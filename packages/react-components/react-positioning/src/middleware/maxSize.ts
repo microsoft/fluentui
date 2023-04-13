@@ -22,16 +22,18 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
         (rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height'));
 
       if (applyMaxHeight) {
-        Object.assign(elements.floating.style, {
+        Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxHeight: `${availableHeight}px`,
           boxSizing: 'border-box',
+          overflowY: 'auto',
         });
       }
 
       if (applyMaxWidth) {
-        Object.assign(elements.floating.style, {
+        Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxWidth: `${availableWidth}px`,
           boxSizing: 'border-box',
+          overflowX: 'auto',
         });
       }
     },

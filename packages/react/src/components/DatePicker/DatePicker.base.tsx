@@ -26,6 +26,11 @@ const DEFAULT_PROPS: IDatePickerProps = {
   allowTextInput: false,
   formatDate: (date: Date) => (date ? date.toDateString() : ''),
   parseDateFromString: (dateStr: string) => {
+    //if dateStr is DATE ONLY ISO 8601 -> add time so Date.parse() won't convert it to UTC
+    //See here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#date_time_string_format
+    if (dateStr.match(/^\d{4}(-\d{2}){2}$/)) {
+      dateStr += 'T12:00';
+    }
     const date = Date.parse(dateStr);
     return date ? new Date(date) : null;
   },
@@ -112,6 +117,7 @@ function useErrorMessage(
     formatDate,
     minDate,
     maxDate,
+    textField,
   }: IDatePickerProps,
   selectedDate: Date | undefined,
   setSelectedDate: (date: Date | undefined) => void,
@@ -120,6 +126,9 @@ function useErrorMessage(
 ) {
   const [errorMessage, setErrorMessage] = React.useState<string | undefined>();
   const [statusMessage, setStatusMessage] = React.useState<string | undefined>();
+  const isFirstLoadRef = React.useRef<boolean>(true);
+
+  const validateOnLoad = textField?.validateOnLoad ?? true;
 
   const validateTextInput = (date: Date | null = null): void => {
     if (allowTextInput) {
@@ -171,6 +180,14 @@ function useErrorMessage(
   };
 
   React.useEffect(() => {
+    if (isFirstLoadRef.current) {
+      isFirstLoadRef.current = false;
+
+      if (!validateOnLoad) {
+        return;
+      }
+    }
+
     if (isRequired && !selectedDate) {
       setErrorMessage(strings!.isRequiredErrorMessage || ' ');
     } else if (selectedDate && isDateOutOfBounds(selectedDate, minDate, maxDate)) {
@@ -188,6 +205,7 @@ function useErrorMessage(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     selectedDate && getDatePartHashValue(selectedDate),
     isRequired,
+    validateOnLoad,
   ]);
 
   return [
@@ -435,6 +453,10 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     }
   };
 
+  const onCalendarDismissed = (ev?: React.MouseEvent<HTMLElement>): void => {
+    calendarDismissed();
+  };
+
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
@@ -520,7 +542,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
               // eslint-disable-next-line react/jsx-no-bind
               onSelectDate={onSelectDate}
               // eslint-disable-next-line react/jsx-no-bind
-              onDismiss={calendarDismissed}
+              onDismiss={onCalendarDismissed}
               isMonthPickerVisible={props.isMonthPickerVisible}
               showMonthPickerAsOverlay={props.showMonthPickerAsOverlay}
               today={props.today}

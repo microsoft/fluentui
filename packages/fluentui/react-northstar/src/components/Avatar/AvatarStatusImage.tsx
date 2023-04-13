@@ -33,7 +33,7 @@ export const avatarStatusImageClassName = 'ui-avatar__statusimage';
 /**
  * A AvatarStatusImage provides a status image for the Avatar.
  */
-export const AvatarStatusImage = (React.forwardRef<HTMLImageElement, AvatarStatusImageProps>((props, ref) => {
+export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatusImageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatusImage.displayName, context.telemetry);
   setStart();
@@ -68,7 +68,7 @@ export const AvatarStatusImage = (React.forwardRef<HTMLImageElement, AvatarStatu
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'img', HTMLImageElement, AvatarStatusImageProps> &
+}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarStatusImageProps> &
   FluentComponentStaticProps<AvatarStatusImageProps>;
 
 AvatarStatusImage.displayName = 'AvatarStatusImage';

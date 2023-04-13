@@ -18,8 +18,11 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
+  Overflow,
+  OverflowItem,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
 } from '@fluentui/react-components';
-import { Overflow, OverflowItem, useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
 
 import { MusicNote1Filled, InfoRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
 

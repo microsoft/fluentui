@@ -417,6 +417,20 @@ describe('Dropdown', () => {
     });
   });
 
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByRole('combobox').textContent).toEqual('Green');
+  });
+
   it('calls onOptionSelect with correct data for multi-select', () => {
     const onOptionSelect = jest.fn();
 

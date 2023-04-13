@@ -17,7 +17,8 @@ export const PeoplePickerPageProps: TFabricPlatformPageProps = {
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerOverview.md') as string,
     related,
     componentUrl,
   },

@@ -11,6 +11,7 @@ export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots> =
  */
 const useStyles = makeStyles({
   root: {
+    backgroundColor: 'inherit',
     position: 'absolute',
     right: '0px',
     top: '50%',

@@ -37,13 +37,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
             {
               alignment-adjust: center;
               box-sizing: content-box;
-              height: 0px;
+              display: block;
+              height: -40px;
               overflow: visible;
               width: 0px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(0, -20)"
         >
           <g>
             <path
@@ -59,7 +60,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,46.747508639798205,28.977067414974766L-16.565176770869186,-11.206913872688409Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -70,6 +71,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               opacity={1}
               role="img"
             />
+<<<<<<< HEAD
             <g
               className=
 
@@ -100,6 +102,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                 y={5}
               />
             </g>
+=======
+>>>>>>> 7dc03924c99ea14c4df43e56454fc7781e1fdb89
           </g>
           <g>
             <path
@@ -115,7 +119,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M46.12029951098431,29.965279458351464A55,55,0,1,1,-0.5852252416682054,-54.99688637928982L-0.5852252416681382,19.99143595183984Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -126,6 +130,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               opacity={1}
               role="img"
             />
+<<<<<<< HEAD
             <g
               className=
 
@@ -156,6 +161,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                 y={5}
               />
             </g>
+=======
+>>>>>>> 7dc03924c99ea14c4df43e56454fc7781e1fdb89
           </g>
         </g>
       </svg>
@@ -363,6 +370,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -396,7 +404,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -487,7 +495,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -614,13 +622,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
             {
               alignment-adjust: center;
               box-sizing: content-box;
-              height: 0px;
+              display: block;
+              height: -40px;
               overflow: visible;
               width: 0px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(0, -20)"
         >
           <g>
             <path
@@ -636,7 +645,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,46.747508639798205,28.977067414974766L-16.565176770869186,-11.206913872688409Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -647,6 +656,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               opacity={1}
               role="img"
             />
+<<<<<<< HEAD
             <g
               className=
 
@@ -677,6 +687,8 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                 y={5}
               />
             </g>
+=======
+>>>>>>> 7dc03924c99ea14c4df43e56454fc7781e1fdb89
           </g>
           <g>
             <path
@@ -692,7 +704,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M46.12029951098431,29.965279458351464A55,55,0,1,1,-0.5852252416682054,-54.99688637928982L-0.5852252416681382,19.99143595183984Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -703,6 +715,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               opacity={1}
               role="img"
             />
+<<<<<<< HEAD
             <g
               className=
 
@@ -733,6 +746,8 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                 y={5}
               />
             </g>
+=======
+>>>>>>> 7dc03924c99ea14c4df43e56454fc7781e1fdb89
           </g>
         </g>
       </svg>
@@ -858,6 +873,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -891,7 +907,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -982,7 +998,877 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels 1`] = `
+<div
+  className=
+      ms-DonutChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone33"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_31"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
+      <svg
+        aria-label="Stacked Bar chart example"
+        className=
+
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: 200px;
+              overflow: visible;
+              width: 200px;
+            }
+      >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_32"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #E5E5E5;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,50.977019571412924,31.644011686506882L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_30first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={54.33177576763747}
+              y={-29.867342398264405}
+            >
+              20.0k
+            </text>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #0078D4;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M50.33398646478252,32.65715551855505A60,60,0,1,1,-0.5999900000500514,-59.99700002499991L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_30second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={-54.33177576763744}
+              y={29.867342398264462}
+            >
+              39.0k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+  <div
+    className=
+
+        {
+          padding-top: 16px;
+          width: 200px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone34"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels in percentage format 1`] = `
+<div
+  className=
+      ms-DonutChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone39"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_37"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
+      <svg
+        aria-label="Stacked Bar chart example"
+        className=
+
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: 200px;
+              overflow: visible;
+              width: 200px;
+            }
+      >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_38"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #E5E5E5;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,50.977019571412924,31.644011686506882L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_36first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={54.33177576763747}
+              y={-29.867342398264405}
+            >
+              34%
+            </text>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #0078D4;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M50.33398646478252,32.65715551855505A60,60,0,1,1,-0.5999900000500514,-59.99700002499991L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_36second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="hanging"
+              textAnchor="end"
+              x={-54.33177576763744}
+              y={29.867342398264462}
+            >
+              66%
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+  <div
+    className=
+
+        {
+          padding-top: 16px;
+          width: 200px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone40"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1096,12 +1982,42 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_2"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -1109,11 +2025,29 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_3"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
@@ -1129,7 +2063,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M1.141252199959434,-99.99348750501748A100,100,0,0,1,85.03612397688221,52.619935566174156L47.03809752649778,28.502936359043495A55,55,0,0,0,1.1412521999594298,-54.98815821080106Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -1140,38 +2074,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
           <g>
             <path
@@ -1187,7 +2089,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M83.81299867891468,54.54705539667788A100,100,0,1,1,-1.141252199959535,-99.99348750501748L-1.1412521999594853,-54.98815821080106A55,55,0,1,0,45.81497222853026,30.430056189547226Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -1198,38 +2100,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
         </g>
       </svg>
@@ -1243,7 +2113,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -1278,12 +2148,13 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone5"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1310,7 +2181,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1400,7 +2271,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1514,12 +2385,42 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone21"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_19"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -1527,11 +2428,29 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_20"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
@@ -1547,9 +2466,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,84.96169928568821,52.74001947751147L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12first20000"
+              id="_Pie_18first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1558,38 +2477,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
           <g>
             <path
@@ -1605,9 +2492,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M83.8899774413042,54.42859253092508A100,100,0,1,1,-0.9999833334167523,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12second39000"
+              id="_Pie_18second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1616,38 +2503,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
         </g>
       </svg>
@@ -1661,7 +2516,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -1696,12 +2551,13 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone14"
+              data-focuszone-id="FocusZone22"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1728,7 +2584,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1818,7 +2674,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1932,12 +2788,42 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_8"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -1945,11 +2831,29 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_9"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
@@ -1965,9 +2869,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,84.96169928568821,52.74001947751147L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5first20000"
+              id="_Pie_7first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1976,38 +2880,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
           <g>
             <path
@@ -2023,9 +2895,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M83.8899774413042,54.42859253092508A100,100,0,1,1,-0.9999833334167523,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5second39000"
+              id="_Pie_7second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2034,38 +2906,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
         </g>
       </svg>
@@ -2101,12 +2941,42 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_13"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -2114,11 +2984,29 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_14"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
@@ -2134,9 +3022,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,84.96169928568821,52.74001947751147L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8first20000"
+              id="_Pie_12first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2145,38 +3033,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
           <g>
             <path
@@ -2192,9 +3048,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M83.8899774413042,54.42859253092508A100,100,0,1,1,-0.9999833334167523,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8second39000"
+              id="_Pie_12second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2203,38 +3059,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                
-              </text>
-            </g>
           </g>
         </g>
       </svg>
@@ -2248,7 +3072,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -2283,12 +3107,13 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone16"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2315,7 +3140,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2405,7 +3230,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2519,12 +3344,42 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_25"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -2532,11 +3387,29 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_26"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
@@ -2552,9 +3425,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,84.96169928568821,52.74001947751147L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16first20000"
+              id="_Pie_24first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2563,38 +3436,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                1,000
-              </text>
-            </g>
           </g>
           <g>
             <path
@@ -2610,9 +3451,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M83.8899774413042,54.42859253092508A100,100,0,1,1,-0.9999833334167523,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16second39000"
+              id="_Pie_24second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2621,39 +3462,26 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               opacity={1}
               role="img"
             />
-            <g
-              className=
-
-                  {
-                    margin-bottom: 4px;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 4px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
-                  }
-            >
-              <text
-                className=
-
-                    {
-                      fill: #323130;
-                      font-size: 18px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
-                    }
-                id="Donut_center_text"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                textAnchor="middle"
-                y={5}
-              >
-                1,000
-              </text>
-            </g>
           </g>
+          <text
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(179, 179, 179);
+                }
+            data-is-focusable={true}
+            dominantBaseline="middle"
+            id="Donut_center_text"
+            textAnchor="middle"
+            y={5}
+          >
+            1,000
+          </text>
         </g>
       </svg>
     </div>
@@ -2666,7 +3494,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -2701,12 +3529,13 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone28"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2733,7 +3562,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2823,7 +3652,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}

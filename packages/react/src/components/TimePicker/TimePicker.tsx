@@ -53,11 +53,10 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
   const initialValue = useConst(defaultValue || new Date());
-  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, initialValue), [
-    increments,
-    timeRange,
-    initialValue,
-  ]);
+  const baseDate: Date = React.useMemo(
+    () => generateBaseDate(increments, timeRange, initialValue),
+    [increments, timeRange, initialValue],
+  );
 
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);

@@ -25,7 +25,14 @@ export const parameters = {
         [
           'Introduction',
           'Developer',
-          ['Quick Start', 'Styling Components', 'Positioning Components', 'Component Poster', 'Server-Side Rendering'],
+          [
+            'Quick Start',
+            'Styling Components',
+            'Positioning Components',
+            'Component Poster',
+            'Server-Side Rendering',
+            ['Basic setup', 'Next.js setup', 'Limitations with Portals'],
+          ],
           'Migration',
           [
             'Getting Started',

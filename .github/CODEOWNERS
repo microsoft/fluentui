@@ -15,10 +15,17 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
+##### Catch All Rule ######
+#### Later rules will override this, if you are hitting this rule often add a rule to a sub-folder
+* @microsoft/fluentui-admins
+
 ###### Build Section ######
 #### Repo-wide build files - Note these will only be applied if another rule below does not apply
 *.sh @microsoft/fluentui-react-build
 *.yml @microsoft/fluentui-react-build
+
+#### Change files (no owner)
+/change
 
 #### Build folders
 /.codesandbox @microsoft/fluentui-react-build
@@ -45,6 +52,7 @@
 /yarn.lock @microsoft/fluentui-react-build
 /*.config.js @microsoft/fluentui-react-build
 /typings @microsoft/fluentui-react-build
+/.babelrc-v9.json @microsoft/fluentui-react-build
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build
@@ -63,7 +71,6 @@ scripts/babel @microsoft/fluentui-react-build
 scripts/beachball @microsoft/fluentui-react-build
 scripts/cypress @microsoft/fluentui-react-build
 scripts/dangerjs @microsoft/fluentui-react-build
-scripts/dependency-graph-generator @microsoft/fluentui-react-build
 scripts/executors @microsoft/fluentui-react-build
 scripts/fluentui-publish @microsoft/fluentui-react-build
 scripts/generators @microsoft/fluentui-react-build
@@ -110,11 +117,14 @@ apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/flue
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
+apps/react-18-tests-v8 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
+apps/react-18-tests-v9 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
+apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
 
 #### Packages
-packages/azure-themes @robtaft-ms @Jacqueline-ms
+packages/azure-themes @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
-packages/date-time-utilities @microsoft/fluent-date-time
+packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
@@ -129,10 +139,11 @@ packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
-packages/react-date-time @microsoft/fluent-date-time
+packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
-packages/react-file-type-icons @jahnp @bigbadcapers
+packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
+packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
@@ -200,13 +211,19 @@ packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
 packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
 packages/react-components/react-avatar-context @microsoft/teams-prg
 packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
-packages/react-migration-v8-v9 @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-tree @microsoft/teams-prg
+packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
 packages/react-components/react-data-grid-react-window @microsoft/teams-prg
-packages/react-components/react-datepicker @microsoft/cxe-red @sopranopillow @khmakoto
+packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
+packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
+packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-components/react-breadcrumb @microsoft/cxe-prg
+packages/react-components/react-drawer @microsoft/cxe-prg
+packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
+packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
@@ -215,16 +232,16 @@ packages/react/src/components/ActivityItem @microsoft/cxe-red @microsoft/cxe-coa
 packages/react/src/components/Announced @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Breadcrumb @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Button @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Calendar @microsoft/fluent-date-time
-packages/react/src/components/CalendarDayGrid @microsoft/fluent-date-time
+packages/react/src/components/Calendar @microsoft/cxe-red
+packages/react/src/components/CalendarDayGrid @microsoft/cxe-red
 packages/react/src/components/Check @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal @leddie24
+packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/DatePicker @microsoft/fluent-date-time
+packages/react/src/components/DatePicker @microsoft/cxe-red
 packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
-packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal @yiminwu
+packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers
@@ -254,7 +271,7 @@ packages/react/src/components/Text @microsoft/cxe-red @microsoft/cxe-coastal @kh
 packages/react/src/components/TextField @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Toggle @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Tooltip @microsoft/cxe-red @microsoft/cxe-coastal @behowell
-packages/react/src/components/WeeklyDayPicker @microsoft/fluent-date-time
+packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
@@ -276,3 +293,4 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/cypress.config.ts @microsoft/fluentui-react-build
 **/api-extractor.json @microsoft/fluentui-react-build
 **/api-extractor.unstable.json @microsoft/fluentui-react-build
+**/.swcrc @microsoft/fluentui-react-build

@@ -11,3 +11,7 @@
 
 - Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.
 - Make sure it's clear what will happen when people interact with the button. Be concise; usually a single verb is best. Include a noun if there is any room for interpretation about what the verb means. For example, "Delete folder" or "Create account".
+
+### Accessibility
+
+- SplitButton automated test error: because the SplitButton variant is a single tab stop with two actions (the primary action and the menu), we have a parent button that gets keyboard focus and two individual buttons nested within it. This covers the widest range of practical accessibility scenarios, but causes an automated error that should be ignored. The v9 SplitButton does not have this issue because it is treated as two separate tab stops.

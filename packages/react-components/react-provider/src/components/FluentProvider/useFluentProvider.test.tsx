@@ -4,6 +4,7 @@ import * as React from 'react';
 import { FluentProvider } from './FluentProvider';
 import { useFluentProvider_unstable } from './useFluentProvider';
 import type { PartialTheme } from '@fluentui/react-theme';
+import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 
 describe('useFluentProvider_unstable', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -47,6 +48,36 @@ describe('useFluentProvider_unstable', () => {
         "strokeWidthThick": "20px",
         "strokeWidthThickest": "30px",
         "strokeWidthThin": "20px",
+      }
+    `);
+  });
+
+  it('should merge overrides', () => {
+    const overridesA: OverridesContextValue_unstable = {
+      inputDefaultAppearance: 'filled-lighter',
+      // currently the overrides object contains a single value, adding one more to test the merging
+      customValue: 'shouldNotBeOverridden',
+    } as OverridesContextValue_unstable;
+    const overridesB: OverridesContextValue_unstable = {
+      inputDefaultAppearance: 'filled-darker',
+    };
+
+    const Wrapper: React.FC = ({ children }) => (
+      <FluentProvider overrides_unstable={overridesA}>{children}</FluentProvider>
+    );
+
+    const { result } = renderHook(
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      () => useFluentProvider_unstable({ overrides_unstable: overridesB }, React.createRef()),
+      {
+        wrapper: Wrapper,
+      },
+    );
+
+    expect(result.current.overrides_unstable).toMatchInlineSnapshot(`
+      Object {
+        "customValue": "shouldNotBeOverridden",
+        "inputDefaultAppearance": "filled-darker",
       }
     `);
   });

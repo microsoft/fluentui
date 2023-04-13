@@ -8,8 +8,8 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-components';
 import {
+  Avatar,
   TableBody,
   TableCell,
   TableRow,
@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const items = [
   {

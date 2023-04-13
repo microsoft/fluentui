@@ -1,4 +1,4 @@
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -9,7 +9,7 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
   root: 'fui-InfoButton',
   // this className won't be used, but it's needed to satisfy the type checker
   popover: 'fui-InfoButton__popover',
-  content: 'fui-InfoButton__content',
+  info: 'fui-InfoButton__info',
 };
 
 /**
@@ -23,12 +23,12 @@ const useButtonStyles = makeStyles({
     justifyContent: 'center',
     textDecorationLine: 'none',
     verticalAlign: 'middle',
+    position: 'relative',
 
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForeground2,
 
-    ...shorthands.overflow('hidden'),
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.margin(0),
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
@@ -70,37 +70,23 @@ const useButtonStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       backgroundColor: 'Highlight',
-      ...shorthands.borderColor('Canvas'),
       color: 'Canvas',
     },
   },
 
   highContrast: {
     '@media (forced-colors: active)': {
-      ...shorthands.borderColor('Canvas'),
       color: 'CanvasText',
 
-      ':hover, :hover:active': {
+      ':hover,:hover:active': {
         forcedColorAdjust: 'none',
         backgroundColor: 'Highlight',
-        ...shorthands.borderColor('Canvas'),
         color: 'Canvas',
       },
     },
   },
 
-  focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-    outlineColor: tokens.colorTransparentStroke,
-    outlineWidth: tokens.strokeWidthThick,
-    outlineStyle: 'solid',
-    boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
-    `,
-    zIndex: 1,
-  }),
+  focusIndicator: createFocusOutlineStyle(),
 
   large: {
     ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalXXS),
@@ -121,10 +107,10 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
-  state.content.className = mergeClasses(
-    infoButtonClassNames.content,
+  state.info.className = mergeClasses(
+    infoButtonClassNames.info,
     size === 'large' && popoverSurfaceStyles.large,
-    state.content.className,
+    state.info.className,
   );
 
   state.root.className = mergeClasses(

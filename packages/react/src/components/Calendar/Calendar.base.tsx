@@ -149,9 +149,8 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
   (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState(
-      props,
-    );
+    const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] =
+      useDateState(props);
     const [isMonthPickerVisible, isDayPickerVisible, toggleDayMonthPickerVisibility] = useVisibilityState(props);
     const [dayPicker, monthPicker, focusOnNextUpdate] = useFocusLogic(props, isDayPickerVisible, isMonthPickerVisible);
 

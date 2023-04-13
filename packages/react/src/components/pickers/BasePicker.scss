@@ -1,5 +1,9 @@
 @import '~@fluentui/common-styles/src/common';
 
+.picker {
+  position: relative;
+}
+
 .pickerText {
   display: flex;
   flex-wrap: wrap;

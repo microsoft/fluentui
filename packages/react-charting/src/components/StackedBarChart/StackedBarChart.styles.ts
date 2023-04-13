@@ -42,7 +42,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
-      color: '#171717',
+      color: theme.palette.neutralPrimary,
       marginBottom: '5px',
     },
     legendContainer: {

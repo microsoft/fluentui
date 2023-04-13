@@ -154,10 +154,12 @@ module.exports = createRule({
           return;
         }
 
-        const specifiers = /** @type {ImportSpecifier[]} */ (imprt.specifiers.filter(
-          // Filter out default imports and namespace (star) imports
-          spec => spec.type === AST_NODE_TYPES.ImportSpecifier,
-        ))
+        const specifiers = /** @type {ImportSpecifier[]} */ (
+          imprt.specifiers.filter(
+            // Filter out default imports and namespace (star) imports
+            spec => spec.type === AST_NODE_TYPES.ImportSpecifier,
+          )
+        )
           // spec.imported is the original name: `foo` in `import { foo as bar } from 'whatever'`
           .map(spec => spec.imported);
 

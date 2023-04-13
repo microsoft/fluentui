@@ -20,7 +20,15 @@ describe('Text', () => {
   it('renders a default state', () => {
     const { container, getByText } = render(<Text>Test</Text>);
 
-    expect(container).toMatchSnapshot();
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-Text"
+        >
+          Test
+        </span>
+      </div>
+    `);
 
     const textElement = getByText('Test');
     expect(textElement.nodeName).toBe('SPAN');

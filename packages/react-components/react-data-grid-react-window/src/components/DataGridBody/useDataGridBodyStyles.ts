@@ -1,5 +1,5 @@
 import type { DataGridBodyState } from './DataGridBody.types';
-import { useDataGridBodyStyles_unstable as useDataGridBodyStylesBase_unstable } from '@fluentui/react-components/unstable';
+import { useDataGridBodyStyles_unstable as useDataGridBodyStylesBase_unstable } from '@fluentui/react-table';
 
 /**
  * Apply styling to the DataGridBody slots based on the state

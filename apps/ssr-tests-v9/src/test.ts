@@ -15,19 +15,28 @@ async function test(): Promise<void> {
   const startTime = process.hrtime();
   console.log('Starting a browser...');
 
+  const htmlPath = path.resolve(__dirname, '..', 'dist', 'index.html');
+
+  if (!fs.existsSync(htmlPath)) {
+    throw new Error('"dist/index.html" does not exist, please run "yarn build" first');
+  }
+
   let browser: Browser | undefined;
 
   try {
-    browser = await launchBrowser();
+    browser = await launchBrowser({
+      ignoreDefaultArgs: [
+        // If sidebars are hidden, they will have "0px" width. It's not the same as in a real browser
+        // https://github.com/microsoft/fluentui/issues/27357
+        '--hide-scrollbars',
+      ],
+    });
     console.log('Using', await browser.version());
 
-    const htmlPath = path.resolve(__dirname, '..', 'dist', 'index.html');
-
-    if (!fs.existsSync(htmlPath)) {
-      throw new Error('"dist/index.html" does not exist, please run "yarn build" first');
-    }
-
-    const url = `file://${htmlPath}`;
+    const url =
+      process.platform === 'win32'
+        ? `file:///${htmlPath.split(path.win32.sep).join(path.posix.sep)}`
+        : `file://${htmlPath}`;
     console.log(`Using "${url}"`);
 
     await visitPage(browser, url);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { setRTL, setWarningCallback } from '@fluentui/utilities';
 import { Persona } from './Persona';
 import { mount } from 'enzyme';

@@ -1,7 +1,7 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
-import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
+import { select as d3Select, Selection, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
@@ -100,6 +100,8 @@ export interface IXAxisParams {
   xAxistickSize?: number;
   tickPadding?: number;
   xAxisPadding?: number;
+  xAxisInnerPadding?: number;
+  xAxisOuterPadding?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[];
@@ -171,21 +173,23 @@ function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
   const formatMonth = locale.format('%B');
   const formatYear = locale.format('%Y');
 
-  return (d3TimeSecond(date) < date
-    ? formatMillisecond
-    : d3TimeMinute(date) < date
-    ? formatSecond
-    : d3TimeHour(date) < date
-    ? formatMinute
-    : d3TimeDay(date) < date
-    ? formatHour
-    : d3TimeMonth(date) < date
-    ? d3TimeWeek(date) < date
-      ? formatDay
-      : formatWeek
-    : d3TimeYear(date) < date
-    ? formatMonth
-    : formatYear)(date);
+  return (
+    d3TimeSecond(date) < date
+      ? formatMillisecond
+      : d3TimeMinute(date) < date
+      ? formatSecond
+      : d3TimeHour(date) < date
+      ? formatMinute
+      : d3TimeDay(date) < date
+      ? formatHour
+      : d3TimeMonth(date) < date
+      ? d3TimeWeek(date) < date
+        ? formatDay
+        : formatWeek
+      : d3TimeYear(date) < date
+      ? formatMonth
+      : formatYear
+  )(date);
 }
 
 /**
@@ -248,11 +252,20 @@ export function createStringXAxis(
   dataset: string[],
   culture?: string,
 ) {
-  const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisCount = 6,
+    xAxistickSize = 6,
+    tickPadding = 10,
+    xAxisPadding = 0.1,
+    xAxisInnerPadding,
+    xAxisOuterPadding,
+  } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
-    .padding(xAxisPadding);
+    .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
+    .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
@@ -745,8 +758,8 @@ export function domainRageOfVerticalNumeric(
 ): IDomainNRange {
   const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
   const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const rMin = margins.left! + barWidth;
-  const rMax = containerWidth - margins.right! - barWidth;
+  const rMin = margins.left! + barWidth / 2;
+  const rMax = containerWidth - margins.right! - barWidth / 2;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMin, rEndValue: rMax }
@@ -858,9 +871,10 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
  * @param {IVerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(
-  points: IVerticalBarChartDataPoint[],
-): { startValue: number; endValue: number } {
+export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[]): {
+  startValue: number;
+  endValue: number;
+} {
   const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.y)!;
   const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.y)!;
 
@@ -1076,20 +1090,17 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   return Math.floor(maxHeight / 1.414); // Compute maxHeight/tanInverse(45) to get the vertical height of labels.
 }
 
-export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): string {
+export function wrapTextInsideDonut(selectorClass: string, maxWidth: number, val: string) {
   let idx: number = 0;
-  let value: string = '';
 
   d3SelectAll(`.${selectorClass}`).each(function () {
     const text = d3Select(this);
-    const words = text.text().split(/\s+/).reverse();
+    const words = val.split(/\s+/).reverse();
     let word: string = '';
     let line: string[] = [];
     let lineNumber: number = 0;
     const lineHeight = 1.1; // ems
     const y = text.attr('y');
-    const ellipsis: string = '...';
-    let isTruncationRequired: boolean = false;
 
     let tspan = text
       .text(null)
@@ -1099,66 +1110,31 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): st
       .attr('y', y)
       .attr('dy', lineNumber++ * lineHeight + 'em');
 
-    // tspanEllipsis is used for checking if truncation is required vertically/horizontally
-    // before appending the text to the inner donut text
-    let tspanEllipsis = d3Select('#Donut_center_text').text(null).append('tspan').attr('opacity', 0);
+    // Determine the length of a line
+    const lineLength = tspan.node()!.getBoundingClientRect().y;
 
-    // Determine the ellipsis length for word truncation.
-    tspanEllipsis.text(ellipsis);
-    const ellipsisLength = tspanEllipsis.node()!.getComputedTextLength();
-    tspanEllipsis.text(null);
-
-    // Value concatinates and saves the final truncated string and returns it back to the donut chart
-    // to handle mouse over and mouse out scenarios
-    value = '';
-
+    // Determine the ellipsis length for word truncation
+    const ellipsis = '...';
+    tspan.text(ellipsis);
+    const ellipsisLength = tspan.node()!.getComputedTextLength();
+    tspan.text(null);
     while ((word = words.pop()!)) {
       line.push(word);
       tspan.text(line.join(' ') + ' ');
-      tspanEllipsis.text(line.join(' ') + ' ');
-
       // Determine if wrapping is required
-      if (tspan.node()!.getComputedTextLength() > maxWidth - ellipsisLength && line.length > 1) {
-        while (tspan.node()!.getComputedTextLength() > maxWidth - ellipsisLength) {
-          line.pop();
-          tspan.text(line.join(' ') + ' ');
-          tspanEllipsis.text(line.join(' ') + ' ');
-        }
-        // Determine if truncation is required vertically
-        // If truncation is not required vertically, append a new line while taking care of horizontal truncation
-        if (tspan.node()!.getBoundingClientRect().y < maxWidth) {
+      // If yes, append a new line only if it does not exceed the max height
+      // here, max width = max height, so maxWidth is reused to check max height
+      if (
+        tspan.node()!.getComputedTextLength() > maxWidth &&
+        line.length > 1 &&
+        tspan.node()!.getBoundingClientRect().y < maxWidth
+      ) {
+        line.pop();
+        tspan.text(line.join(' ') + ' ');
+        // append a line only if the line is within the max height
+        // else truncate horizontally and break
+        if (tspan.node()!.getBoundingClientRect().y + lineLength < maxWidth) {
           line = [word];
-          tspanEllipsis.text(word);
-
-          // Determine if truncation is appending the text exceeds maximum height vertically or
-          // maximum width horizontally. In this case, maximum height vertically is same as maxWidth
-          while (
-            tspanEllipsis.node()!.getComputedTextLength() > maxWidth - ellipsisLength ||
-            tspanEllipsis.node()!.getBoundingClientRect().y > maxWidth
-          ) {
-            word = line.pop()!;
-            word = word.slice(0, -1);
-            line = [word];
-            tspanEllipsis.text(word);
-            isTruncationRequired = true;
-          }
-
-          // If after truncation, the word becomes empty, append the ellipsis to the last line
-          if (word.length === 0) {
-            tspan.text(tspan.text().trim() + ellipsis);
-            value = value.trim() + ellipsis;
-            break;
-          }
-          // Trim whitespaces if any
-          word = word.trim();
-
-          // Append the ellipsis only if the word was truncated and word is not the last word in the sentence.
-          if (isTruncationRequired && !isTextTruncated(word)) {
-            // Append '.' only as much required
-            while (!isTextTruncated(word)) {
-              word = word + '.';
-            }
-          }
           tspan = text
             .append('tspan')
             .attr('id', `WordBreakId-${idx}-${lineNumber}`)
@@ -1166,59 +1142,62 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): st
             .attr('y', y)
             .attr('dy', lineNumber++ * lineHeight + 'em')
             .text(word);
-          tspanEllipsis = d3Select('#Donut_center_text')
-            .append('tspan')
-            .attr('id', `WordBreakId-${idx}-${lineNumber}`)
-            .attr('x', 0)
-            .attr('y', y)
-            .attr('dy', lineNumber++ * lineHeight + 'em')
-            .text(word);
-          value += word + ' ';
-
-          // If truncation was done either verticaly or horizontally, break
-          if (isTruncationRequired) {
-            tspanEllipsis.text(null);
-            break;
-          }
         } else {
-          // If truncation is required vertically, append ellipsis and break
-          tspan.text(line.join(' ') + ellipsis);
-          value += ellipsis;
+          truncateHorizontally(tspan, line, maxWidth, ellipsisLength);
           break;
         }
-      } else {
-        // If there is just 1 line which exceeds the max width horizontally,
-        // no wrapping required, only truncate
-        tspanEllipsis.text(tspanEllipsis.text().trim());
-        tspan.text(tspan.text().trim());
-        while (tspanEllipsis.node()!.getComputedTextLength() > maxWidth - ellipsisLength) {
-          word = line.pop()!.trim();
-          word = word.slice(0, -1);
-          line = [word];
-          tspanEllipsis.text(word);
-          isTruncationRequired = true;
-        }
-        // Trim whitespaces if any
-        word = word.trim();
-        // Append the ellipsis only if the word was truncated
-        if (isTruncationRequired && !isTextTruncated(word)) {
-          // Append '.' only as much required
-          while (!isTextTruncated(word)) {
-            word = word + '.';
-          }
-          value += word;
-          line = [word];
-          tspan.text(word);
-          break;
-        }
-        // If no truncation is required
-        value += word + ' ';
+      }
+      // Determine if truncation is required vertically
+      // If yes, remove the last line, append ellipsis
+      // to the last word of the previous line (truncate horizontally) and break
+      if (tspan.node()!.getBoundingClientRect().y > maxWidth && line.length >= 1) {
+        line.pop();
+        tspan.text(line.join(' '));
+        truncateHorizontally(tspan, line, maxWidth, ellipsisLength);
+        break;
+      }
+      // Determine if truncation is required horizontally
+      if (tspan.node()!.getComputedTextLength() > maxWidth && line.length >= 1) {
+        truncateHorizontally(tspan, line, maxWidth, ellipsisLength);
+        break;
       }
     }
-    tspanEllipsis.text(null);
     idx += 1;
   });
-  return value.trim();
+}
+
+function truncateHorizontally(
+  tspan: Selection<SVGTSpanElement, unknown, null, undefined>,
+  line: string[],
+  maxWidth: number,
+  ellipsisLength: number,
+) {
+  const ellipsis = '...';
+  let lastWord = '';
+  // atleast 3 chars to remove ('...')
+  // may require more removal based on the locale alphabets
+  const truncateCount = 4;
+  // Truncate till the text fits in the maximum allowable width
+  while (tspan.node()!.getComputedTextLength() > maxWidth - ellipsisLength) {
+    lastWord = line.pop()!;
+    if (lastWord !== undefined && lastWord.length >= truncateCount) {
+      // slice last 4 chars (last char + '...') from current lastword
+      const sliceWords = lastWord.slice(0, -truncateCount);
+      if (sliceWords !== '') {
+        line.pop();
+        line = line.concat(sliceWords + ellipsis);
+        tspan.text(line.join(' '));
+      } else {
+        line.pop();
+        tspan.text(line.join(' ') + ellipsis);
+      }
+    } else {
+      break;
+    }
+  }
+  if (!isTextTruncated(tspan.text())) {
+    tspan.text(line.join(' ') + ellipsis);
+  }
 }
 
 export function isTextTruncated(text: string): boolean {

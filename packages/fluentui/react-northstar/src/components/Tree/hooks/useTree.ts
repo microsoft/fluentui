@@ -116,11 +116,10 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
   });
 
   // We want to set `visibleItemIds` to simplify rendering later
-  const { flatTree, visibleItemIds } = React.useMemo(() => flattenTree(options.items, activeItemIds, selectedItemIds), [
-    activeItemIds,
-    options.items,
-    selectedItemIds,
-  ]);
+  const { flatTree, visibleItemIds } = React.useMemo(
+    () => flattenTree(options.items, activeItemIds, selectedItemIds),
+    [activeItemIds, options.items, selectedItemIds],
+  );
 
   const getItemById = useGetItemById(flatTree);
 

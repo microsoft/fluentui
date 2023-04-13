@@ -53,7 +53,7 @@ export const pillIconClassName = 'ui-pill__icon';
 /**
  * A PillIcon allows user set an icon.
  */
-export const PillIcon = (React.forwardRef<HTMLSpanElement, PillIconProps>((props, ref) => {
+export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillIcon.displayName, context.telemetry);
   setStart();
@@ -90,7 +90,7 @@ export const PillIcon = (React.forwardRef<HTMLSpanElement, PillIconProps>((props
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, PillIconProps> & FluentComponentStaticProps<PillIconProps>;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillIconProps> & FluentComponentStaticProps<PillIconProps>;
 
 PillIcon.defaultProps = {
   accessibility: pillIconBehavior,

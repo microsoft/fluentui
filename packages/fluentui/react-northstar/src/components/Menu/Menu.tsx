@@ -152,7 +152,7 @@ function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
  * [Enter into a tablist JAWS narrates: To switch pages, press Control+PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/337)
  * 51114083 VoiceOver+Web narrate wrong position in menu / total count of menu items, when pseudo element ::after or ::before is used
  */
-export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
+export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
   setStart();
@@ -349,7 +349,7 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
   setEnd();
 
   return wrappedElement;
-}) as unknown) as ForwardRefWithAs<'ul', HTMLUListElement, MenuProps> &
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, MenuProps> &
   FluentComponentStaticProps<MenuProps> & {
     create: ShorthandFactory<MenuProps>;
     shorthandConfig: ShorthandConfig<MenuProps>;

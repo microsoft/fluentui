@@ -1,5 +1,5 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette, FontSizes, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { DefaultPalette, FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IArcProps): IArcStyles => {
   const { color, href, theme } = props;
@@ -20,41 +20,10 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       strokeWidth: 4,
       fill: 'transparent',
     },
-    insideDonutString: {
-      fontSize: FontSizes.large,
-      fill: theme.semanticColors.bodyText,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
-    },
-    tooltip: {
-      ...theme.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: theme.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
-    },
-    nodeTextContainer: {
-      selectors: {
-        text: {
-          selectors: {
-            [HighContrastSelectorBlack]: {
-              fill: 'rgb(179, 179, 179)',
-            },
-          },
-        },
-      },
-      marginTop: '4px',
-      marginLeft: '8px',
-      marginBottom: '4px',
-      marginRight: '8px',
+    arcLabel: {
+      fontSize: FontSizes.small,
+      fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
   };
 };
