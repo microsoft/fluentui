@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
@@ -230,11 +231,20 @@ storiesOf('Avatar Converged', module)
   .addStory('size+active+ring-shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
   ))*/
+  .addStory(
+    'badgeMask',
+    () => (
+      <div style={{ backgroundColor: tokens.colorPaletteYellowBackground3 }}>
+        <AvatarList images={examples.image} active="active" badge={{ status: 'unknown' }} />
+      </div>
+    ),
+    { includeRtl: true },
+  )
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
     <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
   ))
-  .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
+  .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" badge={{ status: 'available' }} />)
   .addStory('color', () => <AvatarColors />, {
     includeHighContrast: true,
     includeDarkMode: true,
