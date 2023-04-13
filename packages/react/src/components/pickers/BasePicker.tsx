@@ -1113,6 +1113,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
+          <span id={`${this._ariaMap.selectedItems}-label`} hidden>
+            {selectionAriaLabel || comboLabel}
+          </span>
           <div className={classNames.text} aria-owns={suggestionsAvailable}>
             <Autofill
               {...(inputProps as any)}
@@ -1128,6 +1131,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               aria-expanded={suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
+              aria-describedby={this.state.items.length > 0 ? this._ariaMap.selectedItems : undefined}
               role="combobox"
               id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
               disabled={disabled}
@@ -1141,7 +1145,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             id={this._ariaMap.selectedItems}
             className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             role={selectionRole}
-            aria-label={selectionAriaLabel || comboLabel}
+            aria-labelledby={`${this._ariaMap.selectedItems}-label`}
           >
             {this.renderItems()}
           </div>

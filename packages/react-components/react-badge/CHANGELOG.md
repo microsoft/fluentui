@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Apr 2023 09:31:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.1.8)
+
+Wed, 12 Apr 2023 09:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.1.7..@fluentui/react-badge_v9.1.8)
+
+### Patches
+
+- fix(react-badge): Use min-width: max-content on Badge to prevent shrinking smaller than content ([PR #27489](https://github.com/microsoft/fluentui/pull/27489) by behowell@microsoft.com)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.1.7)
 

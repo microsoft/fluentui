@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Remove deprecated SwitchField_unstable shim component",
+  "packageName": "@fluentui/react-switch",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

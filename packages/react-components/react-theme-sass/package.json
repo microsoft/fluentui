@@ -40,6 +40,7 @@
   },
   "exports": {
     ".": {
+      "style": "./sass/tokens.scss",
       "types": "./dist/index.d.ts",
       "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",

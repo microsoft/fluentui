@@ -21,8 +21,3 @@ export {
   useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
   useRadioGroupContextValue_unstable,
 } from './contexts/index';
-
-// eslint-disable-next-line deprecation/deprecation
-export { RadioGroupField as RadioGroupField_unstable, radioGroupFieldClassNames } from './RadioGroupField';
-// eslint-disable-next-line deprecation/deprecation
-export type { RadioGroupFieldProps as RadioGroupFieldProps_unstable } from './RadioGroupField';

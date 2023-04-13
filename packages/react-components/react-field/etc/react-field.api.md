@@ -8,17 +8,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @internal @deprecated (undocumented)
-export type DeprecatedFieldProps<ControlProps> = ControlProps & {
-    root?: FieldProps;
-    control?: ControlProps;
-} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
 
 // @public (undocumented)
 export const Field: ForwardRefComponent<FieldProps>;
@@ -80,24 +74,8 @@ export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<Fi
     generatedControlId: string;
 };
 
-// @internal @deprecated (undocumented)
-export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @internal @deprecated (undocumented)
-export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType<ControlProps>, options?: {
-    mapProps?: (props: DeprecatedFieldProps<ControlProps>) => DeprecatedFieldProps<ControlProps>;
-    displayName?: string;
-}): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
-
 // @public
-export const renderField_unstable: (state: FieldState, contextValues?: FieldContextValues | undefined) => JSX.Element;
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
