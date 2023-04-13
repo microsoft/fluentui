@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 03 Apr 2023 07:37:18 GMT",
+      "tag": "@fluentui/react_v8.107.1",
+      "version": "8.107.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cbc6188edbe994d00fd4448c5200a85ce97d7388",
+            "comment": "fix: ColorPicker preview box updated to ignore forced colors to display chosen color"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Mar 2023 07:43:50 GMT",
       "tag": "@fluentui/react_v8.107.0",
       "version": "8.107.0",
