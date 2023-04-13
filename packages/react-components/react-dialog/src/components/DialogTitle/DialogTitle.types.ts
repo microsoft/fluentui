@@ -2,7 +2,8 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type DialogTitleSlots = {
   /**
-   * By default this is a h2, but can be any heading or div
+   * By default this is a h2, but can be any heading or div,
+   * if `div` is provided do not forget to also provide proper `role="heading"` and `aria-level` attributes
    */
   root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
   /**
