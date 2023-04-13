@@ -20,6 +20,8 @@
 - HideLegend prop set to “true”. - [enzyme]
 - EnabledLegendsWrapLines prop set to “true”. - [enzyme]
 - ValueInsideDonut set to a string / number. - [enzyme]
+- HideLabels prop set to "false". - [enzyme]
+- HideLabels prop set to "false" and ShowLabelsInPercent prop set to "true". - [enzyme]
 
 ### Test case 3: [Specific DOM elements] Renders individual elements on a prop change:
 
@@ -30,17 +32,17 @@
 
 ### Test case 4: [Mouse events – Donut chart] Renders individual elements on mouse events:
 
-- On mouseOver on the donut chart should render callout. - [enzyme]
-- On mouseMove on Pie 1 (step 1) -> mouseLeave (step 2) -> mouseMove on Pie 2 (step 3), html in step 1 should not be the same as in step 3. - [enzyme]
-- On mouseover with onRenderCalloutPerDataPoint prop provided, should render the custom callout. [enzyme]
-- On mouseOver, callout should be defined, on mouseLeave, callout should disappear. - [enzyme]
+- On mouse over on the donut chart should render callout. - [enzyme]
+- On mouse move on Pie 1 (step 1) -> mouse leave (step 2) -> mouse move on Pie 2 (step 3), html in step 1 should not be the same as in step 3. - [enzyme]
+- On mouse over with onRenderCalloutPerDataPoint prop provided, should render the custom callout. [enzyme]
+- On mouse over, callout should be defined, on mouse leave, callout should disappear. - [enzyme]
 
 ### Test case 5: [Mouse events – Legends] Renders individual elements on mouse events:
 
-- On mouseOver should highlight the corresponding pie. - [RTL]
-- On mouseOver should change the value inside donut with the legend value. - [enzyme]
+- On mouse over on legends should highlight the corresponding pie. - [RTL]
+- On mouse over on legends should change the value inside donut with the legend value. - [enzyme]
 - On click should highlight the corresponding pie with aria-selected set to “true” and tabIndex set to 0. - [RTL]
-- On mouseOut after mouseOver on first legend, should have opacity 0.1 for second Pie initially (during mouseOver on first legend) and opacity set to 1 for both the Pies on mouseOut. - [RTL]
+- On mouse out after mouse over on first legend, should have opacity 0.1 for second Pie initially (during mouseOver on first legend) and opacity set to 1 for both the Pies on mouse out. - [RTL]
 
 ### Test case 6: [Keyboard events – Donut chart] Renders individual elements on keyboard events:
 

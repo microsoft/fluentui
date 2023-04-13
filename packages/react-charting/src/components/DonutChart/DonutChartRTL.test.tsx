@@ -52,11 +52,13 @@ test('Should highlight the corresponding Pie on mouse over on legends', () => {
 
   // Act
   const legend = screen.queryByText('first');
+  expect(legend).toBeDefined();
   fireEvent.mouseOver(legend!);
 
   // Assert
   const getById = queryAllByAttribute.bind(null, 'id');
   expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+  expect(getById(container, /Pie.*?third/i)[0]).toHaveAttribute('opacity', '0.1');
 });
 
 test('Should select legend on single mouse click on legends', () => {
@@ -65,6 +67,7 @@ test('Should select legend on single mouse click on legends', () => {
 
   // Act
   const legend = screen.queryByText('first');
+  expect(legend).toBeDefined();
   fireEvent.click(legend!);
 
   // Assert
@@ -81,6 +84,8 @@ test('Should deselect legend on double mouse click on legends', () => {
 
   // Act
   const legend = screen.queryByText('first');
+  expect(legend).toBeDefined();
+
   //single click on first legend
   fireEvent.click(legend!);
   const getById = queryAllByAttribute.bind(null, 'id');
@@ -101,6 +106,7 @@ test('Should show Pies with same opacity on mouse out of legends', () => {
 
   // Act
   const legend = screen.queryByText('first');
+  expect(legend).toBeDefined();
   fireEvent.mouseOver(legend!);
   const getById = queryAllByAttribute.bind(null, 'id');
   expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
