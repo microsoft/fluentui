@@ -4,22 +4,34 @@ import { DialogProps } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
 
+const getModalType = (modal?: DrawerProps['modal'], lightDismiss?: DrawerProps['lightDismiss']) => {
+  if (!modal) {
+    return 'non-modal';
+  }
+
+  if (lightDismiss) {
+    return 'alert';
+  }
+
+  return 'modal';
+};
+
 /**
  * @internal
  * Create the state required to render DrawerDialog.
  * @param props - props from this instance of Drawer
  */
 const useDrawerDialogProps = (props: DrawerProps) => {
-  const { open, onOpenChange, modal, children, ...otherProps } = props;
+  const { open, onOpenChange, modal, children, lightDismiss, ...otherProps } = props;
 
   const dialogProps = React.useMemo(() => {
     return {
+      modalType: getModalType(modal, lightDismiss),
       open,
       onOpenChange,
-      modalType: modal ? 'modal' : 'non-modal',
       children,
     } as DialogProps;
-  }, [children, modal, onOpenChange, open]);
+  }, [children, lightDismiss, modal, onOpenChange, open]);
 
   const dialogSurfaceProps = React.useMemo(() => {
     return {
@@ -49,6 +61,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     position = 'left',
     size = 'small',
     modal = true,
+    lightDismiss = true,
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
   } = props;
@@ -61,6 +74,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
 
   const { dialog, dialogSurface } = useDrawerDialogProps({
     ...props,
+    lightDismiss,
     open,
     modal,
   });
