@@ -561,7 +561,8 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable,
+  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
   useRadioGroupStyles_unstable,
