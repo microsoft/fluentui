@@ -277,7 +277,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   y1={0}
                   x2={0}
                   y2={props.containerHeight}
-                  stroke={'#C8C8C8'}
+                  stroke={'#C8C8C9'}
                   id={this._verticalLine}
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
@@ -547,6 +547,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.palette.white : lineColor}
+            data-is-focusable={true}
+            ref={(e: SVGCircleElement | null) => {
+              this._refCallback(e!, circleId);
+            }}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
@@ -565,6 +569,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               circleId,
               xAxisCalloutAccessibilityData,
             )}
+            onFocus={() => this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
             onMouseOut={this._handleMouseOut}
             strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
             stroke={activePoint === circleId ? lineColor : ''}
