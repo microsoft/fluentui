@@ -316,7 +316,7 @@ const useStyles = makeStyles({
 
   highContrastInteractive: {
     '@media (forced-colors: active)': {
-      ':hover': {
+      ':hover, :active': {
         forcedColorAdjust: 'none',
         backgroundColor: 'Highlight',
         color: 'HighlightText',
@@ -324,6 +324,10 @@ const useStyles = makeStyles({
         [`& .${cardPreviewClassNames.root}, & .${cardFooterClassNames.root}`]: {
           forcedColorAdjust: 'auto',
         },
+      },
+
+      '::after': {
+        ...shorthands.borderColor('Highlight'),
       },
     },
   },
