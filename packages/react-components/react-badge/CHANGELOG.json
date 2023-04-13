@@ -2,6 +2,27 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 09:31:42 GMT",
+      "tag": "@fluentui/react-badge_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "72acd40b2319325eb725760888185a2fabdd46e7",
+            "comment": "fix(react-badge): Use min-width: max-content on Badge to prevent shrinking smaller than content"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.7.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:50 GMT",
       "tag": "@fluentui/react-badge_v9.1.7",
       "version": "9.1.7",
