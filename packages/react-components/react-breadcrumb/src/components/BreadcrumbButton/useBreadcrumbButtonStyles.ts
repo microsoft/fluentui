@@ -1,20 +1,19 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem.types';
+import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
-export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
-  root: 'fui-BreadcrumbItem',
+export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> = {
+  root: 'fui-BreadcrumbButton',
+  icon: 'fui-BreadcrumbButton__icon',
 };
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+  root: {},
   small: {
     height: '24px',
     ...shorthands.padding(tokens.spacingHorizontalSNudge),
@@ -42,23 +41,24 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the BreadcrumbItem slots based on the state
+ * Apply styling to the BreadcrumbButton slots based on the state
  */
-export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): BreadcrumbItemState => {
+export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
   const styles = useStyles();
-  const size = state.size || 'medium';
   const currentSizeMap = {
     small: styles.currentSmall,
     medium: styles.currentMedium,
     large: styles.currentLarge,
   };
   state.root.className = mergeClasses(
-    breadcrumbItemClassNames.root,
+    breadcrumbButtonClassNames.root,
+    styles[state.size],
     styles.root,
-    styles[size],
-    state.current && currentSizeMap[size],
+    state.current && currentSizeMap[state.size],
     state.root.className,
   );
+
+  useButtonStyles_unstable(state);
 
   return state;
 };
