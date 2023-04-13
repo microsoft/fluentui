@@ -1,7 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import {
   borderRadiusCircular,
-  borderRadiusXLarge,
+  borderRadiusMedium,
   colorNeutralStroke2,
   shadow4,
   strokeWidthThin,
@@ -32,16 +32,14 @@ export const styles = css`
   :host([fit='none']) ::slotted(img) {
     object-fit: none;
     object-position: top left;
-  }
-  :host([fit='center']) {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 200px;
+    height: 100%;
+    width: 100%;
   }
   :host([fit='center']) ::slotted(img) {
     object-fit: none;
+    object-position: center;
+    height: 100%;
+    width: 100%;
   }
   :host([fit='contain']) ::slotted(img) {
     object-fit: contain;
@@ -62,6 +60,6 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
   }
   :host([shape='rounded']) ::slotted(img) {
-    border-radius: ${borderRadiusXLarge};
+    border-radius: ${borderRadiusMedium};
   }
 `;
