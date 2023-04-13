@@ -78,10 +78,10 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
 
   const {
     children,
-    [SLOT_RENDER_FUNCTION_SYMBOL]: renderOrChildren = children,
     as: asProp,
+    [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
     ...rest
-  } = props as typeof props & { [SLOT_RENDER_FUNCTION_SYMBOL]: SlotRenderFunction<R[K]> };
+  } = props as typeof props & { [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<R[K]> };
 
   const slot = (
     state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
@@ -89,8 +89,8 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
       : state.components[slotName]
   ) as React.ElementType<R[K]>;
 
-  if (typeof renderOrChildren === 'function') {
-    const render = renderOrChildren as SlotRenderFunction<R[K]>;
+  if (renderFunction || typeof children === 'function') {
+    const render = renderFunction || (children as SlotRenderFunction<R[K]>);
     return [
       React.Fragment,
       {
