@@ -5,7 +5,8 @@ import { Field } from '@fluentui/react-components';
 export { Default } from './FieldDefault.stories';
 export { Horizontal } from './FieldHorizontal.stories';
 export { Required } from './FieldRequired.stories';
-export { Info } from './FieldInfo.stories';
+// TODO restore Info story once render functions are fixed (https://github.com/microsoft/fluentui/issues/27559)
+// export { Info } from './FieldInfo.stories';
 export { Disabled } from './FieldDisabled.stories';
 export { Size } from './FieldSize.stories';
 export { ValidationMessage } from './FieldValidationMessage.stories';
