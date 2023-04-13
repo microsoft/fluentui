@@ -55,7 +55,7 @@ export const getCheckStyles = ({ checked, theme }: ICheckStyleProps): Partial<IC
         boxSizing: 'border-box',
       },
       checked && {
-        color: theme.semanticColors.bodyTextChecked,
+        color: 'white', // Intended to be white in all themes (dark and light modes)
       },
     ],
     circle: [
