@@ -18,6 +18,11 @@ const exampleDataGroup: IPackageGroup = {
   loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/example-data'))),
   packages: [],
 };
+const chartingGroup: IPackageGroup = {
+  globalName: 'FluentUIReactCharting',
+  loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/react-charting'))),
+  packages: [],
+};
 
 let typesContext: __WebpackModuleApi.RequireContext | undefined;
 try {
@@ -44,6 +49,8 @@ if (typesContext) {
         ? exampleDataGroup
         : packageName === '@fluentui/react-hooks'
         ? hooksGroup
+        : packageName === '@fluentui/react-charting'
+        ? chartingGroup
         : fabricGroup;
     packageGroup.packages.push({
       packageName,
@@ -70,14 +77,14 @@ if (typesContext) {
     { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@fluentui/theme', loadTypes },
     { packageName: '@fluentui/utilities', loadTypes },
-    { packageName: '@fluentui/react-charting', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
+  chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
 }
 
 /**
  * Default supported packages for imports: `@fluentui/react` and everything it exports,
  * plus `@fluentui/example-data`. (React is implicitly supported.)
  */
-export const SUPPORTED_PACKAGES: IPackageGroup[] = [fabricGroup, hooksGroup, exampleDataGroup];
+export const SUPPORTED_PACKAGES: IPackageGroup[] = [fabricGroup, hooksGroup, exampleDataGroup, chartingGroup];
