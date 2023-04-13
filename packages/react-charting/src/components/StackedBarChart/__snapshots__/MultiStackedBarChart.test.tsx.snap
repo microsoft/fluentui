@@ -96,6 +96,32 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               Monitored
             </div>
           </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -154,7 +180,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 fill="#e81123"
                 height={12}
                 key="0"
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -186,40 +212,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 fill="#107c10"
                 height={12}
                 key="1"
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              key="2"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                key="2"
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -498,190 +492,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                       position: relative;
                     }
                 role="group"
-              >
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  key="0"
-                  role="none"
-                >
-                  <button
-                    aria-label="Debit card numbers (EU and USA) selected"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #e81123;
-                            border-color: #e81123;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #e81123, #e81123);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Debit card numbers (EU and USA)
-                    </div>
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  key="1"
-                  role="none"
-                >
-                  <button
-                    aria-label="Passport numbers (USA) selected"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #107c10;
-                            border-color: #107c10;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #107c10, #107c10);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Passport numbers (USA)
-                    </div>
-                  </button>
-                </div>
-              </div>
+              />
             </div>
           </div>
         </div>
@@ -949,6 +760,32 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               Monitored
             </div>
           </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1007,7 +844,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 fill="#e81123"
                 height={12}
                 key="0"
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -1039,40 +876,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 fill="#107c10"
                 height={12}
                 key="1"
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              key="2"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                key="2"
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -1351,190 +1156,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                       position: relative;
                     }
                 role="group"
-              >
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  key="0"
-                  role="none"
-                >
-                  <button
-                    aria-label="Debit card numbers (EU and USA) selected"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #e81123;
-                            border-color: #e81123;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #e81123, #e81123);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Debit card numbers (EU and USA)
-                    </div>
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  key="1"
-                  role="none"
-                >
-                  <button
-                    aria-label="Passport numbers (USA) selected"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #107c10;
-                            border-color: #107c10;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #107c10, #107c10);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Passport numbers (USA)
-                    </div>
-                  </button>
-                </div>
-              </div>
+              />
             </div>
           </div>
         </div>
@@ -2637,6 +2259,32 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               Monitored
             </div>
           </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -2693,7 +2341,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#e81123"
                 height={12}
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -2723,38 +2371,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -3027,188 +2645,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                       position: relative;
                     }
                 role="group"
-              >
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="Debit card numbers (EU and USA) selected"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #e81123;
-                            border-color: #e81123;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #e81123, #e81123);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Debit card numbers (EU and USA)
-                    </div>
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="Passport numbers (USA) selected"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #107c10;
-                            border-color: #107c10;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #107c10, #107c10);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Passport numbers (USA)
-                    </div>
-                  </button>
-                </div>
-              </div>
+              />
             </div>
           </div>
         </div>
@@ -3315,6 +2752,22 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               Monitored
             </div>
           </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -3371,7 +2824,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#e81123"
                 height={12}
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -3401,38 +2854,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -3695,188 +3118,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                       position: relative;
                     }
                 role="group"
-              >
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="Debit card numbers (EU and USA) selected"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #e81123;
-                            border-color: #e81123;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #e81123, #e81123);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Debit card numbers (EU and USA)
-                    </div>
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="Passport numbers (USA) selected"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #107c10;
-                            border-color: #107c10;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #107c10, #107c10);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Passport numbers (USA)
-                    </div>
-                  </button>
-                </div>
-              </div>
+              />
             </div>
           </div>
         </div>
@@ -3983,6 +3225,32 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               Monitored
             </div>
           </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -4039,7 +3307,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#e81123"
                 height={12}
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -4069,38 +3337,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -4465,7 +3703,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#e81123"
                 height={12}
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -4495,38 +3733,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#107c10"
                 height={12}
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -5087,6 +4295,32 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               Monitored
             </div>
           </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -5143,7 +4377,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#e81123"
                 height={12}
-                width="45.45454545454545%"
+                width="63.49206349206349%"
                 x="0%"
                 y={0}
               />
@@ -5173,38 +4407,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
-                width="26.136363636363637%"
-                x="45.45454545454545%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={false}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="28.40909090909091%"
-                x="71.5909090909091%"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
                 y={0}
               />
             </g>
@@ -5477,188 +4681,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                       position: relative;
                     }
                 role="group"
-              >
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="Debit card numbers (EU and USA) selected"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #e81123;
-                            border-color: #e81123;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #e81123, #e81123);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Debit card numbers (EU and USA)
-                    </div>
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="Passport numbers (USA) selected"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #107c10;
-                            border-color: #107c10;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #107c10, #107c10);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    >
-                      Passport numbers (USA)
-                    </div>
-                  </button>
-                </div>
-              </div>
+              />
             </div>
           </div>
         </div>

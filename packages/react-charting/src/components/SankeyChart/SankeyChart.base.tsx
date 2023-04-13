@@ -91,9 +91,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._normalizeData = memoizeFunction((data: ISankeyChartData) => this._normalizeSankeyData(data));
   }
   public componentDidMount(): void {
-    if (!this.state.emptyChart) {
-      this._fitParentContainer();
-    }
+    this._fitParentContainer();
   }
 
   public componentDidUpdate(prevProps: ISankeyChartProps): void {

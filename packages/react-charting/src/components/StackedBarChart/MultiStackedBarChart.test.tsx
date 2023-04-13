@@ -50,13 +50,6 @@ const firstChartPoints: IChartDataPoint[] = [
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '23%',
   },
-  {
-    legend: 'Passport numbers (USA)',
-    data: 25,
-    color: DefaultPalette.green,
-    xAxisCalloutData: '2020/04/30',
-    yAxisCalloutData: '23%',
-  },
 ];
 
 const secondChartPoints: IChartDataPoint[] = [

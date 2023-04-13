@@ -6,7 +6,7 @@ import { IChartProps } from '../../index';
 import { mount, ReactWrapper } from 'enzyme';
 import { ISparklineState, SparklineBase } from './Sparkline.base';
 
-// Wrapper of the HeatMapChart to be tested.
+// Wrapper of the SparklineChart to be tested.
 let wrapper: ReactWrapper<ISparklineProps, ISparklineState, SparklineBase> | undefined;
 
 const sparkline1Points: IChartProps = {
@@ -90,7 +90,7 @@ const sparkline2Points: IChartProps = {
 };
 
 const emptySparklinePoints: IChartProps = {
-  chartTitle: 'Empty s[arkline chart',
+  chartTitle: 'Empty sparkline chart',
   lineChartData: [
     {
       legend: '19.64',

@@ -120,10 +120,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    if (this.props.data && this.props.data.length > 0) {
-      this._adjustProps();
-      this._dataset = this._createDataSetLayer();
-    }
+    this._adjustProps();
+    this._dataset = this._createDataSetLayer();
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._domainMargin = MIN_DOMAIN_MARGIN;
   }
