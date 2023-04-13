@@ -18,7 +18,6 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
-  joinPathFragments,
   ProjectConfiguration,
 } from '@nrwl/devkit';
 
@@ -129,11 +128,9 @@ describe('migrate-converged-pkg generator', () => {
           return json;
         });
 
-        /* eslint-disable @fluentui/max-len */
         await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
           `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
         );
-        /* eslint-enable @fluentui/max-len */
       });
     });
 
@@ -356,7 +353,6 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
-    // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
@@ -617,8 +613,6 @@ describe('migrate-converged-pkg generator', () => {
       const mainJsFilePath = `${projectStorybookConfigPath}/main.js`;
       const packageJsonPath = `${projectConfig.root}/package.json`;
 
-      let pkgJson: PackageJson = readJson(tree, packageJsonPath);
-
       tree.write(mainJsFilePath, 'module.exports = {}');
 
       // artificially add storybook scripts
@@ -650,7 +644,7 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.test.ts', '**/*.test.tsx'],
       });
 
-      pkgJson = readJson(tree, packageJsonPath);
+      const pkgJson: PackageJson = readJson(tree, packageJsonPath);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
       expect(tree.exists(mainJsFilePath)).toBeTruthy();
@@ -861,13 +855,11 @@ describe('migrate-converged-pkg generator', () => {
       updateJson(tree, pkgJsonPath, json => {
         json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
         json.scripts['build:local'] =
-          // eslint-disable-next-line @fluentui/max-len
           'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components && yarn docs';
         return json;
       });
       let pkgJson = readJson(tree, pkgJsonPath);
 
-      /* eslint-disable @fluentui/max-len */
       expect(pkgJson.scripts).toMatchInlineSnapshot(`
         Object {
           "build": "just-scripts build",
@@ -884,7 +876,6 @@ describe('migrate-converged-pkg generator', () => {
           "update-snapshots": "just-scripts jest -u",
         }
       `);
-      /* eslint-enable @fluentui/max-len */
 
       await generator(tree, options);
 
@@ -898,6 +889,7 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
+        'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
         'type-check': 'tsc -b tsconfig.json',
       });
     });
@@ -1449,7 +1441,6 @@ describe('migrate-converged-pkg generator', () => {
         await generator(tree, options);
 
         expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
-        /* eslint-disable @fluentui/max-len */
         expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
           Object {
             "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
@@ -1465,7 +1456,6 @@ describe('migrate-converged-pkg generator', () => {
             "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
           }
         `);
-        /* eslint-enable @fluentui/max-len */
       });
     });
   });

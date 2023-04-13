@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Remove deprecated TextareaField_unstable shim component",
+  "packageName": "@fluentui/react-textarea",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

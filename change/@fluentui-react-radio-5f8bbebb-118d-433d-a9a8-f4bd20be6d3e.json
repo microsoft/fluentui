@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Have RadioGroup forward aria-describedby to each of the Radio items inside",
-  "packageName": "@fluentui/react-radio",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

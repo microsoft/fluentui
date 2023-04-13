@@ -14,8 +14,3 @@ export {
   useFieldControlProps_unstable,
 } from './contexts/index';
 export type { FieldControlPropsOptions } from './contexts/index';
-
-// eslint-disable-next-line deprecation/deprecation
-export { getDeprecatedFieldClassNames, makeDeprecatedField } from './util/makeDeprecatedField';
-// eslint-disable-next-line deprecation/deprecation
-export type { DeprecatedFieldProps } from './util/makeDeprecatedField';
