@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
-import story from './useFlatTreeItems.md';
+import story from './useFlatTree.md';
 
 const defaultItems: FlatTreeItemProps[] = [
   {
@@ -62,7 +62,7 @@ const defaultItems: FlatTreeItemProps[] = [
   },
 ];
 
-export const UseFlatTreeItems = () => {
+export const UseFlatTree = () => {
   const flatTree = useFlatTree_unstable(defaultItems);
 
   return (
@@ -74,7 +74,7 @@ export const UseFlatTreeItems = () => {
   );
 };
 
-UseFlatTreeItems.parameters = {
+UseFlatTree.parameters = {
   docs: {
     description: {
       story,

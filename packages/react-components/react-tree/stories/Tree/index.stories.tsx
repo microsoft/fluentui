@@ -8,8 +8,8 @@ export { DefaultOpenTrees } from './TreeDefaultOpenTrees.stories';
 export { Appearance } from './TreeAppearance.stories';
 export { Size } from './TreeSize.stories';
 export { OpenItemsControlled } from './TreeControllingOpenAndClose.stories';
+export { UseFlatTree as useFlatTree } from './useFlatTree.stories';
 export { FlattenTree as flattenTree } from './flattenTree.stories';
-export { UseFlatTreeItems } from './useFlatTreeItems.stories';
 export { Virtualization } from './Virtualization.stories';
 
 export default {
