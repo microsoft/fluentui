@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ProgressBar, ProgressBarProps } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, ProgressBar, ProgressBarProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<ProgressBarProps>) => {
   return (

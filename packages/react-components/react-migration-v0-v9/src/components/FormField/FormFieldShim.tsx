@@ -4,7 +4,7 @@ import {
   useFieldContextValues_unstable,
   useFieldStyles_unstable,
   useField_unstable,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 import { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React from 'react';
 
