@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.13",
+  "version": "3.0.0-alpha.17",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -32,6 +32,10 @@
       "types": "./dist/esm/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
+    "./anchor-button": {
+      "types": "./dist/esm/anchor-button/define.d.ts",
+      "default": "./dist/esm/anchor-button/define.js"
+    },
     "./avatar": {
       "types": "./dist/esm/avatar/define.d.ts",
       "default": "./dist/esm/avatar/define.js"
@@ -43,6 +47,10 @@
     "./button": {
       "types": "./dist/esm/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
+    },
+    "./compound-button": {
+      "types": "./dist/esm/compound-button/define.d.ts",
+      "default": "./dist/esm/compound-button/define.js"
     },
     "./counter-badge": {
       "types": "./dist/esm/counter-badge/define.d.ts",
@@ -56,9 +64,17 @@
       "types": "./dist/esm/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
+    "./label": {
+      "types": "./dist/esm/label/define.d.ts",
+      "default": "./dist/esm/label/define.js"
+    },
     "./menu": {
       "types": "./dist/esm/menu/define.d.ts",
       "default": "./dist/esm/menu/define.js"
+    },
+    "./menu-button": {
+      "types": "./dist/esm/menu-button/define.d.ts",
+      "default": "./dist/esm/menu-button/define.js"
     },
     "./menu-item": {
       "types": "./dist/esm/menu-item/define.d.ts",
@@ -80,9 +96,25 @@
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
+    "./tabs": {
+      "types": "./dist/esm/tabs/define.d.ts",
+      "default": "./dist/esm/tabs/define.js"
+    },
+    "./tab": {
+      "types": "./dist/esm/tab/define.d.ts",
+      "default": "./dist/esm/tab/define.js"
+    },
+    "./tab-panel": {
+      "types": "./dist/esm/tab-panel/define.d.ts",
+      "default": "./dist/esm/tab-panel/define.js"
+    },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
+    },
+    "./toggle-button": {
+      "types": "./dist/esm/toggle-button/define.d.ts",
+      "default": "./dist/esm/toggle-button/define.js"
     }
   },
   "scripts": {
