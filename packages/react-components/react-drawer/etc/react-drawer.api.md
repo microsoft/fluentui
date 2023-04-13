@@ -32,6 +32,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     type?: 'inline' | 'overlay';
     size?: 'small' | 'medium' | 'large' | 'full';
     modal?: boolean;
+    separator?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
 // @public (undocumented)
@@ -40,7 +41,7 @@ export type DrawerSlots = {
 };
 
 // @public
-export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>> & {
+export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size' | 'separator'>> & {
     dialog: DialogProps;
     dialogSurface: DialogSurfaceProps;
 };
