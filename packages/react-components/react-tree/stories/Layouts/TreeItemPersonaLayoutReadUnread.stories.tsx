@@ -19,7 +19,7 @@ export const ReadUnread = () => {
           Read content message
         </TreeItemPersonaLayout>
       </TreeItem>
-      <TreeItem>
+      <TreeItem aria-description="New message">
         <TreeItemPersonaLayout
           description={<div className={styles.unread}>Secondary text content</div>}
           media={<Avatar />}
