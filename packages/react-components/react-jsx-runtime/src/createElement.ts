@@ -10,12 +10,12 @@ export function createElement<P extends {}>(
   props?: P | null,
   ...children: React.ReactNode[]
 ): React.ReactElement<P> | null {
-  return isSlotComponent(props)
-    ? createElementFromSlot(type, props, children)
+  return hasRenderFunction(props)
+    ? createElementFromRenderFunction(type, props, children)
     : React.createElement(type, props, ...children);
 }
 
-function createElementFromSlot<P extends UnknownSlotProps>(
+function createElementFromRenderFunction<P extends UnknownSlotProps>(
   type: React.ElementType<P>,
   props: WithMetadata<P>,
   overrideChildren: React.ReactNode[],
@@ -33,6 +33,6 @@ function createElementFromSlot<P extends UnknownSlotProps>(
   ) as React.ReactElement<P>;
 }
 
-export function isSlotComponent<Props extends {}>(props?: Props | null): props is WithMetadata<Props> {
+export function hasRenderFunction<Props extends {}>(props?: Props | null): props is WithMetadata<Props> {
   return Boolean(props?.hasOwnProperty(SLOT_RENDER_FUNCTION_SYMBOL));
 }
