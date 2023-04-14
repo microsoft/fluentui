@@ -234,8 +234,16 @@ storiesOf('Avatar Converged', module)
   .addStory(
     'badgeMask',
     () => (
-      <div style={{ backgroundColor: tokens.colorPaletteYellowBackground3 }}>
-        <AvatarList images={examples.image} active="active" badge={{ status: 'unknown' }} />
+      <div
+        style={{
+          backgroundSize: '32px 32px',
+          backgroundImage:
+            `repeating-conic-gradient(` +
+            `${tokens.colorPaletteYellowBackground3} 0% 25%, ` +
+            `${tokens.colorPaletteMarigoldBackground3} 0% 50%)`,
+        }}
+      >
+        <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
       </div>
     ),
     { includeRtl: true },
