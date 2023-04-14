@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: ensure compatibility with custom JSX pragma",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

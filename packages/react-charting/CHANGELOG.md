@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 07 Apr 2023 07:39:19 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Apr 2023 07:41:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.17)
+
+Thu, 13 Apr 2023 07:41:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.16..@fluentui/react-charting_v5.16.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.5 ([PR #27443](https://github.com/microsoft/fluentui/pull/27443) by beachball)
+
+## [5.16.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.16)
+
+Wed, 12 Apr 2023 07:39:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.15..@fluentui/react-charting_v5.16.16)
+
+### Patches
+
+- Fix wrong state narration for multiple selected legends ([PR #27429](https://github.com/microsoft/fluentui/pull/27429) by kumarkshitij@microsoft.com)
+
+## [5.16.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.15)
+
+Tue, 11 Apr 2023 07:43:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.14..@fluentui/react-charting_v5.16.15)
+
+### Patches
+
+- Fix shape of triangle and pyramid ([PR #27496](https://github.com/microsoft/fluentui/pull/27496) by atishay.jain@microsoft.com)
+
+## [5.16.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.14)
+
+Mon, 10 Apr 2023 07:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.13..@fluentui/react-charting_v5.16.14)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.4 ([PR #27002](https://github.com/microsoft/fluentui/pull/27002) by beachball)
 
 ## [5.16.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.13)
 

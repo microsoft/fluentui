@@ -2,6 +2,51 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 09:31:44 GMT",
+      "tag": "@fluentui/react-radio_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "865a699268e85c55ba9f26c2b4a109161e48576c",
+            "comment": "fix: Have RadioGroup forward aria-describedby to each of the Radio items inside"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.17",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-field to v9.0.0-beta.2",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-label to v9.1.8",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-tabster to v9.6.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-utilities to v9.7.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Apr 2023 00:01:40 GMT",
       "tag": "@fluentui/react-radio_v9.1.8",
       "version": "9.1.8",

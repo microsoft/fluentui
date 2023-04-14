@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { makeStyles } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, makeStyles } from '@fluentui/react-components';
 import { AnimalCat24Regular } from '@fluentui/react-icons';
 
 const useCatInputStyles = makeStyles({

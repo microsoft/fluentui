@@ -2,6 +2,27 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 09:31:45 GMT",
+      "tag": "@fluentui/react-progress_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-beta.2",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.7.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Apr 2023 00:01:40 GMT",
       "tag": "@fluentui/react-progress_v9.1.8",
       "version": "9.1.8",
