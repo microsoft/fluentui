@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Callout): Update useMaxHeight to check if the provided maxHeight will make the callout get cut off.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

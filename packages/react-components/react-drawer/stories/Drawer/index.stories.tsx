@@ -10,6 +10,7 @@ export { Size } from './DrawerSize.stories';
 export { CustomSize } from './DrawerCustomSize.stories';
 export { DefaultOpen } from './DrawerDefaultOpen.stories';
 export { AlwaysOpen } from './DrawerAlwaysOpen.stories';
+export { Separator } from './DrawerSeparator.stories';
 
 export default {
   title: 'Preview Components/Drawer/Drawer',
