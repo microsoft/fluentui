@@ -120,7 +120,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         updatedCurrentTime.setSeconds(selectedTime.getSeconds());
         updatedCurrentTime.setMilliseconds(selectedTime.getMilliseconds());
 
-        setSelectedTime(updatedCurrentTime);
+        setSelectedTime(updatedCurrentTime, undefined);
       }
     }
   }, [selectedTime, dateStartAnchor, dateEndAnchor, setSelectedTime]);
