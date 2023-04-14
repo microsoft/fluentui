@@ -60,6 +60,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
    */
   lightDismiss?: boolean;
 
+  /**
    * Whether the drawer has a separator line.
    * This prop only works when `type` is `inline`.
    *
