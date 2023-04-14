@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Remove deprecated ProgressField_unstable shim component",
+  "packageName": "@fluentui/react-progress",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
