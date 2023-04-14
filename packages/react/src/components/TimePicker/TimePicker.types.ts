@@ -94,7 +94,7 @@ export interface ITimePickerProps
   /**
    * A callback for receiving a notification when the time has been changed.
    */
-  onChange?: (event?: React.FormEvent<IComboBox>, time?: Date) => void;
+  onChange?: (event: React.FormEvent<IComboBox>, time: Date) => void;
 
   /**
    * Callback to localize the date strings displayed for dropdown options.

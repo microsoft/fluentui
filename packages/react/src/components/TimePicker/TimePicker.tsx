@@ -35,6 +35,8 @@ const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePicke
   };
 };
 
+type HtmlElementComboBox = HTMLElement & Partial<IComboBox>;
+
 /**
  * {@docCategory TimePicker}
  */
@@ -65,8 +67,13 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
   const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
 
-  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue, (_ev: any, newTime: Date) =>
-    onChange?.(undefined, newTime),
+  const [selectedTime, setSelectedTime] = useControllableValue<Date, HTMLElement, React.FormEvent<HtmlElementComboBox>>(
+    value,
+    defaultValue,
+    (ev: React.FormEvent<HtmlElementComboBox>, newTime: Date) => {
+      const event = ev as React.FormEvent<IComboBox>;
+      onChange?.(event, newTime);
+    },
   );
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
@@ -151,7 +158,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   }, [selectedTime, getComboBoxOptionInDropdown, onFormatDate, showSeconds, useHour12]);
 
   const onInputChange = React.useCallback(
-    (_: React.FormEvent<IComboBox>, option?: IComboBoxOption, _index?: number, input?: string): void => {
+    (ev: React.FormEvent<IComboBox>, option?: IComboBoxOption, _index?: number, input?: string): void => {
       const validateUserInput = (userInput: string): string => {
         let errorMessageToDisplay = '';
         let regex: RegExp;
@@ -198,11 +205,14 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         const timeSelection = input || option?.text || '';
         setSelectedKey(option?.key as string);
         setComboBoxText(timeSelection);
-        setSelectedTime(errorMessageToDisplay ? new Date('invalid') : undefined);
+        setSelectedTime(
+          errorMessageToDisplay ? new Date('invalid') : undefined,
+          ev as React.FormEvent<HtmlElementComboBox>,
+        );
       } else {
         const timeSelection = (option?.key as string) || input || '';
         const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
-        setSelectedTime(updatedTime);
+        setSelectedTime(updatedTime, ev as React.FormEvent<HtmlElementComboBox>);
       }
 
       setErrorMessage(errorMessageToDisplay);
