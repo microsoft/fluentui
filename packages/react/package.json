@@ -430,6 +430,11 @@
       "import": "./lib/DragDrop.js",
       "require": "./lib-commonjs/DragDrop.js"
     },
+    "./lib/DraggableZone": {
+      "types": "./lib/DraggableZone.d.ts",
+      "import": "./lib/DraggableZone.js",
+      "require": "./lib-commonjs/DraggableZone.js"
+    },
     "./lib/Dropdown": {
       "types": "./lib/Dropdown.d.ts",
       "import": "./lib/Dropdown.js",
@@ -1150,6 +1155,10 @@
     "./lib-commonjs/DragDrop": {
       "types": "./lib-commonjs/DragDrop.d.ts",
       "require": "./lib-commonjs/DragDrop.js"
+    },
+    "./lib-commonjs/DraggableZone": {
+      "types": "./lib-commonjs/DraggableZone.d.ts",
+      "require": "./lib-commonjs/DraggableZone.js"
     },
     "./lib-commonjs/Dropdown": {
       "types": "./lib-commonjs/Dropdown.d.ts",
