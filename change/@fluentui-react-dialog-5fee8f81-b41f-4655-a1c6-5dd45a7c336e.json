@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adopts custom JSX pragma",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
