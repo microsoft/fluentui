@@ -1,7 +1,7 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   root: 'fui-Avatar',
@@ -16,7 +16,6 @@ const vars = {
   badgeRadius: '--fui-Avatar-badgeRadius',
   badgeGap: '--fui-Avatar-badgeGap',
   badgeAlign: '--fui-Avatar-badgeAlign',
-  badgeMask: '--fui-Avatar-badgeMask',
   ringWidth: '--fui-Avatar-ringWidth',
 };
 
@@ -53,7 +52,6 @@ const useRootClassName = makeResetStyles({
   '::before': {
     borderStyle: 'solid',
     borderWidth: `var(${vars.ringWidth})`,
-    maskImage: `var(${vars.badgeMask})`,
   },
 });
 
@@ -67,7 +65,6 @@ const useImageClassName = makeResetStyles({
   borderRadius: 'inherit',
   objectFit: 'cover',
   verticalAlign: 'top',
-  maskImage: `var(${vars.badgeMask})`,
 });
 
 const useIconInitialsClassName = makeResetStyles({
@@ -87,8 +84,28 @@ const useIconInitialsClassName = makeResetStyles({
   textAlign: 'center',
   userSelect: 'none',
   borderRadius: 'inherit',
-  maskImage: `var(${vars.badgeMask})`,
 });
+
+/**
+ * Helper to create a maskImage that punches out a circle larger than the badge by `badgeGap`.
+ * This creates a transparent gap between the badge and Avatar.
+ */
+const badgeCutout = (margin?: string) => {
+  const center = margin ? `calc(var(${vars.badgeRadius}) + ${margin})` : `var(${vars.badgeRadius})`;
+
+  // radial-gradient does not have anti-aliasing, so the transparent and opaque circles are offset by +/- 0.25px
+  // to "fade" from transparent to opaque over a half-pixel and ease the transition.
+  return {
+    maskImage:
+      `radial-gradient(circle at bottom ${center} var(${vars.badgeAlign}) ${center}, ` +
+      `transparent calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) - 0.25px), ` +
+      `white calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) + 0.25px))`,
+
+    // Griffel won't auto-flip the "right" alignment to "left" in RTL if it is inline in the maskImage,
+    // so split it out into a css variable that will auto-flip.
+    [vars.badgeAlign]: 'right',
+  };
+};
 
 const useStyles = makeStyles({
   textCaption2Strong: { fontSize: tokens.fontSizeBase100 },
@@ -121,30 +138,21 @@ const useStyles = makeStyles({
     },
   },
 
-  inactive: {
-    opacity: '0.8',
-    transform: 'scale(0.875)',
-    transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
-
-    '::before,::after': {
-      ...shorthands.margin(0),
-      opacity: 0,
-      transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
-    },
-  },
-
   ring: {
     // Show the ::before pseudo-element, which is the ring
     '::before': { content: '""' },
   },
+  ringBadgeCutout: {
+    '::before': badgeCutout(/*margin =*/ `2 * var(${vars.ringWidth})`),
+  },
   ringThick: {
-    '::before,::after': { [vars.ringWidth]: tokens.strokeWidthThick },
+    [vars.ringWidth]: tokens.strokeWidthThick,
   },
   ringThicker: {
-    '::before,::after': { [vars.ringWidth]: tokens.strokeWidthThicker },
+    [vars.ringWidth]: tokens.strokeWidthThicker,
   },
   ringThickest: {
-    '::before,::after': { [vars.ringWidth]: tokens.strokeWidthThickest },
+    [vars.ringWidth]: tokens.strokeWidthThickest,
   },
 
   shadow: {
@@ -164,6 +172,18 @@ const useStyles = makeStyles({
     '::after': { boxShadow: tokens.shadow28 },
   },
 
+  inactive: {
+    opacity: '0.8',
+    transform: 'scale(0.875)',
+    transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
+
+    '::before,::after': {
+      ...shorthands.margin(0),
+      opacity: 0,
+      transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
+    },
+  },
+
   // Applied to the badge slot
   badge: {
     position: 'absolute',
@@ -171,21 +191,8 @@ const useStyles = makeStyles({
     right: 0,
   },
 
-  // Applied to the root slot
-  rootWithBadge: {
-    [vars.badgeMask]:
-      `radial-gradient(circle at ` +
-      `bottom calc(var(${vars.badgeRadius}) + 2 * var(${vars.ringWidth}, 0px)) ` +
-      `var(${vars.badgeAlign}) calc(var(${vars.badgeRadius}) + 2 * var(${vars.ringWidth}, 0px)), ` +
-      // radial-gradient does not have anti-aliasing, so the transparent and opaque circles are offset by +/- 0.25px
-      // to "fade" from transparent to opaque over a half-pixel and ease the transition.
-      `transparent calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) - 0.25px), ` +
-      `white calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) + 0.25px))`,
-
-    // Griffel won't auto-flip the "right" alignment to "left" in RTL if it is inline in the maskImage,
-    // so split it out into a css variable that will auto-flip.
-    [vars.badgeAlign]: 'right',
-  },
+  // Applied to the image, initials, or icon slot when there is a badge
+  badgeCutout: badgeCutout(),
 
   icon12: { fontSize: '12px' },
   icon16: { fontSize: '16px' },
@@ -484,7 +491,6 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     rootClassName,
     size !== 32 && sizeStyles[size],
     state.badge && sizeStyles[state.badge.size || 'medium'],
-    state.badge && styles.rootWithBadge,
   ];
 
   if (size <= 24) {
@@ -518,6 +524,9 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
     if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
       rootClasses.push(styles.ring, ringColorStyles[color]);
+      if (state.badge) {
+        rootClasses.push(styles.ringBadgeCutout);
+      }
 
       if (size <= 48) {
         rootClasses.push(styles.ringThick);
@@ -554,7 +563,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   }
 
   if (state.image) {
-    state.image.className = mergeClasses(avatarClassNames.image, imageClassName, state.image.className);
+    state.image.className = mergeClasses(
+      avatarClassNames.image,
+      imageClassName,
+      state.badge && styles.badgeCutout,
+      state.image.className,
+    );
   }
 
   if (state.initials) {
@@ -562,6 +576,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       avatarClassNames.initials,
       iconInitialsClassName,
       colorStyles[color],
+      state.badge && styles.badgeCutout,
       state.initials.className,
     );
   }
@@ -589,6 +604,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconInitialsClassName,
       iconSizeClass,
       colorStyles[color],
+      state.badge && styles.badgeCutout,
       state.icon.className,
     );
   }
