@@ -59,8 +59,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -84,7 +85,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -429,8 +430,9 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -454,7 +456,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -716,8 +718,9 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -741,7 +744,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -923,8 +926,9 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -948,7 +952,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1130,8 +1134,9 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -1155,7 +1160,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1327,8 +1332,9 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -1352,7 +1358,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1534,8 +1540,9 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -1715,8 +1722,9 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>
@@ -1740,7 +1748,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1922,8 +1930,9 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
+          tabIndex={-1}
         >
           Stacked bar chart 2nd example
         </span>

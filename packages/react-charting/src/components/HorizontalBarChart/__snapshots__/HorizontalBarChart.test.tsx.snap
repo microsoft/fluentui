@@ -64,8 +64,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               one
             </span>
@@ -96,7 +97,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                   font-size: 14px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             1,543
@@ -231,8 +232,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               two
             </span>
@@ -263,7 +265,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                   font-size: 14px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             800
@@ -574,8 +576,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               one
             </span>
@@ -606,7 +609,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                   font-size: 14px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             1,543
@@ -741,8 +744,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               two
             </span>
@@ -773,7 +777,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                   font-size: 14px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             800
@@ -1004,8 +1008,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               one
             </span>
@@ -1136,8 +1141,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               two
             </span>
@@ -1285,8 +1291,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               one
             </span>
@@ -1435,8 +1442,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
+              tabIndex={-1}
             >
               two
             </span>

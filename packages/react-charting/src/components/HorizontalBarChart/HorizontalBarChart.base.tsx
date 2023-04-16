@@ -14,8 +14,8 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { ChartTitle } from '../../utilities/ChartTitle';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -100,15 +100,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
                     {points!.chartTitle && (
-                      <TooltipHost
-                        overflowMode={TooltipOverflowMode.Self}
-                        hostClassName={this._classNames.chartTitleLeft}
-                        content={points!.chartTitle}
+                      <ChartTitle
+                        className={this._classNames.chartTitleLeft}
+                        accessibilityData={points!.chartTitleAccessibilityData}
                       >
-                        <span {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}>
-                          {points!.chartTitle}
-                        </span>
-                      </TooltipHost>
+                        {points!.chartTitle}
+                      </ChartTitle>
                     )}
                     {chartDataText}
                   </div>
@@ -225,9 +222,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _getChartDataText = (data: IChartProps) => {
     return this.props.barChartCustomData ? (
-      <div data-is-focusable={true} role="text">
-        {this.props.barChartCustomData(data)}
-      </div>
+      <div role="text">{this.props.barChartCustomData(data)}</div>
     ) : (
       this._getDefaultTextData(data)
     );
@@ -240,7 +235,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!);
+    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     switch (chartDataMode) {
       case 'default':
         return (

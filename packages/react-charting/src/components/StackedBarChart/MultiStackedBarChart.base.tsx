@@ -14,8 +14,8 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
-import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { ChartTitle } from '../../utilities/ChartTitle';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -258,7 +258,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             dominantBaseline="central"
             transform={`translate(${this._isRTL ? -4 : 4})`}
             className={this._classNames.barLabel}
-            data-is-focusable={true}
             aria-label={`Total: ${barTotalValue}`}
             role="img"
           >
@@ -297,16 +296,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <TooltipHost
-                overflowMode={TooltipOverflowMode.Self}
-                hostClassName={this._classNames.chartTitleLeft}
-                content={data!.chartTitle}
+              <ChartTitle
+                className={this._classNames.chartTitleLeft}
+                accessibilityData={data!.chartTitleAccessibilityData}
               >
-                <span {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>{data!.chartTitle}</span>
-              </TooltipHost>
+                {data!.chartTitle}
+              </ChartTitle>
             )}
             {showRatio && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!hideDenominator && (
                   <span className={this._classNames.ratioDenominator}>
@@ -318,7 +316,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             {showNumber && (
               <div
                 className={this._classNames.ratioNumerator}
-                {...getAccessibleDataObject(data!.chartDataAccessibilityData)}
+                {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}
               >
                 {getChartData()}
               </div>
