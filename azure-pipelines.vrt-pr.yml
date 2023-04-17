@@ -50,6 +50,7 @@ jobs:
           BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_API_URL: 'https://vrtestfunctionapp.azurewebsites.net/api/'
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
 
       - bash: |
           postPolicy="true";
