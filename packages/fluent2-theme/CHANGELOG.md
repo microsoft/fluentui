@@ -1,8 +1,18 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Thu, 13 Apr 2023 07:41:10 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 07:40:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.0](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.0)
+
+Mon, 17 Apr 2023 07:40:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.106.12..@fluentui/fluent2-theme_v8.107.0)
+
+### Minor changes
+
+- [FEAT] Add details list checkbox styles that are more inline with V9 ([PR #27562](https://github.com/microsoft/fluentui/pull/27562) by mifraser@microsoft.com)
+- Bump @fluentui/react to v8.107.6 ([PR #27546](https://github.com/microsoft/fluentui/pull/27546) by beachball)
 
 ## [8.106.12](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.106.12)
 
