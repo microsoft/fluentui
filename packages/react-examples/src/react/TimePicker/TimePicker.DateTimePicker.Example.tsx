@@ -4,17 +4,43 @@ import { TimePicker, DatePicker, Label, Text, IStackTokens, Stack, IStackStyles,
 const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
+const snapTimeToUpdatedDateAnchor = (datePickerDate: Date, currentTime: Date) => {
+  let snappedTime = new Date(currentTime);
+
+  if (currentTime && !isNaN(currentTime.valueOf())) {
+    const startAnchor = new Date(datePickerDate);
+    const endAnchor = new Date(startAnchor);
+    endAnchor.setDate(startAnchor.getDate() + 1);
+    if (currentTime < startAnchor || currentTime > endAnchor) {
+      snappedTime = new Date(startAnchor);
+      snappedTime.setHours(currentTime.getHours());
+      snappedTime.setMinutes(currentTime.getMinutes());
+      snappedTime.setSeconds(currentTime.getSeconds());
+      snappedTime.setMilliseconds(currentTime.getMilliseconds());
+    }
+  }
+
+  return snappedTime;
+};
+
 export const TimePickerDateTimePickerExample: React.FC = () => {
   const currentDate = new Date('2023-02-01 05:00:00');
   const [datePickerDate, setDatePickerDate] = React.useState<Date>(currentDate);
   const [currentTime, setCurrentTime] = React.useState<Date>();
   const [currentTimeString, setCurrentTimeString] = React.useState<string>('');
 
-  const onSelectDate = React.useCallback((selectedDate: Date) => {
-    setDatePickerDate(selectedDate);
-  }, []);
+  const onSelectDate = React.useCallback(
+    (selectedDate: Date) => {
+      setDatePickerDate(selectedDate);
+      if (currentTime) {
+        const snappedTime = snapTimeToUpdatedDateAnchor(selectedDate, currentTime);
+        setCurrentTime(snappedTime);
+      }
+    },
+    [currentTime],
+  );
 
-  const onDateTimePickerChange = React.useCallback((_ev: React.FormEvent<IComboBox>, date: Date) => {
+  const onTimePickerChange = React.useCallback((_ev: React.FormEvent<IComboBox>, date: Date) => {
     setCurrentTime(date);
   }, []);
 
@@ -27,7 +53,7 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
       <Label>{'DatePicker and TimePicker combination'}</Label>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridColumnGap: '3px' }}>
         <DatePicker placeholder="Select a date..." value={datePickerDate} onSelectDate={onSelectDate} />
-        <TimePicker dateAnchor={datePickerDate} value={currentTime} onChange={onDateTimePickerChange} />
+        <TimePicker dateAnchor={datePickerDate} value={currentTime} onChange={onTimePickerChange} />
       </div>
       <Text>{`⚓ Date anchor: ${datePickerDate.toString()}`}</Text>
       <Text>{`⌚ Selected time: ${currentTimeString ? currentTimeString : '<no time selected>'}`}</Text>
