@@ -2,6 +2,27 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 07:40:25 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.0",
+      "version": "8.107.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "92dd9470416805fedd2f4462102391e123b7fe76",
+            "comment": "[FEAT] Add details list checkbox styles that are more inline with V9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.107.6",
+            "commit": "b415aefbc882a0e84a076df45c04f1efda26c34b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Apr 2023 07:41:10 GMT",
       "tag": "@fluentui/fluent2-theme_v8.106.12",
       "version": "8.106.12",
