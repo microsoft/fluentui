@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { addMonths, addYears, DatePicker } from '@fluentui/react-datepicker-compat';
-import { Field } from '@fluentui/react-components/unstable';
-import { makeStyles } from '@fluentui/react-components';
+import { Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   inputControl: {

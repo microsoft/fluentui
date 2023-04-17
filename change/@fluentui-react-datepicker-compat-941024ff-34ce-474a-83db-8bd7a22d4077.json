@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: Refactor DatePicker to remove Field and error handling.",
+  "comment": "feat: Refactor DatePicker to remove Field and error handling logic.",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"

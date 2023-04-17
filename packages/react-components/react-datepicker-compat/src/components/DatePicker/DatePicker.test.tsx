@@ -69,7 +69,7 @@ describe('DatePicker', () => {
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
-    const result = render(<DatePicker allowTextInput onSelectDate={onSelectDate} />);
+    const result = render(<DatePicker required allowTextInput onSelectDate={onSelectDate} />);
     const input = result.getByRole('combobox');
 
     fireEvent.change(input, { target: { value: 'Jan 1 2030' } });
