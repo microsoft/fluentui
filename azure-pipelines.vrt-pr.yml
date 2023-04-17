@@ -49,7 +49,7 @@ jobs:
           STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
           BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          VR_APP_API_URL: 'https://vrtestfunctionapp.azurewebsites.net/api/'
 
       - bash: |
           postPolicy="true";
