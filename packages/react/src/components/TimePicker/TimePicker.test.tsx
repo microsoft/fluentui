@@ -41,7 +41,7 @@ describe('TimePicker', () => {
 
   it('shows controlled time correctly', () => {
     let _selectedTime = new Date('February 27, 2023 10:00:00');
-    const onChange = (ev: React.FormEvent<IComboBox>, time: Date | undefined): void => {
+    const onChange = (_ev: React.FormEvent<IComboBox>, time: Date): void => {
       if (time) {
         _selectedTime = time;
       }
@@ -65,68 +65,79 @@ describe('TimePicker', () => {
     expect(timePickerComboBox.value).toEqual('10:00:00');
 
     userEvent.click(timePickerComboBox);
-    const timePickerOptions = getAllByRole('option') as HTMLInputElement[];
-    userEvent.click(timePickerOptions[1], undefined, { skipPointerEventsCheck: true });
+    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
+    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
 
     const formattedSelectedTime = _selectedTime.toLocaleTimeString([], {
       hour: 'numeric',
       minute: '2-digit',
       second: '2-digit',
+      hour12: false,
     });
 
-    const expectedTime = '8:15:00 AM';
+    const expectedTime = '08:30:00';
     expect(formattedSelectedTime).toEqual(expectedTime);
   });
 
-  it('changes time options to match new base date', () => {
-    let dateAnchor = new Date('April 12, 2023 00:00:00');
-    let _selectedTime: Date | undefined = undefined;
-    const onChange = (ev: React.FormEvent<IComboBox>, time: Date | undefined): void => {
-      _selectedTime = time;
+  it('correctly renders options using value as date anchor', () => {
+    let _selectedTime = new Date('March 12, 2023 17:00:00');
+    const onChange = (_ev: React.FormEvent<IComboBox>, time: Date): void => {
+      if (time) {
+        _selectedTime = time;
+      }
     };
 
-    const { getByRole, getAllByRole, rerender } = render(
+    const { getByRole, getAllByRole } = render(
       <TimePicker
         showSeconds
         allowFreeform={false}
-        increments={15}
         autoComplete="on"
-        label="I am a controlled TimePicker"
-        dateAnchor={dateAnchor}
+        label="I am a TimePicker with the value prop"
         value={_selectedTime}
         onChange={onChange}
+        useHour12={true}
       />,
     );
 
-    const timePickerOptionIdx = 6;
-    const initialTimePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    userEvent.click(initialTimePickerComboBox);
-    const timePickerOptions = getAllByRole('option') as HTMLInputElement[];
-    userEvent.click(timePickerOptions[timePickerOptionIdx], undefined, { skipPointerEventsCheck: true });
-    expect(_selectedTime!.toString()).toEqual(new Date('April 12, 2023 01:30:00').toString());
+    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
+    expect(timePickerComboBox.value).toEqual('5:00:00 PM');
 
-    dateAnchor = new Date('April 05, 2023 00:00:00');
+    userEvent.click(timePickerComboBox);
+    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
+    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
 
-    rerender(
+    const formattedSelectedTime = _selectedTime.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    });
+
+    const expectedTime = '6:00:00 PM';
+    expect(formattedSelectedTime).toEqual(expectedTime);
+  });
+
+  it('correctly renders options using default value as date anchor', () => {
+    const defaultValue = new Date('April 1, 2023 13:00:00');
+
+    const { getByRole, getAllByRole } = render(
       <TimePicker
-        showSeconds
+        showSeconds={false}
         allowFreeform={false}
-        increments={15}
         autoComplete="on"
-        label="I am a controlled TimePicker"
-        dateAnchor={dateAnchor}
-        value={_selectedTime}
-        onChange={onChange}
+        label="I am a TimePicker with the defaultValue prop"
+        defaultValue={defaultValue}
       />,
     );
 
-    expect(_selectedTime!.toString()).toEqual(new Date('April 05, 2023 01:30:00').toString());
+    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
+    expect(timePickerComboBox.value).toEqual('13:00');
 
-    const updatedTimePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    userEvent.click(updatedTimePickerComboBox);
-    const updatedTimePickerOptions = getAllByRole('option') as HTMLInputElement[];
-    userEvent.click(updatedTimePickerOptions[timePickerOptionIdx + 1], undefined, { skipPointerEventsCheck: true });
-    expect(_selectedTime!.toString()).toEqual(new Date('April 05, 2023 01:45:00').toString());
+    userEvent.click(timePickerComboBox);
+    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
+    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+
+    expect(timePickerComboBox.value).toEqual('14:00');
   });
 
   describe('validates entered text when', () => {
