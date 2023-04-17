@@ -23,13 +23,17 @@ import { getSpinnerStyles } from './componentStyles/Spinner.styles';
 import { getTagItemStyles } from './componentStyles/TagItem.styles';
 import { getTextFieldStyles } from './componentStyles/TextField.styles';
 import { getToggleStyles } from './componentStyles/Toggle.styles';
-
+import { getDetailsRowCheckStyles } from './componentStyles/DetailsRowCheck.styles';
+import { getCheckStyles } from './componentStyles/Check.styles';
 export const fluent2ComponentStyles: { [key: string]: ISettings } = {
   Breadcrumb: {
     styles: getBreadcrumbStyles,
   },
   CalloutContent: {
     styles: getCalloutContentStyles,
+  },
+  Check: {
+    styles: getCheckStyles,
   },
   Checkbox: {
     styles: getCheckboxStyles,
@@ -57,6 +61,9 @@ export const fluent2ComponentStyles: { [key: string]: ISettings } = {
   },
   DefaultButton: {
     styles: getDefaultButtonStyles,
+  },
+  DetailRowCheck: {
+    styles: getDetailsRowCheckStyles,
   },
   Dialog: {
     styles: getDialogStyles,
