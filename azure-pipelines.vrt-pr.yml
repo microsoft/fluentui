@@ -36,7 +36,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: vr-app run-diff --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --clientName "fluentuiv9" --buildId $(Build.BuildId) --screenshotsDirectory 'screenshots/'
+      - bash: vr-app run-diff --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --clientName "fluentuiv9" --buildId $(Build.BuildId) --screenshotsDirectory 'screenshots/' --groupName 'test'
         displayName: 'Run Screenshotdiff update baseline'
         env:
           API_URL: $(System.CollectionUri)
