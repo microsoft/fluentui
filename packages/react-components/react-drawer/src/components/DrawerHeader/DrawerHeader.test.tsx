@@ -13,11 +13,11 @@ describe('DrawerHeader', () => {
     const result = render(<DrawerHeader>Default DrawerHeader</DrawerHeader>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <div
+        <header
           class="fui-DrawerHeader"
         >
           Default DrawerHeader
-        </div>
+        </header>
       </div>
     `);
   });

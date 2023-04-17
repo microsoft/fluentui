@@ -45,6 +45,23 @@ export const drawerCSSVars: {
 };
 
 // @public
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
+
+// @public (undocumented)
+export const drawerHeaderClassNames: SlotClassNames<DrawerHeaderSlots>;
+
+// @public
+export type DrawerHeaderProps = ComponentProps<DrawerHeaderSlots> & {};
+
+// @public (undocumented)
+export type DrawerHeaderSlots = {
+    root: Slot<'header'>;
+};
+
+// @public
+export type DrawerHeaderState = ComponentState<DrawerHeaderSlots>;
+
+// @public
 export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     position?: 'left' | 'right';
     type?: 'inline' | 'overlay';
@@ -71,6 +88,9 @@ export const renderDrawer_unstable: (state: DrawerState) => JSX.Element | null;
 export const renderDrawerBody_unstable: (state: DrawerBodyState) => JSX.Element;
 
 // @public
+export const renderDrawerHeader_unstable: (state: DrawerHeaderState) => JSX.Element;
+
+// @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;
 
 // @public
@@ -78,6 +98,12 @@ export const useDrawerBody_unstable: (props: DrawerBodyProps, ref: React_2.Ref<H
 
 // @public
 export const useDrawerBodyStyles_unstable: (state: DrawerBodyState) => DrawerBodyState;
+
+// @public
+export const useDrawerHeader_unstable: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderStyles_unstable: (state: DrawerHeaderState) => DrawerHeaderState;
 
 // @public
 export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;
