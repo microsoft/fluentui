@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { omit } from '../utils/omit';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 import type {
   AsIntrinsicElement,
   ComponentState,
@@ -75,7 +76,12 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
     return [null, undefined as R[K]];
   }
 
-  const { children, as: asProp, ...rest } = props;
+  const {
+    children,
+    as: asProp,
+    [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+    ...rest
+  } = props as typeof props & { [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<R[K]> };
 
   const slot = (
     state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
@@ -83,8 +89,8 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
       : state.components[slotName]
   ) as React.ElementType<R[K]>;
 
-  if (typeof children === 'function') {
-    const render = children as SlotRenderFunction<R[K]>;
+  if (renderFunction || typeof children === 'function') {
+    const render = renderFunction || (children as SlotRenderFunction<R[K]>);
     return [
       React.Fragment,
       {
