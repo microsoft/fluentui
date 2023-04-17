@@ -9,6 +9,7 @@ export const selectClassNames: SlotClassNames<SelectSlots> = {
   icon: 'fui-Select__icon',
 };
 
+
 const iconSizes = {
   small: '29px',
   medium: '30px',
