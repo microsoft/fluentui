@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Remove the use of ContextSelector in RadioGroupContext",
+  "packageName": "@fluentui/react-components",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

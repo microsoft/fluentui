@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 10 Apr 2023 07:36:30 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 07:40:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.6)
+
+Mon, 17 Apr 2023 07:40:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.5..@fluentui/react_v8.107.6)
+
+### Patches
+
+- fix(Callout): Update useMaxHeight to check if the provided maxHeight will make the callout get cut off. ([PR #27558](https://github.com/microsoft/fluentui/pull/27558) by esteban.230@hotmail.com)
+
+## [8.107.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.5)
+
+Thu, 13 Apr 2023 07:41:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.4..@fluentui/react_v8.107.5)
+
+### Patches
+
+- fix: the BasePicker with List Below variant now sets aria-describedby pointing to selected values ([PR #27525](https://github.com/microsoft/fluentui/pull/27525) by sarah.higley@microsoft.com)
 
 ## [8.107.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.4)
 

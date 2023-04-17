@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TreeItemState, TreeItemSlots, TreeItemContextValues } from './TreeItem.types';
 import { TreeItemProvider } from '../../contexts';
 import { ButtonContextProvider } from '@fluentui/react-button';
@@ -8,7 +11,7 @@ import { ButtonContextProvider } from '@fluentui/react-button';
  * Render the final JSX of TreeItem
  */
 export const renderTreeItem_unstable = (state: TreeItemState, contextValues: TreeItemContextValues) => {
-  const { slots, slotProps } = getSlots<TreeItemSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TreeItemSlots>(state);
 
   return (
     <TreeItemProvider value={contextValues.treeItem}>

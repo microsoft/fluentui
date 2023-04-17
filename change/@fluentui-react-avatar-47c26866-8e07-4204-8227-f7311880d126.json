@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Correct Avatar's active-inactive transition animation curve",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
