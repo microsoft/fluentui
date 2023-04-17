@@ -35,9 +35,9 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-dialog": "^9.5.1",
+    "@fluentui/react-dialog": "^9.5.2",
     "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.7.4",
+    "@fluentui/react-utilities": "^9.8.0",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"
   },

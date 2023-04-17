@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: adopt custom JSX pragma",
-  "packageName": "@fluentui/react-provider",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
