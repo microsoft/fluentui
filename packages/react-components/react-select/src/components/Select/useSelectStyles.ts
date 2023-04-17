@@ -11,7 +11,7 @@ export const selectClassNames: SlotClassNames<SelectSlots> = {
 
 
 const iconSizes = {
-  small: '29px',
+  small: '28px',
   medium: '30px',
   large: '35px',
 };
