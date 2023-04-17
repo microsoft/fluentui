@@ -38,6 +38,7 @@
     "@fluentui/react-divider": "^9.2.8",
     "@fluentui/react-theme": "^9.1.7",
     "@fluentui/react-utilities": "^9.7.4",
+    "@fluentui/react-jsx-runtime": "^9.0.0-alpha.0",
     "@fluentui/react-context-selector": "^9.1.17",
     "@fluentui/react-radio": "^9.1.9",
     "@fluentui/react-shared-contexts": "^9.3.3",

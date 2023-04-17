@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 07:40:25 GMT",
+      "tag": "@fluentui/react_v8.107.6",
+      "version": "8.107.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "97a9295c30393b604cf3c57923334a9b10d3b7d3",
+            "comment": "fix(Callout): Update useMaxHeight to check if the provided maxHeight will make the callout get cut off."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Apr 2023 07:41:10 GMT",
       "tag": "@fluentui/react_v8.107.5",
       "version": "8.107.5",
