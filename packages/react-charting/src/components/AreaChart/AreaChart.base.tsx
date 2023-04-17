@@ -59,6 +59,8 @@ export interface IMapXToDataSet {
   [key: number]: ILineChartDataPoint[];
 }
 
+//by default d3-shape 3.2.0 limits the< path> data point precision to 3 digits(d3/d3-path#10)
+
 export interface IAreaChartState extends IBasestate {
   lineXValue: number;
   displayOfLine: InterceptVisibility;
