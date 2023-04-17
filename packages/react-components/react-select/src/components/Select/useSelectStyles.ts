@@ -120,7 +120,7 @@ const useSelectStyles = makeStyles({
     paddingTop: 0,
 
     ':focus': {
-      outlineWidth: '2px',
+      outlineWidth: '3px',
       outlineStyle: 'solid',
       outlineColor: 'transparent',
     },
