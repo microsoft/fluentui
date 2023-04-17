@@ -81,20 +81,6 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     [internalDateAnchor, increments, timeRange],
   );
 
-  // React.useEffect(() => {
-  //   if (selectedTime && !isNaN(selectedTime.valueOf())) {
-  //     if (selectedTime < dateStartAnchor || selectedTime > dateEndAnchor) {
-  //       const updatedCurrentTime = new Date(dateStartAnchor);
-  //       updatedCurrentTime.setHours(selectedTime.getHours());
-  //       updatedCurrentTime.setMinutes(selectedTime.getMinutes());
-  //       updatedCurrentTime.setSeconds(selectedTime.getSeconds());
-  //       updatedCurrentTime.setMilliseconds(selectedTime.getMilliseconds());
-
-  //       setSelectedTime(updatedCurrentTime);
-  //     }
-  //   }
-  // }, [selectedTime, dateStartAnchor, dateEndAnchor, setSelectedTime]);
-
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
     for (let i = 0; i < optionsCount; i++) {
@@ -173,18 +159,20 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         onGetErrorMessage(errorMessageToDisplay);
       }
 
+      let changedTime: Date;
       if (errorMessageToDisplay || (input !== undefined && !input.length)) {
         const timeSelection = input || option?.text || '';
         setComboBoxText(timeSelection);
         setSelectedTime(errorMessageToDisplay ? new Date('invalid') : undefined);
-        onChange?.(ev, new Date('invalid'));
+        changedTime = new Date('invalid');
       } else {
         const timeSelection = (option?.key as string) || input || '';
         const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
         setSelectedTime(updatedTime);
-        onChange?.(ev, updatedTime);
+        changedTime = updatedTime;
       }
 
+      onChange?.(ev, changedTime);
       setErrorMessage(errorMessageToDisplay);
     },
     [
@@ -247,12 +235,12 @@ const getDateAnchor = (
   increments: number,
   timeRange?: ITimeRange,
 ) => {
-  const clampedDateAnchor = new Date(internalDateAnchor);
+  const clampedDateAnchor = new Date(internalDateAnchor.getTime());
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
-    const timeRangeVal = startEnd === 'start' ? clampedTimeRange.start : clampedTimeRange.end;
-    if (clampedDateAnchor.getHours() !== timeRangeVal) {
-      clampedDateAnchor.setHours(timeRangeVal);
+    const timeRangeHours = startEnd === 'start' ? clampedTimeRange.start : clampedTimeRange.end;
+    if (clampedDateAnchor.getHours() !== timeRangeHours) {
+      clampedDateAnchor.setHours(timeRangeHours);
     }
   } else if (startEnd === 'end') {
     clampedDateAnchor.setDate(clampedDateAnchor.getDate() + 1);
