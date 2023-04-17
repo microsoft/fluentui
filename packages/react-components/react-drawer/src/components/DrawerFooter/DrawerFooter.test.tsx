@@ -13,11 +13,11 @@ describe('DrawerFooter', () => {
     const result = render(<DrawerFooter>Default DrawerFooter</DrawerFooter>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <div
+        <footer
           class="fui-DrawerFooter"
         >
           Default DrawerFooter
-        </div>
+        </footer>
       </div>
     `);
   });
