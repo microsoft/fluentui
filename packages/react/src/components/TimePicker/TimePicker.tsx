@@ -35,8 +35,6 @@ const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePicke
   };
 };
 
-type HtmlElementComboBox = HTMLElement & Partial<IComboBox>;
-
 /**
  * {@docCategory TimePicker}
  */
@@ -59,22 +57,12 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   ...rest
 }: ITimePickerProps) => {
   const [comboBoxText, setComboBoxText] = React.useState<string>('');
-  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>();
+  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined | null>();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
   const fallbackDateAnchor = useConst(new Date());
 
-  const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
-  const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
-
-  const [selectedTime, setSelectedTime] = useControllableValue<Date, HTMLElement, React.FormEvent<HtmlElementComboBox>>(
-    value,
-    defaultValue,
-    (ev: React.FormEvent<HtmlElementComboBox>, newTime: Date) => {
-      const event = ev as React.FormEvent<IComboBox>;
-      onChange?.(event, newTime);
-    },
-  );
+  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue);
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
@@ -83,47 +71,29 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     [dateAnchor, defaultValue, value, fallbackDateAnchor],
   );
 
-  React.useEffect(() => {
-    const clampedStartAnchor = new Date(internalDateAnchor);
-    const clampedEndAnchor = new Date();
+  const dateStartAnchor = React.useMemo(
+    () => getDateAnchor(internalDateAnchor, 'start', increments, timeRange),
+    [internalDateAnchor, increments, timeRange],
+  );
 
-    if (timeRange) {
-      const clampedTimeRange = clampTimeRange(timeRange);
-      if (clampedStartAnchor.getHours() !== clampedTimeRange.start) {
-        clampedStartAnchor.setHours(clampedTimeRange.start);
-        clampedStartAnchor.setMinutes(0);
-      }
-      if (clampedEndAnchor.getHours() !== clampedTimeRange.end) {
-        clampedEndAnchor.setHours(clampedTimeRange.end);
-        clampedEndAnchor.setMinutes(0);
-      }
-    } else {
-      clampedEndAnchor.setDate(clampedStartAnchor.getDate() + 1);
-    }
+  const dateEndAnchor = React.useMemo(
+    () => getDateAnchor(internalDateAnchor, 'end', increments, timeRange),
+    [internalDateAnchor, increments, timeRange],
+  );
 
-    clampedStartAnchor.setMinutes(0);
-    clampedStartAnchor.setSeconds(0);
+  // React.useEffect(() => {
+  //   if (selectedTime && !isNaN(selectedTime.valueOf())) {
+  //     if (selectedTime < dateStartAnchor || selectedTime > dateEndAnchor) {
+  //       const updatedCurrentTime = new Date(dateStartAnchor);
+  //       updatedCurrentTime.setHours(selectedTime.getHours());
+  //       updatedCurrentTime.setMinutes(selectedTime.getMinutes());
+  //       updatedCurrentTime.setSeconds(selectedTime.getSeconds());
+  //       updatedCurrentTime.setMilliseconds(selectedTime.getMilliseconds());
 
-    clampedEndAnchor.setMinutes(0);
-    clampedEndAnchor.setSeconds(0);
-
-    setDateStartAnchor(ceilMinuteToIncrement(clampedStartAnchor, increments));
-    setDateEndAnchor(ceilMinuteToIncrement(clampedEndAnchor, increments));
-  }, [internalDateAnchor, increments, timeRange]);
-
-  React.useEffect(() => {
-    if (selectedTime && !isNaN(selectedTime.valueOf())) {
-      if (selectedTime < dateStartAnchor || selectedTime > dateEndAnchor) {
-        const updatedCurrentTime = new Date(dateStartAnchor);
-        updatedCurrentTime.setHours(selectedTime.getHours());
-        updatedCurrentTime.setMinutes(selectedTime.getMinutes());
-        updatedCurrentTime.setSeconds(selectedTime.getSeconds());
-        updatedCurrentTime.setMilliseconds(selectedTime.getMilliseconds());
-
-        setSelectedTime(updatedCurrentTime, undefined);
-      }
-    }
-  }, [selectedTime, dateStartAnchor, dateEndAnchor, setSelectedTime]);
+  //       setSelectedTime(updatedCurrentTime);
+  //     }
+  //   }
+  // }, [selectedTime, dateStartAnchor, dateEndAnchor, setSelectedTime]);
 
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
@@ -154,6 +124,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       const option = getComboBoxOptionInDropdown(formattedTimeString);
       setSelectedKey(option?.key);
       setComboBoxText(option ? option.text : formattedTimeString);
+    } else {
+      setSelectedKey(null);
     }
   }, [selectedTime, getComboBoxOptionInDropdown, onFormatDate, showSeconds, useHour12]);
 
@@ -203,16 +175,14 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
       if (errorMessageToDisplay || (input !== undefined && !input.length)) {
         const timeSelection = input || option?.text || '';
-        setSelectedKey(option?.key as string);
         setComboBoxText(timeSelection);
-        setSelectedTime(
-          errorMessageToDisplay ? new Date('invalid') : undefined,
-          ev as React.FormEvent<HtmlElementComboBox>,
-        );
+        setSelectedTime(errorMessageToDisplay ? new Date('invalid') : undefined);
+        onChange?.(ev, new Date('invalid'));
       } else {
         const timeSelection = (option?.key as string) || input || '';
         const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
-        setSelectedTime(updatedTime, ev as React.FormEvent<HtmlElementComboBox>);
+        setSelectedTime(updatedTime);
+        onChange?.(ev, updatedTime);
       }
 
       setErrorMessage(errorMessageToDisplay);
@@ -230,6 +200,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       strings.timeOutOfBoundsErrorMessage,
       setSelectedTime,
       onGetErrorMessage,
+      onChange,
     ],
   );
 
@@ -269,6 +240,29 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   );
 };
 TimePicker.displayName = 'TimePicker';
+
+const getDateAnchor = (
+  internalDateAnchor: Date,
+  startEnd: 'start' | 'end',
+  increments: number,
+  timeRange?: ITimeRange,
+) => {
+  const clampedDateAnchor = new Date(internalDateAnchor);
+  if (timeRange) {
+    const clampedTimeRange = clampTimeRange(timeRange);
+    const timeRangeVal = startEnd === 'start' ? clampedTimeRange.start : clampedTimeRange.end;
+    if (clampedDateAnchor.getHours() !== timeRangeVal) {
+      clampedDateAnchor.setHours(timeRangeVal);
+    }
+  } else if (startEnd === 'end') {
+    clampedDateAnchor.setDate(clampedDateAnchor.getDate() + 1);
+  }
+  clampedDateAnchor.setMinutes(0);
+  clampedDateAnchor.setSeconds(0);
+  clampedDateAnchor.setMilliseconds(0);
+
+  return ceilMinuteToIncrement(clampedDateAnchor, increments);
+};
 
 const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   return {

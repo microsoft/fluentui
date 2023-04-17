@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TimePicker, DatePicker, Label, Text, IStackTokens, Stack, IStackStyles } from '@fluentui/react';
+import { TimePicker, DatePicker, Label, Text, IStackTokens, Stack, IStackStyles, IComboBox } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -14,7 +14,7 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
     setDatePickerDate(selectedDate);
   }, []);
 
-  const onDateTimePickerChange = React.useCallback((_, date: Date) => {
+  const onDateTimePickerChange = React.useCallback((_ev: React.FormEvent<IComboBox>, date: Date) => {
     setCurrentTime(date);
   }, []);
 
