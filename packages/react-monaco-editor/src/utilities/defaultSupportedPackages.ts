@@ -80,8 +80,9 @@ if (typesContext) {
   );
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
-  chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
 }
+const loadTypes = () => '';
+chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
 
 /**
  * Default supported packages for imports: `@fluentui/react` and everything it exports,
