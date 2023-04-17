@@ -35,6 +35,7 @@
     "@griffel/react": "^1.5.2",
     "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-utilities": "^9.8.0",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.1",
     "@fluentui/react-theme": "^9.1.7",
     "@swc/helpers": "^0.4.14"
   },

@@ -1,6 +1,10 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
 import { PopoverTrigger } from '@fluentui/react-popover';
-import { getSlots } from '@fluentui/react-utilities';
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -9,7 +13,7 @@ import type { PopoverProps } from '@fluentui/react-popover';
  * Render the final JSX of DatePicker
  */
 export const renderDatePicker_unstable = (state: DatePickerState) => {
-  const { slots, slotProps } = getSlots<DatePickerSlots>(state);
+  const { slots, slotProps } = getSlotsNext<DatePickerSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

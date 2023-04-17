@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TabListState, TabListSlots, TabListContextValues } from './TabList.types';
 import { TabListProvider } from './TabListContext';
 
@@ -7,7 +11,7 @@ import { TabListProvider } from './TabListContext';
  * Render the final JSX of TabList
  */
 export const renderTabList_unstable = (state: TabListState, contextValues: TabListContextValues) => {
-  const { slots, slotProps } = getSlots<TabListSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TabListSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
