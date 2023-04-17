@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 12 Apr 2023 09:31:45 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.0)
+
+Mon, 17 Apr 2023 17:54:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.4..@fluentui/react-utilities_v9.8.0)
+
+### Minor changes
+
+- feat: ensure compatibility with custom JSX pragma ([PR #27472](https://github.com/microsoft/fluentui/pull/27472) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- fix: Fix slot render functions ([PR #27561](https://github.com/microsoft/fluentui/pull/27561) by behowell@microsoft.com)
 
 ## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.4)
 

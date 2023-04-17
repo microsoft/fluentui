@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(react-components/unstable): Remove deprecated InputField, etc. shim components",
-  "packageName": "@fluentui/react-components",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 07:40:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.15.0)
+
+Mon, 17 Apr 2023 07:40:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.14.0..@fluentui/eslint-plugin_v1.15.0)
+
+### Minor changes
+
+- feat: enables jsxTags on comment for react config ([PR #27571](https://github.com/microsoft/fluentui/pull/27571) by bernardo.sunderhus@gmail.com)
 
 ## [1.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.14.0)
 
