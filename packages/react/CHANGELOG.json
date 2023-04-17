@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 13 Apr 2023 07:41:10 GMT",
+      "tag": "@fluentui/react_v8.107.5",
+      "version": "8.107.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a4d3f407950803bb5eda1673e76ae4bfa067bed2",
+            "comment": "fix: the BasePicker with List Below variant now sets aria-describedby pointing to selected values"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Apr 2023 07:36:30 GMT",
       "tag": "@fluentui/react_v8.107.4",
       "version": "8.107.4",

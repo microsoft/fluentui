@@ -7,10 +7,10 @@ import story from './TreeItemActions.md';
 const RenderActions = () => {
   return (
     <>
-      <Button appearance="subtle" icon={<Edit20Regular />} />
+      <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <Button appearance="subtle" icon={<MoreHorizontal20Regular />} />
+          <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
         </MenuTrigger>
 
         <MenuPopover>

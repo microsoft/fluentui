@@ -298,6 +298,40 @@ const useStyles = makeStyles({
     },
   },
 
+  highContrastSelected: {
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+
+      [`& .${cardPreviewClassNames.root}, & .${cardFooterClassNames.root}`]: {
+        forcedColorAdjust: 'auto',
+      },
+
+      '::after': {
+        ...shorthands.borderColor('Highlight'),
+      },
+    },
+  },
+
+  highContrastInteractive: {
+    '@media (forced-colors: active)': {
+      ':hover, :active': {
+        forcedColorAdjust: 'none',
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
+
+        [`& .${cardPreviewClassNames.root}, & .${cardFooterClassNames.root}`]: {
+          forcedColorAdjust: 'auto',
+        },
+      },
+
+      '::after': {
+        ...shorthands.borderColor('Highlight'),
+      },
+    },
+  },
+
   select: {
     position: 'absolute',
     top: '4px',
@@ -353,15 +387,20 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     subtle: styles.subtleInteractive,
   };
 
+  const isSelectableOrInteractive = state.interactive || state.selectable;
+
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
     orientationMap[state.orientation],
     sizeMap[state.size],
     appearanceMap[state.appearance],
-    (state.interactive || state.selectable) && interactiveMap[state.appearance],
+    isSelectableOrInteractive && interactiveMap[state.appearance],
     state.selected && selectedMap[state.appearance],
     state.selectFocused && styles.selectableFocused,
+    // High contrast overrides
+    state.selected && styles.highContrastSelected,
+    isSelectableOrInteractive && styles.highContrastInteractive,
     state.root.className,
   );
 

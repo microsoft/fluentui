@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added aria-orientation attribute",
-  "packageName": "@fluentui/react-tabs",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}
