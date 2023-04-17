@@ -5,36 +5,6 @@ import { DialogProps } from '@fluentui/react-dialog';
 import type { DrawerProps, DrawerState } from './Drawer.types';
 
 /**
- * @internal
- * Create the state required to render DrawerDialog.
- * @param props - props from this instance of Drawer
- */
-const useDrawerDialogProps = (props: DrawerProps) => {
-  const { open, onOpenChange, modal, children, ...otherProps } = props;
-
-  const dialogProps = React.useMemo(() => {
-    return {
-      open,
-      onOpenChange,
-      modalType: modal ? 'modal' : 'non-modal',
-      children,
-    } as DialogProps;
-  }, [children, modal, onOpenChange, open]);
-
-  const dialogSurfaceProps = React.useMemo(() => {
-    return {
-      ...otherProps,
-      children,
-    };
-  }, [children, otherProps]);
-
-  return {
-    dialog: dialogProps,
-    dialogSurface: dialogSurfaceProps,
-  };
-};
-
-/**
  * Create the state required to render Drawer.
  *
  * The returned state can be modified with hooks such as useDrawerStyles_unstable,
@@ -50,8 +20,11 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     size = 'small',
     modal = true,
     separator = false,
+    onOpenChange,
+    children,
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
+    ...otherProps
   } = props;
 
   const [open] = useControllableState({
@@ -60,11 +33,19 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const { dialog, dialogSurface } = useDrawerDialogProps({
-    ...props,
-    open,
-    modal,
-  });
+  const dialogProps = React.useMemo(() => {
+    return {
+      open,
+      onOpenChange,
+      modalType: modal ? 'modal' : 'non-modal',
+      children,
+    } as DialogProps;
+  }, [children, modal, onOpenChange, open]);
+
+  const dialogSurfaceProps = {
+    ...otherProps,
+    children,
+  };
 
   return {
     components: {
@@ -76,8 +57,8 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
       ...props,
     }),
 
-    dialog,
-    dialogSurface,
+    dialog: dialogProps,
+    dialogSurface: dialogSurfaceProps,
 
     type,
     open,

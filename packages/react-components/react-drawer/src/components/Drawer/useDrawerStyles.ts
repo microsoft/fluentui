@@ -12,6 +12,7 @@ export const drawerClassNames: SlotClassNames<DrawerSlots> = {
  */
 export const drawerCSSVars = {
   size: '--fui-Drawer--size',
+  borderRadius: '--fui-Drawer--borderRadius',
 };
 
 /**
@@ -19,17 +20,31 @@ export const drawerCSSVars = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding('16px'),
-    ...shorthands.borderRadius(0),
+    ...shorthands.borderRadius(`var(${drawerCSSVars.borderRadius})`),
     ...shorthands.border(0),
+    ...shorthands.overflow('hidden'),
+
+    [drawerCSSVars.borderRadius]: 0,
 
     boxSizing: 'border-box',
     width: `var(${drawerCSSVars.size})`,
     maxWidth: 'calc(100vw - 48px)',
     height: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+
+  overlay: {
+    position: 'fixed',
     top: 0,
     bottom: 0,
-    backgroundColor: tokens.colorNeutralBackground1,
+  },
+
+  inline: {
+    position: 'relative',
+    alignItems: 'stretch',
+    justifyContent: 'stretch',
   },
 
   leftDrawer: {
@@ -40,16 +55,6 @@ const useStyles = makeStyles({
   rightDrawer: {
     right: 0,
     left: 'auto',
-  },
-
-  overlay: {
-    position: 'fixed',
-  },
-
-  inline: {
-    position: 'relative',
-    alignItems: 'stretch',
-    justifyContent: 'stretch',
   },
 
   inlineSeparatorLeft: {
