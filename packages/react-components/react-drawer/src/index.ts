@@ -1,4 +1,3 @@
-// TODO: replace with real exports
 export {
   Drawer,
   drawerCSSVars,
@@ -7,8 +6,8 @@ export {
   useDrawerStyles_unstable,
   useDrawer_unstable,
 } from './Drawer';
-
 export type { DrawerProps, DrawerSlots, DrawerState } from './Drawer';
+
 export {
   DrawerBody,
   drawerBodyClassNames,
@@ -17,3 +16,12 @@ export {
   useDrawerBody_unstable,
 } from './DrawerBody';
 export type { DrawerBodyProps, DrawerBodySlots, DrawerBodyState } from './DrawerBody';
+
+export {
+  DrawerHeader,
+  drawerHeaderClassNames,
+  renderDrawerHeader_unstable,
+  useDrawerHeaderStyles_unstable,
+  useDrawerHeader_unstable,
+} from './DrawerHeader';
+export type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from './DrawerHeader';
