@@ -29,7 +29,7 @@ AsAnAnchor.storyName = 'As an anchor';
 
 export const Circular = () => (
   <Button id={buttonId} shape="circular">
-    Hello, world, This is itasdasdasdas .
+    Hello, world, This is itasdsdasdas .
   </Button>
 );
 
