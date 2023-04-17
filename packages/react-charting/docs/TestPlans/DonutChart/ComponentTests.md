@@ -4,47 +4,18 @@
 
 ![Alt text](BasicDonutChart.png)
 
-## Subcomponents: Pie and Legend
+### Subcomponents: Pie and Legend
 
-## Library used: jest and (enzyme or react testing library)
+### Library used: jest and (enzyme or react testing library)
 
 </div>
 
-### Test case 1: [Snapshot testing] [Component]
-
-- Renders donut chart correctly with data. - [enzyme]
-
-### Test case 2: [Snapshot testing] [Individual Props] Renders donut chart with:
-
-- HideTooltip prop set to “true”. - [enzyme]
-- HideLegend prop set to “true”. - [enzyme]
-- EnabledLegendsWrapLines prop set to “true”. - [enzyme]
-- ValueInsideDonut set to a string / number. - [enzyme]
-- HideLabels prop set to "false". - [enzyme]
-- HideLabels prop set to "false" and ShowLabelsInPercent prop set to "true". - [enzyme]
-
-### Test case 3: [Specific DOM elements] Renders individual elements on a prop change:
-
-- Should mount legend when hideLegend prop is set to “false”. - [enzyme]
-- Should mount callout when hideTootip prop is set to “false”. - [enzyme]
-- Should not render onRenderCalloutPerStack with just data as a prop. - [enzyme]
-- Should render onRenderCalloutPerDataPoint when the prop is given otherwise should not render onRenderCalloutPerDataPoint. - [enzyme]
-
-### Test case 4: [Mouse events – Donut chart] Renders individual elements on mouse events:
-
-- On mouse over on the donut chart should render callout. - [enzyme]
-- On mouse move on Pie 1 (step 1) -> mouse leave (step 2) -> mouse move on Pie 2 (step 3), html in step 1 should not be the same as in step 3. - [enzyme]
-- On mouse over with onRenderCalloutPerDataPoint prop provided, should render the custom callout. [enzyme]
-- On mouse over, callout should be defined, on mouse leave, callout should disappear. - [enzyme]
-
-### Test case 5: [Mouse events – Legends] Renders individual elements on mouse events:
-
-- On mouse over on legends should highlight the corresponding pie. - [RTL]
-- On mouse over on legends should change the value inside donut with the legend value. - [enzyme]
-- On click should highlight the corresponding pie with aria-selected set to “true” and tabIndex set to 0. - [RTL]
-- On mouse out after mouse over on first legend, should have opacity 0.1 for second Pie initially (during mouseOver on first legend) and opacity set to 1 for both the Pies on mouse out. - [RTL]
-
-### Test case 6: [Keyboard events – Donut chart] Renders individual elements on keyboard events:
-
-- On focus should render the corresponding callout. - [RTL]
-- On blur should remove focus from the corresponding Pie. - [RTL]
+| Test case                                                                                                                                                                                                                         | Execution steps                                                                                                                                                                                                            | Validation steps                                                                                                                                               | Library used                                                                                                                                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <tr><td rowspan=1>Test case 1: [Snapshot testing] [Component]<td> Renders donut chart with data</td><td>Donut chart renders correctly</td><td>Enzyme</td></td></tr>                                                               | <tr><td rowspan=7>Test case 2: [Snapshot testing] [Individual Props]<td> Renders donut chart with: <ul><li>HideTooltip prop set to “true”.</li></ul></td><td>Donut chart renders correctly</td><td>Enzyme</td>             |
+| <ul><li>HideLegend prop set to “true”.</li></ul><td>Donut chart renders correctly</td><td>Enzyme</td></tr><tr>                                                                                                                    | <ul><li>EnabledLegendsWrapLines prop set to “true”.</li></ul><td>Donut chart renders correctly</td><td>Enzyme</td></tr><tr>                                                                                                | <ul><li>ValueInsideDonut set to a string / number.</li></ul><td>Donut chart renders correctly</td><td>Enzyme</td></tr><tr>                                     | <ul><li>HideLabels prop set to "false".</li></ul></td></td><td>Donut chart renders correctly</td><td>Enzyme</td></tr><tr>                                                                                                              |
+| <td><ul><li>HideLabels prop set to "false" and ShowLabelsInPercent prop set to "true".</li></ul></td><td>Donut chart renders correctly</td><td>Enzyme</td></tr>                                                                   | <tr><td rowspan=5>Test case 3: [Specific DOM elements] Renders individual elements on a prop change: <td><ul><li>HideLegend prop is set to “false”.</li></ul></td><td>Legend mounts correctly</td><td>Enzyme</td></tr><tr> | <ul><li>HideTootip prop is set to “false”.</li></ul><td>Callout mounts correctly</td><td>Enzyme</td></tr><tr>                                                  | <ul><li>onRenderCalloutPerStack prop is not given.</li></ul><td>Should not render onRenderCalloutPerStack</td><td>Enzyme</td></tr><tr>                                                                                                 |
+| <ul><li>onRenderCalloutPerDataPoint prop is given.</li></ul><td>Should render onRenderCalloutPerDataPoint correctly</td><td>Enzyme</td>                                                                                           |
+| <tr><td rowspan=5>Test case 4: [Mouse events – Donut chart] Renders individual elements on mouse events: <td><ul><li>On mouse over on the donut chart.</li></ul></td><td>Should render callout</td><td>Enzyme</td></tr><tr>       | <ul><li>On mouse move on Pie 1 (step 1) -> mouse leave (step 2) -> mouse move on Pie 2 (step 3).</li></ul><td>Html in step 1 should not be the same as in step 3</td><td>Enzyme</td></tr><tr>                              | <ul><li>On mouse over with onRenderCalloutPerDataPoint prop provided.</li></ul><td>Should render the custom callout</td><td>Enzyme</td></tr><tr>               | <ul><li>On mouse over, followed by mouse leave on callout.</li></ul><td>On mouse over, callout should be defined, on mouse leave, callout should disappear.</td><td>Enzyme</td></tr><tr>                                               |
+| <tr><td rowspan=5>Test case 5: [Mouse events – Legends] Renders individual elements on mouse events: <td><ul><li>On mouse over on legends.</li></ul></td><td>Should highlight the corresponding pie</td><td>RTL</td></tr><tr>     | <ul><li>On mouse over on legends.</li></ul><td>Should change the value inside donut with the legend value</td><td>Enzyme</td></tr><tr>                                                                                     | <ul><li>On click on Pie.</li></ul><td>Should highlight the corresponding pie with aria-selected set to “true” and tabIndex set to 0.</td><td>RTL</td></tr><tr> | <ul><li>On mouse out after mouse over on first legend.</li></ul><td>Should have opacity 0.1 for second Pie initially (during mouseOver on first legend) and opacity set to 1 for both the Pies on mouse out.</td><td>RTL</td></tr><tr> |
+| <tr><td rowspan=2>Test case 6: [Keyboard events – Donut chart] Renders individual elements on keyboard events: <td><ul><li>On focus on a Pie.</li></ul></td><td>Should render the corresponding callout</td><td>RTL</td></tr><tr> | <ul><li>On blur on a Pie.</li></ul><td>Should remove focus from the corresponding Pie</td><td>RTL</td></tr><tr>                                                                                                            |
