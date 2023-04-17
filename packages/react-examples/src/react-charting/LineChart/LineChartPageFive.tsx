@@ -32,7 +32,7 @@ const LineChartPerfAnalysisFiveExampleCode =
 
 // All line charts locale is impacted.
 
-export class LineChartPageSix extends React.Component<IComponentDemoPageProps, {}> {
+export class LineChartPageFive extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
