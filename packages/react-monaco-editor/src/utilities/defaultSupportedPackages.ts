@@ -37,6 +37,7 @@ try {
 } catch (ex) {
   // We're probably running in jest, which doesn't have webpack's require.context
 }
+const loadTypes = () => '';
 if (typesContext) {
   typesContext.keys().forEach(dtsPath => {
     // The api-extractor .d.ts rollups use the package's unscoped name (such as "utilities")
@@ -49,8 +50,6 @@ if (typesContext) {
         ? exampleDataGroup
         : packageName === '@fluentui/react-hooks'
         ? hooksGroup
-        : packageName === '@fluentui/react-charting'
-        ? chartingGroup
         : fabricGroup;
     packageGroup.packages.push({
       packageName,
@@ -64,7 +63,6 @@ if (typesContext) {
   });
 } else {
   // Use some defaults for jest tests (real types won't be loaded)
-  const loadTypes = () => '';
   fabricGroup.packages.push(
     { packageName: '@fluentui/date-time-utilities', loadTypes },
     { packageName: '@fluentui/dom-utilities', loadTypes },
@@ -81,8 +79,9 @@ if (typesContext) {
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
 }
-const loadTypes = () => '';
-chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
+if (window.location.href.indexOf('react-charting') !== -1) {
+  chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
+}
 
 /**
  * Default supported packages for imports: `@fluentui/react` and everything it exports,
