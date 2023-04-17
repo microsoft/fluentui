@@ -239,11 +239,11 @@ storiesOf('Avatar Converged', module)
           backgroundSize: '32px 32px',
           backgroundImage:
             `repeating-conic-gradient(` +
-            `${tokens.colorPaletteYellowBackground3} 0% 25%, ` +
-            `${tokens.colorPaletteMarigoldBackground3} 0% 50%)`,
+            `${tokens.colorBrandBackground} 0% 25%, ` +
+            `${tokens.colorBrandBackgroundSelected} 0% 50%)`,
         }}
       >
-        <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
+        <AvatarList images={examples.image} color="marigold" active="active" badge={{ status: 'available' }} />
       </div>
     ),
     { includeRtl: true },
