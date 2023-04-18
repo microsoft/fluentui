@@ -100,7 +100,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
      L${x + 0.6884 * w} ${y - 0.2633 * w}
      L${x + 0.5001 * w} ${y + 0.6884 * w}
      L${x - 0.5001 * w} ${y + 0.6884 * w}
-     L${x - 0.6884 * w} ${y - 0.2633 * w}
+     L${x - 0.6884 * w} ${y - 0.263 * w}
      Z`,
     //octagon
     `M${x - 0.5001 * w} ${y - 1.207 * w}
