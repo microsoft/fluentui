@@ -8,11 +8,9 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { Field } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
-import type { PopoverProps } from '@fluentui/react-popover';
-import { PopoverSurface } from '@fluentui/react-popover';
+import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -155,11 +153,10 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
 // @public (undocumented)
-export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
     componentRef?: React_2.RefObject<IDatePicker>;
     onSelectDate?: (date: Date | null | undefined) => void;
-    label?: string;
-    isRequired?: boolean;
+    required?: boolean;
     disabled?: boolean;
     underlined?: boolean;
     isMonthPickerVisible?: boolean;
@@ -167,13 +164,18 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     allowTextInput?: boolean;
     disableAutoFocus?: boolean;
     openOnClick?: boolean;
+    defaultOpen?: boolean;
+    open?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    inlinePopup?: boolean;
+    positioning?: PositioningProps;
     placeholder?: string;
     today?: Date;
     value?: Date;
     formatDate?: (date?: Date) => string;
     parseDateFromString?: (dateStr: string) => Date | null;
     firstDayOfWeek?: DayOfWeek;
-    strings?: DatePickerStrings;
+    strings?: CalendarStrings;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
     showWeekNumbers?: boolean;
@@ -185,18 +187,8 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     maxDate?: Date;
     initialPickerDate?: Date;
     allFocusable?: boolean;
-    onAfterMenuDismiss?: () => void;
     showCloseButton?: boolean;
-    tabIndex?: number;
 };
-
-// @public (undocumented)
-export interface DatePickerStrings extends CalendarStrings {
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
-    isResetStatusMessage?: string;
-}
 
 // @public
 export enum DateRangeType {
@@ -233,9 +225,6 @@ export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
 export const defaultCalendarStrings: CalendarStrings;
-
-// @public (undocumented)
-export const defaultDatePickerStrings: DatePickerStrings;
 
 // @public
 export enum FirstWeekOfYear {
