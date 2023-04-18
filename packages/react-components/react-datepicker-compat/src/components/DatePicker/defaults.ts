@@ -1,6 +1,6 @@
 import { CalendarStrings } from '../../utils/index';
 import { defaultCalendarStrings } from '../Calendar/defaults';
-import { DatePickerErrorData } from './DatePicker.types';
+import type { DatePickerErrorData } from './DatePicker.types';
 
 export const defaultDatePickerStrings: CalendarStrings = {
   ...defaultCalendarStrings,
@@ -12,7 +12,7 @@ export const defaultDatePickerStrings: CalendarStrings = {
 };
 
 export const defaultDatePickerErrorStrings: Record<DatePickerErrorData['error'], string> = {
-  'required-input': 'Field is required',
   'invalid-input': 'Invalid date format',
   'out-of-bounds': 'Date is out of bounds',
+  'required-input': 'Field is required',
 };

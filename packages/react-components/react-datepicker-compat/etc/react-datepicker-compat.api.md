@@ -154,7 +154,7 @@ export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
 // @public (undocumented)
 export type DatePickerErrorData = {
-    error: 'required-input' | 'invalid-input' | 'out-of-bounds';
+    error: 'invalid-input' | 'out-of-bounds' | 'required-input';
 };
 
 // @public (undocumented)
