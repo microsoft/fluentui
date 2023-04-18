@@ -31,7 +31,7 @@
   "dependencies": {
     "@fluentui/react-table": "^9.2.6",
     "@fluentui/react-utilities": "^9.8.0",
-    "@fluentui/react-jsx-runtime": "^9.0.0-alpha.1",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.1",
     "@swc/helpers": "^0.4.14",
     "react-window": "^1.8.6"
   },
