@@ -2,16 +2,13 @@
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
   "id": "tsconfig-base-all",
+  "description": "Create tsconfig.json with merged 'compilerOptions.paths' from v0,v8,v9 tsconfigs",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "description": "Library name",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
+    "verify": {
+      "type": "boolean",
+      "description": "Verify integrity of tsconfig.base.all.json path aliases"
     }
   },
-  "required": ["name"]
+  "required": []
 }

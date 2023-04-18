@@ -1,6 +1,6 @@
 export interface TsconfigBaseAllGeneratorSchema {
   /**
-   * Library name
+   * Verify integrity of tsconfig.base.all.json path aliases
    */
-  name: string;
+  verify?: boolean;
 }

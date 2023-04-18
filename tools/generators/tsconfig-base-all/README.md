@@ -1,20 +1,22 @@
 # tsconfig-base-all
 
-Workspace Generator ...TODO...
+Workspace Generator for generating/updating `/tsconfig.base.all.json`.
+
+> `tsconfig.base.all.json` contains all monorepo project path aliases, and reflect source of truth for all monorepo packages.
 
 <!-- toc -->
 
 - [Usage](#usage)
   - [Examples](#examples)
 - [Options](#options)
-  - [`name`](#name)
+  - [`verify`](#verify)
 
 <!-- tocstop -->
 
 ## Usage
 
 ```sh
-yarn nx workspace-generator tsconfig-base-all ...
+yarn nx workspace-generator tsconfig-base-all
 ```
 
 Show what will be generated without writing to disk:
@@ -31,8 +33,14 @@ yarn nx workspace-generator tsconfig-base-all
 
 ## Options
 
-#### `name`
+#### `verify`
 
-Type: `string`
+Type: `boolean`
 
-TODO...
+use this option on CI to check if base.all.json is up to date and in sync with all other base configs
+
+Following will throw an error if `tsconfig.base.all.json` is out of date
+
+```sh
+yarn nx workspace-generator tsconfig-base-all --verify
+```

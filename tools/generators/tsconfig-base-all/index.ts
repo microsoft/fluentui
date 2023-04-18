@@ -1,50 +1,33 @@
-import * as path from 'path';
-import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/workspace/generators';
-
-import { getProjectConfig } from '../../utils';
+import { Tree, formatFiles, writeJson } from '@nrwl/devkit';
+import { isEqual } from 'lodash';
 
 import { TsconfigBaseAllGeneratorSchema } from './schema';
+import { createPathAliasesConfig } from './lib/utils';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: TsconfigBaseAllGeneratorSchema) {
-  await libraryGenerator(tree, { name: schema.name });
-
   const normalizedOptions = normalizeOptions(tree, schema);
 
-  addFiles(tree, normalizedOptions);
+  const { existingTsConfig, mergedTsConfig, tsConfigAllPath } = createPathAliasesConfig(tree);
 
+  if (normalizedOptions.verify && !isEqual(existingTsConfig, mergedTsConfig)) {
+    throw new Error(`
+      🚨 ${tsConfigAllPath} is out of date.
+
+      Please update it by running  'yarn nx workspace-generator tsconfig-base-all'.
+    `);
+  }
+
+  writeJson(tree, tsConfigAllPath, mergedTsConfig);
   await formatFiles(tree);
-
-  return () => {
-    installPackagesTask(tree);
-  };
 }
 
 function normalizeOptions(tree: Tree, options: TsconfigBaseAllGeneratorSchema) {
-  const project = getProjectConfig(tree, { packageName: options.name });
-
+  const defaults = { verify: false };
   return {
+    ...defaults,
     ...options,
-    ...project,
-    ...names(options.name),
   };
-}
-
-/**
- * NOTE: remove this if your generator doesn't process any static/dynamic templates
- */
-function addFiles(tree: Tree, options: NormalizedSchema) {
-  const templateOptions = {
-    ...options,
-    tmpl: '',
-  };
-
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files'),
-    path.join(options.projectConfig.root, options.name),
-    templateOptions,
-  );
 }
