@@ -132,7 +132,7 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
-    root: Slot<'div'>;
+    root: Slot<'span'>;
     iconBefore?: Slot<'span'>;
     iconAfter?: Slot<'span'>;
     aside?: Slot<'span'>;

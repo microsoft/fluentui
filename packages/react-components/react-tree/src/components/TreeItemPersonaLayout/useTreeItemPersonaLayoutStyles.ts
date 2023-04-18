@@ -20,6 +20,7 @@ const useRootStyles = makeStyles({
     width: '100%',
     display: 'flex',
     alignItems: 'center',
+    ...typographyStyles.body1,
   },
 });
 
@@ -50,16 +51,13 @@ const useContentStyles = makeStyles({
     ...shorthands.gap(tokens.spacingVerticalNone, tokens.spacingHorizontalNone),
   },
 });
-const useMainStyles = makeStyles({
-  base: {
-    ...typographyStyles.body1,
-  },
-});
+
 const useDescriptionStyles = makeStyles({
   base: {
     ...typographyStyles.caption1,
   },
 });
+
 const useAsideStyles = makeStyles({
   base: {
     display: 'flex',
@@ -79,7 +77,6 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const rootStyles = useRootStyles();
   const mediaStyles = useMediaStyles();
   const contentStyles = useContentStyles();
-  const mainStyles = useMainStyles();
   const descriptionStyles = useDescriptionStyles();
   const asideStyles = useAsideStyles();
 
@@ -95,7 +92,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.main) {
-    state.main.className = mergeClasses(treeItemPersonaLayoutClassNames.main, mainStyles.base, state.main.className);
+    state.main.className = mergeClasses(treeItemPersonaLayoutClassNames.main, state.main.className);
   }
   if (state.description) {
     state.description.className = mergeClasses(

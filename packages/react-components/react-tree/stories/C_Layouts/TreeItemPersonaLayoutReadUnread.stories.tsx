@@ -5,7 +5,7 @@ import story from './TreeItemPersonaLayoutReadUnread.md';
 
 const useStyles = makeStyles({
   unread: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightBold,
   },
 });
 
@@ -14,17 +14,18 @@ export const ReadUnread = () => {
 
   return (
     <Tree aria-label="Tree">
-      <TreeItem>
+      <TreeItem expandIcon="">
         <TreeItemPersonaLayout description="Secondary text content" media={<Avatar />}>
           Read content message
         </TreeItemPersonaLayout>
       </TreeItem>
-      <TreeItem aria-description="New message">
+      <TreeItem expandIcon="•" aria-description="New message">
         <TreeItemPersonaLayout
-          description={<div className={styles.unread}>Secondary text content</div>}
+          description={{ className: styles.unread, children: 'Secondary text content' }}
+          className={styles.unread}
           media={<Avatar />}
         >
-          <div className={styles.unread}>Unread content message</div>
+          Unread content message
         </TreeItemPersonaLayout>
       </TreeItem>
     </Tree>
