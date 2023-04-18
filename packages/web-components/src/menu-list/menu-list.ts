@@ -1,5 +1,5 @@
 import { FASTMenu, MenuItemRole } from '@microsoft/fast-foundation';
-import { MenuItem, MenuItemColumnCount } from '../index.js';
+import { MenuItem, MenuItemColumnCount } from '../menu-item/index.js';
 
 /**
  * The base class used for constructing a fluent-menu-list custom element
