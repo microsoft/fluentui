@@ -59,7 +59,7 @@ export class Select extends FASTElement {
    * @public
    */
   @observable
-  public options: HTMLOptionElement[] = [];
+  public options?: HTMLOptionElement[];
 
   /**
    * A boolean value that triggers an input event
