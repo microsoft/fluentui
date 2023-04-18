@@ -152,7 +152,7 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 // @public (undocumented)
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
-// @public (undocumented)
+// @public
 export type DatePickerErrorData = {
     error: 'invalid-input' | 'out-of-bounds' | 'required-input';
 };
@@ -172,7 +172,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    onValidationError?: (date: DatePickerErrorData) => void;
+    onValidationError?: (data: DatePickerErrorData) => void;
     inlinePopup?: boolean;
     positioning?: PositioningProps;
     placeholder?: string;
