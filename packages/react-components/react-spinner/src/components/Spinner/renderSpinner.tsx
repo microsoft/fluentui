@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { SpinnerState, SpinnerSlots } from './Spinner.types';
 
 /**
  * Render the final JSX of Spinner
  */
 export const renderSpinner_unstable = (state: SpinnerState) => {
-  const { slots, slotProps } = getSlots<SpinnerSlots>(state);
+  const { slots, slotProps } = getSlotsNext<SpinnerSlots>(state);
   const { labelPosition } = state;
   return (
     <slots.root {...slotProps.root}>

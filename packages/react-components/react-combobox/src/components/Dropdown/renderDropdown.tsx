@@ -1,6 +1,11 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
 import { Portal } from '@fluentui/react-portal';
-import { getSlots } from '@fluentui/react-utilities';
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 
@@ -8,7 +13,7 @@ import type { DropdownContextValues, DropdownState, DropdownSlots } from './Drop
  * Render the final JSX of Dropdown
  */
 export const renderDropdown_unstable = (state: DropdownState, contextValues: DropdownContextValues) => {
-  const { slots, slotProps } = getSlots<DropdownSlots>(state);
+  const { slots, slotProps } = getSlotsNext<DropdownSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

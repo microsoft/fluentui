@@ -1,9 +1,13 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 export const renderAvatar_unstable = (state: AvatarState) => {
-  const { slots, slotProps } = getSlots<AvatarSlots>(state);
+  const { slots, slotProps } = getSlotsNext<AvatarSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
