@@ -15,7 +15,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { ChartTitle } from '../../utilities/ChartTitle';
+import { HTMLTooltipText } from '../../utilities/HTMLTooltipText';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -100,12 +100,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
                     {points!.chartTitle && (
-                      <ChartTitle
+                      <HTMLTooltipText
                         className={this._classNames.chartTitleLeft}
+                        content={points!.chartTitle}
                         accessibilityData={points!.chartTitleAccessibilityData}
-                      >
-                        {points!.chartTitle}
-                      </ChartTitle>
+                      />
                     )}
                     {chartDataText}
                   </div>
