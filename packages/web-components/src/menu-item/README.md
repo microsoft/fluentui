@@ -1,6 +1,6 @@
 # Menu Item
 
-Menu list item options displayed in a Menu component. They are invoked when users interact with a button, action, or other control.
+Menu list item options displayed in a MenuList component. They are invoked when users interact with a button, action, or other control.
 
 <hr />
 
@@ -8,7 +8,6 @@ Menu list item options displayed in a Menu component. They are invoked when user
 
 **Remaining work items**
 
-1. Ensure divider component is styled appropriately in the context of a Menu
 2. Create support for menu item "grouping"
 3. Split button variation
 

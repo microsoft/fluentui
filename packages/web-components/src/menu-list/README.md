@@ -1,6 +1,6 @@
 # MenuList
 
-The MenuList displays a list of options.
+The MenuList displays a list of MenuItem options.
 
 ## Design Spec
 
@@ -13,8 +13,6 @@ Fluent WC3 MenuList extends from the FAST Menu [FAST Menu](https://explore.fast.
 <br />
 
 ### Inputs
-
-- `icons` - set's alignment of menu items if only a subset of menu items contain an icon
 
 ### Outputs
 
