@@ -29,7 +29,7 @@ export const FontFamily = () => {
       {fontFamilies.map(fontFamily => [
         <div key={fontFamily}>{fontFamily}</div>,
         <div key={`${fontFamily}-value`} style={{ fontFamily: `${theme[fontFamily]}` }}>
-          {theme[fontFamily]}Font family {fontFamily}
+          {theme[fontFamily]}
         </div>,
       ])}
     </div>
