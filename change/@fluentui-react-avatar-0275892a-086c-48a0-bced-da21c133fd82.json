@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Reduce bundle size by refactoring styles",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
