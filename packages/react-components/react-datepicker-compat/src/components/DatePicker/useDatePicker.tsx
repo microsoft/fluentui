@@ -309,13 +309,13 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       dismissDatePickerPopup();
     }
   }, [
-    openOnClick,
-    disableAutoFocus,
-    props.disabled,
     allowTextInput,
-    open,
-    showDatePickerPopup,
+    disableAutoFocus,
     dismissDatePickerPopup,
+    openOnClick,
+    open,
+    props.disabled,
+    showDatePickerPopup,
   ]);
 
   const onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
