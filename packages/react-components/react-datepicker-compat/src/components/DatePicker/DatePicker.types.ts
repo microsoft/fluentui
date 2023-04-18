@@ -235,7 +235,7 @@ export type DatePickerState = ComponentState<DatePickerSlots> & {
 };
 
 export type DatePickerErrorData = {
-  error: 'required-input' | 'invalid-input' | 'out-of-bounds';
+  error: 'invalid-input' | 'out-of-bounds' | 'required-input';
 };
 
 // TODO: remove this once we add error handling hook
