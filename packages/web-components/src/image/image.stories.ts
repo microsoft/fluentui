@@ -100,7 +100,7 @@ export default {
         },
         type: {
           summary:
-            'When shape `rounded` is used, default border radius is 4px -- `borderRadiusMedium`. The dev may override the default border radius using one of the following: borderRadiusSmall, borderRadiusLarge, borderRadiusXLarge.',
+            'When shape `rounded` is used, default border radius is `borderRadiusMedium`. The dev may override the default border radius using one of the following: borderRadiusSmall, borderRadiusLarge, borderRadiusXLarge.',
         },
       },
       options: Object.values(ImageShape),
