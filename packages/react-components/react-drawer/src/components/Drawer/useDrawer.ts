@@ -9,7 +9,7 @@ const getModalType = (modal?: DrawerProps['modal'], lightDismiss?: DrawerProps['
     return 'non-modal';
   }
 
-  if (lightDismiss) {
+  if (!lightDismiss) {
     return 'alert';
   }
 
