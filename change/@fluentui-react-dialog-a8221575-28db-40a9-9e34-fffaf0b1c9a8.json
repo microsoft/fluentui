@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: adopts custom JSX pragma",
+  "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
