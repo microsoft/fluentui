@@ -65,7 +65,7 @@ export function preset() {
   task('eslint', eslint);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer(args));
-  task('api-extractor', apiExtractor());
+  task('api-extractor', apiExtractor);
   task('lint-imports:all', lintImportTaskAll);
   task('lint-imports:amd', lintImportTaskAmdOnly);
   task('prettier', prettier);
