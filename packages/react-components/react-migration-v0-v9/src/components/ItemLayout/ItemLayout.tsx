@@ -1,10 +1,14 @@
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
 import {
   ComponentProps,
   ComponentState,
   getNativeElementProps,
-  getSlots,
+  getSlotsNext,
   Slot,
   resolveShorthand,
 } from '@fluentui/react-utilities';
@@ -78,7 +82,7 @@ export const ItemLayout = React.forwardRef<HTMLDivElement, ItemLayoutProps>((pro
     state.endMedia.className = mergeClasses(styles.endMedia, state.endMedia.className);
   }
 
-  const { slots, slotProps } = getSlots<ItemLayoutSlots>(state);
+  const { slots, slotProps } = getSlotsNext<ItemLayoutSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
