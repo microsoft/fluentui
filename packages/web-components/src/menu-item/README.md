@@ -114,7 +114,7 @@ Due to the nature of Web Components there will not be 100% parity between compon
 **Component, Slot, and Attribute Mapping**
 Component, Slot, or Attribute | Fluent React v9 | Fluent Web Components v3 |
 ---------------------------------| ---------------------| ---------------------------|
-Menu | `<Menu>` | `<fluent-menu>` |
+Menu | `<MenuList>` | `<fluent-menu>` |
 Menu item |`<MenuItem>` | `<fluent-menu-item>` |
 Menu item with radio | `<MenuItemRadio>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Menu item with checkbox | `<MenuItemCheckbox>` | `<fluent-menu-item role="menuitemcheckbox">..` |

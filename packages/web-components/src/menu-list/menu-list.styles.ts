@@ -7,7 +7,7 @@ import {
   shadow16,
 } from '../theme/design-tokens.js';
 
-/** Menu styles
+/** MenuList styles
  * @public
  */
 export const styles = css`

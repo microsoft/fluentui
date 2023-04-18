@@ -1,14 +1,14 @@
-# Menu
+# MenuList
 
-A popup or contextual menu displays a list of options on a temporary surface. They are invoked when users interact with a button, action, or other control.
+The MenuList displays a list of options.
 
 ## Design Spec
 
-[Link to Menu Design Spec in Figma](https://www.figma.com/file/jFWrkFq61GDdOhPlsz6AtX/Menu?node-id=1528%3A5102&t=XtW4laeEzgVFIl1E-0)
+[Link to MenuList Design Spec in Figma](https://www.figma.com/file/jFWrkFq61GDdOhPlsz6AtX/Menu?node-id=1528%3A5102&t=XtW4laeEzgVFIl1E-0)
 
 ## Engineering Spec
 
-Fluent WC3 Menu List extends from the FAST Menu [FAST Menu](https://explore.fast.design/components/fast-menu) and is intended to be as close to the Fluent UI React 9 Menu implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+Fluent WC3 MenuList extends from the FAST Menu [FAST Menu](https://explore.fast.design/components/fast-menu) and is intended to be as close to the Fluent UI React 9 MenuList implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
 
 <br />
 
@@ -66,12 +66,13 @@ Due to the nature of Web Components there will not be 100% parity between compon
 **Component, Slot, and Attribute Mapping**
 Component, Slot, or Attribute | Fluent React v9 | Fluent Web Components v3 |
 --------------------------------|--------------------------------| -----------------------------------------------------|
-Menu | `<MenuList>` | `<fluent-menu>` |
+Menu | `<MenuList>` | `<fluent-menu-list>` |
 Menu item | `<MenuItem>` | `<fluent-menu-item>` |
 Menu item with radio | `<MenuItemRadio>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Menu item with checkbox | `<MenuItemCheckbox>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Icons | `<MenuItem icon={<MyIcon />}>` | `<slot name ="start">..`<br />`<slot name="end">..` |
-Aligning Icons | `<Menu hasIcons>` | `<Menu icons>` |
+Aligning Icons | `<Menu hasIcons>` | aligns by default |
+Aligning Checkboxes | `<Menu hasCheckmarks>` | aligns by default |
 Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">` |
 
 <br />
@@ -80,34 +81,26 @@ Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">` |
 
 **Responsiveness**
 
-The WC3 Menu component does not currently support responsive styling.
-
-**Icons**
-
-In order for icons to render with appropriate styles ( hover state ) the `icons` attribute must be present on the Menu.
+The WC3 MenuList component does not currently support responsive styling.
 
 **Composure**
 
 Complete FUIR9 Menu composure
 
 ```html
-<menu>
-  <MenuPopover>
-    <MenuList>
-      <menuitem>Item 1</menuitem>
-      <menuitem>Item 2</menuitem>
-      <menuitem>Item 3</menuitem>
-    </MenuList>
-  </MenuPopover>
-</menu>
+<MenuList>
+  <menuitem>Item 1</menuitem>
+  <menuitem>Item 2</menuitem>
+  <menuitem>Item 3</menuitem>
+</MenuList>
 ```
 
 Complete WC3 Menu composure
 
 ```html
-<fluent-menu>
+<fluent-menu-list>
   <fluent-menu-item>Item 1</fluent-menu-item>
   <fluent-menu-item>Item 2</fluent-menu-item>
   <fluent-menu-item>Item 3</fluent-menu-item>
-</fluent-menu>
+</fluent-menu-list>
 ```

@@ -13,7 +13,6 @@ import {
   colorNeutralForeground2Pressed,
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
-  colorNeutralStrokeDisabled,
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
@@ -23,7 +22,7 @@ import {
   lineHeightBase300,
 } from '../theme/design-tokens.js';
 
-/** Menu styles
+/** MenuItem styles
  * @public
  */
 export const styles = css`
