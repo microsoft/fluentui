@@ -89,17 +89,22 @@ const useIconInitialsClassName = makeResetStyles({
 /**
  * Helper to create a maskImage that punches out a circle larger than the badge by `badgeGap`.
  * This creates a transparent gap between the badge and Avatar.
+ *
+ * Used by the icon, initials, and image slots, as well as the ring ::before pseudo-element.
  */
 const badgeCutout = (margin?: string) => {
-  const center = margin ? `calc(var(${vars.badgeRadius}) + ${margin})` : `var(${vars.badgeRadius})`;
-
-  // radial-gradient does not have anti-aliasing, so the transparent and opaque circles are offset by +/- 0.25px
+  // Center the cutout at the badge's radius away from the edge.
+  // The ring (::before) also has a 2 * ringWidth margin that also needs to be offset.
+  const centerOffset = margin ? `calc(var(${vars.badgeRadius}) + ${margin})` : `var(${vars.badgeRadius})`;
+  // radial-gradient does not have anti-aliasing, so the transparent and opaque gradient stops are offset by +/- 0.25px
   // to "fade" from transparent to opaque over a half-pixel and ease the transition.
+  const innerRadius = `calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) - 0.25px)`;
+  const outerRadius = `calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) + 0.25px)`;
+
   return {
     maskImage:
-      `radial-gradient(circle at bottom ${center} var(${vars.badgeAlign}) ${center}, ` +
-      `transparent calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) - 0.25px), ` +
-      `white calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) + 0.25px))`,
+      `radial-gradient(circle at bottom ${centerOffset} var(${vars.badgeAlign}) ${centerOffset}, ` +
+      `transparent ${innerRadius}, white ${outerRadius})`,
 
     // Griffel won't auto-flip the "right" alignment to "left" in RTL if it is inline in the maskImage,
     // so split it out into a css variable that will auto-flip.
@@ -194,32 +199,7 @@ const useStyles = makeStyles({
   // Applied to the image, initials, or icon slot when there is a badge
   badgeCutout: badgeCutout(),
 
-  icon12: { fontSize: '12px' },
-  icon16: { fontSize: '16px' },
-  icon20: { fontSize: '20px' },
-  icon24: { fontSize: '24px' },
-  icon28: { fontSize: '28px' },
-  icon32: { fontSize: '32px' },
-  icon48: { fontSize: '48px' },
-});
-
-export const useSizeStyles = makeStyles({
-  16: { width: '16px', height: '16px' },
-  20: { width: '20px', height: '20px' },
-  24: { width: '24px', height: '24px' },
-  28: { width: '28px', height: '28px' },
-  32: { width: '32px', height: '32px' },
-  36: { width: '36px', height: '36px' },
-  40: { width: '40px', height: '40px' },
-  48: { width: '48px', height: '48px' },
-  56: { width: '56px', height: '56px' },
-  64: { width: '64px', height: '64px' },
-  72: { width: '72px', height: '72px' },
-  96: { width: '96px', height: '96px' },
-  120: { width: '120px', height: '120px' },
-  128: { width: '128px', height: '128px' },
-
-  // Badge size: applied when there is a badge
+  // Badge size: applied to root when there is a badge
   tiny: {
     [vars.badgeRadius]: '3px',
     [vars.badgeGap]: tokens.strokeWidthThin,
@@ -244,6 +224,31 @@ export const useSizeStyles = makeStyles({
     [vars.badgeRadius]: '14px',
     [vars.badgeGap]: tokens.strokeWidthThick,
   },
+
+  icon12: { fontSize: '12px' },
+  icon16: { fontSize: '16px' },
+  icon20: { fontSize: '20px' },
+  icon24: { fontSize: '24px' },
+  icon28: { fontSize: '28px' },
+  icon32: { fontSize: '32px' },
+  icon48: { fontSize: '48px' },
+});
+
+export const useSizeStyles = makeStyles({
+  16: { width: '16px', height: '16px' },
+  20: { width: '20px', height: '20px' },
+  24: { width: '24px', height: '24px' },
+  28: { width: '28px', height: '28px' },
+  32: { width: '32px', height: '32px' },
+  36: { width: '36px', height: '36px' },
+  40: { width: '40px', height: '40px' },
+  48: { width: '48px', height: '48px' },
+  56: { width: '56px', height: '56px' },
+  64: { width: '64px', height: '64px' },
+  72: { width: '72px', height: '72px' },
+  96: { width: '96px', height: '96px' },
+  120: { width: '120px', height: '120px' },
+  128: { width: '128px', height: '128px' },
 });
 
 const useColorStyles = makeStyles({
@@ -490,7 +495,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const rootClasses = [
     rootClassName,
     size !== 32 && sizeStyles[size],
-    state.badge && sizeStyles[state.badge.size || 'medium'],
+    state.badge && styles[state.badge.size || 'medium'],
   ];
 
   if (size <= 24) {
