@@ -571,6 +571,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(
       avatarClassNames.image,
       imageClassName,
+      colorStyles[color],
       state.badge && styles.badgeCutout,
       state.image.className,
     );
