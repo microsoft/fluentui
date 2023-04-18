@@ -8,6 +8,7 @@ export interface IExampleState {
   dynamicData: IChartDataPoint[];
   hideLabels: boolean;
   showLabelsInPercent: boolean;
+  innerRadius: number;
 }
 
 export class DonutChartDynamicExample extends React.Component<IDonutChartProps, IExampleState> {
@@ -35,6 +36,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       ],
       hideLabels: false,
       showLabelsInPercent: false,
+      innerRadius: 35,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -49,7 +51,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     return (
       <div>
         <Checkbox
-          label="Hide labels"
+          label="Hide labels (Note: The inner radius is changed along with this to keep the arc width same)"
           checked={this.state.hideLabels}
           onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginBottom: '10px' } }}
@@ -61,7 +63,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         />
         <DonutChart
           data={data}
-          innerRadius={55}
+          innerRadius={this.state.innerRadius}
           legendProps={{
             allowFocusOnLegends: true,
           }}
@@ -105,7 +107,13 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   }
 
   private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideLabels: checked });
+    let innerRadius: number;
+    if (checked) {
+      innerRadius = 55;
+    } else {
+      innerRadius = 35;
+    }
+    this.setState({ hideLabels: checked, innerRadius });
   };
 
   private _onShowPercentCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {

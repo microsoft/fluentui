@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Move ProgressBar to stable",
-  "packageName": "@fluentui/react-progress",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

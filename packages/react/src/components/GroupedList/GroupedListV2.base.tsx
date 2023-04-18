@@ -308,7 +308,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
   const listView = React.useMemo(() => {
     return flattenItems(groups, items, flatList.current, groupProps?.getGroupItemLimit);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups, groupProps?.getGroupItemLimit, items, toggleVersion, flatList]);
+  }, [groups, groupProps?.getGroupItemLimit, items, toggleVersion, flatList, groupExpandedVersion]);
 
   const getPageSpecification = React.useCallback(
     (flattenedIndex: number): { key?: string } => {
@@ -527,7 +527,8 @@ const GroupItem = <T,>({
 
 export class GroupedListV2Wrapper
   extends React.Component<IGroupedListV2Props, IGroupedListV2State>
-  implements IGroupedList {
+  implements IGroupedList
+{
   public static displayName: string = 'GroupedListV2';
   private _list = React.createRef<List>();
 

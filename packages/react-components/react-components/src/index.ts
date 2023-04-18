@@ -24,6 +24,7 @@ export {
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
+  FluentProviderCustomStyleHooks,
   FluentProviderProps,
   FluentProviderSlots,
   FluentProviderState,
@@ -232,6 +233,7 @@ export {
   useCounterBadge_unstable,
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
+  usePresenceBadgeStyles_unstable,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
@@ -559,7 +561,8 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable,
+  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
   useRadioGroupStyles_unstable,
@@ -1032,3 +1035,63 @@ export type {
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
 } from '@fluentui/react-table';
+
+export {
+  Card,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+  cardClassNames,
+  cardCSSVars,
+  cardFooterClassNames,
+  cardHeaderClassNames,
+  cardHeaderCSSVars,
+  cardPreviewClassNames,
+  renderCard_unstable,
+  renderCardFooter_unstable,
+  renderCardHeader_unstable,
+  renderCardPreview_unstable,
+  useCard_unstable,
+  useCardFooter_unstable,
+  useCardFooterStyles_unstable,
+  useCardHeader_unstable,
+  useCardHeaderStyles_unstable,
+  useCardPreview_unstable,
+  useCardPreviewStyles_unstable,
+  useCardStyles_unstable,
+} from '@fluentui/react-card';
+export type {
+  CardFooterProps,
+  CardFooterSlots,
+  CardFooterState,
+  CardHeaderProps,
+  CardHeaderSlots,
+  CardHeaderState,
+  CardPreviewProps,
+  CardPreviewSlots,
+  CardPreviewState,
+  CardProps,
+  CardSlots,
+  CardState,
+} from '@fluentui/react-card';
+
+export {
+  Field,
+  fieldClassNames,
+  FieldContextProvider,
+  renderField_unstable,
+  useFieldContext_unstable,
+  useFieldContextValues_unstable,
+  useFieldControlProps_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
+export type {
+  FieldContextValue,
+  FieldContextValues,
+  FieldControlProps,
+  FieldControlPropsOptions,
+  FieldProps,
+  FieldSlots,
+  FieldState,
+} from '@fluentui/react-field';

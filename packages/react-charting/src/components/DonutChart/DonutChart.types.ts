@@ -50,7 +50,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
 
   /**
    * Prop to hide the arc labels
-   * @default false
+   * @default true
    */
   hideLabels?: boolean;
 }

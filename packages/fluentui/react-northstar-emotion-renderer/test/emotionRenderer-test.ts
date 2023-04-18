@@ -15,7 +15,7 @@ expect.addSnapshotSerializer({
     }
 
     const insertedCSS = Array.from(value.head.childNodes)
-      .map((node: HTMLStyleElement) => reduceRules((node?.sheet as unknown) as CSSStyleSheet))
+      .map((node: HTMLStyleElement) => reduceRules(node?.sheet as unknown as CSSStyleSheet))
       .join(';');
 
     return prettier.format(insertedCSS, { parser: 'css' }).trim();

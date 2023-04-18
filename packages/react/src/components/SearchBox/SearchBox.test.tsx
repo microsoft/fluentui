@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';

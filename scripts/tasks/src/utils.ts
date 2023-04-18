@@ -54,7 +54,7 @@ function createNormalizedTsPaths(options: { definitionsRootPath: string; pathAli
   type PathAliases = Record<string, string[]>;
   const { definitionsRootPath, pathAliasesTsConfigPath } = options;
   const tsConfigRoot = JSON.parse(fs.readFileSync(pathAliasesTsConfigPath, 'utf-8')) as TsConfig;
-  const paths = (tsConfigRoot.compilerOptions.paths as unknown) as undefined | PathAliases;
+  const paths = tsConfigRoot.compilerOptions.paths as unknown as undefined | PathAliases;
 
   if (!paths) {
     throw new Error(`Provided "${pathAliasesTsConfigPath}" has no compilerOptions.path defined`);

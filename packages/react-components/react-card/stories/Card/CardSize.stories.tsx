@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens, shorthands, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
-import { Card, CardHeader, CardProps } from '@fluentui/react-card';
+import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =

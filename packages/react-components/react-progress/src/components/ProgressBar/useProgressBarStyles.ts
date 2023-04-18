@@ -1,6 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -20,18 +19,10 @@ const barThicknessValues = {
 
 const indeterminateProgressBar = {
   '0%': {
-    left: '-100% /* @noflip */',
+    left: '-33%', // matches indeterminate bar width
   },
   '100%': {
-    left: '100% /* @noflip */',
-  },
-};
-const indeterminateProgressBarRTL = {
-  '100%': {
-    right: '-100% /* @noflip */',
-  },
-  '0%': {
-    right: '100% /* @noflip */',
+    left: '100%',
   },
 };
 
@@ -42,11 +33,11 @@ const useRootStyles = makeStyles({
   root: {
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground6,
-    justifySelf: 'stretch',
+    width: '100%',
     ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
-      ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
+      backgroundColor: 'CanvasText',
     },
   },
   rounded: {
@@ -68,13 +59,11 @@ const useRootStyles = makeStyles({
  */
 const useBarStyles = makeStyles({
   base: {
+    '@media screen and (forced-colors: active)': {
+      backgroundColor: 'Highlight',
+    },
     ...shorthands.borderRadius('inherit'),
-  },
-  medium: {
-    height: barThicknessValues.medium,
-  },
-  large: {
-    height: barThicknessValues.large,
+    height: '100%',
   },
   nonZeroDeterminate: {
     transitionProperty: 'width',
@@ -92,6 +81,7 @@ const useBarStyles = makeStyles({
     )`,
     animationName: indeterminateProgressBar,
     animationDuration: '3s',
+    animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
     '@media screen and (prefers-reduced-motion: reduce)': {
       animationDuration: '0.01ms',
@@ -99,15 +89,8 @@ const useBarStyles = makeStyles({
     },
   },
 
-  rtl: {
-    animationName: indeterminateProgressBarRTL,
-  },
-
   brand: {
     backgroundColor: tokens.colorCompoundBrandBackground,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-    },
   },
 
   error: {
@@ -128,7 +111,6 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   const { color, max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
-  const { dir } = useFluent();
 
   state.root.className = mergeClasses(
     progressBarClassNames.root,
@@ -144,8 +126,6 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
       barStyles.base,
       barStyles.brand,
       value === undefined && barStyles.indeterminate,
-      value === undefined && dir === 'rtl' && barStyles.rtl,
-      barStyles[thickness],
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       color && value !== undefined && barStyles[color],
       state.bar.className,

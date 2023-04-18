@@ -1,8 +1,137 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.10)
+
+Mon, 17 Apr 2023 17:53:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.9..@fluentui/react-slider_v9.1.10)
+
+### Patches
+
+- chore: Remove deprecated SliderField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-label to v9.1.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.9)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.8..@fluentui/react-slider_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-beta.2 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-label to v9.1.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.8)
+
+Fri, 07 Apr 2023 00:01:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.7..@fluentui/react-slider_v9.1.8)
+
+### Patches
+
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.7)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.5..@fluentui/react-slider_v9.1.7)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.29 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-tabster to v9.6.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-label to v9.1.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.5)
+
+Tue, 21 Mar 2023 21:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.4..@fluentui/react-slider_v9.1.5)
+
+### Patches
+
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.27 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-tabster to v9.6.1 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-theme to v9.1.7 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-utilities to v9.7.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.20 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-label to v9.1.5 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.4)
+
+Thu, 16 Mar 2023 14:36:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.3..@fluentui/react-slider_v9.1.4)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.26 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-tabster to v9.6.0 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-utilities to v9.7.1 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-label to v9.1.4 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.3)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.2..@fluentui/react-slider_v9.1.3)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.25 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.1 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-tabster to v9.5.7 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-label to v9.1.3 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.2)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.1..@fluentui/react-slider_v9.1.2)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.24 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+- Bump @fluentui/react-tabster to v9.5.6 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+- Bump @fluentui/react-utilities to v9.7.0 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+- Bump @fluentui/react-label to v9.1.2 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.1)
+
+Fri, 10 Mar 2023 07:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.0..@fluentui/react-slider_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.23 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+- Bump @fluentui/react-tabster to v9.5.5 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+- Bump @fluentui/react-utilities to v9.6.2 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+- Bump @fluentui/react-label to v9.1.1 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.0)
+
+Wed, 08 Mar 2023 17:42:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.25..@fluentui/react-slider_v9.1.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27073](https://github.com/microsoft/fluentui/pull/27073) by gcox@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.22 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-tabster to v9.5.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-label to v9.1.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.25)
 

@@ -5,7 +5,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { IAreaChartProps, AreaChart } from './index';
 import { IAreaChartState, AreaChartBase } from './AreaChart.base';
-import { ICustomizedCalloutData } from '../../index';
+import { ICustomizedCalloutData, ILineChartPoints } from '../../index';
 import toJson from 'enzyme-to-json';
 
 // Wrapper of the AreaChart to be tested.
@@ -29,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-const points = [
+const points: ILineChartPoints[] = [
   {
     legend: 'metaData1',
     data: [
@@ -101,6 +101,23 @@ describe('AreaChart snapShot testing', () => {
 
   it('renders Areachart with single point correctly', () => {
     const component = renderer.create(<AreaChart data={singleChartPoint} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render with default colors when line color is not provided', () => {
+    const lineColor = points[0].color;
+    delete points[0].color;
+
+    const component = renderer.create(<AreaChart data={chartPoints} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    points[0].color = lineColor;
+  });
+
+  it('Should not render circles when optimizeLargeData is true', () => {
+    const component = renderer.create(<AreaChart data={chartPoints} optimizeLargeData />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

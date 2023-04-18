@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
@@ -31,7 +32,7 @@ const DEFAULT_SPIN_DELAY_MS = 150;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
 
-// This is here to give an ease the mouse held down case.
+// This is here to give an ease for the mouse held down case.
 // Exact easing it to be defined. Once it is we'll likely
 // pull this out into a util function in the SpinButton package.
 const lerp = (start: number, end: number, percent: number): number => start + (end - start) * percent;
@@ -46,6 +47,9 @@ const lerp = (start: number, end: number, percent: number): number => start + (e
  * @param ref - reference to root HTMLElement of SpinButton
  */
 export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',

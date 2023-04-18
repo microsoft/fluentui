@@ -29,8 +29,9 @@ export const ImperativeAnchorTarget = () => {
     setOpen(true);
   }, []);
 
-  const onMouseLeave = React.useCallback((e: React.MouseEvent) => {
-    if (e.relatedTarget instanceof HTMLElement && e.relatedTarget.getAttribute('role') === 'tooltip') {
+  const onMouseLeave = React.useCallback((event: React.MouseEvent) => {
+    const target = event.relatedTarget as HTMLElement;
+    if (target && target.getAttribute('role') === 'tooltip') {
       return;
     }
     setOpen(false);

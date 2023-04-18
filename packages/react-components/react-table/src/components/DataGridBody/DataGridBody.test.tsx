@@ -56,7 +56,7 @@ describe('DataGridBody', () => {
     ];
 
     const getRows: TableFeaturesState<unknown>['getRows'] = <TRowState extends TableRowData<unknown>>() =>
-      (testRows as unknown) as TRowState[];
+      testRows as unknown as TRowState[];
     const ctx = mockDataGridContext({ getRows });
     const TestComponent = () => {
       const rowId = useTableRowIdContext();

@@ -221,7 +221,7 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'f{enter}');
 
-    const caretdownButton = getByRole('presentation', { hidden: true });
+    const caretdownButton = getByRole('button');
     userEvent.click(caretdownButton);
 
     expect(getAllByRole('option')).toHaveLength(DEFAULT_OPTIONS.length);
@@ -233,7 +233,7 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     userEvent.type(combobox, 'f{enter}');
 
-    const caretdownButton = getByRole('presentation', { hidden: true });
+    const caretdownButton = getByRole('button');
     userEvent.click(caretdownButton);
 
     const options = getAllByRole('option');
@@ -530,6 +530,25 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('value')).toEqual('One');
   });
 
+  it('Updates aria-activedescendant with keyboard', () => {
+    const options: IComboBoxOption[] = [
+      { key: '1', text: '1', id: 'one' },
+      { key: '2', text: '2', id: 'two' },
+      { key: '3', text: '3', id: 'three' },
+    ];
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={options} />);
+    const combobox = getByRole('combobox');
+    // open combobox
+    userEvent.tab();
+    userEvent.keyboard('{enter}');
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual('one');
+
+    // arrow down
+    userEvent.keyboard('{arrowdown}');
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual('two');
+  });
+
   it('Cannot insert text while disabled', () => {
     const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />);
     const combobox = getByRole('combobox');
@@ -555,7 +574,7 @@ describe('ComboBox', () => {
     const { getByRole, queryAllByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />,
     );
-    const caretdownButton = getByRole('presentation', { hidden: true });
+    const caretdownButton = getByRole('button');
     userEvent.click(caretdownButton);
     expect(queryAllByRole('option')).toHaveLength(0);
   });
@@ -1189,7 +1208,7 @@ describe('ComboBox', () => {
       <ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform />,
     );
     const combobox = getByRole('combobox');
-    const caretdownButton = getByRole('presentation', { hidden: true });
+    const caretdownButton = getByRole('button');
     userEvent.type(combobox, comboBoxOption.text);
     //click on container to trigger onBlur
     userEvent.click(container);
@@ -1215,7 +1234,7 @@ describe('ComboBox', () => {
 
     const { container, getByRole, getAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS} allowFreeform />);
     const combobox = getByRole('combobox');
-    const caretdownButton = getByRole('presentation', { hidden: true });
+    const caretdownButton = getByRole('button');
     userEvent.type(combobox, comboBoxOption.text);
     userEvent.click(container);
     expect(combobox.getAttribute('value')).toEqual(comboBoxOption.text);

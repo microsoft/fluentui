@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
   TreeItemPersonaLayoutSlots,
@@ -15,7 +18,7 @@ export const renderTreeItemPersonaLayout_unstable = (
   contextValues: TreeItemPersonaLayoutContextValues,
 ) => {
   const { isActionsVisible } = state;
-  const { slots, slotProps } = getSlots<TreeItemPersonaLayoutSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TreeItemPersonaLayoutSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

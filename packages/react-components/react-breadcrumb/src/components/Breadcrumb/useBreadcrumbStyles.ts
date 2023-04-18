@@ -4,19 +4,19 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots> = {
   root: 'fui-Breadcrumb',
-  // TODO: add class names for all slots on BreadcrumbSlots.
-  // Should be of the form `<slotName>: 'fui-Breadcrumb__<slotName>`
+  list: 'fui-Breadcrumb__list',
 };
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  root: {},
+  list: {
+    listStyleType: 'none',
+    display: 'flex',
+    alignItems: 'center',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -25,9 +25,8 @@ const useStyles = makeStyles({
 export const useBreadcrumbStyles_unstable = (state: BreadcrumbState): BreadcrumbState => {
   const styles = useStyles();
   state.root.className = mergeClasses(breadcrumbClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
+  if (state.list) {
+    state.list.className = mergeClasses(breadcrumbClassNames.list, styles.list, state.list.className);
+  }
   return state;
 };
