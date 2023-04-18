@@ -405,7 +405,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   protected resetFocus(index?: number) {
     const { items } = this.state;
 
-    if (items.length && index! >= 0) {
+    if (items.length) {
+      // default to focusing the last item
+      index = index ?? items.length - 1;
       const newEl: HTMLElement | null =
         this.root.current &&
         (this.root.current.querySelectorAll('[data-selection-index] > button')[
@@ -414,8 +416,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       if (newEl) {
         newEl.focus();
       }
-    } else if (items.length && !this.canAddItems()) {
-      this.resetFocus(items.length - 1);
     } else {
       if (this.input.current) {
         this.input.current.focus();
