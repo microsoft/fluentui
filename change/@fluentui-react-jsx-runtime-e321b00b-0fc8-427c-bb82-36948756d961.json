@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: simplify createElement method",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
