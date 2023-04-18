@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Remove deprecated SpinButtonField_unstable shim component",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

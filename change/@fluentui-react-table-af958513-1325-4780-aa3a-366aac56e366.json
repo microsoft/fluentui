@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: adopt custom JSX pragma",
+  "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency",
   "packageName": "@fluentui/react-table",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

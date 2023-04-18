@@ -2,6 +2,277 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 17:53:43 GMT",
+      "tag": "@fluentui/react-components_v9.19.0",
+      "version": "9.19.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "d055f1628d71368ca21464a453e5cbf89b00d505",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "aed714a47395773c966829e284e4ba9d1926b59c",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "97af91aa7684bbfe149ace1b21b75fb7c04128a2",
+            "comment": "feat: implements custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8",
+            "comment": "fix: add \"style\" to exports field"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "27665739a1f38468c63ea1544a2e82ff357d25f3",
+            "comment": "chore: adopt custom jsx pragma"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b120cc8a76bea610aeeded3eade7c78c0e9ddc0b",
+            "comment": "fix: Correct Avatar's active-inactive transition animation curve"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "ea04a996fe1a9171f3cd4d0dd531fe06431edec0",
+            "comment": "fix: add support for Windows High Contrast Mode"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated CheckboxField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated ComboboxField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore(react-components/unstable): Remove deprecated InputField, etc. shim components"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "ae31ec4170f8e86ffa0e94166602a88ca226186d",
+            "comment": "chore: Remove the use of ContextSelector in RadioGroupContext"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "46c89e8e688152ab8d0ed44ed79572508e4fb50e",
+            "comment": "chore: adopts custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove utilities for deprecated shim InputField, etc. components"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated InputField_unstable shim component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "2dd987418fddbd484e64d7738e1bc999d4ce3021",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b415aefbc882a0e84a076df45c04f1efda26c34b",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated ProgressField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0dfc7e1d250152df475a76a94db0fcf304d8ac14",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated RadioGroupField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ae31ec4170f8e86ffa0e94166602a88ca226186d",
+            "comment": "chore: Remove the use of ContextSelector in RadioGroupContext"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SelectField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SliderField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SpinButtonField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SwitchField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "82e77222889983a6ee9f893e78972ec8a0125271",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated TextareaField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "eefbbb3b40c9c75ff775b9771aeb393041032e39",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c156e7682a89d7766bed3c0b9f231dc2e0a2058b",
+            "comment": "fix: Fix slot render functions"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "feat: Release Field component as stable"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "feat: Release Field component as stable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "97af91aa7684bbfe149ace1b21b75fb7c04128a2",
+            "comment": "feat: ensure compatibility with custom JSX pragma"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Apr 2023 09:31:42 GMT",
       "tag": "@fluentui/react-components_v9.18.9",
       "version": "9.18.9",

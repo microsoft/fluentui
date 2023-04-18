@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "chore: adopt custom jsx pragma",
+  "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency",
   "packageName": "@fluentui/react-tree",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
