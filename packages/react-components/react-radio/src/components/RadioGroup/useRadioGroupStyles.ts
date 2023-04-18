@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     display: 'block',
     alignItems: 'center',
   },
+  
 
   vertical: {
     flexDirection: 'column',
