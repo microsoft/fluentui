@@ -105,6 +105,11 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
   onOpenChange?: (open: boolean) => void;
 
   /**
+   * Callback to run when the DatePicker encounters an error when validating the input
+   */
+  onValidationError?: (date: DatePickerErrorData) => void;
+
+  /**
    * Whether the DatePicker should render the popup as inline or in a portal
    *
    * @default false
@@ -227,6 +232,10 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
 export type DatePickerState = ComponentState<DatePickerSlots> & {
   disabled: boolean;
   inlinePopup: boolean;
+};
+
+export type DatePickerErrorData = {
+  error: 'required-input' | 'invalid-input' | 'out-of-bounds';
 };
 
 // TODO: remove this once we add error handling hook
