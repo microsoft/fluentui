@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Wed, 12 Apr 2023 09:31:45 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.10)
+
+Mon, 17 Apr 2023 17:53:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.9..@fluentui/react-spinbutton_v9.2.10)
+
+### Patches
+
+- chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- chore: Remove deprecated SpinButtonField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-label to v9.1.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
 
 ## [9.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.9)
 

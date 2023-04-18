@@ -150,6 +150,7 @@ packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
+packages/react-examples @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
