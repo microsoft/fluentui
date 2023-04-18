@@ -8,12 +8,11 @@ export type { CalendarMonthProps, ICalendarMonth } from './CalendarMonth';
 export {
   DatePicker,
   datePickerClassNames,
-  defaultDatePickerStrings,
   renderDatePicker_unstable,
   useDatePicker_unstable,
   useDatePickerStyles_unstable,
 } from './DatePicker';
-export type { DatePickerProps, DatePickerStrings, IDatePicker } from './DatePicker';
+export type { DatePickerProps, IDatePicker } from './DatePicker';
 
 export {
   DAYS_IN_WEEK,

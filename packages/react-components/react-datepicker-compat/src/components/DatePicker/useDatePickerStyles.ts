@@ -1,75 +1,65 @@
-import { tokens } from '@fluentui/react-theme';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
 export const datePickerClassNames: SlotClassNames<DatePickerSlots> = {
   root: 'fui-DatePicker',
-  field: 'fui-DatePicker__field',
-  wrapper: 'fui-DatePicker__wrapper',
-  popover: 'fui-DatePicker__popover',
-  popoverSurface: 'fui-DatePicker__popoverSurface',
-  input: 'fui-DatePicker__input',
   calendar: 'fui-DatePicker__calendar',
+  popupSurface: 'fui-DatePicker__popupSurface',
 };
 
-const useRootStyles = makeStyles({
-  base: {
-    fontFamily: tokens.fontFamilyBase,
-    // NOTE: Using 20px as we don't have an 18px font size in the ramp
-    fontSize: tokens.fontSizeBase500,
-    fontWeight: tokens.fontWeightRegular,
-  },
-  normalize: {
-    boxShadow: 'none',
-    boxSizing: 'border-box',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
-  },
-});
-
-const useTextFieldStyles = makeStyles({
+const useStyles = makeStyles({
   base: {
     position: 'relative',
-    '& input[readonly]': {
+    cursor: 'pointer',
+    '& input': {
       cursor: 'pointer',
     },
   },
   disabled: {
-    '& input[readonly]': {
+    cursor: 'default',
+    '& input': {
       cursor: 'default',
     },
   },
+});
+
+const usePopupSurfaceClassName = makeResetStyles({
+  backgroundColor: tokens.colorNeutralBackground1,
+  boxShadow: tokens.shadow16,
+  borderRadius: tokens.borderRadiusMedium,
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: tokens.colorTransparentStroke,
+  display: 'inline-flex',
+  color: tokens.colorNeutralForeground1,
+  padding: '16px',
+  ...typographyStyles.body1,
 });
 
 /**
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
-  const rootStyles = useRootStyles();
-  const textFieldStyles = useTextFieldStyles();
-  const { disabled, isDatePickerShown } = state;
+  const styles = useStyles();
+  const popupSurfaceClassName = usePopupSurfaceClassName();
+  const { disabled } = state;
 
   state.root.className = mergeClasses(
     datePickerClassNames.root,
-    rootStyles.base,
-    isDatePickerShown && 'is-open',
-    rootStyles.normalize,
+    styles.base,
+    disabled && styles.disabled,
     state.root.className,
   );
 
-  state.wrapper.className = mergeClasses(datePickerClassNames.wrapper, state.wrapper.className);
-
-  state.input.className = mergeClasses(
-    datePickerClassNames.input,
-    textFieldStyles.base,
-    disabled && textFieldStyles.disabled,
-    state.input.className,
-  );
-
-  state.field.className = mergeClasses(datePickerClassNames.field, state.field.className);
-
-  state.popoverSurface.className = mergeClasses(datePickerClassNames.popoverSurface, state.popoverSurface.className);
+  if (state.popupSurface) {
+    state.popupSurface.className = mergeClasses(
+      datePickerClassNames.popupSurface,
+      popupSurfaceClassName,
+      state.popupSurface.className,
+    );
+  }
 
   state.calendar.className = mergeClasses(datePickerClassNames.calendar, state.calendar.className);
 
