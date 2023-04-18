@@ -36,6 +36,7 @@
     "@fluentui/keyboard-keys": "^9.0.2",
     "@fluentui/react-aria": "^9.3.18",
     "@fluentui/react-icons": "^2.0.196",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.1",
     "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-tabster": "^9.6.5",
     "@fluentui/react-theme": "^9.1.7",
