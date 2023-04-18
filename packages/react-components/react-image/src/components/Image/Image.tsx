@@ -10,6 +10,7 @@ import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 /**
  * The Image component ensures the consistent styling of images.
  */
+ 
 export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, ref) => {
   const state = useImage_unstable(props, ref);
 
