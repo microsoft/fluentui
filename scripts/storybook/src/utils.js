@@ -3,7 +3,7 @@ const path = require('path');
 
 const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
+const { stripIndents, offsetFromRoot, workspaceRoot } = require('@nrwl/devkit');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
@@ -354,58 +354,9 @@ function overrideDefaultBabelLoader(options) {
   }
 }
 
-/**
- * Create tsconfig.json with merged "compilerOptions.paths" from v0,v8,v9 tsconfigs.
- *
- * Main purpose of this is to be used for build-less DX in webpack in tandem with {@link registerTsPaths}
- *
- * @param {{relativeFolderPathFromRoot?:string,writeFileToDisk?:boolean}} options
- */
-function createPathAliasesConfig(options = {}) {
-  const { relativeFolderPathFromRoot = './dist', writeFileToDisk = true } = options;
-  const rootPath = workspaceRoot;
-  const mergedTsConfigRoot = path.join(rootPath, relativeFolderPathFromRoot);
-  const tsConfigAllFileName = 'tsconfig.base.all.json';
-  const tsConfigAllPath = path.join(mergedTsConfigRoot, tsConfigAllFileName);
-  const existingTsConfig = readJsonFile(tsConfigAllPath);
-
-  const baseConfigs = {
-    v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
-    v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
-    v9: readJsonFile(path.join(rootPath, 'tsconfig.base.json')),
-  };
-  const tsConfigBase = rootPath === mergedTsConfigRoot ? '.' : rootPath;
-  const mergedTsConfig = {
-    compilerOptions: {
-      moduleResolution: 'node',
-      forceConsistentCasingInFileNames: true,
-      skipLibCheck: true,
-      typeRoots: ['node_modules/@types', './typings'],
-      isolatedModules: true,
-      preserveConstEnums: true,
-      sourceMap: true,
-      pretty: true,
-      rootDir: tsConfigBase,
-      baseUrl: tsConfigBase,
-      paths: {
-        ...baseConfigs.v0.compilerOptions.paths,
-        ...baseConfigs.v8.compilerOptions.paths,
-        ...baseConfigs.v9.compilerOptions.paths,
-      },
-    },
-  };
-
-  if (writeFileToDisk) {
-    writeJsonFile(tsConfigAllPath, mergedTsConfig);
-  }
-
-  return { tsConfigAllPath, tsConfigAllFileName, mergedTsConfig, existingTsConfig };
-}
-
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.registerTsPaths = registerTsPaths;
 exports.registerRules = registerRules;
-exports.createPathAliasesConfig = createPathAliasesConfig;
 exports.overrideDefaultBabelLoader = overrideDefaultBabelLoader;
 exports._createCodesandboxRule = _createCodesandboxRule;

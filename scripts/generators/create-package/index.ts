@@ -10,8 +10,6 @@ import _ from 'lodash';
 import { Actions } from 'node-plop';
 import { AddManyActionConfig, NodePlopAPI } from 'plop';
 
-import { main as generateTsBaseAllJson } from '../generate-ts-base-all-json';
-
 const root = findGitRoot();
 
 const v8ReferencePackages = {
@@ -162,8 +160,17 @@ module.exports = (plop: NodePlopAPI) => {
           if (migrateResult.status !== 0) {
             throw new Error('Something went wrong running the migration. Please check previous logs for details.');
           }
+          const tsConfigAllUpdate = spawnSync('yarn', ['nx', 'workspace-generator', 'tsconfig-base-all'], {
+            cwd: root,
+            stdio: 'inherit',
+            shell: true,
+          });
+          if (tsConfigAllUpdate.status !== 0) {
+            throw new Error(
+              'Something went wrong while updating tsconfig.base.all.json. Please check previous logs for details.',
+            );
+          }
 
-          generateTsBaseAllJson();
           return 'Successfully migrated package';
         },
         () => {
