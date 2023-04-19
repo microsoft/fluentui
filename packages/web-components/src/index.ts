@@ -4,6 +4,7 @@ export * from './avatar/index.js';
 export * from './badge/index.js';
 export * from './counter-badge/index.js';
 export * from './divider/index.js';
+export * from './dropdown/index.js';
 export * from './image/index.js';
 export * from './progress-bar/index.js';
 export * from './slider/index.js';
