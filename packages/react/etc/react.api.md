@@ -9396,9 +9396,8 @@ export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'sele
 
 // @public
 export interface ITimePickerStrings {
-    defaultTimePickerPlaceholder: string;
     invalidInputErrorMessage: string;
-    timeOutOfBoundsErrorMessage: string;
+    timeOutOfBoundsErrorMessage?: string;
 }
 
 // @public
