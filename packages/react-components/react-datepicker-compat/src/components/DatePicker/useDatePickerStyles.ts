@@ -34,7 +34,6 @@ const usePopupSurfaceClassName = makeResetStyles({
   borderColor: tokens.colorTransparentStroke,
   display: 'inline-flex',
   color: tokens.colorNeutralForeground1,
-  padding: '16px',
   ...typographyStyles.body1,
 });
 
