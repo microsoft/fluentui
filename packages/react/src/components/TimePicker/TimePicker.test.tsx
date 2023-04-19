@@ -14,7 +14,9 @@ describe('TimePicker', () => {
       start: 0,
       end: 5,
     };
-    const component = create(<TimePicker label="I am a TimePicker" timeRange={timeRange} />);
+    const component = create(
+      <TimePicker label="I am a TimePicker" timeRange={timeRange} placeholder="Select a time" />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
