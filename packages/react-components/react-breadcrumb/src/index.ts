@@ -23,7 +23,8 @@ export {
 } from './BreadcrumbItem';
 export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem';
 export { partitionBreadcrumbItems } from './utils/index';
-export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from './utils/index';export {
+export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from './utils/index';
+export {
   BreadcrumbButton,
   breadcrumbButtonClassNames,
   renderBreadcrumbButton_unstable,
