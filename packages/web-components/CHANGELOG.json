@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 19 Apr 2023 04:23:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.17",
+      "version": "3.0.0-alpha.17",
+      "comments": {
+        "none": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "e5ff319c5354a9f47d6f5b990441673e32998b7c",
+            "comment": "Adds Select spec"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Apr 2023 04:19:35 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.17",
       "version": "3.0.0-alpha.17",
