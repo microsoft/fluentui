@@ -4,60 +4,60 @@ import story from './useFlatTree.md';
 
 const defaultItems: FlatTreeItemProps[] = [
   {
-    id: '1',
+    value: '1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
   },
   {
-    id: '1-1',
-    parentId: '1',
+    value: '1-1',
+    parentValue: '1',
     children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
   },
   {
-    id: '1-2',
-    parentId: '1',
+    value: '1-2',
+    parentValue: '1',
     children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
   },
   {
-    id: '1-3',
-    parentId: '1',
+    value: '1-3',
+    parentValue: '1',
     children: <TreeItemLayout>Level 2, item 3</TreeItemLayout>,
   },
   {
-    id: '2',
+    value: '2',
     children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
   },
   {
-    id: '2-1',
-    parentId: '2',
+    value: '2-1',
+    parentValue: '2',
     children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
   },
   {
-    id: '2-1-1',
-    parentId: '2-1',
+    value: '2-1-1',
+    parentValue: '2-1',
     children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
   },
   {
-    id: '2-2',
-    parentId: '2',
+    value: '2-2',
+    parentValue: '2',
     children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
   },
   {
-    id: '2-2-1',
-    parentId: '2-2',
+    value: '2-2-1',
+    parentValue: '2-2',
     children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
   },
   {
-    id: '2-2-2',
-    parentId: '2-2',
+    value: '2-2-2',
+    parentValue: '2-2',
     children: <TreeItemLayout>Level 3, item 2</TreeItemLayout>,
   },
   {
-    id: '2-2-3',
-    parentId: '2-2',
+    value: '2-2-3',
+    parentValue: '2-2',
     children: <TreeItemLayout>Level 3, item 3</TreeItemLayout>,
   },
   {
-    id: '3',
+    value: '3',
     children: <TreeItemLayout>Level 1, item 3</TreeItemLayout>,
   },
 ];
@@ -68,7 +68,7 @@ export const UseFlatTree = () => {
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
       {Array.from(flatTree.items(), flatTreeItem => (
-        <TreeItem {...flatTreeItem.getTreeItemProps()} key={flatTreeItem.id} />
+        <TreeItem {...flatTreeItem.getTreeItemProps()} key={flatTreeItem.value} />
       ))}
     </Tree>
   );
