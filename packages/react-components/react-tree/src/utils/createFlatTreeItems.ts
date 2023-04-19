@@ -1,32 +1,33 @@
-import type { TreeItemId } from '../TreeItem';
 import type { ImmutableSet } from './ImmutableSet';
 import type { FlatTreeItem, FlatTreeItemProps, MutableFlatTreeItem } from '../hooks/useFlatTree';
 
 /**
  * @internal
  */
-export type FlatTreeItems = {
+export type FlatTreeItems<Value = string> = {
   size: number;
-  root: FlatTreeItem;
-  get(id: string): FlatTreeItem | undefined;
-  set(id: string, value: FlatTreeItem): void;
-  getByIndex(index: number): FlatTreeItem;
+  root: FlatTreeItem<Value>;
+  get(key: Value): FlatTreeItem<Value> | undefined;
+  set(key: Value, value: FlatTreeItem<Value>): void;
+  getByIndex(index: number): FlatTreeItem<Value>;
 };
 
 /**
  * creates a list of flat tree items
  * and provides a map to access each item by id
  */
-export function createFlatTreeItems(flatTreeItemProps: FlatTreeItemProps[]): FlatTreeItems {
-  const root = createFlatTreeRootItem();
-  const itemsPerId = new Map<string, MutableFlatTreeItem>([[flatTreeRootId, root]]);
-  const items: MutableFlatTreeItem[] = [];
+export function createFlatTreeItems<Value = string>(
+  flatTreeItemProps: FlatTreeItemProps<Value>[],
+): FlatTreeItems<Value> {
+  const root = createFlatTreeRootItem<Value>();
+  const itemsPerValue = new Map<Value, MutableFlatTreeItem<Value>>([[flatTreeRootId as Value, root]]);
+  const items: MutableFlatTreeItem<Value>[] = [];
 
   for (let index = 0; index < flatTreeItemProps.length; index++) {
-    const { parentId = flatTreeRootId, ...treeItemProps } = flatTreeItemProps[index];
+    const { parentValue = flatTreeRootId as Value, ...treeItemProps } = flatTreeItemProps[index];
 
-    const nextItemProps: FlatTreeItemProps | undefined = flatTreeItemProps[index + 1];
-    const currentParent = itemsPerId.get(parentId);
+    const nextItemProps: FlatTreeItemProps<Value> | undefined = flatTreeItemProps[index + 1];
+    const currentParent = itemsPerValue.get(parentValue);
     if (!currentParent) {
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
@@ -36,12 +37,12 @@ export function createFlatTreeItems(flatTreeItemProps: FlatTreeItemProps[]): Fla
       }
       break;
     }
-    const isLeaf = nextItemProps?.parentId !== treeItemProps.id;
+    const isLeaf = nextItemProps?.parentValue !== treeItemProps.value;
     const currentLevel = (currentParent.level ?? 0) + 1;
     const currentChildrenSize = ++currentParent.childrenSize;
 
-    const flatTreeItem: FlatTreeItem = {
-      id: treeItemProps.id,
+    const flatTreeItem: FlatTreeItem<Value> = {
+      value: treeItemProps.value,
       getTreeItemProps: () => ({
         ...treeItemProps,
         'aria-level': currentLevel,
@@ -50,11 +51,11 @@ export function createFlatTreeItems(flatTreeItemProps: FlatTreeItemProps[]): Fla
         leaf: isLeaf,
       }),
       level: currentLevel,
-      parentId,
+      parentValue,
       childrenSize: 0,
       index: -1,
     };
-    itemsPerId.set(flatTreeItem.id, flatTreeItem);
+    itemsPerValue.set(flatTreeItem.value, flatTreeItem);
     items.push(flatTreeItem);
   }
 
@@ -62,22 +63,22 @@ export function createFlatTreeItems(flatTreeItemProps: FlatTreeItemProps[]): Fla
     root,
     size: items.length,
     getByIndex: index => items[index],
-    get: id => itemsPerId.get(id),
-    set: (id, value) => itemsPerId.set(id, value),
+    get: id => itemsPerValue.get(id),
+    set: (id, value) => itemsPerValue.set(id, value),
   };
 }
 
-export const flatTreeRootId = '__fuiFlatTreeRoot';
+export const flatTreeRootId = '__fuiFlatTreeRoot' as unknown;
 
-function createFlatTreeRootItem(): FlatTreeItem {
+function createFlatTreeRootItem<Value = string>(): FlatTreeItem<Value> {
   return {
-    id: flatTreeRootId,
+    value: flatTreeRootId as Value,
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
         console.error('useFlatTree: internal error, trying to access treeitem props from invalid root element');
       }
-      return { id: flatTreeRootId, 'aria-setsize': -1, 'aria-level': -1, 'aria-posinset': -1, leaf: true };
+      return { value: flatTreeRootId as Value, 'aria-setsize': -1, 'aria-level': -1, 'aria-posinset': -1, leaf: true };
     },
     childrenSize: 0,
     get index() {
@@ -92,10 +93,13 @@ function createFlatTreeRootItem(): FlatTreeItem {
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function* VisibleFlatTreeItemGenerator(openItems: ImmutableSet<TreeItemId>, flatTreeItems: FlatTreeItems) {
+export function* VisibleFlatTreeItemGenerator<Value = string>(
+  openItems: ImmutableSet<Value>,
+  flatTreeItems: FlatTreeItems<Value>,
+) {
   for (let index = 0, visibleIndex = 0; index < flatTreeItems.size; index++) {
-    const item: MutableFlatTreeItem = flatTreeItems.getByIndex(index);
-    const parent = item.parentId ? flatTreeItems.get(item.parentId) ?? flatTreeItems.root : flatTreeItems.root;
+    const item: MutableFlatTreeItem<Value> = flatTreeItems.getByIndex(index);
+    const parent = item.parentValue ? flatTreeItems.get(item.parentValue) ?? flatTreeItems.root : flatTreeItems.root;
     if (isItemVisible(item, openItems, flatTreeItems)) {
       item.index = visibleIndex++;
       yield item;
@@ -105,15 +109,19 @@ export function* VisibleFlatTreeItemGenerator(openItems: ImmutableSet<TreeItemId
   }
 }
 
-function isItemVisible(item: FlatTreeItem, openItems: ImmutableSet<TreeItemId>, flatTreeItems: FlatTreeItems) {
+function isItemVisible<Value>(
+  item: FlatTreeItem<Value>,
+  openItems: ImmutableSet<Value>,
+  flatTreeItems: FlatTreeItems<Value>,
+) {
   if (item.level === 1) {
     return true;
   }
-  while (item.parentId && item.parentId !== flatTreeItems.root.id) {
-    if (!openItems.has(item.parentId)) {
+  while (item.parentValue && item.parentValue !== flatTreeItems.root.value) {
+    if (!openItems.has(item.parentValue)) {
       return false;
     }
-    const parent = flatTreeItems.get(item.parentId);
+    const parent = flatTreeItems.get(item.parentValue);
     if (!parent) {
       return false;
     }

@@ -377,7 +377,29 @@ describe('Popover', () => {
         cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
         cy.contains('Two').should('have.focus');
       });
+
+      it('should work as inertTrapFocus when set to false', () => {
+        mount(
+          <Popover legacyTrapFocus={false} trapFocus>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <button>One</button>
+              <button>Two</button>
+            </PopoverSurface>
+          </Popover>,
+        );
+
+        cy.get(popoverTriggerSelector).focus().realPress('Enter');
+
+        cy.contains('One').should('have.focus').realPress('Tab');
+        cy.contains('Two').should('have.focus').realPress('Tab');
+        cy.focused().should('not.exist');
+      });
     });
+
     describe('inert focus trap behaviour', () => {
       it('Tab should go to the window', () => {
         mount(

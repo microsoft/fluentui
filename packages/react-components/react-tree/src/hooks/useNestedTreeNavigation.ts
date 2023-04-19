@@ -1,10 +1,10 @@
+import { useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
 import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { treeItemFilter } from '../utils/treeItemFilter';
 import { useRovingTabIndex } from './useRovingTabIndexes';
-import { useMergedRefs } from '@fluentui/react-utilities';
 
 export function useNestedTreeNavigation() {
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);

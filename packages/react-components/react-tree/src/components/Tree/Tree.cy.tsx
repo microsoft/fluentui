@@ -99,7 +99,7 @@ const FlatTree: React.FC<TreeProps> = (props: TreeProps) => {
   return (
     <Tree {...props} {...flatTree.getTreeProps()} id="tree" aria-label="Tree">
       {Array.from(flatTree.items(), item => (
-        <TreeItem key={item.id} {...item.getTreeItemProps()} />
+        <TreeItem key={item.value} {...item.getTreeItemProps()} />
       ))}
     </Tree>
   );
