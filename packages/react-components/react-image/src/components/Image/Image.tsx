@@ -22,3 +22,4 @@ export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, r
 });
 
 Image.displayName = 'Image';
+
