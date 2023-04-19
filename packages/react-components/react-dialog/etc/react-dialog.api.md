@@ -17,6 +17,7 @@ import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
