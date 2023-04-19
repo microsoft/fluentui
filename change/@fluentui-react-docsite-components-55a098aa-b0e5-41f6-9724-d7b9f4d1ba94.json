@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add link to reference v9 website next to v8's version selector.",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
