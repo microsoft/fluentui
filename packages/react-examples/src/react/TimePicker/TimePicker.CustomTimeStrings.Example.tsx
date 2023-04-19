@@ -32,6 +32,7 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
       <TimePicker
+        placeholder="Custom time strings example placeholder"
         styles={timePickerStyles}
         onFormatDate={onFormatDate}
         onValidateUserInput={onValidateUserInput}

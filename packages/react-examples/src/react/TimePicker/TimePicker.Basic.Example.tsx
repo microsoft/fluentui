@@ -44,6 +44,7 @@ export const TimePickerBasicExample: React.FC = () => {
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
       <TimePicker
+        placeholder="Basic example placeholder"
         styles={timePickerStyles}
         useHour12
         allowFreeform

@@ -53,7 +53,12 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
       <Label>{'DatePicker and TimePicker combination'}</Label>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridColumnGap: '3px' }}>
         <DatePicker placeholder="Select a date..." value={datePickerDate} onSelectDate={onSelectDate} />
-        <TimePicker dateAnchor={datePickerDate} value={currentTime} onChange={onTimePickerChange} />
+        <TimePicker
+          placeholder="Select a time"
+          dateAnchor={datePickerDate}
+          value={currentTime}
+          onChange={onTimePickerChange}
+        />
       </div>
       <Text>{`⚓ Date anchor: ${datePickerDate.toString()}`}</Text>
       <Text>{`⌚ Selected time: ${currentTimeString ? currentTimeString : '<no time selected>'}`}</Text>
