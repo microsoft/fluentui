@@ -20,10 +20,8 @@ export interface ITimeRange {
 export interface ITimePickerStrings {
   /** Error message to render below the field if input parsing fails. */
   invalidInputErrorMessage: string;
-  /** Default placeholder text to render within ComboBox if no placeholder is provided. */
-  defaultTimePickerPlaceholder: string;
   /** Error message to render if the user input date is out of bounds. */
-  timeOutOfBoundsErrorMessage: string;
+  timeOutOfBoundsErrorMessage?: string;
 }
 
 /**
