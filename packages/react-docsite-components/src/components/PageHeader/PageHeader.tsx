@@ -85,7 +85,6 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
       </h1>
       {versionSwitcherDefinition && (
         <>
-          <a href="https://react.fluentui.dev/">Fluent UI React v9</a>
           <ActionButton
             className={styles.versionSelector}
             menuProps={{
