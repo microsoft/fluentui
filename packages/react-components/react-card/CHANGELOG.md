@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 21 Mar 2023 21:23:26 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.7)
+
+Mon, 17 Apr 2023 17:53:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.6..@fluentui/react-card_v9.0.7)
+
+### Patches
+
+- fix: add support for Windows High Contrast Mode ([PR #27556](https://github.com/microsoft/fluentui/pull/27556) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-button to v9.3.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.6)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.5..@fluentui/react-card_v9.0.6)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-button to v9.3.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.5)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.3..@fluentui/react-card_v9.0.5)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.6.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-button to v9.3.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.3)
 

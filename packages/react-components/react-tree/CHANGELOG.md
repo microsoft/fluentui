@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Fri, 24 Mar 2023 10:15:27 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:54:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.11)
+
+Mon, 17 Apr 2023 17:54:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.10..@fluentui/react-tree_v9.0.0-beta.11)
+
+### Changes
+
+- chore: adopt custom jsx pragma ([PR #27542](https://github.com/microsoft/fluentui/pull/27542) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.3.18 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-avatar to v9.4.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-button to v9.3.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.18 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-portal to v9.2.6 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.1 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.10)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.9..@fluentui/react-tree_v9.0.0-beta.10)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.3.17 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-avatar to v9.4.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-button to v9.3.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.17 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-portal to v9.2.5 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.9)
+
+Tue, 04 Apr 2023 18:44:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.8..@fluentui/react-tree_v9.0.0-beta.9)
+
+### Changes
+
+- chore: adds e2e flat tree tests ([PR #27318](https://github.com/microsoft/fluentui/pull/27318) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.3.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-avatar to v9.4.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-button to v9.3.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-portal to v9.2.4 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-tabster to v9.6.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.8)
 

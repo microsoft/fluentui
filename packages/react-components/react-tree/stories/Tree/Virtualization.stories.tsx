@@ -18,23 +18,27 @@ import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'reac
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 import story from './Virtualization.md';
 
-const defaultItems: FlatTreeItemProps[] = [
+const defaultItems: FlatTreeItemProps<string>[] = [
   {
     id: 'flatTreeItem_lvl-1_item-1',
+    value: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
   },
   ...Array.from({ length: 300 }, (_, i) => ({
     id: `flatTreeItem_lvl-1_item-1--child:${i}`,
-    parentId: 'flatTreeItem_lvl-1_item-1',
+    value: `flatTreeItem_lvl-1_item-1--child:${i}`,
+    parentValue: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
   })),
   {
     id: 'flatTreeItem_lvl-1_item-2',
+    value: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
   },
   ...Array.from({ length: 300 }, (_, index) => ({
     id: `flatTreeItem_lvl-1_item-2--child:${index}`,
-    parentId: 'flatTreeItem_lvl-1_item-2',
+    value: `flatTreeItem_lvl-1_item-2--child:${index}`,
+    parentValue: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Item {index + 1}</TreeItemLayout>,
   })),
 ];
@@ -81,7 +85,7 @@ export const Virtualization = () => {
     if (!nextItem) {
       return;
     }
-    if (document.getElementById(nextItem.id)) {
+    if (!document.getElementById(nextItem.value)) {
       listRef.current?.scrollToItem(nextItem.index);
       return requestAnimationFrame(() => flatTree.navigate(data));
     }

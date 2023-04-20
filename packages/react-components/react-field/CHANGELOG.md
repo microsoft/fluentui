@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Tue, 21 Mar 2023 21:23:34 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.0)
+
+Mon, 17 Apr 2023 17:53:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-beta.2..@fluentui/react-field_v9.1.0)
+
+### Minor changes
+
+- feat: Release Field component as stable ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.18 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-label to v9.1.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+### Patches
+
+- chore: Remove utilities for deprecated shim InputField, etc. components ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-beta.2)
+
+Wed, 12 Apr 2023 09:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-beta.1..@fluentui/react-field_v9.0.0-beta.2)
+
+### Changes
+
+- fix: Make contextValues argument required on renderField_unstable ([PR #27436](https://github.com/microsoft/fluentui/pull/27436) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.17 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-label to v9.1.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-beta.1)
+
+Fri, 07 Apr 2023 00:01:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.29..@fluentui/react-field_v9.0.0-beta.1)
+
+### Changes
+
+- feat: Add FieldContext to pass props to controls inside Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- chore: Bump react-field version to beta ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.29)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.27..@fluentui/react-field_v9.0.0-alpha.29)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-label to v9.1.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.27)
 

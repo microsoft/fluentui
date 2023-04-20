@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { Select } from './Select';
 import { isConformant } from '../../testing/isConformant';
 
@@ -96,5 +97,26 @@ describe('Select', () => {
       </Select>,
     );
     expect(onChange).toHaveBeenCalledTimes(0);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Select data-testid="select">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </Select>
+      </Field>,
+    );
+
+    const select = result.getByTestId('select') as HTMLSelectElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(select.id).toEqual(label.htmlFor);
+    expect(select.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(select.getAttribute('aria-invalid')).toEqual('true');
+    expect(select.required).toBe(true);
   });
 });

@@ -4753,7 +4753,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selection?: ISelection;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
-    selectionZoneProps?: ISelectionZoneProps;
+    selectionZoneProps?: Partial<ISelectionZoneProps>;
     setKey?: string;
     // @deprecated
     shouldApplyApplicationRole?: boolean;
@@ -6781,6 +6781,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
     onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
+    renderEarly?: boolean;
     renderedWindowsAhead?: number;
     renderedWindowsBehind?: number;
     role?: string;

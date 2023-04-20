@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { DataGridBodyState, DataGridBodySlots } from './DataGridBody.types';
 import { TableRowIdContextProvider } from '../../contexts/rowIdContext';
 
@@ -7,7 +10,7 @@ import { TableRowIdContextProvider } from '../../contexts/rowIdContext';
  * Render the final JSX of DataGridBody
  */
 export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
-  const { slots, slotProps } = getSlots<DataGridBodySlots>(state);
+  const { slots, slotProps } = getSlotsNext<DataGridBodySlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

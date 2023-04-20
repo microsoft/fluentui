@@ -129,6 +129,8 @@ function loadWorkspaceAddon(addonName, options) {
  * @returns {import("webpack").RuleSetRule}
  */
 function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
+  const config = getCodesandboxBabelOptions();
+
   return {
     /**
      * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
@@ -141,7 +143,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
     use: {
       loader: 'babel-loader',
       options: _processBabelLoaderOptions({
-        plugins: [[babelPlugin, getCodesandboxBabelOptions()]],
+        plugins: [[babelPlugin, config]],
       }),
     },
   };
@@ -150,36 +152,48 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
    * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
    */
   function getCodesandboxBabelOptions() {
+    /**
+     * packages that are part of v9 but are not meant for platform:web
+     */
+    const excludePackages = [
+      '@fluentui/babel-preset-storybook-full-source',
+      '@fluentui/react-storybook-addon',
+      '@fluentui/react-storybook-addon-codesandbox',
+      '@fluentui/react-conformance-griffel',
+    ];
+
+    // TODO: https://github.com/microsoft/fluentui/issues/26691
+    const packagesOutsideReactComponentsSuite = [
+      '@fluentui/react-data-grid-react-window',
+      '@fluentui/react-datepicker-compat',
+      '@fluentui/react-migration-v8-v9',
+      '@fluentui/react-migration-v0-v9',
+    ];
+
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
+      if (excludePackages.includes(cur.packageJson.name)) {
+        return acc;
+      }
+
+      if (packagesOutsideReactComponentsSuite.includes(cur.packageJson.name)) {
+        acc[cur.packageJson.name] = { replace: cur.packageJson.name };
+        return acc;
+      }
+
       if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
         const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
         acc[cur.packageJson.name] = isPrerelease
           ? { replace: '@fluentui/react-components/unstable' }
           : { replace: '@fluentui/react-components' };
+
+        return acc;
       }
 
       return acc;
     }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
 
-    return {
-      ...importMappings,
-
-      // TODO: https://github.com/microsoft/fluentui/issues/26691
-
-      '@fluentui/react-data-grid-react-window': {
-        replace: '@fluentui/react-data-grid-react-window',
-      },
-      '@fluentui/react-migration-v8-v9': {
-        replace: '@fluentui/react-migration-v8-v9',
-      },
-      '@fluentui/react-migration-v0-v9': {
-        replace: '@fluentui/react-migration-v0-v9',
-      },
-      '@fluentui/react-datepicker-compat': {
-        replace: '@fluentui/react-datepicker-compat',
-      },
-    };
+    return importMappings;
   }
 }
 

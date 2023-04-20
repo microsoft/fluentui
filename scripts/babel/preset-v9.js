@@ -24,7 +24,7 @@ function createModuleResolverAliases(options) {
     const tsSourceRoot = aliasTuple[0];
     const jsSourceRoot = tsSourceRoot.replace('src', 'lib').replace('.ts', '.js');
     const aliasRegex = `^${packageName}$`;
-    acc[aliasRegex] = `${rootOffset}/${jsSourceRoot}`;
+    acc[aliasRegex] = path.resolve(rootOffset, jsSourceRoot);
     return acc;
   }, /** @type {Record<string,string>} */ ({}));
 }

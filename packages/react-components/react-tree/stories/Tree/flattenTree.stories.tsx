@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, flattenTree_unstable } from '@fluentui/react-tree';
 import story from './flattenTree.md';
 
-const defaultItems = flattenTree_unstable([
+const defaultItems = flattenTree_unstable<string>([
   {
     children: <TreeItemLayout>level 1, item 1</TreeItemLayout>,
     subtree: [
@@ -38,11 +38,11 @@ const defaultItems = flattenTree_unstable([
 ]);
 
 export const FlattenTree = () => {
-  const flatTree = useFlatTree_unstable(defaultItems);
+  const flatTree = useFlatTree_unstable<string>(defaultItems);
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
       {Array.from(flatTree.items(), item => (
-        <TreeItem {...item.getTreeItemProps()} key={item.id} />
+        <TreeItem {...item.getTreeItemProps()} key={item.value} />
       ))}
     </Tree>
   );

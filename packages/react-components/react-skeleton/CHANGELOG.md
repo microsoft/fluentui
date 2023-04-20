@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-skeleton
 
-This log was last generated on Tue, 21 Mar 2023 21:23:02 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.0-beta.9)
+
+Mon, 17 Apr 2023 17:53:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.0-beta.8..@fluentui/react-skeleton_v9.0.0-beta.9)
+
+### Changes
+
+- chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.0-beta.8)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.0-beta.7..@fluentui/react-skeleton_v9.0.0-beta.8)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-beta.2 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.0-beta.7)
+
+Fri, 07 Apr 2023 00:01:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.0-beta.6..@fluentui/react-skeleton_v9.0.0-beta.7)
+
+### Changes
+
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.0-beta.6)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.0-beta.4..@fluentui/react-skeleton_v9.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.29 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.0-beta.4)
 

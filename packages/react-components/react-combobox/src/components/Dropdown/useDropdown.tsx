@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useTimeout } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
@@ -21,6 +22,9 @@ import { useMergedRefs } from '@fluentui/react-utilities';
  * @param ref - reference to root HTMLElement of Dropdown
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
+
   const baseState = useComboboxBaseState(props);
   const { activeOption, getIndexOfId, getOptionsMatchingText, open, setActiveOption, setFocusVisible, setOpen } =
     baseState;

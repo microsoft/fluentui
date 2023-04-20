@@ -1,8 +1,211 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 24 Mar 2023 17:36:41 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.19.0)
+
+Mon, 17 Apr 2023 17:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.9..@fluentui/react-components_v9.19.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Release Field component as stable ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-field`
+  - feat: Release Field component as stable ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: ensure compatibility with custom JSX pragma ([PR #27472](https://github.com/microsoft/fluentui/pull/27472) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - fix: Correct Avatar's active-inactive transition animation curve ([PR #27537](https://github.com/microsoft/fluentui/pull/27537) by behowell@microsoft.com)
+- `@fluentui/react-card`
+  - fix: add support for Windows High Contrast Mode ([PR #27556](https://github.com/microsoft/fluentui/pull/27556) by marcosvmmoura@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: Remove deprecated CheckboxField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: Remove deprecated ComboboxField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - chore(react-components/unstable): Remove deprecated InputField, etc. shim components ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Remove the use of ContextSelector in RadioGroupContext ([PR #27476](https://github.com/microsoft/fluentui/pull/27476) by behowell@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: adopts custom JSX pragma ([PR #27475](https://github.com/microsoft/fluentui/pull/27475) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-field`
+  - chore: Remove utilities for deprecated shim InputField, etc. components ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+  - chore: Remove deprecated InputField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: adopt custom JSX pragma ([PR #27544](https://github.com/microsoft/fluentui/pull/27544) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - feat: adopt custom JSX pragma ([PR #27546](https://github.com/microsoft/fluentui/pull/27546) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - chore: Remove deprecated ProgressField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: adopt custom JSX pragma ([PR #27547](https://github.com/microsoft/fluentui/pull/27547) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+  - chore: Remove deprecated RadioGroupField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Remove the use of ContextSelector in RadioGroupContext ([PR #27476](https://github.com/microsoft/fluentui/pull/27476) by behowell@microsoft.com)
+- `@fluentui/react-select`
+  - chore: Remove deprecated SelectField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: Remove deprecated SliderField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+  - chore: Remove deprecated SpinButtonField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Remove deprecated SwitchField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-table`
+  - chore: adopt custom JSX pragma ([PR #27543](https://github.com/microsoft/fluentui/pull/27543) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-textarea`
+  - chore: Remove deprecated TextareaField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: adopt custom JSX pragma ([PR #27548](https://github.com/microsoft/fluentui/pull/27548) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - fix: Fix slot render functions ([PR #27561](https://github.com/microsoft/fluentui/pull/27561) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - chore: adopt custom JSX pragma ([PR #27550](https://github.com/microsoft/fluentui/pull/27550) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-data-grid-react-window`
+  - chore: adopt custom JSX pragma ([PR #27552](https://github.com/microsoft/fluentui/pull/27552) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - feat: implements custom JSX pragma ([PR #27472](https://github.com/microsoft/fluentui/pull/27472) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-skeleton`
+  - chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - fix: add "style" to exports field ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by olfedias@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: adopt custom jsx pragma ([PR #27542](https://github.com/microsoft/fluentui/pull/27542) by bernardo.sunderhus@gmail.com)
+
+## [9.18.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.9)
+
+Wed, 12 Apr 2023 09:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.8..@fluentui/react-components_v9.18.9)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix(react-badge): Use min-width: max-content on Badge to prevent shrinking smaller than content ([PR #27489](https://github.com/microsoft/fluentui/pull/27489) by behowell@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: popup now defines fallbackPositions to use when it doesn't fit the screen ([PR #27521](https://github.com/microsoft/fluentui/pull/27521) by sarah.higley@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: use tabster to focus on trigger, instead of manually invoking .focus ([PR #27512](https://github.com/microsoft/fluentui/pull/27512) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - fix: Have RadioGroup forward aria-describedby to each of the Radio items inside ([PR #27456](https://github.com/microsoft/fluentui/pull/27456) by behowell@microsoft.com)
+- `@fluentui/react-tabs`
+  - added aria-orientation attribute ([PR #27315](https://github.com/microsoft/fluentui/pull/27315) by kakrookaran@gmail.com)
+- `@fluentui/react-utilities`
+  - fix(hooks): cleanup event listeners only when "disabled" is false ([PR #27516](https://github.com/microsoft/fluentui/pull/27516) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-datepicker-compat`
+  - feat: Make package public. ([PR #27524](https://github.com/microsoft/fluentui/pull/27524) by esteban.230@hotmail.com)
+- `@fluentui/react-field`
+  - fix: Make contextValues argument required on renderField_unstable ([PR #27436](https://github.com/microsoft/fluentui/pull/27436) by behowell@microsoft.com)
+
+## [9.18.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.8)
+
+Fri, 07 Apr 2023 00:01:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.7..@fluentui/react-components_v9.18.8)
+
+### Minor changes
+
+- `@fluentui/react-dialog`
+  - feat: removes aria-expanded from DialogTrigger ([PR #27372](https://github.com/microsoft/fluentui/pull/27372) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+  - chore: Export hooks for FieldContext ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fix: React 18 support in typings ([PR #27439](https://github.com/microsoft/fluentui/pull/27439) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- `@fluentui/react-select`
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - added width 100% to input of spin button ([PR #27421](https://github.com/microsoft/fluentui/pull/27421) by kakrookaran@gmail.com)
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: Merged onClick callbacks in Tab ([PR #27477](https://github.com/microsoft/fluentui/pull/27477) by gcox@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+  - chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-field`
+  - feat: Add FieldContext to pass props to controls inside Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+  - chore: Bump react-field version to beta ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+
+## [9.18.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.7)
+
+Tue, 04 Apr 2023 18:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.6..@fluentui/react-components_v9.18.7)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - fix: Fix vertical alignment of inline Checkbox when checked vs. unchecked ([PR #27324](https://github.com/microsoft/fluentui/pull/27324) by behowell@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: make Option's checkIcon slot render conditionally ([PR #27409](https://github.com/microsoft/fluentui/pull/27409) by seanmonahan@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: DialogContent scrollbar always visible ([PR #27367](https://github.com/microsoft/fluentui/pull/27367) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - fix: Menu should not steal focus on close ([PR #27414](https://github.com/microsoft/fluentui/pull/27414) by lingfangao@hotmail.com)
+- `@fluentui/react-overflow`
+  - fix: overflow item style should be applied when overflow items are nested in wrapper elements ([PR #27402](https://github.com/microsoft/fluentui/pull/27402) by vkozlova@microsoft.com)
+- `@fluentui/react-utilities`
+  - bugfix: increments SlotRenderFunction signature to include children ([PR #27377](https://github.com/microsoft/fluentui/pull/27377) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - chore: Rename content slot to info. ([PR #27316](https://github.com/microsoft/fluentui/pull/27316) by esteban.230@hotmail.com)
+- `@fluentui/react-tree`
+  - chore: adds e2e flat tree tests ([PR #27318](https://github.com/microsoft/fluentui/pull/27318) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-virtualizer`
+  - fix: remove disallowed v9 react-fabric/v8 from dependency to mitigate dep-tree creep ([PR #27334](https://github.com/microsoft/fluentui/pull/27334) by martinhochel@microsoft.com)
 
 ## [9.18.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.6)
 

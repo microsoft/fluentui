@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 21 Mar 2023 21:23:15 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.0)
+
+Mon, 17 Apr 2023 17:54:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.4..@fluentui/react-utilities_v9.8.0)
+
+### Minor changes
+
+- feat: ensure compatibility with custom JSX pragma ([PR #27472](https://github.com/microsoft/fluentui/pull/27472) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- fix: Fix slot render functions ([PR #27561](https://github.com/microsoft/fluentui/pull/27561) by behowell@microsoft.com)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.4)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.3..@fluentui/react-utilities_v9.7.4)
+
+### Patches
+
+- fix(hooks): cleanup event listeners only when "disabled" is false ([PR #27516](https://github.com/microsoft/fluentui/pull/27516) by olfedias@microsoft.com)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.3)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.2..@fluentui/react-utilities_v9.7.3)
+
+### Patches
+
+- bugfix: increments SlotRenderFunction signature to include children ([PR #27377](https://github.com/microsoft/fluentui/pull/27377) by bernardo.sunderhus@gmail.com)
 
 ## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.2)
 
