@@ -40,11 +40,33 @@ const useStyles = makeStyles({
   },
 });
 
+const useIconStyles = makeStyles({
+  small: {
+    fontSize: '12px',
+    height: '12px',
+    lineHeight: tokens.lineHeightBase200,
+    width: '12px',
+  },
+  medium: {
+    fontSize: '16px',
+    height: '16px',
+    lineHeight: tokens.lineHeightBase400,
+    width: '16px',
+  },
+  large: {
+    fontSize: '20px',
+    height: '20px',
+    lineHeight: tokens.lineHeightBase600,
+    width: '20px',
+  },
+});
 /**
  * Apply styling to the BreadcrumbButton slots based on the state
  */
 export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
   const styles = useStyles();
+  const iconStyles = useIconStyles();
+
   const currentSizeMap = {
     small: styles.currentSmall,
     medium: styles.currentMedium,
@@ -57,6 +79,10 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     state.current && currentSizeMap[state.size],
     state.root.className,
   );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles[state.size], state.icon.className);
+  }
 
   useButtonStyles_unstable(state);
 
