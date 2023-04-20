@@ -52,12 +52,11 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 ### **Attributes**
 
-| Name             | Field         |
-| ---------------- | ------------- |
-| `name`           | name          |
-| `disabled`       | disabled      |
-| `label-position` | labelPosition |
-| `checked`        | checked       |
+| Name       | Field    |
+| ---------- | -------- |
+| `name`     | name     |
+| `disabled` | disabled |
+| `checked`  | checked  |
 
 <br />
 
