@@ -9385,8 +9385,8 @@ export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'sele
     label?: string;
     onChange?: (event: React_2.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
-    onGetErrorMessage?: (errorMessage: string) => void;
     onValidateUserInput?: (userInput: string) => string;
+    onValidationError?: (event: React_2.FormEvent<IComboBox>, data: TimePickerErrorData) => void;
     showSeconds?: boolean;
     strings?: ITimePickerStrings;
     timeRange?: ITimeRange;
@@ -11254,6 +11254,11 @@ export { TimeConstants }
 
 // @public (undocumented)
 export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
+
+// @public (undocumented)
+export type TimePickerErrorData = {
+    errorMessage?: string;
+};
 
 // @public (undocumented)
 export const Toggle: React_2.FunctionComponent<IToggleProps>;

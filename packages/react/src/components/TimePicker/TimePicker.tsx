@@ -50,7 +50,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   onChange,
   onFormatDate,
   onValidateUserInput,
-  onGetErrorMessage,
+  onValidationError,
   ...rest
 }: ITimePickerProps) => {
   const [comboBoxText, setComboBoxText] = React.useState<string>('');
@@ -144,8 +144,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         }
       }
 
-      if (onGetErrorMessage) {
-        onGetErrorMessage(errorMessageToDisplay);
+      if (onValidationError) {
+        onValidationError(ev, { errorMessage: errorMessageToDisplay });
       }
 
       let changedTime: Date;
@@ -176,7 +176,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       strings.invalidInputErrorMessage,
       strings.timeOutOfBoundsErrorMessage,
       setSelectedTime,
-      onGetErrorMessage,
+      onValidationError,
       onChange,
     ],
   );

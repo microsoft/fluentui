@@ -24,6 +24,10 @@ export interface ITimePickerStrings {
   timeOutOfBoundsErrorMessage?: string;
 }
 
+export type TimePickerErrorData = {
+  errorMessage?: string;
+};
+
 /**
  * {@docCategory TimePicker}
  */
@@ -107,5 +111,5 @@ export interface ITimePickerProps
   /**
    * Callback to get validation result.
    */
-  onGetErrorMessage?: (errorMessage: string) => void;
+  onValidationError?: (event: React.FormEvent<IComboBox>, data: TimePickerErrorData) => void;
 }
