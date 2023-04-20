@@ -14,12 +14,49 @@ import { CurvedHelixPath, Palette, Vec3 } from './types';
  */
 const defaultLinearity = 0.75;
 
-function getLinearSpace(min: number, max: number, n: number) {
-  const result = [];
-  const delta = (max - min) / n;
-  for (let i = 0; i < n; i++) {
-    result[i] = min + delta * i;
+// function getLinearSpace(min: number, max: number, n: number) {
+//   const result = [];
+//   const delta = (max - min) / n;
+//   for (let i = 0; i < n; i++) {
+//     result[i] = min + delta * i;
+//   }
+//   return result;
+// }
+
+const rangeForKeyColor = (keyColor: string): number[] => {
+  const rgb = hex_to_sRGB(keyColor);
+  const relativeLuminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+  return linearInterpolationThroughPoint(0, relativeLuminance, 100, 16);
+};
+
+function linearInterpolationThroughPoint(start: number, throughPoint: number, endpoint: number, numSamples: number) {
+  if (numSamples < 3) {
+    throw new Error('numSamples should be at least 3');
   }
+
+  const totalRange = endpoint - start;
+  const firstHalfRange = throughPoint - start;
+
+  const firstHalfSamples = Math.floor(numSamples * (firstHalfRange / totalRange));
+  const secondHalfSamples = numSamples - firstHalfSamples - 1;
+  const result = [];
+
+  for (let i = 0; i < firstHalfSamples; i++) {
+    const t = i / (firstHalfSamples - 1);
+    const value = start + t * (throughPoint - start);
+    result.push(value);
+  }
+
+  result.push(throughPoint);
+
+  for (let i = 1; i < secondHalfSamples; i++) {
+    const t = i / (secondHalfSamples - 1);
+    const value = throughPoint + t * (endpoint - throughPoint);
+    result.push(value);
+  }
+
+  result.push(endpoint);
+
   return result;
 }
 
@@ -41,6 +78,7 @@ function paletteShadesFromCurvePoints(
   nShades: number,
   range = [0, 100],
   linearity = defaultLinearity,
+  keyColor: string,
 ): Vec3[] {
   if (curvePoints.length <= 2) {
     return [];
@@ -49,9 +87,8 @@ function paletteShadesFromCurvePoints(
   const paletteShades = [];
 
   const logLightness = getLogSpace(Math.log10(range[0]), Math.log10(range[1]), nShades);
-
-  const linearLightness = getLinearSpace(range[0], range[1], nShades);
-
+  //   const oldLinearLightness = getLinearSpace(range[0], range[1], nShades); // older attempt
+  const linearLightness = rangeForKeyColor(keyColor);
   let c = 0;
 
   for (let i = 0; i < nShades; i++) {
@@ -76,20 +113,17 @@ function paletteShadesFromCurvePoints(
 }
 
 export function paletteShadesFromCurve(
+  keyColor: string,
   curve: CurvedHelixPath,
   nShades = 16,
   range = [0, 100],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): Vec3[] {
-  return paletteShadesFromCurvePoints(
-    getPointsOnCurvePath(curve, Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2)).map(
-      (curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0),
-    ),
-    nShades,
-    range,
-    linearity,
+  const points = getPointsOnCurvePath(curve, Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2)).map(
+    (curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0),
   );
+  return paletteShadesFromCurvePoints(points, nShades, range, linearity, keyColor);
 }
 
 export function sRGB_to_hex(rgb: Vec3): string {
@@ -152,25 +186,26 @@ export function curvePathFromPalette({ keyColor, darkCp, lightCp, hueTorsion }: 
   } as CurvedHelixPath;
 }
 
-export function cssGradientFromCurve(
-  curve: CurvedHelixPath,
-  nShades = 16,
-  range = [0, 100],
-  linearity = defaultLinearity,
-  curveDepth = 24,
-) {
-  const hexes = paletteShadesToHex(paletteShadesFromCurve(curve, nShades, range, linearity, curveDepth));
-  return `linear-gradient(to right, ${hexes.join(', ')})`;
-}
+// export function cssGradientFromCurve(
+//   curve: CurvedHelixPath,
+//   nShades = 16,
+//   range = [0, 100],
+//   linearity = defaultLinearity,
+//   curveDepth = 24,
+// ) {
+//   const hexes = paletteShadesToHex(paletteShadesFromCurve(curve, nShades, range, linearity, curveDepth));
+//   return `linear-gradient(to right, ${hexes.join(', ')})`;
+// }
 
 export function hexColorsFromPalette(
+  keyColor: string,
   palette: Palette,
   nShades = 16,
   range = [0, 100],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): string[] {
-  return paletteShadesToHex(
-    paletteShadesFromCurve(curvePathFromPalette(palette), nShades, range, linearity, curveDepth),
-  );
+  const curve = curvePathFromPalette(palette);
+  const shades = paletteShadesFromCurve(keyColor, curve, nShades, range, linearity, curveDepth);
+  return paletteShadesToHex(shades);
 }
