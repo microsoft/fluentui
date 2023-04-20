@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.18",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.1",
     "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-tabster": "^9.6.5",
     "@fluentui/react-theme": "^9.1.7",
