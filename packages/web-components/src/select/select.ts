@@ -1,5 +1,6 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { ARIAGlobalStatesAndProperties } from '@microsoft/fast-foundation';
+import { SelectSize } from './select.options.js';
 
 /**
  * The base class used for constructing a fluent-slider custom element
@@ -41,6 +42,16 @@ export class Select extends FASTElement {
    */
   @attr
   public autocomplete?: string;
+
+  /**
+   * The size of the select
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: size
+   */
+  @attr
+  public size?: SelectSize;
 
   /**
    * The disabled state of the select
