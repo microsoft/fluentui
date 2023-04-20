@@ -172,23 +172,9 @@ export const RadioGroupDisabledItem = renderComponent(html<RadioGroupStoryArgs>`
   </fluent-radio-group>
 `);
 
-export const RadioGroupChangeEvent = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group
-    id="radio-group-fruit"
-    aria-labelledby="label-8"
-    name="radio-story"
-    @change="${(event: any) => handleChange(event)}"
-  >
-    <span id="label-8" slot="label">${getLabelContent}</span>
-    <fluent-radio checked value="apple">Apple</fluent-radio>
-    <fluent-radio value="pear">Pear</fluent-radio>
-    <fluent-radio value="Banana">Banana</fluent-radio>
-    <fluent-radio value="Orange">Orange</fluent-radio>
-  </fluent-radio-group>
-`);
-
-function getLabelContent(): string | undefined {
+const getLabelContent = (): string | undefined => {
   const radioGroup = document.querySelector('#radio-group-fruit') as FluentRadioGroup;
+
   if (!radioGroup) return; // add a check to make sure radioGroup exists
   const selectedRadio = radioGroup.value as string;
   if (selectedRadio) {
@@ -196,10 +182,13 @@ function getLabelContent(): string | undefined {
   } else {
     return 'Please select your favorite fruit';
   }
-}
+};
 
-function handleChange(event: Event) {
+const handleChange = (event: CustomEvent) => {
+  const changedRadio: HTMLInputElement = event.target as HTMLInputElement;
+  console.log(changedRadio);
   const radioGroup = document.querySelector('#radio-group-fruit') as FluentRadioGroup;
+
   if (!radioGroup) return; // add a check to make sure radioGroup exists
 
   const selectedRadio = radioGroup.value as string;
@@ -208,4 +197,19 @@ function handleChange(event: Event) {
     const labelContent = selectedRadio.charAt(0).toUpperCase() + selectedRadio.slice(1);
     labelElement.textContent = `Favorite fruit: ${labelContent}`;
   }
-}
+};
+
+export const RadioGroupChangeEvent = renderComponent(html<RadioGroupStoryArgs>`
+  <fluent-radio-group
+    id="radio-group-fruit"
+    aria-labelledby="label-8"
+    name="radio-story"
+    @change="${(event: CustomEvent) => handleChange(event)}"
+  >
+    <span id="label-8" slot="label">${getLabelContent}</span>
+    <fluent-radio checked value="apple">Apple</fluent-radio>
+    <fluent-radio value="pear">Pear</fluent-radio>
+    <fluent-radio value="Banana">Banana</fluent-radio>
+    <fluent-radio value="Orange">Orange</fluent-radio>
+  </fluent-radio-group>
+`);

@@ -50,14 +50,6 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 <br />
 
-### **Events**
-
-| Name     | Type | Inherited From |
-| -------- | ---- | -------------- |
-| `change` |      |                |
-
-<br />
-
 ### **Attributes**
 
 | Name             | Field         |
