@@ -23,39 +23,46 @@ const defaultLinearity = 0.75;
 //   return result;
 // }
 
-const rangeForKeyColor = (keyColor: string): number[] => {
+const rangeForKeyColor = (keyColor: string, range: number[]): number[] => {
   const rgb = hex_to_sRGB(keyColor);
-  const relativeLuminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
-  return linearInterpolationThroughPoint(0, relativeLuminance, 100, 16);
+  //   const relativeLuminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+  const perceivedLuminance = 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
+  //   const relativeLuminance = 50; // old way.
+  return linearInterpolationThroughPoint(range[0], range[1], perceivedLuminance * 100, 16);
 };
 
-function linearInterpolationThroughPoint(start: number, throughPoint: number, endpoint: number, numSamples: number) {
+function linearInterpolationThroughPoint(start: number, end: number, inBetween: number, numSamples: number) {
   if (numSamples < 3) {
-    throw new Error('numSamples should be at least 3');
+    throw new Error('Number of samples must be at least 3.');
   }
 
-  const totalRange = endpoint - start;
-  const firstHalfRange = throughPoint - start;
+  // Find the ratio of the inBetween point
+  const inBetweenRatio = (inBetween - start) / (end - start);
 
-  const firstHalfSamples = Math.floor(numSamples * (firstHalfRange / totalRange));
-  const secondHalfSamples = numSamples - firstHalfSamples - 1;
-  const result = [];
+  // Calculate the index of the inBetween point in the resulting array
+  const inBetweenIndex = Math.floor((numSamples - 1) * inBetweenRatio);
 
-  for (let i = 0; i < firstHalfSamples; i++) {
-    const t = i / (firstHalfSamples - 1);
-    const value = start + t * (throughPoint - start);
-    result.push(value);
+  // Initialize the output array
+  let result = new Array(numSamples);
+
+  // Set start, inBetween and end points in the result array
+  result[0] = start;
+  result[inBetweenIndex] = inBetween;
+  result[numSamples - 1] = end;
+
+  // Calculate the step size for each segment
+  const stepBefore = (inBetween - start) / inBetweenIndex;
+  const stepAfter = (end - inBetween) / (numSamples - 1 - inBetweenIndex);
+
+  // Fill the array with interpolated values before the inBetween point
+  for (let i = 1; i < inBetweenIndex; i++) {
+    result[i] = start + i * stepBefore;
   }
 
-  result.push(throughPoint);
-
-  for (let i = 1; i < secondHalfSamples; i++) {
-    const t = i / (secondHalfSamples - 1);
-    const value = throughPoint + t * (endpoint - throughPoint);
-    result.push(value);
+  // Fill the array with interpolated values after the inBetween point
+  for (let i = inBetweenIndex + 1; i < numSamples - 1; i++) {
+    result[i] = inBetween + (i - inBetweenIndex) * stepAfter;
   }
-
-  result.push(endpoint);
 
   return result;
 }
@@ -76,7 +83,7 @@ const getLogSpace = (min: number, max: number, n: number) => {
 function paletteShadesFromCurvePoints(
   curvePoints: Vec3[],
   nShades: number,
-  range = [0, 100],
+  range: number[],
   linearity = defaultLinearity,
   keyColor: string,
 ): Vec3[] {
@@ -88,7 +95,7 @@ function paletteShadesFromCurvePoints(
 
   const logLightness = getLogSpace(Math.log10(range[0]), Math.log10(range[1]), nShades);
   //   const oldLinearLightness = getLinearSpace(range[0], range[1], nShades); // older attempt
-  const linearLightness = rangeForKeyColor(keyColor);
+  const linearLightness = rangeForKeyColor(keyColor, range);
   let c = 0;
 
   for (let i = 0; i < nShades; i++) {
@@ -116,7 +123,7 @@ export function paletteShadesFromCurve(
   keyColor: string,
   curve: CurvedHelixPath,
   nShades = 16,
-  range = [0, 100],
+  range: number[],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): Vec3[] {
@@ -201,7 +208,7 @@ export function hexColorsFromPalette(
   keyColor: string,
   palette: Palette,
   nShades = 16,
-  range = [0, 100],
+  range: number[],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): string[] {
