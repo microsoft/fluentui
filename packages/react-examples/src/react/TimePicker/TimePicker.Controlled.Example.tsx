@@ -17,15 +17,9 @@ export const TimePickerControlledExample: React.FC = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
   const [time, setTime] = React.useState<Date>(new Date('February 27, 2023 10:00:00'));
 
-  const [controlledTimeString, setControlledTimeString] = React.useState<string>('');
-
   const onControlledExampleChange = React.useCallback((_, newTime: Date) => {
     setTime(newTime);
   }, []);
-
-  React.useEffect(() => {
-    setControlledTimeString(time.toString());
-  }, [time]);
 
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
@@ -41,7 +35,7 @@ export const TimePickerControlledExample: React.FC = () => {
         onChange={onControlledExampleChange}
       />
       <Text>{`⚓ Date anchor: ${dateAnchor.toString()}`}</Text>
-      <Text>{`⌚ Selected time: ${controlledTimeString ? controlledTimeString : '<no time selected>'}`}</Text>
+      <Text>{`⌚ Selected time: ${time ? time.toString() : '<no time selected>'}`}</Text>
     </Stack>
   );
 };

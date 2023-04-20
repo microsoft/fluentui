@@ -27,7 +27,6 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
   const currentDate = new Date('2023-02-01 05:00:00');
   const [datePickerDate, setDatePickerDate] = React.useState<Date>(currentDate);
   const [currentTime, setCurrentTime] = React.useState<Date>();
-  const [currentTimeString, setCurrentTimeString] = React.useState<string>('');
 
   const onSelectDate = React.useCallback(
     (selectedDate: Date) => {
@@ -44,10 +43,6 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
     setCurrentTime(date);
   }, []);
 
-  React.useEffect(() => {
-    setCurrentTimeString(currentTime ? currentTime.toString() : '<no time selected>');
-  }, [currentTime]);
-
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
       <Label>{'DatePicker and TimePicker combination'}</Label>
@@ -61,7 +56,7 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
         />
       </div>
       <Text>{`⚓ Date anchor: ${datePickerDate.toString()}`}</Text>
-      <Text>{`⌚ Selected time: ${currentTimeString ? currentTimeString : '<no time selected>'}`}</Text>
+      <Text>{`⌚ Selected time: ${currentTime ? currentTime.toString() : '<no time selected>'}`}</Text>
     </Stack>
   );
 };
