@@ -10,7 +10,7 @@ type SelectStoryMeta = Meta<SelectStoryArgs>;
 
 const storyTemplate = html<SelectStoryArgs>`
   <fluent-select>
-    <label>${x => x.label}</label>
+    <label slot="label">Label</label>
     <option value="option1">Option 1</option>
     <option value="option2">Option 2</option>
     <optgroup label="Group 1">

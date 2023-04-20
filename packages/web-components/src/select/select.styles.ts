@@ -17,12 +17,17 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('flex')} :host {
-    flex-grow: 1;
+  ${display('block')} :host {
     font-family: ${fontFamilyBase};
   }
 
+  label {
+    display: block;
+    width: 100%;
+  }
+
   select {
+    display: block;
     width: 100%;
     height: 32px;
     padding: 0 ${spacingHorizontalMNudge};
@@ -45,6 +50,11 @@ export const styles = css`
 
   :host([size='large']) select {
     height: 40px;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
   }
 
   select:focus {
