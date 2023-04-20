@@ -3,9 +3,9 @@ import { Field, makeStyles, Textarea, tokens } from '@fluentui/react-components'
 
 const useStyles = makeStyles({
   base: {
-    '& > div': {
-      marginTop: tokens.spacingVerticalMNudge,
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingVerticalMNudge,
   },
 });
 
@@ -14,19 +14,19 @@ export const Resize = () => {
 
   return (
     <div className={styles.base}>
-      <Field label='Textarea with resize set to "none".'>
+      <Field label='Textarea with resize set to "none"'>
         <Textarea resize="none" />
       </Field>
 
-      <Field label='Textarea with resize set to "vertical".'>
+      <Field label='Textarea with resize set to "vertical"'>
         <Textarea resize="vertical" />
       </Field>
 
-      <Field label='Textarea with resize set to "horizontal".'>
+      <Field label='Textarea with resize set to "horizontal"'>
         <Textarea resize="horizontal" />
       </Field>
 
-      <Field label='Textarea with resize set to "both".'>
+      <Field label='Textarea with resize set to "both"'>
         <Textarea resize="both" />
       </Field>
     </div>

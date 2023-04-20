@@ -3,9 +3,9 @@ import { Field, makeStyles, Textarea, tokens } from '@fluentui/react-components'
 
 const useStyles = makeStyles({
   base: {
-    '& > div': {
-      marginTop: tokens.spacingVerticalMNudge,
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingVerticalMNudge,
   },
 });
 
@@ -14,15 +14,15 @@ export const Size = () => {
 
   return (
     <div className={styles.base}>
-      <Field size="small" label="Small Textarea.">
+      <Field size="small" label="Small Textarea">
         <Textarea />
       </Field>
 
-      <Field size="medium" label="Medium Textarea.">
+      <Field size="medium" label="Medium Textarea">
         <Textarea />
       </Field>
 
-      <Field size="large" label="Large Textarea.">
+      <Field size="large" label="Large Textarea">
         <Textarea />
       </Field>
     </div>

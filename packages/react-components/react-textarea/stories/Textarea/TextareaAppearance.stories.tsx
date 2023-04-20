@@ -1,24 +1,23 @@
 import * as React from 'react';
-import { Field, makeStyles, shorthands, tokens, Textarea } from '@fluentui/react-components';
+import { Field, makeStyles, mergeClasses, shorthands, tokens, Textarea } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
-    '> div': {
-      marginTop: tokens.spacingVerticalMNudge,
-      ...shorthands.padding(tokens.spacingHorizontalMNudge),
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingVerticalMNudge,
   },
   filledLighter: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
   },
   filledDarker: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+  },
+  labelFilled: {
+    color: tokens.colorNeutralForegroundInverted2,
+  },
+  field: {
+    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
   },
 });
 
@@ -27,15 +26,21 @@ export const Appearance = () => {
 
   return (
     <div className={styles.base}>
-      <Field label="Textarea with Outline appearance.">
+      <Field label="Textarea with Outline appearance" className={styles.field}>
         <Textarea appearance="outline" placeholder="type here..." resize="both" />
       </Field>
 
-      <Field label="Textarea with Filled Darker appearance." className={styles.filledDarker}>
+      <Field
+        label={{ children: 'Textarea with Filled Darker appearance', className: styles.labelFilled }}
+        className={mergeClasses(styles.field, styles.filledDarker)}
+      >
         <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
       </Field>
 
-      <Field label="Textarea with Filled Lighter appearance." className={styles.filledLighter}>
+      <Field
+        label={{ children: 'Textarea with Filled Lighter appearance', className: styles.labelFilled }}
+        className={mergeClasses(styles.field, styles.filledDarker)}
+      >
         <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
       </Field>
     </div>

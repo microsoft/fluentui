@@ -12,7 +12,7 @@ export const Controlled = () => {
   };
 
   return (
-    <Field label="Controlled Textarea limiting the value to 50 characters.">
+    <Field label="Controlled Textarea limiting the value to 50 characters">
       <Textarea value={value} onChange={onChange} />
     </Field>
   );
