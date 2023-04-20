@@ -68,9 +68,17 @@
       "types": "./dist/esm/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
+    "./menu-list": {
+      "types": "./dist/esm/menu-list/define.d.ts",
+      "default": "./dist/esm/menu-list/define.js"
+    },
     "./menu-button": {
       "types": "./dist/esm/menu-button/define.d.ts",
       "default": "./dist/esm/menu-button/define.js"
+    },
+    "./menu-item": {
+      "types": "./dist/esm/menu-item/define.d.ts",
+      "default": "./dist/esm/menu-item/define.js"
     },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
@@ -88,13 +96,13 @@
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
-    "./tabs": {
-      "types": "./dist/esm/tabs/define.d.ts",
-      "default": "./dist/esm/tabs/define.js"
-    },
     "./tab": {
       "types": "./dist/esm/tab/define.d.ts",
       "default": "./dist/esm/tab/define.js"
+    },
+    "./tabs": {
+      "types": "./dist/esm/tabs/define.d.ts",
+      "default": "./dist/esm/tabs/define.js"
     },
     "./tab-panel": {
       "types": "./dist/esm/tab-panel/define.d.ts",

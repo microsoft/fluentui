@@ -10,6 +10,8 @@ export * from './divider/index.js';
 export * from './image/index.js';
 export * from './label/index.js';
 export * from './menu-button/index.js';
+export * from './menu-item/index.js';
+export * from './menu-list/index.js';
 export * from './progress-bar/index.js';
 export * from './slider/index.js';
 export * from './spinner/index.js';
