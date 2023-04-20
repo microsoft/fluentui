@@ -43,7 +43,7 @@ function linearInterpolationThroughPoint(start: number, end: number, inBetween: 
   const inBetweenIndex = Math.floor((numSamples - 1) * inBetweenRatio);
 
   // Initialize the output array
-  let result = new Array(numSamples);
+  const result = new Array(numSamples);
 
   // Set start, inBetween and end points in the result array
   result[0] = start;
