@@ -25,7 +25,7 @@ export function useFlatTreeNavigation<Value = string>(flatTreeItems: FlatTreeIte
         treeItemWalker.currentElement = data.target;
         return nextTypeAheadElement(treeItemWalker, data.event.key);
       case treeDataTypes.arrowLeft:
-        return parentElement(flatTreeItems, data.value, targetDocument);
+        return parentElement(flatTreeItems, data.value);
       case treeDataTypes.arrowRight:
         treeItemWalker.currentElement = data.target;
         return firstChild(data.target, treeItemWalker);
@@ -66,13 +66,11 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement<Value = string>(flatTreeItems: FlatTreeItems<Value>, value: Value, document: Document) {
+function parentElement<Value = string>(flatTreeItems: FlatTreeItems<Value>, value: Value) {
   const flatTreeItem = flatTreeItems.get(value);
-  if (flatTreeItem && flatTreeItem.parentValue) {
-    const parentId = flatTreeItems.get(flatTreeItem.parentValue)?.getTreeItemProps().id;
-    if (parentId) {
-      return document.getElementById(parentId);
-    }
+  if (flatTreeItem?.parentValue) {
+    const parentItem = flatTreeItems.get(flatTreeItem.parentValue);
+    return parentItem?.ref.current ?? null;
   }
   return null;
 }

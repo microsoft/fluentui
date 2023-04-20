@@ -152,6 +152,11 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 // @public (undocumented)
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
+// @public
+export type DatePickerErrorData = {
+    error: 'invalid-input' | 'out-of-bounds' | 'required-input';
+};
+
 // @public (undocumented)
 export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
     componentRef?: React_2.RefObject<IDatePicker>;
@@ -167,6 +172,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
+    onValidationError?: (data: DatePickerErrorData) => void;
     inlinePopup?: boolean;
     positioning?: PositioningProps;
     placeholder?: string;
@@ -224,7 +230,10 @@ export enum DayOfWeek {
 export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
-export const defaultCalendarStrings: CalendarStrings;
+export const defaultDatePickerErrorStrings: Record<DatePickerErrorData['error'], string>;
+
+// @public (undocumented)
+export const defaultDatePickerStrings: CalendarStrings;
 
 // @public
 export enum FirstWeekOfYear {

@@ -1,5 +1,6 @@
 import type { ImmutableSet } from './ImmutableSet';
 import type { FlatTreeItem, FlatTreeItemProps, MutableFlatTreeItem } from '../hooks/useFlatTree';
+import * as React from 'react';
 
 /**
  * @internal
@@ -40,8 +41,9 @@ export function createFlatTreeItems<Value = string>(
     const isLeaf = nextItemProps?.parentValue !== treeItemProps.value;
     const currentLevel = (currentParent.level ?? 0) + 1;
     const currentChildrenSize = ++currentParent.childrenSize;
+    const ref = React.createRef<HTMLDivElement>();
 
-    const flatTreeItem: FlatTreeItem<Value> = {
+    const flatTreeItem: MutableFlatTreeItem<Value> = {
       value: treeItemProps.value,
       getTreeItemProps: () => ({
         ...treeItemProps,
@@ -49,7 +51,10 @@ export function createFlatTreeItems<Value = string>(
         'aria-posinset': currentChildrenSize,
         'aria-setsize': currentParent.childrenSize,
         leaf: isLeaf,
+        // a reference to every parent element is necessary to ensure navigation
+        ref: flatTreeItem.childrenSize > 0 ? ref : undefined,
       }),
+      ref,
       level: currentLevel,
       parentValue,
       childrenSize: 0,
@@ -72,6 +77,7 @@ export const flatTreeRootId = '__fuiFlatTreeRoot' as unknown;
 
 function createFlatTreeRootItem<Value = string>(): FlatTreeItem<Value> {
   return {
+    ref: { current: null },
     value: flatTreeRootId as Value,
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {

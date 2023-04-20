@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 20 Apr 2023 07:47:56 GMT",
+      "tag": "@fluentui/react_v8.108.0",
+      "version": "8.108.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6292ed9f4a5d4292b17de2c031ce7b82d99598ed",
+            "comment": "fix: DetailsList allows className in focusZoneProps, fix typing for selectionZoneProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f860464aeb59555c2eb3271ab5be246c028629c5",
+            "comment": "fix: BasePicker selects correct focus target in selected items"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 07:40:25 GMT",
       "tag": "@fluentui/react_v8.107.6",
       "version": "8.107.6",

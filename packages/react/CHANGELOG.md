@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 17 Apr 2023 07:40:25 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Apr 2023 07:47:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.108.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.0)
+
+Thu, 20 Apr 2023 07:47:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.6..@fluentui/react_v8.108.0)
+
+### Minor changes
+
+- fix: DetailsList allows className in focusZoneProps, fix typing for selectionZoneProps ([PR #27287](https://github.com/microsoft/fluentui/pull/27287) by sarah.higley@microsoft.com)
+
+### Patches
+
+- fix: BasePicker selects correct focus target in selected items ([PR #27534](https://github.com/microsoft/fluentui/pull/27534) by sarah.higley@microsoft.com)
 
 ## [8.107.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.6)
 
