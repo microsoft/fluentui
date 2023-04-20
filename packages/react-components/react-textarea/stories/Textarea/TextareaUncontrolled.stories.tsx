@@ -8,7 +8,7 @@ const onChange: TextareaProps['onChange'] = (ev, data) => {
 };
 
 export const Uncontrolled = () => (
-  <Field label="Uncontrolled Textarea, check console for new value">
+  <Field label="Uncontrolled Textarea" hint="Check console for new value">
     <Textarea onChange={onChange} placeholder="type here..." />
   </Field>
 );

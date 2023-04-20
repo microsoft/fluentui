@@ -26,23 +26,23 @@ export const Appearance = () => {
 
   return (
     <div className={styles.base}>
-      <Field label="Textarea with Outline appearance" className={styles.field}>
-        <Textarea appearance="outline" placeholder="type here..." resize="both" />
-      </Field>
+      <div className={styles.field}>
+        <Field label="Textarea with Outline appearance">
+          <Textarea appearance="outline" placeholder="type here..." resize="both" />
+        </Field>
+      </div>
 
-      <Field
-        label={{ children: 'Textarea with Filled Darker appearance', className: styles.labelFilled }}
-        className={mergeClasses(styles.field, styles.filledDarker)}
-      >
-        <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
-      </Field>
+      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+        <Field label={{ children: 'Textarea with Filled Darker appearance', className: styles.labelFilled }}>
+          <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
+        </Field>
+      </div>
 
-      <Field
-        label={{ children: 'Textarea with Filled Lighter appearance', className: styles.labelFilled }}
-        className={mergeClasses(styles.field, styles.filledDarker)}
-      >
-        <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
-      </Field>
+      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+        <Field label={{ children: 'Textarea with Filled Lighter appearance', className: styles.labelFilled }}>
+          <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
+        </Field>
+      </div>
     </div>
   );
 };
