@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ContextualMenuSplitButton always sets aria-checked (does not leave it undefined) when it is checkable.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

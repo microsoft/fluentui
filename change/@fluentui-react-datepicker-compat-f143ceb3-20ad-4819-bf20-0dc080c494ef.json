@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "chore: adopt custom JSX pragma",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "bernardo.sunderhus@gmail.com",
