@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TimePicker } from './TimePicker';
-import { ITimeRange } from './TimePicker.types';
+import { ITimeRange, TimePickerErrorData } from './TimePicker.types';
 import { create } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
 import type { IComboBox } from '../ComboBox/ComboBox.types';
@@ -140,6 +140,41 @@ describe('TimePicker', () => {
     userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
 
     expect(timePickerComboBox.value).toEqual('14:00');
+  });
+
+  it('gets the error message string within the onValidationError prop', () => {
+    let _errorMessage: string = '';
+    const onValidationError = (_ev: React.FormEvent<IComboBox>, timePickerErrorData: TimePickerErrorData): void => {
+      if (timePickerErrorData.errorMessage !== undefined) {
+        _errorMessage = timePickerErrorData.errorMessage;
+      }
+    };
+    const dateAnchor = new Date('February 27, 2023 08:00:00');
+
+    const { getByRole } = render(
+      <TimePicker
+        showSeconds
+        increments={15}
+        autoComplete="on"
+        label="I am a controlled TimePicker"
+        placeholder="Test TimePicker"
+        dateAnchor={dateAnchor}
+        onValidationError={onValidationError}
+      />,
+    );
+
+    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
+    expect(timePickerComboBox.value).toBe('');
+    expect(timePickerComboBox.placeholder).toEqual('Test TimePicker');
+
+    userEvent.click(timePickerComboBox);
+    userEvent.type(timePickerComboBox, '11111 AM{enter}');
+
+    const errorMessageElement = getByRole('alert') as HTMLDivElement;
+    expect(errorMessageElement).not.toBe(null);
+    const expectedErrorMessage = 'Enter a valid time in the 24-hour format: hh:mm:ss';
+    expect(errorMessageElement.textContent).toEqual(expectedErrorMessage);
+    expect(_errorMessage).toEqual(expectedErrorMessage);
   });
 
   describe('validates entered text when', () => {
