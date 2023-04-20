@@ -58,9 +58,9 @@ Used anywhere an author might group a list of radio options.
 
 ### **Events**
 
-| Name     | Event Type    | Target           | Arguments | Description                                          |
-| -------- | ------------- | ---------------- | --------- | ---------------------------------------------------- |
-| `change` | `CustomEvent` | `FASTRadioGroup` | none      | Fires a custom 'change' event when the value changes |
+| Name     | Event Type    | Target           | Arguments | Description                                                                                                       |
+| -------- | ------------- | ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------- |
+| `change` | `CustomEvent` | `FASTRadioGroup` | none      | Fired when the value of the RadioGroup changes (i.e., when a different radio button within the group is selected) |
 
 <br />
 
