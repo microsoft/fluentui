@@ -1,4 +1,3 @@
-import { colorNeutralForegroundDisabled } from '@fluentui/web-components';
 import { attr } from '@microsoft/fast-element';
 import { FASTRadioGroup } from '@microsoft/fast-foundation';
 

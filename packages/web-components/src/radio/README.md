@@ -38,12 +38,11 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 ### **Fields**
 
-| Name            | Privacy | Type                | Default   | Description                                                                                                                                 |
-| --------------- | ------- | ------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`          | public  | `string`            |           | The name of the radio. See [name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) for more info. |
-| `disabled`      | public  | `boolean`           |           | Sets disabled state for radio                                                                                                               |
-| `labelPosition` | public  | `"after"` `"below"` | `"below"` | The position of the label relative to the radio indicator.                                                                                  |
-| `checked`       | public  | `boolean`           | `false`   | When true, radio button will be checked                                                                                                     |
+| Name       | Privacy | Type      | Default | Description                                                                                                                                 |
+| ---------- | ------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | public  | `string`  |         | The name of the radio. See [name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) for more info. |
+| `disabled` | public  | `boolean` |         | Sets disabled state for radio                                                                                                               |
+| `checked`  | public  | `boolean` | `false` | When true, radio button will be checked                                                                                                     |
 
 <br />
 
@@ -116,6 +115,10 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 <br />
 
 ### **Fluent Web Component v3 v.s Fluent React 9**
+
+**Deltas**
+
+In contrast to the FUIRv9 implimentation of the `Radio` component the WC3 `Radio` must be rendered inside the `RadioGroup` to inherit all appropriate styles.
 
 <br />
 

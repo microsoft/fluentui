@@ -1,10 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup as FluentRadioGroup } from './radio-group.js';
 import './define.js';
 import '../radio/define.js';
-import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 
 type RadioGroupStoryArgs = Args & FluentRadioGroup;
 type RadioGroupStoryMeta = Meta<RadioGroupStoryArgs>;
@@ -86,6 +86,17 @@ export default {
         },
       },
     },
+    change: {
+      action: 'change',
+      table: {
+        type: {
+          summary: 'Event that is fired when the selected radio button changes',
+        },
+        defaultValue: {
+          summary: null,
+        },
+      },
+    },
   },
 } as RadioGroupStoryMeta;
 
@@ -154,9 +165,47 @@ export const RadioGroupDisabled = renderComponent(html<RadioGroupStoryArgs>`
 export const RadioGroupDisabledItem = renderComponent(html<RadioGroupStoryArgs>`
   <fluent-radio-group aria-labelledby="label-8" name="radio-story">
     <span id="label-8" slot="label">Favorite Fruit</span>
-    <fluent-radio checked value="apple">Apple</fluent-radio>
+    <fluent-radio id="baby" checked value="apple">Apple</fluent-radio>
     <fluent-radio disabled value="pear">Pear</fluent-radio>
     <fluent-radio value="banana">Banana</fluent-radio>
     <fluent-radio value="orange">Orange</fluent-radio>
   </fluent-radio-group>
 `);
+
+export const RadioGroupChangeEvent = renderComponent(html<RadioGroupStoryArgs>`
+  <fluent-radio-group
+    id="radio-group-fruit"
+    aria-labelledby="label-8"
+    name="radio-story"
+    @change="${(event: any) => handleChange(event)}"
+  >
+    <span id="label-8" slot="label">${getLabelContent}</span>
+    <fluent-radio checked value="apple">Apple</fluent-radio>
+    <fluent-radio value="pear">Pear</fluent-radio>
+    <fluent-radio value="Banana">Banana</fluent-radio>
+    <fluent-radio value="Orange">Orange</fluent-radio>
+  </fluent-radio-group>
+`);
+
+function getLabelContent(): string | undefined {
+  const radioGroup = document.querySelector('#radio-group-fruit') as FluentRadioGroup;
+  if (!radioGroup) return; // add a check to make sure radioGroup exists
+  const selectedRadio = radioGroup.value as string;
+  if (selectedRadio) {
+    return `Favorite fruit: ${selectedRadio.charAt(0).toUpperCase() + selectedRadio.slice(1)}`;
+  } else {
+    return 'Please select your favorite fruit';
+  }
+}
+
+function handleChange(event: Event) {
+  const radioGroup = document.querySelector('#radio-group-fruit') as FluentRadioGroup;
+  if (!radioGroup) return; // add a check to make sure radioGroup exists
+
+  const selectedRadio = radioGroup.value as string;
+  const labelElement = radioGroup.querySelector('[slot="label"]') as HTMLSpanElement;
+  if (selectedRadio) {
+    const labelContent = selectedRadio.charAt(0).toUpperCase() + selectedRadio.slice(1);
+    labelElement.textContent = `Favorite fruit: ${labelContent}`;
+  }
+}
