@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: DetailsList allows className in focusZoneProps, fix typing for selectionZoneProps",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
