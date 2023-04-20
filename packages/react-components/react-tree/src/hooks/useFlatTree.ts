@@ -31,6 +31,7 @@ export type MutableFlatTreeItem<Value = string> = {
   index: number;
   value: Value;
   level: number;
+  ref: React.RefObject<HTMLDivElement>;
   getTreeItemProps(): Required<
     Pick<TreeItemProps<Value>, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>
   > &
