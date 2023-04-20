@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Add error handling to DatePicker.",
+  "comment": "feat: Move DatePicker compat to stable.",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
