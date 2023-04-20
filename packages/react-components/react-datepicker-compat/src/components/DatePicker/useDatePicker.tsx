@@ -165,7 +165,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           }
           date = date || parseDateFromString!(formattedDate);
 
-          // Check if date is null or date is and invalid date
+          // Check if date is null or date is an invalid date
           if (!date || isNaN(date.getTime())) {
             // Reset input if formatting is available
             setSelectedDate(selectedDate);

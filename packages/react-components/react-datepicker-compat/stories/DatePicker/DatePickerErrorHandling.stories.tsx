@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { addMonths, addYears, DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
-import { DatePickerErrorData } from '../../src/DatePicker';
+import type { DatePickerErrorData } from '../../src/DatePicker';
 
 const useStyles = makeStyles({
   control: {

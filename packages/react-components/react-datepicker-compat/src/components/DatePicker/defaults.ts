@@ -1,5 +1,5 @@
-import { CalendarStrings } from '../../utils/index';
 import { defaultCalendarStrings } from '../Calendar/defaults';
+import type { CalendarStrings } from '../../utils/index';
 import type { DatePickerErrorData } from './DatePicker.types';
 
 export const defaultDatePickerStrings: CalendarStrings = {
