@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Image component style updates",
-  "packageName": "@fluentui/web-components",
-  "email": "harankin@microsoft.com",
-  "dependentChangeType": "patch"
-}

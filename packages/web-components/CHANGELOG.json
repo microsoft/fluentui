@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 20 Apr 2023 04:20:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.18",
+      "version": "3.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9cd641f4d38d6889ee50afeedca54f77617cd1a5",
+            "comment": "Image component style updates"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Apr 2023 04:23:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.17",
       "version": "3.0.0-alpha.17",
