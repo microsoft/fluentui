@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "feat: Add error handling to DatePicker.",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "esteban.230@hotmail.com",
