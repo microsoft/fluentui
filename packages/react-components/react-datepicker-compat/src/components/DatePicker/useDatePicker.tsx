@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
+import { Calendar } from '../Calendar/Calendar';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
+import { defaultDatePickerStrings } from './defaults';
 import { Input } from '@fluentui/react-input';
-import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import {
   mergeCallbacks,
   resolveShorthand,
@@ -13,14 +15,13 @@ import {
   useOnClickOutside,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
-import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
-import { Calendar } from '../Calendar/Calendar';
-import { usePopupPositioning } from '../../utils/usePopupPositioning';
+import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
+import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
+import { usePopupPositioning } from '../../utils/usePopupPositioning';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState } from './DatePicker.types';
-import { defaultCalendarStrings } from '../Calendar/defaults';
+import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
   return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
@@ -128,12 +129,13 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     onOpenChange,
     onSelectDate: onUserSelectDate,
     openOnClick = true,
+    onValidationError,
     parseDateFromString = defaultParseDateFromString,
     showCloseButton = false,
     showGoToToday = true,
     showMonthPickerAsOverlay = false,
     showWeekNumbers = false,
-    strings = defaultCalendarStrings,
+    strings = defaultDatePickerStrings,
     today,
     underlined = false,
     value,
@@ -147,6 +149,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     value,
   });
   const [open, setOpenState] = usePopupVisibility(props);
+  const fieldContext = useFieldContext();
+  const required = fieldContext?.required ?? props.required;
   const popupSurfaceId = useId('datePicker-popoverSurface');
 
   const validateTextInput = React.useCallback(
@@ -161,16 +165,27 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           }
           date = date || parseDateFromString!(formattedDate);
 
-          // Check if date is null or date is and invalid date
+          // Check if date is null or date is an invalid date
           if (!date || isNaN(date.getTime())) {
             // Reset input if formatting is available
             setSelectedDate(selectedDate);
-          } else if (!isDateOutOfBounds(date, minDate, maxDate)) {
-            setSelectedDate(date);
+            onValidationError?.({ error: 'invalid-input' });
+          } else {
+            if (isDateOutOfBounds(date, minDate, maxDate)) {
+              onValidationError?.({ error: 'out-of-bounds' });
+            } else {
+              setSelectedDate(date);
+            }
           }
-        } else if (onUserSelectDate) {
-          onUserSelectDate(date);
+        } else {
+          if (required) {
+            onValidationError?.({ error: 'required-input' });
+          }
+
+          onUserSelectDate?.(date);
         }
+      } else if (required && !formattedDate) {
+        onValidationError?.({ error: 'required-input' });
       }
     },
     [
@@ -180,7 +195,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       maxDate,
       minDate,
       onUserSelectDate,
+      onValidationError,
       parseDateFromString,
+      required,
       selectedDate,
       setSelectedDate,
     ],
