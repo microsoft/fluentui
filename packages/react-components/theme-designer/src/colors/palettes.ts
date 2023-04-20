@@ -23,7 +23,27 @@ const defaultLinearity = 0.75;
 //   return result;
 // }
 
-const rangeForKeyColor = (keyColor: string, range: number[]): number[] => {
+const relativeLuminance = (rgb: Vec3): number => {
+  return 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
+};
+
+const rangeForKeyColor = (keyColor: string): number[] => {
+  const redRange = [13.5, 86];
+  const rgbRed = hex_to_sRGB('#FF0000');
+  const relLumRed = relativeLuminance(rgbRed);
+
+  const rgb = hex_to_sRGB(keyColor);
+  const relLum = relativeLuminance(rgb);
+
+  const ratio = relLumRed / relLum;
+  const minRange = redRange[0] * ratio >= 0 ? redRange[0] * ratio : 0;
+  const maxRange = redRange[1] * ratio <= 100 ? redRange[1] * ratio : 100;
+
+  const range = [minRange, maxRange];
+  return range;
+};
+
+const pointsForKeyColor = (keyColor: string, range: number[]): number[] => {
   const rgb = hex_to_sRGB(keyColor);
   //   const relativeLuminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
   const perceivedLuminance = 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
@@ -83,7 +103,6 @@ const getLogSpace = (min: number, max: number, n: number) => {
 function paletteShadesFromCurvePoints(
   curvePoints: Vec3[],
   nShades: number,
-  range: number[],
   linearity = defaultLinearity,
   keyColor: string,
 ): Vec3[] {
@@ -91,11 +110,12 @@ function paletteShadesFromCurvePoints(
     return [];
   }
 
+  const range = rangeForKeyColor(keyColor);
   const paletteShades = [];
 
-  const logLightness = getLogSpace(Math.log10(range[0]), Math.log10(range[1]), nShades);
+  const logLightness = getLogSpace(Math.log10(0), Math.log10(100), nShades);
   //   const oldLinearLightness = getLinearSpace(range[0], range[1], nShades); // older attempt
-  const linearLightness = rangeForKeyColor(keyColor, range);
+  const linearLightness = pointsForKeyColor(keyColor, range);
   let c = 0;
 
   for (let i = 0; i < nShades; i++) {
@@ -123,14 +143,13 @@ export function paletteShadesFromCurve(
   keyColor: string,
   curve: CurvedHelixPath,
   nShades = 16,
-  range: number[],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): Vec3[] {
   const points = getPointsOnCurvePath(curve, Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2)).map(
     (curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0),
   );
-  return paletteShadesFromCurvePoints(points, nShades, range, linearity, keyColor);
+  return paletteShadesFromCurvePoints(points, nShades, linearity, keyColor);
 }
 
 export function sRGB_to_hex(rgb: Vec3): string {
@@ -208,11 +227,10 @@ export function hexColorsFromPalette(
   keyColor: string,
   palette: Palette,
   nShades = 16,
-  range: number[],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): string[] {
   const curve = curvePathFromPalette(palette);
-  const shades = paletteShadesFromCurve(keyColor, curve, nShades, range, linearity, curveDepth);
+  const shades = paletteShadesFromCurve(keyColor, curve, nShades, linearity, curveDepth);
   return paletteShadesToHex(shades);
 }
