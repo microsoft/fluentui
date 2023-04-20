@@ -109,7 +109,13 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 **Deltas**
 
-In contrast to the FUIRv9 implimentation of the `Radio` component the WC3 `Radio` must be rendered inside the `RadioGroup` to inherit all appropriate styles.
+In contrast to the FUIRv9 implimentation of the `Radio` component the WC3 `Radio` must be rendered inside the WC3 `RadioGroup` to inherit all appropriate styles.
+
+```html
+<fluent-radio-group>
+  <fluent-radio></fluent-radio>
+</fluent-radio-group>
+```
 
 <br />
 
