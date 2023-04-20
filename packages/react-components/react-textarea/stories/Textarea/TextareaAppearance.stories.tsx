@@ -7,16 +7,13 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: tokens.spacingVerticalMNudge,
   },
-  filledLighter: {
+  inverted: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
   },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-  },
-  labelFilled: {
+  invertedLabel: {
     color: tokens.colorNeutralForegroundInverted2,
   },
-  field: {
+  fieldWrapper: {
     ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
   },
 });
@@ -26,20 +23,20 @@ export const Appearance = () => {
 
   return (
     <div className={styles.base}>
-      <div className={styles.field}>
+      <div className={styles.fieldWrapper}>
         <Field label="Textarea with Outline appearance">
           <Textarea appearance="outline" placeholder="type here..." resize="both" />
         </Field>
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Field label={{ children: 'Textarea with Filled Darker appearance', className: styles.labelFilled }}>
+      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
+        <Field label={{ children: 'Textarea with Filled Darker appearance', className: styles.invertedLabel }}>
           <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
         </Field>
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Field label={{ children: 'Textarea with Filled Lighter appearance', className: styles.labelFilled }}>
+      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
+        <Field label={{ children: 'Textarea with Filled Lighter appearance', className: styles.invertedLabel }}>
           <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
         </Field>
       </div>
