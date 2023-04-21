@@ -105,7 +105,7 @@ export const CustomStyleHooksProvider = CustomStyleHooksContext.Provider;
 
 /**
  * Gets a custom style hook
- * @param hook One of the hook properties in CustomStyleHooksContextValue
+ * @param hook - One of the hook properties in CustomStyleHooksContextValue
  * @returns The corresponding hook when defined, otherwise a no-op function.
  */
 export const useCustomStyleHook = (hook: keyof CustomStyleHooksContextValue): CustomStyleHook => {
