@@ -10,40 +10,29 @@ export function createElement<P extends {}>(
   props?: P | null,
   ...children: React.ReactNode[]
 ): React.ReactElement<P> | null {
-  if (!isSlotComponent(props)) {
-    return React.createElement(type, props, ...children);
+  return hasRenderFunction(props)
+    ? createElementFromRenderFunction(type, props, children)
+    : React.createElement(type, props, ...children);
+}
+
+function createElementFromRenderFunction<P extends UnknownSlotProps>(
+  type: React.ElementType<P>,
+  props: WithMetadata<P>,
+  overrideChildren: React.ReactNode[],
+): React.ReactElement<P> | null {
+  const { [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction, ...renderProps } = props;
+
+  if (overrideChildren.length > 0) {
+    renderProps.children = React.createElement(React.Fragment, {}, ...overrideChildren);
   }
 
-  const result = normalizeRenderFunction(props, children);
   return React.createElement(
     React.Fragment,
     {},
-    result.renderFunction(type, { ...result.props, children: result.children }),
+    renderFunction(type, renderProps as UnknownSlotProps as P),
   ) as React.ReactElement<P>;
 }
 
-function normalizeRenderFunction<Props extends UnknownSlotProps>(
-  propsWithMetadata: WithMetadata<Props>,
-  overrideChildren?: React.ReactNode[],
-): {
-  props: Props;
-  children: React.ReactNode;
-  renderFunction: SlotRenderFunction<Props>;
-} {
-  const { [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction, children: externalChildren, ...props } = propsWithMetadata;
-
-  const children: React.ReactNode =
-    Array.isArray(overrideChildren) && overrideChildren.length > 0
-      ? React.createElement(React.Fragment, {}, ...overrideChildren)
-      : externalChildren;
-
-  return {
-    children,
-    renderFunction,
-    props: props as UnknownSlotProps as Props,
-  };
-}
-
-export function isSlotComponent<Props extends {}>(props?: Props | null): props is WithMetadata<Props> {
+export function hasRenderFunction<Props extends {}>(props?: Props | null): props is WithMetadata<Props> {
   return Boolean(props?.hasOwnProperty(SLOT_RENDER_FUNCTION_SYMBOL));
 }

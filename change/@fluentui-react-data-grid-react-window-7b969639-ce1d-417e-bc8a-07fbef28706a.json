@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency",
+  "packageName": "@fluentui/react-data-grid-react-window",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

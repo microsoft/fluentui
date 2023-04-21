@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Tue, 21 Mar 2023 21:23:11 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:54:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.11)
+
+Mon, 17 Apr 2023 17:54:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.10..@fluentui/react-theme-sass_v9.0.0-alpha.11)
+
+### Changes
+
+- fix: add "style" to exports field ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.10)
 

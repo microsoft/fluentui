@@ -1,8 +1,26 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 13 Apr 2023 07:41:10 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Apr 2023 07:47:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.81](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.81)
+
+Thu, 20 Apr 2023 07:47:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.80..@fluentui/azure-themes_v8.5.81)
+
+### Patches
+
+- Bump @fluentui/react to v8.108.0 ([PR #27637](https://github.com/microsoft/fluentui/pull/27637) by beachball)
+
+## [8.5.80](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.80)
+
+Mon, 17 Apr 2023 07:40:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.79..@fluentui/azure-themes_v8.5.80)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.6 ([PR #27546](https://github.com/microsoft/fluentui/pull/27546) by beachball)
 
 ## [8.5.79](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.79)
 

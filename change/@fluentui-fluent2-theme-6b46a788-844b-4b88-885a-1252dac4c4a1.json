@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "[FEAT] Add details list checkbox styles that are more inline with V9",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

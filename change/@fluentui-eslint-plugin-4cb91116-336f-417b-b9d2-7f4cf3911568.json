@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: enables jsxTags on comment for react config",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}
