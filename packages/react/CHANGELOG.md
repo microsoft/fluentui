@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 20 Apr 2023 07:47:56 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2023 07:49:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.108.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.1)
+
+Fri, 21 Apr 2023 07:49:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.108.0..@fluentui/react_v8.108.1)
+
+### Patches
+
+- fix: exclude HTMLAttributes defined 'content' for  Tooltip and TooltipHost Prop types to mitigate @types/react breaking changes ([PR #27467](https://github.com/microsoft/fluentui/pull/27467) by martinhochel@microsoft.com)
+- fix: ContextualMenuSplitButton always sets aria-checked (does not leave it undefined) when it is checkable. ([PR #27650](https://github.com/microsoft/fluentui/pull/27650) by Humberto.Morimoto@microsoft.com)
 
 ## [8.108.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.0)
 

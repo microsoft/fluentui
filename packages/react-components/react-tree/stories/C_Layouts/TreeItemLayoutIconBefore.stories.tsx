@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Image20Regular } from '@fluentui/react-icons';
-import story from './TreeItemIconBefore.md';
+import story from './TreeItemLayoutIconBefore.md';
 
 export const IconBefore = () => {
   return (

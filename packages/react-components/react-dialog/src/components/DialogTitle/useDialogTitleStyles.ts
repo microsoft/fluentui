@@ -17,6 +17,7 @@ const useStyles = makeStyles({
   root: {
     ...typographyStyles.subtitle1,
     ...shorthands.gridArea(TITLE_GRID_AREA),
+    ...shorthands.margin(0),
   },
   rootWithoutCloseButton: {
     ...shorthands.gridArea(TITLE_GRID_AREA, TITLE_GRID_AREA, TITLE_ACTION_GRID_AREA, TITLE_ACTION_GRID_AREA),
