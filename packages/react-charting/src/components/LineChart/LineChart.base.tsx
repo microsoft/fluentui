@@ -576,11 +576,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             }}
             onFocus={() => this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
             onBlur={this._handleMouseOut}
-            {...(this._points[i].data[0].onDataPointClick
-              ? {
-                  onClick: this._points[i].data[0].onDataPointClick,
-                }
-              : {})}
+            {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
           />,
         );
       }
@@ -647,11 +643,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
               onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
               onMouseOut={this._handleMouseOut}
-              {...(this._points[i].onLineClick
-                ? {
-                    onClick: this._points[i].onLineClick,
-                  }
-                : {})}
+              {...this._getClickHandler(this._points[i].onLineClick)}
               opacity={1}
               role="img"
               aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
@@ -750,11 +742,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseOut={this._handleMouseOut}
               onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
               onBlur={this._handleMouseOut}
-              {...(this._points[i].data[j - 1].onDataPointClick
-                ? {
-                    onClick: this._points[i].data[j - 1].onDataPointClick,
-                  }
-                : {})}
+              {...this._getClickHandler(this._points[i].data[j - 1].onDataPointClick)}
               opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
               fill={this._getPointFill(lineColor, circleId, j, false)}
               stroke={lineColor}
@@ -808,11 +796,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
                 }
                 onBlur={this._handleMouseOut}
-                {...(this._points[i].data[j].onDataPointClick
-                  ? {
-                      onClick: this._points[i].data[j].onDataPointClick,
-                    }
-                  : {})}
+                {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
                 opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
                 fill={this._getPointFill(lineColor, lastCircleId, j, true)}
                 stroke={lineColor}
@@ -883,11 +867,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
                   strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
                   opacity={1}
-                  {...(this._points[i].onLineClick
-                    ? {
-                        onClick: this._points[i].onLineClick,
-                      }
-                    : {})}
+                  {...this._getClickHandler(this._points[i].onLineClick)}
                 />,
               );
             }
@@ -1210,6 +1190,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         activeLine: null,
       });
     }
+  };
+
+  /**
+   * Screen readers announce an element as clickable if the onClick attribute is set.
+   * This function sets the attribute only when a click event handler is provided.
+   */
+  private _getClickHandler = (func?: () => void): { onClick?: () => void } => {
+    if (func) {
+      return {
+        onClick: func,
+      };
+    }
+
+    return {};
   };
 
   private _handleMouseOut = () => {
