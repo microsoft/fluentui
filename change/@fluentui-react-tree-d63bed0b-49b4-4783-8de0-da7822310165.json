@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: restructure stories, add separate category for flat tree",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

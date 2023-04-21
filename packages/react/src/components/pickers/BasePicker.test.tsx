@@ -586,9 +586,9 @@ describe('BasePicker', () => {
     document.body.appendChild(root);
 
     const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
-      <button key={props.item.name} data-selection-index={props.index}>
-        {basicRenderer(props)}
-      </button>
+      <div key={props.item.name} data-selection-index={props.index}>
+        <button>{basicRenderer(props)}</button>
+      </div>
     );
     ReactDOM.render(
       <BasePickerWithType
@@ -609,7 +609,7 @@ describe('BasePicker', () => {
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     ReactTestUtils.Simulate.click(suggestionOptions[0]);
 
-    const selectedItem = document.querySelector('button[data-selection-index]');
+    const selectedItem = document.querySelector('[data-selection-index] > button');
 
     expect(document.activeElement).toBe(selectedItem);
   });
@@ -620,9 +620,9 @@ describe('BasePicker', () => {
 
     const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => {
       return (
-        <button key={props.item.name} onClick={props.onRemoveItem} data-selection-index={props.index}>
-          {basicRenderer(props)}
-        </button>
+        <div key={props.item.name} data-selection-index={props.index}>
+          <button onClick={props.onRemoveItem}>{basicRenderer(props)}</button>
+        </div>
       );
     };
     ReactDOM.render(
@@ -638,7 +638,7 @@ describe('BasePicker', () => {
       root,
     );
 
-    const selectedEls = document.querySelectorAll('button[data-selection-index]');
+    const selectedEls = document.querySelectorAll('[data-selection-index] > button');
     (selectedEls[0] as HTMLButtonElement).focus();
     ReactTestUtils.Simulate.click(selectedEls[0]);
 

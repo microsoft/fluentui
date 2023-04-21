@@ -18,6 +18,13 @@ const v9PackageDeps = Object.keys(
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
   rules: {
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        jsxTags: true,
+      },
+    ],
+    '@fluentui/ban-instanceof-html-element': ['error'],
     '@fluentui/no-context-default-value': [
       'error',
       {

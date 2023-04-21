@@ -11,18 +11,6 @@ export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   badge: 'fui-Avatar__badge',
 };
 
-const animations = {
-  fastOutSlowInMax: tokens.curveDecelerateMax,
-  fastOutSlowInMid: tokens.curveDecelerateMid,
-  fastOutSlowInMin: tokens.curveDecelerateMin,
-  slowOutFastInMax: tokens.curveAccelerateMax,
-  slowOutFastInMid: tokens.curveAccelerateMid,
-  slowOutFastInMin: tokens.curveAccelerateMin,
-  fastEase: tokens.curveEasyEaseMax,
-  normalEase: tokens.curveEasyEase,
-  nullEasing: tokens.curveLinear,
-};
-
 const useRootClassName = makeResetStyles({
   display: 'inline-block',
   flexShrink: 0,
@@ -91,7 +79,7 @@ const useStyles = makeStyles({
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
     transitionProperty: 'transform, opacity',
     transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationFaster}`,
-    transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
+    transitionTimingFunction: `${tokens.curveEasyEaseMax}, ${tokens.curveLinear}`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -108,11 +96,10 @@ const useStyles = makeStyles({
       ...shorthands.borderRadius('inherit'),
       transitionProperty: 'margin, opacity',
       transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
-      transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
+      transitionTimingFunction: `${tokens.curveEasyEaseMax}, ${tokens.curveLinear}`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
       },
     },
   },
@@ -149,28 +136,12 @@ const useStyles = makeStyles({
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
-
-    transitionProperty: 'transform, opacity',
-    transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationFaster}`,
-    transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
-
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.01ms',
-      transitionDelay: '0.01ms',
-    },
+    transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
 
     '::before': {
       ...shorthands.margin(0),
       opacity: 0,
-
-      transitionProperty: 'margin, opacity',
-      transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
-      transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
+      transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
     },
   },
 

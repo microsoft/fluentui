@@ -5,6 +5,7 @@ import descriptionMd from './OverflowDescription.md';
 export { Default } from './Default.stories';
 export { ReverseDomOrder } from './ReverseDomOrder.stories';
 export { MinimumVisible } from './MinimumVisible.stories';
+export { Vertical } from './Vertical.stories';
 export { OverflowByPriority } from './OverflowByPriority.stories';
 export { Wrapped } from './Wrapped.stories';
 export { Pinned } from './Pinned.stories';

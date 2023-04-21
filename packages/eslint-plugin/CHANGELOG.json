@@ -2,6 +2,36 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 07:40:24 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.15.0",
+      "version": "1.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "bb758eb9091e5c53f8d1d58baf50505aa2aa34cc",
+            "comment": "feat: enables jsxTags on comment for react config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.14.0",
+      "version": "1.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a3463ec7ba84fce450b4a03c989806ba4e11c5e1",
+            "comment": "feat: rule to ban usage of instanceof HTMLElement"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:18 GMT",
       "tag": "@fluentui/eslint-plugin_v1.13.0",
       "version": "1.13.0",
