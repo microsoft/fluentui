@@ -1,18 +1,19 @@
 import { TreeItemLayout, TreeItemPersonaLayout } from '@fluentui/react-tree';
 import descriptionMd from './description.md';
 
-export { DefaultTreeItemLayout } from './TreeItemLayoutDefault.stories';
-export { DefaultTreeItemPersonaLayout } from './TreeItemPersonaLayoutDefault.stories';
+export { Default } from './LayoutsDefault.stories';
+export { Layout as TreeItemLayout } from './TreeItemLayout.stories';
 export { Aside } from './TreeItemLayoutAside.stories';
+export { IconBefore } from './TreeItemLayoutIconBefore.stories';
+export { IconAfter } from './TreeItemLayoutIconAfter.stories';
+export { Layout as TreeItemPersonaLayout } from './TreeItemPersonaLayout.stories';
 export { Media } from './TreeItemPersonaLayoutMedia.stories';
 export { WithDescription } from './TreeItemPersonaLayoutWithDescription.stories';
 export { ReadUnread } from './TreeItemPersonaLayoutReadUnread.stories';
-export { Layout } from './TreeItemLayout.stories';
-export { TreePersonaLayout } from './TreeItemPersonaLayout.stories';
 
 export default {
   title: 'Preview Components/Tree/Layouts',
-  component: [TreeItemPersonaLayout, TreeItemLayout],
+  subcomponents: { TreeItemLayout, TreeItemPersonaLayout },
   parameters: {
     docs: {
       description: {
