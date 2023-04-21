@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 21 Apr 2023 04:19:22 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.19",
+      "version": "3.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f801e34cdc25ba01ccf3b2baa9fac1080d987e9b",
+            "comment": "feat(menu-list): Add menu-list and menu-item web components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Apr 2023 04:20:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.18",
       "version": "3.0.0-alpha.18",
