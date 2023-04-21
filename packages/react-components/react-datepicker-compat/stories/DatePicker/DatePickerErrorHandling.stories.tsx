@@ -15,7 +15,7 @@ const maxDate = addYears(today, 1);
 
 export const ErrorHandling = () => {
   const styles = useStyles();
-  const [error, setError] = React.useState<DatePickerValidationResultData['error'] | undefined>(undefined);
+  const [error, setError] = React.useState<DatePickerValidationResultData['error']>(undefined);
 
   return (
     <Field
