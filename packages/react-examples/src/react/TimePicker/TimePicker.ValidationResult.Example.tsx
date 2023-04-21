@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   TimePicker,
-  TimePickerErrorData,
+  TimePickerValidationResultData,
   ITimeRange,
   Text,
   IStackTokens,
@@ -29,7 +29,7 @@ const timeRange: ITimeRange = {
   end: 17,
 };
 
-export const TimePickerErrorValidationExample: React.FC = () => {
+export const TimePickerValidationResultExample: React.FC = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
   const [time, setTime] = React.useState<Date>(new Date('January 1, 2023 08:00:00'));
   const [disableButton, setDisableButton] = React.useState<boolean>(false);
@@ -38,10 +38,10 @@ export const TimePickerErrorValidationExample: React.FC = () => {
     setTime(newTime);
   }, []);
 
-  const onValidationError = React.useCallback((_, timePickerErrorData: TimePickerErrorData) => {
-    if (timePickerErrorData.errorMessage !== undefined) {
-      console.log('Validation error message received: ', timePickerErrorData.errorMessage);
-      setDisableButton(timePickerErrorData.errorMessage.length > 0);
+  const onValidationResult = React.useCallback((_, timePickerValidationResultData: TimePickerValidationResultData) => {
+    if (timePickerValidationResultData.errorMessage !== undefined) {
+      console.log('Validation error message received: ', timePickerValidationResultData.errorMessage);
+      setDisableButton(timePickerValidationResultData.errorMessage.length > 0);
     }
   }, []);
 
@@ -53,11 +53,11 @@ export const TimePickerErrorValidationExample: React.FC = () => {
         useHour12
         increments={15}
         autoComplete="on"
-        label="Controlled TimePicker with onValidationError Handling"
+        label="Controlled TimePicker with onValidationResult Handling"
         dateAnchor={dateAnchor}
         value={time}
         onChange={onControlledExampleChange}
-        onValidationError={onValidationError}
+        onValidationResult={onValidationResult}
         timeRange={timeRange}
       />
       <Text>{`⚓ Date anchor: ${dateAnchor.toString()}`}</Text>
