@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 21 Apr 2023 07:49:09 GMT",
+      "tag": "@fluentui/react_v8.108.1",
+      "version": "8.108.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ebffada49e572de35e971ba5deea456bffb2f9c8",
+            "comment": "fix: exclude HTMLAttributes defined 'content' for  Tooltip and TooltipHost Prop types to mitigate @types/react breaking changes"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7b7f8b94f53b28c2dbd87abac8633f4540573e65",
+            "comment": "fix: ContextualMenuSplitButton always sets aria-checked (does not leave it undefined) when it is checkable."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Apr 2023 07:47:56 GMT",
       "tag": "@fluentui/react_v8.108.0",
       "version": "8.108.0",
