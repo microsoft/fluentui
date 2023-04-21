@@ -75,7 +75,7 @@ export interface ITooltipHostProps extends Omit<React.HTMLAttributes<HTMLDivElem
    * Define a custom element to use as the overflow target.
    * Note: this will only be used if `overflowMode` is set to `TooltipOverflowMode.Custom`.
    */
-  customOverflowTarget?: HTMLElement;
+  customOverflowTarget?: HTMLElement | null;
 
   /**
    * Length of delay before showing the tooltip on hover.

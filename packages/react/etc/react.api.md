@@ -9469,7 +9469,7 @@ export interface ITooltipHostProps extends Omit<React_2.HTMLAttributes<HTMLDivEl
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
     content?: string | JSX.Element | JSX.Element[];
-    customOverflowTarget?: HTMLElement;
+    customOverflowTarget?: HTMLElement | null;
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
