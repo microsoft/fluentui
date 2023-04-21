@@ -64,7 +64,7 @@ const displayToolState = (selector: string, context: StoryContext) => {
     );
     return false;
   }
-  console.log(context);
+  // console.log(context);
 
   const defaultFileToPreview = encodeURIComponent('/example.tsx');
   const codeSandboxParameters = getParameters({
