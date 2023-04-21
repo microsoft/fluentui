@@ -122,6 +122,15 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('aria-disabled')).toEqual('true');
   });
 
+  it('Sets aria-invalid when an error message is passed in.', () => {
+    const { getByRole, rerender } = render(<ComboBox errorMessage="error" options={DEFAULT_OPTIONS} />);
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-invalid')).toEqual('true');
+
+    rerender(<ComboBox errorMessage={undefined} options={DEFAULT_OPTIONS} />);
+    expect(combobox.getAttribute('aria-invalid')).toBeNull();
+  });
+
   it('Renders no selected item in default case', () => {
     const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} />);
     expect(getByRole('combobox').getAttribute('value')).toEqual('');
