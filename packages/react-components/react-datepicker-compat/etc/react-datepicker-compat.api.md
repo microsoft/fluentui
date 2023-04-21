@@ -153,9 +153,7 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
 // @public
-export type DatePickerErrorData = {
-    error: 'invalid-input' | 'out-of-bounds' | 'required-input';
-};
+export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public (undocumented)
 export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
@@ -172,7 +170,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    onValidationError?: (data: DatePickerErrorData) => void;
+    onValidationResult?: (data: DatePickerValidationResultData) => void;
     inlinePopup?: boolean;
     positioning?: PositioningProps;
     placeholder?: string;
@@ -194,6 +192,11 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     initialPickerDate?: Date;
     allFocusable?: boolean;
     showCloseButton?: boolean;
+};
+
+// @public
+export type DatePickerValidationResultData = {
+    error?: DatePickerErrorType;
 };
 
 // @public
@@ -230,7 +233,7 @@ export enum DayOfWeek {
 export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
-export const defaultDatePickerErrorStrings: Record<DatePickerErrorData['error'], string>;
+export const defaultDatePickerErrorStrings: Record<DatePickerErrorType, string>;
 
 // @public (undocumented)
 export const defaultDatePickerStrings: CalendarStrings;
