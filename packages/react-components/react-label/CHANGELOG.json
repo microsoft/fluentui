@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 17:54:02 GMT",
+      "tag": "@fluentui/react-label_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.8.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Apr 2023 09:31:45 GMT",
       "tag": "@fluentui/react-label_v9.1.8",
       "version": "9.1.8",

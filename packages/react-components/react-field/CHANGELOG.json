@@ -2,6 +2,47 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 17:53:50 GMT",
+      "tag": "@fluentui/react-field_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove utilities for deprecated shim InputField, etc. components"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "feat: Release Field component as stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.18",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.1.9",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.8.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Apr 2023 09:31:44 GMT",
       "tag": "@fluentui/react-field_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",

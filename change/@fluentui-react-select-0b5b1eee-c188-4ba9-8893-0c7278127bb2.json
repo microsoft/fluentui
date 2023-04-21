@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Remove deprecated SelectField_unstable shim component",
-  "packageName": "@fluentui/react-select",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

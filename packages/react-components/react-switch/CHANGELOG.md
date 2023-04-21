@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Wed, 12 Apr 2023 09:31:45 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 17:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.10)
+
+Mon, 17 Apr 2023 17:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.9..@fluentui/react-switch_v9.1.10)
+
+### Patches
+
+- chore: Remove deprecated SwitchField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-label to v9.1.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
 
 ## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.9)
 

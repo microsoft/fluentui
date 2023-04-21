@@ -163,7 +163,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           weekIndex={-1}
           rowClassName={classNames.firstTransitionWeek}
           aria-role="presentation"
-          aria-hidden={true}
+          ariaHidden={true}
         />
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
           <CalendarGridRow
@@ -182,7 +182,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           weekIndex={-2}
           rowClassName={classNames.lastTransitionWeek}
           aria-role="presentation"
-          aria-hidden={true}
+          ariaHidden={true}
         />
       </tbody>
     </table>
