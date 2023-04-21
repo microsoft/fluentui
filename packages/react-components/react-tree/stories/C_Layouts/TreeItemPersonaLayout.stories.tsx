@@ -1,19 +1,7 @@
 import * as React from 'react';
-import {
-  Avatar,
-  Button,
-  CounterBadge,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  makeStyles,
-  shorthands,
-  tokens,
-} from '@fluentui/react-components';
+import { Avatar, CounterBadge, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemPersonaLayout } from '@fluentui/react-tree';
-import { Flag20Regular, FluentIconsProps, Important16Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { Important16Regular } from '@fluentui/react-icons';
 import story from './TreeItemPersonaLayout.md';
 
 const useBadgeStyles = makeStyles({
@@ -26,56 +14,22 @@ const useBadgeStyles = makeStyles({
   },
 });
 
-const useStyles = makeStyles({
-  unread: {
-    fontWeight: 'bold',
-  },
-});
-
-const iconStyleProps: FluentIconsProps = {
-  primaryFill: 'red',
-};
-
 const Badges = () => {
   const badgeStyles = useBadgeStyles();
   return (
     <div className={badgeStyles.base}>
-      <Important16Regular {...iconStyleProps} />
+      <Important16Regular primaryFill="red" />
       <CounterBadge count={1} color="danger" size="small" />
     </div>
   );
 };
 
-const RenderActions = () => {
-  return (
-    <>
-      <Button aria-label="Report" appearance="subtle" icon={<Flag20Regular />} />
-      <Menu>
-        <MenuTrigger disableButtonEnhancement>
-          <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>New </MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>Open File</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </>
-  );
-};
-
-export const TreePersonaLayout = () => {
-  const styles = useStyles();
-
+export const Layout = () => {
   return (
     <Tree aria-label="Tree">
-      <TreeItem aria-description="1 new message, important" actions={<RenderActions />}>
+      <TreeItem aria-description="1 new message, important">
         <TreeItemPersonaLayout
-          description={<div className={styles.unread}>Secondary text slot</div>}
+          description="Secondary text slot"
           aside={
             <>
               <span>00:00 AM</span>
@@ -84,7 +38,7 @@ export const TreePersonaLayout = () => {
           }
           media={<Avatar />}
         >
-          <div className={styles.unread}>Primary text slot</div>
+          Primary text slot
         </TreeItemPersonaLayout>
         <Tree>
           <TreeItem>
@@ -101,7 +55,7 @@ export const TreePersonaLayout = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem aria-description="1 message, important" actions={<RenderActions />}>
+      <TreeItem aria-description="1 message, important">
         <TreeItemPersonaLayout
           description="Secondary text slot"
           aside={
@@ -134,7 +88,7 @@ export const TreePersonaLayout = () => {
   );
 };
 
-TreePersonaLayout.parameters = {
+Layout.parameters = {
   docs: {
     description: {
       story,
