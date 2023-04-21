@@ -27,11 +27,16 @@ const skeletonWaveAnimation = {
 };
 
 const skeletonPulseAnimation = {
-  from: {
-    opacity: '1',
+  '0%': {
+    transform: 'scale(0.98, 0.98)',
   },
-  to: {
-    opacity: '0.4',
+
+  '50%': {
+    transform: 'scale(1, 1)',
+  },
+
+  '100%': {
+    transform: 'scale(0.98, 0.98)',
   },
 };
 
