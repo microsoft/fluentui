@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(menu-list): Add menu-list and menu-item web components",
-  "packageName": "@fluentui/web-components",
-  "email": "brianbrady@microsoft.com",
-  "dependentChangeType": "patch"
-}
