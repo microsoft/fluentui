@@ -53,7 +53,7 @@ export const TimePickerValidationResultExample: React.FC = () => {
         useHour12
         increments={15}
         autoComplete="on"
-        label="Controlled TimePicker with onValidationResult Handling"
+        label="Controlled TimePicker with onValidationResult handling"
         dateAnchor={dateAnchor}
         value={time}
         onChange={onControlledExampleChange}

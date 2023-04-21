@@ -5,7 +5,7 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { TimePickerBasicExample } from './TimePicker.Basic.Example';
 import { TimePickerControlledExample } from './TimePicker.Controlled.Example';
 import { TimePickerCustomTimeStringsExample } from './TimePicker.CustomTimeStrings.Example';
-import { TimePickerErrorValidationExample } from './TimePicker.ErrorValidation.Example';
+import { TimePickerValidationResultExample } from './TimePicker.ValidationResult.Example';
 import { TimePickerDateTimePickerExample } from './TimePicker.DateTimePicker.Example';
 
 const TimePickerBasicExampleCode =
@@ -14,8 +14,8 @@ const TimePickerControlledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Controlled.Example.tsx') as string;
 const TimePickerCustomTimeStringsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.CustomTimeStrings.Example.tsx') as string;
-const TimePickerErrorValidationExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.ErrorValidation.Example.tsx') as string;
+const TimePickerValidationResultExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.ValidationResult.Example.tsx') as string;
 const TimePickerDateTimePickerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.DateTimePicker.Example.tsx') as string;
 
@@ -40,9 +40,9 @@ export const TimePickerPageProps: IDocPageProps = {
       view: <TimePickerCustomTimeStringsExample />,
     },
     {
-      title: 'TimePicker using onValidationError Result',
-      code: TimePickerErrorValidationExampleCode,
-      view: <TimePickerErrorValidationExample />,
+      title: 'TimePicker using onValidationResult callback',
+      code: TimePickerValidationResultExampleCode,
+      view: <TimePickerValidationResultExample />,
     },
     {
       title: 'TimePicker with DatePicker',
