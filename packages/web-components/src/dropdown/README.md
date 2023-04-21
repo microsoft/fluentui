@@ -58,6 +58,18 @@ Fluent WC3 DroFluent WC3 Dropdown is a form associated component that extends fr
 
 <br />
 
+### **Attributes**
+
+| Name         | Field      | Inherited From                                                                                                                   |
+| ------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `appearance` | appearance |                                                                                                                                  |
+| `disabled`   | disabled   |                                                                                                                                  |
+| `multiple`   | multiple   | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
+| `open`       | open       |                                                                                                                                  |
+| `size`       | size       |                                                                                                                                  |
+
+<br />
+
 ### **Methods**
 
 | Name                 | Privacy | Description                                                                | Parameters | Return | Inherited From                                                                                                                   |
@@ -74,18 +86,6 @@ Fluent WC3 DroFluent WC3 Dropdown is a form associated component that extends fr
 | -------- | ---- | ---------------------------------------------------- |
 | `change` |      | Fires a custom 'change' event when the value updates |
 | `input`  |      | Fires a custom 'input' event when the value updates  |
-
-<br />
-
-### **Attributes**
-
-| Name         | Field      | Inherited From                                                                                                                   |
-| ------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `appearance` | appearance |                                                                                                                                  |
-| `disabled`   | disabled   |                                                                                                                                  |
-| `multiple`   | multiple   | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
-| `open`       | open       |                                                                                                                                  |
-| `size`       | size       |                                                                                                                                  |
 
 <br />
 
