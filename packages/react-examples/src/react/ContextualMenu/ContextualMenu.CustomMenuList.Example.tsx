@@ -78,7 +78,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
       focusZoneProps: {
         shouldInputLoseFocusOnArrowKey: () => true /* Allow up and down arrows to move focus out of the SearchBox */,
       },
-      onDismiss: onDismiss,
+      onDismiss,
     }),
     [items, renderMenuList, onDismiss],
   );
