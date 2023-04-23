@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: ensure legacyTrapFocus works properly",
+  "packageName": "@fluentui/react-popover",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -2,6 +2,57 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 17:53:49 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.0.0-beta.2",
+      "version": "0.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.8.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.1.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.6.5",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.5.9",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-positioning to v9.5.10",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.4.10",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Apr 2023 09:31:43 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.0.0-beta.1",
       "version": "0.0.0-beta.1",

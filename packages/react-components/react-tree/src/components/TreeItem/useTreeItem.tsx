@@ -20,10 +20,16 @@ import { treeDataTypes } from '../../utils/tokens';
  * @param props - props from this instance of TreeItem
  * @param ref - reference to root HTMLElement of TreeItem
  */
-export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
+export function useTreeItem_unstable<Value = string>(
+  props: TreeItemProps<Value>,
+  ref: React.Ref<HTMLDivElement>,
+): TreeItemState {
   const [children, subtreeChildren] = React.Children.toArray(props.children);
 
   const contextLevel = useTreeContext_unstable(ctx => ctx.level);
+
+  const id = useId('fui-TreeItem-', props.id);
+
   const {
     content,
     subtree,
@@ -34,17 +40,16 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     onClick,
     onKeyDown,
     ['aria-level']: level = contextLevel,
+    value = id,
     ...rest
   } = props;
 
   const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
   const requestNavigation = useTreeContext_unstable(ctx => ctx.requestNavigation);
 
-  const id = useId('fui-TreeItem-', props.id);
-
   const isBranch = !isLeaf;
 
-  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.has(id));
+  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.has(value));
   const { dir, targetDocument } = useFluent_unstable();
   const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
 
@@ -54,22 +59,40 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (!open && isBranch) {
-      return requestOpenChange({ event, open: true, type: treeDataTypes.arrowRight, target: event.currentTarget });
+      return requestOpenChange({
+        event,
+        value,
+        open: true,
+        type: treeDataTypes.arrowRight,
+        target: event.currentTarget,
+      });
     }
     if (open && isBranch) {
-      return requestNavigation({ event, type: treeDataTypes.arrowRight, target: event.currentTarget });
+      return requestNavigation({ event, value, type: treeDataTypes.arrowRight, target: event.currentTarget });
     }
   };
   const handleArrowLeft = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (open && isBranch) {
-      return requestOpenChange({ event, open: false, type: treeDataTypes.arrowLeft, target: event.currentTarget });
+      return requestOpenChange({
+        event,
+        value,
+        open: false,
+        type: treeDataTypes.arrowLeft,
+        target: event.currentTarget,
+      });
     }
     if (!open && level > 1) {
-      return requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.arrowLeft });
+      return requestNavigation({ event, value, target: event.currentTarget, type: treeDataTypes.arrowLeft });
     }
   };
   const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    requestOpenChange({ event, open: isLeaf ? open : !open, type: treeDataTypes.enter, target: event.currentTarget });
+    requestOpenChange({
+      event,
+      value,
+      open: isLeaf ? open : !open,
+      type: treeDataTypes.enter,
+      target: event.currentTarget,
+    });
   };
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
@@ -86,11 +109,12 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
     requestOpenChange({
       event,
+      value,
       open: isLeaf ? open : !open,
       type: isFromExpandIcon ? treeDataTypes.expandIconClick : treeDataTypes.click,
       target: event.currentTarget,
     });
-    requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.click });
+    requestNavigation({ event, value, target: event.currentTarget, type: treeDataTypes.click });
   });
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -109,18 +133,18 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       case ArrowLeft:
         return handleArrowLeft(event);
       case End:
-        return requestNavigation({ event, type: treeDataTypes.end, target: event.currentTarget });
+        return requestNavigation({ event, value, type: treeDataTypes.end, target: event.currentTarget });
       case Home:
-        return requestNavigation({ event, type: treeDataTypes.home, target: event.currentTarget });
+        return requestNavigation({ event, value, type: treeDataTypes.home, target: event.currentTarget });
       case ArrowUp:
-        return requestNavigation({ event, type: treeDataTypes.arrowUp, target: event.currentTarget });
+        return requestNavigation({ event, value, type: treeDataTypes.arrowUp, target: event.currentTarget });
       case ArrowDown:
-        return requestNavigation({ event, type: treeDataTypes.arrowDown, target: event.currentTarget });
+        return requestNavigation({ event, value, type: treeDataTypes.arrowDown, target: event.currentTarget });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
-      return requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.typeAhead });
+      return requestNavigation({ event, value, target: event.currentTarget, type: treeDataTypes.typeAhead });
     }
   });
 
@@ -208,4 +232,4 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       },
     }),
   };
-};
+}

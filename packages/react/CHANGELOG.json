@@ -2,6 +2,65 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 21 Apr 2023 07:49:09 GMT",
+      "tag": "@fluentui/react_v8.108.1",
+      "version": "8.108.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ebffada49e572de35e971ba5deea456bffb2f9c8",
+            "comment": "fix: exclude HTMLAttributes defined 'content' for  Tooltip and TooltipHost Prop types to mitigate @types/react breaking changes"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7b7f8b94f53b28c2dbd87abac8633f4540573e65",
+            "comment": "fix: ContextualMenuSplitButton always sets aria-checked (does not leave it undefined) when it is checkable."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Apr 2023 07:47:56 GMT",
+      "tag": "@fluentui/react_v8.108.0",
+      "version": "8.108.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6292ed9f4a5d4292b17de2c031ce7b82d99598ed",
+            "comment": "fix: DetailsList allows className in focusZoneProps, fix typing for selectionZoneProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f860464aeb59555c2eb3271ab5be246c028629c5",
+            "comment": "fix: BasePicker selects correct focus target in selected items"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 07:40:25 GMT",
+      "tag": "@fluentui/react_v8.107.6",
+      "version": "8.107.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "97a9295c30393b604cf3c57923334a9b10d3b7d3",
+            "comment": "fix(Callout): Update useMaxHeight to check if the provided maxHeight will make the callout get cut off."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Apr 2023 07:41:10 GMT",
       "tag": "@fluentui/react_v8.107.5",
       "version": "8.107.5",

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: adopt custom JSX pragma",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

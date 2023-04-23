@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-jsx-runtime",
+  "entries": [
+    {
+      "date": "Mon, 17 Apr 2023 17:53:51 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "97af91aa7684bbfe149ace1b21b75fb7c04128a2",
+            "comment": "feat: implements custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-jsx-runtime",
+            "comment": "Bump @fluentui/react-utilities to v9.8.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          }
+        ]
+      }
+    }
+  ]
+}

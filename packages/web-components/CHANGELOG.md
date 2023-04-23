@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 11 Apr 2023 07:43:45 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Apr 2023 07:40:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.14)
+
+Mon, 17 Apr 2023 07:40:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.13..@fluentui/web-components_v2.5.14)
+
+### Patches
+
+- update FAST dependencies to mitigate Safari 16.4 AdoptedStyleSheets bug ([PR #27578](https://github.com/microsoft/fluentui/pull/27578) by chhol@microsoft.com)
 
 ## [2.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.13)
 
