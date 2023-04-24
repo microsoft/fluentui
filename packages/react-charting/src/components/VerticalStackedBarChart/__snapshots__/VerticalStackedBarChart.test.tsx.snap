@@ -162,7 +162,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   font-size: 12px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
@@ -236,7 +235,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   font-size: 12px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
@@ -810,7 +808,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   font-size: 12px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
@@ -884,7 +881,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   font-size: 12px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
@@ -1367,7 +1363,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   font-size: 12px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
@@ -1432,7 +1427,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   font-size: 12px;
                   font-weight: 600;
                 }
-            data-is-focusable={true}
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"

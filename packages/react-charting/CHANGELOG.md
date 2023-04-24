@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 17 Apr 2023 07:40:26 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.21)
+
+Mon, 24 Apr 2023 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.20..@fluentui/react-charting_v5.16.21)
+
+### Patches
+
+- Make line chart screen reader accessible ([PR #27632](https://github.com/microsoft/fluentui/pull/27632) by kumarkshitij@microsoft.com)
+
+## [5.16.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.20)
+
+Fri, 21 Apr 2023 07:49:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.19..@fluentui/react-charting_v5.16.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.108.1 ([PR #27586](https://github.com/microsoft/fluentui/pull/27586) by beachball)
+
+## [5.16.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.19)
+
+Thu, 20 Apr 2023 07:47:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.18..@fluentui/react-charting_v5.16.19)
+
+### Patches
+
+- Bump @fluentui/react to v8.108.0 ([PR #27637](https://github.com/microsoft/fluentui/pull/27637) by beachball)
 
 ## [5.16.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.18)
 

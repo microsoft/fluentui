@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Mon, 17 Apr 2023 17:53:44 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.45)
+
+Mon, 24 Apr 2023 08:12:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.44..@fluentui/react-alert_v9.0.0-beta.45)
+
+### Changes
+
+- bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-avatar to v9.4.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-button to v9.3.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.44)
 

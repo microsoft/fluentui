@@ -105,6 +105,11 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
   onOpenChange?: (open: boolean) => void;
 
   /**
+   * Callback to run after the DatePicker's input has been validated
+   */
+  onValidationResult?: (data: DatePickerValidationResultData) => void;
+
+  /**
    * Whether the DatePicker should render the popup as inline or in a portal
    *
    * @default false
@@ -224,32 +229,23 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
   showCloseButton?: boolean;
 };
 
+/**
+ * State used in rendering DatePicker.
+ */
 export type DatePickerState = ComponentState<DatePickerSlots> & {
   disabled: boolean;
   inlinePopup: boolean;
 };
 
-// TODO: remove this once we add error handling hook
-export interface DatePickerStrings extends CalendarStrings {
-  /**
-   * Error message to render for Input if isRequired validation fails.
-   */
-  isRequiredErrorMessage?: string;
+/**
+ * Data passed to the `onValidationResult` callback.
+ */
+export type DatePickerValidationResultData = {
+  /** The error found when validating the input. */
+  error?: DatePickerErrorType;
+};
 
-  /**
-   * Error message to render for Input if input date string parsing fails.
-   */
-  invalidInputErrorMessage?: string;
-
-  /**
-   * Error message to render for Input if date boundary (minDate, maxDate) validation fails.
-   */
-  isOutOfBoundsErrorMessage?: string;
-
-  /**
-   * Status message to render for Input the input date parsing fails,
-   * and the typed value is cleared and reset to the previous value.
-   *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
-   */
-  isResetStatusMessage?: string;
-}
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
