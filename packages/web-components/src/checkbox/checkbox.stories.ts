@@ -119,7 +119,7 @@ const mixedTemplate = html<CheckboxStoryArgs>`
 export const Mixed: Args = renderComponent(mixedTemplate).bind({});
 Mixed.args = { indeterminate: true };
 
-// Disabled
+// disabled
 const CheckboxDisabled = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column;">
     <fluent-checkbox name="checkbox-group" disabled> Disabled unchecked </fluent-checkbox>
@@ -143,7 +143,7 @@ const CheckboxDisabled = html<CheckboxStoryArgs>`
 export const Disabled: Args = renderComponent(CheckboxDisabled).bind({});
 Disabled.args = { indeterminate: true };
 
-// large
+// size
 const CheckboxSizes = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}" style="display: flex; gap: 50px">
     <div style="display: flex; flex-direction: column; gap: 4px;">
