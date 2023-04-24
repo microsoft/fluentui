@@ -92,7 +92,7 @@ const useIconInitialsClassName = makeResetStyles({
  *
  * Used by the icon, initials, and image slots, as well as the ring ::before pseudo-element.
  */
-const badgeCutout = (margin?: string) => {
+const badgeMask = (margin?: string) => {
   // Center the cutout at the badge's radius away from the edge.
   // The ring (::before) also has a 2 * ringWidth margin that also needs to be offset.
   const centerOffset = margin ? `calc(var(${vars.badgeRadius}) + ${margin})` : `var(${vars.badgeRadius})`;
@@ -101,15 +101,10 @@ const badgeCutout = (margin?: string) => {
   const innerRadius = `calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) - 0.25px)`;
   const outerRadius = `calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) + 0.25px)`;
 
-  return {
-    maskImage:
-      `radial-gradient(circle at bottom ${centerOffset} var(${vars.badgeAlign}) ${centerOffset}, ` +
-      `transparent ${innerRadius}, white ${outerRadius})`,
-
-    // Griffel won't auto-flip the "right" alignment to "left" in RTL if it is inline in the maskImage,
-    // so split it out into a css variable that will auto-flip.
-    [vars.badgeAlign]: 'right',
-  };
+  return (
+    `radial-gradient(circle at bottom ${centerOffset} var(${vars.badgeAlign}) ${centerOffset}, ` +
+    `transparent ${innerRadius}, white ${outerRadius})`
+  );
 };
 
 const useStyles = makeStyles({
@@ -148,7 +143,7 @@ const useStyles = makeStyles({
     '::before': { content: '""' },
   },
   ringBadgeCutout: {
-    '::before': badgeCutout(/*margin =*/ `2 * var(${vars.ringWidth})`),
+    '::before': { maskImage: badgeMask(/*margin =*/ `2 * var(${vars.ringWidth})`) },
   },
   ringThick: {
     [vars.ringWidth]: tokens.strokeWidthThick,
@@ -197,7 +192,16 @@ const useStyles = makeStyles({
   },
 
   // Applied to the image, initials, or icon slot when there is a badge
-  badgeCutout: badgeCutout(),
+  badgeCutout: {
+    maskImage: badgeMask(),
+  },
+
+  // Applied to the root when there is a badge
+  badgeAlign: {
+    // Griffel won't auto-flip the "right" alignment to "left" in RTL if it is inline in the maskImage,
+    // so split it out into a css variable that will auto-flip.
+    [vars.badgeAlign]: 'right',
+  },
 
   // Badge size: applied to root when there is a badge
   tiny: {
@@ -492,11 +496,11 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const colorStyles = useColorStyles();
   const ringColorStyles = useRingColorStyles();
 
-  const rootClasses = [
-    rootClassName,
-    size !== 32 && sizeStyles[size],
-    state.badge && styles[state.badge.size || 'medium'],
-  ];
+  const rootClasses = [rootClassName, size !== 32 && sizeStyles[size]];
+
+  if (state.badge) {
+    rootClasses.push(styles.badgeAlign, styles[state.badge.size || 'medium']);
+  }
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2Strong);
