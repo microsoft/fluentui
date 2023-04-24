@@ -6,11 +6,13 @@ export const radioGroupClassNames: SlotClassNames<RadioGroupSlots> = {
   root: 'fui-RadioGroup',
 };
 
+
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    alignItems: 'flex-start',
+    display: 'block',
+    alignItems: 'center',
   },
+  
 
   vertical: {
     flexDirection: 'column',
