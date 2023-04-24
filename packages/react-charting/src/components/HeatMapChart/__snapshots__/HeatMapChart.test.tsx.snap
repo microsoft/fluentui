@@ -212,6 +212,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -245,7 +246,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -763,6 +764,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -795,7 +797,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -1098,6 +1100,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1130,7 +1133,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1220,7 +1223,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   role="none"
                 >
                   <button
-                    aria-label="Nasty selected"
+                    aria-label="Nasty"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1699,6 +1702,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1731,7 +1735,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -2034,6 +2038,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2066,7 +2071,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}

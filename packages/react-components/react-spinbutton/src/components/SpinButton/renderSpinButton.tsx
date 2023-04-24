@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { SpinButtonState, SpinButtonSlots } from './SpinButton.types';
 
 /**
  * Render the final JSX of SpinButton
  */
 export const renderSpinButton_unstable = (state: SpinButtonState) => {
-  const { slots, slotProps } = getSlots<SpinButtonSlots>(state);
+  const { slots, slotProps } = getSlotsNext<SpinButtonSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

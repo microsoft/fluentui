@@ -23,10 +23,10 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
 
   return {
     components: {
-      root: 'div',
+      root: 'h2',
       action: 'div',
     },
-    root: getNativeElementProps(as ?? 'div', {
+    root: getNativeElementProps(as ?? 'h2', {
       ref,
       id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
       ...props,

@@ -9,10 +9,9 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
  * and configures them to be the trigger that will open or close a `Dialog`.
  * This component should only accept one child.
  *
- * In case the trigger is used outside `Dialog` component
- * it'll still provide basic ARIA related attributes
- * to it's wrapped child, but it won't be able to alter the dialog `open` state anymore,
- * in that case the user must provide a `controlled state`
+ * This component sole purpose is to avoid opting out of the internal controlled open state of a `Dialog`
+ * Besides being a trigger that opens/close a dialog through context this component doesn't do much,
+ * making it basically unnecessary in cases where the trigger is outside of the `Dialog` component.
  */
 export const DialogTrigger: React.FC<DialogTriggerProps> = props => {
   const state = useDialogTrigger_unstable(props);
