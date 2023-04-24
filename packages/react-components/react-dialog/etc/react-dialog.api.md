@@ -151,7 +151,7 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 // @public (undocumented)
 export type DialogTitleSlots = {
-    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
     action?: Slot<'div'>;
 };
 

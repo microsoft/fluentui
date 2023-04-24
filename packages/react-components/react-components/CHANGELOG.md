@@ -1,8 +1,112 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 17 Apr 2023 17:53:43 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.19.1)
+
+Mon, 24 Apr 2023 08:12:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.19.0..@fluentui/react-components_v9.19.1)
+
+### Minor changes
+
+- `@fluentui/react-datepicker-compat`
+  - feat: Add error handling to DatePicker. ([PR #27637](https://github.com/microsoft/fluentui/pull/27637) by esteban.230@hotmail.com)
+  - feat: Move DatePicker compat to stable. ([PR #27378](https://github.com/microsoft/fluentui/pull/27378) by esteban.230@hotmail.com)
+  - feat: Refactor DatePicker to remove Field and error handling logic. ([PR #27509](https://github.com/microsoft/fluentui/pull/27509) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - feat: adopt custom JSX pragma ([PR #27601](https://github.com/microsoft/fluentui/pull/27601) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - chore: adopt custom JSX pragma ([PR #27602](https://github.com/microsoft/fluentui/pull/27602) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-badge`
+  - chore: adopt custom JSX pragma ([PR #27603](https://github.com/microsoft/fluentui/pull/27603) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - chore: adopt custom JSX pragma ([PR #27605](https://github.com/microsoft/fluentui/pull/27605) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-card`
+  - chore: adopt custom JSX pragma ([PR #27606](https://github.com/microsoft/fluentui/pull/27606) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: adopt custom JSX pragma ([PR #27607](https://github.com/microsoft/fluentui/pull/27607) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-combobox`
+  - chore: adopt custom JSX pragma ([PR #27608](https://github.com/microsoft/fluentui/pull/27608) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - removes TreeItemId type from react-tree ([PR #27532](https://github.com/microsoft/fluentui/pull/27532) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: adopt custom JSX pragma ([PR #27609](https://github.com/microsoft/fluentui/pull/27609) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - bugfix: DialogTitle root as h2 by default ([PR #27555](https://github.com/microsoft/fluentui/pull/27555) by bernardo.sunderhus@gmail.com)
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+  - chore: hoist tabster modal attributes to Dialog component ([PR #27541](https://github.com/microsoft/fluentui/pull/27541) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-divider`
+  - chore: adopt custom JSX pragma ([PR #27610](https://github.com/microsoft/fluentui/pull/27610) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-field`
+  - chore: adopt custom JSX pragma ([PR #27612](https://github.com/microsoft/fluentui/pull/27612) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-image`
+  - chore: adopt custom JSX pragma ([PR #27613](https://github.com/microsoft/fluentui/pull/27613) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-input`
+  - chore: adopt custom JSX pragma ([PR #27614](https://github.com/microsoft/fluentui/pull/27614) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-label`
+  - chore: adopt custom JSX pragma ([PR #27616](https://github.com/microsoft/fluentui/pull/27616) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-link`
+  - chore: adopt custom JSX pragma ([PR #27620](https://github.com/microsoft/fluentui/pull/27620) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-persona`
+  - chore: adopt custom JSX pragma ([PR #27619](https://github.com/microsoft/fluentui/pull/27619) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - bugfix: ensure legacyTrapFocus works properly ([PR #27574](https://github.com/microsoft/fluentui/pull/27574) by bernardo.sunderhus@gmail.com)
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - chore: adopt custom JSX pragma ([PR #27617](https://github.com/microsoft/fluentui/pull/27617) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-provider`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - chore: adopt custom JSX pragma ([PR #27618](https://github.com/microsoft/fluentui/pull/27618) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-select`
+  - chore: adopt custom JSX pragma ([PR #27621](https://github.com/microsoft/fluentui/pull/27621) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-slider`
+  - chore: adopt custom JSX pragma ([PR #27624](https://github.com/microsoft/fluentui/pull/27624) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: adopt custom JSX pragma ([PR #27625](https://github.com/microsoft/fluentui/pull/27625) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinner`
+  - chore: adopt custom JSX pragma ([PR #27622](https://github.com/microsoft/fluentui/pull/27622) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-switch`
+  - chore: adopt custom JSX pragma ([PR #27627](https://github.com/microsoft/fluentui/pull/27627) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-table`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabs`
+  - chore: adopts custom JSX pragma ([PR #27640](https://github.com/microsoft/fluentui/pull/27640) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-text`
+  - chore: adopt custom JSX pragma ([PR #27626](https://github.com/microsoft/fluentui/pull/27626) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-textarea`
+  - chore: adopt custom JSX pragma ([PR #27631](https://github.com/microsoft/fluentui/pull/27631) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-toolbar`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tooltip`
+  - chore: adopt custom JSX pragma ([PR #27630](https://github.com/microsoft/fluentui/pull/27630) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-data-grid-react-window`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-infobutton`
+  - chore: adopt custom JSX pragma ([PR #27615](https://github.com/microsoft/fluentui/pull/27615) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: simplify createElement method ([PR #27573](https://github.com/microsoft/fluentui/pull/27573) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-skeleton`
+  - chore: adopt custom JSX pragma ([PR #27623](https://github.com/microsoft/fluentui/pull/27623) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+  - bugfix: fix parent navigation after independency from id ([PR #27642](https://github.com/microsoft/fluentui/pull/27642) by bernardo.sunderhus@gmail.com)
+  - feat: value property over id ([PR #27532](https://github.com/microsoft/fluentui/pull/27532) by bernardo.sunderhus@gmail.com)
+  - chore: restructure stories, add separate category for flat tree ([PR #27586](https://github.com/microsoft/fluentui/pull/27586) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-virtualizer`
+  - chore: adopt custom JSX pragma ([PR #27629](https://github.com/microsoft/fluentui/pull/27629) by bernardo.sunderhus@gmail.com)
 
 ## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.19.0)
 

@@ -2,6 +2,65 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:34 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.0.0",
+      "version": "0.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "f7d88ee6fb582989efc057880ddfe60228649189",
+            "comment": "feat: Add error handling to DatePicker."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "bb8dfe06f4f2910eef1561c76410bf91b009fa37",
+            "comment": "feat: Move DatePicker compat to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "011c6f0665a03aa804aac1e0f900e70229518c7c",
+            "comment": "feat: Refactor DatePicker to remove Field and error handling logic."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.1.1",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.4.11",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.5.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "59ef51fcd9e2ab84a4a480e0a02bc05ecd3a6697",
+            "comment": "chore: adopt custom JSX pragma"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:49 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.0.0-beta.2",
       "version": "0.0.0-beta.2",

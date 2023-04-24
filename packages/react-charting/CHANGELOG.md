@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 21 Apr 2023 07:49:09 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.21)
+
+Mon, 24 Apr 2023 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.20..@fluentui/react-charting_v5.16.21)
+
+### Patches
+
+- Make line chart screen reader accessible ([PR #27632](https://github.com/microsoft/fluentui/pull/27632) by kumarkshitij@microsoft.com)
 
 ## [5.16.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.20)
 
