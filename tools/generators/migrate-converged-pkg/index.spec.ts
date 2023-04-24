@@ -442,7 +442,7 @@ describe('migrate-converged-pkg generator', () => {
         globals: {
         'ts-jest': {
         tsconfig: '<rootDir>/tsconfig.spec.json',
-        diagnostics: false,
+        isolatedModules: true,
         },
         },
         transform: {
