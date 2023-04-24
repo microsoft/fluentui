@@ -18,7 +18,7 @@ const storyTemplate = html<RadioGroupStoryArgs>`
     name="radio-story"
   >
     <span id="label-1" slot="label">Favorite Fruit</span>
-    <fluent-radio value="apple" ?checked=${x => x.checked}>Apple</fluent-radio>
+    <fluent-radio value="apple">Apple</fluent-radio>
     <fluent-radio value="pear">Pear</fluent-radio>
     <fluent-radio value="banana">Banana</fluent-radio>
     <fluent-radio value="orange">Orange</fluent-radio>
@@ -32,19 +32,6 @@ export default {
     orientation: RadioGroupOrientation.horizontal,
   },
   argTypes: {
-    checked: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Sets checked state on radio',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
     disabled: {
       control: {
         type: 'boolean',
@@ -185,8 +172,6 @@ const getLabelContent = (): string | undefined => {
 };
 
 const handleChange = (event: CustomEvent) => {
-  const changedRadio: HTMLInputElement = event.target as HTMLInputElement;
-  console.log(changedRadio);
   const radioGroup = document.querySelector('#radio-group-fruit') as FluentRadioGroup;
 
   if (!radioGroup) return; // add a check to make sure radioGroup exists
