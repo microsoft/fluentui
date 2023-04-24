@@ -62,7 +62,6 @@ export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStory
         className={className}
         style={{
           padding: '10px',
-          overflow: 'hidden',
         }}
       >
         {story()}
