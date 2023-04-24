@@ -18,8 +18,9 @@ const storyTemplate = html<CheckboxStoryArgs>`
       shape="${x => x.shape}"
       size="${x => x.size}"
       label-position="${x => x.labelPosition}"
+      required="${x => x.required}"
     >
-      Label
+      <fluent-label disabled="${x => x.disabled}" required="${x => x.required}">Checkbox</fluent-label>
     </fluent-checkbox>
   </form>
 `;
@@ -27,22 +28,15 @@ const storyTemplate = html<CheckboxStoryArgs>`
 export default {
   title: 'Components/Checkbox',
   args: {
-    disabled: false,
     checked: false,
+    disabled: false,
     indeterminate: false,
+    labelPosition: CheckboxLabelPosition.after,
+    required: false,
     shape: CheckboxShape.square,
     size: CheckboxSize.medium,
-    labelPosition: CheckboxLabelPosition.after,
   },
   argTypes: {
-    disabled: {
-      description: 'Sets the disabled state of the checkbox',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-      },
-    },
     checked: {
       description: 'Sets the checked state of the checkbox',
       table: {
@@ -51,8 +45,35 @@ export default {
         },
       },
     },
+    disabled: {
+      description: 'Sets the disabled state of the checkbox',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
     indeterminate: {
       description: 'Sets the indeterminate state of the checkbox',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    labelPosition: {
+      description: 'Sets the position of the label relative to the input',
+      table: {
+        defaultValue: { summary: CheckboxLabelPosition.after },
+      },
+      control: {
+        type: 'select',
+        options: Object.values(CheckboxLabelPosition),
+      },
+      defaultValue: CheckboxLabelPosition.after,
+    },
+    required: {
+      description: 'Sets the checkbox as required',
       table: {
         type: {
           summary: 'boolean',
@@ -80,17 +101,6 @@ export default {
         options: Object.values(CheckboxSize),
       },
       defaultValue: CheckboxSize.medium,
-    },
-    labelPosition: {
-      description: 'Sets the position of the label relative to the input',
-      table: {
-        defaultValue: { summary: CheckboxLabelPosition.after },
-      },
-      control: {
-        type: 'select',
-        options: Object.values(CheckboxLabelPosition),
-      },
-      defaultValue: CheckboxLabelPosition.after,
     },
   },
 } as CheckboxStoryMeta;
@@ -142,6 +152,15 @@ const CheckboxDisabled = html<CheckboxStoryArgs>`
 
 export const Disabled: Args = renderComponent(CheckboxDisabled).bind({});
 Disabled.args = { indeterminate: true };
+
+// disabled
+const CheckboxRequired = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}">
+    <fluent-checkbox required name="checkbox-group"><fluent-label required>Required</fluent-label></fluent-checkbox>
+  </form>
+`;
+
+export const Required: Args = renderComponent(CheckboxRequired).bind({});
 
 // size
 const CheckboxSizes = html<CheckboxStoryArgs>`
