@@ -70,6 +70,12 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
+// @public
+export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
+    slots: Slots<R>;
+    slotProps: ObjectSlotProps<R>;
+};
+
 // @internal
 export function getTriggerChild<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children']): (React_2.ReactElement<Partial<TriggerChildProps>> & {
     ref?: React_2.Ref<any>;
@@ -81,8 +87,10 @@ export const IdPrefixProvider: React_2.Provider<string | undefined>;
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
-// @internal
-export function isHTMLElement(element?: unknown): element is HTMLElement;
+// @public
+export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
+    constructorName?: ConstructorName;
+}): element is InstanceType<(typeof globalThis)[ConstructorName]>;
 
 // @internal
 export function isInteractiveHTMLElement(element: unknown): boolean;
@@ -141,6 +149,9 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
+// @internal
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
+
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
@@ -150,7 +161,7 @@ export type SlotClassNames<Slots> = {
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
 
 // @public (undocumented)
-export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
+export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => React_2.ReactNode;
 
 // @public (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
@@ -171,6 +182,11 @@ export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
+};
+
+// @public
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
 };
 
 // @internal

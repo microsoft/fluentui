@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "release @fluentui/react-tree unstable",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

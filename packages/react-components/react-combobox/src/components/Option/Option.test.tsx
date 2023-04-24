@@ -5,6 +5,7 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 import { Option } from './Option';
 import type { OptionProps } from './Option.types';
 import { isConformant } from '../../testing/isConformant';
+import { optionClassNames } from './useOptionStyles';
 
 describe('Option', () => {
   isConformant<OptionProps>({
@@ -221,5 +222,27 @@ describe('Option', () => {
 
     expect(setActiveOption).toHaveBeenCalledTimes(1);
     expect(setActiveOption).toHaveBeenCalledWith(optionData);
+  });
+
+  describe('checkIcon slot', () => {
+    it('renders the `checkIcon` slot by default', () => {
+      render(
+        <Option id="optionId" value="foo">
+          Option 1
+        </Option>,
+      );
+
+      expect(document.querySelector(`.${optionClassNames.checkIcon}`)).toBeTruthy();
+    });
+
+    it('should not render the `checkIcon` slot when passed `null`', () => {
+      render(
+        <Option id="optionId" value="foo" checkIcon={null}>
+          Option 1
+        </Option>,
+      );
+
+      expect(document.querySelector(`.${optionClassNames.checkIcon}`)).toBeFalsy();
+    });
   });
 });

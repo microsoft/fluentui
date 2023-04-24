@@ -442,3 +442,59 @@ ScrollLongContent.storyName = 'scroll long content';
 export const ScrollLongContentDarkMode = getStoryVariant(ScrollLongContent, DARK_MODE);
 export const ScrollLongContentHighContrast = getStoryVariant(ScrollLongContent, HIGH_CONTRAST);
 export const ScrollLongContentRTL = getStoryVariant(ScrollLongContent, RTL);
+
+export const FluidActionsStart = () => {
+  return (
+    <Dialog open>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
+          </DialogContent>
+          <DialogActions fluid position="start">
+            <Button appearance="secondary">Something Else</Button>
+            <Button appearance="secondary">Something Else</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+
+export const FluidActionsEnd = () => {
+  return (
+    <Dialog open>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
+          </DialogContent>
+          <DialogActions fluid position="end">
+            <Button appearance="secondary">Something Else</Button>
+            <Button appearance="secondary">Something Else</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};

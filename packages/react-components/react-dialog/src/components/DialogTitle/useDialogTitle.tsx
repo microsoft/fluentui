@@ -23,10 +23,10 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
 
   return {
     components: {
-      root: 'div',
+      root: 'h2',
       action: 'div',
     },
-    root: getNativeElementProps(as ?? 'div', {
+    root: getNativeElementProps(as ?? 'h2', {
       ref,
       id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
       ...props,
@@ -37,6 +37,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
         children: (
           <DialogTrigger disableButtonEnhancement action="close">
             <button
+              type="button"
               className={internalStyles.button}
               // TODO: find a better way to add internal labels
               aria-label="close"
