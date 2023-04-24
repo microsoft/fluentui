@@ -40,7 +40,7 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 | Name       | Privacy | Type      | Default | Description                                                                                                                                 |
 | ---------- | ------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`     | public  | `string`  |         | The name of the radio. See [name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) for more info. |
+| `name`     | public  | `string`  |         | The name of the radio. See [name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) for more info. When the `radio` component is rendered inside a `radio-group`, the `radio-group` overwrites the `name` in all its `radio` components. |
 | `disabled` | public  | `boolean` |         | Sets disabled state for radio                                                                                                               |
 | `checked`  | public  | `boolean` | `false` | When true, radio button will be checked                                                                                                     |
 
