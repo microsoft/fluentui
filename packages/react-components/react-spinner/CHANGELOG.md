@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.1.10)
+
+Mon, 24 Apr 2023 08:12:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.1.9..@fluentui/react-spinner_v9.1.10)
+
+### Patches
+
+- chore: adopt custom JSX pragma ([PR #27622](https://github.com/microsoft/fluentui/pull/27622) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-label to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.1.9)
 
