@@ -141,7 +141,44 @@ describe('TimePicker', () => {
     expect(timePickerComboBox.value).toEqual('14:00');
   });
 
-  it('gets the error message string within the onValidationResult prop', () => {
+  it('shows the error message under the ComboBox on input validation error', () => {
+    const onValidationResult = jest.fn();
+
+    const dateAnchor = new Date('March 15, 2023 10:00:00');
+    const timeRange: ITimeRange = {
+      start: 10,
+      end: 17,
+    };
+
+    const { getByRole } = render(
+      <TimePicker
+        showSeconds={true}
+        increments={15}
+        timeRange={timeRange}
+        autoComplete="on"
+        label="I am an uncontrolled TimePicker"
+        placeholder="Test TimePicker"
+        dateAnchor={dateAnchor}
+        onValidationResult={onValidationResult}
+      />,
+    );
+
+    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
+
+    userEvent.click(timePickerComboBox);
+    userEvent.type(timePickerComboBox, '10:45:00{enter}');
+    expect(onValidationResult).toHaveBeenCalledTimes(0);
+
+    userEvent.clear(timePickerComboBox);
+    userEvent.click(timePickerComboBox);
+    userEvent.type(timePickerComboBox, '11111 AM{enter}');
+
+    expect(onValidationResult).toHaveBeenCalledTimes(1);
+    const errorMessageElement = getByRole('alert') as HTMLDivElement;
+    expect(errorMessageElement).not.toBe(null);
+  });
+
+  it('calls onValidationResult only when the error message changes', () => {
     let _errorMessage: string = '';
     const onValidationResult = jest.fn(
       (_ev: React.FormEvent<IComboBox>, timePickerErrorData: TimePickerValidationResultData): void => {
@@ -170,39 +207,28 @@ describe('TimePicker', () => {
     );
 
     const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-
-    userEvent.click(timePickerComboBox);
-    userEvent.type(timePickerComboBox, '10:00:00{enter}');
     expect(_errorMessage).toEqual('');
 
-    userEvent.clear(timePickerComboBox);
     userEvent.click(timePickerComboBox);
     userEvent.type(timePickerComboBox, '11111 AM{enter}');
-
-    const firstErrorMessageElement = getByRole('alert') as HTMLDivElement;
-    expect(firstErrorMessageElement).not.toBe(null);
+    const firstExpectedErrorMessage = 'Enter a valid time in the 24-hour format: hh:mm:ss';
+    expect(_errorMessage).toEqual(firstExpectedErrorMessage);
     expect(onValidationResult).toHaveBeenCalled();
     onValidationResult.mockClear();
-
-    const firstExpectedErrorMessage = 'Enter a valid time in the 24-hour format: hh:mm:ss';
-    expect(firstErrorMessageElement.textContent).toEqual(firstExpectedErrorMessage);
-    expect(_errorMessage).toEqual(firstExpectedErrorMessage);
 
     // verify that onValidationResult is not called twice for the same error message
     userEvent.clear(timePickerComboBox);
     userEvent.click(timePickerComboBox);
     userEvent.type(timePickerComboBox, '88888 AM{enter}');
+    expect(_errorMessage).toEqual(firstExpectedErrorMessage);
     expect(onValidationResult).not.toHaveBeenCalled();
-    onValidationResult.mockClear();
 
     // verify that onValidationResult is finally called again for a new error message
     userEvent.click(timePickerComboBox);
     userEvent.type(timePickerComboBox, '03:00:00{enter}');
     expect(onValidationResult).toHaveBeenCalled();
 
-    const secondErrorMessageElement = getByRole('alert') as HTMLDivElement;
     const secondExpectedErrorMessage = 'Please enter a time within the range';
-    expect(secondErrorMessageElement.textContent).toContain(secondExpectedErrorMessage);
     expect(_errorMessage).toContain(secondExpectedErrorMessage);
   });
 
