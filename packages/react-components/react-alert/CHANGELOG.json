@@ -2,6 +2,39 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:31 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.45",
+      "version": "9.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.4.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.3.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:44 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-beta.44",
       "version": "9.0.0-beta.44",

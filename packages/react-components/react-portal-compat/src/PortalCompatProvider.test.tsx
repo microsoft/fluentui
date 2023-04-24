@@ -41,6 +41,24 @@ describe('PortalCompatProvider', () => {
     `);
   });
 
+  it('during register adds a className from "ThemeClassNameContext" context with a React 18 compatible ID', () => {
+    const element = document.createElement('div');
+    const { result } = renderHook(() => usePortalCompat(), {
+      wrapper: props => (
+        <ThemeClassNameProvider value="fui-FluentProviderR1a">
+          <PortalCompatProvider>{props.children}</PortalCompatProvider>
+        </ThemeClassNameProvider>
+      ),
+    });
+
+    expect(result.current(element)).toBeInstanceOf(Function);
+    expect(element.classList).toMatchInlineSnapshot(`
+      DOMTokenList {
+        "0": "fui-FluentProviderR1a",
+      }
+    `);
+  });
+
   it('during unregister remove a className from "ThemeClassNameContext" context', () => {
     const element = document.createElement('div');
 

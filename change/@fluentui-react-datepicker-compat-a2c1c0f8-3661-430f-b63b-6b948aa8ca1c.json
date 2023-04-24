@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "chore: adopt custom JSX pragma",
+  "comment": "chore: update version",
   "packageName": "@fluentui/react-datepicker-compat",
-  "email": "bernardo.sunderhus@gmail.com",
+  "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

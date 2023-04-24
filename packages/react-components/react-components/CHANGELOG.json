@@ -2,6 +2,313 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:30 GMT",
+      "tag": "@fluentui/react-components_v9.19.1",
+      "version": "9.19.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "93de47a555e31b091d76657bd25c0180e290eee0",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "d340ff4b1c3aa7e1818780ec4d41f46c86e451c9",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "477d9f6d64d777f857dedec6a71e58baa31fbe30",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "d65eb9f6ec233104ab627532468fa64d71bbd702",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "2c2438a98002403210039275ce54f94367f2b3fe",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "a8d61a5dde83114c2746c8bba8a0410afea8fa65",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e5b5ac12b9221dbf0d3ec42a4b22a962746774b1",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "4dde6727c7e7fe7fbf6fedb4e1619deddbd3e16a",
+            "comment": "removes TreeItemId type from react-tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "59ef51fcd9e2ab84a4a480e0a02bc05ecd3a6697",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b287dc6426477a8ec03b6a845ea0ee3ba0bfb726",
+            "comment": "bugfix: DialogTitle root as h2 by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "1227882a7a3813f21c45df6eb27aa65a89a5c45c",
+            "comment": "chore: hoist tabster modal attributes to Dialog component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ec5f15a5fb78104ff874f1f16eda663fecde1704",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "7e199488cd02df78788b833bf29ed7e312b9e41f",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "a6ff85541907771d5172fbd804e05a380fd0a906",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "e3f0d22908c3c70c89a984a4025a76eb66a0928d",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "b61892e1d2e6b8bef5b5b1ba22e08247238fb45c",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "a781d26259ea8fc330842aceb439edf2b1378288",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "4f02d916ac12350bd7323d02961fde2de7658658",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "92f70e62b4c8256f81aae5d521477af851656f5d",
+            "comment": "bugfix: ensure legacyTrapFocus works properly"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "4a712dff672b89d0407040354652993822cb541f",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "4b4c462351678e8b6f81e3955d6d0a4a25cb212c",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "fa11c3889e6606bf7b0f8693b75f470b61da5a68",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "1013f6c9298ee3bc942544f8e4634c225c222db2",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "30931f6ca6133ba309323814aa3785abe26378b6",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "cc2d9e296c0a45b6af258e5e3e13b8371f8602d3",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "3af4f74b06db2bb4a1a85361fd7b4595c0e97921",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "fe299ee315a83fdafe7fb3e3cbd2075cc19867e7",
+            "comment": "chore: adopts custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "8b1ce88b43df03b09d0251921a01c0f0499d1cbe",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "4ca91d59dad4b9ad26955d59db15b81b7dfe6faa",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "cf79cc20319c377dda47c0a2b135eeb1b5b7efdf",
+            "comment": "chore: adopt custom JSX pragma"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "dd76eca6f3584188994575d1d15d805a24ee9a91",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "391878bf4d8a8210a8279a6ced8bf9a64daf4c64",
+            "comment": "chore: simplify createElement method"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c899af235684ed0e2745db9c8e394692865b6765",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "acbc5fcb1381e9adcc4e1fa678a374d42a79438b",
+            "comment": "bugfix: fix parent navigation after independency from id"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4dde6727c7e7fe7fbf6fedb4e1619deddbd3e16a",
+            "comment": "feat: value property over id"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ab5e8979917780ec8cf6b3b08b3696fc1b7a83f4",
+            "comment": "chore: restructure stories, add separate category for flat tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "142c07abdeedea8f6b2e0cc15acf02795ce7f0fc",
+            "comment": "chore: adopt custom JSX pragma"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "f7d88ee6fb582989efc057880ddfe60228649189",
+            "comment": "feat: Add error handling to DatePicker."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "bb8dfe06f4f2910eef1561c76410bf91b009fa37",
+            "comment": "feat: Move DatePicker compat to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "011c6f0665a03aa804aac1e0f900e70229518c7c",
+            "comment": "feat: Refactor DatePicker to remove Field and error handling logic."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:43 GMT",
       "tag": "@fluentui/react-components_v9.19.0",
       "version": "9.19.0",

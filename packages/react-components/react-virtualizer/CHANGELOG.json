@@ -2,6 +2,27 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:46 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "142c07abdeedea8f6b2e0cc15acf02795ce7f0fc",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",

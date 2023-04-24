@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: value property over id",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:32 GMT",
+      "tag": "@fluentui/react-button_v9.3.10",
+      "version": "9.3.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "d65eb9f6ec233104ab627532468fa64d71bbd702",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-button_v9.3.9",
       "version": "9.3.9",

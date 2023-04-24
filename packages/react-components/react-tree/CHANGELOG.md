@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 17 Apr 2023 17:54:01 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.12)
+
+Mon, 24 Apr 2023 08:12:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.11..@fluentui/react-tree_v9.0.0-beta.12)
+
+### Changes
+
+- bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- bugfix: fix parent navigation after independency from id ([PR #27642](https://github.com/microsoft/fluentui/pull/27642) by bernardo.sunderhus@gmail.com)
+- feat: value property over id ([PR #27532](https://github.com/microsoft/fluentui/pull/27532) by bernardo.sunderhus@gmail.com)
+- chore: restructure stories, add separate category for flat tree ([PR #27586](https://github.com/microsoft/fluentui/pull/27586) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-avatar to v9.4.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-button to v9.3.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.11)
 
