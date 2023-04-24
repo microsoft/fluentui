@@ -4,22 +4,26 @@ import { getAccessibleDataObject } from './index';
 import { IAccessibilityProps } from '../types/index';
 import { Async } from '../Utilities';
 
-interface IHTMLTooltipTextProps {
+interface IFocusableTooltipTextProps {
   className?: ITooltipHostProps['hostClassName'];
   content?: ITooltipHostProps['content'];
   accessibilityData?: IAccessibilityProps;
 }
 
-interface IHTMLTooltipTextState {
+interface IFocusableTooltipTextState {
   textOverflow: boolean;
 }
 
-export class HTMLTooltipText extends React.Component<IHTMLTooltipTextProps, IHTMLTooltipTextState> {
+/**
+ * Component to make the text focusable when the overflowed content is clipped
+ * because of the CSS text-overflow property.
+ */
+export class FocusableTooltipText extends React.Component<IFocusableTooltipTextProps, IFocusableTooltipTextState> {
   private _tooltipChild = React.createRef<HTMLSpanElement>();
   private _resizeObserver?: ResizeObserver;
   private _async: Async;
 
-  constructor(props: IHTMLTooltipTextProps) {
+  constructor(props: IFocusableTooltipTextProps) {
     super(props);
 
     this.state = {
@@ -38,7 +42,6 @@ export class HTMLTooltipText extends React.Component<IHTMLTooltipTextProps, IHTM
           {...getAccessibleDataObject(accessibilityData)}
           ref={this._tooltipChild}
           data-is-focusable={this.state.textOverflow}
-          tabIndex={this.state.textOverflow ? 0 : -1}
         >
           {content}
         </span>

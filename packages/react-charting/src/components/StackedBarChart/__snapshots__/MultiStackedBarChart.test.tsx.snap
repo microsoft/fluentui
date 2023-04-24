@@ -74,7 +74,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -281,7 +280,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -740,7 +738,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -947,7 +944,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -1323,7 +1319,6 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -1498,7 +1493,6 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -1766,7 +1760,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -1958,7 +1951,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -2243,7 +2235,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -2444,7 +2435,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -2738,7 +2728,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -2929,7 +2918,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -3213,7 +3201,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -3414,7 +3401,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -3637,7 +3623,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -3812,7 +3797,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>
@@ -4287,7 +4271,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Monitored
             </span>
@@ -4488,7 +4471,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               Unmonitored
             </span>

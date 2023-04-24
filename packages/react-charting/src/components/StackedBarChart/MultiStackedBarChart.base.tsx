@@ -15,7 +15,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { HTMLTooltipText } from '../../utilities/HTMLTooltipText';
+import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -296,7 +296,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <HTMLTooltipText
+              <FocusableTooltipText
                 className={this._classNames.chartTitleLeft}
                 content={data!.chartTitle}
                 accessibilityData={data!.chartTitleAccessibilityData}

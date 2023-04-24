@@ -66,7 +66,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               one
             </span>
@@ -234,7 +233,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               two
             </span>
@@ -578,7 +576,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               one
             </span>
@@ -746,7 +743,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               two
             </span>
@@ -1010,7 +1006,6 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               one
             </span>
@@ -1143,7 +1138,6 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               two
             </span>
@@ -1293,7 +1287,6 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               one
             </span>
@@ -1444,7 +1437,6 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             <span
               data-is-focusable={false}
               role="text"
-              tabIndex={-1}
             >
               two
             </span>
