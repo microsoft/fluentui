@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 07:36:03 GMT",
+      "tag": "@fluentui/react-charting_v5.16.21",
+      "version": "5.16.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "948b5bf9871303d1742f1b9a17a3bd4006ce2fea",
+            "comment": "Make line chart screen reader accessible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Apr 2023 07:49:09 GMT",
       "tag": "@fluentui/react-charting_v5.16.20",
       "version": "5.16.20",
