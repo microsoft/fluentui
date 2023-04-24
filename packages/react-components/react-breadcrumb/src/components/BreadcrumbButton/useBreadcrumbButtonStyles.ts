@@ -4,14 +4,22 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
+/**
+ * Static CSS class names used internally for the component slots.
+ */
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> = {
   root: 'fui-BreadcrumbButton',
   icon: 'fui-BreadcrumbButton__icon',
 };
 
 /**
- * Styles for the root slot
+ * CSS variable names used internally for styling in the Breadcrumb.
  */
+export const breadcrumbCSSVars = {
+  breadcrumbIconSizeVar: '--fui-Breadcrumb--icon-size',
+  breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
+};
+
 const useStyles = makeStyles({
   root: {},
   small: {
@@ -41,23 +49,23 @@ const useStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
+  base: {
+    fontSize: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+    height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+    lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
+    width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+  },
   small: {
-    fontSize: '12px',
-    height: '12px',
-    lineHeight: tokens.lineHeightBase200,
-    width: '12px',
+    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
   },
   medium: {
-    fontSize: '16px',
-    height: '16px',
-    lineHeight: tokens.lineHeightBase400,
-    width: '16px',
+    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
   },
   large: {
-    fontSize: '20px',
-    height: '20px',
-    lineHeight: tokens.lineHeightBase600,
-    width: '20px',
+    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
   },
 });
 /**
@@ -81,7 +89,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
   }
 
   useButtonStyles_unstable(state);
