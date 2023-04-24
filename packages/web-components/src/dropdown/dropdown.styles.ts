@@ -2,33 +2,36 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
-  borderRadiusSmall,
-  colorCompoundBrandBackground,
+  borderRadiusNone,
   colorCompoundBrandStroke,
   colorNeutralBackground1,
-  colorNeutralBackgroundDisabled,
+  colorNeutralBackground3,
   colorNeutralForeground1,
   colorNeutralForeground3,
-  colorNeutralForegroundDisabled,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
-  colorNeutralStrokeDisabled,
-  colorStrokeFocus1,
-  colorStrokeFocus2,
   colorTransparentBackground,
+  colorTransparentStroke,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
   durationUltraFast,
   fontFamilyBase,
+  fontSizeBase200,
   fontSizeBase300,
   fontWeightRegular,
+  lineHeightBase200,
   lineHeightBase300,
+  shadow16,
   shadow2,
+  spacingHorizontalSNudge,
   spacingHorizontalXS,
+  spacingHorizontalXXS,
+  spacingVerticalXS,
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { DropdownStyleSizes } from './dropdown.options.js';
 
 /** Dropdown styles
  * @public
@@ -39,10 +42,10 @@ export const styles = css`
   :host {
     background: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: ${strokeWidthThick} solid ${colorNeutralStroke1};
+    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
     box-sizing: border-box;
-    color: var(--neutral-foreground-rest);
+    color: var(--colorNeutralForeground1);
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -52,14 +55,13 @@ export const styles = css`
     user-select: none;
     outline: none;
     vertical-align: middle;
-    padding: 0 var(--spacingHorizontalSNudge);
- }
- :host::after {
+  }
+  :host::after {
     box-sizing: border-box;
     content: '';
     position: absolute;
     left: -1px;
-    bottom: -2px;
+    bottom: 0px;
     right: -1px;
     height: max(${strokeWidthThick}, ${borderRadiusMedium});
     border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
@@ -69,47 +71,33 @@ export const styles = css`
     transition-property: transform;
     transition-duration: ${durationUltraFast};
     transition-delay: ${curveAccelerateMid};
- }
- :host(:focus-within)::after {
+  }
+  :host(:focus-within)::after {
     transform: scaleX(1);
     transition-property: transform;
     transition-duration: ${durationNormal};
     transition-delay: ${curveDecelerateMid};
   }
- :host(appearance="underline") {
-    background: ${colorTransparentBackground};
-    border: 0 none;
-    border-bottom: ${strokeWidthThin} solid ${colorNeutralStroke1};: 
- }
 
-.listbox {
+  .listbox {
+    box-sizing: border-box;
     border: none;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     position: fixed;
-    top: 5px;;
+    top: 5px;
     left: 0;
     z-index: 1;
     height: calc(var(--size) * 32px);
     overflow-y: auto;
+    padding: ${spacingVerticalXS} ${spacingHorizontalXS};
+    box-shadow: ${shadow16};
+    border-radius: ${borderRadiusMedium};
+    background: ${colorNeutralBackground1};
     margin-top: 2px;
-}
-:host([size="0"]) .listbox {
-    max-height: none;
-}
-.control + .listbox {
-    max-height: 300px
-}
-:host(:not([aria-haspopup])) .listbox {
-    left: auto;
-    position: static;
-    z-index: auto;
-}
-.listbox[hidden] {
-    display: none;
-}
-.selected-value {
+  }
+  .selected-value {
     flex: 1 1 auto;
     font-family: inherit;
     overflow: hidden;
@@ -119,34 +107,76 @@ export const styles = css`
     min-width: 200px;
     padding-right: ${spacingHorizontalXS};
     color: ${colorNeutralForeground1};
-}
-.indicator {
+  }
+  .indicator {
     display: flex;
     color: ${colorNeutralForeground3};
-}
-.control {
+    font-size: ;
+  }
+  .control {
     align-items: center;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
     min-height: 100%;
     width: 100%;
-}
-
-:host([disabled]) {
-    cursor: auto;
-}
-:host([disabled]) .control {
-  cursor: auto;
-  user-select: none;
-}
-
-slot[name="listbox"] {
+    padding: 0 var(--spacingHorizontalSNudge);
+  }
+  .control + .listbox {
+    max-height: 300px;
+  }
+  .listbox[hidden] {
     display: none;
-    width: 100%;
-}
-:host([open]) slot[name="listbox"] {
-    display: flex;
-    position: absolute;
-}
+  }
+  :host(:not([aria-haspopup])) .listbox {
+    left: auto;
+    position: static;
+    z-index: auto;
+  }
+
+  :host([style-sizes='${DropdownStyleSizes.small}']) {
+    --style-size-font-small: ${fontSizeBase200} / ${lineHeightBase200};
+    height: 24px;
+    padding: 0 ${spacingHorizontalSNudge};
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
+    font: var(--style-size-font-small) ${fontFamilyBase};
+  }
+
+  :host([style-sizes='${DropdownStyleSizes.small}']) .selected-value {
+    padding: 0 ${spacingHorizontalXXS};
+  }
+
+  :host([appearance='underline']) {
+    background: ${colorTransparentBackground};
+    border-color: ${colorTransparentStroke};
+    border-bottom-color: ${colorNeutralStroke1};
+    border-radius: ${borderRadiusNone};
+  }
+
+  :host([appearance='underline'])::after {
+    height: 0;
+  }
+
+  :host([appearance='filled-darker']) {
+    background: ${colorNeutralBackground3};
+    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    border-bottom: ${strokeWidthThin} solid ${colorNeutralStroke1};
+    box-shadow: ${shadow2};
+  }
+
+  :host([appearance='filled-lighter']) {
+    background: ${colorNeutralBackground1};
+    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow2};
+  }
+
+  :host([size='0']) .listbox {
+    max-height: none;
+  }
+
+  :host([disabled]) {
+    cursor: auto;
+    user-select: none;
+  }
 `;

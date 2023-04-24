@@ -1,5 +1,6 @@
-import { Observable, attr } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { FASTSelect } from '@microsoft/fast-foundation';
+import { DropdownStyleSizes } from './dropdown.options.js';
 
 /**
  * @class Dropdown component
@@ -8,6 +9,16 @@ import { FASTSelect } from '@microsoft/fast-foundation';
  * This class extends the FASTSelect.
  */
 export class Dropdown extends FASTSelect {
+  /**
+   * Style Sizes
+   *
+   * @public
+   * @remarks
+   * HTML attribute: style-sizes.
+   */
+  @attr({ attribute: 'style-sizes' })
+  public styleSizes?: DropdownStyleSizes;
+
   protected sizeChanged(prev: number | undefined, next: number): void {
     super.sizeChanged(prev, next);
     this.updateComputedStylesheet();
