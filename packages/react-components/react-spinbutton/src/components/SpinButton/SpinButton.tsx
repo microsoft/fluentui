@@ -4,7 +4,7 @@ import { renderSpinButton_unstable } from './renderSpinButton';
 import { useSpinButtonStyles_unstable } from './useSpinButtonStyles';
 import type { SpinButtonProps } from './SpinButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A SpinButton allows someone to incrementally adjust a value in small steps.
@@ -14,8 +14,7 @@ export const SpinButton: ForwardRefComponent<SpinButtonProps> = React.forwardRef
 
   useSpinButtonStyles_unstable(state);
 
-  const { useSpinButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useSpinButtonStyles_unstable')(state);
 
   return renderSpinButton_unstable(state);
 });

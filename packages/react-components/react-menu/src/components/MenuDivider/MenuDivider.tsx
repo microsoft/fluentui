@@ -4,7 +4,7 @@ import { useMenuDividerStyles_unstable } from './useMenuDividerStyles';
 import { renderMenuDivider_unstable } from './renderMenuDivider';
 import type { MenuDividerProps } from './MenuDivider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled MenuDivider, using the `useMenuDivider_unstable` hook.
@@ -14,8 +14,7 @@ export const MenuDivider: ForwardRefComponent<MenuDividerProps> = React.forwardR
 
   useMenuDividerStyles_unstable(state);
 
-  const { useMenuDividerStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useMenuDividerStyles_unstable')(state);
 
   return renderMenuDivider_unstable(state);
 });
