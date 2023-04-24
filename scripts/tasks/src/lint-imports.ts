@@ -165,10 +165,11 @@ function lintImports(
 
     if (importStatements) {
       importStatements.forEach(statement => {
-        const parts = importStatementRegex.exec(statement);
+        const [importMatch, declarationType, importSpecifier] = importStatementRegex.exec(statement) ?? [];
 
-        if (parts) {
-          _evaluateImport(filePath, parts, importErrors, isExample);
+        // import regex will include also invalid export declaration type that don't re-export thus we need to filter these in order to not get invalid results
+        if (importMatch && importSpecifier && declarationType !== 'export') {
+          _evaluateImport({ filePath, importSpecifier, importMatch, importErrors, isExample });
         }
       });
     }
@@ -200,17 +201,15 @@ function lintImports(
     }
   }
 
-  /**
-   * @param importMatch - Result of running `importStatementRegex` against a single import
-   * (`[1]` will be the import path)
-   */
-  function _evaluateImport(
-    filePath: string,
-    importMatch: RegExpMatchArray,
-    importErrors: ImportErrors,
-    isExample?: boolean,
-  ) {
-    const importPath = importMatch[2];
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  function _evaluateImport(options: {
+    filePath: string;
+    importMatch: string;
+    importSpecifier: string;
+    importErrors: ImportErrors;
+    isExample?: boolean;
+  }) {
+    const { filePath, importErrors, importMatch, importSpecifier: importPath, isExample } = options;
     const packageRootPath = importPath.split('/')[0];
     const relativePath = path.relative(sourcePath, filePath);
     let fullImportPath: string | undefined;
@@ -296,7 +295,7 @@ function lintImports(
         );
       }
 
-      if (importMatch[0].startsWith('import * from') && !isScss) {
+      if (importMatch.startsWith('import * from') && !isScss) {
         _addError(importErrors.importStar, relativePath, importPath);
       }
     }

@@ -9,7 +9,7 @@ These are not production-ready components and **should never be used in product*
 To import DatePicker:
 
 ```js
-import { DatePicker } from '@fluentui/react-datepicker';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 ```
 
 ### Examples
