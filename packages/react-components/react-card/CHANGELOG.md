@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Mon, 17 Apr 2023 17:53:45 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.8)
+
+Mon, 24 Apr 2023 08:12:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.7..@fluentui/react-card_v9.0.8)
+
+### Patches
+
+- chore: adopt custom JSX pragma ([PR #27606](https://github.com/microsoft/fluentui/pull/27606) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-button to v9.3.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.7)
 

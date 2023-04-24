@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { DrawerState, DrawerSlots } from './Drawer.types';
 import { Dialog, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 
@@ -7,7 +11,7 @@ import { Dialog, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialo
  * Render the final JSX of Drawer
  */
 export const renderDrawer_unstable = (state: DrawerState) => {
-  const { slots, slotProps } = getSlots<DrawerSlots>(state);
+  const { slots, slotProps } = getSlotsNext<DrawerSlots>(state);
 
   const dialogSurfaceProps = {
     ...slotProps.root,

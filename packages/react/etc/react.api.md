@@ -4753,7 +4753,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selection?: ISelection;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
-    selectionZoneProps?: ISelectionZoneProps;
+    selectionZoneProps?: Partial<ISelectionZoneProps>;
     setKey?: string;
     // @deprecated
     shouldApplyApplicationRole?: boolean;
@@ -9463,7 +9463,7 @@ export interface ITooltipHost {
 }
 
 // @public
-export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
+export interface ITooltipHostProps extends Omit<React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase>, 'content'> {
     calloutProps?: ICalloutProps;
     className?: string;
     closeDelay?: number;
@@ -9505,7 +9505,7 @@ export interface ITooltipHostStyles {
 }
 
 // @public (undocumented)
-export interface ITooltipProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipBase> {
+export interface ITooltipProps extends Omit<React_2.HTMLAttributes<HTMLDivElement | TooltipBase>, 'content'> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
     content?: string | JSX.Element | JSX.Element[];

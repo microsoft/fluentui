@@ -2,6 +2,33 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:32 GMT",
+      "tag": "@fluentui/react-card_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "2c2438a98002403210039275ce54f94367f2b3fe",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.3.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:45 GMT",
       "tag": "@fluentui/react-card_v9.0.7",
       "version": "9.0.7",

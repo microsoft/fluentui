@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:43 GMT",
+      "tag": "@fluentui/react-tabs_v9.3.11",
+      "version": "9.3.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "fe299ee315a83fdafe7fb3e3cbd2075cc19867e7",
+            "comment": "chore: adopts custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-tabs_v9.3.10",
       "version": "9.3.10",
