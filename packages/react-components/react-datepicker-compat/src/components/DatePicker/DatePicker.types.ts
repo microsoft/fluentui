@@ -105,9 +105,9 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
   onOpenChange?: (open: boolean) => void;
 
   /**
-   * Callback to run when the DatePicker encounters an error when validating the input
+   * Callback to run after the DatePicker's input has been validated
    */
-  onValidationError?: (data: DatePickerErrorData) => void;
+  onValidationResult?: (data: DatePickerValidationResultData) => void;
 
   /**
    * Whether the DatePicker should render the popup as inline or in a portal
@@ -238,9 +238,14 @@ export type DatePickerState = ComponentState<DatePickerSlots> & {
 };
 
 /**
- * Data passed to the `onValidationError` callback.
+ * Data passed to the `onValidationResult` callback.
  */
-export type DatePickerErrorData = {
+export type DatePickerValidationResultData = {
   /** The error found when validating the input. */
-  error: 'invalid-input' | 'out-of-bounds' | 'required-input';
+  error?: DatePickerErrorType;
 };
+
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
