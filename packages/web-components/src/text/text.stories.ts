@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
+import { colorNeutralBackground6 } from '../theme/design-tokens.js';
 import type { Text as FluentText } from './text.js';
 import './define.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
@@ -159,9 +160,13 @@ export const Strikethrough = renderComponent(html<TextStoryArgs>`
 
 export const Block = renderComponent(html<TextStoryArgs>`
   <span>
-    <fluent-text style="background: #ddd"><span>Fluent text is inline by default. Setting</span></fluent-text>
-    <fluent-text style="background: #ddd" block><span>block</span></fluent-text>
-    <fluent-text style="background: #ddd"><span>will make it behave as a block element.</span></fluent-text>
+    <fluent-text style="background: ${colorNeutralBackground6}"
+      ><span>Fluent text is inline by default. Setting</span></fluent-text
+    >
+    <fluent-text style="background: ${colorNeutralBackground6}" block><span>block</span></fluent-text>
+    <fluent-text style="background: ${colorNeutralBackground6}"
+      ><span>will make it behave as a block element.</span></fluent-text
+    >
   </span>
 `);
 
