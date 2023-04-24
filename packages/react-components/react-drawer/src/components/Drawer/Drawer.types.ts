@@ -54,6 +54,13 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
   modal?: boolean;
 
   /**
+   * When this is true, the drawer will be closed on a click on the overlay.
+   * This prop is only used when `type` is `overlay`.
+   * @defaultvalue true
+   */
+  lightDismiss?: boolean;
+
+  /**
    * Whether the drawer has a separator line.
    * This prop only works when `type` is `inline`.
    *
