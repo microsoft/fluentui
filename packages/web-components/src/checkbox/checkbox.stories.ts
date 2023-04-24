@@ -1,5 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
+import { css } from '@microsoft/fast-element';
 import { renderComponent } from '../helpers.stories.js';
 import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import './define.js';
@@ -206,12 +207,12 @@ export const LabelBefore = renderComponent(labelBeforeTemplate).bind({});
 // label wrapping
 const labelWrappingTemplate = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}">
-    <fluent-checkbox checked style="max-width: 400px">
+    <fluent-checkbox checked style="max-width: 400px; display: inline-flex; align-items: flex-start;">
       Here is an example of a checkbox with a long label and it starts to wrap to a second line
     </fluent-checkbox>
   </form>
 `;
-export const LabelWrapping = renderComponent(labelWrappingTemplate).bind({});
+export const LabelWrapping: Args = renderComponent(labelWrappingTemplate).bind({});
 
 // circular
 const CheckboxCircular = html<CheckboxStoryArgs>`
