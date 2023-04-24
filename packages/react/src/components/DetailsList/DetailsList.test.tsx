@@ -78,8 +78,6 @@ describe('DetailsList', () => {
     spy.mockRestore();
   });
 
-  // beforeEach(() => {});
-
   afterEach(() => {
     if ((setTimeout as unknown as jest.Mock).mock) {
       jest.runOnlyPendingTimers();

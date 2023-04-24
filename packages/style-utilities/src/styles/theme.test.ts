@@ -5,7 +5,7 @@ import type { IRawStyle } from '@fluentui/merge-styles';
 describe('registerOnThemeChangeCallback', () => {
   let callback = jest.fn();
 
-  it.skip('registers a callback successfully', () => {
+  it('registers a callback successfully', () => {
     registerOnThemeChangeCallback(callback);
     expect(callback.mock.calls.length).toBe(0);
   });

@@ -22,7 +22,6 @@ describe('Dialog deprecated props', () => {
 
   afterAll(() => {
     setWarningCallback();
-    //   resetIds();
   });
 
   afterEach(() => {
