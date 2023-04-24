@@ -4,7 +4,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useToolbarGroup_unstable } from './useToolbarGroup';
 import { useToolbarGroupStyles_unstable } from './useToolbarGroupStyles';
 import { renderToolbarGroup_unstable } from './renderToolbarGroup';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToolbarGroup component is a Button to be used inside Toolbar
@@ -15,8 +15,7 @@ export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps> = React.forwar
 
   useToolbarGroupStyles_unstable(state);
 
-  const { useToolbarGroupStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useToolbarGroupStyles_unstable')(state);
 
   return renderToolbarGroup_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

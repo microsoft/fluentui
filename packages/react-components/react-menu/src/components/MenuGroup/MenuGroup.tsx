@@ -5,7 +5,7 @@ import { useMenuGroupContextValues_unstable } from './useMenuGroupContextValues'
 import type { MenuGroupProps } from './MenuGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuGroupStyles_unstable } from './useMenuGroupStyles';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled MenuGroup, using the `useMenuGroup_unstable` hook.
@@ -16,8 +16,7 @@ export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef((
 
   useMenuGroupStyles_unstable(state);
 
-  const { useMenuGroupStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useMenuGroupStyles_unstable')(state);
 
   return renderMenuGroup_unstable(state, contextValues);
 });
