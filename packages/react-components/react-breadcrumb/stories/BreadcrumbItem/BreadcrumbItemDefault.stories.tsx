@@ -10,6 +10,6 @@ export const Default = () => (
     </BreadcrumbDivider>
     <BreadcrumbItem>Item</BreadcrumbItem>
     <BreadcrumbDivider />
-    <BreadcrumbItem>Item</BreadcrumbItem>
+    <BreadcrumbItem current>Item</BreadcrumbItem>
   </Breadcrumb>
 );

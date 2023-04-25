@@ -23,7 +23,7 @@ export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
 // @public
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 
-// @public (undocumented)
+// @public
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
 
 // @public
