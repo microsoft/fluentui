@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:44 GMT",
+      "tag": "@fluentui/react-tooltip_v9.2.10",
+      "version": "9.2.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "cf79cc20319c377dda47c0a2b135eeb1b5b7efdf",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-tooltip_v9.2.9",
       "version": "9.2.9",

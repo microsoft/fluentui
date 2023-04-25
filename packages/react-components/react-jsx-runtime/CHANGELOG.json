@@ -2,6 +2,21 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:37 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "391878bf4d8a8210a8279a6ced8bf9a64daf4c64",
+            "comment": "chore: simplify createElement method"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:51 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.0-alpha.1",
       "version": "9.0.0-alpha.1",

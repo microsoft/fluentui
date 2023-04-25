@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-data-grid-react-window
 
-This log was last generated on Mon, 17 Apr 2023 17:53:49 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-data-grid-react-window_v9.0.0-beta.23)
+
+Mon, 24 Apr 2023 08:12:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-data-grid-react-window_v9.0.0-beta.22..@fluentui/react-data-grid-react-window_v9.0.0-beta.23)
+
+### Changes
+
+- bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-table to v9.2.7 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-components to v9.19.1 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-data-grid-react-window_v9.0.0-beta.22)
 

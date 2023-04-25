@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adopt custom JSX pragma",
-  "packageName": "@fluentui/react-image",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

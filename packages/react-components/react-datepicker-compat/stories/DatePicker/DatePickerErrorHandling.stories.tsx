@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { addMonths, addYears, DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
-import type { DatePickerErrorData } from '../../src/DatePicker';
+import type { DatePickerValidationResultData } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   control: {
@@ -15,7 +15,7 @@ const maxDate = addYears(today, 1);
 
 export const ErrorHandling = () => {
   const styles = useStyles();
-  const [error, setError] = React.useState<DatePickerErrorData['error'] | undefined>(undefined);
+  const [error, setError] = React.useState<DatePickerValidationResultData['error']>(undefined);
 
   return (
     <Field
@@ -31,9 +31,19 @@ export const ErrorHandling = () => {
         maxDate={maxDate}
         placeholder="Select a date..."
         allowTextInput
-        onValidationError={data => setError(data.error)}
+        onValidationResult={data => setError(data.error)}
         className={styles.control}
       />
     </Field>
   );
+};
+
+ErrorHandling.parameters = {
+  docs: {
+    description: {
+      story:
+        'To add error handling to a DatePicker, use `onValidationResult` along with Field. `onValidationResult`' +
+        'provides an error type string that can be used with defaultDatePickerErrorStrings to get default messages.',
+    },
+  },
 };

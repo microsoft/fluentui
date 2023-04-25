@@ -20,7 +20,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { usePopupPositioning } from '../../utils/usePopupPositioning';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
-import type { DatePickerProps, DatePickerState } from './DatePicker.types';
+import type { DatePickerProps, DatePickerState, DatePickerValidationResultData } from './DatePicker.types';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
@@ -129,7 +129,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     onOpenChange,
     onSelectDate: onUserSelectDate,
     openOnClick = true,
-    onValidationError,
+    onValidationResult,
     parseDateFromString = defaultParseDateFromString,
     showCloseButton = false,
     showGoToToday = true,
@@ -155,6 +155,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const validateTextInput = React.useCallback(
     (date: Date | null = null): void => {
+      let error: DatePickerValidationResultData['error'] | undefined;
+
       if (allowTextInput) {
         if (formattedDate || date) {
           // Don't parse if the selected date has the same formatted string as what we're about to parse.
@@ -169,24 +171,26 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           if (!date || isNaN(date.getTime())) {
             // Reset input if formatting is available
             setSelectedDate(selectedDate);
-            onValidationError?.({ error: 'invalid-input' });
+            error = 'invalid-input';
           } else {
             if (isDateOutOfBounds(date, minDate, maxDate)) {
-              onValidationError?.({ error: 'out-of-bounds' });
+              error = 'out-of-bounds';
             } else {
               setSelectedDate(date);
             }
           }
         } else {
           if (required) {
-            onValidationError?.({ error: 'required-input' });
+            error = 'required-input';
           }
 
           onUserSelectDate?.(date);
         }
       } else if (required && !formattedDate) {
-        onValidationError?.({ error: 'required-input' });
+        error = 'required-input';
       }
+
+      onValidationResult?.({ error });
     },
     [
       allowTextInput,
@@ -195,7 +199,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       maxDate,
       minDate,
       onUserSelectDate,
-      onValidationError,
+      onValidationResult,
       parseDateFromString,
       required,
       selectedDate,
