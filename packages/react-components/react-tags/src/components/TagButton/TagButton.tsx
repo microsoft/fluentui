@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTagButton_unstable } from './useTagButton';
 import { renderTagButton_unstable } from './renderTagButton';
-import { useTagButtonStyles_unstable } from './useTagButtonStyles';
+import { useTagButtonStyles_unstable } from './useTagButtonStyles.styles';
 import type { TagButtonProps } from './TagButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
