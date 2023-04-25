@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuPopover_unstable } from './useMenuPopover';
-import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles';
+import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles.styles';
 import { renderMenuPopover_unstable } from './renderMenuPopover';
 import type { MenuPopoverProps } from './MenuPopover.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

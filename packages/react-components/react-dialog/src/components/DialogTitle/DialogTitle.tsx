@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDialogTitle_unstable } from './useDialogTitle';
 import { renderDialogTitle_unstable } from './renderDialogTitle';
-import { useDialogTitleStyles_unstable } from './useDialogTitleStyles';
+import { useDialogTitleStyles_unstable } from './useDialogTitleStyles.styles';
 import type { DialogTitleProps } from './DialogTitle.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

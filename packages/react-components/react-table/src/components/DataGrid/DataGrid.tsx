@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDataGrid_unstable } from './useDataGrid';
 import { renderDataGrid_unstable } from './renderDataGrid';
-import { useDataGridStyles_unstable } from './useDataGridStyles';
+import { useDataGridStyles_unstable } from './useDataGridStyles.styles';
 import type { DataGridProps } from './DataGrid.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDataGridContextValues_unstable } from './useDataGridContextValues';

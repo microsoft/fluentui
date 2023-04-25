@@ -1,25 +1,11 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 
 import { OverflowContext } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU } from '../constants';
-
-const useStyles = makeStyles({
-  overflowMenu: {
-    [`& [${DATA_OVERFLOW_MENU}]`]: {
-      flexShrink: 0,
-    },
-  },
-
-  overflowingItems: {
-    [`& [${DATA_OVERFLOWING}]`]: {
-      display: 'none',
-    },
-  },
-});
+import { useOverflowStyles } from './useOverflowStyles.styles';
 
 /**
  * Overflow Props
@@ -34,7 +20,7 @@ export type OverflowProps = Partial<
  * Provides an OverflowContext for OverflowItem descendants.
  */
 export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
-  const styles = useStyles();
+  const styles = useOverflowStyles();
 
   const { children, minimumVisible, overflowAxis = 'horizontal', overflowDirection, padding } = props;
 
