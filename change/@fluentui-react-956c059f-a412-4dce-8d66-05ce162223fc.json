@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(TimePicker): Updated TimePicker controlled and uncontrolled props to work correctly.",
-  "packageName": "@fluentui/react",
-  "email": "jamwu@microsoft.com",
-  "dependentChangeType": "patch"
-}
