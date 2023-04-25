@@ -1,12 +1,16 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  // Design tokens
   borderRadiusMedium,
   colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralForeground1,
+  colorNeutralForegroundDisabled,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
+  colorNeutralStrokeDisabled,
+  colorTransparentBackground,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
@@ -31,20 +35,23 @@ export const styles = css`
     font-family: ${fontFamilyBase};
   }
 
+  /* Label styles */
   label {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
     display: block;
     width: 100%;
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase300};
     color: ${colorNeutralForeground1};
   }
 
+  /* Select styles */
   select {
     display: block;
+    flex-grow: 1;
     height: 32px;
     padding: 0;
-    flex-grow: 1;
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
@@ -60,50 +67,54 @@ export const styles = css`
     padding-left: calc(${spacingHorizontalMNudge} + ${spacingHorizontalXXS});
   }
 
+  /* Select size variations */
   :host([size='small']) select {
     height: 24px;
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
   }
 
   :host([size='large']) select {
     height: 40px;
+    font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
   }
 
+  /* Disabled styles */
+  :host([disabled]) select {
+    color: ${colorNeutralForegroundDisabled};
+    background-color: ${colorTransparentBackground};
+    border-color: ${colorNeutralStrokeDisabled};
+  }
+
+  :host([disabled]) select:hover {
+    cursor: not-allowed;
+  }
+
+  /* Focus styles */
   select:focus {
     outline-color: transparent;
     outline-style: solid;
     outline-width: 2px;
   }
 
-  :host([size='small']) select {
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
-  }
-
-  :host([size='large']) select {
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
-  }
-
+  /* Select wrapper styles */
   .select-wrapper {
     display: flex;
-    flex-wrap: no-wrap;
     position: relative;
     align-items: center;
+    flex-wrap: no-wrap;
   }
 
   .select-wrapper::after {
     display: block;
     position: absolute;
     content: '';
-    border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
-    transform: scaleX(0);
-    transition-delay: ${curveAccelerateMid};
-    transition-duration: ${durationUltraFast};
-    transition-property: transform;
     left: 0;
     bottom: 0;
     right: 0;
     height: ${borderRadiusMedium};
+    border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
     background-image: linear-gradient(
       0deg,
       ${colorCompoundBrandStroke} 0%,
@@ -111,6 +122,10 @@ export const styles = css`
       transparent 50%,
       transparent 100%
     );
+    transform: scaleX(0);
+    transition-delay: ${curveAccelerateMid};
+    transition-duration: ${durationUltraFast};
+    transition-property: transform;
   }
 
   .select-wrapper:focus-within::after {
@@ -120,6 +135,7 @@ export const styles = css`
     transition-duration: ${durationNormal};
   }
 
+  /* Dropdown arrow styles */
   .dropdown-arrow {
     position: absolute;
     right: ${spacingHorizontalMNudge};
@@ -133,6 +149,7 @@ export const styles = css`
     color: ${colorNeutralStrokeAccessible};
   }
 
+  /* Dropdown arrow size variations */
   :host([size='small']) .dropdown-arrow {
     width: 16px;
     height: 16px;
@@ -143,5 +160,10 @@ export const styles = css`
     width: 24px;
     height: 24px;
     font-size: 24px;
+  }
+
+  /* Disabled dropdown arrow styles */
+  :host([disabled]) .dropdown-arrow svg {
+    color: ${colorNeutralForegroundDisabled};
   }
 `;
