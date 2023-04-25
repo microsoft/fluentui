@@ -32,7 +32,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -67,7 +67,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -111,7 +111,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
             key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -122,7 +122,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -133,7 +133,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
             key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -144,7 +144,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={10}
-            y={0}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -155,7 +155,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
             key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -166,7 +166,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={20}
-            y={0}
+            y={180.76086956521738}
           />
         </g>
         <g
@@ -182,7 +182,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
             key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -193,7 +193,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -204,7 +204,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
             key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -215,7 +215,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={10}
-            y={18.80434782608696}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -226,7 +226,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
             key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -237,7 +237,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={20}
-            y={0}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -274,12 +274,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -618,14 +612,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={false}
       hidden={false}
       id="toolTipcallout0"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -781,7 +781,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -816,7 +816,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -860,7 +860,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
             key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -871,7 +871,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -882,7 +882,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
             key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -893,7 +893,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={10}
-            y={0}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -904,7 +904,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
             key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -915,7 +915,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={20}
-            y={0}
+            y={180.76086956521738}
           />
         </g>
         <g
@@ -931,7 +931,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
             key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -942,7 +942,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -953,7 +953,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
             key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -964,7 +964,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={10}
-            y={18.80434782608696}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -975,7 +975,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
             key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -986,7 +986,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={20}
-            y={0}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -1023,12 +1023,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1367,14 +1361,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={false}
       hidden={false}
       id="toolTipcallout0"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -1515,142 +1515,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <div
@@ -2096,142 +1960,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <div
@@ -2657,142 +2385,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         id="yAxisGElementchart_7"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <span
@@ -2898,142 +2490,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         id="yAxisGElementchart_11"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={false}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={false}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={false}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={false}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={false}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={false}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <div
@@ -3479,142 +2935,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         id="yAxisGElementchart_21"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <div
@@ -4060,142 +3380,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <div
@@ -4641,142 +3825,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         id="yAxisGElementchart_31"
         transform="translate(40, 0)"
       />
-      <g>
-        <g
-          transform="translate(19, 0)"
-        >
-          <rect
-            aria-label="2000. MetaData1, 66."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={4.45652173913043}
-          />
-          <rect
-            aria-label="2000. MetaData2, 13."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={0}
-          />
-          <rect
-            aria-label="2000. MetaData3, 34."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-        <g
-          transform="translate(-28, 0)"
-        >
-          <rect
-            aria-label="2010. MetaData1, 14."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={0}
-            y={0}
-          />
-          <rect
-            aria-label="2010. MetaData2, 90."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00188f"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={10}
-            y={18.80434782608696}
-          />
-          <rect
-            aria-label="2010. MetaData3, 33."
-            className=
-
-                {
-                  cursor: default;
-                }
-            data-is-focusable={true}
-            fill="#00bcf2"
-            height={0}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity=""
-            role="img"
-            width={-9}
-            x={20}
-            y={0}
-          />
-        </g>
-      </g>
     </svg>
   </div>
   <div

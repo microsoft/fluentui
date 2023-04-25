@@ -10,6 +10,8 @@ import toJson from 'enzyme-to-json';
 
 // Wrapper of the LineChart to be tested.
 let wrapper: ReactWrapper<ILineChartProps, ILineChartState, LineChartBase> | undefined;
+//const animationFrame = () => new Promise(resolve => window.requestAnimationFrame(resolve));
+const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
@@ -165,6 +167,11 @@ describe('LineChart - mouse events', () => {
 
     root = document.createElement('div');
     document.body.appendChild(root);
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
   });
 
   afterEach(() => {
@@ -174,6 +181,8 @@ describe('LineChart - mouse events', () => {
       document.body.removeChild(root);
       root = null;
     }
+    jest.useRealTimers();
+    window.requestAnimationFrame = originalRAF;
   });
 
   it('Should render callout correctly on mouseover', () => {

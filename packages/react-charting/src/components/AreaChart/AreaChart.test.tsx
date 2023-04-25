@@ -10,6 +10,7 @@ import toJson from 'enzyme-to-json';
 
 // Wrapper of the AreaChart to be tested.
 let wrapper: ReactWrapper<IAreaChartProps, IAreaChartState, AreaChartBase> | undefined;
+const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
@@ -235,6 +236,11 @@ describe('AreaChart - mouse events', () => {
 
     root = document.createElement('div');
     document.body.appendChild(root);
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
   });
 
   afterEach(() => {
@@ -244,6 +250,8 @@ describe('AreaChart - mouse events', () => {
       document.body.removeChild(root);
       root = null;
     }
+    jest.useRealTimers();
+    window.requestAnimationFrame = originalRAF;
   });
 
   it('Should render callout correctly on mouseover', () => {

@@ -12,6 +12,7 @@ import toJson from 'enzyme-to-json';
 let wrapper:
   | ReactWrapper<IGroupedVerticalBarChartProps, IGroupedVerticalBarChartState, GroupedVerticalBarChartBase>
   | undefined;
+const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
@@ -205,8 +206,20 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('GroupedVerticalBarChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
+  });
+
+  afterEach(() => {
+    sharedAfterEach();
+    jest.useRealTimers();
+    window.requestAnimationFrame = originalRAF;
+  });
 
   it('Should render callout correctly on mouseover', () => {
     wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);

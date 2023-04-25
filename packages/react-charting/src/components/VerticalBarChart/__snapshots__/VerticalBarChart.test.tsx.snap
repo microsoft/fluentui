@@ -1424,11 +1424,6 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         id="yAxisGElementchart_36"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div
@@ -1874,11 +1869,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div
@@ -2324,11 +2314,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div
@@ -2754,11 +2739,6 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         id="yAxisGElementchart_7"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <span
@@ -2864,11 +2844,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         id="yAxisGElementchart_11"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div
@@ -3314,11 +3289,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         id="yAxisGElementchart_21"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div
@@ -3764,11 +3734,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div
@@ -4214,11 +4179,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         id="yAxisGElementchart_31"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-      </g>
     </svg>
   </div>
   <div

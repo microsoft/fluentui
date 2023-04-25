@@ -10,6 +10,7 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
+const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
@@ -239,9 +240,19 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('HeatMapChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
-
+  beforeEach(() => {
+    sharedBeforeEach();
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
+  });
+  afterEach(() => {
+    sharedAfterEach();
+    jest.useRealTimers();
+    window.requestAnimationFrame = originalRAF;
+  });
   it('Should render callout correctly on mouseover', () => {
     wrapper = mount(
       <HeatMapChart
