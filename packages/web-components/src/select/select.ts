@@ -9,10 +9,32 @@ import { SelectSize } from './select.options.js';
 export class Select extends FASTElement {
   constructor() {
     super();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     Object.assign(this, new ARIAGlobalStatesAndProperties()); // Assigns ARIA global states and properties to the element
   }
 
   // Attributes
+  /**
+   * The name of the select element
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: name
+   */
+  @attr
+  public name?: string;
+
+  /**
+   * The required boolean attribute of the select element
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: required
+   */
+  @attr({ mode: 'boolean' })
+  public required?: boolean;
+
   /**
    * The optional label of the select
    *
@@ -48,10 +70,10 @@ export class Select extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: size
+   * HTML Attribute: control-size
    */
   @attr
-  public size?: SelectSize;
+  public controlSize?: SelectSize;
 
   /**
    * The disabled state of the select
@@ -139,23 +161,23 @@ export class Select extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
     if (this.selectElement) {
-      this.selectElement.addEventListener('change', this.handleChange.bind(this)); // Adds a change event listener to the select element
-      this.selectElement.addEventListener('input', this.handleInput.bind(this)); // Adds an input event listener to the select element
+      this.selectElement.addEventListener('change', this.handleChange);
+      this.selectElement.addEventListener('input', this.handleInput);
       this.setOptions();
     }
   }
 
   // Sets the options of the select element
   private setOptions(): void {
-    this.options = [...this.querySelectorAll('option')] as HTMLOptionElement[];
+    this.options = Array.from(this.querySelectorAll('option')) as HTMLOptionElement[];
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
     // Remove events from Select element
     if (this.selectElement) {
-      this.selectElement.removeEventListener('change', this.handleChange.bind(this));
-      this.selectElement.removeEventListener('input', this.handleInput.bind(this));
+      this.selectElement.removeEventListener('change', this.handleChange);
+      this.selectElement.removeEventListener('input', this.handleInput);
     }
   }
 
@@ -176,16 +198,6 @@ export class Select extends FASTElement {
   public handleSlotChange() {
     // Sets the options of the select element
     this.setOptions();
-  }
-
-  // Dispatches an input event when the inputEventTrigger property changes
-  inputEventTriggerChanged(): void {
-    this.dispatchEvent(new Event('input'));
-  }
-
-  // Dispatches a change event when the changeEventTrigger property changes
-  changeEventTriggerChanged(): void {
-    this.dispatchEvent(new Event('change'));
   }
 }
 

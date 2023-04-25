@@ -68,13 +68,13 @@ export const styles = css`
   }
 
   /* Select size variations */
-  :host([size='small']) select {
+  :host([control-size='small']) select {
     height: 24px;
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host([size='large']) select {
+  :host([control-size='large']) select {
     height: 40px;
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
@@ -150,13 +150,13 @@ export const styles = css`
   }
 
   /* Dropdown arrow size variations */
-  :host([size='small']) .dropdown-arrow {
+  :host([control-size='small']) .dropdown-arrow {
     width: 16px;
     height: 16px;
     font-size: 16px;
   }
 
-  :host([size='large']) .dropdown-arrow {
+  :host([control-size='large']) .dropdown-arrow {
     width: 24px;
     height: 24px;
     font-size: 24px;

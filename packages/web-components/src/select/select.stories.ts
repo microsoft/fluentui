@@ -9,8 +9,13 @@ type SelectStoryArgs = Args & FluentSelect;
 type SelectStoryMeta = Meta<SelectStoryArgs>;
 
 const storyTemplate = html<SelectStoryArgs>`
-  <fluent-select>
-    <label slot="label">Label</label>
+  <fluent-select
+    control-size="${x => x.controlSize}"
+    ?disabled="${x => x.disabled}"
+    ?required="${x => x.required}"
+    ?autofocus="${x => x.autofocus}"
+  >
+    <label slot="label">${x => x.label}</label>
     <option value="option1">Option 1</option>
     <option value="option2">Option 2</option>
     <optgroup label="Group 1">
@@ -25,23 +30,28 @@ export default {
   args: {
     disabled: false,
     label: 'Select an option',
-    size: SelectSetSize.medium,
+    controlSize: SelectSetSize.medium,
+    required: false,
+    autofocus: false,
   },
   argTypes: {
+    label: { control: 'text' },
     disabled: { control: 'boolean' },
-    size: {
+    controlSize: {
       control: {
         type: 'inline-radio',
         options: Object.values(SelectSetSize),
       },
     },
+    required: { control: 'boolean' },
+    autofocus: { control: 'boolean' },
   },
 } as SelectStoryMeta;
 
 export const Select = renderComponent(storyTemplate).bind({});
 
 export const SelectSmallSize = renderComponent(html<SelectStoryArgs>`
-  <fluent-select size="small">
+  <fluent-select control-size="small">
     <option value="option1">Option 1</option>
     <option value="option2">Option 2</option>
     <optgroup label="Group 1">
@@ -52,7 +62,7 @@ export const SelectSmallSize = renderComponent(html<SelectStoryArgs>`
 `);
 
 export const SelectLargeSize = renderComponent(html<SelectStoryArgs>`
-  <fluent-select size="large">
+  <fluent-select control-size="large">
     <option value="option1">Option 1</option>
     <option value="option2">Option 2</option>
     <optgroup label="Group 1">

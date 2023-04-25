@@ -9,13 +9,17 @@ import type { Select } from './select.js';
 export function selectTemplate<T extends Select>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
-      <label part="label"><slot name="label"></slot></label>
+      <label part="label" for="${x => x.id}"><slot name="label"></slot></label>
       <div class="select-wrapper" part="select-wrapper">
         <select
           part="control"
+          id="${x => x.id}"
+          aria-labelledby="${x => x.id}"
+          :name="${x => x.name}"
           :autofocus="${x => x.autofocus}"
           :autocomplete="${x => x.autocomplete}"
           ?disabled="${x => x.disabled}"
+          ?required="${x => x.required}"
           @change="${x => x.handleChange()}"
           @input="${x => x.handleInput()}"
         >
