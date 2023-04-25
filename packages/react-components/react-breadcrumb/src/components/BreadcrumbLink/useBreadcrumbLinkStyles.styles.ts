@@ -2,10 +2,19 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbLinkSlots, BreadcrumbLinkState } from './BreadcrumbLink.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useLinkStyles_unstable, LinkState } from '@fluentui/react-link';
 
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
   root: 'fui-BreadcrumbLink',
   icon: 'fui-BreadcrumbLink__icon',
+};
+
+/**
+ * CSS variable names used internally for styling in the Breadcrumb.
+ */
+export const breadcrumbCSSVars = {
+  breadcrumbIconSizeVar: '--fui-Breadcrumb--icon-size',
+  breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
 };
 
 /**
@@ -14,6 +23,7 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    alignItems: 'center',
   },
   icon: {
     display: 'flex',
@@ -41,6 +51,9 @@ const useStyles = makeStyles({
       textDecorationLine: 'none',
     },
   },
+  current: {
+    color: tokens.colorNeutralForeground2,
+  },
   currentSmall: {
     ...typographyStyles.caption1Strong,
   },
@@ -52,11 +65,33 @@ const useStyles = makeStyles({
   },
 });
 
+const useIconStyles = makeStyles({
+  base: {
+    fontSize: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+    height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+    lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
+    width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+  },
+  small: {
+    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
+  },
+  medium: {
+    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
+  },
+  large: {
+    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
+  },
+});
+
 /**
  * Apply styling to the BreadcrumbLink slots based on the state
  */
 export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): BreadcrumbLinkState => {
   const styles = useStyles();
+  const iconStyles = useIconStyles();
 
   const currentSizeMap = {
     small: styles.currentSmall,
@@ -70,12 +105,15 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
     styles[state.size],
     state.overflow && styles.overflow,
     state.current && currentSizeMap[state.size],
+    state.current && styles.current,
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], styles.icon, state.icon.className);
   }
+
+  useLinkStyles_unstable(state as LinkState);
 
   return state;
 };
