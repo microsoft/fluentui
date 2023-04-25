@@ -1,4 +1,4 @@
-import { useCalendarPickerStyles_unstable } from '../CalendarPicker/useCalendarPickerStyles';
+import { useCalendarPickerStyles_unstable } from '../CalendarPicker/useCalendarPickerStyles.styles';
 import type { CalendarYearStyleProps, CalendarYearStyles } from './CalendarYear.types';
 
 /**

@@ -4,7 +4,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InfoLabelProps } from './InfoLabel.types';
 import { renderInfoLabel_unstable } from './renderInfoLabel';
 import { useInfoLabel_unstable } from './useInfoLabel';
-import { useInfoLabelStyles_unstable } from './useInfoLabelStyles';
+import { useInfoLabelStyles_unstable } from './useInfoLabelStyles.styles';
 
 /**
  * InfoLabel component
