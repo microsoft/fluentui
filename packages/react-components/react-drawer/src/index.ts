@@ -1,4 +1,3 @@
-// TODO: replace with real exports
 export {
   Drawer,
   drawerCSSVars,
