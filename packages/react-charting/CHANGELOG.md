@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 24 Apr 2023 07:36:03 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Apr 2023 07:38:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.22)
+
+Tue, 25 Apr 2023 07:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.21..@fluentui/react-charting_v5.16.22)
+
+### Patches
+
+- Disable focus on non-interactive elements ([PR #27580](https://github.com/microsoft/fluentui/pull/27580) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react to v8.108.2 ([PR #26482](https://github.com/microsoft/fluentui/pull/26482) by beachball)
 
 ## [5.16.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.21)
 

@@ -1,7 +1,7 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   root: 'fui-Avatar',
@@ -9,6 +9,14 @@ export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   initials: 'fui-Avatar__initials',
   icon: 'fui-Avatar__icon',
   badge: 'fui-Avatar__badge',
+};
+
+// CSS variables used internally in Avatar's styles
+const vars = {
+  badgeRadius: '--fui-Avatar-badgeRadius',
+  badgeGap: '--fui-Avatar-badgeGap',
+  badgeAlign: '--fui-Avatar-badgeAlign',
+  ringWidth: '--fui-Avatar-ringWidth',
 };
 
 const useRootClassName = makeResetStyles({
@@ -22,6 +30,29 @@ const useRootClassName = makeResetStyles({
   fontSize: tokens.fontSizeBase300,
   width: '32px',
   height: '32px',
+
+  // ::before is the ring, and ::after is the shadow.
+  // These are not displayed by default; the ring and shadow clases set content: "" to display them when appropriate.
+  '::before,::after': {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    zIndex: -1,
+    margin: `calc(-2 * var(${vars.ringWidth}, 0px))`,
+    borderRadius: 'inherit',
+    transitionProperty: 'margin, opacity',
+    transitionTimingFunction: `${tokens.curveEasyEaseMax}, ${tokens.curveLinear}`,
+    transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+  },
+  '::before': {
+    borderStyle: 'solid',
+    borderWidth: `var(${vars.ringWidth})`,
+  },
 });
 
 const useImageClassName = makeResetStyles({
@@ -55,6 +86,27 @@ const useIconInitialsClassName = makeResetStyles({
   borderRadius: 'inherit',
 });
 
+/**
+ * Helper to create a maskImage that punches out a circle larger than the badge by `badgeGap`.
+ * This creates a transparent gap between the badge and Avatar.
+ *
+ * Used by the icon, initials, and image slots, as well as the ring ::before pseudo-element.
+ */
+const badgeMask = (margin?: string) => {
+  // Center the cutout at the badge's radius away from the edge.
+  // The ring (::before) also has a 2 * ringWidth margin that also needs to be offset.
+  const centerOffset = margin ? `calc(var(${vars.badgeRadius}) + ${margin})` : `var(${vars.badgeRadius})`;
+  // radial-gradient does not have anti-aliasing, so the transparent and opaque gradient stops are offset by +/- 0.25px
+  // to "fade" from transparent to opaque over a half-pixel and ease the transition.
+  const innerRadius = `calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) - 0.25px)`;
+  const outerRadius = `calc(var(${vars.badgeRadius}) + var(${vars.badgeGap}) + 0.25px)`;
+
+  return (
+    `radial-gradient(circle at bottom ${centerOffset} var(${vars.badgeAlign}) ${centerOffset}, ` +
+    `transparent ${innerRadius}, white ${outerRadius})`
+  );
+};
+
 const useStyles = makeStyles({
   textCaption2Strong: { fontSize: tokens.fontSizeBase100 },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
@@ -84,76 +136,97 @@ const useStyles = makeStyles({
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
     },
-
-    '::before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-
-      ...shorthands.borderRadius('inherit'),
-      transitionProperty: 'margin, opacity',
-      transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
-      transitionTimingFunction: `${tokens.curveEasyEaseMax}, ${tokens.curveLinear}`,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-      },
-    },
   },
 
   ring: {
-    '::before': {
-      ...shorthands.borderStyle('solid'),
-    },
+    // Show the ::before pseudo-element, which is the ring
+    '::before': { content: '""' },
+  },
+  ringBadgeCutout: {
+    '::before': { maskImage: badgeMask(/*margin =*/ `2 * var(${vars.ringWidth})`) },
   },
   ringThick: {
-    '::before': {
-      ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThick})`),
-      ...shorthands.borderWidth(tokens.strokeWidthThick),
-    },
+    [vars.ringWidth]: tokens.strokeWidthThick,
   },
   ringThicker: {
-    '::before': {
-      ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThicker})`),
-      ...shorthands.borderWidth(tokens.strokeWidthThicker),
-    },
+    [vars.ringWidth]: tokens.strokeWidthThicker,
   },
   ringThickest: {
-    '::before': {
-      ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThickest})`),
-      ...shorthands.borderWidth(tokens.strokeWidthThickest),
-    },
+    [vars.ringWidth]: tokens.strokeWidthThickest,
   },
 
-  shadow4: { '::before': { boxShadow: tokens.shadow4 } },
-  shadow8: { '::before': { boxShadow: tokens.shadow8 } },
-  shadow16: { '::before': { boxShadow: tokens.shadow16 } },
-  shadow28: { '::before': { boxShadow: tokens.shadow28 } },
+  shadow: {
+    // Show the ::after pseudo-element, which is the shadow
+    '::after': { content: '""' },
+  },
+  shadow4: {
+    '::after': { boxShadow: tokens.shadow4 },
+  },
+  shadow8: {
+    '::after': { boxShadow: tokens.shadow8 },
+  },
+  shadow16: {
+    '::after': { boxShadow: tokens.shadow16 },
+  },
+  shadow28: {
+    '::after': { boxShadow: tokens.shadow28 },
+  },
 
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
     transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
 
-    '::before': {
+    '::before,::after': {
       ...shorthands.margin(0),
       opacity: 0,
       transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
     },
   },
 
+  // Applied to the badge slot
   badge: {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralBackground1}`,
   },
 
-  badgeLarge: {
-    boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground1}`,
+  // Applied to the image, initials, or icon slot when there is a badge
+  badgeCutout: {
+    maskImage: badgeMask(),
+  },
+
+  // Applied to the root when there is a badge
+  badgeAlign: {
+    // Griffel won't auto-flip the "right" alignment to "left" in RTL if it is inline in the maskImage,
+    // so split it out into a css variable that will auto-flip.
+    [vars.badgeAlign]: 'right',
+  },
+
+  // Badge size: applied to root when there is a badge
+  tiny: {
+    [vars.badgeRadius]: '3px',
+    [vars.badgeGap]: tokens.strokeWidthThin,
+  },
+  'extra-small': {
+    [vars.badgeRadius]: '5px',
+    [vars.badgeGap]: tokens.strokeWidthThin,
+  },
+  small: {
+    [vars.badgeRadius]: '6px',
+    [vars.badgeGap]: tokens.strokeWidthThin,
+  },
+  medium: {
+    [vars.badgeRadius]: '8px',
+    [vars.badgeGap]: tokens.strokeWidthThin,
+  },
+  large: {
+    [vars.badgeRadius]: '10px',
+    [vars.badgeGap]: tokens.strokeWidthThick,
+  },
+  'extra-large': {
+    [vars.badgeRadius]: '14px',
+    [vars.badgeGap]: tokens.strokeWidthThick,
   },
 
   icon12: { fontSize: '12px' },
@@ -186,162 +259,228 @@ const useColorStyles = makeStyles({
   neutral: {
     color: tokens.colorNeutralForeground3,
     backgroundColor: tokens.colorNeutralBackground6,
-    // The ::before element is the ring when active
-    '::before': { color: tokens.colorBrandStroke1 },
   },
   brand: {
     color: tokens.colorNeutralForegroundStaticInverted,
     backgroundColor: tokens.colorBrandBackgroundStatic,
-    '::before': { color: tokens.colorBrandStroke1 },
   },
   'dark-red': {
     color: tokens.colorPaletteDarkRedForeground2,
     backgroundColor: tokens.colorPaletteDarkRedBackground2,
-    '::before': { color: tokens.colorPaletteDarkRedBorderActive },
   },
   cranberry: {
     color: tokens.colorPaletteCranberryForeground2,
     backgroundColor: tokens.colorPaletteCranberryBackground2,
-    '::before': { color: tokens.colorPaletteCranberryBorderActive },
   },
   red: {
     color: tokens.colorPaletteRedForeground2,
     backgroundColor: tokens.colorPaletteRedBackground2,
-    '::before': { color: tokens.colorPaletteRedBorderActive },
   },
   pumpkin: {
     color: tokens.colorPalettePumpkinForeground2,
     backgroundColor: tokens.colorPalettePumpkinBackground2,
-    '::before': { color: tokens.colorPalettePumpkinBorderActive },
   },
   peach: {
     color: tokens.colorPalettePeachForeground2,
     backgroundColor: tokens.colorPalettePeachBackground2,
-    '::before': { color: tokens.colorPalettePeachBorderActive },
   },
   marigold: {
     color: tokens.colorPaletteMarigoldForeground2,
     backgroundColor: tokens.colorPaletteMarigoldBackground2,
-    '::before': { color: tokens.colorPaletteMarigoldBorderActive },
   },
   gold: {
     color: tokens.colorPaletteGoldForeground2,
     backgroundColor: tokens.colorPaletteGoldBackground2,
-    '::before': { color: tokens.colorPaletteGoldBorderActive },
   },
   brass: {
     color: tokens.colorPaletteBrassForeground2,
     backgroundColor: tokens.colorPaletteBrassBackground2,
-    '::before': { color: tokens.colorPaletteBrassBorderActive },
   },
   brown: {
     color: tokens.colorPaletteBrownForeground2,
     backgroundColor: tokens.colorPaletteBrownBackground2,
-    '::before': { color: tokens.colorPaletteBrownBorderActive },
   },
   forest: {
     color: tokens.colorPaletteForestForeground2,
     backgroundColor: tokens.colorPaletteForestBackground2,
-    '::before': { color: tokens.colorPaletteForestBorderActive },
   },
   seafoam: {
     color: tokens.colorPaletteSeafoamForeground2,
     backgroundColor: tokens.colorPaletteSeafoamBackground2,
-    '::before': { color: tokens.colorPaletteSeafoamBorderActive },
   },
   'dark-green': {
     color: tokens.colorPaletteDarkGreenForeground2,
     backgroundColor: tokens.colorPaletteDarkGreenBackground2,
-    '::before': { color: tokens.colorPaletteDarkGreenBorderActive },
   },
   'light-teal': {
     color: tokens.colorPaletteLightTealForeground2,
     backgroundColor: tokens.colorPaletteLightTealBackground2,
-    '::before': { color: tokens.colorPaletteLightTealBorderActive },
   },
   teal: {
     color: tokens.colorPaletteTealForeground2,
     backgroundColor: tokens.colorPaletteTealBackground2,
-    '::before': { color: tokens.colorPaletteTealBorderActive },
   },
   steel: {
     color: tokens.colorPaletteSteelForeground2,
     backgroundColor: tokens.colorPaletteSteelBackground2,
-    '::before': { color: tokens.colorPaletteSteelBorderActive },
   },
   blue: {
     color: tokens.colorPaletteBlueForeground2,
     backgroundColor: tokens.colorPaletteBlueBackground2,
-    '::before': { color: tokens.colorPaletteBlueBorderActive },
   },
   'royal-blue': {
     color: tokens.colorPaletteRoyalBlueForeground2,
     backgroundColor: tokens.colorPaletteRoyalBlueBackground2,
-    '::before': { color: tokens.colorPaletteRoyalBlueBorderActive },
   },
   cornflower: {
     color: tokens.colorPaletteCornflowerForeground2,
     backgroundColor: tokens.colorPaletteCornflowerBackground2,
-    '::before': { color: tokens.colorPaletteCornflowerBorderActive },
   },
   navy: {
     color: tokens.colorPaletteNavyForeground2,
     backgroundColor: tokens.colorPaletteNavyBackground2,
-    '::before': { color: tokens.colorPaletteNavyBorderActive },
   },
   lavender: {
     color: tokens.colorPaletteLavenderForeground2,
     backgroundColor: tokens.colorPaletteLavenderBackground2,
-    '::before': { color: tokens.colorPaletteLavenderBorderActive },
   },
   purple: {
     color: tokens.colorPalettePurpleForeground2,
     backgroundColor: tokens.colorPalettePurpleBackground2,
-    '::before': { color: tokens.colorPalettePurpleBorderActive },
   },
   grape: {
     color: tokens.colorPaletteGrapeForeground2,
     backgroundColor: tokens.colorPaletteGrapeBackground2,
-    '::before': { color: tokens.colorPaletteGrapeBorderActive },
   },
   lilac: {
     color: tokens.colorPaletteLilacForeground2,
     backgroundColor: tokens.colorPaletteLilacBackground2,
-    '::before': { color: tokens.colorPaletteLilacBorderActive },
   },
   pink: {
     color: tokens.colorPalettePinkForeground2,
     backgroundColor: tokens.colorPalettePinkBackground2,
-    '::before': { color: tokens.colorPalettePinkBorderActive },
   },
   magenta: {
     color: tokens.colorPaletteMagentaForeground2,
     backgroundColor: tokens.colorPaletteMagentaBackground2,
-    '::before': { color: tokens.colorPaletteMagentaBorderActive },
   },
   plum: {
     color: tokens.colorPalettePlumForeground2,
     backgroundColor: tokens.colorPalettePlumBackground2,
-    '::before': { color: tokens.colorPalettePlumBorderActive },
   },
   beige: {
     color: tokens.colorPaletteBeigeForeground2,
     backgroundColor: tokens.colorPaletteBeigeBackground2,
-    '::before': { color: tokens.colorPaletteBeigeBorderActive },
   },
   mink: {
     color: tokens.colorPaletteMinkForeground2,
     backgroundColor: tokens.colorPaletteMinkBackground2,
-    '::before': { color: tokens.colorPaletteMinkBorderActive },
   },
   platinum: {
     color: tokens.colorPalettePlatinumForeground2,
     backgroundColor: tokens.colorPalettePlatinumBackground2,
-    '::before': { color: tokens.colorPalettePlatinumBorderActive },
   },
   anchor: {
     color: tokens.colorPaletteAnchorForeground2,
     backgroundColor: tokens.colorPaletteAnchorBackground2,
+  },
+});
+
+const useRingColorStyles = makeStyles({
+  neutral: {
+    '::before': { color: tokens.colorBrandStroke1 },
+  },
+  brand: {
+    '::before': { color: tokens.colorBrandStroke1 },
+  },
+  'dark-red': {
+    '::before': { color: tokens.colorPaletteDarkRedBorderActive },
+  },
+  cranberry: {
+    '::before': { color: tokens.colorPaletteCranberryBorderActive },
+  },
+  red: {
+    '::before': { color: tokens.colorPaletteRedBorderActive },
+  },
+  pumpkin: {
+    '::before': { color: tokens.colorPalettePumpkinBorderActive },
+  },
+  peach: {
+    '::before': { color: tokens.colorPalettePeachBorderActive },
+  },
+  marigold: {
+    '::before': { color: tokens.colorPaletteMarigoldBorderActive },
+  },
+  gold: {
+    '::before': { color: tokens.colorPaletteGoldBorderActive },
+  },
+  brass: {
+    '::before': { color: tokens.colorPaletteBrassBorderActive },
+  },
+  brown: {
+    '::before': { color: tokens.colorPaletteBrownBorderActive },
+  },
+  forest: {
+    '::before': { color: tokens.colorPaletteForestBorderActive },
+  },
+  seafoam: {
+    '::before': { color: tokens.colorPaletteSeafoamBorderActive },
+  },
+  'dark-green': {
+    '::before': { color: tokens.colorPaletteDarkGreenBorderActive },
+  },
+  'light-teal': {
+    '::before': { color: tokens.colorPaletteLightTealBorderActive },
+  },
+  teal: {
+    '::before': { color: tokens.colorPaletteTealBorderActive },
+  },
+  steel: {
+    '::before': { color: tokens.colorPaletteSteelBorderActive },
+  },
+  blue: {
+    '::before': { color: tokens.colorPaletteBlueBorderActive },
+  },
+  'royal-blue': {
+    '::before': { color: tokens.colorPaletteRoyalBlueBorderActive },
+  },
+  cornflower: {
+    '::before': { color: tokens.colorPaletteCornflowerBorderActive },
+  },
+  navy: {
+    '::before': { color: tokens.colorPaletteNavyBorderActive },
+  },
+  lavender: {
+    '::before': { color: tokens.colorPaletteLavenderBorderActive },
+  },
+  purple: {
+    '::before': { color: tokens.colorPalettePurpleBorderActive },
+  },
+  grape: {
+    '::before': { color: tokens.colorPaletteGrapeBorderActive },
+  },
+  lilac: {
+    '::before': { color: tokens.colorPaletteLilacBorderActive },
+  },
+  pink: {
+    '::before': { color: tokens.colorPalettePinkBorderActive },
+  },
+  magenta: {
+    '::before': { color: tokens.colorPaletteMagentaBorderActive },
+  },
+  plum: {
+    '::before': { color: tokens.colorPalettePlumBorderActive },
+  },
+  beige: {
+    '::before': { color: tokens.colorPaletteBeigeBorderActive },
+  },
+  mink: {
+    '::before': { color: tokens.colorPaletteMinkBorderActive },
+  },
+  platinum: {
+    '::before': { color: tokens.colorPalettePlatinumBorderActive },
+  },
+  anchor: {
     '::before': { color: tokens.colorPaletteAnchorBorderActive },
   },
 });
@@ -355,8 +494,13 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const colorStyles = useColorStyles();
+  const ringColorStyles = useRingColorStyles();
 
-  const rootClasses = [rootClassName, size !== 32 && sizeStyles[size], colorStyles[color]];
+  const rootClasses = [rootClassName, size !== 32 && sizeStyles[size]];
+
+  if (state.badge) {
+    rootClasses.push(styles.badgeAlign, styles[state.badge.size || 'medium']);
+  }
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2Strong);
@@ -388,7 +532,10 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     rootClasses.push(styles.activeOrInactive);
 
     if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
-      rootClasses.push(styles.ring);
+      rootClasses.push(styles.ring, ringColorStyles[color]);
+      if (state.badge) {
+        rootClasses.push(styles.ringBadgeCutout);
+      }
 
       if (size <= 48) {
         rootClasses.push(styles.ringThick);
@@ -400,6 +547,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     }
 
     if (activeAppearance === 'shadow' || activeAppearance === 'ring-shadow') {
+      rootClasses.push(styles.shadow);
       if (size <= 28) {
         rootClasses.push(styles.shadow4);
       } else if (size <= 48) {
@@ -420,20 +568,27 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
 
   if (state.badge) {
-    state.badge.className = mergeClasses(
-      avatarClassNames.badge,
-      styles.badge,
-      size >= 64 && styles.badgeLarge,
-      state.badge.className,
-    );
+    state.badge.className = mergeClasses(avatarClassNames.badge, styles.badge, state.badge.className);
   }
 
   if (state.image) {
-    state.image.className = mergeClasses(avatarClassNames.image, imageClassName, state.image.className);
+    state.image.className = mergeClasses(
+      avatarClassNames.image,
+      imageClassName,
+      colorStyles[color],
+      state.badge && styles.badgeCutout,
+      state.image.className,
+    );
   }
 
   if (state.initials) {
-    state.initials.className = mergeClasses(avatarClassNames.initials, iconInitialsClassName, state.initials.className);
+    state.initials.className = mergeClasses(
+      avatarClassNames.initials,
+      iconInitialsClassName,
+      colorStyles[color],
+      state.badge && styles.badgeCutout,
+      state.initials.className,
+    );
   }
 
   if (state.icon) {
@@ -458,6 +613,8 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       avatarClassNames.icon,
       iconInitialsClassName,
       iconSizeClass,
+      colorStyles[color],
+      state.badge && styles.badgeCutout,
       state.icon.className,
     );
   }
