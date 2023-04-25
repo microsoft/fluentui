@@ -292,6 +292,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           {items}
           {overflowBehavior === 'menu' && (
             <OverflowButton
+              role={overflowButtonAs ? undefined : 'tab'}
               className={css(classNames.link, classNames.overflowMenuButton)}
               elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef}
