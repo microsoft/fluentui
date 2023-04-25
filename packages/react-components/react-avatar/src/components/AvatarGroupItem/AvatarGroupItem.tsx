@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderAvatarGroupItem_unstable } from './renderAvatarGroupItem';
 import { useAvatarGroupItem_unstable } from './useAvatarGroupItem';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useAvatarGroupItemStyles_unstable } from './useAvatarGroupItemStyles';
 import type { AvatarGroupItemProps } from './AvatarGroupItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -15,8 +15,7 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps> = React.
 
   useAvatarGroupItemStyles_unstable(state);
 
-  const { useAvatarGroupItemStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useAvatarGroupItemStyles_unstable')(state);
 
   return renderAvatarGroupItem_unstable(state);
 });

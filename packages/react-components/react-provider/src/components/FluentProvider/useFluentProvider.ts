@@ -3,7 +3,7 @@ import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
   useOverrides_unstable as useOverrides,
-  useCustomStyleHooks_unstable as useCustomStyleHooks,
+  CustomStyleHooksContext_unstable as CustomStyleHooksContext,
 } from '@fluentui/react-shared-contexts';
 import type {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
@@ -32,7 +32,7 @@ export const useFluentProvider_unstable = (
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
-  const parentCustomStyleHooks = useCustomStyleHooks();
+  const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -52,7 +52,6 @@ export const useFluentProvider_unstable = (
 
   const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
-  // parentCustomStyleHooks will not be a partial
   const mergedCustomStyleHooks = shallowMerge(
     parentCustomStyleHooks,
     customStyleHooks_unstable,

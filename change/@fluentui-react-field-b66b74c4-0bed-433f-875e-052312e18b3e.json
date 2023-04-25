@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Release Field component as stable",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

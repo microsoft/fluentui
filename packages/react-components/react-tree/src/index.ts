@@ -28,7 +28,7 @@ export {
   useTreeItemStyles_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemId, TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
 
 export {
   TreeItemLayout,

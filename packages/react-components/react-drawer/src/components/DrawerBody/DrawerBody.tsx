@@ -6,7 +6,7 @@ import type { DrawerBodyProps } from './DrawerBody.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DrawerBody component - TODO: add more docs
+ * DrawerBody provides with a container for the main content of a Drawer.
  */
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps> = React.forwardRef((props, ref) => {
   const state = useDrawerBody_unstable(props, ref);

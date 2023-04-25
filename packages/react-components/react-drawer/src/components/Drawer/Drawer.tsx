@@ -6,7 +6,7 @@ import type { DrawerProps } from './Drawer.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Drawer component - TODO: add more docs
+ * Drawer contains supplementary content and are used for complex creation, edit, or management experiences.
  */
 export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props, ref) => {
   const state = useDrawer_unstable(props, ref);
