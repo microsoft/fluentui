@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerBodyProps } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerBodyProps, DrawerHeader } from '@fluentui/react-drawer';
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     height: '300px',
   },
 
-  container: {
+  footer: {
     ...shorthands.padding(tokens.spacingHorizontalXXL),
     display: 'flex',
     justifyContent: 'flex-start',
@@ -21,21 +21,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = (props: Partial<DrawerBodyProps>) => {
-  const styles = useStyles();
-
+const Header = () => {
   return (
-    <header className={styles.container}>
+    <DrawerHeader>
       <strong>This is a header</strong>
-    </header>
+    </DrawerHeader>
   );
 };
 
-const Footer = (props: Partial<DrawerBodyProps>) => {
+const Footer = () => {
   const styles = useStyles();
 
   return (
-    <footer className={styles.container}>
+    <footer className={styles.footer}>
       <button>Button</button>
     </footer>
   );
