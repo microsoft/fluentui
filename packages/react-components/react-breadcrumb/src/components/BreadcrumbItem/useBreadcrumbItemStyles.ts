@@ -14,6 +14,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
+    color: tokens.colorNeutralForeground2,
   },
   small: {
     height: '24px',
