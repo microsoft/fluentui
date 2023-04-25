@@ -9379,21 +9379,25 @@ export interface IThemeSlotRule {
 // @public (undocumented)
 export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'> {
     allowFreeform?: boolean;
+    dateAnchor?: Date;
     defaultValue?: Date;
     increments?: number;
     label?: string;
     onChange?: (event: React_2.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
     onValidateUserInput?: (userInput: string) => string;
+    onValidationResult?: (event: React_2.FormEvent<IComboBox>, data: TimePickerValidationResultData) => void;
     showSeconds?: boolean;
     strings?: ITimePickerStrings;
     timeRange?: ITimeRange;
     useHour12?: boolean;
+    value?: Date;
 }
 
 // @public
 export interface ITimePickerStrings {
     invalidInputErrorMessage: string;
+    timeOutOfBoundsErrorMessage?: string;
 }
 
 // @public
@@ -11250,6 +11254,11 @@ export { TimeConstants }
 
 // @public (undocumented)
 export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
+
+// @public
+export type TimePickerValidationResultData = {
+    errorMessage?: string;
+};
 
 // @public (undocumented)
 export const Toggle: React_2.FunctionComponent<IToggleProps>;

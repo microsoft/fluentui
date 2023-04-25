@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 25 Apr 2023 07:38:31 GMT",
+      "tag": "@fluentui/react-charting_v5.16.22",
+      "version": "5.16.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "999a7998e3913ab823fe24069f0b5d1aab2b2ce0",
+            "comment": "Disable focus on non-interactive elements"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.108.2",
+            "commit": "2d93a25e46b76bb473f1deaea3180df5ef3c53ec"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Apr 2023 07:36:03 GMT",
       "tag": "@fluentui/react-charting_v5.16.21",
       "version": "5.16.21",
