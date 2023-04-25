@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "added useOverflowCount to react-components exports",
+  "comment": "feat: added useOverflowCount to react-components exports",
   "packageName": "@fluentui/react-components",
   "email": "kakrookaran@gmail.com",
   "dependentChangeType": "patch"
