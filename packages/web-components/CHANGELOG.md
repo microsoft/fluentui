@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 12 Apr 2023 04:19:35 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2023 04:19:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.19)
+
+Fri, 21 Apr 2023 04:19:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.18..@fluentui/web-components_v3.0.0-alpha.19)
+
+### Changes
+
+- feat(menu-list): Add menu-list and menu-item web components ([PR #26765](https://github.com/microsoft/fluentui/pull/26765) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.18)
+
+Thu, 20 Apr 2023 04:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.17..@fluentui/web-components_v3.0.0-alpha.18)
+
+### Changes
+
+- Image component style updates ([PR #27567](https://github.com/microsoft/fluentui/pull/27567) by harankin@microsoft.com)
 
 ## [3.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.17)
 
