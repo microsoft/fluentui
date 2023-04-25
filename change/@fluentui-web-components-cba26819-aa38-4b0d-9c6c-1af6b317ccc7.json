@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds Select web component",
+  "packageName": "@fluentui/web-components",
+  "email": "ryan@ryanmerrill.net",
+  "dependentChangeType": "patch"
+}

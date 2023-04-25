@@ -76,6 +76,10 @@
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
     },
+    "./select": {
+      "types": "./dist/esm/select/define.d.ts",
+      "default": "./dist/esm/select/define.js"
+    },
     "./slider": {
       "types": "./dist/esm/slider/define.d.ts",
       "default": "./dist/esm/slider/define.js"
