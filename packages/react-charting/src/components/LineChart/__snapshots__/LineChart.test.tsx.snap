@@ -113,7 +113,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <line
             id="lineID1_0_1"
             key="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -127,6 +126,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M34.5 -0.625
      A5.5 5.5 0 1 0 45.5 -0.625
      M34.5 -0.625
@@ -137,16 +137,17 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             id="circle0_0_1"
             key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -157,12 +158,12 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             id="circle0_0_11L"
             key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -633,7 +634,6 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           <line
             id="lineID1_0_1"
             key="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -647,6 +647,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M34.5 -0.625
      A5.5 5.5 0 1 0 45.5 -0.625
      M34.5 -0.625
@@ -657,16 +658,17 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             id="circle0_0_1"
             key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -677,12 +679,12 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             id="circle0_0_11L"
             key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -1051,7 +1053,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <line
             id="lineID1_0_1"
             key="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1065,6 +1066,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M34.5 -0.625
      A5.5 5.5 0 1 0 45.5 -0.625
      M34.5 -0.625
@@ -1075,16 +1077,17 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             id="circle0_0_1"
             key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -1095,12 +1098,12 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             id="circle0_0_11L"
             key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -1468,7 +1471,6 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         <g>
           <line
             id="lineID77_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1482,6 +1484,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -1491,16 +1494,17 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             fill="#637cef"
             id="circle76_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="#637cef"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -1510,12 +1514,12 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             fill="#637cef"
             id="circle76_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="#637cef"
             strokeWidth={4}
           />
@@ -1801,7 +1805,6 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         <g>
           <line
             id="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1815,6 +1818,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -1824,16 +1828,17 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             fill="red"
             id="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -1843,12 +1848,12 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             fill="red"
             id="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2134,7 +2139,6 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         <g>
           <line
             id="lineID33_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2148,6 +2152,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -2157,16 +2162,17 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             fill="red"
             id="circle32_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -2176,12 +2182,12 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             fill="red"
             id="circle32_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2447,7 +2453,6 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <line
             id="lineID12_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2461,6 +2466,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -2470,16 +2476,17 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             fill="red"
             id="circle11_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -2489,12 +2496,12 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             fill="red"
             id="circle11_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2620,7 +2627,6 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <line
             id="lineID22_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2634,6 +2640,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -2643,16 +2650,17 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             fill="red"
             id="circle21_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -2662,12 +2670,12 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             fill="red"
             id="circle21_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2953,7 +2961,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         <g>
           <line
             id="lineID44_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2967,6 +2974,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -2976,16 +2984,17 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             fill="red"
             id="circle43_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -2995,12 +3004,12 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             fill="red"
             id="circle43_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -3286,7 +3295,6 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         <g>
           <line
             id="lineID55_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -3300,6 +3308,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -3309,16 +3318,17 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             fill="red"
             id="circle54_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -3328,12 +3338,12 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             fill="red"
             id="circle54_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -3619,7 +3629,6 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         <g>
           <line
             id="lineID66_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -3633,6 +3642,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             y2={20}
           />
           <path
+            aria-label="20. metaData1, 50."
             d="M39.5 -0.625
      A0.5 0.5 0 1 0 40.5 -0.625
      M39.5 -0.625
@@ -3642,16 +3652,17 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             fill="red"
             id="circle65_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
+            aria-label="40. metaData1, 80."
             d="M-20.5 20
      A0.5 0.5 0 1 0 -19.5 20
      M-20.5 20
@@ -3661,12 +3672,12 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             fill="red"
             id="circle65_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />

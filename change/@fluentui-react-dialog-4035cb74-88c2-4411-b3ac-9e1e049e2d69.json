@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: DialogTitle root as h2 by default",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

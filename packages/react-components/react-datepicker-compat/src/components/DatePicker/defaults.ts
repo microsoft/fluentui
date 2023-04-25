@@ -1,6 +1,6 @@
 import { defaultCalendarStrings } from '../Calendar/defaults';
 import type { CalendarStrings } from '../../utils/index';
-import type { DatePickerErrorData } from './DatePicker.types';
+import type { DatePickerErrorType } from './DatePicker.types';
 
 export const defaultDatePickerStrings: CalendarStrings = {
   ...defaultCalendarStrings,
@@ -11,7 +11,7 @@ export const defaultDatePickerStrings: CalendarStrings = {
   closeButtonAriaLabel: 'Close date picker',
 };
 
-export const defaultDatePickerErrorStrings: Record<DatePickerErrorData['error'], string> = {
+export const defaultDatePickerErrorStrings: Record<DatePickerErrorType, string> = {
   'invalid-input': 'Invalid date format',
   'out-of-bounds': 'Date is out of bounds',
   'required-input': 'Field is required',

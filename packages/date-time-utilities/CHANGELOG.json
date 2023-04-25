@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Tue, 25 Apr 2023 07:38:31 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.5.7",
+      "version": "8.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jamwu@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "2d93a25e46b76bb473f1deaea3180df5ef3c53ec",
+            "comment": "chore: Refactored getDateFromTimeSelection variable names."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Mar 2023 08:15:56 GMT",
       "tag": "@fluentui/date-time-utilities_v8.5.6",
       "version": "8.5.6",

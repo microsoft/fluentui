@@ -2,6 +2,57 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:44 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "acbc5fcb1381e9adcc4e1fa678a374d42a79438b",
+            "comment": "bugfix: fix parent navigation after independency from id"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4dde6727c7e7fe7fbf6fedb4e1619deddbd3e16a",
+            "comment": "feat: value property over id"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ab5e8979917780ec8cf6b3b08b3696fc1b7a83f4",
+            "comment": "chore: restructure stories, add separate category for flat tree"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.4.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:01 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",
