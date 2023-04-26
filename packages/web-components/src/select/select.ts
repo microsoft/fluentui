@@ -12,7 +12,6 @@ export class Select extends FASTElement {
     Object.assign(this, new ARIAGlobalStatesAndProperties()); // Assigns ARIA global states and properties to the element
   }
 
-  // Attributes
   /**
    * The name of the select element
    *
@@ -34,24 +33,14 @@ export class Select extends FASTElement {
   public required?: boolean;
 
   /**
-   * The optional label of the select
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: label
-   */
-  @attr
-  public label?: string;
-
-  /**
    * The autofocus attribute of the select
    *
    * @public
    * @remarks
    * HTML Attribute: autofocus
    */
-  @attr({ attribute: 'autofocus', mode: 'boolean' })
-  public autofocusAttr?: boolean;
+  @attr({ mode: 'boolean' })
+  public autofocus: boolean;
 
   /**
    * The autocomplete attribute of the select
@@ -83,7 +72,6 @@ export class Select extends FASTElement {
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
-  // Observables
   /**
    * The options of the select
    *
@@ -127,7 +115,6 @@ export class Select extends FASTElement {
     return this.selectElement ? this.selectElement.length : 0;
   }
 
-  // Event Methods
   public handleChange(): void {
     this.$emit('change');
   }
