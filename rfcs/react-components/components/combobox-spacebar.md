@@ -69,7 +69,7 @@ We would keep the behavior where if the user is actively interacting with the op
 
 - There is no way to opt into space-to-select behavior
 
-### 4. ALways allow space to insert a character on single-select Comboboxes, always select on multi-select comboboxes
+### 4. Always allow space to insert a character on single-select Comboboxes, always select on multi-select comboboxes
 
 Since options visually look like they have check marks and semantically use `aria-checked` instead of `aria-selected`, there is a stronger expectation of space-to-select. Additionally, multiselect comboboxes are already hitting a limit of too much complexity for one component, and most use cases would benefit from using either the multiselect Dropdown or single-select Combobox + tags instead. Opting into a simpler, more intuitive but less feature-rich UX might result in a less error-prone UX in this variant in particular.
 
