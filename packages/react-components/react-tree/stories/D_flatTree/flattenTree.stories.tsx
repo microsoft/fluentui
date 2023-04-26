@@ -1,33 +1,40 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, flattenTree_unstable } from '@fluentui/react-tree';
+import {
+  Tree,
+  TreeItem,
+  useFlatTree_unstable,
+  flattenTree_unstable,
+  TreeItemProps,
+  TreeItemLayout,
+} from '@fluentui/react-tree';
 import story from './flattenTree.md';
 
-const defaultItems = flattenTree_unstable<string>([
+type Item = TreeItemProps & { layout: string };
+
+const defaultItems = flattenTree_unstable<Item>([
   {
-    children: <TreeItemLayout>level 1, item 1</TreeItemLayout>,
+    layout: 'level 1, item 1',
     subtree: [
+      { layout: 'level 2, item 1' },
       {
-        children: <TreeItemLayout>level 2, item 1</TreeItemLayout>,
+        layout: 'level 2, item 2',
       },
       {
-        children: <TreeItemLayout>level 2, item 2</TreeItemLayout>,
-      },
-      {
-        children: <TreeItemLayout>level 2, item 3</TreeItemLayout>,
+        layout: 'level 2, item 3',
       },
     ],
   },
   {
-    children: <TreeItemLayout>level 1, item 2</TreeItemLayout>,
+    layout: 'level 1, item 2',
     subtree: [
       {
-        children: <TreeItemLayout>level 2, item 1</TreeItemLayout>,
+        layout: 'level 2, item 1',
         subtree: [
           {
-            children: <TreeItemLayout>level 3, item 1</TreeItemLayout>,
+            layout: 'level 3, item 1',
             subtree: [
               {
-                children: <TreeItemLayout>level 4, item 1</TreeItemLayout>,
+                layout: 'level 4, item 1',
               },
             ],
           },
@@ -38,12 +45,17 @@ const defaultItems = flattenTree_unstable<string>([
 ]);
 
 export const FlattenTree = () => {
-  const flatTree = useFlatTree_unstable<string>(defaultItems);
+  const flatTree = useFlatTree_unstable(defaultItems);
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-      {Array.from(flatTree.items(), item => (
-        <TreeItem {...item.getTreeItemProps()} key={item.value} />
-      ))}
+      {Array.from(flatTree.items(), item => {
+        const { layout, ...itemProps } = item.getTreeItemProps();
+        return (
+          <TreeItem {...itemProps} key={item.value}>
+            <TreeItemLayout>{layout}</TreeItemLayout>
+          </TreeItem>
+        );
+      })}
     </Tree>
   );
 };

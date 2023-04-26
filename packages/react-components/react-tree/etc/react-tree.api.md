@@ -30,33 +30,41 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public
-export const flattenTree_unstable: <Value = string>(items: NestedTreeItem<Value>[]) => FlatTreeItemProps<Value>[];
+export const flattenTree_unstable: <Props extends TreeItemProps<unknown>>(items: NestedTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
 
 // @public
-export type FlatTree<Value = string> = {
-    getTreeProps(): FlatTreeProps<Value>;
-    navigate(data: TreeNavigationData_unstable<Value>): void;
-    getNextNavigableItem(visibleItems: FlatTreeItem<Value>[], data: TreeNavigationData_unstable<Value>): FlatTreeItem<Value> | undefined;
-    items(): IterableIterator<FlatTreeItem<Value>>;
+export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
+    getTreeProps(): FlatTreeProps<Props['value']>;
+    navigate(data: TreeNavigationData_unstable<Props['value']>): void;
+    getNextNavigableItem(visibleItems: FlatTreeItem<Props>[], data: TreeNavigationData_unstable<Props['value']>): FlatTreeItem<Props> | undefined;
+    items(): IterableIterator<FlatTreeItem<Props>>;
+};
+
+// @public
+export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
+    index: number;
+    level: number;
+    childrenSize: number;
+    value: Props['value'];
+    parentValue: Props['parentValue'];
+    ref: React_2.RefObject<HTMLDivElement>;
+    getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>> & Omit<Props, 'parentValue'>;
 };
 
 // @public (undocumented)
-export type FlatTreeItem<Value = string> = Readonly<MutableFlatTreeItem<Value>>;
-
-// @public (undocumented)
-export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps, 'value'> & {
+export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
     value: Value;
     parentValue?: Value;
 };
 
 // @public (undocumented)
-export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & {
+export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
     ref: React_2.Ref<HTMLDivElement>;
-}>;
+};
 
 // @public (undocumented)
-export type NestedTreeItem<Value = string> = Omit<TreeItemProps<Value>, 'subtree'> & {
-    subtree?: NestedTreeItem<Value>[];
+export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree'> & {
+    subtree?: NestedTreeItem<Props>[];
 };
 
 // @public (undocumented)
@@ -281,7 +289,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public
-export function useFlatTree_unstable<Value = string>(flatTreeItemProps: FlatTreeItemProps<Value>[], options?: Pick<TreeProps<Value>, 'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'>): FlatTree<Value>;
+export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(flatTreeItemProps: Props[], options?: FlatTreeOptions<Props>): FlatTree<Props>;
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
