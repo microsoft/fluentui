@@ -19,6 +19,7 @@ import {
   writeJson,
   WorkspaceConfiguration,
   ProjectConfiguration,
+  joinPathFragments,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -1253,6 +1254,63 @@ describe('migrate-converged-pkg generator', () => {
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
+    });
+  });
+
+  describe(`update conformance setup`, () => {
+    const conformanceSetup = stripIndents`
+      import { isConformant as baseIsConformant } from '@proj/react-conformance';
+      import type { IsConformantOptions, TestObject } from '@proj/react-conformance';
+      import griffelTests from '@proj/react-conformance-griffel';
+
+      export function isConformant<TProps = {}>(
+        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+      ) {
+        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+          componentPath: require.main?.filename.replace('.test', ''),
+          extraTests: griffelTests as TestObject<TProps>,
+          testOptions: {
+            'make-styles-overrides-win': {
+              callCount: 2,
+            },
+            // TODO: https://github.com/microsoft/fluentui/issues/19618
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          } as any,
+        };
+
+        baseIsConformant(defaultOptions, testInfo);
+      }
+    `;
+    it(`should use tsConfig conformance API`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const conformanceSetupPath = joinPathFragments(projectConfig.root as string, 'src/testing/isConformant.ts');
+      tree.write(conformanceSetupPath, conformanceSetup);
+      await generator(tree, options);
+
+      expect(tree.read(conformanceSetupPath, 'utf-8')).toMatchInlineSnapshot(`
+        "import { isConformant as baseIsConformant } from '@proj/react-conformance';
+        import type { IsConformantOptions, TestObject } from '@proj/react-conformance';
+        import griffelTests from '@proj/react-conformance-griffel';
+
+        export function isConformant<TProps = {}>(
+        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+        ) {
+        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+        tsConfig: { configName: 'tsconfig.spec.json' },
+        componentPath: require.main?.filename.replace('.test', ''),
+        extraTests: griffelTests as TestObject<TProps>,
+        testOptions: {
+        'make-styles-overrides-win': {
+        callCount: 2,
+        },
+        // TODO: https://github.com/microsoft/fluentui/issues/19618
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+        };
+
+        baseIsConformant(defaultOptions, testInfo);
+        }"
+      `);
     });
   });
 
