@@ -15,4 +15,7 @@ export const definition = Select.compose({
   name: `${FluentDesignSystem.prefix}-select`,
   template,
   styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
 });

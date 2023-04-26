@@ -1,7 +1,7 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 /**
- * SliderSize Constants
+ * SelectSize Constants
  * @public
  */
 export const SelectSize = {
