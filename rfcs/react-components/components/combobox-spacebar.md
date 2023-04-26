@@ -1,6 +1,6 @@
 # RFC: Combobox spacebar behavior
 
-@smhigley
+@smhigley @jurokapsiar
 
 ## Summary
 
@@ -14,6 +14,8 @@ While this RFC deals only with Combobox and not Dropdown, it is important to not
 
 Another important factor to note is that using Enter to select is not as common as might be expected, since it is also the key that submits a form, and often avoided within forms for that reason. This is less of an issue with a standalone combobox where selection and submission are not different interactions.
 
+Currently, there is an agreement on inserting a space character when freeform variant is used and the user has not interacted with the dropdown list. See [feat: react-combobox space conditionally inserts character when freeform is true](https://github.com/microsoft/fluentui/pull/27025) for details.
+
 ## Precedence
 
 - In v8 Combobox and v0 Dropdown, spacebar did not select
@@ -24,9 +26,15 @@ Another important factor to note is that using Enter to select is not as common 
 
 In an A/B user study focusing primarily on screen reader users and alternative input users (keyboard, switch, voice control), people using the keyboard overwhelmingly expected space to select in all comboboxes. In variations where space did not select, this was called out as one of the primary confusing things about the component, particularly strongly with multiselect comboboxes.
 
+The two caveats to consider when evaluating the user study are that it is impossible to fully and realistically recreate real-world app context and expectations in an isolated test UI, and also that it focused on a small group (~12) of participants who all used some form of assistive tech. It points towards an expected behavior, but is not an absolute conclusion.
+
 ## Context
 
 The surrounding context of an app or website is also likely to influence user expectations on keyboard behavior. Typing a name into a `To: ` input in Outlook or Teams is likely to influence users to expect space to insert a character. Moving through multiple fields in a form is more likely to influence users to expect space to select. The ideal spacebar behavior is likely to differ based on how and where the v9 Combobox is being used.
+
+The content of options also influences user expectations -- there would be a greater expectation of space-to-type when options contain a space in them, for example multi-word options, names, states or cities.
+
+One of the risks is that the developers and designers may not be in a position to make a correct decision on the value of the prop. This is because options are usually either translations or user data, which may contain spaces that the authoring team was not aware of. We generally can't expect authors to understand all possible translations across supported languages or the specific validations of the user data at UI authoring time. While the occaisonal space character does not necessarily mean that space should not select, translations and user data do introduce the possibility of frequent spaces within multiple options.
 
 ## Problem statement
 
@@ -51,6 +59,7 @@ We would likely include author guidance that all Comboboxes within their app use
 - Defaulting to `true` means the simplest/most basic use case is not the default
 - Defaulting to `true` means the Combobox space behavior is different from Dropdown by default, which primarily affects keyboard and screen reader users.
 - Providing a prop to alter the space key behavior potentially means inconsistent behavior within an app, or across related apps
+- This behavior is not aligned with the results of the user study
 
 ### 2. `allowSpaceCharacter` prop, default to `false`
 
@@ -80,6 +89,8 @@ Since options visually look like they have check marks and semantically use `ari
 - The variant with the strongest expectation of space-to-select keeps that behavior
 
 #### Cons
+
+g
 
 - There is no way to opt into space-to-select on single-select combos, or space-to-type on multiselect combos
 
