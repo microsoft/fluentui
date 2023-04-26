@@ -2,12 +2,15 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
-  borderRadiusMedium,
+  borderRadiusSmall,
+  colorCompoundBrandForeground1,
   colorCompoundBrandForeground1Pressed,
   colorCompoundBrandStrokeHover,
   colorCompoundBrandStrokePressed,
   colorNeutralForeground2,
+  colorNeutralForeground3,
   colorNeutralForegroundDisabled,
+  colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorStrokeFocus1,
@@ -37,7 +40,13 @@ export const styles = css`
     outline: none;
     position: relative;
     user-select: none;
-    color: var(--state-color);
+    color: blue;
+    color: var(--state-color, ${colorNeutralForeground3});
+  }
+  :host([disabled]) {
+    --control-border-color: ${colorNeutralForegroundDisabled};
+    --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
+    --state-color: ${colorNeutralForegroundDisabled};
   }
   .label {
     cursor: pointer;
@@ -52,7 +61,7 @@ export const styles = css`
   .control {
     box-sizing: border-box;
     align-items: center;
-    border: 1px solid var(--control-border-color);
+    border: 1px solid var(--control-border-color, ${colorNeutralStrokeAccessible});
     border-radius: ${borderRadiusCircular};
     display: flex;
     height: 16px;
@@ -71,15 +80,10 @@ export const styles = css`
   :host([aria-checked='false']:hover) .control {
     color: ${colorNeutralForeground2};
   }
-  :host(:focus-visible)::after {
-    border: 2px solid ${colorStrokeFocus1};
-    border-radius: ${borderRadiusMedium};
-    box-shadow: inset 0 0 0 2px ${colorStrokeFocus2};
-    content: '';
-    cursor: pointer;
-    inset: 0px;
-    outline: none;
-    position: absolute;
+  :host(:focus-visible) {
+    border-radius: ${borderRadiusSmall};
+    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
   }
   :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
@@ -94,7 +98,7 @@ export const styles = css`
     border-color: var(--control-border-color);
   }
   :host([aria-checked='true']) .checked-indicator {
-    background-color: var(--checked-indicator-background-color);
+    background-color: var(--checked-indicator-background-color, ${colorCompoundBrandForeground1});
   }
   :host([aria-checked='true']:hover) .control {
     border-color: ${colorCompoundBrandStrokeHover};

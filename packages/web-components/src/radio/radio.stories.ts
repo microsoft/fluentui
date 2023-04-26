@@ -9,14 +9,17 @@ type RadioStoryArgs = Args & FluentRadio;
 type RadioStoryMeta = Meta<RadioStoryArgs>;
 
 const storyTemplate = html<RadioStoryArgs>`
-  <fluent-radio-group orientation="vertical" role="radiogroup" name="radio-story">
-    <fluent-radio ?disabled=${x => x.disabled} ?checked=${x => x.checked} value="Apple">Option 1</fluent-radio>
-  </fluent-radio-group>
+  <form @submit="${() => false}">
+    <fluent-radio ?checked="${x => x.checked}" ?disabled="${x => x.disabled}" name="radio-story" value="option1"
+      >Option 1</fluent-radio
+    >
+  </form>
 `;
 
 export default {
   title: 'Components/Radio',
   args: {
+    checked: false,
     disabled: false,
   },
   argTypes: {
@@ -52,13 +55,9 @@ export default {
 export const Radio = renderComponent(storyTemplate).bind({});
 
 export const Checked = renderComponent(html<RadioStoryArgs>`
-  <fluent-radio-group name="radio-story">
-    <fluent-radio checked="true" value="Apple">Apple</fluent-radio>
-  </fluent-radio-group>
+  <fluent-radio checked value="Apple">Apple</fluent-radio>
 `);
 
 export const Disabled = renderComponent(html<RadioStoryArgs>`
-  <fluent-radio-group name="radio-story">
-    <fluent-radio disabled="true" value="Apple">Apple</fluent-radio>
-  </fluent-radio-group>
+  <fluent-radio disabled value="Apple">Apple</fluent-radio>
 `);
