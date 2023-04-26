@@ -100,7 +100,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
      L${x + 0.6884 * w} ${y - 0.2633 * w}
      L${x + 0.5001 * w} ${y + 0.6884 * w}
      L${x - 0.5001 * w} ${y + 0.6884 * w}
-     L${x - 0.6884 * w} ${y - 0.263 * w}
+     L${x - 0.6884 * w} ${y - 0.2633 * w}
      Z`,
     //octagon
     `M${x - 0.5001 * w} ${y - 1.207 * w}
@@ -547,10 +547,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.palette.white : lineColor}
-            data-is-focusable={true}
-            ref={(e: SVGCircleElement | null) => {
-              this._refCallback(e!, circleId);
-            }}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
@@ -569,7 +565,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               circleId,
               xAxisCalloutAccessibilityData,
             )}
-            onFocus={() => this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
             onMouseOut={this._handleMouseOut}
             strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
             stroke={activePoint === circleId ? lineColor : ''}
