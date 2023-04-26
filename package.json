@@ -89,7 +89,7 @@
     "@cypress/webpack-dev-server": "1.8.3",
     "@fluentui/react-icons": "^2.0.196",
     "@griffel/babel-preset": "1.4.8",
-    "@griffel/eslint-plugin": "1.0.0",
+    "@griffel/eslint-plugin": "^1.2.0",
     "@griffel/jest-serializer": "1.1.4",
     "@griffel/react": "^1.5.2",
     "@griffel/webpack-extraction-plugin": "0.3.3",

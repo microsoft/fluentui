@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuGroupHeader_unstable } from './useMenuGroupHeader';
-import { useMenuGroupHeaderStyles_unstable } from './useMenuGroupHeaderStyles';
+import { useMenuGroupHeaderStyles_unstable } from './useMenuGroupHeaderStyles.styles';
 import { renderMenuGroupHeader_unstable } from './renderMenuGroupHeader';
 import type { MenuGroupHeaderProps } from './MenuGroupHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

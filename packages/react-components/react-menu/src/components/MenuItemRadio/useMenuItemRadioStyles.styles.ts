@@ -1,6 +1,6 @@
 import { mergeClasses } from '@griffel/react';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
-import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
+import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuItemSlots } from '../index';
 import type { MenuItemRadioState } from './MenuItemRadio.types';

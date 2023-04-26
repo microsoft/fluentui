@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useToolbar_unstable } from './useToolbar';
 import { renderToolbar_unstable } from './renderToolbar';
-import { useToolbarStyles_unstable } from './useToolbarStyles';
+import { useToolbarStyles_unstable } from './useToolbarStyles.styles';
 import type { ToolbarProps } from './Toolbar.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useToolbarContextValues_unstable } from './useToolbarContextValues';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTableBody_unstable } from './useTableBody';
 import { renderTableBody_unstable } from './renderTableBody';
-import { useTableBodyStyles_unstable } from './useTableBodyStyles';
+import { useTableBodyStyles_unstable } from './useTableBodyStyles.styles';
 import type { TableBodyProps } from './TableBody.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
