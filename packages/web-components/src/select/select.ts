@@ -9,8 +9,6 @@ import { SelectSize } from './select.options.js';
 export class Select extends FASTElement {
   constructor() {
     super();
-    this.handleChange = this.handleChange.bind(this);
-    this.handleInput = this.handleInput.bind(this);
     Object.assign(this, new ARIAGlobalStatesAndProperties()); // Assigns ARIA global states and properties to the element
   }
 
@@ -94,26 +92,6 @@ export class Select extends FASTElement {
   @observable
   public options?: HTMLOptionElement[];
 
-  /**
-   * A boolean value that triggers an input event
-   *
-   * @public
-   */
-  @observable
-  public inputEventTrigger: boolean = false;
-
-  /**
-   * A boolean value that triggers a change event
-   *
-   * @public
-   */
-  @observable
-  public changeEventTrigger: boolean = false;
-
-  // Events
-  private changeEvent: Event = new Event('change');
-  private inputEvent: Event = new Event('input');
-
   // Getters and setters
   // Returns the select element
   public get selectElement(): HTMLSelectElement | null {
@@ -149,20 +127,18 @@ export class Select extends FASTElement {
     return this.selectElement ? this.selectElement.length : 0;
   }
 
-  // Methods
+  // Event Methods
   public handleChange(): void {
-    this.dispatchEvent(this.changeEvent);
+    this.$emit('change');
   }
 
   public handleInput(): void {
-    this.dispatchEvent(this.inputEvent);
+    this.$emit('input');
   }
 
   public connectedCallback(): void {
     super.connectedCallback();
     if (this.selectElement) {
-      this.selectElement.addEventListener('change', this.handleChange);
-      this.selectElement.addEventListener('input', this.handleInput);
       this.setOptions();
     }
   }
@@ -174,11 +150,6 @@ export class Select extends FASTElement {
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    // Remove events from Select element
-    if (this.selectElement) {
-      this.selectElement.removeEventListener('change', this.handleChange);
-      this.selectElement.removeEventListener('input', this.handleInput);
-    }
   }
 
   // Adds an option to the select element
