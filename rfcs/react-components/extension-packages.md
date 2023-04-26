@@ -76,7 +76,7 @@ The Proposal treats each of the above questions separately and provides pros/con
 Keep in mind that some decisions will influence other decisions.
 
 None of the approaches are particularly complex to understand, but the resulting work could be complex. It is important
-that we figure out what answers for these questions so that we can start to move forward
+that we figure out the answers for these questions so that we can start to move forward
 with technical implementation by following concrete requirements.
 
 ## Detailed Design or Proposal
@@ -142,7 +142,8 @@ All extension packages should begin with a peer dependency on `@fluentui/react-c
 by [material-ui](https://mui.com/material-ui/getting-started/faq/#v4-why-arent-my-components-rendering-correctly-in-production-builds)
 for OSS authors that want to extend the library. This recommendation is made to [reduce duplicates in bundle](https://github.com/facebook/react/issues/13346#issuecomment-515079922).
 
-We can look at a case by case basis if more concrete dependencies on the core library are needed.
+We can look at a case by case basis if more concrete dependencies on the core library are needed. This policy should
+be enforced by automation that needs to be disabled in the cases where stricter dependencies are necessary.
 
 ### Core team involvement
 
@@ -251,7 +252,7 @@ two different ways we should host partner code.
 
 #### ADO mirroring
 
-Partner teams can continue to host their code in respective ADO reponsitories and we host a mirror for their
+Partner teams can continue to host their code in respective ADO repositories and we host a mirror for their
 code in GitHub so that it is visible in open source for issue reporting and third party extensionutions.
 
 ##### Pros
@@ -266,13 +267,12 @@ code in GitHub so that it is visible in open source for issue reporting and thir
 
 #### Both
 
-We let partner teams decide how they would like to participate in creating official Fluent powere components.
+We let partner teams decide how they would like to participate in creating official Fluent powered components.
 
 ##### Pros
 
 - 👍 Everybody is happy and can have a presence in open source
 - 👍 Maximum microsoft coverage for open source
-- 👎 Figure out how to make sure partners maintain their projects properly
 
 ##### Cons
 
