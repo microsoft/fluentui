@@ -42,6 +42,7 @@ export const styles = css`
     user-select: none;
     color: blue;
     color: var(--state-color, ${colorNeutralForeground3});
+    padding-inline-end: ${spacingHorizontalS};
   }
   :host([disabled]) {
     --control-border-color: ${colorNeutralForegroundDisabled};
