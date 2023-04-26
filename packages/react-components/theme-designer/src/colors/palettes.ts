@@ -48,27 +48,27 @@ const snappingPointsForKeyColor = (keyColor: string): number[] => {
   return range;
 };
 
-function quadraticBezierInterpolation(start: number, end: number, inBetween: number, numSamples: number) {
-  // Helper function to calculate the quadratic Bezier interpolation
-  function bezier(t: number, p0: number, p1: number, p2: number) {
-    const oneMinusT = 1 - t;
-    return oneMinusT * (oneMinusT * p0 + t * p1) + t * (oneMinusT * p1 + t * p2);
-  }
+// function quadraticBezierInterpolation(start: number, end: number, inBetween: number, numSamples: number) {
+//   // Helper function to calculate the quadratic Bezier interpolation
+//   function bezier(t: number, p0: number, p1: number, p2: number) {
+//     const oneMinusT = 1 - t;
+//     return oneMinusT * (oneMinusT * p0 + t * p1) + t * (oneMinusT * p1 + t * p2);
+//   }
 
-  // Calculate the control point
-  const controlPoint = (inBetween - 0.5 * (start + end)) * 2;
+//   // Calculate the control point
+//   const controlPoint = (inBetween - 0.5 * (start + end)) * 2;
 
-  // Initialize the output array
-  const result = new Array(numSamples);
+//   // Initialize the output array
+//   const result = new Array(numSamples);
 
-  // Fill the array with interpolated values using quadratic Bezier interpolation
-  for (let i = 0; i < numSamples; i++) {
-    const t = i / (numSamples - 1);
-    result[i] = bezier(t, start, controlPoint, end);
-  }
+//   // Fill the array with interpolated values using quadratic Bezier interpolation
+//   for (let i = 0; i < numSamples; i++) {
+//     const t = i / (numSamples - 1);
+//     result[i] = bezier(t, start, controlPoint, end);
+//   }
 
-  return result;
-}
+//   return result;
+// }
 
 const pointsForKeyColor = (keyColor: string, range: number[], centerPoint: number): number[] => {
   const rgb = hex_to_sRGB(keyColor);
