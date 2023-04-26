@@ -256,6 +256,16 @@ import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
+import { Field } from '@fluentui/react-field';
+import { fieldClassNames } from '@fluentui/react-field';
+import { FieldContextProvider } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
+import { FieldControlProps } from '@fluentui/react-field';
+import { FieldControlPropsOptions } from '@fluentui/react-field';
+import { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
+import { FieldState } from '@fluentui/react-field';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
@@ -492,6 +502,7 @@ import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDivider_unstable } from '@fluentui/react-divider';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
+import { renderField_unstable } from '@fluentui/react-field';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -831,6 +842,11 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
@@ -893,6 +909,7 @@ import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
+import { useOverflowCount } from '@fluentui/react-overflow';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { usePersona_unstable } from '@fluentui/react-persona';
 import { usePersonaStyles_unstable } from '@fluentui/react-persona';
@@ -909,6 +926,7 @@ import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
@@ -1490,6 +1508,26 @@ export { DropdownState }
 
 export { DurationTokens }
 
+export { Field }
+
+export { fieldClassNames }
+
+export { FieldContextProvider }
+
+export { FieldContextValue }
+
+export { FieldContextValues }
+
+export { FieldControlProps }
+
+export { FieldControlPropsOptions }
+
+export { FieldProps }
+
+export { FieldSlots }
+
+export { FieldState }
+
 export { FluentProvider }
 
 export { fluentProviderClassNames }
@@ -1961,6 +1999,8 @@ export { renderDivider_unstable }
 export { renderDropdown_unstable }
 
 export { RendererProvider }
+
+export { renderField_unstable }
 
 export { renderFluentProvider_unstable }
 
@@ -2640,6 +2680,16 @@ export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
 
+export { useField_unstable }
+
+export { useFieldContext_unstable }
+
+export { useFieldContextValues_unstable }
+
+export { useFieldControlProps_unstable }
+
+export { useFieldStyles_unstable }
+
 export { useFluent }
 
 export { useFluentProvider_unstable }
@@ -2764,6 +2814,8 @@ export { useOptionGroupStyles_unstable }
 
 export { useOptionStyles_unstable }
 
+export { useOverflowCount }
+
 export { useOverflowMenu }
 
 export { usePersona_unstable }
@@ -2795,6 +2847,8 @@ export { useRadio_unstable }
 export { useRadioGroup_unstable }
 
 export { useRadioGroupContext_unstable }
+
+export { useRadioGroupContextValue_unstable }
 
 export { useRadioGroupContextValues }
 

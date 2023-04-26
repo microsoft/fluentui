@@ -70,6 +70,12 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
+// @public
+export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
+    slots: Slots<R>;
+    slotProps: ObjectSlotProps<R>;
+};
+
 // @internal
 export function getTriggerChild<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children']): (React_2.ReactElement<Partial<TriggerChildProps>> & {
     ref?: React_2.Ref<any>;
@@ -143,6 +149,9 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
+// @internal
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
+
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
@@ -173,6 +182,11 @@ export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
+};
+
+// @public
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
 };
 
 // @internal

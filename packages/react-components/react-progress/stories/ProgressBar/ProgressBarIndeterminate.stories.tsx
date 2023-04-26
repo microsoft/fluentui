@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Field } from '@fluentui/react-field';
-import { ProgressBar } from '@fluentui/react-progress';
+import { Field, ProgressBar } from '@fluentui/react-components';
 
 export const Indeterminate = () => {
   return (

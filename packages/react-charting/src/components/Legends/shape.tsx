@@ -36,7 +36,7 @@ export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, class
       height={14}
       viewBox={'-1 -1 14 14'}
       {...svgProps}
-      transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.triangle] ? 180 : 0}, 0, 0)`}
+      transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0}, 0, 0)`}
     >
       <path d={pointPath[shape]} {...pathProps} />
     </svg>

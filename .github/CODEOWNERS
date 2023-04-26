@@ -133,6 +133,7 @@ apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microso
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/bundle-size @microsoft/teams-prg
+packages/react-conformance @microsoft/fluentui-react-build
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -150,13 +151,14 @@ packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
+packages/react-examples @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-components/react-shared-contexts @microsoft/teams-prg
+packages/react-components/react-shared-contexts @microsoft/teams-prg @microsoft/cxe-red
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
@@ -212,7 +214,7 @@ packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
-packages/react-components/theme-designer @microsoft/cxe-coastal
+packages/react-components/theme-designer @microsoft/cxe-coastal @ms-acalzaretto
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
