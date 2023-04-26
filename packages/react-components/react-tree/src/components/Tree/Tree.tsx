@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTree_unstable } from './useTree';
 import { renderTree_unstable } from './renderTree';
-import { useTreeStyles_unstable } from './useTreeStyles';
+import { useTreeStyles_unstable } from './useTreeStyles.styles';
 import type { TreeProps } from './Tree.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeContextValues_unstable } from './useTreeContextValues';

@@ -2,7 +2,7 @@ import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { FluentProviderState } from './FluentProvider.types';
-import { fluentProviderClassNames } from './useFluentProviderStyles';
+import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 
 // String concatenation is used to prevent bundlers to complain with older versions of React
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
