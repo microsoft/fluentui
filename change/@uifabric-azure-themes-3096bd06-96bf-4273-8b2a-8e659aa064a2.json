@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "high contrast dropdown style fix",
-  "packageName": "@uifabric/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
