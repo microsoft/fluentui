@@ -12,6 +12,7 @@ import type {
   TreeProps,
 } from '../Tree';
 import type { TreeItemProps } from '../TreeItem';
+import { ImmutableSet } from '../utils/ImmutableSet';
 
 export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
   value: Value;
@@ -40,7 +41,10 @@ export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItem
 
 export type FlatTreeProps<Value = string> = Required<
   Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>
-> & { ref: React.Ref<HTMLDivElement> };
+> & {
+  ref: React.Ref<HTMLDivElement>;
+  openItems: ImmutableSet<Value>;
+};
 
 /**
  * FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems

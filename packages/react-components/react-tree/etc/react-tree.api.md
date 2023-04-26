@@ -60,6 +60,7 @@ export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
 // @public (undocumented)
 export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
     ref: React_2.Ref<HTMLDivElement>;
+    openItems: ImmutableSet<Value>;
 };
 
 // @public (undocumented)
