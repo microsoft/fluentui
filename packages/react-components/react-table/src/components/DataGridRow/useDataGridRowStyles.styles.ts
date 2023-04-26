@@ -1,7 +1,7 @@
 import { mergeClasses } from '@griffel/react';
 import type { DataGridRowSlots, DataGridRowState } from './DataGridRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useTableRowStyles_unstable } from '../TableRow/useTableRowStyles';
+import { useTableRowStyles_unstable } from '../TableRow/useTableRowStyles.styles';
 
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots> = {
   root: 'fui-DataGridRow',

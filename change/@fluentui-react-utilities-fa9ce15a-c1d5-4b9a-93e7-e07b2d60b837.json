@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: simplifies useControllableState hook internals",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -2,8 +2,8 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
-import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles';
+import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles.styles';
+import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles.styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableRowClassName = 'fui-TableRow';

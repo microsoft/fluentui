@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDialogActions_unstable } from './useDialogActions';
 import { renderDialogActions_unstable } from './renderDialogActions';
-import { useDialogActionsStyles_unstable } from './useDialogActionsStyles';
+import { useDialogActionsStyles_unstable } from './useDialogActionsStyles.styles';
 import type { DialogActionsProps } from './DialogActions.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTreeItem_unstable } from './useTreeItem';
 import { renderTreeItem_unstable } from './renderTreeItem';
-import { useTreeItemStyles_unstable } from './useTreeItemStyles';
+import { useTreeItemStyles_unstable } from './useTreeItemStyles.styles';
 import type { TreeItemProps } from './TreeItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeItemContextValues_unstable } from './useTreeItemContextValues';
