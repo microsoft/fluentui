@@ -2,7 +2,7 @@
 import { LAB_to_sRGB, LCH_to_Lab, Lab_to_LCH, sRGB_to_LCH, snap_into_gamut } from './csswg';
 import { getPointsOnCurvePath } from './geometry';
 import { CurvedHelixPath, Palette, Vec3 } from './types';
-
+import { relativeLuminanceMap, redSnappingPoints, hexToHue } from './hueMap';
 // This file contains functions that combine geometry and color math to create
 // and work with palette curves.
 
@@ -27,28 +27,59 @@ const relativeLuminance = (rgb: Vec3): number => {
   return 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
 };
 
-const rangeForKeyColor = (keyColor: string): number[] => {
-  const redRange = [13.5, 86];
-  const rgbRed = hex_to_sRGB('#FF0000');
-  const relLumRed = relativeLuminance(rgbRed);
+function normalizeSnappingPoints(arr: number[]) {
+  const min = arr[0];
+  const max = arr[2];
+  const diff = max - min;
+  const normalizedOther = ((arr[1] - min) / diff) * 100;
+  return [0, normalizedOther, 100];
+}
 
-  const rgb = hex_to_sRGB(keyColor);
-  const relLum = relativeLuminance(rgb);
-
-  const ratio = relLumRed / relLum;
-  const minRange = redRange[0] * ratio >= 0 ? redRange[0] * ratio : 0;
-  const maxRange = redRange[1] * ratio <= 100 ? redRange[1] * ratio : 100;
-
-  const range = [minRange, maxRange];
+const snappingPointsForKeyColor = (keyColor: string): number[] => {
+  const hue = hexToHue(keyColor);
+  const lum = relativeLuminanceMap[hue];
+  const start = (redSnappingPoints.startPoint * lum) / redSnappingPoints.relativeLuminosity;
+  const end = (redSnappingPoints.endPoint * lum) / redSnappingPoints.relativeLuminosity;
+  const range = [start, redSnappingPoints.centerPoint, end];
+  if (end > 100) {
+    const norm = normalizeSnappingPoints(range);
+    return norm;
+  }
   return range;
 };
 
-const pointsForKeyColor = (keyColor: string, range: number[]): number[] => {
+function quadraticBezierInterpolation(start: number, end: number, inBetween: number, numSamples: number) {
+  // Helper function to calculate the quadratic Bezier interpolation
+  function bezier(t: number, p0: number, p1: number, p2: number) {
+    const oneMinusT = 1 - t;
+    return oneMinusT * (oneMinusT * p0 + t * p1) + t * (oneMinusT * p1 + t * p2);
+  }
+
+  // Calculate the control point
+  const controlPoint = (inBetween - 0.5 * (start + end)) * 2;
+
+  // Initialize the output array
+  const result = new Array(numSamples);
+
+  // Fill the array with interpolated values using quadratic Bezier interpolation
+  for (let i = 0; i < numSamples; i++) {
+    const t = i / (numSamples - 1);
+    result[i] = bezier(t, start, controlPoint, end);
+  }
+
+  return result;
+}
+
+const pointsForKeyColor = (keyColor: string, range: number[], centerPoint: number): number[] => {
   const rgb = hex_to_sRGB(keyColor);
-  //   const relativeLuminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
-  const perceivedLuminance = 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
+  const perceivedLuminance = relativeLuminance(rgb);
   //   const relativeLuminance = 50; // old way.
-  return linearInterpolationThroughPoint(range[0], range[1], perceivedLuminance * 100, 16);
+  //   const nurbs = quadraticBezierInterpolation(range[0], range[1], perceivedLuminance * 100, 16);
+
+  const linear = linearInterpolationThroughPoint(range[0], range[1], perceivedLuminance * 100, 16);
+  //   const linear = linearInterpolationThroughPoint(range[0], range[1], (range[1]-range[0])/2, 16);
+
+  return linear;
 };
 
 function linearInterpolationThroughPoint(start: number, end: number, inBetween: number, numSamples: number) {
@@ -110,12 +141,12 @@ function paletteShadesFromCurvePoints(
     return [];
   }
 
-  const range = rangeForKeyColor(keyColor);
+  const snappingPoints = snappingPointsForKeyColor(keyColor);
   const paletteShades = [];
-
+  const range = [snappingPoints[0], snappingPoints[2]];
   const logLightness = getLogSpace(Math.log10(0), Math.log10(100), nShades);
   //   const oldLinearLightness = getLinearSpace(range[0], range[1], nShades); // older attempt
-  const linearLightness = pointsForKeyColor(keyColor, range);
+  const linearLightness = pointsForKeyColor(keyColor, range, snappingPoints[1]);
   let c = 0;
 
   for (let i = 0; i < nShades; i++) {
