@@ -1,17 +1,13 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { ARIAGlobalStatesAndProperties } from '@microsoft/fast-foundation';
+import { attr, observable } from '@microsoft/fast-element';
+import { applyMixins, ARIAGlobalStatesAndProperties } from '@microsoft/fast-foundation';
+import { FormAssociatedSelect } from './select.form-associated.js';
 import { SelectSize } from './select.options.js';
 
 /**
  * The base class used for constructing a fluent-slider custom element
  * @public
  */
-export class Select extends FASTElement {
-  constructor() {
-    super();
-    Object.assign(this, new ARIAGlobalStatesAndProperties()); // Assigns ARIA global states and properties to the element
-  }
-
+export class Select extends FormAssociatedSelect {
   /**
    * The name of the select element
    *
@@ -159,6 +155,28 @@ export class Select extends FASTElement {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Select extends ARIAGlobalStatesAndProperties {}
-// applyMixins(Select, [ARIAGlobalStatesAndProperties]);
+/**
+ * Includes ARIA states and properties relating to the ARIA select role
+ *
+ * @public
+ */
+export class DelegatesARIASelect {}
+
+/**
+ * Mark internal because exporting class and interface of the same name
+ * confuses API documenter.
+ * TODO: https://github.com/microsoft/fast/issues/3317
+ * @internal
+ */
+/* eslint-disable-next-line */
+export interface DelegatesARIASelect extends ARIAGlobalStatesAndProperties {}
+applyMixins(DelegatesARIASelect, ARIAGlobalStatesAndProperties);
+
+/**
+ * Mark internal because exporting class and interface of the same name
+ * confuses API documenter.
+ * TODO: https://github.com/microsoft/fast/issues/3317
+ * @internal
+ */
+export type Select = DelegatesARIASelect
+applyMixins(Select, DelegatesARIASelect);
