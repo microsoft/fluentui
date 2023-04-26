@@ -33,7 +33,7 @@ import { SlotRenderFunction } from '@fluentui/react-utilities';
 export const flattenTree_unstable: <Props extends TreeItemProps<unknown>>(items: NestedTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
 
 // @public
-export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>> = {
+export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
     getTreeProps(): FlatTreeProps<Props['value']>;
     navigate(data: TreeNavigationData_unstable<Props['value']>): void;
     getNextNavigableItem(visibleItems: FlatTreeItem<Props>[], data: TreeNavigationData_unstable<Props['value']>): FlatTreeItem<Props> | undefined;
@@ -41,7 +41,7 @@ export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
 };
 
 // @public
-export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>> = {
+export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
     index: number;
     level: number;
     childrenSize: number;
@@ -52,15 +52,15 @@ export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItem
 };
 
 // @public (undocumented)
-export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'value'> & {
+export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
     value: Value;
     parentValue?: Value;
 };
 
 // @public (undocumented)
-export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & {
+export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
     ref: React_2.Ref<HTMLDivElement>;
-}>;
+};
 
 // @public (undocumented)
 export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree'> & {
@@ -289,7 +289,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public
-export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>>(flatTreeItemProps: Props[], options?: FlatTreeOptions<Props>): FlatTree<Props>;
+export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(flatTreeItemProps: Props[], options?: FlatTreeOptions<Props>): FlatTree<Props>;
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;

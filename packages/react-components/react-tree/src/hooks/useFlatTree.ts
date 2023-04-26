@@ -13,7 +13,7 @@ import type {
 } from '../Tree';
 import type { TreeItemProps } from '../TreeItem';
 
-export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'value'> & {
+export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
   value: Value;
   parentValue?: Value;
 };
@@ -22,7 +22,7 @@ export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'valu
  * The item that is returned by `useFlatTree`, it represents a wrapper around the properties provided to
  * `useFlatTree` but with extra information that might be useful on flat tree scenarios
  */
-export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>> = {
+export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
   index: number;
   level: number;
   childrenSize: number;
@@ -39,8 +39,8 @@ export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItem
 };
 
 export type FlatTreeProps<Value = string> = Required<
-  Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & { ref: React.Ref<HTMLDivElement> }
->;
+  Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>
+> & { ref: React.Ref<HTMLDivElement> };
 
 /**
  * FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems
@@ -52,7 +52,7 @@ export type FlatTreeProps<Value = string> = Required<
  *
  * On simple scenarios it is advised to simply use a nested structure instead.
  */
-export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>> = {
+export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
   /**
    * returns the properties required for the Tree component to work properly.
    * That includes:
@@ -100,7 +100,7 @@ export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
   items(): IterableIterator<FlatTreeItem<Props>>;
 };
 
-type FlatTreeOptions<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>> = Pick<
+type FlatTreeOptions<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = Pick<
   TreeProps<Props['value']>,
   'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'
 >;
@@ -117,7 +117,7 @@ type FlatTreeOptions<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
  * @param flatTreeItemProps - a list of tree items
  * @param options - in case control over the internal openItems is required
  */
-export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>>(
+export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(
   flatTreeItemProps: Props[],
   options: FlatTreeOptions<Props> = {},
 ): FlatTree<Props> {

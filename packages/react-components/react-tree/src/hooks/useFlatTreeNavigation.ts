@@ -9,7 +9,7 @@ import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalk
 import { useRovingTabIndex } from './useRovingTabIndexes';
 import { FlatTreeItemProps } from './useFlatTree';
 
-export function useFlatTreeNavigation<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps<string>>(
+export function useFlatTreeNavigation<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(
   flatTreeItems: FlatTreeItems<Props>,
 ) {
   const { targetDocument } = useFluent_unstable();
