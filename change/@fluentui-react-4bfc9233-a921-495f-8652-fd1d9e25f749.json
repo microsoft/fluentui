@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Resolved Issue #27052. Added \"tab\" role to the overflow menu item in the Pivot component.",
+  "comment": "fix(Pivot): Add tab role to the overflow menu button.",
   "packageName": "@fluentui/react",
   "email": "usmanfarooqi@microsoft.com",
   "dependentChangeType": "patch"
