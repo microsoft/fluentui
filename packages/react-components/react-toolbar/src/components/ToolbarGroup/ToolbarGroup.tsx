@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ToolbarGroupProps } from './ToolbarGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useToolbarGroup_unstable } from './useToolbarGroup';
-import { useToolbarGroupStyles_unstable } from './useToolbarGroupStyles';
+import { useToolbarGroupStyles_unstable } from './useToolbarGroupStyles.styles';
 import { renderToolbarGroup_unstable } from './renderToolbarGroup';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 

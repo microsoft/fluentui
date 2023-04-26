@@ -1,7 +1,7 @@
 import { mergeClasses } from '@griffel/react';
 import type { DataGridSelectionCellSlots, DataGridSelectionCellState } from './DataGridSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useTableSelectionCellStyles_unstable } from '../TableSelectionCell/useTableSelectionCellStyles';
+import { useTableSelectionCellStyles_unstable } from '../TableSelectionCell/useTableSelectionCellStyles.styles';
 
 export const dataGridSelectionCellClassNames: SlotClassNames<DataGridSelectionCellSlots> = {
   root: 'fui-DataGridSelectionCell',

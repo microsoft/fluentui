@@ -48,6 +48,10 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       jsContentStr.indexOf('window.FluentUIExampleData') !== -1
         ? script('@fluentui/example-data@8/dist/example-data.js')
         : '',
+      // load charting bundle only if used
+      jsContentStr.indexOf('window.FluentUIReactCharting') !== -1
+        ? script('@fluentui/react-charting@5/dist/react-charting.js')
+        : '',
       `<div id="${CONTENT_ID}"></div>`,
     ]
       .filter(line => !!line)

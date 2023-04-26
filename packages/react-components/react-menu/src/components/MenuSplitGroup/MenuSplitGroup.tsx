@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuSplitGroup_unstable } from './useMenuSplitGroup';
 import { renderMenuSplitGroup_unstable } from './renderMenuSplitGroup';
-import { useMenuSplitGroupStyles_unstable } from './useMenuSplitGroupStyles';
+import { useMenuSplitGroupStyles_unstable } from './useMenuSplitGroupStyles.styles';
 import type { MenuSplitGroupProps } from './MenuSplitGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

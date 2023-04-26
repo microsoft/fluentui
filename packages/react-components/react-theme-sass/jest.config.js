@@ -9,7 +9,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
-      diagnostics: false,
+      isolatedModules: true,
     },
   },
   testEnvironment: 'jest-environment-node-single-context',

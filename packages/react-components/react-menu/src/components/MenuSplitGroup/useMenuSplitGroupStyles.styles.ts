@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { menuItemClassNames } from '../MenuItem/useMenuItemStyles';
+import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
