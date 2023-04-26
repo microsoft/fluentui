@@ -63,7 +63,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const [hideActiveDescendant, setHideActiveDescendant] = React.useState(false);
 
   // save the typing vs. navigating options state, as the space key should behave differently in each case
-  const [typing, setTyping] = React.useState(false);
+  // we do not want to update the combobox when this changes, just save the value between renders
+  const isTyping = React.useRef(false);
 
   // calculate listbox width style based on trigger width
   const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
@@ -232,7 +233,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     // update typing state to true if the user is typing
     const action = getDropdownActionFromKey(ev, { open, multiselect });
     if (action === 'Type') {
-      setTyping(true);
+      isTyping.current = true;
     }
     // otherwise, update the typing state to false if opening or navigating dropdown options
     // other actions, like closing the dropdown, should not impact typing state.
@@ -245,11 +246,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       action === 'PageUp' ||
       action === 'PageDown'
     ) {
-      setTyping(false);
+      isTyping.current = false;
     }
 
     // allow space to insert a character if freeform & the last action was typing, or if the popup is closed
-    if (freeform && (typing || !open) && ev.key === ' ') {
+    if (freeform && (isTyping.current || !open) && ev.key === ' ') {
       resolvedPropsOnKeyDown?.(ev);
       return;
     }
