@@ -161,6 +161,23 @@ export interface IAzureSemanticColors {
     primary: string;
     secondary: string;
   };
+  tagButton: {
+    rest: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    hover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    pressed: {
+      text: string;
+      background: string;
+      border: string;
+    };
+  };
   toggle: {
     disabled: {
       backrgound: string;
