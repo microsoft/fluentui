@@ -26,12 +26,14 @@ const useStyles = makeStyles({
 
     [drawerCSSVars.borderRadius]: 0,
 
-    boxSizing: 'border-box',
     width: `var(${drawerCSSVars.size})`,
     maxWidth: 'calc(100vw - 48px)',
     height: 'auto',
+    boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
   },
 
@@ -43,8 +45,6 @@ const useStyles = makeStyles({
 
   inline: {
     position: 'relative',
-    alignItems: 'stretch',
-    justifyContent: 'stretch',
   },
 
   leftDrawer: {
