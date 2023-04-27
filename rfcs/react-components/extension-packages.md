@@ -81,6 +81,24 @@ with technical implementation by following concrete requirements.
 
 ## Detailed Design or Proposal
 
+### Design driven approach
+
+Any extension pacakge that involves UI components will follow the same design driven approach that all Fluent UI core
+components undergo. Each component should have a design spec and technical spec. The technical spec should be co-located
+with component implementation.
+
+There should be clear process for any potential contributors to request design guidnace and request a design spec or
+formalize a design spec in the Fluent UI design language.
+
+#### Pros
+
+👍 Reduce competing design requirements
+👍 Satisfy design requirements for larger audience
+
+#### Cons
+
+👎 Slower velocity for partner teams
+
 ### Deviating from v9 core concepts
 
 It's difficult to formalize what 'deviating' means here, and any attempt to do so will probably not be
@@ -113,12 +131,72 @@ justified and discussed with the core team.
 - 👍 Can enforce design across Microsoft more strictly
 - 👍 Can be more flexible than core components
 - 👍 Can be done on a case-by-case basis depending on requirements
+  👍 No competing design requirements
 
 #### Cons
 
 - 👎 Can lead to a very inconsistent set of components that behave differently to each other
 - 👎 Our partners might still want to customize to the max
 - 👎 Approaches could be heavily biased on a subset of partners
+  👎 Can have competing technical implementations
+
+### Core team involvement
+
+We want to allow partner teams and contributors to iterate quickly on their components while providing guidance
+on following best practices in Fluent UI and React. The RFC proposes that each extension package should have a
+point of contact with a feature crew. The responsible crew should be involved in reviewing PRs in a non-blocking
+way (i.e. the review should not be required) and also the point of contact for external contributors to address
+questions to.
+
+The ownership of extension packages by external teams should stay with the external teams. Issues reported
+should be handled by the owners of the extension package.
+
+### Competing implementations
+
+The nature of extension packages, as mentioned earlier, is to be more requirement specific and less general. However,
+this means that different contributors could have different requirements even for the same kind of UI control. In these
+cases, competing implementations are acceptable.In these cases the actual UI control should have a single design
+spec that is the source of truth for the visuals.
+
+Naming conflicts will be resolved by contributor teams, this is similar to publishing any package on NPM, and would
+be the case if these contributors were to publish their own implementations outside of the Fluent UI umbrella. Some
+examples of conflicts that would result in competing implementations:
+
+- Flexible vs Strict API usage
+- Style customisability
+- Feature customisability
+- Performance optimized implementation for different scenarios
+
+#### Resolving competing implementations
+
+Any effort to resolve competing implementations or any conflicts should be the initiative of the owners of the extension
+packages. The Fluent UI team can be involved to provide guidance and suggestions for any kind of convergence there, but
+the implementation work should be carried out by the respective owners of these extension packages.
+
+### Elevating extension to core library
+
+Extension packages should be able to be elevated to the core library on request or need. This should involve reviews of:
+
+- Design fidelity
+- API core principles
+- Performance benchmark
+
+before an extension component can be elevated to the core library. The extension package should be deprecated and replaced
+with a new package that follows the naming conventions and versioning of the core library.
+
+Example:
+
+1. Contributor creates `@fluentui-contrib/react-people-picker`
+2. Contributor requests the Fluent UI team for elevation
+3. Fluent UI team assigns a memeber to review the package
+4. Changes are proposed to `@fluentui-contrib/react-people-picker`
+5. Changes are implemented to `@fluentui-contrib/react-people-picker`
+6. Fluent UI team creates new package `@fluentui/react-people-picker@9.0.0`
+
+Once a package is elevated to the core library, the ownership should be shared between the Fluent UI team and original
+authors.
+
+Any packages with competing implementations cannot be elevated until the competing implementations converge.
 
 ### Different breaking change cadence
 
@@ -145,16 +223,7 @@ for OSS authors that want to extend the library. This recommendation is made to 
 We can look at a case by case basis if more concrete dependencies on the core library are needed. This policy should
 be enforced by automation that needs to be disabled in the cases where stricter dependencies are necessary.
 
-### Core team involvement
-
-We want to allow partner teams and contributors to iterate quickly on their components while providing guidance
-on following best practices in Fluent UI and React. The RFC proposes that each extension package should have a
-point of contact with a feature crew. The responsible crew should be involved in reviewing PRs in a non-blocking
-way (i.e. the review should not be required) and also the point of contact for external contributors to address
-questions to.
-
-The ownership of extension packages by external teams should stay with the external teams. Issues reported
-should be handled by the owners of the extension package.
+###
 
 ### Packages scope and hosting
 
