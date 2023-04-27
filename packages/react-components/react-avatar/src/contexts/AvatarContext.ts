@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarSize } from '../components/Avatar/Avatar.types';
+import { AvatarSize, AvatarShape } from '../components/Avatar/Avatar.types';
 
 const avatarContext = React.createContext<AvatarContextValue | undefined>(undefined);
 
@@ -8,6 +8,7 @@ const avatarContext = React.createContext<AvatarContextValue | undefined>(undefi
  */
 export interface AvatarContextValue {
   size?: AvatarSize;
+  shape?: AvatarShape;
 }
 
 const avatarContextDefaultValue: AvatarContextValue = {};
