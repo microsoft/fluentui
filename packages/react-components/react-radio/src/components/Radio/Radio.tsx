@@ -3,7 +3,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { RadioProps } from './Radio.types';
 import { renderRadio_unstable } from './renderRadio';
 import { useRadio_unstable } from './useRadio';
-import { useRadioStyles_unstable } from './useRadioStyles';
+import { useRadioStyles_unstable } from './useRadioStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
