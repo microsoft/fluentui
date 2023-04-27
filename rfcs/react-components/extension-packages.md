@@ -273,6 +273,7 @@ which should be given after a review of:
 - Design spec
 - Code/API architecture
 - Repo build and infra
+- Documentation alignment with Fluent UI
 
 #### Pros/Cons
 
