@@ -6,12 +6,12 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import {
   Points,
   convertToLocaleString,
+  formatValueWithSIPrefix,
   getAccessibleDataObject,
   getColorFromToken,
   pointTypes,
 } from '../../utilities/index';
 import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
@@ -119,7 +119,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Min value: ${minValue}`}
                   >
-                    {d3FormatPrefix(minValue < 1000 ? '.2~' : '.1', minValue)(minValue)}
+                    {formatValueWithSIPrefix(minValue)}
                   </text>
                   <text
                     x={outerRadius + 4}
@@ -129,7 +129,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Max value: ${maxValue}`}
                   >
-                    {d3FormatPrefix(maxValue < 1000 ? '.2~' : '.1', maxValue)(maxValue)}
+                    {formatValueWithSIPrefix(maxValue)}
                   </text>
                 </>
               )}
