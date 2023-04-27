@@ -54,7 +54,9 @@ const overflowIndexData = [
 
 describe('partitionBreadcrumbItems method', () => {
   it.each(emptyTestData)("returns `undefined` if null or undefined is passed '%s'", (testItems, expected) => {
-    expect(partitionBreadcrumbItems(testItems as any)).toStrictEqual(expected);
+    expect(partitionBreadcrumbItems(testItems as unknown as PartitionBreadcrumbItemsOptions<unknown>)).toStrictEqual(
+      expected,
+    );
   });
   it.each(testData)("splits items correctly '%s'", (testItems, expected) => {
     expect(partitionBreadcrumbItems(testItems as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual(expected);
