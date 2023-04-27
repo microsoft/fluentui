@@ -147,9 +147,14 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   className={this._classNames.segment}
                   onFocus={() => this._onSegmentFocus(segments[segment.index].legend)}
                   onBlur={this._onSegmentBlur}
-                  data-is-focusable={true}
-                  role="img"
-                  aria-label={segments[segment.index].legend}
+                  {...getAccessibleDataObject(
+                    {
+                      ariaLabel: segments[segment.index].legend,
+                      ...segments[segment.index].accessibilityData,
+                    },
+                    'img',
+                    true,
+                  )}
                   aria-description={`${segments[segment.index].size} out of ${maxValue - minValue}, or ${(
                     (segments[segment.index].size / (maxValue - minValue)) *
                     100

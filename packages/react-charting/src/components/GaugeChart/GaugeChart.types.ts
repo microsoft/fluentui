@@ -1,6 +1,7 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ILegendsProps } from '../Legends/index';
+import { IAccessibilityProps } from '../../types/index';
 
 export interface IGaugeChartSegment {
   /** */
@@ -11,6 +12,9 @@ export interface IGaugeChartSegment {
 
   /** */
   color?: string;
+
+  /** */
+  accessibilityData?: IAccessibilityProps;
 }
 
 export interface IGaugeChartProps {
