@@ -1,7 +1,6 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-//import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { IAreaChartProps, AreaChart } from './index';
 import { IAreaChartState, AreaChartBase } from './AreaChart.base';
@@ -103,41 +102,41 @@ describe('AreaChart snapShot testing', () => {
   });
 
   it('renders hideLegend hhh correctly', async () => {
-    const component = mount(<AreaChart data={chartPoints} hideLegend={true} />);
+    wrapper = mount(<AreaChart data={chartPoints} hideLegend={true} />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', async () => {
-    const component = mount(<AreaChart data={chartPoints} hideTooltip={true} />);
+    wrapper = mount(<AreaChart data={chartPoints} hideTooltip={true} />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', async () => {
-    const component = mount(<AreaChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    wrapper = mount(<AreaChart data={chartPoints} enabledLegendsWrapLines={true} />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
   it('renders yAxisTickFormat correctly', async () => {
-    const component = mount(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    wrapper = mount(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Areachart with single point correctly', async () => {
-    const component = mount(<AreaChart data={singleChartPoint} />);
+    wrapper = mount(<AreaChart data={singleChartPoint} />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
@@ -145,20 +144,20 @@ describe('AreaChart snapShot testing', () => {
     const lineColor = points[0].color;
     delete points[0].color;
 
-    const component = mount(<AreaChart data={chartPoints} />);
+    wrapper = mount(<AreaChart data={chartPoints} />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
 
     points[0].color = lineColor;
   });
 
   it('Should not render circles when optimizeLargeData is true', async () => {
-    const component = mount(<AreaChart data={chartPoints} optimizeLargeData />);
+    wrapper = mount(<AreaChart data={chartPoints} optimizeLargeData />);
     await new Promise(resolve => setTimeout(resolve));
-    component.update();
-    const tree = toJson(component, { mode: 'deep' });
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
