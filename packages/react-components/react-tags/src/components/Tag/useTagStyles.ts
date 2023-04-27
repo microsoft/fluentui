@@ -87,28 +87,6 @@ const useStyles = makeStyles({
     marginRight: '6px',
     minWidth: '20px',
   },
-  content: {
-    display: 'inline-grid',
-    gridTemplateColumns: 'auto 8px auto auto 8px auto',
-    gridTemplateRows: '1fr auto auto 1fr',
-    gridTemplateAreas: `
-    "avatar . icon .         ."
-    "avatar . icon primary   ."
-    "avatar . icon secondary ."
-    "avatar . icon .         ."
-    `,
-  },
-  avatar: {
-    alignSelf: 'center',
-    ...shorthands.gridArea('avatar'),
-  },
-  icon: {
-    alignSelf: 'center',
-    ...shorthands.gridArea('icon'),
-  },
-  primaryText: { ...shorthands.gridArea('primary') },
-  secondaryText: { ...shorthands.gridArea('secondary') },
-  dismissButton: {},
 
   // TODO add additional classes for different states and/or slots
 });
