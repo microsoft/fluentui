@@ -2014,8 +2014,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         id="yAxisGElementchart_41"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -2374,8 +2372,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -2734,8 +2730,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -3074,8 +3068,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         id="yAxisGElementchart_7"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <span
@@ -3184,8 +3176,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         id="yAxisGElementchart_11"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -3544,8 +3534,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         id="yAxisGElementchart_31"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -3904,8 +3892,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         id="yAxisGElementchart_21"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -4264,8 +4250,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -4624,8 +4608,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         id="yAxisGElementchart_36"
         transform="translate(40, 0)"
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
