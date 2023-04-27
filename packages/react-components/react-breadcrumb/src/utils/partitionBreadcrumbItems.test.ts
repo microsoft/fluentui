@@ -1,33 +1,13 @@
-import {
-  partitionBreadcrumbItems,
-  PartitionBreadcrumbItems,
-  PartitionBreadcrumbItemsOptions,
-} from './partitionBreadcrumbItems';
+import { partitionBreadcrumbItems, PartitionBreadcrumbItemsOptions } from './partitionBreadcrumbItems';
 const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const testData = [
+const emptyTestData = [
   [null, undefined],
   [undefined, undefined],
-  [{}, { startDisplayedItems: [], overflowItems: undefined, endDisplayedItems: undefined }],
-  [{ items }, { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5], endDisplayedItems: [6, 7, 8, 9, 10] }],
-  [
-    { items, overflowIndex: 2 },
-    { startDisplayedItems: [0, 1], overflowItems: [2, 3, 4, 5, 6], endDisplayedItems: [7, 8, 9, 10] },
-  ],
-  [
-    { items, overflowIndex: 0 },
-    { startDisplayedItems: [], overflowItems: [0, 1, 2, 3, 4], endDisplayedItems: [5, 6, 7, 8, 9, 10] },
-  ],
-  [
-    { items, maxDisplayedItems: 3 },
-    { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5, 6, 7, 8], endDisplayedItems: [9, 10] },
-  ],
+];
+const testData = [
   [
     { items, overflowIndex: 2, maxDisplayedItems: 3 },
     { startDisplayedItems: [0, 1], overflowItems: [2, 3, 4, 5, 6, 7, 8, 9], endDisplayedItems: [10] },
-  ],
-  [
-    { items, maxDisplayedItems: 2 },
-    { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5, 6, 7, 8, 9], endDisplayedItems: [10] },
   ],
   [
     { items, maxDisplayedItems: 8, overflowIndex: 7 },
@@ -51,11 +31,51 @@ const testData = [
   ],
 ];
 
+const maxDisplayedItemsData = [
+  [
+    { items, maxDisplayedItems: 3 },
+    { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5, 6, 7, 8], endDisplayedItems: [9, 10] },
+  ],
+  [
+    { items, maxDisplayedItems: 2 },
+    { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5, 6, 7, 8, 9], endDisplayedItems: [10] },
+  ],
+];
+const overflowIndexData = [
+  [
+    { items, overflowIndex: 2 },
+    { startDisplayedItems: [0, 1], overflowItems: [2, 3, 4, 5, 6], endDisplayedItems: [7, 8, 9, 10] },
+  ],
+  [
+    { items, overflowIndex: 0 },
+    { startDisplayedItems: [], overflowItems: [0, 1, 2, 3, 4], endDisplayedItems: [5, 6, 7, 8, 9, 10] },
+  ],
+];
+
 describe('partitionBreadcrumbItems method', () => {
-  it.each(testData)(
-    "splits items correctly '%s'",
-    (testItems: PartitionBreadcrumbItemsOptions, expected: PartitionBreadcrumbItems) => {
-      expect(partitionBreadcrumbItems(testItems)).toStrictEqual(expected);
+  it.each(emptyTestData)("returns `undefined` if null or undefined is passed '%s'", (testItems, expected) => {
+    expect(partitionBreadcrumbItems(testItems as any)).toStrictEqual(expected);
+  });
+  it.each(testData)("splits items correctly '%s'", (testItems, expected) => {
+    expect(partitionBreadcrumbItems(testItems as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual(expected);
+  });
+  it.each(maxDisplayedItemsData)(
+    "splits items correctly if maxDisplayedItems are passed '%s'",
+    (testItems, expected) => {
+      expect(partitionBreadcrumbItems(testItems as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual(expected);
     },
   );
+  it.each(overflowIndexData)("splits items correctly if overflowINdex is passed '%s'", (testItems, expected) => {
+    expect(partitionBreadcrumbItems(testItems as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual(expected);
+  });
+  expect(partitionBreadcrumbItems({ items } as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual({
+    startDisplayedItems: [0],
+    overflowItems: [1, 2, 3, 4, 5],
+    endDisplayedItems: [6, 7, 8, 9, 10],
+  });
+  expect(partitionBreadcrumbItems({} as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual({
+    startDisplayedItems: [],
+    overflowItems: undefined,
+    endDisplayedItems: undefined,
+  });
 });
