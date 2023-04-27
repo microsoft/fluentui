@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field, makeStyles } from '@fluentui/react-components';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
@@ -12,5 +12,9 @@ const useStyles = makeStyles({
 export const Default = (props: Partial<DatePickerProps>) => {
   const styles = useStyles();
 
-  return <DatePicker label="Start date" className={styles.control} {...props} />;
+  return (
+    <Field label="Select a date">
+      <DatePicker className={styles.control} placeholder="Select a date..." {...props} />
+    </Field>
+  );
 };

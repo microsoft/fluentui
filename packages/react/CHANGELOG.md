@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 17 Apr 2023 07:40:25 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Apr 2023 07:38:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.108.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.2)
+
+Tue, 25 Apr 2023 07:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.108.1..@fluentui/react_v8.108.2)
+
+### Patches
+
+- feat(TimePicker): Updated TimePicker controlled and uncontrolled props to work correctly. ([PR #26482](https://github.com/microsoft/fluentui/pull/26482) by jamwu@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.5.7 ([PR #26482](https://github.com/microsoft/fluentui/pull/26482) by beachball)
+
+## [8.108.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.1)
+
+Fri, 21 Apr 2023 07:49:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.108.0..@fluentui/react_v8.108.1)
+
+### Patches
+
+- fix: exclude HTMLAttributes defined 'content' for  Tooltip and TooltipHost Prop types to mitigate @types/react breaking changes ([PR #27467](https://github.com/microsoft/fluentui/pull/27467) by martinhochel@microsoft.com)
+- fix: ContextualMenuSplitButton always sets aria-checked (does not leave it undefined) when it is checkable. ([PR #27650](https://github.com/microsoft/fluentui/pull/27650) by Humberto.Morimoto@microsoft.com)
+
+## [8.108.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.0)
+
+Thu, 20 Apr 2023 07:47:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.6..@fluentui/react_v8.108.0)
+
+### Minor changes
+
+- fix: DetailsList allows className in focusZoneProps, fix typing for selectionZoneProps ([PR #27287](https://github.com/microsoft/fluentui/pull/27287) by sarah.higley@microsoft.com)
+
+### Patches
+
+- fix: BasePicker selects correct focus target in selected items ([PR #27534](https://github.com/microsoft/fluentui/pull/27534) by sarah.higley@microsoft.com)
 
 ## [8.107.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.6)
 

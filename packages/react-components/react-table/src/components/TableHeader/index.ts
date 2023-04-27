@@ -2,4 +2,4 @@ export * from './TableHeader';
 export * from './TableHeader.types';
 export * from './renderTableHeader';
 export * from './useTableHeader';
-export * from './useTableHeaderStyles';
+export * from './useTableHeaderStyles.styles';

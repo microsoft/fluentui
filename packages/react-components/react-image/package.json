@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "9.1.5",
+  "version": "9.1.7",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,7 +34,8 @@
   "dependencies": {
     "@griffel/react": "^1.5.2",
     "@fluentui/react-shared-contexts": "^9.3.3",
-    "@fluentui/react-utilities": "^9.7.4",
+    "@fluentui/react-utilities": "^9.8.0",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.2",
     "@fluentui/react-theme": "^9.1.7",
     "@swc/helpers": "^0.4.14"
   },
