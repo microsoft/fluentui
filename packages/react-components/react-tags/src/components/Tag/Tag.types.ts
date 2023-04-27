@@ -1,20 +1,46 @@
+import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Avatar } from '@fluentui/react-avatar';
+import { Button } from '@fluentui/react-button';
+
+export type TagContextValues = {
+  avatar: {
+    size?: AvatarSize;
+    shape?: AvatarShape;
+  };
+};
 
 export type TagSlots = {
   root: NonNullable<Slot<'div'>>;
-  content?: Slot<'span'>;
-  avatar?: Slot<typeof Avatar>;
+
+  /**
+   * Slot for an icon or other visual element
+   */
+  media: Slot<'span'>;
+
+  /**
+   * A layout wrapper for the icon slot, the primaryText and secondaryText slots
+   */
+  content: Slot<'div'>;
+
   icon?: Slot<'span'>;
-  primaryText?: Slot<'span'>;
-  secondaryText?: Slot<'span'>;
-  dismissButton?: NonNullable<Slot<'button'>>;
+
+  /**
+   * Main text for the Tag. Children of the root slot are automatically rendered here
+   */
+  primaryText: Slot<'span'>;
+
+  /**
+   * Secondary text that describes or complements the main text
+   */
+  secondaryText: Slot<'span'>;
+
+  dismissButton: Slot<typeof Button>;
 };
 
 /**
  * Tag Props
  */
-export type TagProps = ComponentProps<TagSlots> & {
+export type TagProps = ComponentProps<Partial<TagSlots>> & {
   size?: 'extra-small' | 'small' | 'medium';
   shape?: 'rounded' | 'circular';
   appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
@@ -27,4 +53,9 @@ export type TagProps = ComponentProps<TagSlots> & {
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
+  Required<
+    Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'> & {
+      avatarSize: AvatarSize | undefined;
+      avatarShape: AvatarShape | undefined;
+    }
+  >;
