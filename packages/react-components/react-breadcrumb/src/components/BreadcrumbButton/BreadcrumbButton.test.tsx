@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { BreadcrumbButton } from './BreadcrumbButton';
 import { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
-import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles';
+import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
 
 describe('BreadcrumbButton', () => {
   isConformant({
