@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useBadge_unstable } from './useBadge';
-import { useBadgeStyles_unstable } from './useBadgeStyles';
+import { useBadgeStyles_unstable } from './useBadgeStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from './renderBadge';
 import type { BadgeProps } from './Badge.types';
