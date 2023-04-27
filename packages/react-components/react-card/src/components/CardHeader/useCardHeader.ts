@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
-import { cardHeaderClassNames } from './useCardHeaderStyles';
+import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
 
 /**
  * Create the state required to render CardHeader.

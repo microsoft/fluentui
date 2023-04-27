@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useBreadcrumbDivider_unstable } from './useBreadcrumbDivider';
 import { renderBreadcrumbDivider_unstable } from './renderBreadcrumbDivider';
-import { useBreadcrumbDividerStyles_unstable } from './useBreadcrumbDividerStyles';
+import { useBreadcrumbDividerStyles_unstable } from './useBreadcrumbDividerStyles.styles';
 import type { BreadcrumbDividerProps } from './BreadcrumbDivider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
