@@ -51,7 +51,7 @@ export type TagButtonSlots = {
 };
 
 // @public
-export type TagButtonState = ComponentState<TagButtonSlots> & Required<Pick<TagButtonProps, 'dismissable' | 'size' | 'shape' | 'disabled' | 'checked' | 'appearance'>>;
+export type TagButtonState = ComponentState<TagButtonSlots> & Required<Pick<TagButtonProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
@@ -78,7 +78,7 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'dismissable' | 'size' | 'shape' | 'disabled' | 'checked' | 'appearance'>>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
