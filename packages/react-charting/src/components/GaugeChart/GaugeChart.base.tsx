@@ -1,7 +1,13 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
 import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
-import { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
+import {
+  IGaugeChartProps,
+  IGaugeChartSegment,
+  IGaugeChartStyleProps,
+  IGaugeChartStyles,
+  NumberFormat,
+} from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import {
   Points,
@@ -165,7 +171,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                 {this._renderNeedle(innerRadius, outerRadius, 2)}
               </g>
               <TooltipText
-                content={`${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`}
+                content={
+                  this.props.currentValueFormat === NumberFormat.Fraction
+                    ? `${sweptFraction[0]}/${sweptFraction[1]}`
+                    : `${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`
+                }
                 textProps={{
                   x: 0,
                   y: 0,
@@ -353,7 +363,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     }
 
     const target = mouseEvent.target as SVGElement;
-    const hoverXValue: string = `Current value is ${sweptFraction[0]}/${sweptFraction[1]}`;
+    const hoverXValue: string =
+      'Current value is ' +
+      (this.props.currentValueFormat === NumberFormat.Fraction
+        ? `${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`
+        : `${sweptFraction[0]}/${sweptFraction[1]}`);
     let total = minValue;
     const hoverYValues: IYValue[] = arcsData.map(segment => {
       const yValue: IYValue = {

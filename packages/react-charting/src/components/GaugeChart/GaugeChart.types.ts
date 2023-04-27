@@ -17,6 +17,11 @@ export interface IGaugeChartSegment {
   accessibilityData?: IAccessibilityProps;
 }
 
+export enum NumberFormat {
+  Percentage = 'percentage',
+  Fraction = 'fraction',
+}
+
 export interface IGaugeChartProps {
   /**
    * Width of the chart
@@ -48,6 +53,9 @@ export interface IGaugeChartProps {
 
   /** */
   hideLimits?: boolean;
+
+  /** */
+  currentValueFormat?: NumberFormat;
 
   /**
    * Decides wether to show/hide legends

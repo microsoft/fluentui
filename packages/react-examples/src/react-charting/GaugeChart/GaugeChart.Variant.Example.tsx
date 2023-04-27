@@ -74,6 +74,7 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
           currentValue={this.state.currentValue}
           chartTitle="Storage capacity"
           sublabel="used"
+          currentValueFormat="fraction"
         />
       </>
     );
