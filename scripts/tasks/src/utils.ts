@@ -1,31 +1,89 @@
+import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { stripJsonComments } from '@nrwl/devkit';
-import * as jju from 'jju';
+import { parseJson, stripJsonComments } from '@nrwl/devkit';
 import type { TscTaskOptions } from 'just-scripts';
+
+/**
+ *
+ * get full TS configuration for particular tsconfig.json.
+ * uses tsc --showConfig under the hood
+ */
+export function getFullTsConfig(options: { configFileName: string; cwd: string }): TsConfig | null {
+  const { configFileName, cwd } = options;
+  const configPath = path.join(cwd, configFileName);
+
+  if (!fs.existsSync(configPath)) {
+    console.warn(`${configPath} doesn't exist`);
+    return null;
+  }
+
+  const output = execSync(`tsc -p ${configFileName} --showConfig`, { cwd, encoding: 'utf-8' });
+  const json = JSON.parse(output);
+
+  return json;
+}
 
 export function getTsPathAliasesConfig() {
   const cwd = process.cwd();
-  const tsConfigFile = 'tsconfig.lib.json';
-  const tsConfigPath = path.join(cwd, './tsconfig.lib.json');
-  const tsConfig: TsConfig | null = fs.existsSync(tsConfigPath)
-    ? jju.parse(fs.readFileSync(tsConfigPath, 'utf-8'))
-    : null;
+  const tsConfigFileNames = {
+    root: 'tsconfig.json',
+    lib: 'tsconfig.lib.json',
+  };
+  const tsConfigFilePaths = {
+    root: path.join(cwd, tsConfigFileNames.root),
+    lib: path.join(cwd, tsConfigFileNames.lib),
+  };
+  const tsConfigFileContents = {
+    root: fs.existsSync(tsConfigFilePaths.root) ? fs.readFileSync(tsConfigFilePaths.root, 'utf-8') : null,
+    lib: fs.existsSync(tsConfigFilePaths.lib) ? fs.readFileSync(tsConfigFilePaths.lib, 'utf-8') : null,
+  };
+  const tsConfigs = {
+    root: tsConfigFileContents.root
+      ? (parseJson(tsConfigFileContents.root, { expectComments: true }) as TsConfig)
+      : null,
+    lib: tsConfigFileContents.lib ? (parseJson(tsConfigFileContents.lib, { expectComments: true }) as TsConfig) : null,
+  };
   const packageJson: PackageJson = JSON.parse(fs.readFileSync(path.join(cwd, './package.json'), 'utf-8'));
 
-  const isUsingTsSolutionConfigs = Boolean(tsConfig);
+  const isUsingTsSolutionConfigs =
+    tsConfigs.root &&
+    tsConfigs.root.references &&
+    tsConfigs.root.references.length > 0 &&
+    Boolean(tsConfigFileContents.lib);
 
-  return { tsConfig, isUsingTsSolutionConfigs, tsConfigFile, tsConfigPath, packageJson };
+  return {
+    tsConfigFileNames,
+    tsConfigFilePaths,
+    tsConfigFileContents,
+    tsConfigs,
+    packageJson,
+    isUsingTsSolutionConfigs,
+  };
 }
 
-export function getTsPathAliasesConfigV8() {
+export function getTsPathAliasesConfigUsedOnlyForDx() {
+  const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'];
+  const tsConfigBaseFilesForDx = ['tsconfig.base.v8.json', 'tsconfig.base.all.json'];
   const cwd = process.cwd();
-  const tsConfigFile = 'tsconfig.json';
-  const tsConfigPath = path.join(cwd, `./${tsConfigFile}`);
+  const tsConfigPath = path.join(cwd, `./tsconfig.json`);
+
+  if (!fs.existsSync(tsConfigPath)) {
+    throw new Error(`${tsConfigPath} doesn't exist`);
+  }
+
   const tsConfig = JSON.parse(stripJsonComments(fs.readFileSync(tsConfigPath, 'utf-8')));
-  const isUsingV8pathAliases = tsConfig.extends && tsConfig.extends.includes('tsconfig.base.v8.json');
-  return { isUsingV8pathAliases, tsConfigFileV8: tsConfigFile };
+  const isUsingPathAliasesForDx =
+    tsConfig.extends && tsConfigBaseFilesForDx.some(relativeFilePath => tsConfig.extends.endsWith(relativeFilePath));
+
+  const tsConfigFileForCompilation = tsConfigFilesWithAliases.find(fileName => fs.existsSync(path.join(cwd, fileName)));
+
+  if (!tsConfigFileForCompilation) {
+    throw new Error(`no tsconfig from one of [${tsConfigFilesWithAliases}] found!`);
+  }
+
+  return { isUsingPathAliasesForDx, tsConfigFileForCompilation };
 }
 
 const packagesWithInvalidTypes = [
