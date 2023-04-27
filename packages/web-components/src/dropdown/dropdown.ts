@@ -11,11 +11,11 @@ import { DropdownControlSizes } from './dropdown.options.js';
  */
 export class Dropdown extends FASTSelect {
   /**
-   * Style Sizes
+   * Control Size
    *
    * @public
    * @remarks
-   * HTML attribute: style-sizes.
+   * HTML attribute: control-size
    */
   @attr({ attribute: 'control-size' })
   public styleSizes?: DropdownControlSizes;
