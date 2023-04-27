@@ -5,7 +5,8 @@ import {
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-components';
-import { ObjectShorthandValue } from '@fluentui/react-northstar';
+import type { ObjectShorthandValue } from '@fluentui/react-northstar';
+
 import * as React from 'react';
 
 type WithContent = ObjectShorthandValue<React.HTMLAttributes<HTMLDivElement>> | string;

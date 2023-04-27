@@ -811,6 +811,7 @@ export {
   OverflowItem,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
+  useOverflowCount,
   useOverflowMenu,
   DATA_OVERFLOWING,
   DATA_OVERFLOW_MENU,

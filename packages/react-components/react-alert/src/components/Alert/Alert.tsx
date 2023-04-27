@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { renderAlert_unstable } from './renderAlert';
 import { useAlert_unstable } from './useAlert';
-import { useAlertStyles_unstable } from './useAlertStyles';
+import { useAlertStyles_unstable } from './useAlertStyles.styles';
 
 import type { AlertProps } from './Alert.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

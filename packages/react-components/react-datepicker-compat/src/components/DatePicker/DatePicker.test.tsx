@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render, RenderResult } from '@testing-library/react';
 import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
-import { datePickerClassNames } from './useDatePickerStyles';
+import { datePickerClassNames } from './useDatePickerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals

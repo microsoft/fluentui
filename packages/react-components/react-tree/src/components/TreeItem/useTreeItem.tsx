@@ -3,7 +3,7 @@ import { getNativeElementProps, isResolvedShorthand, resolveShorthand, useId } f
 import { ChevronRight12Regular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { expandIconInlineStyles } from './useTreeItemStyles';
+import { expandIconInlineStyles } from './useTreeItemStyles.styles';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';

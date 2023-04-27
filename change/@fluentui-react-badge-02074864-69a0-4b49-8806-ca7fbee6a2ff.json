@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update to use single hook selector",
+  "packageName": "@fluentui/react-badge",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -12,7 +12,6 @@ import { ShorthandValue } from 'src/types';
 import { List } from 'src/components/List/List';
 
 jest.dontMock('@fluentui/keyboard-key');
-jest.useFakeTimers();
 
 describe('Dropdown', () => {
   isConformant(Dropdown, {
@@ -327,6 +326,7 @@ describe('Dropdown', () => {
   });
 
   describe('highlightedIndex', () => {
+    jest.useFakeTimers();
     afterEach(() => {
       act(() => {
         jest.runAllTimers();
@@ -1292,6 +1292,7 @@ describe('Dropdown', () => {
   });
 
   describe('getA11ySelectionMessage', () => {
+    jest.useFakeTimers();
     afterEach(() => {
       jest.runAllTimers();
     });

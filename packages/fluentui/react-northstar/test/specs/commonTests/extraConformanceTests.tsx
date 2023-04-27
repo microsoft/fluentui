@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as path from 'path';
-import { TestObject } from '@fluentui/react-conformance';
+import type { TestObject } from '@fluentui/react-conformance';
 
 import * as doctrine from 'doctrine';
 
