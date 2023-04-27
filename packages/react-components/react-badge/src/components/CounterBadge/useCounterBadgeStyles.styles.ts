@@ -1,5 +1,5 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles';
+import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
 import type { CounterBadgeState } from './CounterBadge.types';
