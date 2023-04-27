@@ -33,6 +33,8 @@ export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefi
 // @internal (undocumented)
 export interface AvatarContextValue {
     // (undocumented)
+    shape?: AvatarShape;
+    // (undocumented)
     size?: AvatarSize;
 }
 
@@ -131,7 +133,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor?: string | undefined;
     name?: string;
-    shape?: 'circular' | 'square';
+    shape?: AvatarShape;
     size?: AvatarSize;
 };
 
