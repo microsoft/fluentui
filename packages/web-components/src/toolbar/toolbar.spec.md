@@ -33,9 +33,11 @@ The actions and input fields on a toolbar can include dropdowns.
 
 ### CSS Variables
 
-Design tokens? All the colors and sizes?
+None
 
 ## Interactions
+
+None - Interactions such as hover and click are subject to the UX rules of the individual components slotted in the toolbar.
 
 ## Accessibility
 
@@ -47,8 +49,8 @@ Design tokens? All the colors and sizes?
   - [x] aria-orientation="vertical" in FAST
 - [ ] Does the component support 400% zoom?
 - [ ] What keyboard behaviors does the component support?
-  - [ ] Tab : Moves focus to the next focusable element in the toolbar.
-  - [ ] Shift + Tab : Moves focus to the previous focusable element in the toolbar.
-  - [ ] Arrow keys : Moves focus to the next/previous focusable element in the toolbar.
+  - [x] Tab : Moves focus to the next focusable element in the toolbar.
+  - [x] Shift + Tab : Moves focus to the previous focusable element in the toolbar.
+  - [x] Arrow keys : Moves focus to the next/previous focusable element in the toolbar.
 
 ## Preparation
