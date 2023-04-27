@@ -84,7 +84,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
     return [
       React.Fragment,
       {
-        children: render(slot, rest as Omit<R[K], 'children' | 'as'>),
+        children: render(slot, rest as Omit<R[K], 'as'>),
       } as unknown as R[K],
     ];
   }

@@ -191,6 +191,31 @@ describe('Overflow', () => {
     });
   });
 
+  it(`should overflow items when there's more than one child element`, () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const overflowElementIndex = 6;
+    mount(
+      <Container width={350}>
+        <div>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </div>
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}]`).each((value, index) => {
+      if (index >= overflowElementIndex) {
+        expect(Cypress.$(value).css('display')).to.equal('none');
+      } else {
+        expect(Cypress.$(value).css('display')).to.equal('inline-block');
+      }
+    });
+  });
+
   it(`should overflow items in reverse order`, () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     mount(

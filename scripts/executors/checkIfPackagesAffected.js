@@ -1,41 +1,36 @@
-const { getAffectedPackages, getNthCommit } = require('@fluentui/scripts-monorepo');
+const { getAffectedPackages } = require('@fluentui/scripts-monorepo');
 const yargs = require('yargs');
 
 const args = yargs
-  .option('packages', {
+  .option('package', {
     alias: 'p',
     type: 'array',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    string: true,
     description: 'Package to check modified files from',
-    demandOption: true,
+    demandOption: false,
   })
-  .option('pr', {
-    alias: 'r',
-    type: 'boolean',
-    description: 'During PR build compares to origin/master, in CI build compares to last commit',
-    default: false,
+  .option('base', {
+    type: 'string',
+    description: 'Base of the current branch (usually main or master)',
+    default: 'origin/master',
   })
-  .scriptName('bundle-size')
   .version(false).argv;
 
 const isPackageAffected = () => {
-  const { packages, pr } = args;
+  const { package: packages, base } = args;
+  const affectedPackages = getAffectedPackages(base);
 
-  let affectedPackages = new Set();
-
-  if (pr) {
-    affectedPackages = getAffectedPackages();
-  } else {
-    // master CI build,
-    const previousMasterCommit = getNthCommit();
-    affectedPackages = getAffectedPackages(previousMasterCommit);
-  }
-
-  for (const pkg of packages) {
-    if (affectedPackages.has(pkg)) {
-      return true;
+  if (packages) {
+    for (const pkg of packages) {
+      if (affectedPackages.has(pkg)) {
+        return true;
+      }
     }
+    return false;
   }
-  return false;
+
+  return affectedPackages;
 };
 
 function main() {
