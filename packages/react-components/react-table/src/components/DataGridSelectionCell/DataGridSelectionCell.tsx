@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDataGridSelectionCell_unstable } from './useDataGridSelectionCell';
 import { renderDataGridSelectionCell_unstable } from './renderDataGridSelectionCell';
-import { useDataGridSelectionCellStyles_unstable } from './useDataGridSelectionCellStyles';
+import { useDataGridSelectionCellStyles_unstable } from './useDataGridSelectionCellStyles.styles';
 import type { DataGridSelectionCellProps } from './DataGridSelectionCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

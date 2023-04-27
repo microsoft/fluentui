@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuItem_unstable } from './useMenuItem';
 import { renderMenuItem_unstable } from './renderMenuItem';
-import { useMenuItemStyles_unstable } from './useMenuItemStyles';
+import { useMenuItemStyles_unstable } from './useMenuItemStyles.styles';
 import type { MenuItemProps } from './MenuItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderImage_unstable } from './renderImage';
 import { useImage_unstable } from './useImage';
-import { useImageStyles_unstable } from './useImageStyles';
+import { useImageStyles_unstable } from './useImageStyles.styles';
 import type { ImageProps } from './Image.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuDivider_unstable } from './useMenuDivider';
-import { useMenuDividerStyles_unstable } from './useMenuDividerStyles';
+import { useMenuDividerStyles_unstable } from './useMenuDividerStyles.styles';
 import { renderMenuDivider_unstable } from './renderMenuDivider';
 import type { MenuDividerProps } from './MenuDivider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

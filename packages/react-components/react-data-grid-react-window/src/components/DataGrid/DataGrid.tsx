@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDataGrid_unstable } from './useDataGrid';
+import { useDataGrid_unstable } from './useDataGrid.styles';
 import {
   renderDataGrid_unstable,
   useDataGridStyles_unstable,
