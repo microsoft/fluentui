@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDrawerBody_unstable } from './useDrawerBody';
 import { renderDrawerBody_unstable } from './renderDrawerBody';
-import { useDrawerBodyStyles_unstable } from './useDrawerBodyStyles';
+import { useDrawerBodyStyles_unstable } from './useDrawerBodyStyles.styles';
 import type { DrawerBodyProps } from './DrawerBody.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
