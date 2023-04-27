@@ -17,7 +17,7 @@ const imageTemplate = html<ImageStoryArgs>`
       ?shadow=${x => x.shadow}
       shape=${x => x.shape}
     >
-      <img alt="Short image description" src="https://via.placeholder.com/300x100/ddd.png" />
+      <img alt="Short image description" src="https://picsum.photos/300/100" />
     </fluent-image>
   </div>
 `;
@@ -98,6 +98,10 @@ export default {
         defaultValue: {
           summary: 'square',
         },
+        type: {
+          summary:
+            'When shape `rounded` is used, default border radius is `borderRadiusMedium`. The dev may override the default border radius using one of the following: borderRadiusSmall, borderRadiusLarge, borderRadiusXLarge.',
+        },
       },
       options: Object.values(ImageShape),
       control: 'select',
@@ -119,8 +123,8 @@ export const Image = renderComponent(imageTemplate).bind({});
 const imageLayoutBlock = html<ImageStoryArgs>`
   <div style="border: 1px dotted #43ED35;">
     <fluent-image block bordered>
-      <img role="presentation" src="https://via.placeholder.com/958x20/ddd.png" />
-      <img role="presentation" src="https://via.placeholder.com/100x100/ddd.png" />
+      <img role="presentation" src="https://picsum.photos/958/20" />
+      <img role="presentation" src="https://picsum.photos/100/100" />
     </fluent-image>
   </div>
 `;
@@ -128,18 +132,18 @@ export const BlockLayout = renderComponent(imageLayoutBlock).bind({});
 
 // Fit: None
 const imageFitNoneLarge = html<ImageStoryArgs>`
-  <div style="height: 150px; width: 300px; border: 1px dotted #43ED35;">
+  <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="none">
-      <img role="presentation" src="https://via.placeholder.com/600x200/ddd.png" />
+      <img role="presentation" src="https://picsum.photos/600/200" />
     </fluent-image>
   </div>
 `;
 export const ImageFitNoneLarge = renderComponent(imageFitNoneLarge).bind({});
 
 const imageFitNoneSmall = html<ImageStoryArgs>`
-  <div style="height: 150px; width: 300px; border: 1px dotted #43ED35;">
+  <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="none">
-      <img alt="200x100 placeholder" src="https://via.placeholder.com/200x100/ddd.png" />
+      <img alt="200x100 placeholder" src="https://picsum.photos/200/100" />
     </fluent-image>
   </div>
 `;
@@ -147,27 +151,27 @@ export const ImageFitNoneSmall = renderComponent(imageFitNoneSmall).bind({});
 
 // Fit: Center
 const imageFitCenterLarge = html<ImageStoryArgs>`
-  <div style="height: 210px; width: 650px; border: 1px dotted #43ED35;">
-    <fluent-image bordered fit="center">
-      <img role="presentation" src="https://via.placeholder.com/600x200/ddd.png" />
+  <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
+    <fluent-image fit="center">
+      <img role="presentation" src="https://picsum.photos/600/200" />
     </fluent-image>
   </div>
 `;
 export const ImageFitCenterLarge = renderComponent(imageFitCenterLarge).bind({});
 
 const imageFitCenterSmall = html<ImageStoryArgs>`
-  <div style="height: 210px; width: 650px; border: 1px dotted #43ED35;">
-    <fluent-image bordered fit="center">
-      <img alt="image layout story" src="https://via.placeholder.com/200x100/ddd.png" />
+  <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
+    <fluent-image fit="center">
+      <img alt="image layout story" src="https://picsum.photos/200/100" />
     </fluent-image>
   </div>
 `;
 export const ImageFitCenterSmall = renderComponent(imageFitCenterSmall).bind({});
 
 const imageFitContain = html<ImageStoryArgs>`
-  <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
+  <div style="height:200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="contain">
-      <img alt="image layout story" src="https://via.placeholder.com/400x200/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/400/200" />
     </fluent-image>
   </div>
 `;
@@ -176,7 +180,7 @@ export const ImageFitContain = renderComponent(imageFitContain).bind({});
 const imageFitContainTall = html<ImageStoryArgs>`
   <div style="height: 250px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="contain">
-      <img alt="image layout story" src="https://via.placeholder.com/400x200/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/400/200" />
     </fluent-image>
   </div>
 `;
@@ -185,7 +189,7 @@ export const ImageFitContainTall = renderComponent(imageFitContainTall).bind({})
 const imageFitContainWide = html<ImageStoryArgs>`
   <div style="height: 200px; width: 450px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="contain">
-      <img alt="image layout story" src="https://via.placeholder.com/400x200/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/400/200" />
     </fluent-image>
   </div>
 `;
@@ -195,7 +199,7 @@ export const ImageFitContainWide = renderComponent(imageFitContainWide).bind({})
 const imageFitCoverSmall = html<ImageStoryArgs>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="cover">
-      <img alt="image layout story" src="https://via.placeholder.com/400x250/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/400/250" />
     </fluent-image>
   </div>
 `;
@@ -204,7 +208,7 @@ export const ImageFitCoverSmall = renderComponent(imageFitCoverSmall).bind({});
 const imageFitCoverMedium = html<ImageStoryArgs>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="cover">
-      <img alt="image layout story" src="https://via.placeholder.com/400x300/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/400/300" />
     </fluent-image>
   </div>
 `;
@@ -213,7 +217,7 @@ export const ImageFitCoverMedium = renderComponent(imageFitCoverMedium).bind({})
 const imageFitCoverLarge = html<ImageStoryArgs>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="cover">
-      <img alt="image layout story" src="https://via.placeholder.com/600x200/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/600/200" />
     </fluent-image>
   </div>
 `;
@@ -223,7 +227,7 @@ export const ImageFitCoverLarge = renderComponent(imageFitCoverLarge).bind({});
 const imageFitDefault = html<ImageStoryArgs>`
   <div style="height: 210px; width: 650px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="default">
-      <img alt="image layout story" src="https://via.placeholder.com/150/ddd.png" />
+      <img alt="image layout story" src="https://picsum.photos/150/150" />
     </fluent-image>
   </div>
 `;
