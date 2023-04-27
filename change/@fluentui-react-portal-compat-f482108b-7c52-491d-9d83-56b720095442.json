@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: React 18 support in typings",
-  "packageName": "@fluentui/react-portal-compat",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

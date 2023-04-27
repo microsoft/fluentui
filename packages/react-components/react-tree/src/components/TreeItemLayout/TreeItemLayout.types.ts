@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { TreeItemContextValue } from '../../contexts/treeItemContext';
 
 export type TreeItemLayoutSlots = {
-  root: Slot<'div'>;
+  root: Slot<'span'>;
   /**
    * Icon slot that renders right before main content
    */
@@ -11,6 +11,9 @@ export type TreeItemLayoutSlots = {
    * Icon slot that renders right after main content
    */
   iconAfter?: Slot<'span'>;
+  /**
+   * slot that render right after main content and iconAfter
+   */
   aside?: Slot<'span'>;
 };
 

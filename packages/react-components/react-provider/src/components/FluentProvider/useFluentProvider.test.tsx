@@ -112,8 +112,8 @@ describe('useFluentProvider_unstable', () => {
         () => useFluentProvider_unstable({ customStyleHooks_unstable: customStylesA }, React.createRef()),
       );
 
-      // Default hooks are still defined
-      expect(result.current.customStyleHooks_unstable.useAvatarStyles_unstable).toBeInstanceOf(Function);
+      // default is undefined as the selector provides no-op
+      expect(result.current.customStyleHooks_unstable.useAvatarStyles_unstable).toBeUndefined();
 
       expect(result.current.customStyleHooks_unstable.useButtonStyles_unstable).toEqual(
         customStylesA.useButtonStyles_unstable,
@@ -134,8 +134,8 @@ describe('useFluentProvider_unstable', () => {
         },
       );
 
-      // Default hooks are still defined
-      expect(result.current.customStyleHooks_unstable.useAvatarStyles_unstable).toBeInstanceOf(Function);
+      // default is undefined as the selector provides no-op
+      expect(result.current.customStyleHooks_unstable.useAvatarStyles_unstable).toBeUndefined();
 
       // Overrides from outer FluentProvider are preserved
       expect(result.current.customStyleHooks_unstable.useImageStyles_unstable).toEqual(

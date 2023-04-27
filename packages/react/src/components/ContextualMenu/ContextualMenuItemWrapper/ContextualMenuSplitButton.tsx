@@ -12,7 +12,7 @@ import {
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../../KeytipData';
-import { isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
+import { getIsChecked, getMenuItemAriaRole, hasSubmenu, isItemDisabled } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
@@ -85,6 +85,8 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       this._ariaDescriptionId = getId();
     }
 
+    const ariaChecked = getIsChecked(item) ?? undefined;
+
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
         {(keytipAttributes: any): JSX.Element => (
@@ -102,7 +104,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
               ariaDescription ? this._ariaDescriptionId : undefined,
               keytipAttributes['aria-describedby'],
             )}
-            aria-checked={item.isChecked || item.checked}
+            aria-checked={ariaChecked}
             aria-posinset={focusableElementIndex + 1}
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
