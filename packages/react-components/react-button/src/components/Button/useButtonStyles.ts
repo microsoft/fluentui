@@ -136,7 +136,7 @@ const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
-
+    transitionProperty: 'background, color',
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
