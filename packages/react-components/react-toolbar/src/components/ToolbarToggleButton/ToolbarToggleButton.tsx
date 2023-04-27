@@ -3,7 +3,7 @@ import type { ToolbarToggleButtonProps } from './ToolbarToggleButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { useToolbarToggleButton_unstable } from './useToolbarToggleButton';
-import { useToolbarToggleButtonStyles_unstable } from './useToolbarToggleButtonStyles';
+import { useToolbarToggleButtonStyles_unstable } from './useToolbarToggleButtonStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**

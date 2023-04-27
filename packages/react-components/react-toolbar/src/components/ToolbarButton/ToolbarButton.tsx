@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ToolbarButtonProps } from './ToolbarButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderButton_unstable } from '@fluentui/react-button';
-import { useToolbarButtonStyles_unstable } from './useToolbarButtonStyles';
+import { useToolbarButtonStyles_unstable } from './useToolbarButtonStyles.styles';
 import { useToolbarButton_unstable } from './useToolbarButton';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 

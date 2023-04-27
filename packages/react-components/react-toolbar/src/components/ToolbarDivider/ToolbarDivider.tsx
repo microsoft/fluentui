@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToolbarDividerStyles_unstable } from './useToolbarDividerStyles';
+import { useToolbarDividerStyles_unstable } from './useToolbarDividerStyles.styles';
 import type { ToolbarDividerProps } from './ToolbarDivider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderDivider_unstable } from '@fluentui/react-divider';
