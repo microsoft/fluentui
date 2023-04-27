@@ -8,6 +8,7 @@ import {
   colorNeutralBackground3,
   colorNeutralForeground1,
   colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
   colorTransparentBackground,
@@ -28,10 +29,10 @@ import {
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalXS,
+  spacingVerticalXXS,
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { DropdownStyleSizes } from './dropdown.options.js';
 
 /** Dropdown styles
  * @public
@@ -44,7 +45,6 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
-    box-sizing: border-box;
     color: var(--colorNeutralForeground1);
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
@@ -55,9 +55,19 @@ export const styles = css`
     user-select: none;
     outline: none;
     vertical-align: middle;
+    --display-multiple-checkmark: none;
+    --display-single-checkmark: none;
   }
-  :host::after {
-    box-sizing: border-box;
+  :host([disabled]) {
+    color: ${colorNeutralForegroundDisabled};
+    background: ${colorTransparentBackground};
+  }
+
+  :host([disabled]) .selected-value {
+    color: ${colorNeutralForegroundDisabled};
+  }
+
+  :host .control::after {
     content: '';
     position: absolute;
     left: -1px;
@@ -78,8 +88,12 @@ export const styles = css`
     transition-duration: ${durationNormal};
     transition-delay: ${curveDecelerateMid};
   }
+  :host([multiple])::not([size]) .listbox {
+    height: fit-content;
+  }
 
   .listbox {
+    --height: calc((var(--size) * 32px) + 12px);
     box-sizing: border-box;
     border: none;
     display: flex;
@@ -89,13 +103,14 @@ export const styles = css`
     top: 5px;
     left: 0;
     z-index: 1;
-    height: calc(var(--size) * 32px);
+    height: var(--height, fit-content);
     overflow-y: auto;
     padding: ${spacingVerticalXS} ${spacingHorizontalXS};
     box-shadow: ${shadow16};
     border-radius: ${borderRadiusMedium};
     background: ${colorNeutralBackground1};
-    margin-top: 2px;
+    min-width: 160px;
+    row-gap: ${spacingVerticalXXS};
   }
   .selected-value {
     flex: 1 1 auto;
@@ -134,16 +149,15 @@ export const styles = css`
     z-index: auto;
   }
 
-  :host([style-sizes='${DropdownStyleSizes.small}']) {
-    --style-size-font-small: ${fontSizeBase200} / ${lineHeightBase200};
+  :host([style-sizes='small']) {
     height: 24px;
     padding: 0 ${spacingHorizontalSNudge};
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
-    font: var(--style-size-font-small) ${fontFamilyBase};
+    font: ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
   }
 
-  :host([style-sizes='${DropdownStyleSizes.small}']) .selected-value {
+  :host([style-sizes='small']) .selected-value {
     padding: 0 ${spacingHorizontalXXS};
   }
 
@@ -160,14 +174,14 @@ export const styles = css`
 
   :host([appearance='filled-darker']) {
     background: ${colorNeutralBackground3};
-    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStroke1};
     box-shadow: ${shadow2};
   }
 
   :host([appearance='filled-lighter']) {
     background: ${colorNeutralBackground1};
-    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: ${shadow2};
   }
 
@@ -178,5 +192,18 @@ export const styles = css`
   :host([disabled]) {
     cursor: auto;
     user-select: none;
+  }
+
+  .listbox {
+  }
+
+  :host(:not([multiple])) {
+    --display-multiple-checkmark: none;
+    --display-single-checkmark: block;
+  }
+
+  :host([multiple]) {
+    --display-multiple-checkmark: block;
+    --display-single-checkmark: none;
   }
 `;

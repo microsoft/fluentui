@@ -1,6 +1,7 @@
-import { attr } from '@microsoft/fast-element';
+import { attr, Observable } from '@microsoft/fast-element';
 import { FASTSelect } from '@microsoft/fast-foundation';
-import { DropdownStyleSizes } from './dropdown.options.js';
+import { ListboxOption } from '../option/option.js';
+import { DropdownControlSizes } from './dropdown.options.js';
 
 /**
  * @class Dropdown component
@@ -16,10 +17,42 @@ export class Dropdown extends FASTSelect {
    * @remarks
    * HTML attribute: style-sizes.
    */
-  @attr({ attribute: 'style-sizes' })
-  public styleSizes?: DropdownStyleSizes;
+  @attr({ attribute: 'control-size' })
+  public styleSizes?: DropdownControlSizes;
 
-  protected sizeChanged(prev: number | undefined, next: number): void {
+  @attr({ attribute: 'placeholder' })
+  public placeholder: string = '';
+
+  public get displayValue(): string {
+    Observable.track(this, 'displayValue');
+    if (this.selectedIndex === -1) {
+      return this.placeholder;
+    }
+    if (this.multiple) {
+      const selectedOptionsText = this.selectedOptions.map(option => option.text);
+      return selectedOptionsText.join(', ') || '';
+    } else {
+      return this.firstSelectedOption?.text ?? '';
+    }
+  }
+
+  protected setDefaultSelectedOption(): void {
+    const options: ListboxOption[] =
+      this.options ?? Array.from(this.children).filter(el => (el as HTMLElement)?.tagName === 'fluent-option');
+
+    const selectedIndex = options?.findIndex(
+      el => el.hasAttribute('selected') || el.selected || el.value === this.value,
+    );
+
+    if (selectedIndex !== -1) {
+      this.selectedIndex = selectedIndex;
+      return;
+    }
+
+    this.selectedIndex = -1;
+  }
+
+  public sizeChanged(prev: number | undefined, next: number): void {
     super.sizeChanged(prev, next);
     this.updateComputedStylesheet();
   }
@@ -29,7 +62,9 @@ export class Dropdown extends FASTSelect {
    *
    * @internal
    */
-  protected updateComputedStylesheet(): void {
-    this.style.setProperty('--size', `${this.size}`);
+  private updateComputedStylesheet(): void {
+    if (typeof this.size === 'number') {
+      this.style.setProperty('--size', `${this.size}`);
+    }
   }
 }
