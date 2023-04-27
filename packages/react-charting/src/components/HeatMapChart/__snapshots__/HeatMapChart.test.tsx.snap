@@ -684,12 +684,6 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -835,7 +829,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         overflow: hidden;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -845,7 +839,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -885,7 +879,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_0"
         transform="translate(0, -35)"
       />
       <g
@@ -913,7 +907,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
     </svg>
@@ -949,12 +943,6 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -964,7 +952,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1190,7 +1178,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_6"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1200,7 +1188,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1240,7 +1228,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_6"
+        id="xAxisGElementchart_0"
         transform="translate(0, -35)"
       />
       <g
@@ -1268,7 +1256,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_6"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
     </svg>
@@ -1295,7 +1283,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1305,7 +1293,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1345,7 +1333,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
+        id="xAxisGElementchart_0"
         transform="translate(0, -35)"
       />
       <g
@@ -1373,7 +1361,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
     </svg>
@@ -1409,12 +1397,6 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1424,7 +1406,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1560,7 +1542,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1570,7 +1552,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1610,7 +1592,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
+        id="xAxisGElementchart_0"
         transform="translate(0, -35)"
       />
       <g
@@ -1638,7 +1620,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
     </svg>
@@ -1674,12 +1656,6 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1689,7 +1665,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

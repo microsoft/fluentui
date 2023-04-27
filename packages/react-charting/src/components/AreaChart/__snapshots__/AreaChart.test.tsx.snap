@@ -1427,7 +1427,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         overflow: hidden;
         width: 100%;
       }
-  id="chart_76"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1437,7 +1437,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone77"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1478,7 +1478,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
             & path {
               display: none;
             }
-        id="xAxisGElementchart_76"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -1506,7 +1506,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_76"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -1542,12 +1542,6 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1557,7 +1551,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone78"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1693,7 +1687,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_68"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1703,7 +1697,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone69"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1744,7 +1738,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_68"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -1772,7 +1766,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_68"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -1808,12 +1802,6 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1823,7 +1811,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone70"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2074,12 +2062,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -2225,7 +2207,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         overflow: hidden;
         width: 100%;
       }
-  id="chart_60"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2235,7 +2217,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone61"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2276,7 +2258,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
             & path {
               display: none;
             }
-        id="xAxisGElementchart_60"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -2304,7 +2286,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_60"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2340,12 +2322,6 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -2355,7 +2331,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone62"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2491,7 +2467,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_28"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2501,7 +2477,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone29"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2542,7 +2518,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_28"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -2570,7 +2546,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_28"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2604,7 +2580,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone30"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2737,7 +2713,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_13"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2747,7 +2723,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone14"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2788,7 +2764,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_13"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -2816,7 +2792,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_13"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2843,7 +2819,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_20"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2853,7 +2829,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2894,7 +2870,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_20"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -2922,7 +2898,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_20"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2958,12 +2934,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -2973,7 +2943,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3109,7 +3079,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_36"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3119,7 +3089,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone37"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3160,7 +3130,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_36"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -3188,7 +3158,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_36"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -3224,12 +3194,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -3239,7 +3203,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone38"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3375,7 +3339,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_44"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3385,7 +3349,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone45"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3426,7 +3390,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_44"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -3454,7 +3418,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_44"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -3490,12 +3454,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -3505,7 +3463,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone46"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3641,7 +3599,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_52"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3651,7 +3609,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone53"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3692,7 +3650,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_52"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -3720,7 +3678,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_52"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
     </svg>
@@ -3756,12 +3714,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -3771,7 +3723,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

@@ -16,6 +16,11 @@ const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
 }
 
 function sharedAfterEach() {
@@ -30,6 +35,8 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
 }
 
 const chartPoints = [
@@ -82,6 +89,8 @@ const chartPoints = [
 ];
 
 describe('GroupedVerticalBarChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('renders GroupedVerticalBarChart correctly', () => {
     const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} />);
     const tree = component.toJSON();
@@ -178,6 +187,8 @@ describe('GroupedVerticalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const renderMock = jest.spyOn(GroupedVerticalBarChartBase.prototype, 'render');
     const props = {
@@ -206,20 +217,8 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('GroupedVerticalBarChart - mouse events', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    jest.useFakeTimers();
-    Object.defineProperty(window, 'requestAnimationFrame', {
-      writable: true,
-      value: (callback: FrameRequestCallback) => callback(0),
-    });
-  });
-
-  afterEach(() => {
-    sharedAfterEach();
-    jest.useRealTimers();
-    window.requestAnimationFrame = originalRAF;
-  });
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   it('Should render callout correctly on mouseover', () => {
     wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);

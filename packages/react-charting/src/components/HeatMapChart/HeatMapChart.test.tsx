@@ -14,6 +14,11 @@ const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
 }
 
 function sharedAfterEach() {
@@ -28,6 +33,8 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
 }
 const yPoint: string[] = ['p1', 'p2'];
 
@@ -90,6 +97,8 @@ const HeatMapData2: IHeatMapChartProps['data'] = [
 ];
 
 describe('HeatMapChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('renders HeatMapChart correctly', () => {
     const component = renderer.create(
       <HeatMapChart
@@ -210,6 +219,8 @@ describe('HeatMapChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HeatMapChartBase.prototype, 'render');
     const props = {
@@ -240,19 +251,9 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('HeatMapChart - mouse events', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    jest.useFakeTimers();
-    Object.defineProperty(window, 'requestAnimationFrame', {
-      writable: true,
-      value: (callback: FrameRequestCallback) => callback(0),
-    });
-  });
-  afterEach(() => {
-    sharedAfterEach();
-    jest.useRealTimers();
-    window.requestAnimationFrame = originalRAF;
-  });
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   it('Should render callout correctly on mouseover', () => {
     wrapper = mount(
       <HeatMapChart

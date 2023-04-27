@@ -15,6 +15,11 @@ const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
 }
 
 function sharedAfterEach() {
@@ -29,6 +34,8 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
 }
 
 const points: ILineChartPoints[] = [
@@ -47,6 +54,8 @@ const chartPoints = {
 };
 
 describe('LineChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('renders LineChart correctly', () => {
     const component = renderer.create(<LineChart data={chartPoints} />);
     const tree = component.toJSON();
@@ -131,6 +140,8 @@ describe('LineChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const renderMock = jest.spyOn(LineChartBase.prototype, 'render');
     const props = {
@@ -167,11 +178,6 @@ describe('LineChart - mouse events', () => {
 
     root = document.createElement('div');
     document.body.appendChild(root);
-    jest.useFakeTimers();
-    Object.defineProperty(window, 'requestAnimationFrame', {
-      writable: true,
-      value: (callback: FrameRequestCallback) => callback(0),
-    });
   });
 
   afterEach(() => {
@@ -181,8 +187,6 @@ describe('LineChart - mouse events', () => {
       document.body.removeChild(root);
       root = null;
     }
-    jest.useRealTimers();
-    window.requestAnimationFrame = originalRAF;
   });
 
   it('Should render callout correctly on mouseover', () => {

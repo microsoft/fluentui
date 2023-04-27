@@ -151,6 +151,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
+
     let children = null;
     if (this.chartContainer) {
       const XAxisParams = {

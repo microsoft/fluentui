@@ -1548,12 +1548,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1879,7 +1873,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_2"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1889,7 +1883,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1929,7 +1923,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -1957,7 +1951,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
     </svg>
@@ -1991,7 +1985,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2304,7 +2298,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         overflow: hidden;
         width: 100%;
       }
-  id="chart_7"
+  id="chart_2"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2314,7 +2308,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2354,7 +2348,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_7"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -2382,7 +2376,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_7"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2409,7 +2403,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_2"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2419,7 +2413,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2459,7 +2453,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -2487,7 +2481,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2523,12 +2517,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -2538,7 +2526,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2854,7 +2842,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         overflow: hidden;
         width: 100%;
       }
-  id="chart_21"
+  id="chart_2"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2864,7 +2852,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone22"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2904,7 +2892,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             & path {
               display: none;
             }
-        id="xAxisGElementchart_21"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -2932,7 +2920,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_21"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
     </svg>
@@ -2968,12 +2956,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -2983,7 +2965,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone23"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3299,7 +3281,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_26"
+  id="chart_2"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3309,7 +3291,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone27"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3349,7 +3331,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_26"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -3377,7 +3359,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_26"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
     </svg>
@@ -3413,12 +3395,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -3428,7 +3404,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone28"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3744,7 +3720,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_31"
+  id="chart_2"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3754,7 +3730,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3794,7 +3770,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_31"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -3822,7 +3798,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_31"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
     </svg>
@@ -3858,12 +3834,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -3873,7 +3843,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
