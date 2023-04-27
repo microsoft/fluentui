@@ -16,13 +16,13 @@ export const renderTag_unstable = (state: TagState, contextValues: TagContextVal
   // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
-      {slots.media && (
-        <AvatarContextProvider value={contextValues.avatar}>
-          <slots.media {...slotProps.media} />
-        </AvatarContextProvider>
-      )}
       {slots.content && (
         <slots.content {...slotProps.content}>
+          {slots.media && (
+            <AvatarContextProvider value={contextValues.avatar}>
+              <slots.media {...slotProps.media} />
+            </AvatarContextProvider>
+          )}
           {slots.icon && <slots.icon {...slotProps.icon} />}
           {slots.primaryText && (
             <slots.primaryText {...slotProps.primaryText}>{slotProps.root.children}</slots.primaryText>

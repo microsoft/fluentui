@@ -22,7 +22,7 @@ export type TagSlots = {
    */
   content: Slot<'div'>;
 
-  icon?: Slot<'span'>;
+  icon: Slot<'span'>;
 
   /**
    * Main text for the Tag. Children of the root slot are automatically rendered here

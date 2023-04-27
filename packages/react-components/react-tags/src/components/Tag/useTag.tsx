@@ -4,7 +4,6 @@ import { DismissRegular } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Button } from '@fluentui/react-button';
 
-// TODO verify map
 const tagAvatarSizeMap = {
   medium: 28,
   small: 24,
@@ -67,9 +66,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     dismissButton: resolveShorthand(props.dismissButton, {
       required: props.dismissable,
       defaultProps: {
-        disabled,
         appearance: 'transparent',
-        type: 'button',
         icon: <DismissRegular />,
       },
     }),

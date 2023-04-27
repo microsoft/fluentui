@@ -33,6 +33,7 @@ const useStyles = makeStyles({
   },
 
   media: {
+    ...shorthands.gridArea('media'),
     alignSelf: 'center',
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tokens.spacingHorizontalS,
@@ -42,10 +43,10 @@ const useStyles = makeStyles({
     display: 'inline-grid',
     gridTemplateRows: '1fr auto auto 1fr',
     gridTemplateAreas: `
-    "icon .        "
-    "icon primary  "
-    "icon secondary"
-    "icon .        "
+    "media icon .        "
+    "media icon primary  "
+    "media icon secondary"
+    "media icon .        "
     `,
     paddingRight: tokens.spacingHorizontalS,
   },
