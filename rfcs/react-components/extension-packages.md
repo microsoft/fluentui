@@ -230,128 +230,59 @@ for OSS authors that want to extend the library. This recommendation is made to 
 We can look at a case by case basis if more concrete dependencies on the core library are needed. This policy should
 be enforced by automation that needs to be disabled in the cases where stricter dependencies are necessary.
 
-###
-
 ### Packages scope and hosting
 
-#### Option 1: Current monorepo using existing scope
+#### New package scope
 
-All extension packages will use the same `@fluentui/` scope. Two new prefixes will be introduced:
+A new scope `@fluentui-contrib/` will be created for extension packages that will be a part of the Fluent umbrella.
+However these packages are not considered a part of the core library. These packages must follow the requirements
+mentioned earlier above.
 
-- `@fluentui/labs-` - For experimental packages that need validating - replacement for pre-release tags
-- `@fluentui/contrib-` - For official extensions to the core library
+#### Self code hosting
 
-##### Pros
+Code for `@fluentui/contrib` packages should be self hosted. The Fluent UI team will provide bootstraping utilities
+for contributors to set up their repositories and have:
 
-- 👍 Easier setup
-- 👍 Nothing new to learn
-- 👍 Extension packages always use latest code
-- 👍 Issue reporting path does not change
+- build
+- type check
+- linting
+- unt tests
+- browser tests
+- playground/storybook
+- publishing
 
-##### Cons
+We plan to leverage [NX](https://nx.dev/) which supports migrations, so that any updates made to build infra should
+be easy to consume by partners' repositories.
 
-- 👎 We might not want the same release cadence - releasing a fix for a extension component would release all of core
-- 👎 More release script work
-- 👎 Extra load on the CI as more extension components are needed
-- 👎 Not possible to have more separation from core components without lots of tooling hacks
-- 👎 Issue reporting path does not change
+This build and infra should be aligned towards our ideal goal for the Fluent UI monorepo to avoid diverging. This will
+also ensure that partners can easily consume all the improvements the Fluent UI build team deliver.
 
-#### Option 2: New package scope and monorepo
+#### Documentation federation
 
-Creates a new package scope, `@fluentui-contrib/` for all components/packages that are extensions. All packages
-with this new scope will be hosted in a separate monorepo.
+The repo scaffolding tools that we intend to create should setup a storybook infrastructure. We can leverage
+storybook federation so that all documentation for contributor packages will be visible from the Fluent UI docsite.
 
-##### Pros
+#### Publish credentials
 
-- 👍 Very clear differentiation between core and extension
-- 👍 Creates a clear boundary for FUI team and partners to collaborate
-- 👍 Clear path to upgrade/downgrade packages between core and extension (i.e. experiments/compat)
+The Fluent UI team will be responsible for distributing publishing credentials to contributors that want to publish
+packages under the `@fluentui-contrib/` scope. NPM allows [creating granular access tokens](https://docs.npmjs.com/creating-and-viewing-access-tokens) that can be scoped for specific packages.
 
-##### Cons
+In order for a contributor to publish their code, they must submit a request to the Fluent UI team for access credentials
+which should be given after a review of:
 
-- 👎 Need to bump core dependencies
-- 👎 Need to maintain a new NPM organization and credentials
-- 👎 Initially could cause some confusion if we don't communicate this well
+- Design spec
+- Code/API architecture
+- Repo build and infra
 
-### Documentation
+#### Pros/Cons
 
-Fluent UI production components should always be documented regardless of whether they are core/extension components.
-This section describes the ways to document extension components.
+👍 Fluent UI allows partners to iterate quickly
+👍 Fluent UI will make the final decision on requirements before publishing
+👍 Easy way to track large numbers of contributor packages - must request publishing permission
+👍 Partners can setup 'ready to publish' repository easily
+👍 Partners can use whatever code platform they want
+👍 Documentation will be in one place (Fluent UI docsite)
 
-#### Current docsite
-
-Create a new section in our docsite explicitly for extension components alongside core components.
-
-##### Pros
-
-- 👍 Existing infrastructure already setup
-- 👍 Enforces consistent documentation approach
-
-##### Cons
-
-- 👎 Do we want to document extension components in the same way?
-- 👎 For separate repo, would need to think about how to consume stories
-- 👎 Needs work to support independently versioned packages
-
-#### New docsite
-
-Creates a new docsite for extension components that will be linked to the current docsite.
-
-##### Pros
-
-- 👍 It's not hard to link between docsites that share the same look and feel
-- 👍 Clear boundary for users to distinguish core/extension components
-- 👍 Possible to change documentation approach
-
-##### Cons
-
-- 👎 Manage the infra for another domain and publish
-- 👎 Needs work to support independently versioned packages
-
-### Partner code hosting
-
-Partner teams might want to build scenario/product specific components, with guidance and support from the Fluent UI
-team. The Fluent UI team should have a say in the quality of the code that is shipped by partner teams under the
-Fluent UI umbrella and work with them to establish these quality criteria and ownership. This section proposes
-two different ways we should host partner code.
-
-#### GitHub
-
-##### Pros
-
-- 👍 Get different organizations in microsoft directly involved in open source
-
-##### Cons
-
-- 👎 Access management and compliance boundaries will be complicated
-- 👎 Figure out how to make sure partners maintain their projects properly
-
-#### ADO mirroring
-
-Partner teams can continue to host their code in respective ADO repositories and we host a mirror for their
-code in GitHub so that it is visible in open source for issue reporting and third party extensionutions.
-
-##### Pros
-
-- 👍 Already done in open source - React does this
-- 👍 Partners can stick to the tools they know but still have open source presence
-
-##### Cons
-
-- 👎 Complicated infra work
-- 👎 Potentially less accountability for partner teams that do this
-
-#### Both
-
-We let partner teams decide how they would like to participate in creating official Fluent powered components.
-
-##### Pros
-
-- 👍 Everybody is happy and can have a presence in open source
-- 👍 Maximum microsoft coverage for open source
-
-##### Cons
-
-- 👎 Cons of both solutions
-- 👎 More work
-- 👎 Figure out how to make sure partners maintain their projects properly
+👎 Work needed to implement build/infra that can be shared
+👎 Need to maintain build/infra
+👎 Fluent UI team needs to be proactive maintaining links to contributors
