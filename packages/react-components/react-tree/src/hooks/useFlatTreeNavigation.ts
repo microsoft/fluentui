@@ -1,19 +1,22 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
-import { UnfilteredFlatTree } from '../utils/createUnfilteredFlatTree';
+import { FlatTreeItems } from '../utils/createFlatTreeItems';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { treeItemFilter } from '../utils/treeItemFilter';
 import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { useRovingTabIndex } from './useRovingTabIndexes';
+import { FlatTreeItemProps } from './useFlatTree';
 
-export function useFlatTreeNavigation(flatTree: UnfilteredFlatTree) {
+export function useFlatTreeNavigation<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(
+  flatTreeItems: FlatTreeItems<Props>,
+) {
   const { targetDocument } = useFluent_unstable();
   const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
 
-  function getNextElement(data: TreeNavigationData_unstable) {
+  function getNextElement(data: TreeNavigationData_unstable<Props['value']>) {
     if (!targetDocument || !treeItemWalkerRef.current) {
       return null;
     }
@@ -25,7 +28,7 @@ export function useFlatTreeNavigation(flatTree: UnfilteredFlatTree) {
         treeItemWalker.currentElement = data.target;
         return nextTypeAheadElement(treeItemWalker, data.event.key);
       case treeDataTypes.arrowLeft:
-        return parentElement(flatTree, data.target, targetDocument);
+        return parentElement(flatTreeItems, data.value);
       case treeDataTypes.arrowRight:
         treeItemWalker.currentElement = data.target;
         return firstChild(data.target, treeItemWalker);
@@ -43,12 +46,12 @@ export function useFlatTreeNavigation(flatTree: UnfilteredFlatTree) {
         return treeItemWalker.previousElement();
     }
   }
-  function navigate(data: TreeNavigationData_unstable) {
+  const navigate = useEventCallback((data: TreeNavigationData_unstable<Props['value']>) => {
     const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
     }
-  }
+  });
   return [navigate, useMergedRefs(treeItemWalkerRootRef, rovingRootRef)] as const;
 }
 
@@ -66,10 +69,11 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement(flatTree: UnfilteredFlatTree, target: HTMLElement, document: Document) {
-  const flatTreeItem = flatTree.itemsPerId.get(target.id);
-  if (flatTreeItem && flatTreeItem.parentId) {
-    return document.getElementById(flatTreeItem.parentId);
+function parentElement(flatTreeItems: FlatTreeItems<FlatTreeItemProps<unknown>>, value: unknown) {
+  const flatTreeItem = flatTreeItems.get(value);
+  if (flatTreeItem?.parentValue) {
+    const parentItem = flatTreeItems.get(flatTreeItem.parentValue);
+    return parentItem?.ref.current ?? null;
   }
   return null;
 }

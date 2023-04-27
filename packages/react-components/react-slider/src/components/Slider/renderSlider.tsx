@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { SliderState, SliderSlots } from './Slider.types';
 
 /**
  * Render the final JSX of Slider
  */
 export const renderSlider_unstable = (state: SliderState) => {
-  const { slots, slotProps } = getSlots<SliderSlots>(state);
+  const { slots, slotProps } = getSlotsNext<SliderSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

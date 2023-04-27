@@ -3,13 +3,12 @@ import { render } from '@testing-library/react';
 import { TreeItem } from './TreeItem';
 import { isConformant } from '../../testing/isConformant';
 import { TreeItemProps } from './TreeItem.types';
-import { treeItemClassNames } from './useTreeItemStyles';
+import { treeItemClassNames } from './useTreeItemStyles.styles';
 
 describe('TreeItem', () => {
   isConformant<TreeItemProps>({
     Component: TreeItem,
     displayName: 'TreeItem',
-    // primarySlot: 'groupper',
     getTargetElement(renderResult, attr) {
       return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
     },
