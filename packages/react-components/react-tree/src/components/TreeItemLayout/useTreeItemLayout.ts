@@ -16,13 +16,13 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, aside, as = 'div' } = props;
+  const { iconAfter, iconBefore, aside, as = 'span' } = props;
   const treeItemContext = useTreeItemContext_unstable();
 
   return {
     ...treeItemContext,
     components: {
-      root: 'div',
+      root: 'span',
       iconBefore: 'span',
       iconAfter: 'span',
       aside: 'span',

@@ -38,10 +38,7 @@ describe('DatePicker', () => {
           props: {},
           expectedClassNames: {
             root: datePickerClassNames.root,
-            field: datePickerClassNames.field,
-            wrapper: datePickerClassNames.wrapper,
-            popoverSurface: datePickerClassNames.popoverSurface,
-            input: datePickerClassNames.input,
+            popupSurface: datePickerClassNames.popupSurface,
             calendar: datePickerClassNames.calendar,
           },
           getPortalElement: getDatepickerPopoverElement,
@@ -55,7 +52,7 @@ describe('DatePicker', () => {
     expect(result.findByTestId('test-id')).toBeTruthy();
   });
 
-  it('should not render DatePicker when isDatePickerShown is not set', () => {
+  it('should not render popup when it is not open', () => {
     const result = render(<DatePicker />);
     expect(result).toMatchSnapshot();
   });
@@ -72,7 +69,7 @@ describe('DatePicker', () => {
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
-    const result = render(<DatePicker isRequired allowTextInput onSelectDate={onSelectDate} />);
+    const result = render(<DatePicker required allowTextInput onSelectDate={onSelectDate} />);
     const input = result.getByRole('combobox');
 
     fireEvent.change(input, { target: { value: 'Jan 1 2030' } });

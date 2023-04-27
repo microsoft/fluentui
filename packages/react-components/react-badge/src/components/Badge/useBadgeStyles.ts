@@ -20,7 +20,8 @@ const useRootClassName = makeResetStyles({
   position: 'relative',
   ...typographyStyles.caption1Strong,
   height: '20px',
-  minWidth: '20px',
+  width: '20px',
+  minWidth: 'max-content',
   padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   borderRadius: tokens.borderRadiusCircular,
   // Use a transparent stroke (rather than no border) so the border is visible in high contrast
@@ -64,7 +65,7 @@ const useRootStyles = makeStyles({
     ...shorthands.padding('unset'),
   },
   small: {
-    minWidth: '16px',
+    width: '16px',
     height: '16px',
     ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`),
   },
@@ -72,12 +73,12 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
   large: {
-    minWidth: '24px',
+    width: '24px',
     height: '24px',
     ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
   },
   'extra-large': {
-    minWidth: '32px',
+    width: '32px',
     height: '32px',
     ...shorthands.padding(0, `calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`),
   },
