@@ -258,13 +258,13 @@ which should be given after a review of:
 
 #### Pros/Cons
 
-👍 Fluent UI allows partners to iterate quickly
-👍 Fluent UI will make the final decision on requirements before publishing
-👍 Easy way to track large numbers of contributor packages - must request publishing permission
-👍 Partners can setup 'ready to publish' repository easily
-👍 Partners can use whatever code platform they want
-👍 Documentation will be in one place (Fluent UI docsite)
+- 👍 Fluent UI allows partners to iterate quickly
+- 👍 Fluent UI will make the final decision on requirements before publishing
+- 👍 Easy way to track large numbers of contributor packages - must request publishing permission
+- 👍 Partners can setup 'ready to publish' repository easily
+- 👍 Partners can use whatever code platform they want
+- 👍 Documentation will be in one place (Fluent UI docsite)
 
-👎 Work needed to implement build/infra that can be shared
-👎 Need to maintain build/infra
-👎 Fluent UI team needs to be proactive maintaining links to contributors
+- 👎 Work needed to implement build/infra that can be shared
+- 👎 Need to maintain build/infra
+- 👎 Fluent UI team needs to be proactive maintaining links to contributors
