@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.11",
+  "version": "3.0.0-alpha.19",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -32,6 +32,10 @@
       "types": "./dist/esm/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
+    "./anchor-button": {
+      "types": "./dist/esm/anchor-button/define.d.ts",
+      "default": "./dist/esm/anchor-button/define.js"
+    },
     "./avatar": {
       "types": "./dist/esm/avatar/define.d.ts",
       "default": "./dist/esm/avatar/define.js"
@@ -39,6 +43,14 @@
     "./badge": {
       "types": "./dist/esm/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
+    },
+    "./button": {
+      "types": "./dist/esm/button/define.d.ts",
+      "default": "./dist/esm/button/define.js"
+    },
+    "./compound-button": {
+      "types": "./dist/esm/compound-button/define.d.ts",
+      "default": "./dist/esm/compound-button/define.js"
     },
     "./counter-badge": {
       "types": "./dist/esm/counter-badge/define.d.ts",
@@ -52,9 +64,21 @@
       "types": "./dist/esm/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
-    "./text": {
-      "types": "./dist/esm/text/define.d.ts",
-      "default": "./dist/esm/text/define.js"
+    "./label": {
+      "types": "./dist/esm/label/define.d.ts",
+      "default": "./dist/esm/label/define.js"
+    },
+    "./menu-list": {
+      "types": "./dist/esm/menu-list/define.d.ts",
+      "default": "./dist/esm/menu-list/define.js"
+    },
+    "./menu-button": {
+      "types": "./dist/esm/menu-button/define.d.ts",
+      "default": "./dist/esm/menu-button/define.js"
+    },
+    "./menu-item": {
+      "types": "./dist/esm/menu-item/define.d.ts",
+      "default": "./dist/esm/menu-item/define.js"
     },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
@@ -71,6 +95,26 @@
     "./switch": {
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
+    },
+    "./tab": {
+      "types": "./dist/esm/tab/define.d.ts",
+      "default": "./dist/esm/tab/define.js"
+    },
+    "./tabs": {
+      "types": "./dist/esm/tabs/define.d.ts",
+      "default": "./dist/esm/tabs/define.js"
+    },
+    "./tab-panel": {
+      "types": "./dist/esm/tab-panel/define.d.ts",
+      "default": "./dist/esm/tab-panel/define.js"
+    },
+    "./text": {
+      "types": "./dist/esm/text/define.d.ts",
+      "default": "./dist/esm/text/define.js"
+    },
+    "./toggle-button": {
+      "types": "./dist/esm/toggle-button/define.d.ts",
+      "default": "./dist/esm/toggle-button/define.js"
     }
   },
   "scripts": {
@@ -129,8 +173,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.22",
-    "@microsoft/fast-foundation": "^3.0.0-alpha.26",
+    "@microsoft/fast-element": "^2.0.0-beta.23",
+    "@microsoft/fast-foundation": "^3.0.0-alpha.27",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
