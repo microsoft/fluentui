@@ -3,9 +3,9 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
-import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles';
-import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
-import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
+import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
+import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
+import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles.styles';
 import type { CardSlots, CardState } from './Card.types';
 
 /**
