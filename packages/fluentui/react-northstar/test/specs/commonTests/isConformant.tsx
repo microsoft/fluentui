@@ -22,7 +22,7 @@ import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
 import { extraConformanceTests } from './extraConformanceTests';
 
-export interface Conformant<TProps = {}>
+interface Conformant<TProps = {}>
   extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions' | 'getTargetElement'> {
   /** Path to the test file. */
   testPath: string;
@@ -75,6 +75,7 @@ export function isConformant(
   } = options;
 
   const defaultConfig: IsConformantOptions = {
+    tsConfig: { configName: 'tsconfig.spec.json' },
     renderOptions: { wrapper: EmptyThemeProvider },
     componentPath: testPath
       .replace(/test[/\\]specs/, 'src')
