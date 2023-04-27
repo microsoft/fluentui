@@ -304,6 +304,15 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     focus: BaseColors.GRAY_A19F9D,
   },
+  dropDown: {
+    background: {
+      rest: BaseColors.GRAY_252423,
+      hover: BaseColors.GRAY_323130,
+    },
+    text: {
+      hovered: BaseColors.WHITE,
+    },
+  },
   item: {
     hover: BaseColors.GRAY_323130,
     select: BaseColors.GRAY_3B3A39,
@@ -574,6 +583,15 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.BLUE_00FFFF,
     },
     focus: BaseColors.GRAY_A19F9D,
+  },
+  dropDown: {
+    background: {
+      rest: BaseColors.GRAY_1B1A19,
+      hover: BaseColors.TRANSPARENT,
+    },
+    text: {
+      hovered: BaseColors.WHITE,
+    },
   },
   item: {
     hover: BaseColors.BLUE_00FFFF,
@@ -846,6 +864,15 @@ export const LightSemanticColors: IAzureSemanticColors = {
     },
     focus: BaseColors.GRAY_605E5C,
   },
+  dropDown: {
+    background: {
+      rest: BaseColors.WHITE,
+      hover: BaseColors.GRAY_F3F2F1,
+    },
+    text: {
+      hovered: BaseColors.GRAY_302928,
+    },
+  },
   item: {
     hover: BaseColors.GRAY_F3F2F1,
     select: BaseColors.GRAY_EDEBE9,
@@ -1116,6 +1143,15 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.GRAY_605E5C,
     },
     focus: BaseColors.GRAY_323130,
+  },
+  dropDown: {
+    background: {
+      rest: BaseColors.WHITE,
+      hover: BaseColors.TRANSPARENT,
+    },
+    text: {
+      hovered: BaseColors.BLACK,
+    },
   },
   item: {
     hover: BaseColors.PURPLE_800080,

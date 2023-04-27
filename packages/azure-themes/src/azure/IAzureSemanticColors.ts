@@ -143,6 +143,15 @@ export interface IAzureSemanticColors {
     };
     focus: string;
   };
+  dropDown: {
+    background: {
+      rest: string;
+      hover: string;
+    };
+    text: {
+      hovered: string;
+    };
+  };
   item: {
     hover: string;
     select: string;
