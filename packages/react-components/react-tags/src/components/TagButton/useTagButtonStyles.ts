@@ -24,8 +24,6 @@ const useStyles = makeStyles({
     width: 'fit-content',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
-    ...shorthands.outline('1px', 'solid', 'red'),
-
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
   },
@@ -115,7 +113,7 @@ const useStyles = makeStyles({
     borderBottomRightRadius: tokens.borderRadiusCircular,
   }),
 
-  // TODO add additional classes for different states and/or slots
+  // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
 
 /**

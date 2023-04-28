@@ -13,7 +13,6 @@ import { AvatarContextProvider } from '@fluentui/react-avatar';
 export const renderTag_unstable = (state: TagState, contextValues: TagContextValues) => {
   const { slots, slotProps } = getSlotsNext<TagSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
       {slots.content && (
