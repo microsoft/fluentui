@@ -2,9 +2,12 @@ import { IAzureSemanticColors } from './IAzureSemanticColors';
 
 export namespace BaseColors {
   export const BLUE_F0F6FF = '#F0F6FF';
+  export const BLUE_B3D7F2 = '#b3d7f2';
   export const BLUE_CCE1FF = '#cce1ff';
+  export const BLUE_CCE4F6 = '#cce4f6';
   export const BLUE_C7E0F4 = '#C7E0F4';
   export const BLUE_DEECF9 = '#deecf9';
+  export const BLUE_E6F2FB = '#e6f2fb';
   export const BLUE_0000CD = '#0000cd';
   export const BLUE_00245B = '#00245B';
   export const BLUE_00E8E8 = '#00e8e8';
@@ -115,6 +118,7 @@ export namespace BaseColors {
   export const GRAY_808080_070 = 'rgba(128, 128, 128, .70)';
   export const BLUE_55B3FF_010 = 'rgba(85, 179, 255, .10)';
   export const BLUE_55B3FF_020 = 'rgba(85, 179, 255, .20)';
+  export const BLUE_55B3FF_040 = 'rgba(85, 179, 255, .4)';
 
   // Extended Palette Colors (not in Azure spec)
   export const GRAY_FFFFFF_050 = 'rgba(255,255,255,.5)'; // overlay light
@@ -300,6 +304,15 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     focus: BaseColors.GRAY_A19F9D,
   },
+  dropDown: {
+    background: {
+      rest: BaseColors.GRAY_252423,
+      hover: BaseColors.GRAY_323130,
+    },
+    text: {
+      hovered: BaseColors.WHITE,
+    },
+  },
   item: {
     hover: BaseColors.GRAY_323130,
     select: BaseColors.GRAY_3B3A39,
@@ -308,6 +321,23 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   shimmer: {
     primary: BaseColors.GRAY_808080,
     secondary: BaseColors.GRAY_404040,
+  },
+  tagButton: {
+    rest: {
+      text: BaseColors.WHITE,
+      background: BaseColors.BLUE_55B3FF_040,
+      border: BaseColors.TRANSPARENT,
+    },
+    hover: {
+      text: BaseColors.WHITE,
+      background: BaseColors.BLUE_55B3FF_040,
+      border: BaseColors.GRAY_808080_070,
+    },
+    pressed: {
+      text: BaseColors.WHITE,
+      background: BaseColors.BLUE_55B3FF_040,
+      border: BaseColors.BLUE_4894FE,
+    },
   },
   toggle: {
     disabled: {
@@ -554,6 +584,15 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     },
     focus: BaseColors.GRAY_A19F9D,
   },
+  dropDown: {
+    background: {
+      rest: BaseColors.GRAY_1B1A19,
+      hover: BaseColors.TRANSPARENT,
+    },
+    text: {
+      hovered: BaseColors.WHITE,
+    },
+  },
   item: {
     hover: BaseColors.BLUE_00FFFF,
     select: BaseColors.GRAY_808080_050,
@@ -562,6 +601,23 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   shimmer: {
     primary: BaseColors.GRAY_808080,
     secondary: BaseColors.GRAY_404040,
+  },
+  tagButton: {
+    rest: {
+      text: BaseColors.WHITE,
+      background: BaseColors.BLUE_55B3FF_040,
+      border: BaseColors.TRANSPARENT,
+    },
+    hover: {
+      text: BaseColors.WHITE,
+      background: BaseColors.BLUE_55B3FF_040,
+      border: BaseColors.WHITE,
+    },
+    pressed: {
+      text: BaseColors.WHITE,
+      background: BaseColors.BLUE_55B3FF_040,
+      border: BaseColors.BLUE_4894FE,
+    },
   },
   toggle: {
     disabled: {
@@ -808,6 +864,15 @@ export const LightSemanticColors: IAzureSemanticColors = {
     },
     focus: BaseColors.GRAY_605E5C,
   },
+  dropDown: {
+    background: {
+      rest: BaseColors.WHITE,
+      hover: BaseColors.GRAY_F3F2F1,
+    },
+    text: {
+      hovered: BaseColors.GRAY_302928,
+    },
+  },
   item: {
     hover: BaseColors.GRAY_F3F2F1,
     select: BaseColors.GRAY_EDEBE9,
@@ -816,6 +881,23 @@ export const LightSemanticColors: IAzureSemanticColors = {
   shimmer: {
     primary: BaseColors.GRAY_F7F7F7,
     secondary: BaseColors.GRAY_DFDFDF,
+  },
+  tagButton: {
+    rest: {
+      text: BaseColors.BLACK,
+      background: BaseColors.BLUE_E6F2FB,
+      border: BaseColors.BLUE_E6F2FB,
+    },
+    hover: {
+      text: BaseColors.BLACK,
+      background: BaseColors.BLUE_CCE4F6,
+      border: BaseColors.BLUE_CCE4F6,
+    },
+    pressed: {
+      text: BaseColors.BLACK,
+      background: BaseColors.BLUE_B3D7F2,
+      border: BaseColors.BLUE_015CDA,
+    },
   },
   toggle: {
     disabled: {
@@ -1062,6 +1144,15 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     },
     focus: BaseColors.GRAY_323130,
   },
+  dropDown: {
+    background: {
+      rest: BaseColors.WHITE,
+      hover: BaseColors.TRANSPARENT,
+    },
+    text: {
+      hovered: BaseColors.BLACK,
+    },
+  },
   item: {
     hover: BaseColors.PURPLE_800080,
     select: BaseColors.GRAY_EDEBE9,
@@ -1070,6 +1161,23 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   shimmer: {
     primary: BaseColors.GRAY_F7F7F7,
     secondary: BaseColors.GRAY_DFDFDF,
+  },
+  tagButton: {
+    rest: {
+      text: BaseColors.BLACK,
+      background: BaseColors.BLUE_E6F2FB,
+      border: BaseColors.BLUE_E6F2FB,
+    },
+    hover: {
+      text: BaseColors.BLACK,
+      background: BaseColors.BLUE_CCE4F6,
+      border: BaseColors.BLUE_CCE4F6,
+    },
+    pressed: {
+      text: BaseColors.BLACK,
+      background: BaseColors.BLUE_B3D7F2,
+      border: BaseColors.BLUE_015CDA,
+    },
   },
   toggle: {
     disabled: {

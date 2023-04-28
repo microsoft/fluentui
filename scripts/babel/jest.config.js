@@ -9,6 +9,12 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      isolatedModules: true,
+    },
+  },
   coverageDirectory: './coverage',
   testEnvironment: 'node',
 };

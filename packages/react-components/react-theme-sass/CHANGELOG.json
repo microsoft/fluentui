@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 17:54:00 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8",
+            "comment": "fix: add \"style\" to exports field"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:11 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",

@@ -1,21 +1,22 @@
 import * as React from 'react';
 import { renderImage_unstable } from './renderImage';
 import { useImage_unstable } from './useImage';
-import { useImageStyles_unstable } from './useImageStyles';
+import { useImageStyles_unstable } from './useImageStyles.styles';
 import type { ImageProps } from './Image.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 // Hello Everyone testing the pipeline runs, Hello
 /**
  * The Image component ensures the consistent styling of images.
  */
+// Testing
 export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, ref) => {
   const state = useImage_unstable(props, ref);
 
   useImageStyles_unstable(state);
-  const { useImageStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+
+  useCustomStyleHook_unstable('useImageStyles_unstable')(state);
 
   return renderImage_unstable(state);
 });

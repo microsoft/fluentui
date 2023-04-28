@@ -6,22 +6,22 @@ import { resetIds, setWarningCallback } from '../../Utilities';
 import { DialogBase } from './Dialog.base';
 
 describe('Dialog deprecated props', () => {
+  beforeAll(() => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const noop = () => {};
+    // Prevent warn deprecations from failing test
+    setWarningCallback(noop);
+  });
+
   beforeEach(() => {
     resetIds();
-  });
-
-  afterAll(() => {
-    resetIds();
-  });
-
-  beforeAll(() => {
-    // Prevent warn deprecations from failing test
-    setWarningCallback(() => {
-      /* no-op */
-    });
     (ReactDOM.createPortal as any) = jest.fn((element, node) => {
       return element;
     });
+  });
+
+  afterAll(() => {
+    setWarningCallback();
   });
 
   afterEach(() => {

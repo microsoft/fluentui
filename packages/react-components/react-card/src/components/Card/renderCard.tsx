@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { CardContextValue, CardSlots, CardState } from './Card.types';
 import { CardProvider } from './CardContext';
 
@@ -7,7 +11,7 @@ import { CardProvider } from './CardContext';
  * Render the final JSX of Card.
  */
 export const renderCard_unstable = (state: CardState, cardContextValue: CardContextValue) => {
-  const { slots, slotProps } = getSlots<CardSlots>(state);
+  const { slots, slotProps } = getSlotsNext<CardSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

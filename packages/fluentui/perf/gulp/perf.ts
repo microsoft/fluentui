@@ -1,5 +1,6 @@
 import express from 'express';
-import fs from 'fs';
+import * as fs from 'fs';
+import * as path from 'path';
 import type { Server } from 'http';
 import { series, task } from 'gulp';
 import { colors, log } from 'gulp-util';
@@ -20,7 +21,7 @@ import type {
   ReducedMeasures,
 } from '../types';
 
-const { paths } = config;
+import { packageDist } from './shared';
 
 const DEFAULT_RUN_TIMES = 10;
 let server: Server;
@@ -114,6 +115,7 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
 
 async function runMeasures(
   browser: Browser,
+  url: string,
   filter: string,
   mode: string,
   times: number,
@@ -129,7 +131,7 @@ async function runMeasures(
 
   if (mode === 'new-page') {
     for (let i = 0; i < times; i++) {
-      const page = await browser.openPage(`http://${config.server_host}:${config.perf_port}`);
+      const page = await browser.openPage(url);
 
       const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
       measures.push(measuresFromStep);
@@ -138,7 +140,7 @@ async function runMeasures(
       await page.close();
     }
   } else if (mode === 'same-page') {
-    const page = await browser.openPage(`http://${config.server_host}:${config.perf_port}`);
+    const page = await browser.openPage(url);
 
     // Empty run to skip slow first run
     await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
@@ -158,7 +160,7 @@ async function runMeasures(
   return measures;
 }
 
-task('perf:clean', () => del(paths.perfDist(), { force: true }));
+task('perf:clean', () => del(packageDist, { force: true }));
 
 task('perf:build', cb => {
   webpackPlugin(require('./webpack.config').webpackConfig, cb);
@@ -187,12 +189,12 @@ task('perf:run', async () => {
   let measures: ProfilerMeasureCycle[];
 
   try {
-    measures = await runMeasures(browser, filter, mode, times);
+    measures = await runMeasures(browser, `http://${config.server_host}:${config.perf_port}`, filter, mode, times);
   } finally {
     await browser.close();
   }
 
-  const resultsFile = paths.perfDist('result.json');
+  const resultsFile = path.join(packageDist, 'result.json');
   const perExamplePerfMeasures = sumByExample(measures);
 
   fs.writeFileSync(resultsFile, JSON.stringify(perExamplePerfMeasures, null, 2));
@@ -204,7 +206,7 @@ task('perf:run', async () => {
 
 task('perf:serve', cb => {
   server = express()
-    .use(express.static(paths.perfDist()))
+    .use(express.static(packageDist))
     .listen(config.perf_port, config.server_host, () => {
       log(colors.yellow('Server running at http://%s:%d'), config.server_host, config.perf_port);
       cb();

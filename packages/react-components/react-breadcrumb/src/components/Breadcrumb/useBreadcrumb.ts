@@ -12,7 +12,13 @@ import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
-  const { size = 'medium', dividerType = 'chevron', ...rest } = props;
+  const {
+    appearance = 'transparent',
+    dividerType = 'chevron',
+    iconPosition = 'before',
+    size = 'medium',
+    ...rest
+  } = props;
   return {
     components: {
       root: 'nav',
@@ -23,7 +29,9 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
       ...rest,
     }),
     list: resolveShorthand(props.list, { required: true }),
-    size,
+    appearance,
     dividerType,
+    iconPosition,
+    size,
   };
 };
