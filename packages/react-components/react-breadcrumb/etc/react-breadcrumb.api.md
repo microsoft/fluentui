@@ -118,6 +118,23 @@ export type BreadcrumbSlots = {
 // @public
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
 
+// @public (undocumented)
+export type PartitionBreadcrumbItems<T> = {
+    startDisplayedItems: readonly T[];
+    overflowItems?: readonly T[];
+    endDisplayedItems?: readonly T[];
+};
+
+// @public
+export const partitionBreadcrumbItems: <T>(options: PartitionBreadcrumbItemsOptions<T>) => PartitionBreadcrumbItems<T>;
+
+// @public (undocumented)
+export type PartitionBreadcrumbItemsOptions<T> = {
+    items: readonly T[];
+    maxDisplayedItems?: number;
+    overflowIndex?: number;
+};
+
 // @public
 export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSX.Element;
 
