@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add missing dependency to fix lint violations during release",
+  "packageName": "@fluentui/react-monaco-editor",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
