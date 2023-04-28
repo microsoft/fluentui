@@ -2,7 +2,7 @@
 import { LAB_to_sRGB, LCH_to_Lab, Lab_to_LCH, sRGB_to_LCH, snap_into_gamut } from './csswg';
 import { getPointsOnCurvePath } from './geometry';
 import { CurvedHelixPath, Palette, Vec3 } from './types';
-import { relativeLuminanceMap, redSnappingPoints, hexToHue } from './hueMap';
+import { hueToSnappingPointsMap, hexToHue } from './hueMap';
 // This file contains functions that combine geometry and color math to create
 // and work with palette curves.
 
@@ -23,60 +23,22 @@ const defaultLinearity = 0.75;
 //   return result;
 // }
 
-const relativeLuminance = (rgb: Vec3): number => {
-  return 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
-};
-
-function normalizeSnappingPoints(arr: number[]) {
-  const min = arr[0];
-  const max = arr[2];
-  const diff = max - min;
-  const normalizedOther = ((arr[1] - min) / diff) * 100;
-  return [0, normalizedOther, 100];
-}
-
 const snappingPointsForKeyColor = (keyColor: string): number[] => {
   const hue = hexToHue(keyColor);
-  const lum = relativeLuminanceMap[hue];
-  const start = (redSnappingPoints.startPoint * lum) / redSnappingPoints.relativeLuminosity;
-  const end = (redSnappingPoints.endPoint * lum) / redSnappingPoints.relativeLuminosity;
-  const range = [start, redSnappingPoints.centerPoint, end];
-  if (end > 100) {
-    const norm = normalizeSnappingPoints(range);
-    return norm;
-  }
+  const range = [
+    hueToSnappingPointsMap[hue][0] * 100,
+    hueToSnappingPointsMap[hue][1] * 100,
+    hueToSnappingPointsMap[hue][2] * 100,
+  ];
+  //   console.log(`hue ${hue} range, ${range}`);
   return range;
 };
 
-// function quadraticBezierInterpolation(start: number, end: number, inBetween: number, numSamples: number) {
-//   // Helper function to calculate the quadratic Bezier interpolation
-//   function bezier(t: number, p0: number, p1: number, p2: number) {
-//     const oneMinusT = 1 - t;
-//     return oneMinusT * (oneMinusT * p0 + t * p1) + t * (oneMinusT * p1 + t * p2);
-//   }
-
-//   // Calculate the control point
-//   const controlPoint = (inBetween - 0.5 * (start + end)) * 2;
-
-//   // Initialize the output array
-//   const result = new Array(numSamples);
-
-//   // Fill the array with interpolated values using quadratic Bezier interpolation
-//   for (let i = 0; i < numSamples; i++) {
-//     const t = i / (numSamples - 1);
-//     result[i] = bezier(t, start, controlPoint, end);
-//   }
-
-//   return result;
-// }
-
 const pointsForKeyColor = (keyColor: string, range: number[], centerPoint: number): number[] => {
-  const rgb = hex_to_sRGB(keyColor);
-  const perceivedLuminance = relativeLuminance(rgb);
-  //   const relativeLuminance = 50; // old way.
-  //   const nurbs = quadraticBezierInterpolation(range[0], range[1], perceivedLuminance * 100, 16);
-
-  const linear = linearInterpolationThroughPoint(range[0], range[1], perceivedLuminance * 100, 16);
+  //   const rgb = hex_to_sRGB(keyColor);
+  const hue = hexToHue(keyColor);
+  const center = hueToSnappingPointsMap[hue][1] * 100;
+  const linear = linearInterpolationThroughPoint(range[0], range[1], center, 16);
   //   const linear = linearInterpolationThroughPoint(range[0], range[1], (range[1]-range[0])/2, 16);
 
   return linear;
@@ -149,6 +111,7 @@ function paletteShadesFromCurvePoints(
   const linearLightness = pointsForKeyColor(keyColor, range, snappingPoints[1]);
   let c = 0;
 
+  // obtain 2d path thru color space to grab points from
   for (let i = 0; i < nShades; i++) {
     const l = Math.min(
       range[1],

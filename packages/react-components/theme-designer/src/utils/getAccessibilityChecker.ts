@@ -61,10 +61,10 @@ export const calculateContrastRatio = (
   const compSRGB: Vec3 = hex_to_sRGB(compHex);
 
   const contrastRatio = contrast(currSRGB, compSRGB);
-  const roundedContrastRatio = Math.floor(contrastRatio * 10) / 10;
+  const roundedContrastRatio = Math.round(contrastRatio * 10) / 10;
 
   return {
-    isPass: contrastRatio >= desiredRatio,
+    isPass: roundedContrastRatio >= desiredRatio,
     testType: TestType.contrastRatio,
     testInfo: {
       currToken,
