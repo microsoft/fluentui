@@ -32,6 +32,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     shape = 'rounded',
     size = 'medium',
     appearance = 'filled-lighter',
+    contentAsButton = false,
   } = props;
 
   return {
@@ -50,6 +51,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     shape,
     size,
     appearance,
+    contentAsButton,
     root: getNativeElementProps('div', {
       ref,
       ...props,
@@ -58,7 +60,14 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     avatarShape: tagAvatarShapeMap[shape],
     media: resolveShorthand(props.media),
 
-    content: resolveShorthand(props.content, { required: !!props.primaryText || !!props.children }),
+    content: resolveShorthand(props.content, {
+      required: !!props.primaryText || !!props.children,
+      defaultProps: contentAsButton
+        ? {
+            tabIndex: 0,
+          }
+        : undefined,
+    }),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),

@@ -7,6 +7,7 @@ export const Default = (props: Partial<TagProps>) => (
   <div style={{ display: 'flex', columnGap: 28 }}>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
       <Tag
+        contentAsButton
         media={
           <Avatar
             {...{
@@ -26,6 +27,7 @@ export const Default = (props: Partial<TagProps>) => (
         Primary text
       </Tag>
       <Tag
+        contentAsButton
         media={
           <Avatar
             {...{
@@ -43,6 +45,7 @@ export const Default = (props: Partial<TagProps>) => (
         Primary text
       </Tag>
       <Tag
+        contentAsButton
         media={
           <Avatar
             {...{
@@ -59,6 +62,7 @@ export const Default = (props: Partial<TagProps>) => (
         Primary text
       </Tag>
       <Tag
+        contentAsButton
         icon={<Calendar3Day20Regular />}
         // primaryText="Primary text"
         secondaryText="Secondary text"
@@ -68,16 +72,19 @@ export const Default = (props: Partial<TagProps>) => (
       >
         Primary text
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+      <Tag contentAsButton icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
         Primary text
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} {...props}>
+      <Tag contentAsButton icon={<Calendar3Day20Regular />} {...props}>
         Primary text
       </Tag>
-      <Tag {...props}>Primary text</Tag>
+      <Tag contentAsButton {...props}>
+        Primary text
+      </Tag>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
       <Tag
+        contentAsButton
         shape="circular"
         media={
           <Avatar
@@ -98,6 +105,7 @@ export const Default = (props: Partial<TagProps>) => (
         Primary text
       </Tag>
       <Tag
+        contentAsButton
         shape="circular"
         media={
           <Avatar
@@ -116,6 +124,7 @@ export const Default = (props: Partial<TagProps>) => (
         Primary text
       </Tag>
       <Tag
+        contentAsButton
         shape="circular"
         media={
           <Avatar
@@ -133,6 +142,7 @@ export const Default = (props: Partial<TagProps>) => (
         Primary text
       </Tag>
       <Tag
+        contentAsButton
         shape="circular"
         icon={<Calendar3Day20Regular />}
         // primaryText="Primary text"
@@ -143,13 +153,13 @@ export const Default = (props: Partial<TagProps>) => (
       >
         Primary text
       </Tag>
-      <Tag shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+      <Tag contentAsButton shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
         Primary text
       </Tag>
-      <Tag shape="circular" icon={<Calendar3Day20Regular />} {...props}>
+      <Tag contentAsButton shape="circular" icon={<Calendar3Day20Regular />} {...props}>
         Primary text
       </Tag>
-      <Tag shape="circular" {...props}>
+      <Tag contentAsButton shape="circular" {...props}>
         Primary text
       </Tag>
     </div>
