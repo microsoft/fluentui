@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { TagState, TagContextValues } from './Tag.types';
+import { TagContextValues, TagState } from '../components/Tag/index';
 
 export function useTagContextValues_unstable(state: TagState): TagContextValues {
   const { avatarSize, avatarShape } = state;

@@ -1,20 +1,159 @@
 import * as React from 'react';
 import { TagButton, TagButtonProps } from '@fluentui/react-tags';
-import { Calendar3Day28Regular } from '@fluentui/react-icons';
+import { Calendar3Day20Regular } from '@fluentui/react-icons';
+import { Avatar } from '@fluentui/react-avatar';
 
 export const Default = (props: Partial<TagButtonProps>) => (
-  <TagButton
-    avatar={{
-      name: 'Katri Athokas',
-      badge: { status: 'busy' },
-      image: {
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-      },
-    }}
-    icon={<Calendar3Day28Regular />}
-    primaryText="Primary text"
-    secondaryText="Secondary text"
-    dismissable={true}
-    {...props}
-  />
+  <div style={{ display: 'flex', columnGap: 28 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
+      <TagButton
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        // primaryText="Primary text"
+        secondaryText="Secondary text"
+        dismissable={true}
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        dismissable={true}
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton
+        icon={<Calendar3Day20Regular />}
+        // primaryText="Primary text"
+        secondaryText="Secondary text"
+        dismissable={true}
+        {...props}
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton contentAsButton icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+        Primary text
+      </TagButton>
+      <TagButton contentAsButton icon={<Calendar3Day20Regular />} {...props}>
+        Primary text
+      </TagButton>
+      <TagButton contentAsButton {...props}>
+        Primary text
+      </TagButton>
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
+      <TagButton
+        shape="circular"
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        // primaryText="Primary text"
+        secondaryText="Secondary text"
+        dismissable={true}
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton
+        shape="circular"
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        dismissable={true}
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton
+        shape="circular"
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton
+        shape="circular"
+        icon={<Calendar3Day20Regular />}
+        // primaryText="Primary text"
+        secondaryText="Secondary text"
+        dismissable={true}
+        {...props}
+        {...props}
+      >
+        Primary text
+      </TagButton>
+      <TagButton contentAsButton shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+        Primary text
+      </TagButton>
+      <TagButton contentAsButton shape="circular" icon={<Calendar3Day20Regular />} {...props}>
+        Primary text
+      </TagButton>
+      <TagButton contentAsButton shape="circular" {...props}>
+        Primary text
+      </TagButton>
+    </div>
+  </div>
 );
