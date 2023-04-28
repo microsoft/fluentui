@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 
 import { TagButton } from '@fluentui/react-tags';

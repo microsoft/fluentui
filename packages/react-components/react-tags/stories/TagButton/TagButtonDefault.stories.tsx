@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TagButton, TagButtonProps } from '@fluentui/react-tags';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-components';
 
 // TODO I added many examples here for easier implementation. This story will be simplified to keep only the default example
 export const Default = (props: Partial<TagButtonProps>) => (
