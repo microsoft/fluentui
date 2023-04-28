@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCounterBadge_unstable } from './useCounterBadge';
-import { useCounterBadgeStyles_unstable } from './useCounterBadgeStyles';
+import { useCounterBadgeStyles_unstable } from './useCounterBadgeStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from '../Badge/index';
 import type { CounterBadgeProps } from './CounterBadge.types';

@@ -13,5 +13,17 @@ export const renderTagButton_unstable = (state: TagButtonState) => {
   const { slots, slotProps } = getSlotsNext<TagButtonSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slots.contentButton && (
+        <slots.contentButton {...slotProps.contentButton}>
+          {slots.avatar && <slots.avatar {...slotProps.avatar} />}
+          {slots.icon && <slots.icon {...slotProps.icon} />}
+          {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
+          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+        </slots.contentButton>
+      )}
+      {slots.dismissButton && state.dismissable && <slots.dismissButton {...slotProps.dismissButton} />}
+    </slots.root>
+  );
 };

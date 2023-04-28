@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSwitch_unstable } from './useSwitch';
 import { renderSwitch_unstable } from './renderSwitch';
-import { useSwitchStyles_unstable } from './useSwitchStyles';
+import { useSwitchStyles_unstable } from './useSwitchStyles.styles';
 import type { SwitchProps } from './Switch.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

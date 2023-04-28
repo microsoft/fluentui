@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useInput_unstable } from './useInput';
 import { renderInput_unstable } from './renderInput';
-import { useInputStyles_unstable } from './useInputStyles';
+import { useInputStyles_unstable } from './useInputStyles.styles';
 import type { InputProps } from './Input.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
