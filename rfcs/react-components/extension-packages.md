@@ -219,6 +219,10 @@ A new scope `@fluentui-contrib/` will be created for extension packages that wil
 However these packages are not considered a part of the core library. These packages must follow the requirements
 mentioned earlier above.
 
+There is no obligation to publish under this scope. However the requirements we set will be only be minimal to
+ensure some consistency under the Fluent UI umbrella, which will build confidence for users who want to consume
+Fluent UI conformant packages.
+
 #### Self code hosting
 
 Code for `@fluentui/contrib` packages should be self hosted. The Fluent UI team will provide bootstraping utilities
@@ -237,6 +241,17 @@ be easy to consume by partners' repositories.
 
 This build and infra should be aligned towards our ideal goal for the Fluent UI monorepo to avoid diverging. This will
 also ensure that partners can easily consume all the improvements the Fluent UI build team deliver.
+
+There is no obligation to publish to the `@fluentui/contrib` scope. These tools can be used by anyone to create
+a publishable library, and their usefulness can extend to beyond UI components to even creating utility libraries.
+Publishing reusable libraries are not obvious and often publishers need to worry about:
+
+- Transpilation
+- Correct package.json format
+- Typings
+- Distributed artifacts
+
+We want to help users who don't have experience publishing libraries succeed with a minimal learning curve.
 
 #### Documentation federation
 
