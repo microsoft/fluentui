@@ -22,6 +22,8 @@ export {
   useBreadcrumbItem_unstable,
 } from './BreadcrumbItem';
 export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem';
+export { partitionBreadcrumbItems } from './utils/index';
+export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from './utils/index';
 export {
   BreadcrumbButton,
   breadcrumbButtonClassNames,

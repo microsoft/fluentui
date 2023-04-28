@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSpinButton_unstable } from './useSpinButton';
 import { renderSpinButton_unstable } from './renderSpinButton';
-import { useSpinButtonStyles_unstable } from './useSpinButtonStyles';
+import { useSpinButtonStyles_unstable } from './useSpinButtonStyles.styles';
 import type { SpinButtonProps } from './SpinButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

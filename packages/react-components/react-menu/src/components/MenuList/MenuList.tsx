@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMenuList_unstable } from './useMenuList';
 import { renderMenuList_unstable } from './renderMenuList';
 import { useMenuListContextValues_unstable } from './useMenuListContextValues';
-import { useMenuListStyles_unstable } from './useMenuListStyles';
+import { useMenuListStyles_unstable } from './useMenuListStyles.styles';
 import type { MenuListProps } from './MenuList.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

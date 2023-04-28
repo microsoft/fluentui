@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useBreadcrumbButton_unstable } from './useBreadcrumbButton';
 import { renderBreadcrumbButton_unstable } from './renderBreadcrumbButton';
-import { useBreadcrumbButtonStyles_unstable } from './useBreadcrumbButtonStyles';
+import { useBreadcrumbButtonStyles_unstable } from './useBreadcrumbButtonStyles.styles';
 import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

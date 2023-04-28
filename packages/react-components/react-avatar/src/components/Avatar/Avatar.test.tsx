@@ -2,7 +2,7 @@ import * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
-import { avatarClassNames } from './useAvatarStyles';
+import { avatarClassNames } from './useAvatarStyles.styles';
 import { DEFAULT_STRINGS } from './useAvatar';
 
 describe('Avatar', () => {

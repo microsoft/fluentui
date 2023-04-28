@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePresenceBadge_unstable } from './usePresenceBadge';
-import { usePresenceBadgeStyles_unstable } from './usePresenceBadgeStyles';
+import { usePresenceBadgeStyles_unstable } from './usePresenceBadgeStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from '../../Badge';
 import type { PresenceBadgeProps } from './PresenceBadge.types';

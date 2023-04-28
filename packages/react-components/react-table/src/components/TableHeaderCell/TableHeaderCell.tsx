@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTableHeaderCell_unstable } from './useTableHeaderCell';
 import { renderTableHeaderCell_unstable } from './renderTableHeaderCell';
-import { useTableHeaderCellStyles_unstable } from './useTableHeaderCellStyles';
+import { useTableHeaderCellStyles_unstable } from './useTableHeaderCellStyles.styles';
 import type { TableHeaderCellProps } from './TableHeaderCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

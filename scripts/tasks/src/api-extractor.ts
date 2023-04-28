@@ -57,7 +57,7 @@ export function apiExtractor(): TaskFunction {
   };
 
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
-  const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
 
   if (configsToExecute.length === 0) {
     return noop;
@@ -102,14 +102,14 @@ export function apiExtractor(): TaskFunction {
   }
 
   function onConfigLoaded(config: Parameters<NonNullable<ApiExtractorOptions['onConfigLoaded']>>[0]) {
-    if (!(isUsingTsSolutionConfigs && tsConfig)) {
+    if (!(isUsingTsSolutionConfigs && tsConfigs.lib)) {
       return;
     }
 
     logger.info(`api-extractor: package is using TS path aliases. Overriding TS compiler settings.`);
 
     const compilerConfig = getTsPathAliasesApiExtractorConfig({
-      tsConfig,
+      tsConfig: tsConfigs.lib,
       packageJson,
       pathAliasesTsConfigPath: isLocalBuild ? path.join(workspaceRoot, 'tsconfig.base.json') : undefined,
       definitionsRootPath: 'dist/out-tsc/types',

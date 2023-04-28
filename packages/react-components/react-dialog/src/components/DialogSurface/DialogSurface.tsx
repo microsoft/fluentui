@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDialogSurface_unstable } from './useDialogSurface';
 import { renderDialogSurface_unstable } from './renderDialogSurface';
-import { useDialogSurfaceStyles_unstable } from './useDialogSurfaceStyles';
+import { useDialogSurfaceStyles_unstable } from './useDialogSurfaceStyles.styles';
 import type { DialogSurfaceProps } from './DialogSurface.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDialogSurfaceContextValues_unstable } from './useDialogSurfaceContextValues';

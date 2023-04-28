@@ -909,6 +909,7 @@ import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
+import { useOverflowCount } from '@fluentui/react-overflow';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { usePersona_unstable } from '@fluentui/react-persona';
 import { usePersonaStyles_unstable } from '@fluentui/react-persona';
@@ -2812,6 +2813,8 @@ export { useOptionGroup_unstable }
 export { useOptionGroupStyles_unstable }
 
 export { useOptionStyles_unstable }
+
+export { useOverflowCount }
 
 export { useOverflowMenu }
 

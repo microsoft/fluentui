@@ -4,7 +4,7 @@ import { renderMenuGroup_unstable } from './renderMenuGroup';
 import { useMenuGroupContextValues_unstable } from './useMenuGroupContextValues';
 import type { MenuGroupProps } from './MenuGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useMenuGroupStyles_unstable } from './useMenuGroupStyles';
+import { useMenuGroupStyles_unstable } from './useMenuGroupStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuItemRadio_unstable } from './useMenuItemRadio';
 import { renderMenuItemRadio_unstable } from './renderMenuItemRadio';
-import { useMenuItemRadioStyles_unstable } from './useMenuItemRadioStyles';
+import { useMenuItemRadioStyles_unstable } from './useMenuItemRadioStyles.styles';
 import type { MenuItemRadioProps } from './MenuItemRadio.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
