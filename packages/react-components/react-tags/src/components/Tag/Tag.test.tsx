@@ -4,9 +4,7 @@ import { Tag } from './Tag';
 import { isConformant } from '../../testing/isConformant';
 
 const requiredProps = {
-  avatar: {
-    name: 'Katri Athokas',
-  },
+  media: 'media',
   icon: 'i',
   primaryText: 'Primary text',
   secondaryText: 'Secondary text',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { DismissRegular } from '@fluentui/react-icons';
+import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Button } from '@fluentui/react-button';
 
@@ -14,6 +14,8 @@ const tagAvatarShapeMap = {
   rounded: 'square',
   circular: 'circular',
 } as const;
+
+const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
  * Create the state required to render Tag.
@@ -67,7 +69,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       required: props.dismissable,
       defaultProps: {
         appearance: 'transparent',
-        icon: <DismissRegular />,
+        icon: <DismissIcon />,
       },
     }),
   };
