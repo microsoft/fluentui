@@ -3,6 +3,7 @@ import { TagButton, TagButtonProps } from '@fluentui/react-tags';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-avatar';
 
+// TODO I added many examples here for easier implementation. This story will be simplified to keep only the default example
 export const Default = (props: Partial<TagButtonProps>) => (
   <div style={{ display: 'flex', columnGap: 28 }}>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
