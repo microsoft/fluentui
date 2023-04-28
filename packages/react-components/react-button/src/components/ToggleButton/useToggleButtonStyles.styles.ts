@@ -2,7 +2,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';

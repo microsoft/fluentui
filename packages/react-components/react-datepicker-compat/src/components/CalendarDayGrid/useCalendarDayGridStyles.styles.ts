@@ -16,7 +16,7 @@ import {
   TRANSITION_ROW_DISAPPEARANCE,
 } from '../../utils';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import { weekCornersClassNames } from './useWeekCornerStyles';
+import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 
