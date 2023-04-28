@@ -95,7 +95,7 @@ export const PrimaryDisabledDarkMode = getStoryVariant(PrimaryDisabled, DARK_MOD
 
 export const SubtleDisabled = () => (
   <Button id={buttonId} appearance="subtle" disabled>
-    Hello, world, This is it.
+    Hello, world, This is itasdasd.
   </Button>
 );
 
