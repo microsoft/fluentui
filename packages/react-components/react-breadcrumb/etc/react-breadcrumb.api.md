@@ -126,7 +126,7 @@ export type PartitionBreadcrumbItems<T> = {
 };
 
 // @public
-export const partitionBreadcrumbItems: <T>(options: PartitionBreadcrumbItemsOptions<T>) => PartitionBreadcrumbItems<T> | undefined;
+export const partitionBreadcrumbItems: <T>(options: PartitionBreadcrumbItemsOptions<T>) => PartitionBreadcrumbItems<T>;
 
 // @public (undocumented)
 export type PartitionBreadcrumbItemsOptions<T> = {

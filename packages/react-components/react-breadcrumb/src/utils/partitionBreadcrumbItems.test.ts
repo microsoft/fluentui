@@ -1,9 +1,5 @@
 import { partitionBreadcrumbItems, PartitionBreadcrumbItemsOptions } from './partitionBreadcrumbItems';
 const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const emptyTestData = [
-  [null, undefined],
-  [undefined, undefined],
-];
 const testData = [
   [
     { items, overflowIndex: 2, maxDisplayedItems: 3 },
@@ -53,11 +49,6 @@ const overflowIndexData = [
 ];
 
 describe('partitionBreadcrumbItems method', () => {
-  it.each(emptyTestData)("returns `undefined` if null or undefined is passed '%s'", (testItems, expected) => {
-    expect(partitionBreadcrumbItems(testItems as unknown as PartitionBreadcrumbItemsOptions<unknown>)).toStrictEqual(
-      expected,
-    );
-  });
   it.each(testData)("splits items correctly '%s'", (testItems, expected) => {
     expect(partitionBreadcrumbItems(testItems as PartitionBreadcrumbItemsOptions<number>)).toStrictEqual(expected);
   });

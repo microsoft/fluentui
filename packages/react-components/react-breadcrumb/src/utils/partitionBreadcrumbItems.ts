@@ -22,20 +22,18 @@ export type PartitionBreadcrumbItems<T> = {
  */
 export const partitionBreadcrumbItems = <T>(
   options: PartitionBreadcrumbItemsOptions<T>,
-): PartitionBreadcrumbItems<T> | undefined => {
-  if (!options) {
-    return;
-  }
+): PartitionBreadcrumbItems<T> => {
+  let startDisplayedItems;
+  let overflowItems;
+  let endDisplayedItems;
+
   const { items = [] } = options;
   const itemsCount = items.length;
   const maxDisplayedItems = getMaxDisplayedItems(options.maxDisplayedItems);
   let overflowIndex = options.overflowIndex ?? DEFAULT_OVERFLOW_INDEX;
-  let startDisplayedItems = items.slice(0, overflowIndex);
+  startDisplayedItems = items.slice(0, overflowIndex);
 
   const numberItemsToHide = itemsCount - maxDisplayedItems;
-
-  let overflowItems;
-  let endDisplayedItems;
 
   if (numberItemsToHide > 0) {
     overflowIndex = overflowIndex === maxDisplayedItems ? overflowIndex - 1 : overflowIndex;

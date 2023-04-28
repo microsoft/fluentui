@@ -147,9 +147,9 @@ const useStyles = makeStyles({
   },
 });
 
-const OverflowBreadcrumbButton = (props: Item) => {
-  const { item } = props;
-  const isVisible = useIsOverflowItemVisible(item.key);
+const OverflowBreadcrumbButton: React.FC<{ id: string; item: Item }> = props => {
+  const { item, id } = props;
+  const isVisible = useIsOverflowItemVisible(id);
 
   if (isVisible) {
     return null;
@@ -194,11 +194,18 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
       <MenuPopover>
         <MenuList className={styles.menu}>
           {isOverflowing &&
-            startDisplayedItems.map((item: Item) => <OverflowBreadcrumbButton key={item.key} item={item} />)}
-          {overflowItems && overflowItems.map((item: Item) => <OverflowBreadcrumbButton key={item.key} item={item} />)}
+            startDisplayedItems.map((item: Item) => (
+              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+            ))}
+          {overflowItems &&
+            overflowItems.map((item: Item) => (
+              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+            ))}
           {isOverflowing &&
             endDisplayedItems &&
-            endDisplayedItems.map((item: Item) => <OverflowBreadcrumbButton key={item.key} item={item} />)}
+            endDisplayedItems.map((item: Item) => (
+              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+            ))}
         </MenuList>
       </MenuPopover>
     </Menu>
