@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderSplitButton_unstable } from './renderSplitButton';
 import { useSplitButton_unstable } from './useSplitButton';
-import { useSplitButtonStyles_unstable } from './useSplitButtonStyles';
+import { useSplitButtonStyles_unstable } from './useSplitButtonStyles.styles';
 import type { SplitButtonProps } from './SplitButton.types';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
