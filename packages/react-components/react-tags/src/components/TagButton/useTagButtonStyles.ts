@@ -1,8 +1,8 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createCustomFocusIndicatorStyle } from '../../../../react-tabster/src/index';
-import { tokens, typographyStyles } from '../../../../react-theme/src/index';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
