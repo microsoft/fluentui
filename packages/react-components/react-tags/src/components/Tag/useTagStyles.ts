@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
@@ -94,55 +93,10 @@ const useStyles = makeStyles({
 });
 
 /**
- * Styles for focus indicator when the content of tag is a focusable button
- */
-const useFocusIndicatorStyles = makeStyles({
-  contentAsButton: {
-    paddingRight: tokens.spacingHorizontalS,
-    position: 'relative',
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorTransparentStroke),
-      boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
-    `,
-      zIndex: 1,
-    }),
-  },
-  circular: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
-  dismissable: createCustomFocusIndicatorStyle({
-    borderTopRightRadius: tokens.borderRadiusNone,
-    borderBottomRightRadius: tokens.borderRadiusNone,
-  }),
-
-  dismissButton: {
-    marginRight: '0px',
-    paddingLeft: '6px',
-    paddingRight: '6px',
-    borderLeftColor: tokens.colorNeutralStroke1,
-    borderTopLeftRadius: tokens.borderRadiusNone,
-    borderBottomLeftRadius: tokens.borderRadiusNone,
-
-    ...createCustomFocusIndicatorStyle({
-      borderTopLeftRadius: tokens.borderRadiusNone,
-      borderBottomLeftRadius: tokens.borderRadiusNone,
-    }),
-  },
-  dismissButtonCircular: createCustomFocusIndicatorStyle({
-    borderTopRightRadius: tokens.borderRadiusCircular,
-    borderBottomRightRadius: tokens.borderRadiusCircular,
-  }),
-});
-
-/**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
   const styles = useStyles();
-  const focusStyles = useFocusIndicatorStyles();
-
   state.root.className = mergeClasses(
     tagClassNames.root,
     styles.root,
@@ -155,11 +109,6 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       styles.content,
       !state.media && !state.icon && styles.textOnlyContent,
       state.dismissButton && styles.dismissableContent,
-
-      state.contentAsButton && focusStyles.contentAsButton,
-      state.contentAsButton && state.shape === 'circular' && focusStyles.circular,
-      state.contentAsButton && state.dismissButton && focusStyles.dismissable,
-
       state.content.className,
     );
   }
@@ -189,10 +138,6 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     state.dismissButton.className = mergeClasses(
       tagClassNames.dismissButton,
       styles.dismissButton,
-
-      state.contentAsButton && focusStyles.dismissButton,
-      state.contentAsButton && state.shape === 'circular' && focusStyles.dismissButtonCircular,
-
       state.dismissButton.className,
     );
   }

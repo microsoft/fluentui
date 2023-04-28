@@ -47,7 +47,6 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
   disabled?: boolean;
   checked?: boolean;
   dismissable?: boolean;
-  contentAsButton?: boolean;
 };
 
 /**
@@ -55,7 +54,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
  */
 export type TagState = ComponentState<TagSlots> &
   Required<
-    Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size' | 'contentAsButton'> & {
+    Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'> & {
       avatarSize: AvatarSize | undefined;
       avatarShape: AvatarShape | undefined;
     }
