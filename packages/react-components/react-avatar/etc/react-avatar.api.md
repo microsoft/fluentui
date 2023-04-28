@@ -138,6 +138,9 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
 };
 
 // @public
+export type AvatarShape = 'circular' | 'square';
+
+// @public
 export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public @deprecated
