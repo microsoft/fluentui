@@ -5,12 +5,12 @@ export {
   useAvatarStyles_unstable,
   useAvatar_unstable,
 } from './Avatar';
-// eslint-disable-next-line deprecation/deprecation
 export type {
   AvatarNamedColor,
   AvatarProps,
   AvatarSlots,
   AvatarState,
+  // eslint-disable-next-line deprecation/deprecation
   AvatarSizes,
   AvatarSize,
   AvatarShape,
