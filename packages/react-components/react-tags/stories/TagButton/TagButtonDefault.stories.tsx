@@ -19,7 +19,6 @@ export const Default = (props: Partial<TagButtonProps>) => (
             }}
           />
         }
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
@@ -61,7 +60,6 @@ export const Default = (props: Partial<TagButtonProps>) => (
       </TagButton>
       <TagButton
         icon={<Calendar3Day20Regular />}
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
@@ -69,15 +67,13 @@ export const Default = (props: Partial<TagButtonProps>) => (
       >
         Primary text
       </TagButton>
-      <TagButton contentAsButton icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+      <TagButton icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
         Primary text
       </TagButton>
-      <TagButton contentAsButton icon={<Calendar3Day20Regular />} {...props}>
+      <TagButton icon={<Calendar3Day20Regular />} {...props}>
         Primary text
       </TagButton>
-      <TagButton contentAsButton {...props}>
-        Primary text
-      </TagButton>
+      <TagButton {...props}>Primary text</TagButton>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
       <TagButton
@@ -93,7 +89,6 @@ export const Default = (props: Partial<TagButtonProps>) => (
             }}
           />
         }
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
@@ -138,7 +133,6 @@ export const Default = (props: Partial<TagButtonProps>) => (
       <TagButton
         shape="circular"
         icon={<Calendar3Day20Regular />}
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
@@ -146,13 +140,13 @@ export const Default = (props: Partial<TagButtonProps>) => (
       >
         Primary text
       </TagButton>
-      <TagButton contentAsButton shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+      <TagButton shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
         Primary text
       </TagButton>
-      <TagButton contentAsButton shape="circular" icon={<Calendar3Day20Regular />} {...props}>
+      <TagButton shape="circular" icon={<Calendar3Day20Regular />} {...props}>
         Primary text
       </TagButton>
-      <TagButton contentAsButton shape="circular" {...props}>
+      <TagButton shape="circular" {...props}>
         Primary text
       </TagButton>
     </div>

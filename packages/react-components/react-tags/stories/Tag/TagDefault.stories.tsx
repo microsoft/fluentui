@@ -19,7 +19,6 @@ export const Default = (props: Partial<TagProps>) => (
             }}
           />
         }
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
@@ -59,14 +58,7 @@ export const Default = (props: Partial<TagProps>) => (
       >
         Primary text
       </Tag>
-      <Tag
-        icon={<Calendar3Day20Regular />}
-        // primaryText="Primary text"
-        secondaryText="Secondary text"
-        dismissable={true}
-        {...props}
-        {...props}
-      >
+      <Tag icon={<Calendar3Day20Regular />} secondaryText="Secondary text" dismissable={true} {...props} {...props}>
         Primary text
       </Tag>
       <Tag icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
@@ -91,7 +83,6 @@ export const Default = (props: Partial<TagProps>) => (
             }}
           />
         }
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
@@ -136,7 +127,6 @@ export const Default = (props: Partial<TagProps>) => (
       <Tag
         shape="circular"
         icon={<Calendar3Day20Regular />}
-        // primaryText="Primary text"
         secondaryText="Secondary text"
         dismissable={true}
         {...props}
