@@ -2,7 +2,7 @@ import * as React from 'react';
 import { renderAvatarGroupItem_unstable } from './renderAvatarGroupItem';
 import { useAvatarGroupItem_unstable } from './useAvatarGroupItem';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
-import { useAvatarGroupItemStyles_unstable } from './useAvatarGroupItemStyles';
+import { useAvatarGroupItemStyles_unstable } from './useAvatarGroupItemStyles.styles';
 import type { AvatarGroupItemProps } from './AvatarGroupItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "composite": false,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "paths": {
+      "src/*": ["packages/fluentui/react-northstar/src/*"],
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
+    }
+  },
+  "include": ["test"]
+}
