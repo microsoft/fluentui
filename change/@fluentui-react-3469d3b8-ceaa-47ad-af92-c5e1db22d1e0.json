@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Export DraggableZone component",
+  "comment": "chore: Export DraggableZone component",
   "packageName": "@fluentui/react",
   "email": "rezha@microsoft.com",
   "dependentChangeType": "patch"
