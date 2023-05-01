@@ -1,8 +1,23 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 25 Apr 2023 07:38:32 GMT and should not be manually modified.
+This log was last generated on Mon, 01 May 2023 07:39:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.0)
+
+Mon, 01 May 2023 07:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.83..@fluentui/azure-themes_v8.6.0)
+
+### Minor changes
+
+- feat: Adding Azure Theme Tag Button variant for primary and default buttons ([PR #27186](https://github.com/microsoft/fluentui/pull/27186) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.108.3 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+
+### Patches
+
+- dropdown style bug fix for high contrast themes ([PR #27346](https://github.com/microsoft/fluentui/pull/27346) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.5.83](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.83)
 

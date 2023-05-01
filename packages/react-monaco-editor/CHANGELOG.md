@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Tue, 25 Apr 2023 07:38:32 GMT and should not be manually modified.
+This log was last generated on Mon, 01 May 2023 07:39:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.7.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.80)
+
+Mon, 01 May 2023 07:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.7.79..@fluentui/react-monaco-editor_v1.7.80)
+
+### Patches
+
+- fix: add missing dependency to fix lint violations during release ([PR #27728](https://github.com/microsoft/fluentui/pull/27728) by martinhochel@microsoft.com)
+- Add react charting to support export to codepen ([PR #27539](https://github.com/microsoft/fluentui/pull/27539) by atishay.jain@microsoft.com)
+- Bump @fluentui/react to v8.108.3 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/example-data to v8.4.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/monaco-editor to v1.3.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-hooks to v8.6.21 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-charting to v5.16.23 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [1.7.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.79)
 

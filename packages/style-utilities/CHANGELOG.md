@@ -1,8 +1,21 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 May 2023 07:39:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.7)
+
+Mon, 01 May 2023 07:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.6..@fluentui/style-utilities_v8.9.7)
+
+### Patches
+
+- Add support for Microsoft Designer .design filetype icon ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by caperez@microsoft.com)
+- Bump @fluentui/theme to v2.6.26 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/merge-styles to v8.5.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/utilities to v8.13.10 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [8.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.6)
 

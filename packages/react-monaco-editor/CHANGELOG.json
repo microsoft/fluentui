@@ -2,6 +2,57 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Mon, 01 May 2023 07:39:52 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.80",
+      "version": "1.7.80",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "1e4ad6831b1e626009674a63d480eedd7045fd05",
+            "comment": "fix: add missing dependency to fix lint violations during release"
+          },
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "cbe5229d974dc11d345729a110b7493564a0b822",
+            "comment": "Add react charting to support export to codepen"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.108.3",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/example-data to v8.4.8",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/monaco-editor to v1.3.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-hooks to v8.6.21",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.16.23",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Apr 2023 07:38:32 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.79",
       "version": "1.7.79",

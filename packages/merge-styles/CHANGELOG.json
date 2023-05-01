@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Mon, 01 May 2023 07:39:54 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.8",
+      "version": "8.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Mar 2023 08:15:56 GMT",
       "tag": "@fluentui/merge-styles_v8.5.7",
       "version": "8.5.7",

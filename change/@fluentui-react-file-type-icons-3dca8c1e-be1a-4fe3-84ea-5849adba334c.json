@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add support for Microsoft Designer .design filetype icon",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
