@@ -31,6 +31,7 @@
     "copy-notices": "node scripts/generators/copy-notices.js",
     "create-component": "plop --plopfile ./scripts/generators/create-component/index.ts --dest . --require @fluentui/scripts-ts-node/register",
     "create-package": "plop --plopfile ./scripts/generators/create-package/index.ts --dest . --require @fluentui/scripts-ts-node/register",
+    "create-recipe": "plop --plopfile ./scripts/generators/create-recipe/index.ts --dest . --require @fluentui/scripts-ts-node/register",
     "e2e": "lage e2e --verbose --concurrency=1",
     "format": "node scripts/executors/format.js",
     "generate-version-files": "node -r ./scripts/ts-node/register ./scripts/generators/generate-version-files",
