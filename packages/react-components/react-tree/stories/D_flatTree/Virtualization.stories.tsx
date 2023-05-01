@@ -18,28 +18,30 @@ import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'reac
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 import story from './Virtualization.md';
 
-const defaultItems: FlatTreeItemProps<string>[] = [
+type ItemProps = FlatTreeItemProps & { content: string };
+
+const defaultItems: ItemProps[] = [
   {
     id: 'flatTreeItem_lvl-1_item-1',
     value: 'flatTreeItem_lvl-1_item-1',
-    children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
+    content: `Level 1, item 1`,
   },
   ...Array.from({ length: 300 }, (_, i) => ({
     id: `flatTreeItem_lvl-1_item-1--child:${i}`,
     value: `flatTreeItem_lvl-1_item-1--child:${i}`,
     parentValue: 'flatTreeItem_lvl-1_item-1',
-    children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
+    content: `Item ${i + 1}`,
   })),
   {
     id: 'flatTreeItem_lvl-1_item-2',
     value: 'flatTreeItem_lvl-1_item-2',
-    children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
+    content: `Level 1, item 2`,
   },
   ...Array.from({ length: 300 }, (_, index) => ({
     id: `flatTreeItem_lvl-1_item-2--child:${index}`,
     value: `flatTreeItem_lvl-1_item-2--child:${index}`,
     parentValue: 'flatTreeItem_lvl-1_item-2',
-    children: <TreeItemLayout>Item {index + 1}</TreeItemLayout>,
+    content: `Item ${index + 1}`,
   })),
 ];
 
@@ -67,9 +69,10 @@ interface FixedSizeTreeItemProps extends ListChildComponentProps {
 
 const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
   const flatTreeItem = props.data[props.index];
+  const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
   return (
-    <TreeItem {...flatTreeItem.getTreeItemProps()} style={props.style}>
-      <TreeItemLayout>Item {props.index}</TreeItemLayout>
+    <TreeItem {...treeItemProps} style={props.style}>
+      <TreeItemLayout>{content}</TreeItemLayout>
     </TreeItem>
   );
 };
@@ -91,6 +94,7 @@ export const Virtualization = () => {
     }
     flatTree.navigate(data);
   };
+
   return (
     <FixedSizeTree
       {...flatTree.getTreeProps()}

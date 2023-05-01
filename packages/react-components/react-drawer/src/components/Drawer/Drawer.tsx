@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDrawer_unstable } from './useDrawer';
 import { renderDrawer_unstable } from './renderDrawer';
-import { useDrawerStyles_unstable } from './useDrawerStyles';
+import { useDrawerStyles_unstable } from './useDrawerStyles.styles';
 import type { DrawerProps } from './Drawer.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

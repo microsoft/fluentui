@@ -7,13 +7,16 @@ import { treeDataTypes } from '../utils/tokens';
 import { treeItemFilter } from '../utils/treeItemFilter';
 import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { useRovingTabIndex } from './useRovingTabIndexes';
+import { FlatTreeItemProps } from './useFlatTree';
 
-export function useFlatTreeNavigation<Value = string>(flatTreeItems: FlatTreeItems<Value>) {
+export function useFlatTreeNavigation<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(
+  flatTreeItems: FlatTreeItems<Props>,
+) {
   const { targetDocument } = useFluent_unstable();
   const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
 
-  function getNextElement(data: TreeNavigationData_unstable<Value>) {
+  function getNextElement(data: TreeNavigationData_unstable<Props['value']>) {
     if (!targetDocument || !treeItemWalkerRef.current) {
       return null;
     }
@@ -43,7 +46,7 @@ export function useFlatTreeNavigation<Value = string>(flatTreeItems: FlatTreeIte
         return treeItemWalker.previousElement();
     }
   }
-  const navigate = useEventCallback((data: TreeNavigationData_unstable<Value>) => {
+  const navigate = useEventCallback((data: TreeNavigationData_unstable<Props['value']>) => {
     const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
@@ -66,7 +69,7 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement<Value = string>(flatTreeItems: FlatTreeItems<Value>, value: Value) {
+function parentElement(flatTreeItems: FlatTreeItems<FlatTreeItemProps<unknown>>, value: unknown) {
   const flatTreeItem = flatTreeItems.get(value);
   if (flatTreeItem?.parentValue) {
     const parentItem = flatTreeItems.get(flatTreeItem.parentValue);

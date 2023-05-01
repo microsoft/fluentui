@@ -3,4 +3,4 @@ export * from './Badge';
 export type { BadgeProps, BadgeSlots, BadgeState } from './Badge.types';
 export * from './renderBadge';
 export * from './useBadge';
-export * from './useBadgeStyles';
+export * from './useBadgeStyles.styles';

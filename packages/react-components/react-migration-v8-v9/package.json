@@ -18,7 +18,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
     "start": "yarn storybook"
@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.2",
-    "@fluentui/react": "^8.108.1",
+    "@fluentui/fluent2-theme": "^8.107.4",
+    "@fluentui/react": "^8.108.3",
     "@fluentui/react-components": "^9.19.1",
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-theme": "^9.1.7",
