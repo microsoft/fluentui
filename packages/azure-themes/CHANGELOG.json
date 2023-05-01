@@ -2,6 +2,41 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Mon, 01 May 2023 07:39:53 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "d9f8a815f9424d6174c4ef45ce3b977ffc28b67f",
+            "comment": "dropdown style bug fix for high contrast themes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "4acd563e14d4a257585cff2dba2fb826ce9c059b",
+            "comment": "feat: Adding Azure Theme Tag Button variant for primary and default buttons"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.108.3",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/set-version to v8.2.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Apr 2023 07:38:32 GMT",
       "tag": "@fluentui/azure-themes_v8.5.83",
       "version": "8.5.83",

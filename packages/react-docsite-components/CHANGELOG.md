@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 25 Apr 2023 07:38:32 GMT and should not be manually modified.
+This log was last generated on Mon, 01 May 2023 07:39:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.12.3)
+
+Mon, 01 May 2023 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.12.2..@fluentui/react-docsite-components_v8.12.3)
+
+### Patches
+
+- Enable export to codepen for react charting ([PR #27539](https://github.com/microsoft/fluentui/pull/27539) by atishay.jain@microsoft.com)
+- Bump @fluentui/react to v8.108.3 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/theme to v2.6.26 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/example-data to v8.4.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/public-docsite-setup to v0.3.19 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-hooks to v8.6.21 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.80 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/common-styles to v1.2.23 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [8.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.12.2)
 
