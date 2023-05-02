@@ -13,7 +13,7 @@ export const renderDrawerHeader_unstable = (state: DrawerHeaderState) => {
     <slots.root {...slotProps.root}>
       {slots.navigation && <slots.navigation {...slotProps.navigation} />}
       {slots.header && <slots.header {...slotProps.header} />}
-      {hasAnySlots ? <div {...state.content}>{state.root.children}</div> : state.root.children}
+      {hasAnySlots && state.root.children ? <div {...state.content}>{state.root.children}</div> : state.root.children}
     </slots.root>
   );
 };
