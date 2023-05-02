@@ -43,6 +43,9 @@ export const styles = css`
     color: blue;
     color: var(--state-color, ${colorNeutralForeground3});
     padding-inline-end: ${spacingHorizontalS};
+    --control-border-color: ${colorNeutralStrokeAccessible};
+    --checked-indicator-background-color: ${colorCompoundBrandForeground1};
+    --state-color: ${colorNeutralForeground3};
   }
   :host([disabled]) {
     --control-border-color: ${colorNeutralForegroundDisabled};
@@ -96,7 +99,7 @@ export const styles = css`
     opacity: 1;
   }
   :host([aria-checked='true']) .control {
-    border-color: var(--control-border-color);
+    border-color: var(--control-border-color, ${colorNeutralStrokeAccessible});
   }
   :host([aria-checked='true']) .checked-indicator {
     background-color: var(--checked-indicator-background-color, ${colorCompoundBrandForeground1});

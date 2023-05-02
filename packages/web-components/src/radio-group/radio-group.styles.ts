@@ -1,11 +1,8 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
-  colorCompoundBrandForeground1,
   colorNeutralForeground1,
-  colorNeutralForeground3,
   colorNeutralForegroundDisabled,
-  colorNeutralStrokeAccessible,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -22,14 +19,11 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    --control-border-color: ${colorNeutralStrokeAccessible};
-    --checked-indicator-background-color: ${colorCompoundBrandForeground1};
-    --state-color: ${colorNeutralForeground3};
     align-items: flex-start;
     flex-direction: column;
     row-gap: ${spacingVerticalS};
   }
-  :host([disabled]) {
+  :host([disabled]) ::slotted([role='radio']) {
     --control-border-color: ${colorNeutralForegroundDisabled};
     --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
     --state-color: ${colorNeutralForegroundDisabled};
