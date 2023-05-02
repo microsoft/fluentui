@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
-import { useRadioGroupContext_unstable } from '../../contexts/RadioGroupContext';
+import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioProps, RadioState } from './Radio.types';
 
@@ -16,20 +16,16 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const nameGroup = useRadioGroupContext_unstable(ctx => ctx.name);
-  const value = useRadioGroupContext_unstable(ctx => ctx.value);
-  const defaultValue = useRadioGroupContext_unstable(ctx => ctx.defaultValue);
-  const disabledGroup = useRadioGroupContext_unstable(ctx => ctx.disabled);
-  const layout = useRadioGroupContext_unstable(ctx => ctx.layout);
-  const requiredGroup = useRadioGroupContext_unstable(ctx => ctx.required);
+  const group = useRadioGroupContextValue_unstable();
 
   const {
-    name = nameGroup,
-    checked = value !== undefined ? value === props.value : undefined,
-    defaultChecked = defaultValue !== undefined ? defaultValue === props.value : undefined,
-    labelPosition = layout === 'horizontal-stacked' ? 'below' : 'after',
-    disabled = disabledGroup,
-    required = requiredGroup,
+    name = group.name,
+    checked = group.value !== undefined ? group.value === props.value : undefined,
+    defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
+    labelPosition = group.layout === 'horizontal-stacked' ? 'below' : 'after',
+    disabled = group.disabled,
+    required = group.required,
+    'aria-describedby': ariaDescribedBy = group['aria-describedby'],
     onChange,
   } = props;
 
@@ -58,6 +54,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       defaultChecked,
       disabled,
       required,
+      'aria-describedby': ariaDescribedBy,
       ...nativeProps.primary,
     },
   });
@@ -67,7 +64,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const label = resolveShorthand(props.label, {
     defaultProps: {
       htmlFor: input.id,
-      disabled,
+      disabled: input.disabled,
     },
   });
 

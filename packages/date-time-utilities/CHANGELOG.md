@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Apr 2023 07:38:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.7)
+
+Tue, 25 Apr 2023 07:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.6..@fluentui/date-time-utilities_v8.5.7)
+
+### Patches
+
+- chore: Refactored getDateFromTimeSelection variable names. ([PR #26482](https://github.com/microsoft/fluentui/pull/26482) by jamwu@microsoft.com)
 
 ## [8.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.6)
 

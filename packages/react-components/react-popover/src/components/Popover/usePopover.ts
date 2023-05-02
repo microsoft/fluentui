@@ -136,6 +136,8 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   return {
     ...initialState,
     ...positioningRefs,
+    // eslint-disable-next-line deprecation/deprecation
+    inertTrapFocus: props.inertTrapFocus ?? (props.legacyTrapFocus === undefined ? false : !props.legacyTrapFocus),
     popoverTrigger,
     popoverSurface,
     open,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
 import type { Slot } from './types';
+import { resolveShorthand } from './resolveShorthand';
 
 describe('getSlots', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
@@ -119,6 +120,24 @@ describe('getSlots', () => {
         components: { root: 'div', icon: Foo },
         root: { as: 'div' },
         icon: { id: 'bar', children: (C: React.ElementType, p: {}) => <C {...p} /> },
+      }),
+    ).toEqual({
+      slots: { root: 'div', icon: React.Fragment },
+      slotProps: { root: {}, icon: { children: <Foo id="bar" /> } },
+    });
+  });
+
+  it('can use slot children functions from resolveShorthand to replace default slot rendering', () => {
+    type Slots = {
+      root: Slot<'div'>;
+      icon: Slot<'a'>;
+    };
+    const renderFunction = (C: React.ElementType, p: {}) => <C {...p} />;
+    expect(
+      getSlots<Slots>({
+        components: { root: 'div', icon: Foo },
+        root: resolveShorthand({ as: 'div' }, { required: true }),
+        icon: resolveShorthand({ id: 'bar', children: renderFunction }),
       }),
     ).toEqual({
       slots: { root: 'div', icon: React.Fragment },

@@ -6,6 +6,7 @@
 ### Do
 
 - **Consider using `Textarea` with outline appearance.** When the contrast ratio against the immediate surrounding color is less than 3:1, consider using outline styles which has a bottom border stroke. But please ensure the color of bottom border stroke has a sufficient contrast which is greater than 3 to 1 against the immediate surrounding.
+- Prefer using `<Field>` instead of `<Label>` to handle accessibility automatically.
 
 ### Don't
 

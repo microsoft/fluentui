@@ -561,7 +561,8 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable,
+  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
   useRadioGroupStyles_unstable,
@@ -810,6 +811,7 @@ export {
   OverflowItem,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
+  useOverflowCount,
   useOverflowMenu,
   DATA_OVERFLOWING,
   DATA_OVERFLOW_MENU,
@@ -1073,3 +1075,24 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
+
+export {
+  Field,
+  fieldClassNames,
+  FieldContextProvider,
+  renderField_unstable,
+  useFieldContext_unstable,
+  useFieldContextValues_unstable,
+  useFieldControlProps_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
+export type {
+  FieldContextValue,
+  FieldContextValues,
+  FieldControlProps,
+  FieldControlPropsOptions,
+  FieldProps,
+  FieldSlots,
+  FieldState,
+} from '@fluentui/react-field';

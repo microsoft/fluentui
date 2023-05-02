@@ -5,7 +5,6 @@ import { treeItemLevelToken } from '../../utils/tokens';
 import * as React from 'react';
 
 export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
-export type TreeItemId = string;
 
 export type TreeItemSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;
@@ -31,7 +30,8 @@ export type TreeItemContextValues = {
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
+export type TreeItemProps<Value = string> = ComponentProps<Partial<TreeItemSlots>> & {
+  value?: Value;
   /**
    * If a TreeItem is a leaf, it'll not present the `expandIcon` slot by default.
    * This attribute is used to force the decision if a TreeItem is a leaf or not. By not providing this property

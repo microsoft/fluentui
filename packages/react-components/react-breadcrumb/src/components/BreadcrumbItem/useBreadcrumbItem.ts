@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { BreadcrumbItemProps, BreadcrumbItemState } from './BreadcrumbItem.types';
+import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
 /**
  * Create the state required to render BreadcrumbItem.
@@ -15,6 +16,8 @@ export const useBreadcrumbItem_unstable = (
   props: BreadcrumbItemProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbItemState => {
+  const { size } = useBreadcrumbContext_unstable();
+  const { current = false } = props;
   return {
     components: {
       root: 'li',
@@ -23,5 +26,7 @@ export const useBreadcrumbItem_unstable = (
       ref,
       ...props,
     }),
+    size,
+    current,
   };
 };

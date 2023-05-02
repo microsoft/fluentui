@@ -1,18 +1,17 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
-import { TreeItemId } from '../TreeItem';
 import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
 
 export type TreeContextValue = {
   level: number;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
-  openItems: ImmutableSet<TreeItemId>;
+  openItems: ImmutableSet<unknown>;
   /**
    * Requests dialog main component to update it's internal open state
    */
-  requestOpenChange(data: TreeOpenChangeData): void;
-  requestNavigation(data: TreeNavigationData_unstable): void;
+  requestOpenChange(data: TreeOpenChangeData<unknown>): void;
+  requestNavigation(data: TreeNavigationData_unstable<unknown>): void;
 };
 
 const defaultContextValue: TreeContextValue = {
