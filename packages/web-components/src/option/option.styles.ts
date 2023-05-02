@@ -11,7 +11,7 @@ import {
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
   colorTransparentBackground,
-  spacingHorizontalSNudge,
+  fontFamilyBase,
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalSNudge,
@@ -29,11 +29,11 @@ export const styles = css`
     box-sizing: border-box;
     column-gap: ${spacingHorizontalXS};
     color: ${colorNeutralForeground2};
+    font-family: ${fontFamilyBase};
     cursor: pointer;
     display: inline-flex;
     fill: currentcolor;
     flex-shrink: 0;
-    font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     height: 32px;
