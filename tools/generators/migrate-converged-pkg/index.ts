@@ -391,6 +391,7 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
+    .swcrc
   ` + os.EOL,
   swcConfig: () => {
     return {
