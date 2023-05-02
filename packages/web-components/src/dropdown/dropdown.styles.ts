@@ -27,11 +27,16 @@ import {
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
+  lineHeightBase400,
   shadow16,
   shadow2,
+  spacingHorizontalM,
+  spacingHorizontalMNudge,
+  spacingHorizontalS,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
+  spacingVerticalSNudge,
   spacingVerticalXS,
   spacingVerticalXXS,
   strokeWidthThick,
@@ -95,6 +100,32 @@ export const styles = css`
   }
   :host([size='0']) .listbox {
     height: fit-content;
+  }
+
+  :host ::slotted(fluent-option) {
+    padding-inline: ${spacingHorizontalS};
+  }
+
+  :host([control-size='small']) {
+    height: 24px;
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
+    --icon-size: 16px;
+  }
+  :host([control-size='small']) ::slotted(fluent-option) {
+    height: 24px;
+    padding-inline: ${spacingHorizontalSNudge};
+  }
+  :host([control-size='large']) {
+    height: 40px;
+    font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
+    --icon-size: 24px;
+    --large-content-padding: 0 ${spacingHorizontalSNudge};
+  }
+  :host([control-size='large']) ::slotted(fluent-option) {
+    height: 40px;
+    padding-inline: ${spacingHorizontalM};
   }
 
   .listbox {

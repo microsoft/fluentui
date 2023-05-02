@@ -11,11 +11,6 @@ import {
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
   colorTransparentBackground,
-  fontFamilyBase,
-  fontSizeBase300,
-  fontWeightRegular,
-  lineHeightBase300,
-  spacingHorizontalS,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
@@ -35,10 +30,7 @@ export const styles = css`
     fill: currentcolor;
     display: inline-flex;
     flex-shrink: 0;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
     height: 32px;
-    line-height: ${lineHeightBase300};
     outline: none;
     overflow: hidden;
     user-select: none;
@@ -47,13 +39,13 @@ export const styles = css`
     color: ${colorNeutralForeground1};
     padding: 0 ${spacingHorizontalSNudge};
     border-radius: ${borderRadiusMedium};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    font-weight: ${fontWeightRegular};
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-family: inherit;
     color: ${colorNeutralForeground2};
     column-gap: ${spacingHorizontalXS};
-    padding: ${spacingVerticalSNudge} ${spacingHorizontalS};
+    padding: inherit ${spacingVerticalSNudge};
     width: 100%;
   }
   :host([hidden]) {
@@ -80,7 +72,7 @@ export const styles = css`
   }
 
   ::slotted([slot='icon']) {
-    font-size: 20px;
+    font-size: var(--icon-size, 20px);
     line-height: 0;
   }
 
@@ -110,7 +102,7 @@ export const styles = css`
   }
 
   .content {
-    padding: 0 ${spacingHorizontalXXS};
+    padding-inline: var(--large-content-padding, ${spacingHorizontalXXS});
     overflow: hidden;
     text-overflow: ellipsis;
   }
