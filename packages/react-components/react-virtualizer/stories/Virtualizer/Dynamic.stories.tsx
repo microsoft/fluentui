@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import {
+  Virtualizer,
+  useDynamicVirtualizerMeasure,
+  VirtualizerContextProvider,
+} from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const smallSize = 100;
@@ -29,6 +33,7 @@ const useStyles = makeStyles({
 });
 
 export const Dynamic = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(-1);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
@@ -52,29 +57,39 @@ export const Dynamic = () => {
     return sizeValue;
   };
 
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
+    defaultItemSize: 100,
+    getItemSize: getSizeForIndex,
+    numItems: childLength,
+    currentIndex,
+  });
+
   return (
-    <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'}>
-      <Virtualizer
-        getItemSize={index => getSizeForIndex(index)}
-        numItems={childLength}
-        bufferSize={50}
-        virtualizerLength={25}
-        itemSize={100}
-      >
-        {(index: number) => {
-          const sizeValue = getSizeForIndex(index);
-          const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;
-          return (
-            <div
-              className={sizeClass}
-              role={'listItem'}
-              aria-posinset={index}
-              aria-setsize={childLength}
-              key={`child-node-${index}-${sizeValue}`}
-            >{`Node-${index}-size-${sizeValue}`}</div>
-          );
-        }}
-      </Virtualizer>
-    </div>
+    <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
+      <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
+        <Virtualizer
+          getItemSize={index => getSizeForIndex(index)}
+          numItems={childLength}
+          bufferSize={bufferSize}
+          bufferItems={bufferItems}
+          virtualizerLength={virtualizerLength}
+          itemSize={100}
+        >
+          {(index: number) => {
+            const sizeValue = getSizeForIndex(index);
+            const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;
+            return (
+              <div
+                className={sizeClass}
+                role={'listItem'}
+                aria-posinset={index}
+                aria-setsize={childLength}
+                key={`child-node-${index}-${sizeValue}`}
+              >{`Node-${index}-size-${sizeValue}`}</div>
+            );
+          }}
+        </Virtualizer>
+      </div>
+    </VirtualizerContextProvider>
   );
 };

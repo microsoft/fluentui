@@ -1,0 +1,43 @@
+import * as React from 'react';
+import { debounce } from '../utilities/debounce';
+import { canUseDOM } from '@fluentui/react-utilities';
+import { ResizeCallbackWithRef } from './hooks.types';
+
+/**
+ * useScrollRef simplifies resize observer connection and ensures debounce/cleanup
+ */
+export const useScrollRef = (resizeCallback: ResizeCallbackWithRef) => {
+  const container = React.useRef<HTMLElement | null>(null);
+  // the handler for resize observer
+  const handleResize = debounce((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
+    resizeCallback(entries, observer, container);
+  });
+
+  // Keep the reference of ResizeObserver in the state, as it should live through renders
+  const [resizeObserver] = React.useState(() => (canUseDOM() ? new ResizeObserver(handleResize) : undefined));
+
+  React.useEffect(() => {
+    return () => {
+      resizeObserver?.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const scrollRef = React.useCallback(
+    (instance: HTMLElement | HTMLDivElement | null) => {
+      if (container.current !== instance) {
+        if (container.current) {
+          resizeObserver?.unobserve(container.current);
+        }
+
+        container.current = instance;
+        if (container.current) {
+          resizeObserver?.observe(container.current);
+        }
+      }
+    },
+    [resizeObserver],
+  );
+
+  return scrollRef;
+};

@@ -1,14 +1,16 @@
-import { VirtualizerScrollViewState } from './VirtualizerScrollView.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { VirtualizerScrollViewSlots } from './VirtualizerScrollView.types';
+import {
+  VirtualizerScrollViewDynamicSlots,
+  VirtualizerScrollViewDynamicState,
+} from './VirtualizerScrollViewDynamic.types';
 import { useVirtualizerStyles_unstable, virtualizerClassNames } from '../Virtualizer/useVirtualizerStyles';
 import { makeStyles, mergeClasses } from '@griffel/react';
 
-const virtualizerScrollViewClassName = 'fui-Virtualizer-Scroll-View';
+const virtualizerScrollViewDynamicClassName = 'fui-Virtualizer-Scroll-View-Dynamic';
 
-export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots> = {
+export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots> = {
   ...virtualizerClassNames,
-  container: `${virtualizerScrollViewClassName}__container`,
+  container: `${virtualizerScrollViewDynamicClassName}__container`,
 };
 
 const useStyles = makeStyles({
@@ -20,7 +22,6 @@ const useStyles = makeStyles({
   },
   vertical: {
     flexDirection: 'column',
-    overflowAnchor: 'none',
     overflowY: 'auto',
   },
   horizontal: {
@@ -40,9 +41,9 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Virtualizer states
  */
-export const useVirtualizerScrollViewStyles_unstable = (
-  state: VirtualizerScrollViewState,
-): VirtualizerScrollViewState => {
+export const useVirtualizerScrollViewDynamicStyles_unstable = (
+  state: VirtualizerScrollViewDynamicState,
+): VirtualizerScrollViewDynamicState => {
   const styles = useStyles();
 
   // Default virtualizer styles base
@@ -59,7 +60,7 @@ export const useVirtualizerScrollViewStyles_unstable = (
 
   // Add container styles
   state.container.className = mergeClasses(
-    virtualizerScrollViewClassNames.container,
+    virtualizerScrollViewDynamicClassNames.container,
     styles.base,
     containerStyle,
     state.container.className,

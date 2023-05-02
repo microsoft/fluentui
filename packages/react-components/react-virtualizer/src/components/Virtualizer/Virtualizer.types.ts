@@ -133,16 +133,6 @@ export type VirtualizerConfigProps = {
    * @param index - the index of the requested size's child
    */
   getItemSize?: (index: number) => number;
-
-  /**
-   * Notify users of index changes
-   */
-  onUpdateIndex?: (index: number, prevIndex: number) => void;
-
-  /**
-   * Allow users to intervene in index calculation changes
-   */
-  onCalculateIndex?: (newIndex: number) => number;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
