@@ -8,7 +8,7 @@ import {
 import type { AvatarGroupProps } from '@fluentui/react-components';
 
 const names = [
-  'Johnie McConnell',
+  'Johnie',
   'Allan Munger',
   'Erik Nason',
   'Kristin Patterson',
