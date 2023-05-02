@@ -2,7 +2,7 @@ import * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { omit } from '@fluentui/react-utilities';
 import { Persona } from './Persona';
-import { personaClassNames } from './usePersonaStyles';
+import { personaClassNames } from './usePersonaStyles.styles';
 import { render, screen } from '@testing-library/react';
 
 describe('Persona', () => {
