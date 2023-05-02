@@ -9,7 +9,7 @@ import { DropdownAppearance, DropdownControlSizes } from './dropdown.options.js'
 type DropdownStoryArgs = Args & FluentDropdown;
 type DropdownStoryMeta = Meta<DropdownStoryArgs>;
 
-const icon = html`<svg
+const FoodFish16Filled = html`<svg
   fill="currentColor"
   aria-hidden="true"
   width="1em"
@@ -18,7 +18,49 @@ const icon = html`<svg
   xmlns="http://www.w3.org/2000/svg"
 >
   <path
-    d="M15.75 6a.75.75 0 0 0 0 1.5c.71 0 1.25.54 1.25 1.25a.75.75 0 0 0 1.5 0C18.5 7.21 17.3 6 15.75 6Zm-8-3c-1.1 0-2.4.55-3.4 1.39A4.74 4.74 0 0 0 2.5 7.95v.02c0 .71 0 2.3 1.21 3.74.13.15.21.25.27.35.31.55.52 1.16.52 1.7.01 1.9.35 3.52.96 4.7.6 1.17 1.55 2.04 2.79 2.04.37 0 .72-.09 1.02-.3.3-.2.5-.48.62-.76.24-.53.3-1.21.33-1.83l.03-.46c.06-1.2.13-2.46.67-3.57.19-.37.52-.58.83-.58h.5c.3 0 .63.2.81.55.4 1.04.52 2.19.63 3.3l.09.8c.07.63.18 1.29.41 1.8.13.27.31.54.58.74.29.2.62.31.98.31 1.11 0 2.05-.9 2.67-2.02.64-1.17 1.07-2.8 1.08-4.73 0-.59.26-1.28.63-1.86a5.64 5.64 0 0 0 1.37-3.94c0-1.48-.85-2.72-1.85-3.56A5.66 5.66 0 0 0 16.25 3a5.4 5.4 0 0 0-2.1.37c-.57.23-.96.55-1.26.84l-.35.37-.03.03c-.1.12-.19.2-.26.27-.12.1-.18.12-.25.12s-.13-.01-.25-.12a3.83 3.83 0 0 1-.26-.27l-.03-.03-.35-.37c-.3-.3-.7-.6-1.25-.84A5.4 5.4 0 0 0 7.75 3ZM4 7.95c0-.89.52-1.74 1.32-2.41A4.2 4.2 0 0 1 7.75 4.5c.7 0 1.19.11 1.53.25.34.15.57.33.78.54l.3.3.02.03c.1.12.23.26.37.38.3.26.7.5 1.25.5s.95-.24 1.25-.5c.14-.12.26-.26.37-.38l.03-.03.29-.3c.2-.2.44-.4.78-.54s.82-.25 1.53-.25c.67 0 1.63.36 2.43 1.04.8.67 1.32 1.52 1.32 2.4v.01c0 .68 0 1.77-1.05 3a5.26 5.26 0 0 0-.95 2.8c0 1.72-.4 3.09-.9 4-.53.98-1.08 1.25-1.35 1.25-.06 0-.08-.01-.08-.02a.45.45 0 0 1-.12-.17c-.12-.26-.2-.7-.28-1.34a41.8 41.8 0 0 1-.08-.7 14.82 14.82 0 0 0-.77-3.85 2.45 2.45 0 0 0-2.17-1.42h-.5c-.99 0-1.79.63-2.17 1.42-.7 1.4-.77 2.99-.83 4.16l-.03.44c-.04.66-.1 1.07-.2 1.31-.05.1-.08.13-.1.14 0 0-.04.03-.17.03-.44 0-.98-.3-1.46-1.23A9.15 9.15 0 0 1 6 13.75a5.1 5.1 0 0 0-1.13-3C4 9.73 4 8.62 4 7.94Z"
+    d="M10.36 4.1c-1 1-1.58 2.34-1.91 3.68A16.66 16.66 0 0 0 8 11.73c0 .17-.14.32-.32.32-1.77 0-4.01.22-5.83 1.09-.68.32-.97 1-.82 1.63.13.6.61 1.09 1.26 1.25.8.19 1.72.44 2.52.72.4.15.76.3 1.05.44.3.15.49.28.58.37.1.1.22.28.37.58.15.29.3.65.44 1.05.28.8.53 1.72.72 2.52.16.65.65 1.13 1.25 1.26.64.14 1.3-.14 1.63-.82.87-1.82 1.08-4.06 1.1-5.82 0-.18.14-.33.32-.33 1.2 0 2.6-.1 3.95-.43a7.78 7.78 0 0 0 3.67-1.91 7.4 7.4 0 0 0 1.92-4.06c.25-1.45.2-2.92.1-4.09a3.77 3.77 0 0 0-3.41-3.4 15.68 15.68 0 0 0-4.1.09 7.4 7.4 0 0 0-4.05 1.91ZM16 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+    fill="currentColor"
+  ></path>
+</svg>`;
+
+const AnimalCat16Filled = html`<svg
+  fill="currentColor"
+  aria-hidden="true"
+  width="1em"
+  height="1em"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M7.25 22H5.8a3.8 3.8 0 0 1-2.78-6.39l1.14-1.22a3.06 3.06 0 0 0-.08-4.25L2.97 9.03a.75.75 0 0 1 1.06-1.06l1.11 1.11a4.56 4.56 0 0 1 .11 6.34l-1.13 1.21A2.3 2.3 0 0 0 5.8 20.5h.67A23.84 23.84 0 0 1 7 15.45c.34-1.46.91-3 1.9-4.17a5.4 5.4 0 0 1 3.6-1.99V5.15A3.15 3.15 0 0 1 15.64 2C16.4 2 17 2.6 17 3.35V4h1.64c.95 0 1.83.5 2.33 1.3l.62 1a2.75 2.75 0 0 1-2.09 4.19v9.26c0 1.24-1 2.25-2.25 2.25h-.75v-2.25A3.75 3.75 0 0 0 12.74 16H11.5a.75.75 0 0 0 0 1.5h1.25c1.25 0 2.25 1 2.25 2.25V22H7.25Z"
+    fill="currentColor"
+  ></path>
+</svg>`;
+
+const AnimalTurtle16Filled = html`<svg
+  fill="currentColor"
+  aria-hidden="true"
+  width="1em"
+  height="1em"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M11 6a6.14 6.14 0 0 1 5.8 4.12l.07.24.05.14h2.33a2.75 2.75 0 0 1 2.74 2.58v1.17c0 .92-.7 1.67-1.6 1.74h-1.77l.24.6c.35.84-.01 1.8-.81 2.21l-.14.07c-.16.06-.32.1-.5.12h-1.95c-.63 0-1.2-.33-1.51-.86l-.08-.14-.53-1.14h.05c-1.4.18-2.82.2-4.22.06l-.5-.06L8.14 18c-.3.61-.9 1-1.59 1h-1.8a1.75 1.75 0 0 1-1.62-2.41l.44-1.05A3.24 3.24 0 0 1 2 12.75c0-.38.28-.7.64-.74l.1-.01h1.89l.5-1.64A6.14 6.14 0 0 1 11 6Zm6.77 9.7c-.77.3-1.55.56-2.35.76l-.55.13.36.77c.03.05.07.09.12.11l.05.02h1.84a.25.25 0 0 0 .25-.27l-.02-.07L17 16h-.05l.42-.15.4-.16Zm-13.55 0 .4.14.38.14-.48 1.17a.25.25 0 0 0 .23.34h1.86a.25.25 0 0 0 .17-.14l.36-.76h.04c-1-.2-2-.51-2.96-.9Zm-.2-1.7.15-.5h-.5l.02.05c.09.17.2.32.33.45Zm13.35-2 .76 2.5h2.12c.11 0 .21-.08.24-.2v-1.05c0-.65-.49-1.18-1.12-1.24h-.12L17.37 12Z"
+    fill="currentColor"
+  ></path>
+</svg>`;
+
+const AnimalDog16Filled = html`<svg
+  fill="currentColor"
+  aria-hidden="true"
+  width="1em"
+  height="1em"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.88 8.66c.38.22.84.34 1.37.34.84 0 1.55-.3 2.04-.84.48-.53.7-1.22.7-1.91a.75.75 0 0 0-1.5 0c0 .38-.11.69-.3.9-.18.19-.48.35-.94.35-.45 0-.73-.16-.92-.37-.18-.21-.3-.5-.33-.84V4.25C11 3.01 12 2 13.25 2h3.18c.51 0 1.01.14 1.45.4l2.76 1.71c.22.14.36.38.36.64v1.5c0 1.24-1 2.25-2.25 2.25h-.25v9.53c.92.1 1.62.37 2.05.97.25.36.36.76.4 1.13.05.35.05.73.05 1.09v.03c0 .41-.34.75-.75.75H17v-.77c0-.58 0-2.21-1.5-3.17v-2.8a.75.75 0 0 0-1.5 0v2.26a4.62 4.62 0 0 0-.7-.02h-.09a.75.75 0 1 0 .08 1.5H13.5a1.94 1.94 0 0 1 .93.18c1.04.48 1.07 1.44 1.07 2.07V22H5.83a3.83 3.83 0 0 1-1.97-7.12.75.75 0 0 1 .78 1.28 2.33 2.33 0 0 0 1.2 4.34c.31 0 .51-.08.64-.18.14-.1.25-.23.33-.4a1.93 1.93 0 0 0 .19-.7v-.03a7.94 7.94 0 0 1 .03-.65c.04-.43.1-1.02.23-1.68.26-1.29.8-2.97 1.96-4.14a6.52 6.52 0 0 0 1.54-3.36l.12-.7Z"
     fill="currentColor"
   ></path>
 </svg>`;
@@ -26,17 +68,17 @@ const icon = html`<svg
 const dropdownTemplate = html<DropdownStoryArgs>`
   <div>
     <fluent-dropdown
-      ?size="${x => x.size}"
+      size="${x => x.size}"
       ?multiple="${x => x.multiple}"
       appearance="${x => x.appearance}"
       control-size="${x => x.controlSize}"
       ?disabled="${x => x.disabled}"
       placeholder="Select an Animal"
     >
-      <fluent-option><span slot="icon">${icon}</span>Pangolin</fluent-option>
-      <fluent-option>Quokka</fluent-option>
-      <fluent-option>Axolotl</fluent-option>
-      <fluent-option>Hoopoe</fluent-option>
+      <fluent-option>Fish</fluent-option>
+      <fluent-option>Cat</fluent-option>
+      <fluent-option>Turtle</fluent-option>
+      <fluent-option>Dog</fluent-option>
     </fluent-dropdown>
   </div>
 `;
@@ -83,3 +125,25 @@ export default {
 } as DropdownStoryMeta;
 
 export const Dropdown = renderComponent(dropdownTemplate).bind({});
+
+export const DropdownMultiple = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-dropdown multiple>
+      <fluent-option>Fish</fluent-option>
+      <fluent-option>Cat</fluent-option>
+      <fluent-option>Turtle</fluent-option>
+      <fluent-option>Dog</fluent-option>
+    </fluent-dropdown>
+  </div>
+`);
+
+export const DropdownCustom = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-dropdown>
+      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+      <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      <fluent-option><span slot="icon">${AnimalDog16Filled}</span>Dog</fluent-option>
+    </fluent-dropdown>
+  </div>
+`);

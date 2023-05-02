@@ -9,7 +9,7 @@ type OptionStoryMeta = Meta<OptionStoryArgs>;
 
 const optionTemplate = html<OptionStoryArgs>`
   <div>
-    <fluent-option>Hello</fluent-option>
+    <fluent-option>Option</fluent-option>
   </div>
 `;
 
