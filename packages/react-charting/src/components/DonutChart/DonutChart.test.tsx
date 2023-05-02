@@ -32,11 +32,12 @@ function sharedAfterEach() {
 const points: IChartDataPoint[] = [
   { legend: 'first', data: 20000, color: '#E5E5E5', xAxisCalloutData: '2020/04/30' },
   { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
+  { legend: 'third', data: 45000, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
 ];
 
 const chartTitle = 'Stacked Bar chart example';
 
-const chartPoints: IChartProps = {
+export const chartPoints: IChartProps = {
   chartTitle: chartTitle,
   chartData: points,
 };

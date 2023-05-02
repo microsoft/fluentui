@@ -3,7 +3,6 @@ export {
   loadWorkspaceAddon,
   registerTsPaths,
   registerRules,
-  createPathAliasesConfig,
   overrideDefaultBabelLoader,
 } from './utils';
 

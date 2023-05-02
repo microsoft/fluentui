@@ -67,6 +67,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     type?: 'inline' | 'overlay';
     size?: 'small' | 'medium' | 'large' | 'full';
     modal?: boolean;
+    lightDismiss?: boolean;
     separator?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 

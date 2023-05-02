@@ -2,6 +2,39 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:35 GMT",
+      "tag": "@fluentui/react-dialog_v9.5.3",
+      "version": "9.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b287dc6426477a8ec03b6a845ea0ee3ba0bfb726",
+            "comment": "bugfix: DialogTitle root as h2 by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "1227882a7a3813f21c45df6eb27aa65a89a5c45c",
+            "comment": "chore: hoist tabster modal attributes to Dialog component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:49 GMT",
       "tag": "@fluentui/react-dialog_v9.5.2",
       "version": "9.5.2",

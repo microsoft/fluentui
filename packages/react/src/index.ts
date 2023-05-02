@@ -1198,7 +1198,7 @@ export {
 } from './ThemeGenerator';
 export type { IThemeRules, IThemeSlotRule } from './ThemeGenerator';
 export { TimePicker } from './TimePicker';
-export type { ITimePickerProps, ITimePickerStrings, ITimeRange } from './TimePicker';
+export type { ITimePickerProps, ITimePickerStrings, ITimeRange, TimePickerValidationResultData } from './TimePicker';
 export { Toggle, ToggleBase } from './Toggle';
 export type { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle';
 export { Tooltip, TooltipBase, TooltipDelay, TooltipHost, TooltipHostBase, TooltipOverflowMode } from './Tooltip';

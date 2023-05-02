@@ -2,6 +2,39 @@
   "name": "@fluentui/react-data-grid-react-window",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:33 GMT",
+      "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-table to v9.2.7",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-components to v9.19.1",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:49 GMT",
       "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.22",
       "version": "9.0.0-beta.22",

@@ -3,8 +3,8 @@ import type { ToolbarRadioButtonProps } from './ToolbarRadioButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { useToolbarRadioButton_unstable } from './useToolbarRadioButton';
-import { useToolbarRadioButtonStyles_unstable } from './useToolbarRadioButtonStyles';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useToolbarRadioButtonStyles_unstable } from './useToolbarRadioButtonStyles.styles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToolbarRadioButton component
@@ -14,8 +14,7 @@ export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps> = 
 
   useToolbarRadioButtonStyles_unstable(state);
 
-  const { useToolbarRadioButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useToolbarRadioButtonStyles_unstable')(state);
 
   return renderToggleButton_unstable(state);
 }) as ForwardRefComponent<ToolbarRadioButtonProps>;

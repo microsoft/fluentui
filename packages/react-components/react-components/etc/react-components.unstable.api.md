@@ -53,7 +53,6 @@ import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeItem } from '@fluentui/react-tree';
 import { treeItemClassNames } from '@fluentui/react-tree';
-import { TreeItemId } from '@fluentui/react-tree';
 import { TreeItemLayout } from '@fluentui/react-tree';
 import { treeItemLayoutClassNames } from '@fluentui/react-tree';
 import { TreeItemLayoutProps } from '@fluentui/react-tree';
@@ -214,8 +213,6 @@ export { TreeContextValue }
 export { TreeItem }
 
 export { treeItemClassNames }
-
-export { TreeItemId }
 
 export { TreeItemLayout }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useBreadcrumb_unstable } from './useBreadcrumb';
 import { renderBreadcrumb_unstable } from './renderBreadcrumb';
-import { useBreadcrumbStyles_unstable } from './useBreadcrumbStyles';
+import { useBreadcrumbStyles_unstable } from './useBreadcrumbStyles.styles';
 import type { BreadcrumbProps } from './Breadcrumb.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useBreadcrumbContextValues_unstable } from './useBreadcrumbContextValue';

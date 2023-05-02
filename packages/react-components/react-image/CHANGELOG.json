@@ -2,6 +2,27 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:36 GMT",
+      "tag": "@fluentui/react-image_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "a6ff85541907771d5172fbd804e05a380fd0a906",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-image_v9.1.6",
       "version": "9.1.6",
