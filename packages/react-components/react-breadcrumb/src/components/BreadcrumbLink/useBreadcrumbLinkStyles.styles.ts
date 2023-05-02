@@ -10,14 +10,6 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
 };
 
 /**
- * CSS variable names used internally for styling in the Breadcrumb.
- */
-export const breadcrumbCSSVars = {
-  breadcrumbIconSizeVar: '--fui-Breadcrumb--icon-size',
-  breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
-};
-
-/**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
@@ -66,23 +58,23 @@ const useStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
-  base: {
-    fontSize: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
-    width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-  },
   small: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
+    fontSize: '12px',
+    height: '12px',
+    lineHeight: tokens.lineHeightBase200,
+    width: '12px',
   },
   medium: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
+    fontSize: '16px',
+    height: '16px',
+    lineHeight: tokens.lineHeightBase400,
+    width: '16px',
   },
   large: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
+    fontSize: '20px',
+    height: '20px',
+    lineHeight: tokens.lineHeightBase600,
+    width: '20px',
   },
 });
 
@@ -110,7 +102,7 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
   }
 
   useLinkStyles_unstable(state as LinkState);
