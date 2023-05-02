@@ -126,6 +126,17 @@ export default {
 
 export const Dropdown = renderComponent(dropdownTemplate).bind({});
 
+export const DropdownPlaceholder = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-dropdown placeholder="Placeholder">
+      <fluent-option>Fish</fluent-option>
+      <fluent-option>Cat</fluent-option>
+      <fluent-option>Turtle</fluent-option>
+      <fluent-option>Dog</fluent-option>
+    </fluent-dropdown>
+  </div>
+`);
+
 export const DropdownMultiple = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
     <fluent-dropdown multiple>
