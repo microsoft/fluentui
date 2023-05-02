@@ -2,6 +2,27 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 22:20:22 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.2",
+      "version": "8.6.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.109.1",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 00:58:19 GMT",
       "tag": "@fluentui/azure-themes_v8.6.1",
       "version": "8.6.1",

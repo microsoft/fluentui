@@ -2,6 +2,33 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 22:20:25 GMT",
+      "tag": "@fluentui/react-focus_v8.8.22",
+      "version": "8.8.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.9.9",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.13.12",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/test-utilities to v8.3.3",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 00:58:17 GMT",
       "tag": "@fluentui/react-focus_v8.8.21",
       "version": "8.8.21",

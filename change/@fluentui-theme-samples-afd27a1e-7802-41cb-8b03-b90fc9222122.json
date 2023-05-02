@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works.",
-  "packageName": "@fluentui/theme-samples",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

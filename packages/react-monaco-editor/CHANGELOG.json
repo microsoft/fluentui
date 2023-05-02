@@ -2,6 +2,45 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 22:20:21 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.82",
+      "version": "1.7.82",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.109.1",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/monaco-editor to v1.3.8",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-hooks to v8.6.23",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.16.25",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 00:58:19 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.81",
       "version": "1.7.81",
