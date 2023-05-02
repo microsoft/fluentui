@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.21",
+    "@fluentui/theme-samples": "^8.7.70",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
