@@ -396,6 +396,12 @@ const templates = {
     .git*
     .prettierignore
     .swcrc
+
+    # exclude gitignore patterns explicitly
+    !lib
+    !lib-commonjs
+    !lib-amd
+    !dist/*.d.ts
   ` + os.EOL,
   swcConfig: () => {
     return {
