@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
@@ -16,7 +17,7 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+export const useTagBaseStyles = makeStyles({
   root: {
     display: 'inline-flex',
     height: '32px',
@@ -51,9 +52,6 @@ const useStyles = makeStyles({
   textOnlyContent: {
     paddingLeft: tokens.spacingHorizontalS,
   },
-  dismissableContent: {
-    paddingRight: '2px',
-  },
 
   icon: {
     display: 'flex',
@@ -83,7 +81,6 @@ const useStyles = makeStyles({
 
   resetButton: {
     boxSizing: 'content-box',
-    backgroundColor: 'inherit',
     color: 'inherit',
     fontFamily: 'inherit',
     lineHeight: 'normal',
@@ -95,60 +92,87 @@ const useStyles = makeStyles({
   },
   dismissButton: {
     ...shorthands.padding('0px'),
-    marginRight: '6px',
-    minWidth: '20px',
+    backgroundColor: 'transparent',
+    width: '20px',
+    display: 'flex',
+    alignItems: 'center',
     fontSize: '20px',
+
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorTransparentStroke),
+      boxShadow: `
+      ${tokens.shadow4},
+      0 0 0 2px ${tokens.colorStrokeFocus2}
+    `,
+      zIndex: 1,
+    }),
   },
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
+});
+
+const useTagStyles = makeStyles({
+  dismissableContent: {
+    paddingRight: '2px',
+  },
+  dismissButton: {
+    marginRight: '6px',
+  },
 });
 
 /**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  const styles = useStyles();
+  const baseStyles = useTagBaseStyles();
+  const styles = useTagStyles();
+
   state.root.className = mergeClasses(
     tagClassNames.root,
-    styles.root,
-    state.shape === 'circular' && styles.rootCircular,
+    baseStyles.root,
+    state.shape === 'circular' && baseStyles.rootCircular,
     state.root.className,
   );
   if (state.content) {
     state.content.className = mergeClasses(
       tagClassNames.content,
-      styles.content,
-      !state.media && !state.icon && styles.textOnlyContent,
+      baseStyles.content,
+      !state.media && !state.icon && baseStyles.textOnlyContent,
+
       state.dismissButton && styles.dismissableContent,
       state.content.className,
     );
   }
 
   if (state.media) {
-    state.media.className = mergeClasses(tagClassNames.media, styles.media, state.media.className);
+    state.media.className = mergeClasses(tagClassNames.media, baseStyles.media, state.media.className);
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(tagClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(tagClassNames.icon, baseStyles.icon, state.icon.className);
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
       tagClassNames.primaryText,
-      styles.primaryText,
-      state.secondaryText && styles.primaryTextWithSecondaryText,
+      baseStyles.primaryText,
+      state.secondaryText && baseStyles.primaryTextWithSecondaryText,
       state.primaryText.className,
     );
   }
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       tagClassNames.secondaryText,
-      styles.secondaryText,
+      baseStyles.secondaryText,
       state.secondaryText.className,
     );
   }
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagClassNames.dismissButton,
-      styles.resetButton,
+      baseStyles.resetButton,
+      baseStyles.dismissButton,
+
       styles.dismissButton,
       state.dismissButton.className,
     );
