@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "dropdown style bug fix for high contrast themes",
-  "packageName": "@fluentui/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
