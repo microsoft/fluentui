@@ -36,7 +36,7 @@ export class Select extends FormAssociatedSelect {
    * HTML Attribute: autofocus
    */
   @attr({ mode: 'boolean' })
-  public autofocus: boolean;
+  public autofocus: boolean = false;
 
   /**
    * The autocomplete attribute of the select
@@ -178,5 +178,5 @@ applyMixins(DelegatesARIASelect, ARIAGlobalStatesAndProperties);
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type Select = DelegatesARIASelect
+export type Select = DelegatesARIASelect;
 applyMixins(Select, DelegatesARIASelect);
