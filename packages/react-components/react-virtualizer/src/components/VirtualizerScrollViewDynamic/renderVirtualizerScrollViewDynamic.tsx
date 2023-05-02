@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import {
   VirtualizerScrollViewDynamicSlots,
   VirtualizerScrollViewDynamicState,
@@ -8,7 +11,7 @@ import { VirtualizerContextProvider } from '../../Utilities';
 import { renderVirtualizer_unstable } from '../Virtualizer/renderVirtualizer';
 
 export const renderVirtualizerScrollViewDynamic_unstable = (state: VirtualizerScrollViewDynamicState) => {
-  const { slots, slotProps } = getSlots<VirtualizerScrollViewDynamicSlots>(state);
+  const { slots, slotProps } = getSlotsNext<VirtualizerScrollViewDynamicSlots>(state);
 
   return (
     <VirtualizerContextProvider value={state.contextValues}>
