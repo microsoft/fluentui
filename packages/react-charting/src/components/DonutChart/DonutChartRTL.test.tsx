@@ -5,7 +5,6 @@ import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
-import '@testing-library/jest-dom';
 
 test('Should hide callout on mouse leave', () => {
   // Arrange
