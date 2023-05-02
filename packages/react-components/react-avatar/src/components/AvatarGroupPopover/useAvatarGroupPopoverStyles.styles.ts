@@ -22,6 +22,8 @@ const useContentStyles = makeStyles({
     listStyleType: 'none',
     ...shorthands.margin('0'),
     ...shorthands.padding('0'),
+    display: 'flex',
+    flexDirection: 'column',
   },
 });
 
