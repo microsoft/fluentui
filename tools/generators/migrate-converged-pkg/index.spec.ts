@@ -1047,6 +1047,12 @@ describe('migrate-converged-pkg generator', () => {
         .git*
         .prettierignore
         .swcrc
+
+        # exclude gitignore patterns explicitly
+        !lib
+        !lib-commonjs
+        !lib-amd
+        !dist/*.d.ts
         "
       `);
     });
