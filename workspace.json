@@ -824,6 +824,13 @@
       "sourceRoot": "packages/react-components/react-theme-sass/src",
       "tags": ["vNext", "platform:web"]
     },
+    "@fluentui/react-toast": {
+      "root": "packages/react-components/react-toast",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-toast/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-toolbar": {
       "root": "packages/react-components/react-toolbar",
       "projectType": "library",
