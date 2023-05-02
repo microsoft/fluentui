@@ -1,6 +1,5 @@
 import { attr, Observable } from '@microsoft/fast-element';
-import { FASTSelect } from '@microsoft/fast-foundation';
-import { ListboxOption } from '../option/option.js';
+import { FASTListboxOption, FASTSelect } from '@microsoft/fast-foundation';
 import { DropdownControlSizes } from './dropdown.options.js';
 
 /**
@@ -37,7 +36,7 @@ export class Dropdown extends FASTSelect {
   }
 
   protected setDefaultSelectedOption(): void {
-    const options: ListboxOption[] =
+    const options: FASTListboxOption[] =
       this.options ?? Array.from(this.children).filter(el => (el as HTMLElement)?.tagName === 'fluent-option');
 
     const selectedIndex = options?.findIndex(
