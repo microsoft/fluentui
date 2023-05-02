@@ -2,12 +2,15 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
+  borderRadiusNone,
+  borderRadiusSmall,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
   colorNeutralBackground1Pressed,
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
+  colorTransparentBackground,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -51,6 +54,7 @@ export const styles = css`
     color: ${colorNeutralForeground2};
     column-gap: ${spacingHorizontalXS};
     padding: ${spacingVerticalSNudge} ${spacingHorizontalS};
+    width: 100%;
   }
   :host([hidden]) {
     display: none;
@@ -70,23 +74,39 @@ export const styles = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 16px;
-    height: 16px;
+    width: fit-content;
     margin-right: ${spacingHorizontalXXS};
-    color: ${colorNeutralForeground2};
+    column-gap: ${spacingHorizontalXS};
   }
 
-  .single-select,
-  .multi-select {
+  ::slotted([slot='icon']) {
+    font-size: 20px;
+    line-height: 0;
+  }
+
+  .checkmark {
+    width: 16px;
+    height: 16px;
+    line-height: 0;
+    font-size: var(--checkmark-size, 16px);
+    border-radius: ${borderRadiusSmall};
+    border: var(--checkmark-border, 0 none);
+    color: var(--checkmark-color, ${colorNeutralForeground1});
+  }
+  :host([aria-selected='true']) .checkmark {
+    background: var(--checkmark-selected-background, ${colorTransparentBackground});
+  }
+
+  .select-indicator {
+    width: 100%;
+    height: 100%;
     display: none;
   }
 
-  :host([aria-selected='true']) .multi-select {
-    display: var(--display-multiple-checkmark);
-  }
-
-  :host([aria-selected='true']) .single-select {
-    display: var(--display-single-checkmark);
+  :host([aria-selected='true']) .select-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .content {
