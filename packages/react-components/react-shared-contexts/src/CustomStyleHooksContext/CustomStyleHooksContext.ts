@@ -92,6 +92,8 @@ export type CustomStyleHooksContextValue = Partial<{
   useDrawerStyles_unstable: CustomStyleHook;
   useDrawerBodyStyles_unstable: CustomStyleHook;
   useDrawerHeaderStyles_unstable: CustomStyleHook;
+  useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+  useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }>;
 
 /**

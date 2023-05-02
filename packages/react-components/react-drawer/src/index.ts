@@ -25,11 +25,25 @@ export {
   useDrawerHeader_unstable,
 } from './DrawerHeader';
 export type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from './DrawerHeader';
+
 export {
-  DrawerTitle,
-  drawerTitleClassNames,
-  renderDrawerTitle_unstable,
-  useDrawerTitleStyles_unstable,
-  useDrawerTitle_unstable,
-} from './DrawerTitle';
-export type { DrawerTitleProps, DrawerTitleSlots, DrawerTitleState } from './DrawerTitle';
+  DrawerHeaderTitle,
+  drawerHeaderTitleClassNames,
+  renderDrawerHeaderTitle_unstable,
+  useDrawerHeaderTitleStyles_unstable,
+  useDrawerHeaderTitle_unstable,
+} from './DrawerHeaderTitle';
+export type { DrawerHeaderTitleProps, DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './DrawerHeaderTitle';
+
+export {
+  DrawerHeaderNavigation,
+  drawerHeaderNavigationClassNames,
+  renderDrawerHeaderNavigation_unstable,
+  useDrawerHeaderNavigationStyles_unstable,
+  useDrawerHeaderNavigation_unstable,
+} from './DrawerHeaderNavigation';
+export type {
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from './DrawerHeaderNavigation';
