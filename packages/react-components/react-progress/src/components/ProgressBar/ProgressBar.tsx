@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useProgressBar_unstable } from './useProgressBar';
 import { renderProgressBar_unstable } from './renderProgressBar';
-import { useProgressBarStyles_unstable } from './useProgressBarStyles';
+import { useProgressBarStyles_unstable } from './useProgressBarStyles.styles';
 import type { ProgressBarProps } from './ProgressBar.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

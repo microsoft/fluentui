@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCheckbox_unstable } from './useCheckbox';
 import { renderCheckbox_unstable } from './renderCheckbox';
-import { useCheckboxStyles_unstable } from './useCheckboxStyles';
+import { useCheckboxStyles_unstable } from './useCheckboxStyles.styles';
 import type { CheckboxProps } from './Checkbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

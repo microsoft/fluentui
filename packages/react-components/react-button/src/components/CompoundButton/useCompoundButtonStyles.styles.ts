@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
 

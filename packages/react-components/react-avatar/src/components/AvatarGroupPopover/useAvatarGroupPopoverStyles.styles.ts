@@ -1,8 +1,8 @@
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useGroupChildClassName } from '../AvatarGroupItem/useAvatarGroupItemStyles';
-import { useSizeStyles } from '../Avatar/useAvatarStyles';
+import { useGroupChildClassName } from '../AvatarGroupItem/useAvatarGroupItemStyles.styles';
+import { useSizeStyles } from '../Avatar/useAvatarStyles.styles';
 import type { AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 

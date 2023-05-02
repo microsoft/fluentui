@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 01 May 2023 07:39:54 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.16.0",
+      "version": "1.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "e0e8de0dadce1a0adcd77acb96028d562773b53d",
+            "comment": "feat: enable @griffel/hook-naming rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 07:40:24 GMT",
       "tag": "@fluentui/eslint-plugin_v1.15.0",
       "version": "1.15.0",

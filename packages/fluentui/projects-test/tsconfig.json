@@ -4,9 +4,8 @@
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "types": ["node"],
-    "skipLibCheck": true,
     "outDir": "dist/dts",
-    "noEmit": true,
+    "emitDeclarationOnly": false,
     "composite": true
   },
   "include": ["src"],

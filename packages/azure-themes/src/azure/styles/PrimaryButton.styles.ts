@@ -13,6 +13,7 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       padding: StyleConstants.buttonPadding,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
       selectors: {
+        // danger button
         '&.danger': {
           outlineColor: extendedSemanticColors.ButtonBackgroundDanger,
           borderColor: `${extendedSemanticColors.ButtonBorderDanger} !important`,
@@ -36,6 +37,33 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
               borderColor: `${extendedSemanticColors.ButtonBackgroundDangerPressed} !important`,
               backgroundColor: `${extendedSemanticColors.ButtonBackgroundDangerPressed} !important`,
               color: `${extendedSemanticColors.ButtonBackgroundDangerTextHovered} !important`,
+            },
+          },
+        },
+        // tag button
+        '&.tag': {
+          outlineColor: extendedSemanticColors.ButtonBackgroundTag,
+          borderColor: `${extendedSemanticColors.ButtonBorderTag} !important`,
+          backgroundColor: extendedSemanticColors.ButtonBackgroundTag,
+          color: extendedSemanticColors.ButtonBackgroundTagText,
+          selectors: {
+            ':hover': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundTagHovered,
+              borderColor: `${extendedSemanticColors.ButtonBorderTagHovered} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundTagHovered,
+              color: extendedSemanticColors.ButtonBackgroundTagTextHovered,
+            },
+            ':active': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundTagPressed,
+              borderColor: extendedSemanticColors.ButtonBorderTagPressed,
+              backgroundColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              color: extendedSemanticColors.ButtonBackgroundTagTextHovered,
+            },
+            ':focus': {
+              outlineColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              borderColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              backgroundColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              color: `${extendedSemanticColors.ButtonBackgroundTagTextHovered} !important`,
             },
           },
         },

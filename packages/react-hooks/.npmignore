@@ -30,3 +30,6 @@ tslint.json
 typings
 fabric-test*
 visualtests
+!lib
+!lib-commonjs
+!lib-amd

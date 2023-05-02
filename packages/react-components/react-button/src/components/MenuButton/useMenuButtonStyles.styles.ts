@@ -2,7 +2,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
 
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {

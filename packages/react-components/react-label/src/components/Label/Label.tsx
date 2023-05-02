@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLabel_unstable } from './useLabel';
 import { renderLabel_unstable } from './renderLabel';
-import { useLabelStyles_unstable } from './useLabelStyles';
+import { useLabelStyles_unstable } from './useLabelStyles.styles';
 import type { LabelProps } from './Label.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
