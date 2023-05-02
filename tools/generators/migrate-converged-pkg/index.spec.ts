@@ -1046,6 +1046,7 @@ describe('migrate-converged-pkg generator', () => {
         .eslint*
         .git*
         .prettierignore
+        .swcrc
         "
       `);
     });
