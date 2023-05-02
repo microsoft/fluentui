@@ -5,7 +5,7 @@ import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
-import { useDialogTitleInternalStyles } from './useDialogTitleStyles';
+import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
 
 /**
  * Create the state required to render DialogTitle.

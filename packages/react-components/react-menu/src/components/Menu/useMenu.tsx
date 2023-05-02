@@ -292,7 +292,9 @@ const useMenuOpenState = (
         }
       }
     }
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, firstMount, targetDocument, state.menuPopoverRef]);
+    // firstMount change should not re-run this effect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
 
   return [open, setOpen] as const;
 };
