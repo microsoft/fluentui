@@ -3,12 +3,15 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   borderRadiusNone,
+  colorCompoundBrandBackground,
   colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralBackground3,
   colorNeutralForeground1,
+  colorNeutralForeground2,
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
+  colorNeutralForegroundInverted,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
   colorTransparentBackground,
@@ -20,6 +23,7 @@ import {
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
+  fontSizeBase400,
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
@@ -55,8 +59,6 @@ export const styles = css`
     user-select: none;
     outline: none;
     vertical-align: middle;
-    --display-multiple-checkmark: none;
-    --display-single-checkmark: none;
   }
   :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
@@ -89,6 +91,9 @@ export const styles = css`
     transition-delay: ${curveDecelerateMid};
   }
   :host([multiple])::not([size]) .listbox {
+    height: fit-content;
+  }
+  :host([size='0']) .listbox {
     height: fit-content;
   }
 
@@ -198,12 +203,18 @@ export const styles = css`
   }
 
   :host(:not([multiple])) {
-    --display-multiple-checkmark: none;
-    --display-single-checkmark: block;
+    --checkmark-border: 0 none;
+    --checkmark-size: ${fontSizeBase400};
+    --checkmark-color: ${colorNeutralForeground2};
+    --checkmark-background: ${colorTransparentBackground};
+    --checkmark-selected-background: ${colorTransparentBackground};
   }
 
   :host([multiple]) {
-    --display-multiple-checkmark: block;
-    --display-single-checkmark: none;
+    --checkmark-border: 1px solid ${colorNeutralStrokeAccessible};
+    --checkmark-size: ${fontSizeBase300};
+    --checkmark-color: ${colorNeutralForegroundInverted};
+    --checkmark-background: ${colorTransparentBackground};
+    --checkmark-selected-background: ${colorCompoundBrandBackground};
   }
 `;
