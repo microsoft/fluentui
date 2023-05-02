@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { useTag_unstable } from '../Tag/index';
 
@@ -12,5 +13,12 @@ import { useTag_unstable } from '../Tag/index';
  * @param ref - reference to root HTMLElement of TagButton
  */
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
-  return useTag_unstable({ ...props, content: { tabIndex: 0, ...props.content } }, ref);
+  const state = useTag_unstable(props, ref);
+  state.content = resolveShorthand(props.content, {
+    required: true,
+    defaultProps: {
+      tabIndex: 0,
+    },
+  });
+  return state;
 };
