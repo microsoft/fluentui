@@ -26,6 +26,7 @@ export const useTagBaseStyles = makeStyles({
 
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
   },
   rootCircular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
