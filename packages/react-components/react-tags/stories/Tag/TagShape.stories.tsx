@@ -1,18 +1,27 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-components';
+import { Avatar, makeStyles } from '@fluentui/react-components';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 
 import { Tag } from '@fluentui/react-tags';
 
-export const Shape = () => (
-  <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
-    <div style={{ display: 'flex', gap: '10px' }}>
+const useContainerStyles = makeStyles({
+  root: {
+    display: 'grid',
+    rowGap: '10px',
+    columnGap: '10px',
+    gridTemplateColumns: 'auto 1fr',
+  },
+});
+
+export const Shape = () => {
+  const containerStyles = useContainerStyles();
+  return (
+    <div className={containerStyles.root}>
       <Tag media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Rounded</Tag>
       <Tag shape="circular" media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
         Circular
       </Tag>
-    </div>
-    <div style={{ display: 'flex', gap: '10px' }}>
+
       <Tag dismissable icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
         Rounded
       </Tag>
@@ -20,8 +29,8 @@ export const Shape = () => (
         Circular
       </Tag>
     </div>
-  </div>
-);
+  );
+};
 
 Shape.storyName = 'Shape';
 Shape.parameters = {
