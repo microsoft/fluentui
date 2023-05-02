@@ -60,7 +60,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     avatarShape: tagAvatarShapeMap[shape],
     media: resolveShorthand(props.media),
 
-    content: resolveShorthand(props.content, { required: !!props.primaryText || !!props.children }),
+    content: resolveShorthand(props.content, { required: true }),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),
