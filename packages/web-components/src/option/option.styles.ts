@@ -24,28 +24,25 @@ export const styles = css`
   ${display('inline-flex')}
   :host {
     align-items: center;
+    background: ${colorNeutralBackground1};
+    border-radius: ${borderRadiusMedium};
     box-sizing: border-box;
+    column-gap: ${spacingHorizontalXS};
+    color: ${colorNeutralForeground2};
     cursor: pointer;
     display: inline-flex;
     fill: currentcolor;
-    display: inline-flex;
     flex-shrink: 0;
-    height: 32px;
-    outline: none;
-    overflow: hidden;
-    user-select: none;
-    white-space: nowrap;
-    background: ${colorNeutralBackground1};
-    color: ${colorNeutralForeground1};
-    padding: 0 ${spacingHorizontalSNudge};
-    border-radius: ${borderRadiusMedium};
+    font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
+    height: 32px;
     line-height: inherit;
-    font-family: inherit;
-    color: ${colorNeutralForeground2};
-    column-gap: ${spacingHorizontalXS};
+    outline: none;
+    overflow: hidden;
     padding: inherit ${spacingVerticalSNudge};
+    user-select: none;
+    white-space: nowrap;
     width: 100%;
   }
   :host([hidden]) {
@@ -58,17 +55,17 @@ export const styles = css`
     background-color: ${colorNeutralBackground1Pressed};
   }
   :host([disabled]) {
-    color: ${colorNeutralForegroundDisabled};
     background: ${colorNeutralBackground1};
+    color: ${colorNeutralForegroundDisabled};
   }
 
   .before-content {
+    align-items: center;
+    column-gap: ${spacingHorizontalXS};
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: fit-content;
     margin-right: ${spacingHorizontalXXS};
-    column-gap: ${spacingHorizontalXS};
+    width: fit-content;
   }
 
   ::slotted([slot='icon']) {
@@ -77,33 +74,32 @@ export const styles = css`
   }
 
   .checkmark {
-    width: 16px;
+    border: var(--checkmark-border, 0 none);
+    border-radius: ${borderRadiusSmall};
+    color: var(--checkmark-color, ${colorNeutralForeground1});
+    font-size: var(--checkmark-size, 16px);
     height: 16px;
     line-height: 0;
-    font-size: var(--checkmark-size, 16px);
-    border-radius: ${borderRadiusSmall};
-    border: var(--checkmark-border, 0 none);
-    color: var(--checkmark-color, ${colorNeutralForeground1});
+    width: 16px;
   }
   :host([aria-selected='true']) .checkmark {
     background: var(--checkmark-selected-background, ${colorTransparentBackground});
   }
 
   .select-indicator {
-    width: 100%;
-    height: 100%;
     display: none;
+    height: 100%;
+    width: 100%;
   }
 
   :host([aria-selected='true']) .select-indicator {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
-
   .content {
-    padding-inline: var(--large-content-padding, ${spacingHorizontalXXS});
     overflow: hidden;
+    padding-inline: var(--large-content-padding, ${spacingHorizontalXXS});
     text-overflow: ellipsis;
   }
   ::slotted([slot='start']),
