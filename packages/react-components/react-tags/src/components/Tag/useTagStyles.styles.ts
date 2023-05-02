@@ -81,10 +81,23 @@ const useStyles = makeStyles({
     ...typographyStyles.caption2,
   },
 
+  resetButton: {
+    boxSizing: 'content-box',
+    backgroundColor: 'inherit',
+    color: 'inherit',
+    fontFamily: 'inherit',
+    lineHeight: 'normal',
+    ...shorthands.overflow('visible'),
+    ...shorthands.padding(0),
+    ...shorthands.borderStyle('none'),
+    WebkitAppearance: 'button',
+    textAlign: 'unset',
+  },
   dismissButton: {
     ...shorthands.padding('0px'),
     marginRight: '6px',
     minWidth: '20px',
+    fontSize: '20px',
   },
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
@@ -135,6 +148,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagClassNames.dismissButton,
+      styles.resetButton,
       styles.dismissButton,
       state.dismissButton.className,
     );

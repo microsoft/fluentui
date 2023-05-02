@@ -1,6 +1,5 @@
 import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Button } from '@fluentui/react-button';
 
 export type TagContextValues = {
   avatar: {
@@ -34,7 +33,7 @@ export type TagSlots = {
    */
   secondaryText: Slot<'span'>;
 
-  dismissButton: Slot<typeof Button>;
+  dismissButton: Slot<'button'>;
 };
 
 /**

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
-import { Button } from '@fluentui/react-button';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -44,7 +44,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       icon: 'span',
       primaryText: 'span',
       secondaryText: 'span',
-      dismissButton: Button,
+      dismissButton: 'button',
     },
     checked,
     disabled,
@@ -65,11 +65,12 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),
 
-    dismissButton: resolveShorthand(props.dismissButton, {
+    dismissButton: useARIAButtonShorthand(props.dismissButton, {
       required: props.dismissable,
       defaultProps: {
-        appearance: 'transparent',
-        icon: <DismissIcon />,
+        disabled,
+        type: 'button',
+        children: <DismissIcon />,
       },
     }),
   };

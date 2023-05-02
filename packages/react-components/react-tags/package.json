@@ -33,8 +33,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-aria": "^9.3.18",
     "@fluentui/react-avatar": "^9.4.10",
-    "@fluentui/react-button": "^9.3.10",
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.2",
     "@fluentui/react-tabster": "^9.6.5",
