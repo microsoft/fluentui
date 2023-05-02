@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerBodyProps, DrawerHeader } from '@fluentui/react-drawer';
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Drawer, DrawerBody, DrawerBodyProps, DrawerHeader, DrawerTitle } from '@fluentui/react-drawer';
+import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -22,11 +22,7 @@ const useStyles = makeStyles({
 });
 
 const Header = () => {
-  return (
-    <DrawerHeader>
-      <strong>This is a header</strong>
-    </DrawerHeader>
-  );
+  return <DrawerHeader header={<DrawerTitle>Title goes here</DrawerTitle>} />;
 };
 
 const Footer = () => {
@@ -34,7 +30,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <button>Button</button>
+      <Button appearance="primary">Button</Button>
     </footer>
   );
 };

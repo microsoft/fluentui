@@ -25,3 +25,11 @@ export {
   useDrawerHeader_unstable,
 } from './DrawerHeader';
 export type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from './DrawerHeader';
+export {
+  DrawerTitle,
+  drawerTitleClassNames,
+  renderDrawerTitle_unstable,
+  useDrawerTitleStyles_unstable,
+  useDrawerTitle_unstable,
+} from './DrawerTitle';
+export type { DrawerTitleProps, DrawerTitleSlots, DrawerTitleState } from './DrawerTitle';
