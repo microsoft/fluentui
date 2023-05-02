@@ -19,6 +19,7 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
  */
 export const useTagBaseStyles = makeStyles({
   root: {
+    // TODO use makeResetStyle when styles are settled
     display: 'inline-flex',
     height: '32px',
     width: 'fit-content',
