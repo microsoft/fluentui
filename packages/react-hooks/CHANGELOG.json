@@ -2,6 +2,39 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 00:58:17 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.22",
+      "version": "8.6.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.11",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/set-version to v8.2.8",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/utilities to v8.13.11",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 May 2023 07:39:54 GMT",
       "tag": "@fluentui/react-hooks_v8.6.21",
       "version": "8.6.21",

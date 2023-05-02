@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 01 May 2023 07:39:54 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 00:58:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.76)
+
+Tue, 02 May 2023 00:58:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.75..@fluentui/react-experiments_v8.14.76)
+
+### Patches
+
+- Add export for FolderCover.scss ([PR #27507](https://github.com/microsoft/fluentui/pull/27507) by jaschieb@microsoft.com)
+- Bump @fluentui/react to v8.109.0 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/theme to v2.6.27 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.35 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.15 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/merge-styles to v8.5.9 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/react-hooks to v8.6.22 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/style-utilities to v8.9.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/utilities to v8.13.11 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/common-styles to v1.2.24 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.26 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
 
 ## [8.14.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.75)
 

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Mon, 01 May 2023 07:39:54 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 00:58:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.27](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.27)
+
+Tue, 02 May 2023 00:58:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.26..@fluentui/theme_v2.6.27)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/merge-styles to v8.5.9 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/utilities to v8.13.11 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
 
 ## [2.6.26](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.26)
 

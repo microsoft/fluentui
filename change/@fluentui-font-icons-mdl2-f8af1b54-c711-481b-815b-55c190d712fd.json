@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: esm, cjs, and amd folders should all be published correctly.",
-  "packageName": "@fluentui/font-icons-mdl2",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

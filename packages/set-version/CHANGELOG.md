@@ -1,8 +1,17 @@
 # Change Log - @fluentui/set-version
 
-This log was last generated on Thu, 03 Mar 2022 07:24:24 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 00:58:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.2.8)
+
+Tue, 02 May 2023 00:58:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/set-version_v8.2.5..@fluentui/set-version_v8.2.8)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.2.0)
 

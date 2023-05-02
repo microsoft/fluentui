@@ -2,6 +2,27 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 00:58:14 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.5.9",
+      "version": "8.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.8",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 May 2023 07:39:54 GMT",
       "tag": "@fluentui/date-time-utilities_v8.5.8",
       "version": "8.5.8",
