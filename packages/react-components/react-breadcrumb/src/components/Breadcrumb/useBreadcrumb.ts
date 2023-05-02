@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Breadcrumb.
@@ -17,8 +18,16 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     dividerType = 'chevron',
     iconPosition = 'before',
     size = 'medium',
+    list,
     ...rest
   } = props;
+
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'horizontal',
+    memorizeCurrent: true,
+  });
+
   return {
     components: {
       root: 'nav',
@@ -26,9 +35,11 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     },
     root: getNativeElementProps('nav', {
       ref,
+      'aria-label': 'Breadcrumb',
+      ...focusAttributes,
       ...rest,
     }),
-    list: resolveShorthand(props.list, { required: true }),
+    list: resolveShorthand(list, { required: true, defaultProps: { role: 'list' } }),
     appearance,
     dividerType,
     iconPosition,
