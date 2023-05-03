@@ -1,7 +1,7 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, NextComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DialogBodySlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -12,4 +12,4 @@ export type DialogBodyProps = ComponentProps<DialogBodySlots> & {};
 /**
  * State used in rendering DialogBody
  */
-export type DialogBodyState = ComponentState<DialogBodySlots>;
+export type DialogBodyState = NextComponentState<DialogBodySlots>;

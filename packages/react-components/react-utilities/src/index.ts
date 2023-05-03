@@ -1,4 +1,6 @@
 export {
+  slot,
+  isSlot,
   getSlots,
   getSlotsNext,
   resolveShorthand,
@@ -8,6 +10,7 @@ export {
 export type {
   ExtractSlotProps,
   ComponentProps,
+  NextComponentState,
   ComponentState,
   ForwardRefComponent,
   ResolveShorthandFunction,

@@ -69,19 +69,19 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const styles = useStyles();
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
-  state.root.className = mergeClasses(
+  state.root.props.className = mergeClasses(
     dialogSurfaceClassNames.root,
     styles.root,
     styles.focusOutline,
     isNestedDialog && styles.nestedNativeDialogBackdrop,
-    state.root.className,
+    state.root.props.className,
   );
   if (state.backdrop) {
-    state.backdrop.className = mergeClasses(
+    state.backdrop.props.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       styles.backdrop,
       isNestedDialog && styles.nestedDialogBackdrop,
-      state.backdrop.className,
+      state.backdrop.props.className,
     );
   }
   return state;

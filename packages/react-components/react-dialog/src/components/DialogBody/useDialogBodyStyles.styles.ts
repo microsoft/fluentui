@@ -54,7 +54,7 @@ const useStyles = makeStyles({
  */
 export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBodyState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogBodyClassNames.root, styles.root, state.root.className);
+  state.root.props.className = mergeClasses(dialogBodyClassNames.root, styles.root, state.root.props.className);
 
   return state;
 };

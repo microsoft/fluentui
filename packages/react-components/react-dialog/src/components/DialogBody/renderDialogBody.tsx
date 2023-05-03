@@ -1,17 +1,11 @@
 /** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsx createElementNext */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
+import { createElementNext } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
-import type { DialogBodyState, DialogBodySlots } from './DialogBody.types';
+import type { DialogBodyState } from './DialogBody.types';
 
 /**
  * Render the final JSX of DialogBody
  */
-export const renderDialogBody_unstable = (state: DialogBodyState) => {
-  const { slots, slotProps } = getSlotsNext<DialogBodySlots>(state);
-
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
-};
+export const renderDialogBody_unstable = (state: DialogBodyState) => <state.root />;

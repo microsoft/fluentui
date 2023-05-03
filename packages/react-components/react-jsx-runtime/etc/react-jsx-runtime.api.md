@@ -10,6 +10,9 @@ import * as React_2 from 'react';
 // @public (undocumented)
 export function createElement<P extends {}>(type: React_2.ElementType<P>, props?: P | null, ...children: React_2.ReactNode[]): React_2.ReactElement<P> | null;
 
+// @public (undocumented)
+export function createElementNext<Props extends {}>(type: React_2.ElementType<Props>, props?: Props | null, ...children: React_2.ReactNode[]): React_2.ReactElement<Props> | null;
+
 export { Fragment }
 
 // (No @packageDocumentation comment for this package)

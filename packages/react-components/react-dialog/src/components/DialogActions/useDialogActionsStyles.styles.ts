@@ -44,14 +44,14 @@ const useStyles = makeStyles({
  */
 export const useDialogActionsStyles_unstable = (state: DialogActionsState): DialogActionsState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
+  state.root.props.className = mergeClasses(
     dialogActionsClassNames.root,
     styles.root,
     state.position === 'start' && styles.gridPositionStart,
     state.position === 'end' && styles.gridPositionEnd,
     state.fluid && state.position === 'start' && styles.fluidStart,
     state.fluid && state.position === 'end' && styles.fluidEnd,
-    state.root.className,
+    state.root.props.className,
   );
   return state;
 };

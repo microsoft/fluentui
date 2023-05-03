@@ -1,25 +1,20 @@
 /** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsx createElementNext */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
+import { createElementNext } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
-import type { DialogSurfaceState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
+import type { DialogSurfaceState, DialogSurfaceContextValues } from './DialogSurface.types';
 import { DialogSurfaceProvider } from '../../contexts';
 import { Portal } from '@fluentui/react-portal';
 
 /**
  * Render the final JSX of DialogSurface
  */
-export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => {
-  const { slots, slotProps } = getSlotsNext<DialogSurfaceSlots>(state);
-
-  return (
-    <Portal>
-      {slots.backdrop && <slots.backdrop {...slotProps.backdrop} />}
-      <DialogSurfaceProvider value={contextValues.dialogSurface}>
-        <slots.root {...slotProps.root} />
-      </DialogSurfaceProvider>
-    </Portal>
-  );
-};
+export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => (
+  <Portal>
+    {state.backdrop && <state.backdrop />}
+    <DialogSurfaceProvider value={contextValues.dialogSurface}>
+      <state.root />
+    </DialogSurfaceProvider>
+  </Portal>
+);

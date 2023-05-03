@@ -28,6 +28,6 @@ const useStyles = makeStyles({
  */
 export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogContentClassNames.root, styles.root, state.root.className);
+  state.root.props.className = mergeClasses(dialogContentClassNames.root, styles.root, state.root.props.className);
   return state;
 };

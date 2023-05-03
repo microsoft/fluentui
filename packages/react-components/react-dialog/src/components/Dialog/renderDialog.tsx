@@ -1,8 +1,4 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
-
+import * as React from 'react';
 import { DialogProvider, DialogSurfaceProvider } from '../../contexts';
 import type { DialogState, DialogContextValues } from './Dialog.types';
 

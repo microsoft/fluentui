@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { DialogActionsProps, DialogActionsState } from './DialogActions.types';
 
 /**
@@ -17,13 +17,13 @@ export const useDialogActions_unstable = (
 ): DialogActionsState => {
   const { position = 'end', fluid = false } = props;
   return {
-    components: {
-      root: 'div',
-    },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot<DialogActionsProps>(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { required: true, componentType: 'div' },
+    ),
     position,
     fluid,
   };

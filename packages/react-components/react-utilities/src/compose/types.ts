@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { SLOT_COMPONENT_SYMBOL } from './constants';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
@@ -200,6 +201,13 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 };
 
 /**
+ * Defines the State object of a component given its slots.
+ */
+export type NextComponentState<Slots extends SlotPropsRecord> = {
+  [Key in keyof Slots]: SlotComponent<ExtractSlotProps<Slots[Key]>>;
+};
+
+/**
  * This is part of a hack to infer the element type from a native element *props* type.
  * The only place the original element is found in a native props type (at least that's workable
  * for inference) is in the event handlers, so some of the helper types use this event handler
@@ -232,4 +240,15 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
  */
 export type SlotClassNames<Slots> = {
   [SlotName in keyof Slots]-?: string;
+};
+
+export type SlotComponent<Props extends UnknownSlotProps = UnknownSlotProps> = React.ExoticComponent<
+  React.PropsWithChildren<{}>
+> & {
+  readonly props: Props;
+  readonly renderFunction?: SlotRenderFunction<Props>;
+  readonly componentType:
+    | React.ComponentType<Props>
+    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+  readonly $$typeof: typeof SLOT_COMPONENT_SYMBOL;
 };

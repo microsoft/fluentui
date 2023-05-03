@@ -55,14 +55,18 @@ export const useDialogTitleInternalStyles = makeStyles({
  */
 export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTitleState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
+  state.root.props.className = mergeClasses(
     dialogTitleClassNames.root,
     styles.root,
     !state.action && styles.rootWithoutCloseButton,
-    state.root.className,
+    state.root.props.className,
   );
   if (state.action) {
-    state.action.className = mergeClasses(dialogTitleClassNames.action, styles.action, state.action.className);
+    state.action.props.className = mergeClasses(
+      dialogTitleClassNames.action,
+      styles.action,
+      state.action.props.className,
+    );
   }
   return state;
 };

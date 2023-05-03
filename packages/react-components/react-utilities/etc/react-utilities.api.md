@@ -101,6 +101,9 @@ export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | Re
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
+// @public (undocumented)
+export function isSlot<P extends {}>(element: React_2.ElementType<P>): element is SlotComponent<P>;
+
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
 
@@ -109,6 +112,11 @@ export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Arg
 
 // @public (undocumented)
 export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
+
+// @public
+export type NextComponentState<Slots extends SlotPropsRecord> = {
+    [Key in keyof Slots]: SlotComponent<ExtractSlotProps<Slots[Key]>>;
+};
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
@@ -148,6 +156,16 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
         as: As;
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+
+// @public (undocumented)
+export function slot<Props extends UnknownSlotProps = UnknownSlotProps>(shorthand: Props | SlotShorthandValue | undefined, options: SlotOptions<Props> & {
+    required: true;
+}): SlotComponent<Props>;
+
+// @public (undocumented)
+export function slot<Props extends UnknownSlotProps = UnknownSlotProps>(shorthand: Props | SlotShorthandValue | null | undefined, options: SlotOptions<Props> & {
+    required?: boolean;
+}): SlotComponent<Props> | undefined;
 
 // @internal
 export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
