@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FluentProvider, makeStyles, mergeClasses, Text, tokens, webDarkTheme } from '@fluentui/react-components';
+import { FluentProvider, makeStyles, mergeClasses, Text, tokens, webDarkTheme, Link } from '@fluentui/react-components';
 import { shorthands } from '@griffel/react';
 
 const MFSTLogo = () => {
@@ -19,9 +19,9 @@ export interface HeaderProps {
 
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
     alignItems: 'center',
-    display: 'grid',
-    gridTemplateColumns: '1fr 2fr 3fr 3fr',
+    width: '100%',
     height: '40px',
   },
   logo: {
@@ -34,6 +34,15 @@ const useStyles = makeStyles({
   text: {
     width: '300px',
   },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  link: {
+    paddingRight: tokens.spacingHorizontalL,
+  },
 });
 
 export const Header: React.FC<HeaderProps> = props => {
@@ -41,9 +50,14 @@ export const Header: React.FC<HeaderProps> = props => {
 
   return (
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
-      <div className={styles.logo}>
-        <MFSTLogo />
-        <Text className={styles.text}>Theme Designer</Text>
+      <div className={styles.header}>
+        <div className={styles.logo}>
+          <MFSTLogo />
+          <Text className={styles.text}>Theme Designer</Text>
+        </div>
+        <div className={styles.link}>
+          <Link href="https://github.com/microsoft/fluentui/discussions">Feedback?</Link>
+        </div>
       </div>
     </FluentProvider>
   );

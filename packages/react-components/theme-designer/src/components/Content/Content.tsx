@@ -7,13 +7,13 @@ import {
   shorthands,
   tokens,
   Text,
+  Caption1,
 } from '@fluentui/react-components';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportPanel } from '../Export/ExportPanel';
-import { KeyColorBanner } from '../ColorTokens/KeyColorBanner';
 
 export interface ContentProps {
   className?: string;
@@ -29,12 +29,17 @@ const useStyles = makeStyles({
     ...shorthands.margin('0', 'auto'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
+  sickerSheet: {
+    display: 'flex',
+    flexDirection: 'column',
+    gridRowGap: tokens.spacingVerticalM,
+  },
 });
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
   const {
-    state: { themeWithOverrides, keyColorHex },
+    state: { themeWithOverrides },
   } = useThemeDesigner();
   return (
     <FluentProvider theme={themeWithOverrides}>
@@ -48,7 +53,10 @@ export const Content: React.FC<ContentProps> = props => {
           2 components.
         </Text>
         <Palette />
-        <KeyColorBanner keyColor={keyColorHex} />
+        <div className={styles.sickerSheet}>
+          <Divider />
+          <Caption1>Sticker sheet</Caption1>
+        </div>
         <Demo />
         <Divider />
         <ColorTokens />

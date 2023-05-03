@@ -17,7 +17,6 @@ import {
   Avatar,
   useId,
   Caption2,
-  Spinner,
   Label,
   Link,
 } from '@fluentui/react-components';
@@ -177,7 +176,6 @@ export const Column3 = () => {
         <Input id={inputId} placeholder="Example Text" appearance="filled-darker" />
       </div>
       <Link href="https://www.microsoft.com">Example link - www.microsoft.com</Link>
-      <Spinner />
     </div>
   );
 };
