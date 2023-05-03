@@ -4,8 +4,11 @@ import { ProgressBar } from '@fluentui/react-progress';
 import { PauseAnimationDecorator, TestWrapperDecoratorFullWidth } from '../utilities/TestWrapperDecorator';
 
 storiesOf('ProgressBar converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(PauseAnimationDecorator)
-  .addDecorator(TestWrapperDecoratorFullWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addStory('Indeterminate', () => <ProgressBar />, {
     includeDarkMode: true,
     includeHighContrast: true,
