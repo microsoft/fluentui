@@ -13,6 +13,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Link } from '@fluentui/react-link';
+import { LinkProps } from '@fluentui/react-link';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -83,7 +84,7 @@ export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps>;
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots>;
 
 // @public
-export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & {
+export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<LinkProps, 'appearance' | 'disabled'> & {
     current?: boolean;
     iconPosition?: 'before' | 'after';
     overflow?: boolean;
@@ -97,7 +98,7 @@ export type BreadcrumbLinkSlots = {
 };
 
 // @public
-export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Required<Pick<BreadcrumbLinkProps, 'iconPosition' | 'disabled' | 'overflow' | 'current' | 'size'>> & {
+export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<Omit<BreadcrumbLinkProps, 'size'>> & Required<Pick<BreadcrumbLinkProps, 'size'>> & {
     iconOnly: boolean;
 };
 
