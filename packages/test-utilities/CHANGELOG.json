@@ -2,6 +2,21 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 22:20:21 GMT",
+      "tag": "@fluentui/test-utilities_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:16 GMT",
       "tag": "@fluentui/test-utilities_v8.3.0",
       "version": "8.3.0",

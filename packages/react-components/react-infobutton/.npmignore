@@ -28,3 +28,9 @@ __tests__
 .eslint*
 .git*
 .prettierignore
+
+# exclude gitignore patterns explicitly
+!lib
+!lib-commonjs
+!lib-amd
+!dist/*.d.ts

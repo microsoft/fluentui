@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: enable @griffel/hook-naming rule",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
