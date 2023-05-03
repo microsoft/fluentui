@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "add style overrides for upcoming drawer components",
+  "type": "minor",
+  "comment": "feat: add style overrides for drawer components",
   "packageName": "@fluentui/react-provider",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"

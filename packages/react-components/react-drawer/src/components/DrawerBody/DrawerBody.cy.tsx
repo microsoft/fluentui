@@ -14,13 +14,7 @@ function assertScrollPosition(element: HTMLElement, position: number) {
 }
 
 describe('DrawerBody', () => {
-  it('render drawer body component', () => {
-    mountFluent(<DrawerBody id="drawer-body" />);
-
-    cy.get('#drawer-body').should('exist');
-  });
-
-  it('scroll drawer body', () => {
+  it('should render drawer body and be scrollable', () => {
     const Example = () => (
       <Drawer type="inline" open style={{ height: '200px' }}>
         <DrawerBody id="drawer-body">
@@ -37,6 +31,7 @@ describe('DrawerBody', () => {
 
     mountFluent(<Example />);
 
+    cy.get('#drawer-body').should('exist');
     cy.get('#drawer-body')
       .scrollTo('bottom')
       .should($e => assertScrollPosition($e[0], $e[0].scrollHeight - $e[0].clientHeight));
