@@ -2,7 +2,8 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Spinner } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecoratorPauseAnimation } from '../utilities/TestWrapperDecorator';
+import { PauseAnimationDecorator, TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import { StoryWright, Steps } from 'storywright';
 
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners

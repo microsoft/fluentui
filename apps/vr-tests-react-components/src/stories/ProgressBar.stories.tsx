@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { ProgressBar } from '@fluentui/react-progress';
-import { PauseAnimationDecorator, TestWrapperDecoratorFullWidth } from '../utilities/TestWrapperDecorator';
+import { PauseAnimationDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { StoryWright, Steps } from 'storywright';
 
 storiesOf('ProgressBar converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)

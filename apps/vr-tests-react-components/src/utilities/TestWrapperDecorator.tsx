@@ -54,7 +54,7 @@ const usePausedAnimationStyles = makeStyles({
   },
 });
 export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const noAnimationStyles = useNoAnimationStyles();
+  const noAnimationStyles = usePausedAnimationStyles();
   const className = mergeClasses(noAnimationStyles.paused, 'testWrapper');
   return (
     <div style={{ display: 'flex' }}>
@@ -70,6 +70,6 @@ export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStory
   );
 };
 export const PauseAnimationDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const noAnimationStyles = useNoAnimationStyles();
+  const noAnimationStyles = usePausedAnimationStyles();
   return <div className={noAnimationStyles.paused}>{story()}</div>;
 };
