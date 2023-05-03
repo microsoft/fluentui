@@ -12,7 +12,11 @@ const InvertedWrapper: React.FC = ({ children }) => {
 };
 
 storiesOf('Spinner converged', module)
-  .addDecorator(TestWrapperDecoratorPauseAnimation)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(PauseAnimationDecorator)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addStory('Primary', () => <Spinner className="test-class" />, {
     includeHighContrast: true,
     includeDarkMode: true,
