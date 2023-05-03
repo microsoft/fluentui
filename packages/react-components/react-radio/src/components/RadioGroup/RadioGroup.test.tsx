@@ -87,6 +87,21 @@ describe('RadioGroup', () => {
     expect(items[2].required).toBe(true);
   });
 
+  it('applies aria-describedby to every radio item, unless overridden locally', () => {
+    const { getAllByRole } = render(
+      <RadioGroup aria-describedby="test-describedby">
+        <Radio />
+        <Radio />
+        <Radio aria-describedby="overridden-describedby" />
+      </RadioGroup>,
+    );
+
+    const items = getAllByRole('radio') as HTMLInputElement[];
+    expect(items[0].getAttribute('aria-describedby')).toEqual('test-describedby');
+    expect(items[1].getAttribute('aria-describedby')).toEqual('test-describedby');
+    expect(items[2].getAttribute('aria-describedby')).toEqual('overridden-describedby');
+  });
+
   it('has no radio item selected by default', () => {
     const { getByDisplayValue } = render(
       <RadioGroup>

@@ -2,14 +2,14 @@
 
 **React Datepicker components for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+Picking a date can be tough without context. A date picker (DatePicker) offers a popup control that’s optimized for picking a single date from a calendar view where contextual information like the day of the week or fullness of the calendar is important. You can modify the calendar to provide additional context or to limit available dates.
 
 ## Usage
 
 To import DatePicker:
 
 ```js
-import { DatePicker } from '@fluentui/react-datepicker';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 ```
 
 ### Examples

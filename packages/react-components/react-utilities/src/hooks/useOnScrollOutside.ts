@@ -20,10 +20,12 @@ export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions) =>
   });
 
   React.useEffect(() => {
-    if (!disabled) {
-      element?.addEventListener('wheel', listener);
-      element?.addEventListener('touchmove', listener);
+    if (disabled) {
+      return;
     }
+
+    element?.addEventListener('wheel', listener);
+    element?.addEventListener('touchmove', listener);
 
     return () => {
       element?.removeEventListener('wheel', listener);

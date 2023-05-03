@@ -1,12 +1,15 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TabState, TabSlots } from './Tab.types';
 
 /**
  * Render the final JSX of Tab
  */
 export const renderTab_unstable = (state: TabState) => {
-  const { slots, slotProps } = getSlots<TabSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TabSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
