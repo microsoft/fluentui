@@ -12,7 +12,7 @@ export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNaviga
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.margin(`calc(${tokens.spacingVerticalXS} * -1)`, `calc(${tokens.spacingHorizontalL} * -1)`),
+    ...shorthands.margin(`calc(${tokens.spacingVerticalS} * -1)`, `calc(${tokens.spacingHorizontalL} * -1)`),
 
     order: 0,
   },
