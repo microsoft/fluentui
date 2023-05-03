@@ -1,13 +1,16 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
-import { getSlots } from '@fluentui/react-utilities';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
  * Render the final JSX of PopoverSurface
  */
 export const renderPopoverSurface_unstable = (state: PopoverSurfaceState) => {
-  const { slots, slotProps } = getSlots<PopoverSurfaceSlots>(state);
+  const { slots, slotProps } = getSlotsNext<PopoverSurfaceSlots>(state);
 
   const surface = (
     <slots.root {...slotProps.root}>

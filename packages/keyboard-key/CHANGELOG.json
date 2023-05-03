@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Tue, 02 May 2023 00:58:15 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.8",
+      "version": "0.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Mar 2023 07:45:39 GMT",
       "tag": "@fluentui/keyboard-key_v0.4.5",
       "version": "0.4.5",

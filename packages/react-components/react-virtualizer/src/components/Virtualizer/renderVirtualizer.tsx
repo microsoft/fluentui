@@ -1,9 +1,13 @@
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
-  const { slots, slotProps } = getSlots<VirtualizerSlots>(state);
+  const { slots, slotProps } = getSlotsNext<VirtualizerSlots>(state);
 
   return (
     <React.Fragment>

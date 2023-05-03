@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useAccordionPanel_unstable } from './useAccordionPanel';
 import { renderAccordionPanel_unstable } from './renderAccordionPanel';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
-import { useAccordionPanelStyles_unstable } from './useAccordionPanelStyles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { useAccordionPanelStyles_unstable } from './useAccordionPanelStyles.styles';
 import type { AccordionPanelProps } from './AccordionPanel.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -14,8 +14,7 @@ export const AccordionPanel: ForwardRefComponent<AccordionPanelProps> = React.fo
 
   useAccordionPanelStyles_unstable(state);
 
-  const { useAccordionPanelStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useAccordionPanelStyles_unstable')(state);
 
   return renderAccordionPanel_unstable(state);
 });

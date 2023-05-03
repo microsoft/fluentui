@@ -3,7 +3,7 @@ import { getWeekNumbersInMonth } from '../../utils';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
 import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayGrid.types';
 import type { DayInfo } from './CalendarDayGrid';
-import type { WeekCorners } from './useWeekCornerStyles';
+import type { WeekCorners } from './useWeekCornerStyles.styles';
 
 /**
  * @internal

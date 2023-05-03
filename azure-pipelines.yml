@@ -31,7 +31,8 @@ jobs:
       - script: |
           yarn nx workspace-lint
           yarn nx run @fluentui/nx-workspace-tools:check-graph
-        displayName: NX workspace lint
+          yarn nx workspace-generator tsconfig-base-all --verify
+        displayName: Workspace lint
 
       - script: |
           # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts, thus it needs to be build in advance
