@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useOptionGroup_unstable } from './useOptionGroup';
 import { renderOptionGroup_unstable } from './renderOptionGroup';
-import { useOptionGroupStyles_unstable } from './useOptionGroupStyles';
+import { useOptionGroupStyles_unstable } from './useOptionGroupStyles.styles';
 import type { OptionGroupProps } from './OptionGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

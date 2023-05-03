@@ -1,8 +1,18 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Tue, 02 May 2023 00:58:19 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.6](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.6)
+
+Tue, 02 May 2023 22:20:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.5..@fluentui/fluent2-theme_v8.107.6)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.109.1 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
 
 ## [8.107.5](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.5)
 

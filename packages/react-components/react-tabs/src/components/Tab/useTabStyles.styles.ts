@@ -4,7 +4,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator';
+import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
   root: 'fui-Tab',

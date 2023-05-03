@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Tue, 02 May 2023 00:58:19 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.205.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.82)
+
+Tue, 02 May 2023 22:20:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.81..@fluentui/react-cards_v0.205.82)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.109.1 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.36 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
 
 ## [0.205.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.81)
 
