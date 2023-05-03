@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerBodyProps, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 
   drawer: {
-    height: '300px',
+    height: '400px',
   },
 
   footer: {
@@ -32,6 +32,7 @@ const Header = () => {
 const Footer = () => {
   const styles = useStyles();
 
+  // TODO: replace with DrawerFooter component when it's implemented
   return (
     <footer className={styles.footer}>
       <Button appearance="primary">Button</Button>
@@ -39,9 +40,9 @@ const Footer = () => {
   );
 };
 
-const Body = (props: Partial<DrawerBodyProps>) => {
+const Body = () => {
   return (
-    <DrawerBody {...props}>
+    <DrawerBody>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus nam aut amet similique, iure vel voluptates
       cum cumque repellendus perferendis maiores officia unde in? Autem neque sequi maiores eum omnis. Lorem ipsum,
       dolor sit amet consectetur adipisicing elit. Perspiciatis ipsam explicabo tempora ipsum saepe nam. Eum aliquid
@@ -54,28 +55,28 @@ const Body = (props: Partial<DrawerBodyProps>) => {
   );
 };
 
-export const Default = (props: Partial<DrawerBodyProps>) => {
+export const WithScroll = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
       <Drawer className={styles.drawer} type="inline" open>
-        <Body {...props} />
+        <Body />
       </Drawer>
 
       <Drawer className={styles.drawer} type="inline" open>
         <Header />
-        <Body {...props} />
+        <Body />
       </Drawer>
 
       <Drawer className={styles.drawer} type="inline" open>
-        <Body {...props} />
+        <Body />
         <Footer />
       </Drawer>
 
       <Drawer className={styles.drawer} type="inline" open>
         <Header />
-        <Body {...props} />
+        <Body />
         <Footer />
       </Drawer>
     </div>
