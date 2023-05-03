@@ -43,7 +43,7 @@ export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnRet
   </div>
 );
 
-const useNoAnimationStyles = makeStyles({
+const usePausedAnimationStyles = makeStyles({
   paused: {
     animationPlayState: 'paused !important',
     animationDelay: '-1s !important',
