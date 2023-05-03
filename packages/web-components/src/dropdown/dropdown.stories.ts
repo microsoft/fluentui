@@ -73,7 +73,7 @@ const dropdownTemplate = html<DropdownStoryArgs>`
       appearance="${x => x.appearance}"
       control-size="${x => x.controlSize}"
       ?disabled="${x => x.disabled}"
-      placeholder="Select an Animal"
+      placeholder="${x => x.placeholder}"
     >
       <fluent-option>Fish</fluent-option>
       <fluent-option>Cat</fluent-option>
@@ -90,6 +90,7 @@ export default {
     controlSize: DropdownControlSizes.medium,
     multiple: false,
     disabled: false,
+    placeholder: 'Select an Animal',
   },
   argTypes: {
     multiple: {
@@ -120,6 +121,14 @@ export default {
       },
       control: 'boolean',
       defaultValue: false,
+    },
+    placeholder: {
+      description: 'Sets control placeholder text',
+      table: {
+        defaultValue: { summary: '' },
+      },
+      control: 'text',
+      defaultValue: 'Select an Animal',
     },
   },
 } as DropdownStoryMeta;
@@ -183,9 +192,20 @@ export const DropdownSizes = renderComponent(html<DropdownStoryArgs>`
 
 export const DropdownDisabled = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-dropdown multiple>
+    <fluent-dropdown disabled placeholder="disabled">
       <fluent-option>Fish</fluent-option>
       <fluent-option>Cat</fluent-option>
+      <fluent-option>Turtle</fluent-option>
+      <fluent-option>Dog</fluent-option>
+    </fluent-dropdown>
+  </div>
+`);
+
+export const DropdownDisabledItem = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-dropdown>
+      <fluent-option>Fish</fluent-option>
+      <fluent-option disabled>Cat</fluent-option>
       <fluent-option>Turtle</fluent-option>
       <fluent-option>Dog</fluent-option>
     </fluent-dropdown>

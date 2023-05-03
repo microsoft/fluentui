@@ -2,7 +2,6 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
-  borderRadiusNone,
   borderRadiusSmall,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
@@ -57,6 +56,7 @@ export const styles = css`
   :host([disabled]) {
     background: ${colorNeutralBackground1};
     color: ${colorNeutralForegroundDisabled};
+    cursor: auto;
   }
 
   .before-content {
