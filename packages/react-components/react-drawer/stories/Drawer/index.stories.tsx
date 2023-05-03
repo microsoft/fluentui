@@ -1,4 +1,4 @@
-import { Drawer } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerHeaderNavigation } from '@fluentui/react-drawer';
 import descriptionMd from './DrawerDescription.md';
 import bestPracticesMd from './DrawerBestPractices.md';
 import previewMd from './DrawerPreview.md';
@@ -17,6 +17,12 @@ export { WithScroll } from './DrawerWithScroll.stories';
 export default {
   title: 'Preview Components/Drawer',
   component: Drawer,
+  subcomponents: {
+    DrawerBody,
+    DrawerHeader,
+    DrawerHeaderTitle,
+    DrawerHeaderNavigation,
+  },
   parameters: {
     docs: {
       description: {
