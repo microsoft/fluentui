@@ -13,12 +13,6 @@ import { useTag_unstable } from '../Tag/index';
  * @param ref - reference to root HTMLElement of TagButton
  */
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
-  const state = useTag_unstable(props, ref);
-  state.content = resolveShorthand(props.content, {
-    required: true,
-    defaultProps: {
-      tabIndex: 0,
-    },
-  });
-  return state;
+  const content = resolveShorthand(props.content, { defaultProps: { tabIndex: 0 } });
+  return useTag_unstable({ ...props, content }, ref);
 };
