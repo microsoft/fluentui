@@ -11,6 +11,11 @@ export type AvatarSizes = AvatarSize;
  */
 export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
+/**
+ * Shape of the avatar
+ */
+export type AvatarShape = 'circular' | 'square';
+
 export type AvatarSlots = {
   root: Slot<'span'>;
 
@@ -129,7 +134,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    * The avatar can have a circular or square shape.
    * @default circular
    */
-  shape?: 'circular' | 'square';
+  shape?: AvatarShape;
 
   /**
    * Size of the avatar in pixels.
