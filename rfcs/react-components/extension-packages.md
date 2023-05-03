@@ -253,6 +253,15 @@ Publishing reusable libraries are not obvious and often publishers need to worry
 
 We want to help users who don't have experience publishing libraries succeed with a minimal learning curve.
 
+#### Monorepo code hosting
+
+In addition to self code hosting, this RFC proposes to initially create a monorepo aligned with the current
+Fluent UI monorepo DX direction. This will reduce the barrier for entry for initial partners to onboard and
+gives the v-build team early feedback to the intended monorepo direction.
+
+As the initiative scales, there should be an active push to get partners to self host code using our monorepo creation
+utilities proposed in the previous section.
+
 #### Documentation federation
 
 The repo scaffolding tools that we intend to create should setup a storybook infrastructure. We can leverage
