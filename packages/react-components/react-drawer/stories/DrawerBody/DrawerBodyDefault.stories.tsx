@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerBodyProps, DrawerHeader, DrawerTitle } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerBodyProps, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -22,7 +22,11 @@ const useStyles = makeStyles({
 });
 
 const Header = () => {
-  return <DrawerHeader header={<DrawerTitle>Title goes here</DrawerTitle>} />;
+  return (
+    <DrawerHeader>
+      <DrawerHeaderTitle>Title goes here</DrawerHeaderTitle>
+    </DrawerHeader>
+  );
 };
 
 const Footer = () => {
