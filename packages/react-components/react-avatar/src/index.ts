@@ -10,10 +10,10 @@ export type {
   AvatarProps,
   AvatarSlots,
   AvatarState,
+  AvatarShape,
   // eslint-disable-next-line deprecation/deprecation
   AvatarSizes,
   AvatarSize,
-  AvatarShape,
 } from './Avatar';
 export { getInitials, partitionAvatarGroupItems } from './utils/index';
 export type { PartitionAvatarGroupItems, PartitionAvatarGroupItemsOptions } from './utils/index';
