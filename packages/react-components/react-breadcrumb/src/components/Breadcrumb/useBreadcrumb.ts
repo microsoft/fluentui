@@ -35,7 +35,7 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     },
     root: getNativeElementProps('nav', {
       ref,
-      'aria-label': 'Breadcrumb',
+      'aria-label': 'breadcrumb' || props['aria-label'],
       ...focusAttributes,
       ...rest,
     }),

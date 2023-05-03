@@ -28,6 +28,7 @@ export const useBreadcrumbLink_unstable = (
       icon: 'span',
     },
     root: getNativeElementProps('a', {
+      'aria-current': current ? 'page' || props['aria-current'] : undefined,
       ref,
       ...rest,
     }),

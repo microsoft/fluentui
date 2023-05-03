@@ -26,7 +26,7 @@ describe('Breadcrumb', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <nav
-          aria-label="Breadcrumb"
+          aria-label="breadcrumb"
           class="fui-Breadcrumb"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
