@@ -5,8 +5,8 @@ import { PauseAnimationDecorator, TestWrapperDecoratorFixedWidth } from '../util
 import { StoryWright, Steps } from 'storywright';
 
 storiesOf('ProgressBar converged', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(PauseAnimationDecorator)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
