@@ -21,24 +21,26 @@ export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
 const useStyles = makeStyles({
   content: {
     position: 'relative',
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorTransparentStroke),
-      boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
-    `,
-      zIndex: 1,
-    }),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      },
+      { enableOutline: true },
+    ),
   },
 
-  circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
+  circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular), {
+    enableOutline: true,
+  }),
   dismissableContent: {
-    ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
-    }),
+    ...createCustomFocusIndicatorStyle(
+      {
+        borderTopRightRadius: tokens.borderRadiusNone,
+        borderBottomRightRadius: tokens.borderRadiusNone,
+      },
+      { enableOutline: true },
+    ),
   },
 
   dismissButton: {
@@ -46,15 +48,21 @@ const useStyles = makeStyles({
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderTopLeftRadius: tokens.borderRadiusNone,
     borderBottomLeftRadius: tokens.borderRadiusNone,
-    ...createCustomFocusIndicatorStyle({
-      borderTopLeftRadius: tokens.borderRadiusNone,
-      borderBottomLeftRadius: tokens.borderRadiusNone,
-    }),
+    ...createCustomFocusIndicatorStyle(
+      {
+        borderTopLeftRadius: tokens.borderRadiusNone,
+        borderBottomLeftRadius: tokens.borderRadiusNone,
+      },
+      { enableOutline: true },
+    ),
   },
-  dismissButtonCircular: createCustomFocusIndicatorStyle({
-    borderTopRightRadius: tokens.borderRadiusCircular,
-    borderBottomRightRadius: tokens.borderRadiusCircular,
-  }),
+  dismissButtonCircular: createCustomFocusIndicatorStyle(
+    {
+      borderTopRightRadius: tokens.borderRadiusCircular,
+      borderBottomRightRadius: tokens.borderRadiusCircular,
+    },
+    { enableOutline: true },
+  ),
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
