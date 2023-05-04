@@ -54,7 +54,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
-    color: var(--colorNeutralForeground1);
+    color: ${colorNeutralForeground1};
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -64,6 +64,7 @@ export const styles = css`
     user-select: none;
     outline: none;
     vertical-align: middle;
+    min-width: 250px;
   }
   :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
@@ -155,9 +156,8 @@ export const styles = css`
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-width: 200px;
     padding-right: ${spacingHorizontalXS};
-    color: ${colorNeutralForeground1};
+    color: var(--placeholder-visible, ${colorNeutralForeground1});
   }
   .indicator {
     display: flex;

@@ -1,6 +1,7 @@
 import { attr, Observable } from '@microsoft/fast-element';
 import { FASTListboxOption, FASTSelect } from '@microsoft/fast-foundation';
-import { DropdownControlSizes } from './dropdown.options.js';
+import { colorNeutralForeground1, colorNeutralForeground3 } from '../theme/design-tokens.js';
+import { DropdownAppearance, DropdownControlSizes } from './dropdown.options.js';
 
 /**
  * @class Dropdown component
@@ -9,6 +10,16 @@ import { DropdownControlSizes } from './dropdown.options.js';
  * This class extends the FASTSelect.
  */
 export class Dropdown extends FASTSelect {
+  /**
+   * Appearance
+   *
+   * @public
+   * @remarks
+   * HTML attribute: control-size
+   */
+  @attr
+  public appearance?: DropdownAppearance;
+
   /**
    * Control Size
    *
@@ -22,15 +33,33 @@ export class Dropdown extends FASTSelect {
   @attr({ attribute: 'placeholder' })
   public placeholder: string = '';
 
+  public get collapsible(): boolean {
+    return true;
+  }
+
+  public clickHandler(e: MouseEvent): boolean | void {
+    super.clickHandler(e);
+
+    // keep the listbox open when in multiple select mode
+    if (this.multiple) {
+      this.open = true;
+    }
+  }
+
   public get displayValue(): string {
     Observable.track(this, 'displayValue');
-    if (this.selectedIndex === -1) {
+    if ((this.selectedOptions.length == 0 || this.selectedIndex == -1) && this.placeholder) {
+      this.style.setProperty('--placeholder-visible', `${colorNeutralForeground3.$value}`);
+      this.currentValue = '';
       return this.placeholder;
     }
     if (this.multiple) {
       const selectedOptionsText = this.selectedOptions.map(option => option.text);
+      this.style.setProperty('--placeholder-visible', `${colorNeutralForeground1.$value}`);
+      this.currentValue = this.firstSelectedOption?.text;
       return selectedOptionsText.join(', ') || '';
     } else {
+      this.style.setProperty('--placeholder-visible', `${colorNeutralForeground1.$value}`);
       return this.firstSelectedOption?.text ?? '';
     }
   }

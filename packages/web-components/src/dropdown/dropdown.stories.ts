@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
+import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 import './define.js';
 import '../option/define';
@@ -148,7 +149,7 @@ export const DropdownPlaceholder = renderComponent(html<DropdownStoryArgs>`
 
 export const DropdownMultiple = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-dropdown multiple>
+    <fluent-dropdown multiple placeholder="-">
       <fluent-option>Fish</fluent-option>
       <fluent-option>Cat</fluent-option>
       <fluent-option>Turtle</fluent-option>
@@ -157,9 +158,60 @@ export const DropdownMultiple = renderComponent(html<DropdownStoryArgs>`
   </div>
 `);
 
+export const DropdownAppearances = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 290px; position: relative; display: flex; flex-direction: column; row-gap: 20px;">
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Outlined</fluent-label>
+      <fluent-label>Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Underlined</fluent-label>
+
+      <fluent-label>Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-" appearance="underline">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
+    <div
+      style="display: flex; flex-direction: column; justify-content: center; padding: 20px; background-color: ${colorNeutralBackgroundInverted}"
+    >
+      <fluent-label size="large" style="margin-bottom: 10px; color: ${colorNeutralForegroundInverted2}"
+        >Filled Darker</fluent-label
+      >
+
+      <fluent-label style="color: ${colorNeutralForegroundInverted2}">Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-" appearance="filled-darker">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
+    <div
+      style="display: flex; flex-direction: column; justify-content: center; padding: 20px; background-color: ${colorNeutralBackgroundInverted}"
+    >
+      <fluent-label size="large" style="margin-bottom: 10px; color: ${colorNeutralForegroundInverted2}"
+        >Filled Lighter</fluent-label
+      >
+      <fluent-label style="color: ${colorNeutralForegroundInverted2}">Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-" appearance="filled-darker">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
+  </div>
+`);
+
 export const DropdownCustom = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-dropdown>
+    <fluent-dropdown placeholder="-">
       <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
       <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
       <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
@@ -168,31 +220,52 @@ export const DropdownCustom = renderComponent(html<DropdownStoryArgs>`
   </div>
 `);
 
+export const DropdownControlled = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-dropdown placeholder="-">
+      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+      <fluent-option selected><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      <fluent-option><span slot="icon">${AnimalDog16Filled}</span>Dog</fluent-option>
+    </fluent-dropdown>
+  </div>
+`);
+
 export const DropdownSizes = renderComponent(html<DropdownStoryArgs>`
-  <div style="width: 128px; position: relative; display: flex; flex-direction: row; column-gap: 40px;">
-    <fluent-dropdown placeholder="small" control-size="small">
-      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
-      <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
-      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
-    </fluent-dropdown>
-
-    <fluent-dropdown placeholder="medium" control-size="medium">
-      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
-      <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
-      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
-    </fluent-dropdown>
-
-    <fluent-dropdown placeholder="large" control-size="large">
-      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
-      <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
-      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
-    </fluent-dropdown>
+  <div style="width: 290px; position: relative; display: flex; flex-direction: column; row-gap: 10px;">
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Small</fluent-label>
+      <fluent-label size="small">Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-" control-size="small">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Medium</fluent-label>
+      <fluent-label>Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-" control-size="medium">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Large</fluent-label>
+      <fluent-label size="large">Select an animal</fluent-label>
+      <fluent-dropdown placeholder="-" control-size="large">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      </fluent-dropdown>
+    </div>
   </div>
 `);
 
 export const DropdownDisabled = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-dropdown disabled placeholder="disabled">
+    <fluent-dropdown disabled placeholder="-">
       <fluent-option>Fish</fluent-option>
       <fluent-option>Cat</fluent-option>
       <fluent-option>Turtle</fluent-option>
@@ -203,7 +276,7 @@ export const DropdownDisabled = renderComponent(html<DropdownStoryArgs>`
 
 export const DropdownDisabledItem = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-dropdown>
+    <fluent-dropdown placeholder="-">
       <fluent-option>Fish</fluent-option>
       <fluent-option disabled>Cat</fluent-option>
       <fluent-option>Turtle</fluent-option>
