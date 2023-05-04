@@ -44,10 +44,10 @@ export const useTagBaseStyles = makeStyles({
     display: 'inline-grid',
     gridTemplateRows: '1fr auto auto 1fr',
     gridTemplateAreas: `
-    "media icon .        "
-    "media icon primary  "
-    "media icon secondary"
-    "media icon .        "
+    "media .        "
+    "media primary  "
+    "media secondary"
+    "media .        "
     `,
     paddingRight: tokens.spacingHorizontalS,
   },
@@ -58,7 +58,7 @@ export const useTagBaseStyles = makeStyles({
   icon: {
     display: 'flex',
     alignSelf: 'center',
-    ...shorthands.gridArea('icon'),
+    ...shorthands.gridArea('media'),
     paddingLeft: '6px',
     paddingRight: '2px',
   },
