@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ *
+ * @param {string} filePath
+ * @param {string} title
+ */
 function fixTitle(filePath, title) {
   const htmlDocumentPath = path.resolve(__dirname, filePath);
   const htmlDocument = fs.readFileSync(htmlDocumentPath, 'utf-8');

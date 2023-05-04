@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
-import { cardPreviewClassNames } from './useCardPreviewStyles';
+import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
 
 /**
  * Create the state required to render CardPreview.

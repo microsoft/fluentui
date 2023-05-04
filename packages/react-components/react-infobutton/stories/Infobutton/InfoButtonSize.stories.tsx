@@ -19,27 +19,30 @@ export const Size = () => {
     <div className={styles.base}>
       <InfoButton
         size="small"
-        content={
+        info={
           <>
-            This is example content for a small InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>.
+            This is example information for a small InfoButton.{' '}
+            <Link href="https://react.fluentui.dev">Learn more</Link>.
           </>
         }
       />
 
       <InfoButton
         size="medium"
-        content={
+        info={
           <>
-            This is example content for a medium InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>.
+            This is example information for a medium InfoButton.{' '}
+            <Link href="https://react.fluentui.dev">Learn more</Link>.
           </>
         }
       />
 
       <InfoButton
         size="large"
-        content={
+        info={
           <>
-            This is example content for a large InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>.
+            This is example information for a large InfoButton.{' '}
+            <Link href="https://react.fluentui.dev">Learn more</Link>.
           </>
         }
       />

@@ -7,6 +7,11 @@ import type { GriffelStyle } from '@griffel/react';
 type GriffelResetStyle = Parameters<typeof makeResetStyles>[0];
 
 export interface CreateCustomFocusIndicatorStyleOptions {
+  /**
+   * Control if the indicator appears when the corresponding element is focused,
+   * or any child is focused within the corresponding element.
+   * @default 'focus'
+   */
   selector?: 'focus' | 'focus-within';
   /**
    * Enables the browser default outline style

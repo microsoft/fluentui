@@ -1428,6 +1428,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 is-preview
                 {
                   border: 1px solid #c8c6c4;
+                  forced-color-adjust: none;
                   height: 48px;
                   margin-bottom: 0;
                   margin-left: 8px;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardPreview } from '@fluentui/react-card';
+import { CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =

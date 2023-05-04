@@ -5,6 +5,7 @@ import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Dialog.
@@ -45,6 +46,11 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   }, [disableBodyScroll, isBodyScrollLocked]);
 
+  const { modalAttributes, triggerAttributes } = useModalAttributes({
+    trapFocus: modalType !== 'non-modal',
+    legacyTrapFocus: !inertTrapFocus,
+  });
+
   return {
     components: {
       backdrop: 'div',
@@ -58,6 +64,8 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     dialogTitleId: useId('dialog-title-'),
     isNestedDialog: useHasParentContext(DialogContext),
     dialogRef: focusRef,
+    modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
+    triggerAttributes,
   };
 };
 

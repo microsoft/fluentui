@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: move makeStyles() calls to .styles.ts files",
+  "packageName": "@fluentui/react-divider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

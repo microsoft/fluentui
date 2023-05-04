@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { SpinButton } from './SpinButton';
 import { isConformant } from '../../testing/isConformant';
 import { ArrowUp, ArrowDown, End, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
@@ -844,5 +845,22 @@ describe('SpinButton', () => {
       expect(incrementButton.getAttribute('aria-label')).toEqual('Increment Override');
       expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement Override');
     });
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <SpinButton />
+      </Field>,
+    );
+
+    const spinbutton = result.getByRole('spinbutton') as HTMLInputElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(spinbutton.id).toEqual(label.htmlFor);
+    expect(spinbutton.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(spinbutton.getAttribute('aria-invalid')).toEqual('true');
+    expect(spinbutton.required).toBe(true);
   });
 });

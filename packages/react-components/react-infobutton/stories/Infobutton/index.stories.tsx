@@ -5,7 +5,6 @@ import bestPracticesMd from './InfoButtonBestPractices.md';
 
 export { Default } from './InfoButtonDefault.stories';
 export { Size } from './InfoButtonSize.stories';
-export { InfoButtonWithLabel } from './InfoButtonWithLabel.stories';
 
 export default {
   title: 'Preview Components/InfoButton',

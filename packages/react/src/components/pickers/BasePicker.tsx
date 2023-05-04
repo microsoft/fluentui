@@ -405,17 +405,17 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   protected resetFocus(index?: number) {
     const { items } = this.state;
 
-    if (items.length && index! >= 0) {
+    if (items.length) {
+      // default to focusing the last item
+      index = index ?? items.length - 1;
       const newEl: HTMLElement | null =
         this.root.current &&
-        (this.root.current.querySelectorAll('[data-selection-index]')[
+        (this.root.current.querySelectorAll('[data-selection-index] > button')[
           Math.min(index!, items.length - 1)
         ] as HTMLElement | null);
       if (newEl) {
         newEl.focus();
       }
-    } else if (items.length && !this.canAddItems()) {
-      this.resetFocus(items.length - 1);
     } else {
       if (this.input.current) {
         this.input.current.focus();
@@ -1113,6 +1113,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
+          <span id={`${this._ariaMap.selectedItems}-label`} hidden>
+            {selectionAriaLabel || comboLabel}
+          </span>
           <div className={classNames.text} aria-owns={suggestionsAvailable}>
             <Autofill
               {...(inputProps as any)}
@@ -1128,6 +1131,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               aria-expanded={suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
+              aria-describedby={this.state.items.length > 0 ? this._ariaMap.selectedItems : undefined}
               role="combobox"
               id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
               disabled={disabled}
@@ -1141,7 +1145,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             id={this._ariaMap.selectedItems}
             className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             role={selectionRole}
-            aria-label={selectionAriaLabel || comboLabel}
+            aria-labelledby={`${this._ariaMap.selectedItems}-label`}
           >
             {this.renderItems()}
           </div>

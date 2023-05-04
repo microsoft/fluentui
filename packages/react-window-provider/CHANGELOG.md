@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Wed, 01 Mar 2023 07:45:41 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.12)
+
+Tue, 02 May 2023 22:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.11..@fluentui/react-window-provider_v2.2.12)
+
+### Patches
+
+- Bump @fluentui/test-utilities to v8.3.3 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [2.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.11)
+
+Tue, 02 May 2023 00:58:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.10..@fluentui/react-window-provider_v2.2.11)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [2.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.10)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.9..@fluentui/react-window-provider_v2.2.10)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/test-utilities to v8.3.2 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+
+## [2.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.9)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.8..@fluentui/react-window-provider_v2.2.9)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/test-utilities to v8.3.1 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+
+## [2.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.8)
+
+Fri, 10 Mar 2023 07:38:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.7..@fluentui/react-window-provider_v2.2.8)
+
+### Patches
+
+- fix: add explicit children to window provider to ensure react 18 type compat ([PR #27117](https://github.com/microsoft/fluentui/pull/27117) by mgodbolt@microsoft.com)
 
 ## [2.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.7)
 

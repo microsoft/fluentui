@@ -3,38 +3,33 @@ import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
 
-const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect;
+import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
+
+const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
 export type UsePortalMountNodeOptions = {
   /**
    * Since hooks cannot be called conditionally use this flag to disable creating the node
    */
   disabled?: boolean;
+
+  className?: string;
 };
 
-const useStyles = makeStyles({
-  root: {
-    position: 'relative',
-    zIndex: 1000000,
-  },
-});
-
-const reactMajorVersion = Number(React.version.split('.')[0]);
-
 /**
- * Creates a new element on a document.body to mount portals
+ * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
   const { targetDocument, dir } = useFluent();
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-  const classes = useStyles();
+  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
-  const className = mergeClasses(themeClassName, classes.root);
+  const className = mergeClasses(themeClassName, classes.root, options.className);
 
   const element = useDisposable(() => {
     if (targetDocument === undefined || options.disabled) {
@@ -46,7 +41,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     return [newElement, () => newElement.remove()];
   }, [targetDocument]);
 
-  if (reactMajorVersion >= 18) {
+  if (useInsertionEffect) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useInsertionEffect(() => {
       if (!element) {

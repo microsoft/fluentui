@@ -25,6 +25,7 @@ module.exports = {
      * griffel eslint rules
      * @see https://github.com/microsoft/griffel/tree/main/packages/eslint-plugin
      */
+    '@griffel/hook-naming': 'error',
     '@griffel/no-shorthands': 'error',
     /**
      * react eslint rules

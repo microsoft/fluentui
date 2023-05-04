@@ -18,8 +18,8 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
-  joinPathFragments,
   ProjectConfiguration,
+  joinPathFragments,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -129,11 +129,9 @@ describe('migrate-converged-pkg generator', () => {
           return json;
         });
 
-        /* eslint-disable @fluentui/max-len */
         await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
           `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
         );
-        /* eslint-enable @fluentui/max-len */
       });
     });
 
@@ -356,7 +354,6 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
-    // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
@@ -446,7 +443,7 @@ describe('migrate-converged-pkg generator', () => {
         globals: {
         'ts-jest': {
         tsconfig: '<rootDir>/tsconfig.spec.json',
-        diagnostics: false,
+        isolatedModules: true,
         },
         },
         transform: {
@@ -617,8 +614,6 @@ describe('migrate-converged-pkg generator', () => {
       const mainJsFilePath = `${projectStorybookConfigPath}/main.js`;
       const packageJsonPath = `${projectConfig.root}/package.json`;
 
-      let pkgJson: PackageJson = readJson(tree, packageJsonPath);
-
       tree.write(mainJsFilePath, 'module.exports = {}');
 
       // artificially add storybook scripts
@@ -650,7 +645,7 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.test.ts', '**/*.test.tsx'],
       });
 
-      pkgJson = readJson(tree, packageJsonPath);
+      const pkgJson: PackageJson = readJson(tree, packageJsonPath);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
       expect(tree.exists(mainJsFilePath)).toBeTruthy();
@@ -840,19 +835,32 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.typings).toEqual('./dist/index.d.ts');
     });
 
+    it(`should update dependencies`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).not.toBeDefined();
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).not.toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).toBeDefined();
+    });
+
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       const pkgJsonPath = `${projectConfig.root}/package.json`;
       updateJson(tree, pkgJsonPath, json => {
         json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
         json.scripts['build:local'] =
-          // eslint-disable-next-line @fluentui/max-len
           'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components && yarn docs';
         return json;
       });
       let pkgJson = readJson(tree, pkgJsonPath);
 
-      /* eslint-disable @fluentui/max-len */
       expect(pkgJson.scripts).toMatchInlineSnapshot(`
         Object {
           "build": "just-scripts build",
@@ -869,20 +877,20 @@ describe('migrate-converged-pkg generator', () => {
           "update-snapshots": "just-scripts jest -u",
         }
       `);
-      /* eslint-enable @fluentui/max-len */
 
       await generator(tree, options);
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.scripts).toEqual({
-        'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+        'generate-api': 'just-scripts generate-api',
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
+        'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
         'type-check': 'tsc -b tsconfig.json',
       });
     });
@@ -920,6 +928,7 @@ describe('migrate-converged-pkg generator', () => {
                   Object {
                     ".": Object {
                       "import": "./lib/index.js",
+                      "node": "./lib-commonjs/index.js",
                       "require": "./lib-commonjs/index.js",
                       "types": "./dist/index.d.ts",
                     },
@@ -1037,8 +1046,89 @@ describe('migrate-converged-pkg generator', () => {
         .eslint*
         .git*
         .prettierignore
+        .swcrc
+
+        # exclude gitignore patterns explicitly
+        !lib
+        !lib-commonjs
+        !lib-amd
+        !dist/*.d.ts
         "
       `);
+    });
+  });
+
+  describe(`just-scripts config setup`, () => {
+    it(`should update just.config.ts`, async () => {
+      function getJustConfig(projectConfig: ReadProjectConfiguration) {
+        return tree.read(`${projectConfig.root}/just.config.ts`)?.toString('utf-8');
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset } from '@fluentui/scripts-tasks';
+
+        preset();"
+      `);
+
+      await generator(tree, options);
+
+      justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset, task } from '@fluentui/scripts-tasks';
+
+        preset();
+
+        task('build', 'build:react-components').cached?.();"
+      `);
+    });
+  });
+
+  describe(`swcrc config setup`, () => {
+    it(`should create an swcrc config file`, async () => {
+      function getSwcConfig(projectConfig: ReadProjectConfiguration) {
+        return readJson(tree, `${projectConfig.root}/.swcrc`);
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/.swcrc`)).toBeTruthy();
+
+      const swcConfig = getSwcConfig(projectConfig);
+
+      expect(swcConfig).toEqual({
+        $schema: 'https://json.schemastore.org/swcrc',
+        exclude: [
+          '/testing',
+          '/**/*.cy.ts',
+          '/**/*.cy.tsx',
+          '/**/*.spec.ts',
+          '/**/*.spec.tsx',
+          '/**/*.test.ts',
+          '/**/*.test.tsx',
+        ],
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: false,
+            dynamicImport: false,
+          },
+          externalHelpers: true,
+          transform: {
+            react: {
+              runtime: 'classic',
+              useSpread: true,
+            },
+          },
+          target: 'es2019',
+        },
+        minify: false,
+        sourceMaps: true,
+      });
     });
   });
 
@@ -1055,7 +1145,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1065,7 +1155,7 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
     });
@@ -1084,7 +1174,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1092,7 +1182,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1101,7 +1190,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls'],
       });
     });
@@ -1173,6 +1261,63 @@ describe('migrate-converged-pkg generator', () => {
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
+    });
+  });
+
+  describe(`update conformance setup`, () => {
+    const conformanceSetup = stripIndents`
+      import { isConformant as baseIsConformant } from '@proj/react-conformance';
+      import type { IsConformantOptions, TestObject } from '@proj/react-conformance';
+      import griffelTests from '@proj/react-conformance-griffel';
+
+      export function isConformant<TProps = {}>(
+        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+      ) {
+        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+          componentPath: require.main?.filename.replace('.test', ''),
+          extraTests: griffelTests as TestObject<TProps>,
+          testOptions: {
+            'make-styles-overrides-win': {
+              callCount: 2,
+            },
+            // TODO: https://github.com/microsoft/fluentui/issues/19618
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          } as any,
+        };
+
+        baseIsConformant(defaultOptions, testInfo);
+      }
+    `;
+    it(`should use tsConfig conformance API`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const conformanceSetupPath = joinPathFragments(projectConfig.root as string, 'src/testing/isConformant.ts');
+      tree.write(conformanceSetupPath, conformanceSetup);
+      await generator(tree, options);
+
+      expect(tree.read(conformanceSetupPath, 'utf-8')).toMatchInlineSnapshot(`
+        "import { isConformant as baseIsConformant } from '@proj/react-conformance';
+        import type { IsConformantOptions, TestObject } from '@proj/react-conformance';
+        import griffelTests from '@proj/react-conformance-griffel';
+
+        export function isConformant<TProps = {}>(
+        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+        ) {
+        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+        tsConfig: { configName: 'tsconfig.spec.json' },
+        componentPath: require.main?.filename.replace('.test', ''),
+        extraTests: griffelTests as TestObject<TProps>,
+        testOptions: {
+        'make-styles-overrides-win': {
+        callCount: 2,
+        },
+        // TODO: https://github.com/microsoft/fluentui/issues/19618
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+        };
+
+        baseIsConformant(defaultOptions, testInfo);
+        }"
+      `);
     });
   });
 
@@ -1300,6 +1445,7 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
           Object {
             "import": "./lib/unstable/index.js",
+            "node": "./lib-commonjs/unstable/index.js",
             "require": "./lib-commonjs/unstable/index.js",
             "types": "./dist/unstable.d.ts",
           }
@@ -1360,7 +1506,6 @@ describe('migrate-converged-pkg generator', () => {
         await generator(tree, options);
 
         expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
-        /* eslint-disable @fluentui/max-len */
         expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
           Object {
             "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
@@ -1376,7 +1521,6 @@ describe('migrate-converged-pkg generator', () => {
             "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
           }
         `);
-        /* eslint-enable @fluentui/max-len */
       });
     });
   });
@@ -1412,7 +1556,7 @@ function setupDummyPackage(
       someThirdPartyDep: '^11.1.2',
     },
     babelConfig: {
-      presets: ['@griffel'],
+      extends: '../../.babelrc-v9.json',
       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     },
     tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
@@ -1497,6 +1641,11 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
+    justConfig: stripIndents`
+      import { preset } from '@fluentui/scripts-tasks';
+
+      preset();
+    `,
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
@@ -1505,6 +1654,7 @@ function setupDummyPackage(
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
+  tree.write(`${paths.root}/just.config.ts`, templates.justConfig);
   tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
   tree.write(
     `${paths.root}/src/index.test.ts`,

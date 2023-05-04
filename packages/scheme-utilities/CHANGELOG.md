@@ -1,8 +1,48 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Wed, 01 Mar 2023 07:45:41 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.29](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.29)
+
+Tue, 02 May 2023 22:20:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.28..@fluentui/scheme-utilities_v8.3.29)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme to v2.6.28 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [8.3.28](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.28)
+
+Tue, 02 May 2023 00:58:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.27..@fluentui/scheme-utilities_v8.3.28)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.27 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [8.3.27](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.27)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.26..@fluentui/scheme-utilities_v8.3.27)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.26 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+
+## [8.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.26)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.25..@fluentui/scheme-utilities_v8.3.26)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.25 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
 
 ## [8.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.25)
 

@@ -1,7 +1,6 @@
-import { Card } from '@fluentui/react-card';
+import { Card } from '@fluentui/react-components';
 import descriptionMd from './CardDescription.md';
 import cardBestpracticesMd from './CardBestPractices.md';
-import previewMd from './CardPreview.md';
 
 export { Default } from './CardDefault.stories';
 export { Orientation } from './CardOrientation.stories';
@@ -13,12 +12,12 @@ export { FocusMode } from './CardFocusMode.stories';
 export { Templates } from './CardTemplates.stories';
 
 export default {
-  title: 'Preview Components/Card/Card',
+  title: 'Components/Card/Card',
   component: Card,
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, cardBestpracticesMd, previewMd].join('\n'),
+        component: [descriptionMd, cardBestpracticesMd].join('\n'),
       },
     },
   },
