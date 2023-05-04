@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add classname to AvatarContext",
+  "packageName": "@fluentui/react-avatar",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
