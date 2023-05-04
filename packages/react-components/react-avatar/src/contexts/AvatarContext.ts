@@ -7,6 +7,7 @@ const avatarContext = React.createContext<AvatarContextValue | undefined>(undefi
  * @internal
  */
 export interface AvatarContextValue {
+  className?: string;
   shape?: AvatarShape;
   size?: AvatarSize;
 }

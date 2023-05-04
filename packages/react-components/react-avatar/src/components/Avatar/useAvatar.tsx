@@ -6,6 +6,7 @@ import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useAvatarContext } from '../../contexts/AvatarContext';
+import { mergeClasses } from '@griffel/react';
 
 export const DEFAULT_STRINGS = {
   active: 'active',
@@ -14,9 +15,10 @@ export const DEFAULT_STRINGS = {
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { shape: contextShape, size: contextSize } = useAvatarContext();
+  const { className: contextClassName, shape: contextShape, size: contextSize } = useAvatarContext();
   const {
     name,
+    className,
     size = contextSize ?? (32 as const),
     shape = contextShape ?? 'circular',
     active = 'unset',
@@ -38,6 +40,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       role: 'img',
       id: baseId,
       // aria-label and/or aria-labelledby are resolved below
+      className: mergeClasses(contextClassName, className),
       ...props,
       ref,
     },
