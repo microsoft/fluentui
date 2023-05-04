@@ -98,27 +98,6 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
       />
       <g>
         <rect
-          aria-label="2020/04/30. 10%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          key="5000"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={-15}
-          x={40}
-          y={233.5}
-        />
-        <rect
           aria-label="2020/04/30. 20%."
           aria-labelledby="toolTipcallout0"
           className=
@@ -180,6 +159,27 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           width={-40}
           x={40}
           y={192.7}
+        />
+        <rect
+          aria-label="2020/04/30. 10%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#0078d4"
+          height={32}
+          key="5000"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={-15}
+          x={40}
+          y={233.5}
         />
       </g>
     </svg>
@@ -1116,7 +1116,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                     opacity: 0.8;
                   }
             >
-              20%
+              37%
                
             </div>
           </div>
@@ -1129,7 +1129,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    border-left: 4px solid #002050;
+                    border-left: 4px solid #00188f;
                     color: #323130;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 28px;
@@ -1152,7 +1152,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                       line-height: 16px;
                     }
               >
-                Dogs
+                Apples
               </div>
               <div
                 className=
@@ -1160,7 +1160,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #002050;
+                      color: #00188f;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 28px;
                       font-weight: bold;
@@ -1275,7 +1275,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         transform="translate(40, 0)"
       />
       <g>
-         
         <rect
           aria-label="2020/04/30. 20%."
           aria-labelledby="toolTipcallout0"
@@ -1296,6 +1295,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           x={40}
           y={4}
         />
+         
          
          
       </g>
@@ -1834,7 +1834,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         transform="translate(40, 0)"
       />
       <g>
-         
         <rect
           aria-label="2020/04/30. 20%."
           aria-labelledby="toolTipcallout5"
@@ -1855,6 +1854,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           x={40}
           y={4}
         />
+         
          
          
       </g>
@@ -1963,11 +1963,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
         <rect
-          aria-label="2000. String Four."
+          aria-label="1000. String One."
           aria-labelledby="toolTipcallout9"
           data-is-focusable={true}
           fill="#0078d4"
@@ -1977,10 +1974,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-24}
+          width={-12}
           x={40}
-          y={25.44715447154472}
+          y={30.25}
         />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2509,11 +2509,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
         <rect
-          aria-label="2000. String Four."
+          aria-label="1000. String One."
           aria-labelledby="toolTipcallout14"
           data-is-focusable={true}
           fill="#0078d4"
@@ -2523,10 +2520,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-24}
+          width={-12}
           x={40}
-          y={25.44715447154472}
+          y={30.25}
         />
+         
+         
+         
       </g>
     </svg>
   </div>

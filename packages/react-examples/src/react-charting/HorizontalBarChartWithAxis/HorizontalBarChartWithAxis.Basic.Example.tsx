@@ -64,24 +64,24 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 5000,
         legend: 'Oranges',
         color: DefaultPalette.accent,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '2020/04/30',
+        xAxisCalloutData: '10%',
       },
       {
         x: 20000,
         y: 50000,
         legend: 'Dogs',
         color: DefaultPalette.blueDark,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '2020/04/30',
+        xAxisCalloutData: '20%',
       },
       {
         x: 25000,
         y: 30000,
         legend: 'Apples',
         color: DefaultPalette.blueMid,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '37%',
+        yAxisCalloutData: '2020/04/30',
+        xAxisCalloutData: '37%',
       },
 
       {
@@ -89,8 +89,8 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 13000,
         legend: 'Bananas',
         color: DefaultPalette.blueLight,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '88%',
+        yAxisCalloutData: '2020/04/30',
+        xAxisCalloutData: '88%',
       },
     ];
 

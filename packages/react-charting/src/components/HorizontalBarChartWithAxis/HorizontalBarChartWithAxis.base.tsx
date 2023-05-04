@@ -31,6 +31,7 @@ import {
   NumericAxis,
   StringAxis,
   getTypeOfAxis,
+  getNextColor,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -55,7 +56,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   IHorizontalBarChartWithAxisState
 > {
   private _points: IHorizontalBarChartWithAxisDataPoint[];
-  private _barWidth: number;
+  private _barHeight: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IHorizontalBarChartWithAxisStyles>;
   private _refArray: IRefArrayData[];
@@ -101,7 +102,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
   public render(): JSX.Element {
     this._adjustProps();
-    this._yAxisLabels = this._points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    const reversedBars = [...this._points].reverse();
+    this._yAxisLabels = reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
     this._xMax = Math.max(
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
       this.props.xMaxValue || 0,
@@ -142,7 +144,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        barwidth={this._barWidth}
+        barwidth={this._barHeight}
         focusZoneDirection={FocusZoneDirection.vertical}
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
@@ -164,7 +166,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = this.props.barWidth || 32;
+    this._barHeight = this.props.barHeight || 32;
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
   }
@@ -239,7 +241,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const YValueHover: IYValueHover[] = [];
     const { useSingleColor = false } = this.props;
     const { data } = this.props;
-    const selectedPoint = data!.filter((xDataPoint: IHorizontalBarChartWithAxisDataPoint) => xDataPoint.x === point.x);
+    const selectedPoint = data!.filter((yDataPoint: IHorizontalBarChartWithAxisDataPoint) => yDataPoint.y === point.y);
     // callout data for the bar
     YValueHover.push({
       legend: selectedPoint[0].legend,
@@ -253,7 +255,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
-    return { YValueHover, hoverXValue: point.xAxisCalloutData || point.x.toString() };
+    return { YValueHover, hoverXValue: point.yAxisCalloutData || point.y.toString() };
   };
 
   private _onBarHover(
@@ -352,10 +354,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return { xBarScale, yBarScale };
     } else {
       const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+      // please note these padding default values must be consistent in here
+      // and CatrtesianChartBase w for more details refer example
+      // http://using-d3js.com/04_07_ordinal_scales.html
       const yBarScale = d3ScaleBand()
         .domain(this._yAxisLabels)
-        .range([containerHeight - this.margins.bottom! - this._barWidth / 2, this.margins.top! + this._barWidth / 2])
-        .padding(this.props.yAxisPadding || 0.1);
+        .range([containerHeight - this.margins.bottom! - this._barHeight / 2, this.margins.top! + this._barHeight / 2])
+        .padding(this.props.yAxisPadding || 0);
 
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
@@ -374,7 +379,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
-    const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
+    const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...this._points];
+    sortedBars.sort((a, b) => {
+      const aValue = typeof a.y === 'number' ? a.y : parseFloat(a.y);
+      const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
+      return bValue - aValue;
+    });
+    const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this.state.selectedLegendTitle === point.legend;
@@ -388,31 +399,32 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
+      const color = this.props.colors ? colorScale(point.x) : getNextColor(index, 0, this.props.theme?.isInverted);
       return (
         <rect
           key={point.y}
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
-          y={yBarScale(point.y) - this._barWidth / 2}
-          data-is-focusable={!this.props.hideTooltip}
+          y={yBarScale(point.y) - this._barHeight / 2}
+          data-is-focusable={true}
           width={
             this._isRtl
               ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
               : Math.max(xBarScale(point.x), 0) - this.margins.left!
           }
-          height={this._barWidth}
+          height={this._barHeight}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
           onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.x))}
+          onMouseOver={this._onBarHover.bind(this, point, color)}
           aria-label={this._getAriaLabel(point)}
           role="img"
           aria-labelledby={`toolTip${this._calloutId}`}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
+          onFocus={this._onBarFocus.bind(this, point, index, color)}
           onBlur={this._onBarLeave}
-          fill={point.color && !useSingleColor ? point.color : colorScale(point.x)}
+          fill={point.color && !useSingleColor ? point.color : color}
         />
       );
     });
@@ -470,13 +482,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         <rect
           key={point.x}
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
-          y={yBarScale(point.y) + this._barWidth / 3}
+          y={yBarScale(point.y) + this._barHeight / 2}
           width={
             this._isRtl
               ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
               : Math.max(xBarScale(point.x), 0) - this.margins.left!
           }
-          height={this._barWidth}
+          height={this._barHeight}
           aria-labelledby={`toolTip${this._calloutId}`}
           aria-label={this._getAriaLabel(point)}
           role="img"
@@ -487,14 +499,16 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.x))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
-          data-is-focusable={!this.props.hideTooltip}
+          data-is-focusable={true}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
           fill={point.color ? point.color : colorScale(point.x)}
         />
       );
     });
 
-    // Removing un wanted tooltip div from DOM, when prop not provided.
+    // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+    // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+    // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with this._tooltipId)
     if (!this.props.showYAxisLablesTooltip) {
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();

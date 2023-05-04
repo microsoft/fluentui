@@ -341,8 +341,6 @@ export function createYAxisForHorizontalBarChartWithAxis(
     maxOfYVal = 0,
     yAxisTickFormat,
     yAxisTickCount = 4,
-    eventAnnotationProps,
-    eventLabelHeight,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
@@ -351,7 +349,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
-    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+    .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
@@ -429,8 +427,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
 
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2])
-    .padding(yAxisPadding);
+    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
@@ -1064,7 +1061,7 @@ export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: 
 }
 
 /**
- * Find the minimum and maximum values of the vertical stacked bar chart y axis data point. Used  for create y axis.
+ * Find the minimum and maximum values of the vertical stacked bar chart y axis data point. Used for create y axis.
  * @export
  * @param {IDataPoint[]} dataset
  * @returns {{ startValue: number; endValue: number }}

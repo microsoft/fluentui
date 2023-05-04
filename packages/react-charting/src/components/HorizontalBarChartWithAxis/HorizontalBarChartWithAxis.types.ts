@@ -21,7 +21,7 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   /**
    * Width of each bar in the chart.
    */
-  barWidth?: number;
+  barHeight?: number;
 
   /**
    * Colors from which to select the color of each bar.
@@ -32,11 +32,6 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    * chart title for the chart
    */
   chartTitle?: string;
-
-  /**
-   * Legend text for the line datapoint in the chart
-   */
-  lineLegendText?: string;
 
   /**
    * This prop makes sure that all the bars are of same color.
@@ -83,43 +78,43 @@ export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartSt
 export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.
-   * @deprecated
+   *
    */
   chartLabel?: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
-   * @deprecated
+   *
    */
   xAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
-   * @deprecated
+   *
    */
   xAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
-   * @deprecated
+   *
    */
   xAxisText?: IStyle;
 
   /**
    * Style for the line representing the domain of the y-axis.
-   * @deprecated
+   *
    */
   yAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
-   * @deprecated
+   *
    */
   yAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
-   * @deprecated
+   *
    */
   yAxisText?: IStyle;
 
