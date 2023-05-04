@@ -34,7 +34,12 @@ describe('Avatar', () => {
           },
         },
       ],
-    },
+      'make-styles-overrides-win': {
+        callCount: 2,
+      },
+      // TODO: https://github.com/microsoft/fluentui/issues/19618
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any,
   });
 
   /**
