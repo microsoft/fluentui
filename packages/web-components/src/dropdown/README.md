@@ -1,7 +1,8 @@
 # Dropdown
 
 > A dropdown is a user interface component that presents a collapsible list of selectable options to users.
-> <br />
+
+<br />
 
 ## **Design Spec**
 
@@ -52,20 +53,22 @@ The Fluent WC3 Dropdown is a form associated component that extends from the FAS
 | `proxy`           | public  |                                                                                                                  |           |                                                      |
 | `selectedIndex`   | public  | `number`                                                                                                         | `-1`      | The index of the selected option.                    |
 | `selectedOptions` | public  | `FluentListboxOption[]`                                                                                          | `[]`      | A collection of the selected options.                |
-| `size`            | public  | `{ small: 'small', medium: 'medium', large: 'large' }`                                                           | `medium`  | The maximum number of options to display.            |
-| `value`           | public  |                                                                                                                  |           | The value property.                                  |
+| `size`            | public  | `number`                                                                                                         |           | The maximum number of options to display.            |
+| `control-size`    | public  | `{ small: 'small', medium: 'medium', large: 'large' }`                                                           |           | Sets the size of the dropdown.                       |
+| `value`           | public  | `string`                                                                                                         |           | Sets the value of the dropdown.                      |
 
 <br />
 
 ### **Attributes**
 
-| Name         | Field      | Inherited From                                                                                                                   |
-| ------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `appearance` | appearance |                                                                                                                                  |
-| `disabled`   | disabled   |                                                                                                                                  |
-| `multiple`   | multiple   | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
-| `open`       | open       |                                                                                                                                  |
-| `size`       | size       |                                                                                                                                  |
+| Name           | Field        | Inherited From                                                                                                                   |
+| -------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `appearance`   | appearance   |                                                                                                                                  |
+| `disabled`     | disabled     |                                                                                                                                  |
+| `multiple`     | multiple     | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
+| `open`         | open         |                                                                                                                                  |
+| `size`         | size         |                                                                                                                                  |
+| `control-size` | control-size |                                                                                                                                  |
 
 <br />
 
@@ -178,3 +181,5 @@ The Fluent WC3 Dropdown is a form associated component that extends from the FAS
 `multiple` - When the `multiple` attribute is used with the WC3 Fluent Dropdown component, it is displayed as a static listbox without any dropdown styling. In contrast, the FUIRv9 implementation of the Dropdown component allows multiple selections and is displayed as a dropdown.
 
 `Persona` Component - The `Persona` component which can be used inside an `Option` to create additional styling for options is available in FUIRv9 but not yet in the FUI WC3 component library.
+
+Option Grouping - Our dropdown component currently does not support option grouping. In order to provide this functionality, we need to add support for grouped options to the FAST implimentation.
