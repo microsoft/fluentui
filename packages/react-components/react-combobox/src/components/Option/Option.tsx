@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useOption_unstable } from './useOption';
 import { renderOption_unstable } from './renderOption';
-import { useOptionStyles_unstable } from './useOptionStyles';
+import { useOptionStyles_unstable } from './useOptionStyles.styles';
 import type { OptionProps } from './Option.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

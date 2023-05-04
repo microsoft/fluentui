@@ -3,7 +3,7 @@ import { renderAccordion_unstable } from './renderAccordion';
 import { useAccordion_unstable } from './useAccordion';
 import { useAccordionContextValues_unstable } from './useAccordionContextValues';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
-import { useAccordionStyles_unstable } from './useAccordionStyles';
+import { useAccordionStyles_unstable } from './useAccordionStyles.styles';
 import type { AccordionProps } from './Accordion.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

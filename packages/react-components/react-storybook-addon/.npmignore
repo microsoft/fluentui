@@ -28,6 +28,7 @@ __tests__
 .eslint*
 .git*
 .prettierignore
+.swcrc
 
 # exclude gitignore patterns explicitly
 !lib
