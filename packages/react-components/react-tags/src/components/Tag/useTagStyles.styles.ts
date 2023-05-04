@@ -89,7 +89,7 @@ export const useTagBaseStyles = makeStyles({
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     ...shorthands.borderStyle('none'),
-    WebkitAppearance: 'button',
+    appearance: 'button',
     textAlign: 'unset',
   },
   dismissButton: {
