@@ -176,7 +176,9 @@ const getLabelContent = (): string | undefined => {
   const radioGroup = document.querySelector('#radio-group-fruit') as FluentRadioGroup;
 
   if (!radioGroup) return; // add a check to make sure radioGroup exists
+
   const selectedRadio = radioGroup.value as string;
+
   if (selectedRadio) {
     return `Favorite fruit: ${selectedRadio.charAt(0).toUpperCase() + selectedRadio.slice(1)}`;
   } else {
