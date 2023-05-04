@@ -1,4 +1,3 @@
-import { attr } from '@microsoft/fast-element';
 import { FASTRadio } from '@microsoft/fast-foundation';
 
 /**
