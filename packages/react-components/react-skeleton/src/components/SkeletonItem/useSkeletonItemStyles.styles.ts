@@ -28,16 +28,10 @@ const skeletonWaveAnimationRTL = {
 
 const skeletonPulseAnimation = {
   '0%': {
-    opacity: '0.5',
-  },
-  '20%': {
-    opacity: '0.6',
+    opacity: '1',
   },
   '50%': {
-    opacity: '0.7',
-  },
-  '70%': {
-    opacity: '0.8',
+    opacity: '0.4',
   },
   '100%': {
     opacity: '1',
@@ -83,7 +77,7 @@ const useStyles = makeStyles({
   },
   pulse: {
     animationName: skeletonPulseAnimation,
-    animationDuration: '2s',
+    animationDuration: '1s',
     backgroundColor: tokens.colorNeutralStencil1,
   },
   translucent: {
