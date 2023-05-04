@@ -8,7 +8,7 @@ export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
   root: 'fui-SkeletonItem',
 };
 
-const skeletonWaveAnimationRTL = {
+const skeletonWaveAnimation = {
   from: {
     backgroundPositionX: '300% /* @noflip */',
   },
@@ -17,7 +17,7 @@ const skeletonWaveAnimationRTL = {
   },
 };
 
-const skeletonWaveAnimation = {
+const skeletonWaveAnimationRTL = {
   from: {
     backgroundPositionX: '0% /* @noflip */',
   },
@@ -28,15 +28,19 @@ const skeletonWaveAnimation = {
 
 const skeletonPulseAnimation = {
   '0%': {
-    transform: 'scale(0.98, 0.98)',
+    opacity: '0.5',
   },
-
+  '20%': {
+    opacity: '0.6',
+  },
   '50%': {
-    transform: 'scale(1, 1)',
+    opacity: '0.7',
   },
-
+  '70%': {
+    opacity: '0.8',
+  },
   '100%': {
-    transform: 'scale(0.98, 0.98)',
+    opacity: '1',
   },
 };
 
@@ -68,9 +72,18 @@ const useStyles = makeStyles({
   },
   waveRtl: {
     animationName: skeletonWaveAnimationRTL,
+    backgroundImage: `linear-gradient(
+      to right,
+      ${tokens.colorNeutralStencil1} 0%,
+      ${tokens.colorNeutralStencil2} 50%,
+      ${tokens.colorNeutralStencil1} 100%)`,
+    '@media screen and (forced-colors: active)': {
+      backgroundColor: 'WindowText',
+    },
   },
   pulse: {
     animationName: skeletonPulseAnimation,
+    animationDuration: '2s',
     backgroundColor: tokens.colorNeutralStencil1,
   },
   translucent: {
