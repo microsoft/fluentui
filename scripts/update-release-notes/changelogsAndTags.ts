@@ -87,7 +87,11 @@ export function getTags(maxAgeDays?: number): string[] {
 
     return tags;
   } catch (err) {
-    throw new Error(`maxBuffer ${TEN_MEGABYTES}MB was reached. Increase its size in the codebase`);
+    if (err.code === 'ENOBUFS') {
+      throw new Error(`maxBuffer ${TEN_MEGABYTES}MB was reached. Increase its size in the codebase`);
+    }
+
+    throw err;
   }
 }
 
