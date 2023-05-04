@@ -100,16 +100,13 @@ export const useTagBaseStyles = makeStyles({
     alignItems: 'center',
     fontSize: '20px',
 
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorTransparentStroke),
-      boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
-    `,
-      zIndex: 1,
-    }),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      },
+      { enableOutline: true },
+    ),
   },
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
