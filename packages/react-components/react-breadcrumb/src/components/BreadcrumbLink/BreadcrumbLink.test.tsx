@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { BreadcrumbLink } from './BreadcrumbLink';
 import type { BreadcrumbLinkProps } from './BreadcrumbLink.types';
 import { isConformant } from '../../testing/isConformant';
-import { breadcrumbLinkClassNames } from './useBreadcrumbLinkStyles';
+import { breadcrumbLinkClassNames } from './useBreadcrumbLinkStyles.styles';
 
 describe('BreadcrumbLink', () => {
   isConformant({
@@ -28,7 +28,7 @@ describe('BreadcrumbLink', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
-          class="fui-Link fui-BreadcrumbLink"
+          class="fui-Link fui-Link fui-BreadcrumbLink"
           type="button"
         >
           Default BreadcrumbLink

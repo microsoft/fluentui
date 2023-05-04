@@ -23,10 +23,8 @@ export {
 export type { OverridesContextValue as OverridesContextValue_unstable } from './OverridesContext';
 
 export {
-  CustomStyleHooksProvider as CustomStyleHooksProvider_unstable,
-  useCustomStyleHooks as useCustomStyleHooks_unstable,
-} from './CustomStyleHooksContext';
-export type {
-  CustomStyleHooksContextValue as CustomStyleHooksContextValue_unstable,
   CustomStyleHooksContext as CustomStyleHooksContext_unstable,
+  CustomStyleHooksProvider as CustomStyleHooksProvider_unstable,
+  useCustomStyleHook as useCustomStyleHook_unstable,
 } from './CustomStyleHooksContext';
+export type { CustomStyleHooksContextValue as CustomStyleHooksContextValue_unstable } from './CustomStyleHooksContext';

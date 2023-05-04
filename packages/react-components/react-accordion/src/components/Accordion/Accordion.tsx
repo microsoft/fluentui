@@ -2,8 +2,8 @@ import * as React from 'react';
 import { renderAccordion_unstable } from './renderAccordion';
 import { useAccordion_unstable } from './useAccordion';
 import { useAccordionContextValues_unstable } from './useAccordionContextValues';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
-import { useAccordionStyles_unstable } from './useAccordionStyles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { useAccordionStyles_unstable } from './useAccordionStyles.styles';
 import type { AccordionProps } from './Accordion.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -17,8 +17,7 @@ export const Accordion: ForwardRefComponent<AccordionProps> = React.forwardRef<H
 
     useAccordionStyles_unstable(state);
 
-    const { useAccordionStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-    useCustomStyles(state);
+    useCustomStyleHook_unstable('useAccordionStyles_unstable')(state);
 
     return renderAccordion_unstable(state, contextValues);
   },

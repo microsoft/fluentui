@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bugfix: fix parent navigation after independency from id",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

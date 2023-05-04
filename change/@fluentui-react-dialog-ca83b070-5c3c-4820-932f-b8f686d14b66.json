@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: hoist tabster modal attributes to Dialog component",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

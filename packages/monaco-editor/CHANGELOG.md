@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Thu, 14 Apr 2022 07:38:08 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.8)
+
+Tue, 02 May 2023 22:20:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.3.6..@fluentui/monaco-editor_v1.3.8)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
 
 ## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.0)
 

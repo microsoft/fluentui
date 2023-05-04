@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 17 Apr 2023 17:53:52 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.7.10)
+
+Mon, 24 Apr 2023 08:12:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.7.9..@fluentui/react-menu_v9.7.10)
+
+### Patches
+
+- bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.7.9)
 

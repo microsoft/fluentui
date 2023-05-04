@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.36)
+
+Mon, 24 Apr 2023 08:12:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.35..@fluentui/react-link_v9.0.36)
+
+### Patches
+
+- chore: adopt custom JSX pragma ([PR #27620](https://github.com/microsoft/fluentui/pull/27620) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.35)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:31 GMT",
+      "tag": "@fluentui/react-accordion_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "93de47a555e31b091d76657bd25c0180e290eee0",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-accordion_v9.1.9",
       "version": "9.1.9",

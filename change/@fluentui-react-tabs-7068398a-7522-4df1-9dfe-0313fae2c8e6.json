@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adopts custom JSX pragma",
-  "packageName": "@fluentui/react-tabs",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

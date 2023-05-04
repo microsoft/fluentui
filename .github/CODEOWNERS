@@ -133,6 +133,7 @@ apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microso
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/bundle-size @microsoft/teams-prg
+packages/react-conformance @microsoft/fluentui-react-build
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -219,13 +220,12 @@ packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
 packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
-packages/react-components/react-avatar-context @microsoft/teams-prg
 packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
+packages/react-components/react-tags @microsoft/cxe-coastal @YuanboXue-Amber
 packages/react-components/react-data-grid-react-window @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
@@ -235,6 +235,7 @@ packages/react-components/react-drawer @microsoft/cxe-prg
 packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
+packages/react-components/react-toast @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

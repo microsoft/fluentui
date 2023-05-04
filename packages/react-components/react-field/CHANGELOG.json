@@ -2,6 +2,33 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 08:12:36 GMT",
+      "tag": "@fluentui/react-field_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "7e199488cd02df78788b833bf29ed7e312b9e41f",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.1.10",
+            "commit": "505433ac64f144c9cca456097413d6af4582e5ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:53:50 GMT",
       "tag": "@fluentui/react-field_v9.1.0",
       "version": "9.1.0",

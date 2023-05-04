@@ -6,10 +6,7 @@ import type { TreeOpenChangeData, TreeProps } from '../Tree';
 export function useOpenItemsState<Value = string>(props: Pick<TreeProps<Value>, 'openItems' | 'defaultOpenItems'>) {
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => props.openItems && createImmutableSet(props.openItems), [props.openItems]),
-    defaultState: React.useMemo(
-      () => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems),
-      [props.defaultOpenItems],
-    ),
+    defaultState: props.defaultOpenItems && (() => createImmutableSet(props.defaultOpenItems)),
     initialState: emptyImmutableSet,
   });
   const updateOpenItems = useEventCallback((data: TreeOpenChangeData<Value>) =>
