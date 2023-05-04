@@ -423,7 +423,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   barWidth: number,
   culture?: string,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
 
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
