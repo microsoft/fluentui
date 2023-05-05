@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { FluentProvider, makeStyles, mergeClasses, Text, tokens, webDarkTheme, Link } from '@fluentui/react-components';
+import {
+  FluentProvider,
+  makeStyles,
+  mergeClasses,
+  Text,
+  tokens,
+  webDarkTheme,
+  Link,
+  Button,
+} from '@fluentui/react-components';
 import { shorthands } from '@griffel/react';
 
 const MFSTLogo = () => {
@@ -48,6 +57,11 @@ const useStyles = makeStyles({
 export const Header: React.FC<HeaderProps> = props => {
   const styles = useStyles();
 
+  const handleClick = () => {
+    const url = 'https://github.com/microsoft/fluentui/discussions';
+    window.open(url, '_blank');
+  };
+
   return (
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
       <div className={styles.header}>
@@ -56,7 +70,9 @@ export const Header: React.FC<HeaderProps> = props => {
           <Text className={styles.text}>Theme Designer</Text>
         </div>
         <div className={styles.link}>
-          <Link href="https://github.com/microsoft/fluentui/discussions">Feedback?</Link>
+          <Button appearance="outline" size="small" onClick={handleClick}>
+            Give Feedback
+          </Button>
         </div>
       </div>
     </FluentProvider>
