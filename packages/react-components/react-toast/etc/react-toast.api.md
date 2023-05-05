@@ -4,6 +4,47 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export function toast<TData = unknown>(content: ToastContent<TData>, options?: ToastOptions): Id;
+
+// @public (undocumented)
+export namespace toast {
+    var // (undocumented)
+    loading: <TData = unknown>(content: ToastContent<TData>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    promise: typeof handlePromise;
+    var // (undocumented)
+    success: <TData = unknown>(content: ToastContent<TData>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    info: <TData = unknown>(content: ToastContent<TData>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    error: <TData = unknown>(content: ToastContent<TData>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    warning: <TData = unknown>(content: ToastContent<TData>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    warn: <TData = unknown>(content: ToastContent<TData>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    dark: (content: ToastContent<unknown>, options?: ToastOptions<{}> | undefined) => Id;
+    var // (undocumented)
+    dismiss: (id?: Id | undefined) => void;
+    var // (undocumented)
+    clearWaitingQueue: (params?: ClearWaitingQueueParams) => void;
+    var // (undocumented)
+    isActive: (id: Id) => boolean;
+    var // (undocumented)
+    update: <TData = unknown>(toastId: Id, options?: UpdateOptions<TData>) => void;
+    var // (undocumented)
+    onChange: (callback: OnChangeCallback) => () => void;
+}
+
+// @public (undocumented)
+export const Toaster: React_2.FC<ToasterProps>;
+
+// @public (undocumented)
+export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+
 // (No @packageDocumentation comment for this package)
 
 ```

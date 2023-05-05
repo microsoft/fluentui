@@ -21,7 +21,9 @@
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr ./stories/**/*.stories.tsx",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -32,10 +34,12 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.2",
+    "@fluentui/react-portal": "^9.2.6",
     "@fluentui/react-theme": "^9.1.7",
     "@fluentui/react-utilities": "^9.8.0",
     "@griffel/react": "^1.5.2",
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.4.14",
+    "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
