@@ -6,6 +6,7 @@ import {
   IDropdownOption,
   TeachingBubbleContent,
   mergeStyleSets,
+  Modal,
 } from '@fluentui/react';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { useBoolean } from '@fluentui/react-hooks';
@@ -15,8 +16,11 @@ const classNames = mergeStyleSets({
     maxWidth: '400px',
   },
   buttonContainer: {
-    marginTop: '30px',
+    marginTop: '300px',
     display: 'inline-block',
+  },
+  base: {
+    backgroundColor: 'lightgray',
   },
 });
 
@@ -65,7 +69,7 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
   );
 
   return (
-    <>
+    <Modal isOpen={true} className={classNames.base}>
       <div className={classNames.dropdownContainer}>
         <Dropdown
           label="Coachmark position"
@@ -83,6 +87,7 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
         <Coachmark
           target={targetButton.current}
           positioningContainerProps={positioningContainerProps}
+          persistentBeak
           ariaAlertText="A coachmark has appeared"
           ariaDescribedBy="coachmark-desc1"
           ariaLabelledBy="coachmark-label1"
@@ -103,6 +108,6 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
           </TeachingBubbleContent>
         </Coachmark>
       )}
-    </>
+    </Modal>
   );
 };
