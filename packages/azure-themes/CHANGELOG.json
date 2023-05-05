@@ -2,6 +2,33 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 18:14:02 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.3",
+      "version": "8.6.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.109.2",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/set-version to v8.2.9",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 22:20:22 GMT",
       "tag": "@fluentui/azure-themes_v8.6.2",
       "version": "8.6.2",
