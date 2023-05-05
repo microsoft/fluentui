@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 18:14:05 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.9",
+      "version": "0.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 00:58:15 GMT",
       "tag": "@fluentui/keyboard-key_v0.4.8",
       "version": "0.4.8",

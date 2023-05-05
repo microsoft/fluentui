@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "patch: publish dist folder that got removed due to node 16 upgrade",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}

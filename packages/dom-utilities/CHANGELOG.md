@@ -1,8 +1,18 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Tue, 02 May 2023 00:58:14 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.9)
+
+Fri, 05 May 2023 18:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.8..@fluentui/dom-utilities_v2.2.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
 
 ## [2.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.8)
 

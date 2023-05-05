@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: move `outlineStyle: none` out of createCustomFocusIndicatorStyle and to createFocusOutlineStyle",
+  "packageName": "@fluentui/react-tabster",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
