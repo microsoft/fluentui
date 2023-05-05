@@ -34,7 +34,7 @@ const storyTemplate = html<TextInputStoryArgs>`
       appearance="${x => x.appearance}"
       placeholder="${x => x.placeholder}"
     >
-      Sample Input
+      <fluent-label>Sample Input</fluent-label>
     </fluent-text-input>
   </div>
 `;
@@ -99,16 +99,16 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
-      Content Start
+      <fluent-label>Content Start</fluent-label>
     </fluent-text-input>
     <fluent-text-input>
       <span slot="end">${Person20Regular}</span>
-      Content After
+      <fluent-label>Content After</fluent-label>
     </fluent-text-input>
     <fluent-text-input>
       <fluent-text slot="start" size="400"><span>$</span></fluent-text>
       <fluent-text slot="end" size="400"><span>.00</span></fluent-text>
-      Content Before + After
+      <fluent-label>Content Before + After</fluent-label>
     </fluent-text-input>
   </div>
 `);
@@ -116,7 +116,7 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
 export const Placeholder = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input placeholder="This is a placeholder">
     <span slot="end">${Person20Regular}</span>
-    Disabled Input
+    <fluent-label>Disabled Input</fluent-label>
   </fluent-text-input>
 `);
 
@@ -124,32 +124,32 @@ export const Appearance = renderComponent(html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
-      Outlined Input
+      <fluent-label>Outline (default) Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input appearance="underline">
       <span slot="start">${Person20Regular}</span>
-      Underlined Input
+      <fluent-label>Underlined Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-lighter">
       <span slot="start">${Person20Regular}</span>
-      Filled Lighter Input
+      <fluent-label>Filled Lighter Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-lighter--shadow">
       <span slot="start">${Person20Regular}</span>
-      Filled Lighter with Shadow Input
+      <fluent-label>Filled Lighter with Shadow Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-darker">
       <span slot="start">${Person20Regular}</span>
-      Filled Darker Input
+      <fluent-label>Filled Darker Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-darker--shadow">
       <span slot="start">${Person20Regular}</span>
-      Filled Darker with Shadow Input
+      <fluent-label>Filled Darker with Shadow Input</fluent-label>
     </fluent-text-input>
   </div>
 `);
@@ -158,17 +158,17 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input control-size="small">
       <span slot="end">${Person20Regular}</span>
-      Small Input
+      <fluent-label>Small Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input>
       <span slot="end">${Person20Regular}</span>
-      Medium Input
+      <fluent-label>Medium (default) Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input control-size="large">
       <span slot="end">${Person20Regular}</span>
-      Large Input
+      <flunet-label>Large Input</fluent-label>
     </fluent-text-input>
   </div>
 `);
@@ -176,7 +176,7 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 export const Inline = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input style="display: inline-flex; align-items: center;">
     <span slot="end">${Person20Regular}</span>
-    Inline Input
+    <fluent-label>Inline Input</fluent-label>
   </fluent-text-input>
   <p
     style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}; display: flex; align-items: center; gap: 4px;"
@@ -191,13 +191,13 @@ export const Inline = renderComponent(html<TextInputStoryArgs>`
 export const Disabled = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input disabled>
     <span slot="end">${Person20Regular}</span>
-    Disabled Input
+    <fluent-label>Disabled Input</fluent-label>
   </fluent-text-input>
 `);
 
 export const Required = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input required>
     <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Required Input
+    <fluent-label>Required Input</fluent-label>
   </fluent-text-input>
 `);
