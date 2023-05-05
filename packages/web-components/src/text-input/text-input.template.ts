@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { ElementViewTemplate } from '@microsoft/fast-element';
 import { textFieldTemplate } from '@microsoft/fast-foundation';
 import type { TextInput } from './text-input.js';
 

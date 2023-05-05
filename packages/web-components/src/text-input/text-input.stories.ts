@@ -1,11 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
+import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputSize } from './text-input.options.js';
 import { TextInputType } from './index.js';
 import './define.js';
-import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
 
 type TextInputStoryArgs = Args & FluentTextInput;
 type TextInputStoryMeta = Meta<TextInputStoryArgs>;
