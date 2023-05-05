@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 05 May 2023 07:41:21 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.12.7)
+
+Fri, 05 May 2023 18:14:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.12.6..@fluentui/react-docsite-components_v8.12.7)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.109.2 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/theme to v2.6.29 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/example-data to v8.4.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/react-hooks to v8.6.24 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.84 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/common-styles to v1.2.26 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
 
 ## [8.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.12.6)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Tue, 02 May 2023 00:58:15 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.4.9)
+
+Fri, 05 May 2023 18:14:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.4.8..@fluentui/keyboard-key_v0.4.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
 
 ## [0.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.4.8)
 

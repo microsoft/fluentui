@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 02 May 2023 22:20:20 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.17)
+
+Fri, 05 May 2023 18:14:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.16..@fluentui/react-file-type-icons_v8.8.17)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/style-utilities to v8.9.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
 
 ## [8.8.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.16)
 

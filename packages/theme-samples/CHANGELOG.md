@@ -1,8 +1,20 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Tue, 02 May 2023 22:20:22 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.83](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.83)
+
+Fri, 05 May 2023 18:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.82..@fluentui/theme-samples_v8.7.83)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.109.2 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.30 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
 
 ## [8.7.82](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.82)
 
