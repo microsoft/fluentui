@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 07:41:21 GMT",
+      "tag": "@fluentui/react-charting_v5.16.26",
+      "version": "5.16.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a59a1056a6110af48fd7a7ab189ced2a6a9567d1",
+            "comment": "patch: publish dist folder that got removed due to node 16 upgrade"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 22:20:24 GMT",
       "tag": "@fluentui/react-charting_v5.16.25",
       "version": "5.16.25",
