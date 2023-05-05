@@ -57,6 +57,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -760,6 +761,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1382,6 +1384,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -1831,6 +1834,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2280,6 +2284,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2709,6 +2714,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -2818,6 +2824,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3267,6 +3274,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -3716,6 +3724,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
@@ -4165,6 +4174,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             & line {
               opacity: 0.2;
               stroke: #323130;
+              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
