@@ -1,8 +1,17 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Wed, 01 Mar 2023 07:45:40 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.3)
+
+Tue, 02 May 2023 22:20:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.3.0..@fluentui/test-utilities_v8.3.3)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.0)
 

@@ -40,14 +40,14 @@ const useStyles = makeStyles({
           opacity: 1,
         },
       },
-      { selector: 'focus-within', enableOutline: true },
+      { selector: 'focus-within' },
     ),
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
-      { selector: 'focus', enableOutline: true },
+      { selector: 'focus' },
     ),
   },
 
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
       {
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
-      { selector: 'focus-within', enableOutline: true },
+      { selector: 'focus-within' },
     ),
   },
 

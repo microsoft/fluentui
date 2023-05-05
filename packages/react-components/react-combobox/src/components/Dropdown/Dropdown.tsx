@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDropdown_unstable } from './useDropdown';
 import { renderDropdown_unstable } from './renderDropdown';
-import { useDropdownStyles_unstable } from './useDropdownStyles';
+import { useDropdownStyles_unstable } from './useDropdownStyles.styles';
 import type { DropdownProps } from './Dropdown.types';
 import { useComboboxContextValues } from '../../contexts/useComboboxContextValues';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

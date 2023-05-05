@@ -1,8 +1,18 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 02 May 2023 00:58:19 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2023 22:20:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.2)
+
+Tue, 02 May 2023 22:20:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.1..@fluentui/azure-themes_v8.6.2)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.109.1 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
 
 ## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.1)
 

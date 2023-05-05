@@ -1,129 +1,18 @@
+import { mergeClasses } from '@griffel/react';
 import * as React from 'react';
+import type { IStackItemProps } from '@fluentui/react';
 
-import { IStackItemProps } from '@fluentui/react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import {
+  useFlexAlignSelfStyles,
+  useFlexGrowStyles,
+  useFlexOrderStyles,
+  useFlexShrinkStyles,
+  useStackItemShimStyles,
+} from './StackItemShim.styles';
 
 const stackItemClassNames = {
   root: 'ms-StackItem',
 };
-
-const useStackItemShimStyles = makeStyles({
-  root: {
-    height: 'auto',
-    width: 'auto',
-  },
-  disableShrink: {
-    flexShrink: 0,
-  },
-  verticalFill: {
-    height: '100%',
-  },
-});
-
-const useFlexAlignSelfStyles = makeStyles({
-  auto: {
-    alignSelf: 'auto',
-  },
-  baseline: {
-    alignSelf: 'baseline',
-  },
-  center: {
-    alignSelf: 'center',
-  },
-  start: {
-    alignSelf: 'flex-start',
-  },
-  end: {
-    alignSelf: 'flex-end',
-  },
-  stretch: {
-    alignSelf: 'stretch',
-  },
-});
-
-const useFlexGrowStyles = makeStyles({
-  inherit: {
-    flexGrow: 'inherit',
-  },
-  initial: {
-    flexGrow: 'initial',
-  },
-  revert: {
-    flexGrow: 'revert',
-  },
-  unset: {
-    flexGrow: 'unset',
-  },
-  '1': {
-    flexGrow: 1,
-  },
-  '2': {
-    flexGrow: 2,
-  },
-  '3': {
-    flexGrow: 3,
-  },
-});
-
-const useFlexShrinkStyles = makeStyles({
-  inherit: {
-    flexShrink: 'inherit',
-  },
-  initial: {
-    flexShrink: 'initial',
-  },
-  revert: {
-    flexShrink: 'revert',
-  },
-  unset: {
-    flexShrink: 'unset',
-  },
-  0: {
-    flexShrink: 0,
-  },
-  1: {
-    flexShrink: 1,
-  },
-  2: {
-    flexShrink: 2,
-  },
-});
-
-const useFlexOrderStyles = makeStyles({
-  inherit: {
-    order: 'inherit',
-  },
-  initial: {
-    order: 'initial',
-  },
-  unset: {
-    order: 'unset',
-  },
-  revert: {
-    order: 'revert',
-  },
-  '-3': {
-    order: -3,
-  },
-  '-2': {
-    order: -2,
-  },
-  '-1': {
-    order: -1,
-  },
-  '0': {
-    order: 0,
-  },
-  '1': {
-    order: 1,
-  },
-  '2': {
-    order: 2,
-  },
-  '3': {
-    order: 3,
-  },
-});
 
 export const StackItemShim = (props: IStackItemProps) => {
   const { grow, shrink, disableShrink, align, verticalFill, order, className, children } = props;

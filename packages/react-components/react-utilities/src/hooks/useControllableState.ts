@@ -22,18 +22,19 @@ export type UseControllableStateOptions<State> = {
 /**
  * @internal
  *
- * A `useState`-like hook to manage a value that could be either controlled or uncontrolled,
+ * A [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate)-like hook
+ * to manage a value that could be either `controlled` or `uncontrolled`,
  * such as a checked state or text input string.
  *
- * Unlike `setState`, it's okay to call the returned updater (dispatch) function for either a
- * controlled or uncontrolled component. Calls will only be respected if the component is uncontrolled.
+ * @see https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components for more details on `controlled`/`uncontrolled`
  *
- * @returns Same as [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate): an array
- * of the current value and an updater (dispatch) function. The updater function is referentially
- * stable (won't change during the component's lifecycle). It can take either a new value, or a
- * function which is passed the previous value and returns the new value. Unlike `setState`, calls
- * to the updater function will only be respected if the component is uncontrolled.
- * @see https://reactjs.org/docs/uncontrolled-components.html
+ * @returns an array of the current value and an updater (dispatcher) function.
+ * The updater function is referentially stable (won't change during the component's lifecycle).
+ * It can take either a new value, or a function which is passed the previous value and returns the new value.
+ *
+ * ❗️❗️ Calls to the dispatcher will only modify the state if the state is `uncontrolled`.
+ * Meaning that if a state is `controlled`, calls to the dispatcher do not modify the state.
+ *
  */
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,

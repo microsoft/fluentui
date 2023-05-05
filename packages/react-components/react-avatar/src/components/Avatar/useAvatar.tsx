@@ -14,11 +14,11 @@ export const DEFAULT_STRINGS = {
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { size: contextSize } = useAvatarContext();
+  const { shape: contextShape, size: contextSize } = useAvatarContext();
   const {
     name,
     size = contextSize ?? (32 as const),
-    shape = 'circular',
+    shape = contextShape ?? 'circular',
     active = 'unset',
     activeAppearance = 'ring',
     idForColor,
