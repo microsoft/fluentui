@@ -243,17 +243,6 @@ function useListeners(
   useOnEvent(document, 'focus', dismissOnLostFocus, true);
 }
 
-// function useGetBounds(props: ICoachmarkProps): IRectangle | undefined {
-//   // const async = useAsync();
-//   const [bounds, setBounds] = React.useState<IRectangle | undefined>();
-
-//   React.useEffect(() => {
-//     setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
-//   }, [props.isPositionForced, props.positioningContainerProps]);
-
-//   return bounds;
-// }
-
 function useProximityHandlers(
   props: ICoachmarkProps,
   translateAnimationContainer: React.RefObject<HTMLDivElement>,
