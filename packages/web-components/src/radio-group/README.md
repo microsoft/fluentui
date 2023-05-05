@@ -1,6 +1,6 @@
 # Radio Group
 
-> RadioGroup lets people select a single option from two or more Radio items. Use RadioGroup to present all available choices if there's enough space..
+> RadioGroup lets users select a single option from two or more Radio items. Use RadioGroup to present all available choices if there's enough space..
 
 <br />
 
@@ -36,13 +36,14 @@ Used anywhere an author might group a list of radio options.
 
 ### **Fields**
 
-| Name          | Privacy | Type                     | Default      | Description                                                                                           |
-| ------------- | ------- | ------------------------ | ------------ | ----------------------------------------------------------------------------------------------------- |
-| `disabled`    | public  | `boolean`                | `false`      | Disables the radio group and child radios.                                                            |
-| `name`        | public  | `string`                 |              | The name of the radio group. Setting this value will set the name value for all child radio elements. |
-| `value`       | public  | `string`                 |              | The value of the checked radio.                                                                       |
-| `orientation` | public  | `horizontal \| vertical` | `horizontal` | The orientation of the group                                                                          |
-| default slot  | public  | `HTMLElement[]`          |              | The default slot expecting Radio items                                                                |
+| Name          | Privacy | Type                     | Default      | Description                                                                                                                                                                                                                                                                                                         |
+| ------------- | ------- | ------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disabled`    | public  | `boolean`                | `false`      | Disables the radio group and child radios.                                                                                                                                                                                                                                                                          |
+| `name`        | public  | `string`                 |              | The name of the radio group. Setting this value will set the name value for all child radio elements.                                                                                                                                                                                                               |
+| `value`       | public  | `string`                 |              | The value of the checked radio.                                                                                                                                                                                                                                                                                     |
+| `orientation` | public  | `horizontal \| vertical` | `horizontal` | Determines whether radios in a radio group are rendered in a horizontal row or a vertical column. The default value is horizontal, which will render radios in a horizontal row with labels appearing inline. Setting orientation to vertical will render radios in a vertical column with labels appearing inline. |
+| `stacked`     | public  | `boolean`                | `false`      | Determines whether the labels for radios appear inline or stacked when orientation is set to horizontal. The default value is false, which will display the labels inline. If stacked is set to true, the labels will appear under each radio in a horizontal row.                                                  |
+| default slot  | public  | `HTMLElement[]`          |              | The default slot expecting Radio items.                                                                                                                                                                                                                                                                             |
 
 <br />
 
@@ -57,9 +58,9 @@ Used anywhere an author might group a list of radio options.
 
 ### **Events**
 
-| Name     | Type | Description                                          |
-| -------- | ---- | ---------------------------------------------------- |
-| `change` |      | Fires a custom 'change' event when the value changes |
+| Name     | Event Type    | Target           | Arguments | Description                                                                                                       |
+| -------- | ------------- | ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------- |
+| `change` | `CustomEvent` | `FASTRadioGroup` | none      | Fired when the value of the RadioGroup changes (i.e., when a different radio button within the group is selected) |
 
 <br />
 
@@ -97,9 +98,10 @@ Used anywhere an author might group a list of radio options.
 
 ### **WAI-ARIA Roles, States, and Properties**
 
-| Attributes        | value | Description                              |
-| ----------------- | ----- | ---------------------------------------- |
-| `aria-labelledby` |       | used to associate a label with the group |
+| Attributes        | value          | Description                              |
+| ----------------- | -------------- | ---------------------------------------- |
+| `aria-labelledby` |                | used to associate a label with the group |
+| `role`            | `"radiogroup"` | used to define a group of radio buttons  |
 
 <br />
 <hr />
@@ -122,6 +124,6 @@ Used anywhere an author might group a list of radio options.
 <br />
 
 **Property Mapping**
-| Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|-------------------|------------------------ |---------------------------|
-| `layout` | `orientation` | React implementation requires user to pass either `"horizontal"` or `"horizontal-stacked"` through `layout` prop. <br /> WC3 implementation requires user to either pass `"vertical"` or "`horizontal"` through `orientation` attribute.
+| Fluent UI React 9 | Fluent Web Components | Description of difference |
+|-------------------|-------------------------- |---------------------------|
+| `layout` | `orientation` + `stacked` | React implementation requires user to pass either `"horizontal"` or `"horizontal-stacked"` through `layout` prop. <br /> WC3 implementation requires user to either pass `"vertical"` or "`horizontal"` through `orientation` attribute. Additionally, adding the `boolean` attribute `stacked` when the orientation is set to `horizontal` will create the `horizontal-stacked` layout available in FUIR9.
