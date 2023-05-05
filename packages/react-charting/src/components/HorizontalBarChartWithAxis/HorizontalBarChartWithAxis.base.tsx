@@ -518,11 +518,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
-      // const color = this.props.colors
-      //   ? colorScale(point.x)
-      //   : this.props.useSingleColor
-      //   ? getNextColor(1, 0, this.props.theme?.isInverted)
-      //   : getNextColor(index, 0, this.props.theme?.isInverted);
       let color: string;
       if (useSingleColor) {
         //if useSingle color , then check if user has given a palette or not
