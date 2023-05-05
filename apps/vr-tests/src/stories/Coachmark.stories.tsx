@@ -6,7 +6,28 @@ import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@flue
 import { useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
-const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
+const directionalHints = [
+  DirectionalHint.topLeftEdge,
+  DirectionalHint.topCenter,
+  DirectionalHint.topRightEdge,
+  DirectionalHint.bottomLeftEdge,
+  DirectionalHint.bottomCenter,
+  DirectionalHint.bottomRightEdge,
+  DirectionalHint.leftTopEdge,
+  DirectionalHint.leftCenter,
+  DirectionalHint.leftBottomEdge,
+  DirectionalHint.rightTopEdge,
+  DirectionalHint.rightCenter,
+  DirectionalHint.rightBottomEdge,
+];
+
+const CoachmarkUsage = ({
+  isCollapsed = true,
+  directionalHint = DirectionalHint.rightTopEdge,
+}: {
+  isCollapsed?: boolean;
+  directionalHint?: DirectionalHint;
+}) => {
   const targetId = useId();
   return (
     <>
@@ -16,7 +37,7 @@ const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
       <Coachmark
         target={`#${targetId}`}
         positioningContainerProps={{
-          directionalHint: DirectionalHint.rightTopEdge,
+          directionalHint,
           doNotLayer: false,
         }}
         ariaAlertText="A Coachmark has appeared"
@@ -85,5 +106,14 @@ storiesOf('Coachmark', module)
         <div style={divStyles} />
         <Coachmark target={rectangle} positioningContainerProps={positioningContainerProps} />
       </>
+    );
+  })
+  .addStory('Positioning', () => {
+    return (
+      <div>
+        {directionalHints.map((directionalHint, index) => (
+          <CoachmarkUsage isCollapsed={false} directionalHint={directionalHint} key={index} />
+        ))}
+      </div>
     );
   });
