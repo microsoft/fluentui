@@ -69,7 +69,12 @@ export const Header: React.FC<HeaderProps> = props => {
           <Text className={styles.text}>Theme Designer</Text>
         </div>
         <div className={styles.link}>
-          <Button appearance="outline" size="small" onClick={handleClick}>
+          <Button
+            size="small"
+            appearance="outline"
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={handleClick}
+          >
             Give Feedback
           </Button>
         </div>
