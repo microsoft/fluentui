@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 02 May 2023 22:20:24 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 07:41:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.26)
+
+Fri, 05 May 2023 07:41:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.25..@fluentui/react-charting_v5.16.26)
+
+### Patches
+
+- patch: publish dist folder that got removed due to node 16 upgrade ([PR #27764](https://github.com/microsoft/fluentui/pull/27764) by atishay.jain@microsoft.com)
 
 ## [5.16.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.25)
 
