@@ -22,7 +22,6 @@ const useRootClassName = makeResetStyles({
   boxSizing: 'border-box',
   alignItems: 'center',
   justifyContent: 'center',
-  aspectRatio: '1',
 
   borderRadius: tokens.borderRadiusCircular,
   backgroundColor: tokens.colorNeutralBackground1,
@@ -76,6 +75,7 @@ const useStyles = makeStyles({
   // use `!important` to size the currently available icons to the missing ones
   //
   tiny: {
+    aspectRatio: '1',
     width: '6px',
     backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
     '& svg': {
@@ -83,23 +83,16 @@ const useStyles = makeStyles({
       height: '6px !important',
     },
   },
-  'extra-small': {
-    width: '10px',
-  },
-  small: {
-    width: '12px',
-  },
-  medium: {
-    width: '16px',
-  },
   large: {
+    aspectRatio: '1',
     width: '20px',
     '& svg': {
       width: '20px !important',
       height: '20px !important',
     },
   },
-  'extra-large': {
+  extraLarge: {
+    aspectRatio: '1',
     width: '28px',
     '& svg': {
       width: '28px !important',
@@ -132,7 +125,9 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
     state.outOfOffice && state.status === 'offline' && styles.statusOffline,
     state.outOfOffice && state.status === 'out-of-office' && styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
-    styles[state.size],
+    state.size === 'tiny' && styles.tiny,
+    state.size === 'large' && styles.large,
+    state.size === 'extra-large' && styles.extraLarge,
     state.root.className,
   );
 
