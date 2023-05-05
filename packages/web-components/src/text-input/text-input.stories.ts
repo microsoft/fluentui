@@ -3,7 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
-import { TextInputAppearance, TextInputSize } from './text-input.options.js';
+import { TextControlSize, TextInputAppearance } from './text-input.options.js';
 import { TextInputType } from './index.js';
 import './define.js';
 
@@ -25,17 +25,15 @@ const Person20Regular = html`<svg
 </svg>`;
 
 const storyTemplate = html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; width: 300px;">
+  <div style="display: flex; flex-direction: column;">
     <fluent-text-input
       type=${x => x.type}
       ?disabled=${x => x.disabled}
       ?block=${x => x.block}
-      input-size="${x => x.inputSize}"
+      control-size="${x => x.controlSize}"
       appearance="${x => x.appearance}"
       placeholder="${x => x.placeholder}"
     >
-      <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Sample Input
     </fluent-text-input>
   </div>
@@ -45,28 +43,52 @@ export default {
   title: 'Components/TextInput',
   argTypes: {
     type: {
+      description: 'Sets the input type',
+      table: {
+        defaultValue: { summary: 'text' },
+      },
       options: Object.values(TextInputType),
       control: {
         type: 'select',
       },
     },
-    inputSize: {
-      options: Object.values(TextInputSize),
+    controlSize: {
+      description: 'Sets the size of the control',
+      table: {
+        defaultValue: { summary: 'medium' },
+      },
       control: {
         type: 'select',
+        options: Object.values(TextControlSize),
       },
     },
     appearance: {
-      options: Object.values(TextInputAppearance),
+      description: 'Sets the visual appearance of the control',
+      table: {
+        defaultValue: { summary: 'outline' },
+      },
       control: {
         type: 'select',
+        options: Object.values(TextInputAppearance),
       },
     },
     disabled: {
-      control: 'boolean',
+      description: 'Sets the disabled state',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+      control: {
+        type: 'boolean',
+      },
     },
     placeholder: {
-      control: 'text',
+      description: 'Sets the placeholder text',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+      control: {
+        type: 'text',
+      },
     },
   },
 } as TextInputStoryMeta;
@@ -74,7 +96,7 @@ export default {
 export const TextInput = renderComponent(storyTemplate).bind({});
 
 export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
+  <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
       Content Start
@@ -92,71 +114,59 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Placeholder = renderComponent(html<TextInputStoryArgs>`
-  <div style="width: 300px;">
-    <fluent-text-input placeholder="This is a placeholder">
-      <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
-      Disabled Input
-    </fluent-text-input>
-  </div>
+  <fluent-text-input placeholder="This is a placeholder">
+    <span slot="end">${Person20Regular}</span>
+    Disabled Input
+  </fluent-text-input>
 `);
 
 export const Appearance = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
+  <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Outlined Input
     </fluent-text-input>
 
     <fluent-text-input appearance="underline">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Underlined Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-lighter">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Filled Lighter Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-lighter--shadow">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Filled Lighter with Shadow Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-darker">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Filled Darker Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-darker--shadow">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
       Filled Darker with Shadow Input
     </fluent-text-input>
   </div>
 `);
 
 export const Size = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
-    <fluent-text-input input-size="small">
-      <span slot="start">${Person20Regular}</span>
+  <div style="display: flex; flex-direction: column; gap: 30px;">
+    <fluent-text-input control-size="small">
       <span slot="end">${Person20Regular}</span>
       Small Input
     </fluent-text-input>
 
     <fluent-text-input>
-      <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}</span>
       Medium Input
     </fluent-text-input>
 
-    <fluent-text-input input-size="large">
-      <span slot="start">${Person20Regular}</span>
+    <fluent-text-input control-size="large">
       <span slot="end">${Person20Regular}</span>
       Large Input
     </fluent-text-input>
@@ -165,38 +175,29 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 
 export const Inline = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input style="display: inline-flex; align-items: center;">
-    <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}</span>
     Inline Input
   </fluent-text-input>
   <p
     style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}; display: flex; align-items: center; gap: 4px;"
   >
-    This input is
-    <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="Inline">
-      <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
+    This input is an
+    <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="inline text input">
     </fluent-text-input>
     with a paragraph of text.
   </p>
 `);
 
 export const Disabled = renderComponent(html<TextInputStoryArgs>`
-  <div style="width: 300px;">
-    <fluent-text-input disabled>
-      <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}</span>
-      Disabled Input
-    </fluent-text-input>
-  </div>
+  <fluent-text-input disabled>
+    <span slot="end">${Person20Regular}</span>
+    Disabled Input
+  </fluent-text-input>
 `);
 
 export const Required = renderComponent(html<TextInputStoryArgs>`
-  <div style="width: 300px;">
-    <fluent-text-input required>
-      <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
-      Required Input
-    </fluent-text-input>
-  </div>
+  <fluent-text-input required>
+    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    Required Input
+  </fluent-text-input>
 `);

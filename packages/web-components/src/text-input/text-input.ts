@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTTextField } from '@microsoft/fast-foundation';
-import { TextInputAppearance, TextInputSize } from './text-input.options.js';
+import { TextControlSize, TextInputAppearance } from './text-input.options.js';
 
 /**
  * The base class used for constructing a fluent-text-input custom element
@@ -8,15 +8,15 @@ import { TextInputAppearance, TextInputSize } from './text-input.options.js';
  */
 export class TextInput extends FASTTextField {
   /**
-   * Defines TextInput size
+   * Defines TextInput control size
    *
    * @public
    * @default 'medium'
    * @remarks
-   * HTML Attribute: size
+   * HTML Attribute: control-size
    */
-  @attr({ attribute: 'input-size' })
-  public inputSize?: TextInputSize;
+  @attr({ attribute: 'control-size' })
+  public controlSize?: TextControlSize;
 
   /**
    * Defines TextInput appearance.

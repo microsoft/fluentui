@@ -58,6 +58,7 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
+    max-width: 400px;
   }
   .label {
     display: flex;
@@ -101,6 +102,7 @@ export const styles = css`
   }
   .control {
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     border-radius: ${borderRadiusMedium};
@@ -173,32 +175,32 @@ export const styles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-  :host([input-size='small']) .control {
+  :host([control-size='small']) .control {
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
   }
-  :host([input-size='small']) .root {
+  :host([control-size='small']) .root {
     height: 24px;
     gap: ${spacingHorizontalXXS};
     padding: 0 ${spacingHorizontalSNudge};
   }
-  :host([input-size='small']) ::slotted([slot='start']),
-  :host([input-size='small']) ::slotted([slot='end']) {
+  :host([control-size='small']) ::slotted([slot='start']),
+  :host([control-size='small']) ::slotted([slot='end']) {
     font-size: ${fontSizeBase400};
   }
-  :host([input-size='large']) .control {
+  :host([control-size='large']) .control {
     font-size: ${fontSizeBase400};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase400};
   }
-  :host([input-size='large']) .root {
+  :host([control-size='large']) .root {
     height: 40px;
     gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalM};
   }
-  :host([input-size='large']) ::slotted([slot='start']),
-  :host([input-size='large']) ::slotted([slot='end']) {
+  :host([control-size='large']) ::slotted([slot='start']),
+  :host([control-size='large']) ::slotted([slot='end']) {
     font-size: ${fontSizeBase600};
   }
   :host([appearance='underline']) .root {

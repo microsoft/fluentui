@@ -4,20 +4,20 @@ import { ValuesOf } from '@microsoft/fast-foundation';
  * TextInput size constants
  * @public
  */
-export const TextInputSize = {
+export const TextControlSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
 
 /**
- * The type for TextInputSize
+ * Applies size styling to TextInput
  * @public
  */
-export type TextInputSize = ValuesOf<typeof TextInputSize>;
+export type TextControlSize = ValuesOf<typeof TextControlSize>;
 
 /**
- * TextInput appearance Constants
+ * TextInput appearance constants
  * @public
  */
 export const TextInputAppearance = {
@@ -30,22 +30,7 @@ export const TextInputAppearance = {
 } as const;
 
 /**
- * Applies styling to TextInput
+ * Applies appearance styling to TextInput
  * @public
  */
 export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
-
-/**
- * TextInput layout Constants
- * @public
- */
-export const TextInputLayout = {
-  block: 'block',
-  inline: 'inline',
-} as const;
-
-/**
- * Applies display style property
- * @public
- */
-export type TextInputLayout = ValuesOf<typeof TextInputLayout>;
