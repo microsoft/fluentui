@@ -175,15 +175,33 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     this.margins = margins;
   };
 
-  private _renderContentForOnlyBars = (props: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
+  private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
     const { useSingleColor = false } = this.props;
+    let selectedPointIndex = 0;
+    this.props.data!.forEach((yDataPoint: IHorizontalBarChartWithAxisDataPoint, index: number) => {
+      if (yDataPoint.y === point.y) {
+        selectedPointIndex = index;
+      }
+    });
+    let color: string;
+    if (useSingleColor) {
+      //if useSingle color , then check if user has given a palette or not
+      // and pick the first color from that or else from our paltette.
+      color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+    } else {
+      color = point.color
+        ? point.color
+        : this.props.colors
+        ? this._createColors()(point.x)
+        : getNextColor(selectedPointIndex, 0, this.props.theme?.isInverted);
+    }
     return (
       <>
         <ChartHoverCard
-          XValue={props.xAxisCalloutData || props.x.toString()}
-          Legend={props.legend}
-          YValue={props.yAxisCalloutData || props.y}
-          color={!useSingleColor && props.color ? props.color : this._createColors()(props.x)}
+          XValue={point.xAxisCalloutData || point.x.toString()}
+          Legend={point.legend}
+          YValue={point.yAxisCalloutData || point.y}
+          color={color}
           culture={this.props.culture}
         />
       </>
@@ -242,16 +260,30 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const { useSingleColor = false } = this.props;
     const { data } = this.props;
     const selectedPoint = data!.filter((yDataPoint: IHorizontalBarChartWithAxisDataPoint) => yDataPoint.y === point.y);
+    let selectedPointIndex = 0;
+    data!.forEach((yDataPoint: IHorizontalBarChartWithAxisDataPoint, index: number) => {
+      if (yDataPoint.y === point.y) {
+        selectedPointIndex = index;
+      }
+    });
+    let color: string;
+    if (useSingleColor) {
+      //if useSingle color , then check if user has given a palette or not
+      // and pick the first color from that or else from our paltette.
+      color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+    } else {
+      color = selectedPoint[0].color
+        ? selectedPoint[0].color
+        : this.props.colors
+        ? this._createColors()(selectedPoint[0].x)
+        : getNextColor(selectedPointIndex, 0, this.props.theme?.isInverted);
+    }
     // callout data for the bar
     YValueHover.push({
       legend: selectedPoint[0].legend,
       // For HBCWA x and y Values are swapped
       y: selectedPoint[0].x,
-      color: !useSingleColor
-        ? selectedPoint[0].color
-          ? selectedPoint[0].color
-          : this._createColors()(selectedPoint[0].x)
-        : this._createColors()(1),
+      color,
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
@@ -277,7 +309,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         isCalloutVisible: true,
         dataForHoverCard: point.x,
         selectedLegendTitle: point.legend!,
-        color: point.color || color,
+        color: this.props.useSingleColor ? color : point.color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue: point.yAxisCalloutData! || point.y.toString(),
         yCalloutValue: point.xAxisCalloutData || point.x.toString(),
@@ -321,7 +353,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             isCalloutVisible: true,
             selectedLegendTitle: point.legend!,
             dataForHoverCard: point.x,
-            color: point.color || color,
+            color: this.props.useSingleColor ? color : point.color,
             xCalloutValue: point.yAxisCalloutData || point.y.toString(),
             yCalloutValue: point.xAxisCalloutData! || point.x.toString(),
             dataPointCalloutProps: point,
@@ -378,7 +410,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
-    const colorScale = this._createColors();
     const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...this._points];
     sortedBars.sort((a, b) => {
       const aValue = typeof a.y === 'number' ? a.y : parseFloat(a.y);
@@ -399,7 +430,16 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
-      const color = this.props.colors ? colorScale(point.x) : getNextColor(index, 0, this.props.theme?.isInverted);
+      let color: string;
+      if (useSingleColor) {
+        //if useSingle color , then check if user has given a palette or not
+        // and pick the first color from that or else from our paltette.
+        color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+      } else {
+        color = this.props.colors
+          ? this._createColors()(point.x)
+          : getNextColor(index, 0, this.props.theme?.isInverted);
+      }
       return (
         <rect
           key={point.y}
@@ -472,12 +512,28 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     yElement: SVGElement,
   ): JSX.Element[] {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
-    const colorScale = this._createColors();
+    const { useSingleColor = false } = this.props;
     const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
+      // const color = this.props.colors
+      //   ? colorScale(point.x)
+      //   : this.props.useSingleColor
+      //   ? getNextColor(1, 0, this.props.theme?.isInverted)
+      //   : getNextColor(index, 0, this.props.theme?.isInverted);
+      let color: string;
+      if (useSingleColor) {
+        //if useSingle color , then check if user has given a palette or not
+        // and pick the first color from that or else from our paltette.
+        color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+      } else {
+        color = this.props.colors
+          ? this._createColors()(point.x)
+          : getNextColor(index, 0, this.props.theme?.isInverted);
+      }
+
       return (
         <rect
           key={point.x}
@@ -496,12 +552,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             this._refCallback(e, point.legend!);
           }}
           onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, colorScale(point.x))}
+          onMouseOver={this._onBarHover.bind(this, point, color)}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
           data-is-focusable={true}
-          onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.x))}
-          fill={point.color ? point.color : colorScale(point.x)}
+          onFocus={this._onBarFocus.bind(this, point, index, color)}
+          fill={point.color && !useSingleColor ? point.color : color}
         />
       );
     });
@@ -583,7 +639,11 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
-      const color: string = !useSingleColor ? point.color! : this._createColors()(1);
+      const color: string = useSingleColor
+        ? this.props.colors
+          ? this._createColors()(1)
+          : getNextColor(1, 0, this.props.theme?.isInverted)
+        : point.color!;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
