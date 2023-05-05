@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     textDecorationColor: tokens.colorStrokeFocus2,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
+    outlineStyle: 'none',
   }),
   // Common styles.
   root: {
