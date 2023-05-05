@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore add !dist to npmignore files",
+  "packageName": "@fluentui/react-icon-provider",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
