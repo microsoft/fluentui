@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-export const Default = () => {
+export const Overlay = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <div>
-      <Drawer position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <DrawerOverlay open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -20,14 +20,14 @@ export const Default = () => {
               />
             }
           >
-            Default Drawer
+            Overlay Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </Drawer>
+      </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
         Toggle

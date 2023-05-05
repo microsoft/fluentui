@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
 import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -60,25 +60,25 @@ export const WithScroll = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer className={styles.drawer} type="inline" open>
+      <DrawerInline className={styles.drawer} open>
         <Body />
-      </Drawer>
+      </DrawerInline>
 
-      <Drawer className={styles.drawer} type="inline" open>
+      <DrawerInline className={styles.drawer} open>
         <Header />
         <Body />
-      </Drawer>
+      </DrawerInline>
 
-      <Drawer className={styles.drawer} type="inline" open>
+      <DrawerInline className={styles.drawer} open>
         <Body />
         <Footer />
-      </Drawer>
+      </DrawerInline>
 
-      <Drawer className={styles.drawer} type="inline" open>
+      <DrawerInline className={styles.drawer} open>
         <Header />
         <Body />
         <Footer />
-      </Drawer>
+      </DrawerInline>
     </div>
   );
 };

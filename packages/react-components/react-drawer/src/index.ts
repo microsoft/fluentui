@@ -47,3 +47,21 @@ export type {
   DrawerHeaderNavigationSlots,
   DrawerHeaderNavigationState,
 } from './DrawerHeaderNavigation';
+
+export {
+  DrawerOverlay,
+  drawerOverlayClassNames,
+  renderDrawerOverlay_unstable,
+  useDrawerOverlayStyles_unstable,
+  useDrawerOverlay_unstable,
+} from './DrawerOverlay';
+export type { DrawerOverlayProps, DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay';
+
+export {
+  DrawerInline,
+  drawerInlineClassNames,
+  renderDrawerInline_unstable,
+  useDrawerInlineStyles_unstable,
+  useDrawerInline_unstable,
+} from './DrawerInline';
+export type { DrawerInlineProps, DrawerInlineSlots, DrawerInlineState } from './DrawerInline';

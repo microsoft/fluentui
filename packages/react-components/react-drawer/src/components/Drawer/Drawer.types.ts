@@ -16,7 +16,7 @@ export type DrawerSlots = {
 export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
   /**
    * Position of the drawer.
-   * @defaultvalue 'left'
+   * @default left
    *
    * - 'left' - Drawer is positioned on the left side of the screen.
    * - 'right' - Drawer is positioned on the right side of the screen.
@@ -25,7 +25,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
 
   /**
    * Type of the drawer.
-   * @defaultvalue 'overlay'
+   * @default overlay
    *
    * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
    * - 'inline' - Drawer is stacked with the content
@@ -34,7 +34,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
 
   /**
    * Size of the drawer.
-   * @defaultvalue 'small'
+   * @default small
    *
    * - 'small' - Drawer is 320px wide.
    * - 'medium' - Drawer is 592px wide.
@@ -45,18 +45,18 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
 
   /**
    * When this is set, the rest of the page is dimmed out and cannot be interacted with.
-   * The tab sequence is kept within the drawer and moving the focus outside
-   * the drawer will imply closing it. This is the default type of the component.
+   * The tab sequence is kept within the dialog and moving the focus outside
+   * the dialog will imply closing it. This is the default type of the component.
    * This prop is only used when `type` is `overlay`.
    *
-   * @defaultvalue true
+   * @default true
    */
   modal?: boolean;
 
   /**
    * When this is true, the drawer will be closed on a click on the overlay.
    * This prop is only used when `type` is `overlay`.
-   * @defaultvalue true
+   * @default true
    */
   lightDismiss?: boolean;
 
@@ -64,7 +64,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
    * Whether the drawer has a separator line.
    * This prop only works when `type` is `inline`.
    *
-   * @defaultvalue false
+   * @default false
    */
   separator?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
