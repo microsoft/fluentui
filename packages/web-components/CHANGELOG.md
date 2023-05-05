@@ -1,8 +1,37 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 11 Apr 2023 04:24:57 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2023 04:19:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.19)
+
+Fri, 21 Apr 2023 04:19:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.18..@fluentui/web-components_v3.0.0-alpha.19)
+
+### Changes
+
+- feat(menu-list): Add menu-list and menu-item web components ([PR #26765](https://github.com/microsoft/fluentui/pull/26765) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.18)
+
+Thu, 20 Apr 2023 04:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.17..@fluentui/web-components_v3.0.0-alpha.18)
+
+### Changes
+
+- Image component style updates ([PR #27567](https://github.com/microsoft/fluentui/pull/27567) by harankin@microsoft.com)
+
+## [3.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.17)
+
+Wed, 12 Apr 2023 04:19:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.16..@fluentui/web-components_v3.0.0-alpha.17)
+
+### Changes
+
+- feat(toggle-button): add toggle button web component ([PR #27405](https://github.com/microsoft/fluentui/pull/27405) by chhol@microsoft.com)
+- feat(compound-button): add compound button as new web component ([PR #27407](https://github.com/microsoft/fluentui/pull/27407) by chhol@microsoft.com)
+- feat(anchor-button): add anchor button to web components ([PR #27395](https://github.com/microsoft/fluentui/pull/27395) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.16)
 
