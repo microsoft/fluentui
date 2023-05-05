@@ -6,7 +6,6 @@ import {
   Text,
   tokens,
   webDarkTheme,
-  Link,
   Button,
 } from '@fluentui/react-components';
 import { shorthands } from '@griffel/react';
