@@ -2,10 +2,10 @@
 
 exports[`DialogTitle renders a default state 1`] = `
 <div>
-  <div
+  <h2
     class="fui-DialogTitle"
   >
     Default DialogTitle
-  </div>
+  </h2>
 </div>
 `;

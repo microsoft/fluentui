@@ -318,13 +318,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-avatar-context": {
-      "root": "packages/react-components/react-avatar-context",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-avatar-context/src",
-      "tags": ["vNext", "platform:web"]
-    },
     "@fluentui/react-badge": {
       "root": "packages/react-components/react-badge",
       "projectType": "library",
@@ -829,6 +822,13 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-theme-sass/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-toast": {
+      "root": "packages/react-components/react-toast",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-toast/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-toolbar": {

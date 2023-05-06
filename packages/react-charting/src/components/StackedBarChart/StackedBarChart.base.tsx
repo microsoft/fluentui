@@ -7,7 +7,7 @@ import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStac
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
-import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
+import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -107,16 +107,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <TooltipHost
-                overflowMode={TooltipOverflowMode.Self}
-                hostClassName={this._classNames.chartTitleLeft}
+              <FocusableTooltipText
+                className={this._classNames.chartTitleLeft}
                 content={data!.chartTitle}
-              >
-                <span {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>{data!.chartTitle}</span>
-              </TooltipHost>
+                accessibilityData={data!.chartTitleAccessibilityData}
+              />
             )}
             {showRatio && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
                   <span className={this._classNames.ratioDenominator}>
@@ -128,7 +126,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             {showNumber && (
               <div
                 className={this._classNames.ratioNumerator}
-                {...getAccessibleDataObject(data!.chartDataAccessibilityData)}
+                {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}
               >
                 {getChartData()}
               </div>

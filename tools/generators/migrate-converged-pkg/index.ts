@@ -13,9 +13,12 @@ import {
   updateProjectConfiguration,
   serializeJson,
   offsetFromRoot,
+  applyChangesToString,
+  ChangeType,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
+import * as ts from 'typescript';
 
 import { PackageJson, TsConfig } from '../../types';
 import {
@@ -144,6 +147,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   setupSwcConfig(tree, options);
   setupJustConfig(tree, options);
+  updateConformanceSetup(tree, options);
 }
 
 // ==== helpers ====
@@ -301,7 +305,7 @@ const templates = {
         globals: {
           'ts-jest': {
             tsconfig: '<rootDir>/tsconfig.spec.json',
-            diagnostics: false,
+            isolatedModules: true,
           },
         },
         transform: {
@@ -391,6 +395,13 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
+    .swcrc
+
+    # exclude gitignore patterns explicitly
+    !lib
+    !lib-commonjs
+    !lib-amd
+    !dist/*.d.ts
   ` + os.EOL,
   swcConfig: () => {
     return {
@@ -973,6 +984,52 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
+  }
+
+  return tree;
+}
+
+function updateConformanceSetup(tree: Tree, options: NormalizedSchema) {
+  if (!tree.exists(options.paths.conformanceSetup)) {
+    logger.warn('no conformance setup present. skipping...');
+    return;
+  }
+
+  const conformanceSetupContent = tree.read(options.paths.conformanceSetup, 'utf-8') as string;
+  const sourceFile = ts.createSourceFile('is-conformant.ts', conformanceSetupContent, ts.ScriptTarget.Latest, true);
+  const addition = `\ntsConfig: { configName: 'tsconfig.spec.json' },`;
+
+  let start: number | undefined;
+  getConfigObjectFirstPropertyIndex(sourceFile);
+
+  if (!start) {
+    return;
+  }
+
+  const updatedContent = applyChangesToString(conformanceSetupContent, [
+    {
+      type: ChangeType.Insert,
+      index: start,
+      text: addition,
+    },
+  ]);
+
+  tree.write(options.paths.conformanceSetup, updatedContent);
+
+  function getConfigObjectFirstPropertyIndex(node: ts.Node) {
+    if (ts.isVariableStatement(node)) {
+      const defaultOptionsVar = node.declarationList.declarations[0].name.getText();
+      if (defaultOptionsVar === 'defaultOptions') {
+        const initializer = node.declarationList.declarations[0].initializer;
+        if (initializer && ts.isObjectLiteralExpression(initializer)) {
+          const firstProp = initializer.properties[0];
+          start = firstProp.pos;
+          return;
+        }
+      }
+    }
+
+    ts.forEachChild(node, getConfigObjectFirstPropertyIndex);
   }
 
   return tree;

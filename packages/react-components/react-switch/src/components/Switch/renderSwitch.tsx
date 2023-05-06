@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { SwitchState, SwitchSlots } from './Switch.types';
 
 /**
  * Render a Switch component by passing the state defined props to the appropriate slots.
  */
 export const renderSwitch_unstable = (state: SwitchState) => {
-  const { slots, slotProps } = getSlots<SwitchSlots>(state);
+  const { slots, slotProps } = getSlotsNext<SwitchSlots>(state);
   const { labelPosition } = state;
 
   return (

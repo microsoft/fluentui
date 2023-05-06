@@ -826,7 +826,6 @@ export class VerticalStackedBarChartBase extends React.Component<
               y={yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
-              data-is-focusable={true}
               aria-label={`Total: ${barTotalValue}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}

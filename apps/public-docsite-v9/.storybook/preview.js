@@ -1,6 +1,8 @@
+import * as rootPreview from '../../../.storybook/preview';
+
 import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
-import * as rootPreview from '../../../.storybook/preview';
+
 import './docs-root-v9.css';
 
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */

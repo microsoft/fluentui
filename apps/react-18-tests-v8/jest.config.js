@@ -15,7 +15,7 @@ if (config.globals) {
   // override ts-jest config, otherwise it gets merged
   config.globals['ts-jest'] = {
     tsconfig: '<rootDir>/tsconfig.spec.json',
-    diagnostics: { warnOnly: true /* , exclude: ['packages/**']  */ },
+    isolatedModules: true,
   };
 }
 

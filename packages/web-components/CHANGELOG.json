@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 17 Apr 2023 07:40:25 GMT",
+      "tag": "@fluentui/web-components_v2.5.14",
+      "version": "2.5.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2e1cf8928df3e4f0b64b7390408374db94ae9e2c",
+            "comment": "update FAST dependencies to mitigate Safari 16.4 AdoptedStyleSheets bug"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Apr 2023 07:43:45 GMT",
       "tag": "@fluentui/web-components_v2.5.13",
       "version": "2.5.13",
