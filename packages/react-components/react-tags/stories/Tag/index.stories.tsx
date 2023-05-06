@@ -9,6 +9,7 @@ export { Media } from './TagMedia.stories';
 export { SecondaryText } from './TagSecondaryText.stories';
 export { Dismiss } from './TagDismiss.stories';
 export { Shape } from './TagShape.stories';
+export { Interactive } from './TagInteractive.stories';
 
 export default {
   title: 'Preview Components/Tag',

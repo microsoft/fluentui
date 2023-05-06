@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 
-import { Tag } from '@fluentui/react-tags';
+import { Tag, TagContent } from '@fluentui/react-tags';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -17,16 +17,22 @@ export const Shape = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <Tag media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Rounded</Tag>
-      <Tag shape="circular" media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-        Circular
+      <Tag>
+        <TagContent media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Rounded </TagContent>
+      </Tag>
+      <Tag shape="circular">
+        <TagContent media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Circular</TagContent>
       </Tag>
 
-      <Tag dismissable icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
-        Rounded
+      <Tag dismissable>
+        <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+          Rounded
+        </TagContent>
       </Tag>
-      <Tag shape="circular" dismissable icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
-        Circular
+      <Tag shape="circular" dismissable>
+        <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+          Circular
+        </TagContent>
       </Tag>
     </div>
   );

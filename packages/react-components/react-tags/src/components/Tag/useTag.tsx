@@ -1,19 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
-
-const tagAvatarSizeMap = {
-  medium: 28,
-  small: 24,
-  'extra-small': 20,
-} as const;
-
-const tagAvatarShapeMap = {
-  rounded: 'square',
-  circular: 'circular',
-} as const;
 
 const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
@@ -34,36 +23,27 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     shape = 'rounded',
     size = 'medium',
     appearance = 'filled-lighter',
+    interactive = false,
   } = props;
 
   return {
     components: {
       root: 'div',
-      content: 'div',
-      media: 'span',
-      icon: 'span',
-      primaryText: 'span',
-      secondaryText: 'span',
       dismissButton: 'button',
     },
+
     checked,
     disabled,
     dismissable,
     shape,
     size,
     appearance,
+    interactive,
+
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
-    avatarSize: tagAvatarSizeMap[size],
-    avatarShape: tagAvatarShapeMap[shape],
-    media: resolveShorthand(props.media),
-
-    content: resolveShorthand(props.content, { required: true }),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, { required: true }),
-    secondaryText: resolveShorthand(props.secondaryText),
 
     dismissButton: useARIAButtonShorthand(props.dismissButton, {
       required: props.dismissable,

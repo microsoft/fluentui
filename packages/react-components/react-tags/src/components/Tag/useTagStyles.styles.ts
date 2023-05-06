@@ -1,16 +1,11 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
-  content: 'fui-Tag__content',
-  media: 'fui-Tag__media',
-  icon: 'fui-Tag__icon',
-  primaryText: 'fui-Tag__primaryText',
-  secondaryText: 'fui-Tag__secondaryText',
   dismissButton: 'fui-Tag__dismissButton',
 };
 
@@ -31,54 +26,6 @@ export const useTagBaseStyles = makeStyles({
   },
   rootCircular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  },
-
-  media: {
-    ...shorthands.gridArea('media'),
-    alignSelf: 'center',
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalS,
-  },
-
-  content: {
-    display: 'inline-grid',
-    gridTemplateRows: '1fr auto auto 1fr',
-    gridTemplateAreas: `
-    "media .        "
-    "media primary  "
-    "media secondary"
-    "media .        "
-    `,
-    paddingRight: tokens.spacingHorizontalS,
-  },
-  textOnlyContent: {
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-
-  icon: {
-    display: 'flex',
-    alignSelf: 'center',
-    ...shorthands.gridArea('media'),
-    paddingLeft: '6px',
-    paddingRight: '2px',
-  },
-  primaryText: {
-    gridColumnStart: 'primary',
-    gridRowStart: 'primary',
-    gridRowEnd: 'secondary',
-    ...typographyStyles.body1,
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalXXS,
-  },
-  primaryTextWithSecondaryText: {
-    ...shorthands.gridArea('primary'),
-    ...typographyStyles.caption1,
-  },
-  secondaryText: {
-    ...shorthands.gridArea('secondary'),
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalXXS,
-    ...typographyStyles.caption2,
   },
 
   resetButton: {
@@ -113,12 +60,26 @@ export const useTagBaseStyles = makeStyles({
 });
 
 const useTagStyles = makeStyles({
-  dismissableContent: {
-    paddingRight: '2px',
-  },
   dismissButton: {
     marginRight: '6px',
   },
+});
+
+const useInteractiveTagStyles = makeStyles({
+  dismissButton: {
+    ...shorthands.padding('0px', '6px'),
+    ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    borderTopLeftRadius: tokens.borderRadiusNone,
+    borderBottomLeftRadius: tokens.borderRadiusNone,
+    ...createCustomFocusIndicatorStyle({
+      borderTopLeftRadius: tokens.borderRadiusNone,
+      borderBottomLeftRadius: tokens.borderRadiusNone,
+    }),
+  },
+  dismissButtonCircular: createCustomFocusIndicatorStyle({
+    borderTopRightRadius: tokens.borderRadiusCircular,
+    borderBottomRightRadius: tokens.borderRadiusCircular,
+  }),
 });
 
 /**
@@ -126,7 +87,9 @@ const useTagStyles = makeStyles({
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
   const baseStyles = useTagBaseStyles();
-  const styles = useTagStyles();
+
+  const tagStyles = useTagStyles();
+  const interactiveTagStyles = useInteractiveTagStyles();
 
   state.root.className = mergeClasses(
     tagClassNames.root,
@@ -134,45 +97,18 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     state.shape === 'circular' && baseStyles.rootCircular,
     state.root.className,
   );
-  if (state.content) {
-    state.content.className = mergeClasses(
-      tagClassNames.content,
-      baseStyles.content,
-      !state.media && !state.icon && baseStyles.textOnlyContent,
 
-      state.dismissButton && styles.dismissableContent,
-      state.content.className,
-    );
-  }
-
-  if (state.media) {
-    state.media.className = mergeClasses(tagClassNames.media, baseStyles.media, state.media.className);
-  }
-  if (state.icon) {
-    state.icon.className = mergeClasses(tagClassNames.icon, baseStyles.icon, state.icon.className);
-  }
-  if (state.primaryText) {
-    state.primaryText.className = mergeClasses(
-      tagClassNames.primaryText,
-      baseStyles.primaryText,
-      state.secondaryText && baseStyles.primaryTextWithSecondaryText,
-      state.primaryText.className,
-    );
-  }
-  if (state.secondaryText) {
-    state.secondaryText.className = mergeClasses(
-      tagClassNames.secondaryText,
-      baseStyles.secondaryText,
-      state.secondaryText.className,
-    );
-  }
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagClassNames.dismissButton,
       baseStyles.resetButton,
       baseStyles.dismissButton,
 
-      styles.dismissButton,
+      !state.interactive && tagStyles.dismissButton,
+
+      state.interactive && interactiveTagStyles.dismissButton,
+      state.interactive && state.shape === 'circular' && interactiveTagStyles.dismissButtonCircular,
+
       state.dismissButton.className,
     );
   }

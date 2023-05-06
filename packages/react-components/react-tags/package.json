@@ -23,7 +23,8 @@
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -35,6 +36,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.3.18",
     "@fluentui/react-avatar": "^9.4.10",
+    "@fluentui/react-context-selector": "^9.1.18",
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.2",
     "@fluentui/react-tabster": "^9.6.5",

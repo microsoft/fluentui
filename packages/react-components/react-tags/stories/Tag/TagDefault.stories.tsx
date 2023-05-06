@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tag, TagProps } from '@fluentui/react-tags';
+import { Tag, TagContent, TagProps } from '@fluentui/react-tags';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-components';
 
@@ -7,141 +7,151 @@ import { Avatar } from '@fluentui/react-components';
 export const Default = (props: Partial<TagProps>) => (
   <div style={{ display: 'flex', columnGap: 28 }}>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
-      <Tag
-        media={
-          <Avatar
-            {...{
-              name: 'Katri Athokas',
-              badge: { status: 'busy' },
-              image: {
-                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-              },
-            }}
-          />
-        }
-        secondaryText="Secondary text"
-        dismissable={true}
-        {...props}
-      >
-        Primary text
+      <Tag dismissable {...props}>
+        <TagContent
+          media={
+            <Avatar
+              {...{
+                name: 'Katri Athokas',
+                badge: { status: 'busy' },
+                image: {
+                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+                },
+              }}
+            />
+          }
+          secondaryText="Secondary text"
+        >
+          Primary text
+        </TagContent>
       </Tag>
-      <Tag
-        media={
-          <Avatar
-            {...{
-              name: 'Katri Athokas',
-              badge: { status: 'busy' },
-              image: {
-                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-              },
-            }}
-          />
-        }
-        dismissable={true}
-        {...props}
-      >
-        Primary text
+
+      <Tag dismissable {...props}>
+        <TagContent
+          media={
+            <Avatar
+              {...{
+                name: 'Katri Athokas',
+                badge: { status: 'busy' },
+                image: {
+                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+                },
+              }}
+            />
+          }
+        >
+          Primary text
+        </TagContent>
       </Tag>
-      <Tag
-        media={
-          <Avatar
-            {...{
-              name: 'Katri Athokas',
-              badge: { status: 'busy' },
-              image: {
-                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-              },
-            }}
-          />
-        }
-        {...props}
-      >
-        Primary text
+
+      <Tag {...props}>
+        <TagContent
+          media={
+            <Avatar
+              {...{
+                name: 'Katri Athokas',
+                badge: { status: 'busy' },
+                image: {
+                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+                },
+              }}
+            />
+          }
+        >
+          Primary text
+        </TagContent>
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} secondaryText="Secondary text" dismissable={true} {...props} {...props}>
-        Primary text
+
+      <Tag dismissable {...props}>
+        <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+          Primary text
+        </TagContent>
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
-        Primary text
+
+      <Tag dismissable {...props}>
+        <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} {...props}>
-        Primary text
+
+      <Tag {...props}>
+        <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>
       </Tag>
-      <Tag {...props}>Primary text</Tag>
+
+      <Tag {...props}>
+        <TagContent>Primary text</TagContent>
+      </Tag>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
-      <Tag
-        shape="circular"
-        media={
-          <Avatar
-            {...{
-              name: 'Katri Athokas',
-              badge: { status: 'busy' },
-              image: {
-                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-              },
-            }}
-          />
-        }
-        secondaryText="Secondary text"
-        dismissable={true}
-        {...props}
-      >
-        Primary text
+      <Tag shape="circular" dismissable {...props}>
+        <TagContent
+          media={
+            <Avatar
+              {...{
+                name: 'Katri Athokas',
+                badge: { status: 'busy' },
+                image: {
+                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+                },
+              }}
+            />
+          }
+          secondaryText="Secondary text"
+        >
+          Primary text
+        </TagContent>
       </Tag>
-      <Tag
-        shape="circular"
-        media={
-          <Avatar
-            {...{
-              name: 'Katri Athokas',
-              badge: { status: 'busy' },
-              image: {
-                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-              },
-            }}
-          />
-        }
-        dismissable={true}
-        {...props}
-      >
-        Primary text
+
+      <Tag shape="circular" dismissable {...props}>
+        <TagContent
+          media={
+            <Avatar
+              {...{
+                name: 'Katri Athokas',
+                badge: { status: 'busy' },
+                image: {
+                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+                },
+              }}
+            />
+          }
+        >
+          Primary text
+        </TagContent>
       </Tag>
-      <Tag
-        shape="circular"
-        media={
-          <Avatar
-            {...{
-              name: 'Katri Athokas',
-              badge: { status: 'busy' },
-              image: {
-                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-              },
-            }}
-          />
-        }
-        {...props}
-      >
-        Primary text
-      </Tag>
-      <Tag
-        shape="circular"
-        icon={<Calendar3Day20Regular />}
-        secondaryText="Secondary text"
-        dismissable={true}
-        {...props}
-        {...props}
-      >
-        Primary text
-      </Tag>
-      <Tag shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
-        Primary text
-      </Tag>
-      <Tag shape="circular" icon={<Calendar3Day20Regular />} {...props}>
-        Primary text
-      </Tag>
+
       <Tag shape="circular" {...props}>
-        Primary text
+        <TagContent
+          media={
+            <Avatar
+              {...{
+                name: 'Katri Athokas',
+                badge: { status: 'busy' },
+                image: {
+                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+                },
+              }}
+            />
+          }
+        >
+          Primary text
+        </TagContent>
+      </Tag>
+
+      <Tag shape="circular" dismissable {...props}>
+        <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+          Primary text
+        </TagContent>
+      </Tag>
+
+      <Tag shape="circular" dismissable {...props}>
+        <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>
+      </Tag>
+
+      <Tag shape="circular" {...props}>
+        <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>
+      </Tag>
+
+      <Tag shape="circular" {...props}>
+        <TagContent>Primary text</TagContent>
       </Tag>
     </div>
   </div>
