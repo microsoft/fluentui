@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Datepicker renders input description if onRenderDescription is passed in\"",
+  "comment": "fix: Datepicker renders input description if onRenderDescription is passed in",
   "packageName": "@fluentui/react",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"
