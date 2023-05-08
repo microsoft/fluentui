@@ -35,3 +35,7 @@ visualtests
 !lib
 !lib-commonjs
 !lib-amd
+!lib
+!lib-commonjs
+!lib-amd
+!dist
