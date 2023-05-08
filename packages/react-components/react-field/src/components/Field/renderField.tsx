@@ -1,6 +1,9 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
 
-import { getSlots } from '@fluentui/react-utilities';
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { FieldContextProvider, getFieldControlProps } from '../../contexts/index';
 import type { FieldContextValues, FieldSlots, FieldState } from './Field.types';
 
@@ -8,7 +11,7 @@ import type { FieldContextValues, FieldSlots, FieldState } from './Field.types';
  * Render the final JSX of Field
  */
 export const renderField_unstable = (state: FieldState, contextValues: FieldContextValues) => {
-  const { slots, slotProps } = getSlots<FieldSlots>(state);
+  const { slots, slotProps } = getSlotsNext<FieldSlots>(state);
 
   let { children } = state;
   if (typeof children === 'function') {

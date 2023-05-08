@@ -13,7 +13,7 @@ import type { IButtonProps } from '@fluentui/react';
 import type { IContextualMenuItem } from '@fluentui/react';
 import type { IContextualMenuProps } from '@fluentui/react';
 import type { IPalette } from '@fluentui/react';
-import { IStackItemProps } from '@fluentui/react';
+import type { IStackItemProps } from '@fluentui/react';
 import type { IStackProps } from '@fluentui/react';
 import type { MenuProps } from '@fluentui/react-menu';
 import * as React_2 from 'react';

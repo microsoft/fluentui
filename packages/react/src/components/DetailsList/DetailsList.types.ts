@@ -125,7 +125,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Additional props to pass through to the SelectionZone created by default.
    */
-  selectionZoneProps?: ISelectionZoneProps;
+  selectionZoneProps?: Partial<ISelectionZoneProps>;
 
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;

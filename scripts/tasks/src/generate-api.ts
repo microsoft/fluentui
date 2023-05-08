@@ -1,17 +1,24 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
+import { execSync } from 'child_process';
 
 import { series } from 'just-scripts';
 
 import { apiExtractor } from './api-extractor';
-
-const execAsync = promisify(exec);
+import { getTsPathAliasesConfigUsedOnlyForDx } from './utils';
 
 export function generateApi() {
   return series(generateTypeDeclarations, apiExtractor);
 }
 
 function generateTypeDeclarations() {
-  const cmd = 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly';
-  return execAsync(cmd);
+  const { isUsingPathAliasesForDx, tsConfigFileForCompilation } = getTsPathAliasesConfigUsedOnlyForDx();
+  const cmd = [
+    'tsc',
+    `-p ./${tsConfigFileForCompilation}`,
+    '--emitDeclarationOnly',
+    isUsingPathAliasesForDx ? '--baseUrl .' : null,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return execSync(cmd, { stdio: 'inherit' });
 }

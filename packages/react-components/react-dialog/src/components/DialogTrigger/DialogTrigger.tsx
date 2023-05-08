@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDialogTrigger_unstable } from './useDialogTrigger';
+import { useDialogTrigger_unstable } from './useDialogTrigger.styles';
 import { renderDialogTrigger_unstable } from './renderDialogTrigger';
 import type { DialogTriggerProps } from './DialogTrigger.types';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';

@@ -3,4 +3,4 @@ export * from './Button';
 export type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 export * from './renderButton';
 export * from './useButton';
-export { buttonClassNames, useButtonStyles_unstable } from './useButtonStyles';
+export { buttonClassNames, useButtonStyles_unstable } from './useButtonStyles.styles';

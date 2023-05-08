@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType, DayOfWeek } from '../../utils';
-import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles';
+import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles.styles';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
 import { useWeeks } from './useWeeks';
-import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles';
+import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
@@ -163,7 +163,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           weekIndex={-1}
           rowClassName={classNames.firstTransitionWeek}
           aria-role="presentation"
-          aria-hidden={true}
+          ariaHidden={true}
         />
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
           <CalendarGridRow
@@ -182,7 +182,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           weekIndex={-2}
           rowClassName={classNames.lastTransitionWeek}
           aria-role="presentation"
-          aria-hidden={true}
+          ariaHidden={true}
         />
       </tbody>
     </table>

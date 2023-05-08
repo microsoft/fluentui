@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Scale pulse animation with percentages and flip wave animation's direction.",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

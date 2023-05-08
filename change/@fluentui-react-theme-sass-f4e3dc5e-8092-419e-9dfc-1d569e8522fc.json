@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: add \"style\" to exports field",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
