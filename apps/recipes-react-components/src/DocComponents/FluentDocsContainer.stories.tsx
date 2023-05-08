@@ -9,7 +9,7 @@ type FluentDocsContainerProps = {
 
 export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ children, context }) => {
   return (
-    <FluentProvider style={{ backgroundColor: 'transparent' }} theme={webLightTheme}>
+    <FluentProvider theme={webLightTheme}>
       <DocsContainer context={context}>{children}</DocsContainer>
     </FluentProvider>
   );
