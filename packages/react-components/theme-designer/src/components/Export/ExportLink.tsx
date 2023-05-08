@@ -4,7 +4,6 @@ import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
-import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
@@ -282,6 +281,8 @@ export const ExportLink = () => {
   const createIndexContent = dedent`
   import * as ReactDOM from 'react-dom';
   import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
+  import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
+
   import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
