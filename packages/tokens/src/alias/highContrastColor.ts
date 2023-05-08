@@ -48,7 +48,9 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandForeground1Hover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandForeground1Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandForeground1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
-  colorBrandForeground2: hcButtonText, // ButtonText Global.Color.hcButtonText
+  colorBrandForeground2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorBrandForeground2Hover: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorBrandForeground2Pressed: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralForeground1Static: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralForegroundStaticInverted: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralForegroundInverted: hcHighlightText, // HighlightText Global.Color.hcHighlightText
@@ -124,7 +126,9 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandBackgroundPressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
-  colorBrandBackground2: hcButtonFace, // ButtonFace Global.Color.hcButtonFace
+  colorBrandBackground2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorBrandBackground2Hover: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorBrandBackground2Pressed: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackgroundInverted: hcButtonFace, // ButtonFace Global.Color.hcButtonFace
   colorBrandBackgroundInvertedHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandBackgroundInvertedPressed: hcHighlight, // Highlight Global.Color.hcHighlight
