@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: explicitly ship dist/ folder.",
-  "packageName": "@fluentui/common-styles",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
