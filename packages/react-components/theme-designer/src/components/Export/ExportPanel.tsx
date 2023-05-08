@@ -20,7 +20,7 @@ import {
 import { DismissSquare24Regular } from '@fluentui/react-icons';
 
 import { getBrandValues, objectToString } from '../../utils/toString';
-import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
+import { createDarkThemeWithUpdatedMapping, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportLink } from '../Export/ExportLink';
 
 const useStyles = makeStyles({
@@ -73,14 +73,19 @@ export const ExportPanel = () => {
     ...createLightTheme(${themeName}), ${getBrandValues(brand, lightThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
+    ...createDarkThemeWithUpdatedMapping(${themeName}), ${getBrandValues(
+    brand,
+    darkThemeOverrides,
+    themeName,
+    '\u00A0\u00A0',
+  )} };
   `;
 
   const jsonLightValue = dedent`
    ${JSON.stringify({ ...createLightTheme(brand), ...lightThemeOverrides }, null, '\t')}`;
 
   const jsonDarkValue = dedent`
-     ${JSON.stringify({ ...createDarkTheme(brand), ...darkThemeOverrides }, null, '\t')} 
+     ${JSON.stringify({ ...createDarkThemeWithUpdatedMapping(brand), ...darkThemeOverrides }, null, '\t')} 
   `;
 
   const exportedValue = React.useMemo(() => {

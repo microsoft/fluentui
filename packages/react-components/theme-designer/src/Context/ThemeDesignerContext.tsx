@@ -51,6 +51,14 @@ export type ThemeDesignerState = {
 
 export const defaultThemePlaceholderName = 'myNewTheme';
 
+export const createDarkThemeWithUpdatedMapping = (brand: BrandVariants): Theme => {
+  const darkTheme = createDarkTheme(brand);
+  // Dark themes have a different set of mapping than light themes
+  darkTheme.colorBrandForeground1 = brand[110]; // use brand[110] instead of brand[100]
+  darkTheme.colorBrandForeground2 = brand[120]; // use brand[120] instead of brand[110]
+  return darkTheme;
+};
+
 export const initialThemeDesignerState: ThemeDesignerState = {
   themeName: defaultThemePlaceholderName,
   keyColorHex: '#0F6CBD',
@@ -61,7 +69,7 @@ export const initialThemeDesignerState: ThemeDesignerState = {
   lightThemeOverrides: {},
   darkThemeOverrides: {},
   lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(brandWeb), brandWeb),
-  darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(brandWeb), brandWeb),
+  darkBrandOverrides: getOverridableTokenBrandColors(createDarkThemeWithUpdatedMapping(brandWeb), brandWeb),
   showExportPanel: false,
 };
 
@@ -80,7 +88,8 @@ const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes)
 export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action): ThemeDesignerState => {
   switch (action.type) {
     case 'isDark':
-      const theme = action.payload ? createDarkTheme(state.brand) : createLightTheme(state.brand);
+      const theme = action.payload ? createDarkThemeWithUpdatedMapping(state.brand) : createLightTheme(state.brand);
+
       return {
         ...state,
         theme,
@@ -91,19 +100,24 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
         },
       };
     case 'reset':
-      const resetTheme = state.isDark ? createDarkTheme(state.brand) : createLightTheme(state.brand);
+      const resetTheme = state.isDark ? createDarkThemeWithUpdatedMapping(state.brand) : createLightTheme(state.brand);
+      if (state.isDark) {
+      }
       return {
         ...state,
         theme: resetTheme,
         themeWithOverrides: resetTheme,
         lightThemeOverrides: {},
         darkThemeOverrides: {},
-        lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(state.brand), state.brand),
-        darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(state.brand), state.brand),
+        lightBrandOverrides: getOverridableTokenBrandColors(
+          createDarkThemeWithUpdatedMapping(state.brand),
+          state.brand,
+        ),
+        darkBrandOverrides: getOverridableTokenBrandColors(createDarkThemeWithUpdatedMapping(state.brand), state.brand),
       };
     case 'updateThemeWithCustomerAttributes':
       const newBrand = createCustomTheme(action.payload);
-      const newTheme = state.isDark ? createDarkTheme(newBrand) : createLightTheme(newBrand);
+      const newTheme = state.isDark ? createDarkThemeWithUpdatedMapping(newBrand) : createLightTheme(newBrand);
       return {
         ...state,
         keyColorHex: action.payload.keyColor,
@@ -114,7 +128,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
         darkThemeOverrides: {},
         // new overrides -- reset
         lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(newBrand), newBrand),
-        darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(newBrand), newBrand),
+        darkBrandOverrides: getOverridableTokenBrandColors(createDarkThemeWithUpdatedMapping(newBrand), newBrand),
       };
     case 'addOverride':
       if (state.isDark) {
@@ -132,7 +146,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
           } as ColorOverrideBrands,
           darkThemeOverrides: overrides,
           themeWithOverrides: {
-            ...createDarkTheme(state.brand),
+            ...createDarkThemeWithUpdatedMapping(state.brand),
             ...overrides,
           },
         };

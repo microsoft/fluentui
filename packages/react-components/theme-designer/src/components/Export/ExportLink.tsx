@@ -4,7 +4,7 @@ import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
-
+import { createDarkThemeWithUpdatedMapping } from '../../Context/ThemeDesignerContext';
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
@@ -291,7 +291,12 @@ export const ExportLink = () => {
     ...createLightTheme(${themeName}), ${getBrandValues(brand, lightThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
+    ...createDarkThemeWithUpdatedMapping(${themeName}), ${getBrandValues(
+    brand,
+    darkThemeOverrides,
+    themeName,
+    '\u00A0\u00A0',
+  )} };
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
