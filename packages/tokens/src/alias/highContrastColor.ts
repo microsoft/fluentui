@@ -143,6 +143,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralStroke1Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralStroke2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStroke3: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralStrokeSubtle: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStrokeOnBrand: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralStrokeOnBrand2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStrokeOnBrand2Hover: hcCanvasText, // CanvasText Global.Color.hcCanvasText
@@ -150,6 +151,8 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralStrokeOnBrand2Selected: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBrandStroke1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBrandStroke2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorBrandStroke2Hover: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorBrandStroke2Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStroke: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokeHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokePressed: hcHighlight, // Highlight Global.Color.hcHighlight
