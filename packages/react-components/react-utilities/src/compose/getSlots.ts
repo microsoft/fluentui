@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { omit } from '../utils/omit';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 import type {
   AsIntrinsicElement,
   ComponentState,
@@ -8,6 +9,7 @@ import type {
   SlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
+  UnknownSlotProps,
 } from './types';
 
 export type Slots<S extends SlotPropsRecord> = {
@@ -19,14 +21,14 @@ export type Slots<S extends SlotPropsRecord> = {
     : React.ElementType<ExtractSlotProps<S[K]>>;
 };
 
-type ObjectSlotProps<S extends SlotPropsRecord> = {
+export type ObjectSlotProps<S extends SlotPropsRecord> = {
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
-      UnionToIntersection<JSX.IntrinsicElements[As]>
+      UnionToIntersection<JSX.IntrinsicElements[As]> // Slot<'div', 'span'>
     : ExtractSlotProps<S[K]> extends React.ComponentType<infer P>
-    ? P
-    : never;
+    ? P // Slot<typeof Button>
+    : ExtractSlotProps<S[K]>; // Slot<ButtonProps>
 };
 
 /**
@@ -61,34 +63,43 @@ export function getSlots<R extends SlotPropsRecord>(
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
-  return { slots, slotProps: (slotProps as unknown) as ObjectSlotProps<R> };
+  return { slots, slotProps: slotProps as unknown as ObjectSlotProps<R> };
 }
 
 function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]> | null, R[K]] {
-  if (state[slotName] === undefined) {
+  const props = state[slotName];
+
+  if (props === undefined) {
     return [null, undefined as R[K]];
   }
-  const { children, as: asProp, ...rest } = state[slotName]!;
 
-  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-    ? asProp || state.components?.[slotName] || 'div'
-    : state.components[slotName]) as React.ElementType<R[K]>;
+  const {
+    children,
+    as: asProp,
+    [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+    ...rest
+  } = props as typeof props & { [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<R[K]> };
 
-  if (typeof children === 'function') {
-    const render = children as SlotRenderFunction<R[K]>;
+  const slot = (
+    state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
+      ? asProp || state.components?.[slotName] || 'div'
+      : state.components[slotName]
+  ) as React.ElementType<R[K]>;
+
+  if (renderFunction || typeof children === 'function') {
+    const render = renderFunction || (children as SlotRenderFunction<R[K]>);
     return [
       React.Fragment,
-      ({
-        children: render(slot, rest as Omit<R[K], 'children' | 'as'>),
-      } as unknown) as R[K],
+      {
+        children: render(slot, rest as Omit<R[K], 'as'>),
+      } as unknown as R[K],
     ];
   }
 
-  const shouldOmitAsProp = typeof slot === 'string' && state[slotName]?.as;
-  const slotProps = (shouldOmitAsProp ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
-
+  const shouldOmitAsProp = typeof slot === 'string' && asProp;
+  const slotProps = (shouldOmitAsProp ? omit(props, ['as']) : (props as UnknownSlotProps)) as R[K];
   return [slot, slotProps];
 }

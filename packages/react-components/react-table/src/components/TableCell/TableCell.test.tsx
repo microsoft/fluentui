@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableCell } from './TableCell';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableCellProps } from './TableCell.types';
-import { TableContextProvider } from '../../contexts/tableContext';
+import { TableContextProvider, tableContextDefaultValue } from '../../contexts/tableContext';
 
 const tr = document.createElement('tr');
 describe('TableCell', () => {
@@ -16,19 +16,8 @@ describe('TableCell', () => {
     renderOptions: {
       container: tr,
     },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            media: 'Test Icon',
-          },
-        },
-      ],
-    },
     displayName: 'TableCell',
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(<TableCell>Default TableCell</TableCell>, { container: tr });
@@ -37,7 +26,7 @@ describe('TableCell', () => {
 
   it('renders as div if `noNativeElements` is set', () => {
     const { container } = render(
-      <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
+      <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true }}>
         <TableCell>Table cell</TableCell>
       </TableContextProvider>,
     );

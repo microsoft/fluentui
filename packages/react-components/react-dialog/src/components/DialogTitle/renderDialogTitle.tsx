@@ -1,20 +1,22 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsxFrag Fragment */
+/** @jsx createElement */
+
+import { createElement, Fragment } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { DialogTitleState, DialogTitleSlots } from './DialogTitle.types';
 
 /**
  * Render the final JSX of DialogTitle
  */
 export const renderDialogTitle_unstable = (state: DialogTitleState) => {
-  const { slots, slotProps } = getSlots<DialogTitleSlots>(state);
+  const { slots, slotProps } = getSlotsNext<DialogTitleSlots>(state);
 
   return (
     <>
       <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>
-      {slots.closeButton && (
-        // TODO: Wrap around DialogTrigger component
-        <slots.closeButton {...slotProps.closeButton} />
-      )}
+      {slots.action && <slots.action {...slotProps.action} />}
     </>
   );
 };

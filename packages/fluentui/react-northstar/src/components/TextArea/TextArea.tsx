@@ -66,7 +66,7 @@ export const textAreaClassName = 'ui-textarea';
  * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
  * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
  */
-export const TextArea = (React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
@@ -131,7 +131,7 @@ export const TextArea = (React.forwardRef<HTMLTextAreaElement, TextAreaProps>((p
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'textarea', HTMLTextAreaElement, TextAreaProps> &
+}) as unknown as ForwardRefWithAs<'textarea', HTMLTextAreaElement, TextAreaProps> &
   FluentComponentStaticProps<TextAreaProps>;
 
 TextArea.displayName = 'TextArea';

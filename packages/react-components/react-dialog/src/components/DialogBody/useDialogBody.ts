@@ -16,7 +16,7 @@ export const useDialogBody_unstable = (props: DialogBodyProps, ref: React.Ref<HT
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps(props.as ?? 'div', {
       ref,
       ...props,
     }),

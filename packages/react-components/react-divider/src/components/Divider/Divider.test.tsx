@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Divider } from './Divider';
 
 describe('Divider', () => {

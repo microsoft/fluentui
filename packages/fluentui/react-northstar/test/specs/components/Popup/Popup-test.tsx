@@ -243,7 +243,10 @@ describe('Popup', () => {
       expect(document.querySelector(`#${contentId}`)).toBe(null);
       expect(document.querySelector(`#${contentId2}`)).toBeDefined();
 
-      ReactDOM.unmountComponentAtNode(attachTo);
+      ReactTestUtils.act(() => {
+        ReactDOM.unmountComponentAtNode(attachTo);
+      });
+
       document.body.removeChild(attachTo);
     });
   });

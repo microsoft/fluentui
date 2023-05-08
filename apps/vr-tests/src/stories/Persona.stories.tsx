@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from '@fluentui/react';
@@ -18,13 +18,13 @@ const examplePersona: IPersonaProps = {
 storiesOf('Persona', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   )
   .addStory('size10 (tiny)', () => (
     <div>

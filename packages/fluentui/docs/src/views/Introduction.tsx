@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Flex, Header } from '@fluentui/react-northstar';
 
 import pkg from '@fluentui/react-northstar/package.json';
@@ -34,9 +34,11 @@ const Introduction = () => (
       Fluent UI provides extensible vanilla JavaScript solutions to component state, styling, and accessibility. These
       powerful features are exposed behind simple APIs based on natural language.
     </p>
+
+    <h3>Status</h3>
     <p>
-      Fluent UI React is being built as an exemplar of the Fluent UI design language, component specifications, and
-      utilities.
+      Fluent UI React Northstar has been superseded by{' '}
+      <Link to="https://react.fluentui.dev/">Fluent UI React Components v9</Link>.
     </p>
 
     <h3>Learn</h3>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from '@fluentui/react';
@@ -44,8 +44,8 @@ function createContentArea(index: number) {
 storiesOf('ScrollablePane', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999",
@@ -54,7 +54,7 @@ storiesOf('ScrollablePane', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default ScrollablePane Example', () => (
     <div

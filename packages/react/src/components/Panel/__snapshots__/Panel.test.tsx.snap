@@ -115,6 +115,7 @@ exports[`Panel renders Panel correctly 1`] = `
             class=
                 ms-Panel-commands
                 {
+                  background-color: #ffffff;
                   padding-top: 18px;
                 }
                 @media (min-height: 480px){& {

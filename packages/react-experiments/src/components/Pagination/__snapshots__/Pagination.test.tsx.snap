@@ -1585,7 +1585,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         value="1"
       />
       <button
-        aria-hidden={true}
         className=
             ms-Button
             ms-Button--icon
@@ -1681,7 +1680,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseUp={[Function]}
-        role="presentation"
         tabIndex={-1}
         type="button"
       >

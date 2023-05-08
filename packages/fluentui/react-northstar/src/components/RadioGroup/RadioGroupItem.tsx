@@ -93,22 +93,12 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  * @accessibility
  * Radio items need to be grouped to correctly handle accessibility.
  */
-export const RadioGroupItem = (React.forwardRef<HTMLDivElement, RadioGroupItemProps>((props, ref) => {
+export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
-  const {
-    label,
-    checkedIndicator,
-    indicator,
-    disabled,
-    vertical,
-    className,
-    design,
-    styles,
-    variables,
-    shouldFocus,
-  } = props;
+  const { label, checkedIndicator, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } =
+    props;
   const elementRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
@@ -209,7 +199,7 @@ export const RadioGroupItem = (React.forwardRef<HTMLDivElement, RadioGroupItemPr
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupItemProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupItemProps> &
   FluentComponentStaticProps<RadioGroupItemProps>;
 
 RadioGroupItem.displayName = 'RadioGroupItem';

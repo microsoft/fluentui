@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

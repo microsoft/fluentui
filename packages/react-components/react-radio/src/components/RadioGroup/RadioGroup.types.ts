@@ -48,7 +48,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   disabled?: boolean;
 
   /**
-   * Require all Radio items in this group.
+   * Require a selection in this group. Adds the `required` prop to all child Radio items.
    */
   required?: boolean;
 };
@@ -68,11 +68,11 @@ export type RadioGroupOnChangeData = {
  */
 export type RadioGroupState = ComponentState<RadioGroupSlots> &
   Required<Pick<RadioGroupProps, 'layout'>> &
-  Partial<Exclude<RadioGroupProps, 'onChange' | 'layout'>>;
+  Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
 
 export type RadioGroupContextValue = Pick<
   RadioGroupProps,
-  'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'
+  'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'
 >;
 
 export type RadioGroupContextValues = {

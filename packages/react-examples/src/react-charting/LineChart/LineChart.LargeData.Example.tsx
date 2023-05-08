@@ -143,6 +143,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
             width={this.state.width}
             margins={margins}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+            optimizeLargeData={true}
           />
         </div>
       </>

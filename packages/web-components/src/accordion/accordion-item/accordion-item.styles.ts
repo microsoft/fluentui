@@ -12,8 +12,6 @@ import { Swatch } from '../../color/swatch';
 import {
   controlCornerRadius,
   designUnit,
-  focusStrokeOuter,
-  focusStrokeWidth,
   layerCornerRadius,
   neutralFillLayerAltRest,
   neutralFillLayerRecipe,
@@ -23,6 +21,7 @@ import {
   neutralStrokeLayerRest,
   strokeWidth,
 } from '../../design-tokens';
+import { focusTreatmentBase } from '../../styles/focus';
 import { typeRampBase } from '../../styles/patterns/type-ramp';
 import { heightNumber } from '../../styles/size';
 
@@ -96,18 +95,16 @@ export const accordionItemStyles: (
     .button::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: calc(${strokeWidth} * -1px);
+      left: calc(${strokeWidth} * -1px);
+      right: calc(${strokeWidth} * -1px);
+      bottom: calc(${strokeWidth} * -1px);
       cursor: pointer;
     }
 
     .button:${focusVisible}::before {
-      outline: none;
-      border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
+      ${focusTreatmentBase}
       border-radius: calc(${layerCornerRadius} * 1px);
-      box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
 
     :host(.expanded) .button:${focusVisible}::before {
@@ -184,8 +181,7 @@ export const accordionItemStyles: (
     forcedColorsStylesheetBehavior(
       css`
         .button:${focusVisible}::before {
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${SystemColors.Highlight};
+          outline-color: ${SystemColors.Highlight};
         }
         .icon {
           fill: ${SystemColors.ButtonText};

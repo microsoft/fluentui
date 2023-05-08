@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AccordionHeader } from './AccordionHeader';
 import { AccordionHeaderProps } from './AccordionHeader.types';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Accordion } from '../Accordion/Accordion';
 import { AccordionItem } from '../AccordionItem';
 import { AccordionPanel } from '../AccordionPanel';

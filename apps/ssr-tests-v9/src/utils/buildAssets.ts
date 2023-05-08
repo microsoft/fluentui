@@ -9,6 +9,7 @@ const commonOptions: BuildOptions = {
     '.jpg': 'dataurl',
     '.png': 'dataurl',
     '.svg': 'dataurl',
+    '.md': 'text',
   },
 };
 

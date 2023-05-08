@@ -21,9 +21,8 @@ const pointPath: PointPathType = {
   [`${Points[Points.diamond]}`]: 'M2 2 L10 2 L10 10  L2 10 L2 2 Z',
   [`${Points[Points.hexagon]}`]: 'M9 0H3L0 5L3 10H9L12 5L9 0Z',
   [`${Points[Points.pentagon]}`]: 'M6.06061 0L0 4.21277L2.30303 11H9.69697L12 4.21277L6.06061 0Z',
-  [`${
-    Points[Points.octagon]
-  }`]: 'M7.08333 0H2.91667L0 2.91667V7.08333L2.91667 10H7.08333L10 7.08333V2.91667L7.08333 0Z',
+  [`${Points[Points.octagon]}`]:
+    'M7.08333 0H2.91667L0 2.91667V7.08333L2.91667 10H7.08333L10 7.08333V2.91667L7.08333 0Z',
   [`${CustomPoints[CustomPoints.dottedLine]}`]: 'M0 6 H3 M5 6 H8 M10 6 H13',
 };
 
@@ -37,7 +36,7 @@ export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, class
       height={14}
       viewBox={'-1 -1 14 14'}
       {...svgProps}
-      transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.triangle] ? 180 : 0}, 0, 0)`}
+      transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0}, 0, 0)`}
     >
       <path d={pointPath[shape]} {...pathProps} />
     </svg>

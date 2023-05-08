@@ -14,7 +14,7 @@ import { createTestContainer } from './createTestContainer';
 export function safeMount<
   TComponent extends React.Component,
   TProps = TComponent['props'],
-  TState = TComponent['state']
+  TState = TComponent['state'],
 >(
   content: React.ReactElement<TProps>,
   callback?: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void,

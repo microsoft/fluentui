@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+import { DialogOpenChangeData } from './Dialog.types';
 import * as React from 'react';
-import type { DialogOpenChangeEvent } from './Dialog.types';
 
 import { useDialog_unstable } from './useDialog';
 
@@ -11,8 +11,13 @@ describe('useDialog_unstable', () => {
     );
 
     expect(result.current.open).toEqual(false);
-    const fakeEvent = { isDefaultPrevented: () => false } as DialogOpenChangeEvent;
-    act(() => result.current.requestOpenChange({ open: true, type: 'triggerClick', event: fakeEvent }));
+    act(() =>
+      result.current.requestOpenChange({
+        open: true,
+        type: 'triggerClick',
+        event: { isDefaultPrevented: () => false },
+      } as DialogOpenChangeData),
+    );
 
     expect(result.current.open).toEqual(true);
   });

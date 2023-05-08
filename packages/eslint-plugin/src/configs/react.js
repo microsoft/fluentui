@@ -18,6 +18,13 @@ const v9PackageDeps = Object.keys(
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
   rules: {
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        jsxTags: true,
+      },
+    ],
+    '@fluentui/ban-instanceof-html-element': ['error'],
     '@fluentui/no-context-default-value': [
       'error',
       {
@@ -32,7 +39,7 @@ module.exports = {
       files: '**/*.stories.tsx',
       rules: {
         '@fluentui/no-restricted-imports': [
-          'warn',
+          'error',
           {
             paths: [
               {
@@ -42,6 +49,13 @@ module.exports = {
             ],
           },
         ],
+      },
+    },
+    {
+      files: ['**/*.cy.{ts,tsx,js}', 'isConformant.{ts,tsx,js}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'react/jsx-no-bind': 'off',
       },
     },
   ],

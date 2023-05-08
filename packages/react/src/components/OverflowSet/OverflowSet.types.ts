@@ -10,10 +10,11 @@ export interface IOverflowSet {
   /**
    * Sets focus to the first tabbable item in the zone.
    * @param forceIntoFirstElement - If true, focus will be forced into the first element, even if
+   * @param bypassHiddenElements - If true, focus will be not be set on hidden elements.
    * focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focus(forceIntoFirstElement?: boolean): boolean;
+  focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with

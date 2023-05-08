@@ -7,8 +7,275 @@
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
-// Warning: (ae-internal-missing-underscore) The name "Provider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
+// @internal (undocumented)
+export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
+    useAccordionHeaderStyles_unstable: CustomStyleHook;
+    useAccordionItemStyles_unstable: CustomStyleHook;
+    useAccordionPanelStyles_unstable: CustomStyleHook;
+    useAccordionStyles_unstable: CustomStyleHook;
+    useAvatarStyles_unstable: CustomStyleHook;
+    useAvatarGroupStyles_unstable: CustomStyleHook;
+    useAvatarGroupItemStyles_unstable: CustomStyleHook;
+    useAvatarGroupPopoverStyles_unstable: CustomStyleHook;
+    useBadgeStyles_unstable: CustomStyleHook;
+    useCounterBadgeStyles_unstable: CustomStyleHook;
+    useCardHeaderStyles_unstable: CustomStyleHook;
+    useCardStyles_unstable: CustomStyleHook;
+    useCardFooterStyles_unstable: CustomStyleHook;
+    useCardPreviewStyles_unstable: CustomStyleHook;
+    usePresenceBadgeStyles_unstable: CustomStyleHook;
+    useButtonStyles_unstable: CustomStyleHook;
+    useCompoundButtonStyles_unstable: CustomStyleHook;
+    useMenuButtonStyles_unstable: CustomStyleHook;
+    useSplitButtonStyles_unstable: CustomStyleHook;
+    useToggleButtonStyles_unstable: CustomStyleHook;
+    useCheckboxStyles_unstable: CustomStyleHook;
+    useComboboxStyles_unstable: CustomStyleHook;
+    useDropdownStyles_unstable: CustomStyleHook;
+    useListboxStyles_unstable: CustomStyleHook;
+    useOptionStyles_unstable: CustomStyleHook;
+    useOptionGroupStyles_unstable: CustomStyleHook;
+    useDividerStyles_unstable: CustomStyleHook;
+    useInputStyles_unstable: CustomStyleHook;
+    useImageStyles_unstable: CustomStyleHook;
+    useLabelStyles_unstable: CustomStyleHook;
+    useLinkStyles_unstable: CustomStyleHook;
+    useMenuDividerStyles_unstable: CustomStyleHook;
+    useMenuGroupHeaderStyles_unstable: CustomStyleHook;
+    useMenuGroupStyles_unstable: CustomStyleHook;
+    useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemRadioStyles_unstable: CustomStyleHook;
+    useMenuItemStyles_unstable: CustomStyleHook;
+    useMenuListStyles_unstable: CustomStyleHook;
+    useMenuPopoverStyles_unstable: CustomStyleHook;
+    useMenuSplitGroupStyles_unstable: CustomStyleHook;
+    usePersonaStyles_unstable: CustomStyleHook;
+    usePopoverSurfaceStyles_unstable: CustomStyleHook;
+    useRadioGroupStyles_unstable: CustomStyleHook;
+    useRadioStyles_unstable: CustomStyleHook;
+    useSelectStyles_unstable: CustomStyleHook;
+    useSliderStyles_unstable: CustomStyleHook;
+    useSpinButtonStyles_unstable: CustomStyleHook;
+    useSpinnerStyles_unstable: CustomStyleHook;
+    useSwitchStyles_unstable: CustomStyleHook;
+    useTabStyles_unstable: CustomStyleHook;
+    useTabListStyles_unstable: CustomStyleHook;
+    useTextStyles_unstable: CustomStyleHook;
+    useTextareaStyles_unstable: CustomStyleHook;
+    useTooltipStyles_unstable: CustomStyleHook;
+    useDialogTitleStyles_unstable: CustomStyleHook;
+    useDialogBodyStyles_unstable: CustomStyleHook;
+    useDialogActionsStyles_unstable: CustomStyleHook;
+    useDialogSurfaceStyles_unstable: CustomStyleHook;
+    useDialogContentStyles_unstable: CustomStyleHook;
+    useProgressBarStyles_unstable: CustomStyleHook;
+    useToolbarButtonStyles_unstable: CustomStyleHook;
+    useToolbarRadioButtonStyles_unstable: CustomStyleHook;
+    useToolbarGroupStyles_unstable: CustomStyleHook;
+    useToolbarToggleButtonStyles_unstable: CustomStyleHook;
+    useToolbarDividerStyles_unstable: CustomStyleHook;
+    useToolbarStyles_unstable: CustomStyleHook;
+    useTableCellStyles_unstable: CustomStyleHook;
+    useTableRowStyles_unstable: CustomStyleHook;
+    useTableBodyStyles_unstable: CustomStyleHook;
+    useTableStyles_unstable: CustomStyleHook;
+    useTableHeaderStyles_unstable: CustomStyleHook;
+    useTableHeaderCellStyles_unstable: CustomStyleHook;
+    useTableResizeHandleStyles_unstable: CustomStyleHook;
+    useTableSelectionCellStyles_unstable: CustomStyleHook;
+    useTableCellActionsStyles_unstable: CustomStyleHook;
+    useTableCellLayoutStyles_unstable: CustomStyleHook;
+    useDataGridCellStyles_unstable: CustomStyleHook;
+    useDataGridRowStyles_unstable: CustomStyleHook;
+    useDataGridBodyStyles_unstable: CustomStyleHook;
+    useDataGridStyles_unstable: CustomStyleHook;
+    useDataGridHeaderStyles_unstable: CustomStyleHook;
+    useDataGridHeaderCellStyles_unstable: CustomStyleHook;
+    useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+}> | undefined>;
+
+// @public (undocumented)
+export type CustomStyleHooksContextValue_unstable = Partial<{
+    useAccordionHeaderStyles_unstable: CustomStyleHook;
+    useAccordionItemStyles_unstable: CustomStyleHook;
+    useAccordionPanelStyles_unstable: CustomStyleHook;
+    useAccordionStyles_unstable: CustomStyleHook;
+    useAvatarStyles_unstable: CustomStyleHook;
+    useAvatarGroupStyles_unstable: CustomStyleHook;
+    useAvatarGroupItemStyles_unstable: CustomStyleHook;
+    useAvatarGroupPopoverStyles_unstable: CustomStyleHook;
+    useBadgeStyles_unstable: CustomStyleHook;
+    useCounterBadgeStyles_unstable: CustomStyleHook;
+    useCardHeaderStyles_unstable: CustomStyleHook;
+    useCardStyles_unstable: CustomStyleHook;
+    useCardFooterStyles_unstable: CustomStyleHook;
+    useCardPreviewStyles_unstable: CustomStyleHook;
+    usePresenceBadgeStyles_unstable: CustomStyleHook;
+    useButtonStyles_unstable: CustomStyleHook;
+    useCompoundButtonStyles_unstable: CustomStyleHook;
+    useMenuButtonStyles_unstable: CustomStyleHook;
+    useSplitButtonStyles_unstable: CustomStyleHook;
+    useToggleButtonStyles_unstable: CustomStyleHook;
+    useCheckboxStyles_unstable: CustomStyleHook;
+    useComboboxStyles_unstable: CustomStyleHook;
+    useDropdownStyles_unstable: CustomStyleHook;
+    useListboxStyles_unstable: CustomStyleHook;
+    useOptionStyles_unstable: CustomStyleHook;
+    useOptionGroupStyles_unstable: CustomStyleHook;
+    useDividerStyles_unstable: CustomStyleHook;
+    useInputStyles_unstable: CustomStyleHook;
+    useImageStyles_unstable: CustomStyleHook;
+    useLabelStyles_unstable: CustomStyleHook;
+    useLinkStyles_unstable: CustomStyleHook;
+    useMenuDividerStyles_unstable: CustomStyleHook;
+    useMenuGroupHeaderStyles_unstable: CustomStyleHook;
+    useMenuGroupStyles_unstable: CustomStyleHook;
+    useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemRadioStyles_unstable: CustomStyleHook;
+    useMenuItemStyles_unstable: CustomStyleHook;
+    useMenuListStyles_unstable: CustomStyleHook;
+    useMenuPopoverStyles_unstable: CustomStyleHook;
+    useMenuSplitGroupStyles_unstable: CustomStyleHook;
+    usePersonaStyles_unstable: CustomStyleHook;
+    usePopoverSurfaceStyles_unstable: CustomStyleHook;
+    useRadioGroupStyles_unstable: CustomStyleHook;
+    useRadioStyles_unstable: CustomStyleHook;
+    useSelectStyles_unstable: CustomStyleHook;
+    useSliderStyles_unstable: CustomStyleHook;
+    useSpinButtonStyles_unstable: CustomStyleHook;
+    useSpinnerStyles_unstable: CustomStyleHook;
+    useSwitchStyles_unstable: CustomStyleHook;
+    useTabStyles_unstable: CustomStyleHook;
+    useTabListStyles_unstable: CustomStyleHook;
+    useTextStyles_unstable: CustomStyleHook;
+    useTextareaStyles_unstable: CustomStyleHook;
+    useTooltipStyles_unstable: CustomStyleHook;
+    useDialogTitleStyles_unstable: CustomStyleHook;
+    useDialogBodyStyles_unstable: CustomStyleHook;
+    useDialogActionsStyles_unstable: CustomStyleHook;
+    useDialogSurfaceStyles_unstable: CustomStyleHook;
+    useDialogContentStyles_unstable: CustomStyleHook;
+    useProgressBarStyles_unstable: CustomStyleHook;
+    useToolbarButtonStyles_unstable: CustomStyleHook;
+    useToolbarRadioButtonStyles_unstable: CustomStyleHook;
+    useToolbarGroupStyles_unstable: CustomStyleHook;
+    useToolbarToggleButtonStyles_unstable: CustomStyleHook;
+    useToolbarDividerStyles_unstable: CustomStyleHook;
+    useToolbarStyles_unstable: CustomStyleHook;
+    useTableCellStyles_unstable: CustomStyleHook;
+    useTableRowStyles_unstable: CustomStyleHook;
+    useTableBodyStyles_unstable: CustomStyleHook;
+    useTableStyles_unstable: CustomStyleHook;
+    useTableHeaderStyles_unstable: CustomStyleHook;
+    useTableHeaderCellStyles_unstable: CustomStyleHook;
+    useTableResizeHandleStyles_unstable: CustomStyleHook;
+    useTableSelectionCellStyles_unstable: CustomStyleHook;
+    useTableCellActionsStyles_unstable: CustomStyleHook;
+    useTableCellLayoutStyles_unstable: CustomStyleHook;
+    useDataGridCellStyles_unstable: CustomStyleHook;
+    useDataGridRowStyles_unstable: CustomStyleHook;
+    useDataGridBodyStyles_unstable: CustomStyleHook;
+    useDataGridStyles_unstable: CustomStyleHook;
+    useDataGridHeaderStyles_unstable: CustomStyleHook;
+    useDataGridHeaderCellStyles_unstable: CustomStyleHook;
+    useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+}>;
+
+// @internal (undocumented)
+export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
+    useAccordionHeaderStyles_unstable: CustomStyleHook;
+    useAccordionItemStyles_unstable: CustomStyleHook;
+    useAccordionPanelStyles_unstable: CustomStyleHook;
+    useAccordionStyles_unstable: CustomStyleHook;
+    useAvatarStyles_unstable: CustomStyleHook;
+    useAvatarGroupStyles_unstable: CustomStyleHook;
+    useAvatarGroupItemStyles_unstable: CustomStyleHook;
+    useAvatarGroupPopoverStyles_unstable: CustomStyleHook;
+    useBadgeStyles_unstable: CustomStyleHook;
+    useCounterBadgeStyles_unstable: CustomStyleHook;
+    useCardHeaderStyles_unstable: CustomStyleHook;
+    useCardStyles_unstable: CustomStyleHook;
+    useCardFooterStyles_unstable: CustomStyleHook;
+    useCardPreviewStyles_unstable: CustomStyleHook;
+    usePresenceBadgeStyles_unstable: CustomStyleHook;
+    useButtonStyles_unstable: CustomStyleHook;
+    useCompoundButtonStyles_unstable: CustomStyleHook;
+    useMenuButtonStyles_unstable: CustomStyleHook;
+    useSplitButtonStyles_unstable: CustomStyleHook;
+    useToggleButtonStyles_unstable: CustomStyleHook;
+    useCheckboxStyles_unstable: CustomStyleHook;
+    useComboboxStyles_unstable: CustomStyleHook;
+    useDropdownStyles_unstable: CustomStyleHook;
+    useListboxStyles_unstable: CustomStyleHook;
+    useOptionStyles_unstable: CustomStyleHook;
+    useOptionGroupStyles_unstable: CustomStyleHook;
+    useDividerStyles_unstable: CustomStyleHook;
+    useInputStyles_unstable: CustomStyleHook;
+    useImageStyles_unstable: CustomStyleHook;
+    useLabelStyles_unstable: CustomStyleHook;
+    useLinkStyles_unstable: CustomStyleHook;
+    useMenuDividerStyles_unstable: CustomStyleHook;
+    useMenuGroupHeaderStyles_unstable: CustomStyleHook;
+    useMenuGroupStyles_unstable: CustomStyleHook;
+    useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemRadioStyles_unstable: CustomStyleHook;
+    useMenuItemStyles_unstable: CustomStyleHook;
+    useMenuListStyles_unstable: CustomStyleHook;
+    useMenuPopoverStyles_unstable: CustomStyleHook;
+    useMenuSplitGroupStyles_unstable: CustomStyleHook;
+    usePersonaStyles_unstable: CustomStyleHook;
+    usePopoverSurfaceStyles_unstable: CustomStyleHook;
+    useRadioGroupStyles_unstable: CustomStyleHook;
+    useRadioStyles_unstable: CustomStyleHook;
+    useSelectStyles_unstable: CustomStyleHook;
+    useSliderStyles_unstable: CustomStyleHook;
+    useSpinButtonStyles_unstable: CustomStyleHook;
+    useSpinnerStyles_unstable: CustomStyleHook;
+    useSwitchStyles_unstable: CustomStyleHook;
+    useTabStyles_unstable: CustomStyleHook;
+    useTabListStyles_unstable: CustomStyleHook;
+    useTextStyles_unstable: CustomStyleHook;
+    useTextareaStyles_unstable: CustomStyleHook;
+    useTooltipStyles_unstable: CustomStyleHook;
+    useDialogTitleStyles_unstable: CustomStyleHook;
+    useDialogBodyStyles_unstable: CustomStyleHook;
+    useDialogActionsStyles_unstable: CustomStyleHook;
+    useDialogSurfaceStyles_unstable: CustomStyleHook;
+    useDialogContentStyles_unstable: CustomStyleHook;
+    useProgressBarStyles_unstable: CustomStyleHook;
+    useToolbarButtonStyles_unstable: CustomStyleHook;
+    useToolbarRadioButtonStyles_unstable: CustomStyleHook;
+    useToolbarGroupStyles_unstable: CustomStyleHook;
+    useToolbarToggleButtonStyles_unstable: CustomStyleHook;
+    useToolbarDividerStyles_unstable: CustomStyleHook;
+    useToolbarStyles_unstable: CustomStyleHook;
+    useTableCellStyles_unstable: CustomStyleHook;
+    useTableRowStyles_unstable: CustomStyleHook;
+    useTableBodyStyles_unstable: CustomStyleHook;
+    useTableStyles_unstable: CustomStyleHook;
+    useTableHeaderStyles_unstable: CustomStyleHook;
+    useTableHeaderCellStyles_unstable: CustomStyleHook;
+    useTableResizeHandleStyles_unstable: CustomStyleHook;
+    useTableSelectionCellStyles_unstable: CustomStyleHook;
+    useTableCellActionsStyles_unstable: CustomStyleHook;
+    useTableCellLayoutStyles_unstable: CustomStyleHook;
+    useDataGridCellStyles_unstable: CustomStyleHook;
+    useDataGridRowStyles_unstable: CustomStyleHook;
+    useDataGridBodyStyles_unstable: CustomStyleHook;
+    useDataGridStyles_unstable: CustomStyleHook;
+    useDataGridHeaderStyles_unstable: CustomStyleHook;
+    useDataGridHeaderCellStyles_unstable: CustomStyleHook;
+    useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+}> | undefined>;
+
+// @internal (undocumented)
+export type OverridesContextValue_unstable = {
+    inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+};
+
+// @internal (undocumented)
+export const OverridesProvider_unstable: React_2.Provider<OverridesContextValue_unstable | undefined>;
+
 // @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
@@ -24,46 +291,40 @@ export type ThemeClassNameContextValue_unstable = string;
 // @public (undocumented)
 export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 
-// Warning: (ae-internal-missing-underscore) The name "ThemeContext_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
 
-// Warning: (ae-internal-missing-underscore) The name "ThemeContextValue_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
+// @public (undocumented)
 export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
 
-// Warning: (ae-internal-missing-underscore) The name "ThemeProvider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export const ThemeProvider_unstable: React_2.Provider<ThemeContextValue_unstable>;
 
-// Warning: (ae-internal-missing-underscore) The name "TooltipVisibilityContextValue_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export type TooltipVisibilityContextValue_unstable = {
     visibleTooltip?: {
         hide: () => void;
     };
 };
 
-// Warning: (ae-internal-missing-underscore) The name "TooltipVisibilityProvider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
+
+// @public
+export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextValue_unstable) => CustomStyleHook;
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
 
-// Warning: (ae-internal-missing-underscore) The name "useThemeClassName_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue" which is marked as @internal
 //
-// @internal (undocumented)
+// @public (undocumented)
+export function useOverrides_unstable(): OverridesContextValue_unstable;
+
+// @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;
 
-// Warning: (ae-internal-missing-underscore) The name "useTooltipVisibility_unstable" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
+// @public (undocumented)
 export function useTooltipVisibility_unstable(): TooltipVisibilityContextValue_unstable;
 
 // (No @packageDocumentation comment for this package)

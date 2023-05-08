@@ -2,6 +2,8 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
+  useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
   useTabsterAttributes,
@@ -20,3 +22,5 @@ export type {
   FocusOutlineOffset,
   FocusOutlineStyleOptions,
 } from './focus/index';
+
+export { applyFocusVisiblePolyfill } from './focus/index';

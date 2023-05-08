@@ -1,12 +1,25 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import type { CardSlots, CardState } from './Card.types';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
+import type { CardContextValue, CardSlots, CardState } from './Card.types';
+import { CardProvider } from './CardContext';
 
 /**
  * Render the final JSX of Card.
  */
-export const renderCard_unstable = (state: CardState) => {
-  const { slots, slotProps } = getSlots<CardSlots>(state);
+export const renderCard_unstable = (state: CardState, cardContextValue: CardContextValue) => {
+  const { slots, slotProps } = getSlotsNext<CardSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      <CardProvider value={cardContextValue}>
+        {slots.checkbox ? <slots.checkbox {...slotProps.checkbox} /> : null}
+        {slots.floatingAction ? <slots.floatingAction {...slotProps.floatingAction} /> : null}
+        {slotProps.root.children}
+      </CardProvider>
+    </slots.root>
+  );
 };

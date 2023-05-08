@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs';
+import { SSRDefaultOpen } from './MenuSSRDefaultOpen.stories';
+
+<Meta title="Concepts/Developer/Server-Side Rendering/Limitations with Portals" />
+
+## React Portals
+
+React does not support hydration for portals ([facebook/react#13097](https://github.com/facebook/react/issues/13097)). While Fluent
+UI tries to work out of the box without hydration warnings, some workarounds are required in certain edge cases.
+
+### Default open
+
+Components like `Menu` or `Popover` have a `defaultOpen` prop that open the positioned surface on mount. These components
+are rendered with React portals. In SSR using the `defaultOpen` on server render will cause a hydration error because
+React does not support hydration for portals.
+
+The below example shows how to use the `useIsSSR` hook to implement a `Menu` that is open by default on the first render.
+Toggle the checkbox to mount/unmount the component.
+
+<SSRDefaultOpen />
+
+```tsx
+import * as React from 'react';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, useIsSSR, Button } from '@fluentui/react-components';
+
+const DefaultOpenMenu = () => {
+  const [open, setOpen] = React.useState(false);
+  const isSSR = useIsSSR();
+
+  React.useEffect(() => {
+    if (!isSSR) {
+      setOpen(true);
+    }
+  }, [isSSR]);
+
+  return (
+    <Menu open={open} onOpenChange={(e, data) => setOpen(data.open)}>
+      <MenuTrigger>
+        <Button>SSR Default open</Button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```

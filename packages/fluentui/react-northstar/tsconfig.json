@@ -1,15 +1,12 @@
 {
-  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "extends": "../../../tsconfig.base.v0.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist/dts",
-    "skipLibCheck": true,
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "paths": {
-      "docs/*": ["packages/fluentui/docs/*"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
-      "test/*": ["packages/fluentui/react-northstar/test/*"],
-      "@fluentui/a11y-testing": ["packages/a11y-testing/src/index"]
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
     }
   },
   "include": ["src", "test"],

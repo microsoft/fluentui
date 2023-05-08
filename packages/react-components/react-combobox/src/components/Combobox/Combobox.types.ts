@@ -20,7 +20,7 @@ export type ComboboxSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /* The dropdown listbox slot */
-  listbox: NonNullable<Slot<typeof Listbox>>;
+  listbox?: Slot<typeof Listbox>;
 };
 
 /**
@@ -29,9 +29,14 @@ export type ComboboxSlots = {
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   ComboboxBaseProps & {
     /*
+     * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
+     */
+    freeform?: boolean;
+
+    /*
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
      */
-    children: React.ReactNode;
+    children?: React.ReactNode;
   };
 
 /**

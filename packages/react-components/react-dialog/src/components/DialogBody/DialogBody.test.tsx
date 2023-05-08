@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DialogBody } from './DialogBody';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import type { DialogBodyProps } from './DialogBody.types';
 
 describe('DialogBody', () => {

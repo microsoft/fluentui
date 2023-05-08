@@ -1,8 +1,451 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Thu, 14 Jul 2022 21:21:10 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Apr 2023 08:12:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.11)
+
+Mon, 24 Apr 2023 08:12:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.10..@fluentui/react-checkbox_v9.1.11)
+
+### Patches
+
+- chore: adopt custom JSX pragma ([PR #27607](https://github.com/microsoft/fluentui/pull/27607) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-field to v9.1.1 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-label to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.10)
+
+Mon, 17 Apr 2023 17:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.9..@fluentui/react-checkbox_v9.1.10)
+
+### Patches
+
+- chore: Remove deprecated CheckboxField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-label to v9.1.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.9)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.8..@fluentui/react-checkbox_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-beta.2 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-label to v9.1.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.8)
+
+Fri, 07 Apr 2023 00:01:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.7..@fluentui/react-checkbox_v9.1.8)
+
+### Patches
+
+- chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.7)
+
+Tue, 04 Apr 2023 18:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.5..@fluentui/react-checkbox_v9.1.7)
+
+### Patches
+
+- fix: Fix vertical alignment of inline Checkbox when checked vs. unchecked ([PR #27324](https://github.com/microsoft/fluentui/pull/27324) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.29 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-label to v9.1.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-tabster to v9.6.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.5)
+
+Tue, 21 Mar 2023 21:23:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.4..@fluentui/react-checkbox_v9.1.5)
+
+### Patches
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.27 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-label to v9.1.5 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-tabster to v9.6.1 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-theme to v9.1.7 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-utilities to v9.7.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.20 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.4)
+
+Thu, 16 Mar 2023 14:36:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.3..@fluentui/react-checkbox_v9.1.4)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.26 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-label to v9.1.4 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-tabster to v9.6.0 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-utilities to v9.7.1 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.3)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.2..@fluentui/react-checkbox_v9.1.3)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.25 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-label to v9.1.3 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.1 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-tabster to v9.5.7 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.2)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.1..@fluentui/react-checkbox_v9.1.2)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.24 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+- Bump @fluentui/react-label to v9.1.2 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+- Bump @fluentui/react-tabster to v9.5.6 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+- Bump @fluentui/react-utilities to v9.7.0 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.1)
+
+Fri, 10 Mar 2023 07:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.0..@fluentui/react-checkbox_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.23 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+- Bump @fluentui/react-label to v9.1.1 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+- Bump @fluentui/react-tabster to v9.5.5 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+- Bump @fluentui/react-utilities to v9.6.2 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.0)
+
+Wed, 08 Mar 2023 17:42:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.28..@fluentui/react-checkbox_v9.1.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27062](https://github.com/microsoft/fluentui/pull/27062) by gcox@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.22 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-label to v9.1.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-tabster to v9.5.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+
+## [9.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.28)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.27..@fluentui/react-checkbox_v9.0.28)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.21 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-label to v9.0.22 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-tabster to v9.5.3 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.27)
+
+Mon, 13 Feb 2023 23:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.26..@fluentui/react-checkbox_v9.0.27)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.20 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-label to v9.0.21 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-tabster to v9.5.2 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.26)
+
+Fri, 10 Feb 2023 08:50:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.25..@fluentui/react-checkbox_v9.0.26)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.19 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-label to v9.0.20 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-tabster to v9.5.1 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+
+## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.25)
+
+Tue, 07 Feb 2023 14:13:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.24..@fluentui/react-checkbox_v9.0.25)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+
+## [9.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.24)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.23..@fluentui/react-checkbox_v9.0.24)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.18 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-label to v9.0.19 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.23)
+
+Thu, 26 Jan 2023 13:30:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.22..@fluentui/react-checkbox_v9.0.23)
+
+### Patches
+
+- Deprecate CheckboxField_unstable in favor of Field with Checkbox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.17 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-label to v9.0.18 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.22)
+
+Mon, 23 Jan 2023 16:43:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.21..@fluentui/react-checkbox_v9.0.22)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.16 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+
+## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.21)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.20..@fluentui/react-checkbox_v9.0.21)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.20)
+
+Mon, 16 Jan 2023 08:38:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.19..@fluentui/react-checkbox_v9.0.20)
+
+### Patches
+
+- chore: Simplify Checkbox style selectors using component checked/disabled state ([PR #26247](https://github.com/microsoft/fluentui/pull/26247) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-label to v9.0.17 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.19)
+
+Mon, 09 Jan 2023 21:51:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.18..@fluentui/react-checkbox_v9.0.19)
+
+### Patches
+
+- perf: Don't render Checkbox icon when unchecked ([PR #26248](https://github.com/microsoft/fluentui/pull/26248) by behowell@microsoft.com)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.18)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.17..@fluentui/react-checkbox_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-label to v9.0.16 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.17)
+
+Wed, 04 Jan 2023 01:40:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.16..@fluentui/react-checkbox_v9.0.17)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.13 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-label to v9.0.15 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-tabster to v9.3.5 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.16)
+
+Wed, 21 Dec 2022 10:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.15..@fluentui/react-checkbox_v9.0.16)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.12 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-label to v9.0.14 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-tabster to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.15)
+
+Tue, 20 Dec 2022 14:59:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.14..@fluentui/react-checkbox_v9.0.15)
+
+### Patches
+
+- chore: Update Checkbox to use griffel reset styles ([PR #25984](https://github.com/microsoft/fluentui/pull/25984) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.11 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-label to v9.0.13 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-tabster to v9.3.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+
+## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.14)
+
+Mon, 05 Dec 2022 18:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.13..@fluentui/react-checkbox_v9.0.14)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.10 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-label to v9.0.12 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-tabster to v9.3.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.13)
+
+Thu, 17 Nov 2022 23:05:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.12..@fluentui/react-checkbox_v9.0.13)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.9 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-label to v9.0.11 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-tabster to v9.3.1 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.12)
+
+Fri, 11 Nov 2022 14:57:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.11..@fluentui/react-checkbox_v9.0.12)
+
+### Patches
+
+- chore: Move CheckboxField into the @fluentui/react-checkbox package and export as _unstable ([PR #25593](https://github.com/microsoft/fluentui/pull/25593) by behowell@microsoft.com)
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.8 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-label to v9.0.10 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tabster to v9.3.0 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.11)
+
+Wed, 02 Nov 2022 11:57:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.10..@fluentui/react-checkbox_v9.0.11)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.9 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-tabster to v9.2.1 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.10)
+
+Tue, 25 Oct 2022 00:35:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.9..@fluentui/react-checkbox_v9.0.10)
+
+### Patches
+
+- chore: Migrate to new package structure. ([PR #25337](https://github.com/microsoft/fluentui/pull/25337) by tristan.watanabe@gmail.com)
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.9)
+
+Thu, 20 Oct 2022 08:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.8..@fluentui/react-checkbox_v9.0.9)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.8 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-tabster to v9.2.0 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.8)
+
+Thu, 13 Oct 2022 11:02:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.7..@fluentui/react-checkbox_v9.0.8)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.7 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.6..@fluentui/react-checkbox_v9.0.7)
+
+### Patches
+
+- fix: Checkbox's label shouldn't have a pointer cursor when disabled ([PR #25018](https://github.com/microsoft/fluentui/pull/25018) by behowell@microsoft.com)
+- fix: Making the hidden input only cover the indicator and not also the label. ([PR #24638](https://github.com/microsoft/fluentui/pull/24638) by makotom@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.6)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.5..@fluentui/react-checkbox_v9.0.6)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.5)
+
+Thu, 15 Sep 2022 09:49:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.4..@fluentui/react-checkbox_v9.0.5)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- fix: update color tokens ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-label to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+
+## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.4)
+
+Wed, 03 Aug 2022 16:03:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.3..@fluentui/react-checkbox_v9.0.4)
+
+### Patches
+
+- refactor: use `useFocusWithin` hook for :focus-within styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-label to v9.0.4 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-tabster to v9.1.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.3)
 

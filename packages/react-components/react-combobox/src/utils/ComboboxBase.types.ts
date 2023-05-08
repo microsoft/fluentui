@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
-import { SelectionEvents, SelectionProps, SelectionState } from '../utils/Selection.types';
+import { SelectionProps, SelectionState } from '../utils/Selection.types';
 
 /**
  * ComboboxBase Props
@@ -21,7 +21,7 @@ export type ComboboxBaseProps = SelectionProps & {
   defaultOpen?: boolean;
 
   /**
-   * The default value when the combobox's value is uncontrolled
+   * The default value displayed in the trigger input or button when the combobox's value is uncontrolled
    */
   defaultValue?: string;
 
@@ -62,7 +62,7 @@ export type ComboboxBaseProps = SelectionProps & {
 
   /**
    * The value displayed by the Combobox.
-   * Use this with `onSelect` to directly control the displayed value string
+   * Use this with `onOptionSelect` to directly control the displayed value string
    */
   value?: string;
 };
@@ -71,20 +71,30 @@ export type ComboboxBaseProps = SelectionProps & {
  * State used in rendering Combobox
  */
 export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inlinePopup' | 'size'>> &
-  Pick<ComboboxBaseProps, 'placeholder' | 'value'> &
+  Pick<ComboboxBaseProps, 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
   SelectionState & {
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
 
-    /* Callback when an option is clicked, for internal use */
-    onOptionClick(event: React.MouseEvent, option: OptionValue): void;
+    // Whether the keyboard focus outline style should be visible
+    focusVisible: boolean;
 
-    selectOption(event: SelectionEvents, optionValue: string): void;
+    // whether the combobox/dropdown currently has focus
+    hasFocus: boolean;
+
+    /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
+    ignoreNextBlur: React.MutableRefObject<boolean>;
 
     setActiveOption(option?: OptionValue): void;
 
+    setFocusVisible(focusVisible: boolean): void;
+
+    setHasFocus(hasFocus: boolean): void;
+
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
+
+    setValue(newValue: string | undefined): void;
   };
 
 /**

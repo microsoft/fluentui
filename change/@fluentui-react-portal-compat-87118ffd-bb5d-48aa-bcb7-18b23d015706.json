@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Class ID detection compatible with React 18",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "hanj@microsoft.com",
+  "dependentChangeType": "patch"
+}

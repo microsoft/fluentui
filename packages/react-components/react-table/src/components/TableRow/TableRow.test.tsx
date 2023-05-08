@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableRow } from './TableRow';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableRowProps } from './TableRow.types';
-import { TableContextProvider } from '../../contexts/tableContext';
+import { TableContextProvider, tableContextDefaultValue } from '../../contexts/tableContext';
 
 const tbody = document.createElement('tbody');
 describe('TableRow', () => {
@@ -20,8 +20,6 @@ describe('TableRow', () => {
     displayName: 'TableRow',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(
       <TableRow>
@@ -34,7 +32,7 @@ describe('TableRow', () => {
 
   it('renders as div if `noNativeElements` is set', () => {
     const { container } = render(
-      <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
+      <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true }}>
         <TableRow>
           <div>Table cell</div>
         </TableRow>

@@ -9,11 +9,15 @@ export interface ITreeChartDataPoint {
   /**
    * Subtext value (optional)
    */
-  subname?: string | undefined;
+  subname?: string;
+  /**
+   * Bodytext value (optional)
+   */
+  bodytext?: string;
   /**
    * Metric text value (optional)
    */
-  metric?: string | undefined;
+  metric?: string;
   /**
    * Color of the rectangular box
    */
@@ -54,12 +58,12 @@ export interface ITreeProps {
   /**
    * compostion for three layer chart, long: composition = 1; compact: composition = 0
    */
-  composition?: NodesComposition.long | NodesComposition.compact | undefined;
+  composition?: NodesComposition.long | NodesComposition.compact;
   /**
    * Node Width Size for the Tree Layout
    * * @default 75
    */
-  layoutWidth?: number | undefined;
+  layoutWidth?: number;
   /**
    * traversal order for tree chart, preOrder = 1, levelOrder = 0
    */
@@ -125,11 +129,15 @@ export interface ITreeDataStructure {
   /**
    * Subtext value (optional)
    */
-  subName?: string | undefined;
+  subName?: string;
+  /**
+   * Bodytext value (optional)
+   */
+  bodyText?: string;
   /**
    * Metric text value (optional)
    */
-  metricName?: string | undefined;
+  metricName?: string;
   /**
    * Color of the rectangular box
    */
@@ -179,6 +187,10 @@ export interface ITreeStyles {
    *  Style for the node sub Text
    */
   rectSubText: IStyle;
+  /**
+   *  Style for the node body Text
+   */
+  rectBodyText: IStyle;
   /**
    *  Style for the node metric value Text
    */

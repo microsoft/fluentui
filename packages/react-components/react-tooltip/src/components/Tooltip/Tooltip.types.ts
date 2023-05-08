@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, TriggerProps } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 
 /**
@@ -14,10 +14,10 @@ export type TooltipSlots = {
 };
 
 /**
- * The properties that are added to the trigger of the Tooltip
+ * The properties that are added to the child of the Tooltip
  */
-export type TooltipTriggerProps = {
-  ref?: React.Ref<never>;
+export type TooltipChildProps = {
+  ref?: React.Ref<unknown>;
 } & Pick<
   React.HTMLAttributes<HTMLElement>,
   'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave'
@@ -34,6 +34,7 @@ export type OnVisibleChangeData = {
  * Properties for Tooltip
  */
 export type TooltipProps = ComponentProps<TooltipSlots> &
+  TriggerProps<TooltipChildProps> &
   Pick<PortalProps, 'mountNode'> & {
     /**
      * The tooltip's visual appearance.
@@ -43,18 +44,6 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
      * @default normal
      */
     appearance?: 'normal' | 'inverted';
-
-    /**
-     * The tooltip can have a single JSX child, or a render function that accepts TooltipTriggerProps.
-     *
-     * If no child is provided, the tooltip's target must be set with the `positioning` prop, and its
-     * visibility must be controlled with the `visible` prop.
-     */
-    children?:
-      | (React.ReactElement & { ref?: React.Ref<unknown> })
-      | ((props: TooltipTriggerProps) => React.ReactElement | null)
-      | null;
-
     /**
      * Delay before the tooltip is hidden, in milliseconds.
      *

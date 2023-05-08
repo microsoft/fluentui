@@ -1,13 +1,15 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TableRowState, TableRowSlots } from './TableRow.types';
 
 /**
  * Render the final JSX of TableRow
  */
 export const renderTableRow_unstable = (state: TableRowState) => {
-  const { slots, slotProps } = getSlots<TableRowSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TableRowSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

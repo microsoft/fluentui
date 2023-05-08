@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { getPartitionedNativeProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useSliderState_unstable } from './useSliderState';
 import { SliderProps, SliderState } from './Slider.types';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
 export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -33,9 +38,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     },
     root: resolveShorthand(root, {
       required: true,
-      defaultProps: {
-        ...nativeProps.root,
-      },
+      defaultProps: nativeProps.root,
     }),
     input: resolveShorthand(input, {
       required: true,
@@ -50,6 +53,8 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     rail: resolveShorthand(rail, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
 
   useSliderState_unstable(state, props);
 

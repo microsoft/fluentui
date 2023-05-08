@@ -3,7 +3,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { SelectionMode } from '../../Selection';
 import { ScrollToMode } from '../../List';
 import type { ISelection, ISelectionZoneProps } from '../../Selection';
-import type { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import type { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
 import type { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import type { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
@@ -125,7 +125,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Additional props to pass through to the SelectionZone created by default.
    */
-  selectionZoneProps?: ISelectionZoneProps;
+  selectionZoneProps?: Partial<ISelectionZoneProps>;
 
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
@@ -700,6 +700,7 @@ export interface IDetailsListStyles {
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+  groupedListAs?: IComponentAs<IGroupedListProps>;
 }
 
 /**

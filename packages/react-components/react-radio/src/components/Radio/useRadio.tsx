@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
-import { RadioGroupContext } from '../../contexts/RadioGroupContext';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
+import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioProps, RadioState } from './Radio.types';
 
 /**
@@ -16,20 +16,16 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const nameGroup = useContextSelector(RadioGroupContext, ctx => ctx.name);
-  const value = useContextSelector(RadioGroupContext, ctx => ctx.value);
-  const defaultValue = useContextSelector(RadioGroupContext, ctx => ctx.defaultValue);
-  const disabledGroup = useContextSelector(RadioGroupContext, ctx => ctx.disabled);
-  const layout = useContextSelector(RadioGroupContext, ctx => ctx.layout);
-  const requiredGroup = useContextSelector(RadioGroupContext, ctx => ctx.required);
+  const group = useRadioGroupContextValue_unstable();
 
   const {
-    name = nameGroup,
-    checked = value !== undefined ? value === props.value : undefined,
-    defaultChecked = defaultValue !== undefined ? defaultValue === props.value : undefined,
-    labelPosition = layout === 'horizontal-stacked' ? 'below' : 'after',
-    disabled = disabledGroup,
-    required = requiredGroup,
+    name = group.name,
+    checked = group.value !== undefined ? group.value === props.value : undefined,
+    defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
+    labelPosition = group.layout === 'horizontal-stacked' ? 'below' : 'after',
+    disabled = group.disabled,
+    required = group.required,
+    'aria-describedby': ariaDescribedBy = group['aria-describedby'],
     onChange,
   } = props;
 
@@ -41,7 +37,10 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
 
   const root = resolveShorthand(props.root, {
     required: true,
-    defaultProps: nativeProps.root,
+    defaultProps: {
+      ref: useFocusWithin<HTMLSpanElement>(),
+      ...nativeProps.root,
+    },
   });
 
   const input = resolveShorthand(props.input, {
@@ -55,16 +54,17 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       defaultChecked,
       disabled,
       required,
+      'aria-describedby': ariaDescribedBy,
       ...nativeProps.primary,
     },
   });
 
-  input.onChange = useMergedEventCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
+  input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
       htmlFor: input.id,
-      disabled,
+      disabled: input.disabled,
     },
   });
 

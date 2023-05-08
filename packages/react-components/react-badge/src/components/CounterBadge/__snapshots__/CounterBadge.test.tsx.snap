@@ -3,7 +3,5 @@
 exports[`CounterBadge renders a default state 1`] = `
 <div
   className="fui-Badge fui-CounterBadge"
->
-  0
-</div>
+/>
 `;

@@ -3,7 +3,7 @@
     "apps/*",
     "packages/*",
     "packages/react-components/*",
-    "scripts",
+    "scripts/*",
     "packages/fluentui/*",
     "tools",
     "typings"

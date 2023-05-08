@@ -1,8 +1,8 @@
 export {
-  Progress,
-  progressClassNames,
-  renderProgress_unstable,
-  useProgress_unstable,
-  useProgressStyles_unstable,
-} from './Progress';
-export type { ProgressProps, ProgressSlots, ProgressState } from './Progress';
+  ProgressBar,
+  progressBarClassNames,
+  renderProgressBar_unstable,
+  useProgressBar_unstable,
+  useProgressBarStyles_unstable,
+} from './ProgressBar';
+export type { ProgressBarProps, ProgressBarSlots, ProgressBarState } from './ProgressBar';

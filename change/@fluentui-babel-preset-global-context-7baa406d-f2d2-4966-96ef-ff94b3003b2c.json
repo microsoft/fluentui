@@ -1,7 +1,0 @@
-{
-  "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours",
-  "type": "none",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

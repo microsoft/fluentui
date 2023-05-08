@@ -5,9 +5,11 @@ module.exports = {
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
+    // adding temporary back until import plugin rule is resolved https://github.com/microsoft/fluentui/issues/27727
     lint: ['build'],
     clean: [],
     test: ['build'],
+    'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
@@ -17,7 +19,18 @@ module.exports = {
   ...(process.env.TF_BUILD && { reporter: 'adoLog' }),
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
-  ignore: ['change/**', 'rfcs/**', 'README.md'],
+  ignore: [
+    'change/**',
+    'rfcs/**',
+    'README.md',
+    '.vscode/**',
+    '.github/*.yml',
+    '.github/*.json',
+    '.github/*.md',
+    '.github/CODEOWNERS',
+    '.github/MAINTAINERS',
+    '.github/ISSUE_TEMPLATE/**',
+  ],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
   cacheOptions: {

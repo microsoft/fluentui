@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { render, RenderResult, fireEvent, screen } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { Input } from './Input';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 function getInput(): HTMLInputElement {
   return screen.getByRole('textbox') as HTMLInputElement;
@@ -94,5 +95,22 @@ describe('Input', () => {
     renderedComponent = render(<Input value="hello" onChange={onChange} />);
     renderedComponent.rerender(<Input value="world" onChange={onChange} />);
     expect(onChange).toHaveBeenCalledTimes(0);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    renderedComponent = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Input />
+      </Field>,
+    );
+
+    const input = renderedComponent.getByRole('textbox') as HTMLInputElement;
+    const label = renderedComponent.getByText('Test label') as HTMLLabelElement;
+    const message = renderedComponent.getByText('Test error message');
+
+    expect(input.id).toEqual(label.htmlFor);
+    expect(input.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(input.getAttribute('aria-invalid')).toEqual('true');
+    expect(input.required).toBe(true);
   });
 });

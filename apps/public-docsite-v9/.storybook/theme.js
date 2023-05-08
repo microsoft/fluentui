@@ -1,4 +1,5 @@
 import { create } from '@storybook/theming';
+
 import logo from '../public/fluentui-logo.svg';
 
 /**

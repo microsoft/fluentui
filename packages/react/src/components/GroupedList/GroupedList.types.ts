@@ -283,10 +283,13 @@ export interface IGroupDividerProps {
   /** Defines the number of columns a group header needs to span in the case of a grid or treegrid */
   ariaColSpan?: number;
 
-  /** Defines the number of items in the current set of listitems or treeitems */
+  /** Defines an element's nesting depth in the current set of treeitems */
+  ariaLevel?: number;
+
+  /** Defines the number of items in the current set of treeitems */
   ariaSetSize?: number;
 
-  /** Defines an element's number or position in the current set of listitems or treeitems */
+  /** Defines an element's number or position in the current set of treeitems */
   ariaPosInSet?: number;
 
   /** Defines the number of items in the current set of grid items */
@@ -341,6 +344,8 @@ export interface IGroupDividerProps {
 
   /** Override which allows the caller to provider a custom renderer for the GroupHeader title. */
   onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
+  /** Override which allows the caller to provide a custom renderer for just the name. */
+  onRenderName?: IRenderFunction<IGroupHeaderProps>;
 
   /** Props for expand/collapse button
    * @deprecated Use {@link IGroupHeaderProps.expandButtonProps} instead.

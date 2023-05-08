@@ -18,6 +18,8 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
+  ProjectConfiguration,
+  joinPathFragments,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -127,11 +129,9 @@ describe('migrate-converged-pkg generator', () => {
           return json;
         });
 
-        /* eslint-disable @fluentui/max-len */
         await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
           `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
         );
-        /* eslint-enable @fluentui/max-len */
       });
     });
 
@@ -269,14 +269,14 @@ describe('migrate-converged-pkg generator', () => {
         extends: './tsconfig.json',
         compilerOptions: {
           noEmit: false,
-          outDir: 'dist',
+          outDir: '../../dist/out-tsc',
           declaration: true,
-          declarationDir: 'dist/types',
+          declarationDir: '../../dist/out-tsc/types',
           inlineSources: true,
           lib: ['ES2019', 'dom'],
           types: ['static-assets', 'environment'],
         },
-        exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
+        exclude: ['./src/testing/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
         include: ['./src/**/*.ts', './src/**/*.tsx'],
       });
       expect(tsConfigTest).toEqual({
@@ -286,7 +286,15 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           types: ['jest', 'node'],
         },
-        include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
+        include: [
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.d.ts',
+          './src/testing/**/*.ts',
+          './src/testing/**/*.tsx',
+        ],
       });
     });
 
@@ -346,7 +354,6 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
-    // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
@@ -435,8 +442,8 @@ describe('migrate-converged-pkg generator', () => {
         preset: '../../../jest.preset.js',
         globals: {
         'ts-jest': {
-        tsConfig: '<rootDir>/tsconfig.spec.json',
-        diagnostics: false,
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        isolatedModules: true,
         },
         },
         transform: {
@@ -498,8 +505,8 @@ describe('migrate-converged-pkg generator', () => {
 
       const normalizedProjectNameNamesVariants = names(normalizedProjectName);
       const paths = {
-        storyOne: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
-        storyTwo: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+        storyOne: `${projectConfig.root}/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
         tsconfig: {
           storybook: `${projectStorybookConfigPath}/tsconfig.json`,
           main: `${projectConfig.root}/tsconfig.json`,
@@ -548,7 +555,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, paths.packageJson).scripts).toEqual(
         expect.objectContaining({
           start: 'yarn storybook',
-          storybook: 'node ../../scripts/storybook/runner',
+          storybook: 'start-storybook',
         }),
       );
 
@@ -560,7 +567,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: '',
           types: ['static-assets', 'environment', 'storybook__addons'],
         },
-        include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
+        include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
       });
       expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).toEqual(
         expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),
@@ -578,7 +585,7 @@ describe('migrate-converged-pkg generator', () => {
 
         module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
         const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -607,8 +614,6 @@ describe('migrate-converged-pkg generator', () => {
       const mainJsFilePath = `${projectStorybookConfigPath}/main.js`;
       const packageJsonPath = `${projectConfig.root}/package.json`;
 
-      let pkgJson: PackageJson = readJson(tree, packageJsonPath);
-
       tree.write(mainJsFilePath, 'module.exports = {}');
 
       // artificially add storybook scripts
@@ -632,7 +637,7 @@ describe('migrate-converged-pkg generator', () => {
       // artificially add stories globs to exclude
       writeJson<TsConfig>(tree, paths.tsconfig.lib, {
         compilerOptions: {},
-        exclude: ['../src/common/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
+        exclude: ['../src/testing/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
       });
       // artificially create spec ts config
       writeJson<TsConfig>(tree, paths.tsconfig.test, {
@@ -640,7 +645,7 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.test.ts', '**/*.test.tsx'],
       });
 
-      pkgJson = readJson(tree, packageJsonPath);
+      const pkgJson: PackageJson = readJson(tree, packageJsonPath);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
       expect(tree.exists(mainJsFilePath)).toBeTruthy();
@@ -674,11 +679,10 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
     });
 
-    it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
-      const { projectConfig, normalizedProjectName } = setup({ createDummyStories: true });
-      const componentName = names(normalizedProjectName).className.replace('React', '');
+    it(`should move existing stories to the root stories subfolder`, async () => {
+      const { projectConfig } = setup({ createDummyStories: true });
       const oldStoriesPath = `${projectConfig.root}/src/stories`;
-      const newStoriesPath = `${oldStoriesPath}/${componentName}`;
+      const newStoriesPath = `${projectConfig.root}/stories`;
       const storyFiles: string[] = [];
 
       visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
@@ -707,29 +711,28 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`e2e config`, () => {
+  describe(`cypress config`, () => {
     function setup(config: { projectName: string }) {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
-        e2eRoot: `${projectConfig.root}/e2e`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
           lib: `${projectConfig.root}/tsconfig.lib.json`,
           test: `${projectConfig.root}/tsconfig.spec.json`,
-          e2e: `${projectConfig.root}/e2e/tsconfig.json`,
+          cypress: `${projectConfig.root}/tsconfig.cy.json`,
         },
       };
 
-      function createE2eSetup() {
-        writeJson<TsConfig>(tree, paths.tsconfig.e2e, {
+      function createCypressSetup() {
+        writeJson<TsConfig>(tree, paths.tsconfig.cypress, {
           extends: '../../tsconfig.base.json',
           compilerOptions: {},
         });
         tree.write(
-          `${paths.e2eRoot}/index.e2e.ts`,
+          `${projectConfig.sourceRoot}/components/index.cy.ts`,
           stripIndents`
-         describe('E2E test', () => {
+         describe('Cypress test', () => {
            before(() => {
             cy.visitStorybook();
            });
@@ -740,39 +743,41 @@ describe('migrate-converged-pkg generator', () => {
         return tree;
       }
 
-      return { projectConfig, paths, createE2eSetup };
+      return { projectConfig, paths, createCypressSetup };
     }
-    it(`should do nothing if e2e setup is missing`, async () => {
+    it(`should do nothing if cypress setup is missing`, async () => {
       const { paths } = setup({ projectName: options.name });
 
       await generator(tree, { name: options.name });
 
-      expect(tree.exists(paths.tsconfig.e2e)).toBeFalsy();
+      expect(tree.exists(paths.tsconfig.cypress)).toBeFalsy();
     });
 
-    it(`should setup e2e if present`, async () => {
-      const { paths, createE2eSetup } = setup({ projectName: options.name });
+    it(`should setup cypress if present`, async () => {
+      const { paths, createCypressSetup } = setup({ projectName: options.name });
 
-      createE2eSetup();
+      createCypressSetup();
 
-      expect(tree.exists(paths.tsconfig.e2e)).toBeTruthy();
+      expect(tree.exists(paths.tsconfig.cypress)).toBeTruthy();
 
       await generator(tree, { name: options.name });
 
       // // TS Updates
-      const e2eTsConfig: TsConfig = readJson(tree, paths.tsconfig.e2e);
+      const cypressTsConfig: TsConfig = readJson(tree, paths.tsconfig.cypress);
       const mainTsConfig: TsConfig = readJson(tree, paths.tsconfig.main);
+      const libTsConfig: TsConfig = readJson(tree, paths.tsconfig.lib);
 
-      expect(e2eTsConfig).toEqual({
-        extends: '../tsconfig.json',
+      expect(cypressTsConfig).toEqual({
+        extends: './tsconfig.json',
         compilerOptions: {
           isolatedModules: false,
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
-        include: ['**/*.ts', '**/*.tsx'],
+        include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
-      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
+      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './tsconfig.cy.json' }]));
+      expect(libTsConfig.exclude).toEqual(expect.arrayContaining(['**/*.cy.ts', '**/*.cy.tsx']));
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
@@ -785,30 +790,36 @@ describe('migrate-converged-pkg generator', () => {
   describe(`api-extractor.json updates`, () => {
     it(`should create api-extractor.json`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
+      const apiExtractorConfigPath = `${projectConfig.root}/config/api-extractor.json`;
 
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
-    });
-
-    it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeFalsy();
+      expect(tree.exists(apiExtractorConfigPath)).toBeFalsy();
 
       await generator(tree, options);
 
-      /* eslint-disable @fluentui/max-len */
-      expect(readJson(tree, `${projectConfig.root}/config/api-extractor.local.json`)).toMatchInlineSnapshot(`
+      expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
+      expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "extends": "./api-extractor.json",
-          "mainEntryPointFilePath": "<projectFolder>/dist/types/packages/react-components/<unscopedPackageName>/src/index.d.ts",
+          "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
         }
       `);
-      /* eslint-enable @fluentui/max-len */
+    });
+
+    it(`should remove api-extractor.local.json if present`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const apiExtractorLocalPath = `${projectConfig.root}/config/api-extractor.local.json`;
+
+      expect(tree.exists(apiExtractorLocalPath)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(apiExtractorLocalPath)).toBeFalsy();
+
+      writeJson(tree, apiExtractorLocalPath, {});
+
+      await generator(tree, options);
+
+      expect(tree.exists(apiExtractorLocalPath)).toBeFalsy();
     });
   });
 
@@ -821,18 +832,42 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
-      expect(pkgJson.typings).toEqual('dist/index.d.ts');
+      expect(pkgJson.typings).toEqual('./dist/index.d.ts');
+    });
+
+    it(`should update dependencies`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).not.toBeDefined();
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).not.toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).toBeDefined();
     });
 
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+      const pkgJsonPath = `${projectConfig.root}/package.json`;
+      updateJson(tree, pkgJsonPath, json => {
+        json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
+        json.scripts['build:local'] =
+          'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components && yarn docs';
+        return json;
+      });
+      let pkgJson = readJson(tree, pkgJsonPath);
 
       expect(pkgJson.scripts).toMatchInlineSnapshot(`
         Object {
           "build": "just-scripts build",
+          "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components && yarn docs",
           "clean": "just-scripts clean",
           "code-style": "just-scripts code-style",
+          "docs": "api-extractor run --config=config/api-extractor.local.json --local",
           "just": "just-scripts",
           "lint": "just-scripts lint",
           "start": "just-scripts dev:storybook",
@@ -848,16 +883,67 @@ describe('migrate-converged-pkg generator', () => {
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.scripts).toEqual({
-        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-        // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-dummy/src && yarn docs`,
+        'generate-api': 'just-scripts generate-api',
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
+        'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
         'type-check': 'tsc -b tsconfig.json',
+      });
+    });
+
+    describe(`export-maps`, () => {
+      function setup(config: { name: string; addModuleField?: boolean }) {
+        const addModuleField = config.addModuleField ?? true;
+        const projectConfig = readProjectConfiguration(tree, config.name);
+        const pkgJsonPath = `${projectConfig.root}/package.json`;
+
+        if (addModuleField) {
+          updateJson(tree, pkgJsonPath, json => {
+            json.module = './lib/index.js';
+            return json;
+          });
+        }
+
+        const getPackageJson = () => readJson(tree, pkgJsonPath);
+
+        return { getPackageJson };
+      }
+
+      it(`should update exports map`, async () => {
+        const { getPackageJson } = setup({ name: options.name });
+
+        let pkgJson = getPackageJson();
+
+        expect(pkgJson.exports).toBe(undefined);
+
+        await generator(tree, options);
+
+        pkgJson = getPackageJson();
+
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+                  Object {
+                    ".": Object {
+                      "import": "./lib/index.js",
+                      "node": "./lib-commonjs/index.js",
+                      "require": "./lib-commonjs/index.js",
+                      "types": "./dist/index.d.ts",
+                    },
+                    "./package.json": "./package.json",
+                  }
+              `);
+      });
+
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson } = setup({ name: options.name, addModuleField: false });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect(pkgJson.exports['.'].module).toBe(undefined);
       });
     });
 
@@ -935,10 +1021,11 @@ describe('migrate-converged-pkg generator', () => {
         bundle-size/
         config/
         coverage/
-        e2e/
+        docs/
         etc/
         node_modules/
         src/
+        stories/
         dist/types/
         temp/
         __fixtures__
@@ -948,7 +1035,7 @@ describe('migrate-converged-pkg generator', () => {
         *.api.json
         *.log
         *.spec.*
-        *.stories.*
+        *.cy.*
         *.test.*
         *.yml
 
@@ -959,8 +1046,89 @@ describe('migrate-converged-pkg generator', () => {
         .eslint*
         .git*
         .prettierignore
+        .swcrc
+
+        # exclude gitignore patterns explicitly
+        !lib
+        !lib-commonjs
+        !lib-amd
+        !dist/*.d.ts
         "
       `);
+    });
+  });
+
+  describe(`just-scripts config setup`, () => {
+    it(`should update just.config.ts`, async () => {
+      function getJustConfig(projectConfig: ReadProjectConfiguration) {
+        return tree.read(`${projectConfig.root}/just.config.ts`)?.toString('utf-8');
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset } from '@fluentui/scripts-tasks';
+
+        preset();"
+      `);
+
+      await generator(tree, options);
+
+      justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset, task } from '@fluentui/scripts-tasks';
+
+        preset();
+
+        task('build', 'build:react-components').cached?.();"
+      `);
+    });
+  });
+
+  describe(`swcrc config setup`, () => {
+    it(`should create an swcrc config file`, async () => {
+      function getSwcConfig(projectConfig: ReadProjectConfiguration) {
+        return readJson(tree, `${projectConfig.root}/.swcrc`);
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/.swcrc`)).toBeTruthy();
+
+      const swcConfig = getSwcConfig(projectConfig);
+
+      expect(swcConfig).toEqual({
+        $schema: 'https://json.schemastore.org/swcrc',
+        exclude: [
+          '/testing',
+          '/**/*.cy.ts',
+          '/**/*.cy.tsx',
+          '/**/*.spec.ts',
+          '/**/*.spec.tsx',
+          '/**/*.test.ts',
+          '/**/*.test.tsx',
+        ],
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: false,
+            dynamicImport: false,
+          },
+          externalHelpers: true,
+          transform: {
+            react: {
+              runtime: 'classic',
+              useSpread: true,
+            },
+          },
+          target: 'es2019',
+        },
+        minify: false,
+        sourceMaps: true,
+      });
     });
   });
 
@@ -977,7 +1145,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -987,7 +1155,7 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
     });
@@ -1006,7 +1174,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1014,7 +1182,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1023,7 +1190,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls'],
       });
     });
@@ -1098,6 +1264,63 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`update conformance setup`, () => {
+    const conformanceSetup = stripIndents`
+      import { isConformant as baseIsConformant } from '@proj/react-conformance';
+      import type { IsConformantOptions, TestObject } from '@proj/react-conformance';
+      import griffelTests from '@proj/react-conformance-griffel';
+
+      export function isConformant<TProps = {}>(
+        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+      ) {
+        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+          componentPath: require.main?.filename.replace('.test', ''),
+          extraTests: griffelTests as TestObject<TProps>,
+          testOptions: {
+            'make-styles-overrides-win': {
+              callCount: 2,
+            },
+            // TODO: https://github.com/microsoft/fluentui/issues/19618
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          } as any,
+        };
+
+        baseIsConformant(defaultOptions, testInfo);
+      }
+    `;
+    it(`should use tsConfig conformance API`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const conformanceSetupPath = joinPathFragments(projectConfig.root as string, 'src/testing/isConformant.ts');
+      tree.write(conformanceSetupPath, conformanceSetup);
+      await generator(tree, options);
+
+      expect(tree.read(conformanceSetupPath, 'utf-8')).toMatchInlineSnapshot(`
+        "import { isConformant as baseIsConformant } from '@proj/react-conformance';
+        import type { IsConformantOptions, TestObject } from '@proj/react-conformance';
+        import griffelTests from '@proj/react-conformance-griffel';
+
+        export function isConformant<TProps = {}>(
+        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+        ) {
+        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+        tsConfig: { configName: 'tsconfig.spec.json' },
+        componentPath: require.main?.filename.replace('.test', ''),
+        extraTests: griffelTests as TestObject<TProps>,
+        testOptions: {
+        'make-styles-overrides-win': {
+        callCount: 2,
+        },
+        // TODO: https://github.com/microsoft/fluentui/issues/19618
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+        };
+
+        baseIsConformant(defaultOptions, testInfo);
+        }"
+      `);
+    });
+  });
+
   describe(`--stats`, () => {
     it(`should print project names and count of how many have been migrated`, async () => {
       const loggerInfoSpy = jest.spyOn(logger, 'info');
@@ -1131,7 +1354,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
 
       expect(configs['@proj/react-foo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-bar'].sourceRoot).toBeDefined();
@@ -1155,7 +1378,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
 
       expect(configs[projects[0]].sourceRoot).toBeDefined();
       expect(configs[projects[1]].sourceRoot).toBeDefined();
@@ -1179,6 +1402,126 @@ describe('migrate-converged-pkg generator', () => {
       const content = tree.read(workspacePaths.github.codeowners, 'utf8');
 
       expect(content).toContain(`packages/react-dummy @org/team-awesome`);
+    });
+  });
+
+  describe(`unstable API`, () => {
+    const getPkgJsonUnstablePath = (projectConfig: ProjectConfiguration) => {
+      return `${projectConfig.root}/src/unstable/package.json__tmpl__`;
+    };
+
+    describe(`export-maps`, () => {
+      function setup(config: { name: string; addModuleField?: boolean }) {
+        const addModuleField = config.addModuleField ?? true;
+        const projectConfig = readProjectConfiguration(tree, config.name);
+        const pkgJsonPath = `${projectConfig.root}/package.json`;
+        const pkgJsonUnstablePath = getPkgJsonUnstablePath(projectConfig);
+
+        if (addModuleField) {
+          updateJson(tree, pkgJsonPath, json => {
+            json.module = './lib/index.js';
+            return json;
+          });
+        }
+
+        writeJson(tree, pkgJsonUnstablePath, {
+          typings: './../dist/unstable.d.ts',
+          ...(addModuleField ? { module: './../lib/index.js' } : null),
+        });
+        const getUnstablePackageJson = () => readJson(tree, pkgJsonUnstablePath);
+
+        const getPackageJson = () => readJson(tree, pkgJsonPath);
+
+        return { getPackageJson, getUnstablePackageJson };
+      }
+
+      it(`should update exports map in stable package.json`, async () => {
+        const { getPackageJson } = setup({ name: options.name });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+
+        expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
+          Object {
+            "import": "./lib/unstable/index.js",
+            "node": "./lib-commonjs/unstable/index.js",
+            "require": "./lib-commonjs/unstable/index.js",
+            "types": "./dist/unstable.d.ts",
+          }
+        `);
+      });
+
+      it(`should update exports map`, async () => {
+        const { getUnstablePackageJson } = setup({ name: options.name });
+
+        let pkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports).toBe(undefined);
+
+        await generator(tree, options);
+
+        pkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+          Object {
+            ".": Object {
+              "import": "./../lib/unstable/index.js",
+              "require": "./../lib-commonjs/unstable/index.js",
+              "types": "./../dist/unstable.d.ts",
+            },
+          }
+        `);
+      });
+
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson, getUnstablePackageJson } = setup({
+          name: options.name,
+          addModuleField: false,
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        const unstablePkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports['./unstable'].module).toBe(undefined);
+        expect(unstablePkgJson.exports['.'].module).toBe(undefined);
+      });
+    });
+
+    describe(`api-extractor`, () => {
+      it(`should create api-extractor.json`, async () => {
+        const projectConfig = readProjectConfiguration(tree, options.name);
+        const pkgJsonUnstablePath = getPkgJsonUnstablePath(projectConfig);
+        writeJson(tree, pkgJsonUnstablePath, {
+          description: 'unstable api',
+          sideEffects: false,
+          main: '../lib-commonjs/unstable/index.js',
+        });
+        const apiExtractorConfigPath = `${projectConfig.root}/config/api-extractor.unstable.json`;
+
+        expect(tree.exists(apiExtractorConfigPath)).toBeFalsy();
+
+        await generator(tree, options);
+
+        expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
+        expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
+          Object {
+            "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+            "apiReport": Object {
+              "enabled": true,
+              "reportFileName": "<unscopedPackageName>.unstable.api.md",
+            },
+            "dtsRollup": Object {
+              "enabled": true,
+              "untrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
+            },
+            "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
+            "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
+          }
+        `);
+      });
     });
   });
 });
@@ -1213,7 +1556,7 @@ function setupDummyPackage(
       someThirdPartyDep: '^11.1.2',
     },
     babelConfig: {
-      presets: ['@griffel'],
+      extends: '../../.babelrc-v9.json',
       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     },
     tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
@@ -1226,11 +1569,18 @@ function setupDummyPackage(
     root: `packages/${normalizedPkgName}`,
   };
 
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  const jestConfigTemplate = fs.readFileSync(
+    path.join(__dirname, '__fixtures__', 'old-jest-config.js__tmpl__'),
+    'utf-8',
+  );
+
   const templates = {
     packageJson: {
       name: pkgName,
       version: normalizedOptions.version,
       typings: 'lib/index.d.ts',
+      main: 'lib-commonjs/index.js',
       scripts: {
         build: 'just-scripts build',
         clean: 'just-scripts clean',
@@ -1248,17 +1598,7 @@ function setupDummyPackage(
     tsConfig: {
       ...normalizedOptions.tsConfig,
     },
-    jestConfig: stripIndents`
-      const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-      const path = require('path');
-
-      const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-      });
-
-      module.exports = config;
-    `,
+    jestConfig: stripIndents`${jestConfigTemplate}`,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
@@ -1301,6 +1641,11 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
+    justConfig: stripIndents`
+      import { preset } from '@fluentui/scripts-tasks';
+
+      preset();
+    `,
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
@@ -1309,6 +1654,7 @@ function setupDummyPackage(
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
+  tree.write(`${paths.root}/just.config.ts`, templates.justConfig);
   tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
   tree.write(
     `${paths.root}/src/index.test.ts`,
@@ -1333,16 +1679,9 @@ function setupDummyPackage(
 }
 
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
-  tree.write(
-    `${projectConfig.root}/src/common/isConformant.ts`,
-    stripIndents`
-          import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-
-          export function isConformant<TProps = {}>(
-            testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string }
-          ){}
-        `,
-  );
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
+  tree.write(`${projectConfig.root}/src/testing/isConformant.ts`, stripIndents`${template}`);
 }
 
 function addUnstableSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {

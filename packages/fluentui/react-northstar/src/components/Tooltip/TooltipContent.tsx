@@ -57,7 +57,7 @@ export const tooltipContentClassName = 'ui-tooltip__content';
 /**
  * A TooltipContent contains the content of a Tooltip component.
  */
-export const TooltipContent = (React.forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
+export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
   setStart();
@@ -120,7 +120,7 @@ export const TooltipContent = (React.forwardRef<HTMLDivElement, TooltipContentPr
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TooltipContentProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TooltipContentProps> &
   FluentComponentStaticProps<TooltipContentProps>;
 
 TooltipContent.displayName = 'TooltipContent';

@@ -39,15 +39,20 @@ async function readReportForPackage(reportFile) {
   }
 }
 
+const collectLocalReportDefaultOptions = {
+  root: /** @type {string | undefined} */ (undefined),
+  reportFilesGlob: 'packages/**/dist/bundle-size/bundle-size.json',
+};
 /**
  * Collects all reports for packages to a single one.
  *
+ * @param {Partial<typeof collectLocalReportDefaultOptions>} options
  * @return {Promise<BundleSizeReport>}
  */
-async function collectLocalReport() {
-  /** @type {string[]} */
-  const reportFiles = glob.sync('packages/**/dist/bundle-size/bundle-size.json', {
-    cwd: /** @type {string} */ (findGitRoot(process.cwd())),
+async function collectLocalReport(options = {}) {
+  const { reportFilesGlob, root = findGitRoot(process.cwd()) } = { ...collectLocalReportDefaultOptions, ...options };
+  const reportFiles = glob.sync(reportFilesGlob, {
+    cwd: root,
   });
 
   const reports = await Promise.all(reportFiles.map(readReportForPackage));

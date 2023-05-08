@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
-import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
-import { useFocusFinders } from '@fluentui/react-tabster';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented } from '../../utils/normalizeDefaultPrevented';
-import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
-import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useHasParentContext } from '@fluentui/react-context-selector';
+import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
+import { DialogContext } from '../../contexts';
+
+import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Dialog.
@@ -17,7 +16,7 @@ import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, overlay, modalType = 'modal', onOpenChange } = props;
+  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -27,64 +26,46 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     initialState: false,
   });
 
-  const overlayShorthand = resolveShorthand(overlay, {
-    required: modalType !== 'non-modal',
-    defaultProps: {
-      'aria-hidden': 'true',
-    },
-  });
-
-  const requestOpenChange = useEventCallback((data: DialogRequestOpenChangeData) => {
-    const getNextOpen = normalizeSetStateAction(data.open);
-    const isDefaultPrevented = normalizeDefaultPrevented(data.event);
-
-    if (onOpenChange) {
-      onOpenChange(data.event, {
-        type: data.type,
-        open: getNextOpen(open),
-        event: data.event,
-      } as DialogOpenChangeData);
-    }
+  const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
+    onOpenChange?.(data.event, data);
 
     // if user prevents default then do not change state value
-    if (!isDefaultPrevented()) {
-      // updates trigger reference
-      (triggerRef as React.MutableRefObject<HTMLElement | null>).current = isOpening(open, getNextOpen)
-        ? (data.event.currentTarget as HTMLElement)
-        : null;
-      // updates value
-      setOpen(getNextOpen);
+    // otherwise updates state value and trigger reference to the element that caused the opening
+    if (!data.event.isDefaultPrevented()) {
+      setOpen(data.open);
     }
   });
 
-  const { contentRef, triggerRef } = useFocusFirstElement({
-    open,
-    modalType,
-    requestOpenChange,
-  });
+  const focusRef = useFocusFirstElement(open, modalType);
+  const disableBodyScroll = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
-  const handleOverLayClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    overlayShorthand?.onClick?.(event);
-    if (isOverlayClickDismiss(event, modalType)) {
-      requestOpenChange({ event, open: false, type: 'overlayClick' });
+  useIsomorphicLayoutEffect(() => {
+    if (isBodyScrollLocked) {
+      return disableBodyScroll();
     }
+  }, [disableBodyScroll, isBodyScrollLocked]);
+
+  const { modalAttributes, triggerAttributes } = useModalAttributes({
+    trapFocus: modalType !== 'non-modal',
+    legacyTrapFocus: !inertTrapFocus,
   });
 
   return {
     components: {
-      overlay: 'div',
+      backdrop: 'div',
     },
-    overlay: overlayShorthand && {
-      ...overlayShorthand,
-      onClick: handleOverLayClick,
-    },
+    inertTrapFocus,
     open,
     modalType,
-    content,
+    content: open ? content : null,
     trigger,
-    triggerRef,
-    contentRef,
     requestOpenChange,
+    dialogTitleId: useId('dialog-title-'),
+    isNestedDialog: useHasParentContext(DialogContext),
+    dialogRef: focusRef,
+    modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
+    triggerAttributes,
   };
 };
 
@@ -115,81 +96,4 @@ function childrenToTriggerAndContent(
     default:
       return [undefined, undefined];
   }
-}
-
-/**
- * Checks is click event is a proper Overlay click dismiss
- */
-function isOverlayClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
-  const isDefaultPrevented = normalizeDefaultPrevented(event);
-  return type === 'modal' && !isDefaultPrevented();
-}
-
-/**
- * Checks if dialog is opening
- */
-function isOpening(current: boolean, next: Extract<React.SetStateAction<boolean>, Function>) {
-  return !current && next(current) === true;
-}
-
-/**
- * Focus first element on content when dialog is opened,
- * in case there's no focusable element, then a eventlistener is added to document
- * to ensure Escape keydown functionality
- */
-function useFocusFirstElement({
-  open,
-  requestOpenChange,
-  modalType,
-}: Pick<DialogState, 'open' | 'requestOpenChange' | 'modalType'>) {
-  const { findFirstFocusable } = useFocusFinders();
-  const { targetDocument } = useFluent_unstable();
-  const contentRef = React.useRef<HTMLElement>(null);
-  const triggerRef = React.useRef<HTMLElement>(null);
-
-  React.useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const element = contentRef.current && findFirstFocusable(contentRef.current);
-    if (element) {
-      element.focus();
-      // NOTE: if it's non-modal global listener to escape is necessary
-      if (modalType !== 'non-modal') {
-        return;
-      }
-    } else {
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('A Dialog should have at least one focusable element inside DialogSurface');
-      }
-    }
-
-    if (triggerRef.current && targetDocument) {
-      const trigger = triggerRef.current;
-      // if the trigger is still the active element, the default behavior is to return focus to document.body,
-      // which can be achived by blurring
-      if (targetDocument.activeElement === trigger) {
-        trigger.blur();
-      }
-      const listener = (event: KeyboardEvent) => {
-        if (isEscapeKeyDismiss(event, modalType)) {
-          requestOpenChange({
-            event,
-            open: false,
-            type: 'documentEscapeKeyDown',
-          });
-          trigger.focus();
-          event.stopImmediatePropagation();
-        }
-      };
-      targetDocument.addEventListener('keydown', listener, { passive: false });
-      return () => {
-        targetDocument.removeEventListener('keydown', listener);
-      };
-    }
-  }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
-
-  return { contentRef, triggerRef };
 }

@@ -45,7 +45,7 @@ interface IFolderTileWithThumbnailProps {
   folderCoverType?: FolderCoverType;
   originalImageSize?: ISize;
   size: 'small' | 'large';
-  item: typeof ITEMS[0];
+  item: (typeof ITEMS)[0];
 }
 
 const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailProps> = (

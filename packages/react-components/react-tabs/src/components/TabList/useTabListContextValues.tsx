@@ -1,8 +1,9 @@
 import { TabListContextValue, TabListContextValues, TabListState } from './TabList.types';
 
-export function useTabListContextValues(state: TabListState): TabListContextValues {
+export function useTabListContextValues_unstable(state: TabListState): TabListContextValues {
   const {
     appearance,
+    reserveSelectedTabSpace,
     disabled,
     selectedValue: selectedKey,
     onRegister,
@@ -15,6 +16,7 @@ export function useTabListContextValues(state: TabListState): TabListContextValu
 
   const tabList: TabListContextValue = {
     appearance,
+    reserveSelectedTabSpace,
     disabled,
     selectedValue: selectedKey,
     onSelect,

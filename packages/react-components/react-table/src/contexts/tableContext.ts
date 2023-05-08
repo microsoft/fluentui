@@ -1,11 +1,12 @@
 import * as React from 'react';
-import type { TableContextValue } from './types';
+import { TableContextValue } from '../components/Table/Table.types';
 
 const tableContext = React.createContext<TableContextValue | undefined>(undefined);
 
-const tableContextDefaultValue: TableContextValue = {
+export const tableContextDefaultValue: TableContextValue = {
   size: 'medium',
   noNativeElements: false,
+  sortable: false,
 };
 
 export const TableContextProvider = tableContext.Provider;

@@ -77,7 +77,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       },
       getBeakStyle(beakWidth),
       backgroundColor && {
-        backgroundColor: backgroundColor,
+        backgroundColor,
       },
     ],
     beakCurtain: [
@@ -106,7 +106,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowY: 'hidden',
       },
       backgroundColor && {
-        backgroundColor: backgroundColor,
+        backgroundColor,
       },
     ],
   };

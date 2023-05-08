@@ -1,4 +1,4 @@
-import { preset, task, logger, spawn } from '@fluentui/scripts';
+import { preset, task, logger, spawn } from '@fluentui/scripts-tasks';
 
 preset();
 

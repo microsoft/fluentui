@@ -1,18 +1,21 @@
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DialogTitleSlots = {
   /**
-   * By default this is a div, but can be a heading.
+   * By default this is a h2, but can be any heading or div,
+   * if `div` is provided do not forget to also provide proper `role="heading"` and `aria-level` attributes
    */
-  root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-  closeButton?: Slot<ARIAButtonSlotProps>;
+  root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+  /**
+   * By default a Dialog with modalType='non-modal' will have a close button action
+   */
+  action?: Slot<'div'>;
 };
 
 /**
  * DialogTitle Props
  */
-export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
+export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 /**
  * State used in rendering DialogTitle

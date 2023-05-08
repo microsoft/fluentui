@@ -217,6 +217,12 @@ export interface IDetailsRowBaseProps
   role?: string;
 
   /**
+   * Whether the row is rendered within a grid.
+   * In DetailsList this should be true, and in GroupedList this should be false.
+   */
+  isGridRow?: boolean;
+
+  /**
    * Id for row
    */
   id?: string;
@@ -318,6 +324,9 @@ export interface IDetailsRowStyles {
   isMultiline: IStyle;
   fields: IStyle;
   cellMeasurer: IStyle;
-  checkCover: IStyle;
+  /**
+   * @deprecated Node removed, do not use
+   */
+  checkCover?: IStyle;
   check: IStyle;
 }

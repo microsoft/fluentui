@@ -1,32 +1,29 @@
-import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
-import type { DialogOpenChangeData, DialogModalType } from '../Dialog';
 import * as React from 'react';
-
-export type DialogRequestOpenChangeData = Omit<DialogOpenChangeData, 'open'> & {
-  open: React.SetStateAction<boolean>;
-};
+import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
+import { DialogSurfaceElement } from '../DialogSurface';
+import type { Context } from '@fluentui/react-context-selector';
+import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 export type DialogContextValue = {
-  /**
-   * Reference to trigger element that opened the Dialog
-   * null if Dialog is closed
-   */
-  triggerRef: React.RefObject<HTMLElement>;
-  contentRef: React.RefObject<HTMLElement>;
-  modalType: DialogModalType;
   open: boolean;
+  inertTrapFocus: boolean;
+  dialogTitleId?: string;
+  isNestedDialog: boolean;
+  dialogRef: React.Ref<DialogSurfaceElement>;
+  modalType: DialogModalType;
   /**
    * Requests dialog main component to update it's internal open state
    */
-  requestOpenChange: (data: DialogRequestOpenChangeData) => void;
-};
+  requestOpenChange: (data: DialogOpenChangeData) => void;
+} & Partial<ReturnType<typeof useModalAttributes>>;
 
 const defaultContextValue: DialogContextValue = {
   open: false,
+  inertTrapFocus: false,
   modalType: 'modal',
-  triggerRef: { current: null },
-  contentRef: { current: null },
+  isNestedDialog: false,
+  dialogRef: { current: null },
   requestOpenChange() {
     /* noop */
   },

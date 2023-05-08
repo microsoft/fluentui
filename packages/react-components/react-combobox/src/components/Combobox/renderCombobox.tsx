@@ -1,6 +1,11 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
 import { Portal } from '@fluentui/react-portal';
-import { getSlots } from '@fluentui/react-utilities';
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
 
@@ -8,17 +13,21 @@ import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Comb
  * Render the final JSX of Combobox
  */
 export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
-  const { slots, slotProps } = getSlots<ComboboxSlots>(state);
-
-  const listbox = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
-  const popup = state.inlinePopup ? listbox : <Portal>{listbox}</Portal>;
+  const { slots, slotProps } = getSlotsNext<ComboboxSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
       <ComboboxContext.Provider value={contextValues.combobox}>
         <slots.input {...slotProps.input} />
         {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
-        {state.open ? popup : null}
+        {slots.listbox &&
+          (state.inlinePopup ? (
+            <slots.listbox {...slotProps.listbox} />
+          ) : (
+            <Portal>
+              <slots.listbox {...slotProps.listbox} />
+            </Portal>
+          ))}
       </ComboboxContext.Provider>
     </slots.root>
   );

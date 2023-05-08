@@ -394,7 +394,10 @@ let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | und
  * only the latest called focusAsync element will actually be focused
  * @param element - The element to focus
  */
-export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
+export function focusAsync(
+  element: HTMLElement | { focus: (options?: FocusOptions) => void } | undefined | null,
+  options?: FocusOptions,
+): void {
   if (element) {
     // An element was already queued to be focused, so replace that one with the new element
     if (targetToFocusOnNextRepaint) {
@@ -409,7 +412,7 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
     if (win) {
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
       win.requestAnimationFrame(() => {
-        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus(options);
 
         // We are done focusing for this frame, so reset the queued focus element
         targetToFocusOnNextRepaint = undefined;

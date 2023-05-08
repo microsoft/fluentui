@@ -25,5 +25,6 @@ export const useTableBody_unstable = (props: TableBodyProps, ref: React.Ref<HTML
       role: rootComponent === 'div' ? 'rowgroup' : undefined,
       ...props,
     }),
+    noNativeElements,
   };
 };

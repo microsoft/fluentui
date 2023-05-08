@@ -1,5 +1,5 @@
 import { createTheme, Theme } from '@fluentui/react';
-import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
+import { BaseColors, CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
@@ -13,11 +13,27 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   buttonBackground: DarkSemanticColors.secondaryButton.rest.background,
   buttonBackgroundChecked: DarkSemanticColors.secondaryButton.pressed.background,
   buttonBackgroundCheckedHovered: DarkSemanticColors.secondaryButton.hover.background,
+  ButtonBackgroundDanger: DarkSemanticColors.dangerButton.rest.background,
+  ButtonBackgroundDangerHovered: DarkSemanticColors.dangerButton.hover.background,
+  ButtonBackgroundDangerPressed: DarkSemanticColors.dangerButton.pressed.background,
+  ButtonBackgroundDangerText: DarkSemanticColors.dangerButton.rest.text,
+  ButtonBackgroundDangerTextHovered: DarkSemanticColors.dangerButton.hover.text,
   buttonBackgroundDisabled: DarkSemanticColors.disabledButton.background,
   buttonBackgroundHovered: DarkSemanticColors.secondaryButton.hover.background,
   buttonBackgroundPressed: DarkSemanticColors.secondaryButton.pressed.background,
+  ButtonBackgroundTag: DarkSemanticColors.tagButton.rest.background,
+  ButtonBackgroundTagHovered: DarkSemanticColors.tagButton.hover.background,
+  ButtonBackgroundTagPressed: DarkSemanticColors.tagButton.pressed.background,
+  ButtonBackgroundTagText: DarkSemanticColors.tagButton.rest.text,
+  ButtonBackgroundTagTextHovered: DarkSemanticColors.tagButton.hover.text,
+  ButtonBorderDanger: DarkSemanticColors.dangerButton.rest.border,
+  ButtonBorderDangerHovered: DarkSemanticColors.dangerButton.hover.border,
+  ButtonBorderDangerPressed: DarkSemanticColors.dangerButton.pressed.border,
   ButtonBorderDisabled: DarkSemanticColors.disabledButton.background,
   ButtonBorderFocus: DarkSemanticColors.secondaryButton.focus.border,
+  ButtonBorderTag: DarkSemanticColors.tagButton.rest.border,
+  ButtonBorderTagHovered: DarkSemanticColors.tagButton.hover.border,
+  ButtonBorderTagPressed: DarkSemanticColors.tagButton.pressed.border,
   buttonText: DarkSemanticColors.secondaryButton.rest.text,
   buttonTextChecked: DarkSemanticColors.secondaryButton.pressed.text,
   buttonTextCheckedHovered: DarkSemanticColors.secondaryButton.hover.border,
@@ -44,6 +60,9 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   datePickerSelectionText: DarkSemanticColors.datePicker.rest.text,
   disabledBackground: CommonSemanticColors.backgrounds.disabled,
   disabledBodyText: DarkSemanticColors.text.disabled,
+  dropdownBackground: DarkSemanticColors.dropDown.background.rest,
+  dropdownItemHover: DarkSemanticColors.dropDown.text.hovered,
+  dropdownTextHovered: DarkSemanticColors.dropDown.text.hovered,
   errorBackground: DarkSemanticColors.controlOutlines.error,
   errorText: DarkSemanticColors.text.error,
   focusBorder: DarkSemanticColors.controlOutlines.accent,
@@ -92,7 +111,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   rowBorder: DarkSemanticColors.detailsRow.border,
   rowFocus: DarkSemanticColors.detailsRow.focus,
   tabHover: DarkSemanticColors.tabs.hover,
-  variantBorder: CommonSemanticColors.dividers.lineSeparator,
+  variantBorder: BaseColors.TRANSPARENT,
 
   // extended
   commandBarButtonAfterColor: DarkSemanticColors.commandBar.button.focus.borderColor,
@@ -111,7 +130,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   controlOutlineDisabled: DarkSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: DarkSemanticColors.controlOutlines.hover,
   iconButtonFill: DarkSemanticColors.primaryButton.rest.background,
-  iconButtonFillHovered: DarkSemanticColors.primaryButton.hover.background,
+  iconButtonFillHovered: DarkSemanticColors.commandBar.button.hover.icon,
   labelText: DarkSemanticColors.text.label,
   sliderActiveBackground: DarkSemanticColors.slider.activeBackground,
   sliderInActiveHover: DarkSemanticColors.slider.inactiveBackgroundHovered,

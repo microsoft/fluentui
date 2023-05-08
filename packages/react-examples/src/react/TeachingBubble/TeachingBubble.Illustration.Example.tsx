@@ -4,7 +4,10 @@ import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { useBoolean, useId } from '@fluentui/react-hooks';
 
-const exampleImageProps: IImageProps = { src: 'http://via.placeholder.com/364x180', alt: 'Example placeholder image' };
+const exampleImageProps: IImageProps = {
+  src: 'https://fabricweb.azureedge.net/fabric-website/placeholders/364x180.png',
+  alt: 'Example placeholder image',
+};
 
 const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',

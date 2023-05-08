@@ -1,16 +1,5 @@
 import * as React from 'react';
 
-export interface RefProps {
-  children: React.ReactElement;
-
-  /**
-   * Called when a child component will be mounted or updated.
-   *
-   * @param node - Referred node.
-   */
-  innerRef: React.Ref<HTMLElement>;
-}
-
 /**
  * The function that correctly handles passing refs.
  *
