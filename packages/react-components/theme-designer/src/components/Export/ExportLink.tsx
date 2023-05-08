@@ -4,7 +4,7 @@ import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
-import { createDarkThemeWithUpdatedMapping } from '../../Context/ThemeDesignerContext';
+import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {

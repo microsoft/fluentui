@@ -4,7 +4,6 @@ import { makeStyles } from '@griffel/react';
 import {
   Body1,
   Button,
-  createDarkTheme,
   createLightTheme,
   FluentProvider,
   SelectTabData,
@@ -20,8 +19,9 @@ import {
 import { DismissSquare24Regular } from '@fluentui/react-icons';
 
 import { getBrandValues, objectToString } from '../../utils/toString';
-import { createDarkThemeWithUpdatedMapping, useThemeDesigner } from '../../Context/ThemeDesignerContext';
+import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportLink } from '../Export/ExportLink';
+import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
 
 const useStyles = makeStyles({
   root: {

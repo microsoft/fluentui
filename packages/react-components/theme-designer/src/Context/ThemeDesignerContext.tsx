@@ -1,10 +1,11 @@
 import * as React from 'react';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
-import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
+import { createLightTheme } from '@fluentui/react-components';
 import { brandWeb } from '../utils/brandColors';
 import { getBrandTokensFromPalette } from '../utils/getBrandTokensFromPalette';
 import { getOverridableTokenBrandColors } from '../utils/getOverridableTokenBrandColors';
 import { Brands } from '@fluentui/react-theme';
+import { createDarkThemeWithUpdatedMapping } from '../utils/getOverridableTokenBrandColors';
 
 export type ColorOverrideBrands = Record<string, Brands>;
 
@@ -50,14 +51,6 @@ export type ThemeDesignerState = {
 };
 
 export const defaultThemePlaceholderName = 'myNewTheme';
-
-export const createDarkThemeWithUpdatedMapping = (brand: BrandVariants): Theme => {
-  const darkTheme = createDarkTheme(brand);
-  // Dark themes have a different set of mapping than light themes
-  darkTheme.colorBrandForeground1 = brand[110]; // use brand[110] instead of brand[100]
-  darkTheme.colorBrandForeground2 = brand[120]; // use brand[120] instead of brand[110]
-  return darkTheme;
-};
 
 export const initialThemeDesignerState: ThemeDesignerState = {
   themeName: defaultThemePlaceholderName,
