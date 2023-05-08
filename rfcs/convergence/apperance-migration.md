@@ -24,6 +24,30 @@ Partners should also easily revert the decision to the default appearance value 
 
 ## Detailed Design or Proposal
 
+### Use React context
+
+Another option is to use React Context to override `appearance` defaults in `FluentProvider`.
+
+#### Example
+
+```tsx
+function App() {
+  return (
+    <FluentProvider appearance="filled-darker">
+      <Input /> {/* has "filled-darker" */}
+      <Input appearance="underline" /> {/* has "underline" */}
+    </FluentProvider>
+  )
+}
+
+👍 more universal solution than a custom token - can be used to override different concepts, not only tokens - props, icons, etc.
+
+👎 new concept
+👎 one-off just for the Input background (although it would be used in multiple input components)
+```
+
+## Discarded Solutions
+
 ### Compose components on application side
 
 Partners could create a new composed component on application side. and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composed component and have the default component without the appearance prop renders as `filled-darker`.
@@ -126,25 +150,3 @@ Discuss with designers to unify V0 and V9 design, setting the appearance to fill
 
 - Inherits design from old V0 package that does not meet our needs/goals
 - According to the design team, this is currently a no-go
-
-### Use React context
-
-Another option is to use React Context to override `appearance` defaults in `FluentProvider`.
-
-#### Example
-
-```tsx
-function App() {
-  return (
-    <FluentProvider appearance="filled-darker">
-      <Input /> {/* has "filled-darker" */}
-      <Input appearance="underline" /> {/* has "underline" */}
-    </FluentProvider>
-  )
-}
-
-👍 more universal solution than a custom token - can be used to override different concepts, not only tokens - props, icons, etc.
-
-👎 new concept
-👎 one-off just for the Input background (although it would be used in multiple input components)
-```
