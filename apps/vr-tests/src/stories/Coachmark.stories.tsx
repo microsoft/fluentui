@@ -10,15 +10,15 @@ const directionalHints = [
   DirectionalHint.topLeftEdge,
   DirectionalHint.topCenter,
   DirectionalHint.topRightEdge,
-  DirectionalHint.bottomLeftEdge,
-  DirectionalHint.bottomCenter,
-  DirectionalHint.bottomRightEdge,
-  DirectionalHint.leftTopEdge,
-  DirectionalHint.leftCenter,
-  DirectionalHint.leftBottomEdge,
   DirectionalHint.rightTopEdge,
   DirectionalHint.rightCenter,
   DirectionalHint.rightBottomEdge,
+  DirectionalHint.bottomRightEdge,
+  DirectionalHint.bottomCenter,
+  DirectionalHint.bottomLeftEdge,
+  DirectionalHint.leftBottomEdge,
+  DirectionalHint.leftCenter,
+  DirectionalHint.leftTopEdge,
 ];
 
 const CoachmarkUsage = ({
@@ -110,10 +110,22 @@ storiesOf('Coachmark', module)
   })
   .addStory('Positioning', () => {
     return (
-      <div>
+      <div style={gridStyles}>
         {directionalHints.map((directionalHint, index) => (
-          <CoachmarkUsage isCollapsed={false} directionalHint={directionalHint} key={index} />
+          <div style={{ gridArea: index }} key={index}>
+            <CoachmarkUsage isCollapsed={false} directionalHint={directionalHint} />
+          </div>
         ))}
       </div>
     );
   });
+
+const gridStyles: React.CSSProperties = {
+  display: 'grid',
+  gridTemplateAreas: `". 1 2 3 ."
+                      "12 . . . 4"
+                      "11 . . . 5"
+                      "10 . . . 6"
+                      ". 9 8 7 ."`,
+  gap: '20px',
+};
