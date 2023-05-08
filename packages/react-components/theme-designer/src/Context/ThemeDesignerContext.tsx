@@ -101,8 +101,6 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
       };
     case 'reset':
       const resetTheme = state.isDark ? createDarkThemeWithUpdatedMapping(state.brand) : createLightTheme(state.brand);
-      if (state.isDark) {
-      }
       return {
         ...state,
         theme: resetTheme,
