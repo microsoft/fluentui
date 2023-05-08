@@ -73,7 +73,7 @@ const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes)
   return getBrandTokensFromPalette(keyColor, {
     hueTorsion,
     darkCp: vibrancy,
-    lightCp: vibrancy + 0.5,
+    lightCp: vibrancy,
   });
 };
 
