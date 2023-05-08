@@ -281,7 +281,6 @@ export const ExportLink = () => {
   const createIndexContent = dedent`
   import * as ReactDOM from 'react-dom';
   import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
-  import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
 
   import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
@@ -292,12 +291,10 @@ export const ExportLink = () => {
     ...createLightTheme(${themeName}), ${getBrandValues(brand, lightThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkThemeWithUpdatedMapping(${themeName}), ${getBrandValues(
-    brand,
-    darkThemeOverrides,
-    themeName,
-    '\u00A0\u00A0',
-  )} };
+    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
+
+  darkTheme.colorBrandForeground1 = ${themeName}[110]; // use brand[110] instead of brand[100]
+  darkTheme.colorBrandForeground2 = ${themeName}[120]; // use brand[120] instead of brand[110]
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,

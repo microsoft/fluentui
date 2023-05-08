@@ -5,6 +5,7 @@ import {
   Body1,
   Button,
   createLightTheme,
+  createDarkTheme,
   FluentProvider,
   SelectTabData,
   SelectTabEvent,
@@ -21,7 +22,6 @@ import { DismissSquare24Regular } from '@fluentui/react-icons';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportLink } from '../Export/ExportLink';
-import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
 
 const useStyles = makeStyles({
   root: {
@@ -73,19 +73,26 @@ export const ExportPanel = () => {
     ...createLightTheme(${themeName}), ${getBrandValues(brand, lightThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkThemeWithUpdatedMapping(${themeName}), ${getBrandValues(
-    brand,
-    darkThemeOverrides,
-    themeName,
-    '\u00A0\u00A0',
-  )} };
+    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
+  
+
+  darkTheme.colorBrandForeground1 = ${themeName}[110];
+  darkTheme.colorBrandForeground2 = ${themeName}[120];
   `;
 
   const jsonLightValue = dedent`
    ${JSON.stringify({ ...createLightTheme(brand), ...lightThemeOverrides }, null, '\t')}`;
 
   const jsonDarkValue = dedent`
-     ${JSON.stringify({ ...createDarkThemeWithUpdatedMapping(brand), ...darkThemeOverrides }, null, '\t')} 
+     ${JSON.stringify(
+       {
+         ...createDarkTheme(brand),
+         ...{ colorBrandForeground1: brand[110], colorBrandForeground2: brand[120] },
+         ...darkThemeOverrides,
+       },
+       null,
+       '\t',
+     )} 
   `;
 
   const exportedValue = React.useMemo(() => {
