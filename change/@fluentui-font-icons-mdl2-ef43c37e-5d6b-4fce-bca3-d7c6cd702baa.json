@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: explicitly ship dist/ folder.",
-  "packageName": "@fluentui/font-icons-mdl2",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/set-version",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 18:14:00 GMT",
+      "tag": "@fluentui/set-version_v8.2.9",
+      "version": "8.2.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/set-version",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 00:58:18 GMT",
       "tag": "@fluentui/set-version_v8.2.8",
       "version": "8.2.8",
