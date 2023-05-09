@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { Tag, TagContent } from '@fluentui/react-tags';
+import { Tag } from '@fluentui/react-tags';
 
-export const SecondaryText = () => (
-  <Tag>
-    <TagContent secondaryText="Secondary text">Primary text</TagContent>
-  </Tag>
-);
+export const SecondaryText = () => <Tag secondaryText="Secondary text">Primary text</Tag>;
 
 SecondaryText.storyName = 'SecondaryText';
 SecondaryText.parameters = {
   docs: {
     description: {
-      story: 'A TagContent can have a secondary text.',
+      story: 'A Tag can have a secondary text.',
     },
   },
 };

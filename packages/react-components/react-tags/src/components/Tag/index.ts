@@ -3,4 +3,3 @@ export * from './Tag.types';
 export * from './renderTag';
 export * from './useTag';
 export * from './useTagStyles.styles';
-export * from './TagContext';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 
-import { Tag, TagContent } from '@fluentui/react-tags';
+import { Tag } from '@fluentui/react-tags';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -16,16 +16,16 @@ export const Dismiss = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <Tag dismissible>
-        <TagContent>Primary text</TagContent>
+      <Tag dismissible>Primary text</Tag>
+      <Tag dismissible icon={<Calendar3Day20Regular />}>
+        Primary text
       </Tag>
-      <Tag dismissible>
-        <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>{' '}
-      </Tag>
-      <Tag dismissible>
-        <TagContent media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} secondaryText="Secondary text">
-          Primary text
-        </TagContent>
+      <Tag
+        dismissible
+        media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
+        secondaryText="Secondary text"
+      >
+        Primary text
       </Tag>
     </div>
   );

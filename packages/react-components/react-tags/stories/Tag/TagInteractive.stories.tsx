@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tag, TagContent } from '@fluentui/react-tags';
+import { Tag } from '@fluentui/react-tags';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 
@@ -16,37 +16,39 @@ export const Interactive = () => {
 
   return (
     <div className={containerStyles.root}>
-      <Tag interactive dismissible>
-        <TagContent
-          onClick={() => {
+      <Tag
+        interactive
+        dismissible
+        content={{
+          onClick: () => {
             console.log('Tag with avatar clicked');
-          }}
-          media={
-            <Avatar
-              {...{
-                name: 'Katri Athokas',
-                badge: { status: 'busy' },
-                image: {
-                  src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-                },
-              }}
-            />
-          }
-          secondaryText="Secondary text"
-        >
-          Primary text
-        </TagContent>
+          },
+        }}
+        media={
+          <Avatar
+            {...{
+              name: 'Katri Athokas',
+              badge: { status: 'busy' },
+              image: {
+                src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+              },
+            }}
+          />
+        }
+        secondaryText="Secondary text"
+      >
+        Primary text
       </Tag>
-
-      <Tag interactive>
-        <TagContent
-          onClick={() => {
+      <Tag
+        interactive
+        content={{
+          onClick: () => {
             console.log('Tag with icon clicked');
-          }}
-          icon={<Calendar3Day20Regular />}
-        >
-          Primary text
-        </TagContent>
+          },
+        }}
+        icon={<Calendar3Day20Regular />}
+      >
+        Primary text
       </Tag>
     </div>
   );

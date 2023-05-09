@@ -1,8 +1,19 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
+
+const tagAvatarSizeMap = {
+  medium: 28,
+  small: 24,
+  'extra-small': 20,
+} as const;
+
+const tagAvatarShapeMap = {
+  rounded: 'square',
+  circular: 'circular',
+} as const;
 
 const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
@@ -17,33 +28,50 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
   const {
-    checked = false,
+    appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
+    interactive = false,
     shape = 'rounded',
     size = 'medium',
-    appearance = 'filled-lighter',
-    interactive = false,
   } = props;
+
+  const contentButton = useARIAButtonShorthand(props.content as ARIAButtonSlotProps, {
+    required: true,
+    defaultProps: {
+      disabled,
+      type: 'button',
+    },
+  });
 
   return {
     components: {
       root: 'div',
+      content: interactive ? 'button' : 'div',
+      media: 'span',
+      icon: 'span',
+      primaryText: 'span',
+      secondaryText: 'span',
       dismissButton: 'button',
     },
-
-    checked,
     disabled,
     dismissible,
+    interactive,
     shape,
     size,
     appearance,
-    interactive,
-
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
+    avatarSize: tagAvatarSizeMap[size],
+    avatarShape: tagAvatarShapeMap[shape],
+    media: resolveShorthand(props.media),
+
+    content: interactive ? (contentButton as TagState['content']) : resolveShorthand(props.content, { required: true }),
+    icon: resolveShorthand(props.icon),
+    primaryText: resolveShorthand(props.primaryText, { required: true, defaultProps: { children: props.children } }),
+    secondaryText: resolveShorthand(props.secondaryText),
 
     dismissButton: useARIAButtonShorthand(props.dismissButton, {
       required: props.dismissible,

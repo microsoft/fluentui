@@ -1,18 +1,18 @@
 import * as React from 'react';
-import type { TagContextValue, TagContextValues, TagState } from './Tag.types';
+import { TagState, TagContextValues } from './Tag.types';
 
 export function useTagContextValues_unstable(state: TagState): TagContextValues {
-  const { dismissible, shape, size, interactive } = state;
+  const { avatarSize, avatarShape } = state;
 
-  const tag = React.useMemo<TagContextValue>(
+  const avatar = React.useMemo(
     () => ({
-      dismissible,
-      shape,
-      size,
-      interactive,
+      size: avatarSize,
+      shape: avatarShape,
     }),
-    [dismissible, interactive, shape, size],
+    [avatarShape, avatarSize],
   );
 
-  return { tag };
+  return {
+    avatar,
+  };
 }

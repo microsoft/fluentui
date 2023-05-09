@@ -5,7 +5,7 @@ import { createElement } from '@fluentui/react-jsx-runtime';
 
 import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TagState, TagSlots, TagContextValues } from './Tag.types';
-import { TagContext } from './TagContext';
+import { AvatarContextProvider } from '@fluentui/react-avatar';
 
 /**
  * Render the final JSX of Tag
@@ -15,10 +15,19 @@ export const renderTag_unstable = (state: TagState, contextValues: TagContextVal
 
   return (
     <slots.root {...slotProps.root}>
-      <TagContext.Provider value={contextValues.tag}>
-        {slotProps.root.children}
-        {slots.dismissButton && <slots.dismissButton {...slotProps.dismissButton} />}
-      </TagContext.Provider>
+      {slots.content && (
+        <slots.content {...slotProps.content}>
+          {slots.media && (
+            <AvatarContextProvider value={contextValues.avatar}>
+              <slots.media {...slotProps.media} />
+            </AvatarContextProvider>
+          )}
+          {slots.icon && <slots.icon {...slotProps.icon} />}
+          {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
+          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+        </slots.content>
+      )}
+      {slots.dismissButton && state.dismissible && <slots.dismissButton {...slotProps.dismissButton} />}
     </slots.root>
   );
 };
