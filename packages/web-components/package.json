@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.19",
+  "version": "3.0.0-alpha.20",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -83,6 +83,14 @@
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
+    },
+    "./radio": {
+      "types": "./dist/esm/radio/define.d.ts",
+      "default": "./dist/esm/radio/define.js"
+    },
+    "./radio-group": {
+      "types": "./dist/esm/radio-group/define.d.ts",
+      "default": "./dist/esm/radio-group/define.js"
     },
     "./slider": {
       "types": "./dist/esm/slider/define.d.ts",
