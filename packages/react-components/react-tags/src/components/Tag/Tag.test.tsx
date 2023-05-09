@@ -4,6 +4,10 @@ import { TagProps } from './Tag.types';
 
 const requiredProps: TagProps = {
   dismissible: true,
+  icon: 'i',
+  media: 'media',
+  primaryText: 'Primary text',
+  secondaryText: 'Secondary text',
 };
 
 describe('Tag', () => {
