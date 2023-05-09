@@ -1,0 +1,56 @@
+{
+  "generatedAt": 1683060234698,
+  "builder": { "name": "webpack5" },
+  "hasCustomBabel": false,
+  "hasCustomWebpack": true,
+  "hasStaticDirs": false,
+  "hasStorybookEslint": false,
+  "refCount": 0,
+  "monorepo": "Nx",
+  "packageManager": { "type": "yarn", "version": "1.23.34" },
+  "features": { "storyStoreV7": true },
+  "storybookVersion": "6.5.15",
+  "language": "typescript",
+  "storybookPackages": {
+    "@storybook/addon-actions": { "version": "6.5.15" },
+    "@storybook/addon-docs": { "version": "6.5.15" },
+    "@storybook/addons": { "version": "6.5.15" },
+    "@storybook/api": { "version": "6.5.15" },
+    "@storybook/builder-webpack5": { "version": "6.5.15" },
+    "@storybook/channels": { "version": "6.5.15" },
+    "@storybook/client-api": { "version": "6.5.15" },
+    "@storybook/components": { "version": "6.5.15" },
+    "@storybook/core": { "version": "6.5.15" },
+    "@storybook/core-events": { "version": "6.5.15" },
+    "@storybook/manager-webpack5": { "version": "6.5.15" },
+    "@storybook/react": { "version": "6.5.15" },
+    "@storybook/theming": { "version": "6.5.15" },
+    "cypress-storybook": { "version": "0.5.1" }
+  },
+  "framework": { "name": "react" },
+  "addons": {
+    "storybook-addon-swc": {
+      "options": {
+        "swcLoaderOptions": {
+          "jsc": {
+            "target": "es2019",
+            "parser": { "syntax": "typescript", "tsx": true, "decorators": true, "dynamicImport": true },
+            "transform": { "decoratorMetadata": true, "legacyDecorator": true },
+            "keepClassNames": true,
+            "externalHelpers": true,
+            "loose": true
+          }
+        },
+        "swcMinifyOptions": { "mangle": false }
+      },
+      "version": "1.1.9"
+    },
+    "@storybook/addon-essentials": { "version": "6.5.15" },
+    "@storybook/addon-a11y": { "version": "6.5.15" },
+    "@storybook/addon-links": { "version": "6.5.15" },
+    "@storybook/addon-knobs": { "version": "6.4.0" },
+    "storybook-addon-performance": { "version": "0.16.1" },
+    "storybook-addon-export-to-codesandbox": { "version": "0.8.4" },
+    "@fluentui/react-storybook-addon": { "version": "9.0.0-rc.1" }
+  }
+}

@@ -3,7 +3,10 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorNeutralBackground1,
+  colorNeutralBackground1Hover,
+  colorNeutralBackground1Pressed,
   colorNeutralForeground1,
+  colorNeutralForeground2,
   fontFamilyBase,
   spacingHorizontalNone,
   spacingHorizontalS,
@@ -19,6 +22,14 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    /* Custom CSS properties specific to fluent-button inside fluent-toolbar */
+    --buttonHoveredBackground: ${colorNeutralBackground1Hover};
+    --buttonHoveredColor: ${colorNeutralForeground2};
+    --buttonHoveredSvgFill: ${colorNeutralForeground2};
+    --buttonHoveredActiveBackground: ${colorNeutralBackground1Pressed};
+    --buttonHoveredActiveColor: ${colorNeutralForeground2};
+    --buttonHoveredActiveSvgFill: ${colorNeutralForeground2};
+
     --toolbar-item-gap: 4px;
     align-items: center;
     background: ${colorNeutralBackground1};
@@ -44,7 +55,7 @@ export const styles = css`
     justify-content: flex-start;
   }
   ::slotted([slot='label']) {
-    margin-right: var(--toolbar-item-gap);
+    margin-inline-end: var(--toolbar-item-gap);
   }
   ::slotted([slot='start']) {
     margin: 0 var(--toolbar-item-gap);
@@ -78,7 +89,7 @@ export const styles = css`
     flex-direction: column;
   }
   :host([orientation='vertical']) ::slotted([slot='label']) {
-    margin-bottom: var(--toolbar-item-gap);
+    margin-block-end: var(--toolbar-item-gap);
   }
   :host([orientation='vertical']) ::slotted([slot='start']) {
     margin: var(--toolbar-item-gap) 0;
