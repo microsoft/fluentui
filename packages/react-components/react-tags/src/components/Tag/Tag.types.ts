@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -36,10 +37,9 @@ export type TagSlots = {
  */
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
   appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
-  // TODO implement tag checked state
-  // checked?: boolean;
   disabled?: boolean;
   dismissible?: boolean;
+  onDismiss?: (e: React.MouseEvent | React.KeyboardEvent) => void;
   shape?: 'rounded' | 'circular';
   size?: 'extra-small' | 'small' | 'medium';
 };
@@ -52,5 +52,6 @@ export type TagState = ComponentState<TagSlots> &
     Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
       avatarSize: AvatarSize | undefined;
       avatarShape: AvatarShape | undefined;
+      dismissed: boolean;
     }
   >;

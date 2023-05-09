@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
+import { Delete, Backspace } from '@fluentui/keyboard-keys';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -30,15 +31,39 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
+    onDismiss,
     shape = 'rounded',
     size = 'medium',
   } = props;
+
+  const [dismissed, setDismissed] = React.useState(false);
+
+  const handleClick = useEventCallback(
+    (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+      props.onClick?.(ev);
+      if (!ev.defaultPrevented) {
+        onDismiss?.(ev);
+        setDismissed(true);
+      }
+    },
+  );
+
+  const handleKeyDown = useEventCallback(
+    (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+      props?.onKeyDown?.(ev);
+      if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+        onDismiss?.(ev);
+        setDismissed(true);
+      }
+    },
+  );
 
   return {
     appearance,
     avatarShape: tagAvatarShapeMap[shape],
     avatarSize: tagAvatarSizeMap[size],
     disabled,
+    dismissed,
     dismissible,
     shape,
     size,
@@ -55,6 +80,8 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref,
       ...props,
+      onClick: handleClick,
+      onKeyDown: handleKeyDown,
     }),
 
     media: resolveShorthand(props.media),

@@ -13,7 +13,7 @@ import { AvatarContextProvider } from '@fluentui/react-avatar';
 export const renderTag_unstable = (state: TagState, contextValues: TagContextValues) => {
   const { slots, slotProps } = getSlotsNext<TagSlots>(state);
 
-  return (
+  return state.dismissed ? null : (
     <slots.root {...slotProps.root}>
       {slots.media && (
         <AvatarContextProvider value={contextValues.avatar}>

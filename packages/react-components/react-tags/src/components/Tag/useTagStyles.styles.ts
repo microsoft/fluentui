@@ -93,6 +93,10 @@ const useTagStyles = makeStyles({
       },
       { enableOutline: true },
     ),
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   rootCircular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),

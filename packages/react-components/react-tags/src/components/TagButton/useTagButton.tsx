@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { Delete, Backspace } from '@fluentui/keyboard-keys';
 
 const tagButtonAvatarSizeMap = {
   medium: 28,
@@ -31,15 +32,48 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
+    onDismiss,
     shape = 'rounded',
     size = 'medium',
   } = props;
+
+  const [dismissed, setDismissed] = React.useState(false);
+
+  const onDismissButtonClick = useEventCallback(
+    (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+      props.onClick?.(ev);
+      if (!ev.defaultPrevented) {
+        onDismiss?.(ev);
+        setDismissed(true);
+      }
+    },
+  );
+
+  const onDismissButtonKeyDown = useEventCallback(
+    (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+      props?.onKeyDown?.(ev);
+      if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+        onDismiss?.(ev);
+        setDismissed(true);
+      }
+    },
+  );
+
+  const dismissButtonShorthand = useARIAButtonShorthand(props.dismissButton, {
+    required: props.dismissible,
+    defaultProps: {
+      disabled,
+      type: 'button',
+      children: <DismissIcon />,
+    },
+  });
 
   return {
     appearance,
     avatarShape: tagButtonAvatarShapeMap[shape],
     avatarSize: tagButtonAvatarSizeMap[size],
     disabled,
+    dismissed,
     dismissible,
     shape,
     size,
@@ -71,13 +105,13 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),
-    dismissButton: useARIAButtonShorthand(props.dismissButton, {
-      required: props.dismissible,
-      defaultProps: {
-        disabled,
-        type: 'button',
-        children: <DismissIcon />,
-      },
-    }),
+
+    dismissButton: dismissButtonShorthand
+      ? {
+          ...dismissButtonShorthand,
+          onClick: onDismissButtonClick,
+          onKeyDown: onDismissButtonKeyDown,
+        }
+      : undefined,
   };
 };

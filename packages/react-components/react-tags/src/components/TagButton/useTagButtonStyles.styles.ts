@@ -50,6 +50,10 @@ const useStyles = makeStyles({
       },
       { enableOutline: true },
     ),
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
   contentWithoutMedia: {
@@ -78,6 +82,10 @@ const useStyles = makeStyles({
       borderTopRightRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
     }),
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   dismissButtonCircular: createCustomFocusIndicatorStyle({
     borderTopRightRadius: tokens.borderRadiusCircular,
