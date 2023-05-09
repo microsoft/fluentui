@@ -34,13 +34,10 @@ const useStyles = makeStyles({
     enableOutline: true,
   }),
   dismissableContent: {
-    ...createCustomFocusIndicatorStyle(
-      {
-        borderTopRightRadius: tokens.borderRadiusNone,
-        borderBottomRightRadius: tokens.borderRadiusNone,
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      borderTopRightRadius: tokens.borderRadiusNone,
+      borderBottomRightRadius: tokens.borderRadiusNone,
+    }),
   },
 
   dismissButton: {
@@ -48,21 +45,15 @@ const useStyles = makeStyles({
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderTopLeftRadius: tokens.borderRadiusNone,
     borderBottomLeftRadius: tokens.borderRadiusNone,
-    ...createCustomFocusIndicatorStyle(
-      {
-        borderTopLeftRadius: tokens.borderRadiusNone,
-        borderBottomLeftRadius: tokens.borderRadiusNone,
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      borderTopLeftRadius: tokens.borderRadiusNone,
+      borderBottomLeftRadius: tokens.borderRadiusNone,
+    }),
   },
-  dismissButtonCircular: createCustomFocusIndicatorStyle(
-    {
-      borderTopRightRadius: tokens.borderRadiusCircular,
-      borderBottomRightRadius: tokens.borderRadiusCircular,
-    },
-    { enableOutline: true },
-  ),
+  dismissButtonCircular: createCustomFocusIndicatorStyle({
+    borderTopRightRadius: tokens.borderRadiusCircular,
+    borderBottomRightRadius: tokens.borderRadiusCircular,
+  }),
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
