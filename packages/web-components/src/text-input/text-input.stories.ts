@@ -51,7 +51,7 @@ export default {
     type: {
       description: 'Sets the input type',
       table: {
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: `${TextInputType.text}` },
       },
       options: Object.values(TextInputType),
       control: {
@@ -61,7 +61,7 @@ export default {
     controlSize: {
       description: 'Sets the size of the control',
       table: {
-        defaultValue: { summary: 'medium' },
+        defaultValue: { summary: `${TextInputControlSize.medium}` },
       },
       control: {
         type: 'select',
@@ -71,7 +71,7 @@ export default {
     appearance: {
       description: 'Sets the visual appearance of the control',
       table: {
-        defaultValue: { summary: 'outline' },
+        defaultValue: { summary: `${TextInputAppearance.outline}` },
       },
       control: {
         type: 'select',
