@@ -6,7 +6,8 @@
 
 /// <reference types="react" />
 
-import { Avatar } from '@fluentui/react-avatar';
+import { AvatarShape } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -15,10 +16,10 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTag_unstable: (state: TagState) => JSX.Element;
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
 
 // @public
-export const renderTagButton_unstable: (state: TagButtonState) => JSX.Element;
+export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -30,34 +31,19 @@ export const TagButton: ForwardRefComponent<TagButtonProps>;
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots>;
 
 // @public
-export type TagButtonProps = ComponentProps<TagButtonSlots> & {
-    size?: 'extra-small' | 'small' | 'medium';
-    shape?: 'rounded' | 'circular';
-    appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
-    disabled?: boolean;
-    checked?: boolean;
-    dismissable?: boolean;
-};
+export type TagButtonProps = TagProps;
 
 // @public (undocumented)
-export type TagButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
-    contentButton?: Slot<'button'>;
-    avatar?: Slot<typeof Avatar>;
-    icon?: Slot<'span'>;
-    primaryText?: Slot<'span'>;
-    secondaryText?: Slot<'span'>;
-    dismissButton?: NonNullable<Slot<'button'>>;
-};
+export type TagButtonSlots = TagSlots;
 
 // @public
-export type TagButtonState = ComponentState<TagButtonSlots> & Required<Pick<TagButtonProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
+export type TagButtonState = TagState;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
-export type TagProps = ComponentProps<TagSlots> & {
+export type TagProps = ComponentProps<Partial<TagSlots>> & {
     size?: 'extra-small' | 'small' | 'medium';
     shape?: 'rounded' | 'circular';
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
@@ -69,16 +55,19 @@ export type TagProps = ComponentProps<TagSlots> & {
 // @public (undocumented)
 export type TagSlots = {
     root: NonNullable<Slot<'div'>>;
-    content?: Slot<'span'>;
-    avatar?: Slot<typeof Avatar>;
-    icon?: Slot<'span'>;
-    primaryText?: Slot<'span'>;
-    secondaryText?: Slot<'span'>;
-    dismissButton?: NonNullable<Slot<'button'>>;
+    media: Slot<'span'>;
+    content: Slot<'div'>;
+    icon: Slot<'span'>;
+    primaryText: Slot<'span'>;
+    secondaryText: Slot<'span'>;
+    dismissButton: Slot<'button'>;
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'> & {
+    avatarSize: AvatarSize | undefined;
+    avatarShape: AvatarShape | undefined;
+}>;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
