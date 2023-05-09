@@ -1,12 +1,13 @@
 import { Tag } from './Tag';
 import { isConformant } from '../../testing/isConformant';
+import { TagProps } from './Tag.types';
 
-const requiredProps = {
-  media: 'media',
+const requiredProps: TagProps = {
+  dismissible: true,
   icon: 'i',
+  media: 'media',
   primaryText: 'Primary text',
   secondaryText: 'Secondary text',
-  dismissable: true,
 };
 
 describe('Tag', () => {

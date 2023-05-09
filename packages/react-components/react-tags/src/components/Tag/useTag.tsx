@@ -28,15 +28,22 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
   const {
-    checked = false,
+    appearance = 'filled-lighter',
     disabled = false,
-    dismissable = false,
+    dismissible = false,
     shape = 'rounded',
     size = 'medium',
-    appearance = 'filled-lighter',
   } = props;
 
   return {
+    appearance,
+    avatarShape: tagAvatarShapeMap[shape],
+    avatarSize: tagAvatarSizeMap[size],
+    disabled,
+    dismissible,
+    shape,
+    size,
+
     components: {
       root: 'div',
       content: 'div',
@@ -46,27 +53,19 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       secondaryText: 'span',
       dismissButton: 'button',
     },
-    checked,
-    disabled,
-    dismissable,
-    shape,
-    size,
-    appearance,
+
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
-    avatarSize: tagAvatarSizeMap[size],
-    avatarShape: tagAvatarShapeMap[shape],
-    media: resolveShorthand(props.media),
 
     content: resolveShorthand(props.content, { required: true }),
+    media: resolveShorthand(props.media),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),
-
     dismissButton: useARIAButtonShorthand(props.dismissButton, {
-      required: props.dismissable,
+      required: props.dismissible,
       defaultProps: {
         disabled,
         type: 'button',

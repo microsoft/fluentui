@@ -29,7 +29,7 @@ export const renderTagButton_unstable = (state: TagButtonState, contextValues: T
           {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
         </slots.content>
       )}
-      {slots.dismissButton && state.dismissable && <slots.dismissButton {...slotProps.dismissButton} />}
+      {slots.dismissButton && state.dismissible && <slots.dismissButton {...slotProps.dismissButton} />}
     </slots.root>
   );
 };
