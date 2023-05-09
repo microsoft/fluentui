@@ -4,14 +4,9 @@
 
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
-import { ToastPosition, useToaster, getPositionStyles } from '../state';
+import { useToaster, getPositionStyles } from '../state';
 import { Toast } from './Toast';
 import { makeStyles, mergeClasses } from '@griffel/react';
-
-interface ToasterProps {
-  position: ToastPosition;
-  targetDocument: Document | null | undefined;
-}
 
 const useStyles = makeStyles({
   container: {
@@ -19,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Toaster: React.FC<ToasterProps> = props => {
+export const Toaster: React.FC = () => {
   const { getToastToRender, isToastVisible } = useToaster();
 
   const styles = useStyles();
