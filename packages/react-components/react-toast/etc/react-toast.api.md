@@ -4,6 +4,14 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export function createToast(content: React_2.ReactNode, options?: ToastOptions): void;
+
+// @public (undocumented)
+export const Toaster: React_2.FC<ToasterProps>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
