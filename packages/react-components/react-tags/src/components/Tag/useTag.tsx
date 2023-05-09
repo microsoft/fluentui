@@ -3,6 +3,7 @@ import { getNativeElementProps, resolveShorthand, useEventCallback } from '@flue
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
+import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -27,6 +28,8 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
+  const { handleTagDismiss } = useTagGroupContext_unstable();
+
   const {
     appearance = 'filled-lighter',
     disabled = false,
@@ -38,12 +41,17 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
 
   const [dismissed, setDismissed] = React.useState(false);
 
+  const dismiss = React.useCallback(() => {
+    setDismissed(true);
+    handleTagDismiss();
+  }, [handleTagDismiss]);
+
   const handleClick = useEventCallback(
     (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
       props.onClick?.(ev);
       if (!ev.defaultPrevented) {
         onDismiss?.(ev);
-        setDismissed(true);
+        dismiss();
       }
     },
   );
@@ -53,7 +61,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       props?.onKeyDown?.(ev);
       if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
         onDismiss?.(ev);
-        setDismissed(true);
+        dismiss();
       }
     },
   );
