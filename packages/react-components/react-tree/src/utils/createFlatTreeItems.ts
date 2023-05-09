@@ -38,8 +38,9 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps<unknown>>(
       }
       break;
     }
-    const isLeaf =
-      treeItemProps.leaf ?? (treeItemProps.value === undefined || nextItemProps?.parentValue !== treeItemProps.value);
+    const itemType =
+      treeItemProps.itemType ??
+      (treeItemProps.value === undefined || nextItemProps?.parentValue !== treeItemProps.value ? 'leaf' : 'branch');
     const currentLevel = (currentParent.level ?? 0) + 1;
     const currentChildrenSize = ++currentParent.childrenSize;
     const ref = React.createRef<HTMLDivElement>();
@@ -51,7 +52,7 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps<unknown>>(
         'aria-level': currentLevel,
         'aria-posinset': currentChildrenSize,
         'aria-setsize': currentParent.childrenSize,
-        leaf: isLeaf,
+        itemType,
         // a reference to every parent element is necessary to ensure navigation
         ref: flatTreeItem.childrenSize > 0 ? ref : undefined,
       }),
@@ -88,7 +89,7 @@ function createFlatTreeRootItem(): FlatTreeItem {
         // eslint-disable-next-line no-console
         console.error('useFlatTree: internal error, trying to access treeitem props from invalid root element');
       }
-      return { value: flatTreeRootId, 'aria-setsize': -1, 'aria-level': -1, 'aria-posinset': -1, leaf: true };
+      return { value: flatTreeRootId, 'aria-setsize': -1, 'aria-level': -1, 'aria-posinset': -1, itemType: 'branch' };
     },
     childrenSize: 0,
     get index() {
