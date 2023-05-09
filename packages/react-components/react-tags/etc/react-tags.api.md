@@ -19,66 +19,40 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
 
 // @public
-export const renderTagContent_unstable: (state: TagContentState, contextValues: TagContentContextValues) => JSX.Element;
-
-// @public
 export const Tag: ForwardRefComponent<TagProps>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
-export const TagContent: ForwardRefComponent<TagContentProps>;
-
-// @public (undocumented)
-export const tagContentClassNames: SlotClassNames<TagContentSlots>;
-
-// @public
-export type TagContentProps = ComponentProps<Partial<TagContentSlots>>;
-
-// @public (undocumented)
-export type TagContentSlots = {
-    root: Slot<'div', 'button'>;
-    media: Slot<'span'>;
-    icon: Slot<'span'>;
-    primaryText: Slot<'span'>;
-    secondaryText: Slot<'span'>;
-};
-
-// @public
-export type TagContentState = ComponentState<TagContentSlots> & Required<Pick<TagContextValue, 'dismissible' | 'shape' | 'interactive'> & {
-    avatarSize: AvatarSize;
-    avatarShape: AvatarShape;
-}>;
-
-// @public
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
-    size?: 'extra-small' | 'small' | 'medium';
-    shape?: 'rounded' | 'circular';
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
-    checked?: boolean;
     dismissible?: boolean;
     interactive?: boolean;
+    shape?: 'rounded' | 'circular';
+    size?: 'extra-small' | 'small' | 'medium';
 };
 
 // @public (undocumented)
 export type TagSlots = {
     root: NonNullable<Slot<'div'>>;
+    media: Slot<'span'>;
+    content: Slot<'div', 'button'>;
+    icon: Slot<'span'>;
+    primaryText: Slot<'span'>;
+    secondaryText: Slot<'span'>;
     dismissButton: Slot<'button'>;
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissible' | 'shape' | 'size' | 'interactive'>>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'interactive' | 'shape' | 'size'> & {
+    avatarSize: AvatarSize | undefined;
+    avatarShape: AvatarShape | undefined;
+}>;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
-
-// @public
-export const useTagContent_unstable: (props: TagContentProps, ref: React_2.Ref<HTMLElement>) => TagContentState;
-
-// @public
-export const useTagContentStyles_unstable: (state: TagContentState) => TagContentState;
 
 // @public
 export const useTagStyles_unstable: (state: TagState) => TagState;
