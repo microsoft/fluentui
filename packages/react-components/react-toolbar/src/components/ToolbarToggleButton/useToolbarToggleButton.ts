@@ -15,9 +15,10 @@ export const useToolbarToggleButton_unstable = (
 ): ToolbarToggleButtonState => {
   const handleToggleButton = useToolbarContext_unstable(ctx => ctx.handleToggleButton);
   const checked = useToolbarContext_unstable(ctx => !!ctx.checkedValues[props.name]?.includes(props.value));
+  const size = useToolbarContext_unstable(ctx => ctx.size);
 
   const { onClick: onClickOriginal } = props;
-  const toggleButtonState = useToggleButton_unstable({ checked, ...props }, ref);
+  const toggleButtonState = useToggleButton_unstable({ size, checked, ...props }, ref);
   const state: ToolbarToggleButtonState = {
     ...toggleButtonState,
     name: props.name,
