@@ -43,7 +43,7 @@ export type TagContentProps = ComponentProps<Partial<TagContentSlots>>;
  */
 export type TagContentState = ComponentState<TagContentSlots> &
   Required<
-    Pick<TagContextValue, 'dismissable' | 'shape' | 'interactive'> & {
+    Pick<TagContextValue, 'dismissible' | 'shape' | 'interactive'> & {
       avatarSize: AvatarSize;
       avatarShape: AvatarShape;
     }

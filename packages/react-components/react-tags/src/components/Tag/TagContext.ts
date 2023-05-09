@@ -7,7 +7,7 @@ export const TagContext: Context<TagContextValue> = createContext<TagContextValu
 ) as Context<TagContextValue>;
 
 const tagContextDefaultValue: TagContextValue = {
-  dismissable: false,
+  dismissible: false,
   shape: 'rounded',
   size: 'medium',
   interactive: false,

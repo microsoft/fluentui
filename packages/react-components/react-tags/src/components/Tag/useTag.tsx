@@ -19,7 +19,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
   const {
     checked = false,
     disabled = false,
-    dismissable = false,
+    dismissible = false,
     shape = 'rounded',
     size = 'medium',
     appearance = 'filled-lighter',
@@ -34,7 +34,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
 
     checked,
     disabled,
-    dismissable,
+    dismissible,
     shape,
     size,
     appearance,
@@ -46,7 +46,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     }),
 
     dismissButton: useARIAButtonShorthand(props.dismissButton, {
-      required: props.dismissable,
+      required: props.dismissible,
       defaultProps: {
         disabled,
         type: 'button',

@@ -116,11 +116,11 @@ export const useTagContentStyles_unstable = (state: TagContentState): TagContent
     styles.root,
     !state.media && !state.icon && styles.textOnlyRoot,
 
-    !state.interactive && state.dismissable && styles.nonInteractiveDismissableRoot,
+    !state.interactive && state.dismissible && styles.nonInteractiveDismissableRoot,
 
     state.interactive && interactiveTagContentStyles.root,
     state.interactive && state.shape === 'circular' && interactiveTagContentStyles.circularRoot,
-    state.interactive && state.dismissable && interactiveTagContentStyles.dismissableRoot,
+    state.interactive && state.dismissible && interactiveTagContentStyles.dismissableRoot,
 
     state.root.className,
   );

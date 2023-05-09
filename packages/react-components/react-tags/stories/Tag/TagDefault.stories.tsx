@@ -7,7 +7,7 @@ import { Avatar } from '@fluentui/react-components';
 export const Default = (props: Partial<TagProps>) => (
   <div style={{ display: 'flex', columnGap: 28 }}>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
-      <Tag dismissable {...props}>
+      <Tag dismissible {...props}>
         <TagContent
           media={
             <Avatar
@@ -26,7 +26,7 @@ export const Default = (props: Partial<TagProps>) => (
         </TagContent>
       </Tag>
 
-      <Tag dismissable {...props}>
+      <Tag dismissible {...props}>
         <TagContent
           media={
             <Avatar
@@ -62,13 +62,13 @@ export const Default = (props: Partial<TagProps>) => (
         </TagContent>
       </Tag>
 
-      <Tag dismissable {...props}>
+      <Tag dismissible {...props}>
         <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
           Primary text
         </TagContent>
       </Tag>
 
-      <Tag dismissable {...props}>
+      <Tag dismissible {...props}>
         <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>
       </Tag>
 
@@ -81,7 +81,7 @@ export const Default = (props: Partial<TagProps>) => (
       </Tag>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
-      <Tag shape="circular" dismissable {...props}>
+      <Tag shape="circular" dismissible {...props}>
         <TagContent
           media={
             <Avatar
@@ -100,7 +100,7 @@ export const Default = (props: Partial<TagProps>) => (
         </TagContent>
       </Tag>
 
-      <Tag shape="circular" dismissable {...props}>
+      <Tag shape="circular" dismissible {...props}>
         <TagContent
           media={
             <Avatar
@@ -136,13 +136,13 @@ export const Default = (props: Partial<TagProps>) => (
         </TagContent>
       </Tag>
 
-      <Tag shape="circular" dismissable {...props}>
+      <Tag shape="circular" dismissible {...props}>
         <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
           Primary text
         </TagContent>
       </Tag>
 
-      <Tag shape="circular" dismissable {...props}>
+      <Tag shape="circular" dismissible {...props}>
         <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>
       </Tag>
 

@@ -16,7 +16,7 @@ export const Interactive = () => {
 
   return (
     <div className={containerStyles.root}>
-      <Tag interactive dismissable>
+      <Tag interactive dismissible>
         <TagContent
           onClick={() => {
             console.log('Tag with avatar clicked');

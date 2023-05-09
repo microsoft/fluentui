@@ -49,7 +49,7 @@ export type TagContentSlots = {
 export type TagContentState = ComponentState<TagContentSlots> & Required<{
     avatarSize: AvatarSize;
     avatarShape: AvatarShape;
-    dismissable: boolean;
+    dismissible: boolean;
     shape?: 'rounded' | 'circular';
 }>;
 
@@ -60,7 +60,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
     checked?: boolean;
-    dismissable?: boolean;
+    dismissible?: boolean;
     interactive?: boolean;
 };
 
@@ -71,7 +71,7 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size' | 'interactive'>>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissible' | 'shape' | 'size' | 'interactive'>>;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;

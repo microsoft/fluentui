@@ -24,12 +24,12 @@ export const Shape = () => {
         <TagContent media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Circular</TagContent>
       </Tag>
 
-      <Tag dismissable>
+      <Tag dismissible>
         <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
           Rounded
         </TagContent>
       </Tag>
-      <Tag shape="circular" dismissable>
+      <Tag shape="circular" dismissible>
         <TagContent icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
           Circular
         </TagContent>

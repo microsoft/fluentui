@@ -3,7 +3,7 @@ import { isConformant } from '../../testing/isConformant';
 import { TagProps } from './Tag.types';
 
 const requiredProps: TagProps = {
-  dismissable: true,
+  dismissible: true,
 };
 
 describe('Tag', () => {

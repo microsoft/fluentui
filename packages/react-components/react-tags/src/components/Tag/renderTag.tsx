@@ -17,7 +17,7 @@ export const renderTag_unstable = (state: TagState, contextValues: TagContextVal
     <slots.root {...slotProps.root}>
       <TagContext.Provider value={contextValues.tag}>
         {slotProps.root.children}
-        {slots.dismissButton && state.dismissable && <slots.dismissButton {...slotProps.dismissButton} />}
+        {slots.dismissButton && <slots.dismissButton {...slotProps.dismissButton} />}
       </TagContext.Provider>
     </slots.root>
   );

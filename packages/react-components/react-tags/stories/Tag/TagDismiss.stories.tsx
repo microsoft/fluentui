@@ -16,13 +16,13 @@ export const Dismiss = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <Tag dismissable>
+      <Tag dismissible>
         <TagContent>Primary text</TagContent>
       </Tag>
-      <Tag dismissable>
+      <Tag dismissible>
         <TagContent icon={<Calendar3Day20Regular />}>Primary text</TagContent>{' '}
       </Tag>
-      <Tag dismissable>
+      <Tag dismissible>
         <TagContent media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} secondaryText="Secondary text">
           Primary text
         </TagContent>

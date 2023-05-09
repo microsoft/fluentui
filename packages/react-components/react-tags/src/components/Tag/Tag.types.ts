@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type TagContextValue = Required<Pick<TagProps, 'dismissable' | 'shape' | 'size' | 'interactive'>>;
+export type TagContextValue = Required<Pick<TagProps, 'dismissible' | 'shape' | 'size' | 'interactive'>>;
 
 export type TagContextValues = {
   tag: TagContextValue;
@@ -21,7 +21,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
   appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
   disabled?: boolean;
   checked?: boolean;
-  dismissable?: boolean;
+  dismissible?: boolean;
   interactive?: boolean;
 };
 
@@ -29,4 +29,4 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size' | 'interactive'>>;
+  Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissible' | 'shape' | 'size' | 'interactive'>>;
