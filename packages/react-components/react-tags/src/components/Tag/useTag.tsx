@@ -45,6 +45,15 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
   });
 
   return {
+    appearance,
+    avatarShape: tagAvatarShapeMap[shape],
+    avatarSize: tagAvatarSizeMap[size],
+    disabled,
+    dismissible,
+    interactive,
+    shape,
+    size,
+
     components: {
       root: 'div',
       content: interactive ? 'button' : 'div',
@@ -54,25 +63,16 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       secondaryText: 'span',
       dismissButton: 'button',
     },
-    disabled,
-    dismissible,
-    interactive,
-    shape,
-    size,
-    appearance,
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
-    avatarSize: tagAvatarSizeMap[size],
-    avatarShape: tagAvatarShapeMap[shape],
-    media: resolveShorthand(props.media),
 
     content: interactive ? (contentButton as TagState['content']) : resolveShorthand(props.content, { required: true }),
+    media: resolveShorthand(props.media),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true, defaultProps: { children: props.children } }),
     secondaryText: resolveShorthand(props.secondaryText),
-
     dismissButton: useARIAButtonShorthand(props.dismissButton, {
       required: props.dismissible,
       defaultProps: {
