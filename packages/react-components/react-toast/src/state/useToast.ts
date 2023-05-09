@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Toast } from './vanilla/toast';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useForceUpdate } from '@fluentui/react-utilities';
 
 export function useToast() {
-  const [toast] = React.useState(() => new Toast());
-  const [_, forceRender] = React.useReducer(() => ({}), {});
-  useIsomorphicLayoutEffect(() => {
-    toast.onUpdate = forceRender;
-  }, [toast]);
+  const forceRender = useForceUpdate();
+  const [toast] = React.useState(() => {
+    const newToast = new Toast();
+    newToast.onUpdate = forceRender;
+    return newToast;
+  });
 
   const play = React.useCallback(() => {
     toast.play();

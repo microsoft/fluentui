@@ -15,14 +15,14 @@ const useStyles = makeStyles({
 });
 
 export const Toaster: React.FC = () => {
-  const { getToastToRender, isToastVisible } = useToaster();
+  const { getToastsToRender, isToastVisible } = useToaster();
 
   const styles = useStyles();
 
   return (
     <Portal>
       <div>
-        {getToastToRender((position, toasts) => {
+        {getToastsToRender((position, toasts) => {
           return (
             <div key={position} style={getPositionStyles(position)} className={mergeClasses(styles.container)}>
               {toasts.map(({ content, ...toastProps }) => {

@@ -1,23 +1,21 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { Toaster } from './vanilla/toaster';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useForceUpdate } from '@fluentui/react-utilities';
 import { Toast, ToastId, ToastPosition } from './types';
 
 export function useToaster() {
   const { targetDocument } = useFluent();
-  const [_, forceRender] = React.useReducer(() => ({}), {});
-  const [toaster] = React.useState(() => (targetDocument ? new Toaster(targetDocument) : undefined));
-
-  useIsomorphicLayoutEffect(() => {
-    if (toaster) {
-      toaster.onUpdate = forceRender;
+  const forceRender = useForceUpdate();
+  const [toaster] = React.useState(() => {
+    if (targetDocument) {
+      const newToaster = new Toaster(targetDocument);
+      newToaster.onUpdate = forceRender;
+      return newToaster;
     }
+  });
 
-    return () => toaster?.dispose();
-  }, [toaster]);
-
-  const getToastToRender = React.useCallback(
+  const getToastsToRender = React.useCallback(
     <T>(cb: (position: ToastPosition, toasts: Toast[]) => T) => {
       if (!toaster) {
         return [];
@@ -45,6 +43,6 @@ export function useToaster() {
 
   return {
     isToastVisible: (toastId: ToastId) => !!toaster?.isToastVisible(toastId),
-    getToastToRender,
+    getToastsToRender,
   };
 }
