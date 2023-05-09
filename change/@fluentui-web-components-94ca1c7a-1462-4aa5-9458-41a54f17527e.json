@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(radio): add radio and radio-group web components",
-  "packageName": "@fluentui/web-components",
-  "email": "brianbrady@microsoft.com",
-  "dependentChangeType": "patch"
-}
