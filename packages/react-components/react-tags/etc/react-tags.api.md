@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -37,12 +38,12 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
 // @public (undocumented)
 export type TagSlots = {
     root: NonNullable<Slot<'div'>>;
-    media: Slot<'span'>;
-    content: Slot<'div', 'button'>;
-    icon: Slot<'span'>;
-    primaryText: Slot<'span'>;
-    secondaryText: Slot<'span'>;
-    dismissButton: Slot<'button'>;
+    media?: Slot<'span'>;
+    content: NonNullable<Slot<ARIAButtonSlotProps<'div'>>>;
+    icon?: Slot<'span'>;
+    primaryText: NonNullable<Slot<'span'>>;
+    secondaryText?: Slot<'span'>;
+    dismissButton?: Slot<'button'>;
 };
 
 // @public

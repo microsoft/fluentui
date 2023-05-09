@@ -15,26 +15,26 @@ export type TagSlots = {
   /**
    * Slot for an icon or other visual element
    */
-  media: Slot<'span'>;
+  media?: Slot<'span'>;
 
   /**
    * A layout wrapper for the icon slot, the primaryText and secondaryText slots
    */
   content: NonNullable<Slot<ARIAButtonSlotProps<'div'>>>;
 
-  icon: Slot<'span'>;
+  icon?: Slot<'span'>;
 
   /**
    * Main text for the Tag. Children of the root slot are automatically rendered here
    */
-  primaryText: Slot<'span'>;
+  primaryText: NonNullable<Slot<'span'>>;
 
   /**
    * Secondary text that describes or complements the main text
    */
-  secondaryText: Slot<'span'>;
+  secondaryText?: Slot<'span'>;
 
-  dismissButton: Slot<'button'>;
+  dismissButton?: Slot<'button'>;
 };
 
 /**
