@@ -29,7 +29,7 @@ const storyTemplate = html<TextInputStoryArgs>`
     <fluent-text-input
       type=${x => x.type}
       ?disabled=${x => x.disabled}
-      ?placeholder="${x => x.placeholder}"
+      placeholder="${x => x.placeholder}"
       control-size="${x => x.controlSize}"
       appearance="${x => x.appearance}"
     >
@@ -161,7 +161,7 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input control-size="small">
       <span slot="end">${Person20Regular}</span>
-      <fluent-label>Small Input</fluent-label>
+      <fluent-label size="small">Small Input</fluent-label>
     </fluent-text-input>
 
     <fluent-text-input>
@@ -171,7 +171,7 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 
     <fluent-text-input control-size="large">
       <span slot="end">${Person20Regular}</span>
-      <flunet-label>Large Input</fluent-label>
+      <fluent-label size="large">Large Input</fluent-label>
     </fluent-text-input>
   </div>
 `);
