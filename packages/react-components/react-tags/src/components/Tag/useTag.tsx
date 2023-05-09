@@ -28,11 +28,11 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
   const {
+    appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
     shape = 'rounded',
     size = 'medium',
-    appearance = 'filled-lighter',
   } = props;
 
   return {
