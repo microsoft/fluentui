@@ -38,7 +38,7 @@ export type TagContentProps = ComponentProps<Partial<TagContentSlots>>;
 
 // @public (undocumented)
 export type TagContentSlots = {
-    root: NonNullable<Slot<'div', 'button'>>;
+    root: Slot<'div', 'button'>;
     media: Slot<'span'>;
     icon: Slot<'span'>;
     primaryText: Slot<'span'>;
@@ -46,11 +46,9 @@ export type TagContentSlots = {
 };
 
 // @public
-export type TagContentState = ComponentState<TagContentSlots> & Required<{
+export type TagContentState = ComponentState<TagContentSlots> & Required<Pick<TagContextValue, 'dismissible' | 'shape' | 'interactive'> & {
     avatarSize: AvatarSize;
     avatarShape: AvatarShape;
-    dismissible: boolean;
-    shape?: 'rounded' | 'circular';
 }>;
 
 // @public
