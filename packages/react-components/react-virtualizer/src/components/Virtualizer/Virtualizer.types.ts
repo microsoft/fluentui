@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { VirtualizerContextProps } from '../../Utilities';
 
 export type VirtualizerSlots = {
   /**
@@ -133,6 +134,11 @@ export type VirtualizerConfigProps = {
    * @param index - the index of the requested size's child
    */
   getItemSize?: (index: number) => number;
+
+  /**
+   * Virtualizer context can be passed as a prop for extended class use
+   */
+  virtualizerContext?: VirtualizerContextProps;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

@@ -12,9 +12,8 @@ import { renderVirtualizer_unstable } from '../Virtualizer/renderVirtualizer';
 
 export const renderVirtualizerScrollViewDynamic_unstable = (state: VirtualizerScrollViewDynamicState) => {
   const { slots, slotProps } = getSlotsNext<VirtualizerScrollViewDynamicSlots>(state);
-
   return (
-    <VirtualizerContextProvider value={state.contextValues}>
+    <VirtualizerContextProvider value={state.virtualizerContext}>
       <slots.container {...slotProps.container}>{renderVirtualizer_unstable(state)}</slots.container>
     </VirtualizerContextProvider>
   );

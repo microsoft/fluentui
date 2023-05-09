@@ -11,10 +11,15 @@ export const useVirtualizerContext = () => {
   return React.useContext(VirtualizerContext);
 };
 
-export const useVirtualizerContextState = (): VirtualizerContextProps => {
+export const useVirtualizerContextState = (passedContext?: VirtualizerContextProps): VirtualizerContextProps => {
   // Respect any wrapped providers while also ensuring defaults
   const virtualizerContext = useVirtualizerContext();
   const [_contextIndex, _setContextIndex] = React.useState<number>(-1);
+
+  if (passedContext) {
+    // Passed context will always override - we use this for extending the class when a provider is not available.
+    return passedContext;
+  }
 
   return {
     contextIndex: virtualizerContext?.contextIndex !== undefined ? virtualizerContext.contextIndex : _contextIndex,

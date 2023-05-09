@@ -6,7 +6,7 @@ import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
-import { useVirtualizerContextState } from '../../Utilities';
+import { useVirtualizerContext, useVirtualizerContextState } from '../../Utilities';
 import { renderVirtualizerChildPlaceholder } from './renderVirtualizer';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
@@ -21,12 +21,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     scrollViewRef,
     axis = 'vertical',
     reversed = false,
+    virtualizerContext,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
-  const virtualizerContext = useVirtualizerContextState();
-  const actualIndex = virtualizerContext.contextIndex;
-  const setActualIndex = virtualizerContext.setContextIndex;
+  const _virtualizerContext = useVirtualizerContextState(virtualizerContext);
+
+  const actualIndex = _virtualizerContext.contextIndex;
+  const setActualIndex = _virtualizerContext.setContextIndex;
 
   // Store ref to before padding element
   const beforeElementRef = useRef<Element | null>(null);

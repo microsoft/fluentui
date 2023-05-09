@@ -36,9 +36,4 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
   };
 
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> &
-  VirtualizerConfigState & {
-    /**
-     * Defaulted/overridden context to notify wrapper of index changes (for dynamic measuring)
-     */
-    contextValues: VirtualizerContextProps;
-  };
+  VirtualizerConfigState;

@@ -11,12 +11,13 @@ import { useVirtualizerContextState } from '../../Utilities';
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  const contextState = useVirtualizerContextState();
+  const contextState = useVirtualizerContextState(props.virtualizerContext);
+
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
     getItemSize: props.getItemSize,
-    currentIndex: contextState.contextIndex,
+    currentIndex: contextState?.contextIndex ?? 0,
     numItems: props.numItems,
   });
 
@@ -28,11 +29,11 @@ export function useVirtualizerScrollViewDynamic_unstable(
     bufferItems,
     bufferSize,
     scrollViewRef: iScrollRef,
+    virtualizerContext: contextState,
   });
 
   return {
     ...virtualizerState,
-    contextValues: contextState,
     components: {
       ...virtualizerState.components,
       container: 'div',

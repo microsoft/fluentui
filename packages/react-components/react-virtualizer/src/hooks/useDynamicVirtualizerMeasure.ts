@@ -16,6 +16,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
 } => {
   const { defaultItemSize, direction = 'vertical', numItems, getItemSize, currentIndex } = virtualizerProps;
 
+  console.log('DYNAMIC VIRTUALIZER: ', currentIndex);
+
   const [state, setState] = React.useState({
     virtualizerLength: 0,
     virtualizerBufferItems: 0,
