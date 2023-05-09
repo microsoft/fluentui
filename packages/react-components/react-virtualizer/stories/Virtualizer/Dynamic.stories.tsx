@@ -40,10 +40,10 @@ export const Dynamic = () => {
   const childLength = 1000;
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  // React.useEffect(() => {
-  //   updateTimeout();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  React.useEffect(() => {
+    updateTimeout();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const updateTimeout = () => {
     clearTimeout(timeoutRef.current);
