@@ -41,7 +41,7 @@ export type TagSlots = {
  */
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
   appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
-  // TODO tag checked state
+  // TODO implement tag checked state
   // checked?: boolean;
   disabled?: boolean;
   dismissible?: boolean;
