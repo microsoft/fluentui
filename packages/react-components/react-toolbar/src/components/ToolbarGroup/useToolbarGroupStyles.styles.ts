@@ -10,10 +10,7 @@ export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    ...shorthands.gap('8px'),
-  },
+  root: {},
 });
 
 /**
