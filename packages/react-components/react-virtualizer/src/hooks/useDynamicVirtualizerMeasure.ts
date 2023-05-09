@@ -2,6 +2,7 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { VirtualizerMeasureDynamicProps } from './hooks.types';
 import { useScrollRef } from './useScrollRef';
+import { useRef } from 'react';
 
 /**
  * React hook that measures virtualized space dynamically to ensure optimized virtualization length.
@@ -15,8 +16,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   scrollRef: (instance: TElement | null) => void;
 } => {
   const { defaultItemSize, direction = 'vertical', numItems, getItemSize, currentIndex } = virtualizerProps;
-
-  console.log('DYNAMIC VIRTUALIZER: ', currentIndex);
+  const indexRef = useRef<number>(currentIndex);
+  indexRef.current = currentIndex;
 
   const [state, setState] = React.useState({
     virtualizerLength: 0,
@@ -29,6 +30,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const container = React.useRef<HTMLElement | null>(null);
   const handleScrollResize = React.useCallback(
     (scrollRef: React.MutableRefObject<HTMLElement | null>) => {
+      console.log('HANDLING SCROLL RESIZE CHANGE: ');
       if (!scrollRef?.current) {
         // Error? ignore?
         return;
@@ -47,7 +49,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       let length = 0;
 
       while (indexSizer <= containerSize && length < numItems) {
-        const iItemSize = getItemSize(currentIndex + length);
+        const iItemSize = getItemSize(indexRef.current + length);
 
         // Increment
         indexSizer += iItemSize;
@@ -65,14 +67,13 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
       const totalLength = length + bufferItems * 2 + 3;
-
       setState({
         virtualizerLength: totalLength,
         virtualizerBufferSize: bufferSize,
         virtualizerBufferItems: bufferItems,
       });
     },
-    [currentIndex, defaultItemSize, direction, getItemSize, numItems],
+    [defaultItemSize, direction, getItemSize, numItems],
   );
 
   const resizeCallback = React.useCallback(
@@ -122,7 +123,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     if (recheckTotal < containerSize || couldBeSmaller) {
       handleScrollResize(container);
     }
-  }, [getItemSize, currentIndex, direction, virtualizerLength, container, resizeCallback, handleScrollResize]);
+  }, [getItemSize, currentIndex, direction, virtualizerLength, resizeCallback, handleScrollResize]);
 
   return {
     virtualizerLength,

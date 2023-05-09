@@ -14,7 +14,16 @@ export const useScrollRef = (resizeCallback: ResizeCallbackWithRef) => {
   });
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = React.useState(() => (canUseDOM() ? new ResizeObserver(handleResize) : undefined));
+  const [resizeObserver, setResizeObserver] = React.useState(() =>
+    canUseDOM() ? new ResizeObserver(handleResize) : undefined,
+  );
+
+  React.useEffect(() => {
+    // Update our state when resizeCallback changes
+    resizeObserver?.disconnect();
+    setResizeObserver(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resizeCallback]);
 
   React.useEffect(() => {
     return () => {

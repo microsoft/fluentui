@@ -6,7 +6,6 @@ import {
 } from '../Virtualizer/Virtualizer.types';
 
 import { VirtualizerScrollViewSlots } from '../VirtualizerScrollView/VirtualizerScrollView.types';
-import { VirtualizerContextProps } from '../../Utilities';
 
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 

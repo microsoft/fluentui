@@ -5,6 +5,7 @@ import {
   VirtualizerContextProvider,
 } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
+import { useRef } from 'react';
 
 const smallSize = 100;
 const largeSize = 200;
@@ -37,25 +38,31 @@ export const Dynamic = () => {
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   React.useEffect(() => {
     updateTimeout();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateTimeout = () =>
-    setTimeout(() => {
+  const updateTimeout = () => {
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
       toggleFlag(iFlag => !iFlag);
       updateTimeout();
     }, 2000);
-
-  const getSizeForIndex = (index: number): number => {
-    const sizeValue1 = flag ? largeSize : smallSize;
-    const sizeValue2 = flag ? smallSize : largeSize;
-
-    const sizeValue = index % 2 === 0 ? sizeValue1 : sizeValue2;
-    return sizeValue;
   };
+
+  const getSizeForIndex = React.useCallback(
+    (index: number): number => {
+      const sizeValue1 = flag ? largeSize : smallSize;
+      const sizeValue2 = flag ? smallSize : largeSize;
+
+      const sizeValue = index % 2 === 0 ? sizeValue1 : sizeValue2;
+      return sizeValue;
+    },
+    [flag],
+  );
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: 100,

@@ -10,6 +10,7 @@ import { ReactNode } from 'react';
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { slots, slotProps } = getSlotsNext<VirtualizerSlots>(state);
 
+  console.log('RENDERING BASE VIRTUALIZER', state);
   return (
     <React.Fragment>
       {/* The 'before' bookend to hold items in place and detect scroll previous */}

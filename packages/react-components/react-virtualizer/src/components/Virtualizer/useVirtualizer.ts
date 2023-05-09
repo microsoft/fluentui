@@ -6,7 +6,7 @@ import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
-import { useVirtualizerContext, useVirtualizerContextState } from '../../Utilities';
+import { useVirtualizerContextState } from '../../Utilities';
 import { renderVirtualizerChildPlaceholder } from './renderVirtualizer';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
@@ -80,6 +80,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     updateChildRows(index);
     updateCurrentItemSizes(index);
 
+    console.log('SETTING INDEX: ', index);
     // State setters
     setActualIndex(index);
   };
