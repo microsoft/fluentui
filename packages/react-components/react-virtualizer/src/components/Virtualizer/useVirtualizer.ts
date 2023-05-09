@@ -80,7 +80,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     updateChildRows(index);
     updateCurrentItemSizes(index);
 
-    console.log('SETTING INDEX: ', index);
     // State setters
     setActualIndex(index);
   };

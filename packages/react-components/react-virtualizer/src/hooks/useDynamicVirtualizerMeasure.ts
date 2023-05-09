@@ -30,7 +30,6 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const container = React.useRef<HTMLElement | null>(null);
   const handleScrollResize = React.useCallback(
     (scrollRef: React.MutableRefObject<HTMLElement | null>) => {
-      console.log('HANDLING SCROLL RESIZE CHANGE: ');
       if (!scrollRef?.current) {
         // Error? ignore?
         return;

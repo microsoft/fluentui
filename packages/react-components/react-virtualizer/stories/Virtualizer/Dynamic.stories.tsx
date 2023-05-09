@@ -5,7 +5,7 @@ import {
   VirtualizerContextProvider,
 } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 const smallSize = 100;
 const largeSize = 200;
@@ -40,10 +40,10 @@ export const Dynamic = () => {
   const childLength = 1000;
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  React.useEffect(() => {
-    updateTimeout();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // React.useEffect(() => {
+  //   updateTimeout();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const updateTimeout = () => {
     clearTimeout(timeoutRef.current);
@@ -53,7 +53,7 @@ export const Dynamic = () => {
     }, 2000);
   };
 
-  const getSizeForIndex = React.useCallback(
+  const getSizeForIndex = useCallback(
     (index: number): number => {
       const sizeValue1 = flag ? largeSize : smallSize;
       const sizeValue2 = flag ? smallSize : largeSize;
@@ -75,26 +75,29 @@ export const Dynamic = () => {
     <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
       <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
         <Virtualizer
-          getItemSize={index => getSizeForIndex(index)}
+          getItemSize={getSizeForIndex}
           numItems={childLength}
           bufferSize={bufferSize}
           bufferItems={bufferItems}
           virtualizerLength={virtualizerLength}
           itemSize={100}
         >
-          {(index: number) => {
-            const sizeValue = getSizeForIndex(index);
-            const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;
-            return (
-              <div
-                className={sizeClass}
-                role={'listItem'}
-                aria-posinset={index}
-                aria-setsize={childLength}
-                key={`child-node-${index}-${sizeValue}`}
-              >{`Node-${index}-size-${sizeValue}`}</div>
-            );
-          }}
+          {useCallback(
+            (index: number) => {
+              const sizeValue = getSizeForIndex(index);
+              const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;
+              return (
+                <div
+                  className={sizeClass}
+                  role={'listItem'}
+                  aria-posinset={index}
+                  aria-setsize={childLength}
+                  key={`child-node-${index}-${sizeValue}`}
+                >{`Node-${index}-size-${sizeValue}`}</div>
+              );
+            },
+            [getSizeForIndex, styles.child, styles.childLarge],
+          )}
         </Virtualizer>
       </div>
     </VirtualizerContextProvider>
