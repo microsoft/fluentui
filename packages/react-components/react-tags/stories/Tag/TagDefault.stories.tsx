@@ -20,7 +20,7 @@ export const Default = (props: Partial<TagProps>) => (
           />
         }
         secondaryText="Secondary text"
-        dismissible={true}
+        dismissible
         {...props}
       >
         Primary text
@@ -37,7 +37,7 @@ export const Default = (props: Partial<TagProps>) => (
             }}
           />
         }
-        dismissible={true}
+        dismissible
         {...props}
       >
         Primary text
@@ -58,10 +58,10 @@ export const Default = (props: Partial<TagProps>) => (
       >
         Primary text
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} secondaryText="Secondary text" dismissible={true} {...props} {...props}>
+      <Tag icon={<Calendar3Day20Regular />} secondaryText="Secondary text" dismissible {...props} {...props}>
         Primary text
       </Tag>
-      <Tag icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
+      <Tag icon={<Calendar3Day20Regular />} dismissible {...props}>
         Primary text
       </Tag>
       <Tag icon={<Calendar3Day20Regular />} {...props}>
@@ -84,7 +84,7 @@ export const Default = (props: Partial<TagProps>) => (
           />
         }
         secondaryText="Secondary text"
-        dismissible={true}
+        dismissible
         {...props}
       >
         Primary text
@@ -102,7 +102,7 @@ export const Default = (props: Partial<TagProps>) => (
             }}
           />
         }
-        dismissible={true}
+        dismissible
         {...props}
       >
         Primary text
@@ -128,13 +128,13 @@ export const Default = (props: Partial<TagProps>) => (
         shape="circular"
         icon={<Calendar3Day20Regular />}
         secondaryText="Secondary text"
-        dismissible={true}
+        dismissible
         {...props}
         {...props}
       >
         Primary text
       </Tag>
-      <Tag shape="circular" icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
+      <Tag shape="circular" icon={<Calendar3Day20Regular />} dismissible {...props}>
         Primary text
       </Tag>
       <Tag shape="circular" icon={<Calendar3Day20Regular />} {...props}>
