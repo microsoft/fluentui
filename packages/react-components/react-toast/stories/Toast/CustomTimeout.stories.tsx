@@ -8,7 +8,7 @@ export const CustomTimeout = () => {
 
   return (
     <>
-      <Toaster position="bottom-right" targetDocument={document} />
+      <Toaster />
       <button onClick={notify}>Make toast</button>
     </>
   );

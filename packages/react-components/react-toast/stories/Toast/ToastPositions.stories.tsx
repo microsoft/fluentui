@@ -6,7 +6,7 @@ export const ToastPositions = () => {
 
   return (
     <>
-      <Toaster position="bottom-right" targetDocument={document} />
+      <Toaster />
       <button onClick={() => notify('bottom-left')}>bottom-left</button>
       <button onClick={() => notify('bottom-right')}>bottom-right</button>
       <button onClick={() => notify('top-left')}>top-left</button>

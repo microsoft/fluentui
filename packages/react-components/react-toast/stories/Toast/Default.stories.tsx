@@ -6,7 +6,7 @@ export const Default = () => {
 
   return (
     <>
-      <Toaster position="bottom-right" targetDocument={document} />
+      <Toaster />
       <button onClick={notify}>Make toast</button>
     </>
   );
