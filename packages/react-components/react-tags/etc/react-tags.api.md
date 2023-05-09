@@ -44,12 +44,11 @@ export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
-    size?: 'extra-small' | 'small' | 'medium';
-    shape?: 'rounded' | 'circular';
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
-    checked?: boolean;
     dismissible?: boolean;
+    shape?: 'rounded' | 'circular';
+    size?: 'extra-small' | 'small' | 'medium';
 };
 
 // @public (undocumented)
@@ -64,7 +63,7 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
     avatarSize: AvatarSize | undefined;
     avatarShape: AvatarShape | undefined;
 }>;
