@@ -103,9 +103,6 @@ export const styles = css`
   :host([orientation='vertical'][size='large']) {
     padding: ${spacingHorizontalXL} ${spacingHorizontalXS};
   }
-  /*
-    STOP: divider orientation does not change when toolbar orientation changes.
-  */
   :host([orientation='vertical']) ::slotted(fluent-divider) {
     max-width: 20px;
     min-width: 20px;
