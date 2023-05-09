@@ -2,6 +2,21 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 18:14:02 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.15",
+      "version": "8.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 22:20:22 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.14",
       "version": "8.1.14",

@@ -38,7 +38,7 @@ const useStyles = makeStyles({
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
-      { selector: 'focus-within', enableOutline: true },
+      { selector: 'focus-within' },
     ),
     position: 'relative',
   },
