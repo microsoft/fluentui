@@ -1,4 +1,4 @@
 export { Toaster } from './components/Toaster';
 
-export { createToast } from './state';
+export { useToastFactory } from './state';
 export type { ToastPosition } from './state';

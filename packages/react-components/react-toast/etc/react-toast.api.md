@@ -7,10 +7,15 @@
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export function createToast(content: React_2.ReactNode, options?: ToastOptions): void;
+export const Toaster: React_2.FC;
 
 // @public (undocumented)
-export const Toaster: React_2.FC<ToasterProps>;
+export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+
+// @public (undocumented)
+export function useToastFactory(): {
+    createToast: (content: React_2.ReactNode, options?: ToastOptions | undefined) => void;
+};
 
 // (No @packageDocumentation comment for this package)
 

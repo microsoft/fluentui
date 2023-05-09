@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Toaster, createToast, ToastPosition } from '@fluentui/react-toast';
+import { Toaster, useToastFactory, ToastPosition } from '@fluentui/react-toast';
 
 export const ToastPositions = () => {
+  const { createToast } = useToastFactory();
   const notify = (position: ToastPosition) => createToast('This is a toast', { position });
 
   return (
