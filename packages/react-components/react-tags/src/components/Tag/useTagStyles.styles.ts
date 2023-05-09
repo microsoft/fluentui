@@ -113,7 +113,7 @@ export const useTagBaseStyles = makeStyles({
 });
 
 const useTagStyles = makeStyles({
-  dismissableContent: {
+  dismissibleContent: {
     paddingRight: '2px',
   },
   dismissButton: {
@@ -140,7 +140,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       baseStyles.content,
       !state.media && !state.icon && baseStyles.textOnlyContent,
 
-      state.dismissButton && styles.dismissableContent,
+      state.dismissButton && styles.dismissibleContent,
       state.content.className,
     );
   }

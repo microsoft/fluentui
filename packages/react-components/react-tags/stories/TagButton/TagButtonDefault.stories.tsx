@@ -20,7 +20,7 @@ export const Default = (props: Partial<TagButtonProps>) => (
           />
         }
         secondaryText="Secondary text"
-        dismissable={true}
+        dismissible={true}
         {...props}
       >
         Primary text
@@ -37,7 +37,7 @@ export const Default = (props: Partial<TagButtonProps>) => (
             }}
           />
         }
-        dismissable={true}
+        dismissible={true}
         {...props}
       >
         Primary text
@@ -61,13 +61,13 @@ export const Default = (props: Partial<TagButtonProps>) => (
       <TagButton
         icon={<Calendar3Day20Regular />}
         secondaryText="Secondary text"
-        dismissable={true}
+        dismissible={true}
         {...props}
         {...props}
       >
         Primary text
       </TagButton>
-      <TagButton icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+      <TagButton icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
         Primary text
       </TagButton>
       <TagButton icon={<Calendar3Day20Regular />} {...props}>
@@ -90,7 +90,7 @@ export const Default = (props: Partial<TagButtonProps>) => (
           />
         }
         secondaryText="Secondary text"
-        dismissable={true}
+        dismissible={true}
         {...props}
       >
         Primary text
@@ -108,7 +108,7 @@ export const Default = (props: Partial<TagButtonProps>) => (
             }}
           />
         }
-        dismissable={true}
+        dismissible={true}
         {...props}
       >
         Primary text
@@ -134,13 +134,13 @@ export const Default = (props: Partial<TagButtonProps>) => (
         shape="circular"
         icon={<Calendar3Day20Regular />}
         secondaryText="Secondary text"
-        dismissable={true}
+        dismissible={true}
         {...props}
         {...props}
       >
         Primary text
       </TagButton>
-      <TagButton shape="circular" icon={<Calendar3Day20Regular />} dismissable={true} {...props}>
+      <TagButton shape="circular" icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
         Primary text
       </TagButton>
       <TagButton shape="circular" icon={<Calendar3Day20Regular />} {...props}>

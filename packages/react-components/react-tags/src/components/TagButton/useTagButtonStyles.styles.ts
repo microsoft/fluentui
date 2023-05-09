@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular), {
     enableOutline: true,
   }),
-  dismissableContent: {
+  dismissibleContent: {
     ...createCustomFocusIndicatorStyle({
       borderTopRightRadius: tokens.borderRadiusNone,
       borderBottomRightRadius: tokens.borderRadiusNone,
@@ -79,7 +79,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
 
       styles.content,
       state.shape === 'circular' && styles.circularContent,
-      state.dismissButton && styles.dismissableContent,
+      state.dismissButton && styles.dismissibleContent,
 
       state.content.className,
     );

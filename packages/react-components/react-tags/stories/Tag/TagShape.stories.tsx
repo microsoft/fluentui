@@ -22,10 +22,10 @@ export const Shape = () => {
         Circular
       </Tag>
 
-      <Tag dismissable icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+      <Tag dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
         Rounded
       </Tag>
-      <Tag shape="circular" dismissable icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+      <Tag shape="circular" dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
         Circular
       </Tag>
     </div>

@@ -6,7 +6,7 @@ const requiredProps = {
   icon: 'i',
   primaryText: 'Primary text',
   secondaryText: 'Secondary text',
-  dismissable: true,
+  dismissible: true,
 };
 
 describe('TagButton', () => {

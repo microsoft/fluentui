@@ -49,7 +49,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
     checked?: boolean;
-    dismissable?: boolean;
+    dismissible?: boolean;
 };
 
 // @public (undocumented)
@@ -64,7 +64,7 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'> & {
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
     avatarSize: AvatarSize | undefined;
     avatarShape: AvatarShape | undefined;
 }>;

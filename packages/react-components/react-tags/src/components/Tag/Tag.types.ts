@@ -40,12 +40,13 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
-  size?: 'extra-small' | 'small' | 'medium';
-  shape?: 'rounded' | 'circular';
   appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+  // TODO implement tag checked state
+  // checked?: boolean;
   disabled?: boolean;
-  checked?: boolean;
-  dismissable?: boolean;
+  dismissible?: boolean;
+  shape?: 'rounded' | 'circular';
+  size?: 'extra-small' | 'small' | 'medium';
 };
 
 /**
@@ -53,7 +54,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
  */
 export type TagState = ComponentState<TagSlots> &
   Required<
-    Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'> & {
+    Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
       avatarSize: AvatarSize | undefined;
       avatarShape: AvatarShape | undefined;
     }
