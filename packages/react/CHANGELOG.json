@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 09 May 2023 07:38:07 GMT",
+      "tag": "@fluentui/react_v8.109.3",
+      "version": "8.109.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "347e2f68a22630b6de882ef032e5a42695b64774",
+            "comment": "fix(Coachmark): Fix positioning regression and update bounds on resize."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 May 2023 18:14:09 GMT",
       "tag": "@fluentui/react_v8.109.2",
       "version": "8.109.2",
