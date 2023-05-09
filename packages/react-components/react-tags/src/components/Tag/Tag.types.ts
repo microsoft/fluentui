@@ -1,3 +1,4 @@
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -19,7 +20,7 @@ export type TagSlots = {
   /**
    * A layout wrapper for the icon slot, the primaryText and secondaryText slots
    */
-  content: Slot<'div', 'button'>;
+  content: NonNullable<Slot<ARIAButtonSlotProps<'div'>>>;
 
   icon: Slot<'span'>;
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
-import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -36,7 +36,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size = 'medium',
   } = props;
 
-  const contentButton = useARIAButtonShorthand(props.content as ARIAButtonSlotProps, {
+  const contentButton = useARIAButtonShorthand(props.content, {
     required: true,
     defaultProps: {
       disabled,
@@ -68,7 +68,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       ...props,
     }),
 
-    content: interactive ? (contentButton as TagState['content']) : resolveShorthand(props.content, { required: true }),
+    content: interactive ? contentButton : resolveShorthand(props.content, { required: true }),
     media: resolveShorthand(props.media),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true, defaultProps: { children: props.children } }),
