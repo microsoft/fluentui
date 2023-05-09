@@ -73,7 +73,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true, defaultProps: { children: props.children } }),
     secondaryText: resolveShorthand(props.secondaryText),
-    dismissButton: useARIAButtonShorthand(props.dismissButton, {
+    dismissButton: resolveShorthand(props.dismissButton, {
       required: props.dismissible,
       defaultProps: {
         disabled,
