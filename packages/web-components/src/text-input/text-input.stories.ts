@@ -1,7 +1,13 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
+import {
+  colorNeutralBackgroundInverted,
+  colorNeutralForegroundInverted2,
+  fontFamilyBase,
+  fontSizeBase300,
+  lineHeightBase300,
+} from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize } from './text-input.options.js';
 import { TextInputType } from './index.js';
@@ -124,36 +130,46 @@ export const Placeholder = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Appearance = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px;">
-    <fluent-text-input>
-      <span slot="start">${Person20Regular}</span>
-      <fluent-label>Outline (default) Input</fluent-label>
-    </fluent-text-input>
+  <div style="display: flex; flex-direction: column; gap: 30px; width: 400px;">
+    <div style="padding: 10px;">
+      <fluent-text-input>
+        <span slot="start">${Person20Regular}</span>
+        <fluent-label>Outline (default) Input</fluent-label>
+      </fluent-text-input>
+    </div>
+    <div style="padding: 10px;">
+      <fluent-text-input appearance="underline">
+        <span slot="start">${Person20Regular}</span>
+        <fluent-label>Underlined Input</fluent-label>
+      </fluent-text-input>
+    </div>
+    <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
+      <fluent-text-input appearance="filled-lighter">
+        <span slot="start">${Person20Regular}</span>
+        <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Lighter Input</fluent-label>
+      </fluent-text-input>
+    </div>
 
-    <fluent-text-input appearance="underline">
-      <span slot="start">${Person20Regular}</span>
-      <fluent-label>Underlined Input</fluent-label>
-    </fluent-text-input>
+    <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
+      <fluent-text-input appearance="filled-lighter--shadow">
+        <span slot="start">${Person20Regular}</span>
+        <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Lighter with Shadow Input</fluent-label>
+      </fluent-text-input>
+    </div>
 
-    <fluent-text-input appearance="filled-lighter">
-      <span slot="start">${Person20Regular}</span>
-      <fluent-label>Filled Lighter Input</fluent-label>
-    </fluent-text-input>
+    <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
+      <fluent-text-input appearance="filled-darker">
+        <span slot="start">${Person20Regular}</span>
+        <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Darker Input</fluent-label>
+      </fluent-text-input>
+    </div>
 
-    <fluent-text-input appearance="filled-lighter--shadow">
-      <span slot="start">${Person20Regular}</span>
-      <fluent-label>Filled Lighter with Shadow Input</fluent-label>
-    </fluent-text-input>
-
-    <fluent-text-input appearance="filled-darker">
-      <span slot="start">${Person20Regular}</span>
-      <fluent-label>Filled Darker Input</fluent-label>
-    </fluent-text-input>
-
-    <fluent-text-input appearance="filled-darker--shadow">
-      <span slot="start">${Person20Regular}</span>
-      <fluent-label>Filled Darker with Shadow Input</fluent-label>
-    </fluent-text-input>
+    <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
+      <fluent-text-input appearance="filled-darker--shadow">
+        <span slot="start">${Person20Regular}</span>
+        <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Darker with Shadow Input</fluent-label>
+      </fluent-text-input>
+    </div>
   </div>
 `);
 
