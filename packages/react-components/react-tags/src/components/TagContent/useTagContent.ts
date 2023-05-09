@@ -24,10 +24,7 @@ const tagContentAvatarShapeMap = {
  * @param ref - reference to root HTMLElement of TagContent
  */
 export const useTagContent_unstable = (props: TagContentProps, ref: React.Ref<HTMLElement>): TagContentState => {
-  const dismissible = useTagContext_unstable(ctx => ctx.dismissible);
-  const shape = useTagContext_unstable(ctx => ctx.shape);
-  const size = useTagContext_unstable(ctx => ctx.size);
-  const interactive = useTagContext_unstable(ctx => ctx.interactive);
+  const { dismissible, shape, size, interactive } = useTagContext_unstable();
 
   return {
     components: {

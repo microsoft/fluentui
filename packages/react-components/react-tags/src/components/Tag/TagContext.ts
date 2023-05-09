@@ -1,10 +1,7 @@
-import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
+import * as React from 'react';
 import type { TagContextValue } from './Tag.types';
 
-export const TagContext: Context<TagContextValue> = createContext<TagContextValue | undefined>(
-  undefined,
-) as Context<TagContextValue>;
+export const TagContext = React.createContext<TagContextValue | undefined>(undefined);
 
 const tagContextDefaultValue: TagContextValue = {
   dismissible: false,
@@ -14,5 +11,4 @@ const tagContextDefaultValue: TagContextValue = {
 };
 
 export const TagProvider = TagContext.Provider;
-export const useTagContext_unstable = <T>(selector: ContextSelector<TagContextValue, T>): T =>
-  useContextSelector(TagContext, (ctx = tagContextDefaultValue) => selector(ctx));
+export const useTagContext_unstable = () => React.useContext(TagContext) ?? tagContextDefaultValue;
