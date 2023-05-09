@@ -4,7 +4,7 @@ import { ValuesOf } from '@microsoft/fast-foundation';
  * TextInput size constants
  * @public
  */
-export const TextControlSize = {
+export const TextInputControlSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
@@ -14,7 +14,7 @@ export const TextControlSize = {
  * Applies size styling to TextInput
  * @public
  */
-export type TextControlSize = ValuesOf<typeof TextControlSize>;
+export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 
 /**
  * TextInput appearance constants

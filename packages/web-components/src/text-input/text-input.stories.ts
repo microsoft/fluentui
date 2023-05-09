@@ -3,7 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
-import { TextControlSize, TextInputAppearance } from './text-input.options.js';
+import { TextInputAppearance, TextInputControlSize } from './text-input.options.js';
 import { TextInputType } from './index.js';
 import './define.js';
 
@@ -29,10 +29,9 @@ const storyTemplate = html<TextInputStoryArgs>`
     <fluent-text-input
       type=${x => x.type}
       ?disabled=${x => x.disabled}
-      ?block=${x => x.block}
+      ?placeholder="${x => x.placeholder}"
       control-size="${x => x.controlSize}"
       appearance="${x => x.appearance}"
-      placeholder="${x => x.placeholder}"
     >
       <fluent-label>Sample Input</fluent-label>
     </fluent-text-input>
@@ -41,6 +40,13 @@ const storyTemplate = html<TextInputStoryArgs>`
 
 export default {
   title: 'Components/TextInput',
+  args: {
+    type: TextInputType.text,
+    controlSize: TextInputControlSize.medium,
+    appearance: TextInputAppearance.outline,
+    disabled: false,
+    placeholder: undefined,
+  },
   argTypes: {
     type: {
       description: 'Sets the input type',
@@ -59,7 +65,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: Object.values(TextControlSize),
+        options: Object.values(TextInputControlSize),
       },
     },
     appearance: {
@@ -83,9 +89,6 @@ export default {
     },
     placeholder: {
       description: 'Sets the placeholder text',
-      table: {
-        defaultValue: { summary: 'undefined' },
-      },
       control: {
         type: 'text',
       },
