@@ -46,7 +46,7 @@ export const useTagContent_unstable = (props: TagContentProps, ref: React.Ref<HT
 
     media: resolveShorthand(props.media),
     icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, { required: true }),
+    primaryText: resolveShorthand(props.primaryText, { required: true, defaultProps: { children: props.children } }),
     secondaryText: resolveShorthand(props.secondaryText),
     root: getNativeElementProps(interactive ? 'button' : 'div', {
       ref,

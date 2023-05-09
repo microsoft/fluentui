@@ -17,7 +17,7 @@ export const renderTagContent_unstable = (state: TagContentState, contextValues:
         </AvatarContextProvider>
       )}
       {slots.icon && <slots.icon {...slotProps.icon} />}
-      {slots.primaryText && <slots.primaryText {...slotProps.primaryText}>{slotProps.root.children}</slots.primaryText>}
+      {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
       {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
     </slots.root>
   );
