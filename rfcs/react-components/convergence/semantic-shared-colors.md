@@ -4,14 +4,14 @@
 
 ## Summary
 
-All color palette tokens in the theme are named after colors. This RFC discusses options how we could name some of them using semantic names (`danger`, `success`...).
+All color palette tokens in the theme use color names (`red`, `green`...). This RFC discusses options how we could name some of them using semantic names (`danger`, `success`...).
 
 ## Background
 
 After changes described in [RFC: Reduce number of shared color alias tokens](https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/theme-shared-colors.md) and another ad-hoc changes to shared color tokens, Fluent UI theme currently contains 2 types of shared color tokens:
 
-- [28 **persona** shared colors](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L390-L420), where each contains [3 color "slots"](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L239-L242) (tokens).
-- [7 **status** shared colors](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L379-L388), where each contains [9 color slots](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L159-L169) (plus 3 of them contain 10th slot).
+- [28 **persona** shared colors](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L390-L420), where each contains [3 color "slots"](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L239-L242) (tokens) = 84 `colorPalette*` tokens.
+- [7 **status** shared colors](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L379-L388), where each contains [9 color slots](https://github.com/microsoft/fluentui/blob/76e6598eae0c9247fb7f8834c1e24d8e864bf5df/packages/tokens/src/types.ts#L159-L169) (plus 3 of them contain 10th slot) = 66 `colorPalette*` tokens.
 
 Status colors have two different purposes - they are either to show a status or presence:
 
