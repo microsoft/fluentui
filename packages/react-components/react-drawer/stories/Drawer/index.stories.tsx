@@ -23,6 +23,7 @@ export { PreventClose } from './DrawerPreventClose.stories';
 export { WithNavigation } from './DrawerWithNavigation.stories';
 export { WithScroll } from './DrawerWithScroll.stories';
 export { Responsive } from './DrawerResponsive.stories';
+export { Resizable } from './DrawerResizable.stories';
 
 export default {
   title: 'Preview Components/Drawer',

@@ -22,7 +22,12 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
       root: type === 'overlay' ? DrawerOverlay : DrawerInline,
     },
 
-    root: resolveShorthand(props, { required: true }),
+    root: resolveShorthand(props, {
+      required: true,
+      defaultProps: {
+        ref,
+      } as DrawerProps,
+    }),
 
     type,
   };

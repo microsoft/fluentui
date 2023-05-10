@@ -64,7 +64,7 @@ export const Default = () => {
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={() => setIsOpen(true)}>
-          Toggle
+          Open
         </Button>
 
         <div className={styles.field}>
