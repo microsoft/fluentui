@@ -27,26 +27,26 @@ const Badges = () => {
 export const Layout = () => {
   return (
     <Tree aria-label="Tree">
-      <TreeItem aria-description="1 new message, important">
+      <TreeItem itemType="branch" aria-description="1 new message, important">
         <TreeItemPersonaLayout
-          description="Secondary text slot"
           aside={
             <>
               <span>00:00 AM</span>
               <Badges />
             </>
           }
+          description="Secondary text slot"
           media={<Avatar />}
         >
           Primary text slot
         </TreeItemPersonaLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="branch">
             <TreeItemPersonaLayout description="description" media={<Avatar />}>
               content
             </TreeItemPersonaLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemPersonaLayout description="description" media={<Avatar />}>
                   content
                 </TreeItemPersonaLayout>
@@ -55,29 +55,29 @@ export const Layout = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem aria-description="1 message, important">
+      <TreeItem itemType="branch" aria-description="1 message, important">
         <TreeItemPersonaLayout
-          description="Secondary text slot"
           aside={
             <>
               <span>00:00 AM</span>
               <Badges />
             </>
           }
+          description="Secondary text slot"
           media={<Avatar />}
         >
           Primary text slot
         </TreeItemPersonaLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemPersonaLayout media={<Avatar />}>content</TreeItemPersonaLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemPersonaLayout description="description" media={<Avatar />}>
               content
             </TreeItemPersonaLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemPersonaLayout description="description" media={<Avatar />}>
               content
             </TreeItemPersonaLayout>

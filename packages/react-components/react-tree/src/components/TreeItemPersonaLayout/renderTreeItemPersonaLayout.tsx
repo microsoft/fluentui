@@ -9,6 +9,7 @@ import type {
   TreeItemPersonaLayoutContextValues,
 } from './TreeItemPersonaLayout.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
+import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemPersonaLayout
@@ -17,23 +18,22 @@ export const renderTreeItemPersonaLayout_unstable = (
   state: TreeItemPersonaLayoutState,
   contextValues: TreeItemPersonaLayoutContextValues,
 ) => {
-  const { isActionsVisible } = state;
   const { slots, slotProps } = getSlotsNext<TreeItemPersonaLayoutSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      {slots.media && (
-        <AvatarContextProvider value={contextValues.avatar}>
-          <slots.media {...slotProps.media} />
-        </AvatarContextProvider>
-      )}
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.main && <slots.main {...slotProps.main} />}
-          {slots.description && <slots.description {...slotProps.description} />}
-        </slots.content>
-      )}
-      {!isActionsVisible && slots.aside && <slots.aside {...slotProps.aside} />}
+      {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+      <AvatarContextProvider value={contextValues.avatar}>
+        <slots.media {...slotProps.media} />
+      </AvatarContextProvider>
+      <slots.content {...slotProps.content}>
+        <slots.main {...slotProps.main} />
+        {slots.description && <slots.description {...slotProps.description} />}
+      </slots.content>
+      <ButtonContextProvider value={state.buttonContextValue}>
+        {state.isAsideVisible && slots.aside && <slots.aside {...slotProps.aside} />}
+        {state.isActionsVisible && slots.actions && <slots.actions {...slotProps.actions} />}
+      </ButtonContextProvider>
     </slots.root>
   );
 };

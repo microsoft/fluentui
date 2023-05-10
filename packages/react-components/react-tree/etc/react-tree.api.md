@@ -12,7 +12,7 @@ import { ArrowRight } from '@fluentui/keyboard-keys';
 import { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
-import type { ButtonContextValue } from '@fluentui/react-button';
+import { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -48,11 +48,11 @@ export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItem
     value: Props['value'];
     parentValue: Props['parentValue'];
     ref: React_2.RefObject<HTMLDivElement>;
-    getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>> & Omit<Props, 'parentValue'>;
+    getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> & Omit<Props, 'parentValue'>;
 };
 
 // @public (undocumented)
-export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
+export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'itemType'> & Partial<Pick<TreeItemProps<Value>, 'itemType'>> & {
     value: Value;
     parentValue?: Value;
 };
@@ -64,7 +64,7 @@ export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'ope
 };
 
 // @public (undocumented)
-export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree'> & {
+export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree' | 'itemType'> & {
     subtree?: NestedTreeItem<Props>[];
 };
 
@@ -90,7 +90,7 @@ export const Tree: React_2.ForwardRefExoticComponent<Omit<TreeSlots, "root"> & O
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
     }>;
 }, "ref"> & {
-    appearance?: "subtle" | "subtle-alpha" | "transparent" | undefined;
+    appearance?: "transparent" | "subtle" | "subtle-alpha" | undefined;
     size?: "small" | "medium" | undefined;
     openItems?: Iterable<string> | undefined;
     defaultOpenItems?: Iterable<string> | undefined;
@@ -107,8 +107,7 @@ export type TreeContextValue = {
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
     openItems: ImmutableSet<unknown>;
-    requestOpenChange(data: TreeOpenChangeData<unknown>): void;
-    requestNavigation(data: TreeNavigationData_unstable<unknown>): void;
+    requestTreeResponse(request: TreeItemRequest<unknown>): void;
 };
 
 // @public
@@ -124,7 +123,7 @@ export const TreeItem: React_2.ForwardRefExoticComponent<Omit<Partial<TreeItemSl
     style?: TreeItemCSSProperties | undefined;
 }, "ref"> & {
     value?: string | undefined;
-    leaf?: boolean | undefined;
+    itemType: TreeItemType;
 } & React_2.RefAttributes<HTMLDivElement>> & (<Value = string>(props: TreeItemProps<Value>) => JSX.Element);
 
 // @public (undocumented)
@@ -141,14 +140,20 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
-    root: Slot<'span'>;
-    iconBefore?: Slot<'span'>;
-    iconAfter?: Slot<'span'>;
-    aside?: Slot<'span'>;
+    root: Slot<'div'>;
+    expandIcon?: Slot<'div'>;
+    iconBefore?: Slot<'div'>;
+    iconAfter?: Slot<'div'>;
+    aside?: Slot<'div'>;
+    actions?: Slot<'div'>;
 };
 
 // @public
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & TreeItemContextValue;
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
+    buttonContextValue: ButtonContextValue;
+    isActionsVisible: boolean;
+    isAsideVisible: boolean;
+};
 
 // @public (undocumented)
 export const treeItemLevelToken: "--fluent-TreeItem--level";
@@ -164,46 +169,44 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
 
 // @public (undocumented)
 export type TreeItemPersonaLayoutSlots = {
-    root: Slot<'span'>;
-    media: NonNullable<Slot<'span'>>;
-    main: Slot<'span'>;
-    description?: Slot<'span'>;
-    aside?: Slot<'span'>;
-    content: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    expandIcon?: Slot<'div'>;
+    media: NonNullable<Slot<'div'>>;
+    main: NonNullable<Slot<'div'>>;
+    description?: Slot<'div'>;
+    content: NonNullable<Slot<'div'>>;
+    aside?: Slot<'div'>;
+    actions?: Slot<'div'>;
 };
 
 // @public
-export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & TreeItemContextValue & {
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
     avatarSize: AvatarSize;
+    buttonContextValue: ButtonContextValue;
+    isActionsVisible: boolean;
+    isAsideVisible: boolean;
 };
 
 // @public
 export type TreeItemProps<Value = string> = ComponentProps<Partial<TreeItemSlots>> & {
     value?: Value;
-    leaf?: boolean;
+    itemType: TreeItemType;
 };
 
 // @public (undocumented)
-export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined>;
+export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined> & React_2.FC<React_2.ProviderProps<TreeItemContextValue | undefined>>;
 
 // @public (undocumented)
 export type TreeItemSlots = {
     root: Slot<ExtractSlotProps<Slot<'div'> & {
         style?: TreeItemCSSProperties;
     }>>;
-    content: NonNullable<Slot<'div'>>;
-    subtree?: Slot<'span'>;
-    expandIcon?: Slot<'span'>;
-    actions?: Slot<'span'>;
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots> & {
-    open: boolean;
-    isLeaf: boolean;
+export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue & {
     level: number;
-    buttonSize: 'small';
-    isActionsVisible: boolean;
+    itemType: TreeItemType;
 };
 
 // @public (undocumented)
@@ -287,7 +290,9 @@ export type TreeSlots = {
 };
 
 // @public
-export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
+export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
+    open: boolean;
+};
 
 // @public
 export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(flatTreeItemProps: Props[], options?: FlatTreeOptions<Props>): FlatTree<Props>;
@@ -305,7 +310,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
 export function useTreeItem_unstable<Value = string>(props: TreeItemProps<Value>, ref: React_2.Ref<HTMLDivElement>): TreeItemState;
 
 // @public (undocumented)
-export const useTreeItemContext_unstable: () => TreeItemContextValue;
+export const useTreeItemContext_unstable: <T>(selector: ContextSelector<TreeItemContextValue, T>) => T;
 
 // @public
 export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;
