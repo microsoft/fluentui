@@ -1,39 +1,44 @@
-import * as React from 'react';
 import { ToastPosition } from '../types';
 
+interface PositionStyles {
+  position: 'fixed';
+  top?: number;
+  left?: number;
+  right?: number;
+  bottom?: number;
+}
+
 export const getPositionStyles = (position: ToastPosition) => {
-  const containerStyles: React.CSSProperties = {
+  const positionStyles: PositionStyles = {
     position: 'fixed',
   };
 
-  let positionStyles: React.CSSProperties = {};
   switch (position) {
     case 'top-left':
-      positionStyles = {
+      Object.assign(positionStyles, {
         top: 0,
         left: 0,
-      };
+      });
       break;
     case 'top-right':
-      positionStyles = {
+      Object.assign(positionStyles, {
         top: 0,
         right: 0,
-      };
+      });
       break;
     case 'bottom-left':
-      positionStyles = {
+      Object.assign(positionStyles, {
         bottom: 0,
         left: 0,
-      };
+      });
       break;
     case 'bottom-right':
-      positionStyles = {
+      Object.assign(positionStyles, {
         bottom: 0,
         right: 0,
-      };
+      });
       break;
   }
 
-  Object.assign(containerStyles, positionStyles);
-  return containerStyles;
+  return positionStyles;
 };
