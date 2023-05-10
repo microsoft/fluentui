@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "chore: move makeStyles() calls to .styles.ts files",
   "packageName": "@fluentui/react-skeleton",
   "email": "olfedias@microsoft.com",

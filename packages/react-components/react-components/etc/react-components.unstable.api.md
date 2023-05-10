@@ -28,26 +28,12 @@ import { NestedTreeItem } from '@fluentui/react-tree';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
-import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
-import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
-import { Skeleton } from '@fluentui/react-skeleton';
-import { skeletonClassNames } from '@fluentui/react-skeleton';
-import { SkeletonContextProvider } from '@fluentui/react-skeleton';
-import { SkeletonContextValue } from '@fluentui/react-skeleton';
-import { SkeletonItem } from '@fluentui/react-skeleton';
-import { skeletonItemClassNames } from '@fluentui/react-skeleton';
-import { SkeletonItemProps } from '@fluentui/react-skeleton';
-import { SkeletonItemSlots } from '@fluentui/react-skeleton';
-import { SkeletonItemState } from '@fluentui/react-skeleton';
-import { SkeletonProps } from '@fluentui/react-skeleton';
-import { SkeletonSlots } from '@fluentui/react-skeleton';
-import { SkeletonState } from '@fluentui/react-skeleton';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
@@ -84,11 +70,6 @@ import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
-import { useSkeleton_unstable } from '@fluentui/react-skeleton';
-import { useSkeletonContext } from '@fluentui/react-skeleton';
-import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
-import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
-import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
@@ -164,10 +145,6 @@ export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
 
-export { renderSkeleton_unstable }
-
-export { renderSkeletonItem_unstable }
-
 export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
@@ -179,30 +156,6 @@ export { renderTreeItemPersonaLayout_unstable }
 export { renderVirtualizer_unstable }
 
 export { renderVirtualizerScrollView_unstable }
-
-export { Skeleton }
-
-export { skeletonClassNames }
-
-export { SkeletonContextProvider }
-
-export { SkeletonContextValue }
-
-export { SkeletonItem }
-
-export { skeletonItemClassNames }
-
-export { SkeletonItemProps }
-
-export { SkeletonItemSlots }
-
-export { SkeletonItemState }
-
-export { SkeletonProps }
-
-export { SkeletonSlots }
-
-export { SkeletonState }
 
 export { Tree }
 
@@ -275,16 +228,6 @@ export { useInfoLabel_unstable }
 export { useInfoLabelStyles_unstable }
 
 export { useIntersectionObserver }
-
-export { useSkeleton_unstable }
-
-export { useSkeletonContext }
-
-export { useSkeletonItem_unstable }
-
-export { useSkeletonItemStyles_unstable }
-
-export { useSkeletonStyles_unstable }
 
 export { useStaticVirtualizerMeasure }
 
