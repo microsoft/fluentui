@@ -42,7 +42,7 @@ export const Responsive = () => {
 
       <Drawer type={type} separator position="right" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
-          <DrawerHeaderTitle>Default Drawer</DrawerHeaderTitle>
+          <DrawerHeaderTitle>Responsive Drawer</DrawerHeaderTitle>
         </DrawerHeader>
 
         <DrawerBody>

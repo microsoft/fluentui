@@ -88,7 +88,7 @@ export const Resizable = () => {
         </DrawerHeader>
 
         <DrawerBody>
-          <p>Drawer content</p>
+          <p>Resizable content</p>
         </DrawerBody>
       </Drawer>
 
