@@ -99,7 +99,7 @@ export const Toast: React.FC<Omit<ToastProps, 'content'> & { visible: boolean }>
     <Transition in={visible} unmountOnExit mountOnEnter timeout={500} onExited={remove} nodeRef={toastRef}>
       <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.slide, !visible && styles.fadeOut)}>
         {children}
-        <Timer onTimeout={close} timeout={!timeout ? -1 : timeout} running={running} />
+        <Timer onTimeout={close} timeout={timeout ? timeout : -1} running={running} />
       </div>
     </Transition>
   );
