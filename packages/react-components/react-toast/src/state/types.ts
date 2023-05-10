@@ -9,9 +9,16 @@ export interface ToastOptions {
   position?: ToastPosition;
   content?: unknown;
   timeout?: number;
+  pauseOnWindowBlur?: boolean;
+  pauseOnHover?: boolean;
 }
 
-export interface Toast extends Required<Omit<ToastOptions, 'toasterId'>> {
+export interface DefaultToastOptions
+  extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover'> {}
+
+export interface ValidatedToastOptions extends Required<DefaultToastOptions> {}
+
+export interface Toast extends Required<ToastOptions> {
   close: () => void;
   remove: () => void;
 }

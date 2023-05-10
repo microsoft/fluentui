@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import { Transition } from 'react-transition-group';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useToast, Toast as ToastProps } from '../state';
 import { Timer } from './Timer';
@@ -77,9 +77,10 @@ const useStyles = makeStyles({
 
 export const Toast: React.FC<Omit<ToastProps, 'content'> & { visible: boolean }> = props => {
   const styles = useStyles();
-  const { visible, children, close, remove, timeout } = props;
-  const { play, running } = useToast();
-  const toastRef = React.useRef<HTMLDivElement>(null);
+  const { visible, children, close, remove, ...toastOptions } = props;
+  const { timeout } = toastOptions;
+  const { play, running, toastRef: toastRefBase } = useToast(toastOptions);
+  const toastRef = useMergedRefs<HTMLElement | null>(React.useRef<HTMLDivElement>(null), toastRefBase);
 
   // start the toast once it's fully in
   useIsomorphicLayoutEffect(() => {
