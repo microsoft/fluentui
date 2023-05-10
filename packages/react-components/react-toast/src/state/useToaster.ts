@@ -42,7 +42,13 @@ export function useToaster() {
   );
 
   return {
-    isToastVisible: (toastId: ToastId) => !!toaster?.isToastVisible(toastId),
+    isToastVisible: (toastId: ToastId) => {
+      if (toaster) {
+        return toaster.isToastVisible(toastId);
+      }
+
+      return false;
+    },
     getToastsToRender,
   };
 }
