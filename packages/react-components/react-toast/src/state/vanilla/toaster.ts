@@ -33,10 +33,20 @@ export class Toaster {
 
   private _initEvents() {
     const buildToast: ToastEventListener = e => this._buildToast(e.detail);
+    const dismissToast: ToastEventListener = e => {
+      const { toastId } = e.detail;
+      if (toastId) {
+        this._dismissToast(toastId);
+      } else {
+        this._dismissAllToasts();
+      }
+    };
 
     this.listeners.set(EVENTS.show, buildToast);
+    this.listeners.set(EVENTS.dismiss, dismissToast);
 
     this._addEventListener(EVENTS.show, buildToast);
+    this._addEventListener(EVENTS.dismiss, dismissToast);
   }
 
   private _addEventListener<TEvent extends keyof ToastEventMap>(
@@ -51,6 +61,16 @@ export class Toaster {
     callback: ToastEventListenerGeneric<TEvent>,
   ) {
     this.targetDocument.removeEventListener(eventType, callback as () => void);
+  }
+
+  private _dismissToast(toastId: ToastId) {
+    this.visibleToasts.delete(toastId);
+    this.onUpdate();
+  }
+
+  private _dismissAllToasts() {
+    this.visibleToasts.clear();
+    this.onUpdate();
   }
 
   private _buildToast(toastOptions: ToastOptions) {
