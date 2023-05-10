@@ -4,7 +4,7 @@ import { EVENTS } from '../constants';
 
 let counter = 0;
 
-export function createToast(content: React.ReactNode, options: ToastOptions = {}, targetDocument: Document) {
+export function dispatchToast(content: React.ReactNode, options: ToastOptions = {}, targetDocument: Document) {
   options.toastId ??= (counter++).toString();
   const event = new CustomEvent(EVENTS.show, { bubbles: false, cancelable: false, detail: { ...options, content } });
   targetDocument.dispatchEvent(event);

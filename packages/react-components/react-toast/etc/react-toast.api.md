@@ -13,8 +13,8 @@ export const Toaster: React_2.FC;
 export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
 
 // @public (undocumented)
-export function useToastFactory(): {
-    createToast: (content: React_2.ReactNode, options?: ToastOptions | undefined) => void;
+export function useToastController(): {
+    dispatchToast: (content: React_2.ReactNode, options?: ToastOptions | undefined) => void;
 };
 
 // (No @packageDocumentation comment for this package)

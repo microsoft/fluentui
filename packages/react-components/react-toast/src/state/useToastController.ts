@@ -1,21 +1,21 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { createToast as createToastVanilla } from './vanilla/createToast';
+import { dispatchToast as dispatchToastVanilla } from './vanilla/dispatchToast';
 import * as React from 'react';
 import { ToastOptions } from './types';
 
-export function useToastFactory() {
+export function useToastController() {
   const { targetDocument } = useFluent();
 
-  const createToast = React.useCallback(
+  const dispatchToast = React.useCallback(
     (content: React.ReactNode, options?: ToastOptions) => {
       if (targetDocument) {
-        createToastVanilla(content, options, targetDocument);
+        dispatchToastVanilla(content, options, targetDocument);
       }
     },
     [targetDocument],
   );
 
   return {
-    createToast,
+    dispatchToast,
   };
 }
