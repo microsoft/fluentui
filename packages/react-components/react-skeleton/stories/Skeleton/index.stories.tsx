@@ -1,4 +1,4 @@
-import { Skeleton } from '@fluentui/react-components/unstable';
+import { Skeleton } from '@fluentui/react-components';
 
 import descriptionMd from './SkeletonDescription.md';
 import bestPracticesMd from './SkeletonBestPractices.md';

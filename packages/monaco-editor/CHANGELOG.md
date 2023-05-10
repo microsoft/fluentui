@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Tue, 02 May 2023 22:20:23 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.9)
+
+Fri, 05 May 2023 18:14:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.3.8..@fluentui/monaco-editor_v1.3.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
 
 ## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.8)
 
