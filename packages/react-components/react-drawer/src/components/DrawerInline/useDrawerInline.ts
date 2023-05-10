@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
-import { getDefaultDrawerProps } from '../../shared/getDefaultDrawerProps';
+import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
 
 /**
  * Create the state required to render DrawerInline.

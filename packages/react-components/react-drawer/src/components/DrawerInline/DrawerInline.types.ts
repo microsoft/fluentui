@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { DrawerBaseTypes } from '../../shared/DrawerBase.types';
+import { DrawerBaseTypes } from '../../util/DrawerBase.types';
 
 export type DrawerInlineSlots = {
   root: Slot<'div'>;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
-import { getDefaultDrawerProps } from '../../shared/getDefaultDrawerProps';
+import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
 
 /**
  * Create the state required to render DrawerOverlay.

@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useDrawerBaseStyles } from '../../shared/useDrawerBaseStyles.styles';
+import { useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',

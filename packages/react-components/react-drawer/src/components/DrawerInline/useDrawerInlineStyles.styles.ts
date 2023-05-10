@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useDrawerBaseStyles } from '../../shared/useDrawerBaseStyles.styles';
+import { useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 import { tokens } from '@fluentui/react-theme';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
