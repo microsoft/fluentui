@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 const Header = (props: Partial<DrawerBodyProps>) => {
   return (
-    <header>
+    <header className={styles.container}>
       <strong>This is a header</strong>
     </header>
   );
