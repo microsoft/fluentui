@@ -85,21 +85,21 @@ export const AddRemoveTreeItem = () => {
         const isUndeletable = item.level === 1 || item.value.endsWith('-btn');
         const { content, ...treeItemProps } = item.getTreeItemProps();
         return (
-          <TreeItem
-            key={item.value}
-            {...treeItemProps}
-            actions={
-              isUndeletable ? null : (
-                <Button
-                  aria-label="Remove item"
-                  appearance="subtle"
-                  onClick={() => removeFlatTreeItem(item.value)}
-                  icon={<Delete20Regular />}
-                />
-              )
-            }
-          >
-            <TreeItemLayout>{content}</TreeItemLayout>
+          <TreeItem key={item.value} {...treeItemProps}>
+            <TreeItemLayout
+              actions={
+                isUndeletable ? null : (
+                  <Button
+                    aria-label="Remove item"
+                    appearance="subtle"
+                    onClick={() => removeFlatTreeItem(item.value)}
+                    icon={<Delete20Regular />}
+                  />
+                )
+              }
+            >
+              {content}
+            </TreeItemLayout>
           </TreeItem>
         );
       })}

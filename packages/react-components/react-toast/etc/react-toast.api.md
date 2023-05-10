@@ -4,6 +4,19 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export const Toaster: React_2.FC;
+
+// @public (undocumented)
+export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+
+// @public (undocumented)
+export function useToastController(): {
+    dispatchToast: (content: React_2.ReactNode, options?: ToastOptions | undefined) => void;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```

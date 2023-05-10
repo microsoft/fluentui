@@ -2,6 +2,27 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 18:14:03 GMT",
+      "tag": "@fluentui/dom-utilities_v2.2.9",
+      "version": "2.2.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/dom-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.9",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 May 2023 00:58:14 GMT",
       "tag": "@fluentui/dom-utilities_v2.2.8",
       "version": "2.2.8",

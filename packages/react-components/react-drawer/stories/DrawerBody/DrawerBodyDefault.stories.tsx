@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerBodyProps, DrawerFooter, DrawerHeader } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerBodyProps, DrawerFooter } from '@fluentui/react-drawer';
 import { Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -16,9 +16,9 @@ const useStyles = makeStyles({
 
 const Header = (props: Partial<DrawerBodyProps>) => {
   return (
-    <DrawerHeader>
+    <header>
       <strong>This is a header</strong>
-    </DrawerHeader>
+    </header>
   );
 };
 
