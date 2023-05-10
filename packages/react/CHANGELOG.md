@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 05 May 2023 18:14:09 GMT and should not be manually modified.
+This log was last generated on Tue, 09 May 2023 07:38:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.109.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.3)
+
+Tue, 09 May 2023 07:38:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.2..@fluentui/react_v8.109.3)
+
+### Patches
+
+- fix(Coachmark): Fix positioning regression and update bounds on resize. ([PR #27782](https://github.com/microsoft/fluentui/pull/27782) by esteban.230@hotmail.com)
 
 ## [8.109.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.2)
 
