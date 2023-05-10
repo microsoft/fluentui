@@ -87,11 +87,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-      const currentIndex = actualIndex;
-
       /* Sanity check - do we even need virtualization? */
       if (virtualizerLength > numItems) {
-        if (currentIndex !== 0) {
+        if (actualIndex !== 0) {
           batchUpdateNewIndex(0);
         }
         // No-op
@@ -170,7 +168,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       const maxIndex = Math.max(numItems - virtualizerLength, 0);
       const newStartIndex = Math.min(Math.max(bufferedIndex, 0), maxIndex);
 
-      if (currentIndex !== newStartIndex) {
+      if (actualIndex !== newStartIndex) {
         // We flush sync this and perform an immediate state update
         flushSync(() => {
           batchUpdateNewIndex(newStartIndex);
@@ -385,9 +383,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // If the user passes in an updated renderChild function - update current children
   useEffect(() => {
-    const currentIndex = actualIndex;
-    if (currentIndex >= 0) {
-      updateChildRows(currentIndex);
+    if (actualIndex >= 0) {
+      updateChildRows(actualIndex);
       forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
