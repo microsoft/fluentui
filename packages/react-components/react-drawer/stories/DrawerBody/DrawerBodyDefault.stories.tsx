@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Drawer, DrawerBody, DrawerBodyProps, DrawerFooter } from '@fluentui/react-drawer';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -12,9 +12,19 @@ const useStyles = makeStyles({
   drawer: {
     height: '300px',
   },
+
+  container: {
+    ...shorthands.padding(tokens.spacingHorizontalXXL),
+
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
 });
 
-const Header = (props: Partial<DrawerBodyProps>) => {
+const Header = () => {
+  const styles = useStyles();
+
   return (
     <header className={styles.container}>
       <strong>This is a header</strong>
@@ -22,7 +32,7 @@ const Header = (props: Partial<DrawerBodyProps>) => {
   );
 };
 
-const Footer = (props: Partial<DrawerBodyProps>) => {
+const Footer = () => {
   return (
     <DrawerFooter>
       <Button appearance="primary">Primary</Button>
@@ -31,9 +41,9 @@ const Footer = (props: Partial<DrawerBodyProps>) => {
   );
 };
 
-const Body = (props: Partial<DrawerBodyProps>) => {
+const Body = () => {
   return (
-    <DrawerBody {...props}>
+    <DrawerBody>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus nam aut amet similique, iure vel voluptates
       cum cumque repellendus perferendis maiores officia unde in? Autem neque sequi maiores eum omnis. Lorem ipsum,
       dolor sit amet consectetur adipisicing elit. Perspiciatis ipsam explicabo tempora ipsum saepe nam. Eum aliquid
