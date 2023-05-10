@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { VirtualizerContextProps } from './types';
+import { useMemo, useState } from 'react';
 
 const VirtualizerContext = React.createContext<VirtualizerContextProps | undefined>(
   undefined,
@@ -7,22 +8,24 @@ const VirtualizerContext = React.createContext<VirtualizerContextProps | undefin
 
 export const VirtualizerContextProvider = VirtualizerContext.Provider;
 
-export const useVirtualizerContext = () => {
+export const useVirtualizerContext_unstable = () => {
   return React.useContext(VirtualizerContext);
 };
 
-export const useVirtualizerContextState = (passedContext?: VirtualizerContextProps): VirtualizerContextProps => {
+export const useVirtualizerContextState_unstable = (
+  passedContext?: VirtualizerContextProps,
+): VirtualizerContextProps => {
   // Respect any wrapped providers while also ensuring defaults
-  const virtualizerContext = useVirtualizerContext();
-  const [_contextIndex, _setContextIndex] = React.useState<number>(-1);
+  const virtualizerContext = useVirtualizerContext_unstable();
+  const [_contextIndex, _setContextIndex] = useState<number>(-1);
 
-  if (passedContext) {
-    // Passed context will always override - we use this for extending the class when a provider is not available.
-    return passedContext;
-  }
+  const _context = useMemo(
+    () => passedContext ?? virtualizerContext ?? { contextIndex: _contextIndex, setContextIndex: _setContextIndex },
+    [_contextIndex, passedContext, virtualizerContext],
+  );
+  const context = useMemo(() => {
+    return { contextIndex: _context.contextIndex, setContextIndex: _context.setContextIndex };
+  }, [_context]);
 
-  return {
-    contextIndex: virtualizerContext?.contextIndex !== undefined ? virtualizerContext.contextIndex : _contextIndex,
-    setContextIndex: virtualizerContext?.setContextIndex ?? _setContextIndex,
-  };
+  return context;
 };

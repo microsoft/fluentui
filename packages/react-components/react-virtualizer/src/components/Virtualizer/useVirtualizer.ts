@@ -6,7 +6,7 @@ import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
-import { useVirtualizerContextState } from '../../Utilities';
+import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { renderVirtualizerChildPlaceholder } from './renderVirtualizer';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
@@ -25,7 +25,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
-  const _virtualizerContext = useVirtualizerContextState(virtualizerContext);
+  const _virtualizerContext = useVirtualizerContextState_unstable(virtualizerContext);
 
   const actualIndex = _virtualizerContext.contextIndex;
   const setActualIndex = _virtualizerContext.setContextIndex;

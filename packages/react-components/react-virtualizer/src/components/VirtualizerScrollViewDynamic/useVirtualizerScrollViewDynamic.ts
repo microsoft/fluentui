@@ -6,12 +6,12 @@ import {
   VirtualizerScrollViewDynamicState,
 } from './VirtualizerScrollViewDynamic.types';
 import { useDynamicVirtualizerMeasure } from '../../Hooks';
-import { useVirtualizerContextState } from '../../Utilities';
+import { useVirtualizerContextState_unstable } from '../../Utilities';
 
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  const contextState = useVirtualizerContextState(props.virtualizerContext);
+  const contextState = useVirtualizerContextState_unstable(props.virtualizerContext);
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,

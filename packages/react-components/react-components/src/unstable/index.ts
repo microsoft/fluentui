@@ -41,7 +41,7 @@ export {
   useDynamicVirtualizerMeasure,
   useScrollRef,
   VirtualizerContextProvider,
-  useVirtualizerContext,
+  useVirtualizerContext_unstable,
   VirtualizerScrollView,
   virtualizerScrollViewClassNames,
   useVirtualizerScrollView_unstable,

@@ -21,7 +21,7 @@ export {
 
 export type { ResizeCallbackWithRef, VirtualizerMeasureDynamicProps, VirtualizerMeasureProps } from './Hooks';
 
-export { VirtualizerContextProvider, useVirtualizerContext } from './Utilities';
+export { VirtualizerContextProvider, useVirtualizerContext_unstable } from './Utilities';
 
 export type { VirtualizerContextProps } from './Utilities';
 

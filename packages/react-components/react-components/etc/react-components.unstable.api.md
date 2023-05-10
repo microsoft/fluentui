@@ -86,7 +86,7 @@ import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerContext } from '@fluentui/react-virtualizer';
+import { useVirtualizerContext_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollViewDynamicStyles_unstable } from '@fluentui/react-virtualizer';
@@ -277,7 +277,7 @@ export { useTreeStyles_unstable }
 
 export { useVirtualizer_unstable }
 
-export { useVirtualizerContext }
+export { useVirtualizerContext_unstable }
 
 export { useVirtualizerScrollView_unstable }
 
