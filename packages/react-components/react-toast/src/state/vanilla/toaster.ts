@@ -50,6 +50,10 @@ export class Toaster {
 
   private _buildToast(toastOptions: ToastOptions) {
     const { toastId = '', position = 'bottom-right', timeout = 3000, content = '' } = toastOptions;
+    if (this.toasts.has(toastId)) {
+      return;
+    }
+
     const close = () => {
       this.visibleToasts.delete(toastId);
       this.onUpdate();
