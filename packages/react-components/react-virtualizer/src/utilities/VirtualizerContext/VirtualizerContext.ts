@@ -15,10 +15,12 @@ export const useVirtualizerContext_unstable = () => {
 export const useVirtualizerContextState_unstable = (
   passedContext?: VirtualizerContextProps,
 ): VirtualizerContextProps => {
-  // Respect any wrapped providers while also ensuring defaults
   const virtualizerContext = useVirtualizerContext_unstable();
   const [_contextIndex, _setContextIndex] = useState<number>(-1);
 
+  /* We respect any wrapped providers while also ensuring defaults or passed through
+   * Order of usage -> Passed Prop -> Provider Context -> Internal State default
+   */
   const _context = useMemo(
     () => passedContext ?? virtualizerContext ?? { contextIndex: _contextIndex, setContextIndex: _setContextIndex },
     [_contextIndex, passedContext, virtualizerContext],
