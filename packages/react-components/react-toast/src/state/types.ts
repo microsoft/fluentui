@@ -16,10 +16,14 @@ export interface Toast extends Required<Omit<ToastOptions, 'toasterId'>> {
   remove: () => void;
 }
 
+export interface DismissToastEventDetail {
+  toastId: ToastId | undefined;
+}
+
 export interface ToastEventMap {
   [EVENTS.show]: CustomEvent<ToastOptions>;
+  [EVENTS.dismiss]: CustomEvent<DismissToastEventDetail>;
 }
 
 export type ToastEventListenerGeneric<K extends keyof ToastEventMap> = (e: ToastEventMap[K]) => void;
-export type ToastShowEventListener = ToastEventListenerGeneric<typeof EVENTS.show>;
-export type ToastEventListener = ToastShowEventListener;
+export type ToastEventListener = <K extends keyof ToastEventMap>(e: ToastEventMap[K]) => void;
