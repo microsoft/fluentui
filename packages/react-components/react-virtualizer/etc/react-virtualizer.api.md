@@ -59,7 +59,7 @@ export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtual
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
 
 // @public (undocumented)
-export const useVirtualizerContext: () => VirtualizerContextProps;
+export const useVirtualizerContext_unstable: () => VirtualizerContextProps;
 
 // @public (undocumented)
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState;
@@ -136,9 +136,7 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 
 // @public (undocumented)
-export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> & VirtualizerConfigState & {
-    contextValues: VirtualizerContextProps;
-};
+export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> & VirtualizerConfigState;
 
 // @public (undocumented)
 export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
