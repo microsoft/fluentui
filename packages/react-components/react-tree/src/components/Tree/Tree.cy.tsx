@@ -8,11 +8,10 @@ import {
   TreeItemLayout,
   TreeProps,
   treeItemLayoutClassNames,
-  treeItemClassNames,
   useFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { Button } from '@fluentui/react-button';
-import { flattenTreeFromElement } from '../../utils/flattenTree';
+import { flattenTreeFromElement } from '../../testing/flattenTreeFromElement';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -20,27 +19,27 @@ const mount = (element: JSX.Element) => {
 
 const treeItems = (
   <>
-    <TreeItem value="item1" data-testid="item1">
+    <TreeItem itemType="branch" value="item1" data-testid="item1">
       <TreeItemLayout>level 1, item 1</TreeItemLayout>
       <Tree>
-        <TreeItem value="item1__item1" data-testid="item1__item1">
+        <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>
         </TreeItem>
-        <TreeItem value="item1__item2" data-testid="item1__item2">
+        <TreeItem itemType="leaf" value="item1__item2" data-testid="item1__item2">
           <TreeItemLayout>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem value="item1__item3" data-testid="item1__item3">
+        <TreeItem itemType="leaf" value="item1__item3" data-testid="item1__item3">
           <TreeItemLayout>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem value="item2" data-testid="item2">
+    <TreeItem itemType="branch" value="item2" data-testid="item2">
       <TreeItemLayout>level 1, item 2</TreeItemLayout>
       <Tree>
-        <TreeItem value="item2__item1" data-testid="item2__item1">
+        <TreeItem itemType="branch" value="item2__item1" data-testid="item2__item1">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem value="item2__item1__item1" data-testid="item2__item1__item1">
+            <TreeItem itemType="leaf" value="item2__item1__item1" data-testid="item2__item1__item1">
               <TreeItemLayout>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>
@@ -114,9 +113,9 @@ for (const TreeTest of [NestedTree, FlatTree]) {
           />,
         );
         cy.get('[data-testid="item1__item1"]').should('not.exist');
-        cy.get(`[data-testid="item1"] .${treeItemClassNames.expandIcon}`).realClick();
+        cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.expandIcon}`).realClick();
         cy.get('[data-testid="item1__item1"]').should('exist');
-        cy.get(`[data-testid="item1"] .${treeItemClassNames.expandIcon}`).realClick();
+        cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.expandIcon}`).realClick();
         cy.get('[data-testid="item1__item1"]').should('not.exist');
 
         cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
@@ -125,18 +124,10 @@ for (const TreeTest of [NestedTree, FlatTree]) {
       it('should not expand/collapse item on actions click', () => {
         mount(
           <TreeTest id="tree" aria-label="Tree">
-            <TreeItem
-              actions={
-                <>
-                  <Button id="action">action</Button>
-                </>
-              }
-              value="item1"
-              data-testid="item1"
-            >
-              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+            <TreeItem itemType="branch" value="item1" data-testid="item1">
+              <TreeItemLayout actions={<Button id="action">action!</Button>}>level 1, item 1</TreeItemLayout>
               <Tree>
-                <TreeItem value="item1__item1" data-testid="item1__item1">
+                <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
                 </TreeItem>
               </Tree>
@@ -176,18 +167,10 @@ for (const TreeTest of [NestedTree, FlatTree]) {
       it('should focus on actions when pressing tab key', () => {
         mount(
           <TreeTest id="tree" aria-label="Tree">
-            <TreeItem
-              actions={
-                <>
-                  <Button id="action">action</Button>
-                </>
-              }
-              value="item1"
-              data-testid="item1"
-            >
-              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+            <TreeItem itemType="branch" value="item1" data-testid="item1">
+              <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
               <Tree>
-                <TreeItem value="item1__item1" data-testid="item1__item1">
+                <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
                 </TreeItem>
               </Tree>
@@ -203,18 +186,10 @@ for (const TreeTest of [NestedTree, FlatTree]) {
       it('should not expand/collapse item on actions Enter/Space key', () => {
         mount(
           <TreeTest id="tree" aria-label="Tree">
-            <TreeItem
-              actions={
-                <>
-                  <Button id="action">action</Button>
-                </>
-              }
-              value="item1"
-              data-testid="item1"
-            >
-              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+            <TreeItem itemType="branch" value="item1" data-testid="item1">
+              <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
               <Tree>
-                <TreeItem value="item1__item1" data-testid="item1__item1">
+                <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
                 </TreeItem>
               </Tree>

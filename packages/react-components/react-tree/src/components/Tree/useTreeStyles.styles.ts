@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TreeSlots, TreeState } from './Tree.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -13,11 +13,20 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: tokens.spacingVerticalXXS,
   },
+  subtree: {
+    ...shorthands.flex(1, 1, '100%'),
+    ...shorthands.gridArea('subtree'),
+  },
 });
 
 export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(treeClassNames.root, styles.root, state.root.className);
-
+  const isSubtree = state.level > 0;
+  state.root.className = mergeClasses(
+    treeClassNames.root,
+    styles.root,
+    isSubtree && styles.subtree,
+    state.root.className,
+  );
   return state;
 };
