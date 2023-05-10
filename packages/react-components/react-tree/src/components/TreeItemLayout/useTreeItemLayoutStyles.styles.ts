@@ -11,8 +11,6 @@ export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
   expandIcon: 'fui-TreeItemLayout__expandIcon',
   iconBefore: 'fui-TreeItemLayout__iconBefore',
   iconAfter: 'fui-TreeItemLayout__iconAfter',
-  actions: 'fui-TreeItemLayout__actions',
-  aside: 'fui-TreeItemLayout__aside',
 };
 
 /**
@@ -109,43 +107,13 @@ const useIconStyles = makeStyles({
 });
 
 /**
- * Styles for the action icon slot
- */
-const useAsideStyles = makeStyles({
-  base: {
-    display: 'flex',
-    marginLeft: 'auto',
-    ...shorthands.gridArea('aside'),
-    alignItems: 'center',
-    zIndex: 0,
-    ...shorthands.padding(0, tokens.spacingHorizontalM),
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-  },
-});
-
-/**
- * Styles for the action icon slot
- */
-const useActionsStyles = makeStyles({
-  base: {
-    display: 'flex',
-    marginLeft: 'auto',
-    ...shorthands.gridArea('aside'),
-    zIndex: 1,
-    ...shorthands.padding(0, tokens.spacingHorizontalS),
-  },
-});
-
-/**
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, expandIcon, root, aside, actions } = state;
+  const { iconAfter, iconBefore, expandIcon, root } = state;
   const rootStyles = useRootStyles();
   const iconStyles = useIconStyles();
   const expandIconStyles = useExpandIconStyles();
-  const asideStyles = useAsideStyles();
-  const actionsStyles = useActionsStyles();
 
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
@@ -184,13 +152,6 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
       iconStyles.iconAfter,
       iconAfter.className,
     );
-  }
-  if (actions) {
-    actions.className = mergeClasses(treeItemLayoutClassNames.actions, actionsStyles.base, actions.className);
-  }
-
-  if (aside) {
-    aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, aside.className);
   }
 
   return state;

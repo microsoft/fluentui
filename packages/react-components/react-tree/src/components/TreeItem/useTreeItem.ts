@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
@@ -36,6 +36,11 @@ export function useTreeItem_unstable<Value = string>(
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
   const [isActionsVisible, setActionsVisible] = React.useState(false);
+  const [isAsideVisible, setAsideVisible] = React.useState(true);
+
+  const handleActionsRef = (actions: HTMLDivElement | null) => {
+    setAsideVisible(actions === null);
+  };
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
 
@@ -119,11 +124,12 @@ export function useTreeItem_unstable<Value = string>(
     value,
     open,
     subtreeRef,
-    actionsRef,
+    actionsRef: useMergedRefs(actionsRef, handleActionsRef),
     expandIconRef,
     layoutRef,
     itemType,
     isActionsVisible,
+    isAsideVisible,
     level,
     components: {
       root: 'div',

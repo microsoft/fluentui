@@ -39,8 +39,6 @@ export const useTreeItemPersonaLayout_unstable = (
       description: 'div',
       root: 'div',
       media: 'div',
-      actions: 'div',
-      aside: 'div',
     },
     avatarSize: treeAvatarSize[size],
     main: resolveShorthand(main, { required: true, defaultProps: { children } }),
