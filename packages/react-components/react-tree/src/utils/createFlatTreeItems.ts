@@ -109,12 +109,12 @@ export function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps<un
 ) {
   for (let index = 0, visibleIndex = 0; index < flatTreeItems.size; index++) {
     const item = flatTreeItems.getByIndex(index) as FlatTreeItem<Props>;
-    const parent = item.parentValue ? flatTreeItems.get(item.parentValue) ?? flatTreeItems.root : flatTreeItems.root;
     if (isItemVisible(item, openItems, flatTreeItems)) {
       item.index = visibleIndex++;
       yield item;
     } else {
-      index += parent.childrenSize - 1 + item.childrenSize;
+      // Jump the amount of children the current item has, since those items will also be hidden
+      index += item.childrenSize;
     }
   }
 }
