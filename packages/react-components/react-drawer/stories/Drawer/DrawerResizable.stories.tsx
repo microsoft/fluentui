@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, Drawer } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
 import { makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -71,13 +71,7 @@ export const Resizable = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer
-        type="inline"
-        open
-        ref={sidebarRef}
-        style={{ width: `${sidebarWidth}px` }}
-        onMouseDown={e => e.preventDefault()}
-      >
+      <DrawerInline open ref={sidebarRef} style={{ width: `${sidebarWidth}px` }} onMouseDown={e => e.preventDefault()}>
         <div
           className={mergeClasses(styles.drawerResizer, isResizing && styles.drawerResizing)}
           onMouseDown={startResizing}
@@ -90,7 +84,7 @@ export const Resizable = () => {
         <DrawerBody>
           <p>Resizable content</p>
         </DrawerBody>
-      </Drawer>
+      </DrawerInline>
 
       <p className={styles.content}>Resize the drawer to see the change</p>
     </div>
