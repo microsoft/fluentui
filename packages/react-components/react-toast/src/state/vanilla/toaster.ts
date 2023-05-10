@@ -1,4 +1,4 @@
-import { Toast, ToastEventMap, ToastId, ToastOptions } from '../types';
+import { Toast, ToastEventListener, ToastEventListenerGeneric, ToastEventMap, ToastId, ToastOptions } from '../types';
 import { EVENTS } from '../constants';
 
 // TODO convert to closure
@@ -8,7 +8,7 @@ export class Toaster {
   public onUpdate: () => void;
   private targetDocument: Document;
 
-  private listeners = new Map<keyof ToastEventMap, Function>();
+  private listeners = new Map<keyof ToastEventMap, ToastEventListener>();
 
   constructor(targetDocument: Document) {
     this.toasts = new Map<ToastId, Toast>();
@@ -20,8 +20,10 @@ export class Toaster {
   }
 
   public dispose() {
+    this.toasts.clear();
     for (const [event, callback] of this.listeners.entries()) {
-      this._removeEventListener(event, callback as () => void);
+      this._removeEventListener(event, callback);
+      this.listeners.delete(event);
     }
   }
 
@@ -30,7 +32,7 @@ export class Toaster {
   }
 
   private _initEvents() {
-    const buildToast: (e: ToastEventMap[typeof EVENTS.show]) => void = e => this._buildToast(e.detail);
+    const buildToast: ToastEventListener = e => this._buildToast(e.detail);
 
     this.listeners.set(EVENTS.show, buildToast);
 
@@ -39,13 +41,16 @@ export class Toaster {
 
   private _addEventListener<TEvent extends keyof ToastEventMap>(
     eventType: TEvent,
-    callback: (event: ToastEventMap[TEvent]) => void,
+    callback: ToastEventListenerGeneric<TEvent>,
   ) {
     this.targetDocument.addEventListener(eventType, callback as () => void);
   }
 
-  private _removeEventListener(eventType: keyof ToastEventMap, callback: () => void) {
-    this.targetDocument.removeEventListener(eventType, callback);
+  private _removeEventListener<TEvent extends keyof ToastEventMap>(
+    eventType: keyof ToastEventMap,
+    callback: ToastEventListenerGeneric<TEvent>,
+  ) {
+    this.targetDocument.removeEventListener(eventType, callback as () => void);
   }
 
   private _buildToast(toastOptions: ToastOptions) {

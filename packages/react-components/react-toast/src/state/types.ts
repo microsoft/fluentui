@@ -19,3 +19,7 @@ export interface Toast extends Required<Omit<ToastOptions, 'toasterId'>> {
 export interface ToastEventMap {
   [EVENTS.show]: CustomEvent<ToastOptions>;
 }
+
+export type ToastEventListenerGeneric<K extends keyof ToastEventMap> = (e: ToastEventMap[K]) => void;
+export type ToastShowEventListener = ToastEventListenerGeneric<typeof EVENTS.show>;
+export type ToastEventListener = ToastShowEventListener;
