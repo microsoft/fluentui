@@ -10,17 +10,9 @@ export function useToast() {
     return newToast;
   });
 
-  const play = React.useCallback(() => {
-    toast.play();
-  }, [toast]);
-
-  const pause = React.useCallback(() => {
-    toast.pause();
-  }, [toast]);
-
   return {
-    play,
-    pause,
+    play: toast.play,
+    pause: toast.pause,
     running: toast.running,
   };
 }
