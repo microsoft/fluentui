@@ -48,12 +48,12 @@ export const useControllableState = <State>(
   return useIsControlled(options.state) ? [options.state, noop] : [internalState, setInternalState];
 };
 
-function noop() {
-  /* noop */
+function isInitializer<State>(value: State | (() => State)): value is () => State {
+  return typeof value === 'function';
 }
 
-function isInitializer<Value>(value: Value | (() => Value)): value is () => Value {
-  return typeof value === 'function';
+function noop() {
+  /* noop */
 }
 
 /**
