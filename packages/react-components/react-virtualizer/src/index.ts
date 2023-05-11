@@ -16,7 +16,7 @@ export {
   useIntersectionObserver,
   useStaticVirtualizerMeasure,
   useDynamicVirtualizerMeasure,
-  useScrollRef,
+  useResizeObserverRef_unstable,
 } from './Hooks';
 
 export type { ResizeCallbackWithRef, VirtualizerMeasureDynamicProps, VirtualizerMeasureProps } from './Hooks';

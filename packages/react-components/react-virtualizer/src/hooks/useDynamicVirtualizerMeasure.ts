@@ -1,7 +1,7 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { VirtualizerMeasureDynamicProps } from './hooks.types';
-import { useScrollRef } from './useScrollRef';
+import { useResizeObserverRef_unstable } from './useResizeObserverRef';
 import { useRef } from 'react';
 
 /**
@@ -88,7 +88,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     [handleScrollResize],
   );
 
-  const scrollRef = useScrollRef(resizeCallback);
+  const scrollRef = useResizeObserverRef_unstable(resizeCallback);
 
   useIsomorphicLayoutEffect(() => {
     if (!container.current) {

@@ -39,7 +39,7 @@ export {
   useIntersectionObserver,
   useStaticVirtualizerMeasure,
   useDynamicVirtualizerMeasure,
-  useScrollRef,
+  useResizeObserverRef_unstable,
   VirtualizerContextProvider,
   useVirtualizerContext_unstable,
   VirtualizerScrollView,

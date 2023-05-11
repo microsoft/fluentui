@@ -73,7 +73,7 @@ import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
-import { useScrollRef } from '@fluentui/react-virtualizer';
+import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
@@ -251,7 +251,7 @@ export { useInfoLabelStyles_unstable }
 
 export { useIntersectionObserver }
 
-export { useScrollRef }
+export { useResizeObserverRef_unstable }
 
 export { useStaticVirtualizerMeasure }
 

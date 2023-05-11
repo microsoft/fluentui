@@ -45,7 +45,7 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 };
 
 // @public
-export const useScrollRef: (resizeCallback: ResizeCallbackWithRef) => (instance: HTMLElement | HTMLDivElement | null) => void;
+export const useResizeObserverRef_unstable: (resizeCallback: ResizeCallbackWithRef) => (instance: HTMLElement | HTMLDivElement | null) => void;
 
 // @public
 export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtualizerProps: VirtualizerMeasureProps) => {

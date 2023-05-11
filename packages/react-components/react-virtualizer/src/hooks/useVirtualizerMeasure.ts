@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VirtualizerMeasureProps } from './hooks.types';
-import { useScrollRef } from './useScrollRef';
+import { useResizeObserverRef_unstable } from './useResizeObserverRef';
 
 /**
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
@@ -64,7 +64,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
     [defaultItemSize, direction],
   );
 
-  const scrollRef = useScrollRef(resizeCallback);
+  const scrollRef = useResizeObserverRef_unstable(resizeCallback);
 
   return {
     virtualizerLength,

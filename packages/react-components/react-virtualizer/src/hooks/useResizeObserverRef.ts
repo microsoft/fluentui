@@ -4,9 +4,9 @@ import { canUseDOM } from '@fluentui/react-utilities';
 import { ResizeCallbackWithRef } from './hooks.types';
 
 /**
- * useScrollRef simplifies resize observer connection and ensures debounce/cleanup
+ * useResizeObserverRef_unstable simplifies resize observer connection and ensures debounce/cleanup
  */
-export const useScrollRef = (resizeCallback: ResizeCallbackWithRef) => {
+export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWithRef) => {
   const container = React.useRef<HTMLElement | null>(null);
   // the handler for resize observer
   const handleResize = debounce((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
