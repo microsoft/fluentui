@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: change DialogTitle default action icon from 24x24 to 20x20",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
