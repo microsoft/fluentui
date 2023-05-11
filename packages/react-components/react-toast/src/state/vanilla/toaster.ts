@@ -74,7 +74,14 @@ export class Toaster {
   }
 
   private _buildToast(toastOptions: ToastOptions) {
-    const { toastId = '', position = 'bottom-right', timeout = 3000, content = '' } = toastOptions;
+    const {
+      toastId = '',
+      position = 'bottom-right',
+      timeout = 3000,
+      content = '',
+      pauseOnHover = false,
+      pauseOnWindowBlur = false,
+    } = toastOptions;
     if (this.toasts.has(toastId)) {
       return;
     }
@@ -90,6 +97,8 @@ export class Toaster {
     };
 
     const toast: Toast = {
+      pauseOnHover,
+      pauseOnWindowBlur,
       position,
       toastId,
       timeout,

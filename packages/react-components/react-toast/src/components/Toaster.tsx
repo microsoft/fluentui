@@ -27,11 +27,7 @@ export const Toaster: React.FC = () => {
             <div key={position} style={getPositionStyles(position)} className={mergeClasses(styles.container)}>
               {toasts.map(({ content, ...toastProps }) => {
                 return (
-                  <Toast
-                    {...toastProps}
-                    key={`toast-${toastProps.toastId}`}
-                    visible={isToastVisible(toastProps.toastId)}
-                  >
+                  <Toast {...toastProps} key={toastProps.toastId} visible={isToastVisible(toastProps.toastId)}>
                     {content as React.ReactNode}
                   </Toast>
                 );
