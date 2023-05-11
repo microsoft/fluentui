@@ -10,7 +10,6 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DialogProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceProps } from '@fluentui/react-dialog';
-import { DialogTitleProps } from '@fluentui/react-dialog';
 import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -63,7 +62,7 @@ export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationS
 
 // @public (undocumented)
 export type DrawerHeaderNavigationSlots = {
-    root: Slot<'div'>;
+    root: Slot<'nav'>;
 };
 
 // @public
@@ -87,15 +86,19 @@ export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
 
 // @public
-export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {};
+export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
+    children: React_2.ReactNode | undefined;
+};
 
 // @public (undocumented)
-export type DrawerHeaderTitleSlots = DialogTitleSlots;
+export type DrawerHeaderTitleSlots = {
+    root: Slot<'div'>;
+    heading?: DialogTitleSlots['root'];
+    action?: DialogTitleSlots['action'];
+};
 
 // @public
-export type DrawerHeaderTitleState = ComponentState<DrawerHeaderTitleSlots> & {
-    title: DialogTitleProps;
-};
+export type DrawerHeaderTitleState = ComponentState<DrawerHeaderTitleSlots>;
 
 // @public
 export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {

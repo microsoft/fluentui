@@ -25,7 +25,7 @@ export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
    * Content of the DrawerHeaderTitle
    * Children is mandatory because DrawerHeaderTitle is a wrapper component
    */
-  children: React.ReactElement | null;
+  children: React.ReactNode | undefined;
 };
 
 /**
