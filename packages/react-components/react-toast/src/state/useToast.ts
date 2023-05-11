@@ -5,15 +5,20 @@ import { Toast } from './vanilla/toast';
 import { ValidatedToastOptions } from './types';
 
 export function useToast(options: ValidatedToastOptions) {
+  const toastOptions = useToastOptions(options);
   const forceRender = useForceUpdate();
   const { targetDocument } = useFluent();
   const [toast] = React.useState(() => {
     if (targetDocument) {
-      const newToast = new Toast(targetDocument, options);
+      const newToast = new Toast(targetDocument, toastOptions);
       newToast.onUpdate = forceRender;
       return newToast;
     }
   });
+
+  React.useEffect(() => {
+    return () => toast?.dispose();
+  }, [toast]);
 
   const toastRef = React.useCallback(
     (el: HTMLElement | null) => {
@@ -42,4 +47,18 @@ export function useToast(options: ValidatedToastOptions) {
     pause,
     running: toast?.running ?? false,
   };
+}
+
+function useToastOptions(options: ValidatedToastOptions) {
+  const { pauseOnHover, pauseOnWindowBlur, position, timeout } = options;
+
+  return React.useMemo<ValidatedToastOptions>(
+    () => ({
+      pauseOnHover,
+      pauseOnWindowBlur,
+      position,
+      timeout,
+    }),
+    [pauseOnHover, pauseOnWindowBlur, position, timeout],
+  );
 }
