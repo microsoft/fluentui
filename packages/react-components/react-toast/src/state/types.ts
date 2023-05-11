@@ -13,6 +13,8 @@ export interface ToastOptions {
   pauseOnHover?: boolean;
 }
 
+export interface ToasterOptions extends DefaultToastOptions {}
+
 export interface DefaultToastOptions
   extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover'> {}
 

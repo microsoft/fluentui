@@ -7,7 +7,7 @@
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export const Toaster: React_2.FC;
+export const Toaster: React_2.FC<ToasterOptions>;
 
 // @public (undocumented)
 export type ToastId = string;
