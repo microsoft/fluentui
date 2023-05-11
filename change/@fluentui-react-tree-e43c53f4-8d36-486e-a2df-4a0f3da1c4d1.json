@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "bugfix: fix horizontal overflow on tree",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
