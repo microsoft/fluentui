@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useForceUpdate } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Toast } from './vanilla/toast';
 import { ValidatedToastOptions } from './types';
 
@@ -9,23 +8,17 @@ const noop = () => null;
 export function useToast<TElement extends HTMLElement>(options: ValidatedToastOptions) {
   const toastOptions = useToastOptions(options);
   const forceRender = useForceUpdate();
-  const { targetDocument } = useFluent();
-  const [toast] = React.useState(() => {
-    if (targetDocument) {
-      const newToast = new Toast();
-      newToast.onUpdate = forceRender;
-      return newToast;
-    }
-  });
+  const [toast] = React.useState(() => new Toast());
 
   const toastRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
     if (toast && toastRef.current) {
+      toast.onUpdate = forceRender;
       toast.connectToDOM(toastRef.current, toastOptions);
       return () => toast.disconnect();
     }
-  }, [toast, toastOptions]);
+  }, [toast, toastOptions, forceRender]);
 
   if (!toast) {
     return {
