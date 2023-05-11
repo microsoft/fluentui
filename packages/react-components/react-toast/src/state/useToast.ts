@@ -4,6 +4,8 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { Toast } from './vanilla/toast';
 import { ValidatedToastOptions } from './types';
 
+const noop = () => null;
+
 export function useToast<TElement extends HTMLElement>(options: ValidatedToastOptions) {
   const toastOptions = useToastOptions(options);
   const forceRender = useForceUpdate();
@@ -25,23 +27,20 @@ export function useToast<TElement extends HTMLElement>(options: ValidatedToastOp
     }
   }, [toast, toastOptions]);
 
-  const play = React.useCallback(() => {
-    if (toast) {
-      toast.play();
-    }
-  }, [toast]);
-
-  const pause = React.useCallback(() => {
-    if (toast) {
-      toast.pause();
-    }
-  }, [toast]);
+  if (!toast) {
+    return {
+      toastRef,
+      play: noop,
+      pause: noop,
+      running: false,
+    };
+  }
 
   return {
     toastRef,
-    play,
-    pause,
-    running: toast?.running ?? false,
+    play: toast.play,
+    pause: toast.pause,
+    running: toast.running,
   };
 }
 
