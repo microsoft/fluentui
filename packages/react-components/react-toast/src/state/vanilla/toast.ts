@@ -4,33 +4,31 @@ import { ValidatedToastOptions } from '../types';
 export class Toast {
   public running: boolean;
   public onUpdate: () => void;
-  private targetDocument: Document;
   private toastElement?: HTMLElement;
   private pauseOnWindowBlur: ValidatedToastOptions['pauseOnWindowBlur'];
   private pauseOnHover: ValidatedToastOptions['pauseOnHover'];
 
-  constructor(targetDocument: Document, options: ValidatedToastOptions) {
+  constructor() {
     this.running = false;
     this.onUpdate = () => null;
-    this.targetDocument = targetDocument;
 
-    const { pauseOnHover, pauseOnWindowBlur } = options;
-    this.pauseOnHover = pauseOnHover;
-    this.pauseOnWindowBlur = pauseOnWindowBlur;
-
-    if (this.pauseOnWindowBlur) {
-      this.targetDocument.defaultView?.addEventListener('focus', this.play);
-      this.targetDocument.defaultView?.addEventListener('blur', this.pause);
-    }
+    this.pauseOnHover = false;
+    this.pauseOnWindowBlur = false;
   }
 
-  public dispose() {
-    if (this.pauseOnWindowBlur) {
-      this.targetDocument.defaultView?.removeEventListener('focus', this.play);
-      this.targetDocument.defaultView?.removeEventListener('blur', this.pause);
+  public disconnect() {
+    if (!this.toastElement) {
+      return;
     }
 
-    if (this.toastElement && this.pauseOnHover) {
+    const targetDocument = this.toastElement.ownerDocument;
+
+    if (this.pauseOnWindowBlur) {
+      targetDocument.defaultView?.removeEventListener('focus', this.play);
+      targetDocument.defaultView?.removeEventListener('blur', this.pause);
+    }
+
+    if (this.pauseOnHover) {
       this.toastElement.addEventListener('mouseenter', this.pause);
       this.toastElement.addEventListener('mouseleave', this.play);
     }
@@ -38,13 +36,23 @@ export class Toast {
     this.toastElement = undefined;
   }
 
-  public setToastElement = (element: HTMLElement) => {
+  public connectToDOM(element: HTMLElement, options: ValidatedToastOptions) {
+    const { pauseOnHover, pauseOnWindowBlur } = options;
+    this.pauseOnHover = pauseOnHover;
+    this.pauseOnWindowBlur = pauseOnWindowBlur;
+
     this.toastElement = element;
+    const targetDocument = element.ownerDocument;
+    if (this.pauseOnWindowBlur) {
+      targetDocument.defaultView?.addEventListener('focus', this.play);
+      targetDocument.defaultView?.addEventListener('blur', this.pause);
+    }
+
     if (this.pauseOnHover) {
       this.toastElement.addEventListener('mouseenter', this.pause);
       this.toastElement.addEventListener('mouseleave', this.play);
     }
-  };
+  }
 
   public play = () => {
     this.running = true;
