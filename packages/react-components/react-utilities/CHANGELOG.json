@@ -2,6 +2,53 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 12 May 2023 20:28:04 GMT",
+      "tag": "@fluentui/react-utilities_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "88ff00c2979ecd025f725fa3fc4e4d370f95cfc4",
+            "comment": "feat: defers useControllableState state to initializer method"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f0b05741d812ad90c52754b0b4035d5554cf2aa0",
+            "comment": "chore: updates useControllableState comments"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "557ffca71ff7767a4d595b6fcc55ad4a1fe02360",
+            "comment": "chore: simplifies useControllableState hook internals"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.3",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-utilities_v9.8.0",
       "version": "9.8.0",
