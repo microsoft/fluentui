@@ -7,6 +7,7 @@ export { DismissAll } from './DismissAll.stories';
 export { PauseOnWindowBlur } from './PauseOnWindowBlur.stories';
 export { PauseOnHover } from './PauseOnHover.stories';
 export { UpdateToast } from './UpdateToast.stories';
+export { MultipeToasters } from './MultipleToasters.stories';
 
 export default {
   title: 'Preview Components/Toast',
