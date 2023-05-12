@@ -126,7 +126,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandBackgroundPressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
-  colorBrandBackground2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorBrandBackground2: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackground2Hover: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackground2Pressed: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackgroundInverted: hcButtonFace, // ButtonFace Global.Color.hcButtonFace
