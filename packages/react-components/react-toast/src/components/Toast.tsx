@@ -75,11 +75,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const Toast: React.FC<Omit<ToastProps, 'content'> & { visible: boolean }> = props => {
+export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
   const styles = useStyles();
-  const { visible, children, close, remove, timeout } = props;
-  const { play, running } = useToast();
-  const toastRef = React.useRef<HTMLDivElement>(null);
+  const { visible, children, close, remove, updateId, ...toastOptions } = props;
+  const { timeout } = toastOptions;
+  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...toastOptions, content: children });
 
   // start the toast once it's fully in
   useIsomorphicLayoutEffect(() => {
@@ -99,7 +99,7 @@ export const Toast: React.FC<Omit<ToastProps, 'content'> & { visible: boolean }>
     <Transition in={visible} unmountOnExit mountOnEnter timeout={500} onExited={remove} nodeRef={toastRef}>
       <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.slide, !visible && styles.fadeOut)}>
         {children}
-        <Timer onTimeout={close} timeout={timeout ?? -1} running={running} />
+        <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
       </div>
     </Transition>
   );

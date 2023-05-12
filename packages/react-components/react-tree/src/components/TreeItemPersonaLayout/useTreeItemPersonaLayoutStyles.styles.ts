@@ -8,8 +8,6 @@ import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
   root: 'fui-TreeItemPersonaLayout',
   expandIcon: 'fui-TreeItemPersonaLayout__expandIcon',
-  aside: 'fui-TreeItemPersonaLayout__aside',
-  actions: 'fui-TreeItemPersonaLayout__actions',
   media: 'fui-TreeItemPersonaLayout__media',
   content: 'fui-TreeItemPersonaLayout__content',
   description: 'fui-TreeItemPersonaLayout__description',
@@ -101,35 +99,6 @@ const useExpandIconStyles = makeStyles({
 });
 
 /**
- * Styles for the action icon slot
- */
-const useAsideStyles = makeStyles({
-  base: {
-    display: 'flex',
-    marginLeft: 'auto',
-    ...shorthands.gridArea('aside'),
-    alignItems: 'center',
-    zIndex: 0,
-    ...shorthands.padding(0, tokens.spacingHorizontalM),
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-  },
-});
-
-/**
- * Styles for the action icon slot
- */
-const useActionsStyles = makeStyles({
-  base: {
-    display: 'flex',
-    marginLeft: 'auto',
-    ...shorthands.gridArea('aside'),
-    position: 'relative',
-    zIndex: 1,
-    ...shorthands.padding(0, tokens.spacingHorizontalS),
-  },
-});
-
-/**
  * Apply styling to the TreeItemPersonaLayout slots based on the state
  */
 export const useTreeItemPersonaLayoutStyles_unstable = (
@@ -140,8 +109,6 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const contentStyles = useContentStyles();
   const descriptionStyles = useDescriptionStyles();
   const expandIconStyles = useExpandIconStyles();
-  const asideStyles = useAsideStyles();
-  const actionsStyles = useActionsStyles();
 
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
@@ -176,22 +143,6 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconStyles.base,
       state.expandIcon.className,
-    );
-  }
-
-  if (state.actions) {
-    state.actions.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.actions,
-      actionsStyles.base,
-      state.actions.className,
-    );
-  }
-
-  if (state.aside) {
-    state.aside.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.aside,
-      asideStyles.base,
-      state.aside.className,
     );
   }
 

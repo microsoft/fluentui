@@ -5,6 +5,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import {
   Tree,
   TreeItem,
+  TreeItemAside,
   TreeItemLayout,
   TreeProps,
   treeItemLayoutClassNames,
@@ -125,7 +126,10 @@ for (const TreeTest of [NestedTree, FlatTree]) {
         mount(
           <TreeTest id="tree" aria-label="Tree">
             <TreeItem itemType="branch" value="item1" data-testid="item1">
-              <TreeItemLayout actions={<Button id="action">action!</Button>}>level 1, item 1</TreeItemLayout>
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <TreeItemAside actions>
+                <Button id="action">action!</Button>1
+              </TreeItemAside>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -168,7 +172,10 @@ for (const TreeTest of [NestedTree, FlatTree]) {
         mount(
           <TreeTest id="tree" aria-label="Tree">
             <TreeItem itemType="branch" value="item1" data-testid="item1">
-              <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <TreeItemAside actions>
+                <Button id="action">action</Button>
+              </TreeItemAside>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -187,7 +194,10 @@ for (const TreeTest of [NestedTree, FlatTree]) {
         mount(
           <TreeTest id="tree" aria-label="Tree">
             <TreeItem itemType="branch" value="item1" data-testid="item1">
-              <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <TreeItemAside actions>
+                <Button id="action">action</Button>
+              </TreeItemAside>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>

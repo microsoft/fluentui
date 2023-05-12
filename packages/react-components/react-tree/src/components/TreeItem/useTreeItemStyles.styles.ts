@@ -23,8 +23,9 @@ const useRootStyles = makeStyles({
     position: 'relative',
     cursor: 'pointer',
     display: 'grid',
+    boxSizing: 'border-box',
     gridTemplateRows: 'auto auto',
-    gridTemplateColumns: 'auto min-content',
+    gridTemplateColumns: 'minmax(0, 100%) minmax(0px, min-content)',
     gridTemplateAreas: `
     "layout  aside"
     "subtree subtree"
