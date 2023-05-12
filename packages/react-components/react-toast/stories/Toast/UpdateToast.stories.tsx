@@ -9,8 +9,8 @@ export const UpdateToast = () => {
   return (
     <>
       <Toaster />
-      <button onClick={() => notify('example')}>Make toast</button>
-      <button onClick={() => update('example')}>Update toast</button>
+      <button onClick={() => notify('EXAMPLE_ID')}>Make toast</button>
+      <button onClick={() => update('EXAMPLE_ID')}>Update toast</button>
     </>
   );
 };
