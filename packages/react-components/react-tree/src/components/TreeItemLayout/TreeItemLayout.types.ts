@@ -1,4 +1,3 @@
-import { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TreeItemLayoutSlots = {
@@ -16,8 +15,6 @@ export type TreeItemLayoutSlots = {
    * Icon slot that renders right after main content
    */
   iconAfter?: Slot<'div'>;
-  aside?: Slot<'div'>;
-  actions?: Slot<'div'>;
 };
 
 /**
@@ -28,8 +25,4 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 /**
  * State used in rendering TreeItemLayout
  */
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
-  buttonContextValue: ButtonContextValue;
-  isActionsVisible: boolean;
-  isAsideVisible: boolean;
-};
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots>;

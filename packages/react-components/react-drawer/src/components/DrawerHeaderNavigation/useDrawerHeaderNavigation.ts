@@ -17,10 +17,10 @@ export const useDrawerHeaderNavigation_unstable = (
 ): DrawerHeaderNavigationState => {
   return {
     components: {
-      root: 'div',
+      root: 'nav',
     },
 
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('nav', {
       ref,
       ...props,
     }),

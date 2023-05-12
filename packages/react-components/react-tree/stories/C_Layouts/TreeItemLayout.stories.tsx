@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemAside, TreeItemLayout } from '@fluentui/react-tree';
 import {
   Image20Regular,
   Important16Regular,
@@ -20,15 +20,13 @@ export const Layout = () => (
             <SquareMultiple20Regular />
           </>
         }
-        aside={
-          <>
-            <Important16Regular primaryFill="red" />
-            <CounterBadge count={1} color="danger" size="small" />
-          </>
-        }
       >
         Content
       </TreeItemLayout>
+      <TreeItemAside>
+        <Important16Regular primaryFill="red" />
+        <CounterBadge count={1} color="danger" size="small" />
+      </TreeItemAside>
       <Tree>
         <TreeItem itemType="branch">
           <TreeItemLayout>Tree Item</TreeItemLayout>
@@ -61,10 +59,12 @@ export const Layout = () => (
             <SquareMultiple20Regular />
           </>
         }
-        aside={<Important16Regular primaryFill="red" />}
       >
         Content
       </TreeItemLayout>
+      <TreeItemAside>
+        <Important16Regular primaryFill="red" />
+      </TreeItemAside>
       <Tree>
         <TreeItem itemType="branch">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>

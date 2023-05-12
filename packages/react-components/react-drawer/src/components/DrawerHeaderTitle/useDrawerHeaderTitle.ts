@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
-import { DialogTitleProps } from '@fluentui/react-dialog';
+import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 
 /**
  * Create the state required to render DrawerHeaderTitle.
@@ -16,31 +16,28 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLElement>,
 ): DrawerHeaderTitleState => {
-  const { as, children } = props;
-
-  const action = resolveShorthand(props.action);
-  const title = resolveShorthand(
-    {
-      as,
-      action,
-      children,
-    } as DialogTitleProps,
-    {
-      required: true,
-    },
-  );
+  const { root: heading, action, components: titleComponents } = useDialogTitle_unstable(props, ref);
 
   return {
     components: {
       root: 'div',
-      action: 'div',
+      heading: titleComponents.root,
+      action: titleComponents.action,
     },
 
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
-    action,
-    title,
+    heading: resolveShorthand(props.heading, {
+      required: true,
+      defaultProps: {
+        ...heading,
+        className: undefined, // remove className from heading
+      },
+    }),
+    action: resolveShorthand(props.action, {
+      defaultProps: action,
+    }),
   };
 };

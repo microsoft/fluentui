@@ -17,6 +17,7 @@ describe('DrawerHeaderTitle', () => {
           },
           expectedClassNames: {
             root: drawerHeaderTitleClassNames.root,
+            heading: drawerHeaderTitleClassNames.heading,
             action: drawerHeaderTitleClassNames.action,
           },
         },
@@ -35,10 +36,32 @@ describe('DrawerHeaderTitle', () => {
           class="fui-DrawerHeaderTitle"
         >
           <h2
-            class="fui-DialogTitle"
+            class="fui-DrawerHeaderTitle__heading fui-DialogTitle"
           >
             Default DrawerHeaderTitle
           </h2>
+        </div>
+      </div>
+    `);
+  });
+
+  it('renders action', () => {
+    const result = render(<DrawerHeaderTitle action={'Test'}>Default DrawerHeaderTitle</DrawerHeaderTitle>);
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          class="fui-DrawerHeaderTitle"
+        >
+          <h2
+            class="fui-DrawerHeaderTitle__heading fui-DialogTitle"
+          >
+            Default DrawerHeaderTitle
+          </h2>
+          <div
+            class="fui-DrawerHeaderTitle__action fui-DialogTitle__action"
+          >
+            Test
+          </div>
         </div>
       </div>
     `);

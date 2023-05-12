@@ -15,11 +15,11 @@ describe('DrawerHeaderNavigation', () => {
     const result = render(<DrawerHeaderNavigation>Default DrawerHeaderNavigation</DrawerHeaderNavigation>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <div
+        <nav
           class="fui-DrawerHeaderNavigation"
         >
           Default DrawerHeaderNavigation
-        </div>
+        </nav>
       </div>
     `);
   });

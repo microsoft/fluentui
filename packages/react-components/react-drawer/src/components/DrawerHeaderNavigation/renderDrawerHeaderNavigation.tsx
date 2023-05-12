@@ -8,6 +8,5 @@ import type { DrawerHeaderNavigationState, DrawerHeaderNavigationSlots } from '.
 export const renderDrawerHeaderNavigation_unstable = (state: DrawerHeaderNavigationState) => {
   const { slots, slotProps } = getSlots<DrawerHeaderNavigationSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

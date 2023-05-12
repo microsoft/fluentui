@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DrawerHeaderNavigationSlots = {
-  root: Slot<'div'>;
+  root: Slot<'nav'>;
 };
 
 /**

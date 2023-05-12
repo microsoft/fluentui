@@ -5,6 +5,7 @@ import { tokens } from '@fluentui/react-theme';
 
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots> = {
   root: 'fui-DrawerHeaderTitle',
+  heading: 'fui-DrawerHeaderTitle__heading',
   action: 'fui-DrawerHeaderTitle__action',
 };
 
@@ -31,6 +32,10 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
   const styles = useStyles();
 
   state.root.className = mergeClasses(drawerHeaderTitleClassNames.root, styles.root, state.root.className);
+
+  if (state.heading) {
+    state.heading.className = mergeClasses(drawerHeaderTitleClassNames.heading, state.heading.className);
+  }
 
   if (state.action) {
     state.action.className = mergeClasses(drawerHeaderTitleClassNames.action, styles.action, state.action.className);
