@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderDivider_unstable } from './renderDivider';
 import { useDivider_unstable } from './useDivider';
-import { useDividerStyles_unstable } from './useDividerStyles';
+import { useDividerStyles_unstable } from './useDividerStyles.styles';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { DividerProps } from './Divider.types';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

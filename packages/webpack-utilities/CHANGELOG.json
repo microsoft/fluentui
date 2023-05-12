@@ -2,6 +2,36 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Fri, 05 May 2023 18:14:02 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.15",
+      "version": "8.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 22:20:22 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.14",
+      "version": "8.1.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:49 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.10",
       "version": "8.1.10",

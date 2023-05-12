@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { VirtualizerContextProps } from '../../Utilities';
 
 export type VirtualizerSlots = {
   /**
@@ -135,14 +136,9 @@ export type VirtualizerConfigProps = {
   getItemSize?: (index: number) => number;
 
   /**
-   * Notify users of index changes
+   * Virtualizer context can be passed as a prop for extended class use
    */
-  onUpdateIndex?: (index: number, prevIndex: number) => void;
-
-  /**
-   * Allow users to intervene in index calculation changes
-   */
-  onCalculateIndex?: (newIndex: number) => number;
+  virtualizerContext?: VirtualizerContextProps;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

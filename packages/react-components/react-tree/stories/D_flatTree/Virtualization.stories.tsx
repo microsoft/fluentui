@@ -64,7 +64,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
 });
 
 interface FixedSizeTreeItemProps extends ListChildComponentProps {
-  data: FlatTreeItem[];
+  data: FlatTreeItem<ItemProps>[];
 }
 
 const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
