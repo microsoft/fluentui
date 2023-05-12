@@ -23,13 +23,11 @@ export const renderTag_unstable = (state: TagState, contextValues: TagContextVal
             </AvatarContextProvider>
           )}
           {slots.icon && <slots.icon {...slotProps.icon} />}
-          {slots.primaryText && (
-            <slots.primaryText {...slotProps.primaryText}>{slotProps.root.children}</slots.primaryText>
-          )}
+          {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
           {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
         </slots.content>
       )}
-      {slots.dismissButton && state.dismissible && <slots.dismissButton {...slotProps.dismissButton} />}
+      {slots.dismissIcon && state.dismissible && <slots.dismissIcon {...slotProps.dismissIcon} />}
     </slots.root>
   );
 };

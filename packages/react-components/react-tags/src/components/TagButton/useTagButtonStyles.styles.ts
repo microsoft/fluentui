@@ -3,7 +3,7 @@ import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { useTagBaseStyles } from '../Tag/index';
+import { useResetButtonStyles, useTagBaseStyles } from '../Tag/index';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
@@ -20,11 +20,11 @@ export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
  */
 const useStyles = makeStyles({
   content: {
-    position: 'relative',
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
         ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+        zIndex: 1,
       },
       { enableOutline: true },
     ),
@@ -33,21 +33,22 @@ const useStyles = makeStyles({
   circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular), {
     enableOutline: true,
   }),
-  dismissibleContent: {
-    ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
-    }),
-  },
+  dismissibleContent: createCustomFocusIndicatorStyle({
+    borderTopRightRadius: tokens.borderRadiusNone,
+    borderBottomRightRadius: tokens.borderRadiusNone,
+  }),
 
   dismissButton: {
-    ...shorthands.padding('0px', '6px'),
+    paddingLeft: '6px',
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderTopLeftRadius: tokens.borderRadiusNone,
     borderBottomLeftRadius: tokens.borderRadiusNone,
     ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
       borderTopLeftRadius: tokens.borderRadiusNone,
       borderBottomLeftRadius: tokens.borderRadiusNone,
+      borderTopRightRadius: tokens.borderRadiusMedium,
+      borderBottomRightRadius: tokens.borderRadiusMedium,
     }),
   },
   dismissButtonCircular: createCustomFocusIndicatorStyle({
@@ -63,6 +64,7 @@ const useStyles = makeStyles({
  */
 export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonState => {
   const baseStyles = useTagBaseStyles();
+  const resetButtonStyles = useResetButtonStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
@@ -109,8 +111,8 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagButtonClassNames.dismissButton,
-      baseStyles.resetButton,
-      baseStyles.dismissButton,
+      resetButtonStyles.resetButton,
+      baseStyles.dismissIcon,
 
       styles.dismissButton,
       state.shape === 'circular' && styles.dismissButtonCircular,

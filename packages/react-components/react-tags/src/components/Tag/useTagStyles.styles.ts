@@ -11,7 +11,7 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
   icon: 'fui-Tag__icon',
   primaryText: 'fui-Tag__primaryText',
   secondaryText: 'fui-Tag__secondaryText',
-  dismissButton: 'fui-Tag__dismissButton',
+  dismissIcon: 'fui-Tag__dismissIcon',
 };
 
 /**
@@ -21,6 +21,8 @@ export const useTagBaseStyles = makeStyles({
   root: {
     // TODO use makeResetStyle when styles are settled
     display: 'inline-flex',
+
+    boxSizing: 'border-box',
     height: '32px',
     width: 'fit-content',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -81,8 +83,19 @@ export const useTagBaseStyles = makeStyles({
     ...typographyStyles.caption2,
   },
 
+  dismissIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '20px',
+    paddingLeft: '2px',
+    paddingRight: '6px',
+  },
+
+  // TODO add additional classes for fill/outline appearance, different sizes, and state
+});
+
+export const useResetButtonStyles = makeStyles({
   resetButton: {
-    boxSizing: 'content-box',
     color: 'inherit',
     fontFamily: 'inherit',
     lineHeight: 'normal',
@@ -91,15 +104,13 @@ export const useTagBaseStyles = makeStyles({
     ...shorthands.borderStyle('none'),
     appearance: 'button',
     textAlign: 'unset',
-  },
-  dismissButton: {
-    ...shorthands.padding('0px'),
     backgroundColor: 'transparent',
-    width: '20px',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '20px',
+  },
+});
 
+const useTagStyles = makeStyles({
+  rootButton: {
+    alignItems: 'center',
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -108,30 +119,30 @@ export const useTagBaseStyles = makeStyles({
       { enableOutline: true },
     ),
   },
-
-  // TODO add additional classes for fill/outline appearance, different sizes, and state
-});
-
-const useTagStyles = makeStyles({
+  rootButtonCircular: {
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
+  },
   dismissibleContent: {
     paddingRight: '2px',
   },
-  dismissButton: {
-    marginRight: '6px',
-  },
 });
-
 /**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
   const baseStyles = useTagBaseStyles();
+  const resetButtonStyles = useResetButtonStyles();
   const styles = useTagStyles();
 
   state.root.className = mergeClasses(
     tagClassNames.root,
+    resetButtonStyles.resetButton,
     baseStyles.root,
+    styles.rootButton,
     state.shape === 'circular' && baseStyles.rootCircular,
+    state.shape === 'circular' && styles.rootButtonCircular,
     state.root.className,
   );
   if (state.content) {
@@ -140,7 +151,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       baseStyles.content,
       !state.media && !state.icon && baseStyles.textOnlyContent,
 
-      state.dismissButton && styles.dismissibleContent,
+      state.dismissIcon && styles.dismissibleContent,
       state.content.className,
     );
   }
@@ -166,14 +177,11 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       state.secondaryText.className,
     );
   }
-  if (state.dismissButton) {
-    state.dismissButton.className = mergeClasses(
-      tagClassNames.dismissButton,
-      baseStyles.resetButton,
-      baseStyles.dismissButton,
-
-      styles.dismissButton,
-      state.dismissButton.className,
+  if (state.dismissIcon) {
+    state.dismissIcon.className = mergeClasses(
+      tagClassNames.dismissIcon,
+      baseStyles.dismissIcon,
+      state.dismissIcon.className,
     );
   }
 
