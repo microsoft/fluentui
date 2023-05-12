@@ -3,6 +3,7 @@ import {
   FlatTreeItemProps,
   Tree,
   TreeItem,
+  TreeItemAside,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
@@ -86,20 +87,17 @@ export const AddRemoveTreeItem = () => {
         const { content, ...treeItemProps } = item.getTreeItemProps();
         return (
           <TreeItem key={item.value} {...treeItemProps}>
-            <TreeItemLayout
-              actions={
-                isUndeletable ? null : (
-                  <Button
-                    aria-label="Remove item"
-                    appearance="subtle"
-                    onClick={() => removeFlatTreeItem(item.value)}
-                    icon={<Delete20Regular />}
-                  />
-                )
-              }
-            >
-              {content}
-            </TreeItemLayout>
+            <TreeItemLayout>{content}</TreeItemLayout>
+            {isUndeletable ? null : (
+              <TreeItemAside actions>
+                <Button
+                  aria-label="Remove item"
+                  appearance="subtle"
+                  onClick={() => removeFlatTreeItem(item.value)}
+                  icon={<Delete20Regular />}
+                />
+              </TreeItemAside>
+            )}
           </TreeItem>
         );
       })}

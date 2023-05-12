@@ -1,6 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AvatarContextValue, AvatarSize } from '@fluentui/react-avatar';
-import { ButtonContextValue } from '@fluentui/react-button';
 
 export type TreeItemPersonaLayoutContextValues = {
   avatar: AvatarContextValue;
@@ -29,8 +28,6 @@ export type TreeItemPersonaLayoutSlots = {
    * A layout wrapper for the main and description slots
    */
   content: NonNullable<Slot<'div'>>;
-  aside?: Slot<'div'>;
-  actions?: Slot<'div'>;
 };
 
 /**
@@ -43,7 +40,4 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
  */
 export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
   avatarSize: AvatarSize;
-  buttonContextValue: ButtonContextValue;
-  isActionsVisible: boolean;
-  isAsideVisible: boolean;
 };
