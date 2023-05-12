@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Mon, 24 Apr 2023 08:12:34 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:28:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.1.0)
+
+Fri, 12 May 2023 20:28:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.0.0..@fluentui/react-datepicker-compat_v0.1.0)
+
+### Minor changes
+
+- fix: Make onValidationError onValidationResult so the error is updated when there's no longer an error. ([PR #27655](https://github.com/microsoft/fluentui/pull/27655) by esteban.230@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-field to v9.1.2 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-input to v9.4.12 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-popover to v9.5.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-portal to v9.2.7 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-positioning to v9.5.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+### Patches
+
+- chore: move makeStyles() calls to .styles.ts files ([PR #27710](https://github.com/microsoft/fluentui/pull/27710) by olfedias@microsoft.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: update version ([PR #27666](https://github.com/microsoft/fluentui/pull/27666) by olfedias@microsoft.com)
 
 ## [0.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.0.0)
 
