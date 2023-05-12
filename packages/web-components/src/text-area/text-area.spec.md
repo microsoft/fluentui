@@ -12,15 +12,15 @@ A text area is a type of input field that allows users to enter multiple lines o
 
 ### Inputs
 
+- @attr autocomplete: "on" "off" | "off"
+- @attr autofocus: boolean
+- @attr cols: number
+- @attr value: string
+- @attr disabled: boolean | false
+- @attr name: string
 - @attr placeholder: string
 - @attr resize: "none" "both" "horizontal" "vertical" | "none"
-- @attr current-value: string
 - @attr rows: number
-- @attr columns: number
-- @attr name: string
-- @attr autofocus: boolean
-- @attr autocomplete: "on" "off" | "off"
-- @attr disabled: boolean | false
 - @attr minlength: number
 - @attr maxlength: number
 
