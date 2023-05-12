@@ -1,4 +1,5 @@
 export { Default } from './Default.stories';
+export { DefaultToastOptions } from './DefaultToastOptions.stories';
 export { CustomTimeout } from './CustomTimeout.stories';
 export { ToastPositions } from './ToastPositions.stories';
 export { DismissToast } from './DismissToast.stories';

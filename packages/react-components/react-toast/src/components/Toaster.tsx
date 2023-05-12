@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
-import { useToaster, getPositionStyles } from '../state';
+import { useToaster, getPositionStyles, ToasterOptions } from '../state';
 import { Toast } from './Toast';
 import { makeStyles, mergeClasses } from '@griffel/react';
 
@@ -14,21 +14,23 @@ const useStyles = makeStyles({
   },
 });
 
-export const Toaster: React.FC = () => {
-  const { getToastsToRender, isToastVisible } = useToaster();
+export type ToasterProps = Partial<ToasterOptions>;
+
+export const Toaster: React.FC<ToasterProps> = props => {
+  const { getToastsToRender, isToastVisible, toasterRef } = useToaster<HTMLDivElement>(props);
 
   const styles = useStyles();
 
   return (
     <Portal>
-      <div>
+      <div ref={toasterRef}>
         {getToastsToRender((position, toasts) => {
           return (
             <div key={position} style={getPositionStyles(position)} className={mergeClasses(styles.container)}>
-              {toasts.map(({ content, ...toastProps }) => {
+              {toasts.map(toastProps => {
                 return (
                   <Toast {...toastProps} key={toastProps.toastId} visible={isToastVisible(toastProps.toastId)}>
-                    {content as React.ReactNode}
+                    {toastProps.content as React.ReactNode}
                   </Toast>
                 );
               })}

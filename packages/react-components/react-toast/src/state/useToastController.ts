@@ -7,7 +7,7 @@ export function useToastController() {
   const { targetDocument } = useFluent();
 
   const dispatchToast = React.useCallback(
-    (content: React.ReactNode, options?: ToastOptions) => {
+    (content: React.ReactNode, options?: Partial<ToastOptions>) => {
       if (targetDocument) {
         dispatchToastVanilla(content, options, targetDocument);
       }

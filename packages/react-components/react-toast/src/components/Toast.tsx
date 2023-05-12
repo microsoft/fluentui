@@ -75,11 +75,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const Toast: React.FC<Omit<ToastProps, 'content'> & { visible: boolean }> = props => {
+export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
   const styles = useStyles();
   const { visible, children, close, remove, ...toastOptions } = props;
   const { timeout } = toastOptions;
-  const { play, running, toastRef } = useToast<HTMLDivElement>(toastOptions);
+  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...toastOptions, content: children });
 
   // start the toast once it's fully in
   useIsomorphicLayoutEffect(() => {
