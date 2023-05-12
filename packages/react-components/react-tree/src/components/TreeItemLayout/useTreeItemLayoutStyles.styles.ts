@@ -21,6 +21,8 @@ const useRootStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     minHeight: '32px',
+    boxSizing: 'border-box',
+    ...shorthands.gridArea('layout'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
