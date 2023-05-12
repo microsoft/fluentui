@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Don't remove outline when filled and disabled and apply correct disabled color to text.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
