@@ -6,10 +6,8 @@ import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
 import { Input } from '@fluentui/react-input';
 import {
-  mergeCallbacks,
   resolveShorthand,
   useControllableState,
-  useEventCallback,
   useId,
   useMergedRefs,
   useOnClickOutside,
@@ -285,6 +283,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           break;
 
         case Escape:
+          ev.stopPropagation();
           ev.preventDefault();
           if (open) {
             calendarDismissed();
@@ -361,11 +360,16 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       'aria-controls': open ? popupSurfaceId : undefined,
       'aria-expanded': open,
       'aria-haspopup': 'dialog',
-      'aria-owns': popupSurfaceId,
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       readOnly: !allowTextInput,
       role: 'combobox',
+      onBlur: onInputBlur,
+      onChange: onInputChange,
+      onClick: onInputClick,
+      onFocus: onInputFocus,
+      onKeyDown: onInputKeyDown,
       root: {
+        'aria-owns': popupSurfaceId,
         ref: useMergedRefs(triggerWrapperRef, ref),
       },
       input: {
@@ -373,11 +377,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       },
     },
   });
-  rootShorthand.onChange = mergeCallbacks(rootShorthand.onChange, onInputChange);
-  rootShorthand.onBlur = mergeCallbacks(rootShorthand.onBlur, onInputBlur);
-  rootShorthand.onKeyDown = mergeCallbacks(rootShorthand.onKeyDown, onInputKeyDown);
-  rootShorthand.onFocus = mergeCallbacks(rootShorthand.onFocus, onInputFocus);
-  rootShorthand.onClick = mergeCallbacks(rootShorthand.onClick, onInputClick);
 
   const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
   const popupSurfaceShorthand = open
@@ -409,15 +408,21 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     disabled: !open,
   });
 
-  const popupOnClick = useEventCallback(
-    mergeCallbacks((ev: React.MouseEvent<HTMLDivElement>) => {
-      focus();
-    }, popupSurfaceShorthand?.onClick),
-  );
+  // When the popup is opened, focus should go to the calendar.
+  // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using an
+  // a useEffect hook
+  React.useEffect(() => {
+    if (open && !props.disabled && calendar.current) {
+      calendar.current.focus();
+    }
+  }, [disableAutoFocus, open, props.disabled]);
 
-  if (popupSurfaceShorthand) {
-    popupSurfaceShorthand.onClick = popupOnClick;
-  }
+  // When the popup is closed, focus should go back to the input.
+  React.useEffect(() => {
+    if (!open && !props.disabled) {
+      focus();
+    }
+  }, [open, props.disabled, focus]);
 
   const calendarShorthand = resolveShorthand(props.calendar, {
     required: true,
@@ -433,6 +438,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       maxDate,
       minDate,
       onDismiss: calendarDismissed,
+      onSelectDate: calendarDismissed,
       showCloseButton,
       showGoToToday,
       showMonthPickerAsOverlay,
@@ -472,16 +478,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   };
 
   state.root.value = formattedDate;
-  state.calendar.onSelectDate = mergeCallbacks(state.calendar.onSelectDate, calendarDismissed);
-
-  // When the popup is opened, focus should go to the calendar.
-  // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using an
-  // a useEffect hook
-  React.useEffect(() => {
-    if (open && !props.disabled) {
-      calendar.current?.focus();
-    }
-  }, [open, props.disabled]);
 
   return state;
 };

@@ -6,12 +6,12 @@ Object {
   "baseElement": <body>
     <div>
       <span
+        aria-owns="datePicker-popoverSurface1"
         class="fui-Input fui-DatePicker"
       >
         <input
           aria-expanded="false"
           aria-haspopup="dialog"
-          aria-owns="datePicker-popoverSurface1"
           class="fui-Input__input"
           readonly=""
           role="combobox"
@@ -41,12 +41,12 @@ Object {
   </body>,
   "container": <div>
     <span
+      aria-owns="datePicker-popoverSurface1"
       class="fui-Input fui-DatePicker"
     >
       <input
         aria-expanded="false"
         aria-haspopup="dialog"
-        aria-owns="datePicker-popoverSurface1"
         class="fui-Input__input"
         readonly=""
         role="combobox"
