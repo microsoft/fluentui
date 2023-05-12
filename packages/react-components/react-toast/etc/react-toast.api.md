@@ -19,6 +19,7 @@ export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-ri
 export function useToastController(): {
     dispatchToast: (content: React_2.ReactNode, options?: Partial<ToastOptions> | undefined) => void;
     dismissToast: (toastId?: string | undefined) => void;
+    updateToast: (options: UpdateToastEventDetail) => void;
 };
 
 // (No @packageDocumentation comment for this package)

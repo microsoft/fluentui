@@ -77,7 +77,7 @@ const useStyles = makeStyles({
 
 export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
   const styles = useStyles();
-  const { visible, children, close, remove, ...toastOptions } = props;
+  const { visible, children, close, remove, updateId, ...toastOptions } = props;
   const { timeout } = toastOptions;
   const { play, running, toastRef } = useToast<HTMLDivElement>({ ...toastOptions, content: children });
 
@@ -99,7 +99,7 @@ export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
     <Transition in={visible} unmountOnExit mountOnEnter timeout={500} onExited={remove} nodeRef={toastRef}>
       <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.slide, !visible && styles.fadeOut)}>
         {children}
-        <Timer onTimeout={close} timeout={timeout ?? -1} running={running} />
+        <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
       </div>
     </Transition>
   );

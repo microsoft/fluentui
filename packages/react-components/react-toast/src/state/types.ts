@@ -22,9 +22,14 @@ export interface ToasterOptions
 export interface Toast extends ToastOptions {
   close: () => void;
   remove: () => void;
+  updateId: number;
 }
 
 export interface ShowToastEventDetail extends Partial<ToastOptions> {
+  toastId: ToastId;
+}
+
+export interface UpdateToastEventDetail extends Partial<ToastOptions> {
   toastId: ToastId;
 }
 
@@ -37,4 +42,5 @@ type EventListener<TDetail> = (e: CustomEvent<TDetail>) => void;
 export type ToastListenerMap = {
   [EVENTS.show]: EventListener<ShowToastEventDetail>;
   [EVENTS.dismiss]: EventListener<DismissToastEventDetail>;
+  [EVENTS.update]: EventListener<UpdateToastEventDetail>;
 };
