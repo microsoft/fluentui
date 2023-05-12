@@ -1,0 +1,1 @@
+The ChatLegacy component implements a similar layout to [Chat](https://fluentsite.z22.web.core.windows.net/0.65.0/components/chat/definition) component from `@fluentui/react-northstar`, using Fluent UI v9 based approach
