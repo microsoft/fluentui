@@ -4,7 +4,6 @@
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TreeItemLayoutState, TreeItemLayoutSlots } from './TreeItemLayout.types';
-import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemLayout
@@ -17,10 +16,6 @@ export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
       {slots.iconBefore && <slots.iconBefore {...slotProps.iconBefore} />}
       {slotProps.root.children}
       {slots.iconAfter && <slots.iconAfter {...slotProps.iconAfter} />}
-      <ButtonContextProvider value={state.buttonContextValue}>
-        {state.isAsideVisible && slots.aside && <slots.aside {...slotProps.aside} />}
-        {state.isActionsVisible && slots.actions && <slots.actions {...slotProps.actions} />}
-      </ButtonContextProvider>
     </slots.root>
   );
 };

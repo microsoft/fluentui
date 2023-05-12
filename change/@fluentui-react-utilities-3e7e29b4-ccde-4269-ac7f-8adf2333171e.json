@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: defers useControllableState state to initializer method",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
