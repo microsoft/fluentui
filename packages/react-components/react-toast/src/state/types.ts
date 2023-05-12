@@ -50,5 +50,6 @@ type EventListener<TDetail> = (e: CustomEvent<TDetail>) => void;
 export type ToastListenerMap = {
   [EVENTS.show]: EventListener<ShowToastEventDetail>;
   [EVENTS.dismiss]: EventListener<DismissToastEventDetail>;
+  [EVENTS.dismissAll]: EventListener<DismissAllToastsEventDetail>;
   [EVENTS.update]: EventListener<UpdateToastEventDetail>;
 };
