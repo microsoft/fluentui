@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
+import type { InfoButtonProps } from '../InfoButton/InfoButton.types';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
 /**
@@ -55,6 +56,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
 
   if (infoButton) {
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
+    root['aria-owns'] = (infoButton.info as InfoButtonProps).id;
   }
 
   return {
