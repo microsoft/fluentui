@@ -32,10 +32,9 @@ export interface DismissToastEventDetail {
   toastId: ToastId | undefined;
 }
 
-export type ShowToastListener = (e: CustomEvent<ShowToastEventDetail>) => void;
-export type DismissToastListener = (e: CustomEvent<ShowToastEventDetail>) => void;
+type EventListener<TDetail> = (e: CustomEvent<TDetail>) => void;
 
 export type ToastListenerMap = {
-  [EVENTS.show]: ShowToastListener;
-  [EVENTS.dismiss]: DismissToastListener;
+  [EVENTS.show]: EventListener<ShowToastEventDetail>;
+  [EVENTS.dismiss]: EventListener<DismissToastEventDetail>;
 };
