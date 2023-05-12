@@ -37,7 +37,11 @@ storiesOf('Textarea Converged', module)
       <Textarea aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Textarea disabled />)
+  .addStory('Disabled', () => <Textarea defaultValue="Example Textarea value" disabled />)
+  .addStory('Disabled + placeholder', () => <Textarea placeholder="Example Textarea placeholder" disabled />)
+  .addStory('Disabled + filled', () => (
+    <Textarea appearance="filled-darker" defaultValue="Example Textarea value" disabled />
+  ))
   .addStory('With value', () => <Textarea defaultValue="Value" />);
 
 // Non interactive
