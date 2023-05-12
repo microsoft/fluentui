@@ -1,31 +1,36 @@
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { dispatchToast as dispatchToastVanilla, dismissToast as dismissToastVanilla } from './vanilla';
 import * as React from 'react';
-import { ToastId, ToastOptions } from './types';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import {
+  dispatchToast as dispatchToastVanilla,
+  dismissToast as dismissToastVanilla,
+  updateToast as updateToastVanilla,
+} from './vanilla';
+import { ToastId, ToastOptions, UpdateToastEventDetail } from './types';
+
+const noop = () => undefined;
 
 export function useToastController() {
   const { targetDocument } = useFluent();
 
-  const dispatchToast = React.useCallback(
-    (content: React.ReactNode, options?: Partial<ToastOptions>) => {
-      if (targetDocument) {
+  return React.useMemo(() => {
+    if (!targetDocument) {
+      return {
+        dispatchToast: noop,
+        dismissToast: noop,
+        updateToast: noop,
+      };
+    }
+
+    return {
+      dispatchToast: (content: React.ReactNode, options?: Partial<ToastOptions>) => {
         dispatchToastVanilla(content, options, targetDocument);
-      }
-    },
-    [targetDocument],
-  );
-
-  const dismissToast = React.useCallback(
-    (toastId?: ToastId) => {
-      if (targetDocument) {
+      },
+      dismissToast: (toastId?: Partial<ToastId>) => {
         dismissToastVanilla(toastId, targetDocument);
-      }
-    },
-    [targetDocument],
-  );
-
-  return {
-    dispatchToast,
-    dismissToast,
-  };
+      },
+      updateToast: (options: UpdateToastEventDetail) => {
+        updateToastVanilla(options, targetDocument);
+      },
+    };
+  }, [targetDocument]);
 }

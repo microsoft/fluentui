@@ -1,4 +1,4 @@
-import { Toast, ToasterOptions, ToastId, ToastOptions, ToastListenerMap } from '../types';
+import { Toast, ToasterOptions, ToastId, ToastOptions, ToastListenerMap, UpdateToastEventDetail } from '../types';
 import { EVENTS } from '../constants';
 
 function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
@@ -49,6 +49,7 @@ export class Toaster {
     assignDefined(this.toasterOptions, options);
 
     const buildToast: ToastListenerMap[typeof EVENTS.show] = e => this._buildToast(e.detail);
+    const updateToast: ToastListenerMap[typeof EVENTS.update] = e => this._updateToast(e.detail);
     const dismissToast: ToastListenerMap[typeof EVENTS.dismiss] = e => {
       const { toastId } = e.detail;
       if (toastId) {
@@ -58,11 +59,9 @@ export class Toaster {
       }
     };
 
-    this.listeners.set(EVENTS.show, buildToast);
-    this.listeners.set(EVENTS.dismiss, dismissToast);
-
     this._addEventListener(EVENTS.show, buildToast);
     this._addEventListener(EVENTS.dismiss, dismissToast);
+    this._addEventListener(EVENTS.update, updateToast);
   }
 
   public isToastVisible = (toastId: ToastId) => {
@@ -74,6 +73,7 @@ export class Toaster {
       return;
     }
 
+    this.listeners.set(eventType, callback);
     const targetDocument = this.toasterElement?.ownerDocument;
     targetDocument.addEventListener(eventType, callback as () => void);
   }
@@ -88,6 +88,18 @@ export class Toaster {
 
     const targetDocument = this.toasterElement?.ownerDocument;
     targetDocument.removeEventListener(eventType, callback as () => void);
+  }
+
+  private _updateToast(toastOptions: UpdateToastEventDetail) {
+    const { toastId } = toastOptions;
+    const toastToUpdate = this.toasts.get(toastId);
+    if (!toastToUpdate) {
+      return;
+    }
+
+    Object.assign(toastToUpdate, toastOptions);
+    toastToUpdate.updateId++;
+    this.onUpdate();
   }
 
   private _dismissToast(toastId: ToastId) {
@@ -123,6 +135,7 @@ export class Toaster {
       remove,
       toastId,
       content,
+      updateId: 0,
     };
 
     assignDefined<Toast>(toast, toastOptions);
