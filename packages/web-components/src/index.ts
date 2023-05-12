@@ -13,6 +13,7 @@ export * from './label/index.js';
 export * from './menu-button/index.js';
 export * from './menu-item/index.js';
 export * from './menu-list/index.js';
+export * from './option/index.js';
 export * from './progress-bar/index.js';
 export * from './radio/index.js';
 export * from './radio-group/index.js';

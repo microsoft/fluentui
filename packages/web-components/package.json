@@ -60,6 +60,10 @@
       "types": "./dist/esm/divider/define.d.ts",
       "default": "./dist/esm/divider/define.js"
     },
+    "./dropdown": {
+      "types": "./dist/esm/dropdown/define.d.ts",
+      "default": "./dist/esm/dropdown/define.js"
+    },
     "./image": {
       "types": "./dist/esm/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
@@ -79,6 +83,10 @@
     "./menu-item": {
       "types": "./dist/esm/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
+    },
+    "./option": {
+      "types": "./dist/esm/option/define.d.ts",
+      "default": "./dist/esm/option/define.js"
     },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
