@@ -5,34 +5,37 @@ export type ToastId = string;
 export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
 
 export interface ToastOptions {
-  toastId?: ToastId;
-  position?: ToastPosition;
-  content?: unknown;
-  timeout?: number;
-  pauseOnWindowBlur?: boolean;
-  pauseOnHover?: boolean;
+  toastId: ToastId;
+  position: ToastPosition;
+  content: unknown;
+  timeout: number;
+  pauseOnWindowBlur: boolean;
+  pauseOnHover: boolean;
 }
 
-export interface ToasterOptions extends DefaultToastOptions {}
+export interface ToasterOptions
+  extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover'> {
+  offset?: number[];
+  toasterId?: string;
+}
 
-export interface DefaultToastOptions
-  extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover'> {}
-
-export interface ValidatedToastOptions extends Required<DefaultToastOptions> {}
-
-export interface Toast extends Required<ToastOptions> {
+export interface Toast extends ToastOptions {
   close: () => void;
   remove: () => void;
+}
+
+export interface ShowToastEventDetail extends Partial<ToastOptions> {
+  toastId: ToastId;
 }
 
 export interface DismissToastEventDetail {
   toastId: ToastId | undefined;
 }
 
-export interface ToastEventMap {
-  [EVENTS.show]: CustomEvent<ToastOptions>;
-  [EVENTS.dismiss]: CustomEvent<DismissToastEventDetail>;
-}
+export type ShowToastListener = (e: CustomEvent<ShowToastEventDetail>) => void;
+export type DismissToastListener = (e: CustomEvent<ShowToastEventDetail>) => void;
 
-export type ToastEventListenerGeneric<K extends keyof ToastEventMap> = (e: ToastEventMap[K]) => void;
-export type ToastEventListener = <K extends keyof ToastEventMap>(e: ToastEventMap[K]) => void;
+export type ToastListenerMap = {
+  [EVENTS.show]: ShowToastListener;
+  [EVENTS.dismiss]: DismissToastListener;
+};

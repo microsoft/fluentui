@@ -1,14 +1,15 @@
-import {
-  DefaultToastOptions,
-  Toast,
-  ToastEventListener,
-  ToastEventListenerGeneric,
-  ToastEventMap,
-  ToastId,
-  ToastOptions,
-  ValidatedToastOptions,
-} from '../types';
+import { Toast, ToasterOptions, ToastId, ToastOptions, ToastListenerMap } from '../types';
 import { EVENTS } from '../constants';
+
+function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
+  for (const [key, prop] of Object.entries(b)) {
+    if (prop !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      a[key] = prop;
+    }
+  }
+}
 
 // TODO convert to closure
 export class Toaster {
@@ -16,15 +17,15 @@ export class Toaster {
   public toasts: Map<ToastId, Toast>;
   public onUpdate: () => void;
   private toasterElement?: HTMLElement;
-  private defaultToastOptions: ValidatedToastOptions;
+  private toasterOptions: ToasterOptions;
 
-  private listeners = new Map<keyof ToastEventMap, ToastEventListener>();
+  private listeners = new Map<keyof ToastListenerMap, ToastListenerMap[keyof ToastListenerMap]>();
 
   constructor() {
     this.toasts = new Map<ToastId, Toast>();
     this.visibleToasts = new Set<ToastId>();
     this.onUpdate = () => null;
-    this.defaultToastOptions = {
+    this.toasterOptions = {
       pauseOnHover: false,
       pauseOnWindowBlur: false,
       position: 'bottom-right',
@@ -43,15 +44,12 @@ export class Toaster {
     this.toasterElement = undefined;
   }
 
-  public connectToDOM(toasterElement: HTMLElement, options: DefaultToastOptions) {
+  public connectToDOM(toasterElement: HTMLElement, options: Partial<ToasterOptions>) {
     this.toasterElement = toasterElement;
-    this.defaultToastOptions = {
-      ...this.defaultToastOptions,
-      ...options,
-    };
+    assignDefined(this.toasterOptions, options);
 
-    const buildToast: ToastEventListener = e => this._buildToast(e.detail);
-    const dismissToast: ToastEventListener = e => {
+    const buildToast: ToastListenerMap[typeof EVENTS.show] = e => this._buildToast(e.detail);
+    const dismissToast: ToastListenerMap[typeof EVENTS.dismiss] = e => {
       const { toastId } = e.detail;
       if (toastId) {
         this._dismissToast(toastId);
@@ -71,10 +69,7 @@ export class Toaster {
     return this.visibleToasts.has(toastId);
   };
 
-  private _addEventListener<TEvent extends keyof ToastEventMap>(
-    eventType: TEvent,
-    callback: ToastEventListenerGeneric<TEvent>,
-  ) {
+  private _addEventListener<TType extends keyof ToastListenerMap>(eventType: TType, callback: ToastListenerMap[TType]) {
     if (!this.toasterElement) {
       return;
     }
@@ -83,9 +78,9 @@ export class Toaster {
     targetDocument.addEventListener(eventType, callback as () => void);
   }
 
-  private _removeEventListener<TEvent extends keyof ToastEventMap>(
-    eventType: keyof ToastEventMap,
-    callback: ToastEventListenerGeneric<TEvent>,
+  private _removeEventListener<TType extends keyof ToastListenerMap>(
+    eventType: TType,
+    callback: ToastListenerMap[TType],
   ) {
     if (!this.toasterElement) {
       return;
@@ -105,24 +100,10 @@ export class Toaster {
     this.onUpdate();
   }
 
-  private _validateToastOptions(toastOptions: ToastOptions) {
-    const validatedToastOptions: ValidatedToastOptions = { ...this.defaultToastOptions };
-    for (const [key, prop] of Object.entries(toastOptions)) {
-      if (toastOptions.hasOwnProperty(key)) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        validatedToastOptions[key] = prop;
-      }
-    }
-
-    return validatedToastOptions;
-  }
-
-  private _buildToast(toastOptions: ToastOptions) {
-    const validatedToastOptions = this._validateToastOptions(toastOptions);
+  private _buildToast(toastOptions: Partial<ToastOptions> & { toastId: ToastId }) {
     const { toastId, content } = toastOptions;
 
-    if (!content || !toastId || this.toasts.has(toastId)) {
+    if (this.toasts.has(toastId)) {
       return;
     }
 
@@ -137,12 +118,14 @@ export class Toaster {
     };
 
     const toast: Toast = {
-      ...validatedToastOptions,
-      toastId,
-      content,
+      ...this.toasterOptions,
       close,
       remove,
+      toastId,
+      content,
     };
+
+    assignDefined<Toast>(toast, toastOptions);
 
     this.visibleToasts.add(toastId);
     this.toasts.set(toastId, toast);

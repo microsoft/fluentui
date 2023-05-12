@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Toaster } from './vanilla/toaster';
 import { useForceUpdate } from '@fluentui/react-utilities';
-import { DefaultToastOptions, Toast, ToastPosition, ToasterOptions } from './types';
+import { Toast, ToastPosition, ToasterOptions } from './types';
+import { ToasterProps } from '../components/Toaster';
 
-export function useToaster<TElement extends HTMLElement>(options: ToasterOptions = {}) {
+export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
   const forceRender = useForceUpdate();
-  const defaultToastOptions = useDefaultToastOptions(options);
+  const defaultToastOptions = useToastOptions(options);
   const toasterRef = React.useRef<TElement>(null);
   const [toaster] = React.useState(() => new Toaster());
 
@@ -51,14 +52,15 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterOptions
   };
 }
 
-function useDefaultToastOptions(options: DefaultToastOptions) {
+function useToastOptions(options: ToasterProps): Partial<ToasterOptions> {
   const { pauseOnHover, pauseOnWindowBlur, position, timeout } = options;
-  return React.useMemo<DefaultToastOptions>(
+
+  return React.useMemo<Partial<ToasterOptions>>(
     () => ({
-      ...(pauseOnHover && { pauseOnHover }),
-      ...(pauseOnWindowBlur && { pauseOnWindowBlur }),
-      ...(position && { position }),
-      ...(timeout && { timeout }),
+      pauseOnHover,
+      pauseOnWindowBlur,
+      position,
+      timeout,
     }),
     [pauseOnHover, pauseOnWindowBlur, position, timeout],
   );

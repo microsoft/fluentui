@@ -1,12 +1,12 @@
-import { ValidatedToastOptions } from '../types';
+import { ToastOptions } from '../types';
 
 // TODO convert to closure
 export class Toast {
   public running: boolean;
   public onUpdate: () => void;
   private toastElement?: HTMLElement;
-  private pauseOnWindowBlur: ValidatedToastOptions['pauseOnWindowBlur'];
-  private pauseOnHover: ValidatedToastOptions['pauseOnHover'];
+  private pauseOnWindowBlur: ToastOptions['pauseOnWindowBlur'];
+  private pauseOnHover: ToastOptions['pauseOnHover'];
 
   constructor() {
     this.running = false;
@@ -36,8 +36,9 @@ export class Toast {
     this.toastElement = undefined;
   }
 
-  public connectToDOM(element: HTMLElement, options: ValidatedToastOptions) {
+  public connectToDOM(element: HTMLElement, options: Pick<ToastOptions, 'pauseOnWindowBlur' | 'pauseOnHover'>) {
     const { pauseOnHover, pauseOnWindowBlur } = options;
+
     this.pauseOnHover = pauseOnHover;
     this.pauseOnWindowBlur = pauseOnWindowBlur;
 

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useForceUpdate } from '@fluentui/react-utilities';
 import { Toast } from './vanilla/toast';
-import { ValidatedToastOptions } from './types';
+import { ToastOptions } from './types';
 
 const noop = () => null;
 
-export function useToast<TElement extends HTMLElement>(options: ValidatedToastOptions) {
-  const toastOptions = useToastOptions(options);
+export function useToast<TElement extends HTMLElement>(options: ToastOptions) {
+  const { pauseOnHover, pauseOnWindowBlur } = options;
+
   const forceRender = useForceUpdate();
   const [toast] = React.useState(() => new Toast());
 
@@ -15,10 +16,14 @@ export function useToast<TElement extends HTMLElement>(options: ValidatedToastOp
   React.useEffect(() => {
     if (toast && toastRef.current) {
       toast.onUpdate = forceRender;
-      toast.connectToDOM(toastRef.current, toastOptions);
+      toast.connectToDOM(toastRef.current, {
+        pauseOnHover,
+        pauseOnWindowBlur,
+      });
+
       return () => toast.disconnect();
     }
-  }, [toast, toastOptions, forceRender]);
+  }, [toast, pauseOnWindowBlur, pauseOnHover, forceRender]);
 
   if (!toast) {
     return {
@@ -35,18 +40,4 @@ export function useToast<TElement extends HTMLElement>(options: ValidatedToastOp
     pause: toast.pause,
     running: toast.running,
   };
-}
-
-function useToastOptions(options: ValidatedToastOptions) {
-  const { pauseOnHover, pauseOnWindowBlur, position, timeout } = options;
-
-  return React.useMemo<ValidatedToastOptions>(
-    () => ({
-      pauseOnHover,
-      pauseOnWindowBlur,
-      position,
-      timeout,
-    }),
-    [pauseOnHover, pauseOnWindowBlur, position, timeout],
-  );
 }

@@ -3,9 +3,9 @@ import { EVENTS } from '../constants';
 
 let counter = 0;
 
-export function dispatchToast(content: unknown, options: ToastOptions = {}, targetDocument: Document) {
+export function dispatchToast(content: unknown, options: Partial<ToastOptions> = {}, targetDocument: Document) {
   options.toastId ??= (counter++).toString();
-  const event = new CustomEvent<ToastOptions>(EVENTS.show, {
+  const event = new CustomEvent<Partial<ToastOptions>>(EVENTS.show, {
     bubbles: false,
     cancelable: false,
     detail: { ...options, content },

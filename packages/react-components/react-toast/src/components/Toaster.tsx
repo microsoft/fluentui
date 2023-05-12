@@ -14,7 +14,9 @@ const useStyles = makeStyles({
   },
 });
 
-export const Toaster: React.FC<ToasterOptions> = props => {
+export type ToasterProps = Partial<ToasterOptions>;
+
+export const Toaster: React.FC<ToasterProps> = props => {
   const { getToastsToRender, isToastVisible, toasterRef } = useToaster<HTMLDivElement>(props);
 
   const styles = useStyles();
@@ -25,10 +27,10 @@ export const Toaster: React.FC<ToasterOptions> = props => {
         {getToastsToRender((position, toasts) => {
           return (
             <div key={position} style={getPositionStyles(position)} className={mergeClasses(styles.container)}>
-              {toasts.map(({ content, ...toastProps }) => {
+              {toasts.map(toastProps => {
                 return (
                   <Toast {...toastProps} key={toastProps.toastId} visible={isToastVisible(toastProps.toastId)}>
-                    {content as React.ReactNode}
+                    {toastProps.content as React.ReactNode}
                   </Toast>
                 );
               })}
