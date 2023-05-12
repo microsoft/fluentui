@@ -922,4 +922,28 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-invalid')).toEqual('true');
     expect(combobox.required).toBe(true);
   });
+
+  it('should ignore changes to defaultValue', () => {
+    const options = ['Red', 'Green', 'Blue'];
+    const result = render(
+      <Combobox defaultValue="Red">
+        {options.map(option => (
+          <Option key={option}>{option}</Option>
+        ))}
+      </Combobox>,
+    );
+
+    const combobox = result.getByRole('combobox') as HTMLInputElement;
+    expect(combobox.value).toEqual('Red');
+
+    result.rerender(
+      <Combobox defaultValue="Blue">
+        {options.map(option => (
+          <Option key={option}>{option}</Option>
+        ))}
+      </Combobox>,
+    );
+
+    expect(combobox.value).toEqual('Red');
+  });
 });
