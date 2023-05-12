@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
-import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
@@ -30,6 +30,16 @@ const popoverSizeMap = {
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
   const { size = 'medium' } = props;
 
+  const infoId = useId('infoButton-');
+  const infoShorthand = resolveShorthand(props.info, {
+    required: true,
+    defaultProps: {
+      id: infoId,
+      role: 'note',
+      tabIndex: -1,
+    },
+  });
+
   const state: InfoButtonState = {
     size,
 
@@ -43,6 +53,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       children: infoButtonIconMap[size],
       type: 'button',
       'aria-label': 'information',
+      'aria-owns': infoShorthand.id,
       ...props,
       ref,
     }),
@@ -54,13 +65,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         withArrow: true,
       },
     }),
-    info: resolveShorthand(props.info, {
-      required: true,
-      defaultProps: {
-        role: 'note',
-        tabIndex: -1,
-      },
-    }),
+    info: infoShorthand,
   };
 
   const [popoverOpen, setPopoverOpen] = useControllableState({
