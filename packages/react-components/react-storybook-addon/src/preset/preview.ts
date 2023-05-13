@@ -11,5 +11,7 @@
 
 import { withFluentProvider } from '../decorators/withFluentProvider';
 import { withReactStrictMode } from '../decorators/withReactStrictMode';
+import { THEME_ID } from '../constants';
 
 export const decorators = [withFluentProvider, withReactStrictMode];
+export const globals = { [THEME_ID]: 'web-dark' }; // allow theme to be set by URL query param
