@@ -3,13 +3,13 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-import { IDonutChartProps, DonutChart } from './index';
-import { IDonutChartState, DonutChartBase } from './DonutChart.base';
+import { DonutChart } from './index';
 import { IChartProps, IChartDataPoint } from '../../index';
 import toJson from 'enzyme-to-json';
 
 // Wrapper of the DonutChart to be tested.
-let wrapper: ReactWrapper<IDonutChartProps, IDonutChartState, DonutChartBase> | undefined;
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+let wrapper: ReactWrapper<any, any, React.Component<{}, {}, any>> | undefined;
 
 function sharedBeforeEach() {
   resetIds();
