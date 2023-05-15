@@ -5,18 +5,10 @@ import {
   colorNeutralBackground1,
   colorNeutralForeground1,
   fontFamilyBase,
-  spacingHorizontalL,
-  spacingHorizontalM,
   spacingHorizontalNone,
   spacingHorizontalS,
-  spacingHorizontalXS,
   spacingHorizontalXL,
-  spacingVerticalL,
-  spacingVerticalM,
-  spacingVerticalNone,
-  spacingVerticalS,
-  spacingVerticalXS,
-  spacingVerticalXL,
+  spacingHorizontalXS,
 } from '../theme/design-tokens.js';
 
 /**
@@ -30,16 +22,17 @@ export const styles = css`
     --toolbar-item-gap: 4px;
     align-items: center;
     background: ${colorNeutralBackground1};
-    color: ${colorNeutralForeground1};
-    height: 40px;
-    box-sizing: border-box;
-    width: 100%;
     border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
+    color: ${colorNeutralForeground1};
     font-family: ${fontFamilyBase};
+    height: 40px;
     padding: ${spacingHorizontalXS} ${spacingHorizontalS};
+    width: 100%;
   }
   ::slotted(:not([slot])) {
     flex: 0 0 auto;
+    flex-direction: row;
     margin: 0 var(--toolbar-item-gap);
   }
 
@@ -47,8 +40,8 @@ export const styles = css`
     align-items: center;
     display: inline-flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
     flex-grow: 1;
+    justify-content: flex-start;
   }
   ::slotted([slot='label']) {
     margin-right: var(--toolbar-item-gap);
@@ -74,8 +67,8 @@ export const styles = css`
   :host([orientation='vertical']) {
     flex-direction: column;
     height: 100%;
-    width: 44px;
     padding: ${spacingHorizontalS} ${spacingHorizontalXS};
+    width: 44px;
   }
   :host([orientation='vertical']) ::slotted(:not([slot])) {
     flex: 0 0 auto;
@@ -91,11 +84,11 @@ export const styles = css`
     margin: var(--toolbar-item-gap) 0;
   }
   :host([orientation='vertical']) ::slotted([slot='end']) {
+    column-gap: 0;
     display: flex;
     flex-direction: column;
+    margin-inline-start: unset;
     row-gap: var(--toolbar-item-gap);
-    column-gap: 0;
-    margin-inline-start: auto;
   }
   :host([orientation='vertical'][size='small']) {
     padding: ${spacingHorizontalNone} ${spacingHorizontalXS};
