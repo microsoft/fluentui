@@ -12,10 +12,10 @@ import {
 import { EVENTS } from '../constants';
 
 function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
-  for (const [key, prop] of Object.entries(b)) {
-    if (prop !== undefined) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+  // This cast is required, as Object.entries will return string as key which is not indexable
+  for (const [key, prop] of Object.entries(b) as [keyof T, T[keyof T]][]) {
+    // eslint-disable-next-line eqeqeq
+    if (prop != undefined) {
       a[key] = prop;
     }
   }
