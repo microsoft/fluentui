@@ -26,18 +26,6 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
   const arr: T[] = [];
   let size = 0;
 
-  const left = (i: number) => {
-    return 2 * i + 1;
-  };
-
-  const right = (i: number) => {
-    return 2 * i + 2;
-  };
-
-  const parent = (i: number) => {
-    return Math.floor((i - 1) / 2);
-  };
-
   const swap = (a: number, b: number) => {
     const tmp = arr[a];
     arr[a] = arr[b];
@@ -129,3 +117,15 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     size: () => size,
   };
 }
+
+const left = (i: number) => {
+  return 2 * i + 1;
+};
+
+const right = (i: number) => {
+  return 2 * i + 2;
+};
+
+const parent = (i: number) => {
+  return Math.floor((i - 1) / 2);
+};
