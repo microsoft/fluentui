@@ -26,7 +26,7 @@ export const useBreadcrumbButton_unstable = (
         appearance: props.appearance || appearance,
         iconPosition: props.iconPosition || iconPosition,
         icon,
-        'aria-current': current ? 'page' || props['aria-current'] : undefined,
+        'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
       },
       ref,
     ),
