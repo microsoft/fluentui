@@ -1,4 +1,4 @@
-const excludePresets = ['@griffel'];
+const excludePresets = ['@griffel', '@fluentui/scripts-babel/preset-v9'];
 
 /**
  * Custom babel loader used with [`customize` babel-loader config](https://github.com/babel/babel-loader#customized-loader)

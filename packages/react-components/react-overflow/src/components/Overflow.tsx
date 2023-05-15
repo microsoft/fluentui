@@ -1,25 +1,17 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 
 import { OverflowContext } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU } from '../constants';
+import { useOverflowStyles } from './useOverflowStyles.styles';
 
-const useStyles = makeStyles({
-  overflowMenu: {
-    [`& [${DATA_OVERFLOW_MENU}]`]: {
-      flexShrink: 0,
-    },
-  },
-
-  overflowingItems: {
-    [`& > [${DATA_OVERFLOWING}]`]: {
-      display: 'none',
-    },
-  },
-});
+interface OverflowState {
+  hasOverflow: boolean;
+  itemVisibility: Record<string, boolean>;
+  groupVisibility: Record<string, OverflowGroupState>;
+}
 
 /**
  * Overflow Props
@@ -34,25 +26,31 @@ export type OverflowProps = Partial<
  * Provides an OverflowContext for OverflowItem descendants.
  */
 export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
-  const styles = useStyles();
+  const styles = useOverflowStyles();
 
   const { children, minimumVisible, overflowAxis = 'horizontal', overflowDirection, padding } = props;
 
-  const [hasOverflow, setHasOverflow] = React.useState(false);
-  const [itemVisibility, setItemVisibility] = React.useState<Record<string, boolean>>({});
-  const [groupVisibility, setGroupVisibility] = React.useState<Record<string, OverflowGroupState>>({});
+  const [overflowState, setOverflowState] = React.useState<OverflowState>({
+    hasOverflow: false,
+    itemVisibility: {},
+    groupVisibility: {},
+  });
 
   // useOverflowContainer wraps this method in a useEventCallback.
-  // TODO: Do we need a useEventCallback here too?
   const update: OnUpdateOverflow = data => {
-    setHasOverflow(() => data.invisibleItems.length > 0);
-    setItemVisibility(() => {
-      const newState: Record<string, boolean> = {};
-      data.visibleItems.forEach(x => (newState[x.id] = true));
-      data.invisibleItems.forEach(x => (newState[x.id] = false));
-      return newState;
+    const { visibleItems, invisibleItems, groupVisibility } = data;
+
+    const itemVisibility: Record<string, boolean> = {};
+    visibleItems.forEach(x => (itemVisibility[x.id] = true));
+    invisibleItems.forEach(x => (itemVisibility[x.id] = false));
+
+    setOverflowState(() => {
+      return {
+        hasOverflow: data.invisibleItems.length > 0,
+        itemVisibility,
+        groupVisibility,
+      };
     });
-    setGroupVisibility(data.groupVisibility);
   };
 
   const { containerRef, registerItem, updateOverflow, registerOverflowMenu } = useOverflowContainer(update, {
@@ -71,9 +69,9 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   return (
     <OverflowContext.Provider
       value={{
-        itemVisibility,
-        groupVisibility,
-        hasOverflow,
+        itemVisibility: overflowState.itemVisibility,
+        groupVisibility: overflowState.groupVisibility,
+        hasOverflow: overflowState.hasOverflow,
         registerItem,
         updateOverflow,
         registerOverflowMenu,

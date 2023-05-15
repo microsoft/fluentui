@@ -9,22 +9,17 @@ describe('BreadcrumbItem', () => {
     displayName: 'BreadcrumbItem',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  // create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(<BreadcrumbItem>Default BreadcrumbItem</BreadcrumbItem>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <div
+        <li
           class="fui-BreadcrumbItem"
         >
           Default BreadcrumbItem
-          <span
-            class="fui-BreadcrumbDivider fui-BreadcrumbItem__divider"
-          >
-            &gt;
-          </span>
-        </div>
+        </li>
       </div>
     `);
   });

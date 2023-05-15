@@ -8,6 +8,7 @@ import {
   elementContains,
   getRTLSafeKeyCode,
   classNamesFunction,
+  css,
   memoizeFunction,
   warnMutuallyExclusive,
 } from '../../Utilities';
@@ -599,7 +600,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const focusZoneInnerProps: IFocusZoneProps = {
     ...focusZoneProps,
     componentRef: focusZoneProps && focusZoneProps.componentRef ? focusZoneProps.componentRef : focusZoneRef,
-    className: classNames.focusZone,
+    className:
+      focusZoneProps && focusZoneProps.className
+        ? css(classNames.focusZone, focusZoneProps.className)
+        : classNames.focusZone,
     direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
     shouldEnterInnerZone:
       focusZoneProps && focusZoneProps.shouldEnterInnerZone ? focusZoneProps.shouldEnterInnerZone : isRightArrow,

@@ -33,7 +33,7 @@ export const V9ControlledExample = () => {
   );
 };
 
-const getFormattedExampleStyles = makeStyles({
+const useGetFormattedExampleStyles = makeStyles({
   wrapper: {
     display: 'grid',
     alignItems: 'center',
@@ -43,7 +43,7 @@ const getFormattedExampleStyles = makeStyles({
 });
 
 export const V9FormattedValueExample = () => {
-  const styles = getFormattedExampleStyles();
+  const styles = useGetFormattedExampleStyles();
   const [sliderValue, setSliderValue] = React.useState(0);
   const sliderOnChange: SliderProps['onChange'] = (ev, data) => setSliderValue(data.value);
   const formattedId = useId();

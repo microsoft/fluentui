@@ -7,10 +7,16 @@ import type { GriffelStyle } from '@griffel/react';
 type GriffelResetStyle = Parameters<typeof makeResetStyles>[0];
 
 export interface CreateCustomFocusIndicatorStyleOptions {
+  /**
+   * Control if the indicator appears when the corresponding element is focused,
+   * or any child is focused within the corresponding element.
+   * @default 'focus'
+   */
   selector?: 'focus' | 'focus-within';
   /**
    * Enables the browser default outline style
-   * @default false
+   * @deprecated The custom focus indicator no longer affects outline styles. Outline is overridden
+   * in the default focus indicator function, `createFocusOutlineStyle`.
    */
   enableOutline?: boolean;
 }
@@ -24,19 +30,9 @@ export interface CreateCustomFocusIndicatorStyleOptions {
  */
 export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(
   style: TStyle,
-  {
-    selector = defaultOptions.selector,
-    enableOutline = false,
-  }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
+  { selector = defaultOptions.selector }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle {
   return {
-    ':focus': {
-      outlineStyle: enableOutline ? undefined : 'none',
-    },
-    ':focus-visible': {
-      outlineStyle: enableOutline ? undefined : 'none',
-    },
-
     ...(selector === 'focus' && {
       [`&[${FOCUS_VISIBLE_ATTR}]`]: style,
     }),

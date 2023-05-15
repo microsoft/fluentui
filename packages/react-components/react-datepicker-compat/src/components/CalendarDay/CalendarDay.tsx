@@ -5,10 +5,13 @@ import { useId } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { addMonths, compareDatePart, getMonthEnd, getMonthStart } from '../../utils';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
-import { useCalendarDayStyles_unstable } from './useCalendarDayStyles';
+import { useCalendarDayStyles_unstable } from './useCalendarDayStyles.styles';
 import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarDayProps, CalendarDayStyles } from './CalendarDay.types';
 
+/**
+ * @internal
+ */
 export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
   const dayGrid = React.useRef<ICalendarDayGrid>(null);
 
@@ -101,7 +104,6 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
     navigatedDate,
     allFocusable,
     strings,
-    // navigationIcons,
     showCloseButton,
     classNames,
     onNavigateDate,

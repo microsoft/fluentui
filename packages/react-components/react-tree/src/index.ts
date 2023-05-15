@@ -14,7 +14,6 @@ export type {
   TreeOpenChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
-  TreeItemId,
 } from './Tree';
 
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
@@ -52,6 +51,15 @@ export type {
   TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutState,
 } from './TreeItemPersonaLayout';
+
+export {
+  TreeItemAside,
+  treeItemAsideClassNames,
+  renderTreeItemAside_unstable,
+  useTreeItemAsideStyles_unstable,
+  useTreeItemAside_unstable,
+} from './TreeItemAside';
+export type { TreeItemAsideProps, TreeItemAsideSlots, TreeItemAsideState } from './TreeItemAside';
 
 export { useFlatTree_unstable } from './hooks/index';
 export type { FlatTreeItem, FlatTreeItemProps, FlatTreeProps, FlatTree } from './hooks/index';

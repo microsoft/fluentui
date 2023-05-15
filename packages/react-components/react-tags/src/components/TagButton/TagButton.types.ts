@@ -1,17 +1,15 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TagContextValues, TagProps, TagSlots, TagState } from '../Tag/index';
 
-export type TagButtonSlots = {
-  root: Slot<'div'>;
-};
+export type TagButtonContextValues = TagContextValues;
+
+export type TagButtonSlots = TagSlots;
 
 /**
  * TagButton Props
  */
-export type TagButtonProps = ComponentProps<TagButtonSlots> & {};
+export type TagButtonProps = TagProps;
 
 /**
  * State used in rendering TagButton
  */
-export type TagButtonState = ComponentState<TagButtonSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TagButtonProps.
-// & Required<Pick<TagButtonProps, 'propName'>>
+export type TagButtonState = TagState;

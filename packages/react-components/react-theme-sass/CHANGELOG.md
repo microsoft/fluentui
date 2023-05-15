@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:27:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.12)
+
+Fri, 12 May 2023 20:27:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.11..@fluentui/react-theme-sass_v9.0.0-alpha.12)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.11)
+
+Mon, 17 Apr 2023 17:54:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.10..@fluentui/react-theme-sass_v9.0.0-alpha.11)
+
+### Changes
+
+- fix: add "style" to exports field ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.10)
+
+Tue, 21 Mar 2023 21:23:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.9..@fluentui/react-theme-sass_v9.0.0-alpha.10)
+
+### Changes
+
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-theme to v9.1.7 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.9)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.8..@fluentui/react-theme-sass_v9.0.0-alpha.9)
+
+### Changes
+
+- feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.7)
 

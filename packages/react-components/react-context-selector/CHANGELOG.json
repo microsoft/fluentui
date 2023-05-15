@@ -2,6 +2,137 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Fri, 12 May 2023 20:28:24 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.19",
+      "version": "9.1.19",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.8.1",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 17:54:02 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.18",
+      "version": "9.1.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.8.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Apr 2023 09:31:45 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.17",
+      "version": "9.1.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.7.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Apr 2023 18:44:50 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.16",
+      "version": "9.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.7.3",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:23:30 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.15",
+      "version": "9.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.7.2",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Mar 2023 14:36:59 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.14",
+      "version": "9.1.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.7.1",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Mar 2023 08:58:26 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.13",
+      "version": "9.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.7.0",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:14:01 GMT",
       "tag": "@fluentui/react-context-selector_v9.1.12",
       "version": "9.1.12",

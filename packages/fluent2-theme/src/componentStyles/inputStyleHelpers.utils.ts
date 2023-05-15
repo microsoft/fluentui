@@ -24,10 +24,11 @@ export const getFluent2InputFocusStyles = (
 };
 
 export const getFluent2InputDisabledStyles = (theme: ITheme): IRawStyle => {
+  const { semanticColors } = theme;
   return {
     borderRadius: theme?.effects.roundedCorner4,
-    border: `1px solid ${theme.palette.neutralQuaternaryAlt}`,
-    color: theme.palette.neutralQuaternaryAlt,
+    border: `1px solid ${semanticColors.disabledBorder}`,
+    color: semanticColors.disabledText,
     backgroundColor: 'unset',
   };
 };

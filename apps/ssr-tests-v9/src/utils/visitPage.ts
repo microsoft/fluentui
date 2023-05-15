@@ -1,6 +1,8 @@
 import type { Browser } from 'puppeteer';
 import { visitUrl } from '@fluentui/scripts-puppeteer';
 import { PROVIDER_ID } from './constants';
+import * as React from 'react';
+import { containsAriaDescriptionWarning } from './helpers';
 
 class RenderError extends Error {
   public name = 'RangeError';
@@ -14,9 +16,17 @@ export async function visitPage(browser: Browser, url: string) {
 
   page.on('console', message => {
     if (message.type() === 'error') {
+      const messageContent = message.text();
+
+      // Ignoring 'aria-description' warning from react 17 as it's a valid prop
+      // https://github.com/facebook/react/issues/21035
+      if (containsAriaDescriptionWarning(messageContent) && React.version.startsWith('17')) {
+        return;
+      }
+
       // Ignoring network errors as we have an interceptor that prevents loading everything except our JS bundle
-      if (!message.text().includes('net::ERR_FAILED')) {
-        error = new RenderError(message.text());
+      if (!messageContent.includes('net::ERR_FAILED')) {
+        error = new RenderError(messageContent);
       }
     }
   });

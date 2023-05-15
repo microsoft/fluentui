@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: release 9.0.0",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -16,6 +16,8 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   verbose: false,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   testEnvironment: 'jsdom',
+  restoreMocks: true,
+  clearMocks: true,
   ...customConfig,
   moduleNameMapper: {
     ...getLernaAliases({

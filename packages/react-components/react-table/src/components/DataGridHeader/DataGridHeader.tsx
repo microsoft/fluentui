@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useDataGridHeader_unstable } from './useDataGridHeader';
 import { renderDataGridHeader_unstable } from './renderDataGridHeader';
-import { useDataGridHeaderStyles_unstable } from './useDataGridHeaderStyles';
+import { useDataGridHeaderStyles_unstable } from './useDataGridHeaderStyles.styles';
 import type { DataGridHeaderProps } from './DataGridHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DataGridHeader component
@@ -14,8 +14,7 @@ export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps> = React.fo
 
   useDataGridHeaderStyles_unstable(state);
 
-  const { useDataGridHeaderStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useDataGridHeaderStyles_unstable')(state);
 
   return renderDataGridHeader_unstable(state);
 });

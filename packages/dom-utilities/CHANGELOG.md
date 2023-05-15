@@ -1,8 +1,46 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Fri, 03 Feb 2023 07:50:06 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.9)
+
+Fri, 05 May 2023 18:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.8..@fluentui/dom-utilities_v2.2.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [2.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.8)
+
+Tue, 02 May 2023 00:58:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.7..@fluentui/dom-utilities_v2.2.8)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [2.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.7)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.6..@fluentui/dom-utilities_v2.2.7)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+
+## [2.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.6)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.5..@fluentui/dom-utilities_v2.2.6)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
 
 ## [2.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.5)
 

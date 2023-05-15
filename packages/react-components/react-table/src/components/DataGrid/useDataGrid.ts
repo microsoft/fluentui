@@ -37,7 +37,9 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
   } = props;
 
   const navigable = focusMode !== 'none';
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+  const keyboardNavAttr = useArrowNavigationGroup({
+    axis: 'grid',
+  });
 
   const tableState = useTableFeatures({ items, columns, getRowId }, [
     useTableSort({

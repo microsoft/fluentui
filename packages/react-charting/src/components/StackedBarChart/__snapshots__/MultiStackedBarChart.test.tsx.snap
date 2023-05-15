@@ -72,7 +72,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -97,7 +97,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -278,7 +278,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -303,7 +303,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -470,6 +470,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -735,7 +736,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -760,7 +761,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -941,7 +942,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -966,7 +967,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -1133,6 +1134,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1315,7 +1317,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -1489,7 +1491,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -1651,6 +1653,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1755,7 +1758,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -1879,7 +1882,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     font-size: 12px;
                     font-weight: 600;
                   }
-              data-is-focusable={true}
               dominantBaseline="central"
               role="img"
               transform="translate(4)"
@@ -1947,7 +1949,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -2071,7 +2073,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     font-size: 12px;
                     font-weight: 600;
                   }
-              data-is-focusable={true}
               dominantBaseline="central"
               role="img"
               transform="translate(4)"
@@ -2127,6 +2128,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2231,7 +2233,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -2256,7 +2258,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -2431,7 +2433,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -2456,7 +2458,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -2619,6 +2621,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2723,7 +2726,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -2748,7 +2751,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -2913,7 +2916,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -2938,7 +2941,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -3091,6 +3094,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3195,7 +3199,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -3220,7 +3224,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -3395,7 +3399,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -3420,7 +3424,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -3617,7 +3621,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -3791,7 +3795,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -3816,7 +3820,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -3979,6 +3983,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4011,7 +4016,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   role="none"
                 >
                   <button
-                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-label="Debit card numbers (EU and USA)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4101,7 +4106,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   role="none"
                 >
                   <button
-                    aria-label="Passport numbers (USA) selected"
+                    aria-label="Passport numbers (USA)"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4264,7 +4269,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Monitored
@@ -4289,7 +4294,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -4464,7 +4469,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             role="none"
           >
             <span
-              data-is-focusable={true}
+              data-is-focusable={false}
               role="text"
             >
               Unmonitored
@@ -4489,7 +4494,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </div>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <span
@@ -4652,6 +4657,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
