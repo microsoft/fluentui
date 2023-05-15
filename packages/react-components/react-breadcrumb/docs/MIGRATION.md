@@ -2,23 +2,25 @@
 
 ### Fabric (v8) property mapping
 
-This should be moved to MIGRATION.md later.
+While the logic in the V8 Breadcrumb component was cooked in, V9 offers partners more flexibility in implementation.
 Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrumb` component:
 
 #### New props
 
 - `appearance`
+- `size`
+- `iconPosition`
 
 #### Props no longer supported with an equivalent functionality in Breadcrumb V9:
 
-- `maxDisplayedItems`and `overflowIndex` - will be part of `partitionBreadcrumbItems` method
+- `maxDisplayedItems`and `overflowIndex` - will be part of `partitionBreadcrumbItems` method.
 - `className` => Slot system supports it by default. We don't need to provide it explicitly.
 - `items` => Use `children` prop instead.
-- `componentRef`
-- `dividerAs` => Divider is a separate component. Type of divider is passed to the Breadcrumb component.
+- `componentRef` => NOT SUPPORTED - use `ref` instead.
+- `dividerAs` => Divider is a separate component. Type of divider is passed to the Breadcrumb component as `dividerType`.
 - `focusZoneProps` => use `focusMode` instead.
-- `overflowButtonAs` => Custom component for the overflow button. - use custom overflow button instead.
-- `styles`
+- `overflowButtonAs` => Custom component for the overflow button - use custom overflow button instead.
+- `styles` => Use style customization through `className` instead.
 - `theme`
 - `overflowAriaLabel` => Aria label for the overflow button.
 
@@ -53,11 +55,14 @@ BreadcrumbItem component contains similar props in V9.
 | v8 `Breadcrumb`     | v9 `Breadcrumb` |
 | ------------------- | --------------- |
 | `ariaLabel`         |                 |
+|                     | `appearance`    |
 | `className`         |                 |
 | `componentRef`      |                 |
-| `dividerAs`         |                 |
+| `dividerAs`         | `dividerType`   |
 | `focusZoneProps`    |                 |
+|                     | `iconPosition`  |
 | `maxDisplayedItems` |                 |
+|                     | `size`          |
 
 ### Northstar property mapping
 
@@ -80,10 +85,14 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 | Northstar `Breadcrumb` | v9 `Breadcrumb` |
 | ---------------------- | --------------- |
 | `accessibility`        |                 |
+|                        | `appearance`    |
 | `as`                   |                 |
 | `className`            |                 |
 | `content`              |                 |
 | `design`               |                 |
+|                        | `dividerType`   |
+|                        | `iconPosition`  |
+| `size`                 | `size`          |
 | `styles`               |                 |
 | `variables`            |                 |
 
@@ -93,7 +102,7 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 
 #### BreadcrumbItem component:
 
-- `active` => Indicates if the link is the active.
+- `active` => Indicates if the link is the active. Use `current` instead.
 - `disabled` => The Breadcrumb Item can be disabled.
 
 #### Property Mapping
