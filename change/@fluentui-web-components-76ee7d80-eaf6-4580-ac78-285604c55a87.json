@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixes exports in Switch",
-  "packageName": "@fluentui/web-components",
-  "email": "ryan@ryanmerrill.net",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 08 May 2023 04:19:58 GMT and should not be manually modified.
+This log was last generated on Mon, 15 May 2023 04:19:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.21)
+
+Mon, 15 May 2023 04:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.20..@fluentui/web-components_v3.0.0-alpha.21)
+
+### Changes
+
+- Fixes exports in Switch ([PR #27821](https://github.com/microsoft/fluentui/pull/27821) by ryan@ryanmerrill.net)
 
 ## [3.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.20)
 
