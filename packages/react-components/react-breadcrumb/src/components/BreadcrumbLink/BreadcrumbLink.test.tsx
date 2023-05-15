@@ -114,7 +114,7 @@ describe('BreadcrumbLink', () => {
   });
 
   it('renders only icon', () => {
-    const result = render(<BreadcrumbLink href="#" icon={<ArrowRight16Filled />}></BreadcrumbLink>);
+    const result = render(<BreadcrumbLink href="#" icon={<ArrowRight16Filled />} />);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <a

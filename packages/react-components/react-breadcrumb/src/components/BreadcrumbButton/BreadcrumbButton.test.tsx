@@ -109,7 +109,7 @@ describe('BreadcrumbButton', () => {
   });
 
   it('renders only icon', () => {
-    const result = render(<BreadcrumbButton icon={<ArrowRight16Filled />}></BreadcrumbButton>);
+    const result = render(<BreadcrumbButton icon={<ArrowRight16Filled />} />);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
