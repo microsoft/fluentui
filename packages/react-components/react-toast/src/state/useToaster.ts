@@ -5,10 +5,11 @@ import { Toast, ToastPosition, ToasterOptions } from './types';
 import { ToasterProps } from '../components/Toaster';
 
 export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
+  const { toasterId, ...rest } = options;
   const forceRender = useForceUpdate();
-  const defaultToastOptions = useToastOptions(options);
+  const defaultToastOptions = useToastOptions(rest);
   const toasterRef = React.useRef<TElement>(null);
-  const [toaster] = React.useState(() => new Toaster());
+  const [toaster] = React.useState(() => new Toaster(toasterId));
 
   React.useEffect(() => {
     if (toasterRef.current) {
