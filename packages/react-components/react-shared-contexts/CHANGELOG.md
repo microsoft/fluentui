@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 21 Mar 2023 21:23:01 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:27:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.4.0)
+
+Fri, 12 May 2023 20:27:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.3.2..@fluentui/react-shared-contexts_v9.4.0)
+
+### Minor changes
+
+- feat: add style overrides for drawer components ([PR #27581](https://github.com/microsoft/fluentui/pull/27581) by marcosvmmoura@gmail.com)
+- Updated to provide single hook for noop tree-shaking ([PR #27491](https://github.com/microsoft/fluentui/pull/27491) by gcox@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.3.2)
 

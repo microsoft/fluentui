@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.5.4",
+  "version": "9.6.0",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,18 +27,18 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.20",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.21",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@griffel/core": "^1.9.0",
     "@griffel/react": "^1.5.2",
-    "@fluentui/react-shared-contexts": "^9.3.3",
-    "@fluentui/react-tabster": "^9.6.5",
-    "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.8.0",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.2",
+    "@fluentui/react-shared-contexts": "^9.4.0",
+    "@fluentui/react-tabster": "^9.7.0",
+    "@fluentui/react-theme": "^9.1.8",
+    "@fluentui/react-utilities": "^9.8.1",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.3",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

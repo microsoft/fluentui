@@ -6,17 +6,17 @@ export const Appearance = () => {
   return (
     <>
       <Tree aria-label="Tree">
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>Subtle tree item</TreeItemLayout>
         </TreeItem>
       </Tree>
       <Tree appearance="subtle-alpha" aria-label="Tree">
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>Subtle-alpha tree item</TreeItemLayout>
         </TreeItem>
       </Tree>
       <Tree appearance="transparent" aria-label="Tree">
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>Transparent tree item</TreeItemLayout>
         </TreeItem>
       </Tree>
