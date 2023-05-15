@@ -1,3 +1,5 @@
+// The underlying implementation of priority queue is vanilla js
+import { createPriorityQueue, PriorityQueue } from '@fluentui/react-utilities';
 import {
   Toast,
   ToasterOptions,
@@ -5,9 +7,9 @@ import {
   ToastOptions,
   ToastListenerMap,
   UpdateToastEventDetail,
-  ToasterId,
   ShowToastEventDetail,
   CommonToastDetail,
+  ToasterId,
 } from '../types';
 import { EVENTS } from '../constants';
 
@@ -27,26 +29,37 @@ export class Toaster {
   public toasts: Map<ToastId, Toast>;
   public onUpdate: () => void;
   private toasterElement?: HTMLElement;
-  private toasterOptions: ToasterOptions;
-  private toasterId?: ToastId;
+  private toastOptions: Pick<ToastOptions, 'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout'>;
+  private toasterId?: ToasterId;
+  private queue: PriorityQueue<Toast>;
+  private limit: number;
 
   private listeners = new Map<keyof ToastListenerMap, ToastListenerMap[keyof ToastListenerMap]>();
 
-  constructor(toasterId?: ToasterId) {
-    this.toasterId = toasterId;
+  constructor() {
     this.toasts = new Map<ToastId, Toast>();
     this.visibleToasts = new Set<ToastId>();
     this.onUpdate = () => null;
-    this.toasterOptions = {
+    this.toastOptions = {
+      priority: 0,
       pauseOnHover: false,
       pauseOnWindowBlur: false,
       position: 'bottom-right',
       timeout: 3000,
     };
+    this.queue = createPriorityQueue<Toast>((a, b) => {
+      if (a.priority === b.priority) {
+        return a.dispatchedAt - b.dispatchedAt;
+      }
+
+      return a.priority - b.priority;
+    });
+    this.limit = Number.POSITIVE_INFINITY;
   }
 
   public disconnect() {
     this.toasts.clear();
+    this.queue.clear();
 
     for (const [event, callback] of this.listeners.entries()) {
       this._removeEventListener(event, callback);
@@ -57,8 +70,11 @@ export class Toaster {
   }
 
   public connectToDOM(toasterElement: HTMLElement, options: Partial<ToasterOptions>) {
+    const { limit = Number.POSITIVE_INFINITY, toasterId, ...rest } = options;
     this.toasterElement = toasterElement;
-    assignDefined(this.toasterOptions, options);
+    this.limit = limit;
+    this.toasterId = toasterId;
+    assignDefined(this.toastOptions, rest);
 
     const buildToast: ToastListenerMap[typeof EVENTS.show] = e => this._buildToast(e.detail);
     const updateToast: ToastListenerMap[typeof EVENTS.update] = e => this._updateToast(e.detail);
@@ -124,6 +140,7 @@ export class Toaster {
 
   private _dismissAllToasts() {
     this.visibleToasts.clear();
+    this.queue.clear();
     this.onUpdate();
   }
 
@@ -141,23 +158,33 @@ export class Toaster {
 
     const remove = () => {
       this.toasts.delete(toastId);
+      if (this.queue.peek()) {
+        const nextToast = this.queue.dequeue();
+        this.toasts.set(nextToast.toastId, nextToast);
+        this.visibleToasts.add(nextToast.toastId);
+      }
       this.onUpdate();
     };
 
     const toast: Toast = {
-      ...this.toasterOptions,
+      ...this.toastOptions,
       close,
       remove,
       toastId,
       content,
       updateId: 0,
       toasterId,
+      dispatchedAt: Date.now(),
     };
 
     assignDefined<Toast>(toast, toastOptions);
 
-    this.visibleToasts.add(toastId);
-    this.toasts.set(toastId, toast);
-    this.onUpdate();
+    if (this.visibleToasts.size >= this.limit) {
+      this.queue.enqueue(toast);
+    } else {
+      this.toasts.set(toastId, toast);
+      this.visibleToasts.add(toastId);
+      this.onUpdate();
+    }
   }
 }
