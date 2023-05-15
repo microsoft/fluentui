@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ToolbarToggleButton should not follow Toolbar size",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

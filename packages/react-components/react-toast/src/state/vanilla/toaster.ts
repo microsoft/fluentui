@@ -1,11 +1,21 @@
-import { Toast, ToasterOptions, ToastId, ToastOptions, ToastListenerMap, UpdateToastEventDetail } from '../types';
+import {
+  Toast,
+  ToasterOptions,
+  ToastId,
+  ToastOptions,
+  ToastListenerMap,
+  UpdateToastEventDetail,
+  ToasterId,
+  ShowToastEventDetail,
+  CommonToastDetail,
+} from '../types';
 import { EVENTS } from '../constants';
 
 function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
-  for (const [key, prop] of Object.entries(b)) {
-    if (prop !== undefined) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+  // This cast is required, as Object.entries will return string as key which is not indexable
+  for (const [key, prop] of Object.entries(b) as [keyof T, T[keyof T]][]) {
+    // eslint-disable-next-line eqeqeq
+    if (prop != undefined) {
       a[key] = prop;
     }
   }
@@ -18,10 +28,12 @@ export class Toaster {
   public onUpdate: () => void;
   private toasterElement?: HTMLElement;
   private toasterOptions: ToasterOptions;
+  private toasterId?: ToastId;
 
   private listeners = new Map<keyof ToastListenerMap, ToastListenerMap[keyof ToastListenerMap]>();
 
-  constructor() {
+  constructor(toasterId?: ToasterId) {
+    this.toasterId = toasterId;
     this.toasts = new Map<ToastId, Toast>();
     this.visibleToasts = new Set<ToastId>();
     this.onUpdate = () => null;
@@ -50,17 +62,12 @@ export class Toaster {
 
     const buildToast: ToastListenerMap[typeof EVENTS.show] = e => this._buildToast(e.detail);
     const updateToast: ToastListenerMap[typeof EVENTS.update] = e => this._updateToast(e.detail);
-    const dismissToast: ToastListenerMap[typeof EVENTS.dismiss] = e => {
-      const { toastId } = e.detail;
-      if (toastId) {
-        this._dismissToast(toastId);
-      } else {
-        this._dismissAllToasts();
-      }
-    };
+    const dismissToast: ToastListenerMap[typeof EVENTS.dismiss] = e => this._dismissToast(e.detail.toastId);
+    const dismissAllToasts: ToastListenerMap[typeof EVENTS.dismissAll] = e => this._dismissAllToasts();
 
     this._addEventListener(EVENTS.show, buildToast);
     this._addEventListener(EVENTS.dismiss, dismissToast);
+    this._addEventListener(EVENTS.dismissAll, dismissAllToasts);
     this._addEventListener(EVENTS.update, updateToast);
   }
 
@@ -73,9 +80,17 @@ export class Toaster {
       return;
     }
 
-    this.listeners.set(eventType, callback);
+    const listener: ToastListenerMap[TType] = (e: CustomEvent<CommonToastDetail>) => {
+      if (e.detail.toasterId !== this.toasterId) {
+        return;
+      }
+
+      callback(e as CustomEvent<ShowToastEventDetail>);
+    };
+
+    this.listeners.set(eventType, listener);
     const targetDocument = this.toasterElement?.ownerDocument;
-    targetDocument.addEventListener(eventType, callback as () => void);
+    targetDocument.addEventListener(eventType, listener as () => void);
   }
 
   private _removeEventListener<TType extends keyof ToastListenerMap>(
@@ -113,7 +128,7 @@ export class Toaster {
   }
 
   private _buildToast(toastOptions: Partial<ToastOptions> & { toastId: ToastId }) {
-    const { toastId, content } = toastOptions;
+    const { toastId, content, toasterId } = toastOptions;
 
     if (this.toasts.has(toastId)) {
       return;
@@ -136,6 +151,7 @@ export class Toaster {
       toastId,
       content,
       updateId: 0,
+      toasterId,
     };
 
     assignDefined<Toast>(toast, toastOptions);

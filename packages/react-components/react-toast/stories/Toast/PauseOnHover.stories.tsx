@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Toaster, useToastController } from '@fluentui/react-toast';
+import { useId } from '@fluentui/react-components';
 
 export const PauseOnHover = () => {
+  const toasterId = useId('toaster');
   const { dispatchToast } = useToastController();
-  const notify = () => dispatchToast('Hover me!', { pauseOnHover: true });
+  const notify = () => dispatchToast('Hover me!', { pauseOnHover: true, toasterId });
 
   return (
     <>
-      <Toaster />
+      <Toaster toasterId={toasterId} />
       <button onClick={notify}>Make toast</button>
     </>
   );

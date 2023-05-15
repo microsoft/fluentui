@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove white border around presence badge when on a dark background",
-  "packageName": "@fluentui/react-badge",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
