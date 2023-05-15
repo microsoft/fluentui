@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: overflowManager should always dispatch initial state",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
