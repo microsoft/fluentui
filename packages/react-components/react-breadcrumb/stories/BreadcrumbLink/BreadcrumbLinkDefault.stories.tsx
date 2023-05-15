@@ -93,13 +93,13 @@ function renderLink(el: Item, isLastItem: boolean = false) {
 
 export const Default = () => (
   <>
-    <Breadcrumb aria-label="breadcrumb-0" size="small">
+    <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbLink" size="small">
       {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
     </Breadcrumb>
-    <Breadcrumb aria-label="breadcrumb-1" appearance="subtle">
+    <Breadcrumb aria-label="Subtle breadcrumb" appearance="subtle">
       {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
     </Breadcrumb>
-    <Breadcrumb aria-label="breadcrumb-2" size="large">
+    <Breadcrumb aria-label="Large breadcrumb with BreadcrumbLink" size="large">
       {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
     </Breadcrumb>
   </>

@@ -88,13 +88,13 @@ function renderButton(el: Item, isLastItem: boolean = false) {
 }
 export const Default = () => (
   <>
-    <Breadcrumb aria-label="breadcrumb-0" size="small">
+    <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbButton" size="small">
       {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
     </Breadcrumb>
-    <Breadcrumb aria-label="breadcrumb-1" appearance="subtle">
+    <Breadcrumb aria-label="Subtle breadcrumb" appearance="subtle">
       {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
     </Breadcrumb>
-    <Breadcrumb aria-label="breadcrumb-2" size="large">
+    <Breadcrumb aria-label="Large breadcrumb with BreadcrumbButton" size="large">
       {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
     </Breadcrumb>
   </>
