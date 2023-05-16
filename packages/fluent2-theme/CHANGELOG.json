@@ -2,6 +2,21 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Tue, 16 May 2023 07:39:13 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.9",
+      "version": "8.107.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "bfd75793f7ec35cec23e0b4f785ededb82a0e1dd",
+            "comment": "Update readme to include instructions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 May 2023 07:38:08 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.8",
       "version": "8.107.8",

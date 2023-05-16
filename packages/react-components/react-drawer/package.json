@@ -24,7 +24,8 @@
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

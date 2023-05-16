@@ -21,7 +21,8 @@
     "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -32,7 +33,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.8",
+    "@fluentui/fluent2-theme": "^8.107.9",
     "@fluentui/react": "^8.109.3",
     "@fluentui/react-components": "^9.20.0",
     "@fluentui/react-icons": "^2.0.196",

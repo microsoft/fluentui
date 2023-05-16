@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update readme to include instructions",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
