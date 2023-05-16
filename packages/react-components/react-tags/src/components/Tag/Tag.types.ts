@@ -16,11 +16,6 @@ export type TagSlots = {
    */
   media?: Slot<'span'>;
 
-  /**
-   * A layout wrapper for the icon slot, the primaryText and secondaryText slots
-   */
-  content: Slot<'div'>;
-
   icon?: Slot<'span'>;
 
   /**

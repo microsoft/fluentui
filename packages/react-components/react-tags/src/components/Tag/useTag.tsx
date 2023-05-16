@@ -45,7 +45,6 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
 
     components: {
       root: 'button',
-      content: 'div',
       media: 'span',
       icon: 'span',
       primaryText: 'span',
@@ -58,7 +57,6 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       ...props,
     }),
 
-    content: resolveShorthand(props.content, { required: true }),
     media: resolveShorthand(props.media),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, {
