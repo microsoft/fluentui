@@ -14,10 +14,11 @@ import type {
 import type { TreeItemProps } from '../TreeItem';
 import { ImmutableSet } from '../utils/ImmutableSet';
 
-export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
-  value: Value;
-  parentValue?: Value;
-};
+export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'itemType'> &
+  Partial<Pick<TreeItemProps<Value>, 'itemType'>> & {
+    value: Value;
+    parentValue?: Value;
+  };
 
 /**
  * The item that is returned by `useFlatTree`, it represents a wrapper around the properties provided to
@@ -35,7 +36,7 @@ export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItem
    * if a node has no parent then this reference will be null.
    */
   ref: React.RefObject<HTMLDivElement>;
-  getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>> &
+  getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> &
     Omit<Props, 'parentValue'>;
 };
 
@@ -152,19 +153,19 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = 
       const item = flatTreeItems.get(data.value);
       if (item) {
         switch (data.type) {
-          case treeDataTypes.typeAhead:
+          case treeDataTypes.TypeAhead:
             return item;
-          case treeDataTypes.arrowLeft:
+          case treeDataTypes.ArrowLeft:
             return flatTreeItems.get(item.parentValue!);
-          case treeDataTypes.arrowRight:
+          case treeDataTypes.ArrowRight:
             return visibleItems[item.index + 1];
-          case treeDataTypes.end:
+          case treeDataTypes.End:
             return visibleItems[visibleItems.length - 1];
-          case treeDataTypes.home:
+          case treeDataTypes.Home:
             return visibleItems[0];
-          case treeDataTypes.arrowDown:
+          case treeDataTypes.ArrowDown:
             return visibleItems[item.index + 1];
-          case treeDataTypes.arrowUp:
+          case treeDataTypes.ArrowUp:
             return visibleItems[item.index - 1];
         }
       }

@@ -2,13 +2,15 @@ import type { TreeItemPersonaLayoutSlots, TreeItemPersonaLayoutState } from './T
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { treeItemLevelToken } from '../../utils/tokens';
+import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
 export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
   root: 'fui-TreeItemPersonaLayout',
+  expandIcon: 'fui-TreeItemPersonaLayout__expandIcon',
   media: 'fui-TreeItemPersonaLayout__media',
   content: 'fui-TreeItemPersonaLayout__content',
   description: 'fui-TreeItemPersonaLayout__description',
-  aside: 'fui-TreeItemPersonaLayout__aside',
   main: 'fui-TreeItemPersonaLayout__main',
 };
 
@@ -17,10 +19,32 @@ export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayo
  */
 const useRootStyles = makeStyles({
   base: {
-    width: '100%',
     display: 'flex',
     alignItems: 'center',
     ...typographyStyles.body1,
+    ...shorthands.gridArea('layout'),
+    ':active': {
+      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      // TODO: stop using treeItemClassNames.expandIcon for styling
+      [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
+        color: tokens.colorNeutralForeground3Pressed,
+      },
+    },
+    ':hover': {
+      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      // TODO: stop using treeItemClassNames.expandIcon  for styling
+      [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
+        color: tokens.colorNeutralForeground3Hover,
+      },
+    },
+  },
+  leaf: {
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
+  },
+  branch: {
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
   },
 });
 
@@ -58,13 +82,19 @@ const useDescriptionStyles = makeStyles({
   },
 });
 
-const useAsideStyles = makeStyles({
+/**
+ * Styles for the expand icon slot
+ */
+const useExpandIconStyles = makeStyles({
   base: {
     display: 'flex',
-    flexDirection: 'column',
-    whiteSpace: 'nowrap',
-    paddingRight: tokens.spacingHorizontalM,
-    ...typographyStyles.caption1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: '24px',
+    boxSizing: 'border-box',
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.flex(0, 0, 'auto'),
+    ...shorthands.padding(tokens.spacingVerticalXS, 0),
   },
 });
 
@@ -78,9 +108,16 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const mediaStyles = useMediaStyles();
   const contentStyles = useContentStyles();
   const descriptionStyles = useDescriptionStyles();
-  const asideStyles = useAsideStyles();
+  const expandIconStyles = useExpandIconStyles();
 
-  state.root.className = mergeClasses(treeItemPersonaLayoutClassNames.root, rootStyles.base, state.root.className);
+  const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
+
+  state.root.className = mergeClasses(
+    treeItemPersonaLayoutClassNames.root,
+    rootStyles.base,
+    rootStyles[itemType],
+    state.root.className,
+  );
 
   state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaStyles.base, state.media.className);
 
@@ -101,11 +138,11 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       state.description.className,
     );
   }
-  if (state.aside) {
-    state.aside.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.aside,
-      asideStyles.base,
-      state.aside.className,
+  if (state.expandIcon) {
+    state.expandIcon.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.expandIcon,
+      expandIconStyles.base,
+      state.expandIcon.className,
     );
   }
 

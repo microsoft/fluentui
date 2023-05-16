@@ -532,6 +532,8 @@ import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSelect_unstable } from '@fluentui/react-select';
+import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
+import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
@@ -573,6 +575,18 @@ import { SelectTabEventHandler } from '@fluentui/react-tabs';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
+import { Skeleton } from '@fluentui/react-skeleton';
+import { skeletonClassNames } from '@fluentui/react-skeleton';
+import { SkeletonContextProvider } from '@fluentui/react-skeleton';
+import { SkeletonContextValue } from '@fluentui/react-skeleton';
+import { SkeletonItem } from '@fluentui/react-skeleton';
+import { skeletonItemClassNames } from '@fluentui/react-skeleton';
+import { SkeletonItemProps } from '@fluentui/react-skeleton';
+import { SkeletonItemSlots } from '@fluentui/react-skeleton';
+import { SkeletonItemState } from '@fluentui/react-skeleton';
+import { SkeletonProps } from '@fluentui/react-skeleton';
+import { SkeletonSlots } from '@fluentui/react-skeleton';
+import { SkeletonState } from '@fluentui/react-skeleton';
 import { Slider } from '@fluentui/react-slider';
 import { sliderClassNames } from '@fluentui/react-slider';
 import { sliderCSSVars } from '@fluentui/react-slider';
@@ -933,6 +947,11 @@ import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
+import { useSkeleton_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonContext } from '@fluentui/react-skeleton';
+import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -2060,6 +2079,10 @@ export { renderRadioGroup_unstable }
 
 export { renderSelect_unstable }
 
+export { renderSkeleton_unstable }
+
+export { renderSkeletonItem_unstable }
+
 export { renderSlider_unstable }
 
 export { renderSpinButton_unstable }
@@ -2141,6 +2164,30 @@ export { ShadowBrandTokens }
 export { ShadowTokens }
 
 export { shorthands }
+
+export { Skeleton }
+
+export { skeletonClassNames }
+
+export { SkeletonContextProvider }
+
+export { SkeletonContextValue }
+
+export { SkeletonItem }
+
+export { skeletonItemClassNames }
+
+export { SkeletonItemProps }
+
+export { SkeletonItemSlots }
+
+export { SkeletonItemState }
+
+export { SkeletonProps }
+
+export { SkeletonSlots }
+
+export { SkeletonState }
 
 export { Slider }
 
@@ -2861,6 +2908,16 @@ export { useScrollbarWidth }
 export { useSelect_unstable }
 
 export { useSelectStyles_unstable }
+
+export { useSkeleton_unstable }
+
+export { useSkeletonContext }
+
+export { useSkeletonItem_unstable }
+
+export { useSkeletonItemStyles_unstable }
+
+export { useSkeletonStyles_unstable }
 
 export { useSlider_unstable }
 
