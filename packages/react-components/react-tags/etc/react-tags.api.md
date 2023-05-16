@@ -17,10 +17,10 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element | null;
 
 // @public
-export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
+export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element | null;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -52,6 +52,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
     dismissible?: boolean;
+    onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent) => void;
     shape?: 'rounded' | 'circular';
     size?: 'extra-small' | 'small' | 'medium';
 };
@@ -70,6 +71,7 @@ export type TagSlots = {
 export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
     avatarSize: AvatarSize | undefined;
     avatarShape: AvatarShape | undefined;
+    dismissed: boolean;
 }>;
 
 // @public
