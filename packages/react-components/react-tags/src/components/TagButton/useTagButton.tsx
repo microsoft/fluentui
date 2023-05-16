@@ -4,7 +4,6 @@ import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
 
-// TODO: do we wanna share this?
 const tagButtonAvatarSizeMap = {
   medium: 28,
   small: 24,
