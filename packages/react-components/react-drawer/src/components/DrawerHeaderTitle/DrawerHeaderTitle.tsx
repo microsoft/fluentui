@@ -5,7 +5,6 @@ import { useDrawerHeaderTitleStyles_unstable } from './useDrawerHeaderTitleStyle
 import type { DrawerHeaderTitleProps } from './DrawerHeaderTitle.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
-import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 
 /**
  * DrawerHeader provides a structured header for the drawer component.
@@ -13,16 +12,6 @@ import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps> = React.forwardRef((props, ref) => {
   const state = useDrawerHeaderTitle_unstable(props, ref);
 
-  const { heading: root = {}, action, components } = state;
-
-  useDialogTitleStyles_unstable({
-    components: {
-      root: components.heading,
-      action: components.action,
-    },
-    root,
-    action,
-  });
   useDrawerHeaderTitleStyles_unstable(state);
   useCustomStyleHook_unstable('useDrawerHeaderTitleStyles_unstable')(state);
 
