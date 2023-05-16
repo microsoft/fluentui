@@ -3,7 +3,11 @@ import { EVENTS } from '../constants';
 
 let counter = 0;
 
-export function dispatchToast(content: unknown, options: Partial<ToastOptions> = {}, targetDocument: Document) {
+export function dispatchToast(
+  content: unknown,
+  options: Partial<Omit<ToastOptions, 'dispatchedAt'>> = {},
+  targetDocument: Document,
+) {
   const detail: ShowToastEventDetail = {
     ...options,
     content,

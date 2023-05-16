@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastId } from '@fluentui/react-toast';
+import { Toaster, useToastController } from '@fluentui/react-toast';
+import { useId } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
+  const toasterId = useId('toaster');
+  const toastId = useId('example');
   const { dispatchToast, updateToast } = useToastController();
-  const notify = (id: ToastId) => dispatchToast('This toast never closes', { toastId: id, timeout: -1 });
-  const update = (id: ToastId) => updateToast({ content: 'This toast will close soon', toastId: id, timeout: 1000 });
+  const notify = () => dispatchToast('This toast never closes', { toastId, timeout: -1, toasterId });
+  const update = () => updateToast({ content: 'This toast will close soon', toastId, timeout: 1000, toasterId });
 
   return (
     <>
-      <Toaster />
-      <button onClick={() => notify('EXAMPLE_ID')}>Make toast</button>
-      <button onClick={() => update('EXAMPLE_ID')}>Update toast</button>
+      <Toaster toasterId={toasterId} />
+      <button onClick={notify}>Make toast</button>
+      <button onClick={update}>Update toast</button>
     </>
   );
 };

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feature: Add dynamically sized virtualizer scroll view",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

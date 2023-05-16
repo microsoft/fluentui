@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: remove now-unnecessary enableOutline in createCustomFocusIndicator",
-  "packageName": "@fluentui/react-table",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

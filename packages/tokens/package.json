@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/tokens",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Fluent UI Theme Tokens",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,8 @@
     "test": "jest --passWithNoTests",
     "token-pipeline": "node -r ../../scripts/ts-node/register ../../scripts/generators/token-pipeline.ts",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.11)
+
+Fri, 12 May 2023 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.10..@fluentui/react-positioning_v9.5.11)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
 
 ## [9.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.10)
 
