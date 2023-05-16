@@ -13,7 +13,10 @@ export const Toaster: React_2.FC<ToasterProps>;
 export type ToastId = string;
 
 // @public (undocumented)
-export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
+
+// @public (undocumented)
+export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 
 // @public (undocumented)
 export function useToastController(): {
