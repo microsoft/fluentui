@@ -51,7 +51,7 @@ export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots>;
 
 // @public
-export type DrawerFooterProps = ComponentProps<DrawerFooterSlots> & {};
+export type DrawerFooterProps = ComponentProps<DrawerFooterSlots>;
 
 // @public (undocumented)
 export type DrawerFooterSlots = {
