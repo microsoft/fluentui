@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { TagContextValues, TagState } from '../components/Tag/index';
-import { TagButtonContextValues, TagButtonState } from '../TagButton';
+import { TagButtonContextValues } from '../TagButton';
 
 export function useTagContextValues_unstable(
-  state: Pick<TagState, 'avatarSize' | 'avatarShape'>
+  state: Pick<TagState, 'avatarSize' | 'avatarShape'>,
 ): TagContextValues | TagButtonContextValues {
   const { avatarSize, avatarShape } = state;
 
