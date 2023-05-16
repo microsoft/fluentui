@@ -8,3 +8,5 @@ export const Legends: React.FunctionComponent<ILegendsProps> = styled<ILegendsPr
   LegendsBase,
   getStyles,
 );
+
+export default Legends;

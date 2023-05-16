@@ -693,7 +693,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     opacity: 0.8;
                   }
             >
-               
+
             </div>
           </div>
           <div
@@ -1416,11 +1416,12 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
   "color": "#0078d4",
   "legend": "MetaData1"
 }
-          </pre>
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -2013,9 +2014,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2588,9 +2586,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2840,9 +2835,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       </g>
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3435,9 +3427,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4030,9 +4019,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4625,9 +4611,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -5220,8 +5203,5 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;

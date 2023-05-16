@@ -441,7 +441,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                     opacity: 0.8;
                   }
             >
-               
+
             </div>
           </div>
           <div
@@ -893,9 +893,6 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1326,9 +1323,6 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1507,9 +1501,6 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
       </g>
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1849,9 +1840,6 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2191,8 +2179,5 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;

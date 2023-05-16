@@ -437,7 +437,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element;
+  legendBars: JSX.Element | null;
 
   /**
    * Callout props
