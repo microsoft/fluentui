@@ -8,11 +8,12 @@
 
 import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
@@ -31,13 +32,17 @@ export const TagButton: ForwardRefComponent<TagButtonProps>;
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots>;
 
 // @public
-export type TagButtonProps = TagProps;
+export type TagButtonProps = ComponentProps<Partial<TagButtonSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
 
 // @public (undocumented)
-export type TagButtonSlots = TagSlots;
+export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
+    root: NonNullable<Slot<'div'>>;
+    dismissButton?: Slot<'button'>;
+    content: NonNullable<ARIAButtonSlotProps<'div'>>;
+};
 
 // @public
-export type TagButtonState = TagState;
+export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
@@ -53,13 +58,12 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
 
 // @public (undocumented)
 export type TagSlots = {
-    root: NonNullable<Slot<'div'>>;
-    media: Slot<'span'>;
-    content: Slot<'div'>;
-    icon: Slot<'span'>;
+    root: NonNullable<Slot<'button'>>;
+    media?: Slot<'span'>;
+    icon?: Slot<'span'>;
     primaryText: Slot<'span'>;
-    secondaryText: Slot<'span'>;
-    dismissButton: Slot<'button'>;
+    secondaryText?: Slot<'span'>;
+    dismissIcon?: Slot<'span'>;
 };
 
 // @public

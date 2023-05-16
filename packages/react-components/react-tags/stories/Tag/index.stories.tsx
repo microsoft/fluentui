@@ -11,7 +11,7 @@ export { Dismiss } from './TagDismiss.stories';
 export { Shape } from './TagShape.stories';
 
 export default {
-  title: 'Preview Components/Tag',
+  title: 'Preview Components/Tag/Tag',
   component: Tag,
   parameters: {
     docs: {

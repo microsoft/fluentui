@@ -15,21 +15,15 @@ export const renderTag_unstable = (state: TagState, contextValues: TagContextVal
 
   return (
     <slots.root {...slotProps.root}>
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.media && (
-            <AvatarContextProvider value={contextValues.avatar}>
-              <slots.media {...slotProps.media} />
-            </AvatarContextProvider>
-          )}
-          {slots.icon && <slots.icon {...slotProps.icon} />}
-          {slots.primaryText && (
-            <slots.primaryText {...slotProps.primaryText}>{slotProps.root.children}</slots.primaryText>
-          )}
-          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
-        </slots.content>
+      {slots.media && (
+        <AvatarContextProvider value={contextValues.avatar}>
+          <slots.media {...slotProps.media} />
+        </AvatarContextProvider>
       )}
-      {slots.dismissButton && state.dismissible && <slots.dismissButton {...slotProps.dismissButton} />}
+      {slots.icon && <slots.icon {...slotProps.icon} />}
+      {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
+      {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+      {slots.dismissIcon && state.dismissible && <slots.dismissIcon {...slotProps.dismissIcon} />}
     </slots.root>
   );
 };
