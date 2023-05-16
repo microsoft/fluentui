@@ -3,7 +3,7 @@ import { TagContextValues, TagState } from '../components/Tag/index';
 import { TagButtonContextValues, TagButtonState } from '../TagButton';
 
 export function useTagContextValues_unstable(
-  state: TagState | TagButtonState,
+  state: Pick<TagState, 'avatarSize' | 'avatarShape'>
 ): TagContextValues | TagButtonContextValues {
   const { avatarSize, avatarShape } = state;
 
