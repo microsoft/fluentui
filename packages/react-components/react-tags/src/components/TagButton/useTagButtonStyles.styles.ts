@@ -3,7 +3,7 @@ import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { useTagBaseStyles } from '../Tag/index';
+import { useResetButtonStyles, useTagBaseStyles } from '../Tag/index';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
@@ -15,39 +15,68 @@ export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   dismissButton: 'fui-TagButton__dismissButton',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
+  root: {
+    // TODO use makeResetStyle when styles are settled
+    display: 'inline-flex',
+
+    boxSizing: 'border-box',
+    height: '32px',
+    width: 'fit-content',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+  },
+  rootCircular: shorthands.borderRadius(tokens.borderRadiusCircular),
+
   content: {
-    position: 'relative',
+    display: 'inline-grid',
+    gridTemplateRows: '1fr auto auto 1fr',
+    gridTemplateAreas: `
+    "media .        "
+    "media primary  "
+    "media secondary"
+    "media .        "
+    `,
+    paddingRight: tokens.spacingHorizontalS,
+
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
         ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+        zIndex: 1,
       },
       { enableOutline: true },
     ),
   },
-
-  circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular), {
-    enableOutline: true,
-  }),
-  dismissibleContent: {
-    ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
-    }),
+  circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
+  contentWithoutMedia: {
+    paddingLeft: tokens.spacingHorizontalS,
   },
+  dismissibleContent: createCustomFocusIndicatorStyle({
+    borderTopRightRadius: tokens.borderRadiusNone,
+    borderBottomRightRadius: tokens.borderRadiusNone,
+  }),
 
   dismissButton: {
-    ...shorthands.padding('0px', '6px'),
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '20px',
+    paddingLeft: '6px',
+    paddingRight: '6px',
+
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+
     borderTopLeftRadius: tokens.borderRadiusNone,
     borderBottomLeftRadius: tokens.borderRadiusNone,
     ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
       borderTopLeftRadius: tokens.borderRadiusNone,
       borderBottomLeftRadius: tokens.borderRadiusNone,
+      borderTopRightRadius: tokens.borderRadiusMedium,
+      borderBottomRightRadius: tokens.borderRadiusMedium,
     }),
   },
   dismissButtonCircular: createCustomFocusIndicatorStyle({
@@ -63,22 +92,22 @@ const useStyles = makeStyles({
  */
 export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonState => {
   const baseStyles = useTagBaseStyles();
+  const resetButtonStyles = useResetButtonStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
     tagButtonClassNames.root,
-    baseStyles.root,
-    state.shape === 'circular' && baseStyles.rootCircular,
+    styles.root,
+    state.shape === 'circular' && styles.rootCircular,
     state.root.className,
   );
   if (state.content) {
     state.content.className = mergeClasses(
       tagButtonClassNames.content,
-      baseStyles.content,
-      !state.media && !state.icon && baseStyles.textOnlyContent,
 
       styles.content,
       state.shape === 'circular' && styles.circularContent,
+      !state.media && !state.icon && styles.contentWithoutMedia,
       state.dismissButton && styles.dismissibleContent,
 
       state.content.className,
@@ -109,8 +138,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagButtonClassNames.dismissButton,
-      baseStyles.resetButton,
-      baseStyles.dismissButton,
+      resetButtonStyles.resetButton,
 
       styles.dismissButton,
       state.shape === 'circular' && styles.dismissButtonCircular,

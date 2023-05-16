@@ -11,7 +11,7 @@ export { Dismiss } from './TagButtonDismiss.stories';
 export { Shape } from './TagButtonShape.stories';
 
 export default {
-  title: 'Preview Components/TagButton',
+  title: 'Preview Components/Tag/TagButton',
   component: TagButton,
   parameters: {
     docs: {

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { TagContextValues, TagState } from '../components/Tag/index';
+import { TagButtonContextValues } from '../TagButton';
 
-export function useTagContextValues_unstable(state: TagState): TagContextValues {
+export function useTagContextValues_unstable(
+  state: Pick<TagState, 'avatarSize' | 'avatarShape'>,
+): TagContextValues | TagButtonContextValues {
   const { avatarSize, avatarShape } = state;
 
   const avatar = React.useMemo(
