@@ -20,8 +20,8 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     root: rootShorthand,
     label: labelShorthand,
     infoButton: infoButtonShorthand,
+    info: infoShorthand,
     size,
-    info,
     className,
     style,
     ...labelProps
@@ -42,6 +42,12 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
       ref,
       size,
       ...labelProps,
+    },
+  });
+
+  const info = resolveShorthand(infoShorthand, {
+    defaultProps: {
+      id: useId('infolabel-info-'),
     },
   });
 

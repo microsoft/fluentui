@@ -43,4 +43,14 @@ describe('InfoLabel', () => {
 
     expect(infoButton.getAttribute('aria-labelledby')).toBe(`${label.id} ${infoButton.id}`);
   });
+
+  it("applies InfoButton's info slot id to aria-owns on the InfoLabel's wrapper", () => {
+    const { container } = render(<InfoLabel className="info-label-wrapper" info={{ id: 'test-id' }} />);
+    expect(container.getElementsByClassName('info-label-wrapper')[0].getAttribute('aria-owns')).toBe('test-id');
+  });
+
+  it("applies InfoButton's correct id to aria-owns on the InfoLabel's wrapper when id is provided to the infoButton slot", () => {
+    const { container } = render(<InfoLabel className="info-label-wrapper" infoButton={{ info: { id: 'test-id' } }} />);
+    expect(container.getElementsByClassName('info-label-wrapper')[0].getAttribute('aria-owns')).toBe('test-id');
+  });
 });

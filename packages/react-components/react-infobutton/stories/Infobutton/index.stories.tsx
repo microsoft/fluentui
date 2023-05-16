@@ -5,6 +5,7 @@ import bestPracticesMd from './InfoButtonBestPractices.md';
 
 export { Default } from './InfoButtonDefault.stories';
 export { Size } from './InfoButtonSize.stories';
+export { AriaOwns } from './InfoButtonAriaOwns.stories';
 
 export default {
   title: 'Preview Components/InfoButton',
