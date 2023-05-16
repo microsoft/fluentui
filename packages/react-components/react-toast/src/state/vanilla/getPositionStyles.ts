@@ -13,7 +13,9 @@ export const getPositionStyles = (position: ToastPosition, offset?: ToastOffset)
     position: 'fixed',
   };
 
-  const { horizontal = 0, vertical = 0 } = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};
+  const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};
+
+  const { horizontal = 0, vertical = 0 } = offsetStyles;
 
   switch (position) {
     case 'top-left':
