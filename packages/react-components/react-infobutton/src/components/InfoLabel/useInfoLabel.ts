@@ -20,7 +20,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     root: rootShorthand,
     label: labelShorthand,
     infoButton: infoButtonShorthand,
-    info: infoShorthand,
+    info,
     size,
     className,
     style,
@@ -45,24 +45,28 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     },
   });
 
-  const info = resolveShorthand(infoShorthand, {
-    defaultProps: {
-      id: useId('infolabel-info-'),
-    },
-  });
-
   const infoButton = resolveShorthand(infoButtonShorthand, {
     required: !!info,
     defaultProps: {
       id: useId('infobutton-'),
-      info,
       size,
+      info,
+    },
+  });
+
+  const infoButtonInfo = resolveShorthand(infoButton?.info, {
+    defaultProps: {
+      id: useId('infobutton-info-'),
     },
   });
 
   if (infoButton) {
+    infoButton.info = infoButtonInfo;
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
-    root['aria-owns'] = (infoButton.info as InfoButtonProps).id;
+
+    if (infoButton['aria-owns'] === undefined) {
+      root['aria-owns'] = (infoButton.info as InfoButtonProps).id;
+    }
   }
 
   return {
