@@ -144,7 +144,6 @@ describe('Menu', () => {
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
-            {/* eslint-disable-next-line @fluentui/max-len */}
             {/* @ts-expect-error - MenuItemComponent is union of 3 non-matching interfaces. Unnecessary narrowing logic would be needed which is out of scope for what is being tested  */}
             <MenuItemComponent disabled {...props}>
               Item

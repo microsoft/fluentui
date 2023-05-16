@@ -4,34 +4,16 @@ import { DialogProps } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
 
-/**
- * @internal
- * Create the state required to render DrawerDialog.
- * @param props - props from this instance of Drawer
- */
-const useDrawerDialogProps = (props: DrawerProps) => {
-  const { open, onOpenChange, modal, children, ...otherProps } = props;
+const getModalType = (modal?: DrawerProps['modal'], lightDismiss?: DrawerProps['lightDismiss']) => {
+  if (!modal) {
+    return 'non-modal';
+  }
 
-  const dialogProps = React.useMemo(() => {
-    return {
-      open,
-      onOpenChange,
-      modalType: modal ? 'modal' : 'non-modal',
-      children,
-    } as DialogProps;
-  }, [children, modal, onOpenChange, open]);
+  if (!lightDismiss) {
+    return 'alert';
+  }
 
-  const dialogSurfaceProps = React.useMemo(() => {
-    return {
-      ...otherProps,
-      children,
-    };
-  }, [children, otherProps]);
-
-  return {
-    dialog: dialogProps,
-    dialogSurface: dialogSurfaceProps,
-  };
+  return 'modal';
 };
 
 /**
@@ -49,9 +31,13 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     position = 'left',
     size = 'small',
     modal = true,
+    lightDismiss = true,
     separator = false,
+    onOpenChange,
+    children,
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
+    ...otherProps
   } = props;
 
   const [open] = useControllableState({
@@ -60,11 +46,19 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const { dialog, dialogSurface } = useDrawerDialogProps({
-    ...props,
-    open,
-    modal,
-  });
+  const dialogProps = React.useMemo(() => {
+    return {
+      modalType: getModalType(modal, lightDismiss),
+      open,
+      onOpenChange,
+      children,
+    } as DialogProps;
+  }, [children, lightDismiss, modal, onOpenChange, open]);
+
+  const dialogSurfaceProps = {
+    ...otherProps,
+    children,
+  };
 
   return {
     components: {
@@ -76,8 +70,8 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
       ...props,
     }),
 
-    dialog,
-    dialogSurface,
+    dialog: dialogProps,
+    dialogSurface: dialogSurfaceProps,
 
     type,
     open,

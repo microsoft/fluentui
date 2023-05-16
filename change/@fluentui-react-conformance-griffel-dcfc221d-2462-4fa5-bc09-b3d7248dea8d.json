@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add test-ssr script to v9 packages",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

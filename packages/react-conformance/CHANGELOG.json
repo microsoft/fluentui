@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Mon, 01 May 2023 07:39:51 GMT",
+      "tag": "@fluentui/react-conformance_v0.16.0",
+      "version": "0.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "3a6bbb0ca32a62a60195d248074236709d7e2b2d",
+            "comment": "feat: add new TS config api to be able to specify configName and configDir"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:55 GMT",
       "tag": "@fluentui/react-conformance_v0.15.6",
       "version": "0.15.6",

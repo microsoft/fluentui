@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 17 Apr 2023 07:40:24 GMT and should not be manually modified.
+This log was last generated on Mon, 01 May 2023 07:39:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.16.0)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.15.0..@fluentui/eslint-plugin_v1.16.0)
+
+### Minor changes
+
+- feat: enable @griffel/hook-naming rule ([PR #27687](https://github.com/microsoft/fluentui/pull/27687) by olfedias@microsoft.com)
 
 ## [1.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.15.0)
 

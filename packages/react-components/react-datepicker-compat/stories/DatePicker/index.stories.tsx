@@ -15,7 +15,7 @@ export { Required } from './DatePickerRequired.stories';
 export { Disabled } from './DatePickerDisabled.stories';
 
 export default {
-  title: 'Preview Components/DatePicker Compat',
+  title: 'Compat Components/DatePicker',
   component: DatePicker,
   parameters: {
     docs: {

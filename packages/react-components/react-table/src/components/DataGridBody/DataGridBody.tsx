@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useDataGridBody_unstable } from './useDataGridBody';
 import { renderDataGridBody_unstable } from './renderDataGridBody';
-import { useDataGridBodyStyles_unstable } from './useDataGridBodyStyles';
+import { useDataGridBodyStyles_unstable } from './useDataGridBodyStyles.styles';
 import type { DataGridBodyProps } from './DataGridBody.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DataGridBody component
@@ -15,8 +15,7 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps> &
 
   useDataGridBodyStyles_unstable(state);
 
-  const { useDataGridBodyStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useDataGridBodyStyles_unstable')(state);
 
   return renderDataGridBody_unstable(state);
 }) as ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);

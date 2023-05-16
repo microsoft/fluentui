@@ -28,6 +28,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
     [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
 };
 
+// @internal (undocumented)
+export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
+
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
@@ -112,6 +115,26 @@ export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
+// @internal (undocumented)
+export interface PriorityQueue<T> {
+    // (undocumented)
+    all: () => T[];
+    // (undocumented)
+    clear: () => void;
+    // (undocumented)
+    contains: (item: T) => boolean;
+    // (undocumented)
+    dequeue: () => T;
+    // (undocumented)
+    enqueue: (item: T) => void;
+    // (undocumented)
+    peek: () => T | null;
+    // (undocumented)
+    remove: (item: T) => void;
+    // (undocumented)
+    size: () => number;
+}
 
 // @public (undocumented)
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;

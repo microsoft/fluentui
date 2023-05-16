@@ -16,9 +16,10 @@ export const useBreadcrumbLink_unstable = (
   props: BreadcrumbLinkProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbLinkState => {
-  const { iconPosition, size } = useBreadcrumbContext_unstable();
+  const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
   const { current = false, disabled = false, icon, overflow = false, ...rest } = props;
 
+  const linkAppearance = props.appearance || appearance;
   const iconShorthand = resolveShorthand(icon);
 
   return {
@@ -30,6 +31,7 @@ export const useBreadcrumbLink_unstable = (
       ref,
       ...rest,
     }),
+    appearance: linkAppearance === 'subtle' ? 'subtle' : 'default',
     current,
     disabled,
     icon: iconShorthand,

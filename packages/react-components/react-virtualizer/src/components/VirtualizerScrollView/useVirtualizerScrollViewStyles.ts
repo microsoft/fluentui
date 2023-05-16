@@ -45,7 +45,7 @@ export const useVirtualizerScrollViewStyles_unstable = (
 ): VirtualizerScrollViewState => {
   const styles = useStyles();
 
-  // For now - just return default style mods
+  // Default virtualizer styles base
   useVirtualizerStyles_unstable(state);
 
   const containerStyle =
@@ -57,6 +57,7 @@ export const useVirtualizerScrollViewStyles_unstable = (
       ? styles.verticalReversed
       : styles.vertical;
 
+  // Add container styles
   state.container.className = mergeClasses(
     virtualizerScrollViewClassNames.container,
     styles.base,

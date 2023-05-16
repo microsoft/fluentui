@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Mon, 17 Apr 2023 17:53:44 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:28:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.46)
+
+Fri, 12 May 2023 20:28:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.45..@fluentui/react-alert_v9.0.0-beta.46)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: move makeStyles() calls to .styles.ts files ([PR #27698](https://github.com/microsoft/fluentui/pull/27698) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-button to v9.3.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.45)
+
+Mon, 24 Apr 2023 08:12:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.44..@fluentui/react-alert_v9.0.0-beta.45)
+
+### Changes
+
+- bugfix: remove caret from react-jsx-runtime prerelease dependency ([PR #27588](https://github.com/microsoft/fluentui/pull/27588) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-avatar to v9.4.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-button to v9.3.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
 
 ## [9.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.44)
 

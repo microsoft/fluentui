@@ -9,7 +9,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
-      diagnostics: false,
+      isolatedModules: true,
     },
   },
   transform: {
@@ -17,5 +17,4 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
 };

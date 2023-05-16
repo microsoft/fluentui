@@ -4,18 +4,23 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+/// <reference types="react" />
+
+import { AvatarShape } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTag_unstable: (state: TagState) => JSX.Element;
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
 
 // @public
-export const renderTagButton_unstable: (state: TagButtonState) => JSX.Element;
+export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -27,29 +32,45 @@ export const TagButton: ForwardRefComponent<TagButtonProps>;
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots>;
 
 // @public
-export type TagButtonProps = ComponentProps<TagButtonSlots> & {};
+export type TagButtonProps = ComponentProps<Partial<TagButtonSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
 
 // @public (undocumented)
-export type TagButtonSlots = {
-    root: Slot<'div'>;
+export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
+    root: NonNullable<Slot<'div'>>;
+    dismissButton?: Slot<'button'>;
+    content: NonNullable<ARIAButtonSlotProps<'div'>>;
 };
 
 // @public
-export type TagButtonState = ComponentState<TagButtonSlots>;
+export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
-export type TagProps = ComponentProps<TagSlots> & {};
+export type TagProps = ComponentProps<Partial<TagSlots>> & {
+    appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+    disabled?: boolean;
+    dismissible?: boolean;
+    shape?: 'rounded' | 'circular';
+    size?: 'extra-small' | 'small' | 'medium';
+};
 
 // @public (undocumented)
 export type TagSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'button'>>;
+    media?: Slot<'span'>;
+    icon?: Slot<'span'>;
+    primaryText: Slot<'span'>;
+    secondaryText?: Slot<'span'>;
+    dismissIcon?: Slot<'span'>;
 };
 
 // @public
-export type TagState = ComponentState<TagSlots>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
+    avatarSize: AvatarSize | undefined;
+    avatarShape: AvatarShape | undefined;
+}>;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
