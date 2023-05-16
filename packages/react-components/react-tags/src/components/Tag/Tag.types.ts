@@ -9,19 +9,14 @@ export type TagContextValues = {
 };
 
 export type TagSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'button'>>;
 
   /**
    * Slot for an icon or other visual element
    */
-  media: Slot<'span'>;
+  media?: Slot<'span'>;
 
-  /**
-   * A layout wrapper for the icon slot, the primaryText and secondaryText slots
-   */
-  content: Slot<'div'>;
-
-  icon: Slot<'span'>;
+  icon?: Slot<'span'>;
 
   /**
    * Main text for the Tag. Children of the root slot are automatically rendered here
@@ -31,9 +26,9 @@ export type TagSlots = {
   /**
    * Secondary text that describes or complements the main text
    */
-  secondaryText: Slot<'span'>;
+  secondaryText?: Slot<'span'>;
 
-  dismissButton: Slot<'button'>;
+  dismissIcon?: Slot<'span'>;
 };
 
 /**

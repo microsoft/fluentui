@@ -6,18 +6,18 @@ import { ToasterProps } from '../components/Toaster';
 
 export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
   const forceRender = useForceUpdate();
-  const defaultToastOptions = useToastOptions(options);
+  const toasterOptions = useToasterOptions(options);
   const toasterRef = React.useRef<TElement>(null);
   const [toaster] = React.useState(() => new Toaster());
 
   React.useEffect(() => {
     if (toasterRef.current) {
-      toaster.connectToDOM(toasterRef.current, defaultToastOptions);
+      toaster.connectToDOM(toasterRef.current, toasterOptions);
       toaster.onUpdate = forceRender;
     }
 
     return () => toaster.disconnect();
-  }, [toaster, defaultToastOptions, forceRender]);
+  }, [toaster, forceRender, toasterOptions]);
 
   const getToastsToRender = React.useCallback(
     <T>(cb: (position: ToastPosition, toasts: Toast[]) => T) => {
@@ -52,8 +52,8 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterProps =
   };
 }
 
-function useToastOptions(options: ToasterProps): Partial<ToasterOptions> {
-  const { pauseOnHover, pauseOnWindowBlur, position, timeout } = options;
+function useToasterOptions(options: ToasterProps): Partial<ToasterOptions> {
+  const { pauseOnHover, pauseOnWindowBlur, position, timeout, limit, toasterId } = options;
 
   return React.useMemo<Partial<ToasterOptions>>(
     () => ({
@@ -61,7 +61,9 @@ function useToastOptions(options: ToasterProps): Partial<ToasterOptions> {
       pauseOnWindowBlur,
       position,
       timeout,
+      limit,
+      toasterId,
     }),
-    [pauseOnHover, pauseOnWindowBlur, position, timeout],
+    [pauseOnHover, pauseOnWindowBlur, position, timeout, limit, toasterId],
   );
 }

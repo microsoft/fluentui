@@ -32,6 +32,7 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeDisabled),
     [`& > textarea`]: {
+      color: tokens.colorNeutralForegroundDisabled,
       cursor: 'not-allowed',
       '::placeholder': {
         color: tokens.colorNeutralForegroundDisabled,
@@ -244,9 +245,9 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   state.root.className = mergeClasses(
     textareaClassNames.root,
     rootStyles.base,
-    rootStyles[appearance],
-    filled && rootStyles.filled,
     disabled && rootStyles.disabled,
+    !disabled && filled && rootStyles.filled,
+    !disabled && rootStyles[appearance],
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && invalid && rootStyles.invalid,
