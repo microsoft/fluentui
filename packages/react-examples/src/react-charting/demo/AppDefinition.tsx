@@ -21,6 +21,18 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/linechart',
         },
         {
+          component: require<any>('../LineChart/LineChartPageOne').LineChartPageOne,
+          key: 'LineChartExampleOne',
+          name: 'Line Chart example one',
+          url: '#/examples/linechartone',
+        },
+        {
+          component: require<any>('../LineChart/LineChartPageTwo').LineChartPageTwo,
+          key: 'LineChartExampleTwo',
+          name: 'Line Chart Example Two',
+          url: '#/examples/linecharttwo',
+        },
+        {
           component: require<any>('../AreaChart/AreaChartPage').AreaChart,
           key: 'AreaChart',
           name: 'Area Chart',
