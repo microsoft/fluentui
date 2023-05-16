@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 
   container: {
     ...shorthands.padding(tokens.spacingHorizontalXXL),
-
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',

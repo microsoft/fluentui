@@ -13,6 +13,7 @@ export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots> = {
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalXXL, tokens.spacingVerticalXXL),
+
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
