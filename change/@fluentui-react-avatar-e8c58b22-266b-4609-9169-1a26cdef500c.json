@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make border around badge transparent, not a solid color",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

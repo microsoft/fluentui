@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Mon, 01 May 2023 07:39:54 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:13:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.13)
+
+Fri, 05 May 2023 18:13:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.12..@fluentui/react-window-provider_v2.2.13)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/test-utilities to v8.3.4 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [2.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.12)
+
+Tue, 02 May 2023 22:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.11..@fluentui/react-window-provider_v2.2.12)
+
+### Patches
+
+- Bump @fluentui/test-utilities to v8.3.3 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [2.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.11)
+
+Tue, 02 May 2023 00:58:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.10..@fluentui/react-window-provider_v2.2.11)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
 
 ## [2.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.10)
 

@@ -50,7 +50,10 @@ export {
   isHTMLElement,
   isInteractiveHTMLElement,
   omit,
+  createPriorityQueue,
 } from './utils/index';
+
+export type { PriorityQueue } from './utils/priorityQueue';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
 

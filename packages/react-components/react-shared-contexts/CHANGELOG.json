@@ -2,6 +2,49 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Fri, 12 May 2023 20:27:41 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "3a9044346aced02d96e8cde65b46e88e8d9d32ec",
+            "comment": "feat: add style overrides for drawer components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Updated to provide single hook for noop tree-shaking"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.8",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:01 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.3.2",
       "version": "9.3.2",

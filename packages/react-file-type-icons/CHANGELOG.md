@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Mon, 01 May 2023 07:39:52 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.17)
+
+Fri, 05 May 2023 18:14:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.16..@fluentui/react-file-type-icons_v8.8.17)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/style-utilities to v8.9.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [8.8.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.16)
+
+Tue, 02 May 2023 22:20:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.15..@fluentui/react-file-type-icons_v8.8.16)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/style-utilities to v8.9.9 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [8.8.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.15)
+
+Tue, 02 May 2023 00:58:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.14..@fluentui/react-file-type-icons_v8.8.15)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/style-utilities to v8.9.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
 
 ## [8.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.14)
 

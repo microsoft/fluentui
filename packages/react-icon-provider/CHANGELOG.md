@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Mon, 01 May 2023 07:39:54 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.38)
+
+Fri, 05 May 2023 18:14:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.37..@fluentui/react-icon-provider_v1.3.38)
+
+### Patches
+
+- chore add !dist to npmignore files ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/style-utilities to v8.9.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [1.3.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.37)
+
+Tue, 02 May 2023 22:20:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.36..@fluentui/react-icon-provider_v1.3.37)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/style-utilities to v8.9.9 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [1.3.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.36)
+
+Tue, 02 May 2023 00:58:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.35..@fluentui/react-icon-provider_v1.3.36)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/style-utilities to v8.9.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
 
 ## [1.3.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.35)
 
