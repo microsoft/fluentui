@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
+import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagAvatarSizeMap = {
@@ -27,7 +28,7 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
-  const { size: contextSize } = useTagGroupContext_unstable();
+  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const {
     appearance = 'filled-lighter',
@@ -36,6 +37,26 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     shape = 'rounded',
     size = contextSize,
   } = props;
+
+  const id = useId('fui-Tag', props.id);
+
+  const handleClick = useEventCallback(
+    (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+      props.onClick?.(ev);
+      if (!ev.defaultPrevented) {
+        handleTagDismiss?.(ev, id);
+      }
+    },
+  );
+
+  const handleKeyDown = useEventCallback(
+    (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+      props?.onKeyDown?.(ev);
+      if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+        handleTagDismiss?.(ev, id);
+      }
+    },
+  );
 
   return {
     appearance,
@@ -58,6 +79,9 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref,
       ...props,
+      id,
+      onClick: handleClick,
+      onKeyDown: handleKeyDown,
     }),
 
     media: resolveShorthand(props.media),
