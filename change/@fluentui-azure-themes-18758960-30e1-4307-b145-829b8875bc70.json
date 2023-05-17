@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "azure theme (light only): body text updated to #292827 to bring contrast ratio to 3.0 to inline hyperlink. Messagebar link color updated to #005A9E (rest) and #004578 (hover) for contrast ratio purposes ",
+  "packageName": "@fluentui/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
