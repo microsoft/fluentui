@@ -16,14 +16,14 @@ When a set of controls is visually presented as a group, the toolbar role can be
 
 ### Inputs
 
+- @attr orientation: "horizontal" "vertical" | "horizontal"
 - @attr size: "small" "medium" "large" | "medium"
 
 ### Outputs
 
 ### Slots
 
-The following slots are defined in the FAST Toolbar component. Nothing new is being added in this component
-
+- label: Content which appears as the label for the toolbar.
 - start: Content which appears at the start of the toolbar, before the default slotted items.
 - default: Content which appears in the default location of the toolbar, left-aligned.
 - end: Content which appears at the end of the toolbar, right aligned.
@@ -35,6 +35,12 @@ None
 ## Interactions
 
 Interactions are inherited from FAST Toolbar component.
+
+| Name             | Description                             |
+| ---------------- | --------------------------------------- |
+| `clickHandler`   | Sets the active index                   |
+| `focusinHandler` | Sets focus on element with active index |
+| `keydownHandler` | Handles keydown events on the toolbar   |
 
 ## Accessibility
 
