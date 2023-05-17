@@ -90,12 +90,6 @@ export const styles = css`
     margin-inline-start: unset;
     row-gap: var(--toolbar-item-gap);
   }
-  :host([orientation='vertical'][size='small']) {
-    padding: ${spacingHorizontalNone} ${spacingHorizontalXS};
-  }
-  :host([orientation='vertical'][size='large']) {
-    padding: ${spacingHorizontalXL} ${spacingHorizontalXS};
-  }
   :host([orientation='vertical']) ::slotted(fluent-divider) {
     max-width: 20px;
     min-width: 20px;
