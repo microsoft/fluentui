@@ -3,7 +3,7 @@ import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSe
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { tableCellClassNames, useTableCellStyles_unstable } from '../TableCell/useTableCellStyles';
+import { tableCellClassNames, useTableCellStyles_unstable } from '../TableCell/useTableCellStyles.styles';
 
 export const CELL_WIDTH = 44;
 
