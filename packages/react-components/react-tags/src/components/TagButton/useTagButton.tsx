@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
@@ -35,24 +35,17 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
-    onDismiss,
     shape = 'rounded',
     size = 'medium',
   } = props;
 
-  const [dismissed, setDismissed] = React.useState(false);
-
-  const dismiss = React.useCallback(() => {
-    setDismissed(true);
-    handleTagDismiss();
-  }, [handleTagDismiss]);
+  const id = useId('fui-Tag', props.id);
 
   const onDismissButtonClick = useEventCallback(
     (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
       props.onClick?.(ev);
       if (!ev.defaultPrevented) {
-        onDismiss?.(ev);
-        dismiss();
+        handleTagDismiss?.(ev, id);
       }
     },
   );
@@ -61,8 +54,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
       props?.onKeyDown?.(ev);
       if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-        onDismiss?.(ev);
-        dismiss();
+        handleTagDismiss?.(ev, id);
       }
     },
   );
@@ -81,7 +73,6 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     avatarShape: tagButtonAvatarShapeMap[shape],
     avatarSize: tagButtonAvatarSizeMap[size],
     disabled,
-    dismissed,
     dismissible,
     shape,
     size,
@@ -99,6 +90,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     root: getNativeElementProps('div', {
       ref,
       ...props,
+      id,
     }),
 
     content: useARIAButtonShorthand(props.content, {

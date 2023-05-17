@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
@@ -34,24 +34,17 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
-    onDismiss,
     shape = 'rounded',
     size = 'medium',
   } = props;
 
-  const [dismissed, setDismissed] = React.useState(false);
-
-  const dismiss = React.useCallback(() => {
-    setDismissed(true);
-    handleTagDismiss();
-  }, [handleTagDismiss]);
+  const id = useId('fui-Tag', props.id);
 
   const handleClick = useEventCallback(
     (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
       props.onClick?.(ev);
       if (!ev.defaultPrevented) {
-        onDismiss?.(ev);
-        dismiss();
+        handleTagDismiss?.(ev, id);
       }
     },
   );
@@ -60,8 +53,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
       props?.onKeyDown?.(ev);
       if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-        onDismiss?.(ev);
-        dismiss();
+        handleTagDismiss?.(ev, id);
       }
     },
   );
@@ -71,7 +63,6 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     avatarShape: tagAvatarShapeMap[shape],
     avatarSize: tagAvatarSizeMap[size],
     disabled,
-    dismissed,
     dismissible,
     shape,
     size,
@@ -88,6 +79,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref,
       ...props,
+      id,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
     }),

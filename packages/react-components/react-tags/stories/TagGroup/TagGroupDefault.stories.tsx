@@ -6,17 +6,15 @@ const Calendar3Day20Icon = bundleIcon(Calendar3Day20Filled, Calendar3Day20Regula
 
 export const Default = (props: Partial<TagGroupProps>) => (
   <TagGroup {...props}>
-    <Tag dismissible shape="circular" icon={<Calendar3Day20Icon />}>
+    <Tag shape="circular" icon={<Calendar3Day20Icon />}>
       Tag 1
     </Tag>
-    <TagButton dismissible shape="circular" icon={<Calendar3Day20Icon />}>
+    <TagButton shape="circular" icon={<Calendar3Day20Icon />}>
       Tag 2
     </TagButton>
     <TagButton shape="circular" icon={<Calendar3Day20Icon />}>
       Tag 3
     </TagButton>
-    <TagButton dismissible shape="circular">
-      Tag 4
-    </TagButton>
+    <TagButton shape="circular">Tag 4</TagButton>
   </TagGroup>
 );

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
-import { useFocusFinders } from '@fluentui/react-tabster';
-import { tagButtonClassNames } from '../TagButton/useTagButtonStyles.styles';
 
 /**
  * Create the state required to render TagGroup.
@@ -14,17 +12,15 @@ import { tagButtonClassNames } from '../TagButton/useTagButtonStyles.styles';
  * @param ref - reference to root HTMLElement of TagGroup
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLElement>): TagGroupState => {
-  const { findLastFocusable, findPrevFocusable } = useFocusFinders();
   const innerRef = React.useRef<HTMLDivElement>(null);
 
-  const handleTagDismiss = React.useCallback(() => {
-    const lastFocusable = findLastFocusable(innerRef.current as HTMLElement);
-    if (lastFocusable && lastFocusable.classList.contains(tagButtonClassNames.dismissButton)) {
-      findPrevFocusable(lastFocusable)?.focus();
-    } else {
-      lastFocusable?.focus();
-    }
-  }, [findLastFocusable, findPrevFocusable]);
+  const { items = [], onDismiss, children } = props;
+
+  const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
+    onDismiss?.(e, [id]);
+
+    // TODO set focus after tag dismiss
+  });
 
   return {
     components: {
@@ -32,9 +28,11 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, innerRef),
-      // TODO aria attributes
       ...props,
+      children: typeof children === 'function' ? items.map(item => children(item)) : children,
+      // TODO aria attributes
     }),
+    items,
     handleTagDismiss,
   };
 };

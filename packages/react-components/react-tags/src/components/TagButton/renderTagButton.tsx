@@ -13,7 +13,7 @@ import { AvatarContextProvider } from '@fluentui/react-avatar';
 export const renderTagButton_unstable = (state: TagButtonState, contextValues: TagButtonContextValues) => {
   const { slots, slotProps } = getSlotsNext<TagButtonSlots>(state);
 
-  return state.dismissed ? null : (
+  return (
     <slots.root {...slotProps.root}>
       {slots.content && (
         <slots.content {...slotProps.content}>

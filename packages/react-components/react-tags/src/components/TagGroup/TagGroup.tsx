@@ -9,12 +9,13 @@ import { useTagGroupContextValue_unstable } from './useTagGroupContextValue';
 /**
  * TagGroup component - TODO: add more docs
  */
-export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef((props, ref) => {
-  const state = useTagGroup_unstable(props, ref);
+export const TagGroup: ForwardRefComponent<TagGroupProps> & (<TItem>(props: TagGroupProps<TItem>) => JSX.Element) =
+  React.forwardRef((props, ref) => {
+    const state = useTagGroup_unstable(props, ref);
 
-  useTagGroupStyles_unstable(state);
+    useTagGroupStyles_unstable(state);
 
-  return renderTagGroup_unstable(state, useTagGroupContextValue_unstable(state));
-});
+    return renderTagGroup_unstable(state, useTagGroupContextValue_unstable(state));
+  }) as ForwardRefComponent<TagGroupProps> & (<TItem>(props: TagGroupProps<TItem>) => JSX.Element);
 
 TagGroup.displayName = 'TagGroup';

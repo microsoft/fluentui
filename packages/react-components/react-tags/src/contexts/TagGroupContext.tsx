@@ -10,7 +10,7 @@ const tagGroupContextDefaultValue: TagGroupContextValue = {
 /**
  * Context shared between TagGroup and its children components
  */
-export type TagGroupContextValue = Pick<TagGroupState, 'handleTagDismiss'>;
+export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismiss'>>;
 
 export const TagGroupContextProvider = TagGroupContext.Provider;
 
