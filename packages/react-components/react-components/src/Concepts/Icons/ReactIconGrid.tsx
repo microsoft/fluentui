@@ -9,26 +9,28 @@ import { makeStyles, shorthands } from '@griffel/react';
 const useStyles = makeStyles({
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'auto auto auto auto',
+    gridTemplateColumns: 'repeat(4, 1fr)',
     gridGap: '10px',
     backgroundColor: '#F7F7F7',
+  },
 
-    '> div': {
-      alignItems: 'center',
-      backgroundColor: '#FFFFFF',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      ...shorthands.padding('8px'),
-      ...shorthands.overflow('hidden'),
+  iconBox: {
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    contain: 'content',
+    contentVisibility: 'auto',
+    ...shorthands.padding('8px'),
+    ...shorthands.overflow('hidden'),
+  },
 
-      '> code': {
-        fontSize: '8px',
-        display: 'inline-block',
-        height: 'auto',
-        ...shorthands.padding('0px 8px'),
-      },
-    },
+  iconName: {
+    fontSize: '8px',
+    display: 'inline-block',
+    height: 'auto',
+    ...shorthands.padding('0px 8px'),
   },
 
   searchBox: {
@@ -43,22 +45,21 @@ const useStyles = makeStyles({
   },
 });
 
-const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIcons)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  .map(iconName => (ReactIcons as any)[iconName])
-  .filter(icon => !!icon && !!icon.displayName);
+const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.values(ReactIcons).filter(
+  icon => !!icon && !!icon.displayName,
+);
 
 const ReactIconGrid = () => {
   const [search, setSearch] = React.useState('');
-  const [size, setSize] = React.useState<string | number>(24);
+  const [size, setSize] = React.useState<string>('24');
   const styles = useStyles();
 
-  const _onSearchQueryChanged = (ev?: React.FormEvent<HTMLInputElement>) => {
-    setSearch(ev ? ev.currentTarget.value : '');
+  const _onSearchQueryChanged = (ev: React.FormEvent<HTMLInputElement>) => {
+    setSearch(ev.currentTarget.value);
   };
 
-  const _filterBySize = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>) => {
-    const newSize = ev ? (ev.currentTarget as HTMLInputElement).value : '';
+  const _filterBySize = (ev: React.FormEvent<HTMLInputElement>) => {
+    const newSize = ev.currentTarget.value;
     if (newSize === 'All') {
       setSize('');
     } else if (newSize === 'Unsized') {
@@ -70,10 +71,10 @@ const ReactIconGrid = () => {
 
   const _renderIcon = (Icon: React.FC<FluentIconsProps>): JSX.Element => {
     return (
-      <div key={Icon.displayName} aria-label={Icon.displayName}>
+      <div key={Icon.displayName} aria-label={Icon.displayName} className={styles.iconBox}>
         <Icon />
         <br />
-        <code>{Icon.displayName}</code>
+        <code className={styles.iconName}>{Icon.displayName}</code>
       </div>
     );
   };
@@ -85,14 +86,11 @@ const ReactIconGrid = () => {
           return (
             icon.displayName! &&
             !/\d/.test(icon.displayName.toLowerCase()) &&
-            icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1
+            icon.displayName?.toLowerCase().includes(search.toLowerCase())
           );
         }
 
-        return (
-          icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-          icon.displayName?.indexOf(String(size)) !== -1
-        );
+        return icon.displayName?.toLowerCase().includes(search.toLowerCase()) && icon.displayName?.includes(size);
       }),
     [search, size],
   );
@@ -108,11 +106,11 @@ const ReactIconGrid = () => {
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
       />
-      {[16, 20, 24, 28, 32, 48, 'Unsized', 'All'].map(option => (
+      {['16', '20', '24', '28', '32', '48', 'Unsized', 'All'].map(option => (
         <>
           <input
             id={`option-${option}`}
-            defaultChecked={option === 24}
+            defaultChecked={option === '24'}
             type="radio"
             value={option}
             name="size"
