@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
@@ -10,7 +11,7 @@ import {
   IYValueHover,
 } from '../../index';
 import {
-  ChartHoverCard,
+  // ChartHoverCard,
   convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
@@ -32,6 +33,7 @@ import {
 import { LegendShape, Shape } from '../Legends/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
+const ChartHoverCard = lazy(() => import('../../utilities/ChartHoverCard/ChartHoverCard'));
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -152,6 +154,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
     let children = null;
+    let callout: JSX.Element | null = null;
     if (this.chartContainer) {
       const XAxisParams = {
         domainNRangeValues: getDomainNRangeValues(
@@ -261,6 +264,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale,
         yScale,
       });
+      if (!this.props.hideTooltip && calloutProps!.isCalloutVisible) {
+        callout = this._generateCallout(calloutProps, chartHoverProps);
+      }
     }
 
     this._classNames = getClassNames(this.props.styles!, {
@@ -324,35 +330,50 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {children}
           </svg>
         </FocusZone>
+
         {!this.props.hideLegend && (
           <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {this.props.legendBars}
           </div>
         )}
-        {/** The callout is used for narration, so keep it mounted on the DOM */}
-        <Callout
-          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
-          /** Keep the callout updated with details of focused/hovered chart element */
-          shouldUpdateWhenHidden={true}
-          {...calloutProps}
-        >
-          {/** Given custom callout, then it will render */}
-          {this.props.customizedCallout && this.props.customizedCallout}
-          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-            <ChartHoverCard
-              XValue={calloutProps.XValue}
-              Legend={calloutProps.legend!}
-              YValue={calloutProps.YValue!}
-              color={calloutProps.color!}
-              culture={this.props.culture}
-              {...chartHoverProps}
-            />
-          )}
-        </Callout>
+        {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
+          <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>
+        )}
       </div>
+    );
+  }
+  /**
+   * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
+   * only the calloutprops and charthover props changes.
+   * @param calloutProps
+   * @param chartHoverProps
+   * @returns
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
+    return (
+      <Callout
+        hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+        /** Keep the callout updated with details of focused/hovered chart element */
+        shouldUpdateWhenHidden={true}
+        {...calloutProps}
+      >
+        {/** Given custom callout, then it will render */}
+        {this.props.customizedCallout && this.props.customizedCallout}
+        {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+        {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+        {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+        {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+          <ChartHoverCard
+            XValue={calloutProps.XValue}
+            Legend={calloutProps.legend!}
+            YValue={calloutProps.YValue!}
+            color={calloutProps.color!}
+            culture={this.props.culture}
+            {...chartHoverProps}
+          />
+        )}
+      </Callout>
     );
   }
 

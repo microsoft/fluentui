@@ -9,3 +9,5 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   ICartesianChartStyleProps,
   ICartesianChartStyles
 >(CartesianChartBase, getStyles);
+
+export default CartesianChart;
