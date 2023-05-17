@@ -3,33 +3,30 @@
  */
 
 import { makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 export const useToastStyles = makeStyles({
   toast: {
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('4px'),
-    display: 'flex',
-    minHeight: '40px',
-    maxHeight: '40px',
-    minWidth: '200px',
-    maxWidth: '200px',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    boxSizing: 'border-box',
+    marginTop: '16px',
+    minHeight: '44px',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    '--fui-toast-height': '44px',
   },
-
-  slide: {
+  enter: {
     animationDuration: '200ms, 400ms',
     animationDelay: '0ms, 200ms',
     animationName: [
       {
         from: {
-          height: '0',
-          minHeight: '0',
-          maxHeight: '0',
+          maxHeight: 0,
           opacity: 0,
+          marginTop: 0,
         },
         to: {
+          marginTop: '16px',
           opacity: 0,
+          maxHeight: 'var(--fui-toast-height)',
         },
       },
       {
@@ -43,7 +40,7 @@ export const useToastStyles = makeStyles({
     ],
   },
 
-  fadeOut: {
+  exit: {
     animationDuration: '400ms, 200ms',
     animationDelay: '0ms, 400ms',
     animationName: [
@@ -61,9 +58,8 @@ export const useToastStyles = makeStyles({
         },
         to: {
           opacity: 0,
-          height: 0,
+          marginTop: 0,
           maxHeight: 0,
-          minHeight: 0,
         },
       },
     ],

@@ -7,5 +7,6 @@ import { makeStyles } from '@griffel/react';
 export const useToasterStyles = makeStyles({
   container: {
     position: 'fixed',
+    width: '292px',
   },
 });
