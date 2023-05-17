@@ -17,10 +17,13 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element | null;
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
 
 // @public
-export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element | null;
+export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
+
+// @public
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValue) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -48,13 +51,31 @@ export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'co
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
+export const TagGroup: ForwardRefComponent<TagGroupProps>;
+
+// @public (undocumented)
+export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
+
+// @public
+export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+    size?: TagSize;
+};
+
+// @public (undocumented)
+export type TagGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TagGroupState = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>>;
+
+// @public
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
     dismissible?: boolean;
-    onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent) => void;
     shape?: 'rounded' | 'circular';
-    size?: 'extra-small' | 'small' | 'medium';
+    size?: TagSize;
 };
 
 // @public (undocumented)
@@ -71,7 +92,6 @@ export type TagSlots = {
 export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
     avatarSize: AvatarSize | undefined;
     avatarShape: AvatarShape | undefined;
-    dismissed: boolean;
 }>;
 
 // @public
@@ -82,6 +102,12 @@ export const useTagButton_unstable: (props: TagButtonProps, ref: React_2.Ref<HTM
 
 // @public
 export const useTagButtonStyles_unstable: (state: TagButtonState) => TagButtonState;
+
+// @public
+export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
+
+// @public
+export const useTagGroupStyles_unstable: (state: TagGroupState) => TagGroupState;
 
 // @public
 export const useTagStyles_unstable: (state: TagState) => TagState;
