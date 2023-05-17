@@ -92,6 +92,8 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDataGridHeaderStyles_unstable: CustomStyleHook;
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+    useDrawerStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -179,6 +181,8 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDataGridHeaderStyles_unstable: CustomStyleHook;
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+    useDrawerStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -266,6 +270,8 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDataGridHeaderStyles_unstable: CustomStyleHook;
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+    useDrawerStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

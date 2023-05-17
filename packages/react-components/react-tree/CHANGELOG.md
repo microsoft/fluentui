@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 24 Apr 2023 08:12:44 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:28:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.13)
+
+Fri, 12 May 2023 20:28:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.12..@fluentui/react-tree_v9.0.0-beta.13)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- feat: TreeItem itemType restructure ([PR #27799](https://github.com/microsoft/fluentui/pull/27799) by bernardo.sunderhus@gmail.com)
+- feat: creates TreeItemAside component ([PR #27701](https://github.com/microsoft/fluentui/pull/27701) by bernardo.sunderhus@gmail.com)
+- feat: makes useFlatTree generic ([PR #27682](https://github.com/microsoft/fluentui/pull/27682) by bernardo.sunderhus@gmail.com)
+- chore: updates useOpenItemsState internals ([PR #27697](https://github.com/microsoft/fluentui/pull/27697) by bernardo.sunderhus@gmail.com)
+- chore: move makeStyles() calls to .styles.ts files ([PR #27698](https://github.com/microsoft/fluentui/pull/27698) by olfedias@microsoft.com)
+- feat: adds lazy loading story ([PR #27587](https://github.com/microsoft/fluentui/pull/27587) by bernardo.sunderhus@gmail.com)
+- bugfix: fix horizontal overflow on tree ([PR #27825](https://github.com/microsoft/fluentui/pull/27825) by bernardo.sunderhus@gmail.com)
+- bugfix: fix VisibleFlatTreeItemGenerator omitting visible items ([PR #27802](https://github.com/microsoft/fluentui/pull/27802) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-aria to v9.3.19 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-avatar to v9.5.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-button to v9.3.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.19 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-portal to v9.2.7 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.12)
 

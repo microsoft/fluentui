@@ -108,4 +108,7 @@ export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
+export type TreeState = ComponentState<TreeSlots> &
+  TreeContextValue & {
+    open: boolean;
+  };
