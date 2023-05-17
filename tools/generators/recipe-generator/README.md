@@ -1,6 +1,6 @@
 # recipe-generator
 
-Workspace Generator ...TODO...
+Workspace Generator to create a recipe.
 
 <!-- toc -->
 
@@ -14,7 +14,7 @@ Workspace Generator ...TODO...
 ## Usage
 
 ```sh
-yarn nx workspace-generator recipe-generator ...
+yarn nx workspace-generator recipe-generator
 ```
 
 Show what will be generated without writing to disk:
@@ -25,14 +25,22 @@ yarn nx workspace-generator recipe-generator --dry-run
 
 ### Examples
 
+Guided CLI prompt:
+
 ```sh
 yarn nx workspace-generator recipe-generator
 ```
 
+Single command:
+
+```sh
+yarn nx workspace-generator recipe-generator --recipeName 'My Recipe'
+```
+
 ## Options
 
-#### `name`
+#### `recipeName`
 
 Type: `string`
 
-TODO...
+Name for the recipe. This name will be used to generate the folder name and file names.
