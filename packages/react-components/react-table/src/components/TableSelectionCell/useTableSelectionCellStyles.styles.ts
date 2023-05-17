@@ -3,11 +3,12 @@ import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSe
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { tableCellClassNames, useTableCellStyles_unstable } from '../TableCell/useTableCellStyles';
 
 export const CELL_WIDTH = 44;
 
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
-  root: 'fui-TableSelectionCell',
+  root: tableCellClassNames.root,
   checkboxIndicator: 'fui-TableSelectionCell__checkboxIndicator',
   radioIndicator: 'fui-TableSelectionCell__radioIndicator',
 };
@@ -73,6 +74,7 @@ const useStyles = makeStyles({
  */
 export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellState): TableSelectionCellState => {
   const styles = useStyles();
+  useTableCellStyles_unstable(state);
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
