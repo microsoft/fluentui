@@ -5,12 +5,13 @@ export const TagGroupContext = React.createContext<TagGroupContextValue | undefi
 
 const tagGroupContextDefaultValue: TagGroupContextValue = {
   handleTagDismiss: () => null,
+  size: 'medium',
 };
 
 /**
  * Context shared between TagGroup and its children components
  */
-export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismiss'>>;
+export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismiss' | 'size'>>;
 
 export const TagGroupContextProvider = TagGroupContext.Provider;
 

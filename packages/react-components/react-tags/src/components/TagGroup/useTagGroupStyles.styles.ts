@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     display: 'inline-flex',
     columnGap: tokens.spacingHorizontalS,
   },
+  rootSmall: {
+    columnGap: tokens.spacingHorizontalSNudge,
+  },
 });
 
 /**
@@ -22,7 +25,12 @@ const useStyles = makeStyles({
  */
 export const useTagGroupStyles_unstable = (state: TagGroupState): TagGroupState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tagGroupClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    tagGroupClassNames.root,
+    styles.root,
+    state.size === 'small' && styles.rootSmall,
+    state.root.className,
+  );
 
   return state;
 };

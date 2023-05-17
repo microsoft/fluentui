@@ -1,6 +1,8 @@
 import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+export type TagSize = 'extra-small' | 'small' | 'medium';
+
 export type TagContextValues = {
   avatar: {
     size?: AvatarSize;
@@ -39,7 +41,7 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
   disabled?: boolean;
   dismissible?: boolean;
   shape?: 'rounded' | 'circular';
-  size?: 'extra-small' | 'small' | 'medium';
+  size?: TagSize;
 };
 
 /**

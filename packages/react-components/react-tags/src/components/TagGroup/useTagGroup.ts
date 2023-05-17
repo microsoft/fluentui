@@ -14,7 +14,7 @@ import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLElement>): TagGroupState => {
   const innerRef = React.useRef<HTMLDivElement>(null);
 
-  const { items = [], onDismiss, children } = props;
+  const { children, onDismiss, items = [], size = 'medium' } = props;
 
   const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
     onDismiss?.(e, [id]);
@@ -23,16 +23,19 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
   });
 
   return {
+    handleTagDismiss,
+    items,
+    size,
+
     components: {
       root: 'div',
     },
+
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, innerRef),
       ...props,
       children: typeof children === 'function' ? items.map(item => children(item)) : children,
       // TODO aria attributes
     }),
-    items,
-    handleTagDismiss,
   };
 };

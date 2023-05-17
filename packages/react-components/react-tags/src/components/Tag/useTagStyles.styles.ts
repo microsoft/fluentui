@@ -122,6 +122,14 @@ const useTagStyles = makeStyles({
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
+
+const useSmallTagStyles = makeStyles({
+  root: {
+    height: '24px',
+  },
+  // TODO add additional styles for sizes
+});
+
 /**
  * Apply styling to the Tag slots based on the state
  */
@@ -129,6 +137,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const baseStyles = useTagBaseStyles();
   const resetButtonStyles = useResetButtonStyles();
   const styles = useTagStyles();
+  const smallStyles = useSmallTagStyles();
 
   state.root.className = mergeClasses(
     tagClassNames.root,
@@ -138,6 +147,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     state.shape === 'circular' && styles.rootCircular,
     !state.media && !state.icon && styles.rootWithoutMedia,
     !state.dismissIcon && styles.rootWithoutDismiss,
+
+    state.size === 'small' && smallStyles.root,
 
     state.root.className,
   );
