@@ -1,29 +1,65 @@
 import { EVENTS } from './constants';
 
 export type ToastId = string;
+export type ToasterId = string;
 
-export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 
 export interface ToastOptions {
-  toastId?: ToastId;
-  position?: ToastPosition;
-  content?: unknown;
-  timeout?: number;
+  toastId: ToastId;
+  position: ToastPosition;
+  content: unknown;
+  timeout: number;
+  pauseOnWindowBlur: boolean;
+  pauseOnHover: boolean;
+  toasterId: ToasterId | undefined;
+  priority: number;
+  dispatchedAt: number;
 }
 
-export interface Toast extends Required<Omit<ToastOptions, 'toasterId'>> {
+export interface ToastOffsetObject {
+  horizontal?: number;
+  vertical?: number;
+}
+
+export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
+
+export interface ToasterOptions
+  extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover' | 'priority'> {
+  offset?: ToastOffset;
+  toasterId?: ToasterId;
+  limit?: number;
+}
+
+export interface Toast extends ToastOptions {
   close: () => void;
   remove: () => void;
+  updateId: number;
 }
 
-export interface DismissToastEventDetail {
-  toastId: ToastId | undefined;
+export interface CommonToastDetail {
+  toasterId?: ToasterId;
 }
 
-export interface ToastEventMap {
-  [EVENTS.show]: CustomEvent<ToastOptions>;
-  [EVENTS.dismiss]: CustomEvent<DismissToastEventDetail>;
+export interface ShowToastEventDetail extends Partial<Omit<ToastOptions, 'dispatchedAt'>>, CommonToastDetail {
+  toastId: ToastId;
 }
 
-export type ToastEventListenerGeneric<K extends keyof ToastEventMap> = (e: ToastEventMap[K]) => void;
-export type ToastEventListener = <K extends keyof ToastEventMap>(e: ToastEventMap[K]) => void;
+export interface UpdateToastEventDetail extends Partial<Omit<ToastOptions, 'dispatchedAt'>>, CommonToastDetail {
+  toastId: ToastId;
+}
+
+export interface DismissToastEventDetail extends CommonToastDetail {
+  toastId: ToastId;
+}
+
+export interface DismissAllToastsEventDetail extends CommonToastDetail {}
+
+type EventListener<TDetail> = (e: CustomEvent<TDetail>) => void;
+
+export type ToastListenerMap = {
+  [EVENTS.show]: EventListener<ShowToastEventDetail>;
+  [EVENTS.dismiss]: EventListener<DismissToastEventDetail>;
+  [EVENTS.dismissAll]: EventListener<DismissAllToastsEventDetail>;
+  [EVENTS.update]: EventListener<UpdateToastEventDetail>;
+};

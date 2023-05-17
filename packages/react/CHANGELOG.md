@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 09 May 2023 07:38:07 GMT and should not be manually modified.
+This log was last generated on Wed, 17 May 2023 07:37:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.109.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.4)
+
+Wed, 17 May 2023 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.3..@fluentui/react_v8.109.4)
+
+### Patches
+
+- DetailsList has been modified to warn when "getKey" and "selection" props are passed simultaneously. The "getKey" property is never used if a Selection object is passed. Either the "getKey" prop from the Selection object is used, or Selection's default getKey implementation (item) => item.key is used, but never the "getKey" prop passed to DetailsList. Making "getKey" and "selection" mutually exclusive DetailsList properties prevents users from making this mistake. ([PR #24048](https://github.com/microsoft/fluentui/pull/24048) by alexok@microsoft.com)
 
 ## [8.109.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.3)
 

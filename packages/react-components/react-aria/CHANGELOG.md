@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:28:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.19)
+
+Fri, 12 May 2023 20:28:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.18..@fluentui/react-aria_v9.3.19)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
 
 ## [9.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.18)
 

@@ -30,14 +30,22 @@ import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
+import { renderTreeItemAside_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
+import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeItem } from '@fluentui/react-tree';
+import { TreeItemAside } from '@fluentui/react-tree';
+import { treeItemAsideClassNames } from '@fluentui/react-tree';
+import { TreeItemAsideProps } from '@fluentui/react-tree';
+import { TreeItemAsideSlots } from '@fluentui/react-tree';
+import { TreeItemAsideState } from '@fluentui/react-tree';
 import { treeItemClassNames } from '@fluentui/react-tree';
 import { TreeItemLayout } from '@fluentui/react-tree';
 import { treeItemLayoutClassNames } from '@fluentui/react-tree';
@@ -64,16 +72,20 @@ import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
+import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
+import { useTreeItemAside_unstable } from '@fluentui/react-tree';
+import { useTreeItemAsideStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemContext_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
@@ -82,15 +94,27 @@ import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerContext_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewDynamicStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
 import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
 import { virtualizerClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerContextProps } from '@fluentui/react-virtualizer';
+import { VirtualizerContextProvider } from '@fluentui/react-virtualizer';
+import { VirtualizerMeasureDynamicProps } from '@fluentui/react-virtualizer';
+import { VirtualizerMeasureProps } from '@fluentui/react-virtualizer';
 import { VirtualizerProps } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
+import { virtualizerScrollViewDynamicClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicState } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollViewProps } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollViewSlots } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollViewState } from '@fluentui/react-virtualizer';
@@ -149,6 +173,8 @@ export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
 
+export { renderTreeItemAside_unstable }
+
 export { renderTreeItemLayout_unstable }
 
 export { renderTreeItemPersonaLayout_unstable }
@@ -157,6 +183,10 @@ export { renderVirtualizer_unstable }
 
 export { renderVirtualizerScrollView_unstable }
 
+export { renderVirtualizerScrollViewDynamic_unstable }
+
+export { ResizeCallbackWithRef }
+
 export { Tree }
 
 export { treeClassNames }
@@ -164,6 +194,16 @@ export { treeClassNames }
 export { TreeContextValue }
 
 export { TreeItem }
+
+export { TreeItemAside }
+
+export { treeItemAsideClassNames }
+
+export { TreeItemAsideProps }
+
+export { TreeItemAsideSlots }
+
+export { TreeItemAsideState }
 
 export { treeItemClassNames }
 
@@ -217,6 +257,8 @@ export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
 
+export { useDynamicVirtualizerMeasure }
+
 export { useFlatTree_unstable }
 
 export { useInfoButton_unstable }
@@ -229,6 +271,8 @@ export { useInfoLabelStyles_unstable }
 
 export { useIntersectionObserver }
 
+export { useResizeObserverRef_unstable }
+
 export { useStaticVirtualizerMeasure }
 
 export { useTree_unstable }
@@ -236,6 +280,10 @@ export { useTree_unstable }
 export { useTreeContext_unstable }
 
 export { useTreeItem_unstable }
+
+export { useTreeItemAside_unstable }
+
+export { useTreeItemAsideStyles_unstable }
 
 export { useTreeItemContext_unstable }
 
@@ -253,7 +301,13 @@ export { useTreeStyles_unstable }
 
 export { useVirtualizer_unstable }
 
+export { useVirtualizerContext_unstable }
+
 export { useVirtualizerScrollView_unstable }
+
+export { useVirtualizerScrollViewDynamic_unstable }
+
+export { useVirtualizerScrollViewDynamicStyles_unstable }
 
 export { useVirtualizerScrollViewStyles_unstable }
 
@@ -265,11 +319,29 @@ export { VirtualizerChildRenderFunction }
 
 export { virtualizerClassNames }
 
+export { VirtualizerContextProps }
+
+export { VirtualizerContextProvider }
+
+export { VirtualizerMeasureDynamicProps }
+
+export { VirtualizerMeasureProps }
+
 export { VirtualizerProps }
 
 export { VirtualizerScrollView }
 
 export { virtualizerScrollViewClassNames }
+
+export { VirtualizerScrollViewDynamic }
+
+export { virtualizerScrollViewDynamicClassNames }
+
+export { VirtualizerScrollViewDynamicProps }
+
+export { VirtualizerScrollViewDynamicSlots }
+
+export { VirtualizerScrollViewDynamicState }
 
 export { VirtualizerScrollViewProps }
 

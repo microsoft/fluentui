@@ -1,66 +1,136 @@
-import { Toast, ToastEventListener, ToastEventListenerGeneric, ToastEventMap, ToastId, ToastOptions } from '../types';
+// The underlying implementation of priority queue is vanilla js
+import { createPriorityQueue, PriorityQueue } from '@fluentui/react-utilities';
+import {
+  Toast,
+  ToasterOptions,
+  ToastId,
+  ToastOptions,
+  ToastListenerMap,
+  UpdateToastEventDetail,
+  ShowToastEventDetail,
+  CommonToastDetail,
+  ToasterId,
+} from '../types';
 import { EVENTS } from '../constants';
+
+function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
+  // This cast is required, as Object.entries will return string as key which is not indexable
+  for (const [key, prop] of Object.entries(b) as [keyof T, T[keyof T]][]) {
+    // eslint-disable-next-line eqeqeq
+    if (prop != undefined) {
+      a[key] = prop;
+    }
+  }
+}
 
 // TODO convert to closure
 export class Toaster {
   public visibleToasts: Set<ToastId>;
   public toasts: Map<ToastId, Toast>;
   public onUpdate: () => void;
-  private targetDocument: Document;
+  private toasterElement?: HTMLElement;
+  private toastOptions: Pick<ToastOptions, 'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout'>;
+  private toasterId?: ToasterId;
+  private queue: PriorityQueue<Toast>;
+  private limit: number;
 
-  private listeners = new Map<keyof ToastEventMap, ToastEventListener>();
+  private listeners = new Map<keyof ToastListenerMap, ToastListenerMap[keyof ToastListenerMap]>();
 
-  constructor(targetDocument: Document) {
+  constructor() {
     this.toasts = new Map<ToastId, Toast>();
     this.visibleToasts = new Set<ToastId>();
     this.onUpdate = () => null;
-    this.targetDocument = targetDocument;
+    this.toastOptions = {
+      priority: 0,
+      pauseOnHover: false,
+      pauseOnWindowBlur: false,
+      position: 'bottom-right',
+      timeout: 3000,
+    };
+    this.queue = createPriorityQueue<Toast>((a, b) => {
+      if (a.priority === b.priority) {
+        return a.dispatchedAt - b.dispatchedAt;
+      }
 
-    this._initEvents();
+      return a.priority - b.priority;
+    });
+    this.limit = Number.POSITIVE_INFINITY;
   }
 
-  public dispose() {
+  public disconnect() {
     this.toasts.clear();
+    this.queue.clear();
+
     for (const [event, callback] of this.listeners.entries()) {
       this._removeEventListener(event, callback);
       this.listeners.delete(event);
     }
+
+    this.toasterElement = undefined;
   }
 
-  public isToastVisible(toastId: ToastId) {
-    return this.visibleToasts.has(toastId);
-  }
+  public connectToDOM(toasterElement: HTMLElement, options: Partial<ToasterOptions>) {
+    const { limit = Number.POSITIVE_INFINITY, toasterId, ...rest } = options;
+    this.toasterElement = toasterElement;
+    this.limit = limit;
+    this.toasterId = toasterId;
+    assignDefined(this.toastOptions, rest);
 
-  private _initEvents() {
-    const buildToast: ToastEventListener = e => this._buildToast(e.detail);
-    const dismissToast: ToastEventListener = e => {
-      const { toastId } = e.detail;
-      if (toastId) {
-        this._dismissToast(toastId);
-      } else {
-        this._dismissAllToasts();
-      }
-    };
-
-    this.listeners.set(EVENTS.show, buildToast);
-    this.listeners.set(EVENTS.dismiss, dismissToast);
+    const buildToast: ToastListenerMap[typeof EVENTS.show] = e => this._buildToast(e.detail);
+    const updateToast: ToastListenerMap[typeof EVENTS.update] = e => this._updateToast(e.detail);
+    const dismissToast: ToastListenerMap[typeof EVENTS.dismiss] = e => this._dismissToast(e.detail.toastId);
+    const dismissAllToasts: ToastListenerMap[typeof EVENTS.dismissAll] = e => this._dismissAllToasts();
 
     this._addEventListener(EVENTS.show, buildToast);
     this._addEventListener(EVENTS.dismiss, dismissToast);
+    this._addEventListener(EVENTS.dismissAll, dismissAllToasts);
+    this._addEventListener(EVENTS.update, updateToast);
   }
 
-  private _addEventListener<TEvent extends keyof ToastEventMap>(
-    eventType: TEvent,
-    callback: ToastEventListenerGeneric<TEvent>,
-  ) {
-    this.targetDocument.addEventListener(eventType, callback as () => void);
+  public isToastVisible = (toastId: ToastId) => {
+    return this.visibleToasts.has(toastId);
+  };
+
+  private _addEventListener<TType extends keyof ToastListenerMap>(eventType: TType, callback: ToastListenerMap[TType]) {
+    if (!this.toasterElement) {
+      return;
+    }
+
+    const listener: ToastListenerMap[TType] = (e: CustomEvent<CommonToastDetail>) => {
+      if (e.detail.toasterId !== this.toasterId) {
+        return;
+      }
+
+      callback(e as CustomEvent<ShowToastEventDetail>);
+    };
+
+    this.listeners.set(eventType, listener);
+    const targetDocument = this.toasterElement?.ownerDocument;
+    targetDocument.addEventListener(eventType, listener as () => void);
   }
 
-  private _removeEventListener<TEvent extends keyof ToastEventMap>(
-    eventType: keyof ToastEventMap,
-    callback: ToastEventListenerGeneric<TEvent>,
+  private _removeEventListener<TType extends keyof ToastListenerMap>(
+    eventType: TType,
+    callback: ToastListenerMap[TType],
   ) {
-    this.targetDocument.removeEventListener(eventType, callback as () => void);
+    if (!this.toasterElement) {
+      return;
+    }
+
+    const targetDocument = this.toasterElement?.ownerDocument;
+    targetDocument.removeEventListener(eventType, callback as () => void);
+  }
+
+  private _updateToast(toastOptions: UpdateToastEventDetail) {
+    const { toastId } = toastOptions;
+    const toastToUpdate = this.toasts.get(toastId);
+    if (!toastToUpdate) {
+      return;
+    }
+
+    Object.assign(toastToUpdate, toastOptions);
+    toastToUpdate.updateId++;
+    this.onUpdate();
   }
 
   private _dismissToast(toastId: ToastId) {
@@ -70,11 +140,13 @@ export class Toaster {
 
   private _dismissAllToasts() {
     this.visibleToasts.clear();
+    this.queue.clear();
     this.onUpdate();
   }
 
-  private _buildToast(toastOptions: ToastOptions) {
-    const { toastId = '', position = 'bottom-right', timeout = 3000, content = '' } = toastOptions;
+  private _buildToast(toastOptions: Partial<ToastOptions> & { toastId: ToastId }) {
+    const { toastId, content, toasterId } = toastOptions;
+
     if (this.toasts.has(toastId)) {
       return;
     }
@@ -86,20 +158,33 @@ export class Toaster {
 
     const remove = () => {
       this.toasts.delete(toastId);
+      if (this.queue.peek()) {
+        const nextToast = this.queue.dequeue();
+        this.toasts.set(nextToast.toastId, nextToast);
+        this.visibleToasts.add(nextToast.toastId);
+      }
       this.onUpdate();
     };
 
     const toast: Toast = {
-      position,
-      toastId,
-      timeout,
-      content,
+      ...this.toastOptions,
       close,
       remove,
+      toastId,
+      content,
+      updateId: 0,
+      toasterId,
+      dispatchedAt: Date.now(),
     };
 
-    this.visibleToasts.add(toastId);
-    this.toasts.set(toastId, toast);
-    this.onUpdate();
+    assignDefined<Toast>(toast, toastOptions);
+
+    if (this.visibleToasts.size >= this.limit) {
+      this.queue.enqueue(toast);
+    } else {
+      this.toasts.set(toastId, toast);
+      this.visibleToasts.add(toastId);
+      this.onUpdate();
+    }
   }
 }

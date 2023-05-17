@@ -1,19 +1,23 @@
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { Toaster } from './vanilla/toaster';
 import { useForceUpdate } from '@fluentui/react-utilities';
-import { Toast, ToastId, ToastPosition } from './types';
+import { Toast, ToastPosition, ToasterOptions } from './types';
+import { ToasterProps } from '../components/Toaster';
 
-export function useToaster() {
-  const { targetDocument } = useFluent();
+export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
   const forceRender = useForceUpdate();
-  const [toaster] = React.useState(() => {
-    if (targetDocument) {
-      const newToaster = new Toaster(targetDocument);
-      newToaster.onUpdate = forceRender;
-      return newToaster;
+  const toasterOptions = useToasterOptions(options);
+  const toasterRef = React.useRef<TElement>(null);
+  const [toaster] = React.useState(() => new Toaster());
+
+  React.useEffect(() => {
+    if (toasterRef.current) {
+      toaster.connectToDOM(toasterRef.current, toasterOptions);
+      toaster.onUpdate = forceRender;
     }
-  });
+
+    return () => toaster.disconnect();
+  }, [toaster, forceRender, toasterOptions]);
 
   const getToastsToRender = React.useCallback(
     <T>(cb: (position: ToastPosition, toasts: Toast[]) => T) => {
@@ -42,13 +46,24 @@ export function useToaster() {
   );
 
   return {
-    isToastVisible: (toastId: ToastId) => {
-      if (toaster) {
-        return toaster.isToastVisible(toastId);
-      }
-
-      return false;
-    },
+    toasterRef,
+    isToastVisible: toaster.isToastVisible,
     getToastsToRender,
   };
+}
+
+function useToasterOptions(options: ToasterProps): Partial<ToasterOptions> {
+  const { pauseOnHover, pauseOnWindowBlur, position, timeout, limit, toasterId } = options;
+
+  return React.useMemo<Partial<ToasterOptions>>(
+    () => ({
+      pauseOnHover,
+      pauseOnWindowBlur,
+      position,
+      timeout,
+      limit,
+      toasterId,
+    }),
+    [pauseOnHover, pauseOnWindowBlur, position, timeout, limit, toasterId],
+  );
 }
