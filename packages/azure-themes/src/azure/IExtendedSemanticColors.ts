@@ -138,6 +138,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   statusInformationIcon: string;
   statusInformationText: string;
   statusLink: string;
+  statusLinkHover: string;
   statusSuccessBackground: string;
   statusSuccessBorder: string;
   statusSuccessIcon: string;

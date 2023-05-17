@@ -42,7 +42,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
     ],
     link: [
       {
-        color: semanticColors.buttonText,
+        color: semanticColors.bodyText,
         height: 36,
         paddingLeft: 0,
         paddingRight: 0,
@@ -116,7 +116,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         selectors: {
           ':hover': {
             backgroundColor: extendedSemanticColors.bodyBackground,
-            color: extendedSemanticColors.bodyTextHovered,
+            color: extendedSemanticColors.bodyText,
             border: StyleConstants.borderNone,
           },
           ':active': {
@@ -130,7 +130,6 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         borderStyle: StyleConstants.borderSolid,
         borderWidth: StyleConstants.borderWidth,
         borderBottomColor: semanticColors.bodyDivider,
-        color: semanticColors.bodyText,
         marginBottom: '-1px',
         selectors: {
           ':hover': {
