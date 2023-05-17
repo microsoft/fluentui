@@ -1488,85 +1488,6 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         id="yAxisGElementchart_68"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle66"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_63"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="#637cef"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="#637cef"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_63"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="#637cef"
-            id="circle65_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="#637cef"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="#637cef"
-            id="circle65_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="#637cef"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_64"
-          opacity={0.5}
-          stroke="#637cef"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -1728,9 +1649,6 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1832,85 +1750,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle3"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_0"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_0"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle2_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle2_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_1"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -2072,9 +1911,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2176,75 +2012,6 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         id="yAxisGElementchart_60"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle58"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={10}
-        />
-      </g>
-      <g>
-        <path
-          d="M10,17.885Z"
-          fill="transparent"
-          id="0-line-areaChart_55"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <circle
-          cx={10}
-          cy={17.884615384615383}
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_55"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          r={6}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M10,17.885L10,-35Z"
-        >
-          <circle
-            cx={10}
-            cy={17.884615384615383}
-            data-is-focusable={true}
-            fill="red"
-            id="circle57_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_56"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -2406,9 +2173,6 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2510,85 +2274,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         id="yAxisGElementchart_28"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle26"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_23"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_23"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle25_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle25_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_24"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -2730,9 +2415,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2834,90 +2516,8 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         id="yAxisGElementchart_13"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle11"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_8"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_8"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle10_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle10_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_9"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3019,85 +2619,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         id="yAxisGElementchart_20"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle18"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_15"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_15"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle17_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle17_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_16"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -3259,9 +2780,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3363,85 +2881,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         id="yAxisGElementchart_36"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle34"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_31"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_31"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle33_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle33_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_32"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -3603,9 +3042,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3707,85 +3143,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         id="yAxisGElementchart_44"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle42"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_39"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_39"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle41_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle41_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_40"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -3947,9 +3304,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4051,85 +3405,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         id="yAxisGElementchart_52"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          fill="transparent"
-          height={-20}
-          id="rectangle50"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          width={-20}
-        />
-      </g>
-      <g>
-        <path
-          d="M40,-0.625L-20,20"
-          fill="transparent"
-          id="0-line-areaChart_47"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-          stroke="red"
-          strokeWidth={3}
-        />
-        <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="red"
-          fillOpacity={0.7}
-          id="0-graph-areaChart_47"
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-          opacity={1}
-        />
-        <g
-          clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-        >
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle49_0"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle49_1"
-            onClick={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            r={0}
-            stroke="red"
-            strokeWidth={3}
-            visibility="hidden"
-          />
-        </g>
-        <line
-          id="verticalLine_48"
-          opacity={0.5}
-          stroke="red"
-          strokeDasharray={5.5}
-          strokeWidth={1}
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-      </g>
     </svg>
   </div>
   <div
@@ -4291,8 +3566,5 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
