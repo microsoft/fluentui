@@ -3,7 +3,7 @@ import {
   VirtualizerScrollViewDynamicSlots,
   VirtualizerScrollViewDynamicState,
 } from './VirtualizerScrollViewDynamic.types';
-import { useVirtualizerStyles_unstable, virtualizerClassNames } from '../Virtualizer/useVirtualizerStyles';
+import { useVirtualizerStyles_unstable, virtualizerClassNames } from '../Virtualizer/useVirtualizerStyles.styles';
 import { makeStyles, mergeClasses } from '@griffel/react';
 
 const virtualizerScrollViewDynamicClassName = 'fui-Virtualizer-Scroll-View-Dynamic';
