@@ -4,6 +4,7 @@ import { useFocusVisible, useFocusWithin } from '@fluentui/react-tabster';
 import type { TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
+import { tableCellClassNames } from '../TableCell/useTableCellStyles';
 
 /**
  * Create the state required to render TableRow.
@@ -20,6 +21,37 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
   const focusVisibleRef = useFocusVisible();
   const focusWithinRef = useFocusWithin();
   const isHeaderRow = useIsInTableHeader();
+  const onFocus = () => {
+    const firstCell = focusWithinRef.current?.querySelector(`.${tableCellClassNames.root}`) as HTMLElement | null;
+    if (!focusWithinRef.current || !firstCell) {
+      return;
+    }
+
+    if (document.activeElement === firstCell) {
+      focusWithinRef.current.style.outlineStyle = '';
+      firstCell.style.outlineStyle = 'none';
+    } else {
+      focusWithinRef.current.style.outlineStyle = 'none';
+      firstCell.style.outlineStyle = '';
+    }
+  };
+
+  const onBlur = (e: React.FocusEvent) => {
+    const firstCell = focusWithinRef.current?.querySelector(`.${tableCellClassNames.root}`) as HTMLElement | null;
+    if (!focusWithinRef.current || !firstCell) {
+      return;
+    }
+
+    if (firstCell && e.relatedTarget !== firstCell) {
+      if (focusWithinRef.current.contains(e.relatedTarget)) {
+        focusWithinRef.current.style.outlineStyle = 'none';
+        firstCell.style.outlineStyle = '';
+      } else {
+        focusWithinRef.current.style.outlineStyle = '';
+        firstCell.style.outlineStyle = '';
+      }
+    }
+  };
 
   return {
     components: {
@@ -29,6 +61,8 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
       ref: useMergedRefs(ref, focusVisibleRef, focusWithinRef),
       role: rootComponent === 'div' ? 'row' : undefined,
       ...props,
+      onFocus,
+      onBlur,
     }),
     size,
     noNativeElements,
