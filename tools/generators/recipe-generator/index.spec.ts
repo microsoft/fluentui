@@ -38,25 +38,20 @@ describe('recipe-generator generator', () => {
       .read(path.join(recipesRoot, recipePackageName, 'code-snippets/index.ts'))
       ?.toString();
 
-    expect(codeSnippetContent).toMatchInlineSnapshot(
-      `
-        "import * as React from 'react';
-        import { Button } from '@fluentui/react-components';
+    expect(codeSnippetContent).toMatchInlineSnapshot(`
+      "import * as React from 'react';
+      import { Button } from '@fluentui/react-components';
 
-        export const HelloWorldSnippetExample = () => {
-          return <Button>This is a Button</Button>;
-        };
-        "
-      `,
-    );
-    expect(codeSnippetIndexContent).toMatchInlineSnapshot(
-      `
-        "export * from './HelloWorld';
-        "
-      `,
-    );
-    expect(storyContent).toMatchInlineSnapshot(
-      `
+      export const HelloWorldSnippetExample = () => {
+        return <Button>This is a Button</Button>;
+      };
+      "
+    `);
+    expect(codeSnippetIndexContent).toMatchInlineSnapshot(`
+      "export * from './HelloWorld';
+      "
+    `);
+    expect(storyContent).toMatchInlineSnapshot(`
       "import LinkTo from '@storybook/addon-links/react';
       import { Example } from '../../templates';
       import { Meta } from '@storybook/addon-docs';
@@ -110,7 +105,6 @@ describe('recipe-generator generator', () => {
       Add a list of best practices here. This list could have do's and don'ts or just general guidelines.
       -->
       "
-    `,
-    );
+    `);
   });
 });
