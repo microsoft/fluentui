@@ -168,7 +168,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
-  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element | null;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -233,7 +233,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     // const legendBars = this._createLegendsMemoized(this._points!);
     let legendBars = null;
     if (!this.props.hideLegend) {
-      legendBars = this._createLegends(this._points!);
+      legendBars = this._createLegendsMemoized(this._points!);
     }
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
