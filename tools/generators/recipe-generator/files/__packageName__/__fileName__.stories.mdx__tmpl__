@@ -1,13 +1,13 @@
 import LinkTo from '@storybook/addon-links/react';
 import { Example } from '../../templates';
 import { Meta } from '@storybook/addon-docs';
-import { {{fileName}}SnippetExample } from './code-snippets';
+import { <%= fileName %>SnippetExample } from './code-snippets';
 
-<Meta title="Concepts/Recipes/{{recipeName}}" />
+<Meta title="Concepts/Recipes/<%= recipeName %>" />
 
 ---
 
-# {{recipeName}} recipe
+# <%= recipeName %> recipe
 
 ### **Overview**
 
@@ -31,7 +31,7 @@ Note: Code snippets in this section should be minimal and only include the impor
 This is an example of a code snippet:
 
 <TemplateExample>
-  <{{fileName}}SnippetExample />
+  <<%= fileName %>SnippetExample />
 </TemplateExample>
 
 ```tsx
