@@ -4,7 +4,7 @@ import { useFocusVisible, useFocusWithin } from '@fluentui/react-tabster';
 import type { TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
-import { tableCellClassNames } from '../TableCell/useTableCellStyles';
+import { tableCellClassNames } from '../TableCell/useTableCellStyles.styles';
 
 /**
  * Create the state required to render TableRow.
