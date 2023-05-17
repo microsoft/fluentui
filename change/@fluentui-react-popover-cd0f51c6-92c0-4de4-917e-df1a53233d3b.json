@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: stop propagation when closing the popover surface to avoid closing parent dialogs.",
+  "comment": "fix: preventDefault when closing the popover surface to avoid closing parent dialogs.",
   "packageName": "@fluentui/react-popover",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
