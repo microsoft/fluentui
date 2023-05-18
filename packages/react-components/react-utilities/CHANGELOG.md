@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 12 May 2023 20:28:04 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 00:39:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.0)
+
+Thu, 18 May 2023 00:39:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.8.1..@fluentui/react-utilities_v9.9.0)
+
+### Minor changes
+
+- feat: Implement a priority queue ([PR #27848](https://github.com/microsoft/fluentui/pull/27848) by lingfangao@hotmail.com)
 
 ## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.1)
 

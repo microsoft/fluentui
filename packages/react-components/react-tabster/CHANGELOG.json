@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:16 GMT",
+      "tag": "@fluentui/react-tabster_v9.7.1",
+      "version": "9.7.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.9.0",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:27:53 GMT",
       "tag": "@fluentui/react-tabster_v9.7.0",
       "version": "9.7.0",

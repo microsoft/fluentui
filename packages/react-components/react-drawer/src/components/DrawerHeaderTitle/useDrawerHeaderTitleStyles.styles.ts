@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 import { tokens } from '@fluentui/react-theme';
 
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots> = {
@@ -30,6 +31,17 @@ const useStyles = makeStyles({
  */
 export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleState): DrawerHeaderTitleState => {
   const styles = useStyles();
+
+  const { heading: root = {}, action, components } = state;
+
+  useDialogTitleStyles_unstable({
+    components: {
+      root: components.heading,
+      action: components.action,
+    },
+    root,
+    action,
+  });
 
   state.root.className = mergeClasses(drawerHeaderTitleClassNames.root, styles.root, state.root.className);
 

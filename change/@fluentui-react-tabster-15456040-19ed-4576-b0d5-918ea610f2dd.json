@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: upgrade tabster to v4.4.0",
+  "packageName": "@fluentui/react-tabster",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

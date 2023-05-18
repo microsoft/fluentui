@@ -2,6 +2,47 @@
   "name": "@fluentui/react-data-grid-react-window",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:05 GMT",
+      "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.25",
+      "version": "9.0.0-beta.25",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-table to v9.2.9",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-utilities to v9.9.0",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-components to v9.20.1",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:28:25 GMT",
       "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.24",
       "version": "9.0.0-beta.24",

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { DrawerInline, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerFooter } from '@fluentui/react-drawer';
+import { Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -11,13 +11,6 @@ const useStyles = makeStyles({
 
   drawer: {
     height: '400px',
-  },
-
-  footer: {
-    ...shorthands.padding(tokens.spacingHorizontalXXL),
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
   },
 });
 
@@ -30,13 +23,11 @@ const Header = () => {
 };
 
 const Footer = () => {
-  const styles = useStyles();
-
-  // TODO: replace with DrawerFooter component when it's implemented
   return (
-    <footer className={styles.footer}>
-      <Button appearance="primary">Button</Button>
-    </footer>
+    <DrawerFooter>
+      <Button appearance="primary">Primary</Button>
+      <Button>Secondary</Button>
+    </DrawerFooter>
   );
 };
 

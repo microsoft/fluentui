@@ -2,6 +2,65 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:09 GMT",
+      "tag": "@fluentui/react-menu_v9.7.12",
+      "version": "9.7.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.3.20",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.20",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.2.8",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.5.12",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.7.1",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.9.0",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:27:26 GMT",
       "tag": "@fluentui/react-menu_v9.7.11",
       "version": "9.7.11",

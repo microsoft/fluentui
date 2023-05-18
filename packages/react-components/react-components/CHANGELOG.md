@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 12 May 2023 20:27:14 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 00:39:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.1)
+
+Thu, 18 May 2023 00:39:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.20.0..@fluentui/react-components_v9.20.1)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: Implement a priority queue ([PR #27848](https://github.com/microsoft/fluentui/pull/27848) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - chore: exports TreeItemAside unstable ([PR #27856](https://github.com/microsoft/fluentui/pull/27856) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - bugfix: removes unnecessary grid gaps ([PR #27845](https://github.com/microsoft/fluentui/pull/27845) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: When Textarea is disabled, make the text gray and add an outline for the filled appearance. ([PR #27837](https://github.com/microsoft/fluentui/pull/27837) by esteban.230@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - fix: Add aria-owns to InfoLabel. ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by esteban.230@hotmail.com)
 
 ## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.0)
 

@@ -37,6 +37,23 @@ export type DrawerBodySlots = {
 export type DrawerBodyState = ComponentState<DrawerBodySlots>;
 
 // @public
+export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
+
+// @public (undocumented)
+export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots>;
+
+// @public
+export type DrawerFooterProps = ComponentProps<DrawerFooterSlots>;
+
+// @public (undocumented)
+export type DrawerFooterSlots = {
+    root: Slot<'footer'>;
+};
+
+// @public
+export type DrawerFooterState = ComponentState<DrawerFooterSlots>;
+
+// @public
 export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
 
 // @public (undocumented)
@@ -151,6 +168,9 @@ export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
 export const renderDrawerBody_unstable: (state: DrawerBodyState) => JSX.Element;
 
 // @public
+export const renderDrawerFooter_unstable: (state: DrawerFooterState) => JSX.Element;
+
+// @public
 export const renderDrawerHeader_unstable: (state: DrawerHeaderState) => JSX.Element;
 
 // @public
@@ -173,6 +193,12 @@ export const useDrawerBody_unstable: (props: DrawerBodyProps, ref: React_2.Ref<H
 
 // @public
 export const useDrawerBodyStyles_unstable: (state: DrawerBodyState) => DrawerBodyState;
+
+// @public
+export const useDrawerFooter_unstable: (props: DrawerFooterProps, ref: React_2.Ref<HTMLElement>) => DrawerFooterState;
+
+// @public
+export const useDrawerFooterStyles_unstable: (state: DrawerFooterState) => DrawerFooterState;
 
 // @public
 export const useDrawerHeader_unstable: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderState;
