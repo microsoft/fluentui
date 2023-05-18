@@ -66,6 +66,7 @@ lib-es2015
 coverage
 dist
 dist-storybook
+storybook-static
 screenshots
 .cache
 !tools/**/lib
