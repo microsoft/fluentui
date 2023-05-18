@@ -3,6 +3,7 @@ import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utiliti
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagButtonAvatarSizeMap = {
   medium: 28,
@@ -27,12 +28,14 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of TagButton
  */
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
+  const { size: contextSize } = useTagGroupContext_unstable();
+
   const {
     appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
     shape = 'rounded',
-    size = 'medium',
+    size = contextSize,
   } = props;
 
   return {
