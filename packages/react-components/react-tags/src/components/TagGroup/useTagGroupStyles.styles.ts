@@ -18,6 +18,9 @@ const useStyles = makeStyles({
   rootSmall: {
     columnGap: tokens.spacingHorizontalSNudge,
   },
+  rootExtraSmall: {
+    columnGap: tokens.spacingHorizontalXS,
+  },
 });
 
 /**
@@ -29,6 +32,7 @@ export const useTagGroupStyles_unstable = (state: TagGroupState): TagGroupState 
     tagGroupClassNames.root,
     styles.root,
     state.size === 'small' && styles.rootSmall,
+    state.size === 'extra-small' && styles.rootExtraSmall,
     state.root.className,
   );
 

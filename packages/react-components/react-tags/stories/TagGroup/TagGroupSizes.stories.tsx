@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TagGroup, Tag, TagButton } from '@fluentui/react-tags';
 import { Avatar, makeStyles } from '@fluentui/react-components';
+import { Calendar3Day20Regular } from '@fluentui/react-icons';
 import { TagSize } from '../../src/Tag';
 
 const useContainerStyles = makeStyles({
@@ -14,19 +15,24 @@ const useContainerStyles = makeStyles({
 export const Sizes = () => {
   const containerStyles = useContainerStyles();
   // TODO add one more size
-  const sizes: TagSize[] = ['small', 'medium'];
+  const sizes: TagSize[] = ['medium', 'small', 'extra-small'];
   return (
     <div className={containerStyles.root}>
       {sizes.map(size => (
         <div key={size}>
           {`${size}: `}
           <TagGroup size={size}>
-            <Tag media={<Avatar name="Katri Athokas" />} shape="circular">
+            <Tag>Tag 1</Tag>
+            <Tag media={<Avatar name="Katri Athokas" />}>Tag 1</Tag>
+            <Tag icon={<Calendar3Day20Regular />}>Tag 1</Tag>
+
+            <Tag dismissible>Tag 1</Tag>
+            <Tag dismissible media={<Avatar name="Katri Athokas" />}>
               Tag 1
             </Tag>
-            <TagButton media={<Avatar name="Katri Athokas" />} shape="circular">
-              Tag 2
-            </TagButton>
+            <Tag dismissible icon={<Calendar3Day20Regular />}>
+              Tag 1
+            </Tag>
           </TagGroup>
         </div>
       ))}

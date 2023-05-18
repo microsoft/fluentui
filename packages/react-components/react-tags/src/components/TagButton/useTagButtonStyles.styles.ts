@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useResetButtonStyles, useTagBaseStyles } from '../Tag/index';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
@@ -68,8 +68,8 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     fontSize: '20px',
-    paddingLeft: '6px',
-    paddingRight: '6px',
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
 
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
 
@@ -99,7 +99,33 @@ const useSmallTagButtonStyles = makeStyles({
   root: {
     height: '24px',
   },
-  // TODO add additional styles for sizes
+  dismissButton: {
+    fontSize: '16px',
+    paddingLeft: tokens.spacingHorizontalXS,
+    paddingRight: tokens.spacingHorizontalXS,
+  },
+  primaryText: typographyStyles.caption1,
+});
+
+const useExtraSmallTagButtonStyles = makeStyles({
+  root: {
+    height: '20px',
+  },
+  content: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  contentWithoutMedia: {
+    paddingLeft: tokens.spacingHorizontalSNudge,
+  },
+  icon: {
+    paddingLeft: tokens.spacingHorizontalXS,
+  },
+  dismissButton: {
+    fontSize: '12px',
+    paddingLeft: tokens.spacingHorizontalXS,
+    paddingRight: tokens.spacingHorizontalXS,
+  },
+  primaryText: typographyStyles.caption1,
 });
 
 /**
@@ -109,7 +135,9 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   const baseStyles = useTagBaseStyles();
   const resetButtonStyles = useResetButtonStyles();
   const styles = useStyles();
+
   const smallStyles = useSmallTagButtonStyles();
+  const extraSmallStyles = useExtraSmallTagButtonStyles();
 
   state.root.className = mergeClasses(
     tagButtonClassNames.root,
@@ -117,6 +145,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
     state.shape === 'circular' && styles.rootCircular,
 
     state.size === 'small' && smallStyles.root,
+    state.size === 'extra-small' && extraSmallStyles.root,
 
     state.root.className,
   );
@@ -130,6 +159,9 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
       !state.media && !state.icon && styles.contentWithoutMedia,
       state.dismissible && styles.dismissibleContent,
 
+      state.size === 'extra-small' && extraSmallStyles.content,
+      state.size === 'extra-small' && !state.media && !state.icon && extraSmallStyles.contentWithoutMedia,
+
       state.content.className,
     );
   }
@@ -138,13 +170,22 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
     state.media.className = mergeClasses(tagButtonClassNames.media, baseStyles.media, state.media.className);
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(tagButtonClassNames.icon, baseStyles.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      tagButtonClassNames.icon,
+      baseStyles.icon,
+      state.size === 'extra-small' && extraSmallStyles.icon,
+      state.icon.className,
+    );
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
       tagButtonClassNames.primaryText,
       baseStyles.primaryText,
       state.secondaryText && baseStyles.primaryTextWithSecondaryText,
+
+      state.size === 'small' && smallStyles.primaryText,
+      state.size === 'extra-small' && extraSmallStyles.primaryText,
+
       state.primaryText.className,
     );
   }
@@ -162,6 +203,10 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
 
       styles.dismissButton,
       state.shape === 'circular' && styles.dismissButtonCircular,
+
+      state.size === 'small' && smallStyles.dismissButton,
+      state.size === 'extra-small' && extraSmallStyles.dismissButton,
+
       state.dismissButton.className,
     );
   }
