@@ -7,7 +7,7 @@ export type DrawerBodySlots = {
 /**
  * DrawerBody Props
  */
-export type DrawerBodyProps = ComponentProps<DrawerBodySlots> & {};
+export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
 
 /**
  * State used in rendering DrawerBody

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerBodyProps, DrawerFooter } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerFooter } from '@fluentui/react-drawer';
+import { Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -10,24 +10,15 @@ const useStyles = makeStyles({
   },
 
   drawer: {
-    height: '300px',
-  },
-
-  container: {
-    ...shorthands.padding(tokens.spacingHorizontalXXL),
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    height: '400px',
   },
 });
 
 const Header = () => {
-  const styles = useStyles();
-
   return (
-    <header className={styles.container}>
-      <strong>This is a header</strong>
-    </header>
+    <DrawerHeader>
+      <DrawerHeaderTitle>Title goes here</DrawerHeaderTitle>
+    </DrawerHeader>
   );
 };
 
@@ -55,28 +46,28 @@ const Body = () => {
   );
 };
 
-export const Default = (props: Partial<DrawerBodyProps>) => {
+export const WithScroll = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
       <Drawer className={styles.drawer} type="inline" open>
-        <Body {...props} />
+        <Body />
       </Drawer>
 
       <Drawer className={styles.drawer} type="inline" open>
         <Header />
-        <Body {...props} />
+        <Body />
       </Drawer>
 
       <Drawer className={styles.drawer} type="inline" open>
-        <Body {...props} />
+        <Body />
         <Footer />
       </Drawer>
 
       <Drawer className={styles.drawer} type="inline" open>
         <Header />
-        <Body {...props} />
+        <Body />
         <Footer />
       </Drawer>
     </div>

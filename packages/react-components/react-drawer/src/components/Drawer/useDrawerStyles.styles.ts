@@ -20,14 +20,15 @@ export const drawerCSSVars = {
  */
 const useStyles = makeStyles({
   root: {
+    ...shorthands.padding(0),
+    ...shorthands.overflow('hidden'),
     ...shorthands.borderRadius(`var(${drawerCSSVars.borderRadius})`),
     ...shorthands.border(0),
-    ...shorthands.overflow('hidden'),
 
     [drawerCSSVars.borderRadius]: 0,
 
     width: `var(${drawerCSSVars.size})`,
-    maxWidth: 'calc(100vw - 48px)',
+    maxWidth: '100vw',
     height: 'auto',
     boxSizing: 'border-box',
     display: 'flex',
