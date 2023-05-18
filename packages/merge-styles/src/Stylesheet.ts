@@ -15,6 +15,11 @@ export const InjectionMode = {
    * Appends rules using appendChild.
    */
   appendChild: 2 as 2,
+
+  /**
+   * Inserts rules into constructible stylesheets.
+   */
+  constructibleStylesheet: 3 as 3,
 };
 
 export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
@@ -94,6 +99,8 @@ const STYLESHEET_SETTING = '__stylesheet__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
+const SUPPORTS_CONSTRUCTIBLE_STYLESHEETS = 'CSSStyleSheet' in window;
+
 let _global: (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
   FabricConfig?: {
@@ -124,6 +131,9 @@ let _stylesheet: Stylesheet | undefined;
 export class Stylesheet {
   private _lastStyleElement?: HTMLStyleElement;
   private _styleElement?: HTMLStyleElement;
+
+  private _constructibleSheet?: CSSStyleSheet;
+
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
   private _config: IStyleSheetConfig;
@@ -151,14 +161,20 @@ export class Stylesheet {
   }
 
   constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet) {
+    // If there is no document we won't have an element to inject into.
+    // const defaultInjectionMode = typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode;
+    const defaultInjectionMode = InjectionMode.constructibleStylesheet;
     this._config = {
-      // If there is no document we won't have an element to inject into.
-      injectionMode: typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode,
+      injectionMode: defaultInjectionMode,
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
       ...config,
     };
+
+    if (!SUPPORTS_CONSTRUCTIBLE_STYLESHEETS && this._config.injectionMode === InjectionMode.constructibleStylesheet) {
+      this._config.injectionMode = defaultInjectionMode;
+    }
 
     this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
     this._counter = serializedStylesheet?.counter ?? this._counter;
@@ -284,7 +300,12 @@ export class Stylesheet {
    */
   public insertRule(rule: string, preserve?: boolean): void {
     const { injectionMode } = this._config;
-    const element = injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
+    const element =
+      injectionMode === InjectionMode.constructibleStylesheet
+        ? this._getConstructibleStylesheet()
+        : injectionMode !== InjectionMode.none
+        ? this._getStyleElement()
+        : undefined;
 
     if (preserve) {
       this._preservedRules.push(rule);
@@ -293,7 +314,7 @@ export class Stylesheet {
     if (element) {
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          const { sheet } = element!;
+          const { sheet } = element! as HTMLStyleElement;
 
           try {
             (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
@@ -305,7 +326,17 @@ export class Stylesheet {
           break;
 
         case InjectionMode.appendChild:
-          element.appendChild(document.createTextNode(rule));
+          (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
+          break;
+
+        case InjectionMode.constructibleStylesheet:
+          try {
+            (element as CSSStyleSheet).insertRule(rule, (element as CSSStyleSheet).cssRules.length);
+          } catch (e) {
+            // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
+            // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
+            // which could be slower and bulkier.
+          }
           break;
       }
     } else {
@@ -392,6 +423,27 @@ export class Stylesheet {
     this._lastStyleElement = styleElement;
 
     return styleElement;
+  }
+
+  private _getConstructibleStylesheet(): CSSStyleSheet {
+    if (!this._constructibleSheet) {
+      this._constructibleSheet = this._createConstructibleStylesheet();
+
+      // Reset the style element on the next frame.
+      window.requestAnimationFrame(() => {
+        this._styleElement = undefined;
+      });
+    }
+
+    return this._constructibleSheet;
+  }
+
+  private _createConstructibleStylesheet(): CSSStyleSheet {
+    const sheet = new CSSStyleSheet();
+
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+
+    return sheet;
   }
 
   private _findPlaceholderStyleTag(): Element | null {
