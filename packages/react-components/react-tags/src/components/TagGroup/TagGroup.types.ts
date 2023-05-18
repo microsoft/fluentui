@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagProps, TagSize } from '../Tag/Tag.types';
+import { TagSize } from '../Tag/Tag.types';
 import { TagGroupContextValue } from '../../contexts/TagGroupContext';
 
 export type TagGroupContextValues = {
@@ -11,8 +11,6 @@ export type TagGroupSlots = {
   root: Slot<'div'>;
 };
 
-export type ItemRenderFunction<TItem = TagProps> = (item: TItem) => React.ReactNode;
-
 export type TagGroupDismissData = {
   dismissedTagId: string;
 };
@@ -20,17 +18,7 @@ export type TagGroupDismissData = {
 /**
  * TagGroup Props
  */
-export type TagGroupProps<TItem = TagProps> = Omit<ComponentProps<TagGroupSlots>, 'children'> & {
-  /**
-   * Children tags or render function for tag items
-   */
-  children: React.ReactNode | ItemRenderFunction<TItem>;
-
-  /**
-   * tag items to be rendered in the group
-   */
-  items?: Array<TItem>;
-
+export type TagGroupProps = ComponentProps<TagGroupSlots> & {
   /**
    * Callback for when a tag is dismissed
    */
@@ -43,6 +31,6 @@ export type TagGroupProps<TItem = TagProps> = Omit<ComponentProps<TagGroupSlots>
  * State used in rendering TagGroup
  */
 export type TagGroupState = ComponentState<TagGroupSlots> &
-  Required<Pick<TagGroupProps, 'items' | 'size'>> & {
+  Required<Pick<TagGroupProps, 'size'>> & {
     handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, id: string) => void;
   };

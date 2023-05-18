@@ -13,8 +13,8 @@ describe('TagGroup', () => {
   it('should invoke onDismiss when clicking on children Tag', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(
-      <TagGroup items={[{ id: '1', children: 'Tag 1' }]} onDismiss={onDismiss}>
-        {item => <Tag key={item.id} dismissible {...item} />}
+      <TagGroup onDismiss={onDismiss}>
+        <Tag id={'1'} dismissible />
       </TagGroup>,
     );
 
@@ -26,8 +26,8 @@ describe('TagGroup', () => {
   it('should invoke onDismiss on children Tag delete keyDown', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(
-      <TagGroup items={[{ id: '1', children: 'Tag 1' }]} onDismiss={onDismiss}>
-        {item => <Tag key={item.id} dismissible {...item} />}
+      <TagGroup onDismiss={onDismiss}>
+        <Tag id={'1'} dismissible />
       </TagGroup>,
     );
 

@@ -9,7 +9,7 @@ export const Dismiss = () => {
     { id: 'tagButton-bar', children: 'Bar' },
   ];
 
-  const [items, setItems] = React.useState(defaultItems);
+  const [items, setItems] = React.useState<Array<TagProps | TagButtonProps>>(defaultItems);
 
   const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagId }) => {
     setItems([...items].filter(item => item.id !== dismissedTagId));
@@ -18,14 +18,14 @@ export const Dismiss = () => {
   const isTagButton = (item: TagProps | TagButtonProps): item is TagButtonProps => !!item.id?.startsWith('tagButton');
 
   return (
-    <TagGroup<TagProps | TagButtonProps> items={items} onDismiss={removeItem}>
-      {item =>
+    <TagGroup onDismiss={removeItem}>
+      {items.map(item =>
         isTagButton(item) ? (
           <TagButton key={item.id} dismissible {...item} />
         ) : (
           <Tag key={item.id} dismissible {...item} />
-        )
-      }
+        ),
+      )}
     </TagGroup>
   );
 };

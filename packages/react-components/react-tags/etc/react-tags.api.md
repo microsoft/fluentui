@@ -51,15 +51,13 @@ export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'co
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
-export const TagGroup: ForwardRefComponent<TagGroupProps> & (<TItem>(props: TagGroupProps<TItem>) => JSX.Element);
+export const TagGroup: ForwardRefComponent<TagGroupProps>;
 
 // @public (undocumented)
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
 
 // @public
-export type TagGroupProps<TItem = TagProps> = Omit<ComponentProps<TagGroupSlots>, 'children'> & {
-    children: React_2.ReactNode | ItemRenderFunction<TItem>;
-    items?: Array<TItem>;
+export type TagGroupProps = Omit<ComponentProps<TagGroupSlots>, 'children'> & {
     onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: TagGroupDismissData) => void;
     size?: TagSize;
 };
@@ -70,7 +68,7 @@ export type TagGroupSlots = {
 };
 
 // @public
-export type TagGroupState = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'items' | 'size'>> & {
+export type TagGroupState = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
     handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, id: string) => void;
 };
 
