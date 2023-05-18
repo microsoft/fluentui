@@ -41,23 +41,19 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
 
   const id = useId('fui-Tag', props.id);
 
-  const onDismissButtonClick = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
-      props.onClick?.(ev);
-      if (!ev.defaultPrevented) {
-        handleTagDismiss?.(ev, id);
-      }
-    },
-  );
+  const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+    props.onClick?.(ev);
+    if (!ev.defaultPrevented) {
+      handleTagDismiss?.(ev, id);
+    }
+  });
 
-  const onDismissButtonKeyDown = useEventCallback(
-    (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
-      props?.onKeyDown?.(ev);
-      if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-        handleTagDismiss?.(ev, id);
-      }
-    },
-  );
+  const onDismissButtonKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    props?.onKeyDown?.(ev);
+    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+      handleTagDismiss?.(ev, id);
+    }
+  });
 
   const dismissButtonShorthand = useARIAButtonShorthand(props.dismissButton, {
     required: props.dismissible,

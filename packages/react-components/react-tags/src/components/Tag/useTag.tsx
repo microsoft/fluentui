@@ -40,23 +40,19 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
 
   const id = useId('fui-Tag', props.id);
 
-  const handleClick = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
-      props.onClick?.(ev);
-      if (!ev.defaultPrevented) {
-        handleTagDismiss?.(ev, id);
-      }
-    },
-  );
+  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+    props.onClick?.(ev);
+    if (!ev.defaultPrevented) {
+      handleTagDismiss?.(ev, id);
+    }
+  });
 
-  const handleKeyDown = useEventCallback(
-    (ev: React.KeyboardEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
-      props?.onKeyDown?.(ev);
-      if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-        handleTagDismiss?.(ev, id);
-      }
-    },
-  );
+  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    props?.onKeyDown?.(ev);
+    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+      handleTagDismiss?.(ev, id);
+    }
+  });
 
   return {
     appearance,
