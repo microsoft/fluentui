@@ -182,7 +182,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
 export const useThemeDesigner = () => {
   const context = React.useContext(ThemeDesignerContext);
   if (context === undefined) {
-    throw new Error('useWizard must be used within a WizardProvider');
+    throw new Error('useThemeDesigner must be used within a ThemeProvider Context');
   }
   return context;
 };

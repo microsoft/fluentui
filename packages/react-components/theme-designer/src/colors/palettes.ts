@@ -14,15 +14,6 @@ import { hueToSnappingPointsMap, hexToHue } from './hueMap';
  */
 const defaultLinearity = 0.75;
 
-// function getLinearSpace(min: number, max: number, n: number) {
-//   const result = [];
-//   const delta = (max - min) / n;
-//   for (let i = 0; i < n; i++) {
-//     result[i] = min + delta * i;
-//   }
-//   return result;
-// }
-
 const snappingPointsForKeyColor = (keyColor: string): number[] => {
   const hue = hexToHue(keyColor);
   const range = [
@@ -30,17 +21,13 @@ const snappingPointsForKeyColor = (keyColor: string): number[] => {
     hueToSnappingPointsMap[hue][1] * 100,
     hueToSnappingPointsMap[hue][2] * 100,
   ];
-  //   console.log(`hue ${hue} range, ${range}`);
   return range;
 };
 
 const pointsForKeyColor = (keyColor: string, range: number[], centerPoint: number): number[] => {
-  //   const rgb = hex_to_sRGB(keyColor);
   const hue = hexToHue(keyColor);
   const center = hueToSnappingPointsMap[hue][1] * 100;
   const linear = linearInterpolationThroughPoint(range[0], range[1], center, 16);
-  //   const linear = linearInterpolationThroughPoint(range[0], range[1], (range[1]-range[0])/2, 16);
-
   return linear;
 };
 
@@ -107,7 +94,6 @@ function paletteShadesFromCurvePoints(
   const paletteShades = [];
   const range = [snappingPoints[0], snappingPoints[2]];
   const logLightness = getLogSpace(Math.log10(0), Math.log10(100), nShades);
-  //   const oldLinearLightness = getLinearSpace(range[0], range[1], nShades); // older attempt
   const linearLightness = pointsForKeyColor(keyColor, range, snappingPoints[1]);
   let c = 0;
 
@@ -205,17 +191,6 @@ export function curvePathFromPalette({ keyColor, darkCp, lightCp, hueTorsion }: 
     torsionT0: l,
   } as CurvedHelixPath;
 }
-
-// export function cssGradientFromCurve(
-//   curve: CurvedHelixPath,
-//   nShades = 16,
-//   range = [0, 100],
-//   linearity = defaultLinearity,
-//   curveDepth = 24,
-// ) {
-//   const hexes = paletteShadesToHex(paletteShadesFromCurve(curve, nShades, range, linearity, curveDepth));
-//   return `linear-gradient(to right, ${hexes.join(', ')})`;
-// }
 
 export function hexColorsFromPalette(
   keyColor: string,

@@ -1,11 +1,11 @@
 export type AccessiblePairs = Record<string, [string, number][]>;
 
-/**
- * Made using token pairs as defined in this spreadsheet:
- * https://microsoft-my.sharepoint.com/:x:/p/t-emmajiang/Ec_h-Eb-fd9LmXNWgFmNwBYBZNaHRQFoUFVxsfCeB2YCAQ?e=Q9S6z9
- *
- * For components that need to be tested against a transparent background, only colorNeutralBackground1 is tested.
- */
+/*
+ Reduced this down to 2 main essentials tests: 
+ colorBrandForeground1: [['colorNeutralBackground1', 4.5]],
+ colorBrandForeground2: [['colorBrandBackground2', 4.5]],
+ can uncomment the rest if needed later and once verified for accuracy.
+*/
 export const accessiblePairs: AccessiblePairs = {
   //   colorNeutralForeground2BrandHover: [
   //     ['colorTransparentBackgroundHover', 4.5],

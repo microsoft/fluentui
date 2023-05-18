@@ -41,22 +41,6 @@ export const Nav: React.FC<NavProps> = props => {
     state: { themeName },
   } = useThemeDesigner();
 
-  // TODO -- fix
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const newName = e.target.value;
-    //
-    // if (newName.length === 0) {
-    //   // setName('myTheme');
-    // } else {
-    //   const camelizeName = e.target.value
-    //     .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
-    //     .replace(/\s+/g, '')
-    //     .replace(/[^A-Za-z0-9@]*/g, ``);
-    //
-    //   // setName(camelizeName);
-    // }
-  };
-
   return (
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
       <div className={styles.logo}>
@@ -71,7 +55,6 @@ export const Nav: React.FC<NavProps> = props => {
           appearance="underline"
           id={underlineId}
           // eslint-disable-next-line react/jsx-no-bind
-          onChange={handleNameChange}
           contentAfter={<EditRegular />}
           placeholder={'myTheme'}
           value={themeName === 'myTheme' ? '' : themeName}
