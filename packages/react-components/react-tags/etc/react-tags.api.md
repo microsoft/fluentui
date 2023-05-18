@@ -8,11 +8,12 @@
 
 import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
@@ -20,6 +21,9 @@ export const renderTag_unstable: (state: TagState, contextValues: TagContextValu
 
 // @public
 export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
+
+// @public
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -31,16 +35,39 @@ export const TagButton: ForwardRefComponent<TagButtonProps>;
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots>;
 
 // @public
-export type TagButtonProps = TagProps;
+export type TagButtonProps = ComponentProps<Partial<TagButtonSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
 
 // @public (undocumented)
-export type TagButtonSlots = TagSlots;
+export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
+    root: NonNullable<Slot<'div'>>;
+    dismissButton?: Slot<'button'>;
+    content: NonNullable<ARIAButtonSlotProps<'div'>>;
+};
 
 // @public
-export type TagButtonState = TagState;
+export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
+
+// @public
+export const TagGroup: ForwardRefComponent<TagGroupProps>;
+
+// @public (undocumented)
+export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
+
+// @public
+export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+    size?: TagSize;
+};
+
+// @public (undocumented)
+export type TagGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TagGroupState = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>>;
 
 // @public
 export type TagProps = ComponentProps<Partial<TagSlots>> & {
@@ -48,18 +75,17 @@ export type TagProps = ComponentProps<Partial<TagSlots>> & {
     disabled?: boolean;
     dismissible?: boolean;
     shape?: 'rounded' | 'circular';
-    size?: 'extra-small' | 'small' | 'medium';
+    size?: TagSize;
 };
 
 // @public (undocumented)
 export type TagSlots = {
-    root: NonNullable<Slot<'div'>>;
-    media: Slot<'span'>;
-    content: Slot<'div'>;
-    icon: Slot<'span'>;
+    root: NonNullable<Slot<'button'>>;
+    media?: Slot<'span'>;
+    icon?: Slot<'span'>;
     primaryText: Slot<'span'>;
-    secondaryText: Slot<'span'>;
-    dismissButton: Slot<'button'>;
+    secondaryText?: Slot<'span'>;
+    dismissIcon?: Slot<'span'>;
 };
 
 // @public
@@ -76,6 +102,12 @@ export const useTagButton_unstable: (props: TagButtonProps, ref: React_2.Ref<HTM
 
 // @public
 export const useTagButtonStyles_unstable: (state: TagButtonState) => TagButtonState;
+
+// @public
+export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
+
+// @public
+export const useTagGroupStyles_unstable: (state: TagGroupState) => TagGroupState;
 
 // @public
 export const useTagStyles_unstable: (state: TagState) => TagState;

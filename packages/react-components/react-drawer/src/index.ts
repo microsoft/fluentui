@@ -47,3 +47,12 @@ export type {
   DrawerHeaderNavigationSlots,
   DrawerHeaderNavigationState,
 } from './DrawerHeaderNavigation';
+
+export {
+  DrawerFooter,
+  drawerFooterClassNames,
+  renderDrawerFooter_unstable,
+  useDrawerFooterStyles_unstable,
+  useDrawerFooter_unstable,
+} from './DrawerFooter';
+export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './DrawerFooter';

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: allow space character insertion while typing in freeform combobox",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

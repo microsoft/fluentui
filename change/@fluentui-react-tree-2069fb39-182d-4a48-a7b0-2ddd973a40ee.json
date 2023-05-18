@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: TreeItem itemType restructure",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

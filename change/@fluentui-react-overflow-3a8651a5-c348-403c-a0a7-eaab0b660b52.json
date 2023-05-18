@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: Consolidate all overflow state into one object",
-  "packageName": "@fluentui/react-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
