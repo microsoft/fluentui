@@ -21,6 +21,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
   });
 
   return {
+    dismissible: !!onDismiss,
     handleTagDismiss,
     size,
 

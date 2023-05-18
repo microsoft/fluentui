@@ -21,11 +21,7 @@ export const Dismiss = () => {
   return (
     <TagGroup onDismiss={removeItem}>
       {items.map(item =>
-        isTagButton(item) ? (
-          <TagButton key={item.value} dismissible {...item} />
-        ) : (
-          <Tag key={item.value} dismissible {...item} />
-        ),
+        isTagButton(item) ? <TagButton key={item.value} {...item} /> : <Tag key={item.value} {...item} />,
       )}
     </TagGroup>
   );

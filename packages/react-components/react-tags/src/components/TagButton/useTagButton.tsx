@@ -29,14 +29,14 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of TagButton
  */
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
-  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
 
   const {
     appearance = 'filled-lighter',
     disabled = false,
-    dismissible = false,
+    dismissible = contextDismissible,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -57,7 +57,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
   });
 
   const dismissButtonShorthand = useARIAButtonShorthand(props.dismissButton, {
-    required: props.dismissible,
+    required: dismissible,
     defaultProps: {
       disabled,
       type: 'button',
