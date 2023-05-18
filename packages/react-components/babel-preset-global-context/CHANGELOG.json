@@ -2,6 +2,29 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:00 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.27",
+      "version": "9.0.0-beta.27",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.27",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:28:07 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.26",
       "version": "9.0.0-beta.26",

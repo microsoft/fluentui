@@ -2,6 +2,29 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:08 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-jsx-runtime",
+            "comment": "Bump @fluentui/react-utilities to v9.9.0",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:27:23 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.0-alpha.3",
       "version": "9.0.0-alpha.3",
