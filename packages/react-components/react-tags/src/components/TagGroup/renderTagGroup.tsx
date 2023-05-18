@@ -2,17 +2,17 @@
 /** @jsx createElement */
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import type { TagGroupState, TagGroupSlots } from './TagGroup.types';
-import { TagGroupContextProvider, TagGroupContextValue } from '../../contexts/TagGroupContext';
+import type { TagGroupState, TagGroupSlots, TagGroupContextValues } from './TagGroup.types';
+import { TagGroupContextProvider } from '../../contexts/TagGroupContext';
 
 /**
  * Render the final JSX of TagGroup
  */
-export const renderTagGroup_unstable = (state: TagGroupState, contextValue: TagGroupContextValue) => {
+export const renderTagGroup_unstable = (state: TagGroupState, contextValue: TagGroupContextValues) => {
   const { slots, slotProps } = getSlotsNext<TagGroupSlots>(state);
 
   return (
-    <TagGroupContextProvider value={contextValue}>
+    <TagGroupContextProvider value={contextValue.tagGroup}>
       <slots.root {...slotProps.root} />
     </TagGroupContextProvider>
   );
