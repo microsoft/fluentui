@@ -12,7 +12,7 @@ export type TagGroupSlots = {
 };
 
 export type TagGroupDismissData = {
-  dismissedTagId: string;
+  dismissedTagValue: string;
 };
 
 /**

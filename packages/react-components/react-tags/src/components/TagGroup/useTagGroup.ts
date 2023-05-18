@@ -15,7 +15,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
   const { onDismiss, size = 'medium' } = props;
 
   const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
-    onDismiss?.(e, { dismissedTagId: id });
+    onDismiss?.(e, { dismissedTagValue: id });
 
     // TODO set focus after tag dismiss
   });

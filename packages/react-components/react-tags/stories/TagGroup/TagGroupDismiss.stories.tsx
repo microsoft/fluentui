@@ -11,8 +11,8 @@ export const Dismiss = () => {
 
   const [items, setItems] = React.useState<Array<TagProps | TagButtonProps>>(defaultItems);
 
-  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagId }) => {
-    setItems([...items].filter(item => item.value !== dismissedTagId));
+  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
+    setItems([...items].filter(item => item.value !== dismissedTagValue));
   };
 
   const isTagButton = (item: TagProps | TagButtonProps): item is TagButtonProps =>

@@ -20,7 +20,7 @@ describe('TagGroup', () => {
 
     fireEvent.click(getByRole('button'));
 
-    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { dismissedTagId: '1' });
+    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { dismissedTagValue: '1' });
   });
 
   it('should invoke onDismiss on children Tag delete keyDown', () => {
@@ -33,6 +33,6 @@ describe('TagGroup', () => {
 
     fireEvent.keyDown(getByRole('button'), { key: 'Delete' });
 
-    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { dismissedTagId: '1' });
+    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { dismissedTagValue: '1' });
   });
 });
