@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 18 May 2023 00:39:06 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 13:11:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.6)
+
+Thu, 18 May 2023 13:11:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.5..@fluentui/react-dialog_v9.5.6)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.2 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+- Bump @fluentui/react-portal to v9.2.9 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
 
 ## [9.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.5)
 

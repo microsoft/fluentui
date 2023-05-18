@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Thu, 18 May 2023 00:39:07 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 13:11:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.31)
+
+Thu, 18 May 2023 13:11:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.30..@fluentui/react-infobutton_v9.0.0-beta.31)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.5.13 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+- Bump @fluentui/react-tabster to v9.7.2 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
 
 ## [9.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.30)
 
