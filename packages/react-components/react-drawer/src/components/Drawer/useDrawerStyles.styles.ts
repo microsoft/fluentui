@@ -24,9 +24,6 @@ const useStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     ...shorthands.borderRadius(`var(${drawerCSSVars.borderRadius})`),
     ...shorthands.border(0),
-    ...shorthands.overflow('hidden'),
-
-    [drawerCSSVars.borderRadius]: 0,
 
     [drawerCSSVars.borderRadius]: 0,
 

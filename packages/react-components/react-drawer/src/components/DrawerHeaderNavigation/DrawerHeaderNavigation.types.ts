@@ -7,7 +7,7 @@ export type DrawerHeaderNavigationSlots = {
 /**
  * DrawerHeaderNavigation Props
  */
-export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots> & {};
+export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
 
 /**
  * State used in rendering DrawerHeaderNavigation
