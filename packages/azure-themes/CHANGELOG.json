@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 12:22:15 GMT",
+      "tag": "@uifabric/azure-themes_v7.10.37",
+      "version": "7.10.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "8.0 azure theme link fix - light theme",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "dce8eb173d17577f41588e39fd2fffcaba1344d5",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Apr 2023 12:23:26 GMT",
       "tag": "@uifabric/azure-themes_v7.10.36",
       "version": "7.10.36",
