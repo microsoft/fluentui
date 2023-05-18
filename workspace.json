@@ -187,7 +187,7 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/tools"],
+          "outputs": ["{workspaceRoot}/coverage/tools"],
           "options": {
             "jestConfig": "tools/jest.config.ts",
             "passWithNoTests": true
