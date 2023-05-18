@@ -33,7 +33,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: 
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
-};
+} & IStylesheetKey;
 
 /**
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
@@ -43,7 +43,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
-};
+} & IStylesheetKey;
 
 /**
  * A processed style set is one which the set of styles associated with each area has been converted
@@ -58,4 +58,11 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
       TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
     >;
   };
+} & IStylesheetKey;
+
+/**
+ * NOTE: This API is unstable and subject to breaking change or removal at any time.
+ */
+export type IStylesheetKey = {
+  __stylesheetKey__?: string;
 };

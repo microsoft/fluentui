@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 
 /**
  * {@docCategory TextField}
@@ -284,6 +285,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * password button for password inputs (Edge, IE).
    */
   revealPasswordAriaLabel?: string;
+
+  shadowDom?: ShadowConfig;
 }
 
 /**

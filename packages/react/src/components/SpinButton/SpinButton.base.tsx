@@ -130,6 +130,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     onValidate,
     onChange,
     styles,
+    shadowDom,
   } = props;
 
   const input = React.useRef<HTMLInputElement>(null);
@@ -176,14 +177,18 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     }
   }, [valueFromProps, previousValueFromProps, intermediateValue]);
 
-  const classNames = getClassNames(styles, {
-    theme: theme!,
-    disabled,
-    isFocused,
-    keyboardSpinDirection,
-    labelPosition,
-    className,
-  });
+  const classNames = getClassNames(
+    styles,
+    {
+      theme: theme!,
+      disabled,
+      isFocused,
+      keyboardSpinDirection,
+      labelPosition,
+      className,
+    },
+    shadowDom,
+  );
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
     'onBlur',

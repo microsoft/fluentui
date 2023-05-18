@@ -220,6 +220,7 @@ export class TextFieldBase
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
+      shadowDom,
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
@@ -227,23 +228,27 @@ export class TextFieldBase
 
     const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
 
-    const classNames = (this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      className,
-      disabled,
-      focused: isFocused,
-      required,
-      multiline,
-      hasLabel: !!label,
-      hasErrorMessage: isInvalid,
-      borderless,
-      resizable,
-      hasIcon: !!iconProps,
-      underlined,
-      inputClassName,
-      autoAdjustHeight,
-      hasRevealButton,
-    }));
+    const classNames = (this._classNames = getClassNames(
+      styles!,
+      {
+        theme: theme!,
+        className,
+        disabled,
+        focused: isFocused,
+        required,
+        multiline,
+        hasLabel: !!label,
+        hasErrorMessage: isInvalid,
+        borderless,
+        resizable,
+        hasIcon: !!iconProps,
+        underlined,
+        inputClassName,
+        autoAdjustHeight,
+        hasRevealButton,
+      },
+      shadowDom,
+    ));
 
     return (
       // eslint-disable-next-line deprecation/deprecation
