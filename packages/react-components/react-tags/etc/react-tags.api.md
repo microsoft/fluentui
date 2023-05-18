@@ -23,7 +23,7 @@ export const renderTag_unstable: (state: TagState, contextValues: TagContextValu
 export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
 
 // @public
-export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValue) => JSX.Element;
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
