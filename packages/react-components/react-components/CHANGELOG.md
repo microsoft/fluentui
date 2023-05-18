@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 18 May 2023 00:39:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 13:11:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.2)
+
+Thu, 18 May 2023 13:11:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.20.1..@fluentui/react-components_v9.20.2)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: upgrade tabster to v4.4.0 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by bernardo.sunderhus@gmail.com)
 
 ## [9.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.1)
 

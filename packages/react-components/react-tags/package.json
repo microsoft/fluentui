@@ -35,10 +35,10 @@
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.3.20",
-    "@fluentui/react-avatar": "^9.5.1",
+    "@fluentui/react-avatar": "^9.5.2",
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.4",
-    "@fluentui/react-tabster": "^9.7.1",
+    "@fluentui/react-tabster": "^9.7.2",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.0",
     "@griffel/react": "^1.5.2",

@@ -26,7 +26,7 @@ export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots>;
 
 // @public
-export type DrawerBodyProps = ComponentProps<DrawerBodySlots> & {};
+export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
 
 // @public (undocumented)
 export type DrawerBodySlots = {
