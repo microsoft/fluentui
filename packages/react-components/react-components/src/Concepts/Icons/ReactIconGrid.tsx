@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 });
 
 const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.values(ReactIcons).filter(
-  icon => !!icon && !!icon.displayName,
+  (icon): icon is React.FC<ReactIcons.FluentIconsProps> => typeof icon === 'function' && !!icon.displayName,
 );
 
 const ReactIconGrid = () => {
