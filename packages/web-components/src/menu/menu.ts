@@ -33,9 +33,6 @@ export class Menu extends FASTElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     document.removeEventListener('click', this.handleDocumentClick);
-    if (this.openOnHover) {
-      document.removeEventListener('hover', this.handleDocumentClick);
-    }
   }
 
   public setPositioning(): void {
