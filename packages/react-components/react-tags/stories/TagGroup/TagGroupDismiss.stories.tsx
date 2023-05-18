@@ -3,27 +3,28 @@ import { TagGroup, Tag, TagButton, TagButtonProps, TagProps, TagGroupProps } fro
 
 export const Dismiss = () => {
   const defaultItems = [
-    { id: '1', children: 'Tag 1' },
-    { id: '2', children: 'Tag 2' },
-    { id: 'tagButton-foo', children: 'Foo' },
-    { id: 'tagButton-bar', children: 'Bar' },
+    { value: '1', children: 'Tag 1' },
+    { value: '2', children: 'Tag 2' },
+    { value: 'tagButton-foo', children: 'Foo' },
+    { value: 'tagButton-bar', children: 'Bar' },
   ];
 
   const [items, setItems] = React.useState<Array<TagProps | TagButtonProps>>(defaultItems);
 
   const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagId }) => {
-    setItems([...items].filter(item => item.id !== dismissedTagId));
+    setItems([...items].filter(item => item.value !== dismissedTagId));
   };
 
-  const isTagButton = (item: TagProps | TagButtonProps): item is TagButtonProps => !!item.id?.startsWith('tagButton');
+  const isTagButton = (item: TagProps | TagButtonProps): item is TagButtonProps =>
+    !!item.value?.startsWith('tagButton');
 
   return (
     <TagGroup onDismiss={removeItem}>
       {items.map(item =>
         isTagButton(item) ? (
-          <TagButton key={item.id} dismissible {...item} />
+          <TagButton key={item.value} dismissible {...item} />
         ) : (
-          <Tag key={item.id} dismissible {...item} />
+          <Tag key={item.value} dismissible {...item} />
         ),
       )}
     </TagGroup>

@@ -14,7 +14,7 @@ describe('TagGroup', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(
       <TagGroup onDismiss={onDismiss}>
-        <Tag id={'1'} dismissible />
+        <Tag value={'1'} dismissible />
       </TagGroup>,
     );
 
@@ -27,7 +27,7 @@ describe('TagGroup', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(
       <TagGroup onDismiss={onDismiss}>
-        <Tag id={'1'} dismissible />
+        <Tag value={'1'} dismissible />
       </TagGroup>,
     );
 

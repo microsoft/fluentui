@@ -31,27 +31,28 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
   const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
+  const id = useId('fui-Tag', props.id);
+
   const {
     appearance = 'filled-lighter',
     disabled = false,
     dismissible = false,
     shape = 'rounded',
     size = contextSize,
+    value = id,
   } = props;
-
-  const id = useId('fui-Tag', props.id);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, id);
+      handleTagDismiss?.(ev, value);
     }
   });
 
   const onDismissButtonKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, id);
+      handleTagDismiss?.(ev, value);
     }
   });
 

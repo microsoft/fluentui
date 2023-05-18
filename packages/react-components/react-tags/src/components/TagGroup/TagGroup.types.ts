@@ -30,7 +30,7 @@ export type TagGroupProps = ComponentProps<TagGroupSlots> & {
 /**
  * State used in rendering TagGroup
  */
-export type TagGroupState = ComponentState<TagGroupSlots> &
+export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> &
   Required<Pick<TagGroupProps, 'size'>> & {
-    handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, id: string) => void;
+    handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
   };
