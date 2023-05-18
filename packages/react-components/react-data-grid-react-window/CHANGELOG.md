@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-data-grid-react-window
 
-This log was last generated on Fri, 12 May 2023 20:28:25 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 00:39:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-data-grid-react-window_v9.0.0-beta.25)
+
+Thu, 18 May 2023 00:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-data-grid-react-window_v9.0.0-beta.24..@fluentui/react-data-grid-react-window_v9.0.0-beta.25)
+
+### Changes
+
+- Bump @fluentui/react-table to v9.2.9 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-components to v9.20.1 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
 
 ## [9.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-data-grid-react-window_v9.0.0-beta.24)
 

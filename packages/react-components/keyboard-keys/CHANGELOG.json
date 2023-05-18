@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:00 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:28:09 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.3",
       "version": "9.0.3",

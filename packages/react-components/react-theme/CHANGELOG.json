@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:17 GMT",
+      "tag": "@fluentui/react-theme_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:27:56 GMT",
       "tag": "@fluentui/react-theme_v9.1.8",
       "version": "9.1.8",
