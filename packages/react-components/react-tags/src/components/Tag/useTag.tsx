@@ -1,8 +1,20 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { Dismiss16Filled } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-avatar';
+import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
+
+const tagAvatarSizeMap = {
+  medium: 28,
+  small: 24,
+  'extra-small': 20,
+} as const;
+
+const tagAvatarShapeMap = {
+  rounded: 'square',
+  circular: 'circular',
+} as const;
+
+const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
  * Create the state required to render Tag.
@@ -15,45 +27,49 @@ import type { TagProps, TagState } from './Tag.types';
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
   const {
-    checked = false,
+    appearance = 'filled-lighter',
     disabled = false,
-    dismissable = false,
+    dismissible = false,
     shape = 'rounded',
     size = 'medium',
-    appearance = 'filled-lighter',
   } = props;
 
   return {
+    appearance,
+    avatarShape: tagAvatarShapeMap[shape],
+    avatarSize: tagAvatarSizeMap[size],
+    disabled,
+    dismissible,
+    shape,
+    size,
+
     components: {
-      root: 'div',
-      content: 'span',
-      avatar: Avatar,
+      root: 'button',
+      media: 'span',
       icon: 'span',
       primaryText: 'span',
       secondaryText: 'span',
-      dismissButton: 'button',
+      dismissIcon: 'span',
     },
-    checked,
-    disabled,
-    dismissable,
-    shape,
-    size,
-    appearance,
-    root: getNativeElementProps('div', {
+
+    root: getNativeElementProps('button', {
       ref,
       ...props,
     }),
-    content: resolveShorthand(props.content, { required: true }),
-    avatar: resolveShorthand(props.avatar),
+
+    media: resolveShorthand(props.media),
     icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText),
-    secondaryText: resolveShorthand(props.secondaryText),
-    dismissButton: resolveShorthand(props.dismissButton, {
+    primaryText: resolveShorthand(props.primaryText, {
       required: true,
       defaultProps: {
-        disabled,
-        type: 'button',
-        children: <Dismiss16Filled />,
+        children: props.children,
+      },
+    }),
+    secondaryText: resolveShorthand(props.secondaryText),
+    dismissIcon: resolveShorthand(props.dismissIcon, {
+      required: props.dismissible,
+      defaultProps: {
+        children: <DismissIcon />,
       },
     }),
   };

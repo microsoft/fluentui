@@ -2,6 +2,89 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 12 May 2023 20:27:59 GMT",
+      "tag": "@fluentui/react-tooltip_v9.2.11",
+      "version": "9.2.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.3",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.2.7",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.5.11",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.4.0",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-theme to v9.1.8",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.8.1",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Apr 2023 08:12:44 GMT",
       "tag": "@fluentui/react-tooltip_v9.2.10",
       "version": "9.2.10",

@@ -1,84 +1,169 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
-  content: 'fui-Tag__content',
-  avatar: 'fui-Tag__avatar',
+  media: 'fui-Tag__media',
   icon: 'fui-Tag__icon',
   primaryText: 'fui-Tag__primaryText',
   secondaryText: 'fui-Tag__secondaryText',
-  dismissButton: 'fui-Tag__dismissButton',
+  dismissIcon: 'fui-Tag__dismissIcon',
 };
 
 /**
- * Styles for the root slot
+ * Base styles shared by Tag/TagButton
  */
-const useStyles = makeStyles({
-  root: {
-    display: 'inline-flex',
-  },
-  content: {
-    display: 'inline-grid',
-    gridTemplateColumns: 'auto 8px auto auto 8px auto',
-    gridTemplateRows: '1fr auto auto 1fr',
-    gridTemplateAreas: `
-    "avatar . icon .         ."
-    "avatar . icon primary   ."
-    "avatar . icon secondary ."
-    "avatar . icon .         ."
-    `,
-  },
-  avatar: {
+export const useTagBaseStyles = makeStyles({
+  media: {
+    ...shorthands.gridArea('media'),
     alignSelf: 'center',
-    ...shorthands.gridArea('avatar'),
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tokens.spacingHorizontalS,
   },
   icon: {
+    ...shorthands.gridArea('media'),
+    display: 'flex',
     alignSelf: 'center',
-    ...shorthands.gridArea('icon'),
+    paddingLeft: '6px',
+    paddingRight: '2px',
   },
-  primaryText: { ...shorthands.gridArea('primary') },
-  secondaryText: { ...shorthands.gridArea('secondary') },
-  dismissButton: {},
-
-  // TODO add additional classes for different states and/or slots
+  primaryText: {
+    gridColumnStart: 'primary',
+    gridRowStart: 'primary',
+    gridRowEnd: 'secondary',
+    ...typographyStyles.body1,
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tokens.spacingHorizontalXXS,
+  },
+  primaryTextWithSecondaryText: {
+    ...shorthands.gridArea('primary'),
+    ...typographyStyles.caption1,
+  },
+  secondaryText: {
+    ...shorthands.gridArea('secondary'),
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tokens.spacingHorizontalXXS,
+    ...typographyStyles.caption2,
+  },
 });
 
+export const useResetButtonStyles = makeStyles({
+  resetButton: {
+    color: 'inherit',
+    fontFamily: 'inherit',
+    lineHeight: 'normal',
+    ...shorthands.overflow('visible'),
+    ...shorthands.padding(0),
+    ...shorthands.borderStyle('none'),
+    appearance: 'button',
+    textAlign: 'unset',
+    backgroundColor: 'transparent',
+  },
+});
+
+const useTagStyles = makeStyles({
+  root: {
+    // TODO use makeResetStyle when styles are settled
+    display: 'inline-grid',
+    alignItems: 'center',
+    gridTemplateRows: '1fr auto auto 1fr',
+    gridTemplateAreas: `
+    "media .         dismissIcon"
+    "media primary   dismissIcon"
+    "media secondary dismissIcon"
+    "media .         dismissIcon"
+    `,
+
+    boxSizing: 'border-box',
+    height: '32px',
+    width: 'fit-content',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      },
+      { enableOutline: true },
+    ),
+  },
+  rootCircular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
+  },
+  rootWithoutMedia: {
+    paddingLeft: tokens.spacingHorizontalS,
+  },
+  rootWithoutDismiss: {
+    paddingRight: tokens.spacingHorizontalS,
+  },
+
+  dismissIcon: {
+    ...shorthands.gridArea('dismissIcon'),
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '20px',
+    paddingLeft: '2px',
+    paddingRight: '6px',
+  },
+
+  // TODO add additional classes for fill/outline appearance, different sizes, and state
+});
 /**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(tagClassNames.root, styles.root, state.root.className);
-  if (state.content) {
-    state.content.className = mergeClasses(tagClassNames.content, styles.content, state.content.className);
-  }
-  if (state.avatar) {
-    state.avatar.className = mergeClasses(tagClassNames.avatar, styles.avatar, state.avatar.className);
+  const baseStyles = useTagBaseStyles();
+  const resetButtonStyles = useResetButtonStyles();
+  const styles = useTagStyles();
+
+  state.root.className = mergeClasses(
+    tagClassNames.root,
+    resetButtonStyles.resetButton,
+
+    styles.root,
+    state.shape === 'circular' && styles.rootCircular,
+    !state.media && !state.icon && styles.rootWithoutMedia,
+    !state.dismissIcon && styles.rootWithoutDismiss,
+
+    state.root.className,
+  );
+
+  if (state.media) {
+    state.media.className = mergeClasses(tagClassNames.media, baseStyles.media, state.media.className);
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(tagClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(tagClassNames.icon, baseStyles.icon, state.icon.className);
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
       tagClassNames.primaryText,
-      styles.primaryText,
+      baseStyles.primaryText,
+      state.secondaryText && baseStyles.primaryTextWithSecondaryText,
       state.primaryText.className,
     );
   }
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       tagClassNames.secondaryText,
-      styles.secondaryText,
+      baseStyles.secondaryText,
       state.secondaryText.className,
     );
   }
-  if (state.dismissButton) {
-    state.dismissButton.className = mergeClasses(
-      tagClassNames.dismissButton,
-      styles.dismissButton,
-      state.dismissButton.className,
+  if (state.dismissIcon) {
+    state.dismissIcon.className = mergeClasses(
+      tagClassNames.dismissIcon,
+      styles.dismissIcon,
+      state.dismissIcon.className,
     );
   }
 

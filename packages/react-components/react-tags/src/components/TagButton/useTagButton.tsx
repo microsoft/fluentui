@@ -1,8 +1,21 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
-import { Dismiss16Filled } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-avatar';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
+
+const tagButtonAvatarSizeMap = {
+  medium: 28,
+  small: 24,
+  'extra-small': 20,
+} as const;
+
+const tagButtonAvatarShapeMap = {
+  rounded: 'square',
+  circular: 'circular',
+} as const;
+
+const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
  * Create the state required to render TagButton.
@@ -15,45 +28,55 @@ import { Avatar } from '@fluentui/react-avatar';
  */
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
   const {
-    checked = false,
+    appearance = 'filled-lighter',
     disabled = false,
-    dismissable = false,
+    dismissible = false,
     shape = 'rounded',
     size = 'medium',
-    appearance = 'filled-lighter',
   } = props;
 
   return {
+    appearance,
+    avatarShape: tagButtonAvatarShapeMap[shape],
+    avatarSize: tagButtonAvatarSizeMap[size],
+    disabled,
+    dismissible,
+    shape,
+    size,
+
     components: {
       root: 'div',
-      contentButton: 'button',
-      avatar: Avatar,
+      content: 'div',
+      media: 'span',
       icon: 'span',
       primaryText: 'span',
       secondaryText: 'span',
       dismissButton: 'button',
     },
-    checked,
-    disabled,
-    dismissable,
-    shape,
-    size,
-    appearance,
+
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
-    contentButton: resolveShorthand(props.contentButton, { required: true }),
-    avatar: resolveShorthand(props.avatar),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText),
-    secondaryText: resolveShorthand(props.secondaryText),
-    dismissButton: resolveShorthand(props.dismissButton, {
+
+    content: useARIAButtonShorthand(props.content, {
       required: true,
       defaultProps: {
         disabled,
+        tabIndex: 0,
         type: 'button',
-        children: <Dismiss16Filled />,
+      },
+    }),
+    media: resolveShorthand(props.media),
+    icon: resolveShorthand(props.icon),
+    primaryText: resolveShorthand(props.primaryText, { required: true }),
+    secondaryText: resolveShorthand(props.secondaryText),
+    dismissButton: useARIAButtonShorthand(props.dismissButton, {
+      required: props.dismissible,
+      defaultProps: {
+        disabled,
+        type: 'button',
+        children: <DismissIcon />,
       },
     }),
   };

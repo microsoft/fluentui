@@ -1,87 +1,147 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+import { useResetButtonStyles, useTagBaseStyles } from '../Tag/index';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
-  contentButton: 'fui-TagButton__contentButton',
-  avatar: 'fui-TagButton__avatar',
+  content: 'fui-TagButton__content',
+  media: 'fui-TagButton__media',
   icon: 'fui-TagButton__icon',
   primaryText: 'fui-TagButton__primaryText',
   secondaryText: 'fui-TagButton__secondaryText',
   dismissButton: 'fui-TagButton__dismissButton',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
+    // TODO use makeResetStyle when styles are settled
     display: 'inline-flex',
+
+    boxSizing: 'border-box',
+    height: '32px',
+    width: 'fit-content',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
   },
-  contentButton: {
+  rootCircular: shorthands.borderRadius(tokens.borderRadiusCircular),
+
+  content: {
     display: 'inline-grid',
-    gridTemplateColumns: 'auto 8px auto auto 8px auto',
     gridTemplateRows: '1fr auto auto 1fr',
     gridTemplateAreas: `
-    "avatar . icon .         ."
-    "avatar . icon primary   ."
-    "avatar . icon secondary ."
-    "avatar . icon .         ."
+    "media .        "
+    "media primary  "
+    "media secondary"
+    "media .        "
     `,
-  },
-  avatar: {
-    alignSelf: 'center',
-    ...shorthands.gridArea('avatar'),
-  },
-  icon: {
-    alignSelf: 'center',
-    ...shorthands.gridArea('icon'),
-  },
-  primaryText: { ...shorthands.gridArea('primary') },
-  secondaryText: { ...shorthands.gridArea('secondary') },
-  dismissButton: {},
+    paddingRight: tokens.spacingHorizontalS,
 
-  // TODO add additional classes for different states and/or slots
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+        zIndex: 1,
+      },
+      { enableOutline: true },
+    ),
+  },
+  circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
+  contentWithoutMedia: {
+    paddingLeft: tokens.spacingHorizontalS,
+  },
+  dismissibleContent: createCustomFocusIndicatorStyle({
+    borderTopRightRadius: tokens.borderRadiusNone,
+    borderBottomRightRadius: tokens.borderRadiusNone,
+  }),
+
+  dismissButton: {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '20px',
+    paddingLeft: '6px',
+    paddingRight: '6px',
+
+    ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+
+    borderTopLeftRadius: tokens.borderRadiusNone,
+    borderBottomLeftRadius: tokens.borderRadiusNone,
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      borderTopLeftRadius: tokens.borderRadiusNone,
+      borderBottomLeftRadius: tokens.borderRadiusNone,
+      borderTopRightRadius: tokens.borderRadiusMedium,
+      borderBottomRightRadius: tokens.borderRadiusMedium,
+    }),
+  },
+  dismissButtonCircular: createCustomFocusIndicatorStyle({
+    borderTopRightRadius: tokens.borderRadiusCircular,
+    borderBottomRightRadius: tokens.borderRadiusCircular,
+  }),
+
+  // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
 
 /**
  * Apply styling to the TagButton slots based on the state
  */
 export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonState => {
+  const baseStyles = useTagBaseStyles();
+  const resetButtonStyles = useResetButtonStyles();
   const styles = useStyles();
-  state.root.className = mergeClasses(tagButtonClassNames.root, styles.root, state.root.className);
-  if (state.contentButton) {
-    state.contentButton.className = mergeClasses(
-      tagButtonClassNames.contentButton,
-      styles.contentButton,
-      state.contentButton.className,
+
+  state.root.className = mergeClasses(
+    tagButtonClassNames.root,
+    styles.root,
+    state.shape === 'circular' && styles.rootCircular,
+    state.root.className,
+  );
+  if (state.content) {
+    state.content.className = mergeClasses(
+      tagButtonClassNames.content,
+
+      styles.content,
+      state.shape === 'circular' && styles.circularContent,
+      !state.media && !state.icon && styles.contentWithoutMedia,
+      state.dismissButton && styles.dismissibleContent,
+
+      state.content.className,
     );
   }
-  if (state.avatar) {
-    state.avatar.className = mergeClasses(tagButtonClassNames.avatar, styles.avatar, state.avatar.className);
+
+  if (state.media) {
+    state.media.className = mergeClasses(tagButtonClassNames.media, baseStyles.media, state.media.className);
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(tagButtonClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(tagButtonClassNames.icon, baseStyles.icon, state.icon.className);
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
       tagButtonClassNames.primaryText,
-      styles.primaryText,
+      baseStyles.primaryText,
+      state.secondaryText && baseStyles.primaryTextWithSecondaryText,
       state.primaryText.className,
     );
   }
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       tagButtonClassNames.secondaryText,
-      styles.secondaryText,
+      baseStyles.secondaryText,
       state.secondaryText.className,
     );
   }
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagButtonClassNames.dismissButton,
+      resetButtonStyles.resetButton,
+
       styles.dismissButton,
+      state.shape === 'circular' && styles.dismissButtonCircular,
       state.dismissButton.className,
     );
   }

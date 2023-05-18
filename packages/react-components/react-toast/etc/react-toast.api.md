@@ -4,6 +4,25 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export const Toaster: React_2.FC<ToasterProps>;
+
+// @public (undocumented)
+export type ToastId = string;
+
+// @public (undocumented)
+export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+
+// @public (undocumented)
+export function useToastController(): {
+    dispatchToast: (content: React_2.ReactNode, options?: Partial<ToastOptions> | undefined) => void;
+    dismissToast: (toastId: ToastId, toasterId?: string | undefined) => void;
+    dismissAllToasts: (toasterId?: string | undefined) => void;
+    updateToast: (options: UpdateToastEventDetail) => void;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
