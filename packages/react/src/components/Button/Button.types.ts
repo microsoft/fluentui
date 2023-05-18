@@ -9,6 +9,7 @@ import type { IContextualMenuProps } from '../../ContextualMenu';
 import type { IIconProps } from '../../Icon';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 
 /**
  * {@docCategory Button}
@@ -344,6 +345,8 @@ export interface IButtonProps
    * overall SplitButton container
    */
   primaryActionButtonProps?: IButtonProps;
+
+  shadowDom?: ShadowConfig;
 }
 
 /**

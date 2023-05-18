@@ -286,6 +286,8 @@ import { mergeScopedSettings } from '@fluentui/utilities';
 import { mergeSettings } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/style-utilities';
 import { mergeStyleSets } from '@fluentui/style-utilities';
+import { MergeStylesRootProvider_unstable } from '@fluentui/utilities';
+import { MergeStylesShadowRootProvider_unstable } from '@fluentui/utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities';
@@ -354,6 +356,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -372,6 +375,7 @@ import { toMatrix } from '@fluentui/utilities';
 import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
 import { unregisterIcons } from '@fluentui/style-utilities';
+import { useAdoptedStylesheet_unstable } from '@fluentui/utilities';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { useFocusRects } from '@fluentui/utilities';
@@ -2706,6 +2710,8 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
     // @deprecated (undocumented)
     rootProps?: React_2.ButtonHTMLAttributes<HTMLButtonElement> | React_2.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;
+    // (undocumented)
+    shadowDom?: ShadowConfig;
     split?: boolean;
     splitButtonAriaLabel?: string;
     splitButtonMenuProps?: IButtonProps;
@@ -9940,6 +9946,10 @@ export { mergeStyles }
 
 export { mergeStyleSets }
 
+export { MergeStylesRootProvider_unstable }
+
+export { MergeStylesShadowRootProvider_unstable }
+
 export { mergeThemes }
 
 // @public (undocumented)
@@ -11350,6 +11360,8 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
 export function updateT(color: IColor, t: number): IColor;
+
+export { useAdoptedStylesheet_unstable }
 
 export { useCustomizationSettings }
 

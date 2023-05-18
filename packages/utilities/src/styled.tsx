@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
+import {
+  useAdoptedStylesheet_unstable,
+  useHasMergeStylesShadowRootContext,
+} from './shadowDom/MergeStylesShadowRootContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { getWindow } from '../lib/dom';
+// eslint-disable-next-line
+import { useWindow } from '@fluentui/react-window-provider';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -95,6 +103,22 @@ export function styled<
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
+    const win = useWindow() ?? getWindow();
+    const inShadow = useHasMergeStylesShadowRootContext();
+    const shadowDom = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
+    if (
+      shadowDom.current.stylesheetKey !== scope ||
+      shadowDom.current.inShadow !== inShadow ||
+      shadowDom.current.window !== win
+      // false
+    ) {
+      shadowDom.current = {
+        stylesheetKey: scope,
+        inShadow,
+        window: win,
+      };
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
     const propStyles = props.styles;
@@ -117,9 +141,33 @@ export function styled<
         !customizedStyles && !propStyles;
 
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
+      // // eslint-disable-next-line
+      // // @ts-ignore
+      // styles.current.__stylesheetKey__ = stylesheetKey;
+      // // eslint-disable-next-line
+      // // @ts-ignore
+      // styles.current.__inShadow__ = inShadow;
     }
 
-    return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
+    useAdoptedStylesheet_unstable(scope);
+
+    // const inShadow = useAdoptedStylesheet_unstable(stylesheetKey);
+    // if (styles.current) {
+    //   // eslint-disable-next-line
+    //   // @ts-ignore
+    //   styles.current.__stylesheetKey__ = inShadow ? stylesheetKey : undefined;
+    // }
+
+    return (
+      <Component
+        ref={forwardedRef}
+        {...rest}
+        {...additionalProps}
+        {...props}
+        shadowDom={shadowDom.current}
+        styles={styles.current}
+      />
+    );
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs
