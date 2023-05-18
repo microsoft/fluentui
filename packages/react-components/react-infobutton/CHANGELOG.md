@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Fri, 12 May 2023 20:27:20 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 00:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.30)
+
+Thu, 18 May 2023 00:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.29..@fluentui/react-infobutton_v9.0.0-beta.30)
+
+### Changes
+
+- fix: Add aria-owns to InfoLabel. ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by esteban.230@hotmail.com)
+- Bump @fluentui/react-label to v9.1.12 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-popover to v9.5.12 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-tabster to v9.7.1 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
 
 ## [9.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.29)
 

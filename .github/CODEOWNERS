@@ -252,20 +252,20 @@ packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coas
 packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/DatePicker @microsoft/cxe-red
-packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
 packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
 packages/react/src/components/HoverCard @microsoft/cxe-red @microsoft/cxe-coastal @Jahnp
 packages/react/src/components/Icon @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Image @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Label @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Layer @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/Link @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan  @ThomasMichon
 packages/react/src/components/MarqueeSelection @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/MessageBar @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Nav @microsoft/cxe-red @microsoft/cxe-coastal

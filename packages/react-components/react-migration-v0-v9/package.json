@@ -36,10 +36,10 @@
   "dependencies": {
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-theme": "^9.1.8",
-    "@fluentui/react-utilities": "^9.8.1",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.3",
+    "@fluentui/react-utilities": "^9.9.0",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.4",
     "@griffel/react": "^1.5.2",
-    "@fluentui/react-components": "^9.20.0",
+    "@fluentui/react-components": "^9.20.1",
     "@fluentui/react-northstar": "^0.66.4",
     "@swc/helpers": "^0.4.14"
   },
