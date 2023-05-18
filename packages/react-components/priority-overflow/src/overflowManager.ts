@@ -230,8 +230,16 @@ export function createOverflowManager(): OverflowManager {
     overflowMenu = el;
   };
 
+  const addDivider: OverflowManager['addDivider'] = el => {
+    divider = el;
+  };
+
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
     overflowMenu = undefined;
+  };
+
+  const removeDivider: OverflowManager['removeDivider'] = () => {
+    divider = undefined;
   };
 
   const removeItem: OverflowManager['removeItem'] = itemId => {
@@ -261,5 +269,7 @@ export function createOverflowManager(): OverflowManager {
     update,
     addOverflowMenu,
     removeOverflowMenu,
+    addDivider,
+    removeDivider,
   };
 }

@@ -10,6 +10,7 @@ export interface OverflowContextValue {
   hasOverflow: boolean;
   registerItem: (item: OverflowItemEntry) => () => void;
   registerOverflowMenu: (el: HTMLElement) => () => void;
+  registerDivider: (el: HTMLElement) => () => void;
   updateOverflow: (padding?: number) => void;
 }
 
@@ -24,6 +25,7 @@ const overflowContextDefaultValue: OverflowContextValue = {
   registerItem: () => () => null,
   updateOverflow: () => null,
   registerOverflowMenu: () => () => null,
+  registerDivider: () => () => null,
 };
 
 /**

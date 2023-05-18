@@ -13,7 +13,7 @@ import type {
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
 /**
  * @internal
@@ -95,11 +95,26 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     [overflowManager],
   );
 
+  const registerDivider = React.useCallback(
+    (el: HTMLElement) => {
+      console.log('registering divider');
+      overflowManager?.addDivider(el);
+      el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+
+      return () => {
+        overflowManager?.removeDivider(el);
+        el.removeAttribute(DATA_OVERFLOW_DIVIDER);
+      };
+    },
+    [overflowManager],
+  );
+
   return {
     containerRef,
     registerItem,
     updateOverflow,
     registerOverflowMenu,
+    registerDivider,
   };
 };
 

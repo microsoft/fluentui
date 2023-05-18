@@ -112,6 +112,16 @@ export interface OverflowManager {
   addOverflowMenu: (element: HTMLElement) => void;
 
   /**
+   * TODO
+   */
+  addDivider: (element: HTMLElement) => void;
+
+  /**
+   * TODO
+   */
+  removeDivider: (element: HTMLElement) => void;
+
+  /**
    * Unsets the overflow menu element
    */
   removeOverflowMenu: () => void;
