@@ -34,12 +34,13 @@ Creating a menu component that can be used to display a list of options or actio
 
 ### **Fields**
 
-| Name            | Privacy | Type            | Default | Description                                     |
-| --------------- | ------- | --------------- | ------- | ----------------------------------------------- |
-| `menu`          | public  | `HTMLElement[]` |         | The menu element(s) to be displayed             |
-| `trigger`       | public  | `HTMLElement[]` |         | The trigger element(s) for opening/closing menu |
-| `expanded`      | public  | `boolean`       | `false` | Specifies if the menu is expanded or collapsed  |
-| `menuContainer` | public  | `HTMLElement`   |         | The container element for the menu items        |
+| Name            | Privacy | Type            | Default | Description                                          |
+| --------------- | ------- | --------------- | ------- | ---------------------------------------------------- |
+| `menu`          | public  | `HTMLElement[]` |         | The menu element(s) to be displayed                  |
+| `trigger`       | public  | `HTMLElement[]` |         | The trigger element(s) for opening/closing menu      |
+| `expanded`      | public  | `boolean`       | `false` | Specifies if the menu is expanded or collapsed       |
+| `menuContainer` | public  | `HTMLElement`   |         | The container element for the menu items             |
+| `openOnHover`   | public  | `boolean`       | `false` | Sets whether the menu opens on hover of menu trigger |
 
 <br />
 
@@ -47,19 +48,15 @@ Creating a menu component that can be used to display a list of options or actio
 
 - `setPositioning()`: Calculates and applies the positioning of the menu list based on available viewport space.
 - `focus()`: Focuses the first item in the menu.
-- `collapseExpandedItem()`: Collapses any expanded menu items.
-
-<br />
-
-### **Events**
 
 <br />
 
 ### **Attributes**
 
-| Name       | Field    |
-| ---------- | -------- |
-| `expanded` | expanded |
+| Name            | Field       |
+| --------------- | ----------- |
+| `expanded`      | expanded    |
+| `open-on-hover` | openOnHover |
 
 <br />
 
@@ -76,7 +73,7 @@ Creating a menu component that can be used to display a list of options or actio
 
 ```html
 <slot name="trigger" ${slotted({ property: 'trigger', filter: elements() })}></slot>
-<span class="menu-container" ${ref('menuContainer')} ?hidden="${(x) => !x.expanded}">
+<span class="menu-list-container" ${ref('menuListContainer')} ?hidden="${(x) => !x.expanded}">
   <slot ${slotted({ property: 'menu', filter: elements() })}></slot>
 </span>
 ```
@@ -105,8 +102,9 @@ Creating a menu component that can be used to display a list of options or actio
 | `<MenuList>`      | `<fluent-menu-list>`    |
 | `<MenuItem>`      | `<fluent-menu-item>`    |
 
-**Dependencies**
-
-- Floating UI Library
-
 <br />
+
+| Fluent UI React 9 | Fluent Web Components | Description of difference                                                                                                                                        |
+| ----------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hasIcons`        |                       | React implementation requires user to pass the `hasIcons` to align menu items with icons. The web components implimentation aligns content by default.           |
+| `hasCheckmarks`   |                       | React implementation requires user to pass the `hasCheckmarks` to align menu items with checkmarks. The web components implimentation aligns content by default. |
