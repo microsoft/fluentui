@@ -7,8 +7,8 @@ import { ValuesOf } from '@microsoft/fast-foundation';
 export const DropdownAppearance = {
   outline: 'outline',
   underline: 'underline',
-  subtle: 'filled-darker',
-  default: 'filled-lighter',
+  filledDarker: 'filled-darker',
+  filledLighter: 'filled-lighter',
 } as const;
 
 /**

@@ -31,12 +31,10 @@ import {
   shadow16,
   shadow2,
   spacingHorizontalM,
-  spacingHorizontalMNudge,
   spacingHorizontalS,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
-  spacingVerticalSNudge,
   spacingVerticalXS,
   spacingVerticalXXS,
   strokeWidthThick,
@@ -162,7 +160,6 @@ export const styles = css`
   .indicator {
     display: flex;
     color: ${colorNeutralForeground3};
-    font-size: ;
   }
   .control {
     align-items: center;
