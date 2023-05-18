@@ -15,6 +15,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
   const {
     appearance = 'transparent',
+    disableFocus,
     dividerType = 'chevron',
     iconPosition = 'before',
     size = 'medium',
@@ -22,11 +23,13 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     ...rest
   } = props;
 
-  const focusAttributes = useArrowNavigationGroup({
-    circular: true,
-    axis: 'horizontal',
-    memorizeCurrent: true,
-  });
+  const focusAttributes = !disableFocus
+    ? useArrowNavigationGroup({
+        circular: true,
+        axis: 'horizontal',
+        memorizeCurrent: true,
+      })
+    : {};
 
   return {
     components: {
@@ -35,7 +38,7 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     },
     root: getNativeElementProps('nav', {
       ref,
-      'aria-label': 'breadcrumb' || props['aria-label'],
+      'aria-label': props['aria-label'] ?? 'breadcrumb',
       ...focusAttributes,
       ...rest,
     }),
