@@ -14,7 +14,6 @@ export interface ToastOptions {
   pauseOnHover: boolean;
   toasterId: ToasterId | undefined;
   priority: number;
-  dispatchedAt: number;
 }
 
 export interface ToastOffsetObject {
@@ -35,6 +34,7 @@ export interface Toast extends ToastOptions {
   close: () => void;
   remove: () => void;
   updateId: number;
+  dispatchedAt: number;
 }
 
 export interface CommonToastDetail {
