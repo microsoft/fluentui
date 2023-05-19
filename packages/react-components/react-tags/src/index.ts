@@ -8,3 +8,11 @@ export {
   useTagButton_unstable,
 } from './TagButton';
 export type { TagButtonProps, TagButtonSlots, TagButtonState } from './TagButton';
+export {
+  TagGroup,
+  renderTagGroup_unstable,
+  tagGroupClassNames,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+} from './TagGroup';
+export type { TagGroupProps, TagGroupSlots, TagGroupState } from './TagGroup';
