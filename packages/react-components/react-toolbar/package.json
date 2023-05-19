@@ -44,7 +44,7 @@
     "@fluentui/react-radio": "^9.1.16",
     "@fluentui/react-shared-contexts": "^9.5.0",
     "@fluentui/react-tabster": "^9.7.4",
-    "@griffel/react": "^1.5.2",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

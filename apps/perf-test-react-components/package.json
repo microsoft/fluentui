@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@fluentui/scripts-perf-test-flamegrill": "*",
-    "@griffel/core": "^1.9.0",
+    "@griffel/core": "^1.11.0",
     "@fluentui/react-avatar": "^9.5.4",
     "@fluentui/react-button": "^9.3.15",
     "@fluentui/react-field": "^9.1.5",
