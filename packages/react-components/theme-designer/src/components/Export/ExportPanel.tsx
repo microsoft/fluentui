@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   exportHeader: {
     display: 'grid',
     gridTemplateColumns: '350px 50px',
-    alignItems: 'top',
+    alignItems: 'center',
   },
   popover: {
     width: '300px',

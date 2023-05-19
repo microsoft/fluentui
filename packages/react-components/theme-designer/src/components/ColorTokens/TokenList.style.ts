@@ -2,7 +2,6 @@ import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-components';
 
 export const useStyles = makeStyles({
-  root: {},
   colorLabel: {
     color: tokens.colorBrandForeground1,
   },

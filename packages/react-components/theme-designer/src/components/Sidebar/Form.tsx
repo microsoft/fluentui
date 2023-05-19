@@ -9,12 +9,12 @@ import {
   AccordionPanel,
   Button,
   Input,
-  Label,
   Slider,
   Switch,
   tokens,
   useId,
   Caption1Stronger,
+  Field,
 } from '@fluentui/react-components';
 import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
 import { AccessibilityPanel } from './AccessibilityPanel';
@@ -165,18 +165,18 @@ export const Form: React.FC = () => {
 
           <AccordionPanel className={styles.accordionContainer}>
             <div className={styles.inputs}>
-              <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
               <div className={styles.labels}>
-                <Input
-                  className={styles.keyColor}
-                  size="large"
-                  appearance="underline"
-                  id={sidebarId + 'keyColor'}
-                  value={keyColor}
-                  onChange={handleKeyColorChange}
-                  maxLength={7}
-                  onBlur={handleKeyColorBlur}
-                />
+                <Field label="Key color value">
+                  <Input
+                    className={styles.keyColor}
+                    size="large"
+                    appearance="underline"
+                    value={keyColor}
+                    onChange={handleKeyColorChange}
+                    maxLength={7}
+                    onBlur={handleKeyColorBlur}
+                  />
+                </Field>
                 <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
                   <input
                     className={styles.color}
@@ -188,50 +188,36 @@ export const Form: React.FC = () => {
               </div>
             </div>
             <div>
-              <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
-              <div className={styles.slider}>
-                <Slider
-                  size="small"
-                  min={-50}
-                  max={50}
-                  id={sidebarId + 'hueTorsion'}
-                  value={hueTorsion}
-                  onChange={handleHueTorsionChange}
-                />
-                <Input
-                  size="small"
-                  type="number"
-                  min={-50}
-                  max={50}
-                  appearance="outline"
-                  id={sidebarId + 'hueTorsion input'}
-                  value={hueTorsion.toString()}
-                  onChange={handleHueTorsionChange}
-                />
-              </div>
+              <Field label="Hue Torsion">
+                <div className={styles.slider}>
+                  <Slider size="small" min={-50} max={50} value={hueTorsion} onChange={handleHueTorsionChange} />
+                  <Input
+                    size="small"
+                    type="number"
+                    min={-50}
+                    max={50}
+                    appearance="outline"
+                    value={hueTorsion.toString()}
+                    onChange={handleHueTorsionChange}
+                  />
+                </div>
+              </Field>
             </div>
             <div>
-              <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
-              <div className={styles.slider}>
-                <Slider
-                  size="small"
-                  min={-50}
-                  max={50}
-                  id={sidebarId + 'vibrancy'}
-                  value={vibrancy}
-                  onChange={handleVibrancyChange}
-                />
-                <Input
-                  size="small"
-                  type="number"
-                  min={-50}
-                  max={50}
-                  appearance="outline"
-                  id={sidebarId + 'vibrancy input'}
-                  value={vibrancy.toString()}
-                  onChange={handleVibrancyChange}
-                />
-              </div>
+              <Field label="Vibrancy">
+                <div className={styles.slider}>
+                  <Slider size="small" min={-50} max={50} value={vibrancy} onChange={handleVibrancyChange} />
+                  <Input
+                    size="small"
+                    type="number"
+                    min={-50}
+                    max={50}
+                    appearance="outline"
+                    value={vibrancy.toString()}
+                    onChange={handleVibrancyChange}
+                  />
+                </div>
+              </Field>
             </div>
           </AccordionPanel>
         </AccordionItem>
@@ -254,14 +240,15 @@ export const Form: React.FC = () => {
           </AccordionHeader>
           <AccordionPanel className={styles.accordionContainer}>
             <div className={styles.labelName}>
-              <Label htmlFor={themeNameInputId}>Theme name</Label>
-              <Input
-                appearance="outline"
-                id={themeNameInputId}
-                onChange={handleThemeNameChange}
-                placeholder={defaultThemePlaceholderName}
-                value={themeName === defaultThemePlaceholderName ? '' : themeName}
-              />
+              <Field label={'Theme name'}>
+                <Input
+                  appearance="outline"
+                  id={themeNameInputId}
+                  onChange={handleThemeNameChange}
+                  placeholder={defaultThemePlaceholderName}
+                  value={themeName === defaultThemePlaceholderName ? '' : themeName}
+                />
+              </Field>
             </div>
             <Button size="small" appearance="primary" onClick={showExportButton}>
               Export

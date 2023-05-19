@@ -8,7 +8,6 @@ import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 export interface ColorTokensProps {}
 
 const useStyles = makeStyles({
-  root: {},
   row: {
     display: 'grid',
     gridTemplateColumns: '15px 1fr 1fr 1fr .5fr',

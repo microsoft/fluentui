@@ -156,7 +156,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
   const failedLuminosityTests = luminosityTests.filter(test => !test.isPass);
   const failedContrastTests = contrastTests.filter(test => !test.isPass);
 
-  const all: string[] = Object.keys(accessiblePairs); // todo: check if this is an exhaustive list of all tokens
+  const all: string[] = Object.keys(accessiblePairs);
 
   return { all, failedLuminosityTests, failedContrastTests };
 };

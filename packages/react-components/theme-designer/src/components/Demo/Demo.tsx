@@ -14,10 +14,9 @@ import {
   Radio,
   RadioGroup,
   Checkbox,
-  Avatar,
+  Field,
+  Persona,
   useId,
-  Caption2,
-  Label,
   Link,
 } from '@fluentui/react-components';
 import {
@@ -83,34 +82,37 @@ const useStyles = makeStyles({
   },
 });
 
+/*
+	Note the state of the stickersheet is that we need consensus on the following post Build 2023:
+		1) Do we have all the correct components displayed and in the correct order?
+		2.a) Do we have all the states of each component displayed? i.e. missing deactive states?
+		2.b) Do was have all the variants of each component displayed? i.e. different sizes, colors, layouts etc?
+		3) Note that the spinner was removed since it was causing confusing with the loading state of the page
+*/
+
 export const Column1 = () => {
   const styles = useStyles();
   const dropdownId = useId('dropdown-default');
   return (
     <div className={styles.column}>
       <div className={styles.avatar}>
-        <Avatar
-          color="brand"
-          initials="CE"
-          badge={{
-            status: 'available',
-            'aria-label': 'available',
-          }}
+        <Persona
+          name="Cameron Evans"
+          secondaryText="Senior Researcher at Contoso"
+          avatar={{ color: 'brand', badge: { status: 'available' } }}
         />
-        <div className={styles.avatarText}>
-          Cameron Evans
-          <Caption2>Senior Researcher at Contoso</Caption2>
-        </div>
       </div>
       <TabList defaultSelectedValue="tab1">
         <Tab value="tab1">Home</Tab>
         <Tab value="tab2">Pages</Tab>
         <Tab value="tab3">Documents</Tab>
       </TabList>
-      <Input
-        placeholder="Find"
-        contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
-      />
+      <Field>
+        <Input
+          placeholder="Find"
+          contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
+        />
+      </Field>
       <Dropdown aria-labelledby={dropdownId} placeholder="Select" inlinePopup>
         <Option value="Action 1">Action 1</Option>
         <Option value="Action 2">Action 2 </Option>
@@ -164,16 +166,14 @@ export const DemoIcons = () => {
 };
 
 export const Column3 = () => {
-  const inputId = useId('input');
   const styles = useStyles();
 
   return (
     <div className={styles.column}>
       <div className={styles.inputLabel}>
-        <Label htmlFor={inputId} required>
-          Description
-        </Label>
-        <Input id={inputId} placeholder="Example Text" appearance="filled-darker" />
+        <Field label="Description" required>
+          <Input placeholder="Example Text" appearance="filled-darker" />
+        </Field>
       </div>
       <Link href="https://www.microsoft.com">Example link - www.microsoft.com</Link>
     </div>
@@ -185,7 +185,6 @@ export const Demo: React.FC<ContentProps> = props => {
   return (
     <div>
       <div className={mergeClasses(styles.root, props.className)}>
-        {/* <Title3 block>Component Examples</Title3> */}
         <Column1 />
         <Column2 />
         <Column3 />
