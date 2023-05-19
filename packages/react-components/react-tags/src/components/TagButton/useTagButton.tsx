@@ -103,12 +103,10 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),
 
-    dismissButton: dismissButtonShorthand
-      ? {
-          ...dismissButtonShorthand,
-          onClick: onDismissButtonClick,
-          onKeyDown: onDismissButtonKeyDown,
-        }
-      : undefined,
+    dismissButton: {
+      ...dismissButtonShorthand,
+      onClick: onDismissButtonClick,
+      onKeyDown: onDismissButtonKeyDown,
+    },
   };
 };
