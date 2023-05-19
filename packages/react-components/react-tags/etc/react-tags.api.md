@@ -58,6 +58,7 @@ export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
 
 // @public
 export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+    onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: TagGroupDismissData) => void;
     size?: TagSize;
 };
 
@@ -67,15 +68,19 @@ export type TagGroupSlots = {
 };
 
 // @public
-export type TagGroupState = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>>;
+export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
+    dismissible: boolean;
+    handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
+};
 
 // @public
-export type TagProps = ComponentProps<Partial<TagSlots>> & {
+export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
     dismissible?: boolean;
     shape?: 'rounded' | 'circular';
     size?: TagSize;
+    value?: Value;
 };
 
 // @public (undocumented)
