@@ -33,9 +33,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.12",
+    "@fluentui/react-button": "^9.3.13",
     "@fluentui/react-icons": "^2.0.196",
-    "@fluentui/react-link": "^9.0.38",
+    "@fluentui/react-link": "^9.0.39",
     "@fluentui/react-shared-contexts": "^9.4.0",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.0",
