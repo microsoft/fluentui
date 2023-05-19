@@ -54,7 +54,6 @@ export const Nav: React.FC<NavProps> = props => {
         <Input
           appearance="underline"
           id={underlineId}
-          // eslint-disable-next-line react/jsx-no-bind
           contentAfter={<EditRegular />}
           placeholder={'myTheme'}
           value={themeName === 'myTheme' ? '' : themeName}
