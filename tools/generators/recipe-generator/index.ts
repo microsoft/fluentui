@@ -1,5 +1,4 @@
-import * as path from 'path';
-import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration } from '@nrwl/devkit';
+import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration, joinPathFragments } from '@nrwl/devkit';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 import { getProjectConfig } from '../../utils';
 
@@ -8,7 +7,7 @@ export default async function (tree: Tree, schema: RecipeGeneratorGeneratorSchem
 
   const { recipesRoot, ...normalizedOptions } = normalizeOptions(tree, validatedSchema);
 
-  generateFiles(tree, path.join(__dirname, 'files'), recipesRoot, normalizedOptions);
+  generateFiles(tree, joinPathFragments(__dirname, 'files'), recipesRoot, normalizedOptions);
 
   await formatFiles(tree);
 }
@@ -19,12 +18,12 @@ function normalizeOptions(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
     packageName: `@${workspaceConfig.npmScope}/recipes-react-components`,
   });
 
-  const recipesRoot = path.join(recipesProject.paths.sourceRoot, 'recipes');
+  const recipesRoot = joinPathFragments(recipesProject.paths.sourceRoot, 'recipes');
 
   const fileName = schema.recipeName.replace(' ', '');
   const packageName = schema.recipeName.toLowerCase().replace(' ', '-');
 
-  if (tree.exists(path.join(recipesRoot, packageName))) {
+  if (tree.exists(joinPathFragments(recipesRoot, packageName))) {
     throw new Error(`The recipe ${schema.recipeName} already exists`);
   }
 
