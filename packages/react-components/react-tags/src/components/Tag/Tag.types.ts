@@ -36,12 +36,16 @@ export type TagSlots = {
 /**
  * Tag Props
  */
-export type TagProps = ComponentProps<Partial<TagSlots>> & {
+export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
   appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
   disabled?: boolean;
   dismissible?: boolean;
   shape?: 'rounded' | 'circular';
   size?: TagSize;
+  /**
+   * Unique value identifying the tag within a TagGroup
+   */
+  value?: Value;
 };
 
 /**
