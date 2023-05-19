@@ -1,5 +1,5 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree } from '@nrwl/devkit';
+import { addProjectConfiguration, Tree, writeJson } from '@nrwl/devkit';
 import * as path from 'path';
 
 import generator from './index';
@@ -9,12 +9,34 @@ const recipesRoot = 'apps/recipes-react-components/src/recipes';
 const recipeName = 'Hello World';
 const recipePackageName = 'hello-world';
 
+const setup = (tree: Tree) => {
+  const generateApp = () => {
+    const paths = { root: 'apps/recipes-react-components' };
+    writeJson(tree, path.join(paths.root, 'package.json'), {
+      name: '@proj/recipes-react-components',
+      private: true,
+    });
+    tree.write(path.join(paths.root, 'src/recipes/.gitkeep'), '');
+
+    addProjectConfiguration(tree, '@proj/recipes-react-components', {
+      root: paths.root,
+      sourceRoot: path.join(paths.root, 'src'),
+      projectType: 'application',
+      targets: {},
+    });
+  };
+
+  generateApp();
+  return tree;
+};
+
 describe('recipe-generator generator', () => {
   let tree: Tree;
   const options: RecipeGeneratorGeneratorSchema = { recipeName };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
+    tree = setup(tree);
   });
 
   it('should generate boilerplate', async () => {
@@ -30,13 +52,15 @@ describe('recipe-generator generator', () => {
   it('should generate implementation boilerplate', async () => {
     await generator(tree, options);
 
-    const storyContent = tree.read(path.join(recipesRoot, recipePackageName, 'HelloWorld.stories.mdx'))?.toString();
-    const codeSnippetContent = tree
-      .read(path.join(recipesRoot, recipePackageName, 'code-snippets/HelloWorld.tsx'))
-      ?.toString();
-    const codeSnippetIndexContent = tree
-      .read(path.join(recipesRoot, recipePackageName, 'code-snippets/index.ts'))
-      ?.toString();
+    const storyContent = tree.read(path.join(recipesRoot, recipePackageName, 'HelloWorld.stories.mdx'), 'utf-8');
+    const codeSnippetContent = tree.read(
+      path.join(recipesRoot, recipePackageName, 'code-snippets/HelloWorld.tsx'),
+      'utf-8',
+    );
+    const codeSnippetIndexContent = tree.read(
+      path.join(recipesRoot, recipePackageName, 'code-snippets/index.ts'),
+      'utf-8',
+    );
 
     expect(codeSnippetContent).toMatchInlineSnapshot(`
       "import * as React from 'react';

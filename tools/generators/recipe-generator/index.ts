@@ -1,33 +1,30 @@
 import * as path from 'path';
-import * as fs from 'fs-extra';
-import { Tree, formatFiles, installPackagesTask, generateFiles, offsetFromRoot } from '@nrwl/devkit';
+import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration } from '@nrwl/devkit';
 import { RecipeGeneratorGeneratorSchema } from './schema';
+import { getProjectConfig } from '../../utils';
 
 export default async function (tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
   const validatedSchema = validateSchema(tree, schema);
 
-  const normalizedOptions = normalizeOptions(tree, validatedSchema);
+  const { recipesRoot, ...normalizedOptions } = normalizeOptions(tree, validatedSchema);
 
-  generateFiles(tree, path.join(__dirname, 'files'), normalizedOptions.recipesRoot, normalizedOptions);
+  generateFiles(tree, path.join(__dirname, 'files'), recipesRoot, normalizedOptions);
 
   await formatFiles(tree);
-
-  return () => {
-    installPackagesTask(tree);
-  };
 }
 
 function normalizeOptions(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
-  if (schema.recipeName.length === 0) {
-    throw new Error('name is required');
-  }
+  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const recipesProject = getProjectConfig(tree, {
+    packageName: `@${workspaceConfig.npmScope}/recipes-react-components`,
+  });
 
-  const recipePath = 'apps/recipes-react-components/src/recipes';
+  const recipesRoot = path.join(recipesProject.paths.sourceRoot, 'recipes');
+
   const fileName = schema.recipeName.replace(' ', '');
   const packageName = schema.recipeName.toLowerCase().replace(' ', '-');
-  const recipesRoot = path.resolve(offsetFromRoot(recipePath), recipePath);
 
-  if (fs.existsSync(path.join(recipesRoot, packageName))) {
+  if (tree.exists(path.join(recipesRoot, packageName))) {
     throw new Error(`The recipe ${schema.recipeName} already exists`);
   }
 
@@ -36,6 +33,10 @@ function normalizeOptions(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
 
 function validateSchema(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
   const newSchema = { ...schema };
+
+  if (!newSchema.recipeName) {
+    throw new Error(`Recipe name is required`);
+  }
 
   if (
     !newSchema.recipeName.match(/^[A-Z][a-z]+$/) &&
