@@ -1,5 +1,6 @@
-import { createDemoApp } from '@fluentui/react-docsite-components';
-import { AppDefinition } from './AppDefinition';
-import { GettingStartedPage } from './GettingStartedPage';
+import * as React from 'react';
+import { render } from 'react-dom';
+import App from './App';
 
-createDemoApp(AppDefinition, GettingStartedPage);
+const rootElement = document.getElementById('root');
+render(<App />, rootElement);

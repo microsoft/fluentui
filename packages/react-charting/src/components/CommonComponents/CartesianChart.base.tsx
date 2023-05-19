@@ -231,6 +231,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
         noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
       };
+      //test
       const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
       // this value need to be updated for draw graph updated. So instead of using private value, using set state.
       if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
