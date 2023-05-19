@@ -6,6 +6,7 @@ import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
 import { Input } from '@fluentui/react-input';
 import {
+  mergeCallbacks,
   resolveShorthand,
   useControllableState,
   useId,
@@ -363,11 +364,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       readOnly: !allowTextInput,
       role: 'combobox',
-      onBlur: onInputBlur,
-      onChange: onInputChange,
-      onClick: onInputClick,
-      onFocus: onInputFocus,
-      onKeyDown: onInputKeyDown,
       root: {
         'aria-owns': popupSurfaceId,
         ref: useMergedRefs(triggerWrapperRef, ref),
@@ -377,6 +373,12 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       },
     },
   });
+
+  rootShorthand.onChange = mergeCallbacks(rootShorthand.onChange, onInputChange);
+  rootShorthand.onBlur = mergeCallbacks(rootShorthand.onBlur, onInputBlur);
+  rootShorthand.onKeyDown = mergeCallbacks(rootShorthand.onKeyDown, onInputKeyDown);
+  rootShorthand.onFocus = mergeCallbacks(rootShorthand.onFocus, onInputFocus);
+  rootShorthand.onClick = mergeCallbacks(rootShorthand.onClick, onInputClick);
 
   const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
   const popupSurfaceShorthand = open
@@ -437,8 +439,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       isMonthPickerVisible,
       maxDate,
       minDate,
-      onDismiss: calendarDismissed,
-      onSelectDate: calendarDismissed,
       showCloseButton,
       showGoToToday,
       showMonthPickerAsOverlay,
@@ -448,6 +448,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       value: selectedDate || initialPickerDate,
     },
   });
+
+  calendarShorthand.onDismiss = mergeCallbacks(calendarShorthand.onDismiss, calendarDismissed);
+  calendarShorthand.onSelectDate = mergeCallbacks(calendarShorthand.onSelectDate, calendarDismissed);
 
   React.useImperativeHandle(
     props.componentRef,
