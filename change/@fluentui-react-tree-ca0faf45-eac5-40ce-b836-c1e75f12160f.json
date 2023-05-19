@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Update Griffel to latest version.",
+  "packageName": "@fluentui/react-tree",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
