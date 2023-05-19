@@ -142,7 +142,7 @@ const getLinkStyles = (
                   height: 0,
                 },
                 ':hover': {
-                  backgroundColor: 'red',
+                  backgroundColor: semanticColors.primaryButtonBackgroundHovered,
                   color: semanticColors.primaryButtonText,
                 },
                 ':active': {
