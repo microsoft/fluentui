@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: exclude .swcrc from being published",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

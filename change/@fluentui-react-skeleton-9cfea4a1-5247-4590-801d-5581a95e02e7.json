@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Releasing react-skeleton to stable.",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

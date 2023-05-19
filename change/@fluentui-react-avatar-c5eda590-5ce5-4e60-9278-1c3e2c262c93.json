@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update createCustomFocusIndicator usage to specify outline: none",
-  "packageName": "@fluentui/react-avatar",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
