@@ -441,6 +441,8 @@ export class Stylesheet {
   private _createConstructibleStylesheet(): CSSStyleSheet {
     const sheet = new CSSStyleSheet();
 
+    // eslint-disable-next-line
+    // @ts-ignore this exists
     document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
 
     return sheet;
