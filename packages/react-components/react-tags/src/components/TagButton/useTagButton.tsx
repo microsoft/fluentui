@@ -56,7 +56,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     }
   });
 
-  const dismissButtonShorthand = useARIAButtonShorthand(props.dismissButton, {
+  const dismissButtonShorthand = resolveShorthand(props.dismissButton, {
     required: dismissible,
     defaultProps: {
       disabled,
