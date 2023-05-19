@@ -1,26 +1,13 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import type { Brands } from '@fluentui/react-theme';
 import { AccessibilityList } from './AccessibilityList';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface ColorTokensProps {}
 
-const useStyles = makeStyles({
-  row: {
-    display: 'grid',
-    gridTemplateColumns: '15px 1fr 1fr 1fr .5fr',
-    alignItems: 'center',
-  },
-  col: {
-    gridColumnStart: '2',
-  },
-});
-
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
-  const styles = useStyles();
-
   const {
     state: {
       brand,
@@ -53,7 +40,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   };
 
   return (
-    <div className={styles.root}>
+    <div>
       <Button size="small" onClick={handleResetClick}>
         Reset Customizations
       </Button>
