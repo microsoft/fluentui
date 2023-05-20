@@ -37,15 +37,6 @@ export class Dropdown extends FASTSelect {
     return true;
   }
 
-  public clickHandler(e: MouseEvent): boolean | void {
-    super.clickHandler(e);
-
-    // keep the listbox open when in multiple select mode
-    if (this.multiple) {
-      this.open = true;
-    }
-  }
-
   public get displayValue(): string {
     Observable.track(this, 'displayValue');
     if ((this.selectedOptions.length == 0 || this.selectedIndex == -1) && this.placeholder) {
@@ -83,6 +74,49 @@ export class Dropdown extends FASTSelect {
   public sizeChanged(prev: number | undefined, next: number): void {
     super.sizeChanged(prev, next);
     this.updateComputedStylesheet();
+  }
+
+  private prevSelectedOption?: FASTListboxOption;
+
+  public handleOptionSelection(e: any) {
+    const selectedOption = e.target as FASTListboxOption;
+    if (selectedOption.disabled) {
+      return;
+    }
+
+    const dataSelectedAttribute = 'data-selected';
+
+    if (selectedOption instanceof FASTListboxOption) {
+      if (this.multiple) {
+        const isSelected = selectedOption.hasAttribute(dataSelectedAttribute);
+
+        // Toggle the data-selected attribute on the clicked option
+        selectedOption.toggleAttribute(dataSelectedAttribute, !isSelected);
+      } else {
+        // Remove data-selected from previously selected option
+        const prevSelectedOption = this.options.find(option => option.hasAttribute(dataSelectedAttribute));
+        if (prevSelectedOption && prevSelectedOption !== selectedOption) {
+          prevSelectedOption.removeAttribute(dataSelectedAttribute);
+        }
+
+        // Toggle data-selected for the clicked option
+        selectedOption.setAttribute(dataSelectedAttribute, '');
+
+        this.prevSelectedOption = selectedOption;
+      }
+
+      // Prevent the fluent-dropdown element from receiving the attribute
+      this.removeAttribute(dataSelectedAttribute);
+    }
+
+    if (this.multiple) {
+      this.open = true;
+    }
+  }
+
+  public clickHandler(e: MouseEvent): boolean | void {
+    super.clickHandler(e);
+    this.handleOptionSelection(e);
   }
 
   /**
