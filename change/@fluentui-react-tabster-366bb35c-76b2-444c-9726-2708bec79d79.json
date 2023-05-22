@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "export getFocusOutlineStyles",
+  "packageName": "@fluentui/react-tabster",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
