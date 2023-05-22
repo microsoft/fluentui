@@ -14,7 +14,7 @@ export type {
   UseModalAttributesOptions,
 } from './hooks/index';
 
-export { createCustomFocusIndicatorStyle, createFocusOutlineStyle } from './focus/index';
+export { createCustomFocusIndicatorStyle, createFocusOutlineStyle, getFocusOutlineStyles } from './focus/index';
 
 export type {
   CreateCustomFocusIndicatorStyleOptions,

@@ -32,6 +32,7 @@ export type {
 export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
+  getFocusOutlineStyles,
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,

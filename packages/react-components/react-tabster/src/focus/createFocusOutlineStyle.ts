@@ -34,7 +34,7 @@ export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIn
  * @param options - Configures the style of the focus outline
  * @returns focus outline styles object
  */
-const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle => {
+export const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle => {
   const { outlineRadius, outlineColor, outlineOffset, outlineWidth } = options;
 
   const outlineOffsetTop = (outlineOffset as FocusOutlineOffset)?.top || outlineOffset;
