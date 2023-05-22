@@ -66,7 +66,7 @@ export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationP
 export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNavigationSlots>;
 
 // @public
-export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots> & {};
+export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
 
 // @public (undocumented)
 export type DrawerHeaderNavigationSlots = {
