@@ -1,17 +1,12 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import {
-  colorNeutralBackgroundInverted,
-  colorNeutralForegroundInverted2,
-  fontFamilyBase,
-  fontSizeBase300,
-  lineHeightBase300,
-} from '../theme/design-tokens.js';
+import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize } from './text-input.options.js';
 import { TextInputType } from './index.js';
 import './define.js';
+import '../text/define.js';
 
 type TextInputStoryArgs = Args & FluentTextInput;
 type TextInputStoryMeta = Meta<TextInputStoryArgs>;
@@ -149,25 +144,10 @@ export const Appearance = renderComponent(html<TextInputStoryArgs>`
         <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Lighter Input</fluent-label>
       </fluent-text-input>
     </div>
-
-    <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
-      <fluent-text-input appearance="filled-lighter--shadow">
-        <span slot="start">${Person20Regular}</span>
-        <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Lighter with Shadow Input</fluent-label>
-      </fluent-text-input>
-    </div>
-
     <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
       <fluent-text-input appearance="filled-darker">
         <span slot="start">${Person20Regular}</span>
         <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Darker Input</fluent-label>
-      </fluent-text-input>
-    </div>
-
-    <div style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
-      <fluent-text-input appearance="filled-darker--shadow">
-        <span slot="start">${Person20Regular}</span>
-        <fluent-label style="color: ${colorNeutralForegroundInverted2}">Filled Darker with Shadow Input</fluent-label>
       </fluent-text-input>
     </div>
   </div>
@@ -193,18 +173,28 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Inline = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input style="display: inline-flex; align-items: center;">
-    <span slot="end">${Person20Regular}</span>
-    <fluent-label>Inline Input</fluent-label>
-  </fluent-text-input>
-  <p
-    style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}; display: flex; align-items: center; gap: 4px;"
-  >
-    This input is an
-    <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="inline text input">
+  <div>
+    <fluent-text-input style="display: inline-flex; align-items: center; margin-bottom: 22px;">
+      <span slot="end">${Person20Regular}</span>
+      <fluent-label>Inline Input</fluent-label>
     </fluent-text-input>
-    with a paragraph of text.
-  </p>
+    <fluent-text
+      align="start"
+      font="base"
+      size="300"
+      weight="regular"
+      style="display: flex; align-items: center; gap: 4px;"
+    >
+      <span
+        >This input is an
+        <fluent-text-input
+          style="display: inline-flex; align-items: center;"
+          placeholder="inline text input"
+        ></fluent-text-input>
+        with a paragraph of text.</span
+      >
+    </fluent-text>
+  </div>
 `);
 
 export const Disabled = renderComponent(html<TextInputStoryArgs>`
@@ -216,7 +206,7 @@ export const Disabled = renderComponent(html<TextInputStoryArgs>`
 
 export const Required = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input required>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    <span slot="end">${Person20Regular}</span>
     <fluent-label>Required Input</fluent-label>
   </fluent-text-input>
 `);

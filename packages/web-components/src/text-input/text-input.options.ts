@@ -24,9 +24,7 @@ export const TextInputAppearance = {
   outline: 'outline',
   underline: 'underline',
   filledLighter: 'filled-lighter',
-  filledLighterShadow: 'filled-lighter--shadow',
   filledDarker: 'filled-darker',
-  filledDarkerShadow: 'filled-darker--shadow',
 } as const;
 
 /**

@@ -223,34 +223,22 @@ export const styles = css`
     border-bottom-color: ${colorNeutralStrokeDisabled};
   }
   :host([appearance='filled-lighter']) .root,
-  :host([appearance='filled-lighter--shadow']) .root,
-  :host([appearance='filled-darker']) .root,
-  :host([appearance='filled-darker--shadow']) .root {
+  :host([appearance='filled-darker']) .root {
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
-  }
-  :host([appearance='filled-lighter--shadow']) .root,
-  :host([appearance='filled-darker--shadow']) .root {
     box-shadow: ${shadow2};
   }
-
-  :host([appearance='filled-lighter']) .root,
-  :host([appearance='filled-lighter--shadow']) .root {
+  :host([appearance='filled-lighter']) .root {
     background: ${colorNeutralBackground1};
   }
-  :host([appearance='filled-darker']) .root,
-  :host([appearance='filled-darker--shadow']) .root {
+  :host([appearance='filled-darker']) .root {
     background: ${colorNeutralBackground3};
   }
   :host([appearance='filled-lighter']:hover) .root,
-  :host([appearance='filled-lighter--shadow']:hover) .root,
-  :host([appearance='filled-darker']:hover) .root,
-  :host([appearance='filled-darkers--shadow']:hover) .root {
+  :host([appearance='filled-darker']:hover) .root {
     border-color: ${colorTransparentStrokeInteractive};
   }
   :host([appearance='filled-lighter']:active) .root,
-  :host([appearance='filled-lighter-shadow']:active) .root,
-  :host([appearance='filled-darker']:active) .root,
-  :host([appearance='filled-darker-shadow']:active) .root {
+  :host([appearance='filled-darker']:active) .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
   }
