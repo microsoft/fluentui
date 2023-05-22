@@ -9,10 +9,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../PerformanceDataSet1/LineChartPage').LineChartPerfDataOne,
-          key: 'LineChart Perf Data Set One',
-          name: 'Line Chart Perf Data One',
-          url: '#/examples/linechartperfone',
+          component: require<any>('../PerformanceDataSet1/LineChartPage').LineChartPage,
+          key: 'LineChartperf',
+          name: 'LineChartperf',
+          url: '#/examples/linechartperf',
         },
       ],
     },
