@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemAside, TreeItemLayout } from '@fluentui/react-tree';
 import {
   Image20Regular,
   Important16Regular,
@@ -11,7 +11,7 @@ import story from './TreeItemLayout.md';
 
 export const Layout = () => (
   <Tree aria-label="Tree">
-    <TreeItem aria-description="Private, 1 message">
+    <TreeItem itemType="branch" aria-description="Private, 1 message">
       <TreeItemLayout
         iconBefore={<Image20Regular />}
         iconAfter={
@@ -20,39 +20,37 @@ export const Layout = () => (
             <SquareMultiple20Regular />
           </>
         }
-        aside={
-          <>
-            <Important16Regular primaryFill="red" />
-            <CounterBadge count={1} color="danger" size="small" />
-          </>
-        }
       >
         Content
       </TreeItemLayout>
+      <TreeItemAside>
+        <Important16Regular primaryFill="red" />
+        <CounterBadge count={1} color="danger" size="small" />
+      </TreeItemAside>
       <Tree>
-        <TreeItem>
+        <TreeItem itemType="branch">
           <TreeItemLayout>Tree Item</TreeItemLayout>
           <Tree>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 1</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 2</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem aria-description="Private">
+    <TreeItem itemType="branch" aria-description="Private">
       <TreeItemLayout
         iconBefore={<Image20Regular />}
         iconAfter={
@@ -61,15 +59,17 @@ export const Layout = () => (
             <SquareMultiple20Regular />
           </>
         }
-        aside={<Important16Regular primaryFill="red" />}
       >
         Content
       </TreeItemLayout>
+      <TreeItemAside>
+        <Important16Regular primaryFill="red" />
+      </TreeItemAside>
       <Tree>
-        <TreeItem>
+        <TreeItem itemType="branch">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>

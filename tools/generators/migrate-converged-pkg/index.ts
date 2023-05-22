@@ -395,6 +395,13 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
+    .swcrc
+
+    # exclude gitignore patterns explicitly
+    !lib
+    !lib-commonjs
+    !lib-amd
+    !dist/*.d.ts
   ` + os.EOL,
   swcConfig: () => {
     return {
@@ -697,7 +704,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   function setupScripts(json: PackageJson) {
     const scripts = {
       test: 'jest --passWithNoTests',
-      'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
+      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'tsc -b tsconfig.json',
     };
 

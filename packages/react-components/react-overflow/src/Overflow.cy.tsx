@@ -8,6 +8,7 @@ import {
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
+  useIsOverflowItemVisible,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 
@@ -538,5 +539,36 @@ describe('Overflow', () => {
 
     setContainerSize(500);
     cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
+  });
+
+  it('Should have correct initial visibility state', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const Assert = () => {
+      const isVisible = mapHelper.map(i => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        return useIsOverflowItemVisible(i.toString());
+      });
+
+      if (isVisible.every(x => x)) {
+        return <span data-passed="true" />;
+      }
+
+      return null;
+    };
+
+    mount(
+      <Container minimumVisible={5}>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+        <Assert />
+      </Container>,
+    );
+
+    setContainerSize(500);
+    cy.get('[data-passed="true"]').should('exist');
   });
 });

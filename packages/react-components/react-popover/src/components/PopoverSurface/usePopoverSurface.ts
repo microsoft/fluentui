@@ -78,6 +78,7 @@ export const usePopoverSurface_unstable = (
     // only close if the event happened inside the current popover
     // If using a stack of inline popovers, the user should call `stopPropagation` to avoid dismissing the entire stack
     if (e.key === 'Escape' && contentRef.current?.contains(e.target as HTMLDivElement)) {
+      e.preventDefault();
       setOpen(e, false);
     }
 

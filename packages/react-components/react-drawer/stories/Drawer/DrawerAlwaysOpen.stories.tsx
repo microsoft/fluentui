@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -17,7 +17,6 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: 'lightblue',
   },
 });
 
@@ -26,8 +25,14 @@ export const AlwaysOpen = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer type="inline" position="right" open>
-        <p>Always open</p>
+      <Drawer type="inline" separator open>
+        <DrawerHeader>
+          <DrawerHeaderTitle>Always open</DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
       </Drawer>
 
       <div className={styles.content}>

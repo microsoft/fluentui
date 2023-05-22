@@ -5929,6 +5929,13 @@
   dependencies:
     "@types/react" "^17"
 
+"@types/react-transition-group@4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.6.tgz#18187bcda5281f8e10dfc48f0943e2fdf4f75e2e"
+  integrity sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-virtualized@^9.21.8":
   version "9.21.8"
   resolved "https://registry.yarnpkg.com/@types/react-virtualized/-/react-virtualized-9.21.8.tgz#dc0150a75fd6e42f33729886463ece04d03367ea"
@@ -21418,10 +21425,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha512-ravE6m9Atw9Z/jjttRUZ+clIXogdghyZAuWJ3qEzjT+jI/dL1ifAqhZeC5VHzQp1MSt1+jxKkFNemj/iO7tVUA==
 
-prettier@2.8.4, "prettier@>=2.2.1 <=2.3.0", prettier@^2.0.1, prettier@^2.2.1:
-  version "2.8.4"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.4.tgz#34dd2595629bfbb79d344ac4a91ff948694463c3"
-  integrity sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==
+prettier@2.8.8, "prettier@>=2.2.1 <=2.3.0", prettier@^2.0.1, prettier@^2.2.1:
+  version "2.8.8"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
+  integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
 pretty-bytes@5.6.0, pretty-bytes@^5.6.0:
   version "5.6.0"
@@ -24716,10 +24723,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.1.1.tgz#4ba615098772cdfc568cca3d5440118f18b29580"
-  integrity sha512-kuO6cxHpDl889ZyY98Fx4Iofiu2U9z7ii2rvPOQgKH5CJMKJ4GddygaEygRETOQV0IDpg4TWJRiDLMAHeS+hDw==
+tabster@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.4.2.tgz#df6a8990ed826301133531adb389267b7f8106dd"
+  integrity sha512-prscUoHg9WfWw2R0+LAlyBjtr0937qfC/s6/0/jO+sJls5pufLueazqHZC13fEV7fUPsGzTDbqchsq3TJLyPfA==
   dependencies:
     keyborg "^2.0.0"
     tslib "^2.3.1"
