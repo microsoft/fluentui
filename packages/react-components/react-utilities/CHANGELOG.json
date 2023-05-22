@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:19 GMT",
+      "tag": "@fluentui/react-utilities_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "bdc00a85606c5a225be1df2a24db1ccecbc65b64",
+            "comment": "feat: Implement a priority queue"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:28:04 GMT",
       "tag": "@fluentui/react-utilities_v9.8.1",
       "version": "9.8.1",

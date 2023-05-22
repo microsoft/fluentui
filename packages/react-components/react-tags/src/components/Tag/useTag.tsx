@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
+import { Delete, Backspace } from '@fluentui/keyboard-keys';
+import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -26,13 +28,32 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
+  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+
+  const id = useId('fui-Tag', props.id);
+
   const {
     appearance = 'filled-lighter',
     disabled = false,
-    dismissible = false,
+    dismissible = contextDismissible,
     shape = 'rounded',
-    size = 'medium',
+    size = contextSize,
+    value = id,
   } = props;
+
+  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+    props.onClick?.(ev);
+    if (!ev.defaultPrevented) {
+      handleTagDismiss?.(ev, value);
+    }
+  });
+
+  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    props?.onKeyDown?.(ev);
+    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+      handleTagDismiss?.(ev, value);
+    }
+  });
 
   return {
     appearance,
@@ -55,6 +76,9 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref,
       ...props,
+      id,
+      onClick: handleClick,
+      onKeyDown: handleKeyDown,
     }),
 
     media: resolveShorthand(props.media),
@@ -67,7 +91,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     }),
     secondaryText: resolveShorthand(props.secondaryText),
     dismissIcon: resolveShorthand(props.dismissIcon, {
-      required: props.dismissible,
+      required: dismissible,
       defaultProps: {
         children: <DismissIcon />,
       },

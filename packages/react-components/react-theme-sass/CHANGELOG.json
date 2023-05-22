@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 00:39:18 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 May 2023 20:27:57 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.12",
       "version": "9.0.0-alpha.12",
