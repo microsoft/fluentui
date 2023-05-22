@@ -21,8 +21,9 @@ export function writeContainerUpdates(options: {
   lowPPI: boolean;
   strategy: Strategy;
   coordinates: Coords;
+  useTransform?: boolean;
 }) {
-  const { container, placement, middlewareData, strategy, lowPPI, coordinates } = options;
+  const { container, placement, middlewareData, strategy, lowPPI, coordinates, useTransform = true } = options;
   if (!container) {
     return;
   }
@@ -50,8 +51,17 @@ export function writeContainerUpdates(options: {
   const x = Math.round(coordinates.x * devicePixelRatio) / devicePixelRatio;
   const y = Math.round(coordinates.y * devicePixelRatio) / devicePixelRatio;
 
+  if (useTransform) {
+    Object.assign(container.style, {
+      transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
+      position: strategy,
+    });
+    return;
+  }
+
   Object.assign(container.style, {
-    transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
+    left: `${x}px`,
+    top: `${y}px`,
     position: strategy,
   });
 }

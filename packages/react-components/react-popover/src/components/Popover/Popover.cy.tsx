@@ -541,4 +541,23 @@ describe('Popover', () => {
         .should('have.length', 2);
     });
   });
+
+  describe('popover not use transform', () => {
+    beforeEach(() => {
+      mount(
+        <Popover positioning={{ useTransform: false }}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>This is a popover</PopoverSurface>
+        </Popover>,
+      );
+      cy.get('body').click('bottomRight');
+    });
+
+    it('should not use transform for positioning when useTransform is false', () => {
+      cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
+      cy.get(popoverContentSelector).should('have.css', 'transform', 'none');
+    });
+  });
 });
