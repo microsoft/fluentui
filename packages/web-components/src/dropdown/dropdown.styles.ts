@@ -88,7 +88,7 @@ export const styles = css`
     transition-duration: ${durationUltraFast};
     transition-delay: ${curveAccelerateMid};
   }
-  :host(:focus-within)::after {
+  :host(:focus-within) .control::after {
     transform: scaleX(1);
     transition-property: transform;
     transition-duration: ${durationNormal};
@@ -136,7 +136,6 @@ export const styles = css`
     overflow-y: auto;
     position: fixed;
     top: 5px;
-    left: 0;
     z-index: 1;
     height: var(--height, fit-content);
     overflow-y: auto;

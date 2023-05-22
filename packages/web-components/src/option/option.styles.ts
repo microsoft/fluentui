@@ -3,6 +3,7 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
+  colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
   colorNeutralBackground1Pressed,
@@ -50,6 +51,9 @@ export const styles = css`
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
   }
+  :host([aria-checked='true']) {
+    outline: ${colorCompoundBrandStroke} 1px solid;
+  }
   :host(:active) {
     background-color: ${colorNeutralBackground1Pressed};
   }
@@ -82,7 +86,7 @@ export const styles = css`
     line-height: 0;
     width: 16px;
   }
-  :host([aria-selected='true']) .checkmark {
+  :host([data-selected]) .checkmark {
     background: var(--checkmark-selected-background, ${colorTransparentBackground});
   }
 
@@ -92,7 +96,7 @@ export const styles = css`
     width: 100%;
   }
 
-  :host([aria-selected='true']) .select-indicator {
+  :host([data-selected]) .select-indicator {
     align-items: center;
     display: flex;
     justify-content: center;

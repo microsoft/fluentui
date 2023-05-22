@@ -78,7 +78,7 @@ export class Dropdown extends FASTSelect {
 
   private prevSelectedOption?: FASTListboxOption;
 
-  public handleOptionSelection(e: any) {
+  public handleOptionSelection(e: CustomEvent) {
     const selectedOption = e.target as FASTListboxOption;
     if (selectedOption.disabled) {
       return;
