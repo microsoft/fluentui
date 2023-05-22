@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 22 May 2023 07:38:20 GMT",
+      "tag": "@fluentui/react_v8.109.5",
+      "version": "8.109.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a96f7b35d8a4ff31da41dc195f06ae4b23438410",
+            "comment": "fix: Links in tab style show focus outline on selected tab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 May 2023 07:37:28 GMT",
       "tag": "@fluentui/react_v8.109.4",
       "version": "8.109.4",

@@ -111,7 +111,7 @@ const getLinkStyles = (
 
           selectors: {
             ':focus': {
-              outlineOffset: '-1px',
+              outlineOffset: '-2px',
             },
             [`.${IsFocusVisibleClassName} &:focus::before`]: {
               height: 'auto',
@@ -145,7 +145,7 @@ const getLinkStyles = (
                   backgroundColor: semanticColors.primaryButtonBackgroundHovered,
                   color: semanticColors.primaryButtonText,
                 },
-                '&:active': {
+                ':active': {
                   backgroundColor: semanticColors.primaryButtonBackgroundPressed,
                   color: semanticColors.primaryButtonText,
                 },
@@ -156,6 +156,9 @@ const getLinkStyles = (
                   ...getHighContrastNoAdjustStyle(),
                 },
               },
+            },
+            [`.${IsFocusVisibleClassName} &.${classNames.linkIsSelected}:focus`]: {
+              outlineColor: semanticColors.primaryButtonText,
             },
           },
         },
