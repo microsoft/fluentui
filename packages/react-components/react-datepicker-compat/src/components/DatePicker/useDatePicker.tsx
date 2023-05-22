@@ -411,8 +411,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   });
 
   // When the popup is opened, focus should go to the calendar.
-  // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using an
-  // a useEffect hook
+  // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using a
+  // useEffect hook.
   React.useEffect(() => {
     if (open && !props.disabled && calendar.current) {
       calendar.current.focus();
