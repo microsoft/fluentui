@@ -1,5 +1,6 @@
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
-import { ColorOverrideBrands } from './ColorTokens';
+import { createDarkTheme } from '@fluentui/react-components';
+import { ColorOverrideBrands } from '../Context/ThemeDesignerContext';
 
 export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
@@ -59,9 +60,17 @@ export const getOverridableTokenBrandColors = (theme: Theme, brand: BrandVariant
   const brandColors: ColorOverrideBrands = {};
   for (let i = 0; i < sortedOverrideableColorTokens.length; i++) {
     const key = sortedOverrideableColorTokens[i];
-    const themeColor = (theme as unknown as Record<string, string>)[key].toUpperCase();
+    const themeColor = (theme as unknown as Record<string, string>)[key];
     brandColors[key] = hexColorToBrand[themeColor];
   }
 
   return brandColors;
+};
+
+export const createDarkThemeWithUpdatedMapping = (brand: BrandVariants): Theme => {
+  const darkTheme = createDarkTheme(brand);
+  // Dark themes have a different set of mapping than light themes
+  darkTheme.colorBrandForeground1 = brand[110]; // use brand[110] instead of brand[100]
+  darkTheme.colorBrandForeground2 = brand[120]; // use brand[120] instead of brand[110]
+  return darkTheme;
 };
