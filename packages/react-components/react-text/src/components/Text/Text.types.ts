@@ -4,13 +4,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
  * Text slots
  */
 export type TextSlots = {
-  root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
+  root: NonNullable<Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>>;
 };
 
 /**
  * Text Props
  */
-export type TextProps = ComponentProps<TextSlots> & {
+export type TextProps = ComponentProps<Partial<TextSlots>> & {
   /**
    * Aligns text based on the parent container.
    *

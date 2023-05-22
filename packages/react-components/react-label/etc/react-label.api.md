@@ -18,7 +18,7 @@ export const Label: ForwardRefComponent<LabelProps>;
 export const labelClassNames: SlotClassNames<LabelSlots>;
 
 // @public
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
+export type LabelProps = Omit<ComponentProps<Partial<LabelSlots>>, 'required'> & {
     disabled?: boolean;
     required?: boolean | Slot<'span'>;
     size?: 'small' | 'medium' | 'large';
@@ -27,7 +27,7 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: Slot<'label'>;
+    root: NonNullable<Slot<'label'>>;
     required?: Slot<'span'>;
 };
 

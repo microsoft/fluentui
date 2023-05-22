@@ -57,14 +57,14 @@ export const TagGroup: ForwardRefComponent<TagGroupProps>;
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
 
 // @public
-export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+export type TagGroupProps = ComponentProps<Partial<TagGroupSlots>> & {
     onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: TagGroupDismissData) => void;
     size?: TagSize;
 };
 
 // @public (undocumented)
 export type TagGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

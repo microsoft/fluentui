@@ -26,11 +26,11 @@ export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots>;
 
 // @public
-export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
+export type DrawerBodyProps = ComponentProps<Partial<DrawerBodySlots>>;
 
 // @public (undocumented)
 export type DrawerBodySlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -52,11 +52,11 @@ export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots>;
 
 // @public
-export type DrawerFooterProps = ComponentProps<DrawerFooterSlots>;
+export type DrawerFooterProps = ComponentProps<Partial<DrawerFooterSlots>>;
 
 // @public (undocumented)
 export type DrawerFooterSlots = {
-    root: Slot<'footer'>;
+    root: NonNullable<Slot<'footer'>>;
 };
 
 // @public
@@ -75,22 +75,22 @@ export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationP
 export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNavigationSlots>;
 
 // @public
-export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
+export type DrawerHeaderNavigationProps = ComponentProps<Partial<DrawerHeaderNavigationSlots>>;
 
 // @public (undocumented)
 export type DrawerHeaderNavigationSlots = {
-    root: Slot<'nav'>;
+    root: NonNullable<Slot<'nav'>>;
 };
 
 // @public
 export type DrawerHeaderNavigationState = ComponentState<DrawerHeaderNavigationSlots>;
 
 // @public
-export type DrawerHeaderProps = ComponentProps<DrawerHeaderSlots>;
+export type DrawerHeaderProps = ComponentProps<Partial<DrawerHeaderSlots>>;
 
 // @public (undocumented)
 export type DrawerHeaderSlots = {
-    root: Slot<'header'>;
+    root: NonNullable<Slot<'header'>>;
 };
 
 // @public
@@ -103,13 +103,13 @@ export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
 
 // @public
-export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
+export type DrawerHeaderTitleProps = ComponentProps<Partial<DrawerHeaderTitleSlots>> & {
     children: React_2.ReactNode | undefined;
 };
 
 // @public (undocumented)
 export type DrawerHeaderTitleSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     heading?: DialogTitleSlots['root'];
     action?: DialogTitleSlots['action'];
 };
@@ -129,7 +129,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
 
 // @public (undocumented)
 export type DrawerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

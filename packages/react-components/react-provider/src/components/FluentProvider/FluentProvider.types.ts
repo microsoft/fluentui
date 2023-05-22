@@ -10,14 +10,14 @@ import type { PartialTheme } from '@fluentui/react-theme';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 // exported for callers to avoid referencing react-shared-context
 // and applying Partial<> when passing custom style hooks.
 export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue;
 
-export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+export type FluentProviderProps = Omit<ComponentProps<Partial<FluentProviderSlots>>, 'dir'> & {
   /**
    * Passes styles applied to a component down to portals if enabled.
    * @default true

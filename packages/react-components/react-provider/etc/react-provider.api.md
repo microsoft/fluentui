@@ -19,7 +19,7 @@ import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
-export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
+export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<FluentProviderSlots>, "root">, "dir"> & {
     applyStylesToPortals?: boolean | undefined;
     customStyleHooks_unstable?: Partial<{
         useAccordionHeaderStyles_unstable: (state: unknown) => void;
@@ -132,7 +132,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyle
 export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue_unstable;
 
 // @public (undocumented)
-export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+export type FluentProviderProps = Omit<ComponentProps<Partial<FluentProviderSlots>>, 'dir'> & {
     applyStylesToPortals?: boolean;
     customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
     dir?: 'ltr' | 'rtl';
@@ -143,7 +143,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 
 // @public (undocumented)
 export type FluentProviderSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)

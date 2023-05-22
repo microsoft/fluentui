@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DialogActionsSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type DialogActionsPosition = 'start' | 'end';
@@ -9,7 +9,7 @@ export type DialogActionsPosition = 'start' | 'end';
 /**
  * DialogActions Props
  */
-export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
+export type DialogActionsProps = ComponentProps<Partial<DialogActionsSlots>> & {
   /**
    * defines the position on the dialog grid of the actions
    * @default 'end'

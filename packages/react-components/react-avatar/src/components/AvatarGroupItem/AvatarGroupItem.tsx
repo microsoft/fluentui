@@ -10,7 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * The AvatarGroupItem component represents a single person or entity.
  * AvatarGroupItem should only be used in an AvatarGroup component.
  */
-export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps> = React.forwardRef((props, ref) => {
+export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps, 'avatar'> = React.forwardRef((props, ref) => {
   const state = useAvatarGroupItem_unstable(props, ref);
 
   useAvatarGroupItemStyles_unstable(state);

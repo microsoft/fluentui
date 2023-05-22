@@ -5,13 +5,13 @@ import type { ListboxContextValue } from '../../contexts/ListboxContext';
 
 export type ListboxSlots = {
   /* The root slot, a `<div>` with `role="listbox"` */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * Listbox Props
  */
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<Partial<ListboxSlots>> & SelectionProps;
 
 /**
  * State used in rendering Listbox

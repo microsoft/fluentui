@@ -15,7 +15,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Radio: ForwardRefComponent<RadioProps>;
+export const Radio: ForwardRefComponent<RadioProps, 'input'>;
 
 // @public (undocumented)
 export const radioClassNames: SlotClassNames<RadioSlots>;

@@ -2,13 +2,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { TableContextValue } from '../Table/Table.types';
 
 export type TableCellSlots = {
-  root: Slot<'td', 'div'>;
+  root: NonNullable<Slot<'td', 'div'>>;
 };
 
 /**
  * TableCell Props
  */
-export type TableCellProps = ComponentProps<TableCellSlots> & {};
+export type TableCellProps = ComponentProps<Partial<TableCellSlots>>;
 
 /**
  * State used in rendering TableCell

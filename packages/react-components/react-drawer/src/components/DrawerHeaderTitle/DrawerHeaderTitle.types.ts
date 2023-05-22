@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import * as React from 'react';
 
 export type DrawerHeaderTitleSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * By default this is a h2, but can be any heading or div.
@@ -20,7 +20,7 @@ export type DrawerHeaderTitleSlots = {
 /**
  * DrawerHeaderTitle Props
  */
-export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
+export type DrawerHeaderTitleProps = ComponentProps<Partial<DrawerHeaderTitleSlots>> & {
   /**
    * Content of the DrawerHeaderTitle
    * Children is mandatory because DrawerHeaderTitle is a wrapper component

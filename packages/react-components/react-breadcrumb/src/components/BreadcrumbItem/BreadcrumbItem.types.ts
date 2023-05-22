@@ -2,13 +2,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { BreadcrumbProps } from '../Breadcrumb';
 
 export type BreadcrumbItemSlots = {
-  root: Slot<'li'>;
+  root: NonNullable<Slot<'li'>>;
 };
 
 /**
  * BreadcrumbItem Props
  */
-export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
+export type BreadcrumbItemProps = ComponentProps<Partial<BreadcrumbItemSlots>> &
   Pick<BreadcrumbProps, 'size'> & {
     /**
      * Defines current sate of the BreadcrumbItem.

@@ -20,7 +20,7 @@ export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 export const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
 
 // @public
-export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
+export type ProgressBarProps = Omit<ComponentProps<Partial<ProgressBarSlots>>, 'size'> & {
     shape?: 'rounded' | 'square';
     value?: number;
     max?: number;

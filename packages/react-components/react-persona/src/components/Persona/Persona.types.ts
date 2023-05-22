@@ -46,7 +46,7 @@ export type PersonaSlots = {
 /**
  * Persona Props
  */
-export type PersonaProps = ComponentProps<PersonaSlots> & {
+export type PersonaProps = ComponentProps<Partial<PersonaSlots>> & {
   /**
    * The name of the person or entity represented by the Persona.
    *

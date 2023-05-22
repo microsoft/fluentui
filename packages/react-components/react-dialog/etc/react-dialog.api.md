@@ -32,14 +32,14 @@ export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots>;
 export type DialogActionsPosition = 'start' | 'end';
 
 // @public
-export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
+export type DialogActionsProps = ComponentProps<Partial<DialogActionsSlots>> & {
     position?: DialogActionsPosition;
     fluid?: boolean;
 };
 
 // @public (undocumented)
 export type DialogActionsSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -52,11 +52,11 @@ export const DialogBody: ForwardRefComponent<DialogBodyProps>;
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots>;
 
 // @public
-export type DialogBodyProps = ComponentProps<DialogBodySlots> & {};
+export type DialogBodyProps = ComponentProps<Partial<DialogBodySlots>> & {};
 
 // @public (undocumented)
 export type DialogBodySlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -69,11 +69,11 @@ export const DialogContent: ForwardRefComponent<DialogContentProps>;
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
 
 // @public
-export type DialogContentProps = ComponentProps<DialogContentSlots>;
+export type DialogContentProps = ComponentProps<Partial<DialogContentSlots>>;
 
 // @public (undocumented)
 export type DialogContentSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -129,12 +129,12 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = ComponentProps<Partial<DialogSurfaceSlots>>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
     backdrop?: Slot<'div'>;
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -147,11 +147,11 @@ export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
 
 // @public
-export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
+export type DialogTitleProps = ComponentProps<Partial<DialogTitleSlots>>;
 
 // @public (undocumented)
 export type DialogTitleSlots = {
-    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+    root: NonNullable<Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>>;
     action?: Slot<'div'>;
 };
 

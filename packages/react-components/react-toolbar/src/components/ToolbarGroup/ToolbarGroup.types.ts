@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ToolbarGroupSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * ToolbarButton Props
  */
-export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
+export type ToolbarGroupProps = ComponentProps<Partial<ToolbarGroupSlots>>;
 
 /**
  * State used in rendering ToolbarButton

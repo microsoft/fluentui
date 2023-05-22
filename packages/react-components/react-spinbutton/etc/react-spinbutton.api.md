@@ -17,7 +17,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
 
 // @public
-export const SpinButton: ForwardRefComponent<SpinButtonProps>;
+export const SpinButton: ForwardRefComponent<SpinButtonProps, 'input'>;
 
 // @public (undocumented)
 export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';

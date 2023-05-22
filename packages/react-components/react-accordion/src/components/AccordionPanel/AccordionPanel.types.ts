@@ -4,7 +4,7 @@ export type AccordionPanelSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
+export type AccordionPanelProps = ComponentProps<Partial<AccordionPanelSlots>>;
 
 export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
   /**

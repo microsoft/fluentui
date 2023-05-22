@@ -142,10 +142,16 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
  * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
  *
+ */
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? NonExpandableOmit<P, 'ref' | 'root'> : P;
+
+/**
+ * Same as Omit, but union expansion safe.
  * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
  * types, to prevent unions from being expanded.
  */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type NonExpandableOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
 
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
@@ -167,9 +173,9 @@ export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefin
  */
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
   // Include a prop for each slot (see note below about the Omit)
-  Omit<Slots, Primary & 'root'> &
+  Slots &
     // Include all of the props of the primary slot inline in the component's props
-    PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
+    NonExpandableOmit<PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>, keyof Slots>;
 
 // Note: the `Omit<Slots, Primary & 'root'>` above is a little tricky. Here's what it's doing:
 // * If the Primary slot is 'root', then omit the `root` slot prop.
@@ -200,32 +206,18 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 };
 
 /**
- * This is part of a hack to infer the element type from a native element *props* type.
- * The only place the original element is found in a native props type (at least that's workable
- * for inference) is in the event handlers, so some of the helper types use this event handler
- * name to infer the original element type.
- *
- * Notes:
- * - Using an extremely obscure event handler reduces the likelihood that its signature will be
- *   modified in any component's props.
- * - Inferring based on a single prop name instead of a larger type like `DOMAttributes<T>` should be
- *   less expensive for typescript to evaluate and is less likely to result in type expansion in .d.ts.
- */
-type ObscureEventName = 'onLostPointerCaptureCapture';
-
-/**
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
  */
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
-  ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
-    ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
+export type ForwardRefComponent<Props, Primary extends string = 'root'> = Primary extends keyof Props
+  ? 'ref' extends keyof ExtractSlotProps<Props[Primary]>
+    ? React.ForwardRefExoticComponent<
+        Props &
+          React.RefAttributes<
+            ExtractSlotProps<Props[Primary]>['ref'] extends React.Ref<infer Element> | undefined ? Element : HTMLElement
+          >
+      >
     : never
   : never;
-// A definition like this would also work, but typescript is more likely to unnecessarily expand
-// the props type with this version (and it's likely much more expensive to evaluate)
-// export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
-//   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
-//   : never;
 
 /**
  * Helper type to correctly define the slot class names object.

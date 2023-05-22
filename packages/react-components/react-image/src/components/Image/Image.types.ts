@@ -1,10 +1,10 @@
 import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
-  root: Slot<'img'>;
+  root: NonNullable<Slot<'img'>>;
 };
 
-export type ImageProps = ComponentProps<ImageSlots> & {
+export type ImageProps = ComponentProps<Partial<ImageSlots>> & {
   /**
    * An image can take up the width of its container.
    *

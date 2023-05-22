@@ -33,7 +33,7 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export type TooltipProps = ComponentProps<TooltipSlots> &
+export type TooltipProps = ComponentProps<Partial<TooltipSlots>> &
   TriggerProps<TooltipChildProps> &
   Pick<PortalProps, 'mountNode'> & {
     /**

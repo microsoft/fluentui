@@ -16,7 +16,7 @@ import {
 import { useItemLayoutStyles } from './ItemLayout.styles';
 
 type ItemLayoutSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   contentMedia?: Slot<'div'>;
   contentWrapper?: Slot<'div'>;
@@ -28,7 +28,7 @@ type ItemLayoutSlots = {
   endMedia?: Slot<'div'>;
 };
 
-type ItemLayoutProps = ComponentProps<ItemLayoutSlots>;
+type ItemLayoutProps = ComponentProps<Partial<ItemLayoutSlots>>;
 
 type ItemLayoutState = ComponentState<ItemLayoutSlots>;
 

@@ -19,7 +19,7 @@ export { Image_2 as Image }
 export const imageClassNames: SlotClassNames<ImageSlots>;
 
 // @public (undocumented)
-export type ImageProps = ComponentProps<ImageSlots> & {
+export type ImageProps = ComponentProps<Partial<ImageSlots>> & {
     block?: boolean;
     bordered?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover' | 'default';
@@ -29,7 +29,7 @@ export type ImageProps = ComponentProps<ImageSlots> & {
 
 // @public (undocumented)
 export type ImageSlots = {
-    root: Slot<'img'>;
+    root: NonNullable<Slot<'img'>>;
 };
 
 // @public (undocumented)

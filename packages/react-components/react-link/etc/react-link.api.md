@@ -18,7 +18,7 @@ export const Link: ForwardRefComponent<LinkProps>;
 export const linkClassNames: SlotClassNames<LinkSlots>;
 
 // @public (undocumented)
-export type LinkProps = ComponentProps<LinkSlots> & {
+export type LinkProps = ComponentProps<Partial<LinkSlots>> & {
     appearance?: 'default' | 'subtle';
     disabled?: boolean;
     disabledFocusable?: boolean;
@@ -27,7 +27,7 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: Slot<'a', 'button'>;
+    root: NonNullable<Slot<'a', 'button'>>;
 };
 
 // @public (undocumented)

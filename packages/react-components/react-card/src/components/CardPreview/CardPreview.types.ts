@@ -7,7 +7,7 @@ export type CardPreviewSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Container that holds a logo related to the image preview provided.
@@ -18,7 +18,7 @@ export type CardPreviewSlots = {
 /**
  * CardPreview component props.
  */
-export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
+export type CardPreviewProps = ComponentProps<Partial<CardPreviewSlots>>;
 
 /**
  * State used in rendering CardPreview.

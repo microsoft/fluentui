@@ -9,7 +9,7 @@ export type TableCellLayoutContextValues = {
 };
 
 export type TableCellLayoutSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Slot for an icon or other visual element

@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TableSlots = {
-  root: Slot<'table', 'div'>;
+  root: NonNullable<Slot<'table', 'div'>>;
 };
 
 export type TableContextValue = {
@@ -34,7 +34,7 @@ export type TableContextValues = {
 /**
  * Table Props
  */
-export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
+export type TableProps = ComponentProps<Partial<TableSlots>> & Partial<TableContextValue>;
 
 /**
  * State used in rendering Table

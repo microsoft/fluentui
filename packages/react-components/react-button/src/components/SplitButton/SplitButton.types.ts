@@ -20,7 +20,7 @@ export type SplitButtonSlots = {
   primaryActionButton?: Slot<typeof Button>;
 };
 
-export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
+export type SplitButtonProps = ComponentProps<Partial<SplitButtonSlots>> &
   Omit<ButtonProps, 'root'> &
   Omit<MenuButtonProps, 'root'>;
 

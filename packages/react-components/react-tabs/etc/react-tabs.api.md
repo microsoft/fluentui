@@ -65,7 +65,7 @@ export type TabListContextValues = {
 };
 
 // @public
-export type TabListProps = ComponentProps<TabListSlots> & {
+export type TabListProps = ComponentProps<Partial<TabListSlots>> & {
     appearance?: 'transparent' | 'subtle';
     reserveSelectedTabSpace?: boolean;
     defaultSelectedValue?: TabValue;
@@ -81,7 +81,7 @@ export const TabListProvider: Provider<TabListContextValue> & FC<ProviderProps<T
 
 // @public (undocumented)
 export type TabListSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -101,7 +101,7 @@ export type TabRegisterData = {
 
 // @public (undocumented)
 export type TabSlots = {
-    root: Slot<'button'>;
+    root: NonNullable<Slot<'button'>>;
     icon?: Slot<'span'>;
     content: NonNullable<Slot<'span'>>;
 };

@@ -22,7 +22,7 @@ export const Persona: ForwardRefComponent<PersonaProps>;
 export const personaClassNames: SlotClassNames<PersonaSlots>;
 
 // @public
-export type PersonaProps = ComponentProps<PersonaSlots> & {
+export type PersonaProps = ComponentProps<Partial<PersonaSlots>> & {
     name?: string;
     presenceOnly?: boolean;
     size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';

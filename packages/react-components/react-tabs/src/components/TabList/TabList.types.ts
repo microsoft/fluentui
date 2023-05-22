@@ -31,13 +31,13 @@ export type TabListSlots = {
   /**
    * The slot associated with the root element of this tab list.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * TabList Props
  */
-export type TabListProps = ComponentProps<TabListSlots> & {
+export type TabListProps = ComponentProps<Partial<TabListSlots>> & {
   /**
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.

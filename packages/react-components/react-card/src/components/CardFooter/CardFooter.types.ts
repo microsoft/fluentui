@@ -7,7 +7,7 @@ export type CardFooterSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Container that renders on the far end of the footer, used for action buttons.
@@ -18,7 +18,7 @@ export type CardFooterSlots = {
 /**
  * CardFooter component props.
  */
-export type CardFooterProps = ComponentProps<CardFooterSlots>;
+export type CardFooterProps = ComponentProps<Partial<CardFooterSlots>>;
 
 /**
  * State used in rendering CardFooter.

@@ -41,11 +41,11 @@ export const CardFooter: ForwardRefComponent<CardFooterProps>;
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
 
 // @public
-export type CardFooterProps = ComponentProps<CardFooterSlots>;
+export type CardFooterProps = ComponentProps<Partial<CardFooterSlots>>;
 
 // @public
 export type CardFooterSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     action?: Slot<'div'>;
 };
 
@@ -68,7 +68,7 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 // @public
 export type CardHeaderSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     image: Slot<'div', 'img'>;
     header: Slot<'div'>;
     description: Slot<'div'>;
@@ -88,11 +88,11 @@ export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
 // @public
-export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
+export type CardPreviewProps = ComponentProps<Partial<CardPreviewSlots>>;
 
 // @public
 export type CardPreviewSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     logo?: Slot<'div', 'img'>;
 };
 
@@ -100,7 +100,7 @@ export type CardPreviewSlots = {
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots> & {
+export type CardProps = ComponentProps<Partial<CardSlots>> & {
     appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
     orientation?: 'horizontal' | 'vertical';
@@ -115,7 +115,7 @@ export const CardProvider: React_2.Provider<CardContextValue | undefined>;
 
 // @public
 export type CardSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     floatingAction?: Slot<'div'>;
     checkbox?: Slot<'input'>;
 };

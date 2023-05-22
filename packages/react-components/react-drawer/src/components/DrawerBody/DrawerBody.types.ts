@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DrawerBodySlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * DrawerBody Props
  */
-export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
+export type DrawerBodyProps = ComponentProps<Partial<DrawerBodySlots>>;
 
 /**
  * State used in rendering DrawerBody

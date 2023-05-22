@@ -53,11 +53,11 @@ export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
 export const menuDividerClassNames: SlotClassNames<MenuDividerSlots>;
 
 // @public (undocumented)
-export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
+export type MenuDividerProps = ComponentProps<Partial<MenuDividerSlots>>;
 
 // @public (undocumented)
 export type MenuDividerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -89,22 +89,22 @@ export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
 export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots>;
 
 // @public (undocumented)
-export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
+export type MenuGroupHeaderProps = ComponentProps<Partial<MenuGroupHeaderSlots>>;
 
 // @public (undocumented)
 export type MenuGroupHeaderSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
 export type MenuGroupHeaderState = ComponentState<MenuGroupHeaderSlots>;
 
 // @public (undocumented)
-export type MenuGroupProps = ComponentProps<MenuGroupSlots>;
+export type MenuGroupProps = ComponentProps<Partial<MenuGroupSlots>>;
 
 // @public (undocumented)
 export type MenuGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -163,7 +163,7 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
@@ -194,7 +194,7 @@ export type MenuListContextValues = {
 };
 
 // @public (undocumented)
-export type MenuListProps = ComponentProps<MenuListSlots> & {
+export type MenuListProps = ComponentProps<Partial<MenuListSlots>> & {
     checkedValues?: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
     hasCheckmarks?: boolean;
@@ -207,7 +207,7 @@ export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.
 
 // @public (undocumented)
 export type MenuListSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -273,11 +273,11 @@ export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots>;
 
 // @public
-export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
+export type MenuPopoverProps = ComponentProps<Partial<MenuPopoverSlots>>;
 
 // @public (undocumented)
 export type MenuPopoverSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -313,11 +313,11 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots>;
 
 // @public
-export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots>;
+export type MenuSplitGroupProps = ComponentProps<Partial<MenuSplitGroupSlots>>;
 
 // @public (undocumented)
 export type MenuSplitGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

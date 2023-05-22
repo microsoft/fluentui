@@ -22,7 +22,7 @@ export type CellRenderFunction<TItem = unknown> = (
  * DataGridRow Props
  */
 export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> &
-  Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
+  Omit<ComponentProps<Partial<DataGridRowSlots>>, 'children'> & {
     children: CellRenderFunction<TItem>;
   };
 

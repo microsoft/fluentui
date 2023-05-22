@@ -23,7 +23,7 @@ export type SpinnerSlots = {
 /**
  * Spinner Props
  */
-export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
+export type SpinnerProps = Omit<ComponentProps<Partial<SpinnerSlots>>, 'size'> & {
   /**
    * The appearance of the Spinner.
    * @default 'primary'

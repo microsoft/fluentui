@@ -2,13 +2,13 @@ import { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TreeItemAsideSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * TreeItemAside Props
  */
-export type TreeItemAsideProps = ComponentProps<TreeItemAsideSlots> & {
+export type TreeItemAsideProps = ComponentProps<Partial<TreeItemAsideSlots>> & {
   /**
    * boolean indicating if the aside content should behave as "actions"
    *

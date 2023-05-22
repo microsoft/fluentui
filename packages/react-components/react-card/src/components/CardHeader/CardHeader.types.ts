@@ -7,7 +7,7 @@ export type CardHeaderSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Element used to render an image or avatar related to the card.

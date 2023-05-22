@@ -13,6 +13,6 @@ export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps> = React.fo
 
   useBreadcrumbLinkStyles_unstable(state);
   return renderBreadcrumbLink_unstable(state);
-});
+}) as ForwardRefComponent<BreadcrumbLinkProps>;
 
 BreadcrumbLink.displayName = 'BreadcrumbLink';

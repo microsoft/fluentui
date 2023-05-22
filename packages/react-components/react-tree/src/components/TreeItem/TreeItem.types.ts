@@ -8,7 +8,7 @@ export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]
 export type TreeItemType = 'leaf' | 'branch';
 
 export type TreeItemSlots = {
-  root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;
+  root: NonNullable<Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>>;
 };
 
 export type TreeItemContextValues = { treeItem: TreeItemContextValue };

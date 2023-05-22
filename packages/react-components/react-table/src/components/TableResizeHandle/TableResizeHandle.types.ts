@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TableResizeHandleSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * TableResizeHandle Props
  */
-export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
+export type TableResizeHandleProps = ComponentProps<Partial<TableResizeHandleSlots>>;
 
 /**
  * State used in rendering TableResizeHandle

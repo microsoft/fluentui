@@ -17,7 +17,7 @@ export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 
 export type AvatarShape = 'circular' | 'square';
 
 export type AvatarSlots = {
-  root: Slot<'span'>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
    * The Avatar's image.
@@ -87,7 +87,7 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
+export type AvatarProps = Omit<ComponentProps<Partial<AvatarSlots>>, 'color'> & {
   /**
    * Optional activity indicator
    * * active: the avatar will be decorated according to activeAppearance

@@ -143,7 +143,7 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
+export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<Partial<DataGridRowSlots>>, 'children'> & {
     children: CellRenderFunction<TItem>;
 };
 
@@ -252,11 +252,11 @@ export const tableBodyClassName = "fui-TableBody";
 export const tableBodyClassNames: SlotClassNames<TableBodySlots>;
 
 // @public
-export type TableBodyProps = ComponentProps<TableBodySlots>;
+export type TableBodyProps = ComponentProps<Partial<TableBodySlots>>;
 
 // @public (undocumented)
 export type TableBodySlots = {
-    root: Slot<'tbody', 'div'>;
+    root: NonNullable<Slot<'tbody', 'div'>>;
 };
 
 // @public
@@ -272,13 +272,13 @@ export const TableCellActions: ForwardRefComponent<TableCellActionsProps>;
 export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots>;
 
 // @public
-export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {
+export type TableCellActionsProps = ComponentProps<Partial<TableCellActionsSlots>> & {
     visible?: boolean;
 };
 
 // @public (undocumented)
 export type TableCellActionsSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -304,7 +304,7 @@ export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>>
 
 // @public (undocumented)
 export type TableCellLayoutSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     media: Slot<'span'>;
     main: Slot<'span'>;
     description: Slot<'span'>;
@@ -317,11 +317,11 @@ export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<T
 } & Pick<TableContextValue, 'size'>;
 
 // @public
-export type TableCellProps = ComponentProps<TableCellSlots> & {};
+export type TableCellProps = ComponentProps<Partial<TableCellSlots>>;
 
 // @public (undocumented)
 export type TableCellSlots = {
-    root: Slot<'td', 'div'>;
+    root: NonNullable<Slot<'td', 'div'>>;
 };
 
 // @public
@@ -400,7 +400,7 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
 
 // @public (undocumented)
 export type TableHeaderCellSlots = {
-    root: Slot<'th', 'div'>;
+    root: NonNullable<Slot<'th', 'div'>>;
     sortIcon: Slot<'span'>;
     button: NonNullable<Slot<ARIAButtonSlotProps>>;
     aside: Slot<'span'>;
@@ -416,18 +416,18 @@ export const tableHeaderClassName = "fui-TableHeader";
 export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
 
 // @public
-export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
+export type TableHeaderProps = ComponentProps<Partial<TableHeaderSlots>>;
 
 // @public (undocumented)
 export type TableHeaderSlots = {
-    root: Slot<'thead', 'div'>;
+    root: NonNullable<Slot<'thead', 'div'>>;
 };
 
 // @public
 export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 // @public
-export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
+export type TableProps = ComponentProps<Partial<TableSlots>> & Partial<TableContextValue>;
 
 // @public
 export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
@@ -436,11 +436,11 @@ export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
 export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
 
 // @public
-export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
+export type TableResizeHandleProps = ComponentProps<Partial<TableResizeHandleSlots>>;
 
 // @public (undocumented)
 export type TableResizeHandleSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -468,13 +468,13 @@ export type TableRowId = string | number;
 export const TableRowIdContextProvider: React_2.Provider<TableRowId | undefined>;
 
 // @public
-export type TableRowProps = ComponentProps<TableRowSlots> & {
+export type TableRowProps = ComponentProps<Partial<TableRowSlots>> & {
     appearance?: 'brand' | 'neutral' | 'none';
 };
 
 // @public (undocumented)
 export type TableRowSlots = {
-    root: Slot<'tr', 'div'>;
+    root: NonNullable<Slot<'tr', 'div'>>;
 };
 
 // @public
@@ -522,7 +522,7 @@ export interface TableSelectionState {
 
 // @public (undocumented)
 export type TableSlots = {
-    root: Slot<'table', 'div'>;
+    root: NonNullable<Slot<'table', 'div'>>;
 };
 
 // @public (undocumented)

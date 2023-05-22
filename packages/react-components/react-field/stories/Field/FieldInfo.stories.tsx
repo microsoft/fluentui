@@ -10,7 +10,7 @@ export const Info = () => (
       // The first param is the component for the slot (Label), which we're ignoring to use InfoLabel instead.
       // The second param are the props for the slot, which need to be passed to the InfoLabel.
       children: (_: unknown, slotProps: LabelProps) => (
-        <InfoLabel {...slotProps} info="Example info">
+        <InfoLabel label={slotProps} info="Example info">
           Field with an info button
         </InfoLabel>
       ),

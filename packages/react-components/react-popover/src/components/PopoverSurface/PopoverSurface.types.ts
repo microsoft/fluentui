@@ -4,13 +4,13 @@ import type { PopoverContextValue } from '../../popoverContext';
 /**
  * PopoverSurface Props
  */
-export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
+export type PopoverSurfaceProps = ComponentProps<Partial<PopoverSurfaceSlots>>;
 
 /**
  * Names of the slots in PopoverSurfaceProps
  */
 export type PopoverSurfaceSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**

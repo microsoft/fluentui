@@ -3,7 +3,7 @@ import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { SortDirection, TableContextValue } from '../Table/Table.types';
 
 export type TableHeaderCellSlots = {
-  root: Slot<'th', 'div'>;
+  root: NonNullable<Slot<'th', 'div'>>;
 
   sortIcon: Slot<'span'>;
 

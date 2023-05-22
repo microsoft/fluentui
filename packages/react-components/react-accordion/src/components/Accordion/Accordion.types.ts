@@ -33,7 +33,7 @@ export type AccordionToggleData = {
   value: AccordionItemValue;
 };
 
-export type AccordionProps = ComponentProps<AccordionSlots> & {
+export type AccordionProps = ComponentProps<Partial<AccordionSlots>> & {
   /**
    * Default value for the uncontrolled state of the panel.
    */

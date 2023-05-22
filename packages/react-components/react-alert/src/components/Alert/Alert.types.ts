@@ -25,7 +25,7 @@ export type AlertSlots = {
 /**
  * Alert Props
  */
-export type AlertProps = ComponentProps<AlertSlots> & {
+export type AlertProps = ComponentProps<Partial<AlertSlots>> & {
   /**
    * The intent prop, if present, determines the icon to be rendered in the icon slot. The icon prop
    * overrides the intent prop

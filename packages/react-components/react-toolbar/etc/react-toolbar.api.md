@@ -33,7 +33,7 @@ export const Toolbar: ForwardRefComponent<ToolbarProps>;
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
 // @public
-export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
+export type ToolbarButtonProps = ComponentProps<Partial<ButtonSlots>> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
     appearance?: 'primary' | 'subtle';
 } & {
     vertical?: boolean;
@@ -74,13 +74,13 @@ export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
 export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
 
 // @public
-export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
+export type ToolbarGroupProps = ComponentProps<Partial<ToolbarGroupSlots>>;
 
 // @public
 export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
 
 // @public
-export type ToolbarProps = ComponentProps<ToolbarSlots> & {
+export type ToolbarProps = ComponentProps<Partial<ToolbarSlots>> & {
     size?: 'small' | 'medium' | 'large';
     vertical?: boolean;
     checkedValues?: Record<string, string[]>;
@@ -92,7 +92,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
 export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
 // @public
-export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
+export type ToolbarRadioButtonProps = ComponentProps<Partial<ButtonSlots>> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
     name: string;
     value: string;
@@ -105,14 +105,14 @@ export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> & Tog
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
 
 // @public
-export type ToolbarRadioGroupProps = ComponentProps<ToolbarRadioGroupSlots>;
+export type ToolbarRadioGroupProps = ComponentProps<Partial<ToolbarRadioGroupSlots>>;
 
 // @public
 export type ToolbarRadioGroupState = ComponentState<ToolbarRadioGroupSlots>;
 
 // @public (undocumented)
 export type ToolbarSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -125,7 +125,7 @@ export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarP
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
 // @public
-export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
+export type ToolbarToggleButtonProps = ComponentProps<Partial<ButtonSlots>> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
     name: string;
     value: string;

@@ -18,7 +18,7 @@ export type ButtonSlots = {
  */
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonProps = ComponentProps<ButtonSlots> & {
+export type ButtonProps = ComponentProps<Partial<ButtonSlots>> & {
   /**
    * A button can have its content and borders styled for greater emphasis or to be subtle.
    * - 'secondary' (default): Gives emphasis to the button in such a way that it indicates a secondary action.

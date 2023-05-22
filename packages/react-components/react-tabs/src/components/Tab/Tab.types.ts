@@ -9,7 +9,7 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root: Slot<'button'>;
+  root: NonNullable<Slot<'button'>>;
 
   /**
    * Icon that renders before the content.

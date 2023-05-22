@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuSplitGroupSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * MenuSplitGroup Props
  */
-export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots>;
+export type MenuSplitGroupProps = ComponentProps<Partial<MenuSplitGroupSlots>>;
 
 /**
  * State used in rendering MenuSplitGroup

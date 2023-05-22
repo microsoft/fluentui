@@ -72,7 +72,7 @@ export const input: {
 };
 
 // @public (undocumented)
-export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots, "root"> & Omit<{
+export const ItemLayout: React_2.ForwardRefExoticComponent<Partial<ItemLayoutSlots> & Omit<Omit<{
     as?: "div" | undefined;
 } & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
@@ -80,7 +80,7 @@ export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots,
     children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
     }>;
-}, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
+}, "ref" | "root">, keyof ItemLayoutSlots> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const itemLayoutClassName = "fui-ItemLayout";
@@ -112,7 +112,7 @@ export const StyledText: React_2.ForwardRefExoticComponent<StyledTextProps & Rea
 export const styledTextClassName = "fui-StyledText";
 
 // @public (undocumented)
-export type StyledTextProps = ComponentProps<StyledTextSlots> & {
+export type StyledTextProps = ComponentProps<Partial<StyledTextSlots>> & {
     align?: 'start' | 'center' | 'end' | 'justify';
     atMention?: 'me' | boolean;
     disabled?: boolean;
@@ -129,7 +129,7 @@ export type StyledTextProps = ComponentProps<StyledTextSlots> & {
 
 // @public (undocumented)
 export type StyledTextSlots = {
-    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'time'>;
+    root: NonNullable<Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'time'>>;
 };
 
 // @public (undocumented)

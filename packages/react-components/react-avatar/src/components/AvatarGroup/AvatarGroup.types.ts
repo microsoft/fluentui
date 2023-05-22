@@ -8,7 +8,7 @@ export type AvatarGroupSlots = {
 /**
  * AvatarGroup Props
  */
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
+export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
   /**
    * Layout the AvatarGroupItems should be displayed as.
    * @default spread

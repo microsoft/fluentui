@@ -468,13 +468,13 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   return state;
 };
 
-const SpinButtonNoPseudos: ForwardRefComponent<SpinButtonProps> = React.forwardRef((props, ref) => {
+const SpinButtonNoPseudos: ForwardRefComponent<SpinButtonProps, 'input'> = React.forwardRef((props, ref) => {
   const state = useSpinButton_unstable(props, ref);
 
   useSpinButtonStyles_unstable(state);
 
   return renderSpinButton_unstable(state);
-}) as ForwardRefComponent<SpinButtonProps>;
+});
 
 const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, index) => {
   return <SpinButtonNoPseudos value={0} displayValue={`${node.value.name}, ${index}`} />;

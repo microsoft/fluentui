@@ -17,7 +17,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: ForwardRefComponent<SliderProps>;
+export const Slider: ForwardRefComponent<SliderProps, 'input'>;
 
 // @public (undocumented)
 export const sliderClassNames: SlotClassNames<SliderSlots>;

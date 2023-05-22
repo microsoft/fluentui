@@ -15,7 +15,7 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Checkbox: ForwardRefComponent<CheckboxProps>;
+export const Checkbox: ForwardRefComponent<CheckboxProps, 'input'>;
 
 // @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;

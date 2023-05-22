@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SkeletonItemSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -12,7 +12,7 @@ export type SkeletonItemSize = 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 
 /**
  * SkeletonItem Props
  */
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+export type SkeletonItemProps = ComponentProps<Partial<SkeletonItemSlots>> & {
   /**
    * Sets the animation of the SkeletonItem
    * @default wave

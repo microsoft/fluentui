@@ -7,7 +7,7 @@ export type DrawerSlots = {
    * This slot is rendered as a `div` by default.
    * Only renders if `type` is `inline`.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**

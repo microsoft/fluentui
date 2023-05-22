@@ -3,10 +3,10 @@ import { getNativeElementProps, mergeClasses, Slot, ComponentProps } from '@flue
 import { useSizeStyles, useStyles, useWeightStyles } from './StyledText.styles';
 
 export type StyledTextSlots = {
-  root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'time'>;
+  root: NonNullable<Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'time'>>;
 };
 
-export type StyledTextProps = ComponentProps<StyledTextSlots> & {
+export type StyledTextProps = ComponentProps<Partial<StyledTextSlots>> & {
   /**
    * Aligns text based on the parent container.
    */

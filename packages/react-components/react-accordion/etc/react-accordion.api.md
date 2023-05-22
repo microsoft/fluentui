@@ -97,7 +97,7 @@ export type AccordionItemContextValues = {
 };
 
 // @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
+export type AccordionItemProps = ComponentProps<Partial<AccordionItemSlots>> & {
     disabled?: boolean;
     value: AccordionItemValue;
 };
@@ -123,7 +123,7 @@ export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
 
 // @public (undocumented)
-export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
+export type AccordionPanelProps = ComponentProps<Partial<AccordionPanelSlots>>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
@@ -136,7 +136,7 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
 };
 
 // @public (undocumented)
-export type AccordionProps = ComponentProps<AccordionSlots> & {
+export type AccordionProps = ComponentProps<Partial<AccordionSlots>> & {
     defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
     collapsible?: boolean;
     multiple?: boolean;

@@ -55,7 +55,7 @@ export type AvatarGroupContextValues = {
 };
 
 // @public
-export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
+export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps, 'avatar'>;
 
 // @public (undocumented)
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
@@ -107,7 +107,7 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & 
 };
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
+export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
     layout?: 'spread' | 'stack' | 'pie';
     size?: AvatarSize;
 };
@@ -127,7 +127,7 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<
 export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
+export type AvatarProps = Omit<ComponentProps<Partial<AvatarSlots>>, 'color'> & {
     active?: 'active' | 'inactive' | 'unset';
     activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
@@ -148,7 +148,7 @@ export type AvatarSizes = AvatarSize;
 
 // @public (undocumented)
 export type AvatarSlots = {
-    root: Slot<'span'>;
+    root: NonNullable<Slot<'span'>>;
     image?: Slot<'img'>;
     initials?: Slot<'span'>;
     icon?: Slot<'span'>;

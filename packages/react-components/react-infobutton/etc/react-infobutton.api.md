@@ -38,7 +38,7 @@ export type InfoButtonSlots = {
 export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
 
 // @public
-export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
+export const InfoLabel: ForwardRefComponent<InfoLabelProps, 'label'>;
 
 // @public (undocumented)
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;

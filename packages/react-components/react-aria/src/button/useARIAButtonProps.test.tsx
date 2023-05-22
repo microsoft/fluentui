@@ -6,7 +6,7 @@ import { getSlots, Slot, ComponentProps } from '@fluentui/react-utilities';
 import { ARIAButtonProps, ARIAButtonSlotProps } from './types';
 import { useARIAButtonShorthand } from './useARIAButtonShorthand';
 
-const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
+const TestButton = (props: ComponentProps<{ root?: Slot<ARIAButtonSlotProps> }>) => {
   const { slots, slotProps } = getSlots<{ root: Slot<ARIAButtonSlotProps> }>({
     components: { root: 'button' },
     root: useARIAButtonShorthand(props, { required: true }),

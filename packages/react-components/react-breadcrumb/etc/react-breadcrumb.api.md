@@ -28,7 +28,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
 
 // @public
-export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size'> & Pick<ButtonProps, 'disabled'> & {
+export type BreadcrumbButtonProps = ComponentProps<Partial<BreadcrumbButtonSlots>> & Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size'> & Pick<ButtonProps, 'disabled'> & {
     current?: boolean;
 };
 
@@ -48,11 +48,11 @@ export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
 export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>;
 
 // @public
-export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {};
+export type BreadcrumbDividerProps = ComponentProps<Partial<BreadcrumbDividerSlots>> & {};
 
 // @public (undocumented)
 export type BreadcrumbDividerSlots = {
-    root: Slot<'li'>;
+    root: NonNullable<Slot<'li'>>;
 };
 
 // @public
@@ -65,13 +65,13 @@ export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots>;
 
 // @public
-export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<BreadcrumbProps, 'size'> & {
+export type BreadcrumbItemProps = ComponentProps<Partial<BreadcrumbItemSlots>> & Pick<BreadcrumbProps, 'size'> & {
     current?: boolean;
 };
 
 // @public (undocumented)
 export type BreadcrumbItemSlots = {
-    root: Slot<'li'>;
+    root: NonNullable<Slot<'li'>>;
 };
 
 // @public
@@ -84,7 +84,7 @@ export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps>;
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots>;
 
 // @public
-export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<LinkProps, 'appearance' | 'disabled'> & {
+export type BreadcrumbLinkProps = ComponentProps<Partial<BreadcrumbLinkSlots>> & Pick<LinkProps, 'appearance' | 'disabled'> & {
     current?: boolean;
     iconPosition?: 'before' | 'after';
     overflow?: boolean;
@@ -93,7 +93,7 @@ export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<Lin
 
 // @public (undocumented)
 export type BreadcrumbLinkSlots = {
-    root: Slot<typeof Link>;
+    root: NonNullable<Slot<typeof Link>>;
     icon?: Slot<'span'>;
 };
 
@@ -103,7 +103,7 @@ export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<
 };
 
 // @public
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
+export type BreadcrumbProps = ComponentProps<Partial<BreadcrumbSlots>> & {
     appearance?: 'transparent' | 'subtle';
     disableFocus?: boolean;
     dividerType?: 'chevron' | 'slash';
@@ -113,7 +113,7 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
-    root: Slot<'nav'>;
+    root: NonNullable<Slot<'nav'>>;
     list?: Slot<'ol'>;
 };
 

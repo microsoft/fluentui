@@ -20,7 +20,7 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 export const badgeClassNames: SlotClassNames<BadgeSlots>;
 
 // @public (undocumented)
-export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
+export type BadgeProps = Omit<ComponentProps<Partial<BadgeSlots>>, 'color'> & {
     appearance?: 'filled' | 'ghost' | 'outline' | 'tint';
     color?: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
     iconPosition?: 'before' | 'after';
@@ -30,7 +30,7 @@ export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     icon?: Slot<'span'>;
 };
 
@@ -64,7 +64,7 @@ export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
 
 // @public (undocumented)
-export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> & Pick<BadgeProps, 'size'> & {
+export type PresenceBadgeProps = Omit<ComponentProps<Partial<Pick<BadgeSlots, 'root' | 'icon'>>>, 'color'> & Pick<BadgeProps, 'size'> & {
     status?: PresenceBadgeStatus;
     outOfOffice?: boolean;
 };

@@ -17,7 +17,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const renderTextarea_unstable: (state: TextareaState) => JSX.Element;
 
 // @public
-export const Textarea: ForwardRefComponent<TextareaProps>;
+export const Textarea: ForwardRefComponent<TextareaProps, 'textarea'>;
 
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;

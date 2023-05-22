@@ -30,7 +30,7 @@ export interface ButtonContextValue {
 }
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps<ButtonSlots> & {
+export type ButtonProps = ComponentProps<Partial<ButtonSlots>> & {
     appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
     disabledFocusable?: boolean;
     disabled?: boolean;
@@ -75,7 +75,7 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
 
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
+export type MenuButtonProps = ComponentProps<Partial<MenuButtonSlots>> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
@@ -106,7 +106,7 @@ export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
-export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
+export type SplitButtonProps = ComponentProps<Partial<SplitButtonSlots>> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
 
 // @public (undocumented)
 export type SplitButtonSlots = {
@@ -155,7 +155,7 @@ export const useMenuButton_unstable: ({ menuIcon, ...props }: MenuButtonProps, r
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
 
 // @public
-export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonState;
 
 // @public (undocumented)
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;

@@ -41,7 +41,7 @@ export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
 
 // @public
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+export type SkeletonItemProps = ComponentProps<Partial<SkeletonItemSlots>> & {
     animation?: 'wave' | 'pulse';
     appearance?: 'opaque' | 'translucent';
     size?: SkeletonItemSize;
@@ -50,7 +50,7 @@ export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
 
 // @public (undocumented)
 export type SkeletonItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

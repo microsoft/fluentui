@@ -267,13 +267,13 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   return state;
 };
 
-const TextareaNoPseudo: ForwardRefComponent<TextareaProps> = React.forwardRef((props, ref) => {
+const TextareaNoPseudo: ForwardRefComponent<TextareaProps, 'textarea'> = React.forwardRef((props, ref) => {
   const state = useTextarea_unstable(props, ref);
 
   useTextareaStyles_unstable(state);
 
   return renderTextarea_unstable(state);
-}) as ForwardRefComponent<TextareaProps>;
+});
 
 const componentRenderer: ReactSelectorTreeComponentRenderer = (node, depth, index) => {
   return <TextareaNoPseudo defaultValue={`${node.value.name}, ${index}`} />;

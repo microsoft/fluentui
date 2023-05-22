@@ -15,7 +15,7 @@ export type BreadcrumbSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'nav'>;
+  root: NonNullable<Slot<'nav'>>;
   /**
    * Ordered list which contains items.
    */
@@ -25,7 +25,7 @@ export type BreadcrumbSlots = {
 /**
  * Breadcrumb Props
  */
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
+export type BreadcrumbProps = ComponentProps<Partial<BreadcrumbSlots>> & {
   /**
    * Breadcrumb appearance.
    *

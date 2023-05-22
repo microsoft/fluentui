@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TreeItemLayoutSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
   /**
    * Expand icon slot,
    * by default renders a chevron icon to indicate opening and closing

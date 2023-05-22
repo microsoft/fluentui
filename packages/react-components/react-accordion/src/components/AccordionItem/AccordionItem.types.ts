@@ -14,7 +14,7 @@ export type AccordionItemSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
+export type AccordionItemProps = ComponentProps<Partial<AccordionItemSlots>> & {
   /**
    * Disables opening/closing of panel.
    */

@@ -10,7 +10,7 @@ export type DialogSurfaceSlots = {
    *
    */
   backdrop?: Slot<'div'>;
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -21,7 +21,7 @@ export type DialogSurfaceElement = HTMLElement;
 /**
  * DialogSurface Props
  */
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = ComponentProps<Partial<DialogSurfaceSlots>>;
 
 export type DialogSurfaceContextValues = {
   dialogSurface: DialogSurfaceContextValue;

@@ -5,7 +5,7 @@ export type BreadcrumbLinkSlots = {
   /**
    * Root element of the BreadcrumbLink.
    */
-  root: Slot<typeof Link>;
+  root: NonNullable<Slot<typeof Link>>;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
@@ -16,7 +16,7 @@ export type BreadcrumbLinkSlots = {
 /**
  * BreadcrumbLink Props
  */
-export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> &
+export type BreadcrumbLinkProps = ComponentProps<Partial<BreadcrumbLinkSlots>> &
   Pick<LinkProps, 'appearance' | 'disabled'> & {
     /**
      * Defines current sate of BreadcrumbLink.

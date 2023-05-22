@@ -1,9 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuDividerSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
-export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
+export type MenuDividerProps = ComponentProps<Partial<MenuDividerSlots>>;
 
 export type MenuDividerState = ComponentState<MenuDividerSlots>;

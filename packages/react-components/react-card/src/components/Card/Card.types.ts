@@ -34,7 +34,7 @@ export type CardSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Floating action that can be rendered on the top-right of a card. Often used together with
@@ -51,7 +51,7 @@ export type CardSlots = {
 /**
  * Card component props.
  */
-export type CardProps = ComponentProps<CardSlots> & {
+export type CardProps = ComponentProps<Partial<CardSlots>> & {
   /**
    * Sets the appearance of the card.
    *

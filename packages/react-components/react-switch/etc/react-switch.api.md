@@ -18,7 +18,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 
 // @public
-export const Switch: ForwardRefComponent<SwitchProps>;
+export const Switch: ForwardRefComponent<SwitchProps, 'input'>;
 
 // @public @deprecated (undocumented)
 export const switchClassName: string;

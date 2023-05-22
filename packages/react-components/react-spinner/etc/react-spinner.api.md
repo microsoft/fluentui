@@ -22,7 +22,7 @@ export const Spinner: ForwardRefComponent<SpinnerProps>;
 export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
 
 // @public
-export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
+export type SpinnerProps = Omit<ComponentProps<Partial<SpinnerSlots>>, 'size'> & {
     appearance?: 'primary' | 'inverted';
     labelPosition?: 'above' | 'below' | 'before' | 'after';
     size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';

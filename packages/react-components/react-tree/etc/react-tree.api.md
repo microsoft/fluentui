@@ -84,7 +84,7 @@ export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.
 export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
 
 // @public
-export const Tree: React_2.ForwardRefExoticComponent<Omit<TreeSlots, "root"> & Omit<{
+export const Tree: React_2.ForwardRefExoticComponent<Partial<TreeSlots> & Omit<Omit<{
     as?: "div" | undefined;
 } & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
@@ -92,7 +92,7 @@ export const Tree: React_2.ForwardRefExoticComponent<Omit<TreeSlots, "root"> & O
     children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
     }>;
-}, "ref"> & {
+}, "ref" | "root">, "root"> & {
     appearance?: "transparent" | "subtle" | "subtle-alpha" | undefined;
     size?: "small" | "medium" | undefined;
     openItems?: Iterable<string> | undefined;
@@ -114,7 +114,7 @@ export type TreeContextValue = {
 };
 
 // @public
-export const TreeItem: React_2.ForwardRefExoticComponent<Omit<Partial<TreeItemSlots>, "root"> & Omit<{
+export const TreeItem: React_2.ForwardRefExoticComponent<Partial<TreeItemSlots> & Omit<Omit<{
     as?: "div" | undefined;
 } & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
@@ -124,7 +124,7 @@ export const TreeItem: React_2.ForwardRefExoticComponent<Omit<Partial<TreeItemSl
     }>;
 } & {
     style?: TreeItemCSSProperties | undefined;
-}, "ref"> & {
+}, "ref" | "root">, "root"> & {
     value?: string | undefined;
     itemType: TreeItemType;
 } & React_2.RefAttributes<HTMLDivElement>> & (<Value = string>(props: TreeItemProps<Value>) => JSX.Element);
@@ -136,14 +136,14 @@ export const TreeItemAside: ForwardRefComponent<TreeItemAsideProps>;
 export const treeItemAsideClassNames: SlotClassNames<TreeItemAsideSlots>;
 
 // @public
-export type TreeItemAsideProps = ComponentProps<TreeItemAsideSlots> & {
+export type TreeItemAsideProps = ComponentProps<Partial<TreeItemAsideSlots>> & {
     actions?: boolean;
     visible?: true;
 };
 
 // @public (undocumented)
 export type TreeItemAsideSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -167,7 +167,7 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     expandIcon?: Slot<'div'>;
     iconBefore?: Slot<'div'>;
     iconAfter?: Slot<'div'>;
@@ -214,9 +214,9 @@ export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined
 
 // @public (undocumented)
 export type TreeItemSlots = {
-    root: Slot<ExtractSlotProps<Slot<'div'> & {
+    root: NonNullable<Slot<ExtractSlotProps<Slot<'div'> & {
         style?: TreeItemCSSProperties;
-    }>>;
+    }>>>;
 };
 
 // @public
@@ -288,7 +288,7 @@ export type TreeOpenChangeData<Value = string> = {
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 // @public (undocumented)
-export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
+export type TreeProps<Value = string> = ComponentProps<Partial<TreeSlots>> & {
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<Value>;
@@ -302,7 +302,7 @@ export const TreeProvider: Provider<TreeContextValue | undefined> & FC<ProviderP
 
 // @public (undocumented)
 export type TreeSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

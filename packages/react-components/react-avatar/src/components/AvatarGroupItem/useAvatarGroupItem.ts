@@ -23,7 +23,7 @@ export const useAvatarGroupItem_unstable = (
   const groupSize = useAvatarGroupContext_unstable(ctx => ctx.size);
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
-  const { style, className, ...avatarSlotProps } = props;
+  const { style, className, root, ...avatarSlotProps } = props;
   const size = groupSize ?? defaultAvatarGroupSize;
   const hasAvatarGroupContext = useHasParentContext(AvatarGroupContext);
 

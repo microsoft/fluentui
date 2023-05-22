@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DialogContentSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * DialogContent Props
  */
-export type DialogContentProps = ComponentProps<DialogContentSlots>;
+export type DialogContentProps = ComponentProps<Partial<DialogContentSlots>>;
 
 /**
  * State used in rendering DialogContent

@@ -6,6 +6,7 @@ import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { defaultDatePickerStrings } from './defaults';
 import { Input } from '@fluentui/react-input';
 import {
+  ExtractSlotProps,
   mergeCallbacks,
   resolveShorthand,
   useControllableState,
@@ -20,7 +21,12 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { usePopupPositioning } from '../../utils/usePopupPositioning';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
-import type { DatePickerProps, DatePickerState, DatePickerValidationResultData } from './DatePicker.types';
+import type {
+  DatePickerProps,
+  DatePickerSlots,
+  DatePickerState,
+  DatePickerValidationResultData,
+} from './DatePicker.types';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
@@ -108,7 +114,7 @@ const defaultParseDateFromString = (dateStr: string) => {
  * @param props - props from this instance of DatePicker
  * @param ref - reference to root Input slot
  */
-export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLElement>): DatePickerState => {
+export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLInputElement>): DatePickerState => {
   const {
     allowTextInput = false,
     allFocusable = false,
@@ -139,8 +145,10 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     today,
     underlined = false,
     value,
+    root,
     ...restOfProps
   } = props;
+
   const calendar = React.useRef<ICalendar>(null);
   const [focus, rootRef, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
@@ -355,7 +363,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     : 'outline';
 
   const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
-  const rootShorthand = resolveShorthand(restOfProps, {
+  const rootShorthand = resolveShorthand<ExtractSlotProps<DatePickerSlots['root']>>(restOfProps, {
     required: true,
     defaultProps: {
       appearance: inputAppearance,

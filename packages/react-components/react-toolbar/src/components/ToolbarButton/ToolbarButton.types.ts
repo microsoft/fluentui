@@ -4,7 +4,7 @@ import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 /**
  * ToolbarButton Props
  */
-export type ToolbarButtonProps = ComponentProps<ButtonSlots> &
+export type ToolbarButtonProps = ComponentProps<Partial<ButtonSlots>> &
   Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
     appearance?: 'primary' | 'subtle';
   } & {

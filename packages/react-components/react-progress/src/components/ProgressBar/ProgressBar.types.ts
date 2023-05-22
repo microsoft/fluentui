@@ -14,7 +14,7 @@ export type ProgressBarSlots = {
 /**
  * ProgressBar Props
  */
-export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
+export type ProgressBarProps = Omit<ComponentProps<Partial<ProgressBarSlots>>, 'size'> & {
   /**
    * The shape of the bar and track.
    * @default rounded

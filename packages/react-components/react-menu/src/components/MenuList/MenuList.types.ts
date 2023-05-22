@@ -13,10 +13,10 @@ export type MenuCheckedValueChangeData = {
 };
 
 export type MenuListSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
-export type MenuListProps = ComponentProps<MenuListSlots> & {
+export type MenuListProps = ComponentProps<Partial<MenuListSlots>> & {
   /**
    * Map of all checked values
    */

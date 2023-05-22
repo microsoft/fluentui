@@ -8,7 +8,7 @@ export type MenuButtonSlots = ButtonSlots & {
   menuIcon?: Slot<'span'>;
 };
 
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
+export type MenuButtonProps = ComponentProps<Partial<MenuButtonSlots>> &
   Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
 export type MenuButtonState = ComponentState<MenuButtonSlots> &

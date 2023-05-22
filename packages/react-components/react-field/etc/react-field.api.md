@@ -52,7 +52,7 @@ export type FieldControlPropsOptions = {
 };
 
 // @public
-export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> & {
     children?: React_2.ReactNode | ((props: FieldControlProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success' | 'none';

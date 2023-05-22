@@ -89,11 +89,11 @@ export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
 
 // @public
-export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
+export type PopoverSurfaceProps = ComponentProps<Partial<PopoverSurfaceSlots>>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

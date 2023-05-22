@@ -4,7 +4,7 @@ import { TreeContextValue } from '../../contexts/treeContext';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 
 export type TreeSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -56,7 +56,7 @@ export type TreeContextValues = {
   tree: TreeContextValue;
 };
 
-export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
+export type TreeProps<Value = string> = ComponentProps<Partial<TreeSlots>> & {
   /**
    * A tree item can have various appearances:
    * - 'subtle' (default): The default tree item styles.

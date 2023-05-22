@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 /**
  * Label Props
  */
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
+export type LabelProps = Omit<ComponentProps<Partial<LabelSlots>>, 'required'> & {
   /**
    * Renders the label as disabled
    * @default false
@@ -31,7 +31,7 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
 };
 
 export type LabelSlots = {
-  root: Slot<'label'>;
+  root: NonNullable<Slot<'label'>>;
   required?: Slot<'span'>;
 };
 

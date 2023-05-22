@@ -8,7 +8,7 @@ export type TagGroupContextValues = {
 };
 
 export type TagGroupSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type TagGroupDismissData = {
@@ -18,7 +18,7 @@ export type TagGroupDismissData = {
 /**
  * TagGroup Props
  */
-export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+export type TagGroupProps = ComponentProps<Partial<TagGroupSlots>> & {
   /**
    * Callback for when a tag is dismissed
    */

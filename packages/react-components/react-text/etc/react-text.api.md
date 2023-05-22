@@ -110,7 +110,7 @@ export const textClassNames: SlotClassNames<TextSlots>;
 export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
 
 // @public
-export type TextProps = ComponentProps<TextSlots> & {
+export type TextProps = ComponentProps<Partial<TextSlots>> & {
     align?: 'start' | 'center' | 'end' | 'justify';
     block?: boolean;
     font?: 'base' | 'monospace' | 'numeric';
@@ -125,7 +125,7 @@ export type TextProps = ComponentProps<TextSlots> & {
 
 // @public
 export type TextSlots = {
-    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
+    root: NonNullable<Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>>;
 };
 
 // @public

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { DataGridSelectionCell } from './DataGridSelectionCell';
 import { isConformant } from '../../testing/isConformant';
-import { DataGridSelectionCellProps } from '../../../dist/index';
+import { DataGridSelectionCellProps } from './DataGridSelectionCell.types';
 import { dataGridSelectionCellClassNames } from './useDataGridSelectionCellStyles.styles';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';

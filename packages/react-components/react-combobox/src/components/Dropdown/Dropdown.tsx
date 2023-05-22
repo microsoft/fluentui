@@ -10,7 +10,7 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Dropdown component: a selection control that allows users to choose from a set of possible options
  */
-export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((props, ref) => {
+export const Dropdown: ForwardRefComponent<DropdownProps, 'button'> = React.forwardRef((props, ref) => {
   const state = useDropdown_unstable(props, ref);
   const contextValues = useComboboxContextValues(state);
 

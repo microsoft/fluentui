@@ -17,7 +17,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSelect_unstable: (state: SelectState) => JSX.Element;
 
 // @public
-export const Select: ForwardRefComponent<SelectProps>;
+export const Select: ForwardRefComponent<SelectProps, 'select'>;
 
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;

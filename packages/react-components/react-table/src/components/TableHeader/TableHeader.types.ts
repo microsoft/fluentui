@@ -2,13 +2,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { TableContextValue } from '../Table/Table.types';
 
 export type TableHeaderSlots = {
-  root: Slot<'thead', 'div'>;
+  root: NonNullable<Slot<'thead', 'div'>>;
 };
 
 /**
  * TableHeader Props
  */
-export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
+export type TableHeaderProps = ComponentProps<Partial<TableHeaderSlots>>;
 
 /**
  * State used in rendering TableHeader

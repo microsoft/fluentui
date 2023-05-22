@@ -13,6 +13,6 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = Reac
 
   useBreadcrumbButtonStyles_unstable(state);
   return renderBreadcrumbButton_unstable(state);
-});
+}) as ForwardRefComponent<BreadcrumbButtonProps>;
 
 BreadcrumbButton.displayName = 'BreadcrumbButton';

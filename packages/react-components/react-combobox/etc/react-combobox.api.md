@@ -18,7 +18,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Combobox: ForwardRefComponent<ComboboxProps>;
+export const Combobox: ForwardRefComponent<ComboboxProps, 'input'>;
 
 // @public (undocumented)
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
@@ -56,7 +56,7 @@ export type ComboboxSlots = {
 export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 // @public
-export const Dropdown: ForwardRefComponent<DropdownProps>;
+export const Dropdown: ForwardRefComponent<DropdownProps, 'button'>;
 
 // @public (undocumented)
 export const dropdownClassNames: SlotClassNames<DropdownSlots>;
@@ -101,14 +101,14 @@ export type ListboxContextValues = {
 };
 
 // @public
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<Partial<ListboxSlots>> & SelectionProps;
 
 // @public (undocumented)
 export const ListboxProvider: Provider<ListboxContextValue> & FC<ProviderProps<ListboxContextValue>>;
 
 // @public (undocumented)
 export type ListboxSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

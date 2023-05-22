@@ -22,7 +22,7 @@ export const Alert: ForwardRefComponent<AlertProps>;
 export const alertClassNames: SlotClassNames<AlertSlots>;
 
 // @public
-export type AlertProps = ComponentProps<AlertSlots> & {
+export type AlertProps = ComponentProps<Partial<AlertSlots>> & {
     intent?: 'info' | 'success' | 'error' | 'warning';
     appearance?: 'primary' | 'inverted';
 };

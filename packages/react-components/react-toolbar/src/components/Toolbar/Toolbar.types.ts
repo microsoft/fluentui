@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ToolbarSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type ToolbarCheckedValueChangeData = {
@@ -17,7 +17,7 @@ export type ToolbarCheckedValueChangeEvent = React.MouseEvent | React.KeyboardEv
 /**
  * Toolbar Props
  */
-export type ToolbarProps = ComponentProps<ToolbarSlots> & {
+export type ToolbarProps = ComponentProps<Partial<ToolbarSlots>> & {
   /**
    * Toolbar can have small or medium size
    *

@@ -4,10 +4,10 @@ export type LinkSlots = {
   /**
    * Root of the component that renders as either an <a> or a <button> tag.
    */
-  root: Slot<'a', 'button'>;
+  root: NonNullable<Slot<'a', 'button'>>;
 };
 
-export type LinkProps = ComponentProps<LinkSlots> & {
+export type LinkProps = ComponentProps<Partial<LinkSlots>> & {
   /**
    * A link can appear either with its default style or subtle.
    * If not specified, the link appears with its default styling.

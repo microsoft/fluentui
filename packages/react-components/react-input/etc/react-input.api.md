@@ -14,7 +14,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Input: ForwardRefComponent<InputProps>;
+export const Input: ForwardRefComponent<InputProps, 'input'>;
 
 // @public (undocumented)
 export const inputClassNames: SlotClassNames<InputSlots>;

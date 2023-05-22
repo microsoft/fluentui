@@ -9,7 +9,7 @@ import { useInfoLabelStyles_unstable } from './useInfoLabelStyles.styles';
 /**
  * InfoLabel component
  */
-export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((props, ref) => {
+export const InfoLabel: ForwardRefComponent<InfoLabelProps, 'label'> = React.forwardRef((props, ref) => {
   const state = useInfoLabel_unstable(props, ref);
 
   useInfoLabelStyles_unstable(state);

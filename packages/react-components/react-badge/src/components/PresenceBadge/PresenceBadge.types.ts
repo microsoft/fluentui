@@ -11,7 +11,7 @@ export type PresenceBadgeStatus =
   | 'unknown'
   | 'blocked';
 
-export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> &
+export type PresenceBadgeProps = Omit<ComponentProps<Partial<Pick<BadgeSlots, 'root' | 'icon'>>>, 'color'> &
   Pick<BadgeProps, 'size'> & {
     /**
      * Represents several status

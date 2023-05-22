@@ -2,13 +2,13 @@ import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuPopoverSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * MenuPopover Props
  */
-export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
+export type MenuPopoverProps = ComponentProps<Partial<MenuPopoverSlots>>;
 
 /**
  * State used in rendering MenuPopover

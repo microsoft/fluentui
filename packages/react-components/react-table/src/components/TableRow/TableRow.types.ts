@@ -2,13 +2,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { TableContextValue } from '../Table/Table.types';
 
 export type TableRowSlots = {
-  root: Slot<'tr', 'div'>;
+  root: NonNullable<Slot<'tr', 'div'>>;
 };
 
 /**
  * TableRow Props
  */
-export type TableRowProps = ComponentProps<TableRowSlots> & {
+export type TableRowProps = ComponentProps<Partial<TableRowSlots>> & {
   /**
    * A table row can have different variants. These appearances are
    * intended to be used with selection.

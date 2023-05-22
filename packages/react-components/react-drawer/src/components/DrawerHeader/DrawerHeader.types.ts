@@ -4,13 +4,13 @@ export type DrawerHeaderSlots = {
   /**
    * The root of the DrawerHeader.
    */
-  root: Slot<'header'>;
+  root: NonNullable<Slot<'header'>>;
 };
 
 /**
  * DrawerHeader Props
  */
-export type DrawerHeaderProps = ComponentProps<DrawerHeaderSlots>;
+export type DrawerHeaderProps = ComponentProps<Partial<DrawerHeaderSlots>>;
 
 /**
  * State used in rendering DrawerHeader
