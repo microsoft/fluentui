@@ -13,6 +13,7 @@ type Item = {
   key: number;
   item?: string;
   linkProps: {
+    'aria-label'?: string;
     href?: string;
     icon?: BreadcrumbLinkProps['icon'];
     disabled?: boolean;
@@ -46,6 +47,7 @@ const linkItems: Item[] = [
   {
     key: 3,
     linkProps: {
+      'aria-label': 'Item 3',
       href: 'https://developer.microsoft.com/',
       icon: <CalendarMonth />,
     },
@@ -91,8 +93,14 @@ function renderLink(el: Item, isLastItem: boolean = false) {
 
 export const Default = () => (
   <>
-    <Breadcrumb size="small">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
-    <Breadcrumb appearance="subtle">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
-    <Breadcrumb size="large">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
+    <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbLink" size="small">
+      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+    </Breadcrumb>
+    <Breadcrumb aria-label="Subtle breadcrumb" appearance="subtle">
+      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+    </Breadcrumb>
+    <Breadcrumb aria-label="Large breadcrumb with BreadcrumbLink" size="large">
+      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+    </Breadcrumb>
   </>
 );
