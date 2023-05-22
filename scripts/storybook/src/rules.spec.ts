@@ -15,6 +15,7 @@ describe(`rules`, () => {
       });
 
       const options = (codesandboxRule.use as { options: Record<string, unknown> }).options;
+
       expect(options).toEqual(
         expect.objectContaining({
           customize: expect.stringContaining('loaders/custom-loader.js'),
@@ -22,6 +23,7 @@ describe(`rules`, () => {
             [
               expect.any(Function),
               expect.objectContaining({
+                '@fluentui/react-migration-v8-v9': { replace: '@fluentui/react-migration-v8-v9' },
                 '@fluentui/react-utilities': { replace: '@fluentui/react-components' },
                 ...(unstablePackage
                   ? { [unstablePackage.packageJson.name]: { replace: '@fluentui/react-components/unstable' } }

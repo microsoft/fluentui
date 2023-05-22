@@ -262,6 +262,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   csv: {
     extensions: ['csv'],
   },
+  designer: {
+    extensions: ['design'],
+  },
   desktopfolder: {},
   docset: {},
   documentsfolder: {},

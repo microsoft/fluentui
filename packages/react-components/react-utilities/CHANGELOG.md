@@ -1,8 +1,52 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 00:39:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.0)
+
+Thu, 18 May 2023 00:39:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.8.1..@fluentui/react-utilities_v9.9.0)
+
+### Minor changes
+
+- feat: Implement a priority queue ([PR #27848](https://github.com/microsoft/fluentui/pull/27848) by lingfangao@hotmail.com)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.1)
+
+Fri, 12 May 2023 20:28:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.8.0..@fluentui/react-utilities_v9.8.1)
+
+### Patches
+
+- feat: defers useControllableState state to initializer method ([PR #27717](https://github.com/microsoft/fluentui/pull/27717) by bernardo.sunderhus@gmail.com)
+- chore: updates useControllableState comments ([PR #27754](https://github.com/microsoft/fluentui/pull/27754) by bernardo.sunderhus@gmail.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: simplifies useControllableState hook internals ([PR #27702](https://github.com/microsoft/fluentui/pull/27702) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.0)
+
+Mon, 17 Apr 2023 17:54:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.4..@fluentui/react-utilities_v9.8.0)
+
+### Minor changes
+
+- feat: ensure compatibility with custom JSX pragma ([PR #27472](https://github.com/microsoft/fluentui/pull/27472) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- fix: Fix slot render functions ([PR #27561](https://github.com/microsoft/fluentui/pull/27561) by behowell@microsoft.com)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.4)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.3..@fluentui/react-utilities_v9.7.4)
+
+### Patches
+
+- fix(hooks): cleanup event listeners only when "disabled" is false ([PR #27516](https://github.com/microsoft/fluentui/pull/27516) by olfedias@microsoft.com)
 
 ## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.3)
 

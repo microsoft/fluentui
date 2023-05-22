@@ -1,8 +1,60 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 13:11:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.9)
+
+Thu, 18 May 2023 13:11:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.8..@fluentui/react-portal_v9.2.9)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.2 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+
+## [9.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.8)
+
+Thu, 18 May 2023 00:39:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.7..@fluentui/react-portal_v9.2.8)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.1 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.7)
+
+Fri, 12 May 2023 20:27:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.6..@fluentui/react-portal_v9.2.7)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: move makeStyles() calls to .styles.ts files ([PR #27698](https://github.com/microsoft/fluentui/pull/27698) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.6)
+
+Mon, 17 Apr 2023 17:54:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.5..@fluentui/react-portal_v9.2.6)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.5)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.4..@fluentui/react-portal_v9.2.5)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
 
 ## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.4)
 

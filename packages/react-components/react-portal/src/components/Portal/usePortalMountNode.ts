@@ -3,9 +3,11 @@ import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
+
+import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
@@ -18,20 +20,13 @@ export type UsePortalMountNodeOptions = {
   className?: string;
 };
 
-const useStyles = makeStyles({
-  root: {
-    position: 'relative',
-    zIndex: 1000000,
-  },
-});
-
 /**
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
   const { targetDocument, dir } = useFluent();
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-  const classes = useStyles();
+  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
   const className = mergeClasses(themeClassName, classes.root, options.className);

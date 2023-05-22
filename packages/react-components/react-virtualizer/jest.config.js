@@ -4,12 +4,12 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'virtualizer',
+  displayName: 'react-virtualizer',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
-      diagnostics: false,
+      isolatedModules: true,
     },
   },
   transform: {

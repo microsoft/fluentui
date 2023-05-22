@@ -5,9 +5,6 @@ import { makeStyles } from '@fluentui/react-components';
 import { useFluent } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  root: {
-    maxHeight: '100vh',
-  },
   container: {
     display: 'flex',
     flexDirection: 'column',

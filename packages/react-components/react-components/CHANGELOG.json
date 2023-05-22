@@ -2,6 +2,2603 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 18 May 2023 13:11:07 GMT",
+      "tag": "@fluentui/react-components_v9.20.2",
+      "version": "9.20.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1e6f5c8eec4b67c051fb3aa429e303115570ae4d",
+            "comment": "chore: upgrade tabster to v4.4.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:00 GMT",
+      "tag": "@fluentui/react-components_v9.20.1",
+      "version": "9.20.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "322ee9ad8bbd87f7721068f664bfb530baf56623",
+            "comment": "chore: exports TreeItemAside unstable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "37159cd67f8698ba8d5b3bf7327801495979beb5",
+            "comment": "bugfix: removes unnecessary grid gaps"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "fb5071ac25ed576b554332afc9305e4fc5ddaa14",
+            "comment": "fix: When Textarea is disabled, make the text gray and add an outline for the filled appearance."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb",
+            "comment": "fix: Add aria-owns to InfoLabel."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "bdc00a85606c5a225be1df2a24db1ccecbc65b64",
+            "comment": "feat: Implement a priority queue"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:27:14 GMT",
+      "tag": "@fluentui/react-components_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "2f28bd181dfa3114b544f2500d2b653ab31ceecc",
+            "comment": "bugfix: change DialogTitle default action icon from 24x24 to 20x20"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "5174214ff482520b8d9fcc6894ed768604112ad5",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "81b87f41557964f9c9f5601a3eec84434eb74f35",
+            "comment": "fix: update createCustomFocusIndicator usage to specify outline: none"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "39a57b2d3d753d2316300ec424e6a2c213887c3d",
+            "comment": "fix: Menu should not steal focus on re-render"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "4e90c5c22a67d62d9da2a9a186ad01051dad7f46",
+            "comment": "refactor: Consolidate all overflow state into one object"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "hanj@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "51767fd6bcd9fedcfe6e4b4735fdf13a1f1174bb",
+            "comment": "fix: Class ID detection compatible with React 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "5174214ff482520b8d9fcc6894ed768604112ad5",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "381cc2d5b1bd6032428bcc506501b2a591825c4a",
+            "comment": "fix: ToolbarToggleButton should not follow Toolbar size"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "88ff00c2979ecd025f725fa3fc4e4d370f95cfc4",
+            "comment": "feat: defers useControllableState state to initializer method"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f0b05741d812ad90c52754b0b4035d5554cf2aa0",
+            "comment": "chore: updates useControllableState comments"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "557ffca71ff7767a4d595b6fcc55ad4a1fe02360",
+            "comment": "chore: simplifies useControllableState hook internals"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "4e90c5c22a67d62d9da2a9a186ad01051dad7f46",
+            "comment": "fix: overflowManager should always dispatch initial state"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "eb1387fb3f564a01f56c788c4ae139e59100fc16",
+            "comment": "fix: Make AvatarGroup's content direction column."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "81b87f41557964f9c9f5601a3eec84434eb74f35",
+            "comment": "fix: update createCustomFocusIndicator usage to specify outline: none"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c7424d14422bb8b1f5282f7c64ec6cc9de3640be",
+            "comment": "fix: Make border around badge transparent, not a solid color"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b83d941f07041e49dc42f49f70e35cb2117324d5",
+            "comment": "fix: Remove white border around presence badge when on a dark background"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "5174214ff482520b8d9fcc6894ed768604112ad5",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "43d6e99d28aa0e7bd7111f1043348683646eaa5b",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0ffdc48b94a76bfd209015b1a9c49eb62aca1ba0",
+            "comment": "feature: Add dynamically sized virtualizer scroll view"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "6c236e60a1a0def5418dc8d930df1e16dbad70d4",
+            "comment": "chore: update version"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "90751623b9cac848b95dd624d601e7617f96ba5a",
+            "comment": "chore: enable build-less DX for storybook"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "ff50792abc7c2cc980168f6afae5e3dfc9be75de",
+            "comment": "fix: Scale pulse animation with percentages and flip wave animation's direction."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "09937fe78c4eea94e150976c9e7b44fe586a4bba",
+            "comment": "chore: update internal types to reflect node 16 types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "66f1e1d23e4e6cf93bd513c69751740621d67894",
+            "comment": "chore: Add description to README."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "81b87f41557964f9c9f5601a3eec84434eb74f35",
+            "comment": "chore: remove now-unnecessary enableOutline in createCustomFocusIndicator"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e61227d7e52d4210b0a108657e6c56c0cfaf8498",
+            "comment": "feat: TreeItem itemType restructure"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e741b289a0cda2711146d171d3b08deb8bb7a156",
+            "comment": "feat: creates TreeItemAside component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "53c5190f2774c4b42777af53f3739bf2949678e2",
+            "comment": "feat: makes useFlatTree generic"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "fa0f2ce25e94ddc8759f545638e01cc34e0e99f4",
+            "comment": "chore: updates useOpenItemsState internals"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d85ae6d21f5c6db877d62ccb1e9270848afbf1bb",
+            "comment": "feat: adds lazy loading story"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "be291a28d39881ce6607f465efc5c7402b2e014c",
+            "comment": "bugfix: fix horizontal overflow on tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "27f252e27361df75a94c5bc5b09fc0097fefd969",
+            "comment": "bugfix: fix VisibleFlatTreeItemGenerator omitting visible items"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0ffdc48b94a76bfd209015b1a9c49eb62aca1ba0",
+            "comment": "feature: Add dynamically sized virtualizer scroll view"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "9d6394b6c751092fd1d4e26ccc618b5ba05086ec",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "3a9044346aced02d96e8cde65b46e88e8d9d32ec",
+            "comment": "feat: add style overrides for drawer components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "3a9044346aced02d96e8cde65b46e88e8d9d32ec",
+            "comment": "feat: add style overrides for drawer components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Updated to provide single hook for noop tree-shaking"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c02b44a98770f8d9da499dbacadcf377eb5efb45",
+            "comment": "chore: Releasing react-skeleton to stable."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "81b87f41557964f9c9f5601a3eec84434eb74f35",
+            "comment": "fix: move `outlineStyle: none` out of createCustomFocusIndicatorStyle and to createFocusOutlineStyle"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "6d0848597a7c07883a93b13f67f6727fd791f3dd",
+            "comment": "feat: add `shape` to AvatarContext"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "37e89b9319db7f31f3afe0d38fc31eac40cb5eaf",
+            "comment": "feat: allow space character insertion while typing in freeform combobox"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "d80eca9d508c9a8afe4b461d56fb172cd2d557b5",
+            "comment": "feat: added useOverflowCount to react-components exports"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c02b44a98770f8d9da499dbacadcf377eb5efb45",
+            "comment": "chore: Releasing react-skeleton to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "ae2b1a097d0dc2e53699f600d1d5d96110e99a5f",
+            "comment": "fix: Make onValidationError onValidationResult so the error is updated when there's no longer an error."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Apr 2023 08:12:30 GMT",
+      "tag": "@fluentui/react-components_v9.19.1",
+      "version": "9.19.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "93de47a555e31b091d76657bd25c0180e290eee0",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "d340ff4b1c3aa7e1818780ec4d41f46c86e451c9",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "477d9f6d64d777f857dedec6a71e58baa31fbe30",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "d65eb9f6ec233104ab627532468fa64d71bbd702",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "2c2438a98002403210039275ce54f94367f2b3fe",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "a8d61a5dde83114c2746c8bba8a0410afea8fa65",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e5b5ac12b9221dbf0d3ec42a4b22a962746774b1",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "4dde6727c7e7fe7fbf6fedb4e1619deddbd3e16a",
+            "comment": "removes TreeItemId type from react-tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "59ef51fcd9e2ab84a4a480e0a02bc05ecd3a6697",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b287dc6426477a8ec03b6a845ea0ee3ba0bfb726",
+            "comment": "bugfix: DialogTitle root as h2 by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "1227882a7a3813f21c45df6eb27aa65a89a5c45c",
+            "comment": "chore: hoist tabster modal attributes to Dialog component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ec5f15a5fb78104ff874f1f16eda663fecde1704",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "7e199488cd02df78788b833bf29ed7e312b9e41f",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "a6ff85541907771d5172fbd804e05a380fd0a906",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "e3f0d22908c3c70c89a984a4025a76eb66a0928d",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "b61892e1d2e6b8bef5b5b1ba22e08247238fb45c",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "a781d26259ea8fc330842aceb439edf2b1378288",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "4f02d916ac12350bd7323d02961fde2de7658658",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "92f70e62b4c8256f81aae5d521477af851656f5d",
+            "comment": "bugfix: ensure legacyTrapFocus works properly"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "4a712dff672b89d0407040354652993822cb541f",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "4b4c462351678e8b6f81e3955d6d0a4a25cb212c",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "fa11c3889e6606bf7b0f8693b75f470b61da5a68",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "1013f6c9298ee3bc942544f8e4634c225c222db2",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "30931f6ca6133ba309323814aa3785abe26378b6",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "cc2d9e296c0a45b6af258e5e3e13b8371f8602d3",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "3af4f74b06db2bb4a1a85361fd7b4595c0e97921",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "fe299ee315a83fdafe7fb3e3cbd2075cc19867e7",
+            "comment": "chore: adopts custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "8b1ce88b43df03b09d0251921a01c0f0499d1cbe",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "4ca91d59dad4b9ad26955d59db15b81b7dfe6faa",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "cf79cc20319c377dda47c0a2b135eeb1b5b7efdf",
+            "comment": "chore: adopt custom JSX pragma"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "dd76eca6f3584188994575d1d15d805a24ee9a91",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "391878bf4d8a8210a8279a6ced8bf9a64daf4c64",
+            "comment": "chore: simplify createElement method"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c899af235684ed0e2745db9c8e394692865b6765",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "85c36e249b33b0bad79be4edd1a943dfc5233b11",
+            "comment": "bugfix: remove caret from react-jsx-runtime prerelease dependency"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "acbc5fcb1381e9adcc4e1fa678a374d42a79438b",
+            "comment": "bugfix: fix parent navigation after independency from id"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4dde6727c7e7fe7fbf6fedb4e1619deddbd3e16a",
+            "comment": "feat: value property over id"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ab5e8979917780ec8cf6b3b08b3696fc1b7a83f4",
+            "comment": "chore: restructure stories, add separate category for flat tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "142c07abdeedea8f6b2e0cc15acf02795ce7f0fc",
+            "comment": "chore: adopt custom JSX pragma"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "f7d88ee6fb582989efc057880ddfe60228649189",
+            "comment": "feat: Add error handling to DatePicker."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "bb8dfe06f4f2910eef1561c76410bf91b009fa37",
+            "comment": "feat: Move DatePicker compat to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "011c6f0665a03aa804aac1e0f900e70229518c7c",
+            "comment": "feat: Refactor DatePicker to remove Field and error handling logic."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 17:53:43 GMT",
+      "tag": "@fluentui/react-components_v9.19.0",
+      "version": "9.19.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "d055f1628d71368ca21464a453e5cbf89b00d505",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "aed714a47395773c966829e284e4ba9d1926b59c",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "97af91aa7684bbfe149ace1b21b75fb7c04128a2",
+            "comment": "feat: implements custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8",
+            "comment": "fix: add \"style\" to exports field"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "27665739a1f38468c63ea1544a2e82ff357d25f3",
+            "comment": "chore: adopt custom jsx pragma"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b120cc8a76bea610aeeded3eade7c78c0e9ddc0b",
+            "comment": "fix: Correct Avatar's active-inactive transition animation curve"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "ea04a996fe1a9171f3cd4d0dd531fe06431edec0",
+            "comment": "fix: add support for Windows High Contrast Mode"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated CheckboxField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated ComboboxField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore(react-components/unstable): Remove deprecated InputField, etc. shim components"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "ae31ec4170f8e86ffa0e94166602a88ca226186d",
+            "comment": "chore: Remove the use of ContextSelector in RadioGroupContext"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "46c89e8e688152ab8d0ed44ed79572508e4fb50e",
+            "comment": "chore: adopts custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove utilities for deprecated shim InputField, etc. components"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated InputField_unstable shim component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "2dd987418fddbd484e64d7738e1bc999d4ce3021",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b415aefbc882a0e84a076df45c04f1efda26c34b",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated ProgressField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0dfc7e1d250152df475a76a94db0fcf304d8ac14",
+            "comment": "feat: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated RadioGroupField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ae31ec4170f8e86ffa0e94166602a88ca226186d",
+            "comment": "chore: Remove the use of ContextSelector in RadioGroupContext"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SelectField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SliderField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SpinButtonField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated SwitchField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "82e77222889983a6ee9f893e78972ec8a0125271",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "273116e8efaf4230474a0f214e9adbb5f556e5de",
+            "comment": "chore: Remove deprecated TextareaField_unstable shim component"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "chore: Update react-field dependency version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "eefbbb3b40c9c75ff775b9771aeb393041032e39",
+            "comment": "chore: adopt custom JSX pragma"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c156e7682a89d7766bed3c0b9f231dc2e0a2058b",
+            "comment": "fix: Fix slot render functions"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "feat: Release Field component as stable"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "36f98c3a49334e4ea9b22774691560d11010f2e7",
+            "comment": "feat: Release Field component as stable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "97af91aa7684bbfe149ace1b21b75fb7c04128a2",
+            "comment": "feat: ensure compatibility with custom JSX pragma"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Apr 2023 09:31:42 GMT",
+      "tag": "@fluentui/react-components_v9.18.9",
+      "version": "9.18.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "72acd40b2319325eb725760888185a2fabdd46e7",
+            "comment": "fix(react-badge): Use min-width: max-content on Badge to prevent shrinking smaller than content"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7b241289e260b97db8cd1fc4347d521a694b06d7",
+            "comment": "fix: popup now defines fallbackPositions to use when it doesn't fit the screen"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "841ea75d516d85b88eb826030718c19c3239ee4d",
+            "comment": "fix: use tabster to focus on trigger, instead of manually invoking .focus"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "865a699268e85c55ba9f26c2b4a109161e48576c",
+            "comment": "fix: Have RadioGroup forward aria-describedby to each of the Radio items inside"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "4652fbe1f9472d5080af23ace0085b1dddd3013c",
+            "comment": "added aria-orientation attribute"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1539311d63dfa731f1bbf1e08ab002a43c52f9a0",
+            "comment": "fix(hooks): cleanup event listeners only when \"disabled\" is false"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "740f3aa9dc9946d9f646831e92f8eccc34e80a22",
+            "comment": "feat: Make package public."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "3bad9d0fca9713c3e375831b26fc2e9d96f3fd35",
+            "comment": "fix: Make contextValues argument required on renderField_unstable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Apr 2023 00:01:35 GMT",
+      "tag": "@fluentui/react-components_v9.18.8",
+      "version": "9.18.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Export hooks for FieldContext"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "ef38eed066906073d7b6e50b1d50afab1c62b3a5",
+            "comment": "fix: React 18 support in typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "4f7b946067bda04d92953cf5e9ed90059a98a8fb",
+            "comment": "added width 100% to input of spin button"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "fe885a29eaaae84a902c66ea0af118c22358228b",
+            "comment": "fix: Merged onClick callbacks in Tab"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ba56da096fffa6b2f114a910afbf12482313ba28",
+            "comment": "feat: removes aria-expanded from DialogTrigger"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "feat: Add FieldContext to pass props to controls inside Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Bump react-field version to beta"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:47 GMT",
       "tag": "@fluentui/react-components_v9.18.7",
       "version": "9.18.7",

@@ -1,8 +1,101 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Thu, 18 May 2023 13:11:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.14)
+
+Thu, 18 May 2023 13:11:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.13..@fluentui/react-radio_v9.1.14)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.2 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+
+## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.13)
+
+Thu, 18 May 2023 00:39:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.12..@fluentui/react-radio_v9.1.13)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.3 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-label to v9.1.12 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-tabster to v9.7.1 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.12)
+
+Fri, 12 May 2023 20:27:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.11..@fluentui/react-radio_v9.1.12)
+
+### Patches
+
+- Update to use single hook selector ([PR #27491](https://github.com/microsoft/fluentui/pull/27491) by gcox@microsoft.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: move makeStyles() calls to .styles.ts files ([PR #27710](https://github.com/microsoft/fluentui/pull/27710) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.2 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-label to v9.1.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.11)
+
+Mon, 24 Apr 2023 08:12:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.10..@fluentui/react-radio_v9.1.11)
+
+### Patches
+
+- chore: adopt custom JSX pragma ([PR #27618](https://github.com/microsoft/fluentui/pull/27618) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-field to v9.1.1 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-label to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.10)
+
+Mon, 17 Apr 2023 17:53:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.9..@fluentui/react-radio_v9.1.10)
+
+### Patches
+
+- chore: Update react-field dependency version ([PR #27493](https://github.com/microsoft/fluentui/pull/27493) by behowell@microsoft.com)
+- chore: Remove deprecated RadioGroupField_unstable shim component ([PR #27492](https://github.com/microsoft/fluentui/pull/27492) by behowell@microsoft.com)
+- chore: Remove the use of ContextSelector in RadioGroupContext ([PR #27476](https://github.com/microsoft/fluentui/pull/27476) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-label to v9.1.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.9)
+
+Wed, 12 Apr 2023 09:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.8..@fluentui/react-radio_v9.1.9)
+
+### Patches
+
+- fix: Have RadioGroup forward aria-describedby to each of the Radio items inside ([PR #27456](https://github.com/microsoft/fluentui/pull/27456) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.17 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-field to v9.0.0-beta.2 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-label to v9.1.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.8)
+
+Fri, 07 Apr 2023 00:01:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.7..@fluentui/react-radio_v9.1.8)
+
+### Patches
+
+- chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.7)
 

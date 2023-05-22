@@ -1,6 +1,6 @@
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
-import { infoButtonClassNames } from './useInfoButtonStyles';
+import { infoButtonClassNames } from './useInfoButtonStyles.styles';
 import type { RenderResult } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals

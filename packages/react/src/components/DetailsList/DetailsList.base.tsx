@@ -8,7 +8,9 @@ import {
   elementContains,
   getRTLSafeKeyCode,
   classNamesFunction,
+  css,
   memoizeFunction,
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -57,6 +59,7 @@ import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from
 import type { IListProps } from '../../List';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const COMPONENT_NAME = 'DetailsList';
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -597,7 +600,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const focusZoneInnerProps: IFocusZoneProps = {
     ...focusZoneProps,
     componentRef: focusZoneProps && focusZoneProps.componentRef ? focusZoneProps.componentRef : focusZoneRef,
-    className: classNames.focusZone,
+    className:
+      focusZoneProps && focusZoneProps.className
+        ? css(classNames.focusZone, focusZoneProps.className)
+        : classNames.focusZone,
     direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
     shouldEnterInnerZone:
       focusZoneProps && focusZoneProps.shouldEnterInnerZone ? focusZoneProps.shouldEnterInnerZone : isRightArrow,
@@ -817,6 +823,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       version: {},
       getDerivedStateFromProps: this._getDerivedStateFromProps,
     };
+
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      selection: 'getKey',
+    });
 
     this._selection =
       props.selection ||

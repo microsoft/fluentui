@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { DatePicker as DatePickerBase, DateRangeType } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-field';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
@@ -37,18 +38,14 @@ storiesOf('DatePicker Compat', module)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory('DateRange: day', () => (
-    <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} popover={{ open: true }} />
-  ))
-  .addStory('DateRange: week', () => (
-    <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} popover={{ open: true }} />
-  ))
+  .addStory('DateRange: day', () => <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} defaultOpen={true} />)
+  .addStory('DateRange: week', () => <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} defaultOpen={true} />)
   .addStory('DateRange: work week', () => (
-    <DatePicker calendar={{ dateRangeType: DateRangeType.WorkWeek }} popover={{ open: true }} />
+    <DatePicker calendar={{ dateRangeType: DateRangeType.WorkWeek }} defaultOpen={true} />
   ))
   .addStory(
     'DateRange: month',
-    () => <DatePicker calendar={{ dateRangeType: DateRangeType.Month }} popover={{ open: true }} />,
+    () => <DatePicker calendar={{ dateRangeType: DateRangeType.Month }} defaultOpen={true} />,
     {
       includeDarkMode: true,
       includeHighContrast: true,
@@ -61,7 +58,7 @@ storiesOf('DatePicker Compat', module)
         calendar={{
           calendarDayProps: { getMarkedDays: (start, end) => [new Date('3/15/2023'), new Date('3/10/2023')] },
         }}
-        popover={{ open: true }}
+        defaultOpen={true}
       />
     ),
     {
@@ -69,12 +66,24 @@ storiesOf('DatePicker Compat', module)
       includeHighContrast: true,
     },
   )
-  .addStory('showWeekNumbers', () => <DatePicker showWeekNumbers popover={{ open: true }} />, {
+  .addStory('showWeekNumbers', () => <DatePicker showWeekNumbers defaultOpen={true} />, {
     includeDarkMode: true,
     includeHighContrast: true,
   })
   .addStory('allowTextInput', () => <DatePicker allowTextInput />)
-  .addStory('Required', () => <DatePicker isRequired />)
+  .addStory('Required', () => (
+    <Field label="Select a date" required>
+      <DatePicker />
+    </Field>
+  ))
   .addStory('Underlined', () => <DatePicker underlined />)
-  .addStory('Underlined and required', () => <DatePicker underlined isRequired />)
-  .addStory('With label', () => <DatePicker label="Select a date" />);
+  .addStory('Underlined and required', () => (
+    <Field required>
+      <DatePicker underlined />
+    </Field>
+  ))
+  .addStory('With label', () => (
+    <Field label="Select a date">
+      <DatePicker />
+    </Field>
+  ));
