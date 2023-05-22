@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expose getFileTypeIconAsURL helper to get file type icon url instead of HTML element",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "tigeroakes@microsoft.com",
+  "dependentChangeType": "patch"
+}
