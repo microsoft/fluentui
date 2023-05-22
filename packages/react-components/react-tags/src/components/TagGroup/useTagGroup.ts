@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 
 /**
@@ -12,13 +12,23 @@ import type { TagGroupProps, TagGroupState } from './TagGroup.types';
  * @param ref - reference to root HTMLElement of TagGroup
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLElement>): TagGroupState => {
-  const { size = 'medium' } = props;
+  const { onDismiss, size = 'medium' } = props;
+
+  const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
+    onDismiss?.(e, { dismissedTagValue: id });
+
+    // TODO set focus after tag dismiss
+  });
 
   return {
+    dismissible: !!onDismiss,
+    handleTagDismiss,
     size,
+
     components: {
       root: 'div',
     },
+
     root: getNativeElementProps('div', {
       ref,
       ...props,

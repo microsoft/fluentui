@@ -34,6 +34,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.3",
     "@fluentui/react-aria": "^9.3.20",
     "@fluentui/react-avatar": "^9.5.2",
     "@fluentui/react-icons": "^2.0.196",
