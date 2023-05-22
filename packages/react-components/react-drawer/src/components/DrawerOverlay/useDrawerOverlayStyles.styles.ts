@@ -22,13 +22,13 @@ const useStyles = makeStyles({
  * Apply styling to the DrawerOverlay slots based on the state
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
-  const styles = useStyles();
   const baseStyles = useDrawerBaseStyles();
+  const styles = useStyles();
 
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
-    styles.root,
     baseStyles.root,
+    styles.root,
     state.size && baseStyles[state.size],
     state.position && baseStyles[state.position],
     state.root.className,

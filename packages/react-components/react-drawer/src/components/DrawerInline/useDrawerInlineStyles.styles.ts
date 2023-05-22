@@ -30,8 +30,8 @@ const useStyles = makeStyles({
  * Apply styling to the DrawerInline slots based on the state
  */
 export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): DrawerInlineState => {
-  const styles = useStyles();
   const baseStyles = useDrawerBaseStyles();
+  const styles = useStyles();
 
   const separatorClass = React.useMemo(() => {
     if (!state.separator) {
@@ -43,8 +43,8 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
-    styles.root,
     baseStyles.root,
+    styles.root,
     state.size && baseStyles[state.size],
     state.position && baseStyles[state.position],
     separatorClass,
