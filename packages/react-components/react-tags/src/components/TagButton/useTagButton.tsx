@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagButtonAvatarSizeMap = {
@@ -28,15 +29,41 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of TagButton
  */
 export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
-  const { size: contextSize } = useTagGroupContext_unstable();
+  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+
+  const id = useId('fui-Tag', props.id);
 
   const {
     appearance = 'filled-lighter',
     disabled = false,
-    dismissible = false,
+    dismissible = contextDismissible,
     shape = 'rounded',
     size = contextSize,
+    value = id,
   } = props;
+
+  const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+    props.onClick?.(ev);
+    if (!ev.defaultPrevented) {
+      handleTagDismiss?.(ev, value);
+    }
+  });
+
+  const onDismissButtonKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    props?.onKeyDown?.(ev);
+    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+      handleTagDismiss?.(ev, value);
+    }
+  });
+
+  const dismissButtonShorthand = resolveShorthand(props.dismissButton, {
+    required: dismissible,
+    defaultProps: {
+      disabled,
+      type: 'button',
+      children: <DismissIcon />,
+    },
+  });
 
   return {
     appearance,
@@ -60,6 +87,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     root: getNativeElementProps('div', {
       ref,
       ...props,
+      id,
     }),
 
     content: useARIAButtonShorthand(props.content, {
@@ -74,13 +102,11 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText, { required: true }),
     secondaryText: resolveShorthand(props.secondaryText),
-    dismissButton: useARIAButtonShorthand(props.dismissButton, {
-      required: props.dismissible,
-      defaultProps: {
-        disabled,
-        type: 'button',
-        children: <DismissIcon />,
-      },
-    }),
+
+    dismissButton: {
+      ...dismissButtonShorthand,
+      onClick: onDismissButtonClick,
+      onKeyDown: onDismissButtonKeyDown,
+    },
   };
 };

@@ -31,13 +31,7 @@ const useRootStyles = makeStyles({
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeDisabled),
-    [`& > textarea`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-      cursor: 'not-allowed',
-      '::placeholder': {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
+
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -183,6 +177,14 @@ const useTextareaStyles = makeStyles({
     outlineStyle: 'none', // disable default browser outline
   },
 
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
+    '::placeholder': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+  },
+
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
@@ -261,6 +263,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     textareaStyles.base,
     textareaStyles[size],
     textareaResizeStyles[resize],
+    disabled && textareaStyles.disabled,
     state.textarea.className,
   );
 

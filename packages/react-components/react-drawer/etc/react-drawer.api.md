@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DialogProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -25,7 +26,7 @@ export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots>;
 
 // @public
-export type DrawerBodyProps = ComponentProps<DrawerBodySlots> & {};
+export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
 
 // @public (undocumented)
 export type DrawerBodySlots = {
@@ -62,6 +63,61 @@ export type DrawerFooterSlots = {
 export type DrawerFooterState = ComponentState<DrawerFooterSlots>;
 
 // @public
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
+
+// @public (undocumented)
+export const drawerHeaderClassNames: SlotClassNames<DrawerHeaderSlots>;
+
+// @public
+export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
+
+// @public (undocumented)
+export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNavigationSlots>;
+
+// @public
+export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderNavigationSlots = {
+    root: Slot<'nav'>;
+};
+
+// @public
+export type DrawerHeaderNavigationState = ComponentState<DrawerHeaderNavigationSlots>;
+
+// @public
+export type DrawerHeaderProps = ComponentProps<DrawerHeaderSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderSlots = {
+    root: Slot<'header'>;
+};
+
+// @public
+export type DrawerHeaderState = ComponentState<DrawerHeaderSlots>;
+
+// @public
+export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
+
+// @public (undocumented)
+export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
+
+// @public
+export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
+    children: React_2.ReactNode | undefined;
+};
+
+// @public (undocumented)
+export type DrawerHeaderTitleSlots = {
+    root: Slot<'div'>;
+    heading?: DialogTitleSlots['root'];
+    action?: DialogTitleSlots['action'];
+};
+
+// @public
+export type DrawerHeaderTitleState = ComponentState<DrawerHeaderTitleSlots>;
+
+// @public
 export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     position?: 'left' | 'right';
     type?: 'inline' | 'overlay';
@@ -92,6 +148,15 @@ export const renderDrawerBody_unstable: (state: DrawerBodyState) => JSX.Element;
 export const renderDrawerFooter_unstable: (state: DrawerFooterState) => JSX.Element;
 
 // @public
+export const renderDrawerHeader_unstable: (state: DrawerHeaderState) => JSX.Element;
+
+// @public
+export const renderDrawerHeaderNavigation_unstable: (state: DrawerHeaderNavigationState) => JSX.Element;
+
+// @public
+export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) => JSX.Element;
+
+// @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;
 
 // @public
@@ -105,6 +170,24 @@ export const useDrawerFooter_unstable: (props: DrawerFooterProps, ref: React_2.R
 
 // @public
 export const useDrawerFooterStyles_unstable: (state: DrawerFooterState) => DrawerFooterState;
+
+// @public
+export const useDrawerHeader_unstable: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderNavigation_unstable: (props: DrawerHeaderNavigationProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderNavigationStyles_unstable: (state: DrawerHeaderNavigationState) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderStyles_unstable: (state: DrawerHeaderState) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderTitle_unstable: (props: DrawerHeaderTitleProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderTitleState;
+
+// @public
+export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
 
 // @public
 export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;

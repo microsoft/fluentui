@@ -127,7 +127,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
       styles.content,
       state.shape === 'circular' && styles.circularContent,
       !state.media && !state.icon && styles.contentWithoutMedia,
-      state.dismissButton && styles.dismissibleContent,
+      state.dismissible && styles.dismissibleContent,
 
       state.content.className,
     );
