@@ -83,6 +83,11 @@ const createConfig = (customConfig = {}) => {
     clearMocks: true,
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future
+    snapshotFormat: {
+      escapeString: true,
+      printBasicPrototype: true,
+    },
   };
 
   return merge(defaultConfig, customConfig);
