@@ -107,7 +107,7 @@ const staticColumns = [
 
 const StaticTable = () => {
   return (
-    <Table>
+    <Table aria-labelledby="static-table-heading">
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
@@ -200,7 +200,7 @@ const SortableTable = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table aria-labelledby="sortable-table-heading" sortable>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -300,7 +300,7 @@ const MultipleSelectTable = () => {
   );
 
   return (
-    <Table>
+    <Table aria-labelledby="multiple-row-select-table-heading">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -379,7 +379,7 @@ const SingleSelectTable = () => {
   });
 
   return (
-    <Table>
+    <Table aria-labelledby="single-row-select-table-heading">
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" hidden />
@@ -422,7 +422,7 @@ const CellNavigationTable = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} role="grid">
+    <Table aria-labelledby="cell-navigation-table-heading" {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
@@ -475,7 +475,12 @@ const RowNavigationTable = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} role="grid" aria-label="Table with grid keyboard navigation">
+    <Table
+      aria-labelledby="row-navigation-table-heading"
+      {...keyboardNavAttr}
+      role="grid"
+      aria-label="Table with grid keyboard navigation"
+    >
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
@@ -527,22 +532,22 @@ export const UserActivityTables = () => {
     <Scenario pageTitle="User activity tables">
       <h1>User activity tables</h1>
 
-      <h2>Static table</h2>
+      <h2 id="static-table-heading">Static table</h2>
       <StaticTable />
 
-      <h2>Sortable table</h2>
+      <h2 id="sortable-table-heading">Sortable table</h2>
       <SortableTable />
 
-      <h2>Multiple select row table</h2>
+      <h2 id="multiple-row-select-table-heading">Multiple row select table</h2>
       <MultipleSelectTable />
 
-      <h2>Single select row table</h2>
+      <h2 id="single-row-select-table-heading">Single row select table</h2>
       <SingleSelectTable />
 
-      <h2>Cell navigation table</h2>
+      <h2 id="cell-navigation-table-heading">Cell navigation table</h2>
       <CellNavigationTable />
 
-      <h2>Row navigation table</h2>
+      <h2 id="row-navigation-table-heading">Row navigation table</h2>
       <RowNavigationTable />
     </Scenario>
   );
