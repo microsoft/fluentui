@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 15 May 2023 04:19:56 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.21",
+      "version": "3.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "cad93648a2ce28e99935d4ab36089d770fa06a53",
+            "comment": "Fixes exports in Switch"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 May 2023 04:19:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.20",
       "version": "3.0.0-alpha.20",
