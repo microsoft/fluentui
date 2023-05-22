@@ -12,7 +12,7 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../PerformanceDataSet1/LineChartPage').LineChartPage,
           key: 'LineChartperf',
           name: 'LineChartperf',
-          url: '#/examples/linechartperf',
+          url: '#/examples/linechartperfurl',
         },
       ],
     },
