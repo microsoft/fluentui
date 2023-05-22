@@ -23,13 +23,11 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     ...rest
   } = props;
 
-  const focusAttributes = !disableFocus
-    ? useArrowNavigationGroup({
-        circular: true,
-        axis: 'horizontal',
-        memorizeCurrent: true,
-      })
-    : {};
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'horizontal',
+    memorizeCurrent: true,
+  });
 
   return {
     components: {
@@ -39,7 +37,7 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     root: getNativeElementProps('nav', {
       ref,
       'aria-label': props['aria-label'] ?? 'breadcrumb',
-      ...focusAttributes,
+      ...(!disableFocus ? focusAttributes : {}),
       ...rest,
     }),
     list: resolveShorthand(list, { required: true, defaultProps: { role: 'list' } }),
