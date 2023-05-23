@@ -177,7 +177,10 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     placeholder: BaseColors.GRAY_A19F9D,
   },
   statusBar: {
-    link: BaseColors.BLUE_6CB8F6,
+    link: {
+      rest: BaseColors.BLUE_6CB8F6,
+      hover: BaseColors.BLUE_82C7FF,
+    },
     background: {
       default: BaseColors.BLUE_00245B,
       okay: BaseColors.GREEN_393D1B,
@@ -451,13 +454,16 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     label: BaseColors.WHITE,
     disabled: BaseColors.GREEN_0AFF00,
     hyperlink: BaseColors.YELLOW_FEFF00,
-    hyperlinkHovered: BaseColors.BLACK,
+    hyperlinkHovered: BaseColors.YELLOW_FEFF00,
     success: BaseColors.GREEN_5DB300,
     error: BaseColors.RED_F63747,
     placeholder: BaseColors.GREEN_0AFF00,
   },
   statusBar: {
-    link: BaseColors.YELLOW_FEFF00,
+    link: {
+      rest: BaseColors.YELLOW_FEFF00,
+      hover: BaseColors.YELLOW_FEFF00,
+    },
     background: {
       default: BaseColors.TRANSPARENT,
       okay: BaseColors.TRANSPARENT,
@@ -724,7 +730,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   text: {
     list: BaseColors.GRAY_302928,
     heading: BaseColors.GRAY_302928,
-    body: BaseColors.GRAY_323130,
+    body: BaseColors.GRAY_292827,
     bodyHovered: BaseColors.GRAY_201F1E,
     value: BaseColors.GRAY_302928,
     icon: BaseColors.GRAY_302928,
@@ -737,7 +743,10 @@ export const LightSemanticColors: IAzureSemanticColors = {
     placeholder: BaseColors.GRAY_605E5C,
   },
   statusBar: {
-    link: BaseColors.BLUE_106EBE,
+    link: {
+      rest: BaseColors.BLUE_005A9E,
+      hover: BaseColors.BLUE_004578,
+    },
     background: {
       default: BaseColors.BLUE_F0F6FF,
       okay: BaseColors.GREEN_F8FFF0,
@@ -1017,7 +1026,10 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     placeholder: BaseColors.RED_800000,
   },
   statusBar: {
-    link: BaseColors.BLUE_0000CD,
+    link: {
+      rest: BaseColors.BLUE_0000CD,
+      hover: BaseColors.BLUE_0000CD,
+    },
     background: {
       default: BaseColors.TRANSPARENT,
       okay: BaseColors.TRANSPARENT,
