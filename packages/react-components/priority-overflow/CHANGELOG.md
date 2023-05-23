@@ -1,8 +1,18 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 21 Mar 2023 21:23:19 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2023 20:28:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.3)
+
+Fri, 12 May 2023 20:28:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.2..@fluentui/priority-overflow_v9.0.3)
+
+### Patches
+
+- fix: overflowManager should always dispatch initial state ([PR #27756](https://github.com/microsoft/fluentui/pull/27756) by lingfangao@hotmail.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.2)
 

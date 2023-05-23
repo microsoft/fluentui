@@ -39,10 +39,18 @@ export type UseControllableStateOptions<State> = {
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
-  const initialState = typeof options.defaultState === 'undefined' ? options.initialState : options.defaultState;
-  const [internalState, setInternalState] = React.useState<State>(initialState);
+  const [internalState, setInternalState] = React.useState<State>(() => {
+    if (options.defaultState === undefined) {
+      return options.initialState;
+    }
+    return isInitializer(options.defaultState) ? options.defaultState() : options.defaultState;
+  });
   return useIsControlled(options.state) ? [options.state, noop] : [internalState, setInternalState];
 };
+
+function isInitializer<State>(value: State | (() => State)): value is () => State {
+  return typeof value === 'function';
+}
 
 function noop() {
   /* noop */
@@ -53,7 +61,7 @@ function noop() {
  * Prints an error when isControlled value switches between subsequent renders
  * @returns - whether the value is controlled
  */
-const useIsControlled = <V>(controlledValue?: V): controlledValue is V => {
+const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is V => {
   const [isControlled] = React.useState<boolean>(() => controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {

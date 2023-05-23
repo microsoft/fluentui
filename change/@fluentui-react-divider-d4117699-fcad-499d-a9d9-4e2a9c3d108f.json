@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: wrapper slot type to NonNullable",
+  "packageName": "@fluentui/react-divider",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

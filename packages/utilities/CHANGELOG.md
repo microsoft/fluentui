@@ -1,8 +1,22 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 02 May 2023 22:20:25 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.13](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.13)
+
+Fri, 05 May 2023 18:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.12..@fluentui/utilities_v8.13.13)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/dom-utilities to v2.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/merge-styles to v8.5.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.27 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/test-utilities to v8.3.4 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
 
 ## [8.13.12](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.12)
 
