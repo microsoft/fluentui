@@ -5,7 +5,7 @@ import { Stack, StackItem } from '@fluentui/react';
 interface IGCBasicExampleState {
   width: number;
   height: number;
-  currentValue: number;
+  chartValue: number;
 }
 
 export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleState> {
@@ -15,7 +15,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
     this.state = {
       width: 252,
       height: 128,
-      currentValue: 50,
+      chartValue: 50,
     };
   }
 
@@ -53,14 +53,14 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             <label htmlFor="value-slider">Current value:</label>
             <input
               type="range"
-              value={this.state.currentValue}
+              value={this.state.chartValue}
               min={0}
               max={100}
               id="value-slider"
               onChange={this._onValueChange}
-              aria-valuetext={`Current value: ${this.state.currentValue}`}
+              aria-valuetext={`Current value: ${this.state.chartValue}`}
             />
-            <span>{this.state.currentValue}</span>
+            <span>{this.state.chartValue}</span>
           </StackItem>
         </Stack>
 
@@ -72,7 +72,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
             { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
           ]}
-          currentValue={this.state.currentValue}
+          chartValue={this.state.chartValue}
         />
       </>
     );
@@ -85,6 +85,6 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
     this.setState({ height: parseInt(e.target.value, 10) });
   };
   private _onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ currentValue: parseInt(e.target.value, 10) });
+    this.setState({ chartValue: parseInt(e.target.value, 10) });
   };
 }

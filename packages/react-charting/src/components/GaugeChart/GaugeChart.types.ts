@@ -4,20 +4,28 @@ import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps } from '../../types/index';
 
 export interface IGaugeChartSegment {
-  /** */
+  /**
+   * Legend text for a segment
+   */
   legend: string;
 
-  /** */
+  /**
+   * Size of the segment
+   */
   size: number;
 
-  /** */
+  /**
+   * Color of the segment. If not provided, it will fallback on the default color palette.
+   */
   color?: string;
 
-  /** */
+  /**
+   * Accessibility data for the segment
+   */
   accessibilityData?: IAccessibilityProps;
 }
 
-export enum NumberFormat {
+export enum GaugeValueFormat {
   Percentage = 'percentage',
   Fraction = 'fraction',
 }
@@ -33,29 +41,47 @@ export interface IGaugeChartProps {
    */
   height?: number;
 
-  /** */
+  /**
+   * Title of the chart
+   */
   chartTitle?: string;
 
-  /** */
-  currentValue: number;
+  /**
+   * Current value of the gauge
+   */
+  chartValue: number;
 
-  /** */
+  /**
+   * Sections of the gauge
+   */
   segments: IGaugeChartSegment[];
 
-  /** */
+  /**
+   * Minimum value of the gauge
+   */
   minValue?: number;
 
-  /** */
+  /**
+   * Maximum value of the gauge
+   */
   maxValue?: number;
 
-  /** */
+  /**
+   * Additional text to display below the chart value
+   */
   sublabel?: string;
 
-  /** */
+  /**
+   * Hide the min and max values of the gauge
+   * @defaultvalue false
+   */
   hideLimits?: boolean;
 
-  /** */
-  currentValueFormat?: NumberFormat;
+  /**
+   * Format of the chart value
+   * @defaultvalue GaugeValueFormat.Percentage
+   */
+  chartValueFormat?: GaugeValueFormat;
 
   /**
    * Decides wether to show/hide legends
@@ -70,138 +96,151 @@ export interface IGaugeChartProps {
 
   /**
    * Do not show tooltips in chart
-   * @default false
+   * @defaultvalue false
    */
   hideTooltip?: boolean;
 
   /**
-   * Additional CSS class(es) to apply to the Chart.
+   * Additional CSS class(es) to apply to the chart
    */
   className?: string;
 
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization)
    */
   theme?: ITheme;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
 
   /**
-   * The prop used to define the culture to localize the numbers and date
+   * Prop to define the culture to localize the numbers and dates
    */
   culture?: string;
 }
 
 export interface IGaugeChartStyleProps {
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization)
    */
   theme: ITheme;
 
-  /** */
-  fontSize?: number;
+  /**
+   * Font size of the chart value
+   */
+  chartValueSize?: number;
 
-  /** */
+  /**
+   * Width of the chart
+   */
   width?: number;
 
-  /** */
+  /**
+   * Height of the chart
+   */
   height?: number;
 
-  /** */
+  /**
+   * Additional CSS class(es) to apply to the chart
+   */
   className?: string;
 
   /**
-   * color of the line
+   * Color of the line
    */
   lineColor?: string;
 
   /**
-   * boolean flag which determines if shape is drawn in callout
+   * Boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
 }
 
 export interface IGaugeChartStyles {
-  /** */
+  /**
+   * Styles for the root element
+   */
   root?: IStyle;
 
-  /** */
+  /**
+   * Styles for the chart container
+   */
   chart?: IStyle;
 
   /**
-   * Style for the min and max values
+   * Styles for the min and max values
    */
   limits?: IStyle;
 
   /**
-   * Style for the chart value
+   * Styles for the chart value
    */
   chartValue?: IStyle;
 
   /**
-   * Style for the sublabel
+   * Styles for the sublabel
    */
   sublabel?: IStyle;
 
   /**
-   * Style for the needle
+   * Styles for the needle
    */
   needle?: IStyle;
 
-  /** */
+  /**
+   * Styles for the chart title
+   */
   chartTitle?: IStyle;
 
-  /** */
-  legendContainer?: IStyle;
-
-  /** */
+  /**
+   * Styles for the segments
+   */
   segment?: IStyle;
 
   /**
-   * styles for callout root-content
+   * Styles for callout root-content
    */
   calloutContentRoot?: IStyle;
 
   /**
-   * styles for callout x-content
+   * Styles for callout x-content
    */
   calloutContentX?: IStyle;
 
   /**
-   * styles for callout y-content
+   * Styles for callout y-content
    */
   calloutContentY?: IStyle;
 
   /**
-   * styles for description message
+   * Styles for description message
    */
   descriptionMessage?: IStyle;
 
   /**
-   * styles for callout Date time container
+   * Styles for callout Date time container
    */
   calloutDateTimeContainer?: IStyle;
 
   /**
-   * styles for callout info container
+   * Styles for callout info container
    */
   calloutInfoContainer?: IStyle;
 
   /**
-   * styles for callout block container
+   * Styles for callout block container
    */
   calloutBlockContainer?: IStyle;
 
   /**
-   * styles for callout legend text
+   * Styles for callout legend text
    */
   calloutlegendText?: IStyle;
 
   /**
-   * styles for the shape object in the callout
+   * Styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
 }

@@ -6,7 +6,7 @@ import {
   IGaugeChartSegment,
   IGaugeChartStyleProps,
   IGaugeChartStyles,
-  NumberFormat,
+  GaugeValueFormat,
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import {
@@ -21,12 +21,20 @@ import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
-import { TooltipText } from './TooltipText';
+import { TooltipText } from '../../utilities/TooltipText';
 import { select as d3Select } from 'd3-selection';
 
+const GAUGE_MARGIN = 16;
+const LABEL_WIDTH = 36;
+const LABEL_HEIGHT = 16;
+const LABEL_OFFSET = 4;
+const TITLE_OFFSET = 11;
+const EXTRA_NEEDLE_LENGTH = 4;
+const ARC_PADDING = 2;
 const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
 const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
 const FONT_SIZES = [20, 24, 32, 32, 40, 40];
+
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
 interface IYValue extends Omit<IYValueHover, 'y'> {
@@ -35,8 +43,9 @@ interface IYValue extends Omit<IYValueHover, 'y'> {
 interface IGaugeChartState {
   hoveredLegend: string;
   selectedLegend: string;
-  focusedSegment: string;
-  hoveredElement: SVGElement | null;
+  focusedElement: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  calloutTarget: any;
   isCalloutVisible: boolean;
   hoverXValue: string | number;
   hoverYValues: IYValue[];
@@ -44,7 +53,13 @@ interface IGaugeChartState {
 
 export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> {
   private _classNames: IProcessedStyleSet<IGaugeChartStyles>;
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean;
+  private _innerRadius: number;
+  private _outerRadius: number;
+  private _minValue: number;
+  private _segments: IGaugeChartSegment[];
+  private _sweepFraction: number[];
+  private _calloutAnchor: string;
 
   constructor(props: IGaugeChartProps) {
     super(props);
@@ -52,51 +67,44 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this.state = {
       hoveredLegend: '',
       selectedLegend: '',
-      focusedSegment: '',
-      hoveredElement: null,
+      focusedElement: '',
+      calloutTarget: null,
       isCalloutVisible: false,
       hoverXValue: '',
       hoverYValues: [],
     };
+
+    this._isRTL = getRTL();
+    this._calloutAnchor = '';
   }
 
   public render(): React.ReactNode {
-    const margins = {
-      left: (!this.props.hideLimits ? 4 + 36 : 0) + 16,
-      right: (!this.props.hideLimits ? 4 + 36 : 0) + 16,
-      top: (this.props.chartTitle ? 11 + 16 : 2) + 16,
-      bottom: (this.props.sublabel ? 4 + 16 : 0) + 16,
-    };
-    const legendContainerHeight = !this.props.hideLegend ? 24 : 0;
+    const margins = this._getMargins();
+    const legendsHeight = !this.props.hideLegend ? 24 : 0;
 
     const width = this.props.width || 140 + margins.left + margins.right;
-    const height = this.props.height || 70 + margins.top + margins.bottom + legendContainerHeight;
-    const outerRadius = Math.min(
+    const height = this.props.height || 70 + margins.top + margins.bottom + legendsHeight;
+
+    this._outerRadius = Math.min(
       (width - (margins.left + margins.right)) / 2,
-      height - (margins.top + margins.bottom + legendContainerHeight),
+      height - (margins.top + margins.bottom + legendsHeight),
     );
 
-    let innerRadius = outerRadius - ARC_WIDTHS[0];
-    let fontSize = FONT_SIZES[0];
-    for (let idx = BREAKPOINTS.length - 1; idx >= 0; idx -= 1) {
-      if (outerRadius >= BREAKPOINTS[idx]) {
-        innerRadius = outerRadius - ARC_WIDTHS[idx];
-        fontSize = FONT_SIZES[idx];
-        break;
-      }
-    }
+    const breakpointIndex = this._getBreakpointIndex();
+    this._innerRadius = this._outerRadius - ARC_WIDTHS[breakpointIndex];
+    const chartValueSize = FONT_SIZES[breakpointIndex];
 
-    const { minValue, maxValue, arcsData, segments } = this._initProps(innerRadius, outerRadius);
-    const sweptFraction = [this.props.currentValue - minValue, maxValue - minValue];
-    const needleRotation = (sweptFraction[0] / sweptFraction[1]) * 180;
-    const rtlSafeNeedleRotation = this._isRTL ? 180 - needleRotation : needleRotation;
+    const { minValue, maxValue, segments, arcs } = this._initProps();
+    this._minValue = minValue;
+    this._segments = segments;
+    this._sweepFraction = [this.props.chartValue - this._minValue, maxValue - this._minValue];
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
-      fontSize,
-      width,
-      height: height - legendContainerHeight,
       className: this.props.className,
+      width,
+      height: height - legendsHeight,
+      chartValueSize,
     });
 
     return (
@@ -104,33 +112,34 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
-            onMouseEnter={e => this._onChartMouseOver(e, sweptFraction, segments, minValue)}
-            onMouseMove={e => this._onChartMouseOver(e, sweptFraction, segments, minValue)}
-            onMouseLeave={this._onChartMouseOut}
             role="presentation"
-            aria-label="Gauge"
-            aria-description={`This is a gauge chart with ${segments.length} section represented.`}
+            aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
           >
-            <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendContainerHeight)})`}>
+            <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendsHeight)})`}>
               {this.props.chartTitle && (
-                <text x={0} y={-(outerRadius + 11)} textAnchor="middle" className={this._classNames.chartTitle}>
+                <text
+                  x={0}
+                  y={-(this._outerRadius + TITLE_OFFSET)}
+                  textAnchor="middle"
+                  className={this._classNames.chartTitle}
+                >
                   {this.props.chartTitle}
                 </text>
               )}
               {!this.props.hideLimits && (
                 <>
                   <text
-                    x={(this._isRTL ? 1 : -1) * (outerRadius + 4)}
+                    x={(this._isRTL ? 1 : -1) * (this._outerRadius + LABEL_OFFSET)}
                     y={0}
                     textAnchor="end"
                     className={this._classNames.limits}
                     role="img"
-                    aria-label={`Min value: ${minValue}`}
+                    aria-label={`Min value: ${this._minValue}`}
                   >
-                    {formatValueWithSIPrefix(minValue)}
+                    {formatValueWithSIPrefix(this._minValue)}
                   </text>
                   <text
-                    x={(this._isRTL ? -1 : 1) * (outerRadius + 4)}
+                    x={(this._isRTL ? -1 : 1) * (this._outerRadius + LABEL_OFFSET)}
                     y={0}
                     textAnchor="start"
                     className={this._classNames.limits}
@@ -141,40 +150,44 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   </text>
                 </>
               )}
-              {arcsData.map((segment, i) => (
+              {arcs.map((arc, index) => (
                 <path
-                  key={i}
-                  d={segment.d}
-                  fill={segments[segment.index].color}
+                  key={index}
+                  d={arc.d}
+                  fill={this._segments[arc.segmentIndex].color}
                   fillOpacity={
-                    this._legendHighlighted(segments[segment.index].legend) || this._noLegendHighlighted() ? 1 : 0.1
+                    this._legendHighlighted(this._segments[arc.segmentIndex].legend) || this._noLegendHighlighted()
+                      ? 1
+                      : 0.1
                   }
-                  strokeWidth={this.state.focusedSegment === segments[segment.index].legend ? 2 : 0}
+                  strokeWidth={this.state.focusedElement === this._segments[arc.segmentIndex].legend ? ARC_PADDING : 0}
                   className={this._classNames.segment}
-                  onFocus={() => this._onSegmentFocus(segments[segment.index].legend)}
-                  onBlur={this._onSegmentBlur}
                   {...getAccessibleDataObject(
                     {
-                      ariaLabel: segments[segment.index].legend,
-                      ...segments[segment.index].accessibilityData,
+                      ariaLabel: `${this._segments[arc.segmentIndex].legend}, ${
+                        this._segments[arc.segmentIndex].size
+                      } out of ${maxValue - this._minValue} or ${(
+                        (this._segments[arc.segmentIndex].size / (maxValue - this._minValue)) *
+                        100
+                      ).toFixed()}%`,
+                      ...this._segments[arc.segmentIndex].accessibilityData,
                     },
                     'img',
                     true,
                   )}
-                  aria-description={`${segments[segment.index].size} out of ${maxValue - minValue}, or ${(
-                    (segments[segment.index].size / (maxValue - minValue)) *
-                    100
-                  ).toFixed()}%`}
+                  onFocus={e => this._handleFocus(e, this._segments[arc.segmentIndex].legend)}
+                  onBlur={this._handleBlur}
+                  onMouseEnter={e => this._handleMouseOver(e, this._segments[arc.segmentIndex].legend)}
+                  onMouseMove={e => this._handleMouseOver(e, this._segments[arc.segmentIndex].legend)}
+                  onMouseLeave={this._handleMouseOut}
                 />
               ))}
-              <g transform={`rotate(${rtlSafeNeedleRotation}, 0, 0)`}>
-                {this._renderNeedle(innerRadius, outerRadius, 2)}
-              </g>
+              {this._renderNeedle()}
               <TooltipText
                 content={
-                  this.props.currentValueFormat === NumberFormat.Fraction
-                    ? `${sweptFraction[0]}/${sweptFraction[1]}`
-                    : `${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`
+                  this.props.chartValueFormat === GaugeValueFormat.Fraction
+                    ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
+                    : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
                 }
                 textProps={{
                   x: 0,
@@ -182,12 +195,17 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   textAnchor: 'middle',
                   className: this._classNames.chartValue,
                   role: 'img',
-                  'aria-label': `Current value: ${sweptFraction[0]} out of ${sweptFraction[1]}, or ${(
-                    (sweptFraction[0] / sweptFraction[1]) *
+                  'aria-label': `Current value: ${this._sweepFraction[0]} out of ${this._sweepFraction[1]}, or ${(
+                    (this._sweepFraction[0] / this._sweepFraction[1]) *
                     100
                   ).toFixed()}%`,
+                  onFocus: e => this._handleFocus(e, 'Chart value'),
+                  onBlur: this._handleBlur,
+                  onMouseEnter: e => this._handleMouseOver(e, 'Chart value'),
+                  onMouseMove: e => this._handleMouseOver(e, 'Chart value'),
+                  onMouseLeave: this._handleMouseOut,
                 }}
-                maxWidth={innerRadius * 2 - 24}
+                maxWidth={this._innerRadius * 2 - 24}
                 wrapContent={this._wrapContent}
               />
               {this.props.sublabel && (
@@ -202,21 +220,21 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role: 'img',
                     'aria-label': this.props.sublabel,
                   }}
-                  maxWidth={innerRadius * 2}
+                  maxWidth={this._innerRadius * 2}
                   wrapContent={this._wrapContent}
                 />
               )}
             </g>
           </svg>
         </FocusZone>
-        {this._renderLegends(segments)}
+        {this._renderLegends()}
         {!this.props.hideTooltip && this.state.isCalloutVisible && (
           <Callout
-            target={this.state.hoveredElement}
+            target={this.state.calloutTarget}
             directionalHint={DirectionalHint.topAutoEdge}
             gapSpace={15}
             isBeakVisible={false}
-            onDismiss={this._onCalloutDismiss}
+            onDismiss={this._handleCalloutDismiss}
           >
             {this._multiValueCallout({
               hoverXValue: this.state.hoverXValue,
@@ -228,77 +246,113 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     );
   }
 
-  private _renderNeedle = (innerRadius: number, outerRadius: number, strokeWidth: number) => {
-    const needleLength = outerRadius - innerRadius + 4;
-    strokeWidth /= 2;
-    return (
-      <path
-        d={`
-            M 0,${-strokeWidth - 3}
-            L ${-needleLength},${-strokeWidth - 1}
-            A ${strokeWidth + 1},${strokeWidth + 1},0,0,0,${-needleLength},${strokeWidth + 1}
-            L 0,${strokeWidth + 3}
-            A ${strokeWidth + 3},${strokeWidth + 3},0,0,0,0,${-strokeWidth - 3}
-          `}
-        strokeWidth={strokeWidth * 2}
-        className={this._classNames.needle}
-        transform={`translate(${-innerRadius + 2})`}
-      />
-    );
+  private _getMargins = () => {
+    const { hideLimits, chartTitle, sublabel } = this.props;
+
+    return {
+      left: (!hideLimits ? LABEL_OFFSET + LABEL_WIDTH : 0) + GAUGE_MARGIN,
+      right: (!hideLimits ? LABEL_OFFSET + LABEL_WIDTH : 0) + GAUGE_MARGIN,
+      top: (chartTitle ? TITLE_OFFSET + LABEL_HEIGHT : EXTRA_NEEDLE_LENGTH / 2) + GAUGE_MARGIN,
+      bottom: (sublabel ? LABEL_OFFSET + LABEL_HEIGHT : 0) + GAUGE_MARGIN,
+    };
   };
 
-  private _initProps = (innerRadius: number, outerRadius: number) => {
-    const { minValue = 0, maxValue, theme } = this.props;
-    const segments = Array.from(this.props.segments || []);
+  private _getBreakpointIndex = () => {
+    for (let index = BREAKPOINTS.length - 1; index >= 0; index -= 1) {
+      if (this._outerRadius >= BREAKPOINTS[index]) {
+        return index;
+      }
+    }
+    return 0;
+  };
 
-    let maxVal = minValue;
+  private _initProps = () => {
+    const { minValue = 0, maxValue, theme } = this.props;
+    const segments = Array.from(this.props.segments);
+
+    let total = minValue;
     segments.forEach(segment => {
-      maxVal += segment.size;
+      total += segment.size;
       segment.color =
         typeof segment.color !== 'undefined'
           ? getColorFromToken(segment.color, theme!.isInverted)
           : theme!.palette.neutralLight;
     });
-    if (typeof maxValue !== 'undefined' && maxVal < maxValue) {
-      segments.push({ legend: 'Unknown', size: maxValue - maxVal, color: theme!.palette.neutralLight });
-      maxVal = maxValue;
+    if (typeof maxValue !== 'undefined' && total < maxValue) {
+      segments.push({
+        legend: 'Unknown',
+        size: maxValue - total,
+        color: theme!.palette.neutralLight,
+      });
+      total = maxValue;
     }
 
     const arcGenerator = shape
       .arc()
-      .padAngle(2 / outerRadius)
-      .padRadius(outerRadius);
-    let prevAngle = -Math.PI / 2;
+      .padAngle(ARC_PADDING / this._outerRadius)
+      .padRadius(this._outerRadius);
     const rtlSafeSegments = this._isRTL ? Array.from(segments).reverse() : segments;
-    const arcsData = rtlSafeSegments.map((segment, idx) => {
-      const endAngle = prevAngle + (segment.size / (maxVal - minValue)) * Math.PI;
+    let prevAngle = -Math.PI / 2;
+    const arcs = rtlSafeSegments.map((segment, index) => {
+      const endAngle = prevAngle + (segment.size / (total - minValue)) * Math.PI;
       const d = arcGenerator({
-        innerRadius,
-        outerRadius,
+        innerRadius: this._innerRadius,
+        outerRadius: this._outerRadius,
         startAngle: prevAngle,
         endAngle,
       })!;
       prevAngle = endAngle;
       return {
         d,
-        index: this._isRTL ? segments.length - 1 - idx : idx,
+        segmentIndex: this._isRTL ? segments.length - 1 - index : index,
       };
     });
 
     return {
       minValue,
-      maxValue: maxVal,
-      arcsData,
+      maxValue: total,
       segments,
+      arcs,
     };
   };
 
-  private _renderLegends = (segments: IGaugeChartSegment[]) => {
+  private _renderNeedle = () => {
+    const needleRotation = (this._sweepFraction[0] / this._sweepFraction[1]) * 180;
+    const rtlSafeNeedleRotation = this._isRTL ? 180 - needleRotation : needleRotation;
+    const strokeWidth = 2;
+    const halfStrokeWidth = strokeWidth / 2;
+    const needleLength = this._outerRadius - this._innerRadius + EXTRA_NEEDLE_LENGTH;
+
+    return (
+      <g transform={`rotate(${rtlSafeNeedleRotation}, 0, 0)`}>
+        <path
+          d={`
+            M 0,${-halfStrokeWidth - 3}
+            L ${-needleLength},${-halfStrokeWidth - 1}
+            A ${halfStrokeWidth + 1},${halfStrokeWidth + 1},0,0,0,${-needleLength},${halfStrokeWidth + 1}
+            L 0,${halfStrokeWidth + 3}
+            A ${halfStrokeWidth + 3},${halfStrokeWidth + 3},0,0,0,0,${-halfStrokeWidth - 3}
+          `}
+          strokeWidth={strokeWidth}
+          className={this._classNames.needle}
+          transform={`translate(${-this._innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
+          data-is-focusable={true}
+          onFocus={e => this._handleFocus(e, 'Needle')}
+          onBlur={this._handleBlur}
+          onMouseEnter={e => this._handleMouseOver(e, 'Needle')}
+          onMouseMove={e => this._handleMouseOver(e, 'Needle')}
+          onMouseLeave={this._handleMouseOut}
+        />
+      </g>
+    );
+  };
+
+  private _renderLegends = () => {
     if (this.props.hideLegend) {
       return null;
     }
 
-    const legends: ILegend[] = segments.map(segment => {
+    const legends: ILegend[] = this._segments.map(segment => {
       return {
         title: segment.legend,
         color: segment.color!,
@@ -340,54 +394,77 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return this.state.selectedLegend === '' && this.state.hoveredLegend === '';
   };
 
-  private _onSegmentFocus = (segmentLegend: string) => {
-    this.setState({ focusedSegment: segmentLegend });
-  };
-
-  private _onSegmentBlur = () => {
-    this.setState({ focusedSegment: '' });
-  };
-
-  private _onCalloutDismiss = () => {
-    this.setState({ isCalloutVisible: false });
-  };
-
-  private _onChartMouseOver = (
-    mouseEvent: React.MouseEvent<SVGElement>,
-    sweptFraction: number[],
-    arcsData: IGaugeChartSegment[],
-    minValue: number,
-  ) => {
-    if (this.state.isCalloutVisible) {
-      return;
-    }
-
-    const target = mouseEvent.target as SVGElement;
+  private _handleFocus = (focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) => {
     const hoverXValue: string =
       'Current value is ' +
-      (this.props.currentValueFormat === NumberFormat.Fraction
-        ? `${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`
-        : `${sweptFraction[0]}/${sweptFraction[1]}`);
-    let total = minValue;
-    const hoverYValues: IYValue[] = arcsData.map(segment => {
+      (this.props.chartValueFormat === GaugeValueFormat.Fraction
+        ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
+        : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`);
+    let total = this._minValue - 1;
+    const hoverYValues: IYValue[] = this._segments.map(segment => {
       const yValue: IYValue = {
         legend: segment.legend,
-        y: `${total} - ${total + segment.size}`,
+        y: `${total + 1} - ${total + segment.size}`,
         color: segment.color,
       };
       total += segment.size;
       return yValue;
     });
     this.setState({
-      hoveredElement: target,
+      focusedElement,
+      calloutTarget: focusEvent.target,
       isCalloutVisible: true,
       hoverXValue,
       hoverYValues,
     });
   };
 
-  private _onChartMouseOut = () => {
-    this.setState({ hoveredElement: null, isCalloutVisible: false, hoverXValue: '', hoverYValues: [] });
+  private _handleBlur = () => {
+    this.setState({
+      focusedElement: '',
+      calloutTarget: null,
+      isCalloutVisible: false,
+      hoverXValue: '',
+      hoverYValues: [],
+    });
+  };
+
+  private _handleCalloutDismiss = () => {
+    this.setState({ isCalloutVisible: false });
+  };
+
+  private _handleMouseOver = (mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string) => {
+    if (this._calloutAnchor === hoveredElement) {
+      return;
+    }
+
+    this._calloutAnchor = hoveredElement;
+    const hoverXValue: string =
+      'Current value is ' +
+      (this.props.chartValueFormat === GaugeValueFormat.Fraction
+        ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
+        : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`);
+    let total = this._minValue - 1;
+    const hoverYValues: IYValue[] = this._segments.map(segment => {
+      const yValue: IYValue = {
+        legend: segment.legend,
+        y: `${total + 1} - ${total + segment.size}`,
+        color: segment.color,
+      };
+      total += segment.size;
+      return yValue;
+    });
+    this.setState({
+      calloutTarget: mouseEvent.target,
+      isCalloutVisible: true,
+      hoverXValue,
+      hoverYValues,
+    });
+  };
+
+  private _handleMouseOut = () => {
+    this._calloutAnchor = '';
+    this.setState({ calloutTarget: null, isCalloutVisible: false, hoverXValue: '', hoverYValues: [] });
   };
 
   private _wrapContent = (content: string, id: string, maxWidth: number) => {

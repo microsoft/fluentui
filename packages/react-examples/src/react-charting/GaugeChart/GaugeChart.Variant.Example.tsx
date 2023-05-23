@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart } from '@fluentui/react-charting';
+import { DataVizPalette, GaugeChart, GaugeValueFormat } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
 
 interface IGCVariantExampleState {
   width: number;
   height: number;
-  currentValue: number;
+  chartValue: number;
 }
 
 export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExampleState> {
@@ -15,7 +15,7 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
     this.state = {
       width: 252,
       height: 173,
-      currentValue: 50,
+      chartValue: 50,
     };
   }
 
@@ -53,14 +53,14 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
             <label htmlFor="value-slider">Current value:</label>
             <input
               type="range"
-              value={this.state.currentValue}
+              value={this.state.chartValue}
               min={0}
               max={100}
               id="value-slider"
               onChange={this._onValueChange}
-              aria-valuetext={`Current value: ${this.state.currentValue}`}
+              aria-valuetext={`Current value: ${this.state.chartValue}`}
             />
-            <span>{this.state.currentValue}</span>
+            <span>{this.state.chartValue}</span>
           </StackItem>
         </Stack>
 
@@ -68,13 +68,13 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
           width={this.state.width}
           height={this.state.height}
           segments={[
-            { size: this.state.currentValue, color: DataVizPalette.color6, legend: 'Used' },
-            { size: 100 - this.state.currentValue, legend: 'Available' },
+            { size: this.state.chartValue, color: DataVizPalette.color6, legend: 'Used' },
+            { size: 100 - this.state.chartValue, legend: 'Available' },
           ]}
-          currentValue={this.state.currentValue}
+          chartValue={this.state.chartValue}
           chartTitle="Storage capacity"
           sublabel="used"
-          currentValueFormat="fraction"
+          chartValueFormat={GaugeValueFormat.Fraction}
         />
       </>
     );
@@ -87,6 +87,6 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
     this.setState({ height: parseInt(e.target.value, 10) });
   };
   private _onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ currentValue: parseInt(e.target.value, 10) });
+    this.setState({ chartValue: parseInt(e.target.value, 10) });
   };
 }
