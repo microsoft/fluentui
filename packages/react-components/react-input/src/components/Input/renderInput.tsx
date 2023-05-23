@@ -1,21 +1,16 @@
 /** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsx createElementNext */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
-import type { InputSlots, InputState } from './Input.types';
+import { createElementNext } from '@fluentui/react-jsx-runtime';
+import type { InputState } from './Input.types';
 
 /**
  * Render the final JSX of Input
  */
-export const renderInput_unstable = (state: InputState) => {
-  const { slots, slotProps } = getSlotsNext<InputSlots>(state);
-  return (
-    <slots.root {...slotProps.root}>
-      {slots.contentBefore && <slots.contentBefore {...slotProps.contentBefore} />}
-      <slots.input {...slotProps.input} />
-      {slots.contentAfter && <slots.contentAfter {...slotProps.contentAfter} />}
-    </slots.root>
-  );
-};
+export const renderInput_unstable = (state: InputState) => (
+  <state.root>
+    {state.contentBefore && <state.contentBefore />}
+    <state.input />
+    {state.contentAfter && <state.contentAfter />}
+  </state.root>
+);

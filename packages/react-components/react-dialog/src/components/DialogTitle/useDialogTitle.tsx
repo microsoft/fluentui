@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
+import { slotFromProps, slotFromShorthand } from '@fluentui/react-utilities';
+import type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { Dismiss20Regular } from '@fluentui/react-icons';
-import { resolveShorthand } from '@fluentui/react-utilities';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
 import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
 
@@ -16,22 +15,21 @@ import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
  * @param props - props from this instance of DialogTitle
  * @param ref - reference to root HTMLElement of DialogTitle
  */
-export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLElement>): DialogTitleState => {
-  const { as, action } = props;
+export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLDivElement>): DialogTitleState => {
+  const { as = 'h2', action } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const internalStyles = useDialogTitleInternalStyles();
+  const dialogTitleId = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
   return {
-    components: {
-      root: 'h2',
-      action: 'div',
-    },
-    root: getNativeElementProps(as ?? 'h2', {
+    components: { root: 'div', action: 'div' },
+    root: slotFromProps<DialogTitleSlots>(props, {
       ref,
-      id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
-      ...props,
+      elementType: as,
+      defaultProps: { id: dialogTitleId },
     }),
-    action: resolveShorthand(action, {
+    action: slotFromShorthand(action, {
+      elementType: 'div',
       required: modalType === 'non-modal',
       defaultProps: {
         children: (

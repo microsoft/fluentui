@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, NextComponentState } from '@fluentui/react-utilities';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
 
@@ -96,7 +96,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
   inertTrapFocus?: boolean;
 };
 
-export type DialogState = ComponentState<DialogSlots> &
+export type DialogState = NextComponentState<DialogSlots> &
   DialogContextValue & {
     content: React.ReactNode;
     trigger: React.ReactNode;

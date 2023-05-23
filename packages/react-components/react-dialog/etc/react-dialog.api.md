@@ -9,9 +9,9 @@
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
+import type { NextComponentState } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -39,11 +39,11 @@ export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
 
 // @public (undocumented)
 export type DialogActionsSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
+export type DialogActionsState = NextComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -56,11 +56,11 @@ export type DialogBodyProps = ComponentProps<DialogBodySlots> & {};
 
 // @public (undocumented)
 export type DialogBodySlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type DialogBodyState = ComponentState<DialogBodySlots>;
+export type DialogBodyState = NextComponentState<DialogBodySlots>;
 
 // @public
 export const DialogContent: ForwardRefComponent<DialogContentProps>;
@@ -73,11 +73,11 @@ export type DialogContentProps = ComponentProps<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogContentSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type DialogContentState = ComponentState<DialogContentSlots>;
+export type DialogContentState = NextComponentState<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogOpenChangeData = {
@@ -114,7 +114,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 export type DialogSlots = {};
 
 // @public (undocumented)
-export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
+export type DialogState = NextComponentState<DialogSlots> & DialogContextValue & {
     content: React_2.ReactNode;
     trigger: React_2.ReactNode;
 };
@@ -126,7 +126,7 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceElement = HTMLElement;
+export type DialogSurfaceElement = HTMLDivElement;
 
 // @public
 export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
@@ -134,11 +134,11 @@ export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 // @public (undocumented)
 export type DialogSurfaceSlots = {
     backdrop?: Slot<'div'>;
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
+export type DialogSurfaceState = NextComponentState<DialogSurfaceSlots>;
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
@@ -151,12 +151,12 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 // @public (undocumented)
 export type DialogTitleSlots = {
-    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+    root: NonNullable<Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>>;
     action?: Slot<'div'>;
 };
 
 // @public
-export type DialogTitleState = ComponentState<DialogTitleSlots>;
+export type DialogTitleState = NextComponentState<DialogTitleSlots>;
 
 // @public
 export const DialogTrigger: React_2.FC<DialogTriggerProps>;
@@ -205,19 +205,19 @@ export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactE
 export const useDialog_unstable: (props: DialogProps) => DialogState;
 
 // @public
-export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLElement>) => DialogActionsState;
+export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLDivElement>) => DialogActionsState;
 
 // @public
 export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
 
 // @public
-export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;
+export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLDivElement>) => DialogBodyState;
 
 // @public
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
 
 // @public
-export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
+export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLDivElement>) => DialogContentState;
 
 // @public
 export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
@@ -229,7 +229,7 @@ export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
 
 // @public
-export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLElement>) => DialogTitleState;
+export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLDivElement>) => DialogTitleState;
 
 // @public
 export const useDialogTitleStyles_unstable: (state: DialogTitleState) => DialogTitleState;
