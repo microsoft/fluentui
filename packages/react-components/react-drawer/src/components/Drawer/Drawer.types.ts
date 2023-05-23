@@ -45,8 +45,8 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
 
   /**
    * When this is set, the rest of the page is dimmed out and cannot be interacted with.
-   * The tab sequence is kept within the dialog and moving the focus outside
-   * the dialog will imply closing it. This is the default type of the component.
+   * The tab sequence is kept within the drawer and moving the focus outside
+   * the drawer will imply closing it. This is the default type of the component.
    * This prop is only used when `type` is `overlay`.
    *
    * @defaultvalue true

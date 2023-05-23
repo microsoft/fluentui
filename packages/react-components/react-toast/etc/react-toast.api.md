@@ -13,13 +13,16 @@ export const Toaster: React_2.FC<ToasterProps>;
 export type ToastId = string;
 
 // @public (undocumented)
-export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
-export function useToastController(): {
-    dispatchToast: (content: React_2.ReactNode, options?: Partial<ToastOptions> | undefined) => void;
-    dismissToast: (toastId: ToastId, toasterId?: string | undefined) => void;
-    dismissAllToasts: (toasterId?: string | undefined) => void;
+export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+
+// @public (undocumented)
+export function useToastController(toasterId?: ToasterId): {
+    dispatchToast: (content: React_2.ReactNode, options?: Partial<Omit<ToastOptions, "toasterId">> | undefined) => void;
+    dismissToast: (toastId: ToastId) => void;
+    dismissAllToasts: () => void;
     updateToast: (options: UpdateToastEventDetail) => void;
 };
 

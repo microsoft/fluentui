@@ -4,8 +4,8 @@ import { useId } from '@fluentui/react-components';
 
 export const PauseOnHover = () => {
   const toasterId = useId('toaster');
-  const { dispatchToast } = useToastController();
-  const notify = () => dispatchToast('Hover me!', { pauseOnHover: true, toasterId });
+  const { dispatchToast } = useToastController(toasterId);
+  const notify = () => dispatchToast('Hover me!', { pauseOnHover: true });
 
   return (
     <>
