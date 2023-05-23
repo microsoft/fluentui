@@ -240,6 +240,11 @@ export interface ICartesianChartProps {
   yMaxValue?: number;
 
   /**
+   * maximum data value point in x-axis
+   */
+  xMaxValue?: number;
+
+  /**
    * Number of ticks on the y-axis.
    * Tick count should be factor of difference between (yMinValue, yMaxValue)?
    * @default 4
@@ -528,4 +533,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /** Padding before first bar/line-point and after last bar/line-point */
   xAxisOuterPadding?: number;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }

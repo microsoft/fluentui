@@ -10,7 +10,7 @@ import { ToastId, ToastOptions, ToasterId, UpdateToastEventDetail } from './type
 
 const noop = () => undefined;
 
-export function useToastController() {
+export function useToastController(toasterId?: ToasterId) {
   const { targetDocument } = useFluent();
 
   return React.useMemo(() => {
@@ -24,18 +24,18 @@ export function useToastController() {
     }
 
     return {
-      dispatchToast: (content: React.ReactNode, options?: Partial<ToastOptions>) => {
+      dispatchToast: (content: React.ReactNode, options?: Partial<Omit<ToastOptions, 'toasterId'>>) => {
         dispatchToastVanilla(content, options, targetDocument);
       },
-      dismissToast: (toastId: ToastId, toasterId?: ToasterId) => {
+      dismissToast: (toastId: ToastId) => {
         dismissToastVanilla(toastId, toasterId, targetDocument);
       },
-      dismissAllToasts: (toasterId?: ToasterId) => {
+      dismissAllToasts: () => {
         dismissAllToastsVanilla(toasterId, targetDocument);
       },
       updateToast: (options: UpdateToastEventDetail) => {
         updateToastVanilla(options, targetDocument);
       },
     };
-  }, [targetDocument]);
+  }, [targetDocument, toasterId]);
 }

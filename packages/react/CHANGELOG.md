@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 17 May 2023 07:37:28 GMT and should not be manually modified.
+This log was last generated on Mon, 22 May 2023 07:38:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.109.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.5)
+
+Mon, 22 May 2023 07:38:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.4..@fluentui/react_v8.109.5)
+
+### Patches
+
+- fix: Links in tab style show focus outline on selected tab ([PR #27922](https://github.com/microsoft/fluentui/pull/27922) by sarah.higley@microsoft.com)
 
 ## [8.109.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.4)
 

@@ -4,8 +4,8 @@ import { useId } from '@fluentui/react-components';
 
 export const PauseOnWindowBlur = () => {
   const toasterId = useId('toaster');
-  const { dispatchToast } = useToastController();
-  const notify = () => dispatchToast('Click on another window!', { pauseOnWindowBlur: true, toasterId });
+  const { dispatchToast } = useToastController(toasterId);
+  const notify = () => dispatchToast('Click on another window!', { pauseOnWindowBlur: true });
 
   return (
     <>

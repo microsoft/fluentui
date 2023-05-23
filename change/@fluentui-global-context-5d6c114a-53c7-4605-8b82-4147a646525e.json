@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update test-ssr script",
+  "packageName": "@fluentui/global-context",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -17,7 +17,7 @@ function getEsmOnlyPackagesToCjsMapping() {
 }
 
 const config = createConfig({
-  setupFiles: ['./config/tests.js'],
+  setupFiles: ['./config/tests.js', 'jest-canvas-mock'],
   snapshotSerializers: ['@fluentui/jest-serializer-merge-styles', 'enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['./config/setup-env.js'],
   moduleNameMapper: {
