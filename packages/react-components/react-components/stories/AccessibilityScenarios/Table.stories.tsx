@@ -475,12 +475,7 @@ const RowNavigationTable = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table
-      aria-labelledby="row-navigation-table-heading"
-      {...keyboardNavAttr}
-      role="grid"
-      aria-label="Table with grid keyboard navigation"
-    >
+    <Table aria-labelledby="row-navigation-table-heading" {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
