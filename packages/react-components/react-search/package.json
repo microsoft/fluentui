@@ -2,7 +2,7 @@
   "name": "@fluentui/react-search",
   "version": "9.0.0-alpha.0",
   "private": true,
-  "description": "React components for building web experiences",
+  "description": "Search input for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
