@@ -94,8 +94,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this.margins = {
       top: this.props.margins?.top ?? 20,
       bottom: this.props.margins?.bottom ?? 35,
-      right: this._isRtl ? this.props.margins?.left ?? 40 : this.props.margins?.right ?? 20,
-      left: this._isRtl ? this.props.margins?.right ?? 20 : this.props.margins?.left ?? 40,
+      right: this._isRtl
+        ? this.props.margins?.left ?? 40
+        : this.props.margins?.right ?? this.props?.enableSecondaryYScale
+        ? 40
+        : 20,
+      left: this._isRtl
+        ? this.props.margins?.right ?? this.props?.enableSecondaryYScale
+          ? 40
+          : 20
+        : this.props.margins?.left ?? 40,
     };
   }
 
