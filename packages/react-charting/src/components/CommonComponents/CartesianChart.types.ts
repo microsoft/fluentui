@@ -230,6 +230,12 @@ export interface ICartesianChartProps {
   yAxisTickFormat?: any;
 
   /**
+   * Whether to enable the secondary y-axis scale or not
+   * False by default.
+   */
+  enableSecondaryYScale?: boolean;
+
+  /**
    * minimum  data value point in y-axis
    */
   yMinValue?: number;
@@ -371,6 +377,7 @@ export interface IChildProps {
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScale?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;
   containerWidth?: number;
