@@ -64,6 +64,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
+  private yAxisElementSecondary: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
   private _reqID: number;
@@ -188,6 +189,21 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yAxisPadding: this.props.yAxisPadding,
     };
 
+    const YAxisParamsSecondary = {
+      margins: this.margins,
+      containerWidth: this.state.containerWidth,
+      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+      yAxisElement: this.yAxisElementSecondary,
+      yAxisTickFormat: this.props.yAxisTickFormat!,
+      yAxisTickCount: this.props.yAxisTickCount!,
+      yMinValue: 0,
+      yMaxValue: 100,
+      tickPadding: 10,
+      maxOfYVal: 100,
+      yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+      yAxisPadding: this.props.yAxisPadding,
+    };
+
     /**
      * These scales used for 2 purposes.
      * 1. To create x and y axis
@@ -246,11 +262,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
+    let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
       yScale = createYAxis(YAxisParams, this._isRtl, axisData);
+      yScaleSecondary = createYAxis(YAxisParamsSecondary, this._isRtl, axisData);
     }
     this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
@@ -318,6 +336,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               transform={`translate(${
                 this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left!
               }, 0)`}
+              className={this._classNames.yAxis}
+            />
+            <g
+              ref={(e: SVGElement | null) => {
+                this.yAxisElementSecondary = e;
+              }}
+              id={`yAxisGElement2${this.idForGraph}`}
+              transform={`translate(${svgDimensions.width - this.margins.right!}, 0)`}
               className={this._classNames.yAxis}
             />
             {children}

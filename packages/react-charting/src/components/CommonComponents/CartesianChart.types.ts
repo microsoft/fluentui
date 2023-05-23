@@ -371,6 +371,7 @@ export interface IChildProps {
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScale?: any;
+  yScaleSecondary?: any;
   containerHeight?: number;
   containerWidth?: number;
 }

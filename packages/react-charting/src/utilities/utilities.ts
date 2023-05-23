@@ -333,9 +333,43 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean, axisData:
     .tickPadding(tickPadding)
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
+  return yAxisScale;
+}
+
+export function createYAxisSecondary(yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData) {
+  const {
+    yMinMaxValues = { startValue: 0, endValue: 0 },
+    yAxisElement = null,
+    yMaxValue = 0,
+    yMinValue = 0,
+    containerHeight,
+    containerWidth,
+    margins,
+    tickPadding = 12,
+    maxOfYVal = 0,
+    yAxisTickFormat,
+    yAxisTickCount = 4,
+    eventAnnotationProps,
+    eventLabelHeight,
+  } = yAxisParams;
+
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const yAxisScale = d3ScaleLinear()
+    .domain([0, 100])
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+  const axis = d3AxisRight(yAxisScale);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues([0, 20, 40, 60, 80, 100])
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = [0, 20, 40, 60, 80, 100];
   return yAxisScale;
 }
 
