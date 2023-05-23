@@ -1,7 +1,7 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
@@ -25,9 +25,10 @@ export const cardCSSVars = {
   cardBorderRadiusVar: '--fui-Card--border-radius',
 };
 
-const focusOutlineStyle = {
+const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
   outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
   outlineWidth: tokens.strokeWidthThick,
+  outlineOffset: '-2px', // FIXME: tokens.strokeWidthThick causes some weird bugs
 };
 
 const useStyles = makeStyles({
