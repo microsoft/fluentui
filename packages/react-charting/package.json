@@ -33,7 +33,8 @@
     "@fluentui/jest-serializer-merge-styles": "^8.0.27",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-webpack": "*",
+    "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.23",
