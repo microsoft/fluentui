@@ -1,38 +1,32 @@
 import * as React from 'react';
-import { SlotRenderFunction, UnknownSlotProps, SLOT_RENDER_FUNCTION_SYMBOL } from '@fluentui/react-utilities';
-
-type WithMetadata<Props extends {}> = Props & {
-  [SLOT_RENDER_FUNCTION_SYMBOL]: SlotRenderFunction<Props>;
-};
+import { UnknownSlotProps, isSlot, SlotComponent, SLOT_COMPONENT_METADATA_SYMBOL } from '@fluentui/react-utilities';
 
 export function createElement<P extends {}>(
   type: React.ElementType<P>,
   props?: P | null,
   ...children: React.ReactNode[]
 ): React.ReactElement<P> | null {
-  return hasRenderFunction(props)
-    ? createElementFromRenderFunction(type, props, children)
+  return isSlot<P>(props)
+    ? createElementFromSlotComponent(type, props, children)
     : React.createElement(type, props, ...children);
 }
 
-function createElementFromRenderFunction<P extends UnknownSlotProps>(
+function createElementFromSlotComponent<P extends UnknownSlotProps>(
   type: React.ElementType<P>,
-  props: WithMetadata<P>,
+  props: SlotComponent<P>,
   overrideChildren: React.ReactNode[],
 ): React.ReactElement<P> | null {
-  const { [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction, ...renderProps } = props;
+  const { [SLOT_COMPONENT_METADATA_SYMBOL]: metadata, ...renderProps } = props;
+  if (metadata.renderFunction) {
+    if (overrideChildren.length > 0) {
+      renderProps.children = React.createElement(React.Fragment, {}, ...overrideChildren);
+    }
 
-  if (overrideChildren.length > 0) {
-    renderProps.children = React.createElement(React.Fragment, {}, ...overrideChildren);
+    return React.createElement(
+      React.Fragment,
+      {},
+      metadata.renderFunction(type, renderProps as UnknownSlotProps as P),
+    ) as React.ReactElement<P>;
   }
-
-  return React.createElement(
-    React.Fragment,
-    {},
-    renderFunction(type, renderProps as UnknownSlotProps as P),
-  ) as React.ReactElement<P>;
-}
-
-export function hasRenderFunction<Props extends {}>(props?: Props | null): props is WithMetadata<Props> {
-  return Boolean(props?.hasOwnProperty(SLOT_RENDER_FUNCTION_SYMBOL));
+  return React.createElement(type, props, ...overrideChildren);
 }

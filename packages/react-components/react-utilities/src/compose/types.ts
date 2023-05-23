@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
@@ -232,4 +233,26 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
  */
 export type SlotClassNames<Slots> = {
   [SlotName in keyof Slots]-?: string;
+};
+
+export type SlotComponent<Props extends UnknownSlotProps> = Props & {
+  /**
+   * **NOTE**: Slot components are not callable.
+   */
+  (props: React.PropsWithChildren<{}>): React.ReactElement | null;
+  [SLOT_COMPONENT_METADATA_SYMBOL]: Readonly<SlotComponentMetadata<Props>>;
+};
+
+export type SlotComponentMetadata<Props extends UnknownSlotProps> = {
+  renderFunction?: SlotRenderFunction<Props>;
+  elementType?:
+    | React.ComponentType<Props>
+    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+};
+
+/**
+ * Defines the State object of a component given its slots.
+ */
+export type NextComponentState<Slots extends SlotPropsRecord> = Pick<ComponentState<Slots>, 'components'> & {
+  [Key in keyof Slots]: SlotComponent<ExtractSlotProps<Slots[Key]>>;
 };

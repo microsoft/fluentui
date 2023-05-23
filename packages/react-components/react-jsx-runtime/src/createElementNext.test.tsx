@@ -1,12 +1,12 @@
 /** @jsxRuntime classic */
 /** @jsxFrag Fragment */
-/** @jsx createElement */
+/** @jsx createElementNext */
 
 import { render } from '@testing-library/react';
-import { ComponentProps, ComponentState, Slot, getSlotsNext, resolveShorthand } from '@fluentui/react-utilities';
-import { createElement } from './createElement';
+import { ComponentProps, NextComponentState, Slot, slot } from '@fluentui/react-utilities';
+import { createElementNext } from './createElementNext';
 
-describe('createElement', () => {
+describe('createElement next', () => {
   describe('general behavior tests', () => {
     it('handles a string', () => {
       const result = render(<div>Hello world</div>);
@@ -65,21 +65,20 @@ describe('createElement', () => {
 
   describe('custom behavior tests', () => {
     it('keeps children from "defaultProps" in a render callback', () => {
-      type TestComponentSlots = { slot: Slot<'div'> };
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      type TestComponentSlots = { slot: NonNullable<Slot<'div'>> };
+      type TestComponentState = NextComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { slot: 'div' },
-
-          slot: resolveShorthand(props.slot, {
+          slot: slot.fromShorthand(props.slot, {
+            required: true,
+            elementType: 'div',
             defaultProps: { children: 'Default Children', id: 'slot' },
           }),
         };
-        const { slots, slotProps } = getSlotsNext<TestComponentSlots>(state);
-
-        return <slots.slot {...slotProps.slot} />;
+        return <state.slot />;
       };
 
       const children = jest.fn().mockImplementation((Component, props) => (
@@ -106,23 +105,20 @@ describe('createElement', () => {
     });
 
     it('keeps children from a render template in a render callback', () => {
-      type TestComponentSlots = { outer: Slot<'div'>; inner: Slot<'div'> };
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      type TestComponentSlots = { outer: NonNullable<Slot<'div'>>; inner: NonNullable<Slot<'div'>> };
+      type TestComponentState = NextComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
-          components: { inner: 'div', outer: 'div' },
-
-          inner: resolveShorthand(props.inner, { defaultProps: { id: 'inner' } }),
-          outer: resolveShorthand(props.outer, { defaultProps: { id: 'outer' } }),
+          components: { outer: 'div', inner: 'div' },
+          inner: slot.fromShorthand(props.inner, { required: true, defaultProps: { id: 'inner' }, elementType: 'div' }),
+          outer: slot.fromShorthand(props.outer, { required: true, defaultProps: { id: 'outer' }, elementType: 'div' }),
         };
-        const { slots, slotProps } = getSlotsNext<TestComponentSlots>(state);
-
         return (
-          <slots.outer {...slotProps.outer}>
-            <slots.inner {...slotProps.inner} />
-          </slots.outer>
+          <state.outer>
+            <state.inner />
+          </state.outer>
         );
       };
 
@@ -162,5 +158,28 @@ describe('createElement', () => {
         </div>
       `);
     });
+
+    it("should support 'as' property to opt-out of base element type", () => {
+      type TestComponentSlots = { slot: NonNullable<Slot<'div', 'span'>> };
+      type TestComponentState = NextComponentState<TestComponentSlots>;
+      type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
+
+      const TestComponent = (props: TestComponentProps) => {
+        const state: TestComponentState = {
+          components: { slot: 'div' },
+          slot: slot.fromShorthand(props.slot, {
+            required: true,
+            elementType: 'div',
+          }),
+        };
+        return <state.slot />;
+      };
+
+      const result = render(<TestComponent slot={{ as: 'span' }} />);
+
+      expect(result.container.firstChild).toMatchInlineSnapshot(`<span />`);
+    });
+
+    it.todo("should pass 'as' property to base element that aren't html element");
   });
 });

@@ -106,7 +106,11 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // ResolveShorthandFunction is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // ResolveShorthandOptions is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   SlotClassNames,
