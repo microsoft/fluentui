@@ -28,6 +28,7 @@ import {
   rotateXAxisLabels,
   Points,
   pointTypes,
+  createYAxisSecondary,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 
@@ -268,7 +269,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
       yScale = createYAxis(YAxisParams, this._isRtl, axisData);
-      yScaleSecondary = createYAxis(YAxisParamsSecondary, this._isRtl, axisData);
+      yScaleSecondary = createYAxisSecondary(YAxisParamsSecondary, this._isRtl, axisData);
     }
     this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
@@ -291,6 +292,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       ...this.state,
       xScale,
       yScale,
+      yScaleSecondary,
     });
 
     let focusDirection;
@@ -343,7 +345,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 this.yAxisElementSecondary = e;
               }}
               id={`yAxisGElement2${this.idForGraph}`}
-              transform={`translate(${svgDimensions.width - this.margins.right!}, 0)`}
+              transform={`translate(${
+                this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+              }, 0)`}
               className={this._classNames.yAxis}
             />
             {children}

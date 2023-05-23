@@ -358,18 +358,22 @@ export function createYAxisSecondary(yAxisParams: IYAxisParams, isRtl: boolean, 
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
-    .domain([0, 100])
+    .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const axis = d3AxisRight(yAxisScale);
+  const axis = isRtl ? d3AxisLeft(yAxisScale) : d3AxisRight(yAxisScale);
   const yAxis = axis
     .tickPadding(tickPadding)
-    .tickValues([0, 20, 40, 60, 80, 100])
+    .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = [0, 20, 40, 60, 80, 100];
+  axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }
 
