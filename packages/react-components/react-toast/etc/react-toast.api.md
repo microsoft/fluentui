@@ -19,10 +19,10 @@ export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | To
 export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 
 // @public (undocumented)
-export function useToastController(): {
-    dispatchToast: (content: React_2.ReactNode, options?: Partial<ToastOptions> | undefined) => void;
-    dismissToast: (toastId: ToastId, toasterId?: string | undefined) => void;
-    dismissAllToasts: (toasterId?: string | undefined) => void;
+export function useToastController(toasterId?: ToasterId): {
+    dispatchToast: (content: React_2.ReactNode, options?: Partial<Omit<ToastOptions, "toasterId">> | undefined) => void;
+    dismissToast: (toastId: ToastId) => void;
+    dismissAllToasts: () => void;
     updateToast: (options: UpdateToastEventDetail) => void;
 };
 
