@@ -45,7 +45,6 @@ export type HTMLElementConstructorName =
   | 'HTMLDataElement'
   | 'HTMLDataListElement'
   | 'HTMLDetailsElement'
-  | 'HTMLDialogElement'
   | 'HTMLDivElement'
   | 'HTMLDListElement'
   | 'HTMLEmbedElement'

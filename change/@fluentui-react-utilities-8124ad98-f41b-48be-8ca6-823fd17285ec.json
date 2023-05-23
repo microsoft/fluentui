@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: removes HTMLDialogElement from isHTMLElement type",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
