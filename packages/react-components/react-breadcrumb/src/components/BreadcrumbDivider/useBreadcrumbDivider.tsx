@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-icons';
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
-import { getRTL } from '@fluentui/react/lib/Utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render BreadcrumbDivider.
@@ -44,14 +44,14 @@ export const useBreadcrumbDivider_unstable = (
 
 const dividerIcons = {
   rtl: {
-    small: <ChevronRight12Regular />,
-    medium: <ChevronRight16Regular />,
-    large: <ChevronRight20Regular />,
-  },
-  ltr: {
     small: <ChevronLeft12Regular />,
     medium: <ChevronLeft16Regular />,
     large: <ChevronLeft20Regular />,
+  },
+  ltr: {
+    small: <ChevronRight12Regular />,
+    medium: <ChevronRight16Regular />,
+    large: <ChevronRight20Regular />,
   },
 };
 
@@ -62,15 +62,16 @@ const dividerIcons = {
  * @param dividerType - type of the divider, can be `slash` or `chevron`
  */
 function getDividerIcon(size: BreadcrumbProps['size'] = 'medium', dividerType: BreadcrumbProps['dividerType']) {
-  const dividerIcon = dividerIcons.ltr; //getRTL() ? dividerIcons.rtl : dividerIcons.ltr;
+  const { dir } = useFluent();
+  const dividerIcon = dir === 'rtl' ? dividerIcons.rtl : dividerIcons.ltr;
   if (size === 'small') {
     if (dividerType === 'slash') {
-      return getRTL() ? '\\' : '/';
+      return dir === 'rtl' ? '\\' : '/';
     }
     return dividerIcon.small;
   }
   if (size === 'large') {
-    return dividerIcon.medium;
+    return dividerIcon.large;
   }
-  return dividerIcon.large;
+  return dividerIcon.medium;
 }
