@@ -96,11 +96,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       bottom: this.props.margins?.bottom ?? 35,
       right: this._isRtl
         ? this.props.margins?.left ?? 40
-        : this.props.margins?.right ?? this.props?.enableSecondaryYScale
+        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions !== undefined
         ? 40
         : 20,
       left: this._isRtl
-        ? this.props.margins?.right ?? this.props?.enableSecondaryYScale
+        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions !== undefined
           ? 40
           : 20
         : this.props.margins?.left ?? 40,
@@ -205,10 +205,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yAxisElement: this.yAxisElementSecondary,
       yAxisTickFormat: this.props.yAxisTickFormat!,
       yAxisTickCount: this.props.yAxisTickCount!,
-      yMinValue: 0,
-      yMaxValue: 100,
+      yMinValue: this.props.secondaryYScaleOptions?.yMinValue ?? 0,
+      yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
       tickPadding: 10,
-      maxOfYVal: 100,
+      maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
       yMinMaxValues: getMinMaxOfYAxis(points, chartType),
       yAxisPadding: this.props.yAxisPadding,
     };
@@ -278,7 +278,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
       yScale = createYAxis(YAxisParams, this._isRtl, axisData);
-      if (this.props.enableSecondaryYScale) {
+      if (this.props?.secondaryYScaleOptions !== undefined) {
         yScaleSecondary = createYAxisSecondary(YAxisParamsSecondary, this._isRtl, axisData);
       }
     }

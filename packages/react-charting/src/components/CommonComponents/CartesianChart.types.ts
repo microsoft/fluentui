@@ -230,10 +230,15 @@ export interface ICartesianChartProps {
   yAxisTickFormat?: any;
 
   /**
-   * Whether to enable the secondary y-axis scale or not
-   * False by default.
+   * Secondary y-scale options
+   * By default this is not defined, meaning there will be no secondary y-scale.
    */
-  enableSecondaryYScale?: boolean;
+  secondaryYScaleOptions?: {
+    /** Minimum value (0 by default) */
+    yMinValue?: number;
+    /** Maximum value (100 by default) */
+    yMaxValue?: number;
+  };
 
   /**
    * minimum  data value point in y-axis
