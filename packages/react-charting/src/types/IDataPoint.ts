@@ -490,6 +490,11 @@ export interface ILineDataInVerticalStackedBarChart {
    */
   data?: number;
   yAxisCalloutData?: string;
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  isUsingSecondaryYScale?: boolean;
 }
 
 export interface IGVBarChartSeriesPoint {
