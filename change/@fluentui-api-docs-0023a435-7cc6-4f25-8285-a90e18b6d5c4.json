@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: bump api-extractor and tsdoc which enables us to remove --isolateModules hacks within our code",
+  "packageName": "@fluentui/api-docs",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
