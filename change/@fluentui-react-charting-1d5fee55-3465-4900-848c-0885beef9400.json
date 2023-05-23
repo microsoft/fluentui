@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Implementation of Horizontal Bar Chart with Axis",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}
