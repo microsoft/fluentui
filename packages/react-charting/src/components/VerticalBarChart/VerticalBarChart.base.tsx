@@ -177,7 +177,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             <>
               <g>{this._bars}</g>
               {this._isHavingLine && (
-                <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
+                <g>
+                  {this._createLine(
+                    props.xScale!,
+                    props.yScale!,
+                    props.containerHeight,
+                    props.containerWidth,
+                    props.yScaleSecondary,
+                  )}
+                </g>
               )}
             </>
           );
@@ -195,6 +203,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     yScale: any,
     containerHeight: number = 0,
     containerWidth: number = 0,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yScaleSecondary?: any,
   ): React.ReactNode => {
     const isNumericAxis = this._xAxisType === XAxisTypes.NumericAxis;
     const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumericAxis);
@@ -214,7 +224,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => yScale(d.y));
+      .y((d: any) => (d?.isUsingSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
     const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
     const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
@@ -244,12 +254,21 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
 
     const dots: React.ReactNode[] = lineData.map(
-      (item: { x: number | string; y: number; point: IVerticalBarChartDataPoint; index: number }, index: number) => {
+      (
+        item: {
+          x: number | string;
+          y: number;
+          isUsingSecondaryYScale?: boolean;
+          point: IVerticalBarChartDataPoint;
+          index: number;
+        },
+        index: number,
+      ) => {
         return (
           <circle
             key={index}
             cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
-            cy={yScale(item.y)}
+            cy={item?.isUsingSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
             onMouseOut={this._onBarLeave}
             r={8}
