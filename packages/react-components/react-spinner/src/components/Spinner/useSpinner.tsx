@@ -21,11 +21,15 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { role = 'progressbar', tabIndex, ...rest } = props;
   const nativeRoot = getNativeElementProps('div', { ref, role, ...rest }, ['size']);
 
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(true);
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
   React.useEffect(() => {
+    if (delay <= 0) {
+      return;
+    }
+    setIsVisible(false);
     setDelayTimeout(() => {
       setIsVisible(true);
     }, delay);
@@ -33,7 +37,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     return () => {
       clearDelayTimeout();
     };
-  }, [setDelayTimeout, clearDelayTimeout, isVisible, delay]);
+  }, [setDelayTimeout, clearDelayTimeout, delay]);
 
   const labelShorthand = resolveShorthand(props.label, {
     defaultProps: {
