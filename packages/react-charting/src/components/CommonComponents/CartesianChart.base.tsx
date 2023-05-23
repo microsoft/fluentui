@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
@@ -10,7 +11,7 @@ import {
   IYValueHover,
 } from '../../index';
 import {
-  ChartHoverCard,
+  // ChartHoverCard,
   convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
@@ -32,6 +33,7 @@ import {
 import { LegendShape, Shape } from '../Legends/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
+const ChartHoverCard = lazy(() => import('../../utilities/ChartHoverCard/ChartHoverCard'));
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -151,110 +153,121 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
-
-    const XAxisParams = {
-      domainNRangeValues: getDomainNRangeValues(
-        points,
-        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
-        this.state.containerWidth,
-        chartType,
-        this._isRtl,
-        this.props.xAxisType,
-        this.props.barwidth!,
-        this.props.tickValues!,
-      ),
-      xAxisElement: this.xAxisElement!,
-      showRoundOffXTickValues: true,
-      xAxisCount: this.props.xAxisTickCount,
-      xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
-      xAxisPadding: this.props.xAxisPadding,
-      xAxisInnerPadding: this.props.xAxisInnerPadding,
-      xAxisOuterPadding: this.props.xAxisOuterPadding,
-    };
-
-    const YAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
-      yAxisElement: this.yAxisElement,
-      yAxisTickFormat: this.props.yAxisTickFormat!,
-      yAxisTickCount: this.props.yAxisTickCount!,
-      yMinValue: this.props.yMinValue || 0,
-      yMaxValue: this.props.yMaxValue || 0,
-      tickPadding: 10,
-      maxOfYVal: this.props.maxOfYVal,
-      yMinMaxValues: getMinMaxOfYAxis(points, chartType),
-      yAxisPadding: this.props.yAxisPadding,
-    };
-
-    /**
-     * These scales used for 2 purposes.
-     * 1. To create x and y axis
-     * 2. To draw the graph.
-     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let xScale: any;
-    switch (this.props.xAxisType!) {
-      case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, culture);
-        break;
-      case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(
-          XAxisParams,
-          this.props.tickParams!,
-          culture,
-          dateLocalizeOptions,
-          timeFormatLocale,
-          customDateTimeFormatter,
-        );
-        break;
-      case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
-        break;
-      default:
-        xScale = createNumericXAxis(XAxisParams, culture);
-    }
-    this._xScale = xScale;
-
-    /*
-     * To enable wrapping of x axis tick values or to display complete x axis tick values,
-     * we need to calculate how much space it needed to render the text.
-     * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
-     * Required space will be calculated first time chart rendering and if any width/height of chart updated.
-     * */
-    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
-      const wrapLabelProps = {
-        node: this.xAxisElement,
-        xAxis: xScale,
-        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
-        noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+    let children = null;
+    let callout: JSX.Element | null = null;
+    if (this.chartContainer) {
+      const XAxisParams = {
+        domainNRangeValues: getDomainNRangeValues(
+          points,
+          this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
+          this.state.containerWidth,
+          chartType,
+          this._isRtl,
+          this.props.xAxisType,
+          this.props.barwidth!,
+          this.props.tickValues!,
+        ),
+        xAxisElement: this.xAxisElement!,
+        showRoundOffXTickValues: true,
+        xAxisCount: this.props.xAxisTickCount,
+        xAxistickSize: this.props.xAxistickSize,
+        tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
+        xAxisPadding: this.props.xAxisPadding,
+        xAxisInnerPadding: this.props.xAxisInnerPadding,
+        xAxisOuterPadding: this.props.xAxisOuterPadding,
       };
-      const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
-      // this value need to be updated for draw graph updated. So instead of using private value, using set state.
-      if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
-        this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
+
+      const YAxisParams = {
+        margins: this.margins,
+        containerWidth: this.state.containerWidth,
+        containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+        yAxisElement: this.yAxisElement,
+        yAxisTickFormat: this.props.yAxisTickFormat!,
+        yAxisTickCount: this.props.yAxisTickCount!,
+        yMinValue: this.props.yMinValue || 0,
+        yMaxValue: this.props.yMaxValue || 0,
+        tickPadding: 10,
+        maxOfYVal: this.props.maxOfYVal,
+        yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+        yAxisPadding: this.props.yAxisPadding,
+      };
+
+      /**
+       * These scales used for 2 purposes.
+       * 1. To create x and y axis
+       * 2. To draw the graph.
+       * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+       */
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let xScale: any;
+      switch (this.props.xAxisType!) {
+        case XAxisTypes.NumericAxis:
+          xScale = createNumericXAxis(XAxisParams, culture);
+          break;
+        case XAxisTypes.DateAxis:
+          xScale = createDateXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            culture,
+            dateLocalizeOptions,
+            timeFormatLocale,
+            customDateTimeFormatter,
+          );
+          break;
+        case XAxisTypes.StringAxis:
+          xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
+          break;
+        default:
+          xScale = createNumericXAxis(XAxisParams, culture);
+      }
+      this._xScale = xScale;
+
+      /*
+       * To enable wrapping of x axis tick values or to display complete x axis tick values,
+       * we need to calculate how much space it needed to render the text.
+       * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
+       * Required space will be calculated first time chart rendering and if any width/height of chart updated.
+       * */
+      if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+        const wrapLabelProps = {
+          node: this.xAxisElement,
+          xAxis: xScale,
+          showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+          noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+        };
+        const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
+        // this value need to be updated for draw graph updated. So instead of using private value, using set state.
+        if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
+          this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
+        }
+      }
+
+      /**
+       * These scales used for 2 purposes.
+       * 1. To create x and y axis
+       * 2. To draw the graph.
+       * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+       */
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let yScale: any;
+      const axisData: IAxisData = { yAxisDomainValues: [] };
+      if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
+        yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
+      } else {
+        yScale = createYAxis(YAxisParams, this._isRtl, axisData);
+      }
+      this.props.getAxisData && this.props.getAxisData(axisData);
+      // Callback function for chart, returns axis
+      this._getData(xScale, yScale);
+      children = this.props.children({
+        ...this.state,
+        xScale,
+        yScale,
+      });
+      if (!this.props.hideTooltip && calloutProps!.isCalloutVisible) {
+        callout = this._generateCallout(calloutProps, chartHoverProps);
       }
     }
-
-    /**
-     * These scales used for 2 purposes.
-     * 1. To create x and y axis
-     * 2. To draw the graph.
-     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScale: any;
-    const axisData: IAxisData = { yAxisDomainValues: [] };
-    if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
-      yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
-    } else {
-      yScale = createYAxis(YAxisParams, this._isRtl, axisData);
-    }
-    this.props.getAxisData && this.props.getAxisData(axisData);
-    // Callback function for chart, returns axis
-    this._getData(xScale, yScale);
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -268,12 +281,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       width: this.state.containerWidth,
       height: this.state.containerHeight,
     };
-
-    const children = this.props.children({
-      ...this.state,
-      xScale,
-      yScale,
-    });
 
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
@@ -323,35 +330,50 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {children}
           </svg>
         </FocusZone>
+
         {!this.props.hideLegend && (
           <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {this.props.legendBars}
           </div>
         )}
-        {/** The callout is used for narration, so keep it mounted on the DOM */}
-        <Callout
-          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
-          /** Keep the callout updated with details of focused/hovered chart element */
-          shouldUpdateWhenHidden={true}
-          {...calloutProps}
-        >
-          {/** Given custom callout, then it will render */}
-          {this.props.customizedCallout && this.props.customizedCallout}
-          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-            <ChartHoverCard
-              XValue={calloutProps.XValue}
-              Legend={calloutProps.legend!}
-              YValue={calloutProps.YValue!}
-              color={calloutProps.color!}
-              culture={this.props.culture}
-              {...chartHoverProps}
-            />
-          )}
-        </Callout>
+        {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
+          <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>
+        )}
       </div>
+    );
+  }
+  /**
+   * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
+   * only the calloutprops and charthover props changes.
+   * @param calloutProps
+   * @param chartHoverProps
+   * @returns
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
+    return (
+      <Callout
+        hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+        /** Keep the callout updated with details of focused/hovered chart element */
+        shouldUpdateWhenHidden={true}
+        {...calloutProps}
+      >
+        {/** Given custom callout, then it will render */}
+        {this.props.customizedCallout && this.props.customizedCallout}
+        {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+        {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+        {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+        {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+          <ChartHoverCard
+            XValue={calloutProps.XValue}
+            Legend={calloutProps.legend!}
+            YValue={calloutProps.YValue!}
+            color={calloutProps.color!}
+            culture={this.props.culture}
+            {...chartHoverProps}
+          />
+        )}
+      </Callout>
     );
   }
 

@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { ILegend, Legends } from '../Legends/index';
+//import { ILegend, Legends } from '../Legends/index';
+import { ILegend } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -36,6 +37,10 @@ import {
   getNextColor,
   getColorFromToken,
 } from '../../utilities/index';
+
+import { lazy } from 'react';
+
+const Legends = lazy(() => import('../Legends/Legends'));
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -163,6 +168,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element | null;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -192,6 +198,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._tooltipId = getId('LineChartTooltipId_');
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle');
+    this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -223,7 +230,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._calloutPoints = calloutData(points);
     }
 
-    const legendBars = this._createLegends(this._points!);
+    // const legendBars = this._createLegendsMemoized(this._points!);
+    let legendBars = null;
+    if (!this.props.hideLegend) {
+      legendBars = this._createLegendsMemoized(this._points!);
+    }
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
@@ -376,7 +387,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
-  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
+  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element | null {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: LineChartDataWithIndex) => {
@@ -438,18 +449,22 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         })
       : [];
 
-    const legends = (
-      <Legends
-        legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
-        enabledWrapLines={this.props.enabledLegendsWrapLines}
-        overflowProps={this.props.legendsOverflowProps}
-        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
-        overflowText={this.props.legendsOverflowText}
-        {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: this._onHoverCardHide })}
-        {...this.props.legendProps}
-      />
-    );
-    return legends;
+    if (!this.props.hideLegend) {
+      return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <Legends
+            legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
+            enabledWrapLines={this.props.enabledLegendsWrapLines}
+            overflowProps={this.props.legendsOverflowProps}
+            focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+            overflowText={this.props.legendsOverflowText}
+            {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: this._onHoverCardHide })}
+            {...this.props.legendProps}
+          />
+        </React.Suspense>
+      );
+    }
+    return null;
   }
 
   private _closeCallout = () => {

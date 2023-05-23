@@ -232,7 +232,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     opacity: 0.8;
                   }
             >
-               
+
             </div>
           </div>
           <div
