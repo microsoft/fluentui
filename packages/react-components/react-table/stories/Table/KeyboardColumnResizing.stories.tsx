@@ -22,6 +22,9 @@ import {
   useArrowNavigationGroup,
   TableColumnId,
   useFocusFinders,
+  makeStyles,
+  tokens,
+  shorthands,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -118,6 +121,13 @@ const items: Item[] = [
   },
 ];
 
+const useStyles = makeStyles({
+  currentlyResizing: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  },
+});
+
 export const KeyboardColumnResizing = () => {
   const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
@@ -133,6 +143,8 @@ export const KeyboardColumnResizing = () => {
       minWidth: 150,
     },
   });
+
+  const [currentlyResizing, setCurrentlyResizing] = React.useState<TableColumnId | undefined>();
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
@@ -153,11 +165,19 @@ export const KeyboardColumnResizing = () => {
 
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
 
+  const styles = useStyles();
+
   // This will focus on the correct table header cell when the keyboard mode is turned off
   const onKeyboardModeChange = React.useCallback(
     (columnId: TableColumnId, isKeyboardMode: boolean) => {
       const element = refMap.current[columnId];
-      if (!isKeyboardMode && element) {
+      if (!element) {
+        return;
+      }
+      if (isKeyboardMode) {
+        setCurrentlyResizing(columnId);
+      } else {
+        setCurrentlyResizing(undefined);
         findFirstFocusable(element)?.focus();
       }
     },
@@ -174,6 +194,7 @@ export const KeyboardColumnResizing = () => {
                 <TableHeaderCell
                   key={column.columnId}
                   ref={el => (refMap.current[column.columnId] = el)}
+                  className={currentlyResizing === column.columnId ? styles.currentlyResizing : undefined}
                   {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
                 >
                   {column.renderHeaderCell()}

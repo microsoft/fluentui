@@ -27,6 +27,9 @@ import {
   MenuItem,
   useFocusFinders,
   TableColumnId,
+  makeStyles,
+  tokens,
+  shorthands,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -164,16 +167,47 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const useStyles = makeStyles({
+  currentlyResizing: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  },
+});
+
 export const KeyboardColumnResizing = () => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+  const [currentlyResizing, setCurrentlyResizing] = React.useState<TableColumnId | undefined>();
   const { findFirstFocusable } = useFocusFinders();
+
+  const columnSizingOptions = React.useMemo(
+    () => ({
+      file: {
+        minWidth: 80,
+        defaultWidth: 120,
+      },
+      author: {
+        defaultWidth: 180,
+        minWidth: 120,
+        idealWidth: 180,
+      },
+    }),
+    [],
+  );
+
+  const styles = useStyles();
 
   // This will focus on the correct table header cell when the keyboard mode is turned off
   const onKeyboardModeChange = React.useCallback(
     (columnId: TableColumnId, isKeyboardMode: boolean) => {
       const element = refMap.current[columnId];
-      if (!isKeyboardMode && element) {
+      if (!element) {
+        return;
+      }
+      if (isKeyboardMode) {
+        setCurrentlyResizing(columnId);
+      } else {
         findFirstFocusable(element)?.focus();
+        setCurrentlyResizing(undefined);
       }
     },
     [findFirstFocusable],
@@ -187,17 +221,7 @@ export const KeyboardColumnResizing = () => {
       getRowId={item => item.file.label}
       selectionMode="multiselect"
       resizableColumns
-      columnSizingOptions={{
-        file: {
-          minWidth: 80,
-          defaultWidth: 120,
-        },
-        author: {
-          defaultWidth: 180,
-          minWidth: 120,
-          idealWidth: 180,
-        },
-      }}
+      columnSizingOptions={columnSizingOptions}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
@@ -205,7 +229,10 @@ export const KeyboardColumnResizing = () => {
             dataGrid.resizableColumns ? (
               <Menu openOnContext>
                 <MenuTrigger>
-                  <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                  <DataGridHeaderCell
+                    ref={el => (refMap.current[columnId] = el)}
+                    className={currentlyResizing === columnId ? styles.currentlyResizing : undefined}
+                  >
                     {renderHeaderCell()}
                   </DataGridHeaderCell>
                 </MenuTrigger>
