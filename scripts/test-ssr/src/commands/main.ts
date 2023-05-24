@@ -63,10 +63,10 @@ export async function main(params: MainParams) {
 
       if (isExcludedPath) {
         acc.excludedStories.push(absoluteStoriesPath);
-      } else {
-        acc.allowedStories.push(absoluteStoriesPath);
+        return acc;
       }
 
+      acc.allowedStories.push(absoluteStoriesPath);
       return acc;
     },
     { allowedStories: [], excludedStories: [] },

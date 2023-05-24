@@ -48,5 +48,5 @@ describe('buildAssets', () => {
       })();
       "
     `);
-  }, 15000);
+  }, /* Sets 15s timeout to allow for the build to complete */ 15000);
 });

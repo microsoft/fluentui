@@ -18,14 +18,13 @@ main(argv as { stories: string }).catch((err: Error) => {
   console.error('');
   console.error(chalk.bgRed.whiteBright(' @fluentui/test-ssr '));
 
-  if (err instanceof RenderError) {
-    console.error('  The reference error is below, you will see it in Devtools on the opened page.');
-    console.error('');
-  } else {
-    console.error('  The test failed, the error below contains relevant information.');
-    console.error('');
-  }
+  const customErrorMessage =
+    err instanceof RenderError
+      ? '  The reference error is below, you will see it in Devtools on the opened page.'
+      : '  The test failed, the error below contains relevant information.';
 
+  console.error(customErrorMessage);
+  console.error('');
   console.error(err);
 
   process.exit(1);
