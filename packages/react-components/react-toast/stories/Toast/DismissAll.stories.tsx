@@ -4,9 +4,9 @@ import { useId } from '@fluentui/react-components';
 
 export const DismissAll = () => {
   const toasterId = useId('toaster');
-  const { dispatchToast, dismissAllToasts } = useToastController();
-  const notify = () => dispatchToast('This is a toast', { toasterId });
-  const dismissAll = () => dismissAllToasts(toasterId);
+  const { dispatchToast, dismissAllToasts } = useToastController(toasterId);
+  const notify = () => dispatchToast('This is a toast');
+  const dismissAll = () => dismissAllToasts();
 
   return (
     <>

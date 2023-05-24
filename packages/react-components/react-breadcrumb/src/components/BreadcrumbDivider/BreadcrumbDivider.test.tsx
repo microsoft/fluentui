@@ -49,10 +49,13 @@ describe('BreadcrumbDivider', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <nav
+          aria-label="breadcrumb"
           class="fui-Breadcrumb"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <ol
             class="fui-Breadcrumb__list"
+            role="list"
           >
             <li
               aria-hidden="true"
@@ -77,10 +80,13 @@ describe('BreadcrumbDivider', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <nav
+          aria-label="breadcrumb"
           class="fui-Breadcrumb"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <ol
             class="fui-Breadcrumb__list"
+            role="list"
           >
             <li
               aria-hidden="true"

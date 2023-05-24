@@ -9,6 +9,7 @@ type Item = {
   key: number;
   item?: string;
   buttonProps?: {
+    'aria-label'?: string;
     onClick?: () => void;
     icon?: ButtonProps['icon'];
     disabled?: boolean;
@@ -28,6 +29,7 @@ const buttonItems: Item[] = [
     key: 1,
     buttonProps: {
       icon: <CalendarMonth />,
+      'aria-label': 'Item 1',
       onClick: () => console.log('item 1 was clicked'),
     },
   },
@@ -86,10 +88,14 @@ function renderButton(el: Item, isLastItem: boolean = false) {
 }
 export const Default = () => (
   <>
-    <Breadcrumb size="small">{buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}</Breadcrumb>
-    <Breadcrumb appearance="subtle">
+    <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbButton" size="small">
       {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
     </Breadcrumb>
-    <Breadcrumb size="large">{buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}</Breadcrumb>
+    <Breadcrumb aria-label="Subtle breadcrumb" appearance="subtle">
+      {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
+    </Breadcrumb>
+    <Breadcrumb aria-label="Large breadcrumb with BreadcrumbButton" size="large">
+      {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
+    </Breadcrumb>
   </>
 );

@@ -34,6 +34,13 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
   appearance?: 'transparent' | 'subtle';
 
   /**
+   * Makes Breadcrumb not focusable.
+   *
+   * @default false
+   */
+  disableFocus?: boolean;
+
+  /**
    * Controls type of the divider.
    *
    * @default 'chevron'
