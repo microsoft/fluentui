@@ -25,7 +25,7 @@ export function useToastController(toasterId?: ToasterId) {
 
     return {
       dispatchToast: (content: React.ReactNode, options?: Partial<Omit<ToastOptions, 'toasterId'>>) => {
-        dispatchToastVanilla(content, options, targetDocument);
+        dispatchToastVanilla(content, { ...options, toasterId }, targetDocument);
       },
       dismissToast: (toastId: ToastId) => {
         dismissToastVanilla(toastId, toasterId, targetDocument);
@@ -34,7 +34,7 @@ export function useToastController(toasterId?: ToasterId) {
         dismissAllToastsVanilla(toasterId, targetDocument);
       },
       updateToast: (options: UpdateToastEventDetail) => {
-        updateToastVanilla(options, targetDocument);
+        updateToastVanilla({ ...options, toasterId }, targetDocument);
       },
     };
   }, [targetDocument, toasterId]);
