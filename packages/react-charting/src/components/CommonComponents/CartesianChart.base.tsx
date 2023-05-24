@@ -31,7 +31,6 @@ import {
   calculateLongestYAxisLabel,
   createYAxisLabels,
   ChartTypes,
-  createYAxisSecondary,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 
