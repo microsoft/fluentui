@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { ToastPosition, Toaster, useToastController } from '@fluentui/react-toast';
+import { ToastPosition, Toaster, useToastController, ToastAlert } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const Offset = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const notify = (position: ToastPosition) => dispatchToast('This is a toast', { position });
+  const notify = (position: ToastPosition) =>
+    dispatchToast(
+      <ToastAlert intent="info">
+        Offset: {horizontal}, {vertical}
+      </ToastAlert>,
+      { position },
+    );
   const [horizontal, setHorizontal] = React.useState(10);
   const [vertical, setVertical] = React.useState(10);
 
