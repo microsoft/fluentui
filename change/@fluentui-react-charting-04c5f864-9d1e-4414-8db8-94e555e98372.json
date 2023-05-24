@@ -1,7 +1,7 @@
 {
-  "type": "patch",
-  "comment": "patch: publish dist folder that got removed due to node 16 upgrade",
+  "type": "minor",
+  "comment": "minor: Added options to have a secondary y-axis for a chart. Also added options for lines in vertical stacked bar chart and vertical bar chart, so that each line can choose if they're using the secondary scale or not.",
   "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
+  "email": "t-miarrieta@microsoft.com",
+  "dependentChangeType": "minor"
 }
