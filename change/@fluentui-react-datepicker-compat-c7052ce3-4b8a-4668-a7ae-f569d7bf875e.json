@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Only apply aria-owns when popup is open.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

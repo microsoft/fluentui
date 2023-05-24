@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: added delay prop to spinner",
-  "packageName": "@fluentui/react-spinner",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

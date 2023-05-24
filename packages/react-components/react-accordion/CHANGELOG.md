@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 18 May 2023 13:11:08 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2023 20:45:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.14)
+
+Wed, 24 May 2023 20:45:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.1.13..@fluentui/react-accordion_v9.1.14)
+
+### Patches
+
+- chore: ensures AccordionHeader expandIcon supports null ([PR #27912](https://github.com/microsoft/fluentui/pull/27912) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.5.0 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+- Bump @fluentui/react-tabster to v9.7.3 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
 
 ## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.13)
 

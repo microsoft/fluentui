@@ -2,6 +2,35 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:26 GMT",
+      "tag": "@fluentui/react-divider_v9.2.13",
+      "version": "9.2.13",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ebd932a81bfc84a048d74f3696a2596f188f936f",
+            "comment": "bugfix: wrapper slot type to NonNullable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.0",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:06 GMT",
       "tag": "@fluentui/react-divider_v9.2.12",
       "version": "9.2.12",

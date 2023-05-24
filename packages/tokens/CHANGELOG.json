@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:37 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.5",
+      "version": "1.0.0-alpha.5",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:20 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.5",
       "version": "1.0.0-alpha.5",
