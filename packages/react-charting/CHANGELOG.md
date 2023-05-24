@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 22 May 2023 07:38:21 GMT and should not be manually modified.
+This log was last generated on Tue, 23 May 2023 07:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.31)
+
+Tue, 23 May 2023 07:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.30..@fluentui/react-charting_v5.16.31)
+
+### Patches
+
+- Implementation of Horizontal Bar Chart with Axis ([PR #25964](https://github.com/microsoft/fluentui/pull/25964) by ankityadav@microsoft.com)
 
 ## [5.16.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.30)
 
