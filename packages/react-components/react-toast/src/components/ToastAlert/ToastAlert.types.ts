@@ -1,8 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type AlertSlots = {
+export type ToastAlertSlots = {
   /**
-   * The root slot is the top level container for the alert component
+   * The root slot is the top level container for the toastAlert component
    */
   root: NonNullable<Slot<'div'>>;
   /**
@@ -10,30 +10,30 @@ export type AlertSlots = {
    */
   media?: Slot<'div'>;
   /**
-   * The action slot renders a button that prompts the user to take action on the alert
+   * The action slot renders a button that prompts the user to take action on the toastAlert
    */
   action?: Slot<'div'>;
 };
 
 /**
- * Alert Props
+ * ToastAlert Props
  */
-export type AlertProps = ComponentProps<AlertSlots> & {
+export type ToastAlertProps = ComponentProps<ToastAlertSlots> & {
   /**
    * The intent prop, if present, determines the icon to be rendered in the icon slot. The icon prop
    * overrides the intent prop
    */
   intent?: 'info' | 'success' | 'error' | 'warning';
   /**
-   * The appearance of the Alert.
+   * The appearance of the ToastAlert.
    * @default 'primary'
    */
   appearance?: 'primary' | 'inverted';
 };
 
 /**
- * State used in rendering Alert
+ * State used in rendering ToastAlert
  */
-export type AlertState = ComponentState<AlertSlots> &
-  Pick<AlertProps, 'intent'> &
-  Required<Pick<AlertProps, 'appearance'>>;
+export type ToastAlertState = ComponentState<ToastAlertSlots> &
+  Pick<ToastAlertProps, 'intent'> &
+  Required<Pick<ToastAlertProps, 'appearance'>>;

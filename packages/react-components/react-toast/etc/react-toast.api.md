@@ -13,30 +13,30 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export const renderToastAlert_unstable: (state: ToastAlertState) => JSX.Element;
+
 // @public
-export const Alert: ForwardRefComponent<AlertProps>;
+export const ToastAlert: ForwardRefComponent<ToastAlertProps>;
 
 // @public (undocumented)
-export const alertClassNames: SlotClassNames<AlertSlots>;
+export const toastAlertClassNames: SlotClassNames<ToastAlertSlots>;
 
 // @public
-export type AlertProps = ComponentProps<AlertSlots> & {
+export type ToastAlertProps = ComponentProps<ToastAlertSlots> & {
     intent?: 'info' | 'success' | 'error' | 'warning';
     appearance?: 'primary' | 'inverted';
 };
 
 // @public (undocumented)
-export type AlertSlots = {
+export type ToastAlertSlots = {
     root: NonNullable<Slot<'div'>>;
     media?: Slot<'div'>;
     action?: Slot<'div'>;
 };
 
 // @public
-export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & Required<Pick<AlertProps, 'appearance'>>;
-
-// @public (undocumented)
-export const renderAlert_unstable: (state: AlertState) => JSX.Element;
+export type ToastAlertState = ComponentState<ToastAlertSlots> & Pick<ToastAlertProps, 'intent'> & Required<Pick<ToastAlertProps, 'appearance'>>;
 
 // @public (undocumented)
 export const Toaster: React_2.FC<ToasterProps>;
@@ -51,10 +51,10 @@ export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | To
 export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 
 // @public
-export const useAlert_unstable: (props: AlertProps, ref: React_2.Ref<HTMLElement>) => AlertState;
+export const useToastAlert_unstable: (props: ToastAlertProps, ref: React_2.Ref<HTMLElement>) => ToastAlertState;
 
 // @public
-export const useAlertStyles_unstable: (state: AlertState) => AlertState;
+export const useToastAlertStyles_unstable: (state: ToastAlertState) => ToastAlertState;
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {

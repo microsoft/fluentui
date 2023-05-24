@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, Alert } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastAlert } from '@fluentui/react-toast';
 import { useId, Link } from '@fluentui/react-components';
 
 export const Default = () => {
@@ -7,9 +7,9 @@ export const Default = () => {
   const { dispatchToast } = useToastController(toasterId);
   const notify = () =>
     dispatchToast(
-      <Alert intent="success" action={<Link>Undo</Link>}>
+      <ToastAlert intent="success" action={<Link>Undo</Link>}>
         Email sent
-      </Alert>,
+      </ToastAlert>,
     );
 
   return (

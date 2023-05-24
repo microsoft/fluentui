@@ -3,13 +3,13 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
-import { Alert } from './Alert';
-import { alertClassNames } from './useAlertStyles.styles';
+import { ToastAlert } from './ToastAlert';
+import { toastAlertClassNames } from './useToastAlertStyles.styles';
 
-describe('Alert', () => {
+describe('ToastAlert', () => {
   isConformant({
-    Component: Alert,
-    displayName: 'Alert',
+    Component: ToastAlert,
+    displayName: 'ToastAlert',
     testOptions: {
       'has-static-classnames': [
         {
@@ -18,9 +18,9 @@ describe('Alert', () => {
             action: 'Test Action',
           },
           expectedClassNames: {
-            root: alertClassNames.root,
-            media: alertClassNames.media,
-            action: alertClassNames.action,
+            root: toastAlertClassNames.root,
+            media: toastAlertClassNames.media,
+            action: toastAlertClassNames.action,
           },
         },
       ],
@@ -31,29 +31,29 @@ describe('Alert', () => {
   // TODO - add tests for aria attributes or any a11y behaviors
 
   it('renders a default state', () => {
-    render(<Alert>Test</Alert>);
+    render(<ToastAlert>Test</ToastAlert>);
     expect(screen.getByText('Test')).toBeTruthy();
   });
 
   it('renders an media', () => {
-    render(<Alert media={<div data-testid="foo" />}>Test</Alert>);
+    render(<ToastAlert media={<div data-testid="foo" />}>Test</ToastAlert>);
     expect(screen.getByTestId('foo')).toBeTruthy();
   });
 
   it('renders a button', () => {
     render(
-      <Alert action={{ children: 'Undo' }} appearance="inverted">
+      <ToastAlert action={{ children: 'Undo' }} appearance="inverted">
         Test
-      </Alert>,
+      </ToastAlert>,
     );
     expect(screen.getByText('Undo')).toBeTruthy();
   });
 
   it('prioritizes media over intent prop', () => {
     render(
-      <Alert intent="success" media={<div data-testid="foo" />}>
+      <ToastAlert intent="success" media={<div data-testid="foo" />}>
         Test
-      </Alert>,
+      </ToastAlert>,
     );
     expect(screen.getByTestId('foo')).toBeTruthy();
   });
@@ -61,12 +61,12 @@ describe('Alert', () => {
   it('sets alert role based on intent', () => {
     render(
       <>
-        <Alert intent="error" data-testid="error">
+        <ToastAlert intent="error" data-testid="error">
           Test
-        </Alert>
-        <Alert intent="error" data-testid="warning">
+        </ToastAlert>
+        <ToastAlert intent="error" data-testid="warning">
           Test
-        </Alert>
+        </ToastAlert>
       </>,
     );
     expect(screen.getByTestId('error').getAttribute('role')).toBe('alert');
@@ -74,7 +74,7 @@ describe('Alert', () => {
   });
 
   it('sets status role by default', () => {
-    render(<Alert data-testid="default">Test</Alert>);
+    render(<ToastAlert data-testid="default">Test</ToastAlert>);
     expect(screen.getByTestId('default').getAttribute('role')).toBe('status');
   });
 });

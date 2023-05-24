@@ -4,10 +4,10 @@
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
 
-import type { AlertState, AlertSlots } from './Alert.types';
+import type { ToastAlertState, ToastAlertSlots } from './ToastAlert.types';
 
-export const renderAlert_unstable = (state: AlertState) => {
-  const { slots, slotProps } = getSlotsNext<AlertSlots>(state);
+export const renderToastAlert_unstable = (state: ToastAlertState) => {
+  const { slots, slotProps } = getSlotsNext<ToastAlertSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

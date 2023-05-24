@@ -1,12 +1,12 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { AlertSlots, AlertState } from './Alert.types';
+import type { ToastAlertSlots, ToastAlertState } from './ToastAlert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const alertClassNames: SlotClassNames<AlertSlots> = {
-  root: 'fui-Alert',
-  media: 'fui-Alert__media',
-  action: 'fui-Alert__action',
+export const toastAlertClassNames: SlotClassNames<ToastAlertSlots> = {
+  root: 'fui-ToastAlert',
+  media: 'fui-ToastAlert__media',
+  action: 'fui-ToastAlert__action',
 };
 
 const useStyles = makeStyles({
@@ -81,9 +81,9 @@ const useActionButtonColorInverted = makeStyles({
 });
 
 /**
- * Apply styling to the Alert slots based on the state
+ * Apply styling to the ToastAlert slots based on the state
  */
-export const useAlertStyles_unstable = (state: AlertState): AlertState => {
+export const useToastAlertStyles_unstable = (state: ToastAlertState): ToastAlertState => {
   const inverted = state.appearance === 'inverted';
   const styles = useStyles();
   const intentMediaStylesPrimary = useIntentMediaStyles();
@@ -91,7 +91,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const actionStylesInverted = useActionButtonColorInverted();
 
   state.root.className = mergeClasses(
-    alertClassNames.root,
+    toastAlertClassNames.root,
     styles.root,
     inverted && styles.inverted,
     state.root.className,
@@ -99,7 +99,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
 
   if (state.media) {
     state.media.className = mergeClasses(
-      alertClassNames.media,
+      toastAlertClassNames.media,
       styles.media,
       state.intent && (inverted ? intentMediaStylesInverted[state.intent] : intentMediaStylesPrimary[state.intent]),
       state.media.className,
@@ -109,7 +109,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   if (state.action) {
     // Note: inverted && actionStylesInverted.action has the highest piority and must be merged last
     state.action.className = mergeClasses(
-      alertClassNames.action,
+      toastAlertClassNames.action,
       styles.action,
       inverted && actionStylesInverted.action,
       state.action.className,
