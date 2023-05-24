@@ -41,11 +41,11 @@ export interface CommonToastDetail {
   toasterId?: ToasterId;
 }
 
-export interface ShowToastEventDetail extends Partial<Omit<ToastOptions, 'dispatchedAt'>>, CommonToastDetail {
+export interface ShowToastEventDetail extends Partial<ToastOptions>, CommonToastDetail {
   toastId: ToastId;
 }
 
-export interface UpdateToastEventDetail extends Partial<Omit<ToastOptions, 'dispatchedAt'>>, CommonToastDetail {
+export interface UpdateToastEventDetail extends Partial<ToastOptions>, CommonToastDetail {
   toastId: ToastId;
 }
 
