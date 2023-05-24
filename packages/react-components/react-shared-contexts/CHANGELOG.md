@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Fri, 12 May 2023 20:27:41 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2023 20:45:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.5.0)
+
+Wed, 24 May 2023 20:45:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.4.0..@fluentui/react-shared-contexts_v9.5.0)
+
+### Minor changes
+
+- feat: add style overrides for drawer components ([PR #27582](https://github.com/microsoft/fluentui/pull/27582) by marcosvmmoura@gmail.com)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.4.0)
 

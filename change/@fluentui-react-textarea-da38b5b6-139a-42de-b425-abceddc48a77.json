@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Move disabled styles in textarea selector to the textarea styles.",
-  "packageName": "@fluentui/react-textarea",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
