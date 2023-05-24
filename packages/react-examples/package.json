@@ -25,7 +25,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/azure-themes": "^8.6.6",
+    "@fluentui/azure-themes": "^8.6.7",
     "@fluentui/date-time-utilities": "^8.5.10",
     "@fluentui/dom-utilities": "^2.2.9",
     "@fluentui/example-data": "^8.4.9",
