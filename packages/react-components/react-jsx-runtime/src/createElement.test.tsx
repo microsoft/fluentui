@@ -1,6 +1,8 @@
+/* eslint-disable jsdoc/check-tag-names */
 /** @jsxRuntime classic */
 /** @jsxFrag Fragment */
 /** @jsx createElement */
+/* eslint-enable jsdoc/check-tag-names */
 
 import { render } from '@testing-library/react';
 import { ComponentProps, ComponentState, Slot, getSlotsNext, resolveShorthand } from '@fluentui/react-utilities';

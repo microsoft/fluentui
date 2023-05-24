@@ -1,22 +1,16 @@
 export {
-  slotFromProps,
-  slotFromShorthand,
-  isSlot,
   getSlots,
   getSlotsNext,
   resolveShorthand,
   isResolvedShorthand,
-  SLOT_COMPONENT_METADATA_SYMBOL,
+  SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
 export type {
   ExtractSlotProps,
   ComponentProps,
-  NextComponentState,
   ComponentState,
   ForwardRefComponent,
-  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
-  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   Slots,
@@ -25,8 +19,6 @@ export type {
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
-  SlotComponent,
-  SlotComponentMetadata,
 } from './compose/index';
 
 export {

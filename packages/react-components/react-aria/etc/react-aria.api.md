@@ -6,10 +6,8 @@
 
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotComponent } from '@fluentui/react-utilities';
-import { SlotOptions } from '@fluentui/react-utilities/src/compose/slot';
-import { SlotShorthandValue } from '@fluentui/react-utilities';
 
 // @public
 export type ARIAButtonAlteredProps<Type extends ARIAButtonType> = (Type extends 'button' ? Pick<JSX.IntrinsicElements['button'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'disabled' | 'aria-disabled' | 'tabIndex'> : never) | (Type extends 'a' ? Pick<JSX.IntrinsicElements['a'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role' | 'href'> : never) | (Type extends 'div' ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'> : never);
@@ -38,17 +36,8 @@ export type ARIAButtonType = 'button' | 'a' | 'div';
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "useARIAButtonShorthand" because one of its declarations is marked as @internal
-//
 // @internal
-export function useARIAButtonShorthand<Props extends ARIAButtonSlotProps>(value: Props | SlotShorthandValue | SlotComponent<Props> | undefined, options: {
-    required: true;
-} & SlotOptions<Props>): SlotComponent<Props>;
-
-// @public (undocumented)
-export function useARIAButtonShorthand<Props extends ARIAButtonSlotProps>(value: Props | SlotShorthandValue | SlotComponent<Props> | undefined | null, options?: {
-    required?: boolean;
-} & SlotOptions<Props>): SlotComponent<Props> | undefined;
+export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // (No @packageDocumentation comment for this package)
 

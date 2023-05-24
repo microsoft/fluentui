@@ -1,7 +1,7 @@
-import { SlotComponent, SlotShorthandValue, slotFromShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from './useARIAButtonProps';
+import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './types';
-import { SlotOptions } from '@fluentui/react-utilities/src/compose/slot';
 
 /**
  * @internal
@@ -12,19 +12,8 @@ import { SlotOptions } from '@fluentui/react-utilities/src/compose/slot';
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export function useARIAButtonShorthand<Props extends ARIAButtonSlotProps>(
-  value: Props | SlotShorthandValue | SlotComponent<Props> | undefined,
-  options: { required: true } & SlotOptions<Props>,
-): SlotComponent<Props>;
-export function useARIAButtonShorthand<Props extends ARIAButtonSlotProps>(
-  value: Props | SlotShorthandValue | SlotComponent<Props> | undefined | null,
-  options?: { required?: boolean } & SlotOptions<Props>,
-): SlotComponent<Props> | undefined;
-export function useARIAButtonShorthand<Props extends ARIAButtonSlotProps>(
-  value: Props | SlotShorthandValue | SlotComponent<Props> | undefined | null,
-  options: { required?: boolean } & SlotOptions<Props> = {},
-): SlotComponent<Props> | undefined {
-  const shorthand = slotFromShorthand(value, options);
+export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (slot, options) => {
+  const shorthand = resolveShorthand(slot, options);
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(shorthand?.as ?? 'button', shorthand);
-  return shorthand && (shorthandARIAButton as SlotComponent<Props>);
-}
+  return shorthand && shorthandARIAButton;
+};

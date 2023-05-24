@@ -104,9 +104,6 @@ export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | Re
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
-// @public (undocumented)
-export function isSlot<Props extends {}>(element: unknown): element is SlotComponent<Props>;
-
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
 
@@ -115,11 +112,6 @@ export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Arg
 
 // @public (undocumented)
 export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
-
-// @public
-export type NextComponentState<Slots extends SlotPropsRecord> = Pick<ComponentState<Slots>, 'components'> & {
-    [Key in keyof Slots]: SlotComponent<ExtractSlotProps<Slots[Key]>>;
-};
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
@@ -154,15 +146,15 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 export function resetIdsForTests(): void;
 
 // @public
-export const resolveShorthand: typeof slotFromShorthand;
+export const resolveShorthand: ResolveShorthandFunction;
 
-// @public @deprecated (undocumented)
+// @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props>(value: P | SlotShorthandValue | SlotComponent<Props> | undefined, options: ResolveShorthandOptions<P, true>): SlotComponent<P>;
-    <P extends Props>(value: P | SlotShorthandValue | SlotComponent<Props> | null | undefined, options?: ResolveShorthandOptions<P, boolean>): SlotComponent<P> | undefined;
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
-// @public @deprecated (undocumented)
+// @public (undocumented)
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
     required: true;
     defaultProps?: Props;
@@ -181,39 +173,12 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @internal
-export const SLOT_COMPONENT_METADATA_SYMBOL: unique symbol;
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
 
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
 };
-
-// @public (undocumented)
-export type SlotComponent<Props extends UnknownSlotProps> = Props & {
-    (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
-    [SLOT_COMPONENT_METADATA_SYMBOL]: Readonly<SlotComponentMetadata<Props>>;
-};
-
-// @public (undocumented)
-export type SlotComponentMetadata<Props extends UnknownSlotProps> = {
-    renderFunction?: SlotRenderFunction<Props>;
-    elementType?: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-};
-
-// @public
-export function slotFromProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'>(props: PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>, params?: SlotOptions<ExtractSlotProps<Slots[Primary]>> & {
-    ref?: 'ref' extends keyof ExtractSlotProps<Slots[Primary]> ? ExtractSlotProps<Slots[Primary]>['ref'] : never;
-}): SlotComponent<ExtractSlotProps<Slots[Primary]>>;
-
-// @public
-export function slotFromShorthand<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | SlotComponent<Props> | undefined, options: {
-    required: true;
-} & SlotOptions<Props>): SlotComponent<Props>;
-
-// @public (undocumented)
-export function slotFromShorthand<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | SlotComponent<Props> | undefined | null, options?: {
-    required?: boolean;
-} & SlotOptions<Props>): SlotComponent<Props> | undefined;
 
 // @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
@@ -301,10 +266,6 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
-
-// Warnings were encountered during analysis:
-//
-// /workspaces/fluentui/dist/out-tsc/types/packages/react-components/react-utilities/src/compose/types.d.ts:173:5 - (ae-incompatible-release-tags) The symbol "[SLOT_COMPONENT_METADATA_SYMBOL]" is marked as @public, but its signature references "SLOT_COMPONENT_METADATA_SYMBOL" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 
