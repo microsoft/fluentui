@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(menu-item): export MenuItemRole constants",
-  "packageName": "@fluentui/web-components",
-  "email": "harankin@microsoft.com",
-  "dependentChangeType": "patch"
-}
