@@ -40,7 +40,7 @@ As you can see in the table above, there is an overlap between the status and pe
 | `colorPaletteRedBorder1`            | status                |
 | `colorPaletteRedBorder2`            | status                |
 
-This results in 150 (28 _ 3 + 7 _ 9 + 3) color tokens.
+**This results in 150 (28 × 3 + 7 × 9 + 3) color tokens.**
 
 Adding new tokens comes at a [runtime performance cost](https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/theme-shape.md).
 
@@ -81,7 +81,7 @@ Add 3 new semantic colors:
 2. success
 3. warning
 
-For each of the 3 new colors, add 9 (or 10) color slots (see the table above).
+For each of the 3 new colors, add 9 (or 10) color slots (see the table above). **30 new tokens in total.**
 
 Update the sources in the library to use the semantic color names instead of the current shared color names.
 
@@ -94,9 +94,112 @@ Once the legacy tokens are not used by the library code, there are three possibl
 
 #### 1A: "deprecate" the tokens and remove them in the next major release
 
+Adds 30 tokens to the theme, removes 20 tokens in the next major release.
+
+```ts
+export const tokens = {
+  // new tokens (note: naming is not final)
+  colorStatusDangerBackground1: 'var(--colorStatusDangerBackground1)',
+  colorStatusWarningBackground1: 'var(--colorStatusDangerBackground1)',
+
+  // old tokens to be deprecated
+  // @deprecated Use colorStatusSuccessBackground1
+  colorPaletteGreenBackground1: 'var(--colorPaletteGreenBackground1)',
+  // @deprecated Use colorStatusWarningBackground1
+  colorPaletteYellowBackground1: 'var(--colorPaletteYellowBackground1)',
+};
+
+export const webLightTheme = {
+  // new tokens present in the theme
+  colorStatusDangerBackground1: 'HEX_VALUE',
+  colorStatusWarningBackground1: 'HEX_VALUE',
+
+  // as well as the old tokens
+  colorPaletteGreenBackground1: 'HEX_VALUE',
+  colorPaletteYellowBackground1: 'HEX_VALUE',
+};
+```
+
 #### 1B: "deprecate" the tokens and create a V2 theme which does not contain them - let applications switch when they are ready
 
+Adds 30 tokens to the current theme, V2 theme adds 10 tokens compared to the current theme.
+
+```ts
+// @deprecated Use tokensV2
+export const tokens = {
+  // new tokens (note: naming is not final)
+  colorStatusDangerBackground1: 'var(--colorStatusDangerBackground1)',
+  colorStatusWarningBackground1: 'var(--colorStatusDangerBackground1)',
+
+  // old tokens
+  colorPaletteGreenBackground1: 'var(--colorPaletteGreenBackground1)',
+  colorPaletteYellowBackground1: 'var(--colorPaletteYellowBackground1)',
+};
+
+export const tokensV2 = {
+  // new tokens (note: naming is not final)
+  colorStatusDangerBackground1: 'var(--colorStatusDangerBackground1)',
+  colorStatusWarningBackground1: 'var(--colorStatusDangerBackground1)',
+
+  // no old tokens
+};
+
+// @deprecated Use webLightThemeV2
+export const webLightTheme = {
+  // new tokens present in the theme
+  colorStatusDangerBackground1: 'HEX_VALUE',
+  colorStatusWarningBackground1: 'HEX_VALUE',
+
+  // as well as the old tokens
+  colorPaletteGreenBackground1: 'HEX_VALUE',
+  colorPaletteYellowBackground1: 'HEX_VALUE',
+};
+
+export const webLightThemeV2 = {
+  // new tokens present in the theme
+  colorStatusDangerBackground1: 'HEX_VALUE',
+  colorStatusWarningBackground1: 'HEX_VALUE',
+
+  // no old tokens
+};
+
+// @deprecated Use createLightThemeV2
+export const createLightTheme = brandRamp => ({
+  /* old theme */
+});
+
+export const createLightThemeV2 = brandRamp => ({
+  /* new theme */
+});
+```
+
 #### 1C: big bang - break semver, remove the tokens immediately
+
+Tokens are removed immediately, any usages will cause build errors.
+
+The updated theme has 10 more tokens than the current one, 20 tokens from the current theme causing build errors.
+
+```ts
+export const tokens = {
+  // new tokens added (note: naming is not final)
+  colorStatusDangerBackground1: 'var(--colorStatusDangerBackground1)',
+  colorStatusWarningBackground1: 'var(--colorStatusDangerBackground1)',
+
+  // old tokens removed
+  // colorPaletteGreenBackground1: 'var(--colorPaletteGreenBackground1)',
+  // colorPaletteYellowBackground1: 'var(--colorPaletteYellowBackground1)',
+};
+
+export const webLightTheme = {
+  // new tokens added to the theme
+  colorStatusDangerBackground1: 'HEX_VALUE',
+  colorStatusWarningBackground1: 'HEX_VALUE',
+
+  // old tokens removed
+  // colorPaletteGreenBackground1: 'HEX_VALUE',
+  // colorPaletteYellowBackground1: 'HEX_VALUE',
+};
+```
 
 #### Pros and Cons
 
@@ -106,19 +209,47 @@ Once the legacy tokens are not used by the library code, there are three possibl
 - 👎 We will remove some "basic" colors `green`, `yellow` - are we sure those have been used as semantic colors only?
   approach
 - 👎 1A: adds ~30 new tokens
+- 👎 1A, 1B: if I mark the tokens as deprecated, IDE does not warn when reading the tokens (the usages in `*.styles.ts`), which makes the deprecation effectively useless
 - 👎 If design decides to do the same for **presence** tokens, we will need to add another ~40 tokens to follow the same
 - 👎 1A: can cause temporarily inconsistent UI colors between library and partners
 - 👍 1B: we can use the current mapping in v1 theme and the new mapping in v2 theme - partners can control the moment when they switch to the new mapping
 - 👎 1B: requires us maintaining the double amount of themes
+- 👎 1B: partners need to switch to both the V2 theme and the V2 tokens
+- 👎 1B: usages (imports) of V2 tokens are usually across all `*.styles.ts` files, requires changing all of them
 - 👎 1C: breaks partners (the questions is how much, but...)
 
 ### 2. Continue with the current approach
 
 The current names are set for v9, let's live with them 🤷‍♂️.
 
-Add "status" slots to `cranberry`, add `orange` as a status color.
+Add "status" slots to `cranberry`, add `orange` as a status color - 15 new tokens added.
 
 Update the sources in the library to use the new colors. Ask partners to update their sources.
+
+```ts
+export const tokens = {
+  // new cranberry and orange tokens added, NO semantic token names
+  colorPaletteCranberryBackground1: 'var(--colorPaletteCranberryBackground1)',
+
+  // no changed to any existing tokens
+};
+
+export const webLightTheme = {
+  // new tokens added to the theme
+  colorPaletteCranberryBackground1: 'HEX_VALUE',
+};
+
+// Error state styles in both the library and partner codebase
+const useAlertStyles = makeStyles({
+  error: {
+    // before - old red token
+    // backgroundColor: tokens.colorPaletteRedBackground1,
+
+    // after - new cranberry token
+    backgroundColor: tokens.colorPaletteCranberryBackground1,
+  },
+});
+```
 
 #### Pros and Cons
 
@@ -131,6 +262,25 @@ Update the sources in the library to use the new colors. Ask partners to update 
 The current names are set for v9, let's live with them 🤷‍♂️.
 
 Change the hex values for `red` to `cranberry` values, `yellow` to `orange`.
+
+```ts
+// No change in tokens
+const tokens = {
+  colorPaletteRedBackground1: 'var(--colorPaletteRedBackground1)',
+  colorPaletteYellowBackground1: 'var(--colorPaletteYellowBackground1)',
+};
+
+const webLightTheme = {
+  // No change in cranberry
+  colorPaletteCranberryBackground1: 'HEX_VALUE_FOR_CRANBERRY',
+
+  // Change in red - now it's cranberry
+  colorPaletteRedBackground1: 'HEX_VALUE_FOR_CRANBERRY',
+
+  // Change in yellow - now it's orange
+  colorPaletteYellowBackground1: 'HEX_VALUE_FOR_ORANGE',
+};
+```
 
 #### Pros and Cons
 
@@ -147,7 +297,7 @@ All tokens are mapped to CSS variables with the same name: `colorPaletteRedBackg
 >
 > ⚠ Never use theme CSS variables directly! The CSS variables implementation of the theme is internal to the library. We might eventually decide to change the variable names, hash them or even use direct values instead of some variables. Always use the tokens to access the theme.
 
-Add "status" slots to `cranberry`, add `orange` as a status color.
+Add "status" slots to `cranberry`, add `orange` as a status color - 15 new tokens added.
 
 Add semantic color tokens which are mapped to the current shared colors. For example, `colorPaletteDangerBackground1` is mapped to `--colorPaletteRedBackground1`. `Danger` is still mapped to the old `red` color, but the token name is now semantic. Still not changed to `cranberry`.
 
@@ -155,10 +305,43 @@ Update the sources in the library to use the new colors.
 
 Update the mapping from old colors to the new colors.
 
+```ts
+const tokens = {
+  // new tokens (note: naming is not final) - the mapping is not 1:1
+  colorStatusDangerBackground1: 'var(--colorPaletteCranberryBackground1)',
+  colorStatusWarningBackground1: 'var(--colorPaletteOrangeBackground1)',
+
+  colorPaletteCranberryBackground1: 'var(--colorPaletteCranberryBackground1)',
+  colorPaletteOrangeBackground1: 'var(--colorPaletteOrangeBackground1)',
+};
+
+const webLightTheme = {
+  colorPaletteCranberryBackground1: 'HEX_VALUE',
+  colorPaletteOrangeBackground1: 'HEX_VALUE',
+};
+```
+
 #### 4B: Add CSS variables for new status tokens, map old tokens to the status CSS variables
 
 The variant 4 proposes to keep `--colorPaletteRedBackground1`, create new token `colorPaletteDangerBackground1` and map it to the red CSS variable.
 We can also implement this the other way around - create `colorPaletteDangerBackground1` mapped 1:1 to `--colorPaletteDangerBackground1` and re-map the legacy tokens `colorPaletteRedBackground1` to the status CSS variables.
+
+```ts
+const tokens = {
+  // new tokens (note: naming is not final)
+  colorStatusDangerBackground1: 'var(--colorStatusDangerBackground1)',
+  colorStatusWarningBackground1: 'var(--colorStatusWarningBackground1)',
+
+  // current tokens - the mapping CHANGED, it is not 1:1
+  colorPaletteCranberryBackground1: 'var(--colorStatusDangerBackground1)',
+  colorPaletteOrangeBackground1: 'var(--colorStatusWarningBackground1)',
+};
+
+const webLightTheme = {
+  colorStatusDangerBackground1: 'HEX_VALUE',
+  colorStatusWarningBackground1: 'HEX_VALUE',
+};
+```
 
 #### Pros and Cons
 
