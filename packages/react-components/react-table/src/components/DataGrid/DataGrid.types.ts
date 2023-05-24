@@ -81,7 +81,7 @@ export type DataGridProps = TableProps &
       data: { columnId: TableColumnId; width: number },
     ) => void;
     /**
-     * For column resizing. Allows for a container size to be offset by a number of pixels, to make
+     * For column resizing. Allows for a container size to be adjusted by a number of pixels, to make
      * sure the columns don't overflow the table.
      * By default, this value is calculated internally based on other props, but can be overriden.
      */
