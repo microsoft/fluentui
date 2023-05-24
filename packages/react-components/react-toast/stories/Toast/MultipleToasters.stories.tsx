@@ -5,9 +5,10 @@ import { useId } from '@fluentui/react-components';
 export const MultipeToasters = () => {
   const first = useId('toaster-1');
   const second = useId('toaster-2');
-  const { dispatchToast } = useToastController();
-  const notifyFirst = () => dispatchToast('Toaster first', { toasterId: first });
-  const notifySecond = () => dispatchToast('Toaster second', { toasterId: second });
+  const { dispatchToast: dispatchFirstToast } = useToastController(first);
+  const { dispatchToast: dispatchSecondToast } = useToastController(second);
+  const notifyFirst = () => dispatchFirstToast('Toaster first');
+  const notifySecond = () => dispatchSecondToast('Toaster second');
 
   return (
     <>

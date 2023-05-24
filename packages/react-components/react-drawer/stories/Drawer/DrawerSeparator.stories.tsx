@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Drawer } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { Button, makeStyles, shorthands } from '@fluentui/react-components';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -35,10 +36,24 @@ export const Separator = () => {
         open={leftOpen}
         onOpenChange={(_, { open }) => setLeftOpen(open)}
       >
-        <Button appearance="outline" onClick={() => setLeftOpen(false)}>
-          Close
-        </Button>
-        <p>This drawer has no separator</p>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setLeftOpen(false)}
+              />
+            }
+          >
+            Drawer with no separator
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
       </Drawer>
 
       <div className={styles.content}>
@@ -58,10 +73,24 @@ export const Separator = () => {
         open={rightOpen}
         onOpenChange={(_, { open }) => setRightOpen(open)}
       >
-        <Button appearance="outline" onClick={() => setRightOpen(false)}>
-          Close
-        </Button>
-        <p>This drawer has a separator</p>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setRightOpen(false)}
+              />
+            }
+          >
+            Drawer with separator
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
       </Drawer>
     </div>
   );
