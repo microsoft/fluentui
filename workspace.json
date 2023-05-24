@@ -699,6 +699,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-search": {
+      "root": "packages/react-components/react-search",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-search/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-select": {
       "root": "packages/react-components/react-select",
       "projectType": "library",
