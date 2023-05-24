@@ -34,6 +34,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     resizableColumns,
     columnSizingOptions,
     onColumnResize,
+    containerWidthOffset = 0,
   } = props;
 
   const navigable = focusMode !== 'none';
@@ -58,7 +59,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       columnSizingOptions,
       // The selection cell is not part of the columns, therefore its width needs to be subtracted
       // from the container to make sure the columns don't overflow the table.
-      containerWidthOffset: selectionMode ? -CELL_WIDTH : 0,
+      containerWidthOffset,
     }),
   ]);
 

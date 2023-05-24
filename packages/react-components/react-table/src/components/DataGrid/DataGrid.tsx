@@ -6,12 +6,14 @@ import type { DataGridProps } from './DataGrid.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDataGridContextValues_unstable } from './useDataGridContextValues';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { CELL_WIDTH } from '../../TableSelectionCell';
 
 /**
  * DataGrid component
  */
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
-  const state = useDataGrid_unstable(props, ref);
+  const containerWidthOffset = props.containerWidthOffset ?? (props.selectionMode ? -CELL_WIDTH : 0);
+  const state = useDataGrid_unstable({ ...props, containerWidthOffset }, ref);
 
   useDataGridStyles_unstable(state);
 
