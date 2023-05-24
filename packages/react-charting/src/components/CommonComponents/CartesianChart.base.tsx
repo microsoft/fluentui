@@ -250,22 +250,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: this.props.yAxisPadding || 0,
     };
-
-    const YAxisParamsSecondary = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
-      yAxisElement: this.yAxisElementSecondary,
-      yAxisTickFormat: this.props.yAxisTickFormat!,
-      yAxisTickCount: this.props.yAxisTickCount!,
-      yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
-      yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue || 100,
-      tickPadding: 10,
-      maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue || 100,
-      yMinMaxValues: getMinMaxOfYAxis(points, chartType),
-      yAxisPadding: this.props.yAxisPadding,
-    };
-
     /**
      * These scales used for 2 purposes.
      * 1. To create x and y axis
@@ -338,6 +322,21 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       );
     } else {
       if (this.props?.secondaryYScaleOptions) {
+        const YAxisParamsSecondary = {
+          margins: this.margins,
+          containerWidth: this.state.containerWidth,
+          containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+          yAxisElement: this.yAxisElementSecondary,
+          yAxisTickFormat: this.props.yAxisTickFormat!,
+          yAxisTickCount: this.props.yAxisTickCount!,
+          yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
+          yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue || 100,
+          tickPadding: 10,
+          maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue || 100,
+          yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+          yAxisPadding: this.props.yAxisPadding,
+        };
+
         yScaleSecondary = createYAxisSecondary(YAxisParamsSecondary, this._isRtl, axisData);
       }
       yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
@@ -434,17 +433,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               ref={(e: SVGElement | null) => {
                 this.yAxisElementSecondary = e;
               }}
-              id={`yAxisGElement2${this.idForGraph}`}
-              transform={`translate(${
-                this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
-              }, 0)`}
-              className={this._classNames.yAxis}
-            />
-            <g
-              ref={(e: SVGElement | null) => {
-                this.yAxisElementSecondary = e;
-              }}
-              id={`yAxisGElement2${this.idForGraph}`}
+              id={`yAxisGElementSecondary${this.idForGraph}`}
               transform={`translate(${
                 this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
               }, 0)`}
