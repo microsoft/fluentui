@@ -220,7 +220,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           lineData.push({
             x: item.x,
             y: item.lineData!.y,
-            useSecondaryYScale: item.lineData?.useSecondaryYScale,
+            useSecondaryYScale: item.lineData!.useSecondaryYScale ?? false,
             point: item,
             index,
           });
@@ -230,7 +230,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => (d?.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
+      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
     const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
     const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
