@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/theme-designer",
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "private": true,
-  "description": "A theme designer",
+  "description": "A theme designer for Fluent UI React v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -53,8 +53,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {
