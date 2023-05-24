@@ -52,7 +52,9 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   return {
-    components: {},
+    components: {
+      backdrop: 'div',
+    },
     inertTrapFocus,
     open,
     modalType,

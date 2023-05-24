@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { slotFromProps, slotFromShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { InputProps, InputSlots, InputState } from './Input.types';
+import {
+  getPartitionedNativeProps,
+  resolveShorthand,
+  useControllableState,
+  useEventCallback,
+} from '@fluentui/react-utilities';
+import type { InputProps, InputState } from './Input.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
@@ -18,20 +23,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
 
   const overrides = useOverrides();
 
-  const {
-    size = 'medium',
-    appearance = overrides.inputDefaultAppearance ?? 'outline',
-    onChange,
-    style,
-    className,
-    value,
-    defaultValue,
-    as = 'input',
-    contentAfter,
-    contentBefore,
-    root,
-    ...rest
-  } = props;
+  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -44,47 +36,49 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     );
   }
 
-  const [internalValue, setInternalValue] = useControllableState({
-    state: value,
-    defaultState: defaultValue,
+  const [value, setValue] = useControllableState({
+    state: props.value,
+    defaultState: props.defaultValue,
     initialState: '',
   });
 
-  return {
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['size', 'onChange', 'value', 'defaultValue'],
+  });
+
+  const state: InputState = {
+    size,
+    appearance,
     components: {
       root: 'span',
       input: 'input',
       contentBefore: 'span',
       contentAfter: 'span',
     },
-    size,
-    appearance,
-    input: slotFromProps<InputSlots, 'input'>(
-      {
-        ...rest,
-        value: internalValue,
-        onChange: useEventCallback(ev => {
-          const newValue = ev.target.value;
-          onChange?.(ev, { value: newValue });
-          setInternalValue(newValue);
-        }),
-      },
-      {
-        ref,
-        elementType: as,
-        defaultProps: { type: 'text' },
-      },
-    ),
-    contentAfter: slotFromShorthand(contentAfter, {
-      elementType: 'span',
-    }),
-    contentBefore: slotFromShorthand(contentBefore, {
-      elementType: 'span',
-    }),
-    root: slotFromShorthand(root, {
+    input: resolveShorthand(props.input, {
       required: true,
-      elementType: 'span',
-      defaultProps: { style, className },
+      defaultProps: {
+        type: 'text',
+        ref,
+        ...nativeProps.primary,
+      },
+    }),
+    contentAfter: resolveShorthand(props.contentAfter),
+    contentBefore: resolveShorthand(props.contentBefore),
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: nativeProps.root,
     }),
   };
+
+  state.input.value = value;
+  state.input.onChange = useEventCallback(ev => {
+    const newValue = ev.target.value;
+    onChange?.(ev, { value: newValue });
+    setValue(newValue);
+  });
+
+  return state;
 };

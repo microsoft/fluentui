@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, NextComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -108,7 +108,7 @@ export type InputProps = Omit<
 /**
  * State used in rendering Input.
  */
-export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & NextComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
 
 /**
  * Data passed to the `onChange` callback when a user changes the input's value.

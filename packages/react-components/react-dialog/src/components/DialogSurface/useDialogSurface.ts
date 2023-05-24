@@ -1,17 +1,12 @@
 import * as React from 'react';
 import {
+  getNativeElementProps,
+  resolveShorthand,
   useEventCallback,
   useMergedRefs,
   isResolvedShorthand,
-  slotFromProps,
-  slotFromShorthand,
 } from '@fluentui/react-utilities';
-import type {
-  DialogSurfaceElement,
-  DialogSurfaceProps,
-  DialogSurfaceSlots,
-  DialogSurfaceState,
-} from './DialogSurface.types';
+import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { isEscapeKeyDismiss } from '../../utils';
 
@@ -28,7 +23,7 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
-  const { backdrop, as = 'div' } = props;
+  const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
@@ -69,30 +64,22 @@ export const useDialogSurface_unstable = (
       backdrop: 'div',
       root: 'div',
     },
-    backdrop: slotFromShorthand(
-      {
-        ...slotFromShorthand(backdrop),
+    backdrop: resolveShorthand(backdrop, {
+      required: open && modalType !== 'non-modal',
+      defaultProps: {
+        'aria-hidden': 'true',
         onClick: handledBackdropClick,
       },
-      {
-        elementType: 'div',
-        required: open && modalType !== 'non-modal',
-        defaultProps: { 'aria-hidden': 'true' },
-      },
-    ),
-    root: slotFromProps<DialogSurfaceSlots>(
-      { ...props, onKeyDown: handleKeyDown },
-      {
-        defaultProps: {
-          ...modalAttributes,
-          tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
-          'aria-modal': modalType !== 'non-modal',
-          role: modalType === 'alert' ? 'alertdialog' : 'dialog',
-          'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
-        },
-        ref: useMergedRefs(ref, dialogRef),
-        elementType: as,
-      },
-    ),
+    }),
+    root: getNativeElementProps(as ?? 'div', {
+      tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
+      'aria-modal': modalType !== 'non-modal',
+      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+      ...props,
+      ...modalAttributes,
+      onKeyDown: handleKeyDown,
+      ref: useMergedRefs(ref, dialogRef),
+    }),
   };
 };

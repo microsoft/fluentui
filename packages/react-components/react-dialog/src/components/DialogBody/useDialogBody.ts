@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './DialogBody.types';
-import { slotFromProps } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import type { DialogBodyProps, DialogBodyState } from './DialogBody.types';
 
 /**
  * Create the state required to render DialogBody.
@@ -11,7 +11,14 @@ import { slotFromProps } from '@fluentui/react-utilities';
  * @param props - props from this instance of DialogBody
  * @param ref - reference to root HTMLElement of DialogBody
  */
-export const useDialogBody_unstable = (props: DialogBodyProps, ref: React.Ref<HTMLDivElement>): DialogBodyState => ({
-  components: { root: 'div' },
-  root: slotFromProps<DialogBodySlots>(props, { ref, elementType: props.as ?? 'div' }),
-});
+export const useDialogBody_unstable = (props: DialogBodyProps, ref: React.Ref<HTMLElement>): DialogBodyState => {
+  return {
+    components: {
+      root: 'div',
+    },
+    root: getNativeElementProps(props.as ?? 'div', {
+      ref,
+      ...props,
+    }),
+  };
+};

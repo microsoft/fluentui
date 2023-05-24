@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DialogContentProps, DialogContentSlots, DialogContentState } from './DialogContent.types';
-import { slotFromProps } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import { DialogContentProps, DialogContentState } from './DialogContent.types';
 
 /**
  * Create the state required to render DialogBody.
@@ -13,8 +13,15 @@ import { slotFromProps } from '@fluentui/react-utilities';
  */
 export const useDialogContent_unstable = (
   props: DialogContentProps,
-  ref: React.Ref<HTMLDivElement>,
-): DialogContentState => ({
-  components: { root: 'div' },
-  root: slotFromProps<DialogContentSlots>(props, { ref, elementType: props.as ?? 'div' }),
-});
+  ref: React.Ref<HTMLElement>,
+): DialogContentState => {
+  return {
+    components: {
+      root: 'div',
+    },
+    root: getNativeElementProps(props.as ?? 'div', {
+      ref,
+      ...props,
+    }),
+  };
+};
