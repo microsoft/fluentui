@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "minor: Added options to have a secondary y-axis for a chart. Also added options for lines in vertical stacked bar chart and vertical bar chart, so that each line can choose if they're using the secondary scale or not.",
+  "comment": "feat: Added options to have a secondary y-axis for a chart + options for the lines to use it",
   "packageName": "@fluentui/react-charting",
   "email": "t-miarrieta@microsoft.com",
-  "dependentChangeType": "minor"
+  "dependentChangeType": "patch"
 }
