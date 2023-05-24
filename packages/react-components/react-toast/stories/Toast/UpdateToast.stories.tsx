@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { Toaster, useToastController } from '@fluentui/react-toast';
+import { Toaster, useToastController, Alert } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
   const toasterId = useId('toaster');
   const toastId = useId('example');
   const { dispatchToast, updateToast } = useToastController(toasterId);
-  const notify = () => dispatchToast('This toast never closes', { toastId, timeout: -1 });
-  const update = () => updateToast({ content: 'This toast will close soon', toastId, timeout: 1000 });
+  const notify = () => dispatchToast(<Alert intent="warning">This toast never closes</Alert>, { toastId, timeout: -1 });
+  const update = () =>
+    updateToast({ content: <Alert intent="success">This toast will close soon</Alert>, toastId, timeout: 1000 });
 
   return (
     <>
