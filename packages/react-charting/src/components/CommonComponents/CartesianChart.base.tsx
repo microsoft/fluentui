@@ -337,7 +337,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           yAxisPadding: this.props.yAxisPadding,
         };
 
-        yScaleSecondary = createYAxisSecondary(YAxisParamsSecondary, this._isRtl, axisData);
+        yScaleSecondary = createYAxis(
+          YAxisParamsSecondary,
+          this._isRtl,
+          axisData,
+          chartType,
+          this.props.barwidth!,
+          true,
+        );
       }
       yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
     }

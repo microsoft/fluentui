@@ -304,8 +304,9 @@ export class VerticalStackedBarChartBase extends React.Component<
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string);
+        const useSecondaryYScale = lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale;
         const y1 =
-          lineObject[item][i - 1].isUsingSecondaryYScale && secondaryYScale
+          useSecondaryYScale && secondaryYScale
             ? secondaryYScale(lineObject[item][i - 1].y)
             : yScale(lineObject[item][i - 1].y);
         const x2 = isNumeric
@@ -313,7 +314,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string);
         const y2 =
-          lineObject[item][i].isUsingSecondaryYScale && secondaryYScale
+          useSecondaryYScale && secondaryYScale
             ? secondaryYScale(lineObject[item][i].y)
             : yScale(lineObject[item][i].y);
 
@@ -366,9 +367,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                   (xBarScale as any)(circlePoint.xItem.xAxisPoint as string)
             }
             cy={
-              circlePoint.isUsingSecondaryYScale && secondaryYScale
-                ? secondaryYScale(circlePoint.y)
-                : yScale(circlePoint.y)
+              circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
             }
             onMouseOver={
               this.state.selectedLegend === item
