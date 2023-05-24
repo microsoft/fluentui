@@ -347,6 +347,7 @@ const webLightTheme = {
 
 - 👍 Semantic tokens without any unnecessary tokens.
 - 👍 Controlled partner upgrade from old hex values to new values, but coupled with library upgrade.
+- 👎 This is currently not supported by token pipeline - would require either changes there or custom implementation on library side.
 - 👎 Semantic and status tokens are still coupled - the only way for the application to override `danger` is to override `red` (which will affect other parts of the UI).
 - 👎 Debugging might be harder - the CSS variable names are not the same as the token names.
 - 👎 There might be code which depends on the 1:1 token to CSS variable mapping (hello, [`themeToTokensObject`](https://github.com/microsoft/fluentui/blob/97c1c1ab218afb20e37bfc35936fd88177d439b4/packages/tokens/src/themeToTokensObject.ts#L14-L16)).
