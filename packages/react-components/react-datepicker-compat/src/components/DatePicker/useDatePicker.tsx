@@ -150,7 +150,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const [open, setOpenState] = usePopupVisibility(props);
   const fieldContext = useFieldContext();
   const required = fieldContext?.required ?? props.required;
-  const popupSurfaceId = useId('datePicker-popoverSurface');
+  const popupSurfaceId = useId('datePicker-popupSurface');
 
   const validateTextInput = React.useCallback(
     (date: Date | null = null): void => {
@@ -365,7 +365,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       readOnly: !allowTextInput,
       role: 'combobox',
       root: {
-        'aria-owns': popupSurfaceId,
+        'aria-owns': open ? popupSurfaceId : undefined,
         ref: useMergedRefs(triggerWrapperRef, ref),
       },
       input: {
