@@ -306,12 +306,12 @@ export class VerticalStackedBarChartBase extends React.Component<
             (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string);
         const useSecondaryYScale =
           lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && secondaryYScale;
-        const y1 = useSecondaryYScale ? !secondaryYScale(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
+        const y1 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
         const x2 = isNumeric
           ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string);
-        const y2 = useSecondaryYScale ? !secondaryYScale(lineObject[item][i].y) : yScale(lineObject[item][i].y);
+        const y2 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i].y) : yScale(lineObject[item][i].y);
 
         if (lineBorderWidth > 0) {
           borderForLines.push(
