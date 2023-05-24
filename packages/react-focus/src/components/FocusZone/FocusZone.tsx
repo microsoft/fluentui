@@ -60,6 +60,7 @@ function raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<H
     });
   } else {
     event = document.createEvent('MouseEvents');
+    // eslint-disable-next-line deprecation/deprecation
     event.initMouseEvent(
       'click',
       ev ? ev.bubbles : false,
@@ -904,6 +905,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocus(
     isForward: boolean,
+    // eslint-disable-next-line deprecation/deprecation
     getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
     ev?: Event,
     useDefaultWrap: boolean = true,
@@ -934,6 +936,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (isBidirectional) {
         if (element) {
           const targetRect = element.getBoundingClientRect();
+          // eslint-disable-next-line deprecation/deprecation
           const elementDistance = getDistanceFromCenter(activeRect as ClientRect, targetRect);
 
           if (elementDistance === -1 && candidateDistance === -1) {
@@ -987,6 +990,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
+      // eslint-disable-next-line deprecation/deprecation
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
         let distance = -1;
         // ClientRect values can be floats that differ by very small fractions of a decimal.
@@ -1029,6 +1033,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
+      // eslint-disable-next-line deprecation/deprecation
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
         let distance = -1;
         // ClientRect values can be floats that differ by very small fractions of a decimal.
@@ -1070,6 +1075,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (
       this._moveFocus(
         getRTL(theme),
+        // eslint-disable-next-line deprecation/deprecation
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
           let topBottomComparison;
@@ -1112,6 +1118,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (
       this._moveFocus(
         !getRTL(theme),
+        // eslint-disable-next-line deprecation/deprecation
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
           let topBottomComparison;
@@ -1151,7 +1158,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _getHorizontalDistanceFromCenter = (
     isForward: boolean,
+    // eslint-disable-next-line deprecation/deprecation
     activeRect: ClientRect,
+    // eslint-disable-next-line deprecation/deprecation
     targetRect: ClientRect,
   ): number => {
     // eslint-disable-next-line deprecation/deprecation
