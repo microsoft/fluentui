@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 22 May 2023 07:38:21 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2023 07:36:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.7)
+
+Wed, 24 May 2023 07:36:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.6..@fluentui/azure-themes_v8.6.7)
+
+### Patches
+
+- Azure Theme: Primary text and inline link contast ratio fix, HCD link hover fix ([PR #27947](https://github.com/microsoft/fluentui/pull/27947) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.6)
 
