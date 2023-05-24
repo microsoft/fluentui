@@ -17,7 +17,7 @@ DisableTransform.parameters = {
   docs: {
     description: {
       story: [
-        'By default, the positioned element is positioned using transform in the element style for better performance, but can be disabled by setting `useTransform` to `false`.',
+        'By default, the positioned element is positioned using [CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) in the element style for better performance, but can be disabled by setting `useTransform` to `false`.',
         '',
         'Note:',
         'When disabling transforms, add `width: max-content` (or a fixed width) to the floating element to prevent positioning issues due to layout affecting the floating element ([Disabling transform](https://floating-ui.com/docs/react#disabling-transform)).',

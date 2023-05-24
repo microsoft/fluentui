@@ -759,9 +759,9 @@ storiesOf('Positioning', module)
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true })
   .addStory('fallback positioning', () => <FallbackPositioning />)
-  .addStory('disable use transform', () => <PositionAndAlignProps useTransform={false} />, { includeRtl: true })
+  .addStory('disable CSS transform', () => <PositionAndAlignProps useTransform={false} />, { includeRtl: true })
   .addStory(
-    'disable use transform with position fixed',
+    'disable CSS transform with position fixed',
     () => <PositionAndAlignProps positionFixed useTransform={false} />,
     { includeRtl: true },
   );

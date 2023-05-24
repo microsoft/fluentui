@@ -51,10 +51,13 @@ export function writeContainerUpdates(options: {
   const x = Math.round(coordinates.x * devicePixelRatio) / devicePixelRatio;
   const y = Math.round(coordinates.y * devicePixelRatio) / devicePixelRatio;
 
+  Object.assign(container.style, {
+    position: strategy,
+  });
+
   if (useTransform) {
     Object.assign(container.style, {
       transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
-      position: strategy,
     });
     return;
   }
@@ -62,6 +65,5 @@ export function writeContainerUpdates(options: {
   Object.assign(container.style, {
     left: `${x}px`,
     top: `${y}px`,
-    position: strategy,
   });
 }
