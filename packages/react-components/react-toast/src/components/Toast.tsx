@@ -6,35 +6,32 @@ import * as React from 'react';
 import { Transition } from 'react-transition-group';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import { useToast, Toast as ToastProps } from '../state';
 import { Timer } from './Timer';
 
 const useStyles = makeStyles({
   toast: {
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('4px'),
-    display: 'flex',
-    minHeight: '40px',
-    maxHeight: '40px',
-    minWidth: '200px',
-    maxWidth: '200px',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    boxSizing: 'border-box',
+    marginTop: '16px',
+    minHeight: '44px',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    '--fui-toast-height': '44px',
   },
-
-  slide: {
+  enter: {
     animationDuration: '200ms, 400ms',
     animationDelay: '0ms, 200ms',
     animationName: [
       {
         from: {
-          height: '0',
-          minHeight: '0',
-          maxHeight: '0',
+          maxHeight: 0,
           opacity: 0,
+          marginTop: 0,
         },
         to: {
+          marginTop: '16px',
           opacity: 0,
+          maxHeight: 'var(--fui-toast-height)',
         },
       },
       {
@@ -48,7 +45,7 @@ const useStyles = makeStyles({
     ],
   },
 
-  fadeOut: {
+  exit: {
     animationDuration: '400ms, 200ms',
     animationDelay: '0ms, 400ms',
     animationName: [
@@ -66,9 +63,8 @@ const useStyles = makeStyles({
         },
         to: {
           opacity: 0,
-          height: 0,
+          marginTop: 0,
           maxHeight: 0,
-          minHeight: 0,
         },
       },
     ],
@@ -95,9 +91,27 @@ export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
     }
   }, [play, toastRef]);
 
+  const onEntering = () => {
+    if (!toastRef.current) {
+      return;
+    }
+
+    const element = toastRef.current;
+    element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
+  };
+
   return (
-    <Transition in={visible} unmountOnExit mountOnEnter timeout={500} onExited={remove} nodeRef={toastRef}>
-      <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.slide, !visible && styles.fadeOut)}>
+    <Transition
+      in={visible}
+      appear
+      unmountOnExit
+      timeout={500}
+      onExited={remove}
+      // eslint-disable-next-line react/jsx-no-bind
+      onEntering={onEntering}
+      nodeRef={toastRef}
+    >
+      <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.enter, !visible && styles.exit)}>
         {children}
         <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
       </div>
