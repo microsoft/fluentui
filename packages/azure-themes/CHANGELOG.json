@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 07:36:58 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.7",
+      "version": "8.6.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "f33aaae7ea0f0ea062dfed95e5e33db9bc684d56",
+            "comment": "Azure Theme: Primary text and inline link contast ratio fix, HCD link hover fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 May 2023 07:38:21 GMT",
       "tag": "@fluentui/azure-themes_v8.6.6",
       "version": "8.6.6",
