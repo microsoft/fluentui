@@ -28,7 +28,5 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
         ref,
       } as DrawerProps,
     }),
-
-    type,
   };
 };

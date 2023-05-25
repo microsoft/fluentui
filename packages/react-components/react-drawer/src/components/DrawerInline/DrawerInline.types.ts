@@ -5,32 +5,13 @@ export type DrawerInlineSlots = {
   root: Slot<'div'>;
 };
 
-export type DrawerOpenChangeData = {
-  open: boolean;
-};
-
 /**
  * DrawerInline Props
  */
 export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> &
   DrawerBaseTypes & {
     /**
-     * Controls the open state of the Drawer
-     *
-     * @default false
-     */
-    open?: boolean;
-
-    /**
-     * Default value for the uncontrolled open state of the Drawer.
-     *
-     * @default false
-     */
-    defaultOpen?: boolean;
-
-    /**
      * Whether the drawer has a separator line.
-     * This prop only works when `type` is `inline`.
      *
      * @default false
      */

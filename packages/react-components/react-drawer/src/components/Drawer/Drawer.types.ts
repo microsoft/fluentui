@@ -28,4 +28,4 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> &
 /**
  * State used in rendering Drawer
  */
-export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type'>>;
+export type DrawerState = ComponentState<DrawerSlots>;
