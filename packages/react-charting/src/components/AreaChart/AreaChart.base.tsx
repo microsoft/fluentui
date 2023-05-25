@@ -385,61 +385,116 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _createDataSet = (points: ILineChartPoints[]) => {
-    const allChartPoints: ILineChartDataPoint[] = [];
-    const dataSet: IAreaChartDataSetPoint[] = [];
-    const colors: string[] = [];
-    const opacity: number[] = [];
-    const calloutPoints = calloutData(points!);
+    if (this.props.enablePerfOptimization) {
+      const allChartPoints: ILineChartDataPoint[] = [];
+      const dataSet: IAreaChartDataSetPoint[] = [];
+      const colors: string[] = [];
+      const opacity: number[] = [];
+      const calloutPoints = calloutData(points!);
 
-    points &&
-      points.length &&
-      points.forEach((singleChartPoint: ILineChartPoints) => {
-        colors.push(singleChartPoint.color!);
-        opacity.push(singleChartPoint.opacity || 1);
-        allChartPoints.push(...singleChartPoint.data);
+      points &&
+        points.length &&
+        points.forEach((singleChartPoint: ILineChartPoints) => {
+          colors.push(singleChartPoint.color!);
+          opacity.push(singleChartPoint.opacity || 1);
+          allChartPoints.push(...singleChartPoint.data);
+        });
+
+      const mapOfXvalToListOfDataPoints: IMapXToDataSet = {};
+      allChartPoints.forEach((dataPoint: ILineChartDataPoint) => {
+        const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
+        // map of x value to the list of data points which share the same x value .
+        if (mapOfXvalToListOfDataPoints[xValue]) {
+          mapOfXvalToListOfDataPoints[xValue].push(dataPoint);
+        } else {
+          mapOfXvalToListOfDataPoints[xValue] = [dataPoint];
+        }
       });
 
-    const mapOfXvalToListOfDataPoints: IMapXToDataSet = {};
-    allChartPoints.forEach((dataPoint: ILineChartDataPoint) => {
-      const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
-      // map of x value to the list of data points which share the same x value .
-      if (mapOfXvalToListOfDataPoints[xValue]) {
-        mapOfXvalToListOfDataPoints[xValue].push(dataPoint);
-      } else {
-        mapOfXvalToListOfDataPoints[xValue] = [dataPoint];
+      Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
+        const value: ILineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const singleDataset: any = {};
+        value.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
+          singleDataset.xVal = singleDataPoint.x;
+          singleDataset[`chart${index}`] = singleDataPoint.y;
+        });
+        dataSet.push(singleDataset);
+      });
+
+      // get keys from dataset, used to create stacked data
+      const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+      const keys: string[] = [];
+      for (let i = 0; i < keysLength - 1; i++) {
+        const keyVal = `chart${i}`;
+        keys.push(keyVal);
       }
-    });
 
-    Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
-      const value: ILineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
+      // Stacked Info used to draw graph
+      const stackedInfo = this._getStackedData(keys, dataSet);
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDataset: any = {};
-      value.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
-        singleDataset.xVal = singleDataPoint.x;
-        singleDataset[`chart${index}`] = singleDataPoint.y;
-      });
-      dataSet.push(singleDataset);
-    });
+      return {
+        colors,
+        opacity,
+        keys,
+        stackedInfo,
+        calloutPoints,
+      };
+    } else {
+      const allChartPoints: ILineChartDataPoint[] = [];
+      const dataSet: IAreaChartDataSetPoint[] = [];
+      const colors: string[] = [];
+      const opacity: number[] = [];
+      const calloutPoints = calloutData(points!);
 
-    // get keys from dataset, used to create stacked data
-    const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
-    const keys: string[] = [];
-    for (let i = 0; i < keysLength - 1; i++) {
-      const keyVal = `chart${i}`;
-      keys.push(keyVal);
+      points &&
+        points.length &&
+        points.forEach((singleChartPoint: ILineChartPoints) => {
+          colors.push(singleChartPoint.color!);
+          opacity.push(singleChartPoint.opacity || 1);
+          allChartPoints.push(...singleChartPoint.data);
+        });
+
+      let tempArr = allChartPoints;
+      while (tempArr.length) {
+        const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+        const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
+          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
+        );
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const singleDataset: any = {};
+        filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
+          singleDataset.xVal = singleDataPoint.x;
+          singleDataset[`chart${index}`] = singleDataPoint.y;
+        });
+        dataSet.push(singleDataset);
+        // removing compared objects from array
+        const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+        tempArr = tempArr.filter(
+          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
+        );
+      }
+
+      // get keys from dataset, used to create stacked data
+      const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+      const keys: string[] = [];
+      for (let i = 0; i < keysLength - 1; i++) {
+        const keyVal = `chart${i}`;
+        keys.push(keyVal);
+      }
+
+      // Stacked Info used to draw graph
+      const stackedInfo = this._getStackedData(keys, dataSet);
+
+      return {
+        colors,
+        opacity,
+        keys,
+        stackedInfo,
+        calloutPoints,
+      };
     }
-
-    // Stacked Info used to draw graph
-    const stackedInfo = this._getStackedData(keys, dataSet);
-
-    return {
-      colors,
-      opacity,
-      keys,
-      stackedInfo,
-      calloutPoints,
-    };
   };
 
   private _getCustomizedCallout = () => {
