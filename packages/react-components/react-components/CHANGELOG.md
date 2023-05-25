@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 24 May 2023 20:45:21 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.4)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.20.3..@fluentui/react-components_v9.20.4)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - chore: fix useDialogTitle ref argument type ([PR #27990](https://github.com/microsoft/fluentui/pull/27990) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - fix(react-utilities): fix dispatcher behavior ([PR #27978](https://github.com/microsoft/fluentui/pull/27978) by olfedias@microsoft.com)
 
 ## [9.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.3)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 25 May 2023 10:00:48 GMT",
+      "tag": "@fluentui/react-utilities_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4e463381ae0a63a07c45a2618bdce46423c65505",
+            "comment": "fix(react-utilities): fix dispatcher behavior"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 20:45:37 GMT",
       "tag": "@fluentui/react-utilities_v9.9.0",
       "version": "9.9.0",

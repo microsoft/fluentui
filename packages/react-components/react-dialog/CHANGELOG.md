@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Wed, 24 May 2023 20:45:26 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.8)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.7..@fluentui/react-dialog_v9.5.8)
+
+### Patches
+
+- chore: fix useDialogTitle ref argument type ([PR #27990](https://github.com/microsoft/fluentui/pull/27990) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.5 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.21 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-aria to v9.3.21 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-tabster to v9.7.4 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-portal to v9.2.11 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
 
 ## [9.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.7)
 

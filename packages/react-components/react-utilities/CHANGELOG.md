@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 18 May 2023 00:39:19 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.1)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.9.0..@fluentui/react-utilities_v9.9.1)
+
+### Patches
+
+- fix(react-utilities): fix dispatcher behavior ([PR #27978](https://github.com/microsoft/fluentui/pull/27978) by olfedias@microsoft.com)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.0)
 
