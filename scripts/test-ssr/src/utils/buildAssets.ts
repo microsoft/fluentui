@@ -1,4 +1,5 @@
-import { build, BuildOptions } from 'esbuild';
+import { build } from 'esbuild';
+import type { BuildOptions } from 'esbuild';
 
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 

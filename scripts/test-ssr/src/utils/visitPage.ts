@@ -1,10 +1,12 @@
-import type { Browser } from 'puppeteer';
 import { visitUrl } from '@fluentui/scripts-puppeteer';
-import { PROVIDER_ID } from './constants';
+import * as match from 'micromatch';
+import type { Browser } from 'puppeteer';
 import * as React from 'react';
+
+import { PROVIDER_ID } from './constants';
 import { containsAriaDescriptionWarning } from './helpers';
 
-class RenderError extends Error {
+export class RenderError extends Error {
   public name = 'RangeError';
 }
 
@@ -24,20 +26,19 @@ export async function visitPage(browser: Browser, url: string) {
         return;
       }
 
-      // Ignoring network errors as we have an interceptor that prevents loading everything except our JS bundle
-      if (!messageContent.includes('net::ERR_FAILED')) {
-        error = new RenderError(messageContent);
-      }
+      error = new RenderError(messageContent);
     }
   });
 
   page.on('request', request => {
-    // Our interceptor allows only our HTML and JS output
-    if (request.url() === url || request.url().endsWith('/out-esm.js')) {
-      return request.continue();
+    if (match.isMatch(request.url(), ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'])) {
+      return request.respond({
+        status: 200,
+        body: '',
+      });
     }
 
-    return request.abort();
+    return request.continue();
   });
 
   page.on('pageerror', err => {

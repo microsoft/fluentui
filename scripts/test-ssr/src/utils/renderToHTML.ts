@@ -1,6 +1,7 @@
-import { createDOMRenderer, renderToStyleElements, RendererProvider } from '@griffel/react';
 import * as fs from 'fs';
 import * as path from 'path';
+
+import { RendererProvider, createDOMRenderer, renderToStyleElements } from '@griffel/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 

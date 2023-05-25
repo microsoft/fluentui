@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-console.log('test-ssr: is not implemented yet');
+
+require('@fluentui/scripts-ts-node/register');
+require('../src/cli.ts');
