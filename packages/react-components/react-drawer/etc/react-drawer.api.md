@@ -116,8 +116,6 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots>;
 
 // @public
 export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> & DrawerBaseTypes & {
-    open?: boolean;
-    defaultOpen?: boolean;
     separator?: boolean;
 };
 
@@ -136,7 +134,7 @@ export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
 
 // @public
-export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseTypes & Pick<DialogProps, 'modalType' | 'open' | 'defaultOpen' | 'onOpenChange' | 'inertTrapFocus'>;
+export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseTypes & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
 
 // @public (undocumented)
 export type DrawerOverlaySlots = {
@@ -159,7 +157,7 @@ export type DrawerSlots = {
 };
 
 // @public
-export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type'>>;
+export type DrawerState = ComponentState<DrawerSlots>;
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
