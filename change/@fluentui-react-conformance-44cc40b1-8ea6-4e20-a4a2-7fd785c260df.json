@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add generate-api task to react-conformance in order to be able to run generate-api task for v9",
+  "packageName": "@fluentui/react-conformance",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

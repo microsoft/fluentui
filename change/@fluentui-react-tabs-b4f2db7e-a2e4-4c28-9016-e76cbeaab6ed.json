@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "perf: use type-check task to improve type-checking speeds up to 60%",
+  "packageName": "@fluentui/react-tabs",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
