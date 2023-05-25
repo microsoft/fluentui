@@ -102,7 +102,7 @@ export const createFocusOutlineStyle = ({
       outlineColor: tokens.colorStrokeFocus2,
       outlineRadius: tokens.borderRadiusMedium,
       // FIXME: tokens.strokeWidthThick causes some weird bugs
-      outlineWidth: tokens.strokeWidthThick,
+      outlineWidth: '2px',
       ...style,
     }),
     { selector },
