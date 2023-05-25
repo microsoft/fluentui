@@ -12,7 +12,6 @@ export const Default = () => (
       <BreadcrumbItem>Item</BreadcrumbItem>
     </Breadcrumb>
     <Breadcrumb aria-label="Breadcrumb example with the divider" size="large">
-      <BreadcrumbDivider />
       <BreadcrumbItem>Item</BreadcrumbItem>
       <BreadcrumbDivider />
       <BreadcrumbItem>Item</BreadcrumbItem>
