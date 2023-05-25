@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix useDialogTitle ref argument type",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

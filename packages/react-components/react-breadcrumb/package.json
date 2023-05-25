@@ -33,14 +33,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.14",
+    "@fluentui/react-button": "^9.3.15",
     "@fluentui/react-icons": "^2.0.196",
-    "@fluentui/react-link": "^9.0.40",
+    "@fluentui/react-link": "^9.0.41",
     "@fluentui/react-shared-contexts": "^9.5.0",
-    "@fluentui/react-tabster": "^9.7.3",
+    "@fluentui/react-tabster": "^9.7.4",
     "@fluentui/react-theme": "^9.1.8",
-    "@fluentui/react-utilities": "^9.9.0",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.4",
+    "@fluentui/react-utilities": "^9.9.1",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.5",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"
   },

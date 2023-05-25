@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-utilities): fix dispatcher behavior",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
