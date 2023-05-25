@@ -2,6 +2,123 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:28 GMT",
+      "tag": "@fluentui/react-label_v9.1.13",
+      "version": "9.1.13",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.0",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:09 GMT",
+      "tag": "@fluentui/react-label_v9.1.12",
+      "version": "9.1.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.9.0",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:27:23 GMT",
+      "tag": "@fluentui/react-label_v9.1.11",
+      "version": "9.1.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ],
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "ee977e20d359922798949a4f18af7a036ca36ca3",
+            "comment": "Update to use single hook selector"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "871192b67e1bc8a68da1b4c55b4e0ee2aed0b604",
+            "comment": "chore: move makeStyles() calls to .styles.ts files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.4.0",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-theme to v9.1.8",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.8.1",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Apr 2023 08:12:38 GMT",
       "tag": "@fluentui/react-label_v9.1.10",
       "version": "9.1.10",

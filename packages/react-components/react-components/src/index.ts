@@ -589,6 +589,29 @@ export {
 } from '@fluentui/react-select';
 export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 export {
+  Skeleton,
+  renderSkeleton_unstable,
+  skeletonClassNames,
+  useSkeletonStyles_unstable,
+  useSkeleton_unstable,
+  SkeletonItem,
+  renderSkeletonItem_unstable,
+  skeletonItemClassNames,
+  useSkeletonItemStyles_unstable,
+  useSkeletonItem_unstable,
+  SkeletonContextProvider,
+  useSkeletonContext,
+} from '@fluentui/react-skeleton';
+export type {
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonState,
+  SkeletonItemProps,
+  SkeletonItemSlots,
+  SkeletonItemState,
+  SkeletonContextValue,
+} from '@fluentui/react-skeleton';
+export {
   Slider,
   sliderClassNames,
   sliderCSSVars,

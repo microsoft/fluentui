@@ -2,6 +2,66 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 07:36:58 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.7",
+      "version": "8.6.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "f33aaae7ea0f0ea062dfed95e5e33db9bc684d56",
+            "comment": "Azure Theme: Primary text and inline link contast ratio fix, HCD link hover fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 May 2023 07:38:21 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.6",
+      "version": "8.6.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.109.5",
+            "commit": "323e7a97aed12661495a492c9a8f10e617a332dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 May 2023 07:37:28 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.5",
+      "version": "8.6.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.109.4",
+            "commit": "c88ed5c283672106e237177f59a8bf356d6d9fc6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 May 2023 07:38:08 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.4",
+      "version": "8.6.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.109.3",
+            "commit": "aef617f3cf693305ed0955faa2afb53643e30464"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 May 2023 18:14:02 GMT",
       "tag": "@fluentui/azure-themes_v8.6.3",
       "version": "8.6.3",

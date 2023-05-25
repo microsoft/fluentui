@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Mon, 24 Apr 2023 08:12:36 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2023 20:45:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.10)
+
+Wed, 24 May 2023 20:45:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.9..@fluentui/react-image_v9.1.10)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.5.0 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.9)
+
+Thu, 18 May 2023 00:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.8..@fluentui/react-image_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.8)
+
+Fri, 12 May 2023 20:27:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.7..@fluentui/react-image_v9.1.8)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: move makeStyles() calls to .styles.ts files ([PR #27707](https://github.com/microsoft/fluentui/pull/27707) by olfedias@microsoft.com)
+- Update to use single hook selector ([PR #27491](https://github.com/microsoft/fluentui/pull/27491) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.7)
 

@@ -1,30 +1,21 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Avatar } from '@fluentui/react-avatar';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TagContextValues, TagProps, TagSlots, TagState } from '../Tag/index';
+import { ARIAButtonSlotProps } from '../../../../react-aria/src/index';
 
-export type TagButtonSlots = {
+export type TagButtonContextValues = TagContextValues;
+
+export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
   root: NonNullable<Slot<'div'>>;
-  contentButton?: Slot<'button'>;
-  avatar?: Slot<typeof Avatar>;
-  icon?: Slot<'span'>;
-  primaryText?: Slot<'span'>;
-  secondaryText?: Slot<'span'>;
-  dismissButton?: NonNullable<Slot<'button'>>;
+  dismissButton?: Slot<'button'>;
+  content: NonNullable<ARIAButtonSlotProps<'div'>>;
 };
 
 /**
  * TagButton Props
  */
-export type TagButtonProps = ComponentProps<TagButtonSlots> & {
-  size?: 'extra-small' | 'small' | 'medium';
-  shape?: 'rounded' | 'circular';
-  appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
-  disabled?: boolean;
-  checked?: boolean;
-  dismissable?: boolean;
-};
+export type TagButtonProps = ComponentProps<Partial<TagButtonSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
 
 /**
  * State used in rendering TagButton
  */
-export type TagButtonState = ComponentState<TagButtonSlots> &
-  Required<Pick<TagButtonProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
+export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;

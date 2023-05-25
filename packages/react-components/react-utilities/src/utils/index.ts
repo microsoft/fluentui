@@ -6,3 +6,4 @@ export * from './omit';
 export * from './properties';
 export * from './isHTMLElement';
 export * from './isInteractiveHTMLElement';
+export * from './priorityQueue';
