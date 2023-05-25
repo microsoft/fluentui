@@ -72,6 +72,11 @@ export function createOverflowManager(): OverflowManager {
     return options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
   };
 
+  const getDividerLength = () => {
+    const divider = document.querySelector('[data-overflow-divider]');
+    return divider ? getOffsetSize(divider as HTMLElement) : 0;
+  };
+
   const makeItemVisible = () => {
     const nextVisible = invisibleItemQueue.dequeue();
     visibleItemQueue.enqueue(nextVisible);
@@ -82,8 +87,7 @@ export function createOverflowManager(): OverflowManager {
       overflowGroups[item.groupId].invisibleItemIds.delete(item.id);
       overflowGroups[item.groupId].visibleItemIds.add(item.id);
     }
-
-    return getOffsetSize(item.element);
+    return getOffsetSize(item.element) + getDividerLength();
   };
 
   const makeItemInvisible = () => {
@@ -91,13 +95,12 @@ export function createOverflowManager(): OverflowManager {
     invisibleItemQueue.enqueue(nextInvisible);
 
     const item = overflowItems[nextInvisible];
-    const width = getOffsetSize(item.element);
+    const width = getOffsetSize(item.element) + getDividerLength();
     options.onUpdateItemVisibility({ item, visible: false });
     if (item.groupId) {
       overflowGroups[item.groupId].visibleItemIds.delete(item.id);
       overflowGroups[item.groupId].invisibleItemIds.add(item.id);
     }
-
     return width;
   };
 
@@ -137,7 +140,7 @@ export function createOverflowManager(): OverflowManager {
     const visibleItemIds = visibleItemQueue.all();
     let currentWidth = visibleItemIds.reduce((sum, visibleItemId) => {
       const child = overflowItems[visibleItemId].element;
-      return sum + getOffsetSize(child);
+      return sum + getOffsetSize(child) + getDividerLength();
     }, 0);
 
     // Add items until available width is filled - can result in overflow

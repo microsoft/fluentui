@@ -19,6 +19,7 @@ import {
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
+import { ChevronRight20Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {
@@ -61,18 +62,18 @@ export const Dividers = () => {
         <OverflowItem id={'1'} groupId={'1'}>
           <Button>Item 1</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'1'} />
+        <OverflowGroupDivider customDivider groupId={'1'} />
         <OverflowItem id={'2'} groupId={'2'}>
           <Button>Item 2</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'2'} />
+        <OverflowGroupDivider customDivider groupId={'2'} />
         <OverflowItem id={'3'} groupId={'3'}>
           <Button>Item 3</Button>
         </OverflowItem>
         <OverflowItem id={'4'} groupId={'3'}>
           <Button>Item 4</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'3'} />
+        <OverflowGroupDivider customDivider groupId={'3'} />
         <OverflowItem id={'5'} groupId={'4'}>
           <Button>Item 5</Button>
         </OverflowItem>
@@ -82,7 +83,7 @@ export const Dividers = () => {
         <OverflowItem id={'7'} groupId={'4'}>
           <Button>Item 7</Button>
         </OverflowItem>
-        <OverflowGroupDivider groupId={'4'} />
+        <OverflowGroupDivider customDivider groupId={'4'} />
         <OverflowItem id={'8'} groupId={'5'}>
           <Button>Item 8</Button>
         </OverflowItem>
@@ -96,6 +97,7 @@ export const Dividers = () => {
 
 const OverflowGroupDivider: React.FC<{
   groupId: string;
+  customDivider?: boolean;
 }> = props => {
   const isGroupVisible = useIsOverflowGroupVisible(props.groupId);
 
@@ -103,7 +105,13 @@ const OverflowGroupDivider: React.FC<{
     return null;
   }
 
-  return <Divider vertical appearance="brand" style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }} />;
+  return props.customDivider ? (
+    <div data-overflow-divider="">
+      <ChevronRight20Regular />
+    </div>
+  ) : (
+    <Divider vertical appearance="brand" style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }} />
+  );
 };
 
 const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
