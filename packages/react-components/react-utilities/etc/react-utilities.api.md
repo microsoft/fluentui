@@ -17,7 +17,12 @@ export function canUseDOM(): boolean;
 export const clamp: (value: number, min: number, max: number) => number;
 
 // @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>> & {
+    [componentMetadataSymbol]?: {
+        slots: Slots;
+        primary: Primary;
+    };
+};
 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
@@ -40,7 +45,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
+export type ForwardRefComponent<Props extends PropsTemplate> = 'ref' extends keyof PropsPrimaryProps<Props> ? React_2.ForwardRefExoticComponent<Props & Pick<PropsPrimaryProps<Props>, 'ref'>> : never;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
