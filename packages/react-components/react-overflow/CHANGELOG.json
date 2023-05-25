@@ -2,6 +2,21 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:29 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.17",
+      "version": "9.0.17",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:10 GMT",
       "tag": "@fluentui/react-overflow_v9.0.17",
       "version": "9.0.17",

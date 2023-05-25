@@ -2,6 +2,29 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:28 GMT",
+      "tag": "@fluentui/react-link_v9.0.40",
+      "version": "9.0.40",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-tabster to v9.7.3",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 13:11:08 GMT",
       "tag": "@fluentui/react-link_v9.0.39",
       "version": "9.0.39",

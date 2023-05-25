@@ -2,6 +2,53 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:37 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.16",
+      "version": "9.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.5.3",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.14",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-portal to v9.2.10",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.0",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-tabster to v9.7.3",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 13:11:08 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.15",
       "version": "9.0.0-beta.15",
