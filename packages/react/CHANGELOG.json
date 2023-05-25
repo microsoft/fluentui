@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 25 May 2023 07:37:49 GMT",
+      "tag": "@fluentui/react_v8.109.6",
+      "version": "8.109.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "1a33af545431260391cf6b021a207df7a16bf1e7",
+            "comment": "fix(DialogFooter): Add explicit children to work with React 18."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 May 2023 07:38:20 GMT",
       "tag": "@fluentui/react_v8.109.5",
       "version": "8.109.5",
