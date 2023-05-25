@@ -899,7 +899,8 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
-        'type-check': 'tsc -b tsconfig.json',
+        'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
+        'type-check': 'just-scripts type-check',
       });
 
       // verify test-ssr addition
