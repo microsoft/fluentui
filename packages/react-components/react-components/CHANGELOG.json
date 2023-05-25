@@ -2,6 +2,27 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 25 May 2023 10:00:48 GMT",
+      "tag": "@fluentui/react-components_v9.20.4",
+      "version": "9.20.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "704929b6c1ef69a3ee055e71b5b197dcc2444d3b",
+            "comment": "chore: fix useDialogTitle ref argument type"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4e463381ae0a63a07c45a2618bdce46423c65505",
+            "comment": "fix(react-utilities): fix dispatcher behavior"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 20:45:21 GMT",
       "tag": "@fluentui/react-components_v9.20.3",
       "version": "9.20.3",

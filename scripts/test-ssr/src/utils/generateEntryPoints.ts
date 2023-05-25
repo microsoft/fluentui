@@ -1,37 +1,23 @@
-import * as glob from 'glob';
 import * as fs from 'fs';
-import * as match from 'micromatch';
 import * as path from 'path';
+
 import * as prettier from 'prettier';
 
 import { PROVIDER_ID } from './constants';
-import { getImportsFromIndexFile } from './getImportsFromIndexFile';
+import { getExportFromFile } from './getExportFromFile';
+import type { StoryImport } from './getExportFromFile';
 
 type GenerateEntryPointsConfig = {
   cjsEntryPoint: string;
   esmEntryPoint: string;
-  storiesGlobs: string[];
-  ignore: string[];
+  storiesPaths: string[];
 };
 
-export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<{ ignoredStories: string[] }> {
-  const storiesFiles = config.storiesGlobs.map(pattern => glob.sync(pattern)).flatMap(pattern => pattern);
-  const indexStoriesFiles = storiesFiles.filter(filename => filename.includes('index.stories.ts'));
-
+export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<void> {
   const distDir = path.dirname(config.cjsEntryPoint);
-  const ignoredStories: string[] = [];
-
-  const imports = (await Promise.all(indexStoriesFiles.map(filename => getImportsFromIndexFile(distDir, filename))))
-    .flatMap(entries => entries)
-    .filter(entry => {
-      const isIgnoredStory = match.isMatch(entry.filepath, config.ignore);
-
-      if (isIgnoredStory) {
-        ignoredStories.push(entry.filepath);
-      }
-
-      return !isIgnoredStory;
-    });
+  const imports = (await Promise.all(config.storiesPaths.map(filename => getExportFromFile(distDir, filename)))).filter(
+    Boolean,
+  ) as StoryImport[];
 
   const appTemplate = `
   import { RendererProvider, createDOMRenderer } from '@griffel/react';
@@ -68,8 +54,4 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
 
   fs.writeFileSync(config.esmEntryPoint, prettier.format(appTemplate, { parser: 'typescript' }));
   fs.writeFileSync(config.cjsEntryPoint, prettier.format(storiesTemplate, { parser: 'typescript' }));
-
-  return {
-    ignoredStories,
-  };
 }

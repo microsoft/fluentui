@@ -2,6 +2,45 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Thu, 25 May 2023 10:00:48 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.50",
+      "version": "9.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.5.4",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.3.15",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-tabster to v9.7.4",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-utilities to v9.9.1",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.5",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 20:45:23 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-beta.49",
       "version": "9.0.0-beta.49",

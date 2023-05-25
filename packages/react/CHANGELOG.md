@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 22 May 2023 07:38:20 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2023 07:37:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.109.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.6)
+
+Thu, 25 May 2023 07:37:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.5..@fluentui/react_v8.109.6)
+
+### Patches
+
+- fix(DialogFooter): Add explicit children to work with React 18. ([PR #27987](https://github.com/microsoft/fluentui/pull/27987) by esteban.230@hotmail.com)
 
 ## [8.109.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.5)
 
