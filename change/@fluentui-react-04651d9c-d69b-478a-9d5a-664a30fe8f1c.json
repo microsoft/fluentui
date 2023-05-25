@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add option in ensuresuggestionmodel to check object ariaLabel property to allow button aria label override from picker item object",
+  "packageName": "@fluentui/react",
+  "email": "daneuber@microsoft.com",
+  "dependentChangeType": "patch"
+}
