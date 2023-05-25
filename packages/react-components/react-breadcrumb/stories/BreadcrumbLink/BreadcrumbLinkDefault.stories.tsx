@@ -82,7 +82,12 @@ function renderLink(el: Item, isLastItem: boolean = false) {
   return (
     <React.Fragment key={`${el.key}-button`}>
       <BreadcrumbItem>
-        <BreadcrumbLink {...el.linkProps} target="_blank" current={isLastItem}>
+        <BreadcrumbLink
+          {...el.linkProps}
+          target="_blank"
+          current={isLastItem}
+          href={isLastItem ? undefined : el.linkProps?.href}
+        >
           {el.item}
         </BreadcrumbLink>
       </BreadcrumbItem>

@@ -11,6 +11,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 const useStyles = makeStyles({
   container: {
     position: 'fixed',
+    width: '292px',
   },
 });
 

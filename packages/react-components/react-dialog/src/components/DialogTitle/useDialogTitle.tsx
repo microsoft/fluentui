@@ -16,7 +16,7 @@ import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
  * @param props - props from this instance of DialogTitle
  * @param ref - reference to root HTMLElement of DialogTitle
  */
-export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLElement>): DialogTitleState => {
+export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLDivElement>): DialogTitleState => {
   const { as, action } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const internalStyles = useDialogTitleInternalStyles();
