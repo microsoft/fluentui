@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { tagClassNames } from '../Tag/index';
+import { tagButtonClassNames } from '../TagButton/index';
 
 /**
  * Create the state required to render TagGroup.
@@ -15,10 +18,23 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLElement>): TagGroupState => {
   const { onDismiss, size = 'medium' } = props;
 
+  const innerRef = React.useRef<HTMLElement>();
+  const { targetDocument } = useFluent();
+  const { findNextFocusable } = useFocusFinders();
+
   const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
     onDismiss?.(e, { dismissedTagValue: id });
 
-    // TODO set focus after tag dismiss
+    // set focus after tag dismiss
+    const activeElement = targetDocument?.activeElement;
+    if (
+      activeElement?.className.includes(tagClassNames.root) ||
+      activeElement?.className.includes(tagButtonClassNames.dismissButton)
+    ) {
+      // focus on next tag only if the active element is a tag/tag button
+      const next = findNextFocusable(activeElement as HTMLElement, { container: innerRef.current });
+      next?.focus();
+    }
   });
 
   const arrowNavigationProps = useArrowNavigationGroup({
@@ -36,7 +52,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
     },
 
     root: getNativeElementProps('div', {
-      ref,
+      ref: useMergedRefs(ref, innerRef),
       role: 'list',
       ...arrowNavigationProps,
       ...props,
