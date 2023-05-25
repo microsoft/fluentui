@@ -26,9 +26,13 @@ export const usePopoverSurface_unstable = (
   const withArrow = usePopoverContext_unstable(context => context.withArrow);
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
-  const legacyTrapFocus = usePopoverContext_unstable(context => context.legacyTrapFocus);
+  const inertTrapFocus = usePopoverContext_unstable(context => context.inertTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
-  const { modalAttributes } = useModalAttributes({ trapFocus, legacyTrapFocus });
+  const { modalAttributes } = useModalAttributes({
+    trapFocus,
+    legacyTrapFocus: !inertTrapFocus,
+    alwaysFocusable: !trapFocus,
+  });
 
   const state: PopoverSurfaceState = {
     inline,
@@ -74,6 +78,7 @@ export const usePopoverSurface_unstable = (
     // only close if the event happened inside the current popover
     // If using a stack of inline popovers, the user should call `stopPropagation` to avoid dismissing the entire stack
     if (e.key === 'Escape' && contentRef.current?.contains(e.target as HTMLDivElement)) {
+      e.preventDefault();
       setOpen(e, false);
     }
 

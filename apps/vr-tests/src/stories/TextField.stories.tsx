@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TextField } from '@fluentui/react';
@@ -7,8 +7,8 @@ import { TextField } from '@fluentui/react';
 storiesOf('TextField', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TextField-field')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -18,7 +18,7 @@ storiesOf('TextField', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <TextField label="Standard" />)
   .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {

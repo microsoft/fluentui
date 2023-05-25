@@ -1,0 +1,151 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Server-Side Rendering/Next.js setup" />
+
+## Next.js
+
+For basic instructions on getting Next.js set up, see [Getting Started](https://nextjs.org/docs/getting-started).
+
+1. Get a basic next.js setup running, rendering a page from the `pages` folder, as guided by the tutorial.
+2. Add the Fluent UI dependencies: `@fluentui/react-components`.
+
+```shell
+# Using Yarn
+yarn add @fluentui/react-components
+
+# Using NPM
+npm install @fluentui/react-components
+```
+
+> **Note on [experimental appDir support](https://beta.nextjs.org/docs/api-reference/next-config#appdir)**
+>
+> Fluent UI React v9 use extensively React Context API, to use Fluent components within `app` directory please use [`use client` directive](https://beta.nextjs.org/docs/rendering/server-and-client-components#convention).
+
+1. Create a `_document.tsx` file under your `pages` folder with the following content:
+
+```tsx
+import { createDOMRenderer, renderToStyleElements } from '@fluentui/react-components';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+
+class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    // 👇 creates a renderer that will be used for SSR
+    const renderer = createDOMRenderer();
+    const originalRenderPage = ctx.renderPage;
+
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: App =>
+          function EnhancedApp(props) {
+            const enhancedProps = {
+              ...props,
+              // 👇 this is required to provide a proper renderer instance
+              renderer,
+            };
+
+            return <App {...enhancedProps} />;
+          },
+      });
+
+    const initialProps = await Document.getInitialProps(ctx);
+    const styles = renderToStyleElements(renderer);
+
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          {/* 👇 adding Fluent UI styles elements to output */}
+          {styles}
+        </>
+      ),
+    };
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+```
+
+2. Create or modify a `_app.tsx` file under your `pages` folder with the following content:
+
+```tsx
+import {
+  createDOMRenderer,
+  FluentProvider,
+  GriffelRenderer,
+  SSRProvider,
+  RendererProvider,
+  webLightTheme,
+} from '@fluentui/react-components';
+import type { AppProps } from 'next/app';
+
+type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
+
+function MyApp({ Component, pageProps, renderer }: EnhancedAppProps) {
+  return (
+    // 👇 Accepts a renderer from <Document /> or creates a default one
+    //    Also triggers rehydration a client
+    <RendererProvider renderer={renderer || createDOMRenderer()}>
+      <SSRProvider>
+        <FluentProvider theme={webLightTheme}>
+          <Component {...pageProps} />
+        </FluentProvider>
+      </SSRProvider>
+    </RendererProvider>
+  );
+}
+
+export default MyApp;
+```
+
+3. You should now be able to server render Fluent UI React components in any of your pages:
+
+```tsx
+import { Button, makeStyles, shorthands, Title1, tokens } from '@fluentui/react-components';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '200px',
+
+    ...shorthands.border('2px', 'dashed', tokens.colorPaletteBerryBorder2),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.gap('5px'),
+    ...shorthands.padding('10px'),
+  },
+});
+
+const Home: NextPage = () => {
+  const styles = useStyles();
+
+  return (
+    <>
+      <Head>
+        <title>My app</title>
+      </Head>
+
+      <div className={styles.container}>
+        <Title1>Hello world!</Title1>
+        <Button>A button</Button>
+      </div>
+    </>
+  );
+};
+
+export default Home;
+```

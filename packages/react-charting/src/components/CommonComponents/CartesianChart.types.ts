@@ -240,6 +240,11 @@ export interface ICartesianChartProps {
   yMaxValue?: number;
 
   /**
+   * maximum data value point in x-axis
+   */
+  xMaxValue?: number;
+
+  /**
    * Number of ticks on the y-axis.
    * Tick count should be factor of difference between (yMinValue, yMaxValue)?
    * @default 4
@@ -333,6 +338,11 @@ export interface ICartesianChartProps {
    * The prop used to define a custom locale for the date time format.
    */
   timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
+
+  /**
+   * The prop used to define a custom datetime formatter for date axis.
+   */
+  customDateTimeFormatter?: (dateTime: Date) => string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -514,4 +524,24 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Callback method used when mouse leaves the chart boundary.
    */
   onChartMouseLeave?: () => void;
+
+  /** Callback method to get extra margins for domain */
+  getDomainMargins?: (containerWidth: number) => IMargins;
+
+  /** Padding between each bar/line-point */
+  xAxisInnerPadding?: number;
+
+  /** Padding before first bar/line-point and after last bar/line-point */
+  xAxisOuterPadding?: number;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }

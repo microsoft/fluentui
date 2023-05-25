@@ -1,11 +1,16 @@
 import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 /**
  * PopoverTrigger Props
  */
-export type PopoverTriggerProps = {
-  children: React.ReactElement | ((props: PopoverTriggerChildProps) => React.ReactElement | null);
+export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps> & {
+  /**
+   * Disables internal trigger mechanism that ensures a child provided will be a compliant ARIA button.
+   * @default false
+   */
+  disableButtonEnhancement?: boolean;
 };
 
 /**

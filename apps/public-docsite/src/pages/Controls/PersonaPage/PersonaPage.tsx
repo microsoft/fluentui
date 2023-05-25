@@ -16,13 +16,13 @@ export const PersonaPage: React.FunctionComponent<IControlsPageProps> = props =>
     <ControlsAreaPage
       {...props}
       title="Persona"
-      {...PersonaPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...PersonaPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

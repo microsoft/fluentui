@@ -227,6 +227,7 @@ import { IPoint } from '@fluentui/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IPropsWithStyles } from '@fluentui/utilities';
 import { IRawStyle } from '@fluentui/style-utilities';
+import { IReactProps } from '@fluentui/utilities';
 import { IRectangle } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderComponent } from '@fluentui/utilities';
@@ -506,6 +507,10 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: IFocusRectsContext;
+    // (undocumented)
+    static contextType: React_2.Context<IFocusRectsContext | undefined>;
     // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
@@ -1443,7 +1448,7 @@ export const DirectionalHint: {
 };
 
 // @public (undocumented)
-export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
+export type DirectionalHint = (typeof DirectionalHint)[keyof typeof DirectionalHint];
 
 export { disableBodyScroll }
 
@@ -2013,7 +2018,7 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
 }
 
 // @public
-export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListV2Props>;
 
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
@@ -2182,8 +2187,6 @@ export { IAnimationStyles }
 
 export { IAnimationVariables }
 
-// Warning: (ae-forgotten-export) The symbol "IReactProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IAnnouncedProps extends IReactProps<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
@@ -3348,8 +3351,8 @@ export interface IChoiceGroupOption extends Omit<React_2.InputHTMLAttributes<HTM
     imageSrc?: string;
     key: string;
     labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
+    onRenderField?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -3364,9 +3367,9 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
     itemKey: string;
     key?: string;
     name?: string;
-    onBlur?: (ev?: React_2.FocusEvent<HTMLElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
-    onChange?: (evt?: React_2.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
-    onFocus?: (ev?: React_2.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void | undefined;
+    onBlur?: (ev?: React_2.FocusEvent<HTMLElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void;
+    onChange?: (evt?: React_2.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void;
+    onFocus?: (ev?: React_2.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void | undefined;
     required?: boolean;
     theme?: ITheme;
 }
@@ -3901,6 +3904,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 // @public (undocumented)
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React_2.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
+    allowFreeInput?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
     autofill?: IAutofillProps;
@@ -3938,6 +3942,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
+    ariaActiveDescendantValue?: string;
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
@@ -4235,6 +4240,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IContextualMenu>;
     contextualMenuItemAs?: React_2.ComponentClass<IContextualMenuItemProps> | React_2.FunctionComponent<IContextualMenuItemProps>;
     coverTarget?: boolean;
@@ -4747,7 +4753,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selection?: ISelection;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
-    selectionZoneProps?: ISelectionZoneProps;
+    selectionZoneProps?: Partial<ISelectionZoneProps>;
     setKey?: string;
     // @deprecated
     shouldApplyApplicationRole?: boolean;
@@ -4953,8 +4959,8 @@ export interface IDetailsRowStyles {
     check: IStyle;
     // (undocumented)
     checkCell: IStyle;
-    // (undocumented)
-    checkCover: IStyle;
+    // @deprecated (undocumented)
+    checkCover?: IStyle;
     // (undocumented)
     fields: IStyle;
     // (undocumented)
@@ -5036,6 +5042,8 @@ export interface IDialogFooter {
 
 // @public (undocumented)
 export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: IRefObject<IDialogFooter>;
     styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
@@ -5798,6 +5806,7 @@ export interface IFabricProps extends React_2.HTMLAttributes<HTMLDivElement>, Re
     // (undocumented)
     componentRef?: IRefObject<{}>;
     dir?: 'rtl' | 'ltr' | 'auto';
+    preventBlanketFontInheritance?: boolean;
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
     theme?: ITheme;
 }
@@ -6121,6 +6130,32 @@ export interface IGroupedListStyles {
     groupIsDropping: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupedListV2Props extends IGroupedListProps {
+    groupExpandedVersion?: {};
+    listRef?: React_2.Ref<List>;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number, group?: IGroup) => React_2.ReactNode;
+    version?: {};
+}
+
+// @public (undocumented)
+export interface IGroupedListV2State {
+    // (undocumented)
+    compact?: IGroupedListV2Props['compact'];
+    // (undocumented)
+    groupExpandedVersion: {};
+    // (undocumented)
+    groups?: IGroup[];
+    // (undocumented)
+    items?: IGroupedListV2Props['items'];
+    // (undocumented)
+    listProps?: IGroupedListV2Props['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListV2Props['selectionMode'];
+    // (undocumented)
+    version: {};
 }
 
 // @public (undocumented)
@@ -6593,6 +6628,7 @@ export interface ILayerProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
+    fabricProps?: IFabricProps;
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
@@ -6747,6 +6783,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
     onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
+    renderEarly?: boolean;
     renderedWindowsAhead?: number;
     renderedWindowsBehind?: number;
     role?: string;
@@ -6759,6 +6796,8 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
 export interface IListState<T = any> {
     // (undocumented)
     getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    // (undocumented)
+    hasMounted: boolean;
     // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
@@ -8095,6 +8134,7 @@ export { isDirectionalKeyCode }
 
 // @public (undocumented)
 export interface ISearchBox {
+    blur(): void;
     focus(): void;
     hasFocus(): boolean;
 }
@@ -8745,6 +8785,7 @@ export interface IStackItemTokens {
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ElementType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    enableScopedSelectors?: boolean;
     // @deprecated
     gap?: number | string;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
@@ -9340,21 +9381,25 @@ export interface IThemeSlotRule {
 // @public (undocumented)
 export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'> {
     allowFreeform?: boolean;
+    dateAnchor?: Date;
     defaultValue?: Date;
     increments?: number;
     label?: string;
     onChange?: (event: React_2.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
     onValidateUserInput?: (userInput: string) => string;
+    onValidationResult?: (event: React_2.FormEvent<IComboBox>, data: TimePickerValidationResultData) => void;
     showSeconds?: boolean;
     strings?: ITimePickerStrings;
     timeRange?: ITimeRange;
     useHour12?: boolean;
+    value?: Date;
 }
 
 // @public
 export interface ITimePickerStrings {
     invalidInputErrorMessage: string;
+    timeOutOfBoundsErrorMessage?: string;
 }
 
 // @public
@@ -9424,7 +9469,7 @@ export interface ITooltipHost {
 }
 
 // @public
-export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
+export interface ITooltipHostProps extends Omit<React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase>, 'content'> {
     calloutProps?: ICalloutProps;
     className?: string;
     closeDelay?: number;
@@ -9466,7 +9511,7 @@ export interface ITooltipHostStyles {
 }
 
 // @public (undocumented)
-export interface ITooltipProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipBase> {
+export interface ITooltipProps extends Omit<React_2.HTMLAttributes<HTMLDivElement | TooltipBase>, 'content'> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
     content?: string | JSX.Element | JSX.Element[];
@@ -10528,7 +10573,7 @@ export const ScrollbarVisibility: {
 };
 
 // @public (undocumented)
-export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];
+export type ScrollbarVisibility = (typeof ScrollbarVisibility)[keyof typeof ScrollbarVisibility];
 
 // @public (undocumented)
 export const ScrollToMode: {
@@ -10539,7 +10584,7 @@ export const ScrollToMode: {
 };
 
 // @public (undocumented)
-export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 // @public (undocumented)
 export const SearchBox: React_2.FunctionComponent<ISearchBoxProps>;
@@ -11009,7 +11054,7 @@ export class SuggestionsController<T> {
     // (undocumented)
     suggestions: ISuggestionModel<T>[];
     // (undocumented)
-    updateSuggestions(newSuggestions: T[], selectedIndex?: number): void;
+    updateSuggestions(newSuggestions: T[], selectedIndex?: number, maxCount?: number): void;
 }
 
 // @public
@@ -11211,6 +11256,11 @@ export { TimeConstants }
 
 // @public (undocumented)
 export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
+
+// @public
+export type TimePickerValidationResultData = {
+    errorMessage?: string;
+};
 
 // @public (undocumented)
 export const Toggle: React_2.FunctionComponent<IToggleProps>;

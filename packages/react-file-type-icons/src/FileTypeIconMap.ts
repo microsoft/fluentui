@@ -44,6 +44,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   classifier: {
     extensions: ['classifier'],
   },
+  clipchamp: {
+    extensions: ['clipchamp'],
+  },
   code: {
     extensions: [
       'abap',
@@ -259,6 +262,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   csv: {
     extensions: ['csv'],
   },
+  designer: {
+    extensions: ['design'],
+  },
   desktopfolder: {},
   docset: {},
   documentsfolder: {},
@@ -293,8 +299,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   linkedfolder: {},
   listitem: {},
   loop: {
-    extensions: ['fluid', 'loop'],
+    extensions: ['fluid', 'loop', 'note'],
   },
+  loopworkspace: {},
   officescript: {
     extensions: ['osts'],
   },
@@ -338,10 +345,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   multiple: {},
   one: {
-    // This represents a single Fluid Note, or a partial exported section/page of a notebook.
-    extensions: ['note', 'one'],
+    // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
+    extensions: ['one'],
   },
   onetoc: {
+    // This is an entire OneNote notebook.
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
   },
   pbiapp: {},
@@ -538,7 +546,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
   whiteboard: {
-    extensions: ['whiteboard'],
+    extensions: ['whiteboard', 'wbtx'],
   },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],

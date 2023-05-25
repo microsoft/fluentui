@@ -11,11 +11,10 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "preserveConstEnums": false,
+    "preserveConstEnums": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"],
-    // Must be false when preserveConstEnums is false
-    "isolatedModules": false
+    "isolatedModules": true
   },
   "include": ["src"]
 }

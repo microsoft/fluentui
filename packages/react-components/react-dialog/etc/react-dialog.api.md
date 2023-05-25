@@ -10,13 +10,14 @@ import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
@@ -33,6 +34,7 @@ export type DialogActionsPosition = 'start' | 'end';
 // @public
 export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
     position?: DialogActionsPosition;
+    fluid?: boolean;
 };
 
 // @public (undocumented)
@@ -41,9 +43,7 @@ export type DialogActionsSlots = {
 };
 
 // @public
-export type DialogActionsState = ComponentState<DialogActionsSlots> & {
-    position: DialogActionsPosition;
-};
+export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -81,10 +81,6 @@ export type DialogContentState = ComponentState<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogOpenChangeData = {
-    type: 'dialogCancel';
-    open: boolean;
-    event: React_2.SyntheticEvent<DialogSurfaceElement>;
-} | {
     type: 'escapeKeyDown';
     open: boolean;
     event: React_2.KeyboardEvent<DialogSurfaceElement>;
@@ -111,6 +107,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    inertTrapFocus?: boolean;
 };
 
 // @public (undocumented)
@@ -129,10 +126,10 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
+export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
@@ -150,11 +147,11 @@ export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
 
 // @public
-export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
+export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 // @public (undocumented)
 export type DialogTitleSlots = {
-    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
     action?: Slot<'div'>;
 };
 
@@ -162,21 +159,20 @@ export type DialogTitleSlots = {
 export type DialogTitleState = ComponentState<DialogTitleSlots>;
 
 // @public
-export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
+export const DialogTrigger: React_2.FC<DialogTriggerProps>;
 
 // @public (undocumented)
 export type DialogTriggerAction = 'open' | 'close';
 
 // @public
 export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
-    ref: React_2.Ref<unknown>;
     'aria-haspopup'?: 'dialog';
 }>;
 
 // @public (undocumented)
-export type DialogTriggerProps = {
+export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
     action?: DialogTriggerAction;
-    children: React_2.ReactElement | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
+    disableButtonEnhancement?: boolean;
 };
 
 // @public (undocumented)
@@ -233,7 +229,7 @@ export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
 
 // @public
-export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLElement>) => DialogTitleState;
+export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLDivElement>) => DialogTitleState;
 
 // @public
 export const useDialogTitleStyles_unstable: (state: DialogTitleState) => DialogTitleState;

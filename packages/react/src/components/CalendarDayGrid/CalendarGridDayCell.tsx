@@ -237,7 +237,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
       role="gridcell"
       tabIndex={isNavigatedDate ? 0 : undefined}
-      aria-current={day.isSelected ? 'date' : undefined}
+      aria-current={day.isToday ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
       data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
     >

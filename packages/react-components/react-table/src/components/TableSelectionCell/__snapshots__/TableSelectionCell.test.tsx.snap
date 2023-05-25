@@ -10,28 +10,13 @@ exports[`TableSelectionCell renders a default state 1`] = `
     >
       <input
         class="fui-Checkbox__input"
-        id="checkbox-8"
+        id="checkbox-2"
         type="checkbox"
       />
       <div
         aria-hidden="true"
         class="fui-Checkbox__indicator"
-      >
-        <svg
-          aria-hidden="true"
-          class=""
-          fill="currentColor"
-          height="12"
-          viewBox="0 0 12 12"
-          width="12"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 01-1.08.02L2.22 6.53a.75.75 0 011.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 011.06-.04z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
+      />
     </span>
   </td>
 </tr>

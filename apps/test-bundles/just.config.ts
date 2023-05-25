@@ -1,4 +1,6 @@
-import { preset, task, resolveCwd } from '@fluentui/scripts';
+import { preset, task, resolveCwd } from '@fluentui/scripts-tasks';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - parallel-webpack has no types
 import { run } from 'parallel-webpack';
 
 preset();

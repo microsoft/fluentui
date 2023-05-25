@@ -3,7 +3,7 @@ import * as React from 'react';
 import { MenuGroup } from './MenuGroup';
 import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('MenuGroup', () => {
   isConformant({

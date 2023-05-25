@@ -9,7 +9,7 @@ export const FOCUS_VISIBLE_ATTR = 'data-fui-focus-visible';
 /**
  * @internal
  */
-export const FOCUS_WITHIN_ATTR = 'data-fui-focus-visible';
+export const FOCUS_WITHIN_ATTR = 'data-fui-focus-within';
 export const defaultOptions = {
   style: {},
   selector: 'focus',

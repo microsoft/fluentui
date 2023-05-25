@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest';
 import * as yargs from 'yargs';
-import { fluentRepoDetails } from '../github';
+import { fluentRepoDetails } from '@fluentui/scripts-github';
 
 const tokenMsg =
   '\nA GitHub personal access token is required even for dry runs due to the potential high rate of requests.\n' +

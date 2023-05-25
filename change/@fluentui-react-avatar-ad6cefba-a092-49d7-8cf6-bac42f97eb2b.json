@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Migrate react-avatar to use new build",
-  "packageName": "@fluentui/react-avatar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

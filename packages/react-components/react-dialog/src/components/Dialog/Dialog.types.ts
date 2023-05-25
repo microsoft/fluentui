@@ -9,14 +9,6 @@ export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 export type DialogOpenChangeData =
   | {
-      /**
-       * triggered when Escape key is pressed in a native `dialog`
-       */
-      type: 'dialogCancel';
-      open: boolean;
-      event: React.SyntheticEvent<DialogSurfaceElement>;
-    }
-  | {
       type: 'escapeKeyDown';
       open: boolean;
       event: React.KeyboardEvent<DialogSurfaceElement>;
@@ -38,7 +30,8 @@ export type DialogModalType = 'modal' | 'non-modal' | 'alert';
  * Callback fired when the component changes value from open state.
  *
  * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
- * @param data - A data object with relevant information, such as open value and type
+ * @param data - A data object with relevant information,
+ * such as open value and type of interaction that created the event
  */
 export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
@@ -81,12 +74,26 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   defaultOpen?: boolean;
+  /**
+   * Callback fired when the component changes value from open state.
+   *
+   * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
+   * @param data - A data object with relevant information,
+   * such as open value and type of interaction that created the event
+   */
   onOpenChange?: DialogOpenChangeEventHandler;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.
    * Alternatively can only contain {@link DialogSurface} if using trigger outside dialog, or controlling state.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
+  /**
+   * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+   * where the focus trap involves setting outside elements inert.
+   *
+   * @default false
+   */
+  inertTrapFocus?: boolean;
 };
 
 export type DialogState = ComponentState<DialogSlots> &

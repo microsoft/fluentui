@@ -152,16 +152,16 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
 
   const { appear, children, className, mountOnEnter, timeout, visible, unmountOnExit } = props;
 
-  const handleAnimationEvent = (
-    event: 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited',
-  ) => () => {
-    _.invoke(props, event, null, props);
-  };
+  const handleAnimationEvent =
+    (event: 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited') => () => {
+      _.invoke(props, event, null, props);
+    };
 
-  const { className: animationClasses, animationDuration, animationDelay } = useAnimationStyles(
-    Animation.displayName,
-    props,
-  );
+  const {
+    className: animationClasses,
+    animationDuration,
+    animationDelay,
+  } = useAnimationStyles(Animation.displayName, props);
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
@@ -195,6 +195,7 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction ? (
+        // @ts-ignore - @types/react-transition-group doesn't actually include this API, nor is it documented
         ({ state }) => {
           const childWithClasses = (children as AnimationChildrenProp)({
             classes: cx(animationClasses, className, (child as any)?.props?.className),

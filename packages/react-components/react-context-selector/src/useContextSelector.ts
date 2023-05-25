@@ -16,13 +16,13 @@ type ContextReducer<Value, SelectedValue> = React.Reducer<
  * @internal
  * This hook returns context selected value by selector.
  * It will only accept context created by `createContext`.
- * It will trigger re-render if only the selected value is referencially changed.
+ * It will trigger re-render if only the selected value is referentially changed.
  */
 export const useContextSelector = <Value, SelectedValue>(
   context: Context<Value>,
   selector: ContextSelector<Value, SelectedValue>,
 ): SelectedValue => {
-  const contextValue = React.useContext((context as unknown) as Context<ContextValue<Value>>);
+  const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
 
   const {
     value: { current: value },

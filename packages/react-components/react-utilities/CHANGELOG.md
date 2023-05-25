@@ -1,8 +1,246 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 15 Sep 2022 09:48:57 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.1)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.9.0..@fluentui/react-utilities_v9.9.1)
+
+### Patches
+
+- fix(react-utilities): fix dispatcher behavior ([PR #27978](https://github.com/microsoft/fluentui/pull/27978) by olfedias@microsoft.com)
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.0)
+
+Thu, 18 May 2023 00:39:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.8.1..@fluentui/react-utilities_v9.9.0)
+
+### Minor changes
+
+- feat: Implement a priority queue ([PR #27848](https://github.com/microsoft/fluentui/pull/27848) by lingfangao@hotmail.com)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.1)
+
+Fri, 12 May 2023 20:28:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.8.0..@fluentui/react-utilities_v9.8.1)
+
+### Patches
+
+- feat: defers useControllableState state to initializer method ([PR #27717](https://github.com/microsoft/fluentui/pull/27717) by bernardo.sunderhus@gmail.com)
+- chore: updates useControllableState comments ([PR #27754](https://github.com/microsoft/fluentui/pull/27754) by bernardo.sunderhus@gmail.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: simplifies useControllableState hook internals ([PR #27702](https://github.com/microsoft/fluentui/pull/27702) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.8.0)
+
+Mon, 17 Apr 2023 17:54:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.4..@fluentui/react-utilities_v9.8.0)
+
+### Minor changes
+
+- feat: ensure compatibility with custom JSX pragma ([PR #27472](https://github.com/microsoft/fluentui/pull/27472) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- fix: Fix slot render functions ([PR #27561](https://github.com/microsoft/fluentui/pull/27561) by behowell@microsoft.com)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.4)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.3..@fluentui/react-utilities_v9.7.4)
+
+### Patches
+
+- fix(hooks): cleanup event listeners only when "disabled" is false ([PR #27516](https://github.com/microsoft/fluentui/pull/27516) by olfedias@microsoft.com)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.3)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.2..@fluentui/react-utilities_v9.7.3)
+
+### Patches
+
+- bugfix: increments SlotRenderFunction signature to include children ([PR #27377](https://github.com/microsoft/fluentui/pull/27377) by bernardo.sunderhus@gmail.com)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.2)
+
+Tue, 21 Mar 2023 21:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.1..@fluentui/react-utilities_v9.7.2)
+
+### Patches
+
+- chore: exports isHTMLElement as public ([PR #27178](https://github.com/microsoft/fluentui/pull/27178) by bernardo.sunderhus@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.1)
+
+Thu, 16 Mar 2023 14:36:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.0..@fluentui/react-utilities_v9.7.1)
+
+### Patches
+
+- fix(getSlots): stops slotProps.slot to be typed as never ([PR #27231](https://github.com/microsoft/fluentui/pull/27231) by bernardo.sunderhus@gmail.com)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.0)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.2..@fluentui/react-utilities_v9.7.0)
+
+### Minor changes
+
+- feat: isHTMLElement to support all HTMLElement classes ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.2)
+
+Fri, 10 Mar 2023 07:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.1..@fluentui/react-utilities_v9.6.2)
+
+### Patches
+
+- fix: ResolveShorthandOptions type to better reflect implementation ([PR #27112](https://github.com/microsoft/fluentui/pull/27112) by bernardo.sunderhus@gmail.com)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.1)
+
+Wed, 08 Mar 2023 17:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.0..@fluentui/react-utilities_v9.6.1)
+
+### Patches
+
+- fix: adjust IntrinsicElementProps type to properly support void elements ([PR #27095](https://github.com/microsoft/fluentui/pull/27095) by bernardo.sunderhus@gmail.com)
+- fix: export omit function ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.0)
+
+Wed, 15 Feb 2023 11:44:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.3..@fluentui/react-utilities_v9.6.0)
+
+### Minor changes
+
+- feat: Add event helpers to ease working with mouse and touch ([PR #26784](https://github.com/microsoft/fluentui/pull/26784) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- fix(useOnClickOutside): iframe focus detection uses `contains` ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by lingfangao@hotmail.com)
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.3)
+
+Mon, 13 Feb 2023 23:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.2..@fluentui/react-utilities_v9.5.3)
+
+### Patches
+
+- fix: `resolveShorthand` should resolve an object as its copy ([PR #26825](https://github.com/microsoft/fluentui/pull/26825) by yuanboxue@microsoft.com)
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.2)
+
+Fri, 10 Feb 2023 08:50:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.1..@fluentui/react-utilities_v9.5.2)
+
+### Patches
+
+- fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.1)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.0..@fluentui/react-utilities_v9.5.1)
+
+### Patches
+
+- fix: update definitions for SSRProvider ([PR #25582](https://github.com/microsoft/fluentui/pull/25582) by olfedias@microsoft.com)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.0)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.4.0..@fluentui/react-utilities_v9.5.0)
+
+### Minor changes
+
+- feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+
+### Patches
+
+- fix: Leverage React.useId when available for our useId hook. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.4.0)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.3.1..@fluentui/react-utilities_v9.4.0)
+
+### Minor changes
+
+- feat: implement `useScrollbarWidth` utility hook ([PR #26144](https://github.com/microsoft/fluentui/pull/26144) by lingfangao@hotmail.com)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.3.1)
+
+Wed, 04 Jan 2023 01:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.3.0..@fluentui/react-utilities_v9.3.1)
+
+### Patches
+
+- feat: generalize is HTMLElement attribute to unknown ([PR #25991](https://github.com/microsoft/fluentui/pull/25991) by bernardo.sunderhus@gmail.com)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.3.0)
+
+Tue, 20 Dec 2022 14:59:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.2.2..@fluentui/react-utilities_v9.3.0)
+
+### Minor changes
+
+- feat: isHTMLElement helper function ([PR #25891](https://github.com/microsoft/fluentui/pull/25891) by bernardo.sunderhus@gmail.com)
+- feat: replace shouldPreventKeydown with isInteractiveHTMLElement ([PR #25942](https://github.com/microsoft/fluentui/pull/25942) by lingfangao@hotmail.com)
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.2)
+
+Thu, 17 Nov 2022 23:05:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.2.1..@fluentui/react-utilities_v9.2.2)
+
+### Patches
+
+- fix: supports colSpan property for th ([PR #25613](https://github.com/microsoft/fluentui/pull/25613) by bernardo.sunderhus@gmail.com)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.1)
+
+Fri, 11 Nov 2022 14:57:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.2.0..@fluentui/react-utilities_v9.2.1)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.2.0)
+
+Wed, 02 Nov 2022 11:58:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.1.2..@fluentui/react-utilities_v9.2.0)
+
+### Minor changes
+
+- feat: exposes internal methods that are used in the API surface ([PR #25406](https://github.com/microsoft/fluentui/pull/25406) by bernardo.sunderhus@gmail.com)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.1.2)
+
+Thu, 20 Oct 2022 08:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.1.1..@fluentui/react-utilities_v9.1.2)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.1.1)
+
+Thu, 13 Oct 2022 11:03:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.1.0..@fluentui/react-utilities_v9.1.1)
+
+### Patches
+
+- chore: restricts trigger API types ([PR #25044](https://github.com/microsoft/fluentui/pull/25044) by bernardo.sunderhus@gmail.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.1.0)
 

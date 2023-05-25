@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useCheckbox_unstable } from './useCheckbox';
 import { renderCheckbox_unstable } from './renderCheckbox';
-import { useCheckboxStyles_unstable } from './useCheckboxStyles';
+import { useCheckboxStyles_unstable } from './useCheckboxStyles.styles';
 import type { CheckboxProps } from './Checkbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Checkboxes give people a way to select one or more items from a group,
@@ -13,6 +14,9 @@ export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((pr
   const state = useCheckbox_unstable(props, ref);
 
   useCheckboxStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useCheckboxStyles_unstable')(state);
+
   return renderCheckbox_unstable(state);
 });
 

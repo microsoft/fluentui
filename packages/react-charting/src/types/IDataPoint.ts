@@ -104,7 +104,7 @@ export interface IChartDataPoint {
   onClick?: VoidFunction;
 
   /**
-   * color for the legend in the chart
+   * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
 
@@ -170,6 +170,52 @@ export interface IVerticalBarChartDataPoint {
    * data to render the line along with bars
    */
   lineData?: ILineDataInVerticalBarChart;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+}
+
+export interface IHorizontalBarChartWithAxisDataPoint {
+  /**
+   * Dependent value of the data point, rendered along the x-axis.
+   */
+  x: number;
+
+  /**
+   * Independent value of the data point, rendered along the y-axis.
+   * If y is a number, then each y-coordinate is plotted at its y-coordinate.
+   * If y is a string, then the data is evenly spaced along the y-axis.
+   */
+  y: number | string;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
 
   /**
    * onClick action for each datapoint in the chart
@@ -311,7 +357,7 @@ export interface ILineChartPoints {
   /**
    * color for the legend in the chart
    */
-  color: string;
+  color?: string;
 
   /**
    * opacity for chart fill color
@@ -388,13 +434,17 @@ export interface ISankeyChartData {
 interface ISNodeExtra {
   nodeId: number | string;
   name: string;
-  color: string;
+  color?: string;
+  borderColor?: string;
+  actualValue?: number;
+  layer?: number;
 }
 
 interface ISLinkExtra {
   source: number;
   target: number;
   value: number;
+  unnormalizedValue?: number;
 }
 
 export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;

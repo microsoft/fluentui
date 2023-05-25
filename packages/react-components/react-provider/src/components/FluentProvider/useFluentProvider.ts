@@ -2,12 +2,19 @@ import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
+  useOverrides_unstable as useOverrides,
+  CustomStyleHooksContext_unstable as CustomStyleHooksContext,
 } from '@fluentui/react-shared-contexts';
-import type { ThemeContextValue_unstable as ThemeContextValue } from '@fluentui/react-shared-contexts';
+import type {
+  CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
+  ThemeContextValue_unstable as ThemeContextValue,
+} from '@fluentui/react-shared-contexts';
+
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
+import { useRenderer_unstable } from '@griffel/react';
 
 /**
  * Create the state required to render FluentProvider.
@@ -24,14 +31,31 @@ export const useFluentProvider_unstable = (
 ): FluentProviderState => {
   const parentContext = useFluent();
   const parentTheme = useTheme();
+  const parentOverrides = useOverrides();
+  const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
 
   /**
    * TODO: add merge functions to "dir" merge,
    * nesting providers with the same "dir" should not add additional attributes to DOM
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
-  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme } = props;
-  const mergedTheme = mergeThemes(parentTheme, theme);
+  const {
+    applyStylesToPortals = true,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    customStyleHooks_unstable,
+    dir = parentContext.dir,
+    targetDocument = parentContext.targetDocument,
+    theme,
+    overrides_unstable: overrides = {},
+  } = props;
+  const mergedTheme = shallowMerge(parentTheme, theme);
+
+  const mergedOverrides = shallowMerge(parentOverrides, overrides);
+
+  const mergedCustomStyleHooks = shallowMerge(
+    parentCustomStyleHooks,
+    customStyleHooks_unstable,
+  ) as CustomStyleHooksContextValue;
 
   React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
@@ -45,11 +69,22 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const renderer = useRenderer_unstable();
+  const { styleTagId, rule } = useFluentProviderThemeStyleTag({
+    theme: mergedTheme,
+    targetDocument,
+    rendererAttributes: renderer.styleElementAttributes ?? {},
+  });
   return {
+    applyStylesToPortals,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    customStyleHooks_unstable: mergedCustomStyleHooks,
     dir,
     targetDocument,
     theme: mergedTheme,
-    themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    overrides_unstable: mergedOverrides,
+    themeClassName: styleTagId,
 
     components: {
       root: 'div',
@@ -58,12 +93,20 @@ export const useFluentProvider_unstable = (
     root: getNativeElementProps('div', {
       ...props,
       dir,
-      ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>()),
+      ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
     }),
+
+    serverStyleProps: {
+      cssRule: rule,
+      attributes: {
+        ...renderer.styleElementAttributes,
+        id: styleTagId,
+      },
+    },
   };
 };
 
-function mergeThemes(a: ThemeContextValue, b: ThemeContextValue): ThemeContextValue {
+function shallowMerge<T>(a: T, b: T): T {
   // Merge impacts perf: we should like to avoid it if it's possible
   if (a && b) {
     return { ...a, ...b };

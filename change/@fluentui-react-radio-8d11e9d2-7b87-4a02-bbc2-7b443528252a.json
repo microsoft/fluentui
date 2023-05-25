@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Making the hidden input only cover the indicator and not also the label.",
-  "packageName": "@fluentui/react-radio",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

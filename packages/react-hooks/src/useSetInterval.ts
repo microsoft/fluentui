@@ -25,7 +25,7 @@ export const useSetInterval = (): UseSetIntervalReturnType => {
 
   return useConst({
     setInterval: (func: () => void, duration: number): number => {
-      const id = (setInterval(func, duration) as unknown) as number;
+      const id = setInterval(func, duration) as unknown as number;
 
       intervalIds[id] = 1;
 

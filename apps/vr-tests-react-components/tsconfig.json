@@ -12,7 +12,7 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["screener-storybook", "node"]
+    "types": ["node", "jest"]
   },
-  "include": ["./src", "./.storybook/*", "screener.config.js"]
+  "include": ["./src", "./.storybook/*"]
 }

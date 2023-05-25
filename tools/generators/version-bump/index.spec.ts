@@ -10,6 +10,7 @@ import {
 
 import generator from './index';
 import { VersionBumpGeneratorSchema } from './schema';
+import { PackageJsonWithBeachball } from '../../types';
 
 const noop = () => null;
 
@@ -103,24 +104,6 @@ describe('version-string-replace generator', () => {
     expect(packageJson.dependencies).toMatchInlineSnapshot(`Object {}`);
   });
 
-  it('should throw error when if package is not converged', async () => {
-    tree = setupDummyPackage(tree, {
-      name: '@proj/babel-make-styles',
-      version: '8.0.0-alpha.0',
-      dependencies: {
-        '@proj/make-styles': '^9.0.0-alpha.1',
-      },
-      projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
-    });
-
-    const result = generator(tree, { name: '@proj/babel-make-styles', ...defaultTestOptions });
-
-    await expect(result).rejects.toMatchInlineSnapshot(`
-            [Error: @proj/babel-make-styles is not converged package consumed by customers.
-                    Make sure to run the migration on packages with version 9.x.x and has the alpha tag]
-          `);
-  });
-
   it('should downgrade the version to 0.0.0 when `nightly` is selected as the bump type', async () => {
     tree = setupDummyPackage(tree, {
       name: '@proj/make-styles',
@@ -128,10 +111,65 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-button',
+      version: '9.0.0-alpha.0',
+      dependencies: {
+        '@proj/make-styles': '^9.0.0',
+      },
+      devDependencies: {
+        '@proj/make-styles': '^9.0.0',
+      },
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
+    });
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson(tree, 'packages/react-button/package.json');
+    expect(packageJson.dependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "0.0.0-nightly.0",
+      }
+    `);
+    expect(packageJson.devDependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "0.0.0-nightly.0",
+      }
+    `);
+  });
+
+  it('should remove carets for dependents when `nightly` is selected as the bump type', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '^9.0.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+    });
+
     await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+  });
+
+  it('should remove beachball disallowedChangeType config when bumping nightly', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '9.0.0-alpha.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+      beachball: {
+        disallowedChangeTypes: ['prerelease'],
+      },
+    });
+
+    expect(
+      readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes,
+    ).toEqual(['prerelease']);
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json');
+    expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+    expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
   });
 
   describe('--all', () => {
@@ -172,7 +210,15 @@ describe('version-string-replace generator', () => {
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
         },
-        projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
+        projectConfiguration: { tags: ['platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
+      });
+      tree = setupDummyPackage(tree, {
+        name: '@proj/tokens',
+        version: '1.0.0',
+        dependencies: {
+          '@proj/make-styles': '^9.0.0-alpha.1',
+        },
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/tokens/src' },
       });
       tree = setupDummyPackage(tree, {
         name: '@proj/react-menu',
@@ -189,6 +235,13 @@ describe('version-string-replace generator', () => {
 
       const packageJson = readJson(tree, 'packages/babel-make-styles/package.json');
       expect(packageJson.version).toMatchInlineSnapshot(`"1.0.0"`);
+    });
+
+    it('should bump packages that have tag vNext but not version 9', async () => {
+      await generator(tree, { all: true, ...defaultTestOptions });
+
+      const packageJson = readJson(tree, 'packages/tokens/package.json');
+      expect(packageJson.version).toMatchInlineSnapshot(`"1.0.1-beta.0"`);
     });
 
     it('should bump all packages to beta', async () => {
@@ -252,6 +305,7 @@ function setupDummyPackage(
       devDependencies: Record<string, string>;
       dependencies: Record<string, string>;
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
+      beachball: PackageJsonWithBeachball['beachball'];
     }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
@@ -279,6 +333,7 @@ function setupDummyPackage(
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
+      beachball: options.beachball,
     },
   };
 

@@ -37,17 +37,18 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
             {
               alignment-adjust: center;
               box-sizing: content-box;
-              height: 0px;
+              display: block;
+              height: -40px;
               overflow: visible;
               width: 0px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(0, -20)"
         >
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -59,7 +60,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -68,25 +69,12 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
-            />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              role="img"
             />
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -98,7 +86,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -106,21 +94,34 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={0.1}
-              role="text"
+              opacity={1}
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
+              d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
+              data-is-focusable={true}
+              id="_Pie_1third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
             />
           </g>
         </g>
@@ -329,6 +330,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -362,10 +364,10 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
-                    aria-selected={true}
-                    aria-setsize={2}
+                    aria-selected={false}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -453,10 +455,10 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -533,6 +535,97 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     </div>
                   </button>
                 </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="2"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -580,17 +673,18 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
             {
               alignment-adjust: center;
               box-sizing: content-box;
-              height: 0px;
+              display: block;
+              height: -40px;
               overflow: visible;
               width: 0px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(0, -20)"
         >
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -602,7 +696,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -611,25 +705,12 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
-            />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              role="img"
             />
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -641,7 +722,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -649,21 +730,34 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={0.1}
-              role="text"
+              opacity={1}
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
+              d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
+              data-is-focusable={true}
+              id="_Pie_1third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
             />
           </g>
         </g>
@@ -790,6 +884,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -823,10 +918,10 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
-                    aria-selected={true}
-                    aria-setsize={2}
+                    aria-selected={false}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -914,10 +1009,10 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -991,6 +1086,1141 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                           }
                     >
                       second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="2"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels 1`] = `
+<div
+  className=
+      ms-DonutChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone21"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked Bar chart example"
+        className=
+
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: 200px;
+              overflow: visible;
+              width: 200px;
+            }
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #E5E5E5;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,56.06817542356052,-21.36257720109735L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_20first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={35.43557344375781}
+              y={-50.87553571916512}
+            >
+              20.0k
+            </text>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #0078D4;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M56.484185223414,-20.237016075673292A60,60,0,0,1,-24.40360777596704,54.81299049966861L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_20second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="hanging"
+              textAnchor="start"
+              x={42.16983494620299}
+              y={45.45002772947447}
+            >
+              39.0k
+            </text>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M-25.494913944568086,54.31398864895735A60,60,0,0,1,-0.5999900000499981,-59.99700002499991L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_20third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="end"
+              x={-60.58001193073337}
+              y={-13.19326170710649}
+            >
+              45.0k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+  <div
+    className=
+
+        {
+          padding-top: 16px;
+          width: 200px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone22"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels in percentage format 1`] = `
+<div
+  className=
+      ms-DonutChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone25"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked Bar chart example"
+        className=
+
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: 200px;
+              overflow: visible;
+              width: 200px;
+            }
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #E5E5E5;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,56.06817542356052,-21.36257720109735L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_24first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={35.43557344375781}
+              y={-50.87553571916512}
+            >
+              19%
+            </text>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #0078D4;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M56.484185223414,-20.237016075673292A60,60,0,0,1,-24.40360777596704,54.81299049966861L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_24second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="hanging"
+              textAnchor="start"
+              x={42.16983494620299}
+              y={45.45002772947447}
+            >
+              38%
+            </text>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M-25.494913944568086,54.31398864895735A60,60,0,0,1,-0.5999900000499981,-59.99700002499991L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_24third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="end"
+              x={-60.58001193073337}
+              y={-13.19326170710649}
+            >
+              43%
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+  <div
+    className=
+
+        {
+          padding-top: 16px;
+          width: 200px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone26"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
                     </div>
                   </button>
                 </div>
@@ -1041,15 +2271,18 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1061,7 +2294,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M1.141252199959434,-99.99348750501748A100,100,0,0,1,93.39656512824911,-35.736278796829446L51.18232065229373,-20.133803730189335A55,55,0,0,0,1.1412521999594298,-54.98815821080106Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -1070,25 +2303,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
-            />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              role="img"
             />
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1100,7 +2320,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M94.18786514866262,-33.595327930195076A100,100,0,0,1,-40.54357552149029,91.41235411000646L-21.828478096689523,50.482844055999315A55,55,0,0,0,51.97362067270725,-17.992852863554965Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -1109,20 +2329,33 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
+              d="M-42.61936939412394,90.46319335755958A100,100,0,0,1,-1.1412521999594463,-99.99348750501748L-1.1412521999594365,-54.98815821080106A55,55,0,0,0,-23.904271969323176,49.53368330355244Z"
+              data-is-focusable={true}
+              id="_Pie_1third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
             />
           </g>
         </g>
@@ -1137,7 +2370,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -1172,6 +2405,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1204,10 +2438,10 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -1294,10 +2528,10 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -1371,6 +2605,96 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                           }
                     >
                       second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
                     </div>
                   </button>
                 </div>
@@ -1421,15 +2745,18 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
-              aria-labelledby="callout11"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1441,7 +2768,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
               id="_Pie_12first20000"
               onBlur={[Function]}
@@ -1450,25 +2777,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
-            />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              role="img"
             />
           </g>
           <g>
             <path
-              aria-labelledby="callout11"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1480,7 +2794,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
               id="_Pie_12second39000"
               onBlur={[Function]}
@@ -1489,20 +2803,33 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
+              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_12third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
             />
           </g>
         </g>
@@ -1517,7 +2844,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -1552,6 +2879,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1584,10 +2912,10 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -1674,10 +3002,10 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -1751,6 +3079,96 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                           }
                     >
                       second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
                     </div>
                   </button>
                 </div>
@@ -1801,15 +3219,18 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
-              aria-labelledby="callout4"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1821,7 +3242,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
               id="_Pie_5first20000"
               onBlur={[Function]}
@@ -1830,25 +3251,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
-            />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              role="img"
             />
           </g>
           <g>
             <path
-              aria-labelledby="callout4"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1860,7 +3268,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
               id="_Pie_5second39000"
               onBlur={[Function]}
@@ -1869,20 +3277,33 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
+              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_5third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
             />
           </g>
         </g>
@@ -1932,15 +3353,18 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
-              aria-labelledby="callout7"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -1952,7 +3376,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
               id="_Pie_8first20000"
               onBlur={[Function]}
@@ -1961,25 +3385,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
-            />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
+              role="img"
             />
           </g>
           <g>
             <path
-              aria-labelledby="callout7"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -1991,7 +3402,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
               id="_Pie_8second39000"
               onBlur={[Function]}
@@ -2000,20 +3411,33 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
+              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_8third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
             />
           </g>
         </g>
@@ -2028,7 +3452,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -2063,6 +3487,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2095,10 +3520,10 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -2185,10 +3610,10 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -2262,6 +3687,96 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                           }
                     >
                       second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
                     </div>
                   </button>
                 </div>
@@ -2312,15 +3827,18 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             {
               alignment-adjust: center;
               box-sizing: content-box;
+              display: block;
+              height: 200px;
               overflow: visible;
+              width: 200px;
             }
       >
         <g
-          transform="translate(0, 0)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
-              aria-labelledby="callout15"
+              aria-label="2020/04/30, 20000."
               className=
 
                   {
@@ -2332,7 +3850,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
               id="_Pie_16first20000"
               onBlur={[Function]}
@@ -2341,27 +3859,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
-            <text
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 18px;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
-                  }
-              textAnchor="middle"
-              y={5}
-            >
-              1,000
-            </text>
           </g>
           <g>
             <path
-              aria-labelledby="callout15"
+              aria-label="2020/04/20, 39000."
               className=
 
                   {
@@ -2373,7 +3876,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0,0Z"
+              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
               id="_Pie_16second39000"
               onBlur={[Function]}
@@ -2382,24 +3885,53 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
-              role="text"
+              role="img"
             />
-            <text
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
               className=
 
                   {
-                    fill: #323130;
-                    font-size: 18px;
+                    cursor: default;
+                    fill: #DADADA;
+                    outline: transparent;
+                    stroke: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-              textAnchor="middle"
-              y={5}
-            >
-              1,000
-            </text>
+              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_16third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+            />
           </g>
+          <text
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(179, 179, 179);
+                }
+            data-is-focusable={true}
+            dominantBaseline="middle"
+            textAnchor="middle"
+            y={5}
+          >
+            1,000
+          </text>
         </g>
       </svg>
     </div>
@@ -2412,7 +3944,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
         {
           padding-top: 16px;
-          width: nullpx;
+          width: 200px;
         }
   >
     <div
@@ -2447,6 +3979,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2479,10 +4012,10 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -2569,10 +4102,10 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
-                    aria-setsize={2}
+                    aria-setsize={3}
                     className=
 
                         {
@@ -2646,6 +4179,96 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                           }
                     >
                       second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
                     </div>
                   </button>
                 </div>

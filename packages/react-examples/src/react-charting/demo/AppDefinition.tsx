@@ -98,6 +98,13 @@ export const AppDefinition: IAppDefinition = {
           name: 'Sparkline Chart',
           url: '#/examples/sparkline',
         },
+        {
+          component: require<any>('../HorizontalBarChartWithAxis/HorizontalBarChartWithAxisPage')
+            .HorizontalBarChartWithAxisPage,
+          key: 'HorizontalBarChartWithAxis',
+          name: 'Horizontal Bar Chart With Axis',
+          url: '#/examples/HorizontalBarChartWithAxis',
+        },
       ],
     },
   ],

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useMenuPopover_unstable } from './useMenuPopover';
-import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles';
+import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles.styles';
 import { renderMenuPopover_unstable } from './renderMenuPopover';
 import type { MenuPopoverProps } from './MenuPopover.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Popover intended to wrap `MenuList` and adds styling and interaction support specific to menus
@@ -12,6 +13,9 @@ export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardR
   const state = useMenuPopover_unstable(props, ref);
 
   useMenuPopoverStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useMenuPopoverStyles_unstable')(state);
+
   return renderMenuPopover_unstable(state);
 });
 

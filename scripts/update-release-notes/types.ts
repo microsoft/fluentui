@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ChangelogJsonEntry } from 'beachball';
-import { IPullRequest } from '../github';
+import { IPullRequest } from '@fluentui/scripts-github';
 
 /** Entry in a CHANGELOG.json's `entries` array, plus the package name */
 export interface IChangelogEntry extends ChangelogJsonEntry {

@@ -5,4 +5,4 @@ export {
   useTextareaStyles_unstable,
   useTextarea_unstable,
 } from './Textarea';
-export type { TextareaProps, TextareaSlots, TextareaState } from './Textarea';
+export type { TextareaOnChangeData, TextareaProps, TextareaSlots, TextareaState } from './Textarea';

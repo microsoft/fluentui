@@ -3,6 +3,7 @@
 exports[`TabList renders tabs when disabled 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -16,6 +17,11 @@ exports[`TabList renders tabs when disabled 1`] = `
     >
       <span
         class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         First
       </span>
@@ -45,6 +51,11 @@ exports[`TabList renders tabs when disabled 1`] = `
       >
         Third
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Third
+      </span>
     </button>
   </div>
 </div>
@@ -53,6 +64,7 @@ exports[`TabList renders tabs when disabled 1`] = `
 exports[`TabList renders tabs with default selected tab 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -67,6 +79,11 @@ exports[`TabList renders tabs with default selected tab 1`] = `
     >
       <span
         class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         First
       </span>
@@ -98,6 +115,11 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       >
         Third
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Third
+      </span>
     </button>
   </div>
 </div>
@@ -106,6 +128,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
 exports[`TabList renders with no tabs 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -116,6 +139,7 @@ exports[`TabList renders with no tabs 1`] = `
 exports[`TabList renders with tabs 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -133,6 +157,11 @@ exports[`TabList renders with tabs 1`] = `
       >
         First
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
     </button>
     <button
       aria-selected="false"
@@ -147,6 +176,11 @@ exports[`TabList renders with tabs 1`] = `
       >
         Second
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Second
+      </span>
     </button>
     <button
       aria-selected="false"
@@ -158,6 +192,11 @@ exports[`TabList renders with tabs 1`] = `
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>

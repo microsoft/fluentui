@@ -27,6 +27,9 @@
     },
     {
       "path": "./json-stable-stringify-without-jsonify/tsconfig.json"
+    },
+    {
+      "path": "./find-free-port/tsconfig.json"
     }
   ]
 }

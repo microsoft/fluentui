@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Use AvatarContext to override avatar size",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Slider Migration" />
+
+# Slider component Migration guide
+
+## Overview:
+
+To help with the migration we also offer a mixin that [can be checked here](/docs/migration-shims-v0-slidermixin--fluid)
+
+Before:
+
+```tsx
+import { Slider } from '@fluentui/react-northstar';
+const Component = () => <Slider />;
+```
+
+After:
+
+```tsx
+import { Slider } from '@fluentui/react-components';
+const Component = () => <Slider />;
+```
+
+More examples: [Sandbox](https://codesandbox.io/s/slider-migration-fluentui-forked-e3zdj5?file=/example.tsx)
+
+Slider upgrade doc in V9: [Slider upgrade to V9](https://react.fluentui.dev/docs/concepts-upgrading-from-v8-components-slider-upgrade--v-8-example)
+
+## How to migrate props:
+
+| Slider props                | migrate guide                                                                                            |
+| --------------------------- | -------------------------------------------------------------------------------------------------------- |
+| accessibility               | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page) |
+| as, className               | keep it as is                                                                                            |
+| defaultValue                | keep it as is                                                                                            |
+| disabled                    | keep it as is                                                                                            |
+| getA11yValueMessageOnChange | create your own message for a11y attr `aria-valuetext` by listening `onChange` and updating state value  |
+| fluid                       | use `slider.fluid()` mixin in Slider component's style file                                              |
+| input                       | keep it as is                                                                                            |
+| max, min                    | keep it as is                                                                                            |
+| onChange                    | keep it as is                                                                                            |
+| step                        | keep it as is                                                                                            |
+| value                       | keep it as is                                                                                            |
+| vertical                    | keep it as is                                                                                            |
+| variables, styles, design   | see [Migrate style overrides](#./Migrate-style-overrides) in this document                               |
+
+Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/slider-migration-fluentui-forked-e3zdj5?file=/example.tsx)
+
+---
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Slider } from '@fluentui/react-northstar';
+
+export const Component = ({ menuItems }) => <Slider variables={{ isVolumeControl: true }} />;
+
+// in slider-styles.ts
+export const sliderStyles1 = {
+  root: ({ variables: { colorSchemeDefault, isVolumeControl } }) => ({
+    ...(isVolumeControl && {
+      color: colorSchemeDefault.foreground,
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Slider } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <Slider className={classes.isVolumeControl} />;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  isVolumeControl: {
+    color: tokens.colorNeutralForeground1,
+  },
+});
+```
+
+Find more examples here: [Sandbox](https://codesandbox.io/s/slider-migration-fluentui-forked-e3zdj5?file=/example.tsx)

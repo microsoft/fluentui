@@ -1,11 +1,13 @@
 import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-export type MenuTriggerProps = {
+export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
   /**
-   * Explicitly require single child or render function
+   * Disables internal trigger mechanism that ensures a child provided will be a compliant ARIA button.
+   * @default false
    */
-  children: React.ReactElement | ((props: MenuTriggerChildProps) => React.ReactElement | null);
+  disableButtonEnhancement?: boolean;
 };
 
 /**
@@ -14,7 +16,7 @@ export type MenuTriggerProps = {
 export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
   Type,
   Props & {
-    'aria-haspopup': 'menu';
+    'aria-haspopup'?: 'menu';
     'aria-expanded'?: boolean;
     id: string;
     ref: React.Ref<never>;

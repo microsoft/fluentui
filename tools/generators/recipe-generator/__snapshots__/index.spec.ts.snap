@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`recipe-generator generator should generate implementation boilerplate 3`] = `
+"import LinkTo from '@storybook/addon-links/react';
+import { TemplateExample } from '../../templates';
+import { Meta } from '@storybook/addon-docs';
+import { HelloWorldSnippetExample } from './code-snippets';
+
+<Meta title=\\"Concepts/Recipes/Hello World\\" />
+
+---
+
+# Hello World recipe
+
+### **Overview**
+
+<!--
+Add a description of the recipe here. This should be a short description and what it does.
+-->
+
+### **Ingredients**
+
+<!--
+Add a list of ingredients here. This should be a list of required/needed dependencies such as: @fluentui/react-button.
+-->
+
+## **Steps**
+
+<!--
+Add a list of steps here. This should be an explanation of how to achieve the outcome.
+Note: Code snippets in this section should be minimal and only include the important parts of the component.
+-->
+
+This is an example of a code snippet:
+
+<TemplateExample>
+  <HelloWorldSnippetExample />
+</TemplateExample>
+
+\`\`\`tsx
+<Button>This is a Button</Button>
+\`\`\`
+
+## **Variants**
+
+<!--
+Add a list of variants here, not all recipes will have variants.
+When adding examples, make sure to add a description of the variant and preferably explain the main idea over providing code snippets.
+-->
+
+## **Best practices**
+
+<!--
+Add a list of best practices here. This list could have do's and don'ts or just general guidelines.
+-->
+"
+`;

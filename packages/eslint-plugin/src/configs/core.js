@@ -124,7 +124,7 @@ const config = {
     'no-useless-escape': 'off',
     'no-useless-rename': 'off',
     'no-useless-return': 'off',
-    'object-shorthand': 'off',
+    'object-shorthand': 'warn',
     'operator-assignment': 'off',
     'prefer-destructuring': 'off',
     'prefer-template': 'off',

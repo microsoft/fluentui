@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { AvatarGroupItem } from './AvatarGroupItem';
 import { AvatarGroupContext } from '../../contexts';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 const testId = 'testId';
 

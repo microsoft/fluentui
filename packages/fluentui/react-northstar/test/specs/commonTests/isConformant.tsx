@@ -22,7 +22,7 @@ import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
 import { extraConformanceTests } from './extraConformanceTests';
 
-export interface Conformant<TProps = {}>
+interface Conformant<TProps = {}>
   extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions' | 'getTargetElement'> {
   /** Path to the test file. */
   testPath: string;
@@ -75,6 +75,7 @@ export function isConformant(
   } = options;
 
   const defaultConfig: IsConformantOptions = {
+    tsConfig: { configName: 'tsconfig.spec.json' },
     renderOptions: { wrapper: EmptyThemeProvider },
     componentPath: testPath
       .replace(/test[/\\]specs/, 'src')
@@ -450,11 +451,12 @@ export function isConformant(
     // for example, "Menu" for "ToolbarMenu" since it is accessed as "Toolbar.Menu" in the API
     const subcomponentName = isParent ? null : constructorName.replace(parentDisplayName!, '');
 
-    const componentClassName = (!isParent
-      ? _.includes(subcomponentName, 'Group')
-        ? `ui-${parentDisplayName}s`
-        : `ui-${parentDisplayName}__${subcomponentName}`
-      : `ui-${constructorName.toLowerCase()}`
+    const componentClassName = (
+      !isParent
+        ? _.includes(subcomponentName, 'Group')
+          ? `ui-${parentDisplayName}s`
+          : `ui-${parentDisplayName}__${subcomponentName}`
+        : `ui-${constructorName.toLowerCase()}`
     ).toLowerCase();
 
     const constClassName = _.camelCase(`${Component.displayName}ClassName`);
@@ -544,7 +546,7 @@ export function isConformant(
         it('allows to define additional styles props', () => {
           const renderer: Partial<Renderer> = {
             renderRule: styles => {
-              const props = (styles as unknown) as ComposedComponentStylesProps;
+              const props = styles as unknown as ComposedComponentStylesProps;
 
               return props.stylesTest ? 'has-test' : 'has-not-test';
             },

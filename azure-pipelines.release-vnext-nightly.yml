@@ -65,15 +65,15 @@ jobs:
       # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
       # https://github.com/microsoft/fluentui/issues/21686
       - script: |
-          yarn run:published test
+          yarn lage test --to @fluentui/react-components
         displayName: yarn test
 
       - script: |
-          yarn run:published lint
+          yarn lage lint --to @fluentui/react-components
         displayName: yarn lint
 
       - script: |
-          yarn run:published build --production
+          yarn lage build --to @fluentui/react-components
         displayName: yarn build
 
       - script: |

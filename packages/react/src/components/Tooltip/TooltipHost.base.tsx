@@ -49,7 +49,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     initializeComponentRef(this);
 
     this.state = {
-      isAriaPlaceholderRendered: false, // eslint-disable-line react/no-unused-state
+      isAriaPlaceholderRendered: false,
       isTooltipVisible: false,
     };
 
@@ -80,7 +80,29 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     const { isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
-    const tooltipContent = tooltipProps?.onRenderContent ? tooltipProps.onRenderContent() : content;
+
+    const tooltipRenderProps = {
+      id: `${tooltipId}--tooltip`,
+      content,
+      targetElement: this._getTargetElement(),
+      directionalHint,
+      directionalHintForRTL,
+      calloutProps: assign({}, calloutProps, {
+        onDismiss: this._hideTooltip,
+        onFocus: this._onTooltipContentFocus,
+        onMouseEnter: this._onTooltipMouseEnter,
+        onMouseLeave: this._onTooltipMouseLeave,
+      }),
+      onMouseEnter: this._onTooltipMouseEnter,
+      onMouseLeave: this._onTooltipMouseLeave,
+      ...getNativeProps(this.props, divProperties, ['id']), // Make sure we use the id above
+      ...tooltipProps,
+    };
+
+    // Get the content of the tooltip for use in the hidden div used for screen readers
+    const tooltipContent = tooltipProps?.onRenderContent
+      ? tooltipProps.onRenderContent(tooltipRenderProps, props => (props?.content ? <>{props.content}</> : null))
+      : content;
     const showTooltip = isTooltipVisible && !!tooltipContent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && !!tooltipContent ? tooltipId : undefined;
 
@@ -98,24 +120,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         aria-describedby={ariaDescribedBy}
       >
         {children}
-        {showTooltip && (
-          <Tooltip
-            id={`${tooltipId}--tooltip`}
-            content={content}
-            targetElement={this._getTargetElement()}
-            directionalHint={directionalHint}
-            directionalHintForRTL={directionalHintForRTL}
-            calloutProps={assign({}, calloutProps, {
-              onDismiss: this._hideTooltip,
-              onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave,
-            })}
-            onMouseEnter={this._onTooltipMouseEnter}
-            onMouseLeave={this._onTooltipMouseLeave}
-            {...getNativeProps(this.props, divProperties, ['id'])} // Make sure we use the id above
-            {...tooltipProps}
-          />
-        )}
+        {showTooltip && <Tooltip {...tooltipRenderProps} />}
         <div hidden={true} id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
           {tooltipContent}
         </div>
@@ -170,6 +175,16 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     this._onTooltipMouseEnter(ev);
   };
 
+  private _onTooltipContentFocus = (ev: React.FocusEvent<HTMLElement>) => {
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
+      TooltipHostBase._currentVisibleTooltip.dismiss();
+    }
+    TooltipHostBase._currentVisibleTooltip = this;
+
+    this._clearDismissTimer();
+    this._clearOpenTimer();
+  };
+
   private _onTooltipBlur = (ev: React.FocusEvent<HTMLElement>) => {
     // The focused element gets a blur event when the document loses focus
     // (e.g. switching tabs in the browser), but we don't want to show the
@@ -179,7 +194,9 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     // See https://github.com/microsoft/fluentui/issues/13541
     this._ignoreNextFocusEvent = document?.activeElement === ev.target;
 
-    this._hideTooltip();
+    this._dismissTimerId = this._async.setTimeout(() => {
+      this._hideTooltip();
+    }, 0);
   };
 
   // Show Tooltip

@@ -13,20 +13,21 @@ export const CalendarPage: React.FunctionComponent<IControlsPageProps> = props =
     <ControlsAreaPage
       {...props}
       title="Calendar"
-      {...CalendarPageProps[props.platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...CalendarPageProps[props.platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'android':
       return [
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/CalendarImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/CalendarPage/docs/android/CalendarImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/CalendarPage/docs/android/CalendarImplementation.md') as string,
         },
       ];
   }

@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -19,6 +21,11 @@ export const Textarea: ForwardRefComponent<TextareaProps>;
 
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
+
+// @public
+export type TextareaOnChangeData = {
+    value: string;
+};
 
 // @public
 export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {

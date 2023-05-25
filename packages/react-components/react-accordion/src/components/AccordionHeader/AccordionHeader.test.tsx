@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AccordionHeader } from './AccordionHeader';
 import { AccordionHeaderProps } from './AccordionHeader.types';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Accordion } from '../Accordion/Accordion';
 import { AccordionItem } from '../AccordionItem';
 import { AccordionPanel } from '../AccordionPanel';
@@ -32,6 +32,15 @@ describe('AccordionHeader', () => {
    */
   it('renders a default state', () => {
     const component = renderer.create(<AccordionHeader>Default AccordionHeader</AccordionHeader>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  /**
+   * Note: see more visual regression tests for AccordionHeader in /apps/vr-tests.
+   */
+  it('renders when expandIcon is null', () => {
+    const component = renderer.create(<AccordionHeader expandIcon={null}>Default AccordionHeader</AccordionHeader>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

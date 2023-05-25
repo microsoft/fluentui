@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
@@ -8,13 +8,13 @@ storiesOf('Checkbox', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { includeRtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
@@ -55,8 +55,8 @@ storiesOf('Checkbox Indeterminate', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Checkbox')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -65,7 +65,7 @@ storiesOf('Checkbox Indeterminate', module)
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Uncontrolled Indeterminate checkbox', () => (
     <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />

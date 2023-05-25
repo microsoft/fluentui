@@ -3,5 +3,5 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { OverflowSetPageProps } from './OverflowSetPage.doc';
 
 export const OverflowSetPage: React.FunctionComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...OverflowSetPageProps[props.platform]} />;
+  return <ControlsAreaPage {...props} {...OverflowSetPageProps[props.platform!]} />;
 };

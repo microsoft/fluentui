@@ -93,7 +93,8 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
  */
 export class BasePicker<T, P extends IBasePickerProps<T>>
   extends React.Component<P, IBasePickerState<T>>
-  implements IBasePicker<T> {
+  implements IBasePicker<T>
+{
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
@@ -137,7 +138,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
     this.selection.setItems(items);
     this.state = {
-      items: items,
+      items,
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
@@ -393,9 +394,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         key: item.key ? item.key : index,
         selected: selectedIndices!.indexOf(index) !== -1,
         onRemoveItem: () => this.removeItem(item),
-        disabled: disabled,
+        disabled,
         onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel,
+        removeButtonAriaLabel,
         removeButtonIconProps,
       }),
     );
@@ -404,17 +405,17 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   protected resetFocus(index?: number) {
     const { items } = this.state;
 
-    if (items.length && index! >= 0) {
+    if (items.length) {
+      // default to focusing the last item
+      index = index ?? items.length - 1;
       const newEl: HTMLElement | null =
         this.root.current &&
-        (this.root.current.querySelectorAll('[data-selection-index]')[
+        (this.root.current.querySelectorAll('[data-selection-index] > button')[
           Math.min(index!, items.length - 1)
         ] as HTMLElement | null);
       if (newEl) {
         newEl.focus();
       }
-    } else if (!this.canAddItems()) {
-      this.resetFocus(items.length - 1);
     } else {
       if (this.input.current) {
         this.input.current.focus();
@@ -437,7 +438,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   }
 
   protected updateSuggestions(suggestions: any[]) {
-    this.suggestionStore.updateSuggestions(suggestions, 0);
+    const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
+    this.suggestionStore.updateSuggestions(suggestions, 0, maxSuggestionsCount);
     this.forceUpdate();
   }
 
@@ -599,7 +601,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
    * Resets focus to last element in wrapper div if clicking back into Picker that has hit item limit
    */
   protected onWrapperClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
-    if (!this.canAddItems()) {
+    if (this.state.items.length && !this.canAddItems()) {
       this.resetFocus(this.state.items.length - 1);
     }
   };
@@ -837,6 +839,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
       this.setState({ selectionRemoved: item });
       this._updateSelectedItems(newItems);
+
+      // reset selection removed text after a timeout so it isn't reached by screen reader virtual cursor.
+      // the exact timing isn't important, the live region will fully read even if the text is removed.
+      this._async.setTimeout(() => {
+        this.setState({ selectionRemoved: undefined });
+      }, 1000);
     }
   };
 
@@ -962,7 +970,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     if (updatedValue !== undefined) {
       this.resolveNewValue(updatedValue, newSuggestions);
     } else {
-      this.suggestionStore.updateSuggestions(newSuggestions, -1);
+      const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
+      this.suggestionStore.updateSuggestions(newSuggestions, -1, maxSuggestionsCount);
       if (this.state.suggestionsLoading) {
         this.setState({
           suggestionsLoading: false,
@@ -981,7 +990,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       // If the component is a controlled component then the controlling component will need to add or remove the items.
       this.onChange(items);
     } else {
-      this.setState({ items: items }, () => {
+      this.setState({ items }, () => {
         this._onSelectedItemsUpdated(items);
       });
     }
@@ -1086,7 +1095,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           inputClassName: inputProps && inputProps.className,
         })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
+          root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
@@ -1104,6 +1113,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
+          <span id={`${this._ariaMap.selectedItems}-label`} hidden>
+            {selectionAriaLabel || comboLabel}
+          </span>
           <div className={classNames.text} aria-owns={suggestionsAvailable}>
             <Autofill
               {...(inputProps as any)}
@@ -1119,6 +1131,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               aria-expanded={suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
+              aria-describedby={this.state.items.length > 0 ? this._ariaMap.selectedItems : undefined}
               role="combobox"
               id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
               disabled={disabled}
@@ -1132,7 +1145,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             id={this._ariaMap.selectedItems}
             className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             role={selectionRole}
-            aria-label={selectionAriaLabel || comboLabel}
+            aria-labelledby={`${this._ariaMap.selectedItems}-label`}
           >
             {this.renderItems()}
           </div>

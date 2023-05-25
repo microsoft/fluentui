@@ -14,8 +14,8 @@ export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props =>
   return (
     <StylesAreaPage
       {...props}
-      {...ElevationPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ElevationPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
@@ -41,7 +41,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
         },
       ];
 
@@ -124,7 +125,7 @@ function _renderDepthsTable() {
               </div>
             );
           default:
-            return row[column.rowProperty];
+            return row[column.rowProperty!];
         }
       }}
     />

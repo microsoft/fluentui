@@ -4,4 +4,6 @@ export * from './getRTLSafeKey';
 export * from './mergeCallbacks';
 export * from './omit';
 export * from './properties';
-export * from './shouldPreventDefaultOnKeyDown';
+export * from './isHTMLElement';
+export * from './isInteractiveHTMLElement';
+export * from './priorityQueue';
