@@ -1,4 +1,5 @@
-import { dialogSurfaceClassNames, dialogTitleClassNames } from '@fluentui/react-dialog';
+import { dialogSurfaceClassNames } from '../components/DialogSurface/useDialogSurfaceStyles.styles';
+import { dialogTitleClassNames } from '../components/DialogTitle/useDialogTitleStyles.styles';
 
 export const dialogTriggerOpenId = 'open-btn';
 export const dialogTriggerCloseId = 'close-btn';
