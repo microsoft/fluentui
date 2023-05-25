@@ -14,7 +14,7 @@ import { useDialogTitle_unstable } from '@fluentui/react-dialog';
  */
 export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
   const { root: heading, action, components: titleComponents } = useDialogTitle_unstable(props, ref);
 
