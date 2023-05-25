@@ -2,6 +2,7 @@ import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps } from '../../types/index';
+import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 export interface IGaugeChartSegment {
   /**
@@ -15,7 +16,7 @@ export interface IGaugeChartSegment {
   size: number;
 
   /**
-   * Color of the segment. If not provided, it will fallback on the default color palette.
+   * Color of the segment. If not provided, a placeholder color will be used.
    */
   color?: string;
 
@@ -119,6 +120,11 @@ export interface IGaugeChartProps {
    * Prop to define the culture to localize the numbers and dates
    */
   culture?: string;
+
+  /**
+   * Props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 export interface IGaugeChartStyleProps {

@@ -30,7 +30,7 @@ const LABEL_HEIGHT = 16;
 const LABEL_OFFSET = 4;
 const TITLE_OFFSET = 11;
 const EXTRA_NEEDLE_LENGTH = 4;
-const ARC_PADDING = 2;
+export const ARC_PADDING = 2;
 const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
 const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
 const FONT_SIZES = [20, 24, 32, 32, 40, 40];
@@ -40,7 +40,7 @@ const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyle
 interface IYValue extends Omit<IYValueHover, 'y'> {
   y?: string | number;
 }
-interface IGaugeChartState {
+export interface IGaugeChartState {
   hoveredLegend: string;
   selectedLegend: string;
   focusedElement: string;
@@ -235,6 +235,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             gapSpace={15}
             isBeakVisible={false}
             onDismiss={this._handleCalloutDismiss}
+            {...this.props.calloutProps}
           >
             {this._multiValueCallout({
               hoverXValue: this.state.hoverXValue,
@@ -468,9 +469,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   private _wrapContent = (content: string, id: string, maxWidth: number) => {
-    let textOverflow = false;
     const text = d3Select<SVGTextElement, {}>(`#${id}`);
     text.text(content);
+    if (!text.node()) {
+      return false;
+    }
+
+    let textOverflow = false;
     let textLength = text.node()!.getComputedTextLength();
     while (textLength > maxWidth && content.length > 0) {
       content = content.slice(0, -1);
