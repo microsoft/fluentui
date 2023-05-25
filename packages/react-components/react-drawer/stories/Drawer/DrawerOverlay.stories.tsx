@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { DrawerOverlay, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-export const PreventClose = () => {
-  const [open, setOpen] = React.useState(false);
+export const Overlay = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <div>
-      <DrawerOverlay position="right" open={open} modalType="alert">
+      <DrawerOverlay open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -16,20 +16,20 @@ export const PreventClose = () => {
                 appearance="subtle"
                 aria-label="Close"
                 icon={<Dismiss24Regular />}
-                onClick={() => setOpen(false)}
+                onClick={() => setIsOpen(false)}
               />
             }
           >
-            Prevent close with Esc or outside click
+            Overlay Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
         <DrawerBody>
-          <p>This drawer cannot be closed when clicking outside nor using the "ESC" key</p>
+          <p>Drawer content</p>
         </DrawerBody>
       </DrawerOverlay>
 
-      <Button appearance="primary" onClick={() => setOpen(true)}>
+      <Button appearance="primary" onClick={() => setIsOpen(true)}>
         Toggle
       </Button>
     </div>
