@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 18 May 2023 13:11:07 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2023 20:45:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.3)
+
+Wed, 24 May 2023 20:45:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.20.2..@fluentui/react-components_v9.20.3)
+
+### Minor changes
+
+- `@fluentui/react-provider`
+  - feat: add style overrides for drawer components ([PR #27582](https://github.com/microsoft/fluentui/pull/27582) by marcosvmmoura@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - feat: add style overrides for drawer components ([PR #27582](https://github.com/microsoft/fluentui/pull/27582) by marcosvmmoura@gmail.com)
+- `@fluentui/react-spinner`
+  - feat: added delay prop to spinner ([PR #27852](https://github.com/microsoft/fluentui/pull/27852) by kakrookaran@gmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - chore: ensures AccordionHeader expandIcon supports null ([PR #27912](https://github.com/microsoft/fluentui/pull/27912) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Only apply aria-owns when popup is open. ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by esteban.230@hotmail.com)
+  - fix: DatePicker now focuses on today's date and works inside dialogs as expected. ([PR #27731](https://github.com/microsoft/fluentui/pull/27731) by esteban.230@hotmail.com)
+- `@fluentui/react-divider`
+  - bugfix: wrapper slot type to NonNullable ([PR #27928](https://github.com/microsoft/fluentui/pull/27928) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat(react-v0-v9-migration): Initial release ([PR #27909](https://github.com/microsoft/fluentui/pull/27909) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - fix: preventDefault when closing the popover surface to avoid closing parent dialogs. ([PR #27832](https://github.com/microsoft/fluentui/pull/27832) by esteban.230@hotmail.com)
+- `@fluentui/react-textarea`
+  - fix: Move disabled styles in textarea selector to the textarea styles. ([PR #27920](https://github.com/microsoft/fluentui/pull/27920) by esteban.230@hotmail.com)
+- `@fluentui/react-toolbar`
+  - packages/react-components/react-toolbar/src/components/ToolbarToggleButton/useToolbarToggleButton.ts ([PR #27796](https://github.com/microsoft/fluentui/pull/27796) by lingfangao@hotmail.com)
 
 ## [9.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.20.2)
 

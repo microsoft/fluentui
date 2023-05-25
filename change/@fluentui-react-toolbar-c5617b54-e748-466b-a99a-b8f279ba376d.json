@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "packages/react-components/react-toolbar/src/components/ToolbarToggleButton/useToolbarToggleButton.ts",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

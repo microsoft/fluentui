@@ -2,6 +2,21 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:22 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.27",
+      "version": "9.0.0-beta.27",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:00 GMT",
       "tag": "@fluentui/global-context_v9.0.0-beta.27",
       "version": "9.0.0-beta.27",

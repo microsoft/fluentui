@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Thu, 18 May 2023 00:39:06 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2023 20:45:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.13)
+
+Wed, 24 May 2023 20:45:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.12..@fluentui/react-divider_v9.2.13)
+
+### Patches
+
+- bugfix: wrapper slot type to NonNullable ([PR #27928](https://github.com/microsoft/fluentui/pull/27928) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.5.0 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
 
 ## [9.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.12)
 

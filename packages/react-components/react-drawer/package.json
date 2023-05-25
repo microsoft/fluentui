@@ -36,9 +36,9 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-dialog": "^9.5.6",
+    "@fluentui/react-dialog": "^9.5.7",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.4",
-    "@fluentui/react-shared-contexts": "^9.4.0",
+    "@fluentui/react-shared-contexts": "^9.5.0",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.0",
     "@griffel/react": "^1.5.2",

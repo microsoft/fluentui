@@ -2,6 +2,29 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:28 GMT",
+      "tag": "@fluentui/react-label_v9.1.13",
+      "version": "9.1.13",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.0",
+            "commit": "3f088b7b09988e7c05af1c953021acc94c273026"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:09 GMT",
       "tag": "@fluentui/react-label_v9.1.12",
       "version": "9.1.12",

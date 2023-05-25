@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:23 GMT",
+      "tag": "@fluentui/react-aria_v9.3.20",
+      "version": "9.3.20",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:02 GMT",
       "tag": "@fluentui/react-aria_v9.3.20",
       "version": "9.3.20",
