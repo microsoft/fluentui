@@ -41,6 +41,10 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
     position: 'relative',
+    '[data-keyboard-resizing]': {
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    },
   },
 
   rootInteractive: {

@@ -107,5 +107,6 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
   return {
     toggleInteractiveMode,
+    currentId: columnId.current,
   };
 }
