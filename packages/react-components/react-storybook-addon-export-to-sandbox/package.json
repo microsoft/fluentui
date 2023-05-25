@@ -18,7 +18,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
@@ -45,8 +45,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
       "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"

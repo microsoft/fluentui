@@ -23,7 +23,7 @@
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
     "storybook": "start-storybook",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
