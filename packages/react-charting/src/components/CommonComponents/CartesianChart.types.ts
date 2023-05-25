@@ -380,6 +380,12 @@ export interface ICartesianChartProps {
    * @default True for LineChart but False for other charts
    */
   enableReflow?: boolean;
+
+  /**
+   * @default false
+   * Used to test the Performance optimization code befor merging it to master.
+   */
+  enablePerfOptimization?: boolean;
 }
 
 export interface IYValueHover {

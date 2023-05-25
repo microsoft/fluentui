@@ -216,7 +216,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this.props.getmargins && this.props.getmargins(margin);
 
     let children = null;
-    if (this.chartContainer) {
+    if ((this.props.enablePerfOptimization && this.chartContainer) || !this.props.enablePerfOptimization) {
       const XAxisParams = {
         domainNRangeValues: getDomainNRangeValues(
           points,
