@@ -18,7 +18,12 @@
 
 The v8 SearchBox component is implemented as a text input field that lacks a type attribute.
 
-The v8 component supports a customizable leading icon, with the default being a search icon. The leading icon is hidden when search box is in focus by default. When the search box is in focus, the leading icon disappears to allow the search content to span the entire width of the search box. The disappearance and reappearance of the leading icon can be animated as sliding in and out from the left side of the search box. The unfocused view lacks support for any content at the end. When in focus and the search box is not empty, a clear button appears at the end of the search bar that is present in the tab order.
+The v8 component supports:
+
+- a customizable leading icon, with the default being a search icon
+- hiding the leading icon when the search box is in focus by default, to allow the search content to span the entire width of the search box
+- animation of the disappearance and reappearance of the leading icon, sliding in and out from the left side of the search box
+- a clear button that appears at the end of the search bar, present in the tab order, when the component is in focus and the search box is not empty
 
 The v8 component spans the entire width of its parent component. There are only three visual variants of the v8 component: default and underlined. The v8 component can be disabled.
 
@@ -36,7 +41,14 @@ The v8 component spans the entire width of its parent component. There are only 
 
 Because v0 does not have a designated search component, search functionalities fall upon the Input component. The v0 Input component is implemented as a text input field with `type="text"`. If the input is search, the input will include `role="search"`.
 
-The v0 component supports an icon positioned at either the beginning or the end of the input. If the input is made clearable, the clear icon will replace the custom icon when there is content in the input box and it is in focus. The v0 component can be used inline with text. The v0 component has a slot for an input label, which can additionally be placed inline or inside of the component.
+The v0 component supports:
+
+- an icon positioned at either the beginning or the end of the input
+- if the input is clearable, the clear icon will replace the custom icon when there is content in the input box and it is in focus
+- being used inline with text
+- input labels, which can be placed outside, inline, or inside of the component
+
+The v0 component has a fixed width that can be changed to span the length of its parent component. Visual variants of the v0 component can be controlled using props. The v0 component can be disabled.
 
 [Documentation for v0 Input](https://fluentsite.z22.web.core.windows.net/0.59.0/components/input/definition)
 
