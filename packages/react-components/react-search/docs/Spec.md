@@ -2,15 +2,52 @@
 
 ## Background
 
-_Description and use cases of this component_
+`SearchBox` is a text input field abstracting `<input type="search" />`.
 
 ## Prior Art
 
-_Include background research done for this component_
+- [Ant Design](https://ant.design/components/input)
+- [Carbon](https://carbondesignsystem.com/components/search/usage/)
+- [Lightning Design](https://www.lightningdesignsystem.com/components/input/)
+- [Material UI](https://mui.com/material-ui/react-text-field/)
+- [Spectrum](https://react-spectrum.adobe.com/react-spectrum/SearchField.html)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Comparison of v8 and v0
+
+#### v8
+
+The v8 SearchBox component is implemented as a text input field that lacks a type attribute.
+
+The v8 component supports a customizable leading icon, with the default being a search icon. The leading icon is hidden when search box is in focus by default. When the search box is in focus, the leading icon disappears to allow the search content to span the entire width of the search box. The disappearance and reappearance of the leading icon can be animated as sliding in and out from the left side of the search box. The unfocused view lacks support for any content at the end. When in focus and the search box is not empty, a clear button appears at the end of the search bar that is present in the tab order.
+
+The v8 component spans the entire width of its parent component. There are only three visual variants of the v8 component: default and underlined. The v8 component can be disabled.
+
+[Documentation for v8 SearchBox](https://developer.microsoft.com/en-us/fluentui#/controls/web/searchbox)
+
+```
+<SearchBox
+    ariaLabel="SearchBox"
+    placeholder="Search"
+    onSearch={newValue => console.log('value is ' + newValue)}
+/>
+```
+
+#### v0
+
+Because v0 does not have a designated search component, search functionalities fall upon the Input component. The v0 Input component is implemented as a text input field with `type="text"`. If the input is search, the input will include `role="search"`.
+
+The v0 component supports an icon positioned at either the beginning or the end of the input. If the input is made clearable, the clear icon will replace the custom icon when there is content in the input box and it is in focus. The v0 component can be used inline with text. The v0 component has a slot for an input label, which can additionally be placed inline or inside of the component.
+
+[Documentation for v0 Input](https://fluentsite.z22.web.core.windows.net/0.59.0/components/input/definition)
+
+```
+<Input
+    icon={<SearchIcon />}
+    iconPosition="start"
+    label="Search"
+    placeholder="Search..."
+/>
+```
 
 ## Sample Code
 
@@ -18,7 +55,14 @@ _Provide some representative example code that uses the proposed API for the com
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+### Visual variants
+
+Search supports the same appearance variants as Input, as follows:
+
+- `outline` (default): the field has a full outline, with a slightly darker underline on the bottom
+- `underline`: the field has an underline on the bottom only
+- `filledDarker`: the field has a gray background and no underline/outline
+- `filledLighter`: the field has a white background and no underline/outline (for use on top of gray/colored backgrounds)
 
 ## API
 
@@ -38,6 +82,9 @@ _Describe what will need to be done to upgrade from the existing implementations
 - _Migration from v0_
 
 ## Behaviors
+
+We don't implement enter to search, this would come from the consuming team
+The clear button is not in the tab order and should not receive focus
 
 _Explain how the component will behave in use, including:_
 
