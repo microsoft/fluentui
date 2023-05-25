@@ -46,6 +46,6 @@ function main() {
       '💁: generating .d.ts files first for @fluentui/react-components, in order to drastically speed up type-check command for v9 packages !',
       '',
     );
-    execSync('yarn lage generate-api --to @fluentui/react-components');
+    execSync('yarn lage build --to @fluentui/react-components');
   }
 }
