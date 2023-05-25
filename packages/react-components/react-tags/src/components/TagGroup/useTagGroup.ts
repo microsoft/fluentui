@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TagGroup.
@@ -20,6 +21,11 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
     // TODO set focus after tag dismiss
   });
 
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: true,
+    axis: 'both',
+  });
+
   return {
     dismissible: !!onDismiss,
     handleTagDismiss,
@@ -31,8 +37,9 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
 
     root: getNativeElementProps('div', {
       ref,
+      role: 'list',
+      ...arrowNavigationProps,
       ...props,
-      // TODO aria attributes
     }),
   };
 };

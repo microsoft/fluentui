@@ -28,7 +28,7 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
-  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize, role } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
 
@@ -75,6 +75,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
 
     root: getNativeElementProps('button', {
       ref,
+      role,
       ...props,
       id,
       onClick: handleClick,
