@@ -1,12 +1,23 @@
-export {
-  Drawer,
-  drawerCSSVars,
-  drawerClassNames,
-  renderDrawer_unstable,
-  useDrawerStyles_unstable,
-  useDrawer_unstable,
-} from './Drawer';
+export { Drawer, renderDrawer_unstable, useDrawer_unstable } from './Drawer';
 export type { DrawerProps, DrawerSlots, DrawerState } from './Drawer';
+
+export {
+  DrawerOverlay,
+  drawerOverlayClassNames,
+  renderDrawerOverlay_unstable,
+  useDrawerOverlayStyles_unstable,
+  useDrawerOverlay_unstable,
+} from './DrawerOverlay';
+export type { DrawerOverlayProps, DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay';
+
+export {
+  DrawerInline,
+  drawerInlineClassNames,
+  renderDrawerInline_unstable,
+  useDrawerInlineStyles_unstable,
+  useDrawerInline_unstable,
+} from './DrawerInline';
+export type { DrawerInlineProps, DrawerInlineSlots, DrawerInlineState } from './DrawerInline';
 
 export {
   DrawerBody,
