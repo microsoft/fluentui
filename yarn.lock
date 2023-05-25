@@ -1707,7 +1707,7 @@
     "@griffel/core" "^1.11.0"
     tslib "^2.1.0"
 
-"@griffel/react@^1.0.0", "@griffel/react@^1.5.7":
+"@griffel/react@^1.0.0", "@griffel/react@^1.5.2", "@griffel/react@^1.5.7":
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.7.tgz#3a6af337bfe7551798aa2f6dd1df032b5869f278"
   integrity sha512-b9/LkkuO512O268jqRpJPso9ROng/kqh81YSTJUL13tT4qPZQnvrdiwoP7ZeqXbG0zzZHLZ3tWUZrCDOl549OQ==
