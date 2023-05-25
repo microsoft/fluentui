@@ -53,7 +53,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
 
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, innerRef),
-      role: 'list',
+      role: 'listbox',
       ...arrowNavigationProps,
       ...props,
     }),

@@ -5,7 +5,7 @@ export function useTagGroupContextValues_unstable(state: TagGroupState): TagGrou
   const { dismissible, handleTagDismiss, size } = state;
   return {
     tagGroup: React.useMemo(
-      () => ({ dismissible, handleTagDismiss, size, role: 'listitem' }),
+      () => ({ dismissible, handleTagDismiss, size, role: 'option' }),
       [dismissible, handleTagDismiss, size],
     ),
   };
