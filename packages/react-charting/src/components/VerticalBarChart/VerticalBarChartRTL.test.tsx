@@ -4,6 +4,7 @@ import { chartPoints } from './VerticalBarChart.test';
 import { DefaultPalette } from '@fluentui/react';
 // import { IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { VerticalBarChart } from './VerticalBarChart';
+import { VerticalBarChartBase } from './VerticalBarChart.base';
 
 const pointsWithLine = [
   {
@@ -118,6 +119,18 @@ const simplePoints = [
     color: '#0E7878',
   },
 ];
+
+describe('Vertical bar chart rendering', () => {
+  test('Should render the vertical bar chart with numeric x-axis data', () => {
+    const { container } = render(<VerticalBarChart data={chartPoints} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test('Should render the vertical bar chart with string x-axis data', () => {
+    const { container } = render(<VerticalBarChart data={simplePoints} />);
+    expect(container).toMatchSnapshot();
+  });
+});
 
 describe('Vertical bar chart - Subcomponent bar', () => {
   test('Should render the bar with the given width', async () => {
@@ -261,6 +274,19 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
   });
 });
 describe('Vertical bar chart - Subcomponent callout', () => {
+  test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
+    // Arrange
+    const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype, '_onBarHover');
+    render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
+    await new Promise(resolve => setTimeout(resolve));
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    expect(bars).toHaveLength(8);
+    fireEvent.mouseOver(bars[0]);
+    await new Promise(resolve => setTimeout(resolve));
+    // Assert
+    expect(handleMouseOver).toHaveBeenCalled();
+  });
+
   test('Should show the callout over the bar on mouse over', async () => {
     // Arrange
     const { container } = render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
