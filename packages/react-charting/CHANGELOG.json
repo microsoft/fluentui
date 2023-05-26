@@ -2,6 +2,111 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 26 May 2023 07:37:02 GMT",
+      "tag": "@fluentui/react-charting_v5.16.33",
+      "version": "5.16.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.24",
+            "commit": "e1ca88c0a92d07dced9c668dd11585c0c4866919"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.88",
+            "commit": "e1ca88c0a92d07dced9c668dd11585c0c4866919"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.109.7",
+            "commit": "e1ca88c0a92d07dced9c668dd11585c0c4866919"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 May 2023 07:37:49 GMT",
+      "tag": "@fluentui/react-charting_v5.16.32",
+      "version": "5.16.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.87",
+            "commit": "e25d7392117677af53c155cc3a7b242215c38465"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.109.6",
+            "commit": "e25d7392117677af53c155cc3a7b242215c38465"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 May 2023 07:38:09 GMT",
+      "tag": "@fluentui/react-charting_v5.16.31",
+      "version": "5.16.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bd15496050409ea20867d894f0841d7a8c1cd2a0",
+            "comment": "Implementation of Horizontal Bar Chart with Axis"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 May 2023 07:38:21 GMT",
+      "tag": "@fluentui/react-charting_v5.16.30",
+      "version": "5.16.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.86",
+            "commit": "323e7a97aed12661495a492c9a8f10e617a332dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.109.5",
+            "commit": "323e7a97aed12661495a492c9a8f10e617a332dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 May 2023 07:37:28 GMT",
+      "tag": "@fluentui/react-charting_v5.16.29",
+      "version": "5.16.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.85",
+            "commit": "c88ed5c283672106e237177f59a8bf356d6d9fc6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.109.4",
+            "commit": "c88ed5c283672106e237177f59a8bf356d6d9fc6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 May 2023 07:38:08 GMT",
       "tag": "@fluentui/react-charting_v5.16.28",
       "version": "5.16.28",
