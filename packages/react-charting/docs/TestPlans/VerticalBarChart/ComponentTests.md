@@ -1,4 +1,4 @@
-# **Vertical Bar Chart – Component test plan**
+**Vertical Bar Chart – Component test plan**
 
 **Sub-components: Bar, Line, Legends, Callout, Labels**
 
@@ -61,3 +61,7 @@
 |                              Test 11: [Sub-Component]: x-axis labels                              |                                                                                                                                        |               |
 |                                     - Truncate x-axis labels                                      |                                           Should show the x-axis labels tooltip when hovered                                           |      RTL      |
 |                                      - Rotate x-axis labels                                       |                                             Should rotate the x-axis labels by 45 degrees                                              |      RTL      |
+|                            Test 12: [Sub-Component]: Screen resolution                            |                                                                                                                                        |               |
+|                            - Increase the screen resolution (zoom in)                             |                                                   Should remain unchanged on zoom in                                                   |      RTL      |
+|                            - Decrease the screen resolution (zoom out)                            |                                                  Should remain unchanged on zoom out                                                   |      RTL      |
+|                               Test 13: Theme changed to Dark Theme                                |                                                      Should reflect theme change                                                       |      RTL      |

@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
+import { act, render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
 import { chartPoints } from './VerticalBarChart.test';
 import { DefaultPalette } from '@fluentui/react';
-// import { IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
+import { DarkTheme } from '@fluentui/theme-samples';
+import { ThemeProvider } from '@fluentui/react';
 
 const pointsWithLine = [
   {
@@ -276,7 +277,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 describe('Vertical bar chart - Subcomponent callout', () => {
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
-    const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype, '_onBarHover');
+    const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
     render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
     await new Promise(resolve => setTimeout(resolve));
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -388,4 +389,58 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
     const getByClass = queryAllByAttribute.bind(null, 'class');
     expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
   });
+});
+
+describe('Screen resolution', () => {
+  const originalInnerWidth = global.innerWidth;
+  const originalInnerHeight = global.innerHeight;
+  afterEach(() => {
+    global.innerWidth = originalInnerWidth;
+    global.innerHeight = originalInnerHeight;
+    act(() => {
+      global.dispatchEvent(new Event('resize'));
+    });
+  });
+
+  test('Should remain unchanged on zoom in', () => {
+    // Arrange
+    const { container } = render(<VerticalBarChart data={chartPoints} width={300} height={300} />);
+
+    // Act
+    global.innerWidth = window.innerWidth / 2;
+    global.innerHeight = window.innerHeight / 2;
+    act(() => {
+      global.dispatchEvent(new Event('resize'));
+    });
+
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+
+  test('Should remain unchanged on zoom out', () => {
+    // Arrange
+    const { container } = render(<VerticalBarChart data={chartPoints} width={300} height={300} />);
+
+    // Act
+    global.innerWidth = window.innerWidth * 2;
+    global.innerHeight = window.innerHeight * 2;
+    act(() => {
+      global.dispatchEvent(new Event('resize'));
+    });
+
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+});
+
+test('Should reflect theme change', () => {
+  // Arrange
+  const { container } = render(
+    <ThemeProvider theme={DarkTheme}>
+      <VerticalBarChart culture={window.navigator.language} data={chartPoints} />
+    </ThemeProvider>,
+  );
+
+  // Assert
+  expect(container).toMatchSnapshot();
 });
