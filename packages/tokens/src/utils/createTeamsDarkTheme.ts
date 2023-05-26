@@ -1,4 +1,4 @@
-import { colorPaletteTokens } from '../alias/darkColorPalette';
+import { colorPaletteTokens, colorStatusTokens } from '../alias/darkColorPalette';
 import { generateColorTokens } from '../alias/teamsDarkColor';
 
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
@@ -7,7 +7,6 @@ import type { BrandVariants, Theme } from '../types';
 import { durations } from '../global/durations';
 import { curves } from '../global/curves';
 import { horizontalSpacings, verticalSpacings } from '../global/spacings';
-import { ColorStatusTokens } from '../types';
 
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
   const colorTokens = generateColorTokens(brand);
@@ -26,7 +25,7 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
 
     ...colorTokens,
     ...colorPaletteTokens,
-    ...({} as ColorStatusTokens), // FIXME
+    ...colorStatusTokens,
 
     ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
     ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),
