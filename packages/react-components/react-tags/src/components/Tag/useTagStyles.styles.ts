@@ -48,6 +48,7 @@ export const useTagBaseStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tokens.spacingHorizontalXXS,
     ...typographyStyles.caption2,
+    whiteSpace: 'nowrap',
   },
 });
 
