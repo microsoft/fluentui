@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Fri, 26 May 2023 07:37:01 GMT",
+      "tag": "@fluentui/style-utilities_v8.9.11",
+      "version": "8.9.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "c29489c82d4e9dc541135e65f1e2a4a5159a2a05",
+            "comment": "Update FabricCDN url to use latest Clipchamp filetype icon"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 May 2023 18:14:00 GMT",
       "tag": "@fluentui/style-utilities_v8.9.10",
       "version": "8.9.10",
