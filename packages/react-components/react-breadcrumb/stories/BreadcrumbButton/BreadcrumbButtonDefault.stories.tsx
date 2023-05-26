@@ -78,7 +78,11 @@ function renderButton(el: Item, isLastItem: boolean = false) {
   return (
     <React.Fragment key={`${el.key}-button`}>
       <BreadcrumbItem>
-        <BreadcrumbButton {...el.buttonProps} current={isLastItem}>
+        <BreadcrumbButton
+          {...el.buttonProps}
+          current={isLastItem}
+          onClick={isLastItem ? undefined : el.buttonProps?.onClick}
+        >
           {el.item}
         </BreadcrumbButton>
       </BreadcrumbItem>

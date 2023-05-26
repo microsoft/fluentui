@@ -2,6 +2,29 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:32 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "a30aec3345289cac3cb0e58f8b17caa8239cd239",
+            "comment": "feat: add style overrides for drawer components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:13 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.4.0",
       "version": "9.4.0",

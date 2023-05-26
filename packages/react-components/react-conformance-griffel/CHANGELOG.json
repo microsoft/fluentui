@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Wed, 24 May 2023 20:45:25 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 00:39:04 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.21",
       "version": "9.0.0-beta.21",
