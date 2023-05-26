@@ -2,10 +2,10 @@ import * as React from 'react';
 import { render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
 import { chartPoints } from './VerticalBarChart.test';
 import { DefaultPalette } from '@fluentui/react';
-import { IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+// import { IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { VerticalBarChart } from './VerticalBarChart';
 
-const pointsWithLine: IVerticalBarChartDataPoint[] = [
+const pointsWithLine = [
   {
     x: 0,
     y: 10000,
@@ -96,7 +96,7 @@ const pointsWithLine: IVerticalBarChartDataPoint[] = [
   },
 ];
 
-const simplePoints: IVerticalBarChartDataPoint[] = [
+const simplePoints = [
   {
     x: 'This is a medium long label. ',
     y: 3500,
@@ -293,7 +293,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
       <VerticalBarChart
         data={pointsWithLine}
         calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+        onRenderCalloutPerDataPoint={props =>
           props ? (
             <div className="onRenderCalloutPerDataPoint">
               <p>Custom Callout Content</p>
@@ -319,7 +319,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
       <VerticalBarChart
         data={pointsWithLine}
         calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+        onRenderCalloutPerDataPoint={props =>
           props ? (
             <div className="onRenderCalloutPerDataPoint">
               <p>Custom Callout Content</p>

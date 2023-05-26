@@ -152,6 +152,7 @@ packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-examples @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-examples/src/react-charting @microsoft/charting-team
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
@@ -236,6 +237,7 @@ packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
+packages/react-components/react-search @microsoft/cxe-coastal
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

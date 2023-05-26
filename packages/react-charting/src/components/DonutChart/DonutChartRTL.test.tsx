@@ -2,7 +2,7 @@ import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-li
 import { chartPoints } from './DonutChart.test';
 import { DonutChart } from './index';
 import * as React from 'react';
-// import { DarkTheme } from '@fluentui/theme-samples';
+import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
 
@@ -132,17 +132,17 @@ test('Should display correct callout data on mouse move', () => {
   expect(getById(container, /callout/i)[0]).toHaveTextContent('39,000');
 });
 
-// test('Should reflect theme change', () => {
-//   // Arrange
-//   const { container } = render(
-//     <ThemeProvider theme={DarkTheme}>
-//       <DonutChart culture={window.navigator.language} data={chartPoints} innerRadius={55} />
-//     </ThemeProvider>,
-//   );
+test('Should reflect theme change', () => {
+  // Arrange
+  const { container } = render(
+    <ThemeProvider theme={DarkTheme}>
+      <DonutChart culture={window.navigator.language} data={chartPoints} innerRadius={55} />
+    </ThemeProvider>,
+  );
 
-//   // Assert
-//   expect(container).toMatchSnapshot();
-// });
+  // Assert
+  expect(container).toMatchSnapshot();
+});
 
 describe('Screen resolution', () => {
   const originalInnerWidth = global.innerWidth;

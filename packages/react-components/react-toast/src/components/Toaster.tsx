@@ -11,12 +11,14 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 const useStyles = makeStyles({
   container: {
     position: 'fixed',
+    width: '292px',
   },
 });
 
 export type ToasterProps = Partial<ToasterOptions>;
 
 export const Toaster: React.FC<ToasterProps> = props => {
+  const { offset } = props;
   const { getToastsToRender, isToastVisible, toasterRef } = useToaster<HTMLDivElement>(props);
 
   const styles = useStyles();
@@ -26,7 +28,7 @@ export const Toaster: React.FC<ToasterProps> = props => {
       <div ref={toasterRef}>
         {getToastsToRender((position, toasts) => {
           return (
-            <div key={position} style={getPositionStyles(position)} className={mergeClasses(styles.container)}>
+            <div key={position} style={getPositionStyles(position, offset)} className={mergeClasses(styles.container)}>
               {toasts.map(toastProps => {
                 return (
                   <Toast {...toastProps} key={toastProps.toastId} visible={isToastVisible(toastProps.toastId)}>
