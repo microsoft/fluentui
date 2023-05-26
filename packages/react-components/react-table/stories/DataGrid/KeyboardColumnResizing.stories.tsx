@@ -164,6 +164,18 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const columnSizingOptions = {
+  file: {
+    minWidth: 80,
+    defaultWidth: 120,
+  },
+  author: {
+    defaultWidth: 180,
+    minWidth: 120,
+    idealWidth: 180,
+  },
+};
+
 export const KeyboardColumnResizing = () => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
   const { findFirstFocusable } = useFocusFinders();
@@ -177,21 +189,6 @@ export const KeyboardColumnResizing = () => {
       }
     },
     [findFirstFocusable],
-  );
-
-  const columnSizingOptions = React.useMemo(
-    () => ({
-      file: {
-        minWidth: 80,
-        defaultWidth: 120,
-      },
-      author: {
-        defaultWidth: 180,
-        minWidth: 120,
-        idealWidth: 180,
-      },
-    }),
-    [],
   );
 
   return (
