@@ -6,122 +6,95 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+import { useClasses } from './Sparkline.styles';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
-export interface ISparklineState {
-  _points: ILineChartDataPoint[] | null;
-  _width: number;
-  _height: number;
-  _valueTextWidth: number;
-}
-
-export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
-  private margin = {
+export const SparklineBase = (props: ISparklineProps) => {
+  const myClass = useClasses();
+  const margin = React.useRef({
     top: 2,
     right: 0,
     bottom: 0,
     left: 0,
-  };
-
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  private x: any;
-
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  private y: any;
-  private area: any;
-  private line: any;
-
-  constructor(props: ISparklineProps) {
-    super(props);
-    this.state = {
-      _points: null,
-      _width: this.props.width! || 80,
-      _height: this.props.height! || 20,
-      _valueTextWidth: this.props.valueTextWidth! || 80,
-    };
-  }
-
-  public componentDidMount() {
-    const area = d3Area()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .x((d: any) => this.x(d.x))
-      .y0(this.state._height)
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .y1((d: any) => this.y(d.y))
+  });
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const x = React.useRef<any>();
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const y = React.useRef<any>();
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const area = React.useRef<any>();
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const line = React.useRef<any>();
+  const [_points, setPoints] = React.useState<ILineChartDataPoint[] | null>(null);
+  const [_width] = React.useState<number>(props.width! || 80);
+  const [_height] = React.useState<number>(props.height! || 20);
+  const [_valueTextWidth] = React.useState<number>(props.valueTextWidth! || 80);
+  React.useEffect(() => {
+    area.current = d3Area()
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      .x((d: any) => x.current(d.x))
+      .y0(_height)
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      .y1((d: any) => y.current(d.y))
       .curve(d3curveLinear);
-    this.area = area;
-
-    const line = d3Line()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .x((d: any) => this.x(d.x))
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .y((d: any) => this.y(d.y))
+    line.current = d3Line()
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      .x((d: any) => x.current(d.x))
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      .y((d: any) => y.current(d.y))
       .curve(d3curveLinear);
-    this.line = line;
-
-    const points = this.props.data!.lineChartData![0].data;
-
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const points = props.data!.lineChartData![0].data;
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
-
-    this.x = d3ScaleLinear()
+    x.current = d3ScaleLinear()
       .domain([xMin, xMax])
-      .range([this.margin.left!, this.state._width - this.margin.right!]);
-    this.y = d3ScaleLinear()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
+      .range([margin.current.left!, _width - margin.current.right!]);
+    y.current = d3ScaleLinear()
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       .domain([0, d3Max(points, (d: any) => d.y)])
-      .range([this.state._height - this.margin.bottom!, this.margin.top!]);
-
-    this.setState({
-      _points: points,
-    });
-  }
-
-  public drawSparkline() {
+      .range([_height - margin.current.bottom!, margin.current.top!]);
+    setPoints(points);
+  }, [_height, _width, props.data]);
+  const drawSparkline = React.useCallback(() => {
     return (
       <>
         <path
-          className="line"
-          d={this.line(this.state._points)}
-          fill={'transparent'}
-          opacity={1}
-          strokeWidth={2}
-          stroke={this.props.data!.lineChartData![0].color!}
+          className={myClass.line}
+          style={{ stroke: props.data!.lineChartData![0].color! }}
+          d={line.current(_points)}
         />
         <path
-          className="area"
-          d={this.area(this.state._points)}
-          opacity={1}
-          fillOpacity={0.2}
-          fill={this.props.data!.lineChartData![0].color!}
-          aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
+          className={myClass.area}
+          style={{ fill: props.data!.lineChartData![0].color! }}
+          d={area.current(_points)}
+          aria-label={`Sparkline with label ${props.data!.lineChartData![0].legend!}`}
         />
       </>
     );
-  }
-
-  public render() {
-    const classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-    });
-    return (
+  }, [_points, props.data, myClass.area, myClass.line]);
+  const classNames = getClassNames(props.styles!, {
+    theme: props.theme!,
+  });
+  return (
+    <FluentProvider theme={webLightTheme}>
       <FocusZone
         direction={FocusZoneDirection.horizontal}
         isCircularNavigation={true}
         className={classNames.inlineBlock}
       >
-        <div className={classNames.inlineBlock}>
-          {this.state._width >= 50 && this.state._height >= 16 ? (
-            <svg width={this.state._width} height={this.state._height} data-is-focusable={true}>
-              {this.state._points ? this.drawSparkline() : null}
+        <div className={myClass.inlineBlock}>
+          {_width >= 50 && _height >= 16 ? (
+            <svg width={_width} height={_height} data-is-focusable={true}>
+              {_points ? drawSparkline() : null}
             </svg>
           ) : (
             <></>
           )}
-          {this.props.showLegend && this.props.data!.lineChartData![0].legend ? (
-            <svg width={this.state._valueTextWidth} height={this.state._height} data-is-focusable={true}>
-              <text x="0%" dx={8} y="100%" dy={-5} className={classNames.valueText}>
-                {this.props.data!.lineChartData![0].legend!}
+          {props.showLegend && props.data!.lineChartData![0].legend ? (
+            <svg width={_valueTextWidth} height={_height} data-is-focusable={true}>
+              <text x="0%" dx={8} y="100%" dy={-5} className={myClass.valueText}>
+                {props.data!.lineChartData![0].legend!}
               </text>
             </svg>
           ) : (
@@ -129,6 +102,6 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           )}
         </div>
       </FocusZone>
-    );
-  }
-}
+    </FluentProvider>
+  );
+};
