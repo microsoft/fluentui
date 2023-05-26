@@ -11,7 +11,7 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
     id = defaultId,
     className,
     selected,
-    disabled = false,
+    disabled,
     onRenderItem,
     cellDisabledStyle,
     cellIsSelectedStyle,

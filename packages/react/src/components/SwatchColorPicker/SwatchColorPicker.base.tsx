@@ -309,7 +309,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         idPrefix={id}
         color={item.color}
         styles={getColorGridCellStyles}
-        disabled={disabled}
+        disabled={item.disabled}
         onClick={onCellClick}
         onHover={onGridCellHovered}
         onFocus={onGridCellFocused}
