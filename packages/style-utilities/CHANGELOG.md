@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 05 May 2023 18:14:00 GMT and should not be manually modified.
+This log was last generated on Fri, 26 May 2023 07:37:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.11](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.11)
+
+Fri, 26 May 2023 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.10..@fluentui/style-utilities_v8.9.11)
+
+### Patches
+
+- Update FabricCDN url to use latest Clipchamp filetype icon ([PR #27779](https://github.com/microsoft/fluentui/pull/27779) by caperez@microsoft.com)
 
 ## [8.9.10](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.10)
 

@@ -30,6 +30,11 @@ interface PositionManagerOptions {
    * [Floating UI placement](https://floating-ui.com/docs/computePosition#placement)
    */
   placement?: Placement;
+  /**
+   * Modifies whether popover is positioned using transform.
+   * @default true
+   */
+  useTransform?: boolean;
 }
 
 /**
@@ -37,7 +42,7 @@ interface PositionManagerOptions {
  * @returns manager that handles positioning out of the react lifecycle
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
-  const { container, target, arrow, strategy, middleware, placement } = options;
+  const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
   let isDestroyed = false;
   if (!target || !container) {
     return {
@@ -91,6 +96,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
           coordinates: { x, y },
           lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
           strategy,
+          useTransform,
         });
       })
       .catch(err => {
