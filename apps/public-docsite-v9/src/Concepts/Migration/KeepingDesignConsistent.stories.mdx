@@ -46,15 +46,19 @@ You can wrap both `ThemeProvider` and `FluentProvider` around components.
 Both `ThemeProvider` and `FluentProvider` support nesting to define a theme or partial theme at different scopes.
 
 ```tsx
-import { ThemeProvider, Button as Buttonv8, webLightTheme} from '@fluentui/react';
-import { FluentProvider, Button as Buttonv9} from '@fluentui/react-components';
+import { ThemeProvider, Button as ButtonV8 } from '@fluentui/react';
+import { FluentProvider, Button as ButtonV9, webLightTheme } from '@fluentui/react-components';
 
-<ThemeProvider>
-  <FluentProvider theme={webLightTheme}>
-    <Buttonv8>Hello migration</Buttonv8>
-    <Buttonv9>Hello migration</Buttonv9>
-  </ThemeProvider>
-</ThemeProvider>
+function App() {
+  return (
+    <ThemeProvider>
+      <FluentProvider theme={webLightTheme}>
+        <ButtonV8>Hello migration</ButtonV8>
+        <ButtonV9>Hello migration</ButtonV9>
+      </FluentProvider>
+    </ThemeProvider>
+  );
+}
 ```
 
 ## You can use design token styles in your own components
@@ -119,8 +123,13 @@ A new style hook is substituted for `useButtonStyle`.
 
 ```tsx
 import * as React from 'react';
-import { renderButton_unstable as renderButton, useButton_unstable as useButton } from '@fluentui/react-components';
-import type { ButtonProps, ForwardRefComponent } from '@fluentui/react-components';
+import {
+  makeStyles,
+  tokens,
+  renderButton_unstable as renderButton,
+  useButton_unstable as useButton,
+} from '@fluentui/react-components';
+import type { ButtonProps, ButtonState, ForwardRefComponent } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -130,11 +139,13 @@ const useStyles = makeStyles({
 });
 
 // This is an example of a custom style hook
-const useCusomButtonStyles = (state: ButtonState): ButtonState => {
+const useCustomButtonStyles = (state: ButtonState): ButtonState => {
   const styles = useStyles();
 
   state.root.className = styles.root;
   //...
+
+  return state;
 };
 
 export const MyButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
@@ -164,7 +175,10 @@ You can pass `FluentProvider.customStyleHooks_unstable` a set of custom style ho
 Each custom style hook can update root or slot class names.
 
 ```tsx
-const myButtonStyles = makeStyles({
+import { makeStyles, mergeClasses, FluentProvider } from '@fluentui/react-components';
+import type { FluentProviderCustomStyleHooks, ButtonState } from '@fluentui/react-components';
+
+const useMyButtonStyles = makeStyles({
   root: {
     //...
   },
@@ -178,7 +192,9 @@ const myCustomStyles: FluentProviderCustomStyleHooks = {
   },
 };
 
-<FluentProvider customStyleHooks_unstable={myCustomStyles}></FluentProvider>;
+function App() {
+  return <FluentProvider customStyleHooks_unstable={myCustomStyles}></FluentProvider>;
+}
 ```
 
 To override existing styles, use `makeStyles` to create your custom styles and then call `mergeClasses` with state `className` and the your new styles.

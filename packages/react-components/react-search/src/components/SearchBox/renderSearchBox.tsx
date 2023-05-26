@@ -11,6 +11,15 @@ import type { SearchBoxState, SearchBoxSlots } from './SearchBox.types';
 export const renderSearchBox_unstable = (state: SearchBoxState) => {
   const { slots, slotProps } = getSlotsNext<SearchBoxSlots>(state);
 
+  const contentBefore = slots.contentBefore && <slots.contentBefore {...slotProps.contentBefore} />;
+  const secondaryContentAfter = slots.secondaryContentAfter && (
+    <slots.secondaryContentAfter {...slotProps.secondaryContentAfter} />
+  );
+  const primaryContentAfter = slots.primaryContentAfter && (
+    <slots.primaryContentAfter {...slotProps.primaryContentAfter} />
+  );
+  const contentAfter = secondaryContentAfter && primaryContentAfter;
+
   // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return <slots.root {...(slotProps.root, { contentBefore, contentAfter })} />;
 };

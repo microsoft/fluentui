@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastAlert } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const MultipeToasters = () => {
@@ -7,8 +7,8 @@ export const MultipeToasters = () => {
   const second = useId('toaster-2');
   const { dispatchToast: dispatchFirstToast } = useToastController(first);
   const { dispatchToast: dispatchSecondToast } = useToastController(second);
-  const notifyFirst = () => dispatchFirstToast('Toaster first');
-  const notifySecond = () => dispatchSecondToast('Toaster second');
+  const notifyFirst = () => dispatchFirstToast(<ToastAlert intent="info">First toaster</ToastAlert>);
+  const notifySecond = () => dispatchSecondToast(<ToastAlert intent="info">Second toaster</ToastAlert>);
 
   return (
     <>

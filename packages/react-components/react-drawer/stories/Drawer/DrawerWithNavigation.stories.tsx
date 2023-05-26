@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderNavigation, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import {
+  DrawerOverlay,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderNavigation,
+  DrawerHeaderTitle,
+} from '@fluentui/react-drawer';
 import { Button, Toolbar, ToolbarGroup, ToolbarButton, makeStyles } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import { ArrowClockwise24Regular } from '@fluentui/react-icons';
@@ -19,7 +25,7 @@ export const WithNavigation = () => {
 
   return (
     <div>
-      <Drawer position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <DrawerOverlay position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
@@ -44,7 +50,7 @@ export const WithNavigation = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </Drawer>
+      </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
         Toggle

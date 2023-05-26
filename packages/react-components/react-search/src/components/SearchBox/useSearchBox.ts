@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 
 /**
@@ -16,13 +17,13 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
-      root: 'div',
+      root: Input,
+      contentBefore: 'span',
+      primaryContentAfter: 'span',
+      secondaryContentAfter: 'span',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: resolveShorthand(props.root),
   };
 };
