@@ -101,7 +101,10 @@ const Box = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement
   );
 });
 
-const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ positionFixed }) => {
+const PositionAndAlignProps: React.FC<{ positionFixed?: boolean; useTransform?: boolean }> = ({
+  positionFixed,
+  useTransform,
+}) => {
   const styles = useStyles();
   const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     const positioningOptions: PositioningProps = { position: cur[0], align: cur[1] };
@@ -109,6 +112,7 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     positioningOptions.positionFixed = positionFixed;
+    positioningOptions.useTransform = useTransform;
 
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -754,4 +758,10 @@ storiesOf('Positioning', module)
     </StoryWright>
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true })
-  .addStory('fallback positioning', () => <FallbackPositioning />);
+  .addStory('fallback positioning', () => <FallbackPositioning />)
+  .addStory('disable CSS transform', () => <PositionAndAlignProps useTransform={false} />, { includeRtl: true })
+  .addStory(
+    'disable CSS transform with position fixed',
+    () => <PositionAndAlignProps positionFixed useTransform={false} />,
+    { includeRtl: true },
+  );
