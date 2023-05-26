@@ -5,7 +5,6 @@ import {
   TableCell,
   TableCellLayout,
   TableColumnDefinition,
-  TableColumnSizingOptions,
   TableHeader,
   TableHeaderCell,
   TableRow,
