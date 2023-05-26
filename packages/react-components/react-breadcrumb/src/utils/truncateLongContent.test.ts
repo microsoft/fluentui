@@ -3,7 +3,7 @@ import { truncateLongName, truncateLongTooltip } from './truncateLongContent';
 const defaultTestNames = [
   ['', ''],
   ['Regular name', 'Regular name'],
-  ['Name which is longer than 30 characters', 'Name which is longer than 3...'],
+  ['Name which is longer than 30 characters', 'Name which is longer than 30 c...'],
   ['Name which equal 30 characters', 'Name which equal 30 characters'],
 ];
 
@@ -12,10 +12,10 @@ describe('truncate method', () => {
     expect(truncateLongName(name)).toBe(expected);
   });
   it('truncates name correctly with custom length', () => {
-    expect(truncateLongName('Name which is longer than 10 characters', 10)).toEqual('Name wh...');
+    expect(truncateLongName('Name which is longer than 10 characters', 10)).toEqual('Name which...');
   });
   it('truncates RTL name correctly with custom length', () => {
-    expect(truncateLongName('رحیمی خسرو رحیمی', 10)).toEqual('رحیمی خ...');
+    expect(truncateLongName('رحیمی خسرو رحیمی', 10)).toEqual('رحیمی خسرو...');
   });
   it('returns the same content for regular tooltips', () => {
     expect(truncateLongTooltip('Just a tooltip')).toEqual('Just a tooltip');
@@ -24,17 +24,17 @@ describe('truncate method', () => {
     const longTooltipContent =
       "Super long tooltip which is longer than 80 characters. Don't think about what you want to be, but what you want to do.";
     expect(truncateLongTooltip(longTooltipContent)).toEqual(
-      "Super long tooltip which is longer than 80 characters. Don't think about what...",
+      "Super long tooltip which is longer than 80 characters. Don't think about what yo...",
     );
     expect(truncateLongTooltip(longTooltipContent, 100)).toEqual(
-      "Super long tooltip which is longer than 80 characters. Don't think about what you want to be, but...",
+      "Super long tooltip which is longer than 80 characters. Don't think about what you want to be, but wh...",
     );
   });
   it('truncates long tooltip correctly with custom length', () => {
     const longTooltipContent =
       "Super long tooltip which is longer than 80 characters. Don't think about what you want to be, but what you want to do.";
     expect(truncateLongTooltip(longTooltipContent, 100)).toEqual(
-      "Super long tooltip which is longer than 80 characters. Don't think about what you want to be, but...",
+      "Super long tooltip which is longer than 80 characters. Don't think about what you want to be, but wh...",
     );
   });
 });

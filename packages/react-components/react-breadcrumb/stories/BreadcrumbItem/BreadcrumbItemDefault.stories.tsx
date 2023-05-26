@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-breadcrumb';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
 import { ArrowRight16Filled, MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
-import { Tooltip, makeStyles } from '@fluentui/react-components';
+import { Tooltip } from '@fluentui/react-components';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
@@ -90,21 +90,14 @@ export const Default = () => {
   );
 };
 
-const useTooltipStyles = makeStyles({
-  tooltipContent: {
-    display: 'flex',
-  },
-});
-
 const getTooltipContent = (breadcrumbItems: readonly Item[]) => {
-  const styles = useTooltipStyles();
   return breadcrumbItems.reduce((acc, initialValue, idx, arr) => {
     return (
-      <div className={styles.tooltipContent}>
+      <div style={{ display: 'flex' }}>
         {acc}
         {arr[0].value !== initialValue.value && <BreadcrumbDivider />}
         {initialValue.value}
       </div>
     );
-  }, <div className={styles.tooltipContent} />);
+  }, <div style={{ display: 'flex' }} />);
 };
