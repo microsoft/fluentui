@@ -21,10 +21,10 @@ function processArgs() {
 
 function main() {
   const { base } = processArgs();
-  const affected = getAffectedPackages(base);
+  const affected = Array.from(getAffectedPackages(base));
   const tree = new FsTree(workspaceRoot, false);
 
-  const needsReactComponentsDts = Array.from(affected).some(projectName => {
+  const needsReactComponentsDts = affected.some(projectName => {
     try {
       const project = readProjectConfiguration(tree, projectName);
 
@@ -40,12 +40,42 @@ function main() {
     return false;
   });
 
-  if (needsReactComponentsDts) {
+  /**
+   *
+   * @param {string[]} affectedPkgs
+   */
+  function handleSpecialPkgDependencies(affectedPkgs) {
+    const specialPackages = { '@fluentui/react-table': ['@fluentui/react-data-grid-react-window'] };
+    const packages = /** @type {string[]} */ (
+      Object.entries(specialPackages)
+        .map(([pkgName, dependencies]) => {
+          if (affectedPkgs.includes(pkgName)) {
+            return dependencies;
+          }
+          return;
+        })
+        .filter(Boolean)
+        .flat()
+    );
+
+    return packages;
+  }
+
+  const nonSuiteAffectedPackages = handleSpecialPkgDependencies(affected);
+
+  const packagesToBuildFirst = [
+    needsReactComponentsDts ? '@fluentui/react-components' : null,
+    ...nonSuiteAffectedPackages,
+  ].filter(Boolean);
+
+  if (packagesToBuildFirst.length > 0) {
     console.info(
       '',
-      '💁: generating .d.ts files first for @fluentui/react-components, in order to drastically speed up type-check command for v9 packages !',
+      `💁: generating .d.ts files first in order to drastically speed up type-check command for v9 packages:\n`,
+      '- ' + packagesToBuildFirst.join('\n - '),
       '',
     );
-    execSync('yarn lage build --to @fluentui/react-components');
+
+    execSync(`yarn lage build --to ${packagesToBuildFirst.join(' ')}`);
   }
 }
