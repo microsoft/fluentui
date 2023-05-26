@@ -1,11 +1,14 @@
 const { execSync } = require('child_process');
 
 const { getAffectedPackages } = require('@fluentui/scripts-monorepo');
-const { readProjectConfiguration, workspaceRoot, joinPathFragments } = require('@nrwl/devkit');
+const { workspaceRoot, joinPathFragments, createProjectGraphAsync } = require('@nrwl/devkit');
 const { FsTree } = require('nx/src/config/tree');
 const yargs = require('yargs');
 
-main();
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
 
 function processArgs() {
   const args = yargs
@@ -19,54 +22,65 @@ function processArgs() {
   return args;
 }
 
-function main() {
+async function main() {
   const { base } = processArgs();
-  const affected = Array.from(getAffectedPackages(base));
+  const affectedSet = getAffectedPackages(base);
+  affectedSet.delete('@fluentui/noop');
+  const affected = Array.from(affectedSet);
   const tree = new FsTree(workspaceRoot, false);
+  /** @type {import('@nrwl/devkit').ProjectGraph<{}>} */
+  const nxGraph = await createProjectGraphAsync();
 
-  const needsReactComponentsDts = affected.some(projectName => {
-    try {
-      const project = readProjectConfiguration(tree, projectName);
-
-      const isVNext = project.tags?.indexOf('vNext') !== -1;
-      const hasStories = tree.exists(joinPathFragments(project.root, 'stories'));
-
-      if (isVNext && hasStories) {
-        return true;
-      }
-      // eslint-disable-next-line no-empty
-    } catch {}
-
-    return false;
-  });
+  const v9SuiteDeps = new Set(
+    nxGraph.dependencies['@fluentui/react-components'].map(dep => {
+      return dep.target;
+    }),
+  );
 
   /**
    *
    * @param {string[]} affectedPkgs
    */
   function handleSpecialPkgDependencies(affectedPkgs) {
-    const specialPackages = { '@fluentui/react-table': ['@fluentui/react-data-grid-react-window'] };
-    const packages = /** @type {string[]} */ (
-      Object.entries(specialPackages)
-        .map(([pkgName, dependencies]) => {
-          if (affectedPkgs.includes(pkgName)) {
-            return dependencies;
-          }
-          return;
-        })
-        .filter(Boolean)
-        .flat()
-    );
+    /** @type {Set<string>} */
+    const pkgsToBuild = new Set();
+    const deps = nxGraph.dependencies;
 
-    return packages;
+    affectedPkgs.forEach(pkgName => {
+      const project = nxGraph.nodes[pkgName].data;
+      const isVNext = project.tags?.indexOf('vNext') !== -1;
+      const hasStories = tree.exists(joinPathFragments(project.root, 'stories'));
+      // @ts-ignore - bug in nx types, projectType is part of API
+      const isLibrary = project.projectType === 'library';
+
+      if (!(isVNext && hasStories && isLibrary)) {
+        return;
+      }
+
+      deps[pkgName].forEach(value => {
+        const target = value.target;
+        if (target.indexOf('npm:') !== -1) {
+          return;
+        }
+
+        const projectInner = nxGraph.nodes[target].data;
+        const isVNextInner = projectInner.tags?.indexOf('vNext') !== -1;
+
+        if (!isVNextInner) {
+          return;
+        }
+        if (v9SuiteDeps.has(target)) {
+          return;
+        }
+
+        pkgsToBuild.add(target);
+      });
+    });
+
+    return pkgsToBuild;
   }
 
-  const nonSuiteAffectedPackages = handleSpecialPkgDependencies(affected);
-
-  const packagesToBuildFirst = [
-    needsReactComponentsDts ? '@fluentui/react-components' : null,
-    ...nonSuiteAffectedPackages,
-  ].filter(Boolean);
+  const packagesToBuildFirst = Array.from(handleSpecialPkgDependencies(affected));
 
   if (packagesToBuildFirst.length > 0) {
     console.info(
