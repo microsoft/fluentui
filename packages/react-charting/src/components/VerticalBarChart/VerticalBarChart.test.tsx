@@ -29,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints = [
+export const chartPoints = [
   {
     x: 0,
     y: 10000,
