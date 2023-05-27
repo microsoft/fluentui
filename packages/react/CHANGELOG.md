@@ -1,8 +1,175 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 Apr 2023 07:38:31 GMT and should not be manually modified.
+This log was last generated on Tue, 30 May 2023 07:36:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.109.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.8)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.7..@fluentui/react_v8.109.8)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.5.11 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.39 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.19 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/merge-styles to v8.5.11 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/react-focus to v8.8.25 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/react-hooks to v8.6.25 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.14 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/set-version to v8.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/style-utilities to v8.9.12 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/theme to v2.6.30 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/utilities to v8.13.14 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/common-styles to v1.2.28 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/example-data to v8.4.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.28 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/test-utilities to v8.3.5 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/webpack-utilities to v8.1.16 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [8.109.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.7)
+
+Fri, 26 May 2023 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.6..@fluentui/react_v8.109.7)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.2.38 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.18 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+- Bump @fluentui/react-focus to v8.8.24 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+- Bump @fluentui/style-utilities to v8.9.11 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+- Bump @fluentui/common-styles to v1.2.27 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+
+## [8.109.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.6)
+
+Thu, 25 May 2023 07:37:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.5..@fluentui/react_v8.109.6)
+
+### Patches
+
+- fix(DialogFooter): Add explicit children to work with React 18. ([PR #27987](https://github.com/microsoft/fluentui/pull/27987) by esteban.230@hotmail.com)
+
+## [8.109.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.5)
+
+Mon, 22 May 2023 07:38:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.4..@fluentui/react_v8.109.5)
+
+### Patches
+
+- fix: Links in tab style show focus outline on selected tab ([PR #27922](https://github.com/microsoft/fluentui/pull/27922) by sarah.higley@microsoft.com)
+
+## [8.109.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.4)
+
+Wed, 17 May 2023 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.3..@fluentui/react_v8.109.4)
+
+### Patches
+
+- DetailsList has been modified to warn when "getKey" and "selection" props are passed simultaneously. The "getKey" property is never used if a Selection object is passed. Either the "getKey" prop from the Selection object is used, or Selection's default getKey implementation (item) => item.key is used, but never the "getKey" prop passed to DetailsList. Making "getKey" and "selection" mutually exclusive DetailsList properties prevents users from making this mistake. ([PR #24048](https://github.com/microsoft/fluentui/pull/24048) by alexok@microsoft.com)
+
+## [8.109.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.3)
+
+Tue, 09 May 2023 07:38:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.2..@fluentui/react_v8.109.3)
+
+### Patches
+
+- fix(Coachmark): Fix positioning regression and update bounds on resize. ([PR #27782](https://github.com/microsoft/fluentui/pull/27782) by esteban.230@hotmail.com)
+
+## [8.109.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.2)
+
+Fri, 05 May 2023 18:14:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.1..@fluentui/react_v8.109.2)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.5.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.37 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.17 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/merge-styles to v8.5.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/react-focus to v8.8.23 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/react-hooks to v8.6.24 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.13 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/style-utilities to v8.9.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/theme to v2.6.29 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/utilities to v8.13.13 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/common-styles to v1.2.26 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/example-data to v8.4.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.27 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/test-utilities to v8.3.4 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/webpack-utilities to v8.1.15 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [8.109.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.1)
+
+Tue, 02 May 2023 22:20:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.0..@fluentui/react_v8.109.1)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/foundation-legacy to v8.2.36 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.16 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/react-focus to v8.8.22 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/react-hooks to v8.6.23 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.12 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/style-utilities to v8.9.9 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/theme to v2.6.28 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/utilities to v8.13.12 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/common-styles to v1.2.25 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/test-utilities to v8.3.3 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+- Bump @fluentui/webpack-utilities to v8.1.14 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [8.109.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.0)
+
+Tue, 02 May 2023 00:58:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.108.3..@fluentui/react_v8.109.0)
+
+### Minor changes
+
+- chore: Export DraggableZone component ([PR #27569](https://github.com/microsoft/fluentui/pull/27569) by rezha@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.5.9 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.35 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.15 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/merge-styles to v8.5.9 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/react-focus to v8.8.21 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/react-hooks to v8.6.22 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.11 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/style-utilities to v8.9.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/theme to v2.6.27 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/utilities to v8.13.11 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/common-styles to v1.2.24 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.26 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+
+## [8.108.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.3)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.108.2..@fluentui/react_v8.108.3)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.5.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.34 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.14 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/merge-styles to v8.5.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-focus to v8.8.20 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-hooks to v8.6.21 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.10 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/style-utilities to v8.9.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/theme to v2.6.26 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/utilities to v8.13.10 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/common-styles to v1.2.23 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/example-data to v8.4.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.25 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/test-utilities to v8.3.2 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/webpack-utilities to v8.1.13 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [8.108.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.108.2)
 

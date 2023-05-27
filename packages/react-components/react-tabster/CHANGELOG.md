@@ -1,8 +1,60 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 17 Apr 2023 17:54:02 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.7.4)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.7.3..@fluentui/react-tabster_v9.7.4)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.7.3)
+
+Wed, 24 May 2023 20:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.7.2..@fluentui/react-tabster_v9.7.3)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.5.0 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.7.2)
+
+Thu, 18 May 2023 13:11:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.7.1..@fluentui/react-tabster_v9.7.2)
+
+### Patches
+
+- chore: upgrade tabster to v4.4.0 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by bernardo.sunderhus@gmail.com)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.7.1)
+
+Thu, 18 May 2023 00:39:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.7.0..@fluentui/react-tabster_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.7.0)
+
+Fri, 12 May 2023 20:27:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.6.5..@fluentui/react-tabster_v9.7.0)
+
+### Minor changes
+
+- fix: move `outlineStyle: none` out of createCustomFocusIndicatorStyle and to createFocusOutlineStyle ([PR #26089](https://github.com/microsoft/fluentui/pull/26089) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.4.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
 
 ## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.6.5)
 

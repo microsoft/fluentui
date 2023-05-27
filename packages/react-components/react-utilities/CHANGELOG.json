@@ -2,6 +2,106 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 25 May 2023 10:00:48 GMT",
+      "tag": "@fluentui/react-utilities_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4e463381ae0a63a07c45a2618bdce46423c65505",
+            "comment": "fix(react-utilities): fix dispatcher behavior"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 20:45:37 GMT",
+      "tag": "@fluentui/react-utilities_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:19 GMT",
+      "tag": "@fluentui/react-utilities_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "bdc00a85606c5a225be1df2a24db1ccecbc65b64",
+            "comment": "feat: Implement a priority queue"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:28:04 GMT",
+      "tag": "@fluentui/react-utilities_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "88ff00c2979ecd025f725fa3fc4e4d370f95cfc4",
+            "comment": "feat: defers useControllableState state to initializer method"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f0b05741d812ad90c52754b0b4035d5554cf2aa0",
+            "comment": "chore: updates useControllableState comments"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "557ffca71ff7767a4d595b6fcc55ad4a1fe02360",
+            "comment": "chore: simplifies useControllableState hook internals"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.3",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 17:54:02 GMT",
       "tag": "@fluentui/react-utilities_v9.8.0",
       "version": "9.8.0",

@@ -19,6 +19,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   buttonBackgroundPressed: string;
   ButtonBorderDisabled: string;
   ButtonBorderFocus: string;
+  ButtonBorderTag: string;
+  ButtonBorderTagHovered: string;
+  ButtonBorderTagPressed: string;
   buttonText: string;
   buttonTextChecked: string;
   buttonTextCheckedHovered: string;
@@ -71,6 +74,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   datePickerSelectionText: string;
   disabledBackground: string;
   disabledBodyText: string;
+  dropdownBackground: string;
+  dropdownItemHover: string;
+  dropdownTextHovered: string;
   errorBackground: string;
   errorText: string;
   focusBorder: string;
@@ -106,6 +112,11 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   primaryButtonBackgroundDisabled: string;
   primaryButtonBackgroundHovered: string;
   primaryButtonBackgroundPressed: string;
+  ButtonBackgroundTag: string;
+  ButtonBackgroundTagHovered: string;
+  ButtonBackgroundTagPressed: string;
+  ButtonBackgroundTagText: string;
+  ButtonBackgroundTagTextHovered: string;
   ButtonBorderDanger: string;
   ButtonBorderDangerHovered: string;
   ButtonBorderDangerPressed: string;
@@ -143,6 +154,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   statusInformationIcon: string;
   statusInformationText: string;
   statusLink: string;
+  statusLinkHover: string;
   statusSuccessBackground: string;
   statusSuccessBorder: string;
   statusSuccessIcon: string;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAccordionHeader_unstable } from './useAccordionHeader';
 import { renderAccordionHeader_unstable } from './renderAccordionHeader';
-import { useAccordionHeaderStyles_unstable } from './useAccordionHeaderStyles';
+import { useAccordionHeaderStyles_unstable } from './useAccordionHeaderStyles.styles';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 import type { AccordionHeaderProps } from './AccordionHeader.types';

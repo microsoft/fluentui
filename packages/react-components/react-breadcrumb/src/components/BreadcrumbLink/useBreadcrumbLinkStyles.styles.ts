@@ -2,10 +2,17 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbLinkSlots, BreadcrumbLinkState } from './BreadcrumbLink.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useLinkStyles_unstable, LinkState } from '@fluentui/react-link';
 
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
   root: 'fui-BreadcrumbLink',
   icon: 'fui-BreadcrumbLink__icon',
+};
+
+const defaultLinkStyles = {
+  textDecorationLine: 'none',
+  color: tokens.colorNeutralForeground2,
+  cursor: 'auto',
 };
 
 /**
@@ -14,6 +21,7 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    alignItems: 'center',
   },
   icon: {
     display: 'flex',
@@ -41,6 +49,15 @@ const useStyles = makeStyles({
       textDecorationLine: 'none',
     },
   },
+  current: {
+    color: tokens.colorNeutralForeground2,
+    ':hover': {
+      ...defaultLinkStyles,
+    },
+    ':hover:active': {
+      ...defaultLinkStyles,
+    },
+  },
   currentSmall: {
     ...typographyStyles.caption1Strong,
   },
@@ -52,11 +69,33 @@ const useStyles = makeStyles({
   },
 });
 
+const useIconStyles = makeStyles({
+  small: {
+    fontSize: '12px',
+    height: '12px',
+    lineHeight: tokens.lineHeightBase200,
+    width: '12px',
+  },
+  medium: {
+    fontSize: '16px',
+    height: '16px',
+    lineHeight: tokens.lineHeightBase400,
+    width: '16px',
+  },
+  large: {
+    fontSize: '20px',
+    height: '20px',
+    lineHeight: tokens.lineHeightBase600,
+    width: '20px',
+  },
+});
+
 /**
  * Apply styling to the BreadcrumbLink slots based on the state
  */
 export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): BreadcrumbLinkState => {
   const styles = useStyles();
+  const iconStyles = useIconStyles();
 
   const currentSizeMap = {
     small: styles.currentSmall,
@@ -70,12 +109,15 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
     styles[state.size],
     state.overflow && styles.overflow,
     state.current && currentSizeMap[state.size],
+    state.current && styles.current,
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
   }
+
+  useLinkStyles_unstable(state as LinkState);
 
   return state;
 };

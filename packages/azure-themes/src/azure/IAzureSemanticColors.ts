@@ -1,7 +1,10 @@
 export interface IAzureSemanticColors {
   background: string;
   statusBar: {
-    link: string;
+    link: {
+      rest: string;
+      hover: string;
+    };
     background: {
       default: string;
       okay: string;
@@ -143,6 +146,15 @@ export interface IAzureSemanticColors {
     };
     focus: string;
   };
+  dropDown: {
+    background: {
+      rest: string;
+      hover: string;
+    };
+    text: {
+      hovered: string;
+    };
+  };
   item: {
     hover: string;
     select: string;
@@ -151,6 +163,23 @@ export interface IAzureSemanticColors {
   shimmer: {
     primary: string;
     secondary: string;
+  };
+  tagButton: {
+    rest: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    hover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    pressed: {
+      text: string;
+      background: string;
+      border: string;
+    };
   };
   toggle: {
     disabled: {

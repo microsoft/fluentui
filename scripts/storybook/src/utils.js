@@ -3,7 +3,7 @@ const path = require('path');
 
 const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
+const { stripIndents, offsetFromRoot, workspaceRoot } = require('@nrwl/devkit');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
@@ -354,48 +354,9 @@ function overrideDefaultBabelLoader(options) {
   }
 }
 
-/**
- * Create tsconfig.json with merged "compilerOptions.paths" from v0,v8,v9 tsconfigs.
- *
- * Main purpose of this is to be used for build-less DX in webpack in tandem with {@link registerTsPaths}
- * @returns
- */
-function createPathAliasesConfig() {
-  const { tsConfigAllPath } = createMergedTsConfig();
-  return { tsConfigAllPath };
-}
-
-function createMergedTsConfig() {
-  const rootPath = workspaceRoot;
-  const tsConfigAllPath = path.join(rootPath, 'dist/tsconfig.base.all.json');
-  const baseConfigs = {
-    v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
-    v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
-    v9: readJsonFile(path.join(rootPath, 'tsconfig.base.json')),
-  };
-  const mergedTsConfig = {
-    compilerOptions: {
-      moduleResolution: 'node',
-      forceConsistentCasingInFileNames: true,
-      skipLibCheck: true,
-      baseUrl: workspaceRoot,
-      paths: {
-        ...baseConfigs.v0.compilerOptions.paths,
-        ...baseConfigs.v8.compilerOptions.paths,
-        ...baseConfigs.v9.compilerOptions.paths,
-      },
-    },
-  };
-
-  writeJsonFile(tsConfigAllPath, mergedTsConfig);
-
-  return { tsConfigAllPath, mergedTsConfig };
-}
-
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.registerTsPaths = registerTsPaths;
 exports.registerRules = registerRules;
-exports.createPathAliasesConfig = createPathAliasesConfig;
 exports.overrideDefaultBabelLoader = overrideDefaultBabelLoader;
 exports._createCodesandboxRule = _createCodesandboxRule;

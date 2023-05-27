@@ -22,7 +22,10 @@ export const Medium = (props: Partial<ToolbarProps>) => (
 Medium.parameters = {
   docs: {
     description: {
-      story: ['Height of the container is 40px'].join('\n'),
+      story: [
+        'The size determines the spacing around the toolbar controls.',
+        'A medium sized toolbar uses 4px for vertical padding and 8px for horizontal padding.',
+      ].join('\n'),
     },
   },
 };
