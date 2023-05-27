@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fetching theme attributes from tokens",
+  "packageName": "@fluentui/react-charting",
+  "email": "t-agarwalp@microsoft.com",
+  "dependentChangeType": "patch"
+}
