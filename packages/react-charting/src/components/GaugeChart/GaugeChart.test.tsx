@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { GaugeChart, GaugeValueFormat, IGaugeChartProps } from './index';
-import { ARC_PADDING, GaugeChartBase, IGaugeChartState } from './GaugeChart.base';
+import { ARC_PADDING, BREAKPOINTS, FONT_SIZES, GaugeChartBase, IGaugeChartState } from './GaugeChart.base';
 import { resetIds, setRTL } from '../../Utilities';
 import { DataVizPalette } from '../../utilities/colors';
 import toJson from 'enzyme-to-json';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 // Wrapper of the DonutChart to be tested.
 let wrapper: ReactWrapper<IGaugeChartProps, IGaugeChartState, GaugeChartBase> | undefined;
@@ -115,6 +117,16 @@ describe('GaugeChart - snapshot testing', () => {
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
+
+  it('should render GaugeChart correctly in dark theme', () => {
+    wrapper = mount(
+      <ThemeProvider theme={DarkTheme}>
+        <GaugeChart segments={segments} chartValue={25} />
+      </ThemeProvider>,
+    );
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('GaugeChart - event listeners testing', () => {
@@ -123,7 +135,7 @@ describe('GaugeChart - event listeners testing', () => {
 
     originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
     SVGElement.prototype.getComputedTextLength = () => {
-      return 30;
+      return 10;
     };
   });
 
@@ -133,8 +145,8 @@ describe('GaugeChart - event listeners testing', () => {
     SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
   });
 
-  it(`should show a callout when the mouse enters and moves on a segment and
-  hide it when the mouse leaves the segment`, () => {
+  it(`should show a callout when the mouse moves over a segment and
+  hide it when the mouse leaves the chart`, () => {
     const { container } = render(
       <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
     );
@@ -144,47 +156,104 @@ describe('GaugeChart - event listeners testing', () => {
     expect(container).toMatchSnapshot();
 
     fireEvent.mouseMove(segment!);
-    expect(container.querySelector('.ms-Callout')).toBeDefined();
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
 
-    fireEvent.mouseLeave(segment!);
+    fireEvent.mouseLeave(container.querySelector('[class^="chart"]')!);
     expect(container.querySelector('.ms-Callout')).toBeNull();
   });
 
   it('should show an outline around the segment on focus and hide it on blur', () => {
-    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={25}
+        chartValueFormat={GaugeValueFormat.Fraction}
+        calloutProps={{ doNotLayer: true }}
+      />,
+    );
 
     const segment = container.querySelector('[class^="segment"]');
     fireEvent.focus(segment!);
-    expect(segment?.getAttribute('stroke-width')).toBe(ARC_PADDING.toString());
-    expect(container.querySelector('.ms-Callout')).toBeDefined();
+    expect(segment).toHaveAttribute('stroke-width', ARC_PADDING.toString());
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
 
     fireEvent.blur(segment!);
-    expect(segment?.getAttribute('stroke-width')).toBe('0');
+    expect(segment).toHaveAttribute('stroke-width', '0');
     expect(container.querySelector('.ms-Callout')).toBeNull();
   });
 
-  it(`should highlight the corresponding segment when the mouse is over a legend and
-  unhighlight it when mouse is out of the legend`, () => {
+  it(`should show a callout when the mouse moves over the chart value and
+  hide it when the mouse leaves the chart`, () => {
+    const { container } = render(
+      <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
+    );
+
+    const chartValue = screen.getByText('25%');
+    fireEvent.mouseEnter(chartValue);
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
+
+    fireEvent.mouseMove(chartValue);
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
+
+    fireEvent.mouseLeave(container.querySelector('[class^="chart"]')!);
+    expect(container.querySelector('.ms-Callout')).toBeNull();
+  });
+
+  it(`should show a callout when the mouse moves over the needle and
+  hide it when the mouse leaves the chart`, () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={25}
+        chartValueFormat={GaugeValueFormat.Fraction}
+        calloutProps={{ doNotLayer: true }}
+      />,
+    );
+
+    const needle = container.querySelector('[class^="needle"]');
+    fireEvent.mouseEnter(needle!);
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
+
+    fireEvent.mouseMove(needle!);
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
+
+    fireEvent.mouseLeave(container.querySelector('[class^="chart"]')!);
+    expect(container.querySelector('.ms-Callout')).toBeNull();
+  });
+
+  it('should show a callout when the needle is focused and hide it when blurred', () => {
+    const { container } = render(
+      <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
+    );
+
+    const needle = container.querySelector('[class^="needle"]');
+    fireEvent.focus(needle!);
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
+
+    fireEvent.blur(needle!);
+    expect(container.querySelector('.ms-Callout')).toBeNull();
+  });
+
+  it(`should highlight the corresponding segment when the mouse moves over a legend and
+  unhighlight it when the mouse moves out of the legend`, () => {
     const { container } = render(
       <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
     );
 
     const legend = screen.getByText(segments[0].legend);
-    fireEvent.mouseOver(legend!);
+    fireEvent.mouseOver(legend);
     const segs = container.querySelectorAll('[class^="segment"]');
-    expect(segs[0].getAttribute('fill-opacity')).toBe('1');
+    expect(segs[0]).toHaveAttribute('fill-opacity', '1');
     for (let i = 0; i < segs.length; i++) {
       if (i !== 0) {
-        expect(segs[i].getAttribute('fill-opacity')).toBe('0.1');
+        expect(segs[i]).toHaveAttribute('fill-opacity', '0.1');
       }
     }
-    expect(container.querySelector('.ms-Callout')).toBeDefined();
 
-    fireEvent.mouseOut(legend!);
+    fireEvent.mouseOut(legend);
     for (let i = 0; i < segs.length; i++) {
-      expect(segs[i].getAttribute('fill-opacity')).toBe('1');
+      expect(segs[i]).toHaveAttribute('fill-opacity', '1');
     }
-    expect(container.querySelector('.ms-Callout')).toBeNull();
   });
 
   it(`should highlight the corresponding segment when a legend is clicked and
@@ -194,20 +263,43 @@ describe('GaugeChart - event listeners testing', () => {
     );
 
     const legend = screen.getByText(segments[0].legend);
-    fireEvent.click(legend!);
+    fireEvent.click(legend);
     const segs = container.querySelectorAll('[class^="segment"]');
-    expect(segs[0].getAttribute('fill-opacity')).toBe('1');
+    expect(segs[0]).toHaveAttribute('fill-opacity', '1');
     for (let i = 0; i < segs.length; i++) {
       if (i !== 0) {
-        expect(segs[i].getAttribute('fill-opacity')).toBe('0.1');
+        expect(segs[i]).toHaveAttribute('fill-opacity', '0.1');
       }
     }
-    expect(container.querySelector('.ms-Callout')).toBeDefined();
 
-    fireEvent.click(legend!);
+    fireEvent.click(legend);
     for (let i = 0; i < segs.length; i++) {
-      expect(segs[i].getAttribute('fill-opacity')).toBe('1');
+      expect(segs[i]).toHaveAttribute('fill-opacity', '1');
     }
-    expect(container.querySelector('.ms-Callout')).toBeNull();
+  });
+
+  it('should truncate the chart value with ellipsis when its length exceeds the max width', () => {
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 1000;
+    };
+
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+
+    expect(container.querySelector('[class^="chartValue"]')).toHaveTextContent('...');
+  });
+
+  it('should update the font size of the chart value when the chart resizes', () => {
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 0;
+    };
+
+    const { rerender } = render(<GaugeChart segments={segments} chartValue={25} />);
+
+    const bounds = [80, ...BREAKPOINTS.map(bp => bp * 2 + 32), 1000];
+    for (let i = 1; i < bounds.length; i++) {
+      const width = Math.floor(Math.random() * (bounds[i] - bounds[i - 1]) + bounds[i - 1]);
+      rerender(<GaugeChart segments={segments} chartValue={25} hideLimits width={width} height={1000} />);
+      expect(screen.getByText('25%')).toHaveStyle(`font-size: ${i < 2 ? FONT_SIZES[0] : FONT_SIZES[i - 2]}px`);
+    }
   });
 });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GaugeChart - event listeners testing should show a callout when the mouse enters and moves on a segment and
-  hide it when the mouse leaves the segment 1`] = `
+exports[`GaugeChart - event listeners testing should show a callout when the mouse moves over a segment and
+  hide it when the mouse leaves the chart 1`] = `
 <div>
   <div
     class=
@@ -141,23 +141,25 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               transform="translate(-52)"
             />
           </g>
-          <text
-            aria-label="Current value: 25 out of 100, or 25%"
-            class=
+          <g>
+            <text
+              aria-label="Current value: 25 out of 100, or 25%"
+              class=
 
-                {
-                  fill: #323130;
-                  font-size: 24px;
-                  font-weight: 600;
-                }
-            id="tooltip-host1"
-            role="img"
-            text-anchor="middle"
-            x="0"
-            y="0"
-          >
-            25%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 24px;
+                    font-weight: 600;
+                  }
+              id="tooltip-host1"
+              role="img"
+              text-anchor="middle"
+              x="0"
+              y="0"
+            >
+              25%
+            </text>
+          </g>
         </g>
       </svg>
     </div>
@@ -796,6 +798,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             height: 104px;
             width: 172px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -817,7 +820,6 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -838,7 +840,6 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -859,7 +860,6 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -885,37 +885,38 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25%
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -1289,6 +1290,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             height: 104px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -1342,7 +1344,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -1363,7 +1364,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -1384,7 +1384,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -1410,37 +1409,38 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25%
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -1480,6 +1480,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             height: 104px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -1533,7 +1534,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -1554,7 +1554,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -1575,7 +1574,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -1601,37 +1599,38 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25%
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -1972,6 +1971,544 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
 </div>
 `;
 
+exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dark theme 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #1b1a19;
+        color: #f3f2f1;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+>
+  <div
+    className=
+        ms-GaugeChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 252px;
+        }
+  >
+    <div
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone3"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+    >
+      <svg
+        aria-label="This is a gauge chart with 3 section represented."
+        className=
+
+            {
+              display: block;
+              height: 104px;
+              width: 252px;
+            }
+        onMouseLeave={[Function]}
+        role="presentation"
+      >
+        <g
+          transform="translate(126, 88)"
+        >
+          <text
+            aria-label="Min value: 0"
+            className=
+
+                {
+                  fill: #f3f2f1;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="end"
+            x={-74}
+            y={0}
+          >
+            0
+          </text>
+          <text
+            aria-label="Max value: 100"
+            className=
+
+                {
+                  fill: #f3f2f1;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="start"
+            x={74}
+            y={0}
+          >
+            100
+          </text>
+          <path
+            aria-label="Low Risk, 33 out of 100 or 33%"
+            className=
+
+                {
+                  outline: none;
+                  stroke: #a19f9d;
+                }
+            d="M-69.99285726433348,-0.9999659867416388A70,70,0,0,1,-36.48997590461294,-59.73676973590694L-28.344235770960164,-45.96307538187825A54,54,0,0,0,-53.99074057674483,-0.9999659867416291Z"
+            data-is-focusable={true}
+            fill="#107c10"
+            fillOpacity={1}
+            key="0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseMove={[Function]}
+            role="img"
+            strokeWidth={0}
+          />
+          <path
+            aria-label="Medium Risk, 34 out of 100 or 34%"
+            className=
+
+                {
+                  outline: none;
+                  stroke: #a19f9d;
+                }
+            d="M-34.76855040388696,-60.754817939093286A70,70,0,0,1,34.768550403887005,-60.754817939093265L26.622810270234226,-46.98112358506458A54,54,0,0,0,-26.6228102702342,-46.98112358506459Z"
+            data-is-focusable={true}
+            fill="#f7630c"
+            fillOpacity={1}
+            key="1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseMove={[Function]}
+            role="img"
+            strokeWidth={0}
+          />
+          <path
+            aria-label="High Risk, 33 out of 100 or 33%"
+            className=
+
+                {
+                  outline: none;
+                  stroke: #a19f9d;
+                }
+            d="M36.48997590461299,-59.736769735906904A70,70,0,0,1,69.99285726433348,-0.9999659867416026L53.99074057674483,-0.9999659867416097A54,54,0,0,0,28.344235770960214,-45.96307538187822Z"
+            data-is-focusable={true}
+            fill="#c50f1f"
+            fillOpacity={1}
+            key="2"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseMove={[Function]}
+            role="img"
+            strokeWidth={0}
+          />
+          <g
+            transform="rotate(45, 0, 0)"
+          >
+            <path
+              className=
+
+                  {
+                    fill: #ffffff;
+                    stroke: #1b1a19;
+                  }
+              d="
+            M 0,-4
+            L -20,-2
+            A 2,2,0,0,0,-20,2
+            L 0,4
+            A 4,4,0,0,0,0,-4
+          "
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseMove={[Function]}
+              strokeWidth={2}
+              transform="translate(-52)"
+            />
+          </g>
+          <g
+            onMouseEnter={[Function]}
+            onMouseMove={[Function]}
+          >
+            <text
+              aria-label="Current value: 25 out of 100, or 25%"
+              className=
+
+                  {
+                    fill: #f3f2f1;
+                    font-size: 24px;
+                    font-weight: 600;
+                  }
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="img"
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone5"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="0"
+                  role="none"
+                >
+                  <button
+                    aria-label="Low Risk"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #a19f9d;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #a19f9d;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #f3f2f1;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Low Risk
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="1"
+                  role="none"
+                >
+                  <button
+                    aria-label="Medium Risk"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #a19f9d;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #a19f9d;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #f7630c;
+                            border-color: #f7630c;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #f7630c, #f7630c);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #f3f2f1;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Medium Risk
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="2"
+                  role="none"
+                >
+                  <button
+                    aria-label="High Risk"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #a19f9d;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #a19f9d;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #c50f1f;
+                            border-color: #c50f1f;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #c50f1f, #c50f1f);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #f3f2f1;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      High Risk
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`GaugeChart - snapshot testing should render GaugeChart correctly when the layout direction is RTL 1`] = `
 <div
   className=
@@ -2005,6 +2542,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             height: 104px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -2058,7 +2596,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -2079,7 +2616,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -2100,7 +2636,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -2126,37 +2661,38 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25%
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -2530,6 +3066,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder color for the
             height: 104px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -2583,7 +3120,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder color for the
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -2604,7 +3140,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder color for the
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -2630,37 +3165,38 @@ exports[`GaugeChart - snapshot testing should render a placeholder color for the
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 60 out of 100, or 60%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          60%
-        </text>
+          <text
+            aria-label="Current value: 60 out of 100, or 60%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            60%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -2944,6 +3480,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             height: 104px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -2997,7 +3534,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3018,7 +3554,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3044,37 +3579,38 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 60 out of 100, or 60%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          60%
-        </text>
+          <text
+            aria-label="Current value: 60 out of 100, or 60%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            60%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -3357,6 +3893,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             height: 129px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -3423,7 +3960,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3444,7 +3980,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3465,7 +4000,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3491,37 +4025,38 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25%
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25%
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -3895,6 +4430,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             height: 104px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -3948,7 +4484,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3969,7 +4504,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -3990,7 +4524,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -4016,37 +4549,38 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25/100
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25/100
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -4420,6 +4954,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             height: 124px;
             width: 252px;
           }
+      onMouseLeave={[Function]}
       role="presentation"
     >
       <g
@@ -4473,7 +5008,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -4494,7 +5028,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -4515,7 +5048,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
           role="img"
           strokeWidth={0}
@@ -4541,37 +5073,38 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
             onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(-52)"
           />
         </g>
-        <text
-          aria-label="Current value: 25 out of 100, or 25%"
-          className=
-
-              {
-                fill: #323130;
-                font-size: 24px;
-                font-weight: 600;
-              }
-          id="tooltip-host1"
-          onBlur={[Function]}
-          onBlurCapture={[Function]}
-          onFocus={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
+        <g
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           onMouseMove={[Function]}
-          role="img"
-          textAnchor="middle"
-          x={0}
-          y={0}
         >
-          25%
-        </text>
+          <text
+            aria-label="Current value: 25 out of 100, or 25%"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+            id="tooltip-host1"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="img"
+            textAnchor="middle"
+            x={0}
+            y={0}
+          >
+            25%
+          </text>
+        </g>
         <text
           aria-label="Low Risk"
           className=

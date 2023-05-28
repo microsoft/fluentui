@@ -31,9 +31,9 @@ const LABEL_OFFSET = 4;
 const TITLE_OFFSET = 11;
 const EXTRA_NEEDLE_LENGTH = 4;
 export const ARC_PADDING = 2;
-const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
+export const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
 const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
-const FONT_SIZES = [20, 24, 32, 32, 40, 40];
+export const FONT_SIZES = [20, 24, 32, 32, 40, 40];
 
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
@@ -114,6 +114,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             className={this._classNames.chart}
             role="presentation"
             aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
+            onMouseLeave={this._handleMouseOut}
           >
             <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendsHeight)})`}>
               {this.props.chartTitle && (
@@ -179,35 +180,34 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   onBlur={this._handleBlur}
                   onMouseEnter={e => this._handleMouseOver(e, this._segments[arc.segmentIndex].legend)}
                   onMouseMove={e => this._handleMouseOver(e, this._segments[arc.segmentIndex].legend)}
-                  onMouseLeave={this._handleMouseOut}
                 />
               ))}
               {this._renderNeedle()}
-              <TooltipText
-                content={
-                  this.props.chartValueFormat === GaugeValueFormat.Fraction
-                    ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
-                    : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
-                }
-                textProps={{
-                  x: 0,
-                  y: 0,
-                  textAnchor: 'middle',
-                  className: this._classNames.chartValue,
-                  role: 'img',
-                  'aria-label': `Current value: ${this._sweepFraction[0]} out of ${this._sweepFraction[1]}, or ${(
-                    (this._sweepFraction[0] / this._sweepFraction[1]) *
-                    100
-                  ).toFixed()}%`,
-                  onFocus: e => this._handleFocus(e, 'Chart value'),
-                  onBlur: this._handleBlur,
-                  onMouseEnter: e => this._handleMouseOver(e, 'Chart value'),
-                  onMouseMove: e => this._handleMouseOver(e, 'Chart value'),
-                  onMouseLeave: this._handleMouseOut,
-                }}
-                maxWidth={this._innerRadius * 2 - 24}
-                wrapContent={this._wrapContent}
-              />
+              <g
+                onMouseEnter={e => this._handleMouseOver(e, 'Chart value')}
+                onMouseMove={e => this._handleMouseOver(e, 'Chart value')}
+              >
+                <TooltipText
+                  content={
+                    this.props.chartValueFormat === GaugeValueFormat.Fraction
+                      ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
+                      : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
+                  }
+                  textProps={{
+                    x: 0,
+                    y: 0,
+                    textAnchor: 'middle',
+                    className: this._classNames.chartValue,
+                    role: 'img',
+                    'aria-label': `Current value: ${this._sweepFraction[0]} out of ${this._sweepFraction[1]}, or ${(
+                      (this._sweepFraction[0] / this._sweepFraction[1]) *
+                      100
+                    ).toFixed()}%`,
+                  }}
+                  maxWidth={this._innerRadius * 2 - 24}
+                  wrapContent={this._wrapContent}
+                />
+              </g>
               {this.props.sublabel && (
                 <TooltipText
                   content={this.props.sublabel}
@@ -342,7 +342,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           onBlur={this._handleBlur}
           onMouseEnter={e => this._handleMouseOver(e, 'Needle')}
           onMouseMove={e => this._handleMouseOver(e, 'Needle')}
-          onMouseLeave={this._handleMouseOut}
         />
       </g>
     );
