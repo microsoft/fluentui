@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AriaLiveSlots = {
-  root: NonNullable<Slot<'div'>>;
   assertive: NonNullable<Slot<'div'>>;
   polite: NonNullable<Slot<'div'>>;
 };

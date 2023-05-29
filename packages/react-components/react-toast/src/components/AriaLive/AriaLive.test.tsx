@@ -9,6 +9,12 @@ describe('AriaLive', () => {
     Component: AriaLive,
     displayName: 'AriaLive',
     isInternal: true,
+    disabledTests: [
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      'make-styles-overrides-win',
+    ],
   });
 
   beforeEach(jest.useRealTimers);

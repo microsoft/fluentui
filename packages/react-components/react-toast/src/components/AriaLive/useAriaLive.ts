@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  getNativeElementProps,
-  resolveShorthand,
-  createPriorityQueue,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { resolveShorthand, createPriorityQueue, useEventCallback } from '@fluentui/react-utilities';
 import type { AnnounceOptions, AriaLiveProps, AriaLiveState, LiveMessage } from './AriaLive.types';
 
 /** The duration the message needs to be in present in DOM for screen readers to register a change and announce */
@@ -17,9 +12,8 @@ const MESSAGE_DURATION = 500;
  * before being passed to renderAriaLive_unstable.
  *
  * @param props - props from this instance of AriaLive
- * @param ref - reference to root HTMLElement of AriaLive
  */
-export const useAriaLive_unstable = (props: AriaLiveProps, ref: React.Ref<HTMLElement>): AriaLiveState => {
+export const useAriaLive_unstable = (props: AriaLiveProps): AriaLiveState => {
   const [currentMessage, setCurrentMessage] = React.useState<LiveMessage | undefined>(undefined);
   // Can't rely on Date.now() if user invokes announce more than once in a code block
   const order = React.useRef(0);
@@ -71,7 +65,6 @@ export const useAriaLive_unstable = (props: AriaLiveProps, ref: React.Ref<HTMLEl
 
   return {
     components: {
-      root: 'div',
       assertive: 'div',
       polite: 'div',
     },
@@ -83,10 +76,6 @@ export const useAriaLive_unstable = (props: AriaLiveProps, ref: React.Ref<HTMLEl
     polite: resolveShorthand(props.polite, {
       required: true,
       defaultProps: { 'aria-live': 'polite', children: politeMessage },
-    }),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
     }),
   };
 };

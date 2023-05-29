@@ -3,16 +3,12 @@
 exports[`AriaLive renders a default state 1`] = `
 <div>
   <div
-    class="fui-AriaLive"
-  >
-    <div
-      aria-live="assertive"
-      class="fui-AriaLive__assertive fui-AriaLive"
-    />
-    <div
-      aria-live="polite"
-      class="fui-AriaLive__polite fui-AriaLive"
-    />
-  </div>
+    aria-live="assertive"
+    class="fui-AriaLive__assertive"
+  />
+  <div
+    aria-live="polite"
+    class="fui-AriaLive__polite"
+  />
 </div>
 `;
