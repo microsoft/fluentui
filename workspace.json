@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
     "@fluentui/a11y-testing": {
@@ -186,27 +187,27 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/tools"],
+          "outputs": ["{workspaceRoot}/coverage/tools"],
           "options": {
-            "jestConfig": "tools/jest.config.js",
+            "jestConfig": "tools/jest.config.ts",
             "passWithNoTests": true
           }
         },
         "lint": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "nx:run-commands",
           "options": {
             "command": "eslint **/*.ts",
             "cwd": "tools"
           }
         },
         "type-check": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "nx:run-commands",
           "options": {
             "command": "tsc -b tools/tsconfig.json"
           }
         },
         "check-graph": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "nx:run-commands",
           "options": {
             "command": "node ./tools/check-dep-graph.js"
           }

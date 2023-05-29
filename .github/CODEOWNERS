@@ -49,6 +49,9 @@
 /.prettierignore @microsoft/fluentui-react-build
 /.nxignore @microsoft/fluentui-react-build
 /jest.preset.js @microsoft/fluentui-react-build
+/jest.preset.ts @microsoft/fluentui-react-build
+/jest.config.js @microsoft/fluentui-react-build
+/jest.config.ts @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /sizeauditor.json @microsoft/fluentui-react-build
