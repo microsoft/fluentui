@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -9,7 +9,7 @@ export const Position = () => {
 
   return (
     <div>
-      <Drawer position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
+      <DrawerOverlay position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -28,7 +28,7 @@ export const Position = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </Drawer>
+      </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setLeftOpen(true)}>
         Toggle left
@@ -38,7 +38,7 @@ export const Position = () => {
         Toggle right
       </Button>
 
-      <Drawer position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
+      <DrawerOverlay position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -57,7 +57,7 @@ export const Position = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </Drawer>
+      </DrawerOverlay>
     </div>
   );
 };

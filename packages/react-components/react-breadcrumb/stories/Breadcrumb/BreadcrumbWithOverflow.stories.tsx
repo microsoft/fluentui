@@ -47,7 +47,7 @@ type Item = {
   };
 };
 
-export const buttonItems: Item[] = [
+const buttonItems: Item[] = [
   {
     key: 0,
     item: 'Item 0',

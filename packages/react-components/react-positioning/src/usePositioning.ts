@@ -172,6 +172,7 @@ function usePositioningOptions(options: PositioningOptions) {
     positionFixed,
     overflowBoundaryPadding,
     fallbackPositions,
+    useTransform,
   } = options;
 
   const { dir } = useFluent();
@@ -207,6 +208,7 @@ function usePositioningOptions(options: PositioningOptions) {
         placement,
         middleware,
         strategy,
+        useTransform,
       };
     },
     [
@@ -224,6 +226,7 @@ function usePositioningOptions(options: PositioningOptions) {
       strategy,
       overflowBoundaryPadding,
       fallbackPositions,
+      useTransform,
     ],
   );
 }

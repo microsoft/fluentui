@@ -161,7 +161,6 @@ export const ResizableColumns = () => {
   return (
     <DataGrid
       items={items}
-      ref={el => console.log('__Ref', el)}
       columns={columns}
       sortable
       getRowId={item => item.file.label}

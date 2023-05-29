@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerProps } from '@fluentui/react-drawer';
+import { DrawerOverlay, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerProps } from '@fluentui/react-drawer';
 import { Button, Label, RadioGroup, Radio, useId, tokens, makeStyles } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -34,7 +34,7 @@ export const Size = () => {
 
   return (
     <div>
-      <Drawer size={size} position="right" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
+      <DrawerOverlay size={size} position="right" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -53,7 +53,7 @@ export const Size = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </Drawer>
+      </DrawerOverlay>
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>
