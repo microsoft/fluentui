@@ -44,6 +44,7 @@ import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
+import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -1102,6 +1103,8 @@ export { AccordionToggleEvent }
 export { AccordionToggleEventHandler }
 
 export { arrowHeights }
+
+export { assertSlots }
 
 export { Avatar }
 

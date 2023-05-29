@@ -92,8 +92,11 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getSlots,
+  assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
+  // resolveShorthand is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
   useId,
@@ -106,7 +109,11 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // ResolveShorthandFunction is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // ResolveShorthandOptions is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   SlotClassNames,

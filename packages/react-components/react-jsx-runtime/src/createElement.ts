@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  UnknownSlotProps,
-  isSlot,
-  SlotComponent,
-  SLOT_COMPONENT_METADATA_SYMBOL,
-  slot,
-} from '@fluentui/react-utilities';
+import { UnknownSlotProps, isSlot, SlotComponent, SLOT_COMPONENT_METADATA_SYMBOL } from '@fluentui/react-utilities';
 
 export function createElement<P extends {}>(
   type: React.ElementType<P>,
@@ -14,15 +8,6 @@ export function createElement<P extends {}>(
 ): React.ReactElement<P> | null {
   if (isSlot<P>(type)) {
     return createElementFromSlotComponent(type, children);
-  }
-  // TODO:
-  // this is for backwards compatibility with getSlotsNext
-  // it should be removed once getSlotsNext is obsolete
-  if (isSlot<P>(props)) {
-    return createElementFromSlotComponent(
-      slot(props, { required: true, elementType: type as React.ComponentType<P> }),
-      children,
-    );
   }
   return React.createElement(type, props, ...children);
 }

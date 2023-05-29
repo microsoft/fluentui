@@ -135,6 +135,7 @@ type SlotComponents<Slots extends SlotPropsRecord> = {
  * ```
  */
 export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots> {
+  /* eslint-disable deprecation/deprecation */
   /**
    * This verification is not necessary in production
    * as we're verifying static properties that will not change between environments
@@ -162,6 +163,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
       }
     }
   }
+  /* eslint-enable deprecation/deprecation */
 }
 
 export function getSlotMetadata<P extends UnknownSlotProps>(

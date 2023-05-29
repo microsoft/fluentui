@@ -136,7 +136,9 @@ describe('getSlots', () => {
     expect(
       getSlots<Slots>({
         components: { root: 'div', icon: Foo },
+        // eslint-disable-next-line deprecation/deprecation
         root: resolveShorthand({ as: 'div' }, { required: true }),
+        // eslint-disable-next-line deprecation/deprecation
         icon: resolveShorthand({ id: 'bar', children: renderFunction }),
       }),
     ).toEqual({

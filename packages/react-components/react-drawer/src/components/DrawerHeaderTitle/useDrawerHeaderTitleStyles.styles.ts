@@ -32,6 +32,7 @@ const useStyles = makeStyles({
 export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleState): DrawerHeaderTitleState => {
   const styles = useStyles();
 
+  // eslint-disable-next-line deprecation/deprecation
   const { heading: root = {}, action, components } = state;
 
   useDialogTitleStyles_unstable({

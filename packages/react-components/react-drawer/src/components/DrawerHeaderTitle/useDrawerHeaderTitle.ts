@@ -16,6 +16,7 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
+  // eslint-disable-next-line deprecation/deprecation
   const { root: heading, action, components: titleComponents } = useDialogTitle_unstable(props, ref);
 
   return {

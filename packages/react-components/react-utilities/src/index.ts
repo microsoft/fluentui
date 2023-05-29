@@ -2,8 +2,8 @@ export {
   slot,
   isSlot,
   getSlots,
-  getSlotsNext,
   assertSlots,
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   isResolvedShorthand,
   SLOT_COMPONENT_METADATA_SYMBOL,
@@ -13,7 +13,9 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   Slots,

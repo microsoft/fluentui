@@ -77,12 +77,6 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
 };
 
 // @internal
-export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
-    slots: Slots<R>;
-    slotProps: ObjectSlotProps<R>;
-};
-
-// @internal
 export function getTriggerChild<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children']): (React_2.ReactElement<Partial<TriggerChildProps>> & {
     ref?: React_2.Ref<any>;
 }) | null;
@@ -151,16 +145,16 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 // @public
 export function resetIdsForTests(): void;
 
-// @public
-export const resolveShorthand: ResolveShorthandFunction;
+// @public @deprecated (undocumented)
+export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
     <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
     <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
     required: true;
     defaultProps?: Props;
@@ -184,9 +178,14 @@ export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponen
 } & SlotOptions<Props>): SlotComponent<Props>;
 
 // @public (undocumented)
-export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null, options?: {
+export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null, options: {
     required?: boolean;
 } & SlotOptions<Props>): SlotComponent<Props> | undefined;
+
+// @public (undocumented)
+export function slot<Props extends UnknownSlotProps>(value: SlotComponent<Props>, options?: {
+    required: true;
+} & Partial<SlotOptions<Props>>): SlotComponent<Props>;
 
 // @public
 export const SLOT_COMPONENT_METADATA_SYMBOL: unique symbol;
@@ -210,7 +209,7 @@ export type SlotComponentMetadata<Props extends UnknownSlotProps> = {
 
 // @public (undocumented)
 export type SlotOptions<Props extends UnknownSlotProps> = {
-    elementType?: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     defaultProps?: Partial<Props>;
 };
 

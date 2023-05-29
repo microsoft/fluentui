@@ -187,6 +187,10 @@ export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | un
  * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {
+  /**
+   * @deprecated
+   * This property is deprecated and it'll be removed in a future minor version
+   */
   components: {
     [Key in keyof Slots]-?:
       | React.ComponentType<ExtractSlotProps<Slots[Key]>>

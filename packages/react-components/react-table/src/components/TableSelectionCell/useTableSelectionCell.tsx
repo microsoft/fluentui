@@ -26,6 +26,7 @@ export const useTableSelectionCell_unstable = (
   return {
     ...tableCellState,
     components: {
+      // eslint-disable-next-line deprecation/deprecation
       ...tableCellState.components,
       checkboxIndicator: Checkbox,
       radioIndicator: Radio,
