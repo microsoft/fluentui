@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
@@ -76,7 +75,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
 
     components: {
       root: 'div',
-      content: 'div',
+      content: 'button',
       media: 'span',
       icon: 'span',
       primaryText: 'span',
@@ -90,11 +89,10 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
       id,
     }),
 
-    content: useARIAButtonShorthand(props.content, {
+    content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
         disabled,
-        tabIndex: 0,
         type: 'button',
       },
     }),
