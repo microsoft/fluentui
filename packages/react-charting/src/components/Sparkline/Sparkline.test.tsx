@@ -1,8 +1,9 @@
 jest.mock('react-dom');
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { Sparkline } from './index';
 import { IChartProps } from '../../index';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 const sparkline1Points: IChartProps = {
   chartTitle: '10.21',
@@ -86,14 +87,16 @@ const sparkline2Points: IChartProps = {
 
 describe('Sparkline snapShot testing', () => {
   it('renders Sparkline correctly', () => {
-    const component = renderer.create(<Sparkline data={sparkline1Points} showLegend={true} />);
-    const tree = component.toJSON();
+    const wrapper = mount(<Sparkline data={sparkline1Points} showLegend={true} />);
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('renders Sparkline correctly with no legend', () => {
-    const component = renderer.create(<Sparkline data={sparkline2Points} showLegend={false} />);
-    const tree = component.toJSON();
+    const wrapper = mount(<Sparkline data={sparkline2Points} showLegend={false} />);
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+    wrapper.unmount();
   });
 });

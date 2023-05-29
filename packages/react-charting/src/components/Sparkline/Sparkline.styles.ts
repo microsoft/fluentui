@@ -4,12 +4,12 @@ export const useClasses = makeStyles({
   line: {
     stroke: tokens.colorPaletteRedForeground2,
     fill: 'transparent',
-    opacity: '1',
-    strokeWidth: '2',
+    opacity: 1,
+    strokeWidth: '2px',
   },
   area: {
-    opacity: '1',
-    fillOpacity: '0.2',
+    opacity: 1,
+    fillOpacity: 0.2,
     fill: tokens.colorPaletteRedForeground2,
   },
   inlineBlock: {
