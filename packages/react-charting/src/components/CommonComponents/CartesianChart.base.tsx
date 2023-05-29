@@ -68,6 +68,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
+  private yAxisElementSecondary: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
   private _reqID: number;
@@ -97,8 +98,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this.margins = {
       top: this.props.margins?.top ?? 20,
       bottom: this.props.margins?.bottom ?? 35,
-      right: this._isRtl ? this.props.margins?.left ?? 40 : this.props.margins?.right ?? 20,
-      left: this._isRtl ? this.props.margins?.right ?? 20 : this.props.margins?.left ?? 40,
+      right: this._isRtl
+        ? this.props.margins?.left ?? 40
+        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+        ? 40
+        : 20,
+      left: this._isRtl
+        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+          ? 40
+          : 20
+        : this.props.margins?.left ?? 40,
     };
   }
 
@@ -240,7 +249,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: this.props.yAxisPadding || 0,
     };
-
     /**
      * These scales used for 2 purposes.
      * 1. To create x and y axis
@@ -299,6 +307,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(
@@ -310,6 +320,31 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         culture,
       );
     } else {
+      if (this.props?.secondaryYScaleOptions) {
+        const YAxisParamsSecondary = {
+          margins: this.margins,
+          containerWidth: this.state.containerWidth,
+          containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+          yAxisElement: this.yAxisElementSecondary,
+          yAxisTickFormat: this.props.yAxisTickFormat!,
+          yAxisTickCount: this.props.yAxisTickCount!,
+          yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
+          yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
+          tickPadding: 10,
+          maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
+          yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+          yAxisPadding: this.props.yAxisPadding,
+        };
+
+        yScaleSecondary = createYAxis(
+          YAxisParamsSecondary,
+          this._isRtl,
+          axisData,
+          chartType,
+          this.props.barwidth!,
+          true,
+        );
+      }
       yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
     }
 
@@ -350,6 +385,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       ...this.state,
       xScale,
       yScale,
+      yScaleSecondary,
     });
 
     let focusDirection;
@@ -399,6 +435,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }, 0)`}
               className={this._classNames.yAxis}
             />
+            {this.props.secondaryYScaleOptions && (
+              <g
+                ref={(e: SVGElement | null) => {
+                  this.yAxisElementSecondary = e;
+                }}
+                id={`yAxisGElementSecondary${this.idForGraph}`}
+                transform={`translate(${
+                  this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                }, 0)`}
+                className={this._classNames.yAxis}
+              />
+            )}
             {children}
           </svg>
         </FocusZone>
