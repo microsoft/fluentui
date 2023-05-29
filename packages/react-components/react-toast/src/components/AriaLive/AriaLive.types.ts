@@ -13,7 +13,7 @@ export type AriaLivePoliteness = 'polite' | 'assertive';
  * AriaLive Props
  */
 export type AriaLiveProps = ComponentProps<Partial<AriaLiveSlots>> & {
-  announceRef: React.RefObject<Announce>;
+  announceRef: React.Ref<Announce>;
 };
 
 /**

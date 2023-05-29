@@ -7,6 +7,9 @@ import {
 } from '@fluentui/react-utilities';
 import type { AnnounceOptions, AriaLiveProps, AriaLiveState, LiveMessage } from './AriaLive.types';
 
+/** The duration the message needs to be in present in DOM for screen readers to register a change and announce */
+const MESSAGE_DURATION = 500;
+
 /**
  * Create the state required to render AriaLive.
  *
@@ -56,7 +59,7 @@ export const useAriaLive_unstable = (props: AriaLiveProps, ref: React.Ref<HTMLEl
       } else {
         setCurrentMessage(undefined);
       }
-    }, 500);
+    }, MESSAGE_DURATION);
 
     return () => clearTimeout(timeout);
   }, [currentMessage, messageQueue]);

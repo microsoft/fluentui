@@ -6,7 +6,7 @@ import type { AriaLiveProps } from './AriaLive.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * AriaLive component - TODO: add more docs
+ * A component that manages aria live announcements imperatively
  */
 export const AriaLive: ForwardRefComponent<AriaLiveProps> = React.forwardRef((props, ref) => {
   const state = useAriaLive_unstable(props, ref);
