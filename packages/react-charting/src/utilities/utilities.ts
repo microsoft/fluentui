@@ -315,12 +315,13 @@ export function createYAxis(
   axisData: IAxisData,
   chartType: ChartTypes,
   barWidth: number,
+  useSecondaryYScale: boolean = false,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData);
+      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, useSecondaryYScale);
   }
 }
 
@@ -357,7 +358,12 @@ export function createYAxisForHorizontalBarChartWithAxis(
   return yAxisScale;
 }
 
-export function createYAxisForOtherCharts(yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData) {
+export function createYAxisForOtherCharts(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData: IAxisData,
+  useSecondaryYScale: boolean = false,
+) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -382,13 +388,14 @@ export function createYAxisForOtherCharts(yAxisParams: IYAxisParams, isRtl: bool
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const axis =
+    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
     .tickPadding(tickPadding)
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
 
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
