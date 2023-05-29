@@ -435,16 +435,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }, 0)`}
               className={this._classNames.yAxis}
             />
-            <g
-              ref={(e: SVGElement | null) => {
-                this.yAxisElementSecondary = e;
-              }}
-              id={`yAxisGElementSecondary${this.idForGraph}`}
-              transform={`translate(${
-                this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
-              }, 0)`}
-              className={this._classNames.yAxis}
-            />
+            {this.props.secondaryYScaleOptions && (
+              <g
+                ref={(e: SVGElement | null) => {
+                  this.yAxisElementSecondary = e;
+                }}
+                id={`yAxisGElementSecondary${this.idForGraph}`}
+                transform={`translate(${
+                  this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                }, 0)`}
+                className={this._classNames.yAxis}
+              />
+            )}
             {children}
           </svg>
         </FocusZone>
