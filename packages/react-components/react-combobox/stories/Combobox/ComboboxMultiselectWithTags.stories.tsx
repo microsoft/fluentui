@@ -50,7 +50,7 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
       {selectedOptions.length ? (
         <TagGroup id={selectedListId} onDismiss={onTagDismiss}>
           {selectedOptions.map(option => (
-            <Tag key={option} value={option}>
+            <Tag key={option} value={option} aria-label={`remove ${option}`}>
               {option}
             </Tag>
           ))}
