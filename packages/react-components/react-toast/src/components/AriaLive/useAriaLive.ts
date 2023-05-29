@@ -1,0 +1,89 @@
+import * as React from 'react';
+import {
+  getNativeElementProps,
+  resolveShorthand,
+  createPriorityQueue,
+  useEventCallback,
+} from '@fluentui/react-utilities';
+import type { AnnounceOptions, AriaLiveProps, AriaLiveState, LiveMessage } from './AriaLive.types';
+
+/**
+ * Create the state required to render AriaLive.
+ *
+ * The returned state can be modified with hooks such as useAriaLiveStyles_unstable,
+ * before being passed to renderAriaLive_unstable.
+ *
+ * @param props - props from this instance of AriaLive
+ * @param ref - reference to root HTMLElement of AriaLive
+ */
+export const useAriaLive_unstable = (props: AriaLiveProps, ref: React.Ref<HTMLElement>): AriaLiveState => {
+  const [currentMessage, setCurrentMessage] = React.useState<LiveMessage | undefined>(undefined);
+  // Can't rely on Date.now() if user invokes announce more than once in a code block
+  const order = React.useRef(0);
+  const [messageQueue] = React.useState(() =>
+    createPriorityQueue<LiveMessage>((a, b) => {
+      if (a.politeness === b.politeness) {
+        return a.createdAt - b.createdAt;
+      }
+
+      return a.politeness === 'assertive' ? -1 : 1;
+    }),
+  );
+
+  const announce = useEventCallback((message: string, options: AnnounceOptions) => {
+    const { politeness } = options;
+    if (message === currentMessage?.message) {
+      return;
+    }
+
+    const liveMessage: LiveMessage = {
+      message,
+      politeness,
+      createdAt: order.current++,
+    };
+
+    if (!currentMessage) {
+      setCurrentMessage(liveMessage);
+    } else {
+      messageQueue.enqueue(liveMessage);
+    }
+  });
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (messageQueue.peek()) {
+        setCurrentMessage(messageQueue.dequeue());
+      } else {
+        setCurrentMessage(undefined);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [currentMessage, messageQueue]);
+
+  React.useImperativeHandle(props.announceRef, () => announce);
+
+  const politeMessage = currentMessage?.politeness === 'polite' ? currentMessage.message : undefined;
+  const assertiveMessage = currentMessage?.politeness === 'assertive' ? currentMessage.message : undefined;
+
+  return {
+    components: {
+      root: 'div',
+      assertive: 'div',
+      polite: 'div',
+    },
+
+    assertive: resolveShorthand(props.assertive, {
+      required: true,
+      defaultProps: { 'aria-live': 'assertive', children: assertiveMessage },
+    }),
+    polite: resolveShorthand(props.polite, {
+      required: true,
+      defaultProps: { 'aria-live': 'polite', children: politeMessage },
+    }),
+    root: getNativeElementProps('div', {
+      ref,
+      ...props,
+    }),
+  };
+};

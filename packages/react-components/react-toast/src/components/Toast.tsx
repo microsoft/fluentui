@@ -9,6 +9,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useToast, Toast as ToastProps } from '../state';
 import { Timer } from './Timer';
+import { Announce } from '../AriaLive';
 
 const useStyles = makeStyles({
   toast: {
@@ -71,11 +72,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
+export const Toast: React.FC<ToastProps & { visible: boolean; announce: Announce }> = props => {
   const styles = useStyles();
-  const { visible, children, close, remove, updateId, ...toastOptions } = props;
-  const { timeout } = toastOptions;
-  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...toastOptions, content: children });
+  const { visible, children, close, remove, updateId, announce, ...toastOptions } = props;
+  const { timeout, politeness } = toastOptions;
+  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props, content: children });
 
   // start the toast once it's fully in
   useIsomorphicLayoutEffect(() => {
@@ -84,12 +85,14 @@ export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
       toast.addEventListener('animationend', play, {
         once: true,
       });
-
-      return () => {
-        toast.removeEventListener('animationend', play);
-      };
     }
   }, [play, toastRef]);
+
+  React.useEffect(() => {
+    if (visible) {
+      announce(toastRef.current?.textContent ?? '', { politeness });
+    }
+  }, [announce, politeness, toastRef, visible, updateId]);
 
   const onEntering = () => {
     if (!toastRef.current) {

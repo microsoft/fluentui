@@ -14,6 +14,7 @@ export interface ToastOptions {
   pauseOnHover: boolean;
   toasterId: ToasterId | undefined;
   priority: number;
+  politeness: 'assertive' | 'polite';
 }
 
 export interface ToastOffsetObject {
