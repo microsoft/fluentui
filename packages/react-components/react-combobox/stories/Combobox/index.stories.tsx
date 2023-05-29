@@ -12,6 +12,7 @@ export { Filtering } from './ComboboxFiltering.stories';
 export { Freeform } from './ComboboxFreeform.stories';
 export { Multiselect } from './ComboboxMultiselect.stories';
 export { MultiselectWithTags } from './ComboboxMultiselectWithTags.stories';
+export { MultiselectWithTagButtons } from './ComboboxMultiselectWithTagButtons.stories';
 export { MultiselectWithValueString } from './ComboboxMultiselectWithValueString.stories';
 export { Grouped } from './ComboboxGrouped.stories';
 export { Appearance } from './ComboboxAppearance.stories';

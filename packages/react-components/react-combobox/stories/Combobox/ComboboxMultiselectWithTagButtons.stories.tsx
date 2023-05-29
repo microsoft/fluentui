@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Combobox, makeStyles, Option, shorthands, tokens, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
-import { Tag, TagGroup, TagGroupProps } from '@fluentui/react-tags';
+import { TagButton, TagGroup, TagGroupProps } from '@fluentui/react-tags';
 
 const useStyles = makeStyles({
   root: {
@@ -20,9 +20,12 @@ const useStyles = makeStyles({
     display: 'flex',
     gridGap: tokens.spacingHorizontalXXS,
   },
+  hilightedTag: {
+    backgroundColor: 'pink',
+  },
 });
 
-export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
+export const MultiselectWithTagButtons = (props: Partial<ComboboxProps>) => {
   // generate ids for handling labelling
   const comboId = useId('combo-multi');
   const selectedListId = `${comboId}-selection`;
@@ -42,15 +45,40 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
   };
 
   const onTagDismiss: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
-    const newSelectionOptions = selectedOptions.filter(o => o !== dismissedTagValue);
-    setSelectedOptions(newSelectionOptions);
-    if (!newSelectionOptions.length) {
-      // focus on input
-      comboboxInputRef.current?.focus();
+    if (hilightedTagValues.includes(dismissedTagValue)) {
+      // bulk delete
+      const newSelectionOptions = selectedOptions.filter(o => !hilightedTagValues.includes(o));
+      setSelectedOptions(newSelectionOptions);
+      setHilightedTagValues([]);
+      if (!newSelectionOptions.length) {
+        // focus on input
+        comboboxInputRef.current?.focus();
+      }
+    } else {
+      // delete one
+      const newSelectionOptions = selectedOptions.filter(o => o !== dismissedTagValue);
+      setSelectedOptions(newSelectionOptions);
+      if (!newSelectionOptions.length) {
+        // focus on input
+        comboboxInputRef.current?.focus();
+      }
     }
   };
 
   const labelledBy = selectedOptions.length > 0 ? `${comboId} ${selectedListId}` : comboId;
+
+  const [hilightedTagValues, setHilightedTagValues] = React.useState<string[]>([]);
+
+  const toggleHilightedTag = (value: string) => {
+    const newHilightedTagValues = [...hilightedTagValues];
+    if (hilightedTagValues.includes(value)) {
+      newHilightedTagValues.splice(newHilightedTagValues.indexOf(value), 1);
+      setHilightedTagValues(newHilightedTagValues);
+    } else {
+      newHilightedTagValues.push(value);
+      setHilightedTagValues(newHilightedTagValues);
+    }
+  };
 
   return (
     <div className={styles.root}>
@@ -58,9 +86,25 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
       {selectedOptions.length ? (
         <TagGroup id={selectedListId} onDismiss={onTagDismiss}>
           {selectedOptions.map(option => (
-            <Tag key={option} value={option} aria-label={`remove ${option}`}>
+            <TagButton
+              key={option}
+              value={option}
+              content={{
+                onClick: () => {
+                  toggleHilightedTag(option);
+                },
+              }}
+              className={hilightedTagValues.includes(option) ? styles.hilightedTag : undefined}
+              aria-selected={hilightedTagValues.includes(option) ? 'true' : 'false'}
+              dismissButton={{
+                'aria-label':
+                  hilightedTagValues.length && hilightedTagValues.includes(option)
+                    ? 'remove selection'
+                    : `remove ${option}`,
+              }}
+            >
               {option}
-            </Tag>
+            </TagButton>
           ))}
         </TagGroup>
       ) : null}
@@ -81,7 +125,7 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
   );
 };
 
-MultiselectWithTags.parameters = {
+MultiselectWithTagButtons.parameters = {
   docs: {
     description: {
       story:

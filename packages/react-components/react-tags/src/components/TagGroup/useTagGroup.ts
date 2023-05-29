@@ -20,7 +20,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
 
   const innerRef = React.useRef<HTMLElement>();
   const { targetDocument } = useFluent();
-  const { findNextFocusable } = useFocusFinders();
+  const { findNextFocusable, findFirstFocusable } = useFocusFinders();
 
   const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
     onDismiss?.(e, { dismissedTagValue: id });
@@ -32,7 +32,9 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
       activeElement?.className.includes(tagButtonClassNames.dismissButton)
     ) {
       // focus on next tag only if the active element is a tag/tag button
-      const next = findNextFocusable(activeElement as HTMLElement, { container: innerRef.current });
+      const next =
+        findNextFocusable(activeElement as HTMLElement, { container: innerRef.current }) ??
+        findFirstFocusable(innerRef.current as HTMLElement);
       next?.focus();
     }
   });
