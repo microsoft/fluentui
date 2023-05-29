@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { ImageProps, ImageState } from './Image.types';
+import { ExtractSlotProps, getNativeElementProps, slot } from '@fluentui/react-utilities';
+import type { ImageProps, ImageSlots, ImageState } from './Image.types';
 
 /**
  * Given user props, returns state and render function for an Image.
@@ -17,10 +17,13 @@ export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageEle
     components: {
       root: 'img',
     },
-    root: getNativeElementProps('img', {
-      ref,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps<ExtractSlotProps<ImageSlots['root']>>('img', {
+        ref,
+        ...props,
+      }),
+      { required: true, elementType: 'img' },
+    ),
   };
 
   return state;

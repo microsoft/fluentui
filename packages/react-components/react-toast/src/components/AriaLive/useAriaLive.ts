@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, createPriorityQueue, useEventCallback } from '@fluentui/react-utilities';
+import { slot, createPriorityQueue, useEventCallback } from '@fluentui/react-utilities';
 import type { AnnounceOptions, AriaLiveProps, AriaLiveState, LiveMessage } from './AriaLive.types';
 
 /** The duration the message needs to be in present in DOM for screen readers to register a change and announce */
@@ -69,13 +69,15 @@ export const useAriaLive_unstable = (props: AriaLiveProps): AriaLiveState => {
       polite: 'div',
     },
 
-    assertive: resolveShorthand(props.assertive, {
+    assertive: slot(props.assertive, {
       required: true,
       defaultProps: { 'aria-live': 'assertive', children: assertiveMessage },
+      elementType: 'div',
     }),
-    polite: resolveShorthand(props.polite, {
+    polite: slot(props.polite, {
       required: true,
       defaultProps: { 'aria-live': 'polite', children: politeMessage },
+      elementType: 'div',
     }),
   };
 };

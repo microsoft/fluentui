@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
@@ -73,28 +73,33 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       dismissIcon: 'span',
     },
 
-    root: getNativeElementProps('button', {
-      ref,
-      ...props,
-      id,
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-    }),
+    root: slot(
+      getNativeElementProps('button', {
+        ref,
+        ...props,
+        id,
+        onClick: handleClick,
+        onKeyDown: handleKeyDown,
+      }),
+      { required: true, elementType: 'button' },
+    ),
 
-    media: resolveShorthand(props.media),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, {
+    media: slot(props.media, { elementType: 'span' }),
+    icon: slot(props.icon, { elementType: 'span' }),
+    primaryText: slot(props.primaryText, {
       required: true,
       defaultProps: {
         children: props.children,
       },
+      elementType: 'span',
     }),
-    secondaryText: resolveShorthand(props.secondaryText),
-    dismissIcon: resolveShorthand(props.dismissIcon, {
+    secondaryText: slot(props.secondaryText, { elementType: 'span' }),
+    dismissIcon: slot(props.dismissIcon, {
       required: dismissible,
       defaultProps: {
         children: <DismissIcon />,
       },
+      elementType: 'span',
     }),
   };
 };

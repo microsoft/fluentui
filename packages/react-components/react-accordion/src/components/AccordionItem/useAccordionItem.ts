@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
 import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
@@ -29,9 +29,12 @@ export const useAccordionItem_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: ref,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

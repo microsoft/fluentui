@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId, useTimeout } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useId, useTimeout } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultSvg } from './DefaultSvg';
@@ -19,12 +19,12 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const baseId = useId('spinner');
 
   const { role = 'progressbar', tabIndex, ...rest } = props;
-  const nativeRoot = getNativeElementProps('div', { ref, role, ...rest }, ['size']);
-
+  const nativeRoot = slot(getNativeElementProps('div', { ref, role, ...rest }, ['size']), {
+    required: true,
+    elementType: 'div',
+  });
   const [isVisible, setIsVisible] = React.useState(true);
-
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
-
   React.useEffect(() => {
     if (delay <= 0) {
       return;
@@ -33,42 +33,26 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     setDelayTimeout(() => {
       setIsVisible(true);
     }, delay);
-
     return () => {
       clearDelayTimeout();
     };
   }, [setDelayTimeout, clearDelayTimeout, delay]);
-
-  const labelShorthand = resolveShorthand(props.label, {
-    defaultProps: {
-      id: baseId,
-    },
-    required: false,
-  });
-
-  const spinnerShortHand = resolveShorthand(props.spinner, {
+  const labelShorthand = slot(props.label, { defaultProps: { id: baseId }, required: false, elementType: Label });
+  const spinnerShortHand = slot(props.spinner, {
     required: true,
-    defaultProps: {
-      children: <DefaultSvg />,
-      tabIndex,
-    },
+    defaultProps: { children: <DefaultSvg />, tabIndex },
+    elementType: 'span',
   });
-
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
     nativeRoot['aria-labelledby'] = labelShorthand.id;
   }
-
   const state: SpinnerState = {
     appearance,
     delay,
     labelPosition,
     size,
     shouldRenderSpinner: isVisible,
-    components: {
-      root: 'div',
-      spinner: 'span',
-      label: Label,
-    },
+    components: { root: 'div', spinner: 'span', label: Label },
     root: nativeRoot,
     spinner: spinnerShortHand,
     label: labelShorthand,

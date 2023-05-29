@@ -1,4 +1,5 @@
-import { resolveShorthand } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { isResolvedShorthand, slot } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from './useARIAButtonProps';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './types';
@@ -12,8 +13,12 @@ import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './typ
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (slot, options) => {
-  const shorthand = resolveShorthand(slot, options);
+export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (value, options) => {
+  const elementType = isResolvedShorthand(value) ? value.as ?? 'button' : ('button' as const);
+  const shorthand = slot(value, {
+    ...options,
+    elementType: elementType as React.ElementType<ARIAButtonSlotProps> as React.ComponentType<ARIAButtonSlotProps>,
+  });
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(shorthand?.as ?? 'button', shorthand);
   return shorthand && shorthandARIAButton;
 };

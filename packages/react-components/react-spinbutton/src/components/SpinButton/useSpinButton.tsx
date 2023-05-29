@@ -3,7 +3,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
-  resolveShorthand,
+  slot,
   useControllableState,
   useTimeout,
 } from '@fluentui/react-utilities';
@@ -257,11 +257,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       incrementButton: 'button',
       decrementButton: 'button',
     },
-    root: resolveShorthand(root, {
+    root: slot(root, {
       required: true,
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
-    input: resolveShorthand(input, {
+    input: slot(input, {
       required: true,
       defaultProps: {
         ref,
@@ -271,8 +272,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         type: 'text',
         ...nativeProps.primary,
       },
+      elementType: 'input',
     }),
-    incrementButton: resolveShorthand(incrementButton, {
+    incrementButton: slot(incrementButton, {
       required: true,
       defaultProps: {
         tabIndex: -1,
@@ -281,8 +283,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         'aria-label': 'Increment value',
         type: 'button',
       },
+      elementType: 'button',
     }),
-    decrementButton: resolveShorthand(decrementButton, {
+    decrementButton: slot(decrementButton, {
       required: true,
       defaultProps: {
         tabIndex: -1,
@@ -291,6 +294,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         'aria-label': 'Decrement value',
         type: 'button',
       },
+      elementType: 'button',
     }),
   };
 

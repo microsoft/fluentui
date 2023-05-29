@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 
 import type { AlertProps, AlertState } from './Alert.types';
 
@@ -39,36 +39,27 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
       break;
   }
 
-  const action = resolveShorthand(props.action, { defaultProps: { appearance: 'transparent' } });
-  const avatar = resolveShorthand(props.avatar);
+  const action = slot(props.action, { defaultProps: { appearance: 'transparent' }, elementType: Button });
+  const avatar = slot(props.avatar, { elementType: Avatar });
   let icon;
-  /** Avatar prop takes precedence over the icon or intent prop */
-  if (!avatar) {
-    icon = resolveShorthand(props.icon, {
-      defaultProps: {
-        children: defaultIcon,
-      },
-      required: !!props.intent,
-    });
+  /** Avatar prop takes precedence over the icon or intent prop */ if (!avatar) {
+    icon = slot(props.icon, { defaultProps: { children: defaultIcon }, required: !!props.intent, elementType: 'span' });
   }
-
   return {
     action,
     appearance,
     avatar,
-    components: {
-      root: 'div',
-      icon: 'span',
-      action: Button,
-      avatar: Avatar,
-    },
+    components: { root: 'div', icon: 'span', action: Button, avatar: Avatar },
     icon,
     intent,
-    root: getNativeElementProps('div', {
-      ref,
-      role: defaultRole,
-      children: props.children,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        role: defaultRole,
+        children: props.children,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

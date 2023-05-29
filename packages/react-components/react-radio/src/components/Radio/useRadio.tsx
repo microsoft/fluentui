@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, slot, useId } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioProps, RadioState } from './Radio.types';
@@ -35,15 +35,15 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
   });
 
-  const root = resolveShorthand(props.root, {
+  const root = slot(props.root, {
     required: true,
     defaultProps: {
       ref: useFocusWithin<HTMLSpanElement>(),
       ...nativeProps.root,
     },
+    elementType: 'span',
   });
-
-  const input = resolveShorthand(props.input, {
+  const input = slot(props.input, {
     required: true,
     defaultProps: {
       ref,
@@ -57,33 +57,21 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       'aria-describedby': ariaDescribedBy,
       ...nativeProps.primary,
     },
+    elementType: 'input',
   });
-
   input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
-
-  const label = resolveShorthand(props.label, {
-    defaultProps: {
-      htmlFor: input.id,
-      disabled: input.disabled,
-    },
+  const label = slot(props.label, {
+    defaultProps: { htmlFor: input.id, disabled: input.disabled },
+    elementType: Label,
   });
-
-  const indicator = resolveShorthand(props.indicator, {
+  const indicator = slot(props.indicator, {
     required: true,
-    defaultProps: {
-      'aria-hidden': true,
-      children: <CircleFilled />,
-    },
+    defaultProps: { 'aria-hidden': true, children: <CircleFilled /> },
+    elementType: 'div',
   });
-
   return {
     labelPosition,
-    components: {
-      root: 'span',
-      input: 'input',
-      label: Label,
-      indicator: 'div',
-    },
+    components: { root: 'span', input: 'input', label: Label, indicator: 'div' },
     root,
     input,
     label,

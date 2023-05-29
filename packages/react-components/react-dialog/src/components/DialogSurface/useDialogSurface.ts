@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   getNativeElementProps,
-  resolveShorthand,
+  slot,
   useEventCallback,
   useMergedRefs,
   isResolvedShorthand,
@@ -64,22 +64,26 @@ export const useDialogSurface_unstable = (
       backdrop: 'div',
       root: 'div',
     },
-    backdrop: resolveShorthand(backdrop, {
+    backdrop: slot(backdrop, {
       required: open && modalType !== 'non-modal',
       defaultProps: {
         'aria-hidden': 'true',
-        onClick: handledBackdropClick,
+        onClick: handledBackdropClick, // FIXME: this should be an override
       },
+      elementType: 'div',
     }),
-    root: getNativeElementProps(as ?? 'div', {
-      tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
-      'aria-modal': modalType !== 'non-modal',
-      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
-      ...props,
-      ...modalAttributes,
-      onKeyDown: handleKeyDown,
-      ref: useMergedRefs(ref, dialogRef),
-    }),
+    root: slot(
+      getNativeElementProps(as ?? 'div', {
+        tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
+        'aria-modal': modalType !== 'non-modal',
+        role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+        'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+        ...props,
+        ...modalAttributes,
+        onKeyDown: handleKeyDown,
+        ref: useMergedRefs(ref, dialogRef),
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

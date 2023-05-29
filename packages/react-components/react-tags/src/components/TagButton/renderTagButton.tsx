@@ -3,7 +3,7 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { TagButtonState, TagButtonSlots, TagButtonContextValues } from './TagButton.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 
@@ -11,25 +11,26 @@ import { AvatarContextProvider } from '@fluentui/react-avatar';
  * Render the final JSX of TagButton
  */
 export const renderTagButton_unstable = (state: TagButtonState, contextValues: TagButtonContextValues) => {
-  const { slots, slotProps } = getSlotsNext<TagButtonSlots>(state);
+  assertSlots<TagButtonSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.media && (
+    <state.root>
+      {state.content && (
+        <state.content>
+          {state.media && (
             <AvatarContextProvider value={contextValues.avatar}>
-              <slots.media {...slotProps.media} />
+              <state.media />
             </AvatarContextProvider>
           )}
-          {slots.icon && <slots.icon {...slotProps.icon} />}
-          {slots.primaryText && (
-            <slots.primaryText {...slotProps.primaryText}>{slotProps.root.children}</slots.primaryText>
-          )}
-          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
-        </slots.content>
+
+          {state.icon && <state.icon />}
+          {state.primaryText && <state.primaryText>{state.root.children}</state.primaryText>}
+
+          {state.secondaryText && <state.secondaryText />}
+        </state.content>
       )}
-      {slots.dismissButton && state.dismissible && <slots.dismissButton {...slotProps.dismissButton} />}
-    </slots.root>
+
+      {state.dismissButton && state.dismissible && <state.dismissButton />}
+    </state.root>
   );
 };

@@ -10,7 +10,7 @@ import type {
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
 
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
@@ -90,11 +90,14 @@ export const useFluentProvider_unstable = (
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ...props,
-      dir,
-      ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ...props,
+        dir,
+        ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
+      }),
+      { required: true, elementType: 'div' },
+    ),
 
     serverStyleProps: {
       cssRule: rule,

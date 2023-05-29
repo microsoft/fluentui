@@ -2,7 +2,7 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
   TreeItemPersonaLayoutSlots,
@@ -17,18 +17,18 @@ export const renderTreeItemPersonaLayout_unstable = (
   state: TreeItemPersonaLayoutState,
   contextValues: TreeItemPersonaLayoutContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<TreeItemPersonaLayoutSlots>(state);
+  assertSlots<TreeItemPersonaLayoutSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+    <state.root>
+      {state.expandIcon && <state.expandIcon />}
       <AvatarContextProvider value={contextValues.avatar}>
-        <slots.media {...slotProps.media} />
+        <state.media />
       </AvatarContextProvider>
-      <slots.content {...slotProps.content}>
-        <slots.main {...slotProps.main} />
-        {slots.description && <slots.description {...slotProps.description} />}
-      </slots.content>
-    </slots.root>
+      <state.content>
+        <state.main />
+        {state.description && <state.description />}
+      </state.content>
+    </state.root>
   );
 };

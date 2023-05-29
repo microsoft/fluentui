@@ -1,17 +1,20 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { DrawerHeaderTitleState, DrawerHeaderTitleSlots } from './DrawerHeaderTitle.types';
 
 /**
  * Render the final JSX of DrawerHeaderTitle
  */
 export const renderDrawerHeaderTitle_unstable = (state: DrawerHeaderTitleState) => {
-  const { slots, slotProps } = getSlots<DrawerHeaderTitleSlots>(state);
+  assertSlots<DrawerHeaderTitleSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.heading && <slots.heading {...slotProps.heading} />}
-      {slots.action && <slots.action {...slotProps.action} />}
-    </slots.root>
+    <state.root>
+      {state.heading && <state.heading />}
+      {state.action && <state.action />}
+    </state.root>
   );
 };

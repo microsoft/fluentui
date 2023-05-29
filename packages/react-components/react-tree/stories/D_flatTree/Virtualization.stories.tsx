@@ -1,4 +1,7 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
 import {
   TreeProps,
   TreeItem,
@@ -15,8 +18,9 @@ import {
   FlatTreeItem,
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
-import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
+import { ForwardRefComponent, assertSlots } from '@fluentui/react-components';
 import story from './Virtualization.md';
+import * as React from 'react';
 
 type ItemProps = FlatTreeItemProps & { content: string };
 
@@ -53,12 +57,12 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   const state = useTree_unstable(props, ref);
   useTreeStyles_unstable(state);
   const contextValues = useTreeContextValues_unstable(state);
-  const { slots, slotProps } = getSlots<TreeSlots>(state);
+  assertSlots<TreeSlots>(state);
   return (
     <TreeProvider value={contextValues.tree}>
-      <slots.root {...slotProps.root}>
+      <state.root>
         <FixedSizeList {...props.listProps} />
-      </slots.root>
+      </state.root>
     </TreeProvider>
   );
 });

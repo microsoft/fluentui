@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
 
@@ -31,11 +31,14 @@ export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
     appearance,
     size,
     level: parentLevel + 1,
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, subtreeRef),
-      role: 'group',
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, subtreeRef),
+        role: 'group',
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
     openItems,
     requestTreeResponse,
   };

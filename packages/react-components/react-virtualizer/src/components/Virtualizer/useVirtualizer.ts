@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { useEffect, useRef, useCallback, useReducer } from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
 import { useVirtualizerContextState_unstable } from '../../Utilities';
@@ -421,31 +421,35 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       afterContainer: 'div',
     },
     virtualizedChildren: childArray.current,
-    before: resolveShorthand(props.before, {
+    before: slot(props.before, {
       required: true,
       defaultProps: {
         ref: setBeforeRef,
         role: 'none',
       },
+      elementType: 'div',
     }),
-    after: resolveShorthand(props.after, {
+    after: slot(props.after, {
       required: true,
       defaultProps: {
         ref: setAfterRef,
         role: 'none',
       },
+      elementType: 'div',
     }),
-    beforeContainer: resolveShorthand(props.beforeContainer, {
+    beforeContainer: slot(props.beforeContainer, {
       required: true,
       defaultProps: {
         role: 'none',
       },
+      elementType: 'div',
     }),
-    afterContainer: resolveShorthand(props.afterContainer, {
+    afterContainer: slot(props.afterContainer, {
       required: true,
       defaultProps: {
         role: 'none',
       },
+      elementType: 'div',
     }),
     beforeBufferHeight: isFullyInitialized ? calculateBefore() : 0,
     afterBufferHeight: isFullyInitialized ? calculateAfter() : 0,

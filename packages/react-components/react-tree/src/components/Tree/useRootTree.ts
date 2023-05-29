@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
 import { useNestedTreeNavigation, useOpenItemsState } from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
@@ -128,11 +128,14 @@ export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.
     level: 1,
     openItems,
     requestTreeResponse,
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(navigationRef, ref),
-      role: 'tree',
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(navigationRef, ref),
+        role: 'tree',
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 }
 

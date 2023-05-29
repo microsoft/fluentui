@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
-  resolveShorthand,
+  slot,
   useControllableState,
   useEventCallback,
   useId,
@@ -73,14 +73,15 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       indicator: 'div',
       label: Label,
     },
-    root: resolveShorthand(props.root, {
+    root: slot(props.root, {
       required: true,
       defaultProps: {
         ref: useFocusWithin<HTMLSpanElement>(),
         ...nativeProps.root,
       },
+      elementType: 'span',
     }),
-    input: resolveShorthand(props.input, {
+    input: slot(props.input, {
       required: true,
       defaultProps: {
         type: 'checkbox',
@@ -89,8 +90,9 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
         checked: checked === true,
         ...nativeProps.primary,
       },
+      elementType: 'input',
     }),
-    label: resolveShorthand(props.label, {
+    label: slot(props.label, {
       required: false,
       defaultProps: {
         htmlFor: id,
@@ -98,13 +100,15 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
         required,
         size: 'medium', // Even if the checkbox itself is large
       },
+      elementType: Label,
     }),
-    indicator: resolveShorthand(props.indicator, {
+    indicator: slot(props.indicator, {
       required: true,
       defaultProps: {
         'aria-hidden': true,
         children: checkmarkIcon,
       },
+      elementType: 'div',
     }),
   };
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
@@ -40,19 +40,23 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       action: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    image: resolveShorthand(image),
-    header: resolveShorthand(header, {
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
+    image: slot(image, { elementType: 'div' }),
+    header: slot(header, {
       required: true,
       defaultProps: {
         ref: headerRef,
         id: referenceId,
       },
+      elementType: 'div',
     }),
-    description: resolveShorthand(description),
-    action: resolveShorthand(action),
+    description: slot(description, { elementType: 'div' }),
+    action: slot(action, { elementType: 'div' }),
   };
 };

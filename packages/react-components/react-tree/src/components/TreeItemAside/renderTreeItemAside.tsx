@@ -2,7 +2,7 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { ButtonContextProvider } from '@fluentui/react-button';
 import type { TreeItemAsideState, TreeItemAsideSlots } from './TreeItemAside.types';
 
@@ -10,15 +10,15 @@ import type { TreeItemAsideState, TreeItemAsideSlots } from './TreeItemAside.typ
  * Render the final JSX of TreeItemAside
  */
 export const renderTreeItemAside_unstable = (state: TreeItemAsideState) => {
-  const { slots, slotProps } = getSlotsNext<TreeItemAsideSlots>(state);
+  assertSlots<TreeItemAsideSlots>(state);
 
   if (!state.visible) {
     return null;
   }
 
   return (
-    <slots.root {...slotProps.root}>
-      <ButtonContextProvider value={state.buttonContextValue}>{slotProps.root.children}</ButtonContextProvider>
-    </slots.root>
+    <state.root>
+      <ButtonContextProvider value={state.buttonContextValue}>{state.root.children}</ButtonContextProvider>
+    </state.root>
   );
 };

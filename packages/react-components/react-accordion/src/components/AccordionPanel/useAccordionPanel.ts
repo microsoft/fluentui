@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
 import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
@@ -23,10 +23,13 @@ export const useAccordionPanel_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      ...(navigation && focusableProps),
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+        ...(navigation && focusableProps),
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { slot, useId } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
+import { PopoverSurface } from '@fluentui/react-popover';
 
 /**
  * Create the state required to render InfoLabel.
@@ -27,15 +28,16 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   } = props;
   const baseId = useId('infolabel-');
 
-  const root = resolveShorthand(rootShorthand, {
+  const root = slot(rootShorthand, {
     required: true,
     defaultProps: {
       className,
       style,
     },
+    elementType: 'span',
   });
 
-  const label = resolveShorthand(labelShorthand, {
+  const label = slot(labelShorthand, {
     required: true,
     defaultProps: {
       id: baseId + '__label',
@@ -43,22 +45,25 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
       size,
       ...labelProps,
     },
+    elementType: Label,
   });
 
-  const infoButton = resolveShorthand(infoButtonShorthand, {
+  const infoButton = slot(infoButtonShorthand, {
     required: !!info,
     defaultProps: {
       id: baseId + '__infoButton',
       size,
       info,
     },
+    elementType: InfoButton,
   });
 
   if (infoButton) {
-    infoButton.info = resolveShorthand(infoButton?.info, {
+    infoButton.info = slot(infoButton?.info, {
       defaultProps: {
         id: baseId + '__info',
       },
+      elementType: PopoverSurface,
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;

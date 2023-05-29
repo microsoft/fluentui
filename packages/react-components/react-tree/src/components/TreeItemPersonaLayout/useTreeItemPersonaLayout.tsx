@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { TreeItemPersonaLayoutProps, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useTreeContext_unstable } from '../../contexts';
 import { treeAvatarSize } from '../../utils/tokens';
 import { useTreeItemLayout_unstable } from '../TreeItemLayout/useTreeItemLayout';
@@ -41,9 +41,9 @@ export const useTreeItemPersonaLayout_unstable = (
       media: 'div',
     },
     avatarSize: treeAvatarSize[size],
-    main: resolveShorthand(main, { required: true, defaultProps: { children } }),
-    media: resolveShorthand(media, { required: true }),
-    content: resolveShorthand(content, { required: true }),
-    description: resolveShorthand(description),
+    main: slot(main, { required: true, defaultProps: { children }, elementType: 'div' }),
+    media: slot(media, { required: true, elementType: 'div' }),
+    content: slot(content, { required: true, elementType: 'div' }),
+    description: slot(description, { elementType: 'div' }),
   };
 };

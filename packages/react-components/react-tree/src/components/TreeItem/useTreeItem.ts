@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
@@ -134,20 +133,23 @@ export function useTreeItem_unstable<Value = string>(
     components: {
       root: 'div',
     },
-    root: getNativeElementProps(as, {
-      tabIndex: -1,
-      ...rest,
-      id,
-      ref,
-      'aria-level': level,
-      'aria-expanded': itemType === 'branch' ? open : undefined,
-      role: 'treeitem',
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-      onMouseOver: handleActionsVisible,
-      onFocus: handleActionsVisible,
-      onMouseOut: handleActionsInvisible,
-      onBlur: handleActionsInvisible,
-    }),
+    root: slot(
+      getNativeElementProps(as, {
+        tabIndex: -1,
+        ...rest,
+        id,
+        ref,
+        'aria-level': level,
+        'aria-expanded': itemType === 'branch' ? open : undefined,
+        role: 'treeitem',
+        onClick: handleClick,
+        onKeyDown: handleKeyDown,
+        onMouseOver: handleActionsVisible,
+        onFocus: handleActionsVisible,
+        onMouseOut: handleActionsInvisible,
+        onBlur: handleActionsInvisible,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getNativeElementProps, isHTMLElement, useEventCallback, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
@@ -33,7 +33,10 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
     root: {
       ref,
       role: 'radiogroup',
-      ...getNativeElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']),
+      ...slot(getNativeElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']), {
+        required: true,
+        elementType: 'div',
+      }),
       onChange: useEventCallback(ev => {
         if (
           onChange &&

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayout.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -32,13 +32,13 @@ export const useTableCellLayout_unstable = (
       content: 'div',
       media: 'span',
     },
-    root: getNativeElementProps('div', { ref, ...props }),
+    root: slot(getNativeElementProps('div', { ref, ...props }), { required: true, elementType: 'div' }),
     appearance: props.appearance,
     truncate: props.truncate,
-    main: resolveShorthand(props.main, { required: true }),
-    media: resolveShorthand(props.media),
-    description: resolveShorthand(props.description),
-    content: resolveShorthand(props.content, { required: !!props.description || !!props.children }),
+    main: slot(props.main, { required: true, elementType: 'span' }),
+    media: slot(props.media, { elementType: 'span' }),
+    description: slot(props.description, { elementType: 'span' }),
+    content: slot(props.content, { required: !!props.description || !!props.children, elementType: 'div' }),
     avatarSize: tableAvatarSizeMap[size],
     size,
   };

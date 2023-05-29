@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 
 /**
@@ -20,9 +20,12 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

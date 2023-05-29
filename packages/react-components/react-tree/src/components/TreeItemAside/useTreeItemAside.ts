@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { TreeItemAsideProps, TreeItemAsideState } from './TreeItemAside.types';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
@@ -29,9 +29,12 @@ export const useTreeItemAside_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, actions ? actionsRef : undefined),
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, actions ? actionsRef : undefined),
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

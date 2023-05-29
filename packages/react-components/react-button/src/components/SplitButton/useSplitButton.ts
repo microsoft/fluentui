@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useId } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
 import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
@@ -29,7 +29,7 @@ export const useSplitButton_unstable = (
 
   const baseId = useId('splitButton-');
 
-  const menuButtonShorthand = resolveShorthand(menuButton, {
+  const menuButtonShorthand = slot(menuButton, {
     defaultProps: {
       appearance,
       disabled,
@@ -39,9 +39,9 @@ export const useSplitButton_unstable = (
       size,
     },
     required: true,
+    elementType: MenuButton,
   });
-
-  const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
+  const primaryActionButtonShorthand = slot(primaryActionButton, {
     defaultProps: {
       appearance,
       children,
@@ -54,9 +54,8 @@ export const useSplitButton_unstable = (
       size,
     },
     required: true,
-  });
-
-  // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
+    elementType: Button,
+  }); // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
   // by the user.
   if (
     menuButtonShorthand &&
@@ -66,7 +65,6 @@ export const useSplitButton_unstable = (
   ) {
     menuButtonShorthand['aria-labelledby'] = primaryActionButtonShorthand.id;
   }
-
   return {
     // Props passed at the top-level
     appearance,
@@ -74,16 +72,9 @@ export const useSplitButton_unstable = (
     disabledFocusable,
     iconPosition,
     shape,
-    size,
-
-    // Slots definition
-    components: {
-      root: 'div',
-      menuButton: MenuButton,
-      primaryActionButton: Button,
-    },
-
-    root: getNativeElementProps('div', { ref, ...props }),
+    size, // Slots definition
+    components: { root: 'div', menuButton: MenuButton, primaryActionButton: Button },
+    root: slot(getNativeElementProps('div', { ref, ...props }), { required: true, elementType: 'div' }),
     menuButton: menuButtonShorthand,
     primaryActionButton: primaryActionButtonShorthand,
   };

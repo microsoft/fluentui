@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
@@ -115,20 +115,24 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       root: 'div',
       checkIcon: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, optionRef),
-      'aria-disabled': disabled ? 'true' : undefined,
-      id,
-      ...semanticProps,
-      ...props,
-      onClick,
-    }),
-    checkIcon: resolveShorthand(props.checkIcon, {
+    root: slot(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, optionRef),
+        'aria-disabled': disabled ? 'true' : undefined,
+        id,
+        ...semanticProps,
+        ...props,
+        onClick,
+      }),
+      { required: true, elementType: 'div' },
+    ),
+    checkIcon: slot(props.checkIcon, {
       required: true,
       defaultProps: {
         'aria-hidden': 'true',
         children: CheckIcon,
       },
+      elementType: 'span',
     }),
     active,
     disabled,

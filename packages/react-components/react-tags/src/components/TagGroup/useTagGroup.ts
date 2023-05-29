@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 
 /**
@@ -29,10 +29,13 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      // TODO aria attributes
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+        // TODO aria attributes
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

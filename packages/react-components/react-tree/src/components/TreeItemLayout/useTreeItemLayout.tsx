@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, isResolvedShorthand, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, isResolvedShorthand, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeItemLayoutProps, TreeItemLayoutState } from './TreeItemLayout.types';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 import { TreeItemChevron } from '../TreeItemChevron';
@@ -30,16 +30,20 @@ export const useTreeItemLayout_unstable = (
       iconBefore: 'div',
       iconAfter: 'div',
     },
-    root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
-    iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
-    iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
-    expandIcon: resolveShorthand(expandIcon, {
+    root: slot(getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }), {
+      required: true,
+      elementType: 'div',
+    }),
+    iconBefore: slot(iconBefore, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
+    iconAfter: slot(iconAfter, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
+    expandIcon: slot(expandIcon, {
       required: isBranch,
       defaultProps: {
         children: <TreeItemChevron />,
         'aria-hidden': true,
         ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
       },
+      elementType: 'div',
     }),
   };
 };

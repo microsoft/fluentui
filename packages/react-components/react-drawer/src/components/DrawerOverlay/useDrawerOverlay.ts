@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
@@ -25,10 +25,13 @@ export const useDrawerOverlay_unstable = (
       root: DialogSurface,
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { required: true, elementType: DialogSurface },
+    ),
     dialog: {
       open,
       defaultOpen,

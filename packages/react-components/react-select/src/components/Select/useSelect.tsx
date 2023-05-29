@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getPartitionedNativeProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectProps, SelectState } from './Select.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
@@ -46,7 +46,7 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
       select: 'select',
       icon: 'span',
     },
-    select: resolveShorthand(select, {
+    select: slot(select, {
       required: true,
       defaultProps: {
         defaultValue,
@@ -54,14 +54,17 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
         ref,
         ...nativeProps.primary,
       },
+      elementType: 'select',
     }),
-    icon: resolveShorthand(icon, {
+    icon: slot(icon, {
       required: true,
       defaultProps: { children: <ChevronDownRegular /> },
+      elementType: 'span',
     }),
-    root: resolveShorthand(root, {
+    root: slot(root, {
       required: true,
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
   };
 

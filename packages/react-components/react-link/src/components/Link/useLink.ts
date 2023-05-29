@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
 
@@ -28,12 +28,15 @@ export const useLink_unstable = (
       root: 'a',
     },
 
-    root: getNativeElementProps(as, {
-      ref,
-      type,
-      ...props,
-      as,
-    }),
+    root: slot(
+      getNativeElementProps(as, {
+        ref,
+        type,
+        ...props,
+        as,
+      }),
+      { required: true, elementType: 'a' },
+    ),
   };
 
   useLinkState_unstable(state);

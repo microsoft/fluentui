@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { OptionGroupProps, OptionGroupState } from './OptionGroup.types';
 
 /**
@@ -20,17 +20,21 @@ export const useOptionGroup_unstable = (props: OptionGroupProps, ref: React.Ref<
       root: 'div',
       label: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      role: 'group',
-      'aria-labelledby': label ? labelId : undefined,
-      ...props,
-    }),
-    label: resolveShorthand(label, {
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        role: 'group',
+        'aria-labelledby': label ? labelId : undefined,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
+    label: slot(label, {
       defaultProps: {
         id: labelId,
         role: 'presentation',
       },
+      elementType: 'span',
     }),
   };
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagButtonProps, TagButtonState } from './TagButton.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
@@ -55,15 +55,15 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     }
   });
 
-  const dismissButtonShorthand = resolveShorthand(props.dismissButton, {
+  const dismissButtonShorthand = slot(props.dismissButton, {
     required: dismissible,
     defaultProps: {
       disabled,
       type: 'button',
       children: <DismissIcon />,
     },
+    elementType: 'button',
   });
-
   return {
     appearance,
     avatarShape: tagButtonAvatarShapeMap[shape],
@@ -72,7 +72,6 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     dismissible,
     shape,
     size,
-
     components: {
       root: 'div',
       content: 'button',
@@ -83,28 +82,35 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
       dismissButton: 'button',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      id,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+        id,
+      }),
+      { required: true, elementType: 'div' },
+    ),
 
-    content: resolveShorthand(props.content, {
+    content: slot(props.content, {
       required: true,
+      elementType: 'button',
       defaultProps: {
         disabled,
         type: 'button',
       },
     }),
-    media: resolveShorthand(props.media),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, { required: true }),
-    secondaryText: resolveShorthand(props.secondaryText),
+    media: slot(props.media, { elementType: 'span' }),
+    icon: slot(props.icon, { elementType: 'span' }),
+    primaryText: slot(props.primaryText, { required: true, elementType: 'span' }),
+    secondaryText: slot(props.secondaryText, { elementType: 'span' }),
 
-    dismissButton: {
-      ...dismissButtonShorthand,
-      onClick: onDismissButtonClick,
-      onKeyDown: onDismissButtonKeyDown,
-    },
+    dismissButton: slot(
+      {
+        ...dismissButtonShorthand,
+        onClick: onDismissButtonClick,
+        onKeyDown: onDismissButtonKeyDown,
+      },
+      { required: true, elementType: 'button' },
+    ),
   };
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   getNativeElementProps,
   mergeCallbacks,
-  resolveShorthand,
+  slot,
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -47,30 +47,36 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const iconShorthand = resolveShorthand(icon);
-  const contentShorthand = resolveShorthand(content, { required: true, defaultProps: { children: props.children } });
+  const iconShorthand = slot(icon, { elementType: 'span' });
+  const contentShorthand = slot(content, {
+    required: true,
+    defaultProps: { children: props.children },
+    elementType: 'span',
+  });
   return {
-    components: {
-      root: 'button',
-      icon: 'span',
-      content: 'span',
-    },
-    root: getNativeElementProps('button', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'tab',
-      type: 'button',
-      // aria-selected undefined indicates it is not selectable
-      // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
-      'aria-selected': disabled ? undefined : `${selected}`,
-      ...props,
-      disabled,
-      onClick: onTabClick,
-    }),
+    components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
+    root: slot(
+      getNativeElementProps('button', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'tab',
+        type: 'button',
+        // aria-selected undefined indicates it is not selectable
+        // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
+        'aria-selected': disabled ? undefined : `${selected}`,
+        ...props,
+        disabled,
+        onClick: onTabClick,
+      }),
+      { required: true, elementType: 'button' },
+    ),
     icon: iconShorthand,
     iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
     content: contentShorthand,
     appearance,
-    contentReservedSpaceClassName: reserveSelectedTabSpace ? '' : undefined,
+    contentReservedSpace: slot(reserveSelectedTabSpace ? contentShorthand : undefined, {
+      required: reserveSelectedTabSpace,
+      elementType: 'span',
+    }),
     disabled,
     selected,
     size,

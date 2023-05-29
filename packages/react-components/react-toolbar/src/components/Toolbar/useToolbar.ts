@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
+import { useEventCallback, useControllableState, slot } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { ToggableHandler, ToolbarProps, ToolbarState, UninitializedToolbarState } from './Toolbar.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -31,13 +31,16 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      role: 'toolbar',
-      ref,
-      ...(vertical && { 'aria-orientation': 'vertical' }),
-      ...arrowNavigationProps,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        role: 'toolbar',
+        ref,
+        ...(vertical && { 'aria-orientation': 'vertical' }),
+        ...arrowNavigationProps,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 
   const [checkedValues, onCheckedValueChange] = useToolbarSelectableState({

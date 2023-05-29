@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 
 import type { ToastAlertProps, ToastAlertState } from './ToastAlert.types';
 
@@ -35,19 +35,18 @@ export const useToastAlert_unstable = (props: ToastAlertProps, ref: React.Ref<HT
   }
 
   return {
-    action: resolveShorthand(props.action),
+    action: slot(props.action, { elementType: 'div' }),
     appearance,
-    components: {
-      root: 'div',
-      media: 'div',
-      action: 'div',
-    },
-    media: resolveShorthand(props.media, { required: !!props.intent, defaultProps: { children: defaultIcon } }),
+    components: { root: 'div', media: 'div', action: 'div' },
+    media: slot(props.media, { required: !!props.intent, defaultProps: { children: defaultIcon }, elementType: 'div' }),
     intent,
-    root: getNativeElementProps('div', {
-      ref,
-      children: props.children,
-      ...props,
-    }),
+    root: slot(
+      getNativeElementProps('div', {
+        ref,
+        children: props.children,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
   };
 };

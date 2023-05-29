@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isInteractiveHTMLElement, useEventCallback, resolveShorthand } from '@fluentui/react-utilities';
+import { isInteractiveHTMLElement, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Space } from '@fluentui/keyboard-keys';
 import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
 import { useTableRow_unstable } from '../TableRow/useTableRow';
@@ -72,7 +72,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       ...baseState.components,
       selectionCell: DataGridSelectionCell,
     },
-    selectionCell: resolveShorthand(props.selectionCell, { required: selectable }),
+    selectionCell: slot(props.selectionCell, { required: selectable, elementType: DataGridSelectionCell }),
     renderCell: props.children,
     columnDefs,
     dataGridContextValue,

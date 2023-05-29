@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
 import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
@@ -34,16 +34,20 @@ export const useTableHeaderCell_unstable = (
       sortIcon: 'span',
       aside: 'span',
     },
-    root: getNativeElementProps(rootComponent, {
-      ref: useMergedRefs(ref, useFocusWithin()),
-      role: rootComponent === 'div' ? 'columnheader' : undefined,
-      'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
-      ...props,
-    }),
-    aside: resolveShorthand(props.aside),
-    sortIcon: resolveShorthand(props.sortIcon, {
+    root: slot(
+      getNativeElementProps(rootComponent, {
+        ref: useMergedRefs(ref, useFocusWithin()),
+        role: rootComponent === 'div' ? 'columnheader' : undefined,
+        'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
+        ...props,
+      }),
+      { required: true, elementType: rootComponent },
+    ),
+    aside: slot(props.aside, { elementType: 'span' }),
+    sortIcon: slot(props.sortIcon, {
       required: !!props.sortDirection,
       defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },
+      elementType: 'span',
     }),
     button: useARIAButtonShorthand(props.button, {
       required: true,

@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  getNativeElementProps,
-  isResolvedShorthand,
-  resolveShorthand,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { getNativeElementProps, isResolvedShorthand, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
 import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
@@ -54,19 +49,23 @@ export const useAccordionHeader_unstable = (
       expandIcon: 'span',
       icon: 'div',
     },
-    root: getNativeElementProps(as || 'div', {
-      ref,
-      ...props,
-    }),
-    icon: resolveShorthand(icon),
-    expandIcon: resolveShorthand(expandIcon, {
+    root: slot(
+      getNativeElementProps(as || 'div', {
+        ref,
+        ...props,
+      }),
+      { required: true, elementType: 'div' },
+    ),
+    icon: slot(icon, { elementType: 'div' }),
+    expandIcon: slot(expandIcon, {
       required: true,
       defaultProps: {
         children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
         'aria-hidden': true,
       },
+      elementType: 'span',
     }),
-    button: resolveShorthand<ARIAButtonSlotProps<'a'>>(
+    button: slot<ARIAButtonSlotProps<'a'>>(
       {
         ...useARIAButtonShorthand(button, {
           required: true,
@@ -86,7 +85,7 @@ export const useAccordionHeader_unstable = (
           }
         }),
       },
-      { required: true },
+      { required: true, elementType: 'button' },
     ),
   };
 };

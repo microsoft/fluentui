@@ -2,7 +2,7 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { DataGridBodyState, DataGridBodySlots } from './DataGridBody.types';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { TableRowData, TableRowIdContextProvider } from '@fluentui/react-table';
@@ -12,10 +12,10 @@ import { TableRowIndexContextProvider } from '../../contexts/rowIndexContext';
  * Render the final JSX of DataGridVirtualizedBody
  */
 export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
-  const { slots, slotProps } = getSlotsNext<DataGridBodySlots>(state);
+  assertSlots<DataGridBodySlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
+    <state.root>
       <List
         itemSize={state.itemSize}
         width={state.width}
@@ -32,6 +32,6 @@ export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
           );
         }}
       </List>
-    </slots.root>
+    </state.root>
   );
 };

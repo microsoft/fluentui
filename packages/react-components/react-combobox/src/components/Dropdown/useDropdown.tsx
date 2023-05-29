@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useTimeout } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, slot, useTimeout } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
@@ -108,53 +108,45 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   let triggerSlot: Slot<'button'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
 
-  triggerSlot = resolveShorthand(props.button, {
+  triggerSlot = slot(props.button, {
     required: true,
     defaultProps: {
       type: 'button',
       children: baseState.value || props.placeholder,
       ...triggerNativeProps,
     },
+    elementType: 'button',
   });
-
   triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
-
   listboxSlot =
     baseState.open || baseState.hasFocus
-      ? resolveShorthand(props.listbox, {
+      ? slot(props.listbox, {
           required: true,
-          defaultProps: {
-            children: props.children,
-            style: { width: popupWidth },
-          },
+          defaultProps: { children: props.children, style: { width: popupWidth } },
+          elementType: Listbox,
         })
       : undefined;
-
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
-
   const state: DropdownState = {
-    components: {
-      root: 'div',
-      button: 'button',
-      expandIcon: 'span',
-      listbox: Listbox,
-    },
-    root: resolveShorthand(props.root, {
+    components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
+    root: slot(props.root, {
       required: true,
       defaultProps: {
         'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
         children: props.children,
         ...rootNativeProps,
       },
+      elementType: 'div',
     }),
     button: triggerSlot,
     listbox: listboxSlot,
-    expandIcon: resolveShorthand(props.expandIcon, {
+    expandIcon: slot(props.expandIcon, {
       required: true,
       defaultProps: {
         children: <ChevronDownIcon />,
       },
+      elementType: 'span',
     }),
     placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,

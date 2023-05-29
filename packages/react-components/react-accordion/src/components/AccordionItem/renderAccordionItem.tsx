@@ -3,7 +3,7 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { AccordionItemContext } from './AccordionItemContext';
 import type { AccordionItemState, AccordionItemSlots, AccordionItemContextValues } from './AccordionItem.types';
 
@@ -11,13 +11,13 @@ import type { AccordionItemState, AccordionItemSlots, AccordionItemContextValues
  * Function that renders the final JSX of the component
  */
 export const renderAccordionItem_unstable = (state: AccordionItemState, contextValues: AccordionItemContextValues) => {
-  const { slots, slotProps } = getSlotsNext<AccordionItemSlots>(state);
+  assertSlots<AccordionItemSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
+    <state.root>
       <AccordionItemContext.Provider value={contextValues.accordionItem}>
-        {slotProps.root.children}
+        {state.root.children}
       </AccordionItemContext.Provider>
-    </slots.root>
+    </state.root>
   );
 };

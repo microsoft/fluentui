@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { DividerProps, DividerState } from './Divider.types';
 
 /**
@@ -24,19 +24,23 @@ export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElem
       wrapper: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      role: 'separator',
-      'aria-orientation': vertical ? 'vertical' : 'horizontal',
-      'aria-labelledby': props.children ? dividerId : undefined,
-      ...props,
-      ref,
-    }),
-    wrapper: resolveShorthand(wrapper, {
+    root: slot(
+      getNativeElementProps('div', {
+        role: 'separator',
+        'aria-orientation': vertical ? 'vertical' : 'horizontal',
+        'aria-labelledby': props.children ? dividerId : undefined,
+        ...props,
+        ref,
+      }),
+      { required: true, elementType: 'div' },
+    ),
+    wrapper: slot(wrapper, {
       required: true,
       defaultProps: {
         id: dividerId,
         children: props.children,
       },
+      elementType: 'div',
     }),
   };
 };

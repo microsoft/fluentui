@@ -1,8 +1,11 @@
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
 import * as React from 'react';
 import { useARIAButtonShorthand } from '../../src/button';
 import type { ARIAButtonSlotProps } from '../../src/button';
-import { getSlots } from '@fluentui/react-components';
-import type { ComponentState, Slot } from '@fluentui/react-components';
+import { ComponentState, Slot, assertSlots } from '@fluentui/react-components';
 
 type Slots = {
   root: Slot<'div'>;
@@ -24,11 +27,11 @@ export const Default = (args: DefaultArgs) => {
       children: React.Fragment,
     },
   };
-  const { slots, slotProps } = getSlots<Slots>(state);
+  assertSlots<Slots>(state);
   return (
-    <slots.root {...slotProps.root}>
-      <slots.button {...slotProps.button}>this is a button</slots.button>
-    </slots.root>
+    <state.root>
+      <state.button>this is a button</state.button>
+    </state.root>
   );
 };
 
@@ -47,11 +50,11 @@ export const Anchor = (args: DefaultArgs) => {
     },
     { required: true },
   );
-  const { slots, slotProps } = getSlots<AnchorSlots>({
-    components: { root: 'a' },
+  const state = {
     root: props,
-  });
-  return <slots.root {...slotProps.root}>this is an anchor</slots.root>;
+  };
+  assertSlots<AnchorSlots>(state);
+  return <state.root>this is an anchor</state.root>;
 };
 
 export default {

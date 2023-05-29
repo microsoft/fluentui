@@ -3,7 +3,7 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { PersonaState, PersonaSlots } from './Persona.types';
 
 /**
@@ -11,20 +11,18 @@ import type { PersonaState, PersonaSlots } from './Persona.types';
  */
 export const renderPersona_unstable = (state: PersonaState) => {
   const { presenceOnly, textPosition } = state;
-  const { slots, slotProps } = getSlotsNext<PersonaSlots>(state);
+  assertSlots<PersonaSlots>(state);
 
-  const coin = presenceOnly
-    ? slots.presence && <slots.presence {...slotProps.presence} />
-    : slots.avatar && <slots.avatar {...slotProps.avatar} />;
+  const coin = presenceOnly ? state.presence && <state.presence /> : state.avatar && <state.avatar />;
 
   return (
-    <slots.root {...slotProps.root}>
+    <state.root>
       {(textPosition === 'after' || textPosition === 'below') && coin}
-      {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
-      {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
-      {slots.tertiaryText && <slots.tertiaryText {...slotProps.tertiaryText} />}
-      {slots.quaternaryText && <slots.quaternaryText {...slotProps.quaternaryText} />}
+      {state.primaryText && <state.primaryText />}
+      {state.secondaryText && <state.secondaryText />}
+      {state.tertiaryText && <state.tertiaryText />}
+      {state.quaternaryText && <state.quaternaryText />}
       {textPosition === 'before' && coin}
-    </slots.root>
+    </state.root>
   );
 };

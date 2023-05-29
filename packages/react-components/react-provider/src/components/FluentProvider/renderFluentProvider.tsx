@@ -2,7 +2,7 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { canUseDOM, getSlotsNext } from '@fluentui/react-utilities';
+import { canUseDOM, assertSlots } from '@fluentui/react-utilities';
 import { TextDirectionProvider } from '@griffel/react';
 import {
   OverridesProvider_unstable as OverridesProvider,
@@ -22,7 +22,7 @@ export const renderFluentProvider_unstable = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<FluentProviderSlots>(state);
+  assertSlots<FluentProviderSlots>(state);
 
   // Typescript (vscode) incorrectly references the FluentProviderProps.customStyleHooks_unstable
   // instead of FluentProviderContextValues.customStyleHooks_unstable and thinks it is
@@ -38,7 +38,7 @@ export const renderFluentProvider_unstable = (
             <TooltipVisibilityProvider value={contextValues.tooltip}>
               <TextDirectionProvider dir={contextValues.textDirection}>
                 <OverridesProvider value={contextValues.overrides_unstable}>
-                  <slots.root {...slotProps.root}>
+                  <state.root>
                     {canUseDOM() ? null : (
                       <style
                         // Using dangerous HTML because react can escape characters
@@ -48,8 +48,9 @@ export const renderFluentProvider_unstable = (
                         {...state.serverStyleProps.attributes}
                       />
                     )}
-                    {slotProps.root.children}
-                  </slots.root>
+
+                    {state.root.children}
+                  </state.root>
                 </OverridesProvider>
               </TextDirectionProvider>
             </TooltipVisibilityProvider>

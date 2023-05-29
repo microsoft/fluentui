@@ -7,7 +7,7 @@ import { defaultDatePickerStrings } from './defaults';
 import { Input } from '@fluentui/react-input';
 import {
   mergeCallbacks,
-  resolveShorthand,
+  slot,
   useControllableState,
   useId,
   useMergedRefs,
@@ -354,7 +354,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     : 'outline';
 
   const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
-  const rootShorthand = resolveShorthand(restOfProps, {
+  const rootShorthand = slot(restOfProps, {
     required: true,
     defaultProps: {
       appearance: inputAppearance,
@@ -372,6 +372,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
         ref: rootRef,
       },
     },
+    elementType: Input,
   });
 
   rootShorthand.onChange = mergeCallbacks(rootShorthand.onChange, onInputChange);
@@ -382,7 +383,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
   const popupSurfaceShorthand = open
-    ? resolveShorthand(props.popupSurface, {
+    ? slot(props.popupSurface, {
         required: true,
         defaultProps: {
           'aria-label': 'Calendar',
@@ -392,9 +393,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           ref: popupRef,
           ...modalAttributes,
         },
+        elementType: 'div',
       })
     : undefined;
-
   const { targetDocument } = useFluent();
   useOnClickOutside({
     element: targetDocument,
@@ -402,24 +403,19 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     refs: [triggerWrapperRef, popupRef],
     disabled: !open,
   });
-
   useOnScrollOutside({
     element: targetDocument,
     callback: ev => dismissDatePickerPopup(),
     refs: [triggerWrapperRef, popupRef],
     disabled: !open,
-  });
-
-  // When the popup is opened, focus should go to the calendar.
+  }); // When the popup is opened, focus should go to the calendar.
   // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using a
   // useEffect hook.
   React.useEffect(() => {
     if (open && !props.disabled && calendar.current) {
       calendar.current.focus();
     }
-  }, [disableAutoFocus, open, props.disabled]);
-
-  // When the popup is closed, focus should go back to the input.
+  }, [disableAutoFocus, open, props.disabled]); // When the popup is closed, focus should go back to the input.
   React.useEffect(() => {
     if (!open && !props.disabled) {
       focus();
@@ -428,7 +424,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, props.disabled]);
 
-  const calendarShorthand = resolveShorthand(props.calendar, {
+  const calendarShorthand = slot(props.calendar, {
     required: true,
     defaultProps: {
       allFocusable,
@@ -449,11 +445,10 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       today,
       value: selectedDate || initialPickerDate,
     },
+    elementType: Calendar,
   });
-
   calendarShorthand.onDismiss = mergeCallbacks(calendarShorthand.onDismiss, calendarDismissed);
   calendarShorthand.onSelectDate = mergeCallbacks(calendarShorthand.onSelectDate, calendarDismissed);
-
   React.useImperativeHandle(
     props.componentRef,
     () => ({
@@ -466,17 +461,10 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }),
     [focus, setOpen, setSelectedDate, showDatePickerPopup],
   );
-
   const state: DatePickerState = {
     disabled: !!props.disabled,
     inlinePopup,
-
-    components: {
-      root: Input,
-      calendar: Calendar as React.FC<Partial<CalendarProps>>,
-      popupSurface: 'div',
-    },
-
+    components: { root: Input, calendar: Calendar as React.FC<Partial<CalendarProps>>, popupSurface: 'div' },
     calendar: calendarShorthand,
     root: rootShorthand,
     popupSurface: popupSurfaceShorthand,
