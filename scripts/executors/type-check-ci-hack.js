@@ -10,6 +10,27 @@ main().catch(err => {
   process.exit(1);
 });
 
+async function main() {
+  const { base } = processArgs();
+  const tree = new FsTree(workspaceRoot, false);
+  const affected = getNormalizeAffected(base);
+  /** @type {import('@nrwl/devkit').ProjectGraph<{}>} */
+  const nxGraph = await createProjectGraphAsync();
+
+  const projectsToBuildFirst = Array.from(getProjectsThatNeedTriggerBuildInAdvance({ affected, nxGraph, tree }));
+
+  if (projectsToBuildFirst.length > 0) {
+    console.info(
+      '',
+      `💁: generating .d.ts files first in order to drastically speed up type-check command for v9 packages:\n`,
+      '- ' + projectsToBuildFirst.join('\n - '),
+      '',
+    );
+
+    return execSync(`yarn lage build --to ${projectsToBuildFirst.join(' ')}`);
+  }
+}
+
 function processArgs() {
   const args = yargs
     .option('base', {
@@ -22,14 +43,33 @@ function processArgs() {
   return args;
 }
 
-async function main() {
-  const { base } = processArgs();
+/**
+ * @param {string} base
+ */
+function getNormalizeAffected(base) {
   const affectedSet = getAffectedPackages(base);
+  // noop is a dummy package that lives within packages/fluentui - for legacy lerna workaround within react-northstar
   affectedSet.delete('@fluentui/noop');
-  const affected = Array.from(affectedSet);
-  const tree = new FsTree(workspaceRoot, false);
-  /** @type {import('@nrwl/devkit').ProjectGraph<{}>} */
-  const nxGraph = await createProjectGraphAsync();
+  return Array.from(affectedSet);
+}
+
+/**
+ * @param {import('@nrwl/devkit').ProjectConfiguration} project
+ */
+function isVNextProject(project) {
+  return project.tags?.indexOf('vNext') !== -1;
+}
+
+/**
+ *
+ * @param {{tree: import('@nrwl/devkit').Tree, affected:string[]; nxGraph: import('@nrwl/devkit').ProjectGraph<unknown>}} options
+ */
+function getProjectsThatNeedTriggerBuildInAdvance(options) {
+  const { affected, nxGraph, tree } = options;
+
+  /** @type {Set<string>} */
+  const pkgsToBuild = new Set();
+  const wholeGraphDependencies = nxGraph.dependencies;
 
   const v9SuiteDeps = new Set(
     nxGraph.dependencies['@fluentui/react-components'].map(dep => {
@@ -37,59 +77,40 @@ async function main() {
     }),
   );
 
-  /**
-   *
-   * @param {string[]} affectedPkgs
-   */
-  function handleSpecialPkgDependencies(affectedPkgs) {
-    /** @type {Set<string>} */
-    const pkgsToBuild = new Set();
-    const deps = nxGraph.dependencies;
+  affected.forEach(pkgName => {
+    const project = nxGraph.nodes[pkgName].data;
+    const isVNext = isVNextProject(project);
+    const hasStories = tree.exists(joinPathFragments(project.root, 'stories'));
+    // @ts-ignore - bug in nx types, projectType is part of API
+    const isLibrary = project.projectType === 'library';
+    const isProjectCandidateForPreBuildTrigger = isVNext && hasStories && isLibrary;
 
-    affectedPkgs.forEach(pkgName => {
-      const project = nxGraph.nodes[pkgName].data;
-      const isVNext = project.tags?.indexOf('vNext') !== -1;
-      const hasStories = tree.exists(joinPathFragments(project.root, 'stories'));
-      // @ts-ignore - bug in nx types, projectType is part of API
-      const isLibrary = project.projectType === 'library';
+    if (!isProjectCandidateForPreBuildTrigger) {
+      return;
+    }
 
-      if (!(isVNext && hasStories && isLibrary)) {
+    const projectGraphDependencies = wholeGraphDependencies[pkgName];
+
+    projectGraphDependencies.forEach(value => {
+      const { target } = value;
+      // not interested in 3rd party packages/dependencies
+      if (target.indexOf('npm:') !== -1) {
         return;
       }
 
-      deps[pkgName].forEach(value => {
-        const target = value.target;
-        if (target.indexOf('npm:') !== -1) {
-          return;
-        }
+      const dependantProject = nxGraph.nodes[target].data;
 
-        const projectInner = nxGraph.nodes[target].data;
-        const isVNextInner = projectInner.tags?.indexOf('vNext') !== -1;
+      if (!isVNextProject(dependantProject)) {
+        return;
+      }
+      // if project is already specified as react-components suite dependency --> skip
+      if (v9SuiteDeps.has(target)) {
+        return;
+      }
 
-        if (!isVNextInner) {
-          return;
-        }
-        if (v9SuiteDeps.has(target)) {
-          return;
-        }
-
-        pkgsToBuild.add(target);
-      });
+      pkgsToBuild.add(target);
     });
+  });
 
-    return pkgsToBuild;
-  }
-
-  const packagesToBuildFirst = Array.from(handleSpecialPkgDependencies(affected));
-
-  if (packagesToBuildFirst.length > 0) {
-    console.info(
-      '',
-      `💁: generating .d.ts files first in order to drastically speed up type-check command for v9 packages:\n`,
-      '- ' + packagesToBuildFirst.join('\n - '),
-      '',
-    );
-
-    execSync(`yarn lage build --to ${packagesToBuildFirst.join(' ')}`);
-  }
+  return pkgsToBuild;
 }
