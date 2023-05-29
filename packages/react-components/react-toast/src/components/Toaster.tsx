@@ -6,15 +6,10 @@ import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { useToaster, getPositionStyles, ToasterOptions } from '../state';
 import { Toast } from './Toast';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import { AriaLive, Announce } from '../AriaLive';
 
-const useStyles = makeStyles({
-  container: {
-    position: 'fixed',
-    width: '292px',
-  },
-});
+import { useToasterStyles } from './Toaster.styles';
 
 export type ToasterProps = Partial<ToasterOptions>;
 
@@ -27,7 +22,7 @@ export const Toaster: React.FC<ToasterProps> = props => {
     announceRef.current(message, options);
   }, []);
 
-  const styles = useStyles();
+  const styles = useToasterStyles();
 
   const toastsToRender = getToastsToRender((position, toasts) => {
     return (
