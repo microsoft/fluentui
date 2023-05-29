@@ -41,6 +41,7 @@
     "@fluentui/react-combobox": "^9.3.4",
     "@fluentui/react-dialog": "^9.5.8",
     "@fluentui/react-divider": "^9.2.14",
+    "@fluentui/react-drawer": "9.0.0-beta.0",
     "@fluentui/react-field": "^9.1.5",
     "@fluentui/react-image": "^9.1.11",
     "@fluentui/react-infobutton": "9.0.0-beta.33",
