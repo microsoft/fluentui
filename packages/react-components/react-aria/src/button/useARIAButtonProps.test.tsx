@@ -8,7 +8,7 @@ import { useARIAButtonShorthand } from './useARIAButtonShorthand';
 
 const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
   const { slots, slotProps } = getSlots<{ root: Slot<ARIAButtonSlotProps> }>({
-    components: { root: 'button' },
+    components: { root: props.as ?? 'button' },
     root: useARIAButtonShorthand(props, { required: true }),
   });
   return <slots.root {...slotProps.root} />;

@@ -1,9 +1,12 @@
 export {
+  slot,
+  isSlot,
   getSlots,
   getSlotsNext,
+  assertSlots,
   resolveShorthand,
   isResolvedShorthand,
-  SLOT_RENDER_FUNCTION_SYMBOL,
+  SLOT_COMPONENT_METADATA_SYMBOL,
 } from './compose/index';
 export type {
   ExtractSlotProps,
@@ -19,6 +22,9 @@ export type {
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
+  SlotComponent,
+  SlotComponentMetadata,
+  SlotOptions,
 } from './compose/index';
 
 export {

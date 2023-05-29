@@ -10,6 +10,9 @@ import * as React_2 from 'react';
 // @internal
 export function applyTriggerPropsToChildren<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children'], triggerChildProps: TriggerChildProps): React_2.ReactElement | null;
 
+// @internal
+export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots>;
+
 // @public
 export function canUseDOM(): boolean;
 
@@ -73,7 +76,7 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
-// @public
+// @internal
 export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
@@ -103,6 +106,9 @@ export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | Re
 
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
+
+// @public
+export function isSlot<Props extends {}>(element: unknown): element is SlotComponent<Props>;
 
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
@@ -172,12 +178,40 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
-// @internal
-export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
+// @public
+export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponent<Props> | SlotShorthandValue | undefined, options: {
+    required: true;
+} & SlotOptions<Props>): SlotComponent<Props>;
+
+// @public (undocumented)
+export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null, options?: {
+    required?: boolean;
+} & SlotOptions<Props>): SlotComponent<Props> | undefined;
+
+// @public
+export const SLOT_COMPONENT_METADATA_SYMBOL: unique symbol;
 
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
+};
+
+// @public (undocumented)
+export type SlotComponent<Props extends UnknownSlotProps> = Props & {
+    (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
+    [SLOT_COMPONENT_METADATA_SYMBOL]: Readonly<SlotComponentMetadata<Props>>;
+};
+
+// @public (undocumented)
+export type SlotComponentMetadata<Props extends UnknownSlotProps> = {
+    renderFunction?: SlotRenderFunction<Props>;
+    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+};
+
+// @public (undocumented)
+export type SlotOptions<Props extends UnknownSlotProps> = {
+    elementType?: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    defaultProps?: Partial<Props>;
 };
 
 // @public
