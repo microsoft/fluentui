@@ -155,10 +155,10 @@ export const renderBreadcrumbLink_unstable: (state: BreadcrumbLinkState) => JSX.
 export const truncate: (content: string, maxLength: number) => string;
 
 // @public (undocumented)
-export const truncateLongName: (content: string, maxLength?: number | undefined) => string;
+export const truncateBreadcrumbLongName: (content: string, maxLength?: number | undefined) => string;
 
 // @public (undocumented)
-export const truncateLongTooltip: (content: string, maxLength?: number | undefined) => string;
+export const truncateBreadcrumLongTooltip: (content: string, maxLength?: number | undefined) => string;
 
 // @public
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;

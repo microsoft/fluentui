@@ -6,8 +6,8 @@ import {
   BreadcrumbProps,
   partitionBreadcrumbItems,
   BreadcrumbButton,
-  truncateLongName,
-  truncateLongTooltip,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
 } from '@fluentui/react-breadcrumb';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
 import { ArrowRight16Filled, MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
@@ -50,8 +50,8 @@ function renderItem(item: Item, size: BreadcrumbProps['size']) {
   const isLastItem = items.length - 1 === item.key;
   return (
     <React.Fragment key={`${size}-item-${item.key}`}>
-      <Tooltip withArrow content={truncateLongTooltip(item.value)} relationship="label">
-        <BreadcrumbItem current={isLastItem}>{truncateLongName(item.value)}</BreadcrumbItem>
+      <Tooltip withArrow content={truncateBreadcrumLongTooltip(item.value)} relationship="label">
+        <BreadcrumbItem current={isLastItem}>{truncateBreadcrumbLongName(item.value)}</BreadcrumbItem>
       </Tooltip>
       {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>

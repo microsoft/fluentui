@@ -5,12 +5,12 @@ export const truncate = (content: string, maxLength: number): string => {
   return content.length > maxLength ? content.trim().slice(0, maxLength).concat('...') : content;
 };
 
-export const truncateLongName = (content: string, maxLength?: number): string => {
+export const truncateBreadcrumbLongName = (content: string, maxLength?: number): string => {
   const truncateLength = maxLength || MAX_NAME_LENGTH;
   return truncate(content, truncateLength);
 };
 
-export const truncateLongTooltip = (content: string, maxLength?: number): string => {
+export const truncateBreadcrumLongTooltip = (content: string, maxLength?: number): string => {
   const truncateLength = maxLength || MAX_TOOLTIP_LENGTH;
   return truncate(content, truncateLength);
 };
