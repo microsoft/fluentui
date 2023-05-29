@@ -3,7 +3,6 @@ import {
   formatFiles,
   updateJson,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   joinPathFragments,
   readJson,
   stripIndents,
@@ -15,6 +14,7 @@ import {
   offsetFromRoot,
   applyChangesToString,
   ChangeType,
+  readNxJson,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -577,7 +577,7 @@ function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
   return tree.exists(options.paths.conformanceSetup);
 }
 
-function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+function updateNxProject(tree: Tree, options: NormalizedSchema) {
   const packageType = getPackageType(tree, options);
   const tags = {
     web: 'platform:web',
@@ -1060,8 +1060,8 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const publishedNpmScope = `@${workspaceConfig.npmScope}`;
+  const workspaceConfig = readNxJson(tree);
+  const publishedNpmScope = `@${workspaceConfig?.npmScope}`;
   const allProjects = getProjects(tree);
 
   const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);

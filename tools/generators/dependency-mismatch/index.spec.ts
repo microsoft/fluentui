@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, addProjectConfiguration, serializeJson, readWorkspaceConfiguration, readJson } from '@nrwl/devkit';
 
 import generator from './index';
@@ -9,7 +9,7 @@ describe('dependency-mismatch generator', () => {
   let workspaceNpmScope: string;
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyV1Workspace();
+    appTree = createTreeWithEmptyWorkspace();
     workspaceNpmScope = readWorkspaceConfiguration(appTree).npmScope as string;
   });
 
