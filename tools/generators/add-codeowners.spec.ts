@@ -1,5 +1,5 @@
 import { Tree, addProjectConfiguration, stripIndents } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import { addCodeowner } from './add-codeowners';
 import { setupCodeowners } from '../utils-testing';
 import { workspacePaths } from '../utils';
@@ -8,7 +8,7 @@ describe(`#addCodeowner`, () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
 
     addProjectConfiguration(tree, '@proj/react-one', {
       root: '/packages/react-one',

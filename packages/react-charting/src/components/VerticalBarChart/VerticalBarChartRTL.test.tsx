@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { act, render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
 import { chartPoints } from './VerticalBarChart.test';
