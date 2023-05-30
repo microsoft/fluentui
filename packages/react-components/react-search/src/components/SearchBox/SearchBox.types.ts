@@ -9,10 +9,10 @@ export type SearchBoxSlots = {
   contentBefore?: Slot<'span'>;
 
   // Last element in the input, within the input border
-  primaryContentAfter?: Slot<'span'>;
+  contentAfter?: Slot<'span'>;
 
   // Element after the input text, within the input border
-  secondaryContentAfter?: Slot<'span'>;
+  contentAfterSecondary?: Slot<'span'>;
 };
 
 /**

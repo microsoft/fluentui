@@ -19,11 +19,19 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       // TODO add each slot's element type or component
       root: Input,
       contentBefore: 'span',
-      primaryContentAfter: 'span',
-      secondaryContentAfter: 'span',
+      contentAfter: 'span',
+      contentAfterSecondary: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: resolveShorthand(props.root),
+
+    // TODO add appropriate slots
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        type: 'search',
+      },
+    }),
+    contentBefore: resolveShorthand(props.contentBefore),
+    contentAfter: resolveShorthand(props.contentAfter),
+    contentAfterSecondary: resolveShorthand(props.contentAfterSecondary),
   };
 };
