@@ -16,7 +16,7 @@ export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
+  const { appearance, iconPosition, size, focusMode } = useBreadcrumbContext_unstable();
   const { current = false, icon, ...rest } = props;
 
   return {
@@ -26,6 +26,7 @@ export const useBreadcrumbButton_unstable = (
         appearance: props.appearance || appearance,
         iconPosition: props.iconPosition || iconPosition,
         icon,
+        tabIndex: focusMode === 'off' ? -1 : undefined,
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
       },
       ref,
