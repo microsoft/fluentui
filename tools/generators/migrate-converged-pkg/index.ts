@@ -143,7 +143,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
-  updateNxWorkspace(tree, options);
+  updateNxProject(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
 
@@ -398,6 +398,7 @@ const templates = {
     .git*
     .prettierignore
     .swcrc
+    project.json
 
     # exclude gitignore patterns explicitly
     !lib

@@ -1058,6 +1058,7 @@ describe('migrate-converged-pkg generator', () => {
         .git*
         .prettierignore
         .swcrc
+        project.json
 
         # exclude gitignore patterns explicitly
         !lib
