@@ -6,7 +6,7 @@ export type TagButtonContextValues = TagContextValues;
 export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
   root: NonNullable<Slot<'div'>>;
   dismissButton?: Slot<'button'>;
-  content: Slot<'button'>;
+  content: NonNullable<Slot<'button'>>;
 };
 
 /**
