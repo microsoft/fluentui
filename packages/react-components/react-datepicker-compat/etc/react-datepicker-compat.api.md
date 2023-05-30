@@ -6,14 +6,7 @@
 
 /// <reference types="react" />
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Input } from '@fluentui/react-input';
-import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -175,7 +168,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     positioning?: PositioningProps;
     placeholder?: string;
     today?: Date;
-    value?: Date;
+    value?: Date | null;
     formatDate?: (date?: Date) => string;
     parseDateFromString?: (dateStr: string) => Date | null;
     firstDayOfWeek?: DayOfWeek;
