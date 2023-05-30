@@ -14,7 +14,7 @@ import {
   lineHeightBase300,
   lineHeightBase500,
   shadow64,
-  spacingHorizontalL,
+  spacingHorizontalS,
   spacingHorizontalXXL,
   spacingVerticalL,
   spacingVerticalS,
@@ -70,7 +70,7 @@ export const styles = css`
     padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }
 
-  .panel {
+  .drawer {
     display: grid;
     grid-template-rows: 64px auto 72px;
     display: grid;
@@ -93,5 +93,12 @@ export const styles = css`
     transition-duration: ${durationNormal};
     transition-timing-function: ${curveAccelerateMid};
     transition-property: width;
+  }
+
+  [slot='actions'],
+  ::slotted([slot='actions']) {
+    display: flex;
+    flex-direction: row;
+    column-gap: ${spacingHorizontalS};
   }
 `;

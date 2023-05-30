@@ -21,6 +21,7 @@ const dismissed16Regular = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
+
 const storyTemplate = html<DrawerStoryArgs>`
   <div>
     <style>
@@ -29,7 +30,7 @@ const storyTemplate = html<DrawerStoryArgs>`
         padding: 0;
       }
     </style>
-    <div style="height: 38em; transform: scale(1)">
+    <div style="height: 37em; transform: scale(1)">
       <fluent-drawer id="drawer" open="${x => x.open}" position="${x => x.position}">
         <div slot="header">Header</div>
         <div slot="close">${dismissed16Regular}</div>

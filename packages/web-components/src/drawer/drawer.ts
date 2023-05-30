@@ -12,10 +12,6 @@ export interface DrawerOptions {
  * @public
  */
 export class Drawer extends FASTElement {
-  constructor() {
-    super();
-  }
-
   public drawer?: HTMLElement;
 
   protected openChanged(): void {

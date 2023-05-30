@@ -9,17 +9,17 @@ import type { Drawer } from './drawer.js';
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
     <template ?open="${x => x.open}" position="${x => x.position}" aria-disabled="${x => x.ariaDisabled}">
-      <div class="panel" part="panel">
-        <div class="header">
+      <div class="drawer" part="drawer">
+        <div class="header" part="header">
           <slot name="header"></slot>
-          <div class="close" @click="${(x: { dismiss: () => any }) => x.dismiss()}">
+          <div class="close" part="close" @click="${(x: { dismiss: () => any }) => x.dismiss()}">
             <slot name="close"></slot>
           </div>
         </div>
-        <div class="content">
+        <div class="content" part="content">
           <slot></slot>
         </div>
-        <div class="actions">
+        <div class="actions" part="actions">
           <slot name="actions"></slot>
         </div>
       </div>
