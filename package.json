@@ -126,7 +126,6 @@
     "@storybook/manager-webpack5": "6.5.15",
     "@storybook/react": "6.5.15",
     "@storybook/theming": "6.5.15",
-    "@swc/cli": "0.1.59",
     "@swc/core": "1.3.30",
     "@swc/helpers": "0.4.14",
     "@testing-library/dom": "8.11.3",
