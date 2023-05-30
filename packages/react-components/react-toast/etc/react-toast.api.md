@@ -61,7 +61,7 @@ export type ToasterSlots = {
 };
 
 // @public
-export type ToasterState = ComponentState<ToasterSlots> & Pick<AriaLiveProps, 'announceRef'> & Pick<Required<ToasterProps>, 'announce'> & {
+export type ToasterState = ComponentState<ToasterSlots & ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<Required<ToasterProps>, 'announce'> & {
     toastsToRender: Map<ToastPosition, Toast[]>;
     isToastVisible: (toastId: ToastId) => boolean;
     offset: ToasterOptions['offset'] | undefined;

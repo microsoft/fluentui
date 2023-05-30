@@ -10,6 +10,13 @@ export type ToasterSlots = {
   root: Slot<'div'>;
 };
 
+export type ToasterSlotsInternal = {
+  'bottom-right': Slot<'div'>;
+  'bottom-left': Slot<'div'>;
+  'top-right': Slot<'div'>;
+  'top-left': Slot<'div'>;
+};
+
 /**
  * Toaster Props
  */
@@ -24,7 +31,7 @@ export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> &
 /**
  * State used in rendering Toaster
  */
-export type ToasterState = ComponentState<ToasterSlots> &
+export type ToasterState = ComponentState<ToasterSlots & ToasterSlotsInternal> &
   Pick<AriaLiveProps, 'announceRef'> &
   Pick<Required<ToasterProps>, 'announce'> & {
     toastsToRender: Map<ToastPosition, Toast[]>;
