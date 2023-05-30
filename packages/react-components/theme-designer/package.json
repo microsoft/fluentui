@@ -39,7 +39,7 @@
     "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.1",
-    "@griffel/react": "^1.5.2",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14",
     "@types/dedent": "0.7.0",
     "codesandbox-import-utils": "2.2.3"

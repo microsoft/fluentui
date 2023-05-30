@@ -41,7 +41,7 @@
     "@fluentui/react-shared-contexts": "^9.5.0",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.1",
-    "@griffel/react": "^1.5.2",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
