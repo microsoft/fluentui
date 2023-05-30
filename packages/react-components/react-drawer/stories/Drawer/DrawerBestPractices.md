@@ -1,11 +1,3 @@
 ## Best practices
 
-TODO: To be added by a future contribution, when all the implementation of sub components is finished.
-
-### Do
-
-TODO
-
-### Don't
-
-TODO
+For a Overlay drawer, please refer to the Dialog component to understand the accessibility recommendations and implications.
