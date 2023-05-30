@@ -88,7 +88,13 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
  * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
-  return mergeCssSets(styleSets as any, getStyleOptions());
+  const last = styleSets[styleSets.length - 1];
+  const { stylesheetKey } = last;
+  if (stylesheetKey) {
+    styleSets.pop();
+  }
+
+  return mergeCssSets(styleSets as any, getStyleOptions(), stylesheetKey);
 }
 
 /**
@@ -103,6 +109,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
 export function mergeCssSets<TStyleSet>(
   styleSets: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
+  stylesheetKey?: string,
 ): IProcessedStyleSet<TStyleSet>;
 
 /**
@@ -117,6 +124,7 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets<TStyleSet1, TStyleSet2>(
   styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined],
   options?: IStyleOptions,
+  stylesheetKey?: string,
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 /**
@@ -135,6 +143,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
     TStyleSet3 | false | null | undefined,
   ],
   options?: IStyleOptions,
+  stylesheetKey?: string,
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 /**
@@ -154,6 +163,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
     TStyleSet4 | false | null | undefined,
   ],
   options?: IStyleOptions,
+  stylesheetKey?: string,
 ): IProcessedStyleSet<
   ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>
 >;
@@ -170,6 +180,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
 export function mergeCssSets<TStyleSet>(
   styleSet: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
+  stylesheetKey?: string,
 ): IProcessedStyleSet<TStyleSet>;
 
 /**
@@ -184,6 +195,7 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets(
   styleSets: Array<IStyleSet | undefined | false | null>,
   options?: IStyleOptions,
+  stylesheetKey?: string,
 ): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
@@ -206,10 +218,10 @@ export function mergeCssSets(
 
       const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
 
-      const { classes, objects } = extractStyleParts(styles);
+      const { classes, objects } = extractStyleParts(stylesheetKey, styles);
 
       if (objects?.length) {
-        const registration = styleToRegistration(options || {}, { displayName: styleSetArea }, objects);
+        const registration = styleToRegistration(stylesheetKey, options || {}, { displayName: styleSetArea }, objects);
 
         if (registration) {
           registrations.push(registration);
@@ -225,7 +237,7 @@ export function mergeCssSets(
 
   for (const registration of registrations) {
     if (registration) {
-      applyRegistration(registration, options?.specificityMultiplier);
+      applyRegistration(registration, options?.specificityMultiplier, stylesheetKey);
     }
   }
 

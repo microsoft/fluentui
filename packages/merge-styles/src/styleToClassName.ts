@@ -243,12 +243,16 @@ export interface IRegistration {
   rulesToInsert: string[];
 }
 
-export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
+export function styleToRegistration(
+  stylesheetKey: string,
+  options: IStyleOptions,
+  ...args: IStyle[]
+): IRegistration | undefined {
   const rules: IRuleSet = extractRules(args);
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance();
+    const stylesheet = Stylesheet.getInstance(stylesheetKey ?? '__global__');
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
@@ -277,8 +281,12 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
  * @param specificityMultiplier Number of times classname selector is repeated in the css rule.
  * This is to increase css specificity in case it's needed. Default to 1.
  */
-export function applyRegistration(registration: IRegistration, specificityMultiplier: number = 1): void {
-  const stylesheet = Stylesheet.getInstance();
+export function applyRegistration(
+  registration: IRegistration,
+  specificityMultiplier: number = 1,
+  stylesheetKey: string = '__global__',
+): void {
+  const stylesheet = Stylesheet.getInstance(stylesheetKey);
   const { className, key, args, rulesToInsert } = registration;
 
   if (rulesToInsert) {

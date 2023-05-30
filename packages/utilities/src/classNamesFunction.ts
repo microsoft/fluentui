@@ -117,6 +117,9 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
           { rtl: !!rtl, specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined },
+          // eslint-disable-next-line
+          // @ts-ignore
+          styleFunctionOrObject.__stylesheetKey__,
         );
       }
 

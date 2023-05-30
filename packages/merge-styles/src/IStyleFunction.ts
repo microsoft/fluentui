@@ -7,6 +7,7 @@ import { DeepPartial } from './DeepPartial';
  */
 export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TStylesProps,
+  __stylesheetKey__?: string,
 ) => DeepPartial<TStyleSet>;
 
 /**

@@ -1014,6 +1014,11 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 // @public
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
+// Warning: (ae-forgotten-export) The symbol "MergeStylesProviderProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MergeStylesProvider_unstable: React_2.FC<MergeStylesProviderProps>;
+
 // @public
 export function modalize(target: HTMLElement): () => void;
 
@@ -1262,6 +1267,9 @@ export const trProperties: Record<string, number>;
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export const useAdoptedStylesheet_unstable: (stylesheetKey: string) => void;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;

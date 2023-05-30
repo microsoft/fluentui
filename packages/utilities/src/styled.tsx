@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
+import { useAdoptedStylesheet_unstable } from './shadowDom/MergeStylesContext/MergeStylesContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
@@ -88,6 +89,8 @@ export function styled<
 
   const { scope, fields = DefaultFields } = customizable;
 
+  const stylesheetKey = scope || '__global__';
+
   const Wrapped = React.forwardRef((props: TComponentProps, forwardedRef: React.Ref<TRef>) => {
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
 
@@ -117,7 +120,12 @@ export function styled<
         !customizedStyles && !propStyles;
 
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
+      // eslint-disable-next-line
+      // @ts-ignore
+      styles.current.__stylesheetKey__ = stylesheetKey;
     }
+
+    useAdoptedStylesheet_unstable(stylesheetKey);
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });

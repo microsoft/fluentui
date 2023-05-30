@@ -30,20 +30,20 @@ export type __MapToFunctionType<T> = Extract<T, Function> extends never
  */
 export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: any }> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+  [P in keyof Omit<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
-};
+} & IStylesheetKey;
 
 /**
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
  */
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+  [P in keyof Omit<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
-};
+} & IStylesheetKey;
 
 /**
  * A processed style set is one which the set of styles associated with each area has been converted
@@ -51,11 +51,18 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
+  [P in keyof Omit<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: string;
 } & {
   subComponentStyles: {
     [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<
       TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
     >;
   };
+} & IStylesheetKey;
+
+/**
+ * NOTE: This API is unstable and subject to breaking change or removal at any time.
+ */
+export type IStylesheetKey = {
+  __stylesheetKey__?: string;
 };

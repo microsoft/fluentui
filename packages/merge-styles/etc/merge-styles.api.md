@@ -33,17 +33,39 @@ export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
+// @public (undocumented)
+export class EventMap<K, V> {
+    constructor();
+    // (undocumented)
+    get(key: K): V | undefined;
+    // (undocumented)
+    has(key: K): boolean;
+    // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    on(type: string, callback: EventHandler): void;
+    // (undocumented)
+    raise(type: string, data: {
+        key: K;
+        sheet: V;
+    }): void;
+    // (undocumented)
+    set(key: K, value: V): void;
+}
+
 // @public
 export function fontFace(font: IFontFace): void;
 
+// Warning: (ae-forgotten-export) The symbol "IStylesheetKey" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
     };
-};
+} & IStylesheetKey;
 
 // @public
 export interface ICSPSettings {
@@ -75,7 +97,7 @@ export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
-    constructibleStylesheet: 3;
+    unstable_constructibleStylesheet: 3;
 };
 
 // @public (undocumented)
@@ -83,12 +105,12 @@ export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: string;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: string;
 } & {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
     };
-};
+} & IStylesheetKey;
 
 // @public
 export interface IRawFontStyle {
@@ -426,7 +448,7 @@ export interface IStyleBaseArray extends Array<IStyle> {
 }
 
 // @public
-export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => DeepPartial<TStyleSet>;
+export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps, __stylesheetKey__?: string) => DeepPartial<TStyleSet>;
 
 // @public
 export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | DeepPartial<TStyleSet>;
@@ -435,12 +457,12 @@ export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TSt
 export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
     [key: string]: any;
 }> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
-};
+} & IStylesheetKey;
 
 // @public
 export interface IStyleSheetConfig {
@@ -462,20 +484,20 @@ export function keyframes(timeline: IKeyframes): string;
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions): string;
+export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions, stylesheetKey?: string): string;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
 TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined
-], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
@@ -483,10 +505,10 @@ TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined,
 TStyleSet4 | false | null | undefined
-], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
@@ -528,7 +550,7 @@ export class Stylesheet {
     getClassNameCache(): {
         [key: string]: string;
     };
-    static getInstance(): Stylesheet;
+    static getInstance(stylesheetKey?: string): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;

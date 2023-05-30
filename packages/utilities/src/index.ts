@@ -235,3 +235,8 @@ import './version';
 
 // eslint-disable-next-line deprecation/deprecation
 export type { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
+
+export {
+  MergeStylesProvider_unstable,
+  useAdoptedStylesheet_unstable,
+} from './shadowDom/MergeStylesContext/MergeStylesContext';

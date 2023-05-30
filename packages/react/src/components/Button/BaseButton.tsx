@@ -172,6 +172,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
           checked!,
           !menuHidden,
           this.props.split,
+          styles?.__stylesheetKey__,
         );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;

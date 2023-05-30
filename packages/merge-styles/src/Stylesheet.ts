@@ -18,8 +18,11 @@ export const InjectionMode = {
 
   /**
    * Inserts rules into constructible stylesheets.
+   * NOTE: This API is unstable and subject to change or removal without notice.
+   * Depend on it at your own risk.
    */
-  constructibleStylesheet: 3 as 3,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_constructibleStylesheet: 3 as 3,
 };
 
 export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
@@ -93,6 +96,9 @@ export interface ISerializedStylesheet {
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
+
+const ADOPTED_STYLESHEETS = '__mergeStylesAdoptedStyleSheets__';
+
 /**
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
  * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
@@ -101,12 +107,71 @@ const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navi
 
 const SUPPORTS_CONSTRUCTIBLE_STYLESHEETS = 'CSSStyleSheet' in window;
 
+// export type EventMap<K, V> = Map<K, V> & {
+//   raise: (type: string, data: { key: K; sheet: V }) => void;
+//   on: (type: string, callback: (data: { key: K; sheet: V }) => void) => void;
+//   off: (type: string) => void;
+// }
+
+export type EventArgs = { key: string; sheet: Stylesheet };
+export type EventHandler = (args: EventArgs) => void;
+
+export class EventMap<K, V> {
+  private _events: Map<string, EventHandler[]>;
+  private _self: Map<K, V>;
+
+  constructor() {
+    this._self = new Map<K, V>();
+    this._events = new Map<string, EventHandler[]>();
+  }
+
+  public get(key: K) {
+    return this._self.get(key);
+  }
+
+  public set(key: K, value: V) {
+    this._self.set(key, value);
+  }
+
+  public has(key: K) {
+    return this._self.has(key);
+  }
+
+  public raise(type: string, data: { key: K; sheet: V }) {
+    const handlers = this._events.get(type);
+    if (!handlers) {
+      return;
+    }
+
+    for (const handler of handlers) {
+      // eslint-disable-next-line
+      // @ts-ignore
+      handler?.(data as EventArgs);
+    }
+  }
+
+  public on(type: string, callback: EventHandler) {
+    const handlers = this._events.get(type);
+    if (!handlers) {
+      this._events.set(type, [callback]);
+    } else {
+      handlers.push(callback);
+    }
+  }
+}
+
+export type AdoptableStylesheet = {
+  fluentSheet: Stylesheet;
+  adoptedSheet: CSSStyleSheet;
+};
+
 let _global: (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
   FabricConfig?: {
     mergeStyles?: IStyleSheetConfig;
     serializedStylesheet?: ISerializedStylesheet;
   };
+  [ADOPTED_STYLESHEETS]?: EventMap<string, Stylesheet>;
 } = {};
 
 // Grab window.
@@ -133,6 +198,7 @@ export class Stylesheet {
   private _styleElement?: HTMLStyleElement;
 
   private _constructibleSheet?: CSSStyleSheet;
+  private _stylesheetKey?: string;
 
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
@@ -146,24 +212,38 @@ export class Stylesheet {
   /**
    * Gets the singleton instance.
    */
-  public static getInstance(): Stylesheet {
-    _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
+  public static getInstance(stylesheetKey?: string): Stylesheet {
+    if (stylesheetKey) {
+      _stylesheet = _global[ADOPTED_STYLESHEETS]?.get(stylesheetKey);
+    } else {
+      _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
+    }
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       const fabricConfig = _global?.FabricConfig || {};
 
-      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
+      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet, stylesheetKey);
       _stylesheet = stylesheet;
-      _global[STYLESHEET_SETTING] = stylesheet;
+      if (stylesheetKey) {
+        if (!_global[ADOPTED_STYLESHEETS]) {
+          _global[ADOPTED_STYLESHEETS] = new EventMap();
+        }
+        _global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
+        const css = _stylesheet._getConstructibleStylesheet();
+        css.__yo__ = stylesheetKey;
+        _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
+      } else {
+        _global[STYLESHEET_SETTING] = stylesheet;
+      }
     }
 
     return _stylesheet;
   }
 
-  constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet) {
+  constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string) {
     // If there is no document we won't have an element to inject into.
     // const defaultInjectionMode = typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode;
-    const defaultInjectionMode = InjectionMode.constructibleStylesheet;
+    const defaultInjectionMode = InjectionMode.unstable_constructibleStylesheet;
     this._config = {
       injectionMode: defaultInjectionMode,
       defaultPrefix: 'css',
@@ -172,7 +252,10 @@ export class Stylesheet {
       ...config,
     };
 
-    if (!SUPPORTS_CONSTRUCTIBLE_STYLESHEETS && this._config.injectionMode === InjectionMode.constructibleStylesheet) {
+    if (
+      !SUPPORTS_CONSTRUCTIBLE_STYLESHEETS &&
+      this._config.injectionMode === InjectionMode.unstable_constructibleStylesheet
+    ) {
       this._config.injectionMode = defaultInjectionMode;
     }
 
@@ -181,6 +264,12 @@ export class Stylesheet {
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
     this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
     this._rules = serializedStylesheet?.rules ?? this._rules;
+
+    this._stylesheetKey = stylesheetKey;
+  }
+
+  public getAdoptableStyleSheet(): CSSStyleSheet | undefined {
+    return this._constructibleSheet;
   }
 
   /**
@@ -301,7 +390,7 @@ export class Stylesheet {
   public insertRule(rule: string, preserve?: boolean): void {
     const { injectionMode } = this._config;
     const element =
-      injectionMode === InjectionMode.constructibleStylesheet
+      injectionMode === InjectionMode.unstable_constructibleStylesheet
         ? this._getConstructibleStylesheet()
         : injectionMode !== InjectionMode.none
         ? this._getStyleElement()
@@ -329,7 +418,7 @@ export class Stylesheet {
           (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
           break;
 
-        case InjectionMode.constructibleStylesheet:
+        case InjectionMode.unstable_constructibleStylesheet:
           try {
             (element as CSSStyleSheet).insertRule(rule, (element as CSSStyleSheet).cssRules.length);
           } catch (e) {
@@ -429,6 +518,7 @@ export class Stylesheet {
     if (!this._constructibleSheet) {
       this._constructibleSheet = this._createConstructibleStylesheet();
 
+      // _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: this._stylesheetKey!, sheet: this });
       // Reset the style element on the next frame.
       window.requestAnimationFrame(() => {
         this._styleElement = undefined;
@@ -443,7 +533,7 @@ export class Stylesheet {
 
     // eslint-disable-next-line
     // @ts-ignore this exists
-    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+    // document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
 
     return sheet;
   }
