@@ -2,6 +2,21 @@
   "name": "@fluentui/common-styles",
   "entries": [
     {
+      "date": "Tue, 30 May 2023 07:36:09 GMT",
+      "tag": "@fluentui/common-styles_v1.2.28",
+      "version": "1.2.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/common-styles",
+            "comment": "Bump @fluentui/style-utilities to v8.9.12",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 May 2023 07:37:02 GMT",
       "tag": "@fluentui/common-styles_v1.2.27",
       "version": "1.2.27",
