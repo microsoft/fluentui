@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update yarn.lock",
+  "packageName": "@fluentui/react-drawer",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "none"
+}
