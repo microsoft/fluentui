@@ -61,6 +61,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
       disabled,
       type: 'button',
       children: <DismissIcon />,
+      role,
     },
   });
 
@@ -85,7 +86,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
 
     root: getNativeElementProps('div', {
       ref,
-      role,
+      role: 'none',
       ...props,
       id,
     }),
@@ -95,6 +96,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
       defaultProps: {
         disabled,
         type: 'button',
+        role,
       },
     }),
     media: resolveShorthand(props.media),

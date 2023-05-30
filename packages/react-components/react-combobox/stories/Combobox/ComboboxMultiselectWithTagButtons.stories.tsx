@@ -93,14 +93,14 @@ export const MultiselectWithTagButtons = (props: Partial<ComboboxProps>) => {
                 onClick: () => {
                   toggleHilightedTag(option);
                 },
+                'aria-selected': hilightedTagValues.includes(option) ? 'true' : 'false',
               }}
               className={hilightedTagValues.includes(option) ? styles.hilightedTag : undefined}
-              aria-selected={hilightedTagValues.includes(option) ? 'true' : 'false'}
               dismissButton={{
                 'aria-label':
                   hilightedTagValues.length && hilightedTagValues.includes(option)
-                    ? 'remove selection'
-                    : `remove ${option}`,
+                    ? 'selection remove'
+                    : `${option}, remove`,
               }}
             >
               {option}
