@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "change theme provider as prop docs to better define valid values",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
