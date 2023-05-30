@@ -7,18 +7,22 @@ import { Scenario } from './utils';
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
 import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
 
-const regexes = {
-  onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
-  startsAndEndsWithLetter:
-    /^(([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ][A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])|[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/,
-  noWhitespace: /^\S*$/,
-  hasNumber: /^\S*[0-9]\S*$/,
-  hasLowercaseLetter: /^\S*[a-z]\S*$/,
-  hasUppercaseLetter: /^\S*[A-Z]\S*$/,
-  hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
-  validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
-  validEmail:
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+const validations = {
+  onlyNameChars: (value: string) => /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/.test(value),
+  startsAndEndsWithLetter: (value: string) =>
+    /^(([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ].*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])|[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/.test(
+      value,
+    ),
+  noWhitespace: (value: string) => /^\S*$/.test(value),
+  hasNumber: (value: string) => /^\S*[0-9]\S*$/.test(value),
+  hasLowercaseLetter: (value: string) => /^\S*[a-z]\S*$/.test(value),
+  hasUppercaseLetter: (value: string) => /^\S*[A-Z]\S*$/.test(value),
+  hasSpecialChar: (value: string) => /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/.test(value),
+  validDate: (value: string) => /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/.test(value),
+  validEmail: (value: string) =>
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+      value,
+    ),
 };
 
 interface FormInputs {
@@ -194,8 +198,8 @@ const RegistrationFormInputsAccessibility = () => {
               minLength: 2,
               maxLength: 50,
               validate: {
-                onlyNameChars: value => regexes.onlyNameChars.test(value),
-                startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                onlyNameChars: value => validations.onlyNameChars(value),
+                startsAndEndsWithLetter: value => validations.startsAndEndsWithLetter(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('fullName');
@@ -235,8 +239,8 @@ const RegistrationFormInputsAccessibility = () => {
               minLength: 2,
               maxLength: 20,
               validate: {
-                onlyNameChars: value => regexes.onlyNameChars.test(value),
-                startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                onlyNameChars: value => validations.onlyNameChars(value),
+                startsAndEndsWithLetter: value => validations.startsAndEndsWithLetter(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('nickname');
@@ -279,11 +283,11 @@ const RegistrationFormInputsAccessibility = () => {
               minLength: 8,
               maxLength: 20,
               validate: {
-                hasLowercaseLetter: value => regexes.hasLowercaseLetter.test(value),
-                hasUppercaseLetter: value => regexes.hasUppercaseLetter.test(value),
-                hasNumber: value => regexes.hasNumber.test(value),
-                hasSpecialChar: value => regexes.hasSpecialChar.test(value),
-                noWhitespace: value => regexes.noWhitespace.test(value),
+                hasLowercaseLetter: value => validations.hasLowercaseLetter(value),
+                hasUppercaseLetter: value => validations.hasUppercaseLetter(value),
+                hasNumber: value => validations.hasNumber(value),
+                hasSpecialChar: value => validations.hasSpecialChar(value),
+                noWhitespace: value => validations.noWhitespace(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('password');
@@ -340,7 +344,7 @@ const RegistrationFormInputsAccessibility = () => {
             rules={{
               required: true,
               validate: {
-                validDate: value => regexes.validDate.test(value),
+                validDate: value => validations.validDate(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('birthDate');
@@ -382,7 +386,7 @@ const RegistrationFormInputsAccessibility = () => {
             rules={{
               required: isSendNewsletter,
               validate: {
-                validEmail: value => !isSendNewsletter || regexes.validEmail.test(value),
+                validEmail: value => !isSendNewsletter || validations.validEmail(value),
                 always: () => {
                   if (!formState.isSubmitting) {
                     formValidation.onFieldValidated('email');
