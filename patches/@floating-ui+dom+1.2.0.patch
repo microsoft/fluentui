@@ -1,0 +1,22 @@
+diff --git a/node_modules/@floating-ui/dom/index.d.ts b/node_modules/@floating-ui/dom/index.d.ts
+index ca0d3a7..9c3edb1 100644
+--- a/node_modules/@floating-ui/dom/index.d.ts
++++ b/node_modules/@floating-ui/dom/index.d.ts
+@@ -1 +1,4 @@
+ export * from './src/types';
++
++declare const getRectRelativeToOffsetParent: any;
++export { getRectRelativeToOffsetParent };
+diff --git a/node_modules/@floating-ui/dom/package.json b/node_modules/@floating-ui/dom/package.json
+index 1f23e45..33e3d7d 100644
+--- a/node_modules/@floating-ui/dom/package.json
++++ b/node_modules/@floating-ui/dom/package.json
+@@ -22,7 +22,7 @@
+       "import": {
+         "browser": {
+           "development": "./dist/floating-ui.dom.browser.mjs",
+-          "default": "./dist/floating-ui.dom.browser.min.mjs"
++          "default": "./dist/floating-ui.dom.browser.mjs"
+         },
+         "default": "./dist/floating-ui.dom.mjs"
+       },

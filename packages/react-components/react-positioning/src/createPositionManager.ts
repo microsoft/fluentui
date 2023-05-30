@@ -1,8 +1,83 @@
-import { computePosition } from '@floating-ui/dom';
+import { computePosition, platform, getRectRelativeToOffsetParent } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
+import { isHTMLElement } from '@fluentui/react-utilities';
+
+// import { DATA_POSITIONING_PLACEMENT, DATA_POSITIONING_STRATEGY } from './constants';
 import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates, getScrollParent } from './utils';
-import { isHTMLElement } from '@fluentui/react-utilities';
+// const i = 0;
+const modifiedPlatform: typeof platform = {
+  ...platform,
+
+  /**
+   * Heads up!
+   *
+   * When the container is first resolved, set position `fixed` to avoid scroll jumps. Without this scroll jumps can
+   * occur when the element is rendered initially and receives focus.
+   */
+  // getOffsetParent(_element, polyfill) {
+  //   const element = _element as HTMLElement;
+  //
+  //   const isPositioned = element.hasAttribute(DATA_POSITIONING_PLACEMENT);
+  //   const strategy = element.getAttribute(DATA_POSITIONING_STRATEGY);
+  //
+  //   // Heads up!
+  //   // For `fixed` positioning, we need to assign `positionFixed` *before* `getOffsetParent` is called: otherwise it
+  //   // will compute a wrong offset parent.
+  //   if (!isPositioned && strategy === 'fixed') {
+  //     Object.assign(element.style, { position: 'fixed' });
+  //   }
+  //
+  //   const offsetParent = platform.getOffsetParent(element, polyfill);
+  //
+  //   if (!isPositioned && strategy !== null && i === 0) {
+  //     console.log('offsetParent', offsetParent);
+  //     // i += 1
+  //     Object.assign(element.style, {
+  //       position: 'fixed',
+  //       left: 0,
+  //       top: 0,
+  //       margin: 0,
+  //     });
+  //   }
+  //
+  //   return offsetParent;
+  // },
+  // async getElementRects(_ref) {
+  //   let { reference, floating, strategy } = _ref;
+  //
+  //   const getOffsetParentFn = platform.getOffsetParent;
+  //   const getDimensionsFn = platform.getDimensions;
+  //
+  //   return {
+  //     reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
+  //     floating: {
+  //       x: 0,
+  //       y: 0,
+  //       ...(await getDimensionsFn(floating)),
+  //     },
+  //   };
+  // },
+  async getElementRects({ reference, floating, strategy }) {
+    Object.assign(floating.style, { position: strategy, left: 0, top: 0, margin: 0 });
+
+    // if (strategy === 'fixed') {
+    //   Object.assign(floating.style, { position: strategy });
+    // }
+
+    const offsetParent = await this.getOffsetParent(floating);
+    // console.log('offsetParent', offsetParent);
+    Object.assign(floating.style, { position: 'fixed' });
+
+    const rectRelativeToOffsetParent = getRectRelativeToOffsetParent(reference, offsetParent, strategy);
+    Object.assign(floating.style, { position: strategy });
+
+    return {
+      reference: rectRelativeToOffsetParent,
+      floating: { x: 0, y: 0, ...(await this.getDimensions(floating)) },
+    };
+  },
+};
 
 interface PositionManagerOptions {
   /**
@@ -55,10 +130,6 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
   const targetWindow = container.ownerDocument.defaultView;
 
-  // When the container is first resolved, set position `fixed` to avoid scroll jumps.
-  // Without this scroll jumps can occur when the element is rendered initially and receives focus
-  Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
-
   const forceUpdate = () => {
     // debounced update can still occur afterwards
     // early return to avoid memory leaks
@@ -79,8 +150,14 @@ export function createPositionManager(options: PositionManagerOptions): Position
       isFirstUpdate = false;
     }
 
-    Object.assign(container.style, { position: strategy });
-    computePosition(target, container, { placement, middleware, strategy })
+    container.setAttribute('data-popper-strategy', strategy);
+    // Object.assign(container.style, {
+    //   position: strategy,
+    //   left: 0,
+    //   top: 0,
+    //   margin: 0,
+    // });
+    computePosition(target, container, { placement, middleware, strategy, platform: modifiedPlatform })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
         // Promise can still resolve after destruction
         // early return to avoid applying outdated position
