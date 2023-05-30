@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: DatePicker now focuses on today's date and works inside dialogs as expected.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

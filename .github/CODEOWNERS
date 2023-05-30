@@ -49,6 +49,9 @@
 /.prettierignore @microsoft/fluentui-react-build
 /.nxignore @microsoft/fluentui-react-build
 /jest.preset.js @microsoft/fluentui-react-build
+/jest.preset.ts @microsoft/fluentui-react-build
+/jest.config.js @microsoft/fluentui-react-build
+/jest.config.ts @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /sizeauditor.json @microsoft/fluentui-react-build
@@ -237,6 +240,7 @@ packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
+packages/react-components/react-search @microsoft/cxe-coastal
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

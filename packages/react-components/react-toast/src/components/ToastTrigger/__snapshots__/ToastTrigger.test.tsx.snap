@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastTrigger renders a default state 1`] = `
+<div>
+  <button
+    type="button"
+  >
+    toast trigger
+  </button>
+</div>
+`;

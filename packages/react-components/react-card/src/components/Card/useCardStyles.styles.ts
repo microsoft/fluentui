@@ -399,8 +399,8 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     state.selected && selectedMap[state.appearance],
     state.selectFocused && styles.selectableFocused,
     // High contrast overrides
-    state.selected && styles.highContrastSelected,
     isSelectableOrInteractive && styles.highContrastInteractive,
+    state.selected && styles.highContrastSelected,
     state.root.className,
   );
 
