@@ -37,9 +37,9 @@
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.1",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.5",
-    "@griffel/react": "^1.5.2",
     "@fluentui/react-components": "^9.20.4",
     "@fluentui/react-northstar": "^0.66.4",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

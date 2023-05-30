@@ -32,7 +32,7 @@
     "@fluentui/react-conformance": "^0.16.1"
   },
   "dependencies": {
-    "@griffel/react": "^1.5.2",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "beachball": {
