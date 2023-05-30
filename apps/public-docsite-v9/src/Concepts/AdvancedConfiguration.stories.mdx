@@ -110,6 +110,20 @@ function MyComponent(props) {
 }
 ```
 
+
+### IdPrefixProvider 
+
+ Having multiple applications using `FluentProvider` on a single web page can cause interop problems. This will result in styling to be lost on one or multiple components that are using fluent ui.
+ The problem can be solved by adding the `IdPrefixProvider` component around the `FluentProvider`.
+
+```jsx
+<IdPrefixProvider value="APP1-">
+  <FluentProvider>
+    {/* app provider */}
+  </FluentProvider>
+</IdPrefixProvider>
+```
+
 ## References
 
 - https://griffel.js.org/react/api/create-dom-renderer
