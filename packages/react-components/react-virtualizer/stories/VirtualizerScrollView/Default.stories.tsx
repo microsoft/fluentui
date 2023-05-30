@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { ThemeProvider } from '@fluentui/react';
 
 const useStyles = makeStyles({
-  root: {
-    maxHeight: '100vh',
-  },
   child: {
     height: '100px',
     lineHeight: '100px',
@@ -19,24 +15,22 @@ export const Default = () => {
   const childLength = 1000;
 
   return (
-    <ThemeProvider className={styles.root} applyTo="body">
-      <VirtualizerScrollView
-        numItems={childLength}
-        itemSize={100}
-        container={{ role: 'list', style: { maxHeight: '100vh' } }}
-      >
-        {(index: number) => {
-          return (
-            <div
-              role={'listitem'}
-              aria-posinset={index}
-              aria-setsize={childLength}
-              key={`test-virtualizer-child-${index}`}
-              className={styles.child}
-            >{`Node-${index}`}</div>
-          );
-        }}
-      </VirtualizerScrollView>
-    </ThemeProvider>
+    <VirtualizerScrollView
+      numItems={childLength}
+      itemSize={100}
+      container={{ role: 'list', style: { maxHeight: '100vh' } }}
+    >
+      {(index: number) => {
+        return (
+          <div
+            role={'listitem'}
+            aria-posinset={index}
+            aria-setsize={childLength}
+            key={`test-virtualizer-child-${index}`}
+            className={styles.child}
+          >{`Node-${index}`}</div>
+        );
+      }}
+    </VirtualizerScrollView>
   );
 };

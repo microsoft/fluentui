@@ -8,6 +8,7 @@ import {
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
+  useIsOverflowItemVisible,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 
@@ -188,6 +189,31 @@ describe('Overflow', () => {
     overflowCases.forEach(({ overflowCount, containerSize }) => {
       setContainerSize(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items when there's more than one child element`, () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const overflowElementIndex = 6;
+    mount(
+      <Container width={350}>
+        <div>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </div>
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}]`).each((value, index) => {
+      if (index >= overflowElementIndex) {
+        expect(Cypress.$(value).css('display')).to.equal('none');
+      } else {
+        expect(Cypress.$(value).css('display')).to.equal('inline-block');
+      }
     });
   });
 
@@ -513,5 +539,36 @@ describe('Overflow', () => {
 
     setContainerSize(500);
     cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
+  });
+
+  it('Should have correct initial visibility state', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const Assert = () => {
+      const isVisible = mapHelper.map(i => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        return useIsOverflowItemVisible(i.toString());
+      });
+
+      if (isVisible.every(x => x)) {
+        return <span data-passed="true" />;
+      }
+
+      return null;
+    };
+
+    mount(
+      <Container minimumVisible={5}>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+        <Assert />
+      </Container>,
+    );
+
+    setContainerSize(500);
+    cy.get('[data-passed="true"]').should('exist');
   });
 });

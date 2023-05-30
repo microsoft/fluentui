@@ -31,11 +31,14 @@ jobs:
       - script: |
           yarn nx workspace-lint
           yarn nx run @fluentui/nx-workspace-tools:check-graph
-        displayName: NX workspace lint
+          yarn nx workspace-generator tsconfig-base-all --verify
+        displayName: Workspace lint
 
       - script: |
-          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts thus it needs to be build in advance
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts, thus it needs to be build in advance
           yarn workspace @fluentui/api-docs build
+          # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
+          yarn workspace @fluentui/digest build
           yarn tsc -p ./tsconfig.json
         displayName: Type-check just.config.ts files
 
@@ -60,8 +63,8 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn buildci  $(sinceArg)
-        displayName: build, test, lint
+          yarn buildci $(sinceArg)
+        displayName: build, test, lint, test-ssr
 
       - template: .devops/templates/cleanup.yml
 

@@ -13,10 +13,14 @@ import {
   updateProjectConfiguration,
   serializeJson,
   offsetFromRoot,
+  applyChangesToString,
+  ChangeType,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
+import * as ts from 'typescript';
 
+import { getTemplate } from './lib/utils';
 import { PackageJson, TsConfig } from '../../types';
 import {
   arePromptsEnabled,
@@ -144,6 +148,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   setupSwcConfig(tree, options);
   setupJustConfig(tree, options);
+  updateConformanceSetup(tree, options);
 }
 
 // ==== helpers ====
@@ -159,7 +164,6 @@ const templates = {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
         mainEntryPointFilePath:
-          // eslint-disable-next-line @fluentui/max-len
           '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
         apiReport: {
           enabled: true,
@@ -302,7 +306,7 @@ const templates = {
         globals: {
           'ts-jest': {
             tsconfig: '<rootDir>/tsconfig.spec.json',
-            diagnostics: false,
+            isolatedModules: true,
           },
         },
         transform: {
@@ -392,6 +396,13 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
+    .swcrc
+
+    # exclude gitignore patterns explicitly
+    !lib
+    !lib-commonjs
+    !lib-amd
+    !dist/*.d.ts
   ` + os.EOL,
   swcConfig: () => {
     return {
@@ -425,12 +436,8 @@ const templates = {
       sourceMaps: true,
     };
   },
-  justConfig: stripIndents`
-    import { preset, task } from '@fluentui/scripts-tasks';
-
-    preset();
-
-    task('build', 'build:react-components').cached?.();`,
+  // why not inline template ? this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  justConfig: getTemplate(joinPathFragments(__dirname, 'files/just-config.ts__tmpl__'), {}),
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -694,6 +701,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   function setupScripts(json: PackageJson) {
     const scripts = {
       test: 'jest --passWithNoTests',
+      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'tsc -b tsconfig.json',
     };
 
@@ -973,6 +981,52 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
+  }
+
+  return tree;
+}
+
+function updateConformanceSetup(tree: Tree, options: NormalizedSchema) {
+  if (!tree.exists(options.paths.conformanceSetup)) {
+    logger.warn('no conformance setup present. skipping...');
+    return;
+  }
+
+  const conformanceSetupContent = tree.read(options.paths.conformanceSetup, 'utf-8') as string;
+  const sourceFile = ts.createSourceFile('is-conformant.ts', conformanceSetupContent, ts.ScriptTarget.Latest, true);
+  const addition = `\ntsConfig: { configName: 'tsconfig.spec.json' },`;
+
+  let start: number | undefined;
+  getConfigObjectFirstPropertyIndex(sourceFile);
+
+  if (!start) {
+    return;
+  }
+
+  const updatedContent = applyChangesToString(conformanceSetupContent, [
+    {
+      type: ChangeType.Insert,
+      index: start,
+      text: addition,
+    },
+  ]);
+
+  tree.write(options.paths.conformanceSetup, updatedContent);
+
+  function getConfigObjectFirstPropertyIndex(node: ts.Node) {
+    if (ts.isVariableStatement(node)) {
+      const defaultOptionsVar = node.declarationList.declarations[0].name.getText();
+      if (defaultOptionsVar === 'defaultOptions') {
+        const initializer = node.declarationList.declarations[0].initializer;
+        if (initializer && ts.isObjectLiteralExpression(initializer)) {
+          const firstProp = initializer.properties[0];
+          start = firstProp.pos;
+          return;
+        }
+      }
+    }
+
+    ts.forEachChild(node, getConfigObjectFirstPropertyIndex);
   }
 
   return tree;

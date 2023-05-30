@@ -1,6 +1,6 @@
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
-import { infoButtonClassNames } from './useInfoButtonStyles';
+import { infoButtonClassNames } from './useInfoButtonStyles.styles';
 import type { RenderResult } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -27,17 +27,17 @@ describe('InfoButton', () => {
     Component: InfoButton,
     displayName: 'InfoButton',
     requiredProps: {
-      content: "This is an InfoButton's Content.",
+      info: "This is an InfoButton's information.",
     },
     testOptions: {
       'has-static-classnames': [
         {
           props: {
-            content: "This is an InfoButton's Content.",
+            info: "This is an InfoButton's information.",
           },
           expectedClassNames: {
             root: infoButtonClassNames.root,
-            content: infoButtonClassNames.content,
+            info: infoButtonClassNames.info,
           },
           getPortalElement: getPopoverSurfaceElement,
         },

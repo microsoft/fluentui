@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-skeleton",
-  "version": "9.0.0-beta.4",
+  "version": "9.0.3",
   "description": "Converged v9 Skeleton Component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,20 +21,22 @@
     "generate-api": "just-scripts generate-api",
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.20",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.21",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "9.0.0-alpha.27",
-    "@fluentui/react-shared-contexts": "^9.3.2",
-    "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.7.2",
+    "@fluentui/react-field": "^9.1.5",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.5",
+    "@fluentui/react-shared-contexts": "^9.5.0",
+    "@fluentui/react-theme": "^9.1.8",
+    "@fluentui/react-utilities": "^9.9.1",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"
   },
@@ -47,8 +49,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {

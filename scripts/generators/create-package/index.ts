@@ -1,14 +1,14 @@
-import { NodePlopAPI, AddManyActionConfig } from 'plop';
-import { Actions } from 'node-plop';
+import { spawnSync } from 'child_process';
 import * as path from 'path';
+
+import { PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
+import { ProjectsConfigurations } from '@nrwl/devkit';
+import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
 import _ from 'lodash';
-import chalk from 'chalk';
-import { spawnSync } from 'child_process';
-import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
-
-import { findGitRoot, PackageJson } from '@fluentui/scripts-monorepo';
+import { Actions } from 'node-plop';
+import { AddManyActionConfig, NodePlopAPI } from 'plop';
 
 const root = findGitRoot();
 
@@ -160,6 +160,17 @@ module.exports = (plop: NodePlopAPI) => {
           if (migrateResult.status !== 0) {
             throw new Error('Something went wrong running the migration. Please check previous logs for details.');
           }
+          const tsConfigAllUpdate = spawnSync('yarn', ['nx', 'workspace-generator', 'tsconfig-base-all'], {
+            cwd: root,
+            stdio: 'inherit',
+            shell: true,
+          });
+          if (tsConfigAllUpdate.status !== 0) {
+            throw new Error(
+              'Something went wrong while updating tsconfig.base.all.json. Please check previous logs for details.',
+            );
+          }
+
           return 'Successfully migrated package';
         },
         () => {
@@ -295,7 +306,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   };
 
   const nxWorkspaceContent = fs.readFileSync(paths.workspace, 'utf-8');
-  const nxWorkspace: WorkspaceJsonConfiguration = jju.parse(nxWorkspaceContent);
+  const nxWorkspace: ProjectsConfigurations = jju.parse(nxWorkspaceContent);
   Object.assign(nxWorkspace.projects, templates.workspace);
 
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
@@ -304,7 +315,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
 }
 
 function getProjectMetadata(options: { root: string; name: string }) {
-  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
+  const nxWorkspace: ProjectsConfigurations = JSON.parse(
     fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
   );
 

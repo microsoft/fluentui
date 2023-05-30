@@ -4753,7 +4753,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selection?: ISelection;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
-    selectionZoneProps?: ISelectionZoneProps;
+    selectionZoneProps?: Partial<ISelectionZoneProps>;
     setKey?: string;
     // @deprecated
     shouldApplyApplicationRole?: boolean;
@@ -5042,6 +5042,8 @@ export interface IDialogFooter {
 
 // @public (undocumented)
 export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: IRefObject<IDialogFooter>;
     styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
@@ -6781,6 +6783,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
     onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
+    renderEarly?: boolean;
     renderedWindowsAhead?: number;
     renderedWindowsBehind?: number;
     role?: string;
@@ -8131,6 +8134,7 @@ export { isDirectionalKeyCode }
 
 // @public (undocumented)
 export interface ISearchBox {
+    blur(): void;
     focus(): void;
     hasFocus(): boolean;
 }
@@ -9377,21 +9381,25 @@ export interface IThemeSlotRule {
 // @public (undocumented)
 export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'> {
     allowFreeform?: boolean;
+    dateAnchor?: Date;
     defaultValue?: Date;
     increments?: number;
     label?: string;
     onChange?: (event: React_2.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
     onValidateUserInput?: (userInput: string) => string;
+    onValidationResult?: (event: React_2.FormEvent<IComboBox>, data: TimePickerValidationResultData) => void;
     showSeconds?: boolean;
     strings?: ITimePickerStrings;
     timeRange?: ITimeRange;
     useHour12?: boolean;
+    value?: Date;
 }
 
 // @public
 export interface ITimePickerStrings {
     invalidInputErrorMessage: string;
+    timeOutOfBoundsErrorMessage?: string;
 }
 
 // @public
@@ -9461,7 +9469,7 @@ export interface ITooltipHost {
 }
 
 // @public
-export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
+export interface ITooltipHostProps extends Omit<React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase>, 'content'> {
     calloutProps?: ICalloutProps;
     className?: string;
     closeDelay?: number;
@@ -9503,7 +9511,7 @@ export interface ITooltipHostStyles {
 }
 
 // @public (undocumented)
-export interface ITooltipProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipBase> {
+export interface ITooltipProps extends Omit<React_2.HTMLAttributes<HTMLDivElement | TooltipBase>, 'content'> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
     content?: string | JSX.Element | JSX.Element[];
@@ -11248,6 +11256,11 @@ export { TimeConstants }
 
 // @public (undocumented)
 export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
+
+// @public
+export type TimePickerValidationResultData = {
+    errorMessage?: string;
+};
 
 // @public (undocumented)
 export const Toggle: React_2.FunctionComponent<IToggleProps>;

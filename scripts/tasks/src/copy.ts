@@ -1,7 +1,9 @@
-import * as fs from 'fs-extra';
 import * as path from 'path';
-import { series, resolveCwd, copyTask, copyInstructionsTask, logger, TaskFunction } from 'just-scripts';
-import { getProjectMetadata, findGitRoot } from '@fluentui/scripts-monorepo';
+
+import { findGitRoot, getProjectMetadata } from '@fluentui/scripts-monorepo';
+import * as fs from 'fs-extra';
+import { TaskFunction, copyInstructionsTask, copyTask, logger, resolveCwd, series } from 'just-scripts';
+
 import { getTsPathAliasesConfig } from './utils';
 
 export function expandSourcePath(pattern: string): string | null {
@@ -38,10 +40,11 @@ export function expandSourcePath(pattern: string): string | null {
  * Used solely for packages that use TS solution config files with TS path aliases
  */
 export function copyCompiled() {
-  const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
   const root = findGitRoot();
 
   const packageDir = process.cwd();
+  const tsConfig = tsConfigs.lib;
 
   if (!(isUsingTsSolutionConfigs && tsConfig)) {
     logger.warn(`copy-compiled: works only with packages that use TS solution config files. Skipping...`);

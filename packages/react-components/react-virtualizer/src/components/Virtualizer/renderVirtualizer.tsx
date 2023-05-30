@@ -1,9 +1,14 @@
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
+import { ReactNode } from 'react';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
-  const { slots, slotProps } = getSlots<VirtualizerSlots>(state);
+  const { slots, slotProps } = getSlotsNext<VirtualizerSlots>(state);
 
   return (
     <React.Fragment>
@@ -18,5 +23,13 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
         <slots.after {...slotProps.after} />
       </slots.afterContainer>
     </React.Fragment>
+  );
+};
+
+export const renderVirtualizerChildPlaceholder = (child: ReactNode, index: number) => {
+  return (
+    <React.Suspense key={`fui-virtualizer-placeholder-${index}`} fallback={null}>
+      {child}
+    </React.Suspense>
   );
 };

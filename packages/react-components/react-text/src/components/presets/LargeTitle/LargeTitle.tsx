@@ -1,26 +1,13 @@
 import type { FunctionComponent } from 'react';
-import { makeStyles } from '@griffel/react';
 import { createPreset } from '../createPreset';
-import { SlotClassNames } from '@fluentui/react-utilities';
-import type { TextSlots, TextPresetProps } from '../../Text/Text.types';
-import { typographyStyles } from '@fluentui/react-theme';
-
-export const largeTitleClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-LargeTitle',
-};
-
-/**
- * Styles for the root slot
- */
-const useStyles = makeStyles({
-  root: typographyStyles.largeTitle,
-});
+import type { TextPresetProps } from '../../Text/Text.types';
+import { largeTitleClassNames, useLargeTitleStyles } from './useLargeTitleStyles.styles';
 
 /**
  * Text preset component for the Large Title typography variant
  */
 export const LargeTitle: FunctionComponent<TextPresetProps> = createPreset({
-  useStyles,
+  useStyles: useLargeTitleStyles,
   className: largeTitleClassNames.root,
   displayName: 'LargeTitle',
 });

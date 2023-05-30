@@ -1,8 +1,63 @@
 # Change Log - @fluentui/common-styles
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Tue, 30 May 2023 07:36:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.28](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.28)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.27..@fluentui/common-styles_v1.2.28)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.12 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [1.2.27](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.27)
+
+Fri, 26 May 2023 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.26..@fluentui/common-styles_v1.2.27)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.11 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+
+## [1.2.26](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.26)
+
+Fri, 05 May 2023 18:14:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.25..@fluentui/common-styles_v1.2.26)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/style-utilities to v8.9.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [1.2.25](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.25)
+
+Tue, 02 May 2023 22:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.24..@fluentui/common-styles_v1.2.25)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.9 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [1.2.24](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.24)
+
+Tue, 02 May 2023 00:58:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.23..@fluentui/common-styles_v1.2.24)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [1.2.23](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.23)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.22..@fluentui/common-styles_v1.2.23)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [1.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.22)
 

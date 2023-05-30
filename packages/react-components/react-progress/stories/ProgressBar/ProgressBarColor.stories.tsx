@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Field } from '@fluentui/react-field';
-import { makeStyles } from '@fluentui/react-components';
-import { ProgressBar } from '@fluentui/react-progress';
+import { Field, ProgressBar, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

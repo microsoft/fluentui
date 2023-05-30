@@ -35,6 +35,27 @@ describe('useControllableState', () => {
     expect(result.current[0]).toBe(initialState);
   });
 
+  it('should call setState() with a value when is controlled', () => {
+    const spy = jest.fn();
+    const { result } = renderHook(() =>
+      useControllableState({ state: 'foo', defaultState: undefined, initialState: '' }),
+    );
+
+    const [, setState] = result.current;
+
+    act(() => {
+      setState(prevState => {
+        spy(prevState);
+        return prevState;
+      });
+    });
+
+    expect(result.current[0]).toEqual('foo');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('foo');
+  });
+
   it.each([
     ['', true],
     ['factory', () => true],

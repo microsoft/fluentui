@@ -12,7 +12,8 @@ export function createOverflowManager(): OverflowManager {
   // Set as true when resize observer is observing
   let observing = false;
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
-  let forceDispatch = false;
+  // Initially true to force dispatch on first mount
+  let forceDispatch = true;
   const options: Required<ObserveOptions> = {
     padding: 10,
     overflowAxis: 'horizontal',

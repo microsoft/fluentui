@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Breadcrumb.
@@ -12,19 +13,37 @@ import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
+  const {
+    appearance = 'transparent',
+    disableFocus,
+    dividerType = 'chevron',
+    iconPosition = 'before',
+    size = 'medium',
+    list,
+    ...rest
+  } = props;
+
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'horizontal',
+    memorizeCurrent: true,
+  });
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'nav',
       list: 'ol',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('nav', {
       ref,
-      ...props,
+      'aria-label': props['aria-label'] ?? 'breadcrumb',
+      ...(!disableFocus ? focusAttributes : {}),
+      ...rest,
     }),
-    list: {},
+    list: resolveShorthand(list, { required: true, defaultProps: { role: 'list' } }),
+    appearance,
+    dividerType,
+    iconPosition,
+    size,
   };
 };
