@@ -10,6 +10,7 @@ import { useToast, Toast as ToastProps } from '../state';
 import { Timer } from './Timer';
 import { Announce } from '../AriaLive';
 import { useToastStyles } from './Toast.styles';
+import { ToastContextProvider } from '../contexts/toastContext';
 
 export const Toast: React.FC<ToastProps & { visible: boolean; announce: Announce }> = props => {
   const styles = useToastStyles();
