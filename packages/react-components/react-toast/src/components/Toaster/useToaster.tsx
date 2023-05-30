@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { ExtractSlotProps, Slot, getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ToasterProps, ToasterState } from './Toaster.types';
-import { ToastPosition, useToaster } from '../../state';
+import { TOAST_POSITIONS, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
-import { toastPositions } from './constants';
+import { Toast } from '../Toast';
 
 /**
  * Create the state required to render Toaster.
@@ -16,28 +16,64 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const { toastsToRender, isToastVisible } = useToaster<HTMLDivElement>(rest);
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
 
-  const positionSlots = Object.fromEntries(
-    toastPositions.map(position => {
-      return [position, getNativeElementProps('div', { ...rest, 'data-toaster-position': position })];
-    }),
-  ) as Record<ToastPosition, React.HTMLAttributes<HTMLDivElement>>;
+  const rootProps = getNativeElementProps('div', {
+    ...rest,
+  });
 
   return {
     components: {
       root: 'div',
-      'bottom-left': 'div',
-      'bottom-right': 'div',
-      'top-left': 'div',
-      'top-right': 'div',
+      bottomLeft: 'div',
+      bottomRight: 'div',
+      topLeft: 'div',
+      topRight: 'div',
     },
-    ...positionSlots,
-    root: getNativeElementProps('div', {
-      ...props,
+    root: resolveShorthand(rootProps, { required: true }),
+    bottomLeft: resolveShorthand(rootProps, {
+      required: toastsToRender.has(TOAST_POSITIONS.bottomLeft),
+      defaultProps: {
+        children: toastsToRender.get(TOAST_POSITIONS.bottomLeft)?.map(toast => (
+          <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
+            {toast.content as React.ReactNode}
+          </Toast>
+        )),
+        'data-toaster-position': TOAST_POSITIONS.bottomLeft,
+      } as ExtractSlotProps<Slot<'div'>>,
     }),
-    ...positionSlots,
+    bottomRight: resolveShorthand(rootProps, {
+      required: toastsToRender.has(TOAST_POSITIONS.bottomRight),
+      defaultProps: {
+        children: toastsToRender.get(TOAST_POSITIONS.bottomRight)?.map(toast => (
+          <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
+            {toast.content as React.ReactNode}
+          </Toast>
+        )),
+        'data-toaster-position': TOAST_POSITIONS.bottomRight,
+      } as ExtractSlotProps<Slot<'div'>>,
+    }),
+    topLeft: resolveShorthand(rootProps, {
+      required: toastsToRender.has(TOAST_POSITIONS.topLeft),
+      defaultProps: {
+        children: toastsToRender.get(TOAST_POSITIONS.topLeft)?.map(toast => (
+          <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
+            {toast.content as React.ReactNode}
+          </Toast>
+        )),
+        'data-toaster-position': TOAST_POSITIONS.topLeft,
+      } as ExtractSlotProps<Slot<'div'>>,
+    }),
+    topRight: resolveShorthand(rootProps, {
+      required: toastsToRender.has(TOAST_POSITIONS.topRight),
+      defaultProps: {
+        children: toastsToRender.get(TOAST_POSITIONS.topRight)?.map(toast => (
+          <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
+            {toast.content as React.ReactNode}
+          </Toast>
+        )),
+        'data-toaster-position': TOAST_POSITIONS.topRight,
+      } as ExtractSlotProps<Slot<'div'>>,
+    }),
     announceRef,
-    toastsToRender,
-    isToastVisible,
     offset,
     announce: announceProp ?? announce,
     renderAriaLive: !announceProp,

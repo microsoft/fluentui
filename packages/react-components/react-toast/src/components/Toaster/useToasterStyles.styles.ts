@@ -1,8 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToasterSlots, ToasterState } from './Toaster.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { getPositionStyles } from '../../state/index';
-import { toastPositions } from './constants';
+import { TOAST_POSITIONS, getPositionStyles } from '../../state/index';
 
 export const toasterClassNames: SlotClassNames<ToasterSlots> = {
   root: 'fui-Toaster',
@@ -24,18 +23,29 @@ const useStyles = makeStyles({
  */
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+  if (state.bottomLeft) {
+    state.bottomLeft.className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+    state.bottomLeft.style ??= {};
+    Object.assign(state.bottomLeft.style, getPositionStyles(TOAST_POSITIONS.bottomLeft, state.offset));
+  }
 
-  toastPositions.forEach(position => {
-    const positionSlot = state[position];
-    if (!positionSlot) {
-      return;
-    }
+  if (state.bottomRight) {
+    state.bottomRight.className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+    state.bottomRight.style ??= {};
+    Object.assign(state.bottomRight.style, getPositionStyles(TOAST_POSITIONS.bottomRight, state.offset));
+  }
 
-    positionSlot.className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
-    positionSlot.style ??= {};
-    Object.assign(positionSlot.style, getPositionStyles(position, state.offset));
-  });
+  if (state.topLeft) {
+    state.topLeft.className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+    state.topLeft.style ??= {};
+    Object.assign(state.topLeft.style, getPositionStyles(TOAST_POSITIONS.topLeft, state.offset));
+  }
+
+  if (state.topRight) {
+    state.topRight.className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+    state.topRight.style ??= {};
+    Object.assign(state.topRight.style, getPositionStyles(TOAST_POSITIONS.topRight, state.offset));
+  }
 
   return state;
 };
