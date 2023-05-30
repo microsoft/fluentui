@@ -2,6 +2,27 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Tue, 30 May 2023 07:36:09 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.89",
+      "version": "8.7.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.109.8",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/set-version to v8.2.10",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 May 2023 07:37:02 GMT",
       "tag": "@fluentui/react-date-time_v8.7.88",
       "version": "8.7.88",
