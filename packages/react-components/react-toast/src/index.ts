@@ -10,3 +10,6 @@ export {
   toastAlertClassNames,
 } from './ToastAlert';
 export type { ToastAlertProps, ToastAlertSlots, ToastAlertState } from './ToastAlert';
+
+export { ToastTrigger } from './ToastTrigger';
+export type { ToastTriggerChildProps, ToastTriggerProps, ToastTriggerState } from './ToastTrigger';

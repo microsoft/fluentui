@@ -10,6 +10,7 @@ import { useToast, Toast as ToastProps } from '../state';
 import { Timer } from './Timer';
 import { Announce } from '../AriaLive';
 import { useToastStyles } from './Toast.styles';
+import { ToastContextProvider } from '../contexts/toastContext';
 
 export const Toast: React.FC<ToastProps & { visible: boolean; announce: Announce }> = props => {
   const styles = useToastStyles();
@@ -43,6 +44,13 @@ export const Toast: React.FC<ToastProps & { visible: boolean; announce: Announce
     element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
   };
 
+  const contextValue = React.useMemo(
+    () => ({
+      close,
+    }),
+    [close],
+  );
+
   return (
     <Transition
       in={visible}
@@ -54,10 +62,12 @@ export const Toast: React.FC<ToastProps & { visible: boolean; announce: Announce
       onEntering={onEntering}
       nodeRef={toastRef}
     >
-      <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.enter, !visible && styles.exit)}>
-        {children}
-        <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
-      </div>
+      <ToastContextProvider value={contextValue}>
+        <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.enter, !visible && styles.exit)}>
+          {children}
+          <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
+        </div>
+      </ToastContextProvider>
     </Transition>
   );
 };
