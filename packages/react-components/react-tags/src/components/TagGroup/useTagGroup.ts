@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
+import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { tagClassNames } from '../Tag/index';
+import { tagButtonClassNames } from '../TagButton/index';
 
 /**
  * Create the state required to render TagGroup.
@@ -14,10 +18,30 @@ import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLElement>): TagGroupState => {
   const { onDismiss, size = 'medium' } = props;
 
+  const innerRef = React.useRef<HTMLElement>();
+  const { targetDocument } = useFluent();
+  const { findNextFocusable, findFirstFocusable } = useFocusFinders();
+
   const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
     onDismiss?.(e, { dismissedTagValue: id });
 
-    // TODO set focus after tag dismiss
+    // set focus after tag dismiss
+    const activeElement = targetDocument?.activeElement;
+    if (
+      activeElement?.className.includes(tagClassNames.root) ||
+      activeElement?.className.includes(tagButtonClassNames.dismissButton)
+    ) {
+      // focus on next tag only if the active element is a tag/tag button
+      const next =
+        findNextFocusable(activeElement as HTMLElement, { container: innerRef.current }) ??
+        findFirstFocusable(innerRef.current as HTMLElement);
+      next?.focus();
+    }
+  });
+
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: true,
+    axis: 'both',
   });
 
   return {
@@ -30,9 +54,10 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
     },
 
     root: getNativeElementProps('div', {
-      ref,
+      ref: useMergedRefs(ref, innerRef),
+      role: 'listbox',
+      ...arrowNavigationProps,
       ...props,
-      // TODO aria attributes
     }),
   };
 };

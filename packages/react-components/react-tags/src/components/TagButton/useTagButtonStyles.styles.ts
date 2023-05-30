@@ -124,6 +124,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
     state.content.className = mergeClasses(
       tagButtonClassNames.content,
 
+      resetButtonStyles.resetButton,
       styles.content,
       state.shape === 'circular' && styles.circularContent,
       !state.media && !state.icon && styles.contentWithoutMedia,
