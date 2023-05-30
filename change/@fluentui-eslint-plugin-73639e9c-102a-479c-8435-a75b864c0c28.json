@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: enable @griffel/styles-file rule",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

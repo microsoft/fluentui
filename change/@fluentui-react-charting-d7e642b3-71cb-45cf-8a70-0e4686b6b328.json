@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added options to have a secondary y-axis for a vertical chart and options for the lines to use the secondary y-axis or not",
-  "packageName": "@fluentui/react-charting",
-  "email": "t-miarrieta@microsoft.com",
-  "dependentChangeType": "patch"
-}
