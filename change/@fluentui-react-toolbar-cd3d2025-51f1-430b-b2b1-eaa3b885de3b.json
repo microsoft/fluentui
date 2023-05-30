@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed a bug where ToolbarDivider default styles were prioritized",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
