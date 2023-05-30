@@ -134,6 +134,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
         columnId: TableColumnId;
         width: number;
     }) => void;
+    containerWidthOffset?: number;
 };
 
 // @public
@@ -504,6 +505,9 @@ export type TableSelectionCellSlots = {
 
 // @public
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
+
+// @public (undocumented)
+export const TableSelectionCellWidth = 44;
 
 // @public (undocumented)
 export interface TableSelectionState {
