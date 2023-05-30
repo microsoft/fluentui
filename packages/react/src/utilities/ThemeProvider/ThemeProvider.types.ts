@@ -10,7 +10,7 @@ import type { ICustomizerContext } from '@fluentui/utilities';
  */
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * A component that should be used as the root element of the ThemeProvider component.
+   * The element that should be used as the root of the ThemeProvider component.
    */
   as?: React.ElementType;
 
