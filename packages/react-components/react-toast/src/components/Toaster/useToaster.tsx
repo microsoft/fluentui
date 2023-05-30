@@ -37,6 +37,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
           </Toast>
         )),
         'data-toaster-position': TOAST_POSITIONS.bottomLeft,
+        // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
     }),
     bottomRight: resolveShorthand(toastsToRender.has(TOAST_POSITIONS.bottomRight) ? rootProps : null, {
