@@ -29,8 +29,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
       topRight: 'div',
     },
     root: resolveShorthand(rootProps, { required: true }),
-    bottomLeft: resolveShorthand(rootProps, {
-      required: toastsToRender.has(TOAST_POSITIONS.bottomLeft),
+    bottomLeft: resolveShorthand(toastsToRender.has(TOAST_POSITIONS.bottomLeft) ? rootProps : null, {
       defaultProps: {
         children: toastsToRender.get(TOAST_POSITIONS.bottomLeft)?.map(toast => (
           <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
@@ -40,8 +39,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         'data-toaster-position': TOAST_POSITIONS.bottomLeft,
       } as ExtractSlotProps<Slot<'div'>>,
     }),
-    bottomRight: resolveShorthand(rootProps, {
-      required: toastsToRender.has(TOAST_POSITIONS.bottomRight),
+    bottomRight: resolveShorthand(toastsToRender.has(TOAST_POSITIONS.bottomRight) ? rootProps : null, {
       defaultProps: {
         children: toastsToRender.get(TOAST_POSITIONS.bottomRight)?.map(toast => (
           <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
@@ -51,8 +49,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         'data-toaster-position': TOAST_POSITIONS.bottomRight,
       } as ExtractSlotProps<Slot<'div'>>,
     }),
-    topLeft: resolveShorthand(rootProps, {
-      required: toastsToRender.has(TOAST_POSITIONS.topLeft),
+    topLeft: resolveShorthand(toastsToRender.has(TOAST_POSITIONS.topLeft) ? rootProps : null, {
       defaultProps: {
         children: toastsToRender.get(TOAST_POSITIONS.topLeft)?.map(toast => (
           <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
@@ -62,8 +59,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         'data-toaster-position': TOAST_POSITIONS.topLeft,
       } as ExtractSlotProps<Slot<'div'>>,
     }),
-    topRight: resolveShorthand(rootProps, {
-      required: toastsToRender.has(TOAST_POSITIONS.topRight),
+    topRight: resolveShorthand(toastsToRender.has(TOAST_POSITIONS.topRight) ? rootProps : null, {
       defaultProps: {
         children: toastsToRender.get(TOAST_POSITIONS.topRight)?.map(toast => (
           <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
