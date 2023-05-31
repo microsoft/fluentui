@@ -4739,6 +4739,31 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
+"@swc-node/core@^1.10.0":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@swc-node/core/-/core-1.10.3.tgz#dbc37c6d8d28ce59bd1bc55b300fb92bd3876152"
+  integrity sha512-8rpv1DXzsQjN/C8ZXuaTSmJ4M/lRr6geUlbOQ861DLC+sKWcEEvxRjK9cXQ28GserHuEcFDA3wlF9rD1YD0x+Q==
+
+"@swc-node/register@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@swc-node/register/-/register-1.6.1.tgz#e2e6172aeebb9e34a7a5c154958420c8e4dc98ff"
+  integrity sha512-4/vx+bE8tG+gDhvMpaoqiaTXuTMSK+e4ohujn8rj9IW3SSCK4/dYIJKwxW0Mn2sOPMIdylhxu70WWuSRCUG38g==
+  dependencies:
+    "@swc-node/core" "^1.10.0"
+    "@swc-node/sourcemap-support" "^0.3.0"
+    colorette "^2.0.19"
+    debug "^4.3.4"
+    pirates "^4.0.5"
+    tslib "^2.5.0"
+
+"@swc-node/sourcemap-support@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@swc-node/sourcemap-support/-/sourcemap-support-0.3.0.tgz#e8a0d139bd3e8db39635f63fde43dbe6c39237cc"
+  integrity sha512-gqBJSmJMWomZFxlppaKea7NeAqFrDrrS0RMt24No92M3nJWcyI9YKGEQKl+EyJqZ5gh6w1s0cTklMHMzRwA1NA==
+  dependencies:
+    source-map-support "^0.5.21"
+    tslib "^2.5.0"
+
 "@swc/core-darwin-arm64@1.3.30":
   version "1.3.30"
   resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.30.tgz#fb9b20a46455f49597e760e4dfe829196e0fe12e"
@@ -9439,10 +9464,10 @@ colorette@^1.2.1, colorette@^1.2.2:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
-colorette@^2.0.10, colorette@^2.0.14, colorette@^2.0.16:
-  version "2.0.19"
-  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.19.tgz#cdf044f47ad41a0f4b56b3a0d5b4e6e1a2d5a798"
-  integrity sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==
+colorette@^2.0.10, colorette@^2.0.14, colorette@^2.0.16, colorette@^2.0.19:
+  version "2.0.20"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.20.tgz#9eb793e6833067f7235902fcd3b09917a000a95a"
+  integrity sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==
 
 colors@1.0.3:
   version "1.0.3"
@@ -23552,7 +23577,7 @@ source-map-support@0.5.19:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map-support@^0.5.16, source-map-support@^0.5.5, source-map-support@~0.5.12, source-map-support@~0.5.20:
+source-map-support@^0.5.16, source-map-support@^0.5.21, source-map-support@^0.5.5, source-map-support@~0.5.12, source-map-support@~0.5.20:
   version "0.5.21"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
   integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
@@ -25063,7 +25088,7 @@ tslib@1.11.2:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.2.tgz#9c79d83272c9a7aaf166f73915c9667ecdde3cc9"
   integrity sha512-tTSkux6IGPnUGUd1XAZHcpu85MOkIl5zX49pO+jfsie3eP0B6pyhOlLXm3cAC6T7s+euSDDUUV+Acop5WmtkVg==
 
-tslib@2.4.1, tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.4.0:
+tslib@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
   integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
@@ -25072,6 +25097,11 @@ tslib@^1.10.0, tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.4.0, tslib@^2.5.0:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.2.tgz#1b6f07185c881557b0ffa84b111a0106989e8338"
+  integrity sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==
 
 tsscmp@1.0.6:
   version "1.0.6"
