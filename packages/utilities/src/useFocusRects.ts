@@ -110,8 +110,9 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onKeyUp: (ev: KeyboardEvent) => void;
     if (context?.providerRef?.current) {
       el = context.providerRef.current;
-      // The NOINLINE directive tells terser not to move the setCallbackMap implementation into the call site during minification.
-      // This is prevents the function from capturing additional variables in the closure, which has been a source of memory leaks.
+      // The NOINLINE directive tells terser not to move the setCallbackMap implementation into the call site during
+      // minification.
+      // This prevents the function from capturing additional variables in the closure, which can cause memory leaks.
       const callbacks = /*@__NOINLINE__*/ setCallbackMap(context);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
