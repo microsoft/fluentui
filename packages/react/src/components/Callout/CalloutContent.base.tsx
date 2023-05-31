@@ -124,13 +124,19 @@ function useMaxHeight(
 
   React.useEffect(() => {
     const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
+    let calculatedHeight: number | undefined;
 
-    if (!calloutMaxHeight && !hidden) {
-      if (typeof top === 'number' && bottomBounds) {
-        setMaxHeight(bottomBounds - top);
-      } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
-        setMaxHeight(bottomBounds - topBounds - bottom);
-      }
+    if (typeof top === 'number' && bottomBounds) {
+      calculatedHeight = bottomBounds - top;
+    } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
+      calculatedHeight = bottomBounds - topBounds - bottom;
+    }
+
+    if (
+      (!calloutMaxHeight && !hidden) ||
+      (calloutMaxHeight && calculatedHeight && calloutMaxHeight > calculatedHeight)
+    ) {
+      setMaxHeight(calculatedHeight);
     } else if (calloutMaxHeight) {
       setMaxHeight(calloutMaxHeight);
     } else {
@@ -476,7 +482,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     const classNames = getClassNames(styles!, {
       theme: props.theme!,
       className,
-      overflowYHidden: overflowYHidden,
+      overflowYHidden,
       calloutWidth,
       positions,
       beakWidth,

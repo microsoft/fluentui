@@ -66,6 +66,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // ref: https://github.com/microsoft/fluentui/issues/26359#issuecomment-1397759888
   const [hideActiveDescendant, setHideActiveDescendant] = React.useState(false);
 
+  // save the typing vs. navigating options state, as the space key should behave differently in each case
+  // we do not want to update the combobox when this changes, just save the value between renders
+  const isTyping = React.useRef(false);
+
   // calculate listbox width style based on trigger width
   const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
   React.useEffect(() => {
@@ -150,20 +154,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }
   };
 
-  // open Combobox when typing
-  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!open && getDropdownActionFromKey(ev) === 'Type') {
-      baseState.setOpen(ev, true);
-    }
-
-    // clear activedescendant when moving the text insertion cursor
-    if (ev.key === ArrowLeft || ev.key === ArrowRight) {
-      setHideActiveDescendant(true);
-    } else {
-      setHideActiveDescendant(false);
-    }
-  };
-
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
@@ -178,9 +168,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     },
   });
 
+  const resolvedPropsOnKeyDown = triggerSlot.onKeyDown;
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
-  triggerSlot.onKeyDown = mergeCallbacks(triggerSlot.onKeyDown, onTriggerKeyDown);
 
   // only resolve listbox slot if needed
   listboxSlot =
@@ -229,6 +219,49 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
+
+  /* Set input.onKeyDown here, so we can override the default behavior for spacebar */
+  const defaultOnTriggerKeyDown = state.input.onKeyDown;
+  state.input.onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!open && getDropdownActionFromKey(ev) === 'Type') {
+      baseState.setOpen(ev, true);
+    }
+
+    // clear activedescendant when moving the text insertion cursor
+    if (ev.key === ArrowLeft || ev.key === ArrowRight) {
+      setHideActiveDescendant(true);
+    } else {
+      setHideActiveDescendant(false);
+    }
+
+    // update typing state to true if the user is typing
+    const action = getDropdownActionFromKey(ev, { open, multiselect });
+    if (action === 'Type') {
+      isTyping.current = true;
+    }
+    // otherwise, update the typing state to false if opening or navigating dropdown options
+    // other actions, like closing the dropdown, should not impact typing state.
+    else if (
+      (action === 'Open' && ev.key !== ' ') ||
+      action === 'Next' ||
+      action === 'Previous' ||
+      action === 'First' ||
+      action === 'Last' ||
+      action === 'PageUp' ||
+      action === 'PageDown'
+    ) {
+      isTyping.current = false;
+    }
+
+    // allow space to insert a character if freeform & the last action was typing, or if the popup is closed
+    if (freeform && (isTyping.current || !open) && ev.key === ' ') {
+      resolvedPropsOnKeyDown?.(ev);
+      return;
+    }
+
+    // if we're not allowing space to type, continue with default behavior
+    defaultOnTriggerKeyDown?.(ev);
+  });
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};

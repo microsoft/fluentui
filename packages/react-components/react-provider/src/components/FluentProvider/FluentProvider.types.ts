@@ -15,7 +15,7 @@ export type FluentProviderSlots = {
 
 // exported for callers to avoid referencing react-shared-context
 // and applying Partial<> when passing custom style hooks.
-export type FluentProviderCustomStyleHooks = Partial<CustomStyleHooksContextValue>;
+export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue;
 
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
   /**

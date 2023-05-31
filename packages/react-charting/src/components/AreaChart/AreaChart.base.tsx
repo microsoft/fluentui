@@ -114,10 +114,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       nearestCircleToHighlight: null,
       isShowCalloutPending: false,
       emptyChart: !(
-        this.props.data &&
-        this.props.data.lineChartData &&
-        this.props.data.lineChartData.length > 0 &&
-        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+        (
+          this.props.data &&
+          this.props.data.lineChartData &&
+          this.props.data.lineChartData.length > 0 &&
+          this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+        )
+        // if all the data sets have no data
+        // filtering all items which have no data and checking if the length of the filtered array is 0
+        // which means chart is not empty
       ),
       activePoint: '',
     };

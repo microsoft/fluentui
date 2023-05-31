@@ -120,8 +120,16 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    this._adjustProps();
-    this._dataset = this._createDataSetLayer();
+    if (
+      this.props.data &&
+      this.props.data.length &&
+      !this.props.data.filter((item: IVerticalStackedChartProps) => item.xAxisPoint === undefined).length
+    ) {
+      this._adjustProps();
+      this._dataset = this._createDataSetLayer();
+    } else {
+      this.state = { ...this.state, emptyChart: true };
+    }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._domainMargin = MIN_DOMAIN_MARGIN;
   }
@@ -837,7 +845,6 @@ export class VerticalStackedBarChartBase extends React.Component<
               y={yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
-              data-is-focusable={true}
               aria-label={`Total: ${barTotalValue}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}

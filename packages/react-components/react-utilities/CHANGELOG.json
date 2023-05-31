@@ -2,6 +2,91 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 12 May 2023 20:28:04 GMT",
+      "tag": "@fluentui/react-utilities_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "88ff00c2979ecd025f725fa3fc4e4d370f95cfc4",
+            "comment": "feat: defers useControllableState state to initializer method"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f0b05741d812ad90c52754b0b4035d5554cf2aa0",
+            "comment": "chore: updates useControllableState comments"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "557ffca71ff7767a4d595b6fcc55ad4a1fe02360",
+            "comment": "chore: simplifies useControllableState hook internals"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.3",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 17:54:02 GMT",
+      "tag": "@fluentui/react-utilities_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c156e7682a89d7766bed3c0b9f231dc2e0a2058b",
+            "comment": "fix: Fix slot render functions"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "97af91aa7684bbfe149ace1b21b75fb7c04128a2",
+            "comment": "feat: ensure compatibility with custom JSX pragma"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Apr 2023 09:31:45 GMT",
+      "tag": "@fluentui/react-utilities_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1539311d63dfa731f1bbf1e08ab002a43c52f9a0",
+            "comment": "fix(hooks): cleanup event listeners only when \"disabled\" is false"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:50 GMT",
       "tag": "@fluentui/react-utilities_v9.7.3",
       "version": "9.7.3",

@@ -1,4 +1,4 @@
 export * from './ToolbarButton';
 export * from './ToolbarButton.types';
 export * from './useToolbarButton';
-export * from './useToolbarButtonStyles';
+export * from './useToolbarButtonStyles.styles';

@@ -9,12 +9,13 @@ export { FirstDayOfTheWeek } from './DatePickerFirstDayOfTheWeek.stories';
 export { WeekNumbers } from './DatePickerWeekNumbers.stories';
 export { DateBoundaries } from './DatePickerDateBoundaries.stories';
 export { CustomDateFormatting } from './DatePickerCustomDateFormatting.stories';
+export { ErrorHandling } from './DatePickerErrorHandling.stories';
 export { Controlled } from './DatePickerControlled.stories';
 export { Required } from './DatePickerRequired.stories';
 export { Disabled } from './DatePickerDisabled.stories';
 
 export default {
-  title: 'Preview Components/DatePicker Compat',
+  title: 'Compat Components/DatePicker',
   component: DatePicker,
   parameters: {
     docs: {

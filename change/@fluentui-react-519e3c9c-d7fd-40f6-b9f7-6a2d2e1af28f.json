@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "DetailsList has been modified to warn when \"getKey\" and \"selection\" props are passed simultaneously. The \"getKey\" property is never used if a Selection object is passed. Either the \"getKey\" prop from the Selection object is used, or Selection's default getKey implementation (item) => item.key is used, but never the \"getKey\" prop passed to DetailsList. Making \"getKey\" and \"selection\" mutually exclusive DetailsList properties prevents users from making this mistake.",
+  "packageName": "@fluentui/react",
+  "email": "alexok@microsoft.com",
+  "dependentChangeType": "patch"
+}
