@@ -29,6 +29,7 @@ import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { FASTTabPanel } from '@microsoft/fast-foundation';
 import { FASTTabs } from '@microsoft/fast-foundation';
+import { MenuItemRole } from '@microsoft/fast-foundation';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
@@ -1719,42 +1720,6 @@ export const lineHeightHero800: CSSDesignToken<string>;
 // @public (undocumented)
 export const lineHeightHero900: CSSDesignToken<string>;
 
-// @public (undocumented)
-export class Popover extends FASTElement {
-    constructor();
-    // (undocumented)
-    anchorRef?: HTMLElement[];
-    // (undocumented)
-    protected anchorRefChanged(): void;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // (undocumented)
-    open: boolean;
-    // (undocumented)
-    protected openChanged(): void;
-    // (undocumented)
-    popoverContentRef?: FASTElement;
-    // (undocumented)
-    protected popoverContentRefChanged(): void;
-    // Warning: (ae-forgotten-export) The symbol "PopoverPosition" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    position: PopoverPosition;
-    // (undocumented)
-    protected positionChanged(): void;
-}
-
-// @public (undocumented)
-export const PopoverDefinition: FASTElementDefinition<typeof Popover>;
-
-// @public (undocumented)
-export const PopoverStyles: ElementStyles;
-
-// @public (undocumented)
-export const PopoverTemplate: ViewTemplate<Popover, any>;
-
 // @public
 export class MenuButton extends Button {
 }
@@ -1807,6 +1772,8 @@ export type MenuItemColumnCount = 0 | 1 | 2;
 // @public
 export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
+export { MenuItemRole }
+
 // @public
 export const MenuItemStyles: ElementStyles;
 
@@ -1827,6 +1794,50 @@ export const MenuListStyles: ElementStyles;
 
 // @public (undocumented)
 export const MenuListTemplate: ElementViewTemplate<MenuList>;
+
+// @public (undocumented)
+export class Popover extends FASTElement {
+    constructor();
+    // (undocumented)
+    anchorRef?: HTMLElement[];
+    // (undocumented)
+    protected anchorRefChanged(): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    objId: string;
+    // (undocumented)
+    open: boolean;
+    // (undocumented)
+    protected openChanged(): void;
+    // Warning: (ae-forgotten-export) The symbol "PopoverAlignment" needs to be exported by the entry point index.d.ts
+    popoverAlign?: PopoverAlignment;
+    // (undocumented)
+    protected popoverAlignChanged(): void;
+    // (undocumented)
+    popoverContentRef?: FASTElement;
+    // (undocumented)
+    protected popoverContentRefChanged(): void;
+    // Warning: (ae-forgotten-export) The symbol "PopoverPosition" needs to be exported by the entry point index.d.ts
+    position?: PopoverPosition;
+    // (undocumented)
+    protected positionChanged(): void;
+    // @internal
+    protected registerChildPopover(popover: Popover): void;
+    // @internal
+    protected unregisterChildPopover(popover: Popover): void;
+}
+
+// @public (undocumented)
+export const PopoverDefinition: FASTElementDefinition<typeof Popover>;
+
+// @public (undocumented)
+export const PopoverStyles: ElementStyles;
+
+// @public (undocumented)
+export const PopoverTemplate: ViewTemplate<Popover, any>;
 
 // @public
 class ProgressBar_2 extends FASTProgress {
