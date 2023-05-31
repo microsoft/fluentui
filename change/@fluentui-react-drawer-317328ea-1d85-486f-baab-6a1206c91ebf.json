@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: release react-drawer to unstable",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
