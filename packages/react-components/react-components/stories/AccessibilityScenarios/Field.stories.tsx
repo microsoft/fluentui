@@ -333,7 +333,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                                       'hasUppercaseLetter' in errors.password.types ||
                                       'hasSpecialChar' in errors.password.types ||
                                       'hasNumber' in errors.password.types ||
-                                      'noWhiteSpace' in errors.password.types) && (
+                                      'noWhitespace' in errors.password.types) && (
                                       <li>
                                         Contain at least one lower case letter, upper case letter, number, special
                                         character and no spaces.
