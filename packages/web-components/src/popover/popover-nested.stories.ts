@@ -10,9 +10,10 @@ import { attr, customElement, FASTElement, html } from '@microsoft/fast-element'
         x.close(c.event);
       }}"
       position="above"
+      open
     >
       <button slot="anchor" @click="${x => x.toggle()}">${x => (x.open ? 'Close' : 'Open') + ' 2nd level'}</button>
-      <div>Nested popover</div>
+      <div>This is some popover content.This is some popover content.</div>
     </fluent-popover>
   `,
   shadowOptions: null,
@@ -43,6 +44,7 @@ export class NestedInner extends FASTElement {
         x.close();
       }}"
       position="after"
+      open
     >
       <button style="margin: 100px 0 0 100px" slot="anchor" @click="${x => x.toggle()}">
         ${x => (x.open ? 'Close' : 'Open') + ' 1st level'}

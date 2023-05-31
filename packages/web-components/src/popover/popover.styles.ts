@@ -7,11 +7,13 @@ export const styles = css`
   }
 
   .popover-content ::slotted(*) {
-    position: relative; // needed for correct positioning of nested popovers
+    position: relative; /* needed for correct positioning of nested popovers */
   }
 
   .popover-content {
     position: absolute;
+    left: 0;
+    top: 0;
     background: ${tokens.colorNeutralBackground1};
     color: ${tokens.colorNeutralForeground1};
     padding: ${tokens.spacingHorizontalM} ${tokens.spacingVerticalM};

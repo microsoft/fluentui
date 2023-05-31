@@ -14,7 +14,7 @@ export default {
       control: { type: 'radio' },
     },
     open: {
-      defaultValue: false,
+      defaultValue: true,
       control: { type: 'boolean' },
     },
   },
@@ -27,8 +27,8 @@ const PopoverTemplate = ({ open, position, popoverAlign }) => `
   ${position ? `position="${position}"` : ''}
   ${popoverAlign ? `popover-align="${popoverAlign}"` : ''}
   >
-    <div slot="anchor" style="display: inline-block; border: 1px dashed #ccc; height: 80px; width: 80px; margin: 30px 200px">Anchor</div>
-    <div>Popover ${position || popoverAlign ? [position, popoverAlign].filter(Boolean).join('-') : ''}</div>
+    <div slot="anchor" style="border: 1px dashed #ccc; height: 80px; width: 80px; line-height: 80px; text-align: center; margin: 40px auto">Anchor</div>
+    <div>Popover content ${position || popoverAlign ? [position, popoverAlign].filter(Boolean).join('-') : ''}</div>
 </fluent-popover>
 `;
 

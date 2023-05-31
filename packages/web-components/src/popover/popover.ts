@@ -3,6 +3,7 @@ import { autoUpdate, computePosition } from '@floating-ui/dom';
 import { PopoverAlignment, PopoverPosition } from './popover.options.js';
 import { toFloatingUIPlacement } from './toFloatingUIPlacement.js';
 
+/* Fixme: this is temporary debugging code. Will be removed before merging together with all console.* calls in the file.  */
 let nextEmoji = 0;
 const getNextEmoji = () => {
   // prettier-ignore
