@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Default button's height changed to minHeight, There was a problem with long texts inside the buttons. since buttons had fixed height, when the user writes long texts inside the button the text would be overflowed up and down outside the button",
+  "packageName": "@fluentui/react",
+  "email": "samaavaati@gmail.com",
+  "dependentChangeType": "patch"
+}

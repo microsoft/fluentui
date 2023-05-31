@@ -17,7 +17,7 @@ export const getStyles = memoizeFunction(
     const defaultButtonStyles: IButtonStyles = {
       root: {
         minWidth: DEFAULT_BUTTON_MIN_WIDTH,
-        height: DEFAULT_BUTTON_HEIGHT,
+        minHeight: DEFAULT_BUTTON_HEIGHT,
       },
       label: {
         fontWeight: FontWeights.semibold,
