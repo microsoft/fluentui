@@ -13,25 +13,25 @@ import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
  * @param ref - reference to root HTMLElement of SearchBox
  */
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLElement>): SearchBoxState => {
+  const { contentBefore, dismiss, contentAfter, ...inputProps } = props;
+
   return {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
       root: Input,
       contentBefore: 'span',
+      dismiss: 'span',
       contentAfter: 'span',
-      contentAfterSecondary: 'span',
     },
 
     // TODO add appropriate slots
-    root: resolveShorthand(props.root, {
-      required: true,
-      defaultProps: {
-        type: 'search',
-      },
-    }),
-    contentBefore: resolveShorthand(props.contentBefore),
-    contentAfter: resolveShorthand(props.contentAfter),
-    contentAfterSecondary: resolveShorthand(props.contentAfterSecondary),
+    root: {
+      type: 'search',
+      ...inputProps,
+    },
+    contentBefore: resolveShorthand(contentBefore),
+    dismiss: resolveShorthand(dismiss, { required: true }),
+    contentAfter: resolveShorthand(contentAfter, { required: true }),
   };
 };

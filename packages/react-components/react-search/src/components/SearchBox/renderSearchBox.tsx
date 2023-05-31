@@ -15,15 +15,16 @@ export const renderSearchBox_unstable = (state: SearchBoxState) => {
 
   slotProps.contentAfter.children = (
     <div>
-      {slots.contentAfterSecondary && <slots.contentAfterSecondary {...slotProps.contentAfterSecondary} />}
-      ...slotProps.contentAfter.children
+      {slotProps.contentAfter.children}
+      {slots.dismiss && <slots.dismiss {...slotProps.dismiss} />}
     </div>
   );
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.contentBefore && <slots.contentBefore {...slotProps.contentBefore} />}
-      {slots.contentAfter && <slots.contentAfter {...slotProps.contentAfter} />}
-    </slots.root>
+    <slots.root
+      {...slotProps.root}
+      contentBefore={slots.contentBefore && <slots.contentBefore {...slotProps.contentBefore} />}
+      contentAfter={slots.contentAfter && <slots.contentAfter {...slotProps.contentAfter} />}
+    />
   );
 };
