@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add test-ssr script to v9 packages",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

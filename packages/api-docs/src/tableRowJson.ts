@@ -9,8 +9,8 @@ import {
   ApiProperty,
   ApiConstructor,
   ApiMethod,
+  ApiItemKind,
 } from '@microsoft/api-extractor-model';
-import { ApiItemKind } from './const-enum-overrides';
 import { ICollectedData } from './types-private';
 import { ITableRowJson, IEnumTableRowJson } from './types';
 import {

@@ -5,81 +5,19 @@
 import * as React from 'react';
 import { Transition } from 'react-transition-group';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import { useToast, Toast as ToastProps } from '../state';
 import { Timer } from './Timer';
+import { Announce } from '../AriaLive';
+import { useToastStyles } from './Toast.styles';
+import { ToastContextProvider } from '../contexts/toastContext';
 
-const useStyles = makeStyles({
-  toast: {
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('4px'),
-    display: 'flex',
-    minHeight: '40px',
-    maxHeight: '40px',
-    minWidth: '200px',
-    maxWidth: '200px',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
+export const Toast: React.FC<ToastProps & { visible: boolean; announce: Announce }> = props => {
+  const styles = useToastStyles();
 
-  slide: {
-    animationDuration: '200ms, 400ms',
-    animationDelay: '0ms, 200ms',
-    animationName: [
-      {
-        from: {
-          height: '0',
-          minHeight: '0',
-          maxHeight: '0',
-          opacity: 0,
-        },
-        to: {
-          opacity: 0,
-        },
-      },
-      {
-        from: {
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
-    ],
-  },
-
-  fadeOut: {
-    animationDuration: '400ms, 200ms',
-    animationDelay: '0ms, 400ms',
-    animationName: [
-      {
-        from: {
-          opacity: 1,
-        },
-        to: {
-          opacity: 0,
-        },
-      },
-      {
-        from: {
-          opacity: 0,
-        },
-        to: {
-          opacity: 0,
-          height: 0,
-          maxHeight: 0,
-          minHeight: 0,
-        },
-      },
-    ],
-  },
-});
-
-export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
-  const styles = useStyles();
-  const { visible, children, close, remove, updateId, ...toastOptions } = props;
-  const { timeout } = toastOptions;
-  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...toastOptions, content: children });
+  const { visible, children, close, remove, updateId, announce, ...toastOptions } = props;
+  const { timeout, politeness } = toastOptions;
+  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props, content: children });
 
   // start the toast once it's fully in
   useIsomorphicLayoutEffect(() => {
@@ -88,19 +26,48 @@ export const Toast: React.FC<ToastProps & { visible: boolean }> = props => {
       toast.addEventListener('animationend', play, {
         once: true,
       });
-
-      return () => {
-        toast.removeEventListener('animationend', play);
-      };
     }
   }, [play, toastRef]);
 
+  React.useEffect(() => {
+    if (visible) {
+      announce(toastRef.current?.textContent ?? '', { politeness });
+    }
+  }, [announce, politeness, toastRef, visible, updateId]);
+
+  const onEntering = () => {
+    if (!toastRef.current) {
+      return;
+    }
+
+    const element = toastRef.current;
+    element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
+  };
+
+  const contextValue = React.useMemo(
+    () => ({
+      close,
+    }),
+    [close],
+  );
+
   return (
-    <Transition in={visible} unmountOnExit mountOnEnter timeout={500} onExited={remove} nodeRef={toastRef}>
-      <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.slide, !visible && styles.fadeOut)}>
-        {children}
-        <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
-      </div>
+    <Transition
+      in={visible}
+      appear
+      unmountOnExit
+      timeout={500}
+      onExited={remove}
+      // eslint-disable-next-line react/jsx-no-bind
+      onEntering={onEntering}
+      nodeRef={toastRef}
+    >
+      <ToastContextProvider value={contextValue}>
+        <div ref={toastRef} className={mergeClasses(styles.toast, visible && styles.enter, !visible && styles.exit)}>
+          {children}
+          <Timer key={updateId} onTimeout={close} timeout={timeout ?? -1} running={running} />
+        </div>
+      </ToastContextProvider>
     </Transition>
   );
 };

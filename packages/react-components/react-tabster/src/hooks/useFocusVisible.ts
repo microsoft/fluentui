@@ -4,7 +4,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { applyFocusVisiblePolyfill } from '../focus/focusVisiblePolyfill';
 
 type UseFocusVisibleOptions = {
-  targetDocument?: HTMLDocument;
+  targetDocument?: Document;
 };
 
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options: UseFocusVisibleOptions = {}) {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: When Textarea is disabled, make the text gray and add an outline for the filled appearance.",
-  "packageName": "@fluentui/react-textarea",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

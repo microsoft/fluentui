@@ -10,6 +10,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
+import * as ReactDOM from 'react-dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Steps, StoryWright } from 'storywright';
 
@@ -101,7 +102,10 @@ const Box = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement
   );
 });
 
-const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ positionFixed }) => {
+const PositionAndAlignProps: React.FC<{ positionFixed?: boolean; useTransform?: boolean }> = ({
+  positionFixed,
+  useTransform,
+}) => {
   const styles = useStyles();
   const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     const positioningOptions: PositioningProps = { position: cur[0], align: cur[1] };
@@ -109,6 +113,7 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     positioningOptions.positionFixed = positionFixed;
+    positioningOptions.useTransform = useTransform;
 
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -477,7 +482,6 @@ const DisableTether = () => {
     position: 'above',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether: 'all',
   });
 
@@ -706,6 +710,129 @@ const FallbackPositioning = () => {
   );
 };
 
+const ScrollJump: React.FC = () => {
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (open && buttonRef.current) {
+      const scrollY = window.scrollY;
+      buttonRef.current.focus();
+
+      setTimeout(() => {
+        const element = document.querySelector<HTMLElement>(
+          scrollY === window.scrollY ? '#test-passed' : '#test-failed',
+        );
+
+        if (element) {
+          element.style.setProperty('display', 'block');
+          element.setAttribute('id', 'test-completed');
+        }
+      }, 500);
+    }
+  }, [open]);
+
+  const { containerRef, targetRef } = usePositioning({
+    position: 'above',
+    align: 'start',
+  });
+
+  const floating = ReactDOM.createPortal(
+    <Box ref={containerRef}>
+      Focusable element <button ref={buttonRef}>Focus me</button>
+    </Box>,
+    document.body,
+  );
+
+  return (
+    <>
+      <div
+        style={{
+          position: 'fixed',
+          top: 10,
+          left: 100,
+          right: 100,
+
+          background: 'white',
+        }}
+      >
+        <p style={{ fontWeight: 20, border: '8px dotted magenta', padding: 10, margin: 0 }}>
+          This example simulates a scroll jump on autofocus when opening a floating element. The example uses a layout
+          effect to focus on the content of the floating box before usePopper is called. This results in the focus
+          executing before the layout effect to position the floating is executed. The scroll jump is fixed internally
+          in usePositioning by using position: fixed on the floating element before it is first positioned.
+        </p>
+        <div
+          id="test-failed"
+          style={{
+            border: '8px dotted magenta',
+            borderTop: 'none',
+            padding: 10,
+            fontSize: 20,
+            color: 'red',
+            display: 'none',
+          }}
+        >
+          Test failed, scroll jump occurred 💥
+        </div>
+        <div
+          id="test-passed"
+          style={{
+            border: '8px dotted magenta',
+            borderTop: 'none',
+            padding: 10,
+            fontSize: 20,
+            color: 'green',
+            display: 'none',
+          }}
+        >
+          Test passed ✅
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          background: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #ccc 10px, #ccc 20px)',
+        }}
+      >
+        <div style={{ background: 'white', border: '4px dotted green', margin: 10 }}>
+          <div
+            style={{
+              display: 'flex',
+
+              background:
+                'repeating-linear-gradient(135deg, transparent, transparent 15px, #0f6cbd 10px, #0f6cbd 20px)',
+              margin: 30,
+              height: '100vh',
+            }}
+          />
+
+          <div style={{ border: '4px dotted black', padding: 10, margin: 100 }}>
+            <button id="target" ref={targetRef} onClick={() => setOpen(s => !s)}>
+              Target
+            </button>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+
+              background:
+                'repeating-linear-gradient(135deg, transparent, transparent 15px, #0f6cbd 10px, #0f6cbd 20px)',
+              margin: 30,
+              height: '100vh',
+            }}
+          />
+
+          {open && floating}
+        </div>
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -754,4 +881,23 @@ storiesOf('Positioning', module)
     </StoryWright>
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true })
-  .addStory('fallback positioning', () => <FallbackPositioning />);
+  .addStory('fallback positioning', () => <FallbackPositioning />)
+  .addStory('disable CSS transform', () => <PositionAndAlignProps useTransform={false} />, { includeRtl: true })
+  .addStory(
+    'disable CSS transform with position fixed',
+    () => <PositionAndAlignProps positionFixed useTransform={false} />,
+    { includeRtl: true },
+  );
+
+storiesOf('Positioning (no decorator)', module).addStory('scroll jumps', () => (
+  <StoryWright
+    steps={new Steps()
+      .focus('#target')
+      .click('#target')
+      .wait('#test-completed')
+      .snapshot('positions without scroll jump')
+      .end()}
+  >
+    <ScrollJump />
+  </StoryWright>
+));

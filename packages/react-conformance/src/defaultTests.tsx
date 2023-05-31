@@ -9,6 +9,12 @@ import { ComponentDoc } from 'react-docgen-typescript';
 import { getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
 import { act } from 'react-dom/test-utils';
 
+/**
+ * TODO - TS 4.5 introduces strict catch `err` callback handling - opting out for sake of smoother ts 4.5 upgrade
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type OptOutStrictCatchTypes = any;
+
 const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
 
 /**
@@ -39,7 +45,7 @@ export const defaultTests: TestObject = {
         } else {
           expect(componentFile[displayName]).toBe(Component);
         }
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['exports-component'](testInfo, e, Object.keys(componentFile)));
       }
     });
@@ -51,7 +57,7 @@ export const defaultTests: TestObject = {
       try {
         const { requiredProps, Component, renderOptions } = testInfo;
         expect(() => render(<Component {...requiredProps} />, renderOptions)).not.toThrow();
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['component-renders'](testInfo, e));
       }
     });
@@ -73,7 +79,7 @@ export const defaultTests: TestObject = {
         // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
         // styled() typically have Base in their name, so remove that too.
         expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['component-has-displayname'](testInfo, e));
       }
     });
@@ -95,7 +101,7 @@ export const defaultTests: TestObject = {
       try {
         expect(rootRef.current).toBeInstanceOf(HTMLElement);
         expect(baseElement.contains(rootRef.current)).toBe(true);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['component-handles-ref'](testInfo, e));
       }
     });
@@ -129,7 +135,7 @@ export const defaultTests: TestObject = {
         // will print out the very long stringified version in the error (which isn't helpful)
         expect(rootRef.current).toBeInstanceOf(HTMLElement);
         expect(rootRef.current).toBe(refEl);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['component-has-root-ref'](testInfo, e));
       }
     });
@@ -175,7 +181,7 @@ export const defaultTests: TestObject = {
 
       try {
         expect(elementWithSize).toBeFalsy();
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['omits-size-prop'](testInfo, e, size, elementWithSize!));
       }
     });
@@ -211,7 +217,7 @@ export const defaultTests: TestObject = {
       try {
         expect(classNames).toContain(testClassName);
         handledClassName = true;
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(
           defaultErrorMessages['component-handles-classname'](testInfo, e, testClassName, classNames, domNode),
         );
@@ -232,7 +238,7 @@ export const defaultTests: TestObject = {
         for (defaultClassName of defaultClassNames) {
           expect(classNames).toContain(defaultClassName);
         }
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(
           defaultErrorMessages['component-preserves-default-classname'](
             testInfo,
@@ -266,7 +272,7 @@ export const defaultTests: TestObject = {
         const classNamesFromFile = indexFile[exportName];
         expect(classNamesFromFile).toBeTruthy();
         handledClassNamesObjectExport = true;
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(
           defaultErrorMessages['component-has-static-classnames-object-exported'](testInfo, e, exportName),
         );
@@ -291,7 +297,7 @@ export const defaultTests: TestObject = {
 
       try {
         expect(classNamesFromFile).toEqual(expectedClassNames);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(
           defaultErrorMessages['component-has-static-classnames-in-correct-format'](testInfo, e, exportName),
         );
@@ -331,7 +337,7 @@ export const defaultTests: TestObject = {
 
         try {
           expect(missingClassNames).toHaveLength(0);
-        } catch (e) {
+        } catch (e: OptOutStrictCatchTypes) {
           throw new Error(
             defaultErrorMessages['component-has-static-classnames'](
               testInfo,
@@ -354,7 +360,7 @@ export const defaultTests: TestObject = {
         const fileName = path.basename(componentPath, path.extname(componentPath));
 
         expect(displayName).toMatch(fileName);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['name-matches-filename'](testInfo, e));
       }
     });
@@ -372,7 +378,7 @@ export const defaultTests: TestObject = {
         const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
 
         expect(indexFile[displayName]).toBe(Component);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['exported-top-level'](testInfo, e));
       }
     });
@@ -390,7 +396,7 @@ export const defaultTests: TestObject = {
         const topLevelFile = require(path.join(getPackagePath(componentPath), 'src', displayName));
 
         expect(topLevelFile[displayName]).toBe(Component);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['has-top-level-file'](testInfo, e));
       }
     });
@@ -404,7 +410,7 @@ export const defaultTests: TestObject = {
       );
       try {
         expect(invalidProps).toEqual([]);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['kebab-aria-attributes'](testInfo, invalidProps));
       }
     });
@@ -432,7 +438,7 @@ export const defaultTests: TestObject = {
 
       try {
         expect(invalidProps).toEqual([]);
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['consistent-callback-names'](testInfo, invalidProps));
       }
     });
@@ -476,7 +482,7 @@ export const defaultTests: TestObject = {
 
           try {
             validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
-          } catch (err) {
+          } catch (err: OptOutStrictCatchTypes) {
             console.log('err', err);
 
             return { ...errors, [propName]: err };
@@ -488,7 +494,7 @@ export const defaultTests: TestObject = {
 
       try {
         expect(invalidProps).toEqual({});
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
       }
     });
@@ -555,7 +561,7 @@ export const defaultTests: TestObject = {
           expect(rootNode).not.toBe(ref.current);
           expect(rootNode.getAttribute(testDataAttribute)).not.toEqual(testDataAttribute);
         });
-      } catch (e) {
+      } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['primary-slot-gets-native-props'](testInfo, e));
       }
     });

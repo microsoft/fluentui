@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 12 May 2023 20:27:35 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 06:46:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.6.0)
+
+Wed, 31 May 2023 06:46:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.14..@fluentui/react-positioning_v9.6.0)
+
+### Minor changes
+
+- Add new optional useTransform parameter to allow disabling transform for positioning ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by yiliu9@microsoft.com)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+
+### Patches
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+
+## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.14)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.13..@fluentui/react-positioning_v9.5.14)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+
+## [9.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.13)
+
+Wed, 24 May 2023 20:45:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.12..@fluentui/react-positioning_v9.5.13)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.5.0 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+
+## [9.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.12)
+
+Thu, 18 May 2023 00:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.11..@fluentui/react-positioning_v9.5.12)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
 
 ## [9.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.11)
 
