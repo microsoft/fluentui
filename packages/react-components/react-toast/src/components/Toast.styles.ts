@@ -7,6 +7,7 @@ import { tokens } from '@fluentui/react-theme';
 
 export const useToastStyles = makeStyles({
   toast: {
+    pointerEvents: 'all',
     boxSizing: 'border-box',
     marginTop: '16px',
     minHeight: '44px',

@@ -20,35 +20,26 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterProps =
     return () => toaster.disconnect();
   }, [toaster, forceRender, toasterOptions, targetDocument]);
 
-  const getToastsToRender = React.useCallback(
-    <T>(cb: (position: ToastPosition, toasts: Toast[]) => T) => {
-      if (!toaster) {
-        return [];
-      }
+  const toastsToRender = (() => {
+    if (!toaster) {
+      return new Map<ToastPosition, Toast[]>();
+    }
 
-      const toRender = new Map<ToastPosition, Toast[]>();
-      const toasts = Array.from(toaster.toasts.values());
+    const toRender = new Map<ToastPosition, Toast[]>();
+    const toasts = Array.from(toaster.toasts.values());
 
-      toasts.forEach(toast => {
-        const { position } = toast;
-        toRender.has(position) || toRender.set(position, []);
-        toRender.get(position)!.push(toast);
-      });
+    toasts.forEach(toast => {
+      const { position } = toast;
+      toRender.has(position) || toRender.set(position, []);
+      toRender.get(position)!.push(toast);
+    });
 
-      return Array.from(toRender, ([position, toastsToRender]) => {
-        if (position.startsWith('top')) {
-          toastsToRender.reverse();
-        }
-
-        return cb(position, toastsToRender);
-      });
-    },
-    [toaster],
-  );
+    return toRender;
+  })();
 
   return {
     isToastVisible: toaster.isToastVisible,
-    getToastsToRender,
+    toastsToRender,
   };
 }
 
