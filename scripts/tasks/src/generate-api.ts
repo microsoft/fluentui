@@ -8,7 +8,6 @@ import { apiExtractor } from './api-extractor';
 import { getTsPathAliasesConfigUsedOnlyForDx } from './utils';
 
 export function generateApi() {
-  console.log('cwd', cwd);
   return series(generateTypeDeclarations, apiExtractor, readTempFile);
 }
 
