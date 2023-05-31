@@ -33,7 +33,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.3",
     "@fluentui/react-utilities": "^9.9.2",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.5",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.6",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
