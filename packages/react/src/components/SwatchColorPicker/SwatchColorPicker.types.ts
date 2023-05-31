@@ -89,6 +89,11 @@ export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement
   onRenderColorCell?: IRenderFunction<IColorCellProps>;
 
   /**
+   * Custom render function for button/cell content area
+   */
+  onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
+
+  /**
    * Whether the control is disabled.
    */
   disabled?: boolean;
