@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: tweak type errors exposed in ts 4.5",
-  "packageName": "@fluentui/react-focus",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

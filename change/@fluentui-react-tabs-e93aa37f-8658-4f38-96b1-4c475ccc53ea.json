@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update Griffel to v1.5.7.",
-  "packageName": "@fluentui/react-tabs",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

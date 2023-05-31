@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: createFocusOutlineStyle cannot work with CSS variables",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

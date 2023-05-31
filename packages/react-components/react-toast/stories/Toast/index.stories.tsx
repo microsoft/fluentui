@@ -11,6 +11,7 @@ export { PauseOnHover } from './PauseOnHover.stories';
 export { UpdateToast } from './UpdateToast.stories';
 export { MultipeToasters } from './MultipleToasters.stories';
 export { ToasterLimit } from './ToasterLimit.stories';
+export { CustomAnnounce } from './CustomAnnounce.stories';
 
 export default {
   title: 'Preview Components/Toast',

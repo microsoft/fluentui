@@ -20,6 +20,9 @@ import type { TriggerProps } from '@fluentui/react-utilities';
 export const renderToastAlert_unstable: (state: ToastAlertState) => JSX.Element;
 
 // @public
+export const renderToaster_unstable: (state: ToasterState) => JSX.Element;
+
+// @public
 export const ToastAlert: ForwardRefComponent<ToastAlertProps>;
 
 // @public (undocumented)
@@ -41,8 +44,27 @@ export type ToastAlertSlots = {
 // @public
 export type ToastAlertState = ComponentState<ToastAlertSlots> & Pick<ToastAlertProps, 'intent'> & Required<Pick<ToastAlertProps, 'appearance'>>;
 
-// @public (undocumented)
+// @public
 export const Toaster: React_2.FC<ToasterProps>;
+
+// @public (undocumented)
+export const toasterClassNames: SlotClassNames<ToasterSlots>;
+
+// @public
+export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & {
+    announce?: Announce;
+};
+
+// @public (undocumented)
+export type ToasterSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<Required<ToasterProps>, 'announce'> & {
+    offset: ToasterOptions['offset'] | undefined;
+    renderAriaLive: boolean;
+};
 
 // @public (undocumented)
 export type ToastId = string;
@@ -82,6 +104,12 @@ export function useToastController(toasterId?: ToasterId): {
     dismissAllToasts: () => void;
     updateToast: (options: UpdateToastEventDetail) => void;
 };
+
+// @public
+export const useToaster_unstable: (props: ToasterProps) => ToasterState;
+
+// @public
+export const useToasterStyles_unstable: (state: ToasterState) => ToasterState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bumps Griffel version to 1.5.7 from 1.5.2",
-  "packageName": "@fluentui/react-drawer",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
