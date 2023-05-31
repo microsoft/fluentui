@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "a11y: add reduced motion styling for Skeleton",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
