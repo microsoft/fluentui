@@ -6,6 +6,7 @@
 - Mason Tejera - MADS use cases
 - Ben Howell - easier recomposition
 - Micah Godbolt - component CSS vars
+- Miroslav Statsny, Oleksandr Fediashov, Lingfan Gao - provider/context optimizations
 
 ## Summary
 
@@ -33,7 +34,61 @@ other components.
 Example: Change the border radius and border width of all Button components without changing those styles for
 Input components.
 
-## Option A: React.Context useCustomStyles hooks
+## Solution
+
+We chose to define a set of custom style hooks available on React context.
+
+A `CustomStyleHook` takes state and updates the className to customize styles.
+The type of the state is `unknown` to avoid circular dependencies between shared context and component packages,
+and to force casting to a known component state type.
+
+```ts
+type CustomStyleHook = (state: unknown) => void;
+```
+
+The `CustomStyleHooksContext` provides the set of hooks for all the components exported from react-components.
+
+```tsx
+export type CustomStyleHooksContextValue = Partial<{
+  useAccordionHeaderStyles_unstable: CustomStyleHook;
+  //...
+};
+
+export const CustomStyleHooksContext = React.createContext<CustomStyleHooksContextValue | undefined>(undefined);
+```
+
+Initially every hook had to be defined and the default was a large object of no-op methods.
+This bloated bundle size, so the context value was set to be partial, the default is undefined, and
+an accessor hook was defined to get a single custom style hook. If the hook is not defined, a no-op function is returned.
+
+The custom style hooks are set using `FluentProvider`. When providers are nested, a shallow merge is done on the
+hooks object allowing for inheritance and overrides.
+
+```ts
+export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+  //...
+  customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
+  //...
+};
+```
+
+Components call the useCustomStyleHooks_unstable to access a custom style hook and then call it after the default styling hook.
+The default and custom style hooks are always called to avoid conditional hook calls.
+
+```tsx
+export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  //...
+
+  useButtonStyles_unstable(state);
+  useCustomStyleHook_unstable('useButtonStyles_unstable')(state);
+
+  //...
+});
+```
+
+## Options Considered
+
+### Option A: React.Context useCustomStyles hooks
 
 Each component could check context for a useCustomStyle hook within the useComponentStyle hook.
 If this hook was defined, it is called at the end of the method before returning state.
@@ -56,9 +111,8 @@ export type ComponentCustomStylesContextValue = {
   useCustomStyles?: (state: ComponentState) => ComponentState;
 };
 
-export const ComponentCustomStylesContext: Context<ComponentCustomStylesContextValue> = createContext<ComponentCustomStylesContextValue>(
-  {},
-);
+export const ComponentCustomStylesContext: Context<ComponentCustomStylesContextValue> =
+  createContext<ComponentCustomStylesContextValue>({});
 
 export const ComponentCustomStylesContextProvider = ComponentCustomStylesContext.Provider;
 ```
@@ -78,7 +132,7 @@ these could be aggregated into a component that transcludes children.
 </App>
 ```
 
-### 👍
+#### 👍
 
 - Custom styling gets the same power as the default component useStyles hook.
 - This builds on using slots as the addressable items for applying styles.
@@ -91,7 +145,7 @@ these could be aggregated into a component that transcludes children.
 - Does not significantly affect rendering performance.
 - Partners building components can follow the same practice to support custom styling in their libraries.
 
-### 👎
+#### 👎
 
 - Custom styling all components requires adding and configuring lots of context providers.
 - Requires writing new code for every component, adding a story, and documenting the feature.
@@ -99,7 +153,7 @@ these could be aggregated into a component that transcludes children.
 - Callers doing custom styling may still take a dependency on the CSS internals of the component if they don't replace a
   style block completely.
 
-### 🤔 Centralized and singular custom styling method
+#### 🤔 Centralized and singular custom styling method
 
 It would be nice to have a single method on context that could apply for all components. This proves difficult
 with each component having its own props and state types.
@@ -110,9 +164,9 @@ a method for each component, but that causes a circular dependency problem for c
 There may some typescript trickery that would allow for a single context value type, but having each component define
 the context type it will inspect for custom styling follows SOLID dependency inversion.
 
-## Option A2: Add global custom styling hook
+### Option A2: Add global custom styling hook
 
-A global object would be defined having custom styling hooks for each known component. 
+A global object would be defined having custom styling hooks for each known component.
 To avoid circular references and preventing tree-shaking, each hook takes state as `unknown`.
 
 ```tsx
@@ -169,7 +223,7 @@ export const useFancyButtonStyles = (state: unknown) => {
 When the application is created, the customizer hooks can be set.
 
 ```tsx
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 const root = createRoot(rootElement!);
 
 fuiCustomizer.useButtonCustomStyles = useFancyButtonStyles;
@@ -177,7 +231,7 @@ fuiCustomizer.useButtonCustomStyles = useFancyButtonStyles;
 root.render(<App />);
 ```
 
-### 👍
+#### 👍
 
 - Custom styling gets the same power as the default component useStyles hook.
 - This builds on using slots as the addressable items for applying styles.
@@ -191,17 +245,17 @@ root.render(<App />);
 - Can restyle without having to recompile component libraries.
 - Globally traverses multiple render roots.
 
-### 👎
+#### 👎
 
 - Custom style hook state is not typesafe. With the component-specific hooks, there is less chance for error.
 - Very powerful. Only modifying classes is an implicit agreement but state modification is possible.
 - Callers doing custom styling may still take a dependency on the CSS internals of the component.
 
-## Option A3: Add custom styling hooks at FluentProvider
+### Option A3: Add custom styling hooks at FluentProvider
 
-A blend of using React.Context from A1 and having a tree-shakable hooks object from A2. 
+A blend of using React.Context from A1 and having a tree-shakable hooks object from A2.
 
-This defines the same hooks object from A2.  I've renamed it to ComponentStyleHooks as it has the same feel as the ComponentStyles in v8 that were attached to v8's Theme.
+This defines the same hooks object from A2. I've renamed it to ComponentStyleHooks as it has the same feel as the ComponentStyles in v8 that were attached to v8's Theme.
 
 ```tsx
 export type ComponentStyleHooks = {
@@ -213,7 +267,7 @@ As in A2, a default is defined with noop implementation.
 
 ```tsx
 export const defaultComponentStyleHooks: ComponentStyleHooks = {
-  useCustomButtonStyles_unstable: () => {}
+  useCustomButtonStyles_unstable: () => {},
 };
 ```
 
@@ -225,9 +279,9 @@ An additional `componentStyles` param would be added to FluentProvider.
 ```tsx
 export type ComponentStylesContextValue = ComponentStyleHooks;
 
-const ComponentStylesContext = React.createContext<
-  ComponentStylesContextValue | undefined
->(undefined) as React.Context<ComponentStylesContextValue>;
+const ComponentStylesContext = React.createContext<ComponentStylesContextValue | undefined>(
+  undefined,
+) as React.Context<ComponentStylesContextValue>;
 
 export const Provider = ComponentStylesContext.Provider;
 
@@ -236,7 +290,7 @@ export function useComponentStyles(): ComponentStylesContextValue {
 }
 ```
 
-Like in option A1, components use the context to call the hooks. 
+Like in option A1, components use the context to call the hooks.
 Because of the default, the call does not have to be conditional.
 
 ```tsx
@@ -283,16 +337,17 @@ const customStyles : ComponentStyleHooks = {
 </App>
 ```
 
-### 👍
+#### 👍
 
 - Same benefits of leveraging Griffle and slots. Additionally, this solution leverages FluentProvider.
 - Same benefit of a tree-shakable set of hooks from A2.
 - Same benefit of minimal code and type introduction from A2.
 
-### 👎
+#### 👎
+
 - Same state:unknown type-safety issue from A2.
 
-## Option B: Encourage recomposition | make recomposition easier
+### Option B: Encourage recomposition | make recomposition easier
 
 The hooks composition model was architected to separate concerns of component behavior, style, and rendering.
 Rather than provide an additional mechanism for custom styling, this option would assist partners with leveraging
@@ -322,7 +377,7 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
 Button.displayName = 'Button';
 ```
 
-### 💡 Improvement - making recomposition easier with compose()
+#### 💡 Improvement - making recomposition easier with compose()
 
 Recomposing every component could be made easier with a compose method that hides some of the details of the ForwardRef
 and sequencing the hook.
@@ -341,7 +396,7 @@ export const Button = compose<ButtonProps>('Button', useButton_unstable, useCust
 > It is likely something worth doing regardless of the outcome of this RFC.
 > The compose method could be called from our own components to reduce boilerplate code.
 
-### 💡 Improvement - generating a recomposed package
+#### 💡 Improvement - generating a recomposed package
 
 We could create an nx generator that produces all the boilerplate component recomposition code.
 This would allow partners to create an unstyled or custom library easily.
@@ -351,7 +406,7 @@ Partners could re-run the tool to keep up with new components shipping in react-
 yarn create-recomposed-library my-components
 ```
 
-### 👍
+#### 👍
 
 - doesn't add yet another way to customize styles to the architecture
 - uses the hooks composition model for its intended purpose, to handle special cases of customization
@@ -360,7 +415,7 @@ yarn create-recomposed-library my-components
 - supports tree-shaking out the hooks that are not used
 - follows out recommended dependency abstraction approach for partners with large and complex code bases to make future migration easier.
 
-### 👎
+#### 👎
 
 - does not provide partners with an out-of-the-box solution
 - non-trivial effort to create a library with every component re-exported
@@ -369,9 +424,9 @@ yarn create-recomposed-library my-components
 - does not affect (reusable) components which are implemented outside the application's source.
 - no consistency between approaches partners might take in creating centralized custom styling solutions
 
-## Option C: Component level CSS custom properties
+### Option C: Component level CSS custom properties
 
-### 💡 Improvement - Remove dependency on classNames and DOM order
+#### 💡 Improvement - Remove dependency on classNames and DOM order
 
 ```tsx
 // Button with component tokens and global fallbacks
@@ -452,11 +507,11 @@ export const CustomButton: ForwardRefComponent<ButtonProps> = React.forwardRef((
 }) as ForwardRefComponent<ButtonProps>;
 ```
 
-### 💡 Improvement - Explicit APIs for modifying commonly modified styles
+#### 💡 Improvement - Explicit APIs for modifying commonly modified styles
 
 checkboxCheckedBackground = 'foo' vs ':enabled:not(:checked):not(:indeterminate)': { background: 'foo'}
 
-### 💡 Improvement - Perf - complex selectors are much slower than local CSS variables
+#### 💡 Improvement - Perf - complex selectors are much slower than local CSS variables
 
 Single className adding multiple css variables is much more performant than complex selectors targeting individual parts of the control
 
@@ -473,26 +528,24 @@ vs
 
 Composition approach would be difficult to adjust at runtime because css vars are already set on the root, and new styles would either need to replace the old one, be more specific, or not use makeResetStyles so user could override individual css vars
 
-
-### 👍
+#### 👍
 
 - Provides increased control of individual aspects of components similar to v8.
 - Extends theming without introducing unused CSS vars.
 - A less fragile API that the raw CSS customization through className.
 
-### 👎
+#### 👎
 
 - May break Griffel optimization as each var() with default would be a unique style.
 - Adopters providing customization of all components would likely introduce a vast number component vars that that could hurt performance.
 - Introduces complexity at every token usage for the component author and for debugging style issues.
 - Does not provide full control over the CSS, adopters still limited to a specific set of tokens.
 
-
-## Decision making
+## Decision
 
 Option A: Discarded - too much additional code, circular reference problems, unwieldy for consumers.
 Option A2: Discarded - global function is no-go
-Option A3: Chosen - minmimal introduction of new types, support tree-shaking, provides full styling escape-hatch to consumers.
+Option A3: **Chosen** - minmimal introduction of new types, support tree-shaking, provides full styling escape-hatch to consumers.
 Option B: Deferred/Parallel - recomposition is the recommended approach for many scenarios and we should continue making it easier. It is not the centralized escape-hatch solution.
 Option C: Deferred - component-level tokens will require longer term investigation and solution brainstorming, including CSS parts. They would make the existing Fluent 2 tokens more customizable, but would still have built-in limitations that prevent them from being a complete escape-hatch.
 
