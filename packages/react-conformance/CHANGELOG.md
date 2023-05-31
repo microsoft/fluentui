@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Mon, 01 May 2023 07:39:51 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 07:38:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.16.2)
+
+Wed, 31 May 2023 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.16.0..@fluentui/react-conformance_v0.16.2)
+
+### Patches
+
+- fix: tweak type errors exposed in ts 4.5 ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
 
 ## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.16.0)
 
