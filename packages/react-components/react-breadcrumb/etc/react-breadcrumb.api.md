@@ -105,6 +105,7 @@ export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<
 // @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     appearance?: 'transparent' | 'subtle';
+    disableFocus?: boolean;
     dividerType?: 'chevron' | 'slash';
     iconPosition?: 'before' | 'after';
     size?: 'small' | 'medium' | 'large';
@@ -150,6 +151,12 @@ export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.
 
 // @public
 export const renderBreadcrumbLink_unstable: (state: BreadcrumbLinkState) => JSX.Element;
+
+// @public (undocumented)
+export const truncateBreadcrumbLongName: (content: string, maxLength?: number | undefined) => string;
+
+// @public (undocumented)
+export const truncateBreadcrumLongTooltip: (content: string, maxLength?: number | undefined) => string;
 
 // @public
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;

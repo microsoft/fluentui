@@ -5042,6 +5042,8 @@ export interface IDialogFooter {
 
 // @public (undocumented)
 export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: IRefObject<IDialogFooter>;
     styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;

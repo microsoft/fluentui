@@ -1,5 +1,5 @@
 import { addProjectConfiguration, getProjects, logger, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import * as chalk from 'chalk';
 import { disableChalk, formatMockedCalls } from '../utils-testing';
 
@@ -19,7 +19,7 @@ describe(`print stats`, () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
 
     addProjectConfiguration(tree, '@proj/pkg-a', {
       root: 'packages/pkg-a',

@@ -34,10 +34,12 @@ function renderItem(item: Item, size: BreadcrumbProps['size']) {
 }
 export const Default = () => (
   <>
-    <Breadcrumb size="small" dividerType="slash">
+    <Breadcrumb aria-label="Small breadcrumb example with slashes" size="small" dividerType="slash">
       {items.map(item => renderItem(item, 'small'))}
     </Breadcrumb>
-    <Breadcrumb>{items.map(item => renderItem(item, 'medium'))}</Breadcrumb>
-    <Breadcrumb size="large">{items.map(item => renderItem(item, 'large'))}</Breadcrumb>
+    <Breadcrumb aria-label="Default breadcrumb">{items.map(item => renderItem(item, 'medium'))}</Breadcrumb>
+    <Breadcrumb aria-label="Large breadcrumb" size="large">
+      {items.map(item => renderItem(item, 'large'))}
+    </Breadcrumb>
   </>
 );

@@ -21,6 +21,7 @@ if (packageName === '@fluentui/react-northstar') {
   entries = buildEntries('@fluentui/react');
   entries['keyboard-key'] = buildEntry('@fluentui/keyboard-key');
 } else {
+  console.error('🚨 No packageName provided!');
   process.exit(1);
 }
 
