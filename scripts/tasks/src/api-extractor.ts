@@ -69,6 +69,7 @@ export function apiExtractor(): TaskFunction {
    */
   const isLocalBuild = args.local ?? !(process.env.TF_BUILD || isCI);
 
+  console.log('is local build', isLocalBuild);
   const tasks = configsToExecute.map(([configPath, configName]) => {
     const taskName = `api-extractor:${configName}`;
 
