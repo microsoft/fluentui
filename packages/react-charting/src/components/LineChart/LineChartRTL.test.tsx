@@ -2,12 +2,7 @@ import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-li
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import * as utils from '../../utilities/utilities';
-import { mount, ReactWrapper } from 'enzyme';
-import { ILineChartPoints, ILineChartProps, LineChart } from './index';
-import { ILineChartState, LineChartBase } from './LineChart.base';
-
-
+import { ILineChartPoints, LineChart } from './index';
 
 const points: ILineChartPoints[] = [
   {
@@ -76,38 +71,45 @@ describe('Line chart rendering', () => {
   // });
 });
 
-test('Should render the lines with the specified colors', async () => {
-  // Arrange
-  // colors mentioned in the data points itself
-  const { container } = render(<LineChart data={chartPoints}/>);
-  const getById = queryAllByAttribute.bind(null, 'id');
-  const lines = getById(container, /lineID/i);
-  // Assert
-  expect(lines[0].getAttribute('stroke')).toEqual('yellow');
-  expect(lines[1].getAttribute('stroke')).toEqual('green');
-  expect(lines[2].getAttribute('stroke')).toEqual('red');
+describe('Line chart - Subcomponent line', () => {
+  test('Should render the lines with the specified colors', async () => {
+    // Arrange
+    // colors mentioned in the data points itself
+    const { container } = render(<LineChart data={chartPoints}/>);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    const lines = getById(container, /lineID/i);
+
+    // Assert
+    expect(lines[0].getAttribute('stroke')).toEqual('yellow');
+    expect(lines[1].getAttribute('stroke')).toEqual('green');
+    expect(lines[2].getAttribute('stroke')).toEqual('red');
+  });
+
+  test('Should hide callout on mouse leave on line', () => {
+    // Arrange
+    const { container } = render(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }}/>);
+    // Act
+    const getById = queryAllByAttribute.bind(null, 'id');
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+
+    // Assert
+    fireEvent.mouseOver(getById(container, /line/i)[0]);
+    expect(getByClass(container, /callout/i)[0]).toBeDefined();
+    fireEvent.mouseLeave(getById(container, /line/i)[0]);
+    expect(!getByClass(container, /callout/i)[0]).toBeDefined();
+  });
 });
 
-test('Should hide callout on mouse leave', () => {
-  // Arrange
-  const { container } = render(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }}/>);
-  // Act
-  const getById = queryAllByAttribute.bind(null, 'id');
-  const getByClass = queryAllByAttribute.bind(null, 'class');
-
-  fireEvent.mouseOver(getById(container, /line/i)[0]);
-  expect(getByClass(container, /callout/i)[0]).toBeDefined();
-  fireEvent.mouseLeave(getById(container, /line/i)[0]);
-  expect(!getByClass(container, /callout/i)[0]).toBeDefined();
-});
-
+describe('Line chart - Subcomponent legend', () => {
 test('Should highlight the corresponding Line on mouse over on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} />);
+
   // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
   fireEvent.mouseOver(legend!);
+
   // Assert
   const getById = queryAllByAttribute.bind(null, 'id');
   const lines = getById(container, /lineID/i);
@@ -119,10 +121,12 @@ test('Should highlight the corresponding Line on mouse over on legends', () => {
 test('Should highlight the corresponding Legend on mouse over on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} />);
+
   // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
   fireEvent.mouseOver(legend!);
+
   // Assert
   expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
 });
@@ -130,10 +134,12 @@ test('Should highlight the corresponding Legend on mouse over on legends', () =>
 test('Should select legend on single mouse click on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} hideLegend={false} />);
+
   // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
   fireEvent.click(legend!);
+
   // Assert
   const getById = queryAllByAttribute.bind(null, 'id');
   expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
@@ -145,9 +151,11 @@ test('Should select legend on single mouse click on legends', () => {
 test('Should deselect legend on double mouse click on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} hideLegend={false} />);
+
   // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
+
   //single click on first legend
   fireEvent.click(legend!);
   const getById = queryAllByAttribute.bind(null, 'id');
@@ -155,10 +163,41 @@ test('Should deselect legend on double mouse click on legends', () => {
   const firstLegend = screen.queryByText('metaData1')?.closest('button');
   expect(firstLegend).toHaveAttribute('aria-selected', 'true');
   expect(firstLegend).toHaveAttribute('tabIndex', '0');
+
   // double click on same first legend
   fireEvent.click(legend!);
+
   // Assert
   expect(firstLegend).toHaveAttribute('aria-selected', 'false');
+});
+
+test('Should highlight the data points and render the corresponding callout', () => {
+  // Arrange
+  const { container } = render(<LineChart data={chartPoints} />);
+  const getById = queryAllByAttribute.bind(null, 'id');
+  // const firstPointonLine = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle')[0];
+  const firstPointonLine = getById(container, /lineID/)[0];
+  expect(firstPointonLine).toBeDefined();
+  fireEvent.mouseOver(firstPointonLine);
+  // Assert
+  // expect(firstPointonLine.getAttribute('visibility')).toEqual('visibility');
+  expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
+});
+
+test('Should not show any rendered legends when hideLegend is true', () => {
+  const { container } = render(<LineChart data={chartPoints} hideLegend={true} />);
+  const getByClass = queryAllByAttribute.bind(null, 'class');
+  expect(getByClass(container, /rect/i)).toHaveLength(0);
+});
+
+test('Should render the lines with tooltip hidden', () => {
+  // Arrange
+  const { container } = render(<LineChart data={chartPoints} hideTooltip={true} />);
+  const getByClass = queryAllByAttribute.bind(null, 'class');
+
+  // Assert
+  expect(getByClass(container, /toolTipcallout/i)).toHaveLength(0);
+});
 });
 
 test('Should reflect theme change', () => {
@@ -171,34 +210,6 @@ test('Should reflect theme change', () => {
   // Assert
   // expect(container).toMatchSnapshot();
 });
-// test('Should display legends callout on mouse over', async () => {
-//   // Arrange
-//   // const { container } = render(<LineChart data={chartPoints} width={200} height={300} tickValues={[ 20, 30, 40 ]} />);
-//   const { container } = render(<LineChart data={chartPoints} width={200} height={300} legendsOverflowText={'Overflow Items'}/>);
-//   // await new Promise(resolve => setTimeout(resolve));
-//   // Act
-
-//   global.innerHeight = 300;
-//   global.innerWidth = 200;
-//   act(() => {
-//     global.dispatchEvent(new Event('resize'));
-//     const legend = screen.queryByText('more');
-//   expect(legend).toBeDefined();
-//   // screen.debug(container, 500000);
-//   fireEvent.mouseOver(legend!);
-//   });
-
-
-//   // Assert
-
-//   const getByClass = queryAllByAttribute.bind(null, 'class');
-//   expect(getByClass(container, /callout/i)[0]).toBeDefined();
-
-
-// });
-
-
-
 
 describe('Screen resolution', () => {
   const originalInnerWidth = global.innerWidth;
@@ -241,3 +252,29 @@ describe('Screen resolution', () => {
   //  expect(container).toMatchSnapshot();
   });
 });
+
+// test('Should display legends callout on mouse over', async () => {
+//   // Arrange
+//   // const { container } = render(<LineChart data={chartPoints} width={200} height={300} tickValues={[ 20, 30, 40 ]} />);
+//   const { container } = render(<LineChart data={chartPoints} width={200} height={300} legendsOverflowText={'Overflow Items'}/>);
+//   // await new Promise(resolve => setTimeout(resolve));
+//   // Act
+
+//   global.innerHeight = 300;
+//   global.innerWidth = 200;
+//   act(() => {
+//     global.dispatchEvent(new Event('resize'));
+//     const legend = screen.queryByText('more');
+//   expect(legend).toBeDefined();
+//   // screen.debug(container, 500000);
+//   fireEvent.mouseOver(legend!);
+//   });
+
+
+//   // Assert
+
+//   const getByClass = queryAllByAttribute.bind(null, 'class');
+//   expect(getByClass(container, /callout/i)[0]).toBeDefined();
+
+
+// });
