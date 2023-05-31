@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: tweak type errors exposed in ts 4.5",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
