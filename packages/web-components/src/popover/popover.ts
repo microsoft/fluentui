@@ -286,8 +286,10 @@ export class Popover extends FASTElement {
     });
     computePosition(this.anchorRef[0], this.popoverContentRef, {
       placement,
+      // strategy: 'fixed',
     }).then(({ x, y, middlewareData, placement }) => {
-      Object.assign(this.popoverContentRef!.style, { left: `${x}px`, top: `${y}px` });
+      // This originally used left/top but that caused the nested popovers to be positioned incorrectly on the first open.
+      Object.assign(this.popoverContentRef!.style, { transform: `translate3d(${x}px, ${y}px, 0)` });
     });
   };
 }
