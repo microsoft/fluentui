@@ -230,6 +230,17 @@ export interface ICartesianChartProps {
   yAxisTickFormat?: any;
 
   /**
+   * Secondary y-scale options
+   * By default this is not defined, meaning there will be no secondary y-scale.
+   */
+  secondaryYScaleOptions?: {
+    /** Minimum value (0 by default) */
+    yMinValue?: number;
+    /** Maximum value (100 by default) */
+    yMaxValue?: number;
+  };
+
+  /**
    * minimum  data value point in y-axis
    */
   yMinValue?: number;
@@ -238,6 +249,11 @@ export interface ICartesianChartProps {
    * maximum data value point in y-axis
    */
   yMaxValue?: number;
+
+  /**
+   * maximum data value point in x-axis
+   */
+  xMaxValue?: number;
 
   /**
    * Number of ticks on the y-axis.
@@ -371,6 +387,8 @@ export interface IChildProps {
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScale?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yScaleSecondary?: any;
   containerHeight?: number;
   containerWidth?: number;
 }
@@ -528,4 +546,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /** Padding before first bar/line-point and after last bar/line-point */
   xAxisOuterPadding?: number;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }

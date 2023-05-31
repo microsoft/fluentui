@@ -4,7 +4,42 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import { ARIAButtonResultProps } from '@fluentui/react-aria';
+import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export const renderToastAlert_unstable: (state: ToastAlertState) => JSX.Element;
+
+// @public
+export const ToastAlert: ForwardRefComponent<ToastAlertProps>;
+
+// @public (undocumented)
+export const toastAlertClassNames: SlotClassNames<ToastAlertSlots>;
+
+// @public
+export type ToastAlertProps = ComponentProps<ToastAlertSlots> & {
+    intent?: 'info' | 'success' | 'error' | 'warning';
+    appearance?: 'primary' | 'inverted';
+};
+
+// @public (undocumented)
+export type ToastAlertSlots = {
+    root: NonNullable<Slot<'div'>>;
+    media?: Slot<'div'>;
+    action?: Slot<'div'>;
+};
+
+// @public
+export type ToastAlertState = ComponentState<ToastAlertSlots> & Pick<ToastAlertProps, 'intent'> & Required<Pick<ToastAlertProps, 'appearance'>>;
 
 // @public (undocumented)
 export const Toaster: React_2.FC<ToasterProps>;
@@ -13,13 +48,38 @@ export const Toaster: React_2.FC<ToasterProps>;
 export type ToastId = string;
 
 // @public (undocumented)
-export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
+export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
-export function useToastController(): {
-    dispatchToast: (content: React_2.ReactNode, options?: Partial<ToastOptions> | undefined) => void;
-    dismissToast: (toastId: ToastId, toasterId?: string | undefined) => void;
-    dismissAllToasts: (toasterId?: string | undefined) => void;
+export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+
+// @public
+export const ToastTrigger: React_2.FC<ToastTriggerProps>;
+
+// @public
+export type ToastTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props>;
+
+// @public (undocumented)
+export type ToastTriggerProps = TriggerProps<ToastTriggerChildProps> & {
+    disableButtonEnhancement?: boolean;
+};
+
+// @public (undocumented)
+export type ToastTriggerState = {
+    children: React_2.ReactElement | null;
+};
+
+// @public
+export const useToastAlert_unstable: (props: ToastAlertProps, ref: React_2.Ref<HTMLElement>) => ToastAlertState;
+
+// @public
+export const useToastAlertStyles_unstable: (state: ToastAlertState) => ToastAlertState;
+
+// @public (undocumented)
+export function useToastController(toasterId?: ToasterId): {
+    dispatchToast: (content: React_2.ReactNode, options?: Partial<Omit<ToastOptions, "toasterId">> | undefined) => void;
+    dismissToast: (toastId: ToastId) => void;
+    dismissAllToasts: () => void;
     updateToast: (options: UpdateToastEventDetail) => void;
 };
 

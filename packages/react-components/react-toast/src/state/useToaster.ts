@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { Toaster } from './vanilla/toaster';
 import { useForceUpdate } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { Toaster } from './vanilla/toaster';
 import { Toast, ToastPosition, ToasterOptions } from './types';
 import { ToasterProps } from '../components/Toaster';
 
 export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
   const forceRender = useForceUpdate();
   const toasterOptions = useToasterOptions(options);
-  const toasterRef = React.useRef<TElement>(null);
   const [toaster] = React.useState(() => new Toaster());
+  const { targetDocument } = useFluent();
 
   React.useEffect(() => {
-    if (toasterRef.current) {
-      toaster.connectToDOM(toasterRef.current, toasterOptions);
+    if (targetDocument) {
+      toaster.connectToDOM(targetDocument, toasterOptions);
       toaster.onUpdate = forceRender;
     }
 
     return () => toaster.disconnect();
-  }, [toaster, forceRender, toasterOptions]);
+  }, [toaster, forceRender, toasterOptions, targetDocument]);
 
   const getToastsToRender = React.useCallback(
     <T>(cb: (position: ToastPosition, toasts: Toast[]) => T) => {
@@ -46,7 +47,6 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterProps =
   );
 
   return {
-    toasterRef,
     isToastVisible: toaster.isToastVisible,
     getToastsToRender,
   };

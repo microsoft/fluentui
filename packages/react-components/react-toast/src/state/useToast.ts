@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useForceUpdate } from '@fluentui/react-utilities';
 import { Toast } from './vanilla/toast';
-import { ToastOptions } from './types';
+import { Toast as ToastProps } from './types';
 
 const noop = () => null;
 
-export function useToast<TElement extends HTMLElement>(options: ToastOptions) {
+export function useToast<TElement extends HTMLElement>(options: ToastProps) {
   const { pauseOnHover, pauseOnWindowBlur } = options;
 
   const forceRender = useForceUpdate();

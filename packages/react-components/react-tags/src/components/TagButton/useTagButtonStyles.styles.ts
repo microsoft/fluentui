@@ -50,6 +50,10 @@ const useStyles = makeStyles({
       },
       { enableOutline: true },
     ),
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
   contentWithoutMedia: {
@@ -78,6 +82,10 @@ const useStyles = makeStyles({
       borderTopRightRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
     }),
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   dismissButtonCircular: createCustomFocusIndicatorStyle({
     borderTopRightRadius: tokens.borderRadiusCircular,
@@ -87,6 +95,13 @@ const useStyles = makeStyles({
   // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
 
+const useSmallTagButtonStyles = makeStyles({
+  root: {
+    height: '24px',
+  },
+  // TODO add additional styles for sizes
+});
+
 /**
  * Apply styling to the TagButton slots based on the state
  */
@@ -94,21 +109,26 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   const baseStyles = useTagBaseStyles();
   const resetButtonStyles = useResetButtonStyles();
   const styles = useStyles();
+  const smallStyles = useSmallTagButtonStyles();
 
   state.root.className = mergeClasses(
     tagButtonClassNames.root,
     styles.root,
     state.shape === 'circular' && styles.rootCircular,
+
+    state.size === 'small' && smallStyles.root,
+
     state.root.className,
   );
   if (state.content) {
     state.content.className = mergeClasses(
       tagButtonClassNames.content,
 
+      resetButtonStyles.resetButton,
       styles.content,
       state.shape === 'circular' && styles.circularContent,
       !state.media && !state.icon && styles.contentWithoutMedia,
-      state.dismissButton && styles.dismissibleContent,
+      state.dismissible && styles.dismissibleContent,
 
       state.content.className,
     );

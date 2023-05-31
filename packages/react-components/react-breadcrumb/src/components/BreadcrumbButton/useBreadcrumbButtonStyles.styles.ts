@@ -20,6 +20,11 @@ export const breadcrumbCSSVars = {
   breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
 };
 
+const defaultButtonStyles = {
+  backgroundColor: tokens.colorTransparentBackground,
+  color: tokens.colorNeutralForeground2,
+  cursor: 'auto',
+};
 const useStyles = makeStyles({
   root: {},
   small: {
@@ -36,6 +41,14 @@ const useStyles = makeStyles({
     height: '40px',
     ...shorthands.padding(tokens.spacingHorizontalS),
     ...typographyStyles.body2,
+  },
+  current: {
+    ':hover': {
+      ...defaultButtonStyles,
+    },
+    ':hover:active': {
+      ...defaultButtonStyles,
+    },
   },
   currentSmall: {
     ...typographyStyles.caption1Strong,
@@ -85,6 +98,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     styles[state.size],
     styles.root,
     state.current && currentSizeMap[state.size],
+    state.current && styles.current,
     state.root.className,
   );
 

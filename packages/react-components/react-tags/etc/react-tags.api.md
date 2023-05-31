@@ -10,7 +10,6 @@ import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -21,6 +20,9 @@ export const renderTag_unstable: (state: TagState, contextValues: TagContextValu
 
 // @public
 export const renderTagButton_unstable: (state: TagButtonState, contextValues: TagButtonContextValues) => JSX.Element;
+
+// @public
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -38,7 +40,7 @@ export type TagButtonProps = ComponentProps<Partial<TagButtonSlots>> & Omit<TagP
 export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
     root: NonNullable<Slot<'div'>>;
     dismissButton?: Slot<'button'>;
-    content: NonNullable<ARIAButtonSlotProps<'div'>>;
+    content: NonNullable<Slot<'button'>>;
 };
 
 // @public
@@ -48,12 +50,36 @@ export type TagButtonState = ComponentState<TagButtonSlots> & Omit<TagState, 'co
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
-export type TagProps = ComponentProps<Partial<TagSlots>> & {
+export const TagGroup: ForwardRefComponent<TagGroupProps>;
+
+// @public (undocumented)
+export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
+
+// @public
+export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+    onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: TagGroupDismissData) => void;
+    size?: TagSize;
+};
+
+// @public (undocumented)
+export type TagGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
+    dismissible: boolean;
+    handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
+};
+
+// @public
+export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
     disabled?: boolean;
     dismissible?: boolean;
     shape?: 'rounded' | 'circular';
-    size?: 'extra-small' | 'small' | 'medium';
+    size?: TagSize;
+    value?: Value;
 };
 
 // @public (undocumented)
@@ -80,6 +106,12 @@ export const useTagButton_unstable: (props: TagButtonProps, ref: React_2.Ref<HTM
 
 // @public
 export const useTagButtonStyles_unstable: (state: TagButtonState) => TagButtonState;
+
+// @public
+export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
+
+// @public
+export const useTagGroupStyles_unstable: (state: TagGroupState) => TagGroupState;
 
 // @public
 export const useTagStyles_unstable: (state: TagState) => TagState;
