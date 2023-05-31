@@ -56,7 +56,7 @@ Controlled.parameters = {
     description: {
       story:
         'A DatePicker can be controlled by manually keeping track of the state and updating it. When controlled,' +
-        ' the value prop should use null instead of undefined.',
+        ' the value prop should use null instead of undefined to clear the value of the DatePicker.',
     },
   },
 };

@@ -70,18 +70,16 @@ function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
     initialState: null,
     state: value,
   });
-  const [formattedDate, setFormattedDate] = React.useState(() =>
-    value !== null && value && formatDate ? formatDate(value) : '',
-  );
+  const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
   const setSelectedDate = (newDate: Date | null | undefined) => {
     onSelectDate?.(newDate);
     setSelectedDateState(newDate);
-    setFormattedDate(newDate !== null && newDate && formatDate ? formatDate(newDate) : '');
+    setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
   };
 
   React.useEffect(() => {
-    setFormattedDate(value !== null && value && formatDate ? formatDate(value) : '');
+    setFormattedDate(value && formatDate ? formatDate(value) : '');
   }, [formatDate, value]);
 
   return [selectedDate, formattedDate, setSelectedDate, setFormattedDate] as const;

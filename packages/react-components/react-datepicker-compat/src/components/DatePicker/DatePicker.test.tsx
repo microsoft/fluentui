@@ -158,7 +158,7 @@ describe('DatePicker', () => {
 
   it('calls onSelectDate when controlled', () => {
     const onSelectDate = jest.fn();
-    const result = render(<ControlledDatePicker onSelectDate={date => onSelectDate()} />);
+    const result = render(<ControlledDatePicker onSelectDate={onSelectDate} />);
 
     fireEvent.click(result.getByRole('combobox'));
     result.getAllByRole('gridcell')[10].click();
@@ -169,9 +169,7 @@ describe('DatePicker', () => {
   it('calls onSelectDate and formatDate when controlled', () => {
     const onSelectDate = jest.fn();
     const formatDate = jest.fn();
-    const result = render(
-      <ControlledDatePicker formatDate={date => formatDate()} onSelectDate={date => onSelectDate()} />,
-    );
+    const result = render(<ControlledDatePicker formatDate={formatDate} onSelectDate={onSelectDate} />);
 
     fireEvent.click(result.getByRole('combobox'));
     result.getAllByRole('gridcell')[10].click();
