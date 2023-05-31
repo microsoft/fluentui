@@ -1,4 +1,4 @@
-import { truncateBreadcrumbLongName, truncateBreadcrumLongTooltip } from './truncate';
+import { truncateBreadcrumbLongName, truncateBreadcrumLongTooltip } from './truncateBreadcrumb';
 
 describe('truncate method', () => {
   it('returns empty string when name is empty', () => {

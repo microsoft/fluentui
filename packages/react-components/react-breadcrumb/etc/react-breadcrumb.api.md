@@ -152,9 +152,6 @@ export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.
 export const renderBreadcrumbLink_unstable: (state: BreadcrumbLinkState) => JSX.Element;
 
 // @public (undocumented)
-export const truncate: (content: string, maxLength: number) => string;
-
-// @public (undocumented)
 export const truncateBreadcrumbLongName: (content: string, maxLength?: number | undefined) => string;
 
 // @public (undocumented)
