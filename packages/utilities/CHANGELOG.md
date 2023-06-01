@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 31 May 2023 07:38:40 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.16](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.16)
+
+Thu, 01 Jun 2023 07:38:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.15..@fluentui/utilities_v8.13.16)
+
+### Patches
+
+- fix: Avoid inlining setCallbackMap with terser to prevent memory leaks. ([PR #28080](https://github.com/microsoft/fluentui/pull/28080) by andrew.stegmaier@microsoft.com)
 
 ## [8.13.15](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.15)
 
