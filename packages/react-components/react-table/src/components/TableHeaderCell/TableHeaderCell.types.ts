@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { SortDirection, TableContextValue } from '../Table/Table.types';
 
 export type TableHeaderCellSlots = {
@@ -10,7 +9,7 @@ export type TableHeaderCellSlots = {
   /**
    * Button handles correct narration and interactions for sorting;
    */
-  button: NonNullable<Slot<ARIAButtonSlotProps>>;
+  button: NonNullable<Slot<'div'>>;
   /**
    * aside content for anything that should be after main content of the table header cell
    */
