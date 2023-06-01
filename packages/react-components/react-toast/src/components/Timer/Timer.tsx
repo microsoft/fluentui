@@ -27,5 +27,5 @@ export const Timer: React.FC<{
     return null;
   }
 
-  return <span ref={ref} style={style} className={styles.progress} />;
+  return <span data-timer-status={style.animationPlayState} ref={ref} style={style} className={styles.progress} />;
 };
