@@ -1,6 +1,6 @@
 import { debounce } from './debounce';
 import { createPriorityQueue } from './priorityQueue';
-import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOptions } from './types';
+import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOptions, OverflowDivider } from './types';
 
 /**
  * @internal
@@ -20,11 +20,14 @@ export function createOverflowManager(): OverflowManager {
     overflowDirection: 'end',
     minimumVisible: 0,
     onUpdateItemVisibility: () => undefined,
+    onUpdateDividerVisibility: () => undefined,
     onUpdateOverflow: () => undefined,
   };
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowGroups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
+  const overflowDividers: Record<string, OverflowDivider> = {};
+  const groupVisibility: Record<string, OverflowGroupState> = {};
   const resizeObserver = new ResizeObserver(entries => {
     if (!entries[0] || !container) {
       return;
@@ -72,10 +75,9 @@ export function createOverflowManager(): OverflowManager {
     return options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
   };
 
-  // const getDividerLength = () => {
-  //   const divider = document.querySelector('[data-overflow-divider]');
-  //   return divider ? getOffsetSize(divider as HTMLElement) : 0;
-  // };
+  const isGroupVisible = (id: number | string) => {
+    return groupVisibility[id] === 'visible';
+  };
 
   const makeItemVisible = () => {
     const nextVisible = invisibleItemQueue.dequeue();
@@ -83,11 +85,15 @@ export function createOverflowManager(): OverflowManager {
 
     const item = overflowItems[nextVisible];
     options.onUpdateItemVisibility({ item, visible: true });
+    let dividerWidth = 0;
     if (item.groupId) {
       overflowGroups[item.groupId].invisibleItemIds.delete(item.id);
       overflowGroups[item.groupId].visibleItemIds.add(item.id);
+      if (!isGroupVisible(item.groupId) && overflowDividers[item.groupId]) {
+        dividerWidth = getOffsetSize(overflowDividers[item.groupId].element);
+      }
     }
-    return getOffsetSize(item.element); // + getDividerLength();
+    return getOffsetSize(item.element) + dividerWidth;
   };
 
   const makeItemInvisible = () => {
@@ -95,11 +101,14 @@ export function createOverflowManager(): OverflowManager {
     invisibleItemQueue.enqueue(nextInvisible);
 
     const item = overflowItems[nextInvisible];
-    const width = getOffsetSize(item.element); // + getDividerLength();
+    let width = getOffsetSize(item.element);
     options.onUpdateItemVisibility({ item, visible: false });
     if (item.groupId) {
       overflowGroups[item.groupId].visibleItemIds.delete(item.id);
       overflowGroups[item.groupId].invisibleItemIds.add(item.id);
+      if (isGroupVisible(item.groupId) && overflowDividers[item.groupId]) {
+        width += getOffsetSize(overflowDividers[item.groupId].element);
+      }
     }
     return width;
   };
@@ -111,7 +120,6 @@ export function createOverflowManager(): OverflowManager {
     const visibleItems = visibleItemIds.map(itemId => overflowItems[itemId]);
     const invisibleItems = invisibleItemIds.map(itemId => overflowItems[itemId]);
 
-    const groupVisibility: Record<string, OverflowGroupState> = {};
     Object.entries(overflowGroups).forEach(([groupId, groupState]) => {
       if (groupState.invisibleItemIds.size && groupState.visibleItemIds.size) {
         groupVisibility[groupId] = 'overflow';
@@ -129,8 +137,21 @@ export function createOverflowManager(): OverflowManager {
     if (!container) {
       return false;
     }
+    const dividersWidth = Object.values(overflowDividers).reduce((sum, divider) => {
+      if (!divider.groupId) {
+        return sum;
+      }
+      const groupVisible = isGroupVisible(divider.groupId);
+      const width = groupVisible ? getOffsetSize(divider.element) : 0;
 
-    const availableSize = getOffsetSize(container) - options.padding;
+      // options.onUpdateDividerVisibility({
+      //   divider: overflowDividers[divider.groupId],
+      //   groupVisible: isGroupVisible(divider.groupId),
+      // });
+      return sum + width;
+    }, 0);
+
+    const availableSize = getOffsetSize(container) - options.padding - dividersWidth;
     const overflowMenuOffset = overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     // Snapshot of the visible/invisible state to compare for updates
@@ -138,9 +159,10 @@ export function createOverflowManager(): OverflowManager {
     const invisibleTop = invisibleItemQueue.peek();
 
     const visibleItemIds = visibleItemQueue.all();
+
     let currentWidth = visibleItemIds.reduce((sum, visibleItemId) => {
       const child = overflowItems[visibleItemId].element;
-      return sum + getOffsetSize(child); // + getDividerLength();
+      return sum + getOffsetSize(child);
     }, 0);
 
     // Add items until available width is filled - can result in overflow
@@ -164,6 +186,16 @@ export function createOverflowManager(): OverflowManager {
     ) {
       makeItemInvisible();
     }
+
+    // Object.values(overflowDividers).map((el, i) => {
+    //   const groupId = el.groupId;
+    //   if (groupId) {
+    //     options.onUpdateDividerVisibility({
+    //       divider: overflowDividers[groupId],
+    //       groupVisible: isGroupVisible(groupId),
+    //     });
+    //   }
+    // });
 
     // only update when the state of visible/invisible items has changed
     if (visibleItemQueue.peek() !== visibleTop || invisibleItemQueue.peek() !== invisibleTop) {
@@ -230,16 +262,26 @@ export function createOverflowManager(): OverflowManager {
     overflowMenu = el;
   };
 
-  const addDivider: OverflowManager['addDivider'] = el => {
-    divider = el;
+  const addDivider: OverflowManager['addDivider'] = divider => {
+    if (overflowDividers[divider.groupId]) {
+      return;
+    }
+
+    overflowDividers[divider.groupId] = divider;
   };
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
     overflowMenu = undefined;
   };
 
-  const removeDivider: OverflowManager['removeDivider'] = () => {
-    divider = undefined;
+  const removeDivider: OverflowManager['removeDivider'] = groupId => {
+    if (!overflowDividers[groupId]) {
+      return;
+    }
+    const divider = overflowDividers[groupId];
+    if (divider.groupId) {
+      delete overflowDividers[groupId];
+    }
   };
 
   const removeItem: OverflowManager['removeItem'] = itemId => {

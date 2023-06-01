@@ -19,12 +19,23 @@ export interface OverflowItemEntry {
   groupId?: string;
 }
 
+export interface OverflowDivider {
+  /**
+   * HTML element that will be disappear when overflowed
+   */
+  element: HTMLElement;
+
+  groupId?: string;
+}
+
 /**
  * signature similar to standard event listeners, but typed to handle the custom event
  */
 export type OnUpdateOverflow = (data: OverflowEventPayload) => void;
 
 export type OnUpdateItemVisibility = (data: OnUpdateItemVisibilityPayload) => void;
+
+export type OnUpdateDividerVisibility = (data: OnUpdateDividerVisibilityPayload) => void;
 
 /**
  * Payload of the custom DOM event for overflow updates
@@ -38,6 +49,11 @@ export interface OverflowEventPayload {
 export interface OnUpdateItemVisibilityPayload {
   item: OverflowItemEntry;
   visible: boolean;
+}
+
+export interface OnUpdateDividerVisibilityPayload {
+  divider: OverflowDivider;
+  groupVisible: boolean;
 }
 
 export interface ObserveOptions {
@@ -69,6 +85,8 @@ export interface ObserveOptions {
    * Callback when item visibility is updated
    */
   onUpdateItemVisibility: OnUpdateItemVisibility;
+
+  onUpdateDividerVisibility: OnUpdateDividerVisibility;
 
   /**
    * Callback when item visibility is updated
@@ -114,12 +132,12 @@ export interface OverflowManager {
   /**
    * TODO
    */
-  addDivider: (element: HTMLElement) => void;
+  addDivider: (divider: OverflowDivider) => void;
 
   /**
    * TODO
    */
-  removeDivider: (element: HTMLElement) => void;
+  removeDivider: (element: OverflowDivider) => void;
 
   /**
    * Unsets the overflow menu element

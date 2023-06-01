@@ -4,7 +4,11 @@ import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@flue
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 
 import { OverflowContext } from '../overflowContext';
-import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
+import {
+  updateDividerVisibilityAttribute,
+  updateVisibilityAttribute,
+  useOverflowContainer,
+} from '../useOverflowContainer';
 import { useOverflowStyles } from './useOverflowStyles.styles';
 
 interface OverflowState {
@@ -63,6 +67,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       padding,
       minimumVisible,
       onUpdateItemVisibility: updateVisibilityAttribute,
+      onUpdateDividerVisibility: updateDividerVisibilityAttribute,
     },
   );
 

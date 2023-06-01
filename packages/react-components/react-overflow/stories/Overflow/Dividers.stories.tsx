@@ -19,6 +19,7 @@ import {
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
+import { OverflowDivider } from '../../src';
 import { ChevronRight20Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -103,14 +104,18 @@ const OverflowGroupDivider: React.FC<{
 
   if (isGroupVisible === 'hidden') {
     return null;
-  }
+  } // TODO hide using overflow logic
 
-  return props.customDivider ? (
-    <div data-overflow-divider="">
-      <ChevronRight20Regular />
-    </div>
-  ) : (
-    <Divider vertical appearance="brand" style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }} />
+  return (
+    <OverflowDivider groupId={props.groupId}>
+      {props.customDivider ? (
+        <div>
+          <ChevronRight20Regular />
+        </div>
+      ) : (
+        <Divider vertical appearance="brand" style={{ flexGrow: 0, paddingRight: '4px', paddingLeft: '4px' }} />
+      )}
+    </OverflowDivider>
   );
 };
 
