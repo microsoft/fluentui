@@ -38,6 +38,7 @@ export interface IMultiStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  emptyChart?: boolean;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -66,70 +67,87 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
+      emptyChart: false,
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
   }
 
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.chartData && item.chartData.length === 0).length === 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
-    const { data, theme, culture } = this.props;
-    this._adjustProps();
-    const { palette } = theme!;
-    const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
-    const { isCalloutVisible } = this.state;
+    if (!this.state.emptyChart) {
+      const { data, theme, culture } = this.props;
+      this._adjustProps();
+      const { palette } = theme!;
+      const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
+      const { isCalloutVisible } = this.state;
 
-    this._classNames = getClassNames(this.props.styles!, {
-      legendColor: this.state.color,
-      theme: theme!,
-      variant: this.props.variant,
-      hideLabels: this.props.hideLabels,
-    });
+      this._classNames = getClassNames(this.props.styles!, {
+        legendColor: this.state.color,
+        theme: theme!,
+        variant: this.props.variant,
+        hideLabels: this.props.hideLabels,
+      });
 
-    const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
-    const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
+      const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
+      const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
-    this._longestBarTotalValue = this._computeLongestBarTotalValue();
-    const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
-      const singleChartBars = this._createBarsAndLegends(
-        singleChartData!,
-        this.props.barHeight!,
-        palette,
-        this.props.hideRatio![index],
-        this.props.hideDenominator![index],
-        this.props.href,
+      this._longestBarTotalValue = this._computeLongestBarTotalValue();
+      const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
+        const singleChartBars = this._createBarsAndLegends(
+          singleChartData!,
+          this.props.barHeight!,
+          palette,
+          this.props.hideRatio![index],
+          this.props.hideDenominator![index],
+          this.props.href,
+        );
+        return <div key={index}>{singleChartBars}</div>;
+      });
+
+      return (
+        <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
+          {bars}
+          {!this.props.hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
+          <Callout
+            gapSpace={15}
+            isBeakVisible={false}
+            target={this.state.refSelected}
+            setInitialFocus={true}
+            hidden={!(!this.props.hideTooltip && isCalloutVisible)}
+            directionalHint={DirectionalHint.topAutoEdge}
+            id={this._calloutId}
+            onDismiss={this._closeCallout}
+            preventDismissOnLostFocus={true}
+            /** Keep the callout updated with details of focused/hovered bar */
+            shouldUpdateWhenHidden={true}
+            {...this.props.calloutProps!}
+            {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+          >
+            <>
+              {this.props.onRenderCalloutPerDataPoint ? (
+                this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+              ) : (
+                <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
+              )}
+            </>
+          </Callout>
+        </div>
       );
-      return <div key={index}>{singleChartBars}</div>;
-    });
-
+    }
     return (
-      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
-        {bars}
-        {!this.props.hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        <Callout
-          gapSpace={15}
-          isBeakVisible={false}
-          target={this.state.refSelected}
-          setInitialFocus={true}
-          hidden={!(!this.props.hideTooltip && isCalloutVisible)}
-          directionalHint={DirectionalHint.topAutoEdge}
-          id={this._calloutId}
-          onDismiss={this._closeCallout}
-          preventDismissOnLostFocus={true}
-          /** Keep the callout updated with details of focused/hovered bar */
-          shouldUpdateWhenHidden={true}
-          {...this.props.calloutProps!}
-          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
-        >
-          <>
-            {this.props.onRenderCalloutPerDataPoint ? (
-              this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-            ) : (
-              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
-            )}
-          </>
-        </Callout>
-      </div>
+      <div id={getId('_MSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   }
 

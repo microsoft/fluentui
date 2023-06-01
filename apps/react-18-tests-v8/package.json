@@ -21,8 +21,8 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.109.9",
-    "@fluentui/react-hooks": "^8.6.26",
+    "@fluentui/react": "^8.109.10",
+    "@fluentui/react-hooks": "^8.6.27",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.6",
     "react": "18.2.0",
