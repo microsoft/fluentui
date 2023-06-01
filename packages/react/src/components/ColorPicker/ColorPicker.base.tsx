@@ -346,6 +346,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const isHex = component === 'hex';
     const isAlpha = component === 'a';
     const isTransparency = component === 't';
+    // eslint-disable-next-line deprecation/deprecation
     newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
 
     // Ignore what the user typed if it contains invalid characters

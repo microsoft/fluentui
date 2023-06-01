@@ -28,6 +28,26 @@ export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIn
 }
 
 /**
+ * Get the position of the focus outline
+ *
+ * @param options - Configures the style of the focus outline
+ * @param position - The position of the focus outline
+ * @returns CSS value for the position of the focus outline
+ */
+function getOutlinePosition(
+  { outlineWidth, outlineOffset }: FocusOutlineStyleOptions,
+  position: 'top' | 'bottom' | 'left' | 'right',
+) {
+  const offsetValue = (outlineOffset as FocusOutlineOffset)?.[position] || outlineOffset;
+
+  if (!outlineOffset) {
+    return `calc(${outlineWidth} * -1)`;
+  }
+
+  return `calc(0px - ${outlineWidth} - ${offsetValue})`;
+}
+
+/**
  * NOTE: the element with the focus outline needs to have `position: relative` so that the
  * pseudo element can be properly positioned.
  *
@@ -35,12 +55,7 @@ export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIn
  * @returns focus outline styles object
  */
 const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle => {
-  const { outlineRadius, outlineColor, outlineOffset, outlineWidth } = options;
-
-  const outlineOffsetTop = (outlineOffset as FocusOutlineOffset)?.top || outlineOffset;
-  const outlineOffsetBottom = (outlineOffset as FocusOutlineOffset)?.bottom || outlineOffset;
-  const outlineOffsetLeft = (outlineOffset as FocusOutlineOffset)?.left || outlineOffset;
-  const outlineOffsetRight = (outlineOffset as FocusOutlineOffset)?.right || outlineOffset;
+  const { outlineRadius, outlineColor, outlineWidth } = options;
 
   return {
     ...shorthands.borderColor('transparent'),
@@ -55,10 +70,10 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
       ...shorthands.borderRadius(outlineRadius),
       ...shorthands.borderColor(outlineColor),
 
-      top: !outlineOffset ? `-${outlineWidth}` : `calc(0px - ${outlineWidth} - ${outlineOffsetTop})`,
-      bottom: !outlineOffset ? `-${outlineWidth}` : `calc(0px - ${outlineWidth} - ${outlineOffsetBottom})`,
-      left: !outlineOffset ? `-${outlineWidth}` : `calc(0px - ${outlineWidth} - ${outlineOffsetLeft})`,
-      right: !outlineOffset ? `-${outlineWidth}` : `calc(0px - ${outlineWidth} - ${outlineOffsetRight})`,
+      top: getOutlinePosition(options, 'top'),
+      right: getOutlinePosition(options, 'right'),
+      bottom: getOutlinePosition(options, 'bottom'),
+      left: getOutlinePosition(options, 'left'),
     },
   };
 };

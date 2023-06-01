@@ -5,7 +5,7 @@ import * as os from 'os';
 import * as path from 'path';
 
 import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
-import { WorkspaceJsonConfiguration, names } from '@nrwl/devkit';
+import { ProjectsConfigurations, names } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import { Actions } from 'node-plop';
@@ -173,7 +173,7 @@ const appendToPackageIndex = (data: Data): string => {
 //#endregion
 
 function getProjectMetadata(options: { root: string; name: string }) {
-  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
+  const nxWorkspace: ProjectsConfigurations = JSON.parse(
     fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
   );
 

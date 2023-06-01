@@ -121,6 +121,6 @@ describe('collectLocalReport', () => {
     await fs.writeFile(reportBPath, JSON.stringify(reportB));
     await fs.writeFile(reportCPath, JSON.stringify(reportC));
 
-    await expect(collectLocalReport({ root: rootDir })).rejects.toThrow(/Failed to read JSON/);
+    await expect(collectLocalReport({ root: rootDir })).rejects.toThrow(/Invalid JSON/);
   });
 });

@@ -2,7 +2,7 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 
 import { PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
-import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
+import { ProjectsConfigurations } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
@@ -306,7 +306,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   };
 
   const nxWorkspaceContent = fs.readFileSync(paths.workspace, 'utf-8');
-  const nxWorkspace: WorkspaceJsonConfiguration = jju.parse(nxWorkspaceContent);
+  const nxWorkspace: ProjectsConfigurations = jju.parse(nxWorkspaceContent);
   Object.assign(nxWorkspace.projects, templates.workspace);
 
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
@@ -315,7 +315,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
 }
 
 function getProjectMetadata(options: { root: string; name: string }) {
-  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
+  const nxWorkspace: ProjectsConfigurations = JSON.parse(
     fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
   );
 

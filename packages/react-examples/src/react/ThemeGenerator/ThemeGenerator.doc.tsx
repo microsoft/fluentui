@@ -40,7 +40,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
     this.state = {
-      themeRules: themeRules,
+      themeRules,
       colorPickerSlotRule: null,
       colorPickerElement: null,
       colorPickerVisible: false,
@@ -227,7 +227,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
         true,
         true,
       );
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      this.setState({ themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
     // but high enough that quick changes don't get bogged down by a million changes in-between
@@ -289,6 +289,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
 
     const contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
+    // eslint-disable-next-line deprecation/deprecation
     contrastRatioString = contrastRatioString.substr(0, contrastRatioString.indexOf('.') + 3);
     if (contrastRatio < 4.5) {
       contrastRatioString = '**' + contrastRatioString + '**';
@@ -413,7 +414,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
           // isInverted got swapped, so need to refresh slots with new shading rules
           ThemeGenerator.insureSlots(themeRules, !currentIsDark);
         }
-        this.setState({ themeRules: themeRules }, this._makeNewTheme);
+        this.setState({ themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes in-between
