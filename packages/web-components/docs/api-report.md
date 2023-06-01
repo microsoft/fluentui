@@ -29,6 +29,8 @@ import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { FASTTabPanel } from '@microsoft/fast-foundation';
 import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTToolbar } from '@microsoft/fast-foundation';
+import { MenuItemRole } from '@microsoft/fast-foundation';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
@@ -36,6 +38,8 @@ import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import { TabsOrientation } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
+import { ToolbarOptions } from '@microsoft/fast-foundation';
+import { ToolbarOrientation } from '@microsoft/fast-foundation';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 // @public
@@ -120,7 +124,10 @@ export const AnchorButtonAppearance: {
     readonly outline: "outline";
     readonly subtle: "subtle";
     readonly secondary: "secondary";
-    readonly transparent: "transparent";
+    readonly transparent: "transparent"; /**
+    * An Anchor Button can be secondary, primary, outline, subtle, transparent
+    * @public
+    */
 };
 
 // @public
@@ -1509,9 +1516,6 @@ export const curveEasyEaseMax: CSSDesignToken<string>;
 export const curveLinear: CSSDesignToken<string>;
 
 // @public
-export const definition: FASTElementDefinition<typeof Switch>;
-
-// @public
 export class Divider extends FASTDivider {
     alignContent?: DividerAlignContent;
     appearance?: DividerAppearance;
@@ -1765,6 +1769,8 @@ export type MenuItemColumnCount = 0 | 1 | 2;
 
 // @public
 export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+
+export { MenuItemRole }
 
 // @public
 export const MenuItemStyles: ElementStyles;
@@ -2058,6 +2064,9 @@ export class Switch extends FASTSwitch {
 }
 
 // @public
+export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
+
+// @public
 export const SwitchLabelPosition: {
     readonly above: "above";
     readonly after: "after";
@@ -2068,10 +2077,10 @@ export const SwitchLabelPosition: {
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
 
 // @public (undocumented)
-export const switchStyles: ElementStyles;
+export const SwitchStyles: ElementStyles;
 
 // @public (undocumented)
-export const switchTemplate: ElementViewTemplate<Switch>;
+export const SwitchTemplate: ElementViewTemplate<Switch>;
 
 // @public
 export class Tab extends FASTTab {
@@ -2282,6 +2291,34 @@ export const ToggleButtonStyles: ElementStyles;
 
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// @public
+export class Toolbar extends FASTToolbar {
+    size?: ToolbarSize;
+}
+
+// @public
+export const ToolbarDefinition: FASTElementDefinition<typeof Toolbar>;
+
+export { ToolbarOptions }
+
+export { ToolbarOrientation }
+
+// @public
+export const ToolbarSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ToolbarSize = ValuesOf<typeof ToolbarSize>;
+
+// @public
+export const ToolbarStyles: ElementStyles;
+
+// @public (undocumented)
+export const ToolbarTemplate: ElementViewTemplate<Toolbar>;
 
 // (No @packageDocumentation comment for this package)
 
