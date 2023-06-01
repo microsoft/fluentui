@@ -17,7 +17,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_149"
+    id="chart_477"
     role="presentation"
   >
     <div
@@ -26,7 +26,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone150"
+      data-focuszone-id="FocusZone478"
     >
       <svg
         focusable="false"
@@ -60,7 +60,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_149"
+          id="xAxisGElementchart_477"
           transform="translate(0, -35)"
         />
         <g
@@ -88,7 +88,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_149"
+          id="yAxisGElementchart_477"
           transform="translate(40, 0)"
         />
         <g>
@@ -135,7 +135,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone151"
+                data-focuszone-id="FocusZone479"
                 role="listbox"
               >
                 <div
@@ -438,7 +438,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_154"
+    id="chart_482"
     role="presentation"
   >
     <div
@@ -447,7 +447,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone155"
+      data-focuszone-id="FocusZone483"
     >
       <svg
         focusable="false"
@@ -481,7 +481,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_154"
+          id="xAxisGElementchart_482"
           transform="translate(0, -35)"
         />
         <g
@@ -509,7 +509,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_154"
+          id="yAxisGElementchart_482"
           transform="translate(40, 0)"
         />
         <g>
@@ -556,7 +556,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone156"
+                data-focuszone-id="FocusZone484"
                 role="listbox"
               >
                 <div
@@ -872,7 +872,7 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_162"
+      id="chart_490"
       role="presentation"
     >
       <div
@@ -881,7 +881,7 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone163"
+        data-focuszone-id="FocusZone491"
       >
         <svg
           focusable="false"
@@ -915,7 +915,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_162"
+            id="xAxisGElementchart_490"
             transform="translate(0, -35)"
           />
           <g
@@ -943,7 +943,7 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_162"
+            id="yAxisGElementchart_490"
             transform="translate(40, 0)"
           />
           <g>
@@ -990,7 +990,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone164"
+                  data-focuszone-id="FocusZone492"
                   role="listbox"
                 >
                   <div
@@ -1294,7 +1294,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_30"
+    id="chart_36"
     role="presentation"
   >
     <div
@@ -1303,7 +1303,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone31"
+      data-focuszone-id="FocusZone37"
     >
       <svg
         focusable="false"
@@ -1337,7 +1337,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_30"
+          id="xAxisGElementchart_36"
           transform="translate(0, -35)"
         />
         <g
@@ -1365,7 +1365,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_30"
+          id="yAxisGElementchart_36"
           transform="translate(40, 0)"
         />
         <g>
@@ -1412,7 +1412,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone32"
+                data-focuszone-id="FocusZone38"
                 role="listbox"
               >
                 <div
@@ -1715,7 +1715,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_35"
+    id="chart_41"
     role="presentation"
   >
     <div
@@ -1724,7 +1724,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone36"
+      data-focuszone-id="FocusZone42"
     >
       <svg
         focusable="false"
@@ -1758,7 +1758,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_35"
+          id="xAxisGElementchart_41"
           transform="translate(0, -35)"
         />
         <g
@@ -1786,7 +1786,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_35"
+          id="yAxisGElementchart_41"
           transform="translate(40, 0)"
         />
         <g>
@@ -1834,7 +1834,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone37"
+                data-focuszone-id="FocusZone43"
                 role="listbox"
               >
                 <div
@@ -2309,6 +2309,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
+            id="_VBC_bar_14"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2347,6 +2348,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#002050"
             height={255}
+            id="_VBC_bar_15"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2385,6 +2387,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#00188f"
             height={153}
+            id="_VBC_bar_16"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -3013,6 +3016,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
+            id="_VBC_bar_8"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -3051,6 +3055,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#002050"
             height={255}
+            id="_VBC_bar_9"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -3089,6 +3094,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#00188f"
             height={153}
+            id="_VBC_bar_10"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
