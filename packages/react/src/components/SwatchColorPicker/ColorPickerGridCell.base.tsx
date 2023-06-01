@@ -71,7 +71,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     idPrefix = props.id,
     isRadio,
     selected = false,
-    disabled = props.disabled,
+    disabled = false,
     styles,
     circle = true,
     color,
