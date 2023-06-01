@@ -1,7 +1,7 @@
 import { VirtualizerScrollViewDynamicProps } from './VirtualizerScrollViewDynamic.types';
 import { useVirtualizerScrollViewDynamic_unstable } from './useVirtualizerScrollViewDynamic';
 import { renderVirtualizerScrollViewDynamic_unstable } from './renderVirtualizerScrollViewDynamic';
-import { useVirtualizerScrollViewDynamicStyles_unstable } from './useVirtualizerScrollViewDynamicStyles';
+import { useVirtualizerScrollViewDynamicStyles_unstable } from './useVirtualizerScrollViewDynamicStyles.styles';
 import * as React from 'react';
 import { VirtualizerContextProps } from '../../Utilities';
 

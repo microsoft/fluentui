@@ -14,7 +14,7 @@ export interface ToastOptions {
   pauseOnHover: boolean;
   toasterId: ToasterId | undefined;
   priority: number;
-  dispatchedAt: number;
+  politeness: 'assertive' | 'polite';
 }
 
 export interface ToastOffsetObject {
@@ -35,17 +35,18 @@ export interface Toast extends ToastOptions {
   close: () => void;
   remove: () => void;
   updateId: number;
+  dispatchedAt: number;
 }
 
 export interface CommonToastDetail {
   toasterId?: ToasterId;
 }
 
-export interface ShowToastEventDetail extends Partial<Omit<ToastOptions, 'dispatchedAt'>>, CommonToastDetail {
+export interface ShowToastEventDetail extends Partial<ToastOptions>, CommonToastDetail {
   toastId: ToastId;
 }
 
-export interface UpdateToastEventDetail extends Partial<Omit<ToastOptions, 'dispatchedAt'>>, CommonToastDetail {
+export interface UpdateToastEventDetail extends Partial<ToastOptions>, CommonToastDetail {
   toastId: ToastId;
 }
 

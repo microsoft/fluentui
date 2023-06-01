@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
+import { KeyboardResizingCurrentColumnDataAttribute } from '../../hooks/useTableColumnSizing';
 
 export const tableHeaderCellClassName = 'fui-TableHeaderCell';
 export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
@@ -41,6 +42,10 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
     position: 'relative',
+    [`[${KeyboardResizingCurrentColumnDataAttribute}]`]: {
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    },
   },
 
   rootInteractive: {

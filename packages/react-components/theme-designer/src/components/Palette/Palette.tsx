@@ -4,8 +4,7 @@ import { Button, Caption1, Text } from '@fluentui/react-components';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { bundleIcon, CopyFilled, CopyRegular } from '@fluentui/react-icons';
-import { AppContext } from '../../ThemeDesigner';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface PaletteProps {
   className?: string;
@@ -54,7 +53,10 @@ const getBrands = (colors: BrandVariants): Brands[] => {
 export const Palette: React.FC<PaletteProps> = props => {
   const styles = useStyles();
 
-  const { brand } = useContextSelector(AppContext, ctx => ctx.appState);
+  const {
+    state: { brand },
+  } = useThemeDesigner();
+
   const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
 
   return (
@@ -71,6 +73,9 @@ export const Palette: React.FC<PaletteProps> = props => {
               style={{
                 backgroundColor: brandColor,
                 color: textColor,
+              }}
+              onClick={() => {
+                navigator.clipboard.writeText(brandColor);
               }}
             >
               <div className={`${styles.hexCopy} ${hexCopyClassName}`}>

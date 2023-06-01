@@ -10,7 +10,6 @@ import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -41,7 +40,7 @@ export type TagButtonProps = ComponentProps<Partial<TagButtonSlots>> & Omit<TagP
 export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
     root: NonNullable<Slot<'div'>>;
     dismissButton?: Slot<'button'>;
-    content: NonNullable<ARIAButtonSlotProps<'div'>>;
+    content: NonNullable<Slot<'button'>>;
 };
 
 // @public

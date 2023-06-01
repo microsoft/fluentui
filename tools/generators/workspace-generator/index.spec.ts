@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import { Tree, readJson } from '@nrwl/devkit';
 
 import generator from './index';
@@ -9,7 +9,7 @@ describe('workspace-generator generator', () => {
   const options: WorkspaceGeneratorGeneratorSchema = { name: 'custom' };
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
   });
 
   it('should generate boilerplate', async () => {
@@ -118,7 +118,7 @@ describe('workspace-generator generator', () => {
     const content = tree.read('/tools/generators/custom/index.spec.ts')?.toString();
 
     expect(content).toMatchInlineSnapshot(`
-      "import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+      "import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
       import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
       import generator from './index';
@@ -129,7 +129,7 @@ describe('workspace-generator generator', () => {
         const options: CustomGeneratorSchema = { name: 'test' };
 
         beforeEach(() => {
-          appTree = createTreeWithEmptyWorkspace();
+          appTree = createTreeWithEmptyV1Workspace();
         });
 
         it('should run successfully', async () => {

@@ -28,8 +28,11 @@ export class Toaster {
   public visibleToasts: Set<ToastId>;
   public toasts: Map<ToastId, Toast>;
   public onUpdate: () => void;
-  private toasterElement?: HTMLElement;
-  private toastOptions: Pick<ToastOptions, 'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout'>;
+  private targetDocument?: Document;
+  private toastOptions: Pick<
+    ToastOptions,
+    'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout' | 'politeness'
+  >;
   private toasterId?: ToasterId;
   private queue: PriorityQueue<Toast>;
   private limit: number;
@@ -41,6 +44,7 @@ export class Toaster {
     this.visibleToasts = new Set<ToastId>();
     this.onUpdate = () => null;
     this.toastOptions = {
+      politeness: 'polite',
       priority: 0,
       pauseOnHover: false,
       pauseOnWindowBlur: false,
@@ -66,12 +70,12 @@ export class Toaster {
       this.listeners.delete(event);
     }
 
-    this.toasterElement = undefined;
+    this.targetDocument = undefined;
   }
 
-  public connectToDOM(toasterElement: HTMLElement, options: Partial<ToasterOptions>) {
+  public connectToDOM(targetDocument: Document, options: Partial<ToasterOptions>) {
     const { limit = Number.POSITIVE_INFINITY, toasterId, ...rest } = options;
-    this.toasterElement = toasterElement;
+    this.targetDocument = targetDocument;
     this.limit = limit;
     this.toasterId = toasterId;
     assignDefined(this.toastOptions, rest);
@@ -92,7 +96,7 @@ export class Toaster {
   };
 
   private _addEventListener<TType extends keyof ToastListenerMap>(eventType: TType, callback: ToastListenerMap[TType]) {
-    if (!this.toasterElement) {
+    if (!this.targetDocument) {
       return;
     }
 
@@ -105,20 +109,18 @@ export class Toaster {
     };
 
     this.listeners.set(eventType, listener);
-    const targetDocument = this.toasterElement?.ownerDocument;
-    targetDocument.addEventListener(eventType, listener as () => void);
+    this.targetDocument.addEventListener(eventType, listener as () => void);
   }
 
   private _removeEventListener<TType extends keyof ToastListenerMap>(
     eventType: TType,
     callback: ToastListenerMap[TType],
   ) {
-    if (!this.toasterElement) {
+    if (!this.targetDocument) {
       return;
     }
 
-    const targetDocument = this.toasterElement?.ownerDocument;
-    targetDocument.removeEventListener(eventType, callback as () => void);
+    this.targetDocument.removeEventListener(eventType, callback as () => void);
   }
 
   private _updateToast(toastOptions: UpdateToastEventDetail) {

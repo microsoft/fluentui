@@ -7,7 +7,7 @@ import {
   IHeatMapChartDataPoint,
 } from '../../index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -86,6 +86,11 @@ export interface IHeatMapChartState {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Check for empty chart accessibility
+   */
+  emptyChart?: boolean;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -146,8 +151,17 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: null,
       descriptionMessage: '',
       calloutId: '',
+      emptyChart: false,
     };
   }
+
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): React.ReactNode {
     const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
       this.props;
@@ -185,7 +199,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return (
+    return !this.state.emptyChart ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -213,6 +227,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._yAxisScale = props.yScale;
           return this._createRectangles();
         }}
+      />
+    ) : (
+      <div
+        id={getId('_HeatMap_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }
