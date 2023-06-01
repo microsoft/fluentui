@@ -36,6 +36,7 @@ describe('Toast', () => {
     Component: Toast,
     displayName: 'Toast',
     requiredProps: defaultToastProps,
+    isInternal: true,
   });
 
   it('renders a default state', () => {
