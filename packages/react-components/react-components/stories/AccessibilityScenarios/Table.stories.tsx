@@ -107,7 +107,7 @@ const staticColumns = [
 
 const StaticTable = () => {
   return (
-    <Table aria-labelledby="static-table-heading">
+    <Table aria-labelledby="staticTable-heading">
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
@@ -200,7 +200,7 @@ const SortableTable = () => {
   const rows = sort(getRows());
 
   return (
-    <Table aria-labelledby="sortable-table-heading" sortable>
+    <Table aria-labelledby="sortableTable-heading" sortable>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -300,7 +300,7 @@ const MultipleSelectTable = () => {
   );
 
   return (
-    <Table aria-labelledby="multiple-row-select-table-heading">
+    <Table aria-labelledby="multipleRowSelectTable-heading">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -379,7 +379,7 @@ const SingleSelectTable = () => {
   });
 
   return (
-    <Table aria-labelledby="single-row-select-table-heading">
+    <Table aria-labelledby="singleRowSelectTable-heading">
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" hidden />
@@ -422,7 +422,7 @@ const CellNavigationTable = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table aria-labelledby="cell-navigation-table-heading" {...keyboardNavAttr} role="grid">
+    <Table aria-labelledby="cellNavigationTable-heading" {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
@@ -475,7 +475,7 @@ const RowNavigationTable = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table aria-labelledby="row-navigation-table-heading" {...keyboardNavAttr} role="grid">
+    <Table aria-labelledby="rowNavigationTable-heading" {...keyboardNavAttr} role="grid">
       <TableHeader>
         <TableRow>
           {staticColumns.map(column => (
@@ -522,27 +522,27 @@ const RowNavigationTable = () => {
   );
 };
 
-export const UserActivityTables = () => {
+export const FilesActivityTables = () => {
   return (
-    <Scenario pageTitle="User activity tables">
-      <h1>User activity tables</h1>
+    <Scenario pageTitle="Files activity tables">
+      <h1>Files activity</h1>
 
-      <h2 id="static-table-heading">Static table</h2>
+      <h2 id="staticTable-heading">Static table</h2>
       <StaticTable />
 
-      <h2 id="sortable-table-heading">Sortable table</h2>
+      <h2 id="sortableTable-heading">Sortable table</h2>
       <SortableTable />
 
-      <h2 id="multiple-row-select-table-heading">Multiple row select table</h2>
+      <h2 id="multipleRowSelectTable-heading">Multiple row select table</h2>
       <MultipleSelectTable />
 
-      <h2 id="single-row-select-table-heading">Single row select table</h2>
+      <h2 id="singleRowSelectTable-heading">Single row select table</h2>
       <SingleSelectTable />
 
-      <h2 id="cell-navigation-table-heading">Cell navigation table</h2>
+      <h2 id="cellNavigationTable-heading">Cell navigation table</h2>
       <CellNavigationTable />
 
-      <h2 id="row-navigation-table-heading">Row navigation table</h2>
+      <h2 id="rowNavigationTable-heading">Row navigation table</h2>
       <RowNavigationTable />
     </Scenario>
   );
