@@ -107,7 +107,7 @@ describe('Toast', () => {
       }
     });
 
-    expect(container.querySelector('[data-timer-status="running"]')).not.toBeNull();
+    expect(container.querySelector(runningTimerSelector)).not.toBeNull();
   });
 
   it('should close toast ontimeout', () => {
@@ -118,7 +118,9 @@ describe('Toast', () => {
     const toastElement = container.querySelector(`.${toastClassNames.root}`);
     expect(toastElement).not.toBeNull();
     act(() => {
-      toastElement?.dispatchEvent(new Event('animationend'));
+      if (toastElement) {
+        fireEvent.animationEnd(toastElement);
+      }
     });
 
     const timer = container.querySelector(runningTimerSelector);
@@ -189,5 +191,19 @@ describe('Toast', () => {
     });
 
     expect(container.querySelector(runningTimerSelector)).not.toBeNull();
+  });
+
+  it('should render different timer on update', () => {
+    const toastProps: ToastProps = { ...defaultToastProps, timeout: 1 };
+    const { container, rerender } = render(<Toast {...toastProps}>Toast</Toast>);
+
+    const firstTimer = container.querySelector(pausedTimerSelector);
+    expect(firstTimer).not.toBeNull();
+
+    toastProps.updateId++;
+    rerender(<Toast {...toastProps}>Toast</Toast>);
+
+    const secondTimer = container.querySelector(pausedTimerSelector);
+    expect(firstTimer).not.toBe(secondTimer);
   });
 });

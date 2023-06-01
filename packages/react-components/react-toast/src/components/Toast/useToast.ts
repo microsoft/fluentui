@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {
   getNativeElementProps,
-  useIsomorphicLayoutEffect,
   useMergedRefs,
   ExtractSlotProps,
   Slot,
+  useEventCallback,
+  resolveShorthand,
 } from '@fluentui/react-utilities';
 import type { ToastProps, ToastState } from './Toast.types';
 import { useToast } from '../../state';
+import { Timer, TimerProps } from '../Timer/Timer';
 
 /**
  * Create the state required to render Toast.
@@ -33,16 +35,6 @@ export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>
   } = props;
   const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props, content: children });
 
-  // start the toast once it's fully in
-  useIsomorphicLayoutEffect(() => {
-    if (toastRef.current) {
-      const toast = toastRef.current;
-      toast.addEventListener('animationend', play, {
-        once: true,
-      });
-    }
-  }, [play, toastRef]);
-
   React.useEffect(() => {
     if (visible) {
       announce(toastRef.current?.textContent ?? '', { politeness });
@@ -64,15 +56,27 @@ export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>
   // Users never actually use Toast as a JSX but imperatively through useToastController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
 
+  const onAnimationEnd = useEventCallback((e: React.AnimationEvent<HTMLDivElement>) => {
+    // start toast once it's fully animated in
+    play();
+    userRootSlot?.onAnimationEnd?.(e);
+  });
+
   return {
     components: {
+      timer: Timer,
       root: 'div',
     },
+    timer: resolveShorthand<TimerProps>(
+      { key: updateId, onTimeout: close, running, timeout: timerTimeout ?? -1 },
+      { required: true },
+    ),
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, toastRef),
       children,
       ...rest,
       ...userRootSlot,
+      onAnimationEnd,
     }),
     timerTimeout,
     transitionTimeout: 500,

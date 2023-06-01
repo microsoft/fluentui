@@ -3,13 +3,15 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { Announce } from '../AriaLive/AriaLive.types';
 import { Toast as VanillaToast } from '../../state';
 import { ToastContextValue } from '../../contexts/toastContext';
+import { TimerProps } from '../Timer/Timer';
 
 export type ToastContextValues = {
   toast: ToastContextValue;
 };
 
 export type ToastSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
+  timer?: NonNullable<Slot<TimerProps>>;
 };
 
 /**
