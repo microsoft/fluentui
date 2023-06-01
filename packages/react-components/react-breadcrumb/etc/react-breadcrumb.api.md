@@ -6,17 +6,7 @@
 
 /// <reference types="react" />
 
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonSlots } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Link } from '@fluentui/react-link';
-import { LinkProps } from '@fluentui/react-link';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
@@ -105,7 +95,7 @@ export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<
 // @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     appearance?: 'transparent' | 'subtle';
-    disableFocus?: boolean;
+    focusMode?: 'arrow' | 'tab' | 'off';
     dividerType?: 'chevron' | 'slash';
     iconPosition?: 'before' | 'after';
     size?: 'small' | 'medium' | 'large';
@@ -118,7 +108,7 @@ export type BreadcrumbSlots = {
 };
 
 // @public
-export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
+export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType' | 'focusMode'>>;
 
 // @public (undocumented)
 export type PartitionBreadcrumbItems<T> = {
