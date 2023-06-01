@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 30 May 2023 07:36:09 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 07:38:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.1)
+
+Wed, 31 May 2023 07:38:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.0..@fluentui/eslint-plugin_v1.17.1)
+
+### Patches
+
+- fix: tweak type errors exposed in ts 4.5 ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
 
 ## [1.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.0)
 

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 06:46:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.16)
+
+Wed, 31 May 2023 06:46:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.15..@fluentui/react-input_v9.4.16)
+
+### Patches
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-field to v9.1.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-text to v9.3.12 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
 
 ## [9.4.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.15)
 

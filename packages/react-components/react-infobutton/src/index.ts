@@ -14,3 +14,11 @@ export {
   useInfoLabel_unstable,
 } from './InfoLabel';
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from './InfoLabel';
+export {
+  InfoTip,
+  infoTipClassNames,
+  renderInfoTip_unstable,
+  useInfoTipStyles_unstable,
+  useInfoTip_unstable,
+} from './InfoTip';
+export type { InfoTipProps, InfoTipSlots, InfoTipState } from './InfoTip';

@@ -2,6 +2,91 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Wed, 31 May 2023 06:46:19 GMT",
+      "tag": "@fluentui/react-table_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "f376f2871a07ce1f0b376de57968c780cdb13e01",
+            "comment": "A column header style now reflects if its being resized by keyboard"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.5.5",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.1.17",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.1.17",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.7.5",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "chore: Update Griffel to v1.5.7."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 May 2023 10:00:48 GMT",
       "tag": "@fluentui/react-table_v9.2.12",
       "version": "9.2.12",

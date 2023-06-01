@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: ignore eslint exception in a story",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -29,6 +29,7 @@ export const useDataGridHeaderCell_unstable = (
   const resizableColumns = useDataGridContext_unstable(ctx => ctx.resizableColumns);
   const columnSizing = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable);
 
+  // eslint-disable-next-line deprecation/deprecation -- prefer HTMLTableCellElement
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
     if (sortable) {
       toggleColumnSort(e, columnId);

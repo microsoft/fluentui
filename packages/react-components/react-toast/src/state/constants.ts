@@ -4,3 +4,10 @@ export const EVENTS = {
   dismissAll: 'fui-toast-dismiss-all',
   update: 'fui-toast-update',
 } as const;
+
+export const TOAST_POSITIONS = {
+  bottomRight: 'bottom-right',
+  bottomLeft: 'bottom-left',
+  topRight: 'top-right',
+  topLeft: 'top-left',
+} as const;
