@@ -1,3 +1,33 @@
+diff --git a/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.mjs b/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.mjs
+index c4f75ab..b5c695b 100644
+--- a/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.mjs
++++ b/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.mjs
+@@ -655,4 +655,4 @@ const computePosition = (reference, floating, options) => {
+   });
+ };
+ 
+-export { autoUpdate, computePosition, getOverflowAncestors, platform };
++export { autoUpdate, computePosition, getOverflowAncestors, platform, getRectRelativeToOffsetParent };
+diff --git a/node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js b/node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js
+index c4f75ab..b5c695b 100644
+--- a/node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js
++++ b/node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js
+@@ -655,4 +655,4 @@ const computePosition = (reference, floating, options) => {
+   });
+ };
+ 
+-export { autoUpdate, computePosition, getOverflowAncestors, platform };
++export { autoUpdate, computePosition, getOverflowAncestors, platform, getRectRelativeToOffsetParent };
+diff --git a/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs b/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+index c4f75ab..b5c695b 100644
+--- a/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
++++ b/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+@@ -655,4 +655,4 @@ const computePosition = (reference, floating, options) => {
+   });
+ };
+ 
+-export { autoUpdate, computePosition, getOverflowAncestors, platform };
++export { autoUpdate, computePosition, getOverflowAncestors, platform, getRectRelativeToOffsetParent };
 diff --git a/node_modules/@floating-ui/dom/index.d.ts b/node_modules/@floating-ui/dom/index.d.ts
 index ca0d3a7..9c3edb1 100644
 --- a/node_modules/@floating-ui/dom/index.d.ts
