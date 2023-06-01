@@ -7,7 +7,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useToastContextValues_unstable } from './useToastContextValues';
 
 /**
- * Toast component - TODO: add more docs
+ * Toast component
  */
 export const Toast: ForwardRefComponent<ToastProps> = React.forwardRef((props, ref) => {
   const state = useToast_unstable(props, ref);
