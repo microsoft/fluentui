@@ -5,6 +5,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const toastClassNames: SlotClassNames<ToastSlots> = {
   root: 'fui-Toast',
+  timer: 'fui-Timer',
 };
 
 /**

@@ -8,17 +8,11 @@
 
 import * as React_2 from 'react';
 
-// @public
-export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSX.Element;
-
 // @public (undocumented)
 export const renderToastAlert_unstable: (state: ToastAlertState) => JSX.Element;
 
 // @public
 export const renderToaster_unstable: (state: ToasterState) => JSX.Element;
-
-// @public
-export const Toast: ForwardRefComponent<ToastProps>;
 
 // @public
 export const ToastAlert: ForwardRefComponent<ToastAlertProps>;
@@ -41,14 +35,6 @@ export type ToastAlertSlots = {
 
 // @public
 export type ToastAlertState = ComponentState<ToastAlertSlots> & Pick<ToastAlertProps, 'intent'> & Required<Pick<ToastAlertProps, 'appearance'>>;
-
-// @public (undocumented)
-export const toastClassNames: SlotClassNames<ToastSlots>;
-
-// @public (undocumented)
-export type ToastContextValues = {
-    toast: ToastContextValue;
-};
 
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
@@ -82,26 +68,6 @@ export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | To
 export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
 
 // @public
-export type ToastProps = ComponentProps<ToastSlots> & Toast_2 & {
-    visible: boolean;
-    announce: Announce;
-};
-
-// @public (undocumented)
-export type ToastSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type ToastState = ComponentState<ToastSlots> & Pick<ToastProps, 'remove' | 'close' | 'updateId' | 'visible'> & {
-    transitionTimeout: number;
-    timerTimeout: number;
-    running: boolean;
-    onTransitionEntering: () => void;
-    nodeRef: React_2.Ref<HTMLDivElement>;
-};
-
-// @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;
 
 // @public
@@ -118,16 +84,10 @@ export type ToastTriggerState = {
 };
 
 // @public
-export const useToast_unstable: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
-
-// @public
 export const useToastAlert_unstable: (props: ToastAlertProps, ref: React_2.Ref<HTMLElement>) => ToastAlertState;
 
 // @public
 export const useToastAlertStyles_unstable: (state: ToastAlertState) => ToastAlertState;
-
-// @public (undocumented)
-export function useToastContextValues_unstable(state: ToastState): ToastContextValues;
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {
@@ -142,9 +102,6 @@ export const useToaster_unstable: (props: ToasterProps) => ToasterState;
 
 // @public
 export const useToasterStyles_unstable: (state: ToasterState) => ToasterState;
-
-// @public
-export const useToastStyles_unstable: (state: ToastState) => ToastState;
 
 // (No @packageDocumentation comment for this package)
 

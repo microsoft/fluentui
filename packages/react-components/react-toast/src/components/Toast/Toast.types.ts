@@ -11,13 +11,13 @@ export type ToastContextValues = {
 
 export type ToastSlots = {
   root: NonNullable<Slot<'div'>>;
-  timer?: NonNullable<Slot<TimerProps>>;
+  timer: NonNullable<Slot<TimerProps>>;
 };
 
 /**
  * Toast Props
  */
-export type ToastProps = ComponentProps<ToastSlots> &
+export type ToastProps = ComponentProps<Partial<ToastSlots>> &
   VanillaToast & {
     visible: boolean;
     announce: Announce;
