@@ -4,8 +4,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
   root: 'fui-SearchBox',
-  // TODO: add class names for all slots on SearchBoxSlots.
-  // Should be of the form `<slotName>: 'fui-SearchBox__<slotName>`
+  contentBefore: 'fui-SearchBox__contentBefore',
+  dismiss: 'fui-SearchBox__dismiss',
+  contentAfter: 'fui-SearchBox__contentAfter',
 };
 
 /**
