@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
 
 /**
@@ -12,7 +12,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       <div class="drawer" part="drawer">
         <div class="header" part="header">
           <slot name="header"></slot>
-          <div class="close" part="close" @click="${(x: { dismiss: () => any }) => x.dismiss()}">
+          <div class="close" part="close" @click="${(x: { closeDrawer: () => any }) => x.closeDrawer()}">
             <slot name="close"></slot>
           </div>
         </div>

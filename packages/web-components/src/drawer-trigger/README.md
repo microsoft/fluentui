@@ -55,7 +55,7 @@ The Fluent WC3 Drawer extends from the FAST Dialog component and is designed to 
 
 ### Events
 
-- change
+- none
 
 ### Slots
 

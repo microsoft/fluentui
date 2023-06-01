@@ -3,6 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import './define.js';
+import '../drawer-trigger/define.js';
 import { DrawerPosition } from './drawer.options.js';
 
 type DrawerStoryArgs = Args & FluentDrawer;
@@ -26,12 +27,13 @@ const storyTemplate = html<DrawerStoryArgs>`
   <div>
     <style>
       div.docs-story > div:first-child {
-        height: 38em !important;
+        height: 38em;
         padding: 0;
       }
     </style>
-    <div style="height: 37em; transform: scale(1)">
-      <fluent-drawer id="drawer" open="${x => x.open}" position="${x => x.position}">
+    <div style="height: 38em; transform: scale(1); overflow-y: hidden;">
+      <fluent-drawer-trigger drawer-id="drawer">CLICK</fluent-drawer-trigger>
+      <fluent-drawer id="drawer" ?open="${x => x.open}" position="${x => x.position}">
         <div slot="header">Header</div>
         <div slot="close">${dismissed16Regular}</div>
         <fluent-text>
@@ -54,9 +56,22 @@ export default {
   args: {
     disabled: false,
     position: DrawerPosition.right,
-    open: false,
+    open: true,
   },
   argTypes: {
+    open: {
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        type: {
+          summary: 'Sets the open state of drawer',
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     position: {
       options: Object.values(DrawerPosition),
       control: {
@@ -68,17 +83,6 @@ export default {
         },
         defaultValue: {
           summary: DrawerPosition.right,
-        },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets disabled state',
-        },
-        defaultValue: {
-          summary: 'false',
         },
       },
     },

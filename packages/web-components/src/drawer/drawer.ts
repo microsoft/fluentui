@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { DrawerPosition } from './drawer.options.js';
 
 export interface DrawerOptions {
@@ -12,25 +12,6 @@ export interface DrawerOptions {
  * @public
  */
 export class Drawer extends FASTElement {
-  public drawer?: HTMLElement;
-
-  protected openChanged(): void {
-    if (this.$fastController.isConnected && this.drawer) {
-      console.log('openChanged');
-    }
-  }
-
-  /**
-   * The toolbar attribute.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: toolbar
-   */
-
-  @attr({ mode: 'boolean' })
-  public toolbar: boolean = false;
-
   /**
    * The open attribute.
    *
@@ -38,9 +19,15 @@ export class Drawer extends FASTElement {
    * @remarks
    * HTML Attribute: open
    */
-  @observable
   @attr({ attribute: 'open', mode: 'boolean' })
   public open: boolean = false;
+
+  // Method to update the expanded property when it changes
+  public openChanged(prev: boolean, next: boolean): void {
+    if (this.$fastController.isConnected) {
+      this.$emit('change', this.open);
+    }
+  }
 
   /**
    * The position attribute.
@@ -53,11 +40,15 @@ export class Drawer extends FASTElement {
   @attr
   public position?: DrawerPosition = DrawerPosition.right;
 
-  /**
-   * @internal
-   */
-  public dismiss(): void {
-    this.$emit('dismiss');
+  public openDrawer(): void {
+    this.open = true;
+  }
+
+  public closeDrawer(): void {
     this.open = false;
+  }
+
+  public toggleDrawer(): void {
+    this.open = !this.open;
   }
 }
