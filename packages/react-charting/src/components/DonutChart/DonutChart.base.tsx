@@ -8,6 +8,7 @@ import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../ind
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -25,6 +26,7 @@ export interface IDonutChartState {
   selectedLegend: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  emptyChart?: boolean;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -72,6 +74,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: '',
       selectedLegend: '',
       focusedArcId: '',
+      emptyChart: false,
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -85,6 +88,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         _width: this._rootElem.offsetWidth,
         _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
       });
+    }
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.chartData &&
+      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
     }
   }
 
@@ -107,7 +118,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
-    return (
+    return !this.state.emptyChart ? (
       <div
         className={this._classNames.root}
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
@@ -171,6 +182,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         </Callout>
         {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
       </div>
+    ) : (
+      <div
+        id={getId('_DonutChart_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
