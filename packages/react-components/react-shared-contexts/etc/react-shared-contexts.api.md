@@ -5,6 +5,7 @@
 ```ts
 
 import * as React_2 from 'react';
+import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
 export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
