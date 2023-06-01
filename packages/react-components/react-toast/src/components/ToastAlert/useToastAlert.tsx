@@ -19,18 +19,15 @@ export const useToastAlert_unstable = (props: ToastAlertProps, ref: React.Ref<HT
 
   /** Determine the role and media to render based on the intent */
   let defaultIcon;
-  let defaultRole = 'status';
   switch (intent) {
     case 'success':
       defaultIcon = <CheckmarkCircleFilled />;
       break;
     case 'error':
       defaultIcon = <DismissCircleFilled />;
-      defaultRole = 'alert';
       break;
     case 'warning':
       defaultIcon = <WarningFilled />;
-      defaultRole = 'alert';
       break;
     case 'info':
       defaultIcon = <InfoFilled />;
@@ -49,7 +46,6 @@ export const useToastAlert_unstable = (props: ToastAlertProps, ref: React.Ref<HT
     intent,
     root: getNativeElementProps('div', {
       ref,
-      role: defaultRole,
       children: props.children,
       ...props,
     }),

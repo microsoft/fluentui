@@ -1,13 +1,12 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TagContextValues, TagProps, TagSlots, TagState } from '../Tag/index';
-import { ARIAButtonSlotProps } from '../../../../react-aria/src/index';
 
 export type TagButtonContextValues = TagContextValues;
 
 export type TagButtonSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
   root: NonNullable<Slot<'div'>>;
   dismissButton?: Slot<'button'>;
-  content: NonNullable<ARIAButtonSlotProps<'div'>>;
+  content: NonNullable<Slot<'button'>>;
 };
 
 /**

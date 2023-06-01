@@ -3,7 +3,7 @@
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
-module.exports = {
+export default {
   displayName: 'tools',
   preset: '../jest.preset.js',
   globals: {

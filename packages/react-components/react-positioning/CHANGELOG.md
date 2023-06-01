@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 06:46:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.6.0)
+
+Wed, 31 May 2023 06:46:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.14..@fluentui/react-positioning_v9.6.0)
+
+### Minor changes
+
+- Add new optional useTransform parameter to allow disabling transform for positioning ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by yiliu9@microsoft.com)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+
+### Patches
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
 
 ## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.14)
 
