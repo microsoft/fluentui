@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Avoid inlining setCallbackMap with terser to prevent memory leaks.",
+  "packageName": "@fluentui/utilities",
+  "email": "andrew.stegmaier@microsoft.com",
+  "dependentChangeType": "patch"
+}
