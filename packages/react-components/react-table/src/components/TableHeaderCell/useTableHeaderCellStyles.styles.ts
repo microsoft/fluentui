@@ -33,6 +33,7 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
+    fontWeight: tokens.fontWeightRegular,
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
     ...createCustomFocusIndicatorStyle(
       {
