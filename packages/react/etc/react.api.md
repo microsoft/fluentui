@@ -3582,7 +3582,7 @@ export interface IColorPickerGridCellProps {
     // (undocumented)
     onMouseLeave?: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     onMouseMove?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
-    onRenderCellContent?: IRenderFunction<IColorCellProps>;
+    onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
     // (undocumented)
     onWheel?: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     selected: boolean;

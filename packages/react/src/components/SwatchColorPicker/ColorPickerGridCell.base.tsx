@@ -120,8 +120,8 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   };
 
   const onRenderItem = (option: IColorCellProps): JSX.Element => {
-    const { onRenderCellContent = renderColorOption } = props;
-    return onRenderCellContent(option, renderColorOption) as JSX.Element;
+    const { onRenderColorCellContent = renderColorOption } = props;
+    return onRenderColorCellContent(option, renderColorOption) as JSX.Element;
   };
 
   const cellSemantics = isRadio

@@ -115,9 +115,9 @@ export interface IColorPickerGridCellProps {
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 
   /**
-   * Custom content render function for rendering core of cell
+   * Custom render function for rendering internal content of the color cell.
    */
-  onRenderCellContent?: IRenderFunction<IColorCellProps>;
+  onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
 }
 
 /**

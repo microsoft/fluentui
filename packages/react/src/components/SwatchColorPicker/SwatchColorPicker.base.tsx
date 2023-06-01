@@ -322,7 +322,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         onMouseLeave={onMouseLeave}
         onWheel={setNavigationTimeout}
         onKeyDown={onKeyDown}
-        onRenderCellContent={onRenderColorCellContent}
+        onRenderColorCellContent={onRenderColorCellContent}
         height={cellHeight}
         width={cellWidth}
         borderWidth={cellBorderWidth}
