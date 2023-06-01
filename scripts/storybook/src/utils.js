@@ -208,16 +208,15 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
 function getPackageStoriesGlob(options) {
   const projectMetadata = getProjectMetadata({ name: options.packageName });
 
-  /** @type {Record<string,unknown>} */
+  /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
   const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  const dependencies = /** @type {Record<string,string>} */ (
-    Object.assign(packageJson.dependencies, {
-      [options.packageName]: '*',
-    })
-  );
+  packageJson.dependencies = packageJson.dependencies ?? {};
+  const dependencies = Object.assign(packageJson.dependencies, {
+    [options.packageName]: '*',
+  });
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
