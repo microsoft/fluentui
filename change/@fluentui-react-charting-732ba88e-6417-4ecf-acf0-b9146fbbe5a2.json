@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bug fix for bars are not coming in center for string variant",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
