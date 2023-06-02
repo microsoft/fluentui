@@ -55,7 +55,35 @@ export function writeContainerUpdates(options: {
     position: strategy,
   });
 
+  let varX = x;
+  let varY = y;
+
+  switch (placement) {
+    case 'bottom':
+    case 'bottom-end':
+    case 'bottom-start':
+      varY -= 10;
+      break;
+    case 'top':
+    case 'top-end':
+    case 'top-start':
+      varY += 10;
+      break;
+    case 'left':
+    case 'left-end':
+    case 'left-start':
+      varX += 10;
+      break;
+    case 'right':
+    case 'right-end':
+    case 'right-start':
+      varX -= 10;
+      break;
+  }
+
   if (useTransform) {
+    container.style.setProperty('--positioning-x', `${varX}px`);
+    container.style.setProperty('--positioning-y', `${varY}px`);
     Object.assign(container.style, {
       transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
     });

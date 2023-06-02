@@ -28,6 +28,20 @@ const useStyles = makeStyles({
     ...typographyStyles.body1,
   },
 
+  enter: {
+    animationDuration: '367ms',
+    animationTimingFunction: 'cubic-bezier(.1,.9,.2,1)',
+    animationName: {
+      from: {
+        transform: `translate3d(var(--positioning-x), var(--positioning-y), 0)`,
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
+      },
+    },
+  },
+
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
     color: tokens.colorNeutralForegroundStaticInverted,
@@ -63,6 +77,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
   state.root.className = mergeClasses(
     popoverSurfaceClassNames.root,
     styles.root,
+    styles.enter,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
