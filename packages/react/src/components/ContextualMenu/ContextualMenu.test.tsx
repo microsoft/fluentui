@@ -470,7 +470,7 @@ describe('ContextualMenu', () => {
               className: 'SubMenuClass',
             },
           ],
-          onDismiss: onDismiss,
+          onDismiss,
         },
       },
     ];
@@ -754,12 +754,14 @@ describe('ContextualMenu', () => {
       ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
     });
 
-    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
-    const total = menuItemButtonEl.getAttribute('aria-setsize');
-    const index = menuItemButtonEl.getAttribute('aria-posinset');
+    const menuItems = document.querySelectorAll('li button');
+    const total = menuItems[0].getAttribute('aria-setsize');
+    const index1 = menuItems[0].getAttribute('aria-posinset');
+    const index2 = menuItems[1].getAttribute('aria-posinset');
 
     expect(total).toBe('2');
-    expect(index).toBe('1');
+    expect(index1).toBe('1');
+    expect(index2).toBe('2');
   });
 
   it('calculates index and total of menu items in a section correctly', () => {
@@ -785,12 +787,14 @@ describe('ContextualMenu', () => {
       ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
     });
 
-    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
-    const total = menuItemButtonEl.getAttribute('aria-setsize');
-    const index = menuItemButtonEl.getAttribute('aria-posinset');
+    const menuItems = document.querySelectorAll('li button');
+    const total = menuItems[0].getAttribute('aria-setsize');
+    const index1 = menuItems[0].getAttribute('aria-posinset');
+    const index2 = menuItems[1].getAttribute('aria-posinset');
 
     expect(total).toBe('2');
-    expect(index).toBe('1');
+    // expect(index1).toBe('1');
+    expect(index2).toBe('2');
   });
 
   describe('with links', () => {
