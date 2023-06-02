@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { InfoTip } from '@fluentui/react-infobutton';
 import { Label, makeStyles, useId } from '@fluentui/react-components';
-import type { InfoTipProps } from '@fluentui/react-infobutton';
 
 const useStyles = makeStyles({
+  wrapper: {
+    display: 'flex',
+    rowGap: '20px',
+    flexDirection: 'column',
+  },
   infoTip: {
     verticalAlign: 'top',
   },
 });
 
-export const Default = (props: InfoTipProps) => {
+const InfoTipSize: React.FC<{ size: string }> = ({ size }) => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -18,14 +22,12 @@ export const Default = (props: InfoTipProps) => {
 
   return (
     <div aria-owns={open ? infoTipId : undefined}>
-      <Label>This is a label with an InfoTip</Label>
+      <Label id={infoTipInfoId}>{`This is a ${size} label with an InfoTip`}</Label>
       <InfoTip
-        {...props}
-        id={infoTipId}
-        aria-labelledby={`${infoTipId} ${infoTipInfoId}`}
+        aria-labelledby={`${infoTipInfoId} ${infoTipId}`}
         info={{
           children: 'InfoTip sample text',
-          id: infoTipInfoId,
+          id: infoTipId,
         }}
         className={styles.infoTip}
         tooltip={{
@@ -36,4 +38,24 @@ export const Default = (props: InfoTipProps) => {
       />
     </div>
   );
+};
+
+export const Size = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.wrapper}>
+      <InfoTipSize size="small" />
+      <InfoTipSize size="medium" />
+      <InfoTipSize size="large" />
+    </div>
+  );
+};
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: 'An InfoTip supports a range of sizes from small to large. The default is medium.',
+    },
+  },
 };

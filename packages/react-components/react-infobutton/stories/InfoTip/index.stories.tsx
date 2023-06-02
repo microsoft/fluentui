@@ -4,6 +4,7 @@ import descriptionMd from './InfoTipDescription.md';
 import bestPracticesMd from './InfoTipBestPractices.md';
 
 export { Default } from './InfoTipDefault.stories';
+export { Size } from './InfoTipSize.stories';
 
 export default {
   title: 'Preview Components/InfoTip',

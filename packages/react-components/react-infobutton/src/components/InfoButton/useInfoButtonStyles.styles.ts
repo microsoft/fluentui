@@ -27,6 +27,7 @@ const useButtonStyles = makeStyles({
 
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForeground2,
+    cursor: 'pointer',
 
     ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),

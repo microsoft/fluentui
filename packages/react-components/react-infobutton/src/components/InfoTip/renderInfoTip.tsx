@@ -11,6 +11,9 @@ import type { InfoTipState, InfoTipSlots } from './InfoTip.types';
 export const renderInfoTip_unstable = (state: InfoTipState) => {
   const { slots, slotProps } = getSlotsNext<InfoTipSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.tooltip {...slotProps.tooltip}>
+      <slots.root {...slotProps.root} />
+    </slots.tooltip>
+  );
 };

@@ -1,17 +1,33 @@
+import type { TooltipProps } from '@fluentui/react-tooltip';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type InfoTipSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'span'>>;
+
+  tooltip: NonNullable<Slot<Partial<TooltipProps>>>;
 };
 
 /**
  * InfoTip Props
  */
-export type InfoTipProps = ComponentProps<InfoTipSlots> & {};
+export type InfoTipProps = ComponentProps<Partial<InfoTipSlots>> & {
+  /**
+   * Size of the InfoTip.
+   *
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+
+  /**
+   * The information to be displayed in the tooltip.
+   */
+  info: TooltipProps['content'];
+};
 
 /**
  * State used in rendering InfoTip
  */
-export type InfoTipState = ComponentState<InfoTipSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from InfoTipProps.
-// & Required<Pick<InfoTipProps, 'propName'>>
+export type InfoTipState = ComponentState<InfoTipSlots> &
+  Required<Pick<InfoTipProps, 'size'>> & {
+    open: boolean;
+  };

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { infoIconMap } from '../utils/InfoIcon';
+import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
 import type { InfoTipProps, InfoTipState } from './InfoTip.types';
 
 /**
@@ -12,17 +14,40 @@ import type { InfoTipProps, InfoTipState } from './InfoTip.types';
  * @param ref - reference to root HTMLElement of InfoTip
  */
 export const useInfoTip_unstable = (props: InfoTipProps, ref: React.Ref<HTMLElement>): InfoTipState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+  const { size = 'medium', info } = props;
+  const [open, setOpen] = React.useState(false);
+
+  const tooltip = resolveShorthand(props.tooltip, {
+    required: true,
+    defaultProps: {
+      content: info,
+      positioning: 'above-start',
+      relationship: 'description',
+      withArrow: true,
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
+  });
+
+  tooltip.onVisibleChange = mergeCallbacks(tooltip.onVisibleChange, (e, data) => {
+    setOpen(data.visible);
+  });
+
+  return {
+    open,
+    size,
+
+    components: {
+      root: 'span',
+      tooltip: Tooltip as React.FC<Partial<TooltipProps>>,
+    },
+
+    root: getNativeElementProps('span', {
+      'aria-label': 'information',
+      children: infoIconMap[size],
+      role: 'image',
+      tabIndex: 0,
       ...props,
+      ref,
     }),
+    tooltip,
   };
 };

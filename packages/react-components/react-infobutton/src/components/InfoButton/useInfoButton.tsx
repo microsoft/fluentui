@@ -1,16 +1,10 @@
 import * as React from 'react';
-import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { infoIconMap } from '../utils/InfoIcon';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
-
-const infoButtonIconMap = {
-  small: <DefaultInfoButtonIcon12 />,
-  medium: <DefaultInfoButtonIcon16 />,
-  large: <DefaultInfoButtonIcon20 />,
-} as const;
 
 const popoverSizeMap = {
   small: 'small',
@@ -40,9 +34,9 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     },
 
     root: getNativeElementProps('button', {
-      children: infoButtonIconMap[size],
-      type: 'button',
       'aria-label': 'information',
+      children: infoIconMap[size],
+      type: 'button',
       ...props,
       ref,
     }),
