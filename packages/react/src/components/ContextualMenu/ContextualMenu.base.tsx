@@ -71,6 +71,18 @@ const DEFAULT_PROPS: Partial<IContextualMenuProps> = {
   beakWidth: 16,
 };
 
+/* return number of menu items, excluding headers and dividers */
+function getItemCount(items: IContextualMenuItem[]): number {
+  let totalItemCount = 0;
+  for (const item of items) {
+    if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
+      const itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+      totalItemCount += itemCount;
+    }
+  }
+  return totalItemCount;
+}
+
 export function getSubmenuItems(
   item: IContextualMenuItem,
   options?: {
@@ -986,7 +998,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
                     contextualMenuItem,
                     itemsIndex,
                     itemsIndex,
-                    sectionProps.items.length,
+                    getItemCount(sectionProps.items),
                     hasCheckmarks,
                     hasIcons,
                     menuClassNames,
@@ -1217,13 +1229,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
-      let totalItemCount = 0;
-      for (const item of items) {
-        if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
-          const itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
-          totalItemCount += itemCount;
-        }
-      }
+      const totalItemCount = getItemCount(items);
 
       const calloutStyles = classNames.subComponentStyles
         ? (classNames.subComponentStyles.callout as IStyleFunctionOrObject<

@@ -742,6 +742,57 @@ describe('ContextualMenu', () => {
     expect(menuItems.length).toEqual(10);
   });
 
+  it('calculates index and total of menu items correctly', () => {
+    const items: IContextualMenuItem[] = [
+      { key: 'header', text: 'header', itemType: ContextualMenuItemType.Header },
+      { key: '1', text: 'One' },
+      { key: 'divider', itemType: ContextualMenuItemType.Divider },
+      { key: '2', text: 'Two' },
+    ];
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+    });
+
+    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+    const total = menuItemButtonEl.getAttribute('aria-setsize');
+    const index = menuItemButtonEl.getAttribute('aria-posinset');
+
+    expect(total).toBe('2');
+    expect(index).toBe('1');
+  });
+
+  it('calculates index and total of menu items in a section correctly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        key: 'section1',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          topDivider: true,
+          bottomDivider: true,
+          title: 'Actions',
+          items: [
+            { key: 'header', text: 'header', itemType: ContextualMenuItemType.Header },
+            { key: '1', text: 'One' },
+            { key: 'divider', itemType: ContextualMenuItemType.Divider },
+            { key: '2', text: 'Two' },
+          ],
+        },
+      },
+    ];
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+    });
+
+    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+    const total = menuItemButtonEl.getAttribute('aria-setsize');
+    const index = menuItemButtonEl.getAttribute('aria-posinset');
+
+    expect(total).toBe('2');
+    expect(index).toBe('1');
+  });
+
   describe('with links', () => {
     const testUrl = 'http://test.com';
     let items: IContextualMenuItem[];
