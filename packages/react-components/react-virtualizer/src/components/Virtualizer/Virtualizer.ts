@@ -11,6 +11,7 @@ import type { FC } from 'react';
  */
 export const Virtualizer: FC<VirtualizerProps> = (props: VirtualizerProps) => {
   const state = useVirtualizer_unstable(props);
+  console.log('Update virtualizer with a comment to test PR visibility');
   useVirtualizerStyles_unstable(state);
 
   return renderVirtualizer_unstable(state);
