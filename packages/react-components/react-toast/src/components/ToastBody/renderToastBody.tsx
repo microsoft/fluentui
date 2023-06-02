@@ -14,8 +14,8 @@ export const renderToastBody_unstable = (state: ToastBodyState) => {
 
   return (
     <>
-      {slots.subtitle ? <slots.subtitle {...slotProps.subtitle} /> : null}
       <slots.root {...slotProps.root} />
+      {slots.subtitle ? <slots.subtitle {...slotProps.subtitle} /> : null}
     </>
   );
 };
