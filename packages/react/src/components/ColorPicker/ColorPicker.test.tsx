@@ -17,19 +17,26 @@ const white = getColorFromString('#ffffff')!;
 const AEAEAE = getColorFromString('#AEAEAE')!;
 
 describe('ColorPicker', () => {
-  beforeEach(() => {
-    // Resetting ids to create predictability in generated ids.
-    resetIds();
-  });
-
   let colorPicker: ColorPickerBase | null = null;
   const colorPickerRef = (ref: ColorPickerBase | null) => {
     colorPicker = ref;
   };
 
   let updatedColor: IColor | undefined;
-  const onChange = jest.fn((ev: any, color: IColor) => {
-    updatedColor = color;
+  let onChange: jest.Mock<void, [_ev: any, color: IColor], any>;
+
+  beforeEach(() => {
+    // Resetting ids to create predictability in generated ids.
+    resetIds();
+    onChange = jest.fn((_ev: any, color: IColor) => {
+      updatedColor = color;
+    });
+  });
+
+  afterEach(() => {
+    updatedColor = undefined;
+    // clear onChange calls
+    onChange.mockClear();
   });
 
   interface IValidateChangeOptions {
@@ -68,12 +75,6 @@ describe('ColorPicker', () => {
       expect(input.value).toBe(inputValue);
     }
   }
-
-  afterEach(() => {
-    updatedColor = undefined;
-    // clear onChange calls
-    onChange.mockClear();
-  });
 
   it('renders correctly', () => {
     const { container } = render(<ColorPicker color="#abcdef" />);

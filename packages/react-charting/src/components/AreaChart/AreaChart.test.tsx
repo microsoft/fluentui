@@ -56,6 +56,18 @@ const singleChartPoint = {
   lineChartData: singlePoint,
 };
 
+const emptyPoint = [
+  {
+    legend: 'metaData1',
+    data: [],
+    color: 'red',
+  },
+];
+const emptyChartPoints = {
+  chartTitle: 'EmptyAreaChart',
+  lineChartData: emptyPoint,
+};
+
 describe('AreaChart snapShot testing', () => {
   it('renders Areachart correctly', () => {
     const component = renderer.create(<AreaChart data={chartPoints} />);
@@ -301,5 +313,19 @@ describe('AreaChart - mouse events', () => {
     wrapper.find('rect').simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  describe('Render empty chart aria label div when chart is empty', () => {
+    it('No empty chart aria label div rendered', () => {
+      wrapper = mount(<AreaChart data={chartPoints} />);
+      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+      expect(renderedDOM!.length).toBe(0);
+    });
+
+    it('Empty chart aria label div rendered', () => {
+      wrapper = mount(<AreaChart data={emptyChartPoints} />);
+      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+      expect(renderedDOM!.length).toBe(1);
+    });
   });
 });
