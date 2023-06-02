@@ -21,7 +21,7 @@ import * as os from 'os';
 import * as ts from 'typescript';
 
 import { getTemplate, uniqueArray } from './lib/utils';
-import { setupCypressComponentTesting } from './lib/cypress-component-setup';
+import setupCypressComponentTesting from '../cypress-component-configuration';
 import { PackageJson, TsConfig } from '../../types';
 import {
   arePromptsEnabled,
@@ -918,14 +918,15 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function setupCypress(tree: Tree, options: NormalizedSchema) {
+async function setupCypress(tree: Tree, options: NormalizedSchema) {
   const shouldSetupCypress = tree.exists(options.paths.tsconfig.cypress);
 
   if (!shouldSetupCypress) {
     return tree;
   }
 
-  tree = setupCypressComponentTesting(tree, options);
+  await setupCypressComponentTesting(tree, { project: options.name });
+
   return tree;
 }
 

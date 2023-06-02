@@ -5,10 +5,6 @@ import { PackageJson, TsConfig } from '../../../types';
 import { getProjectConfig } from '../../../utils';
 import { uniqueArray } from './utils';
 
-const template = {
-  exclude: ['**/*.cy.ts', '**/*.cy.tsx'],
-};
-
 const templates = {
   config: stripIndents`
     import { baseConfig } from '@fluentui/scripts-cypress';
@@ -28,7 +24,7 @@ const templates = {
 
 type Options = ReturnType<typeof getProjectConfig>;
 
-export function setupCypressComponentTesting(tree: Tree, options: Options) {
+export function addFiles(tree: Tree, options: Options) {
   tree.write(options.paths.cypressConfig, templates.config);
 
   writeJson<TsConfig>(tree, options.paths.tsconfig.cypress, templates.tsconfig);

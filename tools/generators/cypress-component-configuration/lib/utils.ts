@@ -1,5 +1,3 @@
-// use this module to define any kind of generic utilities that are used in more than 1 place within the generator implementation
-
-export function dummyHelper() {
-  return;
+export function uniqueArray<T extends unknown>(value: T[]) {
+  return Array.from(new Set(value));
 }

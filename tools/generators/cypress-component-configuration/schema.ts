@@ -1,6 +1,6 @@
 export interface CypressComponentConfigurationGeneratorSchema {
   /**
-   * Library name
+   * The name of the project to add cypress component testing to
    */
-  name: string;
+  project: string;
 }

@@ -1,50 +1,35 @@
-import * as path from 'path';
-import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/workspace/generators';
+import { Tree, formatFiles, names } from '@nrwl/devkit';
 
-import { getProjectConfig } from '../../utils';
+import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 
-import { CypressComponentConfigurationGeneratorSchema } from './schema';
+import type { CypressComponentConfigurationGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
+import { addFiles } from './lib/add-files';
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+interface _NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: CypressComponentConfigurationGeneratorSchema) {
-  await libraryGenerator(tree, { name: schema.name });
-
+  const userLog: UserLog = [];
   const normalizedOptions = normalizeOptions(tree, schema);
+
+  if (normalizedOptions.projectConfig.projectType === 'application') {
+    userLog.push({ type: 'warn', message: 'we dont support cypress component tests for applications' });
+    printUserLogs(userLog);
+    return;
+  }
 
   addFiles(tree, normalizedOptions);
 
   await formatFiles(tree);
-
-  return () => {
-    installPackagesTask(tree);
-  };
 }
 
 function normalizeOptions(tree: Tree, options: CypressComponentConfigurationGeneratorSchema) {
-  const project = getProjectConfig(tree, { packageName: options.name });
+  const project = getProjectConfig(tree, { packageName: options.project });
 
   return {
     ...options,
     ...project,
-    ...names(options.name),
+    ...names(options.project),
   };
-}
-
-/**
- * NOTE: remove this if your generator doesn't process any static/dynamic templates
- */
-function addFiles(tree: Tree, options: NormalizedSchema) {
-  const templateOptions = {
-    ...options,
-    tmpl: '',
-  };
-
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files'),
-    path.join(options.projectConfig.root, options.name),
-    templateOptions,
-  );
 }

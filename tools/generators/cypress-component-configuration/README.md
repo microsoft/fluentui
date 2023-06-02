@@ -1,13 +1,13 @@
 # cypress-component-configuration
 
-Workspace Generator ...TODO...
+Workspace Generator for setting up Cypress component testing for a project
 
 <!-- toc -->
 
 - [Usage](#usage)
   - [Examples](#examples)
 - [Options](#options)
-  - [`name`](#name)
+  - [`project`](#project)
 
 <!-- tocstop -->
 
@@ -31,8 +31,8 @@ yarn nx workspace-generator cypress-component-configuration
 
 ## Options
 
-#### `name`
+#### `project`
 
 Type: `string`
 
-TODO...
+The name of the project to add cypress component testing to

@@ -3,15 +3,18 @@
   "cli": "nx",
   "id": "cypress-component-configuration",
   "type": "object",
+  "title": "Set up Cypress component testing for a project",
+  "description": "Set up Cypress component test for a project.",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
-      "description": "Library name",
+      "description": "The name of the project to add cypress component testing to",
       "$default": {
         "$source": "argv",
         "index": 0
-      }
+      },
+      "x-prompt": "What project should we add Cypress component testing to?"
     }
   },
-  "required": ["name"]
+  "required": ["project"]
 }
