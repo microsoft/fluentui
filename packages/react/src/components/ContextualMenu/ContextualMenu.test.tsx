@@ -793,7 +793,7 @@ describe('ContextualMenu', () => {
     const index2 = menuItems[1].getAttribute('aria-posinset');
 
     expect(total).toBe('2');
-    // expect(index1).toBe('1');
+    expect(index1).toBe('1');
     expect(index2).toBe('2');
   });
 
