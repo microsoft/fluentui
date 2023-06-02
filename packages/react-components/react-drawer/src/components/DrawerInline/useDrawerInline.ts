@@ -2,6 +2,8 @@ import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
+import usePresenceState from '../../util/usePresenceState';
+import useDrawerRef from '../../util/useDrawerRef';
 
 /**
  * Create the state required to render DrawerInline.
@@ -22,13 +24,16 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
     initialState: false,
   });
 
+  const drawerRef = useDrawerRef(ref);
+  const { rendered, mounted, entering, exiting } = usePresenceState(open, drawerRef);
+
   return {
     components: {
       root: 'div',
     },
 
     root: getNativeElementProps('div', {
-      ref,
+      ref: drawerRef,
       ...props,
     }),
 
@@ -36,5 +41,10 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
     position,
     open,
     separator,
+
+    rendered,
+    mounted,
+    entering,
+    exiting,
   };
 };

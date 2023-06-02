@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
+import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
@@ -15,6 +15,21 @@ const useStyles = makeStyles({
     position: 'fixed',
     top: 0,
     bottom: 0,
+    transitionProperty: 'transform',
+    willChange: 'transform',
+  },
+
+  /* Positioning */
+  left: {
+    transform: 'translate3D(calc(var(--fui-Drawer--size) * -1), 0, 0)',
+  },
+  right: {
+    transform: 'translate3D(calc(var(--fui-Drawer--size) * 1), 0, 0)',
+  },
+
+  /* Mounted */
+  mounted: {
+    transform: 'translate3D(0, 0, 0)',
   },
 });
 
@@ -29,8 +44,9 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     drawerOverlayClassNames.root,
     baseStyles.root,
     styles.root,
-    state.size && baseStyles[state.size],
-    state.position && baseStyles[state.position],
+    getDrawerBaseClassNames(state, baseStyles),
+    state.position && styles[state.position],
+    state.mounted && styles.mounted,
     state.root.className,
   );
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
+import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 import { tokens } from '@fluentui/react-theme';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
@@ -23,6 +23,26 @@ const useStyles = makeStyles({
   },
   separatorRight: {
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
+  },
+
+  /* Positioning */
+  left: {
+    marginLeft: 'calc(var(--fui-Drawer--size) * -1)',
+    transitionProperty: 'margin-left',
+    willChange: 'margin-left',
+  },
+  right: {
+    marginRight: 'calc(var(--fui-Drawer--size) * -1)',
+    transitionProperty: 'margin-right',
+    willChange: 'margin-right',
+  },
+
+  /* Mounted */
+  mountedLeft: {
+    marginLeft: 0,
+  },
+  mountedRight: {
+    marginRight: 0,
   },
 });
 
@@ -45,8 +65,9 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     drawerInlineClassNames.root,
     baseStyles.root,
     styles.root,
-    state.size && baseStyles[state.size],
-    state.position && baseStyles[state.position],
+    getDrawerBaseClassNames(state, baseStyles),
+    state.position && styles[state.position],
+    state.mounted && (state.position === 'left' ? styles.mountedLeft : styles.mountedRight),
     separatorClass,
     state.root.className,
   );

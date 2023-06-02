@@ -1,4 +1,4 @@
-export type DrawerBaseTypes = {
+export type DrawerBaseProps = {
   /**
    * Position of the drawer.
    *
@@ -31,4 +31,26 @@ export type DrawerBaseTypes = {
    * @default false
    */
   defaultOpen?: boolean;
+};
+
+export type DrawerBaseState = {
+  /**
+   * Whether the drawer is rendered but not yet mounted.
+   * */
+  rendered: boolean;
+
+  /**
+   * Whether the drawer is rendered and already mounted.
+   * */
+  mounted: boolean;
+
+  /**
+   * Whether the drawer is entering the screen.
+   * */
+  entering: boolean;
+
+  /**
+   * Whether the drawer is exiting the screen.
+   * */
+  exiting: boolean;
 };

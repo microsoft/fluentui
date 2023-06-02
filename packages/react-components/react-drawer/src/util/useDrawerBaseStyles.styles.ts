@@ -1,5 +1,13 @@
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import { DrawerBaseProps, DrawerBaseState } from './DrawerBase.types';
+
+/**
+ * CSS variable names used internally for uniform styling in Drawer.
+ */
+export const drawerCSSVars = {
+  drawerSizeVar: '--fui-Drawer--size',
+};
 
 /**
  * Styles for the root slot
@@ -11,6 +19,7 @@ export const useDrawerBaseStyles = makeStyles({
     ...shorthands.borderRadius(0),
     ...shorthands.border(0),
 
+    width: `var(${drawerCSSVars.drawerSizeVar})`,
     maxWidth: '100vw',
     height: 'auto',
     boxSizing: 'border-box',
@@ -19,6 +28,7 @@ export const useDrawerBaseStyles = makeStyles({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
+    transitionDuration: tokens.durationNormal,
   },
 
   /* Positioning */
@@ -31,18 +41,37 @@ export const useDrawerBaseStyles = makeStyles({
     left: 'auto',
   },
 
+  /* Motion */
+  entering: {
+    transitionTimingFunction: tokens.curveDecelerateMid,
+  },
+  exiting: {
+    transitionTimingFunction: tokens.curveAccelerateMin,
+  },
+
   /* Sizes */
   small: {
-    width: '320px',
+    [drawerCSSVars.drawerSizeVar]: '320px',
   },
   medium: {
-    width: '592px',
+    [drawerCSSVars.drawerSizeVar]: '592px',
   },
   large: {
-    width: '940px',
+    [drawerCSSVars.drawerSizeVar]: '940px',
   },
   full: {
-    width: '100vw',
-    maxWidth: '100vw',
+    [drawerCSSVars.drawerSizeVar]: '100vw',
   },
 });
+
+export const getDrawerBaseClassNames = (
+  { position, size, entering, exiting }: Partial<DrawerBaseState & DrawerBaseProps>,
+  baseStyles: ReturnType<typeof useDrawerBaseStyles>,
+) => {
+  return mergeClasses(
+    position && baseStyles[position],
+    size && baseStyles[size],
+    entering && baseStyles.entering,
+    exiting && baseStyles.exiting,
+  );
+};

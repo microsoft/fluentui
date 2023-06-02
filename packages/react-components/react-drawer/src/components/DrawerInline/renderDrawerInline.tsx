@@ -8,7 +8,7 @@ import type { DrawerInlineState, DrawerInlineSlots } from './DrawerInline.types'
 export const renderDrawerInline_unstable = (state: DrawerInlineState) => {
   const { slots, slotProps } = getSlots<DrawerInlineSlots>(state);
 
-  if (!state.open) {
+  if (!state.rendered) {
     return null;
   }
 
