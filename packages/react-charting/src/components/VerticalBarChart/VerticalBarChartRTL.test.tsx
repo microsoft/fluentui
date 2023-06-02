@@ -8,6 +8,7 @@ import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { testScreenResolution } from '../../utilities/TestUtility';
+import { IVerticalBarChartProps } from './VerticalBarChart.types';
 
 const pointsWithLine = [
   {
@@ -123,328 +124,291 @@ const simplePoints = [
   },
 ];
 
+const getById = queryAllByAttribute.bind(null, 'id');
+const getByClass = queryAllByAttribute.bind(null, 'class');
+
+const testWithoutWait = (
+  description: string,
+  props: IVerticalBarChartProps,
+  testFunction: (container: HTMLElement) => void,
+  testFunctionBeforeWait?: () => void,
+) => {
+  test(description, () => {
+    const { container } = render(<VerticalBarChart {...props} />);
+    testFunctionBeforeWait !== undefined && testFunctionBeforeWait();
+    testFunction(container);
+  });
+};
+
+const testWithWait = (
+  description: string,
+  props: IVerticalBarChartProps,
+  testFunction: (container: HTMLElement) => void,
+) => {
+  test(description, async () => {
+    const { container } = render(<VerticalBarChart {...props} />);
+    await waitFor(() => {
+      testFunction(container);
+    });
+  });
+};
+
 describe('Vertical bar chart rendering', () => {
-  test('Should render the vertical bar chart with numeric x-axis data', () => {
-    const { container } = render(<VerticalBarChart data={chartPoints} />);
+  testWithoutWait('Should render the vertical bar chart with numeric x-axis data', { data: chartPoints }, container => {
+    // Assert
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render the vertical bar chart with string x-axis data', () => {
-    const { container } = render(<VerticalBarChart data={simplePoints} />);
+  testWithoutWait('Should render the vertical bar chart with string x-axis data', { data: simplePoints }, container => {
+    // Assert
     expect(container).toMatchSnapshot();
   });
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
-  test('Should render the bar with the given width', async () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={chartPoints} barWidth={100} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
+  testWithWait('Should render the bar with the given width', { data: chartPoints, barWidth: 100 }, container => {
     // Assert
-    await waitFor(
-      () => {
-        const bars = getById(container, /_VBC_bar/i);
-        expect(bars).toHaveLength(3);
-        expect(bars[0].getAttribute('width')).toEqual('100');
-        expect(bars[1].getAttribute('width')).toEqual('100');
-        expect(bars[2].getAttribute('width')).toEqual('100');
-      },
-      { timeout: 1000 },
-    );
+    const bars = getById(container, /_VBC_bar/i);
+    expect(bars).toHaveLength(3);
+    expect(bars[0].getAttribute('width')).toEqual('100');
+    expect(bars[1].getAttribute('width')).toEqual('100');
+    expect(bars[2].getAttribute('width')).toEqual('100');
   });
-  test('Should render the bars with the specified colors', async () => {
-    // Arrange
+
+  testWithWait('Should render the bars with the specified colors', { data: chartPoints }, container => {
     // colors mentioned in the data points itself
-    const { container } = render(<VerticalBarChart data={chartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
-    await waitFor(
-      () => {
-        const bars = getById(container, /_VBC_bar/i);
-        expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
-        expect(bars[1].getAttribute('fill')).toEqual('#002050');
-        expect(bars[2].getAttribute('fill')).toEqual('#00188f');
-      },
-      { timeout: 1000 },
-    );
+    const bars = getById(container, /_VBC_bar/i);
+    expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
+    expect(bars[1].getAttribute('fill')).toEqual('#002050');
+    expect(bars[2].getAttribute('fill')).toEqual('#00188f');
   });
-  test('Should render the bars with the a single color', async () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={chartPoints} useSingleColor={true} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
+
+  testWithWait(
+    'Should render the bars with the a single color',
+    { data: chartPoints, useSingleColor: true },
+    container => {
+      // Assert
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
+      expect(bars[1].getAttribute('fill')).toEqual('#00bcf2');
+      expect(bars[2].getAttribute('fill')).toEqual('#00bcf2');
+    },
+  );
+
+  testWithWait('Should render the bars with labels hidden', { data: chartPoints, hideLabels: true }, container => {
     // Assert
-    await waitFor(
-      () => {
-        const bars = getById(container, /_VBC_bar/i);
-        expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
-        expect(bars[1].getAttribute('fill')).toEqual('#00bcf2');
-        expect(bars[2].getAttribute('fill')).toEqual('#00bcf2');
-      },
-      { timeout: 1000 },
-    );
-  });
-  test('Should render the bars with labels hidden', async () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={chartPoints} hideLabels={true} />);
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    // Assert
-    await waitFor(
-      () => {
-        expect(getByClass(container, /barLabel/i)).toHaveLength(0);
-      },
-      { timeout: 1000 },
-    );
+    expect(getByClass(container, /barLabel/i)).toHaveLength(0);
   });
 });
 
 describe('Vertical bar chart - Subcomponent line', () => {
-  test('Should render line along with bars', () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={pointsWithLine} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
+  testWithoutWait('Should render line along with bars', { data: pointsWithLine }, container => {
     const line = getById(container, /_VBC_line/i);
     const points = getById(container, /_VBC_point/i);
     // Assert
     expect(line).toHaveLength(1);
     expect(points).toHaveLength(7);
   });
-  test('Should highlight the data points and not render the corresponding callout', () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={pointsWithLine} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const firstPointonLine = getById(container, /_VBC_point/i)[0];
-    expect(firstPointonLine).toBeDefined();
-    fireEvent.mouseOver(firstPointonLine);
-    // Assert
-    expect(firstPointonLine.getAttribute('visibility')).toEqual('visibility');
-    expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
-  });
+  testWithoutWait(
+    'Should highlight the data points and not render the corresponding callout',
+    { data: pointsWithLine },
+    container => {
+      const firstPointonLine = getById(container, /_VBC_point/i)[0];
+      expect(firstPointonLine).toBeDefined();
+      fireEvent.mouseOver(firstPointonLine);
+      // Assert
+      expect(firstPointonLine.getAttribute('visibility')).toEqual('visibility');
+      expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
-  test('Should not show any rendered legends when hideLegend is true', () => {
-    const { container } = render(<VerticalBarChart data={pointsWithLine} hideLegend={true} />);
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    expect(getByClass(container, /rect/i)).toHaveLength(0);
-  });
-  test('Should reduce the opacity of the other bars/lines and their legends on mouse over a line legend', async () => {
-    const { container } = render(<VerticalBarChart data={pointsWithLine} lineLegendText={'just line'} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    fireEvent.mouseOver(screen.getByText('just line'));
-    await waitFor(
-      () => {
-        const bars = getById(container, /_VBC_bar/i);
-        const line = getById(container, /_VBC_line/i)[0];
-        const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-        expect(line).toBeDefined();
-        expect(bars).toHaveLength(8);
-        expect(legends).toHaveLength(9);
-        expect(line.getAttribute('opacity')).toEqual('1');
-        expect(screen.getByText('Oranges')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
-        expect(line).toBeDefined();
-        expect(bars[0]).toBeDefined();
-        expect(bars[0]).toHaveStyle('opacity: 0.1');
-        expect(bars[1]).toBeDefined();
-        expect(bars[1]).toHaveStyle('opacity: 0.1');
-        expect(bars[2]).toBeDefined();
-        expect(bars[2]).toHaveStyle('opacity: 0.1');
-        expect(bars[3]).toBeDefined();
-        expect(bars[3]).toHaveStyle('opacity: 0.1');
-        expect(bars[4]).toBeDefined();
-        expect(bars[4]).toHaveStyle('opacity: 0.1');
-        expect(bars[5]).toBeDefined();
-        expect(bars[5]).toHaveStyle('opacity: 0.1');
-        expect(bars[6]).toBeDefined();
-        expect(bars[6]).toHaveStyle('opacity: 0.1');
-        expect(bars[7]).toBeDefined();
-        expect(bars[7]).toHaveStyle('opacity: 0.1');
-      },
-      { timeout: 1000 },
-    );
-  });
-  test('Should reduce the opacity of the other bars/lines and their legends on mouse over a bar legend', async () => {
-    const { container } = render(<VerticalBarChart data={pointsWithLine} lineLegendText={'just line'} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    fireEvent.mouseOver(screen.getByText('Oranges'));
-    await waitFor(
-      () => {
-        const bars = getById(container, /_VBC_bar/i);
-        const line = getById(container, /_VBC_line/i)[0];
-        const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-        expect(line).toBeDefined();
-        expect(bars).toHaveLength(8);
-        expect(legends).toHaveLength(9);
-        expect(screen.getByText('just line')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
-        expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
-        expect(line).toBeDefined();
-        expect(bars[1]).toBeDefined();
-        expect(bars[1]).toHaveStyle('opacity: 0.1');
-        expect(bars[2]).toBeDefined();
-        expect(bars[2]).toHaveStyle('opacity: 0.1');
-        expect(bars[3]).toBeDefined();
-        expect(bars[3]).toHaveStyle('opacity: 0.1');
-        expect(bars[4]).toBeDefined();
-        expect(bars[4]).toHaveStyle('opacity: 0.1');
-        expect(bars[5]).toBeDefined();
-        expect(bars[5]).toHaveStyle('opacity: 0.1');
-        expect(bars[6]).toBeDefined();
-        expect(bars[6]).toHaveStyle('opacity: 0.1');
-        expect(bars[7]).toBeDefined();
-        expect(bars[7]).toHaveStyle('opacity: 0.1');
-      },
-      { timeout: 1000 },
-    );
-  });
+  testWithoutWait(
+    'Should not show any rendered legends when hideLegend is true',
+    { data: pointsWithLine, hideLegend: true },
+    container => {
+      expect(getByClass(container, /rect/i)).toHaveLength(0);
+    },
+  );
+  testWithWait(
+    'Should reduce the opacity of the other bars/lines and their legends on mouse over a line legend',
+    { data: pointsWithLine, lineLegendText: 'just line' },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      const line = getById(container, /_VBC_line/i)[0];
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(line).toBeDefined();
+      expect(bars).toHaveLength(8);
+      expect(legends).toHaveLength(9);
+      fireEvent.mouseOver(screen.getByText('just line'));
+      expect(line.getAttribute('opacity')).toEqual('1');
+      expect(screen.getByText('Oranges')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
+      expect(line).toBeDefined();
+      expect(bars[0]).toBeDefined();
+      expect(bars[0]).toHaveStyle('opacity: 0.1');
+      expect(bars[1]).toBeDefined();
+      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toBeDefined();
+      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toBeDefined();
+      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toBeDefined();
+      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toBeDefined();
+      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toBeDefined();
+      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toBeDefined();
+      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    },
+  );
+  testWithWait(
+    'Should reduce the opacity of the other bars/lines and their legends on mouse over a bar legend',
+    { data: pointsWithLine, lineLegendText: 'just line' },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      const line = getById(container, /_VBC_line/i);
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(line).toBeDefined();
+      expect(bars).toHaveLength(8);
+      expect(legends).toHaveLength(9);
+      fireEvent.mouseOver(screen.getByText('Oranges'));
+      expect(screen.getByText('just line')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
+      expect(line).toBeDefined();
+      expect(bars[1]).toBeDefined();
+      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toBeDefined();
+      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toBeDefined();
+      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toBeDefined();
+      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toBeDefined();
+      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toBeDefined();
+      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toBeDefined();
+      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    },
+  );
 });
+
 describe('Vertical bar chart - Subcomponent callout', () => {
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
     const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
-    render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
-    await waitFor(
-      () => {
-        const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-        expect(bars).toHaveLength(8);
-        fireEvent.mouseOver(bars[0]);
-        // Assert
-        expect(handleMouseOver).toHaveBeenCalled();
-      },
-      { timeout: 1000 },
-    );
-  });
-
-  test('Should show the callout over the bar on mouse over', async () => {
-    // Arrange
     const { container } = render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    await waitFor(
-      () => {
-        const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-        expect(bars).toHaveLength(8);
-        fireEvent.mouseOver(bars[0]);
-        // Assert
-        expect(getById(container, /toolTipcallout/i)).toBeDefined();
-      },
-      { timeout: 1000 },
-    );
+    await waitFor(() => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(8);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(handleMouseOver).toHaveBeenCalled();
+    });
   });
 
-  test('Should show the callout over the line on mouse over', async () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    await waitFor(
-      () => {
-        const line = getById(container, /_VBC_line/i)[0];
-        expect(line).toBeDefined();
-        fireEvent.mouseOver(line);
-        // Assert
-        expect(getById(container, /toolTipcallout/i)).toBeDefined();
-      },
-      { timeout: 1000 },
-    );
-  });
+  testWithWait(
+    'Should show the callout over the bar on mouse over',
+    { data: pointsWithLine, calloutProps: { doNotLayer: true } },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(8);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
 
-  test('Should show the custom callout over the bar on mouse over', async () => {
-    // Arrange
-    const { container } = render(
-      <VerticalBarChart
-        data={pointsWithLine}
-        calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerDataPoint={props =>
-          props ? (
-            <div className="onRenderCalloutPerDataPoint">
-              <p>Custom Callout Content</p>
-            </div>
-          ) : null
-        }
-      />,
-    );
-    const getById = queryAllByAttribute.bind(null, 'id');
-    await waitFor(
-      () => {
-        const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-        expect(bars).toHaveLength(8);
-        fireEvent.mouseOver(bars[0]);
-        // Assert
-        expect(getById(container, /toolTipcallout/i)).toBeDefined();
-        expect(screen.queryByText('Custom Callout Content')).toBeDefined();
-      },
-      { timeout: 1000 },
-    );
-  });
+  testWithWait(
+    'Should show the callout over the line on mouse over',
+    { data: pointsWithLine, calloutProps: { doNotLayer: true } },
+    container => {
+      const line = getById(container, /_VBC_line/i)[0];
+      expect(line).toBeDefined();
+      fireEvent.mouseOver(line);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
 
-  test('Should not show the custom callout over the line on mouse over', async () => {
-    // Arrange
-    const { container } = render(
-      <VerticalBarChart
-        data={pointsWithLine}
-        calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerDataPoint={props =>
-          props ? (
-            <div className="onRenderCalloutPerDataPoint">
-              <p>Custom Callout Content</p>
-            </div>
-          ) : null
-        }
-      />,
-    );
-    const getById = queryAllByAttribute.bind(null, 'id');
-    await waitFor(
-      () => {
-        const line = getById(container, /_VBC_line/i)[0];
-        expect(line).toBeDefined();
-        fireEvent.mouseOver(line);
-        // Assert
-        expect(getById(container, /toolTipcallout/i)).toBeDefined();
-        expect(screen.queryByText('Custom Callout Content')).toBeNull();
-      },
-      { timeout: 1000 },
-    );
-  });
+  testWithWait(
+    'Should show the custom callout over the bar on mouse over',
+    {
+      data: pointsWithLine,
+      calloutProps: { doNotLayer: true },
+      onRenderCalloutPerDataPoint: props =>
+        props ? (
+          <div className="onRenderCalloutPerDataPoint">
+            <p>Custom Callout Content</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(8);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      expect(screen.queryByText('Custom Callout Content')).toBeDefined();
+    },
+  );
+
+  testWithWait(
+    'Should not show the custom callout over the line on mouse over',
+    {
+      data: pointsWithLine,
+      calloutProps: { doNotLayer: true },
+      onRenderCalloutPerDataPoint: props =>
+        props ? (
+          <div className="onRenderCalloutPerDataPoint">
+            <p>Custom Callout Content</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      const line = getById(container, /_VBC_line/i)[0];
+      expect(line).toBeDefined();
+      fireEvent.mouseOver(line);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      expect(screen.queryByText('Custom Callout Content')).toBeNull();
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
-  test('Should show the x-axis labels tooltip when hovered', async () => {
-    // Arrange
-    const { container } = render(<VerticalBarChart data={pointsWithLine} showXAxisLablesTooltip={true} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    await waitFor(
-      () => {
-        const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-        expect(bars).toHaveLength(8);
-        fireEvent.mouseOver(bars[0]);
-        // Assert
-        expect(getById(container, /showDots/i)).toHaveLength(5);
-        expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('20,0...');
-      },
-      { timeout: 1000 },
-    );
-  });
+  testWithWait(
+    'Should show the x-axis labels tooltip when hovered',
+    { data: pointsWithLine, showXAxisLablesTooltip: true },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(8);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /showDots/i)).toHaveLength(5);
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('20,0...');
+    },
+  );
 
-  test('Should show rotated x-axis labels', async () => {
+  testWithWait('Should show rotated x-axis labels', { data: simplePoints, rotateXAxisLables: true }, container => {
     // Arrange
-    const { container } = render(<VerticalBarChart data={simplePoints} rotateXAxisLables={true} />);
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    await waitFor(
-      () => {
-        expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
-      },
-      { timeout: 1000 },
-    );
+    expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
   });
 });
 
@@ -463,7 +427,6 @@ test('Should reflect theme change', () => {
       <VerticalBarChart culture={window.navigator.language} data={chartPoints} />
     </ThemeProvider>,
   );
-
   // Assert
   expect(container).toMatchSnapshot();
 });

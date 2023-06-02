@@ -17,7 +17,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_477"
+    id="chart_493"
     role="presentation"
   >
     <div
@@ -26,7 +26,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone478"
+      data-focuszone-id="FocusZone494"
     >
       <svg
         focusable="false"
@@ -60,7 +60,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_477"
+          id="xAxisGElementchart_493"
           transform="translate(0, -35)"
         />
         <g
@@ -88,7 +88,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_477"
+          id="yAxisGElementchart_493"
           transform="translate(40, 0)"
         />
         <g>
@@ -135,7 +135,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone479"
+                data-focuszone-id="FocusZone495"
                 role="listbox"
               >
                 <div
@@ -438,7 +438,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_482"
+    id="chart_498"
     role="presentation"
   >
     <div
@@ -447,7 +447,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone483"
+      data-focuszone-id="FocusZone499"
     >
       <svg
         focusable="false"
@@ -481,7 +481,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_482"
+          id="xAxisGElementchart_498"
           transform="translate(0, -35)"
         />
         <g
@@ -509,7 +509,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_482"
+          id="yAxisGElementchart_498"
           transform="translate(40, 0)"
         />
         <g>
@@ -556,7 +556,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone484"
+                data-focuszone-id="FocusZone500"
                 role="listbox"
               >
                 <div
@@ -872,7 +872,7 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_490"
+      id="chart_506"
       role="presentation"
     >
       <div
@@ -881,7 +881,7 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone491"
+        data-focuszone-id="FocusZone507"
       >
         <svg
           focusable="false"
@@ -915,7 +915,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_490"
+            id="xAxisGElementchart_506"
             transform="translate(0, -35)"
           />
           <g
@@ -943,7 +943,7 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_490"
+            id="yAxisGElementchart_506"
             transform="translate(40, 0)"
           />
           <g>
@@ -990,7 +990,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone492"
+                  data-focuszone-id="FocusZone508"
                   role="listbox"
                 >
                   <div
