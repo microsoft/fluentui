@@ -8,7 +8,6 @@ import { Args } from '@storybook/api';
 import { OptionsParameter } from '@storybook/addons';
 import { Parameters as Parameters_2 } from '@storybook/addons';
 import { StoryContext } from '@storybook/addons';
-import type { Theme } from '@fluentui/react-theme';
 
 // @public
 export interface FluentGlobals extends Args {

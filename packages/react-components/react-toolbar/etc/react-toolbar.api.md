@@ -6,19 +6,7 @@
 
 /// <reference types="react" />
 
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonSlots } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import { DividerSlots } from '@fluentui/react-divider';
-import { DividerState } from '@fluentui/react-divider';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
-import { ToggleButtonProps } from '@fluentui/react-button';
-import { ToggleButtonState } from '@fluentui/react-button';
 
 // @public
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;

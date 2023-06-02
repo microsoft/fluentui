@@ -6,15 +6,7 @@
 
 /// <reference types="react" />
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
-import type { PopoverProps } from '@fluentui/react-popover';
-import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const InfoButton: ForwardRefComponent<InfoButtonProps>;

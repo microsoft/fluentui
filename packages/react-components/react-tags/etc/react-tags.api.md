@@ -6,14 +6,7 @@
 
 /// <reference types="react" />
 
-import { AvatarShape } from '@fluentui/react-avatar';
-import { AvatarSize } from '@fluentui/react-avatar';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;

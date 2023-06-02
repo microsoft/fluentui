@@ -6,8 +6,6 @@
 
 /// <reference types="react" />
 
-import { BrandVariants } from '@fluentui/react-components';
-import type { ButtonProps } from '@fluentui/react-components';
 import type { IBaseButtonProps } from '@fluentui/react';
 import type { IButtonProps } from '@fluentui/react';
 import type { IContextualMenuItem } from '@fluentui/react';
@@ -15,9 +13,7 @@ import type { IContextualMenuProps } from '@fluentui/react';
 import type { IPalette } from '@fluentui/react';
 import type { IStackItemProps } from '@fluentui/react';
 import type { IStackProps } from '@fluentui/react';
-import type { MenuProps } from '@fluentui/react-menu';
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-components';
 import { Theme as Theme_2 } from '@fluentui/react';
 
 // @public
