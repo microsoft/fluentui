@@ -33,7 +33,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-field": "^9.1.6",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.6",
+    "@fluentui/react-shared-contexts": "^9.5.0",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.2",
     "@griffel/react": "^1.5.7",
