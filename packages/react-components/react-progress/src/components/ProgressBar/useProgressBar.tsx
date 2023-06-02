@@ -15,10 +15,11 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
   const field = useFieldContext_unstable();
-  const fieldState = field?.validationState;
+  //const fieldState = field?.validationState;
 
   const {
-    color = fieldState === 'error' || fieldState === 'warning' || fieldState === 'success' ? fieldState : 'brand',
+    // color = fieldState === 'error' || fieldState === 'warning' || fieldState === 'success' ? fieldState : 'brand',
+    color = 'brand',
     shape = 'rounded',
     thickness = 'medium',
   } = props;

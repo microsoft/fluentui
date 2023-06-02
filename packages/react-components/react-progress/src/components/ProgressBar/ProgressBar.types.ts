@@ -43,7 +43,7 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
    * The status of the ProgressBar bar. Changes the color of the bar.
    * @default brand
    */
-  color?: 'brand' | 'success' | 'warning' | 'error';
+  color?: 'brand' | 'success' | 'warning' | 'error' | 'striped';
 };
 
 /**
