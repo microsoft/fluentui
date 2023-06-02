@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 02 Jun 2023 07:35:08 GMT",
+      "tag": "@fluentui/react-charting_v5.16.37",
+      "version": "5.16.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "3d73007c50ca4008618498a998cdaed5675bbda6",
+            "comment": "Accessibility fixes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jun 2023 07:38:37 GMT",
       "tag": "@fluentui/react-charting_v5.16.36",
       "version": "5.16.36",
