@@ -4,25 +4,12 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
-import type { PortalProps } from '@fluentui/react-portal';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
-import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;

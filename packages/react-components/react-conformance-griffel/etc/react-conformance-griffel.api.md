@@ -4,7 +4,10 @@
 
 ```ts
 
-import { TestObject } from '@fluentui/react-conformance';
+import { ComponentDoc } from 'react-docgen-typescript';
+import * as React_2 from 'react';
+import { render } from '@testing-library/react';
+import * as ts from 'typescript';
 
 // @public (undocumented)
 const makeStylesTests: TestObject;

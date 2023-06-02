@@ -6,21 +6,7 @@
 
 /// <reference types="react" />
 
-import { ARIAButtonElement } from '@fluentui/react-aria';
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ContextSelector } from '@fluentui/react-context-selector';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { PortalProps } from '@fluentui/react-portal';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
-import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;

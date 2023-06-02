@@ -4,19 +4,7 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
-import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
-import type { PartialTheme } from '@fluentui/react-theme';
-import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
-import { Theme } from '@fluentui/tokens';
-import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
-import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
-import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
@@ -114,7 +102,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
-    overrides_unstable?: OverridesContextValue_unstable | undefined;
+    overrides_unstable?: OverridesContextValue | undefined;
 } & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -122,14 +110,14 @@ export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 
 // @public (undocumented)
 export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'> & {
-    provider: ProviderContextValue_unstable;
-    themeClassName: ThemeClassNameContextValue_unstable;
+    provider: ProviderContextValue;
+    themeClassName: ThemeClassNameContextValue;
     textDirection: 'ltr' | 'rtl';
-    tooltip: TooltipVisibilityContextValue_unstable;
+    tooltip: TooltipVisibilityContextValue;
 };
 
 // @public (undocumented)
-export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue_unstable;
+export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue;
 
 // @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
@@ -138,7 +126,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document;
     theme?: PartialTheme;
-    overrides_unstable?: OverridesContextValue_unstable;
+    overrides_unstable?: OverridesContextValue;
 };
 
 // @public (undocumented)
@@ -148,7 +136,7 @@ export type FluentProviderSlots = {
 
 // @public (undocumented)
 export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
-    theme: ThemeContextValue_unstable;
+    theme: ThemeContextValue;
     themeClassName: string;
     serverStyleProps: {
         cssRule: string;

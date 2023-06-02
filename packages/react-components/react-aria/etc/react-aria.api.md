@@ -4,10 +4,7 @@
 
 ```ts
 
-import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
-import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export type ARIAButtonAlteredProps<Type extends ARIAButtonType> = (Type extends 'button' ? Pick<JSX.IntrinsicElements['button'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'disabled' | 'aria-disabled' | 'tabIndex'> : never) | (Type extends 'a' ? Pick<JSX.IntrinsicElements['a'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role' | 'href'> : never) | (Type extends 'div' ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'> : never);
