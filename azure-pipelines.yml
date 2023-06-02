@@ -94,6 +94,10 @@ jobs:
           yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
 
+      - bash: |
+          mkdir -p apps/pr-deploy-site/sbom
+        displayName: 📒 Create dir for manifest Deploy-Site
+
       - task: ManifestGeneratorTask@0
         displayName: 📒 Generate Manifest Deploy-Site
         inputs:
