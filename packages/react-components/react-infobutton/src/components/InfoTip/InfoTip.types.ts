@@ -2,8 +2,14 @@ import type { TooltipProps } from '@fluentui/react-tooltip';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type InfoTipSlots = {
+  /**
+   * Root slot that wraps the icon.
+   */
   root: NonNullable<Slot<'span'>>;
 
+  /**
+   * The Tooltip slot that wraps the icon. Use this to pass props to the Tooltip.
+   */
   tooltip: NonNullable<Slot<Partial<TooltipProps>>>;
 };
 

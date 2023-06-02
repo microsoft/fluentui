@@ -3,7 +3,6 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { InfoTipSlots, InfoTipState } from './InfoTip.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const infoTipClassNames: SlotClassNames<InfoTipSlots> = {
   root: 'fui-InfoTip',
@@ -39,16 +38,12 @@ const useStyles = makeStyles({
       [`& .${iconRegularClassName}`]: {
         display: 'none',
       },
-      ':hover:active': {
-        backgroundColor: tokens.colorTransparentBackgroundPressed,
-        color: tokens.colorNeutralForeground2BrandPressed,
-      },
     },
   },
 
   open: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: tokens.colorTransparentBackgroundHover,
+    color: tokens.colorNeutralForeground2BrandHover,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline-flex',
@@ -71,15 +66,13 @@ const useStyles = makeStyles({
     '@media (forced-colors: active)': {
       color: 'CanvasText',
 
-      ':hover,:hover:active': {
+      ':hover': {
         forcedColorAdjust: 'none',
         backgroundColor: 'Highlight',
         color: 'Canvas',
       },
     },
   },
-
-  focusIndicator: createFocusOutlineStyle(),
 });
 
 /**
@@ -93,7 +86,6 @@ export const useInfoTipStyles_unstable = (state: InfoTipState): InfoTipState => 
     infoTipClassNames.root,
     styles.base,
     styles.highContrast,
-    // styles.focusIndicator,
     open && styles.open,
     size === 'large' && styles.large,
     state.root.className,
