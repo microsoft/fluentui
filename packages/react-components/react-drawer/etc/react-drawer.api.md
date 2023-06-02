@@ -6,7 +6,15 @@
 
 /// <reference types="react" />
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import { DialogProps } from '@fluentui/react-dialog';
+import { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogTitleSlots } from '@fluentui/react-dialog';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;

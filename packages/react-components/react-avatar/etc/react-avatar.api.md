@@ -6,10 +6,20 @@
 
 /// <reference types="react" />
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PopoverProps } from '@fluentui/react-popover';
+import type { PopoverSurface } from '@fluentui/react-popover';
+import { PresenceBadge } from '@fluentui/react-badge';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;

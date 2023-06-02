@@ -6,10 +6,17 @@
 
 /// <reference types="react" />
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;

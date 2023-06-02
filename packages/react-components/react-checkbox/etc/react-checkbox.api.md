@@ -6,7 +6,13 @@
 
 /// <reference types="react" />
 
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;

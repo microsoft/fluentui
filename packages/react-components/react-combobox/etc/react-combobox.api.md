@@ -6,10 +6,16 @@
 
 /// <reference types="react" />
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;

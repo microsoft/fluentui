@@ -4,9 +4,12 @@
 
 ```ts
 
-/// <reference types="react" />
-
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSearchBox_unstable: (state: SearchBoxState) => JSX.Element;
@@ -17,31 +20,19 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 // @public (undocumented)
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
-// @public (undocumented)
-export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
-    children?: never;
-    size?: 'small' | 'medium' | 'large';
-    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
-    defaultValue?: string;
-    value?: string;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SearchBoxOnChangeData) => void;
-    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
-};
+// @public
+export type SearchBoxProps = ComponentProps<SearchBoxSlots> & {};
 
 // @public (undocumented)
 export type SearchBoxSlots = {
-    root: NonNullable<Slot<'span'>>;
-    input: NonNullable<Slot<'input'>>;
-    contentBefore?: Slot<'span'>;
-    contentAfter?: Slot<'span'>;
-    dismiss?: Slot<'span'>;
+    root: Slot<'div'>;
 };
 
 // @public
-export type SearchBoxState = Required<Pick<SearchBoxProps, 'appearance' | 'size'>> & ComponentState<SearchBoxSlots>;
+export type SearchBoxState = ComponentState<SearchBoxSlots>;
 
 // @public
-export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLInputElement>) => SearchBoxState;
+export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLElement>) => SearchBoxState;
 
 // @public
 export const useSearchBoxStyles_unstable: (state: SearchBoxState) => SearchBoxState;

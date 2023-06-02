@@ -4,10 +4,14 @@
 
 ```ts
 
-import { GriffelStyle } from '@griffel/react';
+import { ComponentProps } from '@fluentui/react-components';
+import { GriffelStyle } from '@fluentui/react-components';
 import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
+import { Slot } from '@fluentui/react-components';
+import { Slot as Slot_2 } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Flex: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & FlexProps & React_2.RefAttributes<HTMLDivElement>>;

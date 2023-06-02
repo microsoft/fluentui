@@ -4,10 +4,16 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type RegisterTabEventHandler = (data: TabRegisterData) => void;

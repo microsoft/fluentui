@@ -6,7 +6,20 @@
 
 /// <reference types="react" />
 
+import type { DataGridBodyProps as DataGridBodyProps_2 } from '@fluentui/react-table';
+import { DataGridCell } from '@fluentui/react-table';
+import { DataGridCellProps } from '@fluentui/react-table';
+import { DataGridHeader } from '@fluentui/react-table';
+import { DataGridHeaderCell } from '@fluentui/react-table';
+import { DataGridHeaderCellProps } from '@fluentui/react-table';
+import { DataGridHeaderProps } from '@fluentui/react-table';
+import { DataGridProps } from '@fluentui/react-table';
+import { DataGridRowProps } from '@fluentui/react-table';
+import { DataGridSelectionCell } from '@fluentui/react-table';
+import { DataGridSelectionCellProps } from '@fluentui/react-table';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { TableRowData } from '@fluentui/react-table';
 
 // @public (undocumented)
 export const DataGrid: ForwardRefComponent<DataGridProps>;
@@ -19,53 +32,32 @@ export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'chil
     itemSize: number;
     height: number;
     width?: string | number;
-    children: RowRenderFunction_2<TItem>;
+    children: RowRenderFunction<TItem>;
     ariaRowIndexStart?: number;
 };
 
-// @public
-export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
+export { DataGridCell }
 
-// @public
-export type DataGridCellProps = TableCellProps;
+export { DataGridCellProps }
 
-// @public
-export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
+export { DataGridHeader }
 
-// @public
-export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
+export { DataGridHeaderCell }
 
-// @public
-export type DataGridHeaderCellProps = TableHeaderCellProps;
+export { DataGridHeaderCellProps }
 
-// @public
-export type DataGridHeaderProps = TableHeaderProps;
+export { DataGridHeaderProps }
 
-// @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
-    onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
-    onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
-    selectionMode?: SelectionMode_2;
-    columnSizingOptions?: TableColumnSizingOptions;
-    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
-        columnId: TableColumnId;
-        width: number;
-    }) => void;
-};
+export { DataGridProps }
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
 
-// @public
-export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
-    children: CellRenderFunction<TItem>;
-};
+export { DataGridRowProps }
 
-// @public
-export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
+export { DataGridSelectionCell }
 
-// @public
-export type DataGridSelectionCellProps = TableSelectionCellProps;
+export { DataGridSelectionCellProps }
 
 // (No @packageDocumentation comment for this package)
 

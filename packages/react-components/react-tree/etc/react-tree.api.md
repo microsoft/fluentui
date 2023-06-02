@@ -6,10 +6,28 @@
 
 /// <reference types="react" />
 
+import { ArrowDown } from '@fluentui/keyboard-keys';
+import { ArrowLeft } from '@fluentui/keyboard-keys';
+import { ArrowRight } from '@fluentui/keyboard-keys';
+import { ArrowUp } from '@fluentui/keyboard-keys';
+import type { AvatarContextValue } from '@fluentui/react-avatar';
+import type { AvatarSize } from '@fluentui/react-avatar';
+import { ButtonContextValue } from '@fluentui/react-button';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { End } from '@fluentui/keyboard-keys';
+import { Enter } from '@fluentui/keyboard-keys';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Home } from '@fluentui/keyboard-keys';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public
 export const flattenTree_unstable: <Props extends TreeItemProps<unknown>>(items: NestedTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
