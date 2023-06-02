@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { InfoTip } from '@fluentui/react-infobutton';
 import { Label, makeStyles, useId } from '@fluentui/react-components';
+import type { InfoTipProps } from '@fluentui/react-infobutton';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-const InfoTipSize: React.FC<{ size: string }> = ({ size }) => {
+const InfoTipSize: React.FC<{ size: InfoTipProps['size'] }> = ({ size }) => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -22,9 +23,9 @@ const InfoTipSize: React.FC<{ size: string }> = ({ size }) => {
 
   return (
     <div aria-owns={open ? infoTipId : undefined}>
-      <Label id={infoTipInfoId}>{`This is a ${size} label with an InfoTip`}</Label>
+      <Label size={size} id={infoTipInfoId}>{`This is a ${size} label with an InfoTip`}</Label>
       <InfoTip
-        aria-labelledby={`${infoTipInfoId} ${infoTipId}`}
+        aria-labelledby={`${infoTipId} ${infoTipInfoId}`}
         info={{
           children: 'InfoTip sample text',
           id: infoTipId,

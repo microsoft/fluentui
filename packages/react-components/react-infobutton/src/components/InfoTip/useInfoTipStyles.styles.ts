@@ -8,7 +8,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 export const infoTipClassNames: SlotClassNames<InfoTipSlots> = {
   root: 'fui-InfoTip',
   // this className won't be used, but it's needed to satisfy the type checker
-  tooltip: 'fui-InfoTip__toolTip',
+  tooltip: 'fui-InfoTip__tooltip',
 };
 
 /**
