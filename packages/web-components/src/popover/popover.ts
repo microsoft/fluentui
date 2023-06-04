@@ -49,6 +49,53 @@ export class Popover extends FASTElement {
   protected anchorRefChanged() {
     console.group(this.objId, 'anchorRefChanged');
 
+    this.setNewAnchor();
+
+    console.groupEnd();
+  }
+
+  @attr
+  public anchor?: string;
+
+  protected anchorChanged() {
+    console.group(this.objId, 'anchorChanged');
+
+    this.setNewAnchor();
+
+    console.groupEnd();
+  }
+
+  private setNewAnchor() {
+    console.group(this.objId, 'setNewAnchor');
+
+    // Anchor by id takes precedence
+    if (this.anchor) {
+      const anchorById = this.getRootNode().getElementById?.(this.anchor);
+      if (anchorById) {
+        this.anchorElement = anchorById;
+        console.groupEnd();
+        return;
+      }
+    }
+
+    // Use slotted anchor if available
+    if (this.anchorRef?.[0]) {
+      this.anchorElement = this.anchorRef[0];
+      console.groupEnd();
+      return;
+    }
+
+    this.anchorElement = null;
+
+    console.groupEnd();
+  }
+
+  @observable
+  private anchorElement: Element | null = null;
+
+  protected anchorElementChanged() {
+    console.group(this.objId, 'anchorElementChanged');
+    console.log('ANCHOR ELEMENT', this.anchorElement);
     // ref might have changed -> force restart
     this.handlePositioningStartStop(true);
 
@@ -126,12 +173,12 @@ export class Popover extends FASTElement {
   private autoUpdateCleanup: (() => void) | undefined;
   private handlePositioningStartStop(forceRestart: boolean = false) {
     const shouldStart =
-      (this as FASTElement).$fastController.isConnected && this.open && this.popoverContentRef && !!this.anchorRef?.[0];
+      (this as FASTElement).$fastController.isConnected && this.open && this.popoverContentRef && this.anchorElement;
 
     console.log(this.objId, 'handlePositioningStartStop', {
       open: this.open,
       connected: (this as FASTElement).$fastController.isConnected,
-      anchorRef: this.anchorRef,
+      anchorElement: this.anchorElement,
       popoverContentRef: this.popoverContentRef,
       shouldStart,
       positioningStarted: this.isPositioningStarted,
@@ -158,7 +205,7 @@ export class Popover extends FASTElement {
     console.log(this.objId, 'startPositioning', {
       open: this.open,
       connected: (this as FASTElement).$fastController.isConnected,
-      anchorRef: this.anchorRef,
+      anchorElement: this.anchorElement,
       popoverContentRef: this.popoverContentRef,
     });
 
@@ -175,7 +222,7 @@ export class Popover extends FASTElement {
     console.log(this.objId, 'stopPositioning', {
       open: this.open,
       connected: (this as FASTElement).$fastController.isConnected,
-      anchorRef: this.anchorRef,
+      anchorElement: this.anchorElement,
       popoverContentRef: this.popoverContentRef,
     });
 
@@ -184,7 +231,7 @@ export class Popover extends FASTElement {
   }
 
   private startAutoUpdate() {
-    this.autoUpdateCleanup = autoUpdate(this.anchorRef![0], this.popoverContentRef!, this.updatePosition);
+    this.autoUpdateCleanup = autoUpdate(this.anchorElement!, this.popoverContentRef!, this.updatePosition);
     document.addEventListener('click', this.handleOutsideClick, true);
     document.addEventListener('keydown', this.handleDocumentKeyDown);
     this.updatePosition();
@@ -208,7 +255,7 @@ export class Popover extends FASTElement {
     const target = e.target as HTMLElement;
     const path = e.composedPath();
     const isOutsideContent = !this.popoverContentRef || path.indexOf(this.popoverContentRef) < 0;
-    const isOutsideAnchor = !this.anchorRef?.[0] || path.indexOf(this.anchorRef[0]) < 0;
+    const isOutsideAnchor = !this.anchorElement || path.indexOf(this.anchorElement) < 0;
 
     if (isOutsideContent && isOutsideAnchor) {
       console.log(this.objId, 'handleOutsideClick - should close', {
@@ -272,7 +319,7 @@ export class Popover extends FASTElement {
   }
 
   private updatePosition = () => {
-    if (!this.anchorRef?.[0] || !this.popoverContentRef) {
+    if (!this.anchorElement || !this.popoverContentRef) {
       return;
     }
 
@@ -284,7 +331,7 @@ export class Popover extends FASTElement {
     console.log(this.objId, 'updatePosition', {
       placement,
     });
-    computePosition(this.anchorRef[0], this.popoverContentRef, {
+    computePosition(this.anchorElement, this.popoverContentRef, {
       placement,
       // strategy: 'fixed',
     }).then(({ x, y, middlewareData, placement }) => {

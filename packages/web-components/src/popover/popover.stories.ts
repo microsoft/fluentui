@@ -23,7 +23,6 @@ export default {
 const PopoverTemplate = ({ open, position, popoverAlign }) => `
 <fluent-popover
   ${open ? 'open' : ''}
-  id="default-popover"
   ${position ? `position="${position}"` : ''}
   ${popoverAlign ? `popover-align="${popoverAlign}"` : ''}
   >
@@ -33,6 +32,22 @@ const PopoverTemplate = ({ open, position, popoverAlign }) => `
 `;
 
 export const Popover = PopoverTemplate.bind({});
+
+export const CustomAnchor = (): string => `
+<button id="external-anchor-by-id" style="margin: 80px 200px">Custom Anchor</button>
+<span id="alternate-anchor">alternate</span>
+<fluent-popover open anchor="external-anchor-by-id">This popover is attached to the anchor by HTML id</fluent-popover>
+`;
+CustomAnchor.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default the anchor is slotted using an `anchor` slot.',
+        "It is possible to attach the popover to an external anchor by passing the anchor' id to `anchor` attribute.",
+      ].join('\n'),
+    },
+  },
+};
 
 export const Interactive = (): string => `<fuisb-popover-interactive></fuisb-popover-interactive>`;
 
