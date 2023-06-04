@@ -25,7 +25,7 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
   });
 
   const drawerRef = useDrawerRef(ref);
-  const { rendered, mounted, entering, exiting } = usePresenceState(open, drawerRef);
+  const { rendered, mounted, entering, exiting } = usePresenceState(drawerRef, open);
 
   return {
     components: {

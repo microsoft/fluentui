@@ -12,7 +12,22 @@ type UsePresenceState = UsePresenceStateStore & {
   animating: boolean;
 };
 
-const usePresenceState = (open: boolean, ref: React.RefObject<HTMLElement>): UsePresenceState => {
+type UsePresenceStateOptions = {
+  onEnter?: () => void;
+  onEntered?: () => void;
+  onExit?: () => void;
+  onExited?: () => void;
+};
+
+const noop = () => ({});
+
+const usePresenceState = (
+  ref: React.RefObject<HTMLElement>,
+  open: boolean,
+  options?: UsePresenceStateOptions,
+): UsePresenceState => {
+  const { onEnter = noop, onEntered = noop, onExit = noop, onExited = noop } = options || {};
+
   const [hasFinishedStart, setHasFinishedStart] = React.useState(false);
 
   const [presenceState, setPresenceState] = React.useState<UsePresenceStateStore>({
@@ -35,8 +50,14 @@ const usePresenceState = (open: boolean, ref: React.RefObject<HTMLElement>): Use
         exiting: !open,
       }));
       setHasFinishedStart(true);
+
+      if (open) {
+        onEnter();
+      } else {
+        onExit();
+      }
     },
-    [open, ref],
+    [onEnter, onExit, open, ref],
   );
 
   const onEnd = React.useCallback(
@@ -51,8 +72,14 @@ const usePresenceState = (open: boolean, ref: React.RefObject<HTMLElement>): Use
         rendered: open,
         mounted: open,
       });
+
+      if (open) {
+        onEntered();
+      } else {
+        onExited();
+      }
     },
-    [open, ref],
+    [onEntered, onExited, open, ref],
   );
 
   useIsomorphicLayoutEffect(() => {

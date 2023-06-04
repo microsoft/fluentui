@@ -23,7 +23,7 @@ export const useDrawerOverlay_unstable = (
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
   const drawerRef = useDrawerRef(ref);
-  const { rendered, mounted, entering, exiting } = usePresenceState(open, drawerRef);
+  const { rendered, mounted, entering, exiting } = usePresenceState(drawerRef, open);
 
   return {
     components: {
