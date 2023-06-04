@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
-import usePresenceState from '../../util/usePresenceState';
+import { usePresenceState } from '../../util/usePresenceState';
 import useDrawerRef from '../../util/useDrawerRef';
 
 /**

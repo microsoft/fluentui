@@ -3,7 +3,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
-import usePresenceState from '../../util/usePresenceState';
+import { usePresenceState } from '../../util/usePresenceState';
 import useDrawerRef from '../../util/useDrawerRef';
 
 /**

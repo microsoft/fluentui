@@ -8,11 +8,11 @@ type UsePresenceStateStore = {
   exiting: boolean;
 };
 
-type UsePresenceState = UsePresenceStateStore & {
+export type UsePresenceState = UsePresenceStateStore & {
   animating: boolean;
 };
 
-type UsePresenceStateOptions = {
+export type UsePresenceStateOptions = {
   onEnter?: () => void;
   onEntered?: () => void;
   onExit?: () => void;
@@ -21,7 +21,7 @@ type UsePresenceStateOptions = {
 
 const noop = () => ({});
 
-const usePresenceState = (
+export const usePresenceState = (
   ref: React.RefObject<HTMLElement>,
   open: boolean,
   options?: UsePresenceStateOptions,
@@ -133,5 +133,3 @@ const usePresenceState = (
     animating,
   };
 };
-
-export default usePresenceState;
