@@ -67,3 +67,5 @@ export {
   useDrawerFooter_unstable,
 } from './DrawerFooter';
 export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './DrawerFooter';
+
+export { default as usePresenceState } from './util/usePresenceState';
