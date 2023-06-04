@@ -206,7 +206,9 @@ const useMenuOpenState = (
 
   const setOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     clearTimeout(setOpenTimeout.current);
-    if (!(e instanceof Event) && e.persist) {
+    // https://www.npmjs.com/package/is-react-synthetic-event
+    const isSyntheticEvent = typeof e !== 'object' || e === null ? false : '_dispatchListeners' in e;
+    if (isSyntheticEvent && e.persist) {
       // < React 17 still uses pooled synthetic events
       e.persist();
     }

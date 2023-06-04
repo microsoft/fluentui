@@ -1380,7 +1380,9 @@ function overrideTarget(
   ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
   target?: Target,
 ): void {
-  if (ev && target) {
+  // https://www.npmjs.com/package/is-react-synthetic-event
+  const isSyntheticEvent = typeof ev !== 'object' || ev === null ? false : '_dispatchListeners' in ev;
+  if (ev && target && isSyntheticEvent) {
     ev.persist();
 
     if (target instanceof Event) {
