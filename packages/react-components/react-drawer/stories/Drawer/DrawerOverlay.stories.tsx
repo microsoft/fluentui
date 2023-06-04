@@ -30,7 +30,7 @@ export const Overlay = () => {
       </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
-        Toggle
+        Open
       </Button>
     </div>
   );

@@ -57,8 +57,8 @@ export const CustomTransition = () => {
         </DrawerBody>
       </Drawer>
 
-      <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
-        Toggle
+      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+        Open
       </Button>
     </div>
   );
