@@ -220,6 +220,9 @@ export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2
 // @public
 export const useDrawerOverlayStyles_unstable: (state: DrawerOverlayState) => DrawerOverlayState;
 
+// @public (undocumented)
+export const usePresenceState: (ref: React_2.RefObject<HTMLElement>, open: boolean, options?: UsePresenceStateOptions | undefined) => UsePresenceState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
