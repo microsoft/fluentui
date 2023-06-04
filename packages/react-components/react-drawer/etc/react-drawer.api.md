@@ -221,7 +221,20 @@ export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2
 export const useDrawerOverlayStyles_unstable: (state: DrawerOverlayState) => DrawerOverlayState;
 
 // @public (undocumented)
+export type UsePresenceState = UsePresenceStateStore & {
+    animating: boolean;
+};
+
+// @public (undocumented)
 export const usePresenceState: (ref: React_2.RefObject<HTMLElement>, open: boolean, options?: UsePresenceStateOptions | undefined) => UsePresenceState;
+
+// @public (undocumented)
+export type UsePresenceStateOptions = {
+    onEnter?: () => void;
+    onEntered?: () => void;
+    onExit?: () => void;
+    onExited?: () => void;
+};
 
 // (No @packageDocumentation comment for this package)
 
