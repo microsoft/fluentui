@@ -13,6 +13,7 @@ import previewMd from './DrawerPreview.md';
 
 export { Default } from './DrawerDefault.stories';
 export { Overlay } from './DrawerOverlay.stories';
+export { OverlayNoModal } from './DrawerOverlayNoModal.stories';
 export { Inline } from './DrawerInline.stories';
 export { Position } from './DrawerPosition.stories';
 export { Size } from './DrawerSize.stories';
