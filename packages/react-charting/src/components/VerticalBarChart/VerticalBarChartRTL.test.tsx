@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { render, screen, queryAllByAttribute, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { chartPoints } from './VerticalBarChart.test';
 import { DefaultPalette } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import { testScreenResolution } from '../../utilities/TestUtility';
+import { getByClass, getById, testScreenResolution, testWithWait, testWithoutWait } from '../../utilities/TestUtility';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 
 const pointsWithLine = [
@@ -124,68 +124,60 @@ const simplePoints = [
   },
 ];
 
-const getById = queryAllByAttribute.bind(null, 'id');
-const getByClass = queryAllByAttribute.bind(null, 'class');
-
-const testWithoutWait = (
-  description: string,
-  props: IVerticalBarChartProps,
-  testFunction: (container: HTMLElement) => void,
-  testFunctionBeforeWait?: () => void,
-) => {
-  test(description, () => {
-    const { container } = render(<VerticalBarChart {...props} />);
-    testFunctionBeforeWait !== undefined && testFunctionBeforeWait();
-    testFunction(container);
-  });
-};
-
-const testWithWait = (
-  description: string,
-  props: IVerticalBarChartProps,
-  testFunction: (container: HTMLElement) => void,
-) => {
-  test(description, async () => {
-    const { container } = render(<VerticalBarChart {...props} />);
-    await waitFor(() => {
-      testFunction(container);
-    });
-  });
-};
-
 describe('Vertical bar chart rendering', () => {
-  testWithoutWait('Should render the vertical bar chart with numeric x-axis data', { data: chartPoints }, container => {
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
+  testWithoutWait(
+    'Should render the vertical bar chart with numeric x-axis data',
+    VerticalBarChart,
+    { data: chartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 
-  testWithoutWait('Should render the vertical bar chart with string x-axis data', { data: simplePoints }, container => {
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
+  testWithoutWait(
+    'Should render the vertical bar chart with string x-axis data',
+    VerticalBarChart,
+    { data: simplePoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
-  testWithWait('Should render the bar with the given width', { data: chartPoints, barWidth: 100 }, container => {
-    // Assert
-    const bars = getById(container, /_VBC_bar/i);
-    expect(bars).toHaveLength(3);
-    expect(bars[0].getAttribute('width')).toEqual('100');
-    expect(bars[1].getAttribute('width')).toEqual('100');
-    expect(bars[2].getAttribute('width')).toEqual('100');
-  });
+  testWithWait(
+    'Should render the bar with the given width',
+    VerticalBarChart,
+    { data: chartPoints, barWidth: 100 },
+    container => {
+      // Assert
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(3);
+      expect(bars[0].getAttribute('width')).toEqual('100');
+      expect(bars[1].getAttribute('width')).toEqual('100');
+      expect(bars[2].getAttribute('width')).toEqual('100');
+    },
+  );
 
-  testWithWait('Should render the bars with the specified colors', { data: chartPoints }, container => {
-    // colors mentioned in the data points itself
-    // Assert
-    const bars = getById(container, /_VBC_bar/i);
-    expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
-    expect(bars[1].getAttribute('fill')).toEqual('#002050');
-    expect(bars[2].getAttribute('fill')).toEqual('#00188f');
-  });
+  testWithWait(
+    'Should render the bars with the specified colors',
+    VerticalBarChart,
+    { data: chartPoints },
+    container => {
+      // colors mentioned in the data points itself
+      // Assert
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
+      expect(bars[1].getAttribute('fill')).toEqual('#002050');
+      expect(bars[2].getAttribute('fill')).toEqual('#00188f');
+    },
+  );
 
   testWithWait(
     'Should render the bars with the a single color',
+    VerticalBarChart,
     { data: chartPoints, useSingleColor: true },
     container => {
       // Assert
@@ -196,14 +188,19 @@ describe('Vertical bar chart - Subcomponent bar', () => {
     },
   );
 
-  testWithWait('Should render the bars with labels hidden', { data: chartPoints, hideLabels: true }, container => {
-    // Assert
-    expect(getByClass(container, /barLabel/i)).toHaveLength(0);
-  });
+  testWithWait(
+    'Should render the bars with labels hidden',
+    VerticalBarChart,
+    { data: chartPoints, hideLabels: true },
+    container => {
+      // Assert
+      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent line', () => {
-  testWithoutWait('Should render line along with bars', { data: pointsWithLine }, container => {
+  testWithoutWait('Should render line along with bars', VerticalBarChart, { data: pointsWithLine }, container => {
     const line = getById(container, /_VBC_line/i);
     const points = getById(container, /_VBC_point/i);
     // Assert
@@ -212,6 +209,7 @@ describe('Vertical bar chart - Subcomponent line', () => {
   });
   testWithoutWait(
     'Should highlight the data points and not render the corresponding callout',
+    VerticalBarChart,
     { data: pointsWithLine },
     container => {
       const firstPointonLine = getById(container, /_VBC_point/i)[0];
@@ -227,6 +225,7 @@ describe('Vertical bar chart - Subcomponent line', () => {
 describe('Vertical bar chart - Subcomponent Legends', () => {
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
+    VerticalBarChart,
     { data: pointsWithLine, hideLegend: true },
     container => {
       expect(getByClass(container, /rect/i)).toHaveLength(0);
@@ -234,6 +233,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
   );
   testWithWait(
     'Should reduce the opacity of the other bars/lines and their legends on mouse over a line legend',
+    VerticalBarChart,
     { data: pointsWithLine, lineLegendText: 'just line' },
     container => {
       const bars = getById(container, /_VBC_bar/i);
@@ -273,6 +273,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
   );
   testWithWait(
     'Should reduce the opacity of the other bars/lines and their legends on mouse over a bar legend',
+    VerticalBarChart,
     { data: pointsWithLine, lineLegendText: 'just line' },
     container => {
       const bars = getById(container, /_VBC_bar/i);
@@ -325,6 +326,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 
   testWithWait(
     'Should show the callout over the bar on mouse over',
+    VerticalBarChart,
     { data: pointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
       const bars = getById(container, /_VBC_bar/i);
@@ -337,6 +339,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 
   testWithWait(
     'Should show the callout over the line on mouse over',
+    VerticalBarChart,
     { data: pointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
       const line = getById(container, /_VBC_line/i)[0];
@@ -349,10 +352,11 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 
   testWithWait(
     'Should show the custom callout over the bar on mouse over',
+    VerticalBarChart,
     {
       data: pointsWithLine,
       calloutProps: { doNotLayer: true },
-      onRenderCalloutPerDataPoint: props =>
+      onRenderCalloutPerDataPoint: (props: IVerticalBarChartProps) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>
@@ -371,10 +375,11 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 
   testWithWait(
     'Should not show the custom callout over the line on mouse over',
+    VerticalBarChart,
     {
       data: pointsWithLine,
       calloutProps: { doNotLayer: true },
-      onRenderCalloutPerDataPoint: props =>
+      onRenderCalloutPerDataPoint: (props: IVerticalBarChartProps) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>
@@ -395,6 +400,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
+    VerticalBarChart,
     { data: pointsWithLine, showXAxisLablesTooltip: true },
     container => {
       const bars = getById(container, /_VBC_bar/i);
@@ -406,10 +412,15 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
     },
   );
 
-  testWithWait('Should show rotated x-axis labels', { data: simplePoints, rotateXAxisLables: true }, container => {
-    // Arrange
-    expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
-  });
+  testWithWait(
+    'Should show rotated x-axis labels',
+    VerticalBarChart,
+    { data: simplePoints, rotateXAxisLables: true },
+    container => {
+      // Arrange
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
+    },
+  );
 });
 
 describe('Screen resolution', () => {

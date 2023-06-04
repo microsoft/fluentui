@@ -1,4 +1,37 @@
-import { act } from '@testing-library/react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
+import * as React from 'react';
+
+export const getById = queryAllByAttribute.bind(null, 'id');
+export const getByClass = queryAllByAttribute.bind(null, 'class');
+
+export const testWithoutWait = (
+  description: string,
+  component: any,
+  props: any,
+  testFunction: (container: HTMLElement) => void,
+  testFunctionBeforeWait?: () => void,
+) => {
+  test(description, () => {
+    const { container } = render(React.createElement(component, (props = { ...props })));
+    testFunctionBeforeWait !== undefined && testFunctionBeforeWait();
+    testFunction(container);
+  });
+};
+
+export const testWithWait = (
+  description: string,
+  component: any,
+  props: any,
+  testFunction: (container: HTMLElement) => void,
+) => {
+  test(description, async () => {
+    const { container } = render(React.createElement(component, (props = { ...props })));
+    await waitFor(() => {
+      testFunction(container);
+    });
+  });
+};
 
 export const testScreenResolution = (testFunction: () => void) => {
   const originalInnerWidth = global.innerWidth;
