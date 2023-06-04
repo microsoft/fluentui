@@ -55,12 +55,15 @@ export const useDrawerBaseStyles = makeStyles({
   },
   medium: {
     [drawerCSSVars.drawerSizeVar]: '592px',
+    transitionDuration: tokens.durationSlow,
   },
   large: {
     [drawerCSSVars.drawerSizeVar]: '940px',
+    transitionDuration: tokens.durationSlower,
   },
   full: {
     [drawerCSSVars.drawerSizeVar]: '100vw',
+    transitionDuration: tokens.durationUltraSlow,
   },
 });
 
