@@ -18,6 +18,12 @@ export default {
     readonly: {
       control: { type: 'boolean' },
     },
+    rows: {
+      control: { type: 'number' },
+    },
+    cols: {
+      control: { type: 'number' },
+    },
     resize: {
       options: ['both', 'horizontal', 'vertical'],
       control: { type: 'select' },
@@ -28,13 +34,15 @@ export default {
   },
 };
 
-const TextAreaTemplate = ({ appearance, autoFocus, disabled, placeholder, readonly, resize, required }) => `
+const TextAreaTemplate = ({ appearance, autoFocus, disabled, placeholder, readonly, rows, cols, resize, required }) => `
 <fluent-text-area
   ${appearance ? `appearance="${appearance}"` : ''}
   ${autoFocus ? 'autofocus' : ''}
   ${disabled ? 'disabled' : ''}
   ${placeholder ? `placeholder="${placeholder}"` : ''}
   ${readonly ? 'readonly' : ''}
+  ${rows ? `rows="${rows}"` : ''}
+  ${cols ? `cols="${cols}"` : ''}
   ${resize ? `resize="${resize}"` : ''}
   ${required ? 'required' : ''}
 ></fluent-text-area>`;
