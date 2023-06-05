@@ -12,16 +12,16 @@ import { usePresenceState } from '../../util/usePresenceState';
  * before being passed to renderDrawerOverlay_unstable.
  *
  * @param props - props from this instance of DrawerOverlay
- * @param ref - reference to root HTMLElement of DrawerOverlay
+ * @param ref - reference to root HTMLDivElement of DrawerOverlay
  */
 export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
   const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
-  const { ref: drawerRef, shouldRender, mounted, entering, exiting } = usePresenceState(open);
+  const { ref: drawerRef, shouldRender, mounted, entering, exiting } = usePresenceState<HTMLDivElement>(open);
 
   return {
     components: {

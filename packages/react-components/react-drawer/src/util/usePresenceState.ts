@@ -3,6 +3,15 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 const noop = () => ({});
 
+export type UsePresenceStateResult<T = HTMLElement> = {
+  ref: React.RefCallback<T>;
+  shouldRender: boolean;
+  mounted: boolean;
+  entering: boolean;
+  exiting: boolean;
+  animating: boolean;
+};
+
 export type UsePresenceStateEvents = {
   onEnter?: () => void;
   onExit?: () => void;
@@ -33,7 +42,10 @@ function getMaxTransitionDuration(transitionDuration: string) {
  * @param open - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export const usePresenceState = (open: boolean, events?: UsePresenceStateEvents) => {
+export const usePresenceState = <T extends HTMLElement>(
+  open: boolean,
+  events?: UsePresenceStateEvents,
+): UsePresenceStateResult<T> => {
   const { onEnter = noop, onExit = noop } = events || {};
 
   const [shouldRender, setShouldRender] = React.useState(open);
@@ -42,7 +54,7 @@ export const usePresenceState = (open: boolean, events?: UsePresenceStateEvents)
   const [exiting, setExiting] = React.useState(false);
   const animating = entering || exiting;
 
-  const [currentElement, setCurrentElement] = React.useState<HTMLElement | null>(null);
+  const [currentElement, setCurrentElement] = React.useState<T | null>(null);
 
   const ref = React.useCallback(node => {
     if (!node) {
@@ -52,7 +64,7 @@ export const usePresenceState = (open: boolean, events?: UsePresenceStateEvents)
     setCurrentElement(node);
   }, []);
 
-  const notCurrentElement = React.useCallback((target: HTMLElement) => target !== currentElement, [currentElement]);
+  const notCurrentElement = React.useCallback((target: T) => target !== currentElement, [currentElement]);
 
   const onStart = React.useCallback(
     ({ target }) => {

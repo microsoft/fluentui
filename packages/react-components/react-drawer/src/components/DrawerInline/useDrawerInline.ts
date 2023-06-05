@@ -13,7 +13,10 @@ import { usePresenceState } from '../../util/usePresenceState';
  * @param props - props from this instance of DrawerInline
  * @param ref - reference to root HTMLElement of DrawerInline
  */
-export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Ref<HTMLElement>): DrawerInlineState => {
+export const useDrawerInline_unstable = (
+  props: DrawerInlineProps,
+  ref: React.Ref<HTMLDivElement>,
+): DrawerInlineState => {
   const { open: initialOpen, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { separator = false } = props;
 
@@ -23,7 +26,7 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
     initialState: false,
   });
 
-  const { ref: drawerRef, shouldRender, mounted, entering, exiting } = usePresenceState(open);
+  const { ref: drawerRef, shouldRender, mounted, entering, exiting } = usePresenceState<HTMLDivElement>(open);
 
   return {
     components: {
@@ -39,7 +42,6 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
     position,
     open,
     separator,
-
     shouldRender,
     mounted,
     entering,
