@@ -12,13 +12,13 @@ export {
 } from './Toaster';
 export type { ToasterProps, ToasterState, ToasterSlots } from './Toaster';
 export {
-  ToastLayout,
-  useToastLayoutStyles_unstable,
-  useToastLayout_unstable,
-  renderToastLayout_unstable,
+  Toast,
+  useToastStyles_unstable,
+  useToast_unstable,
+  renderToast_unstable,
   toastLayoutClassNames,
-} from './ToastLayout';
-export type { ToastLayoutProps, ToastLayoutState, ToastLayoutSlots } from './ToastLayout';
+} from './Toast';
+export type { ToastProps, ToastState, ToastSlots } from './Toast';
 
 export {
   ToastTitle,
