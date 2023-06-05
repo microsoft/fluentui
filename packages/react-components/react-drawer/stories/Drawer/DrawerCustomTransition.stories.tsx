@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 
     opacity: 0,
     transform: 'translate3D(-100%, 0, 0) scale(0.9)',
-    transitionDuration: tokens.durationSlower,
+    transitionDuration: `${tokens.durationSlower}`,
     transitionProperty: 'opacity, transform, border-radius',
     willChange: 'opacity, transform, border-radius',
   },
@@ -26,8 +26,7 @@ export const CustomTransition = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement>(null);
-  const { mounted } = usePresenceState(ref, isOpen);
+  const { ref, mounted } = usePresenceState(isOpen);
 
   return (
     <div>

@@ -35,9 +35,9 @@ export type DrawerBaseProps = {
 
 export type DrawerBaseState = {
   /**
-   * Whether the drawer is rendered but not yet mounted.
+   * Whether the drawer should be rendered.
    * */
-  rendered: boolean;
+  shouldRender: boolean;
 
   /**
    * Whether the drawer is rendered and already mounted.

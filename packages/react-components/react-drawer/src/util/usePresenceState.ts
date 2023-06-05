@@ -1,135 +1,151 @@
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
-type UsePresenceStateStore = {
-  rendered: boolean;
-  mounted: boolean;
-  entering: boolean;
-  exiting: boolean;
-};
-
-export type UsePresenceState = UsePresenceStateStore & {
-  animating: boolean;
-};
-
-export type UsePresenceStateOptions = {
-  onEnter?: () => void;
-  onEntered?: () => void;
-  onExit?: () => void;
-  onExited?: () => void;
-};
-
 const noop = () => ({});
 
-export const usePresenceState = (
-  ref: React.RefObject<HTMLElement>,
-  open: boolean,
-  options?: UsePresenceStateOptions,
-): UsePresenceState => {
-  const { onEnter = noop, onEntered = noop, onExit = noop, onExited = noop } = options || {};
+export type UsePresenceStateEvents = {
+  onEnter?: () => void;
+  onExit?: () => void;
+};
 
-  const [hasFinishedStart, setHasFinishedStart] = React.useState(false);
+function getMaxTransitionDuration(transitionDuration: string) {
+  if (!transitionDuration) {
+    return 0;
+  }
 
-  const [presenceState, setPresenceState] = React.useState<UsePresenceStateStore>({
-    rendered: open,
-    mounted: false,
-    entering: false,
-    exiting: false,
+  const durations = transitionDuration.split(',').map(duration => {
+    const trimmed = duration.trim();
+    const parsed = parseFloat(trimmed);
+
+    if (duration.includes('ms')) {
+      return parsed;
+    }
+
+    return parsed * 1000;
   });
-  const animating = React.useMemo(() => presenceState.entering || presenceState.exiting, [presenceState]);
+
+  return Math.max(...durations);
+}
+
+/**
+ * Hook to manage the presence of an element in the DOM.
+ *
+ * @param open - Whether the element should be present in the DOM
+ * @param events - Callbacks for when the element enters or exits the DOM
+ */
+export const usePresenceState = (open: boolean, events?: UsePresenceStateEvents) => {
+  const { onEnter = noop, onExit = noop } = events || {};
+
+  const [shouldRender, setShouldRender] = React.useState(open);
+  const [mounted, setMounted] = React.useState(false);
+  const [entering, setEntering] = React.useState(false);
+  const [exiting, setExiting] = React.useState(false);
+  const animating = entering || exiting;
+
+  const [currentElement, setCurrentElement] = React.useState<HTMLElement | null>(null);
+
+  const ref = React.useCallback(node => {
+    if (!node) {
+      return;
+    }
+
+    setCurrentElement(node);
+  }, []);
+
+  const notCurrentElement = React.useCallback((target: HTMLElement) => target !== currentElement, [currentElement]);
 
   const onStart = React.useCallback(
-    event => {
-      if (event.target !== ref.current) {
+    ({ target }) => {
+      if (notCurrentElement(target)) {
         return;
       }
 
-      setPresenceState(prevState => ({
-        ...prevState,
-        entering: open,
-        exiting: !open,
-      }));
-      setHasFinishedStart(true);
-
       if (open) {
-        onEnter();
+        setEntering(true);
       } else {
-        onExit();
+        setExiting(true);
       }
     },
-    [onEnter, onExit, open, ref],
+    [notCurrentElement, open],
   );
 
   const onEnd = React.useCallback(
-    event => {
-      if (event.target !== ref.current) {
+    ({ target }) => {
+      if (notCurrentElement(target)) {
         return;
       }
 
-      setPresenceState({
-        entering: false,
-        exiting: false,
-        rendered: open,
-        mounted: open,
-      });
-
       if (open) {
-        onEntered();
+        setEntering(false);
+        onEnter();
       } else {
-        onExited();
+        setExiting(false);
+        setShouldRender(false);
+        onExit();
       }
     },
-    [onEntered, onExited, open, ref],
+    [notCurrentElement, onEnter, onExit, open],
+  );
+
+  const onCanceled = React.useCallback(
+    ({ target }) => {
+      if (notCurrentElement(target)) {
+        return;
+      }
+
+      setEntering(false);
+      setExiting(false);
+      setShouldRender(open);
+      setMounted(open);
+    },
+    [notCurrentElement, open],
   );
 
   useIsomorphicLayoutEffect(() => {
-    let currentRef: HTMLElement;
-
-    if (open) {
-      setPresenceState(prevState => ({
-        ...prevState,
-        rendered: true,
-      }));
-    } else if (!hasFinishedStart) {
-      setPresenceState(prevState => ({
-        ...prevState,
-        rendered: false,
-      }));
-      setHasFinishedStart(false);
+    if (!currentElement) {
+      return;
     }
 
-    const animationFrame = requestAnimationFrame(() => {
-      if (ref && ref.current) {
-        currentRef = ref.current;
-
-        ref.current.addEventListener('transitionstart', onStart);
-        ref.current.addEventListener('animationstart', onStart);
-        ref.current.addEventListener('transitionend', onEnd);
-        ref.current.addEventListener('animationend', onEnd);
-      }
-
-      setPresenceState(prevState => ({
-        ...prevState,
-        mounted: open,
-      }));
-    });
+    currentElement.addEventListener('transitionstart', onStart);
+    currentElement.addEventListener('transitionend', onEnd);
+    currentElement.addEventListener('transitioncancel', onCanceled);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
-
-      if (!currentRef) {
+      if (!currentElement) {
         return;
       }
 
-      currentRef.removeEventListener('transitionstart', onStart);
-      currentRef.removeEventListener('animationstart', onStart);
-      currentRef.removeEventListener('transitionend', onEnd);
-      currentRef.removeEventListener('animationend', onEnd);
+      currentElement.removeEventListener('transitionstart', onStart);
+      currentElement.removeEventListener('transitionend', onEnd);
+      currentElement.removeEventListener('transitioncancel', onCanceled);
     };
-  }, [hasFinishedStart, onEnd, onStart, open, ref]);
+  }, [currentElement, onCanceled, onEnd, onStart]);
+
+  React.useEffect(() => {
+    if (open) {
+      setShouldRender(true);
+    } else {
+      if (currentElement) {
+        const { transitionDuration } = window?.getComputedStyle(currentElement);
+        const hasTransition = getMaxTransitionDuration(transitionDuration) > 0;
+
+        if (!hasTransition) {
+          setShouldRender(false);
+        }
+      } else {
+        setShouldRender(false);
+      }
+    }
+
+    requestAnimationFrame(() => setMounted(open));
+  }, [currentElement, open]);
 
   return {
-    ...presenceState,
+    ref,
+    shouldRender,
+    mounted,
+    entering,
+    exiting,
     animating,
   };
 };

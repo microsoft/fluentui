@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
 import { usePresenceState } from '../../util/usePresenceState';
-import useDrawerRef from '../../util/useDrawerRef';
 
 /**
  * Create the state required to render DrawerOverlay.
@@ -22,8 +21,7 @@ export const useDrawerOverlay_unstable = (
   const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
-  const drawerRef = useDrawerRef(ref);
-  const { rendered, mounted, entering, exiting } = usePresenceState(drawerRef, open);
+  const { ref: drawerRef, shouldRender, mounted, entering, exiting } = usePresenceState(open);
 
   return {
     components: {
@@ -31,11 +29,11 @@ export const useDrawerOverlay_unstable = (
     },
 
     root: getNativeElementProps('div', {
-      ref: drawerRef,
+      ref: useMergedRefs(ref, drawerRef),
       ...props,
     }),
     dialog: {
-      open: rendered,
+      open: shouldRender,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
@@ -44,7 +42,7 @@ export const useDrawerOverlay_unstable = (
 
     size,
     position,
-    rendered,
+    shouldRender,
     mounted,
     entering,
     exiting,
