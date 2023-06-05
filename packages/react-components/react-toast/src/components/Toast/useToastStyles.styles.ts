@@ -3,7 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { ToastSlots, ToastState } from './Toast.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const toastLayoutClassNames: SlotClassNames<ToastSlots> = {
+export const toastClassNames: SlotClassNames<ToastSlots> = {
   root: 'fui-Toast',
 };
 
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
  */
 export const useToastStyles_unstable = (state: ToastState): ToastState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(toastLayoutClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(toastClassNames.root, styles.root, state.root.className);
 
   return state;
 };

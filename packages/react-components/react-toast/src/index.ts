@@ -11,13 +11,7 @@ export {
   toasterClassNames,
 } from './Toaster';
 export type { ToasterProps, ToasterState, ToasterSlots } from './Toaster';
-export {
-  Toast,
-  useToastStyles_unstable,
-  useToast_unstable,
-  renderToast_unstable,
-  toastLayoutClassNames,
-} from './Toast';
+export { Toast, useToastStyles_unstable, useToast_unstable, renderToast_unstable, toastClassNames } from './Toast';
 export type { ToastProps, ToastState, ToastSlots } from './Toast';
 
 export {

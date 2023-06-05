@@ -1,1 +1,1 @@
-export * from './components/ToastLayout/index';
+export * from './components/Toast/index';

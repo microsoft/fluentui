@@ -52,6 +52,9 @@ export type ToastBodySlots = {
 // @public
 export type ToastBodyState = ComponentState<ToastBodySlots>;
 
+// @public (undocumented)
+export const toastClassNames: SlotClassNames<ToastSlots>;
+
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
 
@@ -93,9 +96,6 @@ export type ToastFooterState = ComponentState<ToastFooterSlots>;
 
 // @public (undocumented)
 export type ToastId = string;
-
-// @public (undocumented)
-export const toastLayoutClassNames: SlotClassNames<ToastSlots>;
 
 // @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
