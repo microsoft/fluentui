@@ -177,6 +177,7 @@ export class Toaster {
       updateId: 0,
       toasterId,
       dispatchedAt: Date.now(),
+      data: {},
     };
 
     assignDefined<Toast>(toast, toastOptions);

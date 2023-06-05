@@ -3,8 +3,10 @@ import { Toaster, useToastController, ToastTitle, ToastLayout } from '@fluentui/
 import { useId } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
+  const toastId = useId('toast');
   const toasterId = useId('toaster');
-  const toastId = useId('example');
+  const [dispatched, setDispatched] = React.useState(false);
+
   const { dispatchToast, updateToast } = useToastController(toasterId);
   const notify = () =>
     dispatchToast(
@@ -21,14 +23,23 @@ export const UpdateToast = () => {
         </ToastLayout>
       ),
       toastId,
-      timeout: 1000,
+      timeout: 2000,
     });
+
+  const onClick = () => {
+    if (dispatched) {
+      update();
+      setDispatched(false);
+    } else {
+      notify();
+      setDispatched(true);
+    }
+  };
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
-      <button onClick={update}>Update toast</button>
+      <button onClick={onClick}>{dispatched ? 'Update toast' : 'Make toast'}</button>
     </>
   );
 };

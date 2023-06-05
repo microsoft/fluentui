@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Jun 2023 07:37:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.109.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.11)
+
+Mon, 05 Jun 2023 07:37:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.10..@fluentui/react_v8.109.11)
+
+### Patches
+
+- fix: Dropdown hover high contrast mode colors ([PR #27306](https://github.com/microsoft/fluentui/pull/27306) by sarah.higley@microsoft.com)
+- MessageBar: Add SmallScreenSelector styles to use grid layout to properly place buttons ([PR #28100](https://github.com/microsoft/fluentui/pull/28100) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-focus to v8.8.28 ([PR #28125](https://github.com/microsoft/fluentui/pull/28125) by beachball)
 
 ## [8.109.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.10)
 
