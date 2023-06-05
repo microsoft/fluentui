@@ -173,6 +173,7 @@ function usePositioningOptions(options: PositioningOptions) {
     overflowBoundaryPadding,
     fallbackPositions,
     useTransform,
+    applyMiddleware = middleware => middleware,
   } = options;
 
   const { dir } = useFluent();
@@ -206,7 +207,7 @@ function usePositioningOptions(options: PositioningOptions) {
 
       return {
         placement,
-        middleware,
+        middleware: applyMiddleware(middleware),
         strategy,
         useTransform,
       };
@@ -227,6 +228,7 @@ function usePositioningOptions(options: PositioningOptions) {
       overflowBoundaryPadding,
       fallbackPositions,
       useTransform,
+      applyMiddleware,
     ],
   );
 }

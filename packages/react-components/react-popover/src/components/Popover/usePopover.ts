@@ -11,12 +11,14 @@ import {
   resolvePositioningShorthand,
   mergeArrowOffset,
   usePositioningMouseTarget,
+  slide,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 import { popoverSurfaceBorderRadius } from './constants';
+import { PositioningOptions } from '../../../../react-positioning/src/types';
 
 /**
  * Create the state required to render Popover.
@@ -191,11 +193,17 @@ function usePopoverRefs(
   state: Pick<PopoverState, 'size' | 'contextTarget'> &
     Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow'>,
 ) {
+  const applyMiddleware: PositioningOptions['applyMiddleware'] = React.useCallback(middleware => {
+    middleware.push(slide({ mainAxis: 10 }));
+    return middleware;
+  }, []);
+
   const positioningOptions = {
     position: 'above' as const,
     align: 'center' as const,
     arrowPadding: 2 * popoverSurfaceBorderRadius,
     target: state.openOnContext ? state.contextTarget : undefined,
+    applyMiddleware,
     ...resolvePositioningShorthand(state.positioning),
   };
 

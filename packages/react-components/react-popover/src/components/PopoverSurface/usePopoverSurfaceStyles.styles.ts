@@ -1,5 +1,10 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
+import {
+  createArrowHeightStyles,
+  createArrowStyles,
+  positionSlideVarX,
+  positionSlideVarY,
+} from '@fluentui/react-positioning';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
@@ -33,7 +38,7 @@ const useStyles = makeStyles({
     animationTimingFunction: 'cubic-bezier(.1,.9,.2,1)',
     animationName: {
       from: {
-        transform: `translate3d(var(--positioning-x), var(--positioning-y), 0)`,
+        transform: `translate(var(${positionSlideVarX}), var(${positionSlideVarY}))`,
         opacity: 0,
       },
       to: {
