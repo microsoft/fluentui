@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useTimeout } from '@fluentui/react-utilities';
 
-const noop = () => ({});
+const noop = () => null;
 
 export type UseTransitionPresenceState<TElement = HTMLElement> = {
   ref: React.RefCallback<TElement>;
@@ -70,6 +71,8 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
 
   const [currentElement, setCurrentElement] = React.useState<TElement | null>(null);
 
+  const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+
   const ref: React.RefCallback<TElement> = React.useCallback(node => {
     if (!node) {
       return;
@@ -136,8 +139,6 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    let timeout: number | undefined;
-
     const styles = window?.getComputedStyle(currentElement);
     const { duration, hasTransition } = getTransitionInfo(styles);
 
@@ -158,7 +159,7 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
          * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
          * if the transition has multiple properties.
          */
-        timeout = setTimeout(() => {
+        setAnimationTimeout(() => {
           if (present) {
             onEnterAnimationEnd();
           } else {
@@ -170,9 +171,18 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
 
     return () => {
       cancelAnimationFrame(animationFrame);
-      clearTimeout(timeout);
+      clearAnimationTimeout();
     };
-  }, [currentElement, onExitAnimationEnd, onEnterAnimationEnd, present, onEntering, onExiting]);
+  }, [
+    currentElement,
+    onExitAnimationEnd,
+    onEnterAnimationEnd,
+    present,
+    onEntering,
+    onExiting,
+    setAnimationTimeout,
+    clearAnimationTimeout,
+  ]);
 
   return {
     ref,
