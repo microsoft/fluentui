@@ -27,8 +27,8 @@ const useStyles = makeStyles({
     transform: 'translate3D(calc(var(--fui-Drawer--size) * 1), 0, 0)',
   },
 
-  /* Mounted */
-  mounted: {
+  /* Visible */
+  visible: {
     transform: 'translate3D(0, 0, 0)',
   },
 });
@@ -46,7 +46,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     styles.root,
     getDrawerBaseClassNames(state, baseStyles),
     state.position && styles[state.position],
-    state.mounted && styles.mounted,
+    state.visible && styles.visible,
     state.root.className,
   );
 

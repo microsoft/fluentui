@@ -68,5 +68,5 @@ export {
 } from './DrawerFooter';
 export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './DrawerFooter';
 
-export { usePresenceState } from './util/usePresenceState';
-export type { UsePresenceState, UsePresenceStateOptions } from './util/usePresenceState';
+export { useTransitionPresence } from './util/useTransitionPresence';
+export type { UseTransitionPresenceEvents, UseTransitionPresenceState } from './util/useTransitionPresence';

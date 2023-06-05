@@ -40,9 +40,9 @@ export type DrawerBaseState = {
   shouldRender: boolean;
 
   /**
-   * Whether the drawer is rendered and already mounted.
+   * Whether the drawer is rendered and already visible.
    * */
-  mounted: boolean;
+  visible: boolean;
 
   /**
    * Whether the drawer is entering the screen.

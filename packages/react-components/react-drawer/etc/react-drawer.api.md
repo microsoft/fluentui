@@ -209,31 +209,34 @@ export const useDrawerHeaderTitle_unstable: (props: DrawerHeaderTitleProps, ref:
 export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
 
 // @public
-export const useDrawerInline_unstable: (props: DrawerInlineProps, ref: React_2.Ref<HTMLElement>) => DrawerInlineState;
+export const useDrawerInline_unstable: (props: DrawerInlineProps, ref: React_2.Ref<HTMLDivElement>) => DrawerInlineState;
 
 // @public
 export const useDrawerInlineStyles_unstable: (state: DrawerInlineState) => DrawerInlineState;
 
 // @public
-export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2.Ref<HTMLElement>) => DrawerOverlayState;
+export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2.Ref<HTMLDivElement>) => DrawerOverlayState;
 
 // @public
 export const useDrawerOverlayStyles_unstable: (state: DrawerOverlayState) => DrawerOverlayState;
 
+// @public
+export const useTransitionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseTransitionPresenceEvents | undefined) => UseTransitionPresenceState<TElement>;
+
 // @public (undocumented)
-export type UsePresenceState = UsePresenceStateStore & {
-    animating: boolean;
+export type UseTransitionPresenceEvents = {
+    onEntered?: () => void;
+    onExited?: () => void;
 };
 
 // @public (undocumented)
-export const usePresenceState: (ref: React_2.RefObject<HTMLElement>, open: boolean, options?: UsePresenceStateOptions | undefined) => UsePresenceState;
-
-// @public (undocumented)
-export type UsePresenceStateOptions = {
-    onEnter?: () => void;
-    onEntered?: () => void;
-    onExit?: () => void;
-    onExited?: () => void;
+export type UseTransitionPresenceState<TElement = HTMLElement> = {
+    ref: React_2.RefCallback<TElement>;
+    shouldRender: boolean;
+    visible: boolean;
+    entering: boolean;
+    exiting: boolean;
+    animating: boolean;
 };
 
 // (No @packageDocumentation comment for this package)

@@ -37,11 +37,11 @@ const useStyles = makeStyles({
     willChange: 'margin-right',
   },
 
-  /* Mounted */
-  mountedLeft: {
+  /* Visible */
+  visibleLeft: {
     marginLeft: 0,
   },
-  mountedRight: {
+  visibleRight: {
     marginRight: 0,
   },
 });
@@ -67,7 +67,7 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     styles.root,
     getDrawerBaseClassNames(state, baseStyles),
     state.position && styles[state.position],
-    state.mounted && (state.position === 'left' ? styles.mountedLeft : styles.mountedRight),
+    state.visible && (state.position === 'left' ? styles.visibleLeft : styles.visibleRight),
     separatorClass,
     state.root.className,
   );
