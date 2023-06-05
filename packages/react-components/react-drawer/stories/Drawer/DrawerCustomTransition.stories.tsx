@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 
     opacity: 0,
     transform: 'translate3D(-100%, 0, 0) scale(0.9)',
-    transitionDuration: `${tokens.durationSlower}`,
+    transitionDuration: tokens.durationSlower,
     transitionProperty: 'opacity, transform, border-radius',
     willChange: 'opacity, transform, border-radius',
   },
