@@ -1,11 +1,11 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { ToastSlots, ToastState } from './Toast.types';
+import type { ToastContainerSlots, ToastContainerState } from './ToastContainer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const toastClassNames: SlotClassNames<ToastSlots> = {
-  root: 'fui-Toast',
-  timer: 'fui-Toast__timer',
+export const toastClassNames: SlotClassNames<ToastContainerSlots> = {
+  root: 'fui-ToastContainer',
+  timer: 'fui-ToastContainer__timer',
 };
 
 /**
@@ -75,9 +75,9 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Toast slots based on the state
+ * Apply styling to the ToastContainer slots based on the state
  */
-export const useToastStyles_unstable = (state: ToastState): ToastState => {
+export const useToastContainerStyles_unstable = (state: ToastContainerState): ToastContainerState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     toastClassNames.root,

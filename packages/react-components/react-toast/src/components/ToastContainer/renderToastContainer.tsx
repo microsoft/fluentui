@@ -4,15 +4,18 @@
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
 import { Transition } from 'react-transition-group';
-import type { ToastState, ToastSlots, ToastContextValues } from './Toast.types';
+import type { ToastContainerState, ToastContainerSlots, ToastContainerContextValues } from './ToastContainer.types';
 import { ToastContextProvider } from '../../contexts/toastContext';
 
 /**
- * Render the final JSX of Toast
+ * Render the final JSX of ToastContainer
  */
-export const renderToast_unstable = (state: ToastState, contextValues: ToastContextValues) => {
+export const renderToastContainer_unstable = (
+  state: ToastContainerState,
+  contextValues: ToastContainerContextValues,
+) => {
   const { onTransitionEntering, visible, transitionTimeout, remove, nodeRef } = state;
-  const { slots, slotProps } = getSlotsNext<ToastSlots>(state);
+  const { slots, slotProps } = getSlotsNext<ToastContainerSlots>(state);
 
   return (
     <Transition

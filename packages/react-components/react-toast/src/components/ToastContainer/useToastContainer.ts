@@ -7,20 +7,23 @@ import {
   useEventCallback,
   resolveShorthand,
 } from '@fluentui/react-utilities';
-import type { ToastProps, ToastState } from './Toast.types';
+import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { useToast } from '../../state';
 import { Timer, TimerProps } from '../Timer/Timer';
 
 /**
- * Create the state required to render Toast.
+ * Create the state required to render ToastContainer.
  *
- * The returned state can be modified with hooks such as useToastStyles_unstable,
- * before being passed to renderToast_unstable.
+ * The returned state can be modified with hooks such as useToastContainerStyles_unstable,
+ * before being passed to renderToastContainer_unstable.
  *
- * @param props - props from this instance of Toast
- * @param ref - reference to root HTMLElement of Toast
+ * @param props - props from this instance of ToastContainer
+ * @param ref - reference to root HTMLElement of ToastContainer
  */
-export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
+export const useToastContainer_unstable = (
+  props: ToastContainerProps,
+  ref: React.Ref<HTMLElement>,
+): ToastContainerState => {
   const {
     visible,
     children,
@@ -53,7 +56,7 @@ export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>
     element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
   };
 
-  // Users never actually use Toast as a JSX but imperatively through useToastController
+  // Users never actually use ToastContainer as a JSX but imperatively through useToastContainerController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
 
   const onAnimationEnd = useEventCallback((e: React.AnimationEvent<HTMLDivElement>) => {
