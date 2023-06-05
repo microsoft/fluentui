@@ -4,11 +4,8 @@ import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { classNamesFunction } from '@fluentui/react/lib/Utilities';
-import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+import { ISparklineProps } from '../../index';
 import { useClasses } from './Sparkline.styles';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
 export const SparklineBase = (props: ISparklineProps) => {
   const myClass = useClasses();
@@ -73,35 +70,26 @@ export const SparklineBase = (props: ISparklineProps) => {
       </>
     );
   }, [_points, props.data, myClass.area, myClass.line]);
-  const classNames = getClassNames(props.styles!, {
-    theme: props.theme!,
-  });
   return (
-    <FluentProvider theme={webLightTheme}>
-      <FocusZone
-        direction={FocusZoneDirection.horizontal}
-        isCircularNavigation={true}
-        className={classNames.inlineBlock}
-      >
-        <div className={myClass.inlineBlock}>
-          {_width >= 50 && _height >= 16 ? (
-            <svg width={_width} height={_height} data-is-focusable={true}>
-              {_points ? drawSparkline() : null}
-            </svg>
-          ) : (
-            <></>
-          )}
-          {props.showLegend && props.data!.lineChartData![0].legend ? (
-            <svg width={_valueTextWidth} height={_height} data-is-focusable={true}>
-              <text x="0%" dx={8} y="100%" dy={-5} className={myClass.valueText}>
-                {props.data!.lineChartData![0].legend!}
-              </text>
-            </svg>
-          ) : (
-            <></>
-          )}
-        </div>
-      </FocusZone>
-    </FluentProvider>
+    <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
+      <div className={myClass.inlineBlock}>
+        {_width >= 50 && _height >= 16 ? (
+          <svg width={_width} height={_height} data-is-focusable={true}>
+            {_points ? drawSparkline() : null}
+          </svg>
+        ) : (
+          <></>
+        )}
+        {props.showLegend && props.data!.lineChartData![0].legend ? (
+          <svg width={_valueTextWidth} height={_height} data-is-focusable={true}>
+            <text x="0%" dx={8} y="100%" dy={-5}>
+              {props.data!.lineChartData![0].legend!}
+            </text>
+          </svg>
+        ) : (
+          <></>
+        )}
+      </div>
+    </FocusZone>
   );
 };

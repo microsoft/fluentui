@@ -14,8 +14,6 @@ export const useClasses = makeStyles({
   },
   inlineBlock: {
     display: 'inline',
-  },
-  valueText: {
     fontSize: tokens.fontSizeBase300,
     fill: tokens.colorNeutralForeground1,
   },
