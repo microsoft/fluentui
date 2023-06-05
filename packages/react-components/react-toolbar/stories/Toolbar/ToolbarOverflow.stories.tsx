@@ -233,7 +233,7 @@ OverflowItems.parameters = {
       story: [
         'This example uses the',
         '<a href="#" data-sb-kind="components-overflow--default">Overflow component and utilities</a>,',
-        'Please refer to the documentation for achieve more complex scenarios.',
+        'Please refer to the documentation to achieve more complex scenarios.',
       ].join('\n'),
     },
   },
