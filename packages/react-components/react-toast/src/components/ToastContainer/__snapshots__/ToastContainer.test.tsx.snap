@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toast renders a default state 1`] = `
+exports[`ToastContainer renders a default state 1`] = `
 <div>
   <div
-    class="fui-Toast"
+    class="fui-ToastContainer"
     style="--fui-toast-height: 0px;"
   >
-    Default Toast
+    Default ToastContainer
   </div>
 </div>
 `;
