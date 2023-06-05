@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/utilities_v8.13.16",
+      "version": "8.13.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "andrew.stegmaier@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "170594a14c0b892bf418831d5be7f995b0e981f8",
+            "comment": "fix: Avoid inlining setCallbackMap with terser to prevent memory leaks."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 07:38:40 GMT",
       "tag": "@fluentui/utilities_v8.13.15",
       "version": "8.13.15",

@@ -376,6 +376,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-colorpicker-compat": {
+      "root": "packages/react-components/react-colorpicker-compat",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-colorpicker-compat/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-combobox": {
       "root": "packages/react-components/react-combobox",
       "projectType": "library",
