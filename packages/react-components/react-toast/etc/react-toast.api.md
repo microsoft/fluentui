@@ -99,10 +99,10 @@ export const useToastAlertStyles_unstable: (state: ToastAlertState) => ToastAler
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {
-    dispatchToast: (content: React_2.ReactNode, options?: Partial<Omit<ToastOptions, "toasterId">> | undefined) => void;
+    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions | undefined) => void;
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
-    updateToast: (options: UpdateToastEventDetail) => void;
+    updateToast: (options: UpdateToastOptions) => void;
 };
 
 // @public
