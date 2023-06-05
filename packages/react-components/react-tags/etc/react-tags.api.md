@@ -84,7 +84,7 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
 
 // @public (undocumented)
 export type TagSlots = {
-    root: NonNullable<Slot<'button'>>;
+    root: NonNullable<Slot<'button', 'span'>>;
     media?: Slot<'span'>;
     icon?: Slot<'span'>;
     primaryText: Slot<'span'>;

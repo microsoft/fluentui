@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TagGroup, TagButton, TagButtonProps, TagGroupProps } from '@fluentui/react-tags';
+import { TagGroup, Tag, TagProps } from '@fluentui/react-tags';
 import {
   makeStyles,
   shorthands,
@@ -13,6 +13,7 @@ import {
   Overflow,
   OverflowItem,
   Avatar,
+  tokens,
 } from '@fluentui/react-components';
 
 const names = [
@@ -28,33 +29,51 @@ const names = [
   'Charlotte Waltson',
   'Elliot Woodward',
 ];
-const defaultItems: TagButtonProps[] = names.map(name => ({
+const defaultItems: TagProps[] = names.map(name => ({
   value: name.replace(' ', '_'),
   children: name,
-  media: <Avatar name={name} />,
+  media: (
+    <Avatar
+      name={name}
+      badge={{
+        status: 'available',
+      }}
+    />
+  ),
+  secondaryText: 'Available',
 }));
 
 //----- OverflowMenuItem -----//
 
 type OverflowMenuItemProps = {
-  tag: TagButtonProps;
+  tag: TagProps;
   onClick: React.MouseEventHandler;
 };
+
+const useMenuItemStyles = makeStyles({
+  menuItem: shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
+  tag: {
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
+  },
+});
 
 /**
  * A menu item for an overflow menu that only displays when the tab is not visible
  */
 const OverflowMenuItem = (props: OverflowMenuItemProps) => {
-  const { tag, onClick } = props;
+  const { tag } = props;
   const isVisible = useIsOverflowItemVisible(tag.value!);
+
+  const styles = useMenuItemStyles();
 
   if (isVisible) {
     return null;
   }
 
   return (
-    <MenuItem key={tag.value} icon={tag.media} onClick={onClick}>
-      <div>{tag.children}</div>
+    <MenuItem key={tag.value} className={styles.menuItem}>
+      <Tag {...tag} as="span" className={styles.tag} />
     </MenuItem>
   );
 };
@@ -62,32 +81,27 @@ const OverflowMenuItem = (props: OverflowMenuItemProps) => {
 //----- OverflowMenu -----//
 
 type OverflowMenuProps = {
-  onDismissItem: TagGroupProps['onDismiss'];
+  onDismissItem?: TagGroupProps['onDismiss'];
 };
 
 /**
  * A menu for selecting tabs that have overflowed and are not visible.
  */
-const OverflowMenu = (props: OverflowMenuProps) => {
+const OverflowMenu = () => {
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-
-  // const onItemClick = (tabId: string) => {
-  //   onTabSelect?.(tabId);
-  // };
 
   if (!isOverflowing) {
     return null;
   }
 
+  // const onItemClick = (tabId: string) => {
+  //   onTabSelect?.(tabId);
+  // };
+
   return (
-    <Menu hasIcons>
+    <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <TagButton
-          dismissible={false}
-          ref={ref}
-          aria-label={`${overflowCount} more tags`}
-          // TODO should have role same as tag
-        >{`+${overflowCount}`}</TagButton>
+        <Tag ref={ref} aria-label={`${overflowCount} more tags`}>{`+${overflowCount}`}</Tag>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -121,13 +135,32 @@ const useStyles = makeStyles({
   },
 });
 
-export const HorizontalOverflow = () => {
+const OverflowExample = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <Overflow minimumVisible={2}>
+        <TagGroup className={styles.tagGroup}>
+          {defaultItems.map(item => (
+            <OverflowItem key={item.value} id={item.value!}>
+              <Tag key={item.value} {...item} />
+            </OverflowItem>
+          ))}
+          <OverflowMenu />
+        </TagGroup>
+      </Overflow>
+    </div>
+  );
+};
+
+const DismissibleOverflowExample = () => {
+  const styles = useStyles();
+
   const [items, setItems] = React.useState<TagButtonProps[]>(defaultItems);
   const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
     setItems([...items].filter(item => item.value !== dismissedTagValue));
   };
-
-  const styles = useStyles();
 
   return (
     <div className={styles.container}>
@@ -145,8 +178,19 @@ export const HorizontalOverflow = () => {
   );
 };
 
-HorizontalOverflow.storyName = 'Overflow';
-HorizontalOverflow.parameters = {
+export const WithOverflow = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <OverflowExample />
+      <DismissibleOverflowExample />
+    </div>
+  );
+};
+
+WithOverflow.storyName = 'With Overflow';
+WithOverflow.parameters = {
   docs: {
     description: {
       story: 'A TagGroup can support overflow by using Overflow and OverflowItem.',
