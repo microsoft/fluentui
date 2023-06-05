@@ -47,7 +47,6 @@ const defaultItems: TagProps[] = names.map(name => ({
 
 type OverflowMenuItemProps = {
   tag: TagProps;
-  onClick: React.MouseEventHandler;
 };
 
 const useMenuItemStyles = makeStyles({
@@ -80,10 +79,6 @@ const OverflowMenuItem = (props: OverflowMenuItemProps) => {
 
 //----- OverflowMenu -----//
 
-type OverflowMenuProps = {
-  onDismissItem?: TagGroupProps['onDismiss'];
-};
-
 /**
  * A menu for selecting tabs that have overflowed and are not visible.
  */
@@ -94,10 +89,6 @@ const OverflowMenu = () => {
     return null;
   }
 
-  // const onItemClick = (tabId: string) => {
-  //   onTabSelect?.(tabId);
-  // };
-
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -106,11 +97,7 @@ const OverflowMenu = () => {
       <MenuPopover>
         <MenuList>
           {defaultItems.map(item => (
-            <OverflowMenuItem
-              key={item.value}
-              tag={item}
-              onClick={() => console.log('OverflowMenuItem', 'value', 'click')}
-            />
+            <OverflowMenuItem key={item.value} tag={item} />
           ))}
         </MenuList>
       </MenuPopover>
@@ -135,7 +122,7 @@ const useStyles = makeStyles({
   },
 });
 
-const OverflowExample = () => {
+export const WithOverflow = () => {
   const styles = useStyles();
 
   return (
@@ -150,41 +137,6 @@ const OverflowExample = () => {
           <OverflowMenu />
         </TagGroup>
       </Overflow>
-    </div>
-  );
-};
-
-const DismissibleOverflowExample = () => {
-  const styles = useStyles();
-
-  const [items, setItems] = React.useState<TagButtonProps[]>(defaultItems);
-  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
-    setItems([...items].filter(item => item.value !== dismissedTagValue));
-  };
-
-  return (
-    <div className={styles.container}>
-      <Overflow minimumVisible={2}>
-        <TagGroup onDismiss={removeItem} className={styles.tagGroup}>
-          {items.map(item => (
-            <OverflowItem key={item.value} id={item.value!}>
-              <TagButton key={item.value} {...item} />
-            </OverflowItem>
-          ))}
-          <OverflowMenu onDismissItem={removeItem} />
-        </TagGroup>
-      </Overflow>
-    </div>
-  );
-};
-
-export const WithOverflow = () => {
-  const styles = useStyles();
-
-  return (
-    <div className={styles.container}>
-      <OverflowExample />
-      <DismissibleOverflowExample />
     </div>
   );
 };
