@@ -30,57 +30,6 @@ const useStyles = makeStyles({
 
   slideAndFadeIn: createSlideStyles(10),
 
-  enter: {
-    animationComposition: 'accumulate',
-    animationDuration: '367ms',
-    animationTimingFunction: 'cubic-bezier(.1,.9,.2,1)',
-
-    '&[data-popper-placement^="top"]': {
-      animationName: {
-        from: {
-          transform: `translate(0px, 10px)`,
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
-    },
-    '&[data-popper-placement^="right"]': {
-      animationName: {
-        from: {
-          transform: `translate(-10px, 0px)`,
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
-    },
-    '&[data-popper-placement^="bottom"]': {
-      animationName: {
-        from: {
-          transform: `translate(0, -10px)`,
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
-    },
-    '&[data-popper-placement^="left"]': {
-      animationName: {
-        from: {
-          transform: `translate(10px, 0px)`,
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
-    },
-  },
-
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
     color: tokens.colorNeutralForegroundStaticInverted,
