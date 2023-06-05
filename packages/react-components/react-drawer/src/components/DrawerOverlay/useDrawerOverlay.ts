@@ -3,7 +3,7 @@ import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities'
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
-import { useTransitionPresence } from '../../util/useTransitionPresence';
+import { useTransitionPresence } from '../../hooks/useTransitionPresence';
 
 /**
  * Create the state required to render DrawerOverlay.
