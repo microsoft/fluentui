@@ -68,7 +68,7 @@ export const infoTipClassNames: SlotClassNames<InfoTipSlots>;
 // @public
 export type InfoTipProps = ComponentProps<Partial<InfoTipSlots>> & {
     size?: 'small' | 'medium' | 'large';
-    info: TooltipProps['content'];
+    info?: TooltipProps['content'];
 };
 
 // @public (undocumented)

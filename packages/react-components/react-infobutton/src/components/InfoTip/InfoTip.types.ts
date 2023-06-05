@@ -27,7 +27,7 @@ export type InfoTipProps = ComponentProps<Partial<InfoTipSlots>> & {
   /**
    * The information to be displayed in the tooltip.
    */
-  info: TooltipProps['content'];
+  info?: TooltipProps['content'];
 };
 
 /**
