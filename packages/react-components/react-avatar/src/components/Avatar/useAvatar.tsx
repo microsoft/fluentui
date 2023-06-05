@@ -45,14 +45,17 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   );
 
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
-  const image: AvatarState['image'] = resolveShorthand(props.image, {
-    defaultProps: {
-      alt: '',
-      role: 'presentation',
-      'aria-hidden': true,
-      hidden: imageHidden,
-    },
-  });
+  // Image shouldn't be resolved if its src is undefined
+  const image: AvatarState['image'] = props.image?.src
+    ? resolveShorthand(props.image, {
+        defaultProps: {
+          alt: '',
+          role: 'presentation',
+          'aria-hidden': true,
+          hidden: imageHidden,
+        },
+      })
+    : undefined;
 
   // Hide the image if it fails to load and restore it on a successful load
   if (image) {
