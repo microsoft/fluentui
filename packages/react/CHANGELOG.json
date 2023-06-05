@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 05 Jun 2023 07:37:24 GMT",
+      "tag": "@fluentui/react_v8.109.11",
+      "version": "8.109.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0868df85405025c1488c8b0f8285ead56c379626",
+            "comment": "fix: Dropdown hover high contrast mode colors"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4a9f03c96b04bd9cca11b7718a3f7f60bf78d2ee",
+            "comment": "MessageBar: Add SmallScreenSelector styles to use grid layout to properly place buttons"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.28",
+            "commit": "b922d4bbfce680ac0a8ec46b73e30958c7fa3b09"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jun 2023 07:38:37 GMT",
       "tag": "@fluentui/react_v8.109.10",
       "version": "8.109.10",

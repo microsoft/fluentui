@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastAlert } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastTitle, ToastLayout } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const ToasterLimit = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const notify = () => dispatchToast(<ToastAlert intent="success">Limited to 3 toasts</ToastAlert>);
+  const notify = () =>
+    dispatchToast(
+      <ToastLayout>
+        <ToastTitle intent="success">Limited to 3 toasts</ToastTitle>
+      </ToastLayout>,
+    );
 
   return (
     <>
