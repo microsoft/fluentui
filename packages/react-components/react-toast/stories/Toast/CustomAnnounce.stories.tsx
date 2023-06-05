@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastAlert, ToasterProps } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastLayout, ToastTitle, ToasterProps } from '@fluentui/react-toast';
 import { useId, Link, makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -24,17 +24,21 @@ export const CustomAnnounce = () => {
   const { dispatchToast } = useToastController(toasterId);
   const dispatchAlert = () =>
     dispatchToast(
-      <ToastAlert intent="success" action={<Link>Undo</Link>}>
-        Assertive toast {counter++}
-      </ToastAlert>,
+      <ToastLayout>
+        <ToastTitle intent="success" action={<Link>Undo</Link>}>
+          Assertive toast {counter++}
+        </ToastTitle>
+      </ToastLayout>,
       { politeness: 'assertive' },
     );
 
   const dispatchStatus = () =>
     dispatchToast(
-      <ToastAlert intent="success" action={<Link>Undo</Link>}>
-        Polite toast {counter++}
-      </ToastAlert>,
+      <ToastLayout>
+        <ToastTitle intent="success" action={<Link>Undo</Link>}>
+          Polite toast {counter++}
+        </ToastTitle>
+      </ToastLayout>,
       { politeness: 'polite' },
     );
 

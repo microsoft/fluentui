@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastAlert, ToastTrigger } from '@fluentui/react-toast';
-import { useId, Link } from '@fluentui/react-components';
+import { Toaster, useToastController, ToastTitle, ToastLayout } from '@fluentui/react-toast';
+import { useId } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
   const toastId = useId('toast');
@@ -10,32 +10,17 @@ export const UpdateToast = () => {
   const { dispatchToast, updateToast } = useToastController(toasterId);
   const notify = () =>
     dispatchToast(
-      <ToastAlert
-        intent="info"
-        action={
-          <ToastTrigger>
-            <Link>Undo</Link>
-          </ToastTrigger>
-        }
-      >
-        Sending email...
-      </ToastAlert>,
-      { timeout: -1, toastId },
+      <ToastLayout>
+        <ToastTitle intent="warning">This toast never closes</ToastTitle>
+      </ToastLayout>,
+      { toastId, timeout: -1 },
     );
-
   const update = () =>
     updateToast({
       content: (
-        <ToastAlert
-          intent="success"
-          action={
-            <ToastTrigger>
-              <Link>Dismiss</Link>
-            </ToastTrigger>
-          }
-        >
-          Email sent
-        </ToastAlert>
+        <ToastLayout>
+          <ToastTitle intent="success">This toast will close soon</ToastTitle>
+        </ToastLayout>
       ),
       toastId,
       timeout: 2000,

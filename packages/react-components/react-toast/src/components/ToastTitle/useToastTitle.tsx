@@ -3,19 +3,19 @@ import * as React from 'react';
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 
-import type { ToastAlertProps, ToastAlertState } from './ToastAlert.types';
+import type { ToastTitleProps, ToastTitleState } from './ToastTitle.types';
 
 /**
- * Create the state required to render ToastAlert.
+ * Create the state required to render ToastTitle.
  *
- * The returned state can be modified with hooks such as useToastAlertStyles_unstable,
- * before being passed to renderToastAlert_unstable.
+ * The returned state can be modified with hooks such as useToastTitleStyles_unstable,
+ * before being passed to renderToastTitle_unstable.
  *
- * @param props - props from this instance of ToastAlert
- * @param ref - reference to root HTMLElement of ToastAlert
+ * @param props - props from this instance of ToastTitle
+ * @param ref - reference to root HTMLElement of ToastTitle
  */
-export const useToastAlert_unstable = (props: ToastAlertProps, ref: React.Ref<HTMLElement>): ToastAlertState => {
-  const { appearance = 'primary', intent } = props;
+export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HTMLElement>): ToastTitleState => {
+  const { intent = 'info' } = props;
 
   /** Determine the role and media to render based on the intent */
   let defaultIcon;
@@ -36,7 +36,6 @@ export const useToastAlert_unstable = (props: ToastAlertProps, ref: React.Ref<HT
 
   return {
     action: resolveShorthand(props.action),
-    appearance,
     components: {
       root: 'div',
       media: 'div',
