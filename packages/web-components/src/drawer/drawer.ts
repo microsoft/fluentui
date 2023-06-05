@@ -64,14 +64,19 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'focus-target' })
   public focusTarget?: string;
 
+  // The previous active element before opening the drawer.
+  private previousActiveElement?: HTMLElement;
+
   /**
    * Shows the drawer.
    * @public
    */
   public show(): void {
-    if (!this.open) {
-      this.open = true;
-    }
+    // Store the current active element before opening the drawer.
+    this.previousActiveElement = document.activeElement as HTMLElement;
+
+    // Open the drawer.
+    this.open = true;
   }
 
   /**
@@ -79,8 +84,12 @@ export class Drawer extends FASTElement {
    * @public
    */
   public hide(): void {
-    if (this.open) {
-      this.open = false;
+    // Close the drawer.
+    this.open = false;
+
+    // Return the focus to the previous active element if available.
+    if (this.previousActiveElement) {
+      Updates.enqueue(() => this.previousActiveElement?.focus());
     }
   }
 
@@ -89,9 +98,19 @@ export class Drawer extends FASTElement {
    * @public
    */
   public toggleDrawer(): void {
+    // If the drawer is currently closed, it will be opened
+    if (!this.open) {
+      // Store the current active element before opening the drawer
+      this.previousActiveElement = document.activeElement as HTMLElement;
+    } else if (this.previousActiveElement) {
+      // If the drawer is currently open, it will be closed
+      // We need to return the focus to the previous active element if available
+      Updates.enqueue(() => this.previousActiveElement?.focus());
+    }
+
+    // Toggle the open state
     this.open = !this.open;
   }
-
   /**
    * Handles changes to the `open` property.
    * @param prev - The previous value of `open`.
