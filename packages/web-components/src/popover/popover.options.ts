@@ -18,3 +18,10 @@ export const PopoverAlignment = {
 } as const;
 
 export type PopoverAlignment = ValuesOf<typeof PopoverAlignment>;
+
+export const PopoverAppearance = {
+  brand: 'brand',
+  inverted: 'inverted',
+};
+
+export type PopoverAppearance = ValuesOf<typeof PopoverAppearance>;

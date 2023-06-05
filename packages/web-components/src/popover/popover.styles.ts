@@ -14,9 +14,25 @@ export const styles = css`
     position: absolute;
     left: 0;
     top: 0;
-    background: ${tokens.colorNeutralBackground1};
     color: ${tokens.colorNeutralForeground1};
+    background: ${tokens.colorNeutralBackground1};
+    box-shadow: ${tokens.shadow16};
     padding: ${tokens.spacingHorizontalM} ${tokens.spacingVerticalM};
-    border: ${tokens.strokeWidthThickest} solid ${tokens.colorNeutralStroke1};
+    border-radius: ${tokens.borderRadiusMedium};
+    border: 1px solid ${tokens.colorTransparentStroke};
+    font-family: ${tokens.fontFamilyBase};
+    font-size: ${tokens.fontSizeBase300};
+    font-weight: ${tokens.fontWeightRegular};
+    line-height: ${tokens.lineHeightBase300};
+  }
+
+  :host([appearance='brand']) .popover-content {
+    background-color: ${tokens.colorBrandBackground};
+    color: ${tokens.colorNeutralForegroundOnBrand};
+  }
+
+  :host([appearance='inverted']) .popover-content {
+    background-color: ${tokens.colorNeutralBackgroundStatic};
+    color: ${tokens.colorNeutralForegroundStaticInverted};
   }
 `;

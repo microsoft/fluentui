@@ -1,6 +1,6 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { autoUpdate, computePosition } from '@floating-ui/dom';
-import { PopoverAlignment, PopoverPosition } from './popover.options.js';
+import { PopoverAlignment, PopoverAppearance, PopoverPosition } from './popover.options.js';
 import { toFloatingUIPlacement } from './toFloatingUIPlacement.js';
 
 /* Fixme: this is temporary debugging code. Will be removed before merging together with all console.* calls in the file.  */
@@ -101,6 +101,16 @@ export class Popover extends FASTElement {
 
     console.groupEnd();
   }
+
+  @attr
+  /**
+   * The appearance the popover surface should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  public appearance?: PopoverAppearance;
 
   /**
    * @internal
