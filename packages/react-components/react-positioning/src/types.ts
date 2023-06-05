@@ -1,4 +1,3 @@
-import { Middleware } from '@floating-ui/dom';
 import * as React from 'react';
 
 type Rect = {
@@ -174,8 +173,6 @@ export interface PositioningOptions {
    * @default true
    */
   useTransform?: boolean;
-
-  applyMiddleware?: (middleware: Middleware[]) => Middleware[];
 }
 
 export interface PositioningProps

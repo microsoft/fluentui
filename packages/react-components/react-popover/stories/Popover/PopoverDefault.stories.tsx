@@ -20,11 +20,9 @@ const ExampleContent = () => {
 };
 
 export const Default = (props: PopoverProps) => (
-  <Popover {...props} positioning="after">
+  <Popover {...props}>
     <PopoverTrigger disableButtonEnhancement>
-      <Button style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translateX(-50%)' }}>
-        Popover trigger
-      </Button>
+      <Button>Popover trigger</Button>
     </PopoverTrigger>
 
     <PopoverSurface>
