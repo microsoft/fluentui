@@ -20,17 +20,21 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     animationComposition: 'accumulate',
     animationDuration: tokens.durationSlower,
     animationTimingFunction: tokens.curveDecelerateMid,
+    // Note: at-rules have more specificity in Griffel
     '@media(prefers-reduced-motion)': {
       '&[data-popper-placement]': {
         animationDuration: '.001s',
         animationName: fadeIn,
       },
     },
+
+    // Tested in Firefox 79
     '@supports not (animation-composition: accumulate)': {
       '&[data-popper-placement]': {
         animationName: fadeIn,
       },
     },
+
     '&[data-popper-placement^="top"]': {
       animationName: [
         fadeIn,
@@ -42,6 +46,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
         },
       ],
     },
+
     '&[data-popper-placement^="right"]': {
       animationName: [
         fadeIn,
@@ -52,6 +57,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
         },
       ],
     },
+
     '&[data-popper-placement^="bottom"]': {
       animationName: [
         fadeIn,
@@ -62,6 +68,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
         },
       ],
     },
+
     '&[data-popper-placement^="left"]': {
       animationName: [
         fadeIn,
