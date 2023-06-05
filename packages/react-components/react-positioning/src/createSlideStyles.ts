@@ -1,5 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import type { GriffelStyle } from '@griffel/react';
+import { DATA_POSITIONING_PLACEMENT } from './constants';
 
 /**
  * Creates animation styles so that positioned elements slide in from the main axis
@@ -22,7 +23,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     animationTimingFunction: tokens.curveDecelerateMid,
     // Note: at-rules have more specificity in Griffel
     '@media(prefers-reduced-motion)': {
-      '&[data-popper-placement]': {
+      [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
         animationDuration: '.001s',
         animationName: fadeIn,
       },
@@ -30,12 +31,12 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
 
     // Tested in Firefox 79
     '@supports not (animation-composition: accumulate)': {
-      '&[data-popper-placement]': {
+      [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
         animationName: fadeIn,
       },
     },
 
-    '&[data-popper-placement^="top"]': {
+    [`&[${DATA_POSITIONING_PLACEMENT}^=top]`]: {
       animationName: [
         fadeIn,
         {
@@ -47,7 +48,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
       ],
     },
 
-    '&[data-popper-placement^="right"]': {
+    [`&[${DATA_POSITIONING_PLACEMENT}^=right]`]: {
       animationName: [
         fadeIn,
         {
@@ -58,7 +59,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
       ],
     },
 
-    '&[data-popper-placement^="bottom"]': {
+    [`&[${DATA_POSITIONING_PLACEMENT}^=bottom]`]: {
       animationName: [
         fadeIn,
         {
@@ -69,7 +70,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
       ],
     },
 
-    '&[data-popper-placement^="left"]': {
+    [`&[${DATA_POSITIONING_PLACEMENT}^=left]`]: {
       animationName: [
         fadeIn,
         {
