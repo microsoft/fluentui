@@ -4,9 +4,12 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,11 +24,14 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
 // @public
-export type SearchBoxProps = ComponentProps<SearchBoxSlots> & {};
+export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
 
 // @public (undocumented)
 export type SearchBoxSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<typeof Input>>;
+    contentBefore?: Slot<'span'>;
+    dismiss?: Slot<'span'>;
+    contentAfter?: Slot<'span'>;
 };
 
 // @public
