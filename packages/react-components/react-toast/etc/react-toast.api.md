@@ -17,6 +17,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
+export const renderToast_unstable: (state: ToastState) => JSX.Element;
+
+// @public
 export const renderToastBody_unstable: (state: ToastBodyState) => JSX.Element;
 
 // @public
@@ -26,10 +29,10 @@ export const renderToaster_unstable: (state: ToasterState) => JSX.Element;
 export const renderToastFooter_unstable: (state: ToastFooterState) => JSX.Element;
 
 // @public
-export const renderToastLayout_unstable: (state: ToastLayoutState) => JSX.Element;
+export const renderToastTitle_unstable: (state: ToastTitleState) => JSX.Element;
 
 // @public
-export const renderToastTitle_unstable: (state: ToastTitleState) => JSX.Element;
+export const Toast: ForwardRefComponent<ToastProps>;
 
 // @public
 export const ToastBody: ForwardRefComponent<ToastBodyProps>;
@@ -48,6 +51,9 @@ export type ToastBodySlots = {
 
 // @public
 export type ToastBodyState = ComponentState<ToastBodySlots>;
+
+// @public (undocumented)
+export const toastClassNames: SlotClassNames<ToastSlots>;
 
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
@@ -91,28 +97,22 @@ export type ToastFooterState = ComponentState<ToastFooterSlots>;
 // @public (undocumented)
 export type ToastId = string;
 
-// @public
-export const ToastLayout: ForwardRefComponent<ToastLayoutProps>;
-
-// @public (undocumented)
-export const toastLayoutClassNames: SlotClassNames<ToastLayoutSlots>;
-
-// @public
-export type ToastLayoutProps = ComponentProps<ToastLayoutSlots> & {};
-
-// @public (undocumented)
-export type ToastLayoutSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type ToastLayoutState = ComponentState<ToastLayoutSlots>;
-
 // @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
 export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+
+// @public
+export type ToastProps = ComponentProps<ToastSlots> & {};
+
+// @public (undocumented)
+export type ToastSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type ToastState = ComponentState<ToastSlots>;
 
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
@@ -152,6 +152,9 @@ export type ToastTriggerState = {
 };
 
 // @public
+export const useToast_unstable: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
+
+// @public
 export const useToastBody_unstable: (props: ToastBodyProps, ref: React_2.Ref<HTMLElement>) => ToastBodyState;
 
 // @public
@@ -178,10 +181,7 @@ export const useToastFooter_unstable: (props: ToastFooterProps, ref: React_2.Ref
 export const useToastFooterStyles_unstable: (state: ToastFooterState) => ToastFooterState;
 
 // @public
-export const useToastLayout_unstable: (props: ToastLayoutProps, ref: React_2.Ref<HTMLElement>) => ToastLayoutState;
-
-// @public
-export const useToastLayoutStyles_unstable: (state: ToastLayoutState) => ToastLayoutState;
+export const useToastStyles_unstable: (state: ToastState) => ToastState;
 
 // @public
 export const useToastTitle_unstable: (props: ToastTitleProps, ref: React_2.Ref<HTMLElement>) => ToastTitleState;
