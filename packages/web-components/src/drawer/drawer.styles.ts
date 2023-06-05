@@ -66,6 +66,15 @@ export const styles = css`
     padding: ${spacingVerticalXXL} ${spacingHorizontalXXL} ${spacingVerticalS};
   }
 
+  .close {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+
   .actions {
     padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }

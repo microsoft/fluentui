@@ -71,8 +71,38 @@ The Fluent WC3 Drawer extends from the FAST Dialog component and is designed to 
 
 ### Accessibility
 
-The Drawer component should adhere to the following accessibility guidelines:
+## Drawer Accessibility Specification
 
-- Use appropriate ARIA attributes for the close button, header, and other interactive elements.
-- Ensure keyboard accessibility for opening and closing the drawer, focusing elements, etc.
-- Provide clear instructions or labels for interactive elements to aid screen reader users.
+Role: complimentary
+
+Labeling: The Drawer must be labeled by setting `aria-label` or `aria-labelledby`.
+
+Focus Management: When the drawer is opened, the focus should move to the drawer, making it easier for keyboard and screen reader users to interact with the drawer content immediately. On closing the drawer, the focus should return to the element that opened the drawer.
+
+Keyboard Interaction:
+
+- The drawer should be dismissible via the Escape key, which should close the drawer.
+- Tabbing should not move focus outside the opened drawer, implementing a keyboard trap.
+
+State Announcement: The state (open or closed) of the drawer should be indicated with the `aria-expanded` state set on the controlling element (the button that triggers the drawer's opening and closing).
+
+## DrawerToolbar Accessibility Specification
+
+Role: The toolbar should have a role of toolbar to identify the collection of interactive elements.
+
+Labeling: If not evident from the context, the toolbar should have a label associated with it using `aria-label` or `aria-labelledby`.
+
+Keyboard Interaction:
+
+- Interactive elements within the toolbar should be navigable via the Tab key or Arrow keys as per the toolbar design pattern.
+- The optional close button should be accessible via keyboard and should close the drawer when activated.
+
+State Announcement: If the visibility of the close button changes, it should be communicated to assistive technology using `aria-hidden`.
+
+Focus Management: If the toolbar is the first element inside the drawer, it will receive focus first when the drawer is opened, which could be the desired behavior.
+
+Semantic Markup: For the slot intended for icon buttons, it's important to advise developers to use buttons with appropriate accessible names. If the names are not visually present, they should use `aria-label` or `aria-labelledby` to label buttons.
+
+These considerations follow WCAG 2.1 and ARIA Authoring Practices 1.1. Each aspect should be tested using both automated accessibility tests and manual testing with various assistive technologies, including keyboard-only navigation, screen readers, and magnification.
+
+Remember that accessibility should always include usability testing with individuals who use these assistive technologies for a truly inclusive design.

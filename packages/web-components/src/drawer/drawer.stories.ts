@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import './define.js';
-import '../drawer-trigger/define.js';
 import { DrawerPosition } from './drawer.options.js';
 
 type DrawerStoryArgs = Args & FluentDrawer;
@@ -23,6 +22,21 @@ const dismissed16Regular = html`<svg
   ></path>
 </svg>`;
 
+const toggleDrawer = () => {
+  const drawer = document.getElementById('drawer') as FluentDrawer;
+  drawer.toggleDrawer();
+};
+
+const toggleDrawer2 = () => {
+  const drawer = document.getElementById('drawer2') as FluentDrawer;
+  drawer.toggleDrawer();
+};
+
+const hideDrawer = () => {
+  const drawer = document.getElementById('drawer') as FluentDrawer;
+  drawer.hide();
+};
+
 const storyTemplate = html<DrawerStoryArgs>`
   <div>
     <style>
@@ -32,19 +46,54 @@ const storyTemplate = html<DrawerStoryArgs>`
       }
     </style>
     <div style="height: 38em; transform: scale(1); overflow-y: hidden;">
-      <fluent-drawer-trigger drawer-id="drawer">CLICK</fluent-drawer-trigger>
-      <fluent-drawer id="drawer" ?open="${x => x.open}" position="${x => x.position}">
-        <div slot="header">Header</div>
+      <fluent-button appearance="primary" @click="${toggleDrawer}">Toggle Drawer</fluent-button>
+      <fluent-button appearance="primary" @click="${toggleDrawer2}">Toggle Drawer 2</fluent-button>
+
+      <fluent-drawer
+        focus-target="abc"
+        id="drawer"
+        ?open="${x => x.open}"
+        position="${x => x.position}"
+        trap-focus="${x => x.trapFocus}"
+      >
+        <div slot="header">
+          <fluent-text>Header</fluent-text>
+          <button @click="${hideDrawer}">Hide Drawer</button>
+        </div>
+        <fluent-text>
+          The drawer gives users a quick entry point to configuration and information. It should be used when retaining
+          context is beneficial to users. An overlay is optional depending on whether or not interacting with the
+          background content is beneficial to the user’s context/scenario. An overlay makes the drawer blocking and
+          signifies that the users full attention is required when making configurations.
+          <input id="abc" type="text" />
+        </fluent-text>
+        <div slot="actions">
+          <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+          <button>MyButton</button>
+          <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+        </div>
+      </fluent-drawer>
+
+      <fluent-drawer
+        focus-target="def"
+        id="drawer2"
+        ?open="${x => x.open}"
+        position="${x => x.position}"
+        trap-focus="${x => x.trapFocus}"
+      >
+        <div slot="header">Header 2</div>
         <div slot="close">${dismissed16Regular}</div>
         <fluent-text>
           The drawer gives users a quick entry point to configuration and information. It should be used when retaining
           context is beneficial to users. An overlay is optional depending on whether or not interacting with the
           background content is beneficial to the user’s context/scenario. An overlay makes the drawer blocking and
           signifies that the users full attention is required when making configurations.
+          <input id="def" type="text" />
         </fluent-text>
         <div slot="actions">
-          <fluent-button appearance="primary">Primary</fluent-button>
-          <fluent-button appearance="secondary">Secondary</fluent-button>
+          <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+          <button>MyButton</button>
+          <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
         </div>
       </fluent-drawer>
     </div>
@@ -56,7 +105,8 @@ export default {
   args: {
     disabled: false,
     position: DrawerPosition.right,
-    open: true,
+    noTrapFocus: false,
+    open: false,
   },
   argTypes: {
     open: {
@@ -69,6 +119,19 @@ export default {
         },
         defaultValue: {
           summary: false,
+        },
+      },
+    },
+    trapFocus: {
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        type: {
+          summary: 'Sets whether the drawer traps focus or not',
+        },
+        defaultValue: {
+          summary: true,
         },
       },
     },

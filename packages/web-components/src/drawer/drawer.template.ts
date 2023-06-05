@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref, when } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
 
 /**
@@ -8,13 +8,25 @@ import type { Drawer } from './drawer.js';
 
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
-    <template ?open="${x => x.open}" position="${x => x.position}" aria-disabled="${x => x.ariaDisabled}">
-      <div class="drawer" part="drawer">
+    <template
+      role="complementary"
+      ?open="${x => x.open}"
+      position="${x => x.position}"
+      focus-target="${x => x.focusTarget}"
+      aria-disabled="${x => x.ariaDisabled}"
+      aria-label="${x => x.ariaLabel}"
+      trap-focus="${x => x.trapFocus}"
+      tabindex="${x => (x.open ? '0' : '-1')}"
+    >
+      <div class="drawer" part="drawer" ${ref('drawer')}>
+        ${when(
+          x => x.toolbar,
+          html<T>` <div class="toolbar" part="toolbar">
+            <slot name="toolbar"></slot>
+          </div>`,
+        )}
         <div class="header" part="header">
           <slot name="header"></slot>
-          <div class="close" part="close" @click="${(x: { closeDrawer: () => any }) => x.closeDrawer()}">
-            <slot name="close"></slot>
-          </div>
         </div>
         <div class="content" part="content">
           <slot></slot>
