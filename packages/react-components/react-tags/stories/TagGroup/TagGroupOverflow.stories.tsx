@@ -80,7 +80,7 @@ const OverflowMenuItem = (props: OverflowMenuItemProps) => {
 //----- OverflowMenu -----//
 
 /**
- * A menu for selecting tabs that have overflowed and are not visible.
+ * A menu for viewing tags that have overflowed and are not visible.
  */
 const OverflowMenu = () => {
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
@@ -111,7 +111,7 @@ const useStyles = makeStyles({
   container: {
     ...shorthands.overflow('hidden'),
     ...shorthands.padding('5px'),
-    zIndex: 0, //stop the browser resize handle from piercing the overflow menu
+    zIndex: 0, // stop the browser resize handle from piercing the overflow menu
     height: 'fit-content',
     minWidth: '150px',
     resize: 'horizontal',
