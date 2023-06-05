@@ -96,6 +96,19 @@ const useRootStyles = makeStyles({
         color: tokens.colorNeutralForeground2Pressed,
       },
     },
+
+    '@media (forced-colors: active)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'canvas',
+        },
+      },
+      ':hover:active': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'canvas',
+        },
+      },
+    },
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
