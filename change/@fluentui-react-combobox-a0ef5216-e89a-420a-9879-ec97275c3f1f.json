@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Option's checkIcon adds provided className at the end to avoid overrides.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
