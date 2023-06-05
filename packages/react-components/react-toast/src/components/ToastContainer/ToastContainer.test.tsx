@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
-import { Toast } from './Toast';
+import { ToastContainer } from './ToastContainer';
 import { isConformant } from '../../testing/isConformant';
-import { ToastProps } from './Toast.types';
-import { toastClassNames } from './useToastStyles.styles';
+import { ToastContainerProps } from './ToastContainer.types';
+import { toastClassNames } from './useToastContainerStyles.styles';
 
-const defaultToastProps: ToastProps = {
+const defaultToastContainerProps: ToastContainerProps = {
   announce: () => null,
   close: () => null,
   content: '',
@@ -27,58 +27,58 @@ const defaultToastProps: ToastProps = {
 const runningTimerSelector = '[data-timer-status="running"]';
 const pausedTimerSelector = '[data-timer-status="paused"]';
 
-describe('Toast', () => {
+describe('ToastContainer', () => {
   beforeEach(() => {
     jest.useRealTimers();
   });
 
   isConformant({
-    Component: Toast,
-    displayName: 'Toast',
-    requiredProps: defaultToastProps,
+    Component: ToastContainer,
+    displayName: 'ToastContainer',
+    requiredProps: defaultToastContainerProps,
     isInternal: true,
   });
 
   it('renders a default state', () => {
-    const result = render(<Toast {...defaultToastProps}>Default Toast</Toast>);
+    const result = render(<ToastContainer {...defaultToastContainerProps}>Default ToastContainer</ToastContainer>);
     expect(result.container).toMatchSnapshot();
   });
 
   it('should announce on mount', () => {
     const announce = jest.fn();
-    const toastProps = { ...defaultToastProps, announce };
-    render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps = { ...defaultToastContainerProps, announce };
+    render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     expect(announce).toHaveBeenCalledTimes(1);
-    expect(announce).toHaveBeenCalledWith('Toast', { politeness: 'polite' });
+    expect(announce).toHaveBeenCalledWith('ToastContainer', { politeness: 'polite' });
   });
 
   it('should announce on updateId change', () => {
     const announce = jest.fn();
-    const toastProps = { ...defaultToastProps, announce };
-    const { rerender } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps = { ...defaultToastContainerProps, announce };
+    const { rerender } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     toastProps.updateId++;
 
-    rerender(<Toast {...toastProps}>Toast</Toast>);
+    rerender(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     expect(announce).toHaveBeenCalledTimes(2);
-    expect(announce).toHaveBeenNthCalledWith(2, 'Toast', { politeness: 'polite' });
+    expect(announce).toHaveBeenNthCalledWith(2, 'ToastContainer', { politeness: 'polite' });
   });
 
   it('should announce with configured politeness', () => {
     const announce = jest.fn();
-    const toastProps: ToastProps = { ...defaultToastProps, announce, politeness: 'assertive' };
-    render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, announce, politeness: 'assertive' };
+    render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     expect(announce).toHaveBeenCalledTimes(1);
-    expect(announce).toHaveBeenCalledWith('Toast', { politeness: 'assertive' });
+    expect(announce).toHaveBeenCalledWith('ToastContainer', { politeness: 'assertive' });
   });
 
   it('should respect user root', () => {
     const className = 'foo';
-    const toastProps: ToastProps = { ...defaultToastProps, data: { root: { className } } };
-    const { container } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, data: { root: { className } } };
+    const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     expect(container.querySelector(`.${className}`)).not.toBe(null);
   });
@@ -86,10 +86,10 @@ describe('Toast', () => {
   it('should remove toast after visible is false', () => {
     jest.useFakeTimers();
     const remove = jest.fn();
-    const toastProps: ToastProps = { ...defaultToastProps, remove };
-    const { rerender } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, remove };
+    const { rerender } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
     toastProps.visible = false;
-    rerender(<Toast {...toastProps}>Toast</Toast>);
+    rerender(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     jest.advanceTimersByTime(500);
 
@@ -97,8 +97,8 @@ describe('Toast', () => {
   });
 
   it('should start timer after toast on animationend', () => {
-    const toastProps: ToastProps = { ...defaultToastProps, timeout: 1 };
-    const { container } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1 };
+    const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastClassNames.root}`);
     expect(toastElement).not.toBeNull();
@@ -113,8 +113,8 @@ describe('Toast', () => {
 
   it('should close toast ontimeout', () => {
     const close = jest.fn();
-    const toastProps: ToastProps = { ...defaultToastProps, timeout: 1, close };
-    const { container } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, close };
+    const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastClassNames.root}`);
     expect(toastElement).not.toBeNull();
@@ -137,8 +137,8 @@ describe('Toast', () => {
   });
 
   it('should pause on hover', () => {
-    const toastProps: ToastProps = { ...defaultToastProps, timeout: 1, pauseOnHover: true };
-    const { container } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnHover: true };
+    const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastClassNames.root}`);
     expect(toastElement).not.toBeNull();
@@ -168,8 +168,8 @@ describe('Toast', () => {
   });
 
   it('should pause on window blur', () => {
-    const toastProps: ToastProps = { ...defaultToastProps, timeout: 1, pauseOnWindowBlur: true };
-    const { container } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnWindowBlur: true };
+    const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastClassNames.root}`);
     expect(toastElement).not.toBeNull();
@@ -195,14 +195,14 @@ describe('Toast', () => {
   });
 
   it('should render different timer on update', () => {
-    const toastProps: ToastProps = { ...defaultToastProps, timeout: 1 };
-    const { container, rerender } = render(<Toast {...toastProps}>Toast</Toast>);
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1 };
+    const { container, rerender } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const firstTimer = container.querySelector(pausedTimerSelector);
     expect(firstTimer).not.toBeNull();
 
     toastProps.updateId++;
-    rerender(<Toast {...toastProps}>Toast</Toast>);
+    rerender(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const secondTimer = container.querySelector(pausedTimerSelector);
     expect(firstTimer).not.toBe(secondTimer);

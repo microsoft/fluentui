@@ -5,29 +5,29 @@ import { Toast as VanillaToast } from '../../state';
 import { ToastContextValue } from '../../contexts/toastContext';
 import { TimerProps } from '../Timer/Timer';
 
-export type ToastContextValues = {
+export type ToastContainerContextValues = {
   toast: ToastContextValue;
 };
 
-export type ToastSlots = {
+export type ToastContainerSlots = {
   root: NonNullable<Slot<'div'>>;
   timer: NonNullable<Slot<TimerProps>>;
 };
 
 /**
- * Toast Props
+ * ToastContainer Props
  */
-export type ToastProps = ComponentProps<Partial<ToastSlots>> &
+export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
   VanillaToast & {
     visible: boolean;
     announce: Announce;
   };
 
 /**
- * State used in rendering Toast
+ * State used in rendering ToastContainer
  */
-export type ToastState = ComponentState<ToastSlots> &
-  Pick<ToastProps, 'remove' | 'close' | 'updateId' | 'visible'> & {
+export type ToastContainerState = ComponentState<ToastContainerSlots> &
+  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible'> & {
     transitionTimeout: number;
     timerTimeout: number;
     running: boolean;
