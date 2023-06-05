@@ -4,28 +4,26 @@ describe('toMountNodeProps', () => {
   it('handles HTMLElement', () => {
     const element = document.createElement('div');
 
-    expect(toMountNodeProps(element)).toMatchObject({
-      element,
-    });
+    expect(toMountNodeProps(element)).toEqual({ element });
   });
 
   it('handles "null"', () => {
-    expect(toMountNodeProps(null)).toMatchObject({
+    expect(toMountNodeProps(null)).toEqual({
       element: null,
     });
   });
 
   it('handles "undefined"', () => {
-    expect(toMountNodeProps(null)).toMatchObject({});
+    expect(toMountNodeProps(undefined)).toEqual({});
   });
 
   it('handles objects', () => {
     const element = document.createElement('div');
 
-    expect(toMountNodeProps({ element })).toMatchObject({
+    expect(toMountNodeProps({ element })).toEqual({
       element,
     });
-    expect(toMountNodeProps({ element, className: 'foo' })).toMatchObject({
+    expect(toMountNodeProps({ element, className: 'foo' })).toEqual({
       element,
       className: 'foo',
     });

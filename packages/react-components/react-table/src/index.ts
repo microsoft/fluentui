@@ -98,6 +98,7 @@ export {
   useTableSelectionCell_unstable,
   renderTableSelectionCell_unstable,
   tableSelectionCellClassNames,
+  CELL_WIDTH as TABLE_SELECTION_CELL_WIDTH,
 } from './TableSelectionCell';
 
 export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';

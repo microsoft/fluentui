@@ -4,8 +4,9 @@ import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
 export interface ISparklineState {
@@ -13,6 +14,7 @@ export interface ISparklineState {
   _width: number;
   _height: number;
   _valueTextWidth: number;
+  _emptyChart?: boolean;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -38,43 +40,54 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       _width: this.props.width! || 80,
       _height: this.props.height! || 20,
       _valueTextWidth: this.props.valueTextWidth! || 80,
+      _emptyChart: false,
     };
   }
 
   public componentDidMount() {
-    const area = d3Area()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .x((d: any) => this.x(d.x))
-      .y0(this.state._height)
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .y1((d: any) => this.y(d.y))
-      .curve(d3curveLinear);
-    this.area = area;
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+    );
+    if (this.state._emptyChart !== isChartEmpty) {
+      this.setState({ _emptyChart: isChartEmpty });
+    } else {
+      const area = d3Area()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .x((d: any) => this.x(d.x))
+        .y0(this.state._height)
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .y1((d: any) => this.y(d.y))
+        .curve(d3curveLinear);
+      this.area = area;
 
-    const line = d3Line()
+      const line = d3Line()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .x((d: any) => this.x(d.x))
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .y((d: any) => this.y(d.y))
+        .curve(d3curveLinear);
+      this.line = line;
+
+      const points = this.props.data!.lineChartData![0].data;
+
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      .x((d: any) => this.x(d.x))
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .y((d: any) => this.y(d.y))
-      .curve(d3curveLinear);
-    this.line = line;
+      const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
 
-    const points = this.props.data!.lineChartData![0].data;
+      this.x = d3ScaleLinear()
+        .domain([xMin, xMax])
+        .range([this.margin.left!, this.state._width - this.margin.right!]);
+      this.y = d3ScaleLinear()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        .domain([0, d3Max(points, (d: any) => d.y)])
+        .range([this.state._height - this.margin.bottom!, this.margin.top!]);
 
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
-
-    this.x = d3ScaleLinear()
-      .domain([xMin, xMax])
-      .range([this.margin.left!, this.state._width - this.margin.right!]);
-    this.y = d3ScaleLinear()
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      .domain([0, d3Max(points, (d: any) => d.y)])
-      .range([this.state._height - this.margin.bottom!, this.margin.top!]);
-
-    this.setState({
-      _points: points,
-    });
+      this.setState({
+        _points: points,
+      });
+    }
   }
 
   public drawSparkline() {
@@ -104,7 +117,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });
-    return (
+    return !this.state._emptyChart ? (
       <FocusZone
         direction={FocusZoneDirection.horizontal}
         isCircularNavigation={true}
@@ -129,6 +142,13 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           )}
         </div>
       </FocusZone>
+    ) : (
+      <div
+        id={getId('_SparklineChart_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 }

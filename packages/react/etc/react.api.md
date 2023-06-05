@@ -3547,6 +3547,7 @@ export interface IColor extends IRGB, IHSV {
 // @public (undocumented)
 export interface IColorCellProps {
     color: string;
+    disabled?: boolean;
     id: string;
     index?: number;
     label?: string;

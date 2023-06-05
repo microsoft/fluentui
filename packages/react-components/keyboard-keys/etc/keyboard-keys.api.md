@@ -921,7 +921,8 @@ export const ListProgram = "ListProgram";
 export const LiveContent = "LiveContent";
 
 // @public (undocumented)
-export const Lock = "Lock";
+const Lock_2 = "Lock";
+export { Lock_2 as Lock }
 
 // @public (undocumented)
 export const LogOff = "LogOff";

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Mon, 05 Jun 2023 07:37:25 GMT",
+      "tag": "@fluentui/react-conformance_v0.16.3",
+      "version": "0.16.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "59d477883786b3330c55ff6877c6bbed11d34bae",
+            "comment": "fix: testOptions custom classname prefix now works as intended."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 07:38:39 GMT",
       "tag": "@fluentui/react-conformance_v0.16.2",
       "version": "0.16.2",
