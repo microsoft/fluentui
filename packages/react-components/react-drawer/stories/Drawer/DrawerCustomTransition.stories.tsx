@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, usePresenceState } from '@fluentui/react-drawer';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, useTransitionPresence } from '@fluentui/react-drawer';
 import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -26,7 +26,7 @@ export const CustomTransition = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const { ref, visible } = usePresenceState(isOpen);
+  const { ref, visible } = useTransitionPresence(isOpen);
 
   return (
     <div>
