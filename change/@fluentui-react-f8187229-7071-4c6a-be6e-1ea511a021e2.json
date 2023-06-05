@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Exposed disabled property in IColorCellProps to allow customers to disable color cells.",
+  "packageName": "@fluentui/react",
+  "email": "jesszhang782@gmail.com",
+  "dependentChangeType": "patch"
+}

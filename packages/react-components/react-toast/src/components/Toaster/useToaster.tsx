@@ -3,7 +3,7 @@ import { ExtractSlotProps, Slot, getNativeElementProps, resolveShorthand } from 
 import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
-import { Toast } from '../Toast';
+import { ToastContainer } from '../ToastContainer';
 
 /**
  * Create the state required to render Toaster.
@@ -22,9 +22,9 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
         children: toastsToRender.get(toastPosition)?.map(toast => (
-          <Toast {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
+          <ToastContainer {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
             {toast.content as React.ReactNode}
-          </Toast>
+          </ToastContainer>
         )),
         'data-toaster-position': toastPosition,
         // Explicitly casting because our slot types can't handle data attributes
