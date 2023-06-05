@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataGridProps, DataGridState, TableSelectionCellWidth } from '@fluentui/react-table';
+import { DataGridProps, DataGridState, TABLE_SELECTION_CELL_WIDTH } from '@fluentui/react-table';
 import { useDataGrid_unstable as useBaseState } from '@fluentui/react-table';
 import { useFluent, useScrollbarWidth } from '@fluentui/react-components';
 
@@ -19,7 +19,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
   let containerWidthOffset = props.containerWidthOffset;
 
   if (containerWidthOffset === undefined) {
-    containerWidthOffset = props.selectionMode ? -TableSelectionCellWidth : 0;
+    containerWidthOffset = props.selectionMode ? -TABLE_SELECTION_CELL_WIDTH : 0;
     containerWidthOffset -= scrollbarWidth || 0;
   }
 

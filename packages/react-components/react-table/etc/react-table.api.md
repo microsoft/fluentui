@@ -243,6 +243,9 @@ export type SortDirection = 'ascending' | 'descending';
 // @public
 export const Table: ForwardRefComponent<TableProps>;
 
+// @public (undocumented)
+export const TABLE_SELECTION_CELL_WIDTH = 44;
+
 // @public
 export const TableBody: ForwardRefComponent<TableBodyProps>;
 
@@ -505,9 +508,6 @@ export type TableSelectionCellSlots = {
 
 // @public
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
-
-// @public (undocumented)
-export const TableSelectionCellWidth = 44;
 
 // @public (undocumented)
 export interface TableSelectionState {
