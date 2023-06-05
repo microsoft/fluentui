@@ -23,7 +23,9 @@ const InfoTipSize: React.FC<{ size: InfoTipProps['size'] }> = ({ size }) => {
 
   return (
     <div aria-owns={open ? infoTipId : undefined}>
-      <Label size={size} id={infoTipInfoId}>{`This is a ${size} label with an InfoTip`}</Label>
+      <Label size={size} id={infoTipInfoId}>
+        This is a {size} label with an InfoTip
+      </Label>
       <InfoTip
         aria-labelledby={`${infoTipId} ${infoTipInfoId}`}
         info={{
