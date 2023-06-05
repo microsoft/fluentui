@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Wed, 31 May 2023 07:38:39 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Jun 2023 07:37:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.16.3)
+
+Mon, 05 Jun 2023 07:37:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.16.2..@fluentui/react-conformance_v0.16.3)
+
+### Patches
+
+- fix: testOptions custom classname prefix now works as intended. ([PR #28101](https://github.com/microsoft/fluentui/pull/28101) by tristan.watanabe@gmail.com)
 
 ## [0.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.16.2)
 
