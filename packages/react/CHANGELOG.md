@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 05 Jun 2023 07:37:24 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2023 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.0)
+
+Tue, 06 Jun 2023 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.11..@fluentui/react_v8.110.0)
+
+### Minor changes
+
+- add onRenderCellContent to override cell internals ([PR #28064](https://github.com/microsoft/fluentui/pull/28064) by prkalaga@microsoft.com)
+- Exposed disabled property in IColorCellProps to allow customers to disable color cells. ([PR #28015](https://github.com/microsoft/fluentui/pull/28015) by jesszhang782@gmail.com)
 
 ## [8.109.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.11)
 

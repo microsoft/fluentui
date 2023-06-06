@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 06 Jun 2023 07:35:19 GMT",
+      "tag": "@fluentui/react_v8.110.0",
+      "version": "8.110.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "prkalaga@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "90162ed42add4d012bc403e234faf146efc53cca",
+            "comment": "add onRenderCellContent to override cell internals"
+          },
+          {
+            "author": "jesszhang782@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "713a02b9fdf3d73391c41a15501d34adc7102be6",
+            "comment": "Exposed disabled property in IColorCellProps to allow customers to disable color cells."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Jun 2023 07:37:24 GMT",
       "tag": "@fluentui/react_v8.109.11",
       "version": "8.109.11",
