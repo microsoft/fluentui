@@ -17,37 +17,39 @@ export type UseTransitionPresenceEvents = {
   onExited?: () => void;
 };
 
+/**
+ * @internal
+ * Converts a CSS duration string to milliseconds.
+ *
+ * @param s - CSS duration string
+ * @returns Duration in milliseconds
+ */
 function toMs(s: string): number {
+  if (s.includes('ms')) {
+    return parseFloat(s);
+  }
+
   return Number(s.slice(0, -1).replace(',', '.')) * 1000;
 }
 
 /**
+ * @internal
  * Gets the maximum duration from a list of CSS durations.
  *
  * @param durations - List of CSS durations
  * @returns Maximum duration
  */
 const getMaxCssDuration = (durations: string[]) => {
-  return Math.max(
-    ...durations.map(d => {
-      const trimmed = d.trim();
-
-      if (d.includes('ms')) {
-        return parseFloat(trimmed);
-      }
-
-      return toMs(trimmed);
-    }),
-  );
+  return Math.max(...durations.map(d => toMs(d.trim())));
 };
 
 /**
+ * @internal
  * Gets the transition information for a given element.
  *
  * @param computedStyle - Computed style of the element
  * @returns Transition information
  */
-
 const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
   const getProp = (prop: string) => (computedStyle.getPropertyValue(prop) || '').split(',');
 
@@ -61,20 +63,6 @@ const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
     hasTransition: totalDuration > 0,
   };
 };
-
-export function mergeRefs<T = never>(
-  refs: Array<React.RefCallback<T> | React.MutableRefObject<T> | React.LegacyRef<T>>,
-): React.RefCallback<T> {
-  return value => {
-    refs.forEach(ref => {
-      if (typeof ref === 'function') {
-        ref(value);
-      } else if (ref !== null) {
-        (ref as React.MutableRefObject<T | null>).current = value;
-      }
-    });
-  };
-}
 
 /**
  * Hook to manage the presence of an element in the DOM based on its CSS transition state.
