@@ -5,6 +5,7 @@ import {
   colorNeutralForeground1,
   colorTransparentStroke,
   curveAccelerateMid,
+  curveDecelerateMid,
   durationNormal,
   fontFamilyBase,
   fontSizeBase300,
@@ -30,18 +31,15 @@ export const styles = css`
 
   :host {
     position: fixed;
-    display: inline-block;
     left: auto;
     right: 0;
     top: 0;
     height: 100%;
     z-index: 1;
     overflow-x: hidden;
-    transition: width 325ms ease 0s;
     width: 0;
-    margin-right: 0;
     transition-duration: ${durationNormal};
-    transition-timing-function: ${curveAccelerateMid};
+    transition-timing-function: ${curveDecelerateMid};
     transition-property: width;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
@@ -53,10 +51,21 @@ export const styles = css`
     box-shadow: ${shadow64};
   }
 
+  :host([open]) {
+    width: var(--drawer-width);
+    transition-duration: ${durationNormal};
+    transition-timing-function: ${curveAccelerateMid};
+    transition-property: width;
+    width: var(--drawer-width);
+  }
+
+  ::slotted([slot='header']) {
+    width: 100%;
+  }
+
   .header {
     height: 32px;
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
     align-items: center;
     font-size: ${fontSizeBase500};
@@ -85,29 +94,23 @@ export const styles = css`
     display: grid;
     height: 100%;
     width: 100%;
-    transition: width 325ms ease 0s;
-    transition-duration: ${durationNormal};
-    transition-timing-function: ${curveAccelerateMid};
-    transition-property: width;
-    width: 100%;
     position: relative;
   }
 
   .content {
-    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL} ${spacingHorizontalXXL};
+    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }
 
-  :host([open]) {
-    width: 522px;
-    transition-duration: ${durationNormal};
-    transition-timing-function: ${curveAccelerateMid};
-    transition-property: width;
-  }
-
-  [slot='actions'],
   ::slotted([slot='actions']) {
     display: flex;
     flex-direction: row;
+    column-gap: ${spacingHorizontalS};
+  }
+
+  :host([position='left']) {
+    right: auto;
+    left: 0;
+    margin-left: 0;
     column-gap: ${spacingHorizontalS};
   }
 `;

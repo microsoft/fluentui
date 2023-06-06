@@ -13,3 +13,18 @@ export const DrawerPosition = {
  * @public
  */
 export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+/**
+ * A drawer can be different sizes
+ */
+export const DrawerSize = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+/**
+ * The size of the drawer.
+ * @public
+ */
+export type DrawerSize = ValuesOf<typeof DrawerSize>;

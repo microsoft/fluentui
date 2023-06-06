@@ -1,22 +1,35 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { keyEscape, keyTab } from '@microsoft/fast-web-utilities';
 import { isTabbable } from 'tabbable';
-import { DrawerPosition } from './drawer.options.js';
+import { DrawerPosition, DrawerSize } from './drawer.options.js';
 
-/**
- * Represents a Drawer component.
- */
+export interface OpenEvent {
+  open: boolean;
+  position?: string;
+  controlSize?: DrawerSize | number;
+}
+
 export class Drawer extends FASTElement {
-  private _drawer?: HTMLElement;
-  private isTrappingFocus: boolean = false;
+  public connectedCallback(): void {
+    super.connectedCallback();
+    document.addEventListener('keydown', this.handleDocumentKeydown);
+    this.updateTrapFocus();
+  }
 
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+    document.removeEventListener('keydown', this.handleDocumentKeydown);
+    this.updateTrapFocus(false);
+  }
+
+  private _drawer?: HTMLElement;
   /**
    * Determines whether the focus should be trapped within the Drawer when it is open.
    * @public
    * @remarks
    * HTML Attribute: no-trap-focus
    */
-  @attr({ attribute: 'no-trap-focus', mode: 'boolean' })
+  @attr({ attribute: 'trap-focus', mode: 'boolean' })
   public trapFocus: boolean = true;
 
   /**
@@ -34,7 +47,7 @@ export class Drawer extends FASTElement {
    * @remarks
    * HTML Attribute: open
    */
-  @attr({ attribute: 'open', mode: 'boolean' })
+  @attr({ mode: 'boolean' })
   public open: boolean = false;
 
   /**
@@ -45,6 +58,9 @@ export class Drawer extends FASTElement {
    */
   @attr
   public position?: DrawerPosition;
+
+  @attr({ attribute: 'control-size' })
+  public controlSize?: DrawerSize | number = DrawerSize.medium;
 
   /**
    * Indicates the presence of the toolbar.
@@ -72,10 +88,7 @@ export class Drawer extends FASTElement {
    * @public
    */
   public show(): void {
-    // Store the current active element before opening the drawer.
     this.previousActiveElement = document.activeElement as HTMLElement;
-
-    // Open the drawer.
     this.open = true;
   }
 
@@ -84,10 +97,7 @@ export class Drawer extends FASTElement {
    * @public
    */
   public hide(): void {
-    // Close the drawer.
     this.open = false;
-
-    // Return the focus to the previous active element if available.
     if (this.previousActiveElement) {
       Updates.enqueue(() => this.previousActiveElement?.focus());
     }
@@ -98,19 +108,14 @@ export class Drawer extends FASTElement {
    * @public
    */
   public toggleDrawer(): void {
-    // If the drawer is currently closed, it will be opened
     if (!this.open) {
-      // Store the current active element before opening the drawer
       this.previousActiveElement = document.activeElement as HTMLElement;
     } else if (this.previousActiveElement) {
-      // If the drawer is currently open, it will be closed
-      // We need to return the focus to the previous active element if available
       Updates.enqueue(() => this.previousActiveElement?.focus());
     }
-
-    // Toggle the open state
     this.open = !this.open;
   }
+
   /**
    * Handles changes to the `open` property.
    * @param prev - The previous value of `open`.
@@ -121,8 +126,15 @@ export class Drawer extends FASTElement {
    */
   public openChanged(prev: boolean, next: boolean): void {
     if (this.$fastController.isConnected) {
-      // Emit the 'change' event with the new state
-      this.$emit('change', this.open);
+      const eventDetail: OpenEvent = {
+        open: this.open,
+        position: this.position,
+        controlSize: this.controlSize,
+      };
+      const event = new CustomEvent<OpenEvent>('open', {
+        detail: eventDetail,
+      });
+      this.dispatchEvent(event);
     }
 
     Updates.enqueue(() => {
@@ -136,6 +148,7 @@ export class Drawer extends FASTElement {
         }
       }
       this.updateTrapFocus();
+      this.setDrawerWidth();
     });
   }
 
@@ -154,8 +167,52 @@ export class Drawer extends FASTElement {
         return;
       }
     }
-
     this.focusFirstElement();
+  }
+
+  /**
+   * Sets the width of the drawer based on the control size.
+   * @private
+   */
+  private setDrawerWidth(): void {
+    /**
+     * The value of the control size attribute.
+     * @type {DrawerSize | number | undefined}
+     */
+    const sizeValue: DrawerSize | number | undefined = this.controlSize;
+
+    /**
+     * The width of the drawer.
+     * @type {number | undefined}
+     */
+    let width: number | undefined;
+
+    if (typeof sizeValue === 'string' && Object.values(DrawerSize).includes(sizeValue as DrawerSize)) {
+      // Size value is one of the predefined options from DrawerSize
+      // Assign the corresponding width value based on the option
+      switch (sizeValue as DrawerSize) {
+        case DrawerSize.small:
+          width = 320;
+          break;
+        case DrawerSize.medium:
+          width = 592;
+          break;
+        case DrawerSize.large:
+          width = 940;
+          break;
+        default:
+          break;
+      }
+    } else {
+      // Size value is a number
+      // Convert it to a valid width value
+      width = parseInt(sizeValue as string, 10);
+    }
+
+    if (width !== undefined && !isNaN(width)) {
+      // Set the CSS custom property to adjust the drawer width
+      this.style.setProperty('--drawer-width', `${width}px`);
+    }
   }
 
   /**
@@ -183,28 +240,6 @@ export class Drawer extends FASTElement {
     }
 
     return null;
-  }
-
-  /**
-   * Called when the element is connected to the DOM.
-   * @internal
-   */
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    document.addEventListener('keydown', this.handleDocumentKeydown);
-    this.updateTrapFocus();
-  }
-
-  /**
-   * Called when the element is disconnected from the DOM.
-   * @internal
-   */
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    document.removeEventListener('keydown', this.handleDocumentKeydown);
-    this.updateTrapFocus(false);
   }
 
   /**
@@ -259,13 +294,9 @@ export class Drawer extends FASTElement {
     const lastFocusableElement = bounds[bounds.length - 1] as HTMLElement;
 
     if (e.shiftKey && e.target === firstFocusableElement) {
-      // If Shift + Tab is pressed and the current focus is on the first element,
-      // move focus to the last focusable element.
       lastFocusableElement.focus();
       e.preventDefault();
     } else if (!e.shiftKey && e.target === lastFocusableElement) {
-      // If Tab is pressed and the current focus is on the last element,
-      // move focus back to the first focusable element.
       firstFocusableElement.focus();
       e.preventDefault();
     }
@@ -283,62 +314,56 @@ export class Drawer extends FASTElement {
     }
     return bounds;
   };
-
   /**
    * Focuses the first element within the drawer.
    * @internal
    */
-  private focusFirstElement = (): void => {
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-
-    if (bounds.length > 0) {
-      bounds[0].focus();
-    } else if (this._drawer instanceof HTMLElement) {
-      this._drawer.focus();
+  private focusFirstElement(): void {
+    const focusableElement = this.querySelector<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    if (focusableElement) {
+      focusableElement.focus();
     }
-  };
-
+  }
   /**
    * Determines whether the current focused element should force focus within the drawer.
    * @param currentFocusElement - The current focused element.
    * @returns True if the focus should be forced within the drawer, false otherwise.
    * @internal
    */
-  private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
-    return this.isTrappingFocus && !this.contains(currentFocusElement);
-  };
+  private shouldForceFocus(currentFocusElement: Element | null): boolean {
+    return !this.contains(currentFocusElement);
+  }
 
   /**
    * Determines whether the focus should be trapped within the drawer.
    * @returns True if the focus should be trapped within the drawer, false otherwise.
    * @internal
    */
-  private shouldTrapFocus = (): boolean => {
+  private shouldTrapFocus(): boolean {
     return this.trapFocus && this.open;
-  };
+  }
 
   /**
    * Updates the trapping focus behavior based on the current state.
    * @param shouldTrapFocusOverride - Optional parameter to override the default trapping focus behavior.
    * @internal
    */
-  private updateTrapFocus = (shouldTrapFocusOverride?: boolean): void => {
+  private updateTrapFocus(shouldTrapFocusOverride?: boolean): void {
     const shouldTrapFocus = shouldTrapFocusOverride === undefined ? this.shouldTrapFocus() : shouldTrapFocusOverride;
 
-    if (shouldTrapFocus && !this.isTrappingFocus) {
-      this.isTrappingFocus = true;
+    if (shouldTrapFocus) {
       document.addEventListener('focusin', this.handleDocumentFocus);
       Updates.enqueue(() => {
         if (this.shouldForceFocus(document.activeElement)) {
           this.focusFirstElement();
         }
       });
-    } else if (!shouldTrapFocus && this.isTrappingFocus) {
-      this.isTrappingFocus = false;
+    } else if (!shouldTrapFocus) {
       document.removeEventListener('focusin', this.handleDocumentFocus);
     }
-  };
-
+  }
   /**
    * Reduces the tabbable items within an element.
    * @param elements - An array to store the tabbable elements.
@@ -346,6 +371,7 @@ export class Drawer extends FASTElement {
    * @returns An array of tabbable elements.
    * @internal
    */
+
   private static reduceTabbableItems(elements: HTMLElement[], element: Element): HTMLElement[] {
     if (element.getAttribute('tabindex') === '-1') {
       return elements;
@@ -375,7 +401,6 @@ export class Drawer extends FASTElement {
   private static isFocusableFastElement(element: FASTElement | Element): boolean {
     return !!(element as FASTElement).$fastController?.definition.shadowOptions?.delegatesFocus;
   }
-
   /**
    * Checks if a FAST Element's shadow DOM has any tabbable elements.
    * @param element - The FAST Element with shadow DOM to check.

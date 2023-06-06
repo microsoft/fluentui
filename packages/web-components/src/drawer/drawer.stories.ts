@@ -1,9 +1,9 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import type { Drawer as FluentDrawer } from './drawer.js';
+import type { Drawer as FluentDrawer, OpenEvent } from './drawer.js';
 import './define.js';
-import { DrawerPosition } from './drawer.options.js';
+import { DrawerPosition, DrawerSize } from './drawer.options.js';
 
 type DrawerStoryArgs = Args & FluentDrawer;
 type DrawerStoryMeta = Meta<DrawerStoryArgs>;
@@ -24,11 +24,32 @@ const dismissed16Regular = html`<svg
 
 const toggleDrawer = () => {
   const drawer = document.getElementById('drawer') as FluentDrawer;
-  drawer.toggleDrawer();
-};
-
-const toggleDrawer2 = () => {
-  const drawer = document.getElementById('drawer2') as FluentDrawer;
+  const main = document.getElementById('main') as HTMLElement;
+  drawer.addEventListener('open', (event: any) => {
+    if (event.detail.open) {
+      let marginSize;
+      switch (event.detail.controlSize) {
+        case 'small':
+          marginSize = 320;
+          break;
+        case 'medium':
+          marginSize = 592;
+          break;
+        case 'large':
+          marginSize = 940;
+          break;
+        default:
+          marginSize = event.detail.controlSize;
+      }
+      if (event.detail.position === DrawerPosition.right) {
+        main.style.marginRight = `${marginSize}px`;
+      } else {
+        main.style.marginLeft = `${marginSize}px`;
+      }
+    } else {
+      main.style.margin = '0px';
+    }
+  });
   drawer.toggleDrawer();
 };
 
@@ -44,58 +65,60 @@ const storyTemplate = html<DrawerStoryArgs>`
         height: 38em;
         padding: 0;
       }
+      .close-btn {
+        background: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+      }
     </style>
-    <div style="height: 38em; transform: scale(1); overflow-y: hidden;">
-      <fluent-button appearance="primary" @click="${toggleDrawer}">Toggle Drawer</fluent-button>
-      <fluent-button appearance="primary" @click="${toggleDrawer2}">Toggle Drawer 2</fluent-button>
+    <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
+      <div id="main" style="float: right; width: 200px;">
+        <fluent-button appearance="primary" @click="${toggleDrawer}">Toggle Drawer</fluent-button>
+      </div>
+      <div>
+        <fluent-drawer
+          id="drawer"
+          ?open="${x => x.open}"
+          position="${x => x.position}"
+          trap-focus="${x => x.trapFocus}"
+          control-size="${x => x.controlSize}"
+        >
+          <div slot="header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <fluent-text slot="header-start">Header</fluent-text>
+              <button class="close-btn" slot="header-end" tabindex="0" @click="${hideDrawer}" aria-label="close">
+                ${dismissed16Regular}
+              </button>
+            </div>
+          </div>
 
-      <fluent-drawer
-        focus-target="abc"
-        id="drawer"
-        ?open="${x => x.open}"
-        position="${x => x.position}"
-        trap-focus="${x => x.trapFocus}"
-      >
-        <div slot="header">
-          <fluent-text>Header</fluent-text>
-          <button @click="${hideDrawer}">Hide Drawer</button>
-        </div>
-        <fluent-text>
-          The drawer gives users a quick entry point to configuration and information. It should be used when retaining
-          context is beneficial to users. An overlay is optional depending on whether or not interacting with the
-          background content is beneficial to the user’s context/scenario. An overlay makes the drawer blocking and
-          signifies that the users full attention is required when making configurations.
+          <fluent-text>
+            The drawer gives users a quick entry point to configuration and information. It should be used when
+            retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
+            with the background content is beneficial to the user’s context/scenario. An overlay makes the drawer
+            blocking and signifies that the users full attention is required when making configurations.
+          </fluent-text>
+          <fluent-label>First Name</fluent-label>
           <input id="abc" type="text" />
-        </fluent-text>
-        <div slot="actions">
-          <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
-          <button>MyButton</button>
-          <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
-        </div>
-      </fluent-drawer>
 
-      <fluent-drawer
-        focus-target="def"
-        id="drawer2"
-        ?open="${x => x.open}"
-        position="${x => x.position}"
-        trap-focus="${x => x.trapFocus}"
-      >
-        <div slot="header">Header 2</div>
-        <div slot="close">${dismissed16Regular}</div>
-        <fluent-text>
-          The drawer gives users a quick entry point to configuration and information. It should be used when retaining
-          context is beneficial to users. An overlay is optional depending on whether or not interacting with the
-          background content is beneficial to the user’s context/scenario. An overlay makes the drawer blocking and
-          signifies that the users full attention is required when making configurations.
+          <fluent-label>Last Name</fluent-label>
           <input id="def" type="text" />
-        </fluent-text>
-        <div slot="actions">
-          <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
-          <button>MyButton</button>
-          <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
-        </div>
-      </fluent-drawer>
+
+          <fluent-label>Email</fluent-label>
+          <input id="ghi" type="text" />
+
+          <fluent-label>Phone Number</fluent-label>
+          <input id="jkl" type="text" />
+
+          <div slot="actions">
+            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+          </div>
+        </fluent-drawer>
+      </div>
     </div>
   </div>
 `;
@@ -105,8 +128,9 @@ export default {
   args: {
     disabled: false,
     position: DrawerPosition.right,
-    noTrapFocus: false,
     open: false,
+    trapFocus: true,
+    controlSize: 'medium',
   },
   argTypes: {
     open: {
@@ -131,7 +155,7 @@ export default {
           summary: 'Sets whether the drawer traps focus or not',
         },
         defaultValue: {
-          summary: true,
+          summary: false,
         },
       },
     },
@@ -146,6 +170,20 @@ export default {
         },
         defaultValue: {
           summary: DrawerPosition.right,
+        },
+      },
+    },
+    controlSize: {
+      options: Object.values(DrawerSize),
+      control: {
+        type: 'select',
+      },
+      table: {
+        type: {
+          summary: 'Sets the width of drawer',
+        },
+        defaultValue: {
+          summary: DrawerSize.medium,
         },
       },
     },
