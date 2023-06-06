@@ -100,12 +100,12 @@ const useRootStyles = makeStyles({
     '@media (forced-colors: active)': {
       ':hover': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
-          color: 'canvas',
+          color: 'Canvas',
         },
       },
       ':hover:active': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
-          color: 'canvas',
+          color: 'Canvas',
         },
       },
     },
