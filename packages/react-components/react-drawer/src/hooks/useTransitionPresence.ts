@@ -3,17 +3,58 @@ import { useTimeout } from '@fluentui/react-utilities';
 
 const noop = () => null;
 
+/**
+ * State for useTransitionPresence hook.
+ */
 export type UseTransitionPresenceState<TElement extends HTMLElement> = {
+  /**
+   * Ref to the element that is being transitioned.
+   */
   ref: React.RefCallback<TElement>;
+
+  /**
+   * Whether the element should be rendered in the DOM.
+   * This should be used to conditionally render the element.
+   */
   shouldRender: boolean;
+
+  /**
+   * Whether the element is visible in the DOM.
+   * This is true when the element is already rendered and transitioning from being hidden to visible.
+   */
   visible: boolean;
+
+  /**
+   * Whether the element is entering the DOM.
+   * This is true when the element is transitioning from not being rendered to being rendered.
+   */
   entering: boolean;
+
+  /**
+   * Whether the element is exiting the DOM.
+   * This is true when the element is transitioning from being rendered to not being rendered.
+   */
   exiting: boolean;
+
+  /**
+   * Whether the element is animating.
+   * This is true when the element is entering or exiting the DOM.
+   */
   animating: boolean;
 };
 
+/**
+ * Events for useTransitionPresence hook.
+ */
 export type UseTransitionPresenceEvents = {
+  /**
+   * Callback for after the element enters the DOM.
+   */
   onEntered?: () => void;
+
+  /**
+   * Callback for after the element exits the DOM.
+   */
   onExited?: () => void;
 };
 

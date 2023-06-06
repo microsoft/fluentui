@@ -223,13 +223,13 @@ export const useDrawerOverlayStyles_unstable: (state: DrawerOverlayState) => Dra
 // @public
 export const useTransitionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseTransitionPresenceEvents | undefined) => UseTransitionPresenceState<TElement>;
 
-// @public (undocumented)
+// @public
 export type UseTransitionPresenceEvents = {
     onEntered?: () => void;
     onExited?: () => void;
 };
 
-// @public (undocumented)
+// @public
 export type UseTransitionPresenceState<TElement extends HTMLElement> = {
     ref: React_2.RefCallback<TElement>;
     shouldRender: boolean;
