@@ -65,6 +65,6 @@ export const useDrawerOverlay_unstable = (
     visible,
     entering,
     exiting,
-    backdropPresence,
+    backdropVisible: backdropPresence.visible,
   };
 };
