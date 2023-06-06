@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "A column header style now reflects if its being resized by keyboard",
-  "packageName": "@fluentui/react-table",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

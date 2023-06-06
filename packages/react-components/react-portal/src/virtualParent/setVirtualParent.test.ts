@@ -10,7 +10,7 @@ describe('setVirtualParent', () => {
     setVirtualParent(child, virtualParent);
 
     // Assert
-    expect(child).toMatchObject({ _virtual: { parent: virtualParent } });
+    expect(child).toEqual(expect.objectContaining({ _virtual: { parent: virtualParent } }));
   });
 
   it('should remove virtual parent when parent is undefined', () => {
@@ -21,6 +21,6 @@ describe('setVirtualParent', () => {
     setVirtualParent(child);
 
     // Assert
-    expect(child).toMatchObject({ _virtual: { parent: undefined } });
+    expect(child).toEqual(expect.objectContaining({ _virtual: { parent: undefined } }));
   });
 });

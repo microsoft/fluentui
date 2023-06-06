@@ -11,9 +11,9 @@ import {
   DocNodeContainer,
   DocCodeSpan,
   DocBlock,
+  DocNodeKind,
 } from '@microsoft/tsdoc';
 import { ApiItem, ApiModel, ExcerptToken, IExcerptTokenRange } from '@microsoft/api-extractor-model';
-import { DocNodeKind } from './const-enum-overrides';
 import { ILinkToken } from './types';
 import { ICollectedData } from './types-private';
 
