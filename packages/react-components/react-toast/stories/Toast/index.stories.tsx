@@ -9,10 +9,19 @@ export { DismissAll } from './DismissAll.stories';
 export { PauseOnWindowBlur } from './PauseOnWindowBlur.stories';
 export { PauseOnHover } from './PauseOnHover.stories';
 export { UpdateToast } from './UpdateToast.stories';
-export { MultipeToasters } from './MultipleToasters.stories';
+export { MultipleToasters } from './MultipleToasters.stories';
 export { ToasterLimit } from './ToasterLimit.stories';
 export { CustomAnnounce } from './CustomAnnounce.stories';
 
+import descriptionMd from './ToastDescription.md';
+
 export default {
   title: 'Preview Components/Toast',
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
 };
