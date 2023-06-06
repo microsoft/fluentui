@@ -1,5 +1,5 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
+import { createArrowHeightStyles, createArrowStyles, createSlideStyles } from '@fluentui/react-positioning';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
+    ...createSlideStyles(10),
   },
 
   inverted: {
