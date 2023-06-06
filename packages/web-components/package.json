@@ -120,6 +120,10 @@
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
+    "./text-input": {
+      "types": "./dist/esm/text-input/define.d.ts",
+      "default": "./dist/esm/text-input/define.js"
+    },
     "./toggle-button": {
       "types": "./dist/esm/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
