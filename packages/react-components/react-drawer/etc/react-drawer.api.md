@@ -230,7 +230,7 @@ export type UseTransitionPresenceEvents = {
 };
 
 // @public (undocumented)
-export type UseTransitionPresenceState<TElement = HTMLElement> = {
+export type UseTransitionPresenceState<TElement extends HTMLElement> = {
     ref: React_2.RefCallback<TElement>;
     shouldRender: boolean;
     visible: boolean;
