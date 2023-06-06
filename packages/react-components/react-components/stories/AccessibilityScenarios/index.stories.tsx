@@ -4,6 +4,7 @@ export { MessengerButtons } from './Button.stories';
 export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
 export { UserPromptingDialogs } from './Dialog.stories';
 export { FilesListingInfoButtons } from './InfoButton.stories';
+export { RegistrationFormInfoLabels } from './InfoLabel.stories';
 export { TicketOrderFormInputs } from './Input.stories';
 export { SiteNavigationLinks } from './Link.stories';
 export { ProfileMenu } from './Menu.stories';
