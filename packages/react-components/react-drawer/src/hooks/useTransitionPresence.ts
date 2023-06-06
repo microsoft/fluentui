@@ -3,7 +3,7 @@ import { useTimeout } from '@fluentui/react-utilities';
 
 const noop = () => null;
 
-export type UseTransitionPresenceState<TElement = HTMLElement> = {
+export type UseTransitionPresenceState<TElement extends HTMLElement> = {
   ref: React.RefCallback<TElement>;
   shouldRender: boolean;
   visible: boolean;
@@ -21,6 +21,12 @@ function toMs(s: string): number {
   return Number(s.slice(0, -1).replace(',', '.')) * 1000;
 }
 
+/**
+ * Gets the maximum duration from a list of CSS durations.
+ *
+ * @param durations - List of CSS durations
+ * @returns Maximum duration
+ */
 const getMaxCssDuration = (durations: string[]) => {
   return Math.max(
     ...durations.map(d => {
@@ -35,6 +41,13 @@ const getMaxCssDuration = (durations: string[]) => {
   );
 };
 
+/**
+ * Gets the transition information for a given element.
+ *
+ * @param computedStyle - Computed style of the element
+ * @returns Transition information
+ */
+
 const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
   const getProp = (prop: string) => (computedStyle.getPropertyValue(prop) || '').split(',');
 
@@ -44,11 +57,24 @@ const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
   const totalDuration = getMaxCssDuration(durations) + getMaxCssDuration(delays);
 
   return {
-    count: durations.length,
     duration: totalDuration,
     hasTransition: totalDuration > 0,
   };
 };
+
+export function mergeRefs<T = never>(
+  refs: Array<React.RefCallback<T> | React.MutableRefObject<T> | React.LegacyRef<T>>,
+): React.RefCallback<T> {
+  return value => {
+    refs.forEach(ref => {
+      if (typeof ref === 'function') {
+        ref(value);
+      } else if (ref !== null) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
+}
 
 /**
  * Hook to manage the presence of an element in the DOM based on its CSS transition state.
@@ -73,11 +99,13 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
 
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
 
+  const computedStylesRef = React.useRef<CSSStyleDeclaration>({} as CSSStyleDeclaration);
   const ref: React.RefCallback<TElement> = React.useCallback(node => {
     if (!node) {
       return;
     }
 
+    computedStylesRef.current = window?.getComputedStyle(node);
     setCurrentElement(node);
   }, []);
 
@@ -139,8 +167,7 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    const styles = window?.getComputedStyle(currentElement);
-    const { duration, hasTransition } = getTransitionInfo(styles);
+    const { duration, hasTransition } = getTransitionInfo(computedStylesRef.current);
 
     const animationFrame = requestAnimationFrame(() => {
       setVisible(present);
