@@ -1799,9 +1799,23 @@ export const MenuListTemplate: ElementViewTemplate<MenuList>;
 export class Popover extends FASTElement {
     constructor();
     // (undocumented)
+    anchor?: string;
+    // (undocumented)
+    protected anchorChanged(): void;
+    // (undocumented)
+    protected anchorElementChanged(): void;
+    // (undocumented)
     anchorRef?: HTMLElement[];
     // (undocumented)
     protected anchorRefChanged(): void;
+    // Warning: (ae-forgotten-export) The symbol "PopoverAppearance" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    appearance?: PopoverAppearance;
+    // (undocumented)
+    arrowRef?: FASTElement;
+    // (undocumented)
+    protected arrowRefChanged(): void;
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -1828,6 +1842,10 @@ export class Popover extends FASTElement {
     protected registerChildPopover(popover: Popover): void;
     // @internal
     protected unregisterChildPopover(popover: Popover): void;
+    // (undocumented)
+    withArrow?: boolean;
+    // (undocumented)
+    protected withArrowChanged(): void;
 }
 
 // @public (undocumented)

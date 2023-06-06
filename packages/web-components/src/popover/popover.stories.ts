@@ -4,6 +4,12 @@ import { PopoverAlignment, PopoverAppearance, PopoverPosition } from './popover.
 export default {
   title: 'Components/Popover',
   argTypes: {
+    /* FIXME: RTL should be solved on Storybook level */
+    dir: {
+      options: ['ltr', 'rtl'],
+      defaultValue: 'ltr',
+      control: { type: 'radio' },
+    },
     position: {
       options: Object.values(PopoverPosition),
       control: { type: 'radio' },
@@ -21,26 +27,34 @@ export default {
       options: [undefined, ...Object.values(PopoverAppearance)],
       control: { type: 'select' },
     },
+    withArrow: {
+      name: 'with-arrow',
+      defaultValue: false,
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const PopoverTemplate = ({ open, position, popoverAlign, appearance }) => `
-<fluent-popover
-  ${open ? 'open' : ''}
-  ${position ? `position="${position}"` : ''}
-  ${popoverAlign ? `popover-align="${popoverAlign}"` : ''}
-  ${appearance ? `appearance="${appearance}"` : ''}
-  >
-    <div slot="anchor" style="border: 1px dashed #ccc; height: 80px; width: 80px; line-height: 80px; text-align: center; margin: 40px auto">Anchor</div>
-    <div>Popover content ${position || popoverAlign ? [position, popoverAlign].filter(Boolean).join('-') : ''}</div>
-</fluent-popover>
+const PopoverTemplate = ({ open, position, popoverAlign, appearance, dir, withArrow }) => `
+<div dir="${dir}">
+  <fluent-popover
+    ${open ? 'open' : ''}
+    ${position ? `position="${position}"` : ''}
+    ${popoverAlign ? `popover-align="${popoverAlign}"` : ''}
+    ${appearance ? `appearance="${appearance}"` : ''}
+    ${withArrow ? 'with-arrow' : ''}
+    >
+      <div slot="anchor" style="border: 1px dashed #ccc; height: 80px; width: 80px; line-height: 80px; text-align: center; margin: 40px auto">Anchor</div>
+      <div>Popover content ${position || popoverAlign ? [position, popoverAlign].filter(Boolean).join('-') : ''}
+      </div>
+  </fluent-popover>
+</div>
 `;
 
 export const Popover = PopoverTemplate.bind({});
 
 export const CustomAnchor = (): string => `
 <button id="external-anchor-by-id" style="margin: 80px 200px">Custom Anchor</button>
-<span id="alternate-anchor">alternate</span>
 <fluent-popover open anchor="external-anchor-by-id">This popover is attached to the anchor by HTML id</fluent-popover>
 `;
 CustomAnchor.parameters = {
@@ -91,6 +105,25 @@ Appearance.parameters = {
         'The appearance of the popover can be controlled using the `appearance` attribute.',
         'It can be default (not set), `brand` or `inverted`.',
       ].join('\n'),
+    },
+  },
+};
+
+export const WithArrow = (): string => `
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: 6em">
+  <fluent-popover open with-arrow>
+    <button slot="anchor">Default</button>
+    <div>
+      <h3 style="margin-top: 0">Popover content</h3>
+      <div>This popover has an arrow pointing to its anchor</div>
+    </div>
+  </fluent-popover>
+</div>
+`;
+WithArrow.parameters = {
+  docs: {
+    description: {
+      story: ['The `with-arrow` attribute can be used to display an arrow pointing to the anchor.'].join('\\n'),
     },
   },
 };

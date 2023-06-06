@@ -1,6 +1,9 @@
 import { css } from '@microsoft/fast-element';
 import * as tokens from '../theme/design-tokens.js';
 
+const borderWidth = '1px';
+const arrowEdgeLength = `${8 * 1.414}px`; // FIXME: will be improved when introducing size attribute
+
 export const styles = css`
   :host {
     display: contents;
@@ -34,5 +37,48 @@ export const styles = css`
   :host([appearance='inverted']) .popover-content {
     background-color: ${tokens.colorNeutralBackgroundStatic};
     color: ${tokens.colorNeutralForegroundStaticInverted};
+  }
+
+  .popover-arrow {
+    position: absolute;
+    background-color: inherit;
+    visibility: hidden;
+    z-index: -1;
+    width: ${arrowEdgeLength};
+    height: ${arrowEdgeLength};
+  }
+
+  .popover-arrow::before {
+    content: '';
+    visibility: visible;
+    position: absolute;
+    box-sizing: border-box;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    border-right: ${borderWidth} solid ${tokens.colorTransparentStroke};
+    border-bottom: ${borderWidth} solid ${tokens.colorTransparentStroke};
+    border-bottom-right-radius: ${tokens.borderRadiusSmall};
+    transform: rotate(var(--angle)) translate(0, 50%) rotate(45deg);
+  }
+
+  :host([data-popper-placement^='top']) .popover-arrow {
+    bottom: -${borderWidth};
+    --angle: 0;
+  }
+
+  :host([data-popper-placement^='right']) .popover-arrow {
+    left: -${borderWidth};
+    --angle: 90deg;
+  }
+
+  :host([data-popper-placement^='bottom']) .popover-arrow {
+    top: -${borderWidth};
+    --angle: 180deg;
+  }
+
+  :host([data-popper-placement^='left']) .popover-arrow {
+    right: -${borderWidth};
+    --angle: 270deg;
   }
 `;

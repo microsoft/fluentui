@@ -7,6 +7,7 @@ export const template = html<Popover>`
     x => x.open,
     html`
       <div class="popover-content" ${ref('popoverContentRef')}>
+        ${when(x => x.withArrow, html`<div class="popover-arrow" ${ref('arrowRef')}></div>`)}
         <slot></slot>
       </div>
     `,

@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { autoUpdate, computePosition } from '@floating-ui/dom';
+import { arrow, autoUpdate, computePosition, offset } from '@floating-ui/dom';
 import { PopoverAlignment, PopoverAppearance, PopoverPosition } from './popover.options.js';
 import { toFloatingUIPlacement } from './toFloatingUIPlacement.js';
 
@@ -70,7 +70,7 @@ export class Popover extends FASTElement {
 
     // Anchor by id takes precedence
     if (this.anchor) {
-      const anchorById = this.getRootNode().getElementById?.(this.anchor);
+      const anchorById = (this.getRootNode() as Document | ShadowRoot).getElementById?.(this.anchor);
       if (anchorById) {
         this.anchorElement = anchorById;
         console.groupEnd();
@@ -111,6 +111,31 @@ export class Popover extends FASTElement {
    * HTML Attribute: appearance
    */
   public appearance?: PopoverAppearance;
+
+  @attr({
+    attribute: 'with-arrow',
+    mode: 'boolean',
+  })
+  public withArrow?: boolean;
+  protected withArrowChanged() {
+    console.group(this.objId, 'withArrowChanged');
+
+    // with-arrow attribute might have been removed (that does not change ref) -> force restart
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
+
+  @observable
+  public arrowRef?: FASTElement; // @FIXME: what type?
+  protected arrowRefChanged() {
+    console.group(this.objId, 'arrowRefChanged');
+
+    // ref might have changed -> force restart
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
 
   /**
    * @internal
@@ -333,6 +358,8 @@ export class Popover extends FASTElement {
       return;
     }
 
+    const shouldPositionArrow = this.withArrow && !!this.arrowRef;
+
     const placement = toFloatingUIPlacement(
       this.popoverAlign,
       this.position,
@@ -341,12 +368,26 @@ export class Popover extends FASTElement {
     console.log(this.objId, 'updatePosition', {
       placement,
     });
+
     computePosition(this.anchorElement, this.popoverContentRef, {
       placement,
+      middleware: [
+        ...(shouldPositionArrow ? [arrow({ element: this.arrowRef!, padding: 10 })] : []),
+        ...(shouldPositionArrow ? [offset(8)] : []), // FIXME: once the popover supports offset, the two should be merged - see mergeArrowOffset in FUIR9
+      ],
+
       // strategy: 'fixed',
-    }).then(({ x, y, middlewareData, placement }) => {
+    }).then(({ x, y, middlewareData, placement: computedPlacement }) => {
       // This originally used left/top but that caused the nested popovers to be positioned incorrectly on the first open.
       Object.assign(this.popoverContentRef!.style, { transform: `translate3d(${x}px, ${y}px, 0)` });
+      this.setAttribute('data-popper-placement', computedPlacement);
+
+      if (shouldPositionArrow && middlewareData.arrow) {
+        Object.assign(this.arrowRef!.style, {
+          left: `${middlewareData.arrow.x}px`,
+          top: `${middlewareData.arrow.y}px`,
+        });
+      }
     });
   };
 }
