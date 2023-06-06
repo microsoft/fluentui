@@ -36,8 +36,15 @@ export {
   usePrevious,
   useScrollbarWidth,
   useTimeout,
+  useTransitionPresence,
 } from './hooks/index';
-export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
+export type {
+  RefObjectFunction,
+  UseControllableStateOptions,
+  UseOnClickOrScrollOutsideOptions,
+  UseTransitionPresenceEvents,
+  UseTransitionPresenceState,
+} from './hooks/index';
 
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 

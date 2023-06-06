@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  resolveShorthand,
+  useMergedRefs,
+  useTransitionPresence,
+} from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
-import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
+import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
-import { useTransitionPresence } from '../../hooks/useTransitionPresence';
 
 /**
  * Create the state required to render DrawerOverlay.
@@ -22,15 +26,30 @@ export const useDrawerOverlay_unstable = (
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
   const { ref: drawerRef, shouldRender, visible, entering, exiting } = useTransitionPresence<HTMLDivElement>(open);
+  const backdropPresence = useTransitionPresence<HTMLDivElement>(open);
+
+  const backdropProps = React.useMemo(() => {
+    if (backdropPresence.shouldRender) {
+      return {
+        ref: backdropPresence.ref,
+      };
+    }
+
+    return null;
+  }, [backdropPresence.ref, backdropPresence.shouldRender]);
 
   return {
     components: {
       root: DialogSurface,
     },
 
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, drawerRef),
-      ...props,
+    root: resolveShorthand(getNativeElementProps('div', {}), {
+      required: true,
+      defaultProps: {
+        ...props,
+        ref: useMergedRefs(ref, drawerRef),
+        backdrop: backdropProps,
+      } as DialogSurfaceProps,
     }),
     dialog: {
       open: shouldRender,
@@ -46,5 +65,6 @@ export const useDrawerOverlay_unstable = (
     visible,
     entering,
     exiting,
+    backdropPresence,
   };
 };

@@ -29,6 +29,9 @@ export const useDrawerBaseStyles = makeStyles({
     justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
     transitionDuration: tokens.durationNormal,
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
   },
 
   /* Positioning */

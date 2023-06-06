@@ -67,6 +67,3 @@ export {
   useDrawerFooter_unstable,
 } from './DrawerFooter';
 export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './DrawerFooter';
-
-export { useTransitionPresence } from './hooks/useTransitionPresence';
-export type { UseTransitionPresenceEvents, UseTransitionPresenceState } from './hooks/useTransitionPresence';

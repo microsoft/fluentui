@@ -4,528 +4,775 @@
 
 ```ts
 
-import { Alert } from '@fluentui/react-alert';
-import { alertClassNames } from '@fluentui/react-alert';
-import { AlertProps } from '@fluentui/react-alert';
-import { AlertSlots } from '@fluentui/react-alert';
-import { AlertState } from '@fluentui/react-alert';
-import { Drawer } from '@fluentui/react-drawer';
-import { DrawerBody } from '@fluentui/react-drawer';
-import { drawerBodyClassNames } from '@fluentui/react-drawer';
-import { DrawerBodySlots } from '@fluentui/react-drawer';
-import { DrawerBodyState } from '@fluentui/react-drawer';
-import { DrawerFooter } from '@fluentui/react-drawer';
-import { drawerFooterClassNames } from '@fluentui/react-drawer';
-import { DrawerFooterSlots } from '@fluentui/react-drawer';
-import { DrawerFooterState } from '@fluentui/react-drawer';
-import { DrawerHeader } from '@fluentui/react-drawer';
-import { drawerHeaderClassNames } from '@fluentui/react-drawer';
-import { DrawerHeaderNavigation } from '@fluentui/react-drawer';
-import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
-import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
-import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
-import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
-import { DrawerHeaderSlots } from '@fluentui/react-drawer';
-import { DrawerHeaderState } from '@fluentui/react-drawer';
-import { DrawerHeaderTitle } from '@fluentui/react-drawer';
-import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
-import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
-import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
-import { DrawerInline } from '@fluentui/react-drawer';
-import { drawerInlineClassNames } from '@fluentui/react-drawer';
-import { DrawerInlineProps } from '@fluentui/react-drawer';
-import { DrawerInlineSlots } from '@fluentui/react-drawer';
-import { DrawerInlineState } from '@fluentui/react-drawer';
-import { DrawerOverlay } from '@fluentui/react-drawer';
-import { drawerOverlayClassNames } from '@fluentui/react-drawer';
-import { DrawerOverlayProps } from '@fluentui/react-drawer';
-import { DrawerOverlaySlots } from '@fluentui/react-drawer';
-import { DrawerOverlayState } from '@fluentui/react-drawer';
-import { DrawerProps } from '@fluentui/react-drawer';
-import { DrawerSlots } from '@fluentui/react-drawer';
-import { DrawerState } from '@fluentui/react-drawer';
-import { flattenTree_unstable } from '@fluentui/react-tree';
-import { FlatTree } from '@fluentui/react-tree';
-import { FlatTreeItem } from '@fluentui/react-tree';
-import { FlatTreeItemProps } from '@fluentui/react-tree';
-import { FlatTreeProps } from '@fluentui/react-tree';
-import { InfoButton } from '@fluentui/react-infobutton';
-import { infoButtonClassNames } from '@fluentui/react-infobutton';
-import { InfoButtonProps } from '@fluentui/react-infobutton';
-import { InfoButtonSlots } from '@fluentui/react-infobutton';
-import { InfoButtonState } from '@fluentui/react-infobutton';
-import { InfoLabel } from '@fluentui/react-infobutton';
-import { infoLabelClassNames } from '@fluentui/react-infobutton';
-import { InfoLabelProps } from '@fluentui/react-infobutton';
-import { InfoLabelSlots } from '@fluentui/react-infobutton';
-import { InfoLabelState } from '@fluentui/react-infobutton';
-import { NestedTreeItem } from '@fluentui/react-tree';
-import { renderAlert_unstable } from '@fluentui/react-alert';
-import { renderDrawer_unstable } from '@fluentui/react-drawer';
-import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
-import { renderDrawerFooter_unstable } from '@fluentui/react-drawer';
-import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
-import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
-import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
-import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
-import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
-import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
-import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
-import { renderTree_unstable } from '@fluentui/react-tree';
-import { renderTreeItem_unstable } from '@fluentui/react-tree';
-import { renderTreeItemAside_unstable } from '@fluentui/react-tree';
-import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
-import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
-import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
-import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
-import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
-import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
-import { Tree } from '@fluentui/react-tree';
-import { treeClassNames } from '@fluentui/react-tree';
-import { TreeContextValue } from '@fluentui/react-tree';
-import { TreeItem } from '@fluentui/react-tree';
-import { TreeItemAside } from '@fluentui/react-tree';
-import { treeItemAsideClassNames } from '@fluentui/react-tree';
-import { TreeItemAsideProps } from '@fluentui/react-tree';
-import { TreeItemAsideSlots } from '@fluentui/react-tree';
-import { TreeItemAsideState } from '@fluentui/react-tree';
-import { treeItemClassNames } from '@fluentui/react-tree';
-import { TreeItemLayout } from '@fluentui/react-tree';
-import { treeItemLayoutClassNames } from '@fluentui/react-tree';
-import { TreeItemLayoutProps } from '@fluentui/react-tree';
-import { TreeItemLayoutSlots } from '@fluentui/react-tree';
-import { TreeItemLayoutState } from '@fluentui/react-tree';
-import { treeItemLevelToken } from '@fluentui/react-tree';
-import { TreeItemPersonaLayout } from '@fluentui/react-tree';
-import { treeItemPersonaLayoutClassNames } from '@fluentui/react-tree';
-import { TreeItemPersonaLayoutProps } from '@fluentui/react-tree';
-import { TreeItemPersonaLayoutSlots } from '@fluentui/react-tree';
-import { TreeItemPersonaLayoutState } from '@fluentui/react-tree';
-import { TreeItemProps } from '@fluentui/react-tree';
-import { TreeItemProvider } from '@fluentui/react-tree';
-import { TreeItemSlots } from '@fluentui/react-tree';
-import { TreeItemState } from '@fluentui/react-tree';
-import { TreeNavigationData_unstable } from '@fluentui/react-tree';
-import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
-import { TreeOpenChangeData } from '@fluentui/react-tree';
-import { TreeOpenChangeEvent } from '@fluentui/react-tree';
-import { TreeProps } from '@fluentui/react-tree';
-import { TreeProvider } from '@fluentui/react-tree';
-import { TreeSlots } from '@fluentui/react-tree';
-import { TreeState } from '@fluentui/react-tree';
-import { useAlert_unstable } from '@fluentui/react-alert';
-import { useAlertStyles_unstable } from '@fluentui/react-alert';
-import { useDrawer_unstable } from '@fluentui/react-drawer';
-import { useDrawerBody_unstable } from '@fluentui/react-drawer';
-import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
-import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
-import { useDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
-import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
-import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerInline_unstable } from '@fluentui/react-drawer';
-import { useDrawerInlineStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerOverlay_unstable } from '@fluentui/react-drawer';
-import { useDrawerOverlayStyles_unstable } from '@fluentui/react-drawer';
-import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
-import { useFlatTree_unstable } from '@fluentui/react-tree';
-import { useInfoButton_unstable } from '@fluentui/react-infobutton';
-import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
-import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
-import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
-import { useIntersectionObserver } from '@fluentui/react-virtualizer';
-import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
-import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
-import { useTree_unstable } from '@fluentui/react-tree';
-import { useTreeContext_unstable } from '@fluentui/react-tree';
-import { useTreeItem_unstable } from '@fluentui/react-tree';
-import { useTreeItemAside_unstable } from '@fluentui/react-tree';
-import { useTreeItemAsideStyles_unstable } from '@fluentui/react-tree';
-import { useTreeItemContext_unstable } from '@fluentui/react-tree';
-import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
-import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
-import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
-import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
-import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
-import { useTreeStyles_unstable } from '@fluentui/react-tree';
-import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerContext_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerScrollViewDynamicStyles_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
-import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
-import { Virtualizer } from '@fluentui/react-virtualizer';
-import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
-import { virtualizerClassNames } from '@fluentui/react-virtualizer';
-import { VirtualizerContextProps } from '@fluentui/react-virtualizer';
-import { VirtualizerContextProvider } from '@fluentui/react-virtualizer';
-import { VirtualizerMeasureDynamicProps } from '@fluentui/react-virtualizer';
-import { VirtualizerMeasureProps } from '@fluentui/react-virtualizer';
-import { VirtualizerProps } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
-import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
-import { virtualizerScrollViewDynamicClassNames } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewDynamicProps } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewDynamicSlots } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewDynamicState } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewProps } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewSlots } from '@fluentui/react-virtualizer';
-import { VirtualizerScrollViewState } from '@fluentui/react-virtualizer';
-import { VirtualizerSlots } from '@fluentui/react-virtualizer';
-import { VirtualizerState } from '@fluentui/react-virtualizer';
+/// <reference types="react" />
 
-export { Alert }
+import type { Dispatch } from 'react';
+import { FC } from 'react';
+import { MutableRefObject } from 'react';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
+import * as React_2 from 'react';
+import type { SetStateAction } from 'react';
 
-export { alertClassNames }
+// @public
+export const Alert: ForwardRefComponent<AlertProps>;
 
-export { AlertProps }
+// @public (undocumented)
+export const alertClassNames: SlotClassNames<AlertSlots>;
 
-export { AlertSlots }
+// @public
+export type AlertProps = ComponentProps<AlertSlots> & {
+    intent?: 'info' | 'success' | 'error' | 'warning';
+    appearance?: 'primary' | 'inverted';
+};
 
-export { AlertState }
+// @public (undocumented)
+export type AlertSlots = {
+    root: NonNullable<Slot<'div'>>;
+    icon?: Slot<'span'>;
+    action?: Slot<typeof Button>;
+    avatar?: Slot<typeof Avatar>;
+};
 
-export { Drawer }
+// @public
+export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & Required<Pick<AlertProps, 'appearance'>>;
 
-export { DrawerBody }
+// @public
+export const Drawer: ForwardRefComponent<DrawerProps>;
 
-export { drawerBodyClassNames }
+// @public
+export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 
-export { DrawerBodySlots }
+// @public (undocumented)
+export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots>;
 
-export { DrawerBodyState }
+// @public (undocumented)
+export type DrawerBodySlots = {
+    root: Slot<'div'>;
+};
 
-export { DrawerFooter }
+// @public
+export type DrawerBodyState = ComponentState<DrawerBodySlots>;
 
-export { drawerFooterClassNames }
+// @public
+export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 
-export { DrawerFooterSlots }
+// @public (undocumented)
+export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots>;
 
-export { DrawerFooterState }
+// @public (undocumented)
+export type DrawerFooterSlots = {
+    root: Slot<'footer'>;
+};
 
-export { DrawerHeader }
+// @public
+export type DrawerFooterState = ComponentState<DrawerFooterSlots>;
 
-export { drawerHeaderClassNames }
+// @public
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
 
-export { DrawerHeaderNavigation }
+// @public (undocumented)
+export const drawerHeaderClassNames: SlotClassNames<DrawerHeaderSlots>;
 
-export { drawerHeaderNavigationClassNames }
+// @public
+export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
 
-export { DrawerHeaderNavigationProps }
+// @public (undocumented)
+export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNavigationSlots>;
 
-export { DrawerHeaderNavigationSlots }
+// @public
+export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderNavigationSlots = {
+    root: Slot<'nav'>;
+};
+
+// @public
+export type DrawerHeaderNavigationState = ComponentState<DrawerHeaderNavigationSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderSlots = {
+    root: Slot<'header'>;
+};
+
+// @public
+export type DrawerHeaderState = ComponentState<DrawerHeaderSlots>;
+
+// @public
+export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
+
+// @public (undocumented)
+export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderTitleSlots = {
+    root: Slot<'div'>;
+    heading?: DialogTitleSlots['root'];
+    action?: DialogTitleSlots['action'];
+};
+
+// @public
+export type DrawerHeaderTitleState = ComponentState<DrawerHeaderTitleSlots>;
+
+// @public
+export const DrawerInline: ForwardRefComponent<DrawerInlineProps>;
+
+// @public (undocumented)
+export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots>;
+
+// @public
+export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> & DrawerBaseProps & {
+    separator?: boolean;
+};
+
+// @public (undocumented)
+export type DrawerInlineSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerBaseProps & DrawerBaseState & Pick<DrawerInlineProps, 'open' | 'separator'>;
+
+// @public
+export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
+
+// @public (undocumented)
+export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
+
+// @public
+export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseProps & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
+
+// @public (undocumented)
+export type DrawerOverlaySlots = {
+    root: Slot<DialogSurfaceProps>;
+};
+
+// @public
+export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & DrawerBaseState & {
+    dialog: DialogProps;
+};
+
+// @public
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & DrawerOverlayProps & DrawerInlineProps & {
+    type?: 'inline' | 'overlay';
+};
+
+// @public (undocumented)
+export type DrawerSlots = {
+    root: Slot<DrawerOverlayProps | DrawerInlineProps>;
+};
+
+// @public
+export type DrawerState = ComponentState<DrawerSlots>;
+
+// @public
+export const flattenTree_unstable: <Props extends TreeItemProps<unknown>>(items: NestedTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
+
+// @public
+export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
+    getTreeProps(): FlatTreeProps<Props['value']>;
+    navigate(data: TreeNavigationData_unstable<Props['value']>): void;
+    getNextNavigableItem(visibleItems: FlatTreeItem<Props>[], data: TreeNavigationData_unstable<Props['value']>): FlatTreeItem<Props> | undefined;
+    items(): IterableIterator<FlatTreeItem<Props>>;
+};
+
+// @public
+export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
+    index: number;
+    level: number;
+    childrenSize: number;
+    value: Props['value'];
+    parentValue: Props['parentValue'];
+    ref: React_2.RefObject<HTMLDivElement>;
+    getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> & Omit<Props, 'parentValue'>;
+};
+
+// @public (undocumented)
+export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'itemType'> & Partial<Pick<TreeItemProps<Value>, 'itemType'>> & {
+    value: Value;
+    parentValue?: Value;
+};
+
+// @public (undocumented)
+export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
+    ref: React_2.Ref<HTMLDivElement>;
+    openItems: ImmutableSet<Value>;
+};
 
-export { DrawerHeaderNavigationState }
+// @public
+export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 
-export { DrawerHeaderSlots }
+// @public (undocumented)
+export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
-export { DrawerHeaderState }
+// @public
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+    size?: 'small' | 'medium' | 'large';
+};
 
-export { DrawerHeaderTitle }
-
-export { drawerHeaderTitleClassNames }
-
-export { DrawerHeaderTitleSlots }
-
-export { DrawerHeaderTitleState }
-
-export { DrawerInline }
-
-export { drawerInlineClassNames }
-
-export { DrawerInlineProps }
-
-export { DrawerInlineSlots }
-
-export { DrawerInlineState }
-
-export { DrawerOverlay }
-
-export { drawerOverlayClassNames }
-
-export { DrawerOverlayProps }
-
-export { DrawerOverlaySlots }
-
-export { DrawerOverlayState }
-
-export { DrawerProps }
-
-export { DrawerSlots }
-
-export { DrawerState }
-
-export { flattenTree_unstable }
-
-export { FlatTree }
-
-export { FlatTreeItem }
-
-export { FlatTreeItemProps }
-
-export { FlatTreeProps }
-
-export { InfoButton }
-
-export { infoButtonClassNames }
-
-export { InfoButtonProps }
-
-export { InfoButtonSlots }
-
-export { InfoButtonState }
-
-export { InfoLabel }
-
-export { infoLabelClassNames }
-
-export { InfoLabelProps }
-
-export { InfoLabelSlots }
-
-export { InfoLabelState }
-
-export { NestedTreeItem }
-
-export { renderAlert_unstable }
-
-export { renderDrawer_unstable }
-
-export { renderDrawerBody_unstable }
-
-export { renderDrawerFooter_unstable }
-
-export { renderDrawerHeader_unstable }
-
-export { renderDrawerHeaderNavigation_unstable }
-
-export { renderDrawerHeaderTitle_unstable }
-
-export { renderDrawerInline_unstable }
-
-export { renderDrawerOverlay_unstable }
-
-export { renderInfoButton_unstable }
-
-export { renderInfoLabel_unstable }
-
-export { renderTree_unstable }
-
-export { renderTreeItem_unstable }
-
-export { renderTreeItemAside_unstable }
-
-export { renderTreeItemLayout_unstable }
-
-export { renderTreeItemPersonaLayout_unstable }
-
-export { renderVirtualizer_unstable }
-
-export { renderVirtualizerScrollView_unstable }
-
-export { renderVirtualizerScrollViewDynamic_unstable }
-
-export { ResizeCallbackWithRef }
-
-export { Tree }
-
-export { treeClassNames }
-
-export { TreeContextValue }
-
-export { TreeItem }
-
-export { TreeItemAside }
-
-export { treeItemAsideClassNames }
-
-export { TreeItemAsideProps }
-
-export { TreeItemAsideSlots }
-
-export { TreeItemAsideState }
-
-export { treeItemClassNames }
-
-export { TreeItemLayout }
-
-export { treeItemLayoutClassNames }
-
-export { TreeItemLayoutProps }
-
-export { TreeItemLayoutSlots }
-
-export { TreeItemLayoutState }
-
-export { treeItemLevelToken }
-
-export { TreeItemPersonaLayout }
-
-export { treeItemPersonaLayoutClassNames }
-
-export { TreeItemPersonaLayoutProps }
-
-export { TreeItemPersonaLayoutSlots }
-
-export { TreeItemPersonaLayoutState }
-
-export { TreeItemProps }
-
-export { TreeItemProvider }
-
-export { TreeItemSlots }
-
-export { TreeItemState }
-
-export { TreeNavigationData_unstable }
-
-export { TreeNavigationEvent_unstable }
-
-export { TreeOpenChangeData }
-
-export { TreeOpenChangeEvent }
-
-export { TreeProps }
-
-export { TreeProvider }
-
-export { TreeSlots }
-
-export { TreeState }
-
-export { useAlert_unstable }
-
-export { useAlertStyles_unstable }
-
-export { useDrawer_unstable }
-
-export { useDrawerBody_unstable }
-
-export { useDrawerBodyStyles_unstable }
-
-export { useDrawerFooter_unstable }
-
-export { useDrawerFooterStyles_unstable }
-
-export { useDrawerHeader_unstable }
-
-export { useDrawerHeaderNavigation_unstable }
-
-export { useDrawerHeaderNavigationStyles_unstable }
-
-export { useDrawerHeaderStyles_unstable }
-
-export { useDrawerHeaderTitle_unstable }
-
-export { useDrawerHeaderTitleStyles_unstable }
-
-export { useDrawerInline_unstable }
-
-export { useDrawerInlineStyles_unstable }
-
-export { useDrawerOverlay_unstable }
-
-export { useDrawerOverlayStyles_unstable }
-
-export { useDynamicVirtualizerMeasure }
-
-export { useFlatTree_unstable }
-
-export { useInfoButton_unstable }
-
-export { useInfoButtonStyles_unstable }
-
-export { useInfoLabel_unstable }
-
-export { useInfoLabelStyles_unstable }
-
-export { useIntersectionObserver }
-
-export { useResizeObserverRef_unstable }
-
-export { useStaticVirtualizerMeasure }
-
-export { useTree_unstable }
-
-export { useTreeContext_unstable }
-
-export { useTreeItem_unstable }
-
-export { useTreeItemAside_unstable }
-
-export { useTreeItemAsideStyles_unstable }
-
-export { useTreeItemContext_unstable }
-
-export { useTreeItemLayout_unstable }
-
-export { useTreeItemLayoutStyles_unstable }
-
-export { useTreeItemPersonaLayout_unstable }
-
-export { useTreeItemPersonaLayoutStyles_unstable }
-
-export { useTreeItemStyles_unstable }
-
-export { useTreeStyles_unstable }
-
-export { useVirtualizer_unstable }
-
-export { useVirtualizerContext_unstable }
-
-export { useVirtualizerScrollView_unstable }
-
-export { useVirtualizerScrollViewDynamic_unstable }
-
-export { useVirtualizerScrollViewDynamicStyles_unstable }
-
-export { useVirtualizerScrollViewStyles_unstable }
-
-export { useVirtualizerStyles_unstable }
-
-export { Virtualizer }
-
-export { VirtualizerChildRenderFunction }
-
-export { virtualizerClassNames }
-
-export { VirtualizerContextProps }
-
-export { VirtualizerContextProvider }
-
-export { VirtualizerMeasureDynamicProps }
-
-export { VirtualizerMeasureProps }
-
-export { VirtualizerProps }
-
-export { VirtualizerScrollView }
-
-export { virtualizerScrollViewClassNames }
-
-export { VirtualizerScrollViewDynamic }
-
-export { virtualizerScrollViewDynamicClassNames }
-
-export { VirtualizerScrollViewDynamicProps }
-
-export { VirtualizerScrollViewDynamicSlots }
-
-export { VirtualizerScrollViewDynamicState }
-
-export { VirtualizerScrollViewProps }
-
-export { VirtualizerScrollViewSlots }
-
-export { VirtualizerScrollViewState }
-
-export { VirtualizerSlots }
-
-export { VirtualizerState }
+// @public (undocumented)
+export type InfoButtonSlots = {
+    root: NonNullable<Slot<'button'>>;
+    popover: NonNullable<Slot<Partial<PopoverProps>>>;
+    info: NonNullable<Slot<typeof PopoverSurface>>;
+};
+
+// @public
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
+
+// @public
+export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
+
+// @public (undocumented)
+export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
+
+// @public
+export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
+    info?: InfoButtonProps['info'];
+};
+
+// @public (undocumented)
+export type InfoLabelSlots = {
+    root: NonNullable<Slot<'span'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    infoButton: Slot<typeof InfoButton>;
+};
+
+// @public
+export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
+
+// @public (undocumented)
+export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree' | 'itemType'> & {
+    subtree?: NestedTreeItem<Props>[];
+};
+
+// @public (undocumented)
+export const renderAlert_unstable: (state: AlertState) => JSX.Element;
+
+// @public
+export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
+
+// @public
+export const renderDrawerBody_unstable: (state: DrawerBodyState) => JSX.Element;
+
+// @public
+export const renderDrawerFooter_unstable: (state: DrawerFooterState) => JSX.Element;
+
+// @public
+export const renderDrawerHeader_unstable: (state: DrawerHeaderState) => JSX.Element;
+
+// @public
+export const renderDrawerHeaderNavigation_unstable: (state: DrawerHeaderNavigationState) => JSX.Element;
+
+// @public
+export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) => JSX.Element;
+
+// @public
+export const renderDrawerInline_unstable: (state: DrawerInlineState) => JSX.Element | null;
+
+// @public
+export const renderDrawerOverlay_unstable: (state: DrawerOverlayState) => JSX.Element;
+
+// @public
+export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
+
+// @public
+export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
+
+// @public (undocumented)
+export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
+
+// @public
+export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
+
+// @public
+export const renderTreeItemAside_unstable: (state: TreeItemAsideState) => JSX.Element | null;
+
+// @public
+export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
+
+// @public
+export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
+
+// @public (undocumented)
+export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
+
+// @public (undocumented)
+export const renderVirtualizerScrollView_unstable: (state: VirtualizerScrollViewState) => JSX.Element;
+
+// @public (undocumented)
+export const renderVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => JSX.Element;
+
+// @public
+export interface ResizeCallbackWithRef {
+    // (undocumented)
+    (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: MutableRefObject<HTMLElement | null>): void;
+}
+
+// @public
+export const Tree: React_2.ForwardRefExoticComponent<Omit<TreeSlots, "root"> & Omit<{
+    as?: "div" | undefined;
+} & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
+} & {
+    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
+    }>;
+}, "ref"> & {
+    appearance?: "transparent" | "subtle" | "subtle-alpha" | undefined;
+    size?: "small" | "medium" | undefined;
+    openItems?: Iterable<string> | undefined;
+    defaultOpenItems?: Iterable<string> | undefined;
+    onOpenChange?(event: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement, MouseEvent>, data: TreeOpenChangeData<string>): void;
+    onNavigation_unstable?(event: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement, MouseEvent>, data: TreeNavigationData_unstable<string>): void;
+} & React_2.RefAttributes<HTMLDivElement>> & (<Value = string>(props: TreeProps<Value>) => JSX.Element);
+
+// @public (undocumented)
+export const treeClassNames: SlotClassNames<TreeSlots>;
+
+// @public (undocumented)
+export type TreeContextValue = {
+    level: number;
+    appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+    size: 'small' | 'medium';
+    openItems: ImmutableSet<unknown>;
+    requestTreeResponse(request: TreeItemRequest<unknown>): void;
+};
+
+// @public
+export const TreeItem: React_2.ForwardRefExoticComponent<Omit<Partial<TreeItemSlots>, "root"> & Omit<{
+    as?: "div" | undefined;
+} & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
+} & {
+    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
+    }>;
+} & {
+    style?: TreeItemCSSProperties | undefined;
+}, "ref"> & {
+    value?: string | undefined;
+    itemType: TreeItemType;
+} & React_2.RefAttributes<HTMLDivElement>> & (<Value = string>(props: TreeItemProps<Value>) => JSX.Element);
+
+// @public
+export const TreeItemAside: ForwardRefComponent<TreeItemAsideProps>;
+
+// @public (undocumented)
+export const treeItemAsideClassNames: SlotClassNames<TreeItemAsideSlots>;
+
+// @public
+export type TreeItemAsideProps = ComponentProps<TreeItemAsideSlots> & {
+    actions?: boolean;
+    visible?: true;
+};
+
+// @public (undocumented)
+export type TreeItemAsideSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeItemAsideState = ComponentState<TreeItemAsideSlots> & {
+    actions: boolean;
+    visible: boolean;
+    buttonContextValue: ButtonContextValue;
+};
+
+// @public (undocumented)
+export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
+
+// @public
+export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
+
+// @public (undocumented)
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots>;
+
+// @public
+export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
+
+// @public (undocumented)
+export type TreeItemLayoutSlots = {
+    root: Slot<'div'>;
+    expandIcon?: Slot<'div'>;
+    iconBefore?: Slot<'div'>;
+    iconAfter?: Slot<'div'>;
+};
+
+// @public
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots>;
+
+// @public (undocumented)
+export const treeItemLevelToken: "--fluent-TreeItem--level";
+
+// @public
+export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
+
+// @public (undocumented)
+export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots>;
+
+// @public
+export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;
+
+// @public (undocumented)
+export type TreeItemPersonaLayoutSlots = {
+    root: NonNullable<Slot<'div'>>;
+    expandIcon?: Slot<'div'>;
+    media: NonNullable<Slot<'div'>>;
+    main: NonNullable<Slot<'div'>>;
+    description?: Slot<'div'>;
+    content: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
+    avatarSize: AvatarSize;
+};
+
+// @public
+export type TreeItemProps<Value = string> = ComponentProps<Partial<TreeItemSlots>> & {
+    value?: Value;
+    itemType: TreeItemType;
+};
+
+// @public (undocumented)
+export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined> & React_2.FC<React_2.ProviderProps<TreeItemContextValue | undefined>>;
+
+// @public (undocumented)
+export type TreeItemSlots = {
+    root: Slot<ExtractSlotProps<Slot<'div'> & {
+        style?: TreeItemCSSProperties;
+    }>>;
+};
+
+// @public
+export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue & {
+    level: number;
+    itemType: TreeItemType;
+};
+
+// @public (undocumented)
+export type TreeNavigationData_unstable<Value = string> = {
+    value: Value;
+    target: HTMLElement;
+} & ({
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'Click';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: 'TypeAhead';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowRight;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowLeft;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowUp;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowDown;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof Home;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof End;
+});
+
+// @public (undocumented)
+export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
+
+// @public (undocumented)
+export type TreeOpenChangeData<Value = string> = {
+    open: boolean;
+    value: Value;
+} & ({
+    event: React_2.MouseEvent<HTMLElement>;
+    target: HTMLElement;
+    type: 'ExpandIconClick';
+} | {
+    event: React_2.MouseEvent<HTMLElement>;
+    target: HTMLElement;
+    type: 'Click';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof Enter;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof ArrowRight;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof ArrowLeft;
+});
+
+// @public (undocumented)
+export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
+
+// @public (undocumented)
+export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
+    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+    size?: 'small' | 'medium';
+    openItems?: Iterable<Value>;
+    defaultOpenItems?: Iterable<Value>;
+    onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData<Value>): void;
+    onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable<Value>): void;
+};
+
+// @public (undocumented)
+export const TreeProvider: Provider<TreeContextValue | undefined> & FC<ProviderProps<TreeContextValue | undefined>>;
+
+// @public (undocumented)
+export type TreeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
+    open: boolean;
+};
+
+// @public
+export const useAlert_unstable: (props: AlertProps, ref: React_2.Ref<HTMLElement>) => AlertState;
+
+// @public
+export const useAlertStyles_unstable: (state: AlertState) => AlertState;
+
+// @public
+export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;
+
+// @public
+export const useDrawerBody_unstable: (props: DrawerBodyProps, ref: React_2.Ref<HTMLElement>) => DrawerBodyState;
+
+// @public
+export const useDrawerBodyStyles_unstable: (state: DrawerBodyState) => DrawerBodyState;
+
+// @public
+export const useDrawerFooter_unstable: (props: DrawerFooterProps, ref: React_2.Ref<HTMLElement>) => DrawerFooterState;
+
+// @public
+export const useDrawerFooterStyles_unstable: (state: DrawerFooterState) => DrawerFooterState;
+
+// @public
+export const useDrawerHeader_unstable: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderNavigation_unstable: (props: DrawerHeaderNavigationProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderNavigationStyles_unstable: (state: DrawerHeaderNavigationState) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderStyles_unstable: (state: DrawerHeaderState) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderTitle_unstable: (props: DrawerHeaderTitleProps, ref: React_2.Ref<HTMLDivElement>) => DrawerHeaderTitleState;
+
+// @public
+export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
+
+// @public
+export const useDrawerInline_unstable: (props: DrawerInlineProps, ref: React_2.Ref<HTMLDivElement>) => DrawerInlineState;
+
+// @public
+export const useDrawerInlineStyles_unstable: (state: DrawerInlineState) => DrawerInlineState;
+
+// @public
+export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2.Ref<HTMLDivElement>) => DrawerOverlayState;
+
+// @public
+export const useDrawerOverlayStyles_unstable: (state: DrawerOverlayState) => DrawerOverlayState;
+
+// @public
+export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtualizerProps: VirtualizerMeasureDynamicProps) => {
+    virtualizerLength: number;
+    bufferItems: number;
+    bufferSize: number;
+    scrollRef: (instance: TElement | null) => void;
+};
+
+// @public
+export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(flatTreeItemProps: Props[], options?: FlatTreeOptions<Props>): FlatTree<Props>;
+
+// @public
+export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
+
+// @public
+export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
+
+// @public
+export const useInfoLabel_unstable: (props: InfoLabelProps, ref: React_2.Ref<HTMLLabelElement>) => InfoLabelState;
+
+// @public
+export const useInfoLabelStyles_unstable: (state: InfoLabelState) => InfoLabelState;
+
+// @public
+export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined) => {
+    setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
+    setObserverInit: Dispatch<SetStateAction<IntersectionObserverInit | undefined>>;
+    observer: MutableRefObject<IntersectionObserver | undefined>;
+};
+
+// @public
+export const useResizeObserverRef_unstable: (resizeCallback: ResizeCallbackWithRef) => (instance: HTMLElement | HTMLDivElement | null) => void;
+
+// @public
+export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtualizerProps: VirtualizerMeasureProps) => {
+    virtualizerLength: number;
+    bufferItems: number;
+    bufferSize: number;
+    scrollRef: (instance: TElement | null) => void;
+};
+
+// @public
+export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
+
+// @public (undocumented)
+export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
+
+// @public
+export function useTreeItem_unstable<Value = string>(props: TreeItemProps<Value>, ref: React_2.Ref<HTMLDivElement>): TreeItemState;
+
+// @public
+export const useTreeItemAside_unstable: (props: TreeItemAsideProps, ref: React_2.Ref<HTMLElement>) => TreeItemAsideState;
+
+// @public
+export const useTreeItemAsideStyles_unstable: (state: TreeItemAsideState) => TreeItemAsideState;
+
+// @public (undocumented)
+export const useTreeItemContext_unstable: <T>(selector: ContextSelector<TreeItemContextValue, T>) => T;
+
+// @public
+export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;
+
+// @public
+export const useTreeItemLayoutStyles_unstable: (state: TreeItemLayoutState) => TreeItemLayoutState;
+
+// @public
+export const useTreeItemPersonaLayout_unstable: (props: TreeItemPersonaLayoutProps, ref: React_2.Ref<HTMLSpanElement>) => TreeItemPersonaLayoutState;
+
+// @public
+export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLayoutState) => TreeItemPersonaLayoutState;
+
+// @public
+export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
+
+// @public (undocumented)
+export const useTreeStyles_unstable: (state: TreeState) => TreeState;
+
+// @public (undocumented)
+export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
+
+// @public (undocumented)
+export const useVirtualizerContext_unstable: () => VirtualizerContextProps;
+
+// @public (undocumented)
+export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState;
+
+// @public (undocumented)
+export function useVirtualizerScrollViewDynamic_unstable(props: VirtualizerScrollViewDynamicProps): VirtualizerScrollViewDynamicState;
+
+// @public
+export const useVirtualizerScrollViewDynamicStyles_unstable: (state: VirtualizerScrollViewDynamicState) => VirtualizerScrollViewDynamicState;
+
+// @public
+export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollViewState) => VirtualizerScrollViewState;
+
+// @public
+export const useVirtualizerStyles_unstable: (state: VirtualizerState) => VirtualizerState;
+
+// @public
+export const Virtualizer: FC<VirtualizerProps>;
+
+// @public (undocumented)
+export type VirtualizerChildRenderFunction = (index: number) => React_2.ReactNode;
+
+// @public (undocumented)
+export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
+
+// @public (undocumented)
+export type VirtualizerContextProps = {
+    contextIndex: number;
+    setContextIndex: (index: number) => void;
+};
+
+// @public (undocumented)
+export const VirtualizerContextProvider: React_2.Provider<VirtualizerContextProps>;
+
+// @public (undocumented)
+export type VirtualizerMeasureDynamicProps = {
+    defaultItemSize: number;
+    currentIndex: number;
+    numItems: number;
+    getItemSize: (index: number) => number;
+    direction?: 'vertical' | 'horizontal';
+};
+
+// @public (undocumented)
+export type VirtualizerMeasureProps = {
+    defaultItemSize: number;
+    direction?: 'vertical' | 'horizontal';
+};
+
+// @public (undocumented)
+export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
+
+// @public
+export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
+
+// @public (undocumented)
+export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
+
+// @public
+export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynamicProps>;
+
+// @public (undocumented)
+export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
+
+// @public (undocumented)
+export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+    itemSize: number;
+    getItemSize: (index: number) => number;
+    numItems: number;
+    children: VirtualizerChildRenderFunction;
+};
+
+// @public (undocumented)
+export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
+
+// @public (undocumented)
+export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> & VirtualizerConfigState;
+
+// @public (undocumented)
+export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+    itemSize: number;
+    numItems: number;
+    children: VirtualizerChildRenderFunction;
+};
+
+// @public (undocumented)
+export type VirtualizerScrollViewSlots = VirtualizerSlots & {
+    container: NonNullable<Slot<'div'>>;
+};
+
+// @public (undocumented)
+export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;
+
+// @public (undocumented)
+export type VirtualizerSlots = {
+    before: NonNullable<Slot<'div', 'td'>>;
+    beforeContainer: NonNullable<Slot<'div', 'tr'>>;
+    after: NonNullable<Slot<'div', 'td'>>;
+    afterContainer: NonNullable<Slot<'div', 'tr'>>;
+};
+
+// @public (undocumented)
+export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, useTransitionPresence } from '@fluentui/react-drawer';
-import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import {
+  Button,
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  tokens,
+  useTransitionPresence,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({

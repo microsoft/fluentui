@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
+import { tokens } from '@fluentui/react-theme';
+import { HTMLAttributes } from 'react';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
@@ -31,6 +33,21 @@ const useStyles = makeStyles({
   visible: {
     transform: 'translate3D(0, 0, 0)',
   },
+
+  /* Backdrop */
+  backdrop: {
+    opacity: 0,
+    transitionProperty: 'opacity',
+    transitionDuration: tokens.durationNormal,
+    transitionTimingFunction: tokens.curveEasyEase,
+    willChange: 'opacity',
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+  },
+  backdropVisible: {
+    opacity: 1,
+  },
 });
 
 /**
@@ -49,6 +66,16 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     state.visible && styles.visible,
     state.root.className,
   );
+
+  const backdrop = state.root.backdrop as HTMLAttributes<HTMLDivElement>;
+
+  if (backdrop) {
+    backdrop.className = mergeClasses(
+      backdrop.className,
+      styles.backdrop,
+      state.backdropPresence.visible && styles.backdropVisible,
+    );
+  }
 
   return state;
 };

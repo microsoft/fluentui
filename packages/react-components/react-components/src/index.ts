@@ -101,6 +101,7 @@ export {
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
+  useTransitionPresence,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -112,6 +113,8 @@ export type {
   SlotClassNames,
   SlotPropsRecord,
   SlotRenderFunction,
+  UseTransitionPresenceEvents,
+  UseTransitionPresenceState,
 } from '@fluentui/react-utilities';
 
 // Components
