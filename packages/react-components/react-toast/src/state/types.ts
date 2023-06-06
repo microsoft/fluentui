@@ -4,7 +4,7 @@ import { EVENTS } from './constants';
 export type ToastId = string;
 export type ToasterId = string;
 
-export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
 export interface ToastOptions<TData = object> {
   toastId: ToastId;

@@ -75,6 +75,7 @@ export type ToasterSlots = {
 export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<Required<ToasterProps>, 'announce'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
+    dir: 'rtl' | 'ltr';
 };
 
 // @public
@@ -101,7 +102,7 @@ export type ToastId = string;
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
-export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
 // @public
 export type ToastProps = ComponentProps<ToastSlots> & {};

@@ -20,10 +20,10 @@ export const Offset = () => {
   return (
     <>
       <Toaster toasterId={toasterId} offset={{ horizontal, vertical }} />
-      <button onClick={() => notify('bottom-left')}>bottom-left</button>
-      <button onClick={() => notify('bottom-right')}>bottom-right</button>
-      <button onClick={() => notify('top-left')}>top-left</button>
-      <button onClick={() => notify('top-right')}>top-right</button>
+      <button onClick={() => notify('bottom-start')}>bottom-start</button>
+      <button onClick={() => notify('bottom-end')}>bottom-end</button>
+      <button onClick={() => notify('top-start')}>top-start</button>
+      <button onClick={() => notify('top-end')}>top-end</button>
       <div>
         <label htmlFor="horizntal">horizontal</label>
         <input id="horizontal" type="number" value={horizontal} onChange={e => setHorizontal(Number(e.target.value))} />

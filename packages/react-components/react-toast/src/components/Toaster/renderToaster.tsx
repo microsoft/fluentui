@@ -15,17 +15,17 @@ export const renderToaster_unstable = (state: ToasterState) => {
   const { announceRef, renderAriaLive } = state;
   const { slots, slotProps } = getSlotsNext<ToasterSlotsInternal>(state);
 
-  const hasToasts = !!slots.bottomLeft || !!slots.bottomRight || !!slots.topLeft || !!slots.topRight;
+  const hasToasts = !!slots.bottomStart || !!slots.bottomEnd || !!slots.topStart || !!slots.topEnd;
 
   return (
     <>
       {renderAriaLive ? <AriaLive announceRef={announceRef} /> : null}
       {hasToasts ? (
         <Portal>
-          {slots.bottomLeft ? <slots.bottomLeft {...slotProps.bottomLeft} /> : null}
-          {slots.bottomRight ? <slots.bottomRight {...slotProps.bottomRight} /> : null}
-          {slots.topLeft ? <slots.topLeft {...slotProps.topLeft} /> : null}
-          {slots.topRight ? <slots.topRight {...slotProps.topRight} /> : null}
+          {slots.bottomStart ? <slots.bottomStart {...slotProps.bottomStart} /> : null}
+          {slots.bottomEnd ? <slots.bottomEnd {...slotProps.bottomEnd} /> : null}
+          {slots.topStart ? <slots.topStart {...slotProps.topStart} /> : null}
+          {slots.topEnd ? <slots.topEnd {...slotProps.topEnd} /> : null}
         </Portal>
       ) : null}
     </>
