@@ -14,7 +14,7 @@ export const DefaultToastOptions = () => {
 
   return (
     <>
-      <Toaster toasterId={toasterId} position="top-right" pauseOnHover pauseOnWindowBlur timeout={1000} />
+      <Toaster toasterId={toasterId} position="top-end" pauseOnHover pauseOnWindowBlur timeout={1000} />
       <button onClick={notify}>Make toast</button>
     </>
   );

@@ -14,7 +14,7 @@ const defaultToastContainerProps: ToastContainerProps = {
   pauseOnHover: false,
   pauseOnWindowBlur: false,
   politeness: 'polite',
-  position: 'bottom-left',
+  position: 'bottom-end',
   priority: 0,
   remove: () => null,
   timeout: -1,

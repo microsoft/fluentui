@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 05 Jun 2023 07:37:25 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2023 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.39)
+
+Tue, 06 Jun 2023 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.38..@fluentui/react-charting_v5.16.39)
+
+### Patches
+
+- Bug fix for bars are not coming in center for string variant ([PR #28092](https://github.com/microsoft/fluentui/pull/28092) by ankityadav@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.93 ([PR #28092](https://github.com/microsoft/fluentui/pull/28092) by beachball)
+- Bump @fluentui/react to v8.110.0 ([PR #28092](https://github.com/microsoft/fluentui/pull/28092) by beachball)
 
 ## [5.16.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.38)
 
