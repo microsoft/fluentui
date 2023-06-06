@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: testOptions custom classname prefix now works as intended.",
-  "packageName": "@fluentui/react-conformance",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

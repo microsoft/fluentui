@@ -11,10 +11,10 @@ export type ToasterSlots = {
 };
 
 export type ToasterSlotsInternal = ToasterSlots & {
-  bottomRight?: Slot<'div'>;
-  bottomLeft?: Slot<'div'>;
-  topRight?: Slot<'div'>;
-  topLeft?: Slot<'div'>;
+  bottomEnd?: Slot<'div'>;
+  bottomStart?: Slot<'div'>;
+  topEnd?: Slot<'div'>;
+  topStart?: Slot<'div'>;
 };
 
 /**
@@ -36,4 +36,5 @@ export type ToasterState = ComponentState<ToasterSlotsInternal> &
   Pick<Required<ToasterProps>, 'announce'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
+    dir: 'rtl' | 'ltr';
   };

@@ -6,7 +6,7 @@ import {
   dismissAllToasts as dismissAllToastsVanilla,
   updateToast as updateToastVanilla,
 } from './vanilla';
-import { ToastId, ToastOptions, ToasterId, UpdateToastEventDetail } from './types';
+import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
 
 const noop = () => undefined;
 
@@ -24,8 +24,8 @@ export function useToastController(toasterId?: ToasterId) {
     }
 
     return {
-      dispatchToast: (content: React.ReactNode, options?: Partial<Omit<ToastOptions, 'toasterId'>>) => {
-        dispatchToastVanilla(content, { ...options, toasterId }, targetDocument);
+      dispatchToast: (content: React.ReactNode, options?: DispatchToastOptions) => {
+        dispatchToastVanilla(content, { ...options, toasterId, data: { root: options?.root } }, targetDocument);
       },
       dismissToast: (toastId: ToastId) => {
         dismissToastVanilla(toastId, toasterId, targetDocument);
@@ -33,8 +33,8 @@ export function useToastController(toasterId?: ToasterId) {
       dismissAllToasts: () => {
         dismissAllToastsVanilla(toasterId, targetDocument);
       },
-      updateToast: (options: UpdateToastEventDetail) => {
-        updateToastVanilla({ ...options, toasterId }, targetDocument);
+      updateToast: (options: UpdateToastOptions) => {
+        updateToastVanilla({ ...options, data: { root: options.root }, toasterId }, targetDocument);
       },
     };
   }, [targetDocument, toasterId]);
