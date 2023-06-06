@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, ToastLayout } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const DismissAll = () => {
@@ -7,9 +7,9 @@ export const DismissAll = () => {
   const { dispatchToast, dismissAllToasts } = useToastController(toasterId);
   const notify = () =>
     dispatchToast(
-      <ToastLayout>
+      <Toast>
         <ToastTitle intent="success">'This is a toast</ToastTitle>
-      </ToastLayout>,
+      </Toast>,
     );
   const dismissAll = () => dismissAllToasts();
 

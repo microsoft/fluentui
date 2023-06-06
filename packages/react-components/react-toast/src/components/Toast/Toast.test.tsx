@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { ToastLayout } from './ToastLayout';
+import { Toast } from './Toast';
 import { isConformant } from '../../testing/isConformant';
 
-describe('ToastLayout', () => {
+describe('Toast', () => {
   isConformant({
-    Component: ToastLayout,
-    displayName: 'ToastLayout',
+    Component: Toast,
+    displayName: 'Toast',
   });
 
   it('renders a default state', () => {
-    const result = render(<ToastLayout>Default ToastLayout</ToastLayout>);
+    const result = render(<Toast>Default Toast</Toast>);
     expect(result.container).toMatchSnapshot();
   });
 });
