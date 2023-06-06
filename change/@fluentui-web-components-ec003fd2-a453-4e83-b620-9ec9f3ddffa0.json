@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(text-input): add TextInput as a new web component",
+  "packageName": "@fluentui/web-components",
+  "email": "brianbrady@microsoft.com",
+  "dependentChangeType": "patch"
+}
