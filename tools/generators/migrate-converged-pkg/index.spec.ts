@@ -2,7 +2,7 @@ import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as chalk from 'chalk';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -60,7 +60,7 @@ describe('migrate-converged-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
     tree = setupCodeowners(tree, { content: `` });
     tree.write(
       'jest.config.js',
@@ -670,7 +670,7 @@ describe('migrate-converged-pkg generator', () => {
     it(`should remove @ts-ignore pragmas from all stories`, async () => {
       const { paths } = setup({ createDummyStories: true });
       // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-      const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'ts-ignore-story.ts__tmpl__'), 'utf-8');
+      const template = getFixture('ts-ignore-story.ts__tmpl__');
       append(tree, paths.storyOne, template);
 
       await generator(tree, options);
@@ -1066,23 +1066,13 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       let justConfig = getJustConfig(projectConfig);
 
-      expect(justConfig).toMatchInlineSnapshot(`
-        "import { preset } from '@fluentui/scripts-tasks';
-
-        preset();"
-      `);
+      expect(justConfig).not.toContain(`task('build', 'build:react-components').cached?.();`);
 
       await generator(tree, options);
 
       justConfig = getJustConfig(projectConfig);
 
-      expect(justConfig).toMatchInlineSnapshot(`
-        "import { preset, task } from '@fluentui/scripts-tasks';
-
-        preset();
-
-        task('build', 'build:react-components').cached?.();"
-      `);
+      expect(justConfig).toContain(`task('build', 'build:react-components').cached?.();`);
     });
   });
 
@@ -1570,10 +1560,7 @@ function setupDummyPackage(
   };
 
   // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-  const jestConfigTemplate = fs.readFileSync(
-    path.join(__dirname, '__fixtures__', 'old-jest-config.js__tmpl__'),
-    'utf-8',
-  );
+  const jestConfigTemplate = getFixture('old-jest-config.js__tmpl__');
 
   const templates = {
     packageJson: {
@@ -1641,11 +1628,7 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
-    justConfig: stripIndents`
-      import { preset } from '@fluentui/scripts-tasks';
-
-      preset();
-    `,
+    justConfig: getFixture('just-config.ts__tmpl__'),
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
@@ -1680,7 +1663,7 @@ function setupDummyPackage(
 
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
   // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-  const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
+  const template = getFixture('conformance-setup.ts__tmpl__');
   tree.write(`${projectConfig.root}/src/testing/isConformant.ts`, stripIndents`${template}`);
 }
 
@@ -1724,4 +1707,13 @@ function append(tree: Tree, filePath: string, content: string) {
 
 function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+}
+
+/**
+ *
+ * @param src  - relative path/file name within `__fixtures__` folder
+ * @returns
+ */
+function getFixture(src: string) {
+  return fs.readFileSync(path.join(__dirname, '__fixtures__', src), 'utf-8');
 }

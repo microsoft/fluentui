@@ -1,54 +1,49 @@
 import * as React from 'react';
-import { Toaster } from './vanilla/toaster';
 import { useForceUpdate } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { Toaster } from './vanilla/toaster';
 import { Toast, ToastPosition, ToasterOptions } from './types';
 import { ToasterProps } from '../components/Toaster';
 
 export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
   const forceRender = useForceUpdate();
   const toasterOptions = useToasterOptions(options);
-  const toasterRef = React.useRef<TElement>(null);
   const [toaster] = React.useState(() => new Toaster());
+  const { targetDocument } = useFluent();
 
   React.useEffect(() => {
-    if (toasterRef.current) {
-      toaster.connectToDOM(toasterRef.current, toasterOptions);
+    if (targetDocument) {
+      toaster.connectToDOM(targetDocument, toasterOptions);
       toaster.onUpdate = forceRender;
     }
 
     return () => toaster.disconnect();
-  }, [toaster, forceRender, toasterOptions]);
+  }, [toaster, forceRender, toasterOptions, targetDocument]);
 
-  const getToastsToRender = React.useCallback(
-    <T>(cb: (position: ToastPosition, toasts: Toast[]) => T) => {
-      if (!toaster) {
-        return [];
-      }
+  const toastsToRender = (() => {
+    if (!toaster) {
+      return new Map<ToastPosition, Toast[]>();
+    }
 
-      const toRender = new Map<ToastPosition, Toast[]>();
-      const toasts = Array.from(toaster.toasts.values());
+    const toRender = new Map<ToastPosition, Toast[]>();
+    const toasts = Array.from(toaster.toasts.values());
 
-      toasts.forEach(toast => {
-        const { position } = toast;
-        toRender.has(position) || toRender.set(position, []);
+    toasts.forEach(toast => {
+      const { position } = toast;
+      toRender.has(position) || toRender.set(position, []);
+      if (position.startsWith('bottom')) {
         toRender.get(position)!.push(toast);
-      });
+      } else {
+        toRender.get(position)!.unshift(toast);
+      }
+    });
 
-      return Array.from(toRender, ([position, toastsToRender]) => {
-        if (position.startsWith('top')) {
-          toastsToRender.reverse();
-        }
-
-        return cb(position, toastsToRender);
-      });
-    },
-    [toaster],
-  );
+    return toRender;
+  })();
 
   return {
-    toasterRef,
     isToastVisible: toaster.isToastVisible,
-    getToastsToRender,
+    toastsToRender,
   };
 }
 

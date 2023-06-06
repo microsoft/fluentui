@@ -13,11 +13,11 @@ const realSetCurrentStory = window.__setCurrentStory;
 window.__setCurrentStory = function (categorization, story) {
   try {
     realSetCurrentStory(categorization, story);
-  } catch (e) {
+  } catch (err) {
     // Ignore API removed errors from cypress-storybook's call to forceReRender
     // https://github.com/storybookjs/storybook/blob/208d2f930b2b72a48355367d993e65e5b01be655/lib/core-client/src/preview/start.ts#L24
-    if (!(typeof e.message === 'string' && e.message.includes('was removed in storyStoreV7'))) {
-      throw e;
+    if (!(err instanceof Error && err.message.includes('was removed in storyStoreV7'))) {
+      throw err;
     }
   }
 };

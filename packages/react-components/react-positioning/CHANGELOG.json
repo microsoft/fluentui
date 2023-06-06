@@ -2,6 +2,35 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 31 May 2023 06:46:17 GMT",
+      "tag": "@fluentui/react-positioning_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yiliu9@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e1ca88c0a92d07dced9c668dd11585c0c4866919",
+            "comment": "Add new optional useTransform parameter to allow disabling transform for positioning"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "chore: Update Griffel to v1.5.7."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 May 2023 10:00:48 GMT",
       "tag": "@fluentui/react-positioning_v9.5.14",
       "version": "9.5.14",

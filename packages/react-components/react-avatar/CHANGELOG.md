@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 25 May 2023 10:00:48 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 06:46:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.5)
+
+Wed, 31 May 2023 06:46:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.5.4..@fluentui/react-avatar_v9.5.5)
+
+### Patches
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-badge to v9.1.15 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.22 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-popover to v9.6.0 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-tabster to v9.7.5 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-tooltip to v9.2.16 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
 
 ## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.4)
 

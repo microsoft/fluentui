@@ -20,6 +20,7 @@ import * as path from 'path';
 import * as os from 'os';
 import * as ts from 'typescript';
 
+import { getTemplate } from './lib/utils';
 import { PackageJson, TsConfig } from '../../types';
 import {
   arePromptsEnabled,
@@ -435,12 +436,8 @@ const templates = {
       sourceMaps: true,
     };
   },
-  justConfig: stripIndents`
-    import { preset, task } from '@fluentui/scripts-tasks';
-
-    preset();
-
-    task('build', 'build:react-components').cached?.();`,
+  // why not inline template ? this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  justConfig: getTemplate(joinPathFragments(__dirname, 'files/just-config.ts__tmpl__'), {}),
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {

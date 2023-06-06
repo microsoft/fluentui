@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { ExecFileException, execSync } from 'child_process';
 import * as path from 'path';
 
 import { ChangelogJson } from 'beachball';
@@ -87,7 +87,7 @@ export function getTags(maxAgeDays?: number): string[] {
 
     return tags;
   } catch (err) {
-    if (err.code === 'ENOBUFS') {
+    if (err instanceof Error && (err as ExecFileException).code === 'ENOBUFS') {
       throw new Error(`maxBuffer ${TEN_MEGABYTES}MB was reached. Increase its size in the codebase`);
     }
 
