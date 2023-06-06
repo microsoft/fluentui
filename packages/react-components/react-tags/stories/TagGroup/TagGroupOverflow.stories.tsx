@@ -127,7 +127,7 @@ export const WithOverflow = () => {
 
   return (
     <div className={styles.container}>
-      <Overflow minimumVisible={2}>
+      <Overflow minimumVisible={2} padding={30}>
         <TagGroup className={styles.tagGroup}>
           {defaultItems.map(item => (
             <OverflowItem key={item.value} id={item.value!}>
