@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: make useTransitionPresence hook",
+  "packageName": "@fluentui/react-components",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
