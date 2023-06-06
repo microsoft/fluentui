@@ -20,9 +20,8 @@ const useStyles = makeStyles({
     ...shorthands.padding('4px'),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
+    ...createSlideStyles(10),
   },
-
-  slideAndFadeIn: createSlideStyles(10),
 });
 
 /**
@@ -30,11 +29,6 @@ const useStyles = makeStyles({
  */
 export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopoverState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
-    menuPopoverClassNames.root,
-    styles.root,
-    styles.slideAndFadeIn,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(menuPopoverClassNames.root, styles.root, state.root.className);
   return state;
 };

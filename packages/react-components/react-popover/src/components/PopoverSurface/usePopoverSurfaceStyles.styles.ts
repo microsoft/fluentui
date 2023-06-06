@@ -26,9 +26,8 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
+    ...createSlideStyles(10),
   },
-
-  slideAndFadeIn: createSlideStyles(10),
 
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
@@ -65,7 +64,6 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
   state.root.className = mergeClasses(
     popoverSurfaceClassNames.root,
     styles.root,
-    styles.slideAndFadeIn,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
