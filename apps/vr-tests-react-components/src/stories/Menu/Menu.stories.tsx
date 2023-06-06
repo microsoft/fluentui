@@ -15,8 +15,10 @@ import {
   MenuSplitGroup,
 } from '@fluentui/react-menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
+import { TestWrapperDecoratorNoAnimation } from '../../utilities';
 
 storiesOf('Menu Converged - basic', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}>{story()}</StoryWright>
   ))
@@ -41,6 +43,7 @@ storiesOf('Menu Converged - basic', module)
   );
 
 storiesOf('Menu Converged - secondary content', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}>{story()}</StoryWright>
   ))
@@ -69,6 +72,7 @@ storiesOf('Menu Converged - secondary content', module)
   );
 
 storiesOf('Menu Converged - groups', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => <StoryWright>{story()}</StoryWright>)
   .addStory(
     'default',
@@ -101,6 +105,7 @@ storiesOf('Menu Converged - groups', module)
   );
 
 storiesOf('Menu Converged - selection', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}>
       {story()}
@@ -133,6 +138,7 @@ storiesOf('Menu Converged - selection', module)
   );
 
 storiesOf('Menu Converged - selection groups', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}>
       {story()}
@@ -181,6 +187,7 @@ storiesOf('Menu Converged - selection groups', module)
   );
 
 storiesOf('Menu Converged - nested submenus', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     // https://github.com/microsoft/fluentui/issues/19782
     <StoryWright steps={new Steps().click('#nestedTrigger').snapshot('all open').end()}>{story()}</StoryWright>
@@ -219,6 +226,7 @@ storiesOf('Menu Converged - nested submenus', module)
   );
 
 storiesOf('Menu Converged - split item', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     // https://github.com/microsoft/fluentui/issues/19782
     <StoryWright steps={new Steps().click('#nestedTrigger').snapshot('submenu open').end()}>{story()}</StoryWright>
@@ -305,6 +313,7 @@ const ContextMenuArea = React.forwardRef<HTMLDivElement>((props, ref) => {
 });
 
 storiesOf('Menu nested within a MenuTrigger', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     // https://github.com/microsoft/fluentui/issues/19782
     <StoryWright steps={new Steps().click('#nestedTrigger').snapshot('submenu open').end()}>{story()}</StoryWright>
@@ -328,6 +337,7 @@ storiesOf('Menu nested within a MenuTrigger', module)
 
 // this places text in the icon slot to verify alignment when not using v9 icons
 storiesOf('Menu Converged - icon slotted content', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}>{story()}</StoryWright>
   ))
@@ -359,6 +369,7 @@ storiesOf('Menu Converged - icon slotted content', module)
 
 // this places text in the submenuIndicator slot to verify alignment when not using v9 icons
 storiesOf('Menu Converged - submenuIndicator slotted content', module)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().click('#nestedTrigger1').click('#nestedTrigger2').snapshot('submenus open').end()}>
       {story()}

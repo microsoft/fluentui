@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecorator } from '../utilities/index';
+import { TestWrapperDecoratorNoAnimation } from '../utilities';
 
 const PopoverPositioning: React.FC = () => {
   const positions = [
@@ -48,7 +48,7 @@ const PopoverPositioning: React.FC = () => {
 };
 
 storiesOf('Popover Converged', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright
       steps={new Steps().click('#show-popovers').snapshot('positioned popovers', { cropTo: '.testWrapper' }).end()}
@@ -59,7 +59,7 @@ storiesOf('Popover Converged', module)
   .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });
 
 storiesOf('Popover Converged', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorNoAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().click('#show-popover').snapshot('PopoverSurface focused').end()}>
       {story()}
