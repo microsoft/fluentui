@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add onRenderCellContent to override cell internals",
+  "packageName": "@fluentui/react",
+  "email": "prkalaga@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -74,6 +74,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     cellHeight,
     cellWidth,
     cellBorderWidth,
+    onRenderColorCellContent,
   } = props;
 
   /**
@@ -321,6 +322,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         onMouseLeave={onMouseLeave}
         onWheel={setNavigationTimeout}
         onKeyDown={onKeyDown}
+        onRenderColorCellContent={onRenderColorCellContent}
         height={cellHeight}
         width={cellWidth}
         borderWidth={cellBorderWidth}
