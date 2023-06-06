@@ -1,11 +1,12 @@
+import type { Slot } from '@fluentui/react-utilities';
 import { EVENTS } from './constants';
 
 export type ToastId = string;
 export type ToasterId = string;
 
-export type ToastPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
-export interface ToastOptions {
+export interface ToastOptions<TData = object> {
   toastId: ToastId;
   position: ToastPosition;
   content: unknown;
@@ -15,6 +16,7 @@ export interface ToastOptions {
   toasterId: ToasterId | undefined;
   priority: number;
   politeness: 'assertive' | 'polite';
+  data: TData;
 }
 
 export interface ToastOffsetObject {
@@ -31,7 +33,7 @@ export interface ToasterOptions
   limit?: number;
 }
 
-export interface Toast extends ToastOptions {
+export interface Toast<TData = object> extends ToastOptions<TData> {
   close: () => void;
   remove: () => void;
   updateId: number;
@@ -64,3 +66,13 @@ export type ToastListenerMap = {
   [EVENTS.dismissAll]: EventListener<DismissAllToastsEventDetail>;
   [EVENTS.update]: EventListener<UpdateToastEventDetail>;
 };
+
+type RootSlot = Slot<'div'>;
+
+export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
+  root?: RootSlot;
+}
+
+export interface UpdateToastOptions extends UpdateToastEventDetail {
+  root?: RootSlot;
+}

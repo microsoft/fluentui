@@ -1,19 +1,26 @@
-/**
- * ⚠️ This is temporary and WILL be removed
- */
-
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import type { ToastContainerSlots, ToastContainerState } from './ToastContainer.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const useToastStyles = makeStyles({
-  toast: {
-    pointerEvents: 'all',
+export const toastClassNames: SlotClassNames<ToastContainerSlots> = {
+  root: 'fui-ToastContainer',
+  timer: 'fui-ToastContainer__timer',
+};
+
+/**
+ * Styles for the root slot
+ */
+const useStyles = makeStyles({
+  root: {
     boxSizing: 'border-box',
     marginTop: '16px',
     minHeight: '44px',
+    pointerEvents: 'all',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     '--fui-toast-height': '44px',
   },
+
   enter: {
     animationDuration: '200ms, 400ms',
     animationDelay: '0ms, 200ms',
@@ -66,3 +73,18 @@ export const useToastStyles = makeStyles({
     ],
   },
 });
+
+/**
+ * Apply styling to the ToastContainer slots based on the state
+ */
+export const useToastContainerStyles_unstable = (state: ToastContainerState): ToastContainerState => {
+  const styles = useStyles();
+  state.root.className = mergeClasses(
+    toastClassNames.root,
+    state.visible ? styles.enter : styles.exit,
+    styles.root,
+    state.root.className,
+  );
+
+  return state;
+};

@@ -133,6 +133,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
         columnId: TableColumnId;
         width: number;
     }) => void;
+    containerWidthOffset?: number;
 };
 
 // @public
@@ -240,6 +241,9 @@ export type SortDirection = 'ascending' | 'descending';
 
 // @public
 export const Table: ForwardRefComponent<TableProps>;
+
+// @public (undocumented)
+export const TABLE_SELECTION_CELL_WIDTH = 44;
 
 // @public
 export const TableBody: ForwardRefComponent<TableBodyProps>;

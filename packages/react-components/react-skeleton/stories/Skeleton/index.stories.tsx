@@ -9,7 +9,7 @@ export { Animation } from './SkeletonAnimation.stories';
 export { Row } from './SkeletonRow.stories';
 
 export default {
-  title: 'Skeleton',
+  title: 'Components/Skeleton',
   component: Skeleton,
   parameters: {
     docs: {

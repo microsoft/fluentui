@@ -6,8 +6,8 @@ export const EVENTS = {
 } as const;
 
 export const TOAST_POSITIONS = {
-  bottomRight: 'bottom-right',
-  bottomLeft: 'bottom-left',
-  topRight: 'top-right',
-  topLeft: 'top-left',
+  bottomEnd: 'bottom-end',
+  bottomStart: 'bottom-start',
+  topEnd: 'top-end',
+  topStart: 'top-start',
 } as const;
