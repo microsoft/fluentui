@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastPosition, ToastTitle, ToastLayout } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastPosition, ToastTitle, Toast } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const ToastPositions = () => {
@@ -7,19 +7,19 @@ export const ToastPositions = () => {
   const { dispatchToast } = useToastController(toasterId);
   const notify = (position: ToastPosition) =>
     dispatchToast(
-      <ToastLayout>
+      <Toast>
         <ToastTitle intent="success">This toast is {position}</ToastTitle>
-      </ToastLayout>,
+      </Toast>,
       { position },
     );
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={() => notify('bottom-left')}>bottom-left</button>
-      <button onClick={() => notify('bottom-right')}>bottom-right</button>
-      <button onClick={() => notify('top-left')}>top-left</button>
-      <button onClick={() => notify('top-right')}>top-right</button>
+      <button onClick={() => notify('bottom-start')}>bottom-start</button>
+      <button onClick={() => notify('bottom-end')}>bottom-end</button>
+      <button onClick={() => notify('top-start')}>top-start</button>
+      <button onClick={() => notify('top-end')}>top-end</button>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ExtractSlotProps, Slot, getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
@@ -15,6 +16,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const announceRef = React.useRef<Announce>(() => null);
   const { toastsToRender, isToastVisible } = useToaster<HTMLDivElement>(rest);
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
+  const { dir } = useFluent();
 
   const rootProps = getNativeElementProps('div', rest);
 
@@ -32,18 +34,19 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     });
 
   return {
+    dir,
     components: {
       root: 'div',
-      bottomLeft: 'div',
-      bottomRight: 'div',
-      topLeft: 'div',
-      topRight: 'div',
+      bottomStart: 'div',
+      bottomEnd: 'div',
+      topStart: 'div',
+      topEnd: 'div',
     },
     root: resolveShorthand(rootProps, { required: true }),
-    bottomLeft: createPositionSlot(TOAST_POSITIONS.bottomLeft),
-    bottomRight: createPositionSlot(TOAST_POSITIONS.bottomRight),
-    topLeft: createPositionSlot(TOAST_POSITIONS.topLeft),
-    topRight: createPositionSlot(TOAST_POSITIONS.topRight),
+    bottomStart: createPositionSlot(TOAST_POSITIONS.bottomStart),
+    bottomEnd: createPositionSlot(TOAST_POSITIONS.bottomEnd),
+    topStart: createPositionSlot(TOAST_POSITIONS.topStart),
+    topEnd: createPositionSlot(TOAST_POSITIONS.topEnd),
     announceRef,
     offset,
     announce: announceProp ?? announce,

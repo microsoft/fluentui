@@ -22,8 +22,8 @@ export const MultipeToasters = () => {
 
   return (
     <>
-      <Toaster toasterId={first} position="bottom-right" />
-      <Toaster toasterId={second} position="top-right" />
+      <Toaster toasterId={first} position="bottom-end" />
+      <Toaster toasterId={second} position="top-end" />
       <button onClick={notifyFirst}>Toaster first</button>
       <button onClick={notifySecond}>Toaster second</button>
     </>
