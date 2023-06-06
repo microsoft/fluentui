@@ -59,6 +59,21 @@ export type UseTransitionPresenceEvents = {
 };
 
 /**
+ * Returns CSS styles of the given node.
+ * @param node - DOM node.
+ * @returns - CSS styles.
+ */
+const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
+  if (node.nodeType !== 1) {
+    return {};
+  }
+
+  const window = node.ownerDocument?.defaultView;
+
+  return window!.getComputedStyle(node, null);
+};
+
+/**
  * @internal
  * Converts a CSS duration string to milliseconds.
  *
@@ -134,49 +149,49 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    computedStylesRef.current = window?.getComputedStyle(node);
+    computedStylesRef.current = getStyleComputedProperty(node) as CSSStyleDeclaration;
     setCurrentElement(node);
   }, []);
 
   const notCurrentElement = React.useCallback((target: TElement) => target !== currentElement, [currentElement]);
 
-  const onEntering = React.useCallback(() => {
-    setEntering(true);
-    setVisible(true);
-  }, []);
-
-  const onExiting = React.useCallback(() => {
-    setExiting(true);
-  }, []);
-
-  const onFinishedAnimating = React.useCallback(() => {
+  const onFinishedTransition = React.useCallback(() => {
     setEntering(false);
     setExiting(false);
   }, []);
 
-  const onEnterAnimationEnd = React.useCallback(() => {
-    onFinishedAnimating();
-    onEntered();
-  }, [onEntered, onFinishedAnimating]);
+  const onStartEntering = React.useCallback(() => {
+    setEntering(true);
+    setVisible(true);
+  }, []);
 
-  const onExitAnimationEnd = React.useCallback(() => {
-    onFinishedAnimating();
+  const onFinishedEntering = React.useCallback(() => {
+    onFinishedTransition();
+    onEntered();
+  }, [onEntered, onFinishedTransition]);
+
+  const onStartExiting = React.useCallback(() => {
+    setExiting(true);
+  }, []);
+
+  const onFinishedExiting = React.useCallback(() => {
+    onFinishedTransition();
     setVisible(false);
     setShouldRender(false);
     onExited();
-  }, [onExited, onFinishedAnimating]);
+  }, [onExited, onFinishedTransition]);
 
-  const onCanceled = React.useCallback(
+  const onTransitionCanceled = React.useCallback(
     ({ target }) => {
       if (notCurrentElement(target)) {
         return;
       }
 
-      onFinishedAnimating();
+      onFinishedTransition();
       setVisible(present);
       setShouldRender(present);
     },
-    [notCurrentElement, onFinishedAnimating, present],
+    [notCurrentElement, onFinishedTransition, present],
   );
 
   React.useEffect(() => {
@@ -186,10 +201,10 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
   }, [present]);
 
   React.useEffect(() => {
-    currentElement?.addEventListener('transitioncancel', onCanceled);
+    currentElement?.addEventListener('transitioncancel', onTransitionCanceled);
 
-    return () => currentElement?.removeEventListener('transitioncancel', onCanceled);
-  }, [currentElement, onCanceled]);
+    return () => currentElement?.removeEventListener('transitioncancel', onTransitionCanceled);
+  }, [currentElement, onTransitionCanceled]);
 
   React.useEffect(() => {
     if (!currentElement) {
@@ -205,9 +220,9 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
         setShouldRender(present);
       } else {
         if (present) {
-          onEntering();
+          onStartEntering();
         } else {
-          onExiting();
+          onStartExiting();
         }
 
         /**
@@ -217,9 +232,9 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
          */
         setAnimationTimeout(() => {
           if (present) {
-            onEnterAnimationEnd();
+            onFinishedEntering();
           } else {
-            onExitAnimationEnd();
+            onFinishedExiting();
           }
         }, duration + 1);
       }
@@ -231,11 +246,11 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
     };
   }, [
     currentElement,
-    onExitAnimationEnd,
-    onEnterAnimationEnd,
+    onFinishedExiting,
+    onFinishedEntering,
     present,
-    onEntering,
-    onExiting,
+    onStartEntering,
+    onStartExiting,
     setAnimationTimeout,
     clearAnimationTimeout,
   ]);
