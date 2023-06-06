@@ -22,7 +22,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -66,7 +66,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         </span>
         <div
           hidden={true}
-          id="tooltip2"
+          id="tooltip4"
           style={
             Object {
               "border": 0,
@@ -117,7 +117,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -162,6 +162,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar6"
               key="0"
               width="63.49206349206349%"
               x="0%"
@@ -195,6 +196,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar7"
               key="1"
               width="36.507936507936506%"
               x="63.49206349206349%"
@@ -392,7 +394,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -436,7 +438,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         </span>
         <div
           hidden={true}
-          id="tooltip2"
+          id="tooltip4"
           style={
             Object {
               "border": 0,
@@ -487,7 +489,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -532,6 +534,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar6"
               key="0"
               width="63.49206349206349%"
               x="0%"
@@ -565,6 +568,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar7"
               key="1"
               width="36.507936507936506%"
               x="63.49206349206349%"
@@ -679,7 +683,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -723,7 +727,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         </span>
         <div
           hidden={true}
-          id="tooltip2"
+          id="tooltip4"
           style={
             Object {
               "border": 0,
@@ -774,7 +778,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -818,6 +822,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar1"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -849,6 +854,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar2"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -886,7 +892,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone26"
+    data-focuszone-id="FocusZone40"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -930,7 +936,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         </span>
         <div
           hidden={true}
-          id="tooltip27"
+          id="tooltip41"
           style={
             Object {
               "border": 0,
@@ -981,7 +987,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone28"
+    data-focuszone-id="FocusZone42"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1025,6 +1031,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar38"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1056,6 +1063,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar39"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1093,7 +1101,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1137,7 +1145,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         </span>
         <div
           hidden={true}
-          id="tooltip18"
+          id="tooltip28"
           style={
             Object {
               "border": 0,
@@ -1178,7 +1186,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone19"
+    data-focuszone-id="FocusZone29"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1222,6 +1230,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar25"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1253,6 +1262,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar26"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1269,394 +1279,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
 `;
 
 exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
-<div
-  className=
-      ms-StackedBarChart
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100%;
-      }
-  onMouseLeave={[Function]}
->
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone5"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <div
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            justify-content: space-between;
-          }
-    >
-      <div
-        className=
-            ms-TooltipHost
-            {
-              color: #323130;
-              display: block;
-              margin-bottom: 5px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        role="none"
-      >
-        <span
-          data-is-focusable={false}
-          role="text"
-        >
-          Stacked bar chart 2nd example
-        </span>
-        <div
-          hidden={true}
-          id="tooltip6"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
-        >
-          Stacked bar chart 2nd example
-        </div>
-      </div>
-      <div
-        data-is-focusable={false}
-        role="text"
-      >
-        <span
-          className=
-
-              {
-                color: #323130;
-                font-size: 14px;
-                font-weight: 600;
-              }
-        >
-          40
-        </span>
-        <span
-          className=
-
-              {
-                color: #323130;
-                font-size: 14px;
-              }
-        >
-           / 63
-        </span>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone7"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <div>
-      <svg
-        aria-label="Stacked bar chart 2nd example"
-        className=
-
-            {
-              display: block;
-              height: 12px;
-              margin-bottom: 10px;
-              width: 100%;
-            }
-      >
-        <g>
-          <g
-            aria-label="first Lorem ipsum dolor sit amet, 40."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
-                &:focus {
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            pointerEvents="all"
-            role="img"
-          >
-            <rect
-              fill="#5c005c"
-              height={12}
-              width="63.49206349206349%"
-              x="0%"
-              y={0}
-            />
-          </g>
-          <g
-            aria-label="Winter is coming, 23."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
-                &:focus {
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            pointerEvents="all"
-            role="img"
-          >
-            <rect
-              fill="#e81123"
-              height={12}
-              width="36.507936507936506%"
-              x="63.49206349206349%"
-              y={0}
-            />
-          </g>
-        </g>
-        <span
-          className="ms-layer"
-        />
-      </svg>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`] = `
-<div
-  className=
-      ms-StackedBarChart
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100%;
-      }
-  onMouseLeave={[Function]}
->
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone13"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <div
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            justify-content: space-between;
-          }
-    >
-      <div
-        className=
-            ms-TooltipHost
-            {
-              color: #323130;
-              display: block;
-              margin-bottom: 5px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        role="none"
-      >
-        <span
-          data-is-focusable={false}
-          role="text"
-        >
-          Stacked bar chart 2nd example
-        </span>
-        <div
-          hidden={true}
-          id="tooltip14"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
-        >
-          Stacked bar chart 2nd example
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone15"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <div>
-      <svg
-        aria-label="Stacked bar chart 2nd example"
-        className=
-
-            {
-              display: block;
-              height: 12px;
-              margin-bottom: 10px;
-              width: 100%;
-            }
-      >
-        <g>
-          <g
-            aria-label="first Lorem ipsum dolor sit amet, 40."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
-                &:focus {
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            pointerEvents="all"
-            role="img"
-          >
-            <rect
-              fill="#5c005c"
-              height={12}
-              width="63.49206349206349%"
-              x="0%"
-              y={0}
-            />
-          </g>
-          <g
-            aria-label="Winter is coming, 23."
-            className=
-
-                {
-                  cursor: default;
-                  opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
-                &:focus {
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
-            pointerEvents="all"
-            role="img"
-          >
-            <rect
-              fill="#e81123"
-              height={12}
-              width="36.507936507936506%"
-              x="63.49206349206349%"
-              y={0}
-            />
-          </g>
-        </g>
-        <span
-          className="ms-layer"
-        />
-      </svg>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
   className=
       ms-StackedBarChart
@@ -1805,7 +1427,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #000000;
                 }
-            data-is-focusable={false}
+            data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1817,6 +1439,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar7"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1836,7 +1459,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #000000;
                 }
-            data-is-focusable={false}
+            data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1848,6 +1471,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar8"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1863,7 +1487,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
 </div>
 `;
 
-exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] = `
+exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`] = `
 <div
   className=
       ms-StackedBarChart
@@ -1998,6 +1622,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar19"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -2029,6 +1654,399 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar20"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
+        </g>
+        <span
+          className="ms-layer"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone15"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+          }
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              color: #323130;
+              display: block;
+              margin-bottom: 5px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
+      >
+        <span
+          data-is-focusable={false}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip16"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
+      </div>
+      <div
+        data-is-focusable={false}
+        role="text"
+      >
+        <span
+          className=
+
+              {
+                color: #323130;
+                font-size: 14px;
+                font-weight: 600;
+              }
+        >
+          40
+        </span>
+        <span
+          className=
+
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone17"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked bar chart 2nd example"
+        className=
+
+            {
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
+              width: 100%;
+            }
+      >
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar13"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar14"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
+        </g>
+        <span
+          className="ms-layer"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone33"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+          }
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              color: #323130;
+              display: block;
+              margin-bottom: 5px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
+      >
+        <span
+          data-is-focusable={false}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip34"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone35"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked bar chart 2nd example"
+        className=
+
+            {
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
+              width: 100%;
+            }
+      >
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar31"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar32"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -2089,7 +2107,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone24"
+              data-focuszone-id="FocusZone36"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
