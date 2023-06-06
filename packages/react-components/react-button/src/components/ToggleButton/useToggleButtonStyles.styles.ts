@@ -215,6 +215,12 @@ const useIconCheckedStyles = makeStyles({
   subtleOrTransparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
   },
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'auto',
+    },
+  },
 });
 
 const usePrimaryHighContrastStyles = makeStyles({
@@ -272,7 +278,9 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
+      (appearance === 'subtle' || appearance === 'transparent') &&
+        iconCheckedStyles.subtleOrTransparent &&
+        iconCheckedStyles.highContrast,
       state.icon.className,
     );
   }
