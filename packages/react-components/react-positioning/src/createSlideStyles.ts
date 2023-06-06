@@ -17,14 +17,44 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     },
   };
 
+  const slideDistanceVarX = '--slide-distance-x';
+  const slideDistanceVarY = '--slide-distance-y';
+
   return {
     animationComposition: 'accumulate',
     animationDuration: tokens.durationSlower,
     animationTimingFunction: tokens.curveDecelerateMid,
+    [slideDistanceVarX]: `0px`,
+    [slideDistanceVarY]: `${mainAxis}px`,
+    [`&[${DATA_POSITIONING_PLACEMENT}^=right]`]: {
+      [slideDistanceVarX]: `-${mainAxis}px`,
+      [slideDistanceVarY]: '0px',
+    },
+
+    [`&[${DATA_POSITIONING_PLACEMENT}^=bottom]`]: {
+      [slideDistanceVarX]: '0px',
+      [slideDistanceVarY]: `-${mainAxis}px`,
+    },
+
+    [`&[${DATA_POSITIONING_PLACEMENT}^=left]`]: {
+      [slideDistanceVarX]: `${mainAxis}px`,
+      [slideDistanceVarY]: '0px',
+    },
+
+    animationName: [
+      fadeIn,
+      {
+        from: {
+          transform: `translate(var(${slideDistanceVarX}), var(${slideDistanceVarY}))`,
+        },
+        to: {},
+      },
+    ],
+
     // Note: at-rules have more specificity in Griffel
     '@media(prefers-reduced-motion)': {
       [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
-        animationDuration: '.001s',
+        animationDuration: '1ms',
         animationName: fadeIn,
       },
     },
@@ -35,51 +65,5 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
         animationName: fadeIn,
       },
     },
-
-    [`&[${DATA_POSITIONING_PLACEMENT}^=top]`]: {
-      animationName: [
-        fadeIn,
-        {
-          from: {
-            transform: `translate(0px, ${mainAxis}px)`,
-          },
-          to: {},
-        },
-      ],
-    },
-
-    [`&[${DATA_POSITIONING_PLACEMENT}^=right]`]: {
-      animationName: [
-        fadeIn,
-        {
-          from: {
-            transform: `translate(-${mainAxis}px, 0px)`,
-          },
-        },
-      ],
-    },
-
-    [`&[${DATA_POSITIONING_PLACEMENT}^=bottom]`]: {
-      animationName: [
-        fadeIn,
-        {
-          from: {
-            transform: `translate(0, -${mainAxis}px)`,
-          },
-        },
-      ],
-    },
-
-    [`&[${DATA_POSITIONING_PLACEMENT}^=left]`]: {
-      animationName: [
-        fadeIn,
-        {
-          from: {
-            transform: `translate(${mainAxis}px, 0px)`,
-          },
-        },
-      ],
-    },
-    // FIXME: remove casting https://github.com/microsoft/griffel/issues/378
-  } as GriffelStyle;
+  };
 }
