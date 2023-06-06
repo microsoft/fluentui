@@ -190,7 +190,7 @@ const RegistrationFormInputsAccessibility = () => {
                 id="fullName"
                 aria-required="true"
                 aria-invalid={!!errors.fullName}
-                aria-describedby="fullNameErrors"
+                aria-describedby="fullNameRequiredError fullNameInvalidError fullNameLengthError fullNameOnlyNameCharsError fullNameStartsAndEndsWithLetterError"
               />
             }
             rules={{
@@ -212,18 +212,22 @@ const RegistrationFormInputsAccessibility = () => {
           {errors.fullName?.types && (
             <ValidationMessage id="fullName" formValidation={formValidation}>
               {'required' in errors.fullName.types ? (
-                <p>Full name is required.</p>
+                <p id="fullNameRequiredError">Full name is required.</p>
               ) : (
                 <>
-                  <p>Full name is invalid. It must:</p>
+                  <p id="fullNameInvalidError">Full name is invalid. It must:</p>
                   <ul>
                     {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
-                      <li>Have between 2 and 50 characters.</li>
+                      <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
                     )}
                     {'onlyNameChars' in errors.fullName.types && (
-                      <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                      <li id="fullNameOnlyNameCharsError">
+                        Contain only lowercase or uppercase letters, spaces or hyphens.
+                      </li>
                     )}
-                    {'startsAndEndsWithLetter' in errors.fullName.types && <li>Start and end wit letter.</li>}
+                    {'startsAndEndsWithLetter' in errors.fullName.types && (
+                      <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                    )}
                   </ul>
                 </>
               )}
