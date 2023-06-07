@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SearchBoxSlots, SearchBoxState } from './SearchBox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -12,23 +12,40 @@ export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
+const useRootClassName = makeResetStyles({});
 
-  // TODO add additional classes for different states and/or slots
+const useContentClassName = makeResetStyles({
+  boxSizing: 'border-box',
+  display: 'flex',
+  // special case styling for icons (most common case) to ensure they're centered vertically
+  // size: medium (default)
+  '> svg': { fontSize: '20px' },
 });
 
 /**
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(searchBoxClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(useRootClassName(), state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const contentClasses = [useContentClassName()];
+  if (state.contentBefore) {
+    state.contentBefore.className = mergeClasses(
+      searchBoxClassNames.contentBefore,
+      ...contentClasses,
+      state.contentBefore.className,
+    );
+  }
+  if (state.contentAfter) {
+    state.contentAfter.className = mergeClasses(
+      searchBoxClassNames.contentAfter,
+      ...contentClasses,
+      state.contentAfter.className,
+    );
+  }
+  if (state.dismiss) {
+    state.dismiss.className = mergeClasses(searchBoxClassNames.dismiss, ...contentClasses, state.dismiss.className);
+  }
 
   return state;
 };
