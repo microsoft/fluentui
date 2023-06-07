@@ -54,17 +54,7 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
     formValidation.subscribe(id, alert);
     return () => formValidation.unsubscribe(id, alert);
   }, [formValidation, alert, id]);
-  return (
-    <>
-      {isAlerting ? (
-        <div role="alert" id={`${id}Errors`}>
-          {children}
-        </div>
-      ) : (
-        <div id={`${id}Errors`}>{children}</div>
-      )}
-    </>
-  );
+  return <>{isAlerting ? <div role="alert">{children}</div> : <div>{children}</div>}</>;
 };
 
 const useFormValidation = (
@@ -238,7 +228,14 @@ const RegistrationFormInputsAccessibility = () => {
           <Controller
             name="nickname"
             control={control}
-            as={<Input type="text" id="nickname" aria-invalid={!!errors.nickname} aria-describedby="nicknameErrors" />}
+            as={
+              <Input
+                type="text"
+                id="nickname"
+                aria-invalid={!!errors.nickname}
+                aria-describedby="nicknameInvalidError nicknameLengthError nicknameOnlyNameCharsError nicknameStartsAndEndsWithLetterError"
+              />
+            }
             rules={{
               minLength: 2,
               maxLength: 20,
@@ -256,15 +253,19 @@ const RegistrationFormInputsAccessibility = () => {
           />
           {errors.nickname?.types && (
             <ValidationMessage id="nickname" formValidation={formValidation}>
-              <p>Nickname is invalid. It must:</p>
+              <p id="nicknameInvalidError">Nickname is invalid. It must:</p>
               <ul>
                 {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
-                  <li>Have between 2 and 20 characters.</li>
+                  <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
                 )}
                 {'onlyNameChars' in errors.nickname.types && (
-                  <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                  <li id="nicknameOnlyNameCharsError">
+                    Contain only lowercase or uppercase letters, spaces or hyphens.
+                  </li>
                 )}
-                {'startsAndEndsWithLetter' in errors.nickname.types && <li>Start and end wit letter.</li>}
+                {'startsAndEndsWithLetter' in errors.nickname.types && (
+                  <li id="nicknameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                )}
               </ul>
             </ValidationMessage>
           )}
@@ -279,7 +280,7 @@ const RegistrationFormInputsAccessibility = () => {
                 id="password"
                 aria-required="true"
                 aria-invalid={!!errors.password}
-                aria-describedby="passwordErrors"
+                aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordValidPasswordError"
               />
             }
             rules={{
@@ -307,20 +308,20 @@ const RegistrationFormInputsAccessibility = () => {
           {errors.password?.types && (
             <ValidationMessage id="password" formValidation={formValidation}>
               {'required' in errors.password.types ? (
-                <p>Password is required.</p>
+                <p id="passwordRequiredError">Password is required.</p>
               ) : (
                 <>
-                  <p>Password is invalid. It must:</p>
+                  <p id="passwordInvalidError">Password is invalid. It must:</p>
                   <ul>
                     {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
-                      <li>Have between 8 and 20 characters.</li>
+                      <li id="passwordLengthError">Have between 8 and 20 characters.</li>
                     )}
                     {('hasLowercaseLetter' in errors.password.types ||
                       'hasUppercaseLetter' in errors.password.types ||
                       'hasSpecialChar' in errors.password.types ||
                       'hasNumber' in errors.password.types ||
                       'noWhitespace' in errors.password.types) && (
-                      <li>
+                      <li id="passwordValidPasswordError">
                         Contain at least one lower case letter, upper case letter, number, special character and no
                         spaces.
                       </li>
@@ -342,7 +343,7 @@ const RegistrationFormInputsAccessibility = () => {
                 placeholder="E.g. 3/21/1995"
                 aria-required="true"
                 aria-invalid={!!errors.birthDate}
-                aria-describedby="birthDateErrors"
+                aria-describedby="birthDateRequiredError birthDateInvalidError birthDateValidDateError"
               />
             }
             rules={{
@@ -361,11 +362,15 @@ const RegistrationFormInputsAccessibility = () => {
           {errors.birthDate?.types && (
             <ValidationMessage id="birthDate" formValidation={formValidation}>
               {'required' in errors.birthDate.types ? (
-                <p>Birth date is required.</p>
+                <p id="birthDateRequiredError">Birth date is required.</p>
               ) : (
                 <>
-                  <p>Birth date is invalid. It must:</p>
-                  <ul>{'validDate' in errors.birthDate.types && <li>Be in the MM/DD/YYYY format.</li>}</ul>
+                  <p id="birthDateInvalidError">Birth date is invalid. It must:</p>
+                  <ul>
+                    {'validDate' in errors.birthDate.types && (
+                      <li id="birthDateValidDateError">Be in the MM/DD/YYYY format.</li>
+                    )}
+                  </ul>
                 </>
               )}
             </ValidationMessage>
@@ -384,7 +389,7 @@ const RegistrationFormInputsAccessibility = () => {
                 disabled={!isSendNewsletter}
                 aria-required={isSendNewsletter}
                 aria-invalid={!!errors.email}
-                aria-describedby="emailErrors"
+                aria-describedby="emailRequiredError emailInvalidError emailValidEmailError"
               />
             }
             rules={{
@@ -403,12 +408,14 @@ const RegistrationFormInputsAccessibility = () => {
           {errors.email?.types && (
             <ValidationMessage id="email" formValidation={formValidation}>
               {'required' in errors.email.types ? (
-                <p>E-mail is required.</p>
+                <p id="emailRequiredError">E-mail is required.</p>
               ) : (
                 <>
-                  <p>E-mail is invalid. It must:</p>
+                  <p id="emailInvalidError">E-mail is invalid. It must:</p>
                   <ul>
-                    {'validEmail' in errors.email.types && <li>Be a valid e-mail address, like name@example.com.</li>}
+                    {'validEmail' in errors.email.types && (
+                      <li id="emailValidEmailError">Be a valid e-mail address, like name@example.com.</li>
+                    )}
                   </ul>
                 </>
               )}
