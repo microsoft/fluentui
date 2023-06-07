@@ -4,7 +4,7 @@ The `Drawer` component represents a drawer that can be opened and closed, typica
 
 ## Design Spec
 
-Link to Drawer Design Spec in Figma: [Link](https://www.figma.com/)
+Link to Drawer Design Spec in Figma: [Link](<https://www.figma.com/file/V2sDk36xZfp8tFhb53DfsT/Drawer-(Overlay-%26-Inline)?type=design&viewport=2606%2C1404%2C0.23&t=iNWjZIpDljA1EshA-0>)
 
 ## Engineering Spec
 
@@ -193,48 +193,5 @@ The Fluent WC3 Drawer extends `FASTElement`
   - The `aria-describedby` attribute should be used to associate the drawer with an element that provides a description of its purpose or content.
 
 - `aria-labelledby`
+
   - The `aria-labelledby` attribute should be used to associate the drawer with an element that serves as its accessible label or title.
-
-## Drawer Accessibility Specification
-
-Focus Management: When the drawer is opened, the focus should move to the drawer, making it easier for keyboard and screen reader users to interact with the drawer content immediately. On closing the drawer, the focus should return to the element that opened the drawer.
-
-Keyboard Interaction:
-
-- The drawer should be dismissible via the Escape key, which should close the drawer.
-- Tabbing should not move focus outside the opened drawer, implementing a keyboard trap.
-
-State Announcement: The state (open or closed) of the drawer should be indicated with the `aria-expanded` state set on the controlling element (the button that triggers the drawer's opening and closing).
-
-## DrawerToolbar Accessibility Specification
-
-Role: The toolbar should have a role of toolbar to identify the collection of interactive elements.
-
-Labeling: If not evident from the context, the toolbar should have a label associated with it using `aria-label` or `aria-labelledby`.
-
-Keyboard Interaction:
-
-- Interactive elements within the toolbar should be navigable via the Tab key or Arrow keys as per the toolbar design pattern.
-- The optional close button should be accessible via keyboard and should close the drawer when activated.
-
-State Announcement: If the visibility of the close button changes, it should be communicated to assistive technology using `aria-hidden`.
-
-Focus Management: If the toolbar is the first element inside the drawer, it will receive focus first when the drawer is opened, which could be the desired behavior.
-
-Semantic Markup: For the slot intended for icon buttons, it's important to advise developers to use buttons with appropriate accessible names. If the names are not visually present, they should use `aria-label` or `aria-labelledby` to label buttons.
-
-These considerations follow WCAG 2.1 and ARIA Authoring Practices 1.1. Each aspect should be tested using both automated accessibility tests and manual testing with various assistive technologies, including keyboard-only navigation, screen readers, and magnification.
-
-Remember that accessibility should always include usability testing with individuals who use these assistive technologies for a truly inclusive design.
-
-# Open Questions
-
-Should the "side bar toggles" use the existing subtle icon only buttons or do we need a custom solution? ( green selected indicator )
-inline drawer + overlay drawer
-when only one option selected dont show sidebar
-No overflow button needed for first iteration.
-Pane default width 320px, min width 180px
-button slots and container pane
-component switcher
-When only one pane is active pane switcher isnt there
-static v.s dynamic

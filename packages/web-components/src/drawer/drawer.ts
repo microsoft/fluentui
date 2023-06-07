@@ -194,8 +194,17 @@ export class Drawer extends FASTElement {
         }
       }
       this.updateTrapFocus();
-      this.setDrawerWidth();
     });
+  }
+
+  /**
+   * Handles changes to the `controlSize` property.
+   * @param prev - The previous value of `controlSize`.
+   * @param next - The new value of `controlSize`.
+   * @internal
+   */
+  public controlSizeChanged(prev: DrawerSize | number | undefined, next: DrawerSize | number | undefined): void {
+    this.setDrawerWidth();
   }
 
   /**
@@ -360,6 +369,7 @@ export class Drawer extends FASTElement {
     }
     return bounds;
   };
+
   /**
    * Focuses the first element within the drawer.
    * @internal
@@ -372,6 +382,7 @@ export class Drawer extends FASTElement {
       focusableElement.focus();
     }
   }
+
   /**
    * Determines whether the current focused element should force focus within the drawer.
    * @param currentFocusElement - The current focused element.
@@ -406,10 +417,11 @@ export class Drawer extends FASTElement {
           this.focusFirstElement();
         }
       });
-    } else if (!shouldTrapFocus) {
+    } else {
       document.removeEventListener('focusin', this.handleDocumentFocus);
     }
   }
+
   /**
    * Reduces the tabbable items within an element.
    * @param elements - An array to store the tabbable elements.
@@ -417,7 +429,6 @@ export class Drawer extends FASTElement {
    * @returns An array of tabbable elements.
    * @internal
    */
-
   private static reduceTabbableItems(elements: HTMLElement[], element: Element): HTMLElement[] {
     if (element.getAttribute('tabindex') === '-1') {
       return elements;
@@ -447,6 +458,7 @@ export class Drawer extends FASTElement {
   private static isFocusableFastElement(element: FASTElement | Element): boolean {
     return !!(element as FASTElement).$fastController?.definition.shadowOptions?.delegatesFocus;
   }
+
   /**
    * Checks if a FAST Element's shadow DOM has any tabbable elements.
    * @param element - The FAST Element with shadow DOM to check.
