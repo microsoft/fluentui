@@ -19,7 +19,6 @@ export const ToasterLimit = () => {
         <SpinButton
           value={limit}
           onChange={(e, data) => {
-            console.log(data.value);
             if (data.value) {
               setLimit(data.value);
             } else if (data.displayValue !== undefined) {

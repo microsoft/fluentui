@@ -29,7 +29,6 @@ export const CustomTimeout = () => {
         <SpinButton
           value={timeout}
           onChange={(e, data) => {
-            console.log(data.value);
             if (data.value) {
               setDismissTimeout(data.value);
             } else if (data.displayValue !== undefined) {

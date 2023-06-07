@@ -17,7 +17,7 @@ export const DismissAll = () => {
     <>
       <Toaster toasterId={toasterId} />
       <Button onClick={notify}>Make toast</Button>
-      <Button onClick={dismissAll}>Dismiss all</Button>
+      <Button onClick={dismissAll}>Dismiss all toasts</Button>
     </>
   );
 };

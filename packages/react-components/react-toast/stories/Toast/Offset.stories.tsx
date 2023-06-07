@@ -51,7 +51,6 @@ export const Offset = () => {
           <SpinButton
             value={horizontal}
             onChange={(e, data) => {
-              console.log(data.value);
               if (data.value) {
                 setHorizontal(data.value);
               } else if (data.displayValue !== undefined) {
@@ -67,7 +66,6 @@ export const Offset = () => {
           <SpinButton
             value={vertical}
             onChange={(e, data) => {
-              console.log(data.value);
               if (data.value) {
                 setVertical(data.value);
               } else if (data.displayValue !== undefined) {
