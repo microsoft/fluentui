@@ -8,9 +8,13 @@ const useStyles = makeStyles({
   },
 });
 
-const today = new Date('05/24/2023');
+const today = new Date();
 const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
+
+const onFormatDate = (date?: Date): string => {
+  return `${date?.getMonth()}/${date?.getDay()}/${date?.getFullYear()}`;
+};
 
 export const DateBoundaries = () => {
   const styles = useStyles();
@@ -23,6 +27,7 @@ export const DateBoundaries = () => {
         minDate={minDate}
         maxDate={maxDate}
         placeholder="Select a date..."
+        formatDate={onFormatDate}
         allowTextInput
         className={styles.inputControl}
       />
