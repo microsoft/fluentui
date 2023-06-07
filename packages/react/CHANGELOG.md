@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 06 Jun 2023 07:35:19 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Jun 2023 07:33:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.1)
+
+Wed, 07 Jun 2023 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.0..@fluentui/react_v8.110.1)
+
+### Patches
+
+- fix: Layer propagates focus visible classname to its contents ([PR #28157](https://github.com/microsoft/fluentui/pull/28157) by sarah.higley@microsoft.com)
 
 ## [8.110.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.0)
 
