@@ -50,7 +50,7 @@ type OverflowMenuItemProps = {
 };
 
 const useMenuItemStyles = makeStyles({
-  menuItem: shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
+  menuItem: shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalXS),
   tag: {
     backgroundColor: 'transparent',
     ...shorthands.borderColor('transparent'),
@@ -115,7 +115,7 @@ const useStyles = makeStyles({
     height: 'fit-content',
     minWidth: '150px',
     resize: 'horizontal',
-    width: '600px',
+    width: '100%',
   },
   tagGroup: {
     display: 'flex', // TagGroup is inline-flex by default, but we want it to be same width as the container
