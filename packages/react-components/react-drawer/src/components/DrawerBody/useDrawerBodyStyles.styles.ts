@@ -17,6 +17,8 @@ const useStyles = makeStyles({
     ...shorthands.overflow('auto'),
     ...shorthands.flex(1),
 
+    alignSelf: 'stretch',
+
     // A "good hack" to display top and bottom borders based on the scroll position
     backgroundImage: `linear-gradient(to top, ${tokens.colorNeutralBackground1}, ${tokens.colorNeutralBackground1}),
     linear-gradient(to top, ${tokens.colorNeutralBackground1}, ${tokens.colorNeutralBackground1}),

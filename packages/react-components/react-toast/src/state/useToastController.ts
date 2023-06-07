@@ -6,11 +6,11 @@ import {
   dismissAllToasts as dismissAllToastsVanilla,
   updateToast as updateToastVanilla,
 } from './vanilla';
-import { ToastId, ToastOptions, ToasterId, UpdateToastEventDetail } from './types';
+import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
 
 const noop = () => undefined;
 
-export function useToastController() {
+export function useToastController(toasterId?: ToasterId) {
   const { targetDocument } = useFluent();
 
   return React.useMemo(() => {
@@ -24,18 +24,18 @@ export function useToastController() {
     }
 
     return {
-      dispatchToast: (content: React.ReactNode, options?: Partial<ToastOptions>) => {
-        dispatchToastVanilla(content, options, targetDocument);
+      dispatchToast: (content: React.ReactNode, options?: DispatchToastOptions) => {
+        dispatchToastVanilla(content, { ...options, toasterId, data: { root: options?.root } }, targetDocument);
       },
-      dismissToast: (toastId: ToastId, toasterId?: ToasterId) => {
+      dismissToast: (toastId: ToastId) => {
         dismissToastVanilla(toastId, toasterId, targetDocument);
       },
-      dismissAllToasts: (toasterId?: ToasterId) => {
+      dismissAllToasts: () => {
         dismissAllToastsVanilla(toasterId, targetDocument);
       },
-      updateToast: (options: UpdateToastEventDetail) => {
-        updateToastVanilla(options, targetDocument);
+      updateToast: (options: UpdateToastOptions) => {
+        updateToastVanilla({ ...options, data: { root: options.root }, toasterId }, targetDocument);
       },
     };
-  }, [targetDocument]);
+  }, [targetDocument, toasterId]);
 }

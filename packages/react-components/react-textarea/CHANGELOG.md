@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Fri, 12 May 2023 20:27:55 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 06:46:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.16)
+
+Wed, 31 May 2023 06:46:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.3.15..@fluentui/react-textarea_v9.3.16)
+
+### Patches
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-field to v9.1.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+
+## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.15)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.3.14..@fluentui/react-textarea_v9.3.15)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.5 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.5 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+
+## [9.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.14)
+
+Wed, 24 May 2023 20:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.3.13..@fluentui/react-textarea_v9.3.14)
+
+### Patches
+
+- fix: Move disabled styles in textarea selector to the textarea styles. ([PR #27920](https://github.com/microsoft/fluentui/pull/27920) by esteban.230@hotmail.com)
+- Bump @fluentui/react-field to v9.1.4 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.5.0 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+
+## [9.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.13)
+
+Thu, 18 May 2023 00:39:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.3.12..@fluentui/react-textarea_v9.3.13)
+
+### Patches
+
+- fix: When Textarea is disabled, make the text gray and add an outline for the filled appearance. ([PR #27837](https://github.com/microsoft/fluentui/pull/27837) by esteban.230@hotmail.com)
+- Bump @fluentui/react-field to v9.1.3 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
 
 ## [9.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.12)
 

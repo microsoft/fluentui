@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { Toaster, useToastController } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const PauseOnWindowBlur = () => {
   const toasterId = useId('toaster');
-  const { dispatchToast } = useToastController();
-  const notify = () => dispatchToast('Click on another window!', { pauseOnWindowBlur: true, toasterId });
+  const { dispatchToast } = useToastController(toasterId);
+  const notify = () =>
+    dispatchToast(
+      <Toast>
+        <ToastTitle intent="info">Click on another window!</ToastTitle>
+      </Toast>,
+      { pauseOnWindowBlur: true },
+    );
 
   return (
     <>

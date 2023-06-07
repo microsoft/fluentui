@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-const today = new Date(Date.now());
+const today = new Date('05/24/2023');
 const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
 
