@@ -103,6 +103,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
   private _highlightedCircleId: string;
+  private _enableComputationOptimization: boolean;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -140,6 +141,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
+    this._enableComputationOptimization = true;
   }
 
   public componentDidUpdate() {
@@ -385,7 +387,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _createDataSet = (points: ILineChartPoints[]) => {
-    if (this.props.enablePerfOptimization) {
+    if (this.props.enablePerfOptimization && this._enableComputationOptimization) {
       const allChartPoints: ILineChartDataPoint[] = [];
       const dataSet: IAreaChartDataSetPoint[] = [];
       const colors: string[] = [];
