@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbButton, BreadcrumbDivider } from '@fluentui/react-breadcrumb';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular, GridDots20Regular } from '@fluentui/react-icons';
-import { ButtonProps } from '@fluentui/react-components';
+import { ButtonProps } from '@fluentui/react-button';
 
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
@@ -21,16 +21,12 @@ const buttonItems: Item[] = [
   {
     key: 0,
     item: 'Item 0',
-    buttonProps: {
-      onClick: () => console.log('item 0 was clicked'),
-    },
   },
   {
     key: 1,
     buttonProps: {
       icon: <CalendarMonth />,
       'aria-label': 'Item 1',
-      onClick: () => console.log('item 1 was clicked'),
     },
   },
   {
@@ -38,15 +34,11 @@ const buttonItems: Item[] = [
     item: 'Item 2',
     buttonProps: {
       icon: <GridDots20Regular />,
-      onClick: () => console.log('item 2 was clicked'),
     },
   },
   {
     key: 3,
     item: 'Item 3',
-    buttonProps: {
-      onClick: () => console.log('item 3 was clicked'),
-    },
   },
   {
     key: 4,
@@ -54,15 +46,11 @@ const buttonItems: Item[] = [
     buttonProps: {
       icon: <CalendarMonth />,
       iconPosition: 'after',
-      onClick: () => console.log('item 4 was clicked'),
     },
   },
   {
     key: 5,
     item: 'Item 5',
-    buttonProps: {
-      onClick: () => console.log('item 5 was clicked'),
-    },
   },
 ];
 
@@ -92,11 +80,6 @@ export const BreadcrumbFocusMode = () => (
     <h2>`arrow`</h2>
     Navigation using arrow keys
     <Breadcrumb aria-label="Breadcrumb with `arrow` focusMode" focusMode="arrow">
-      {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
-    </Breadcrumb>
-    <h2>`off`</h2>
-    Breadcrumb is not focusable
-    <Breadcrumb aria-label="Breadcrumb with `off` focusMode" focusMode="off">
       {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
     </Breadcrumb>
   </>
