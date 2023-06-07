@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
@@ -17,6 +17,7 @@ export const usePopoverSurface_unstable = (
   props: PopoverSurfaceProps,
   ref: React.Ref<HTMLDivElement>,
 ): PopoverSurfaceState => {
+  const id = 'popover-' + useId();
   const contentRef = usePopoverContext_unstable(context => context.contentRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
@@ -45,10 +46,13 @@ export const usePopoverSurface_unstable = (
       root: 'div',
     },
     root: getNativeElementProps('div', {
+      id,
+      'aria-labelledby': id,
       ref: useMergedRefs(ref, contentRef),
       role: trapFocus ? 'dialog' : 'group',
       'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
+      tabIndex: '-1',
       ...props,
     }),
   };
