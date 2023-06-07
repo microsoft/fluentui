@@ -86,7 +86,6 @@ export const getDefaultChoiceGroupOptionStyles = (
       color: getChoiceGroupTextColor(props),
       '.ms-ChoiceFieldLabel': {
         color: getChoiceGroupTextColor(props),
-        paddingLeft: '32px',
       },
       '&:hover .ms-ChoiceFieldLabel': {
         color: getTextHoverColor(props),
