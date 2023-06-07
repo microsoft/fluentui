@@ -52,7 +52,10 @@ export {
   useVirtualizerScrollViewDynamic_unstable,
   renderVirtualizerScrollViewDynamic_unstable,
   useVirtualizerScrollViewDynamicStyles_unstable,
+  scrollToItemDynamic,
+  scrollToItemStatic,
 } from '@fluentui/react-virtualizer';
+
 export type {
   VirtualizerProps,
   VirtualizerState,
@@ -68,6 +71,9 @@ export type {
   VirtualizerMeasureDynamicProps,
   VirtualizerMeasureProps,
   ResizeCallbackWithRef,
+  ScrollToInterface,
+  ScrollToItemDynamicParams,
+  ScrollToItemStaticParams,
 } from '@fluentui/react-virtualizer';
 
 export {
