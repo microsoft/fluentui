@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: add value to appearance prop of ProgressBar",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

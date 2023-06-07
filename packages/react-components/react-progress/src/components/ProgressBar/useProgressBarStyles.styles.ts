@@ -92,7 +92,13 @@ const useBarStyles = makeStyles({
   brand: {
     backgroundColor: tokens.colorCompoundBrandBackground,
   },
-
+  striped: {
+    backgroundImage: `repeating-linear-gradient(
+      -45deg,
+      ${tokens.colorBrandBackground},
+      ${tokens.colorBrandBackgroundHover} 4px
+    )`,
+  },
   error: {
     backgroundColor: tokens.colorPaletteRedBackground3,
   },
