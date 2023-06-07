@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, ToastLayout } from '@fluentui/react-toast';
+import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
@@ -10,17 +10,17 @@ export const UpdateToast = () => {
   const { dispatchToast, updateToast } = useToastController(toasterId);
   const notify = () =>
     dispatchToast(
-      <ToastLayout>
+      <Toast>
         <ToastTitle intent="warning">This toast never closes</ToastTitle>
-      </ToastLayout>,
+      </Toast>,
       { toastId, timeout: -1 },
     );
   const update = () =>
     updateToast({
       content: (
-        <ToastLayout>
+        <Toast>
           <ToastTitle intent="success">This toast will close soon</ToastTitle>
-        </ToastLayout>
+        </Toast>
       ),
       toastId,
       timeout: 2000,

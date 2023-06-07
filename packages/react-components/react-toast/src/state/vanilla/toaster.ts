@@ -48,7 +48,7 @@ export class Toaster {
       priority: 0,
       pauseOnHover: false,
       pauseOnWindowBlur: false,
-      position: 'bottom-right',
+      position: 'bottom-end',
       timeout: 3000,
     };
     this.queue = createPriorityQueue<Toast>((a, b) => {

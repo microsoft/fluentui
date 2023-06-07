@@ -84,9 +84,16 @@ export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement
   onCellFocused?: (id?: string, color?: string, event?: React.FormEvent<HTMLButtonElement>) => void;
 
   /**
-   * Custom render function for the color cell
+   * Custom render function for the color cell.
+   * This can replace the entire button element, including the default focus and hover states.
    */
   onRenderColorCell?: IRenderFunction<IColorCellProps>;
+
+  /**
+   * Custom render function for inner content of the color cell.
+   * This will retain the cell's default button behavior and overrides just the inner content.
+   */
+  onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
 
   /**
    * Whether the control is disabled.
