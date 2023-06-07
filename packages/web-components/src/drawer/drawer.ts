@@ -10,6 +10,8 @@ export interface OpenEvent {
 }
 
 export class Drawer extends FASTElement {
+  private hasInteracted: boolean = false;
+
   public connectedCallback(): void {
     super.connectedCallback();
     document.addEventListener('keydown', this.handleDocumentKeydown);
@@ -23,6 +25,7 @@ export class Drawer extends FASTElement {
   }
 
   private _drawer?: HTMLElement;
+
   /**
    * Determines whether the focus should be trapped within the Drawer when it is open.
    * @public
@@ -30,7 +33,7 @@ export class Drawer extends FASTElement {
    * HTML Attribute: no-trap-focus
    */
   @attr({ attribute: 'trap-focus', mode: 'boolean' })
-  public trapFocus: boolean = true;
+  public trapFocus: boolean = false;
 
   /**
    * The drawer element.
@@ -51,16 +54,52 @@ export class Drawer extends FASTElement {
   public open: boolean = false;
 
   /**
+   * Determines whether the drawer should be displayed as modal or non-modal.
+   * When in modal mode, an overlay is applied over the rest of the view.
+   * @public
+   * @remarks
+   * HTML Attribute: modal
+   */
+  @attr({ mode: 'boolean' })
+  public modal: boolean = false;
+
+  /**
    * Sets the position of the drawer (left/right).
    * @public
    * @remarks
    * HTML Attribute: position
+   * @defaultValue right
    */
   @attr
   public position?: DrawerPosition;
 
+  /**
+   * Sets the control size of the drawer (small/medium/large).
+   * @public
+   * @remarks
+   * HTML Attribute: control-size
+   * @defaultValue medium
+   */
   @attr({ attribute: 'control-size' })
   public controlSize?: DrawerSize | number = DrawerSize.medium;
+
+  /**
+   * Sets the aria-labelledby attribute of the drawer.
+   * @public
+   * @remarks
+   * HTML Attribute: aria-labelledby
+   */
+  @attr({ attribute: 'aria-labelledby' })
+  public ariaLabelledby?: string;
+
+  /**
+   * Sets the aria-describedby attribute of the drawer.
+   * @public
+   * @remarks
+   * HTML Attribute: aria-describedby
+   */
+  @attr({ attribute: 'aria-describedby' })
+  public ariaDescribedby?: string;
 
   /**
    * Indicates the presence of the toolbar.
@@ -108,6 +147,11 @@ export class Drawer extends FASTElement {
    * @public
    */
   public toggleDrawer(): void {
+    if (!this.open && !this.hasInteracted) {
+      // Only update the hasInteracted flag if the drawer is closed and hasn't been interacted with yet
+      this.hasInteracted = true;
+    }
+
     if (!this.open) {
       this.previousActiveElement = document.activeElement as HTMLElement;
     } else if (this.previousActiveElement) {
@@ -136,10 +180,12 @@ export class Drawer extends FASTElement {
       });
       this.dispatchEvent(event);
     }
-
     Updates.enqueue(() => {
       if (next) {
-        this.focusTargetElement();
+        // Focus on open if the drawer has been interacted with
+        if (this.hasInteracted) {
+          this.focusTargetElement();
+        }
       } else {
         // Return focus to element that opened the drawer
         const trigger = document.activeElement;

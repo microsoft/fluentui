@@ -1,6 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  colorBackgroundOverlay,
   colorNeutralBackground1,
   colorNeutralForeground1,
   colorTransparentStroke,
@@ -15,6 +16,7 @@ import {
   lineHeightBase300,
   lineHeightBase500,
   shadow64,
+  spacingHorizontalL,
   spacingHorizontalS,
   spacingHorizontalXXL,
   spacingVerticalL,
@@ -37,15 +39,13 @@ export const styles = css`
     height: 100%;
     z-index: 1;
     overflow-x: hidden;
+    overflow-y: auto;
     width: 0;
-    transition-duration: ${durationNormal};
-    transition-timing-function: ${curveDecelerateMid};
-    transition-property: width;
-    font-family: ${fontFamilyBase};
+    transition: width ${durationNormal} ${curveDecelerateMid};
     font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    background: ${colorNeutralBackground1};
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: ${shadow64};
@@ -53,14 +53,26 @@ export const styles = css`
 
   :host([open]) {
     width: var(--drawer-width);
-    transition-duration: ${durationNormal};
-    transition-timing-function: ${curveAccelerateMid};
-    transition-property: width;
-    width: var(--drawer-width);
+    transition: width ${durationNormal} ${curveAccelerateMid};
   }
 
-  ::slotted([slot='header']) {
+  ::slotted([slot='header']),
+  ::slotted([slot='toolbar']) {
     width: 100%;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${colorBackgroundOverlay};
+  }
+
+  .root {
+    width: 100%;
+    position: relative;
   }
 
   .header {
@@ -69,10 +81,9 @@ export const styles = css`
     flex-direction: row;
     align-items: center;
     font-size: ${fontSizeBase500};
-    font-family: ${fontFamilyBase};
-    font-weight: ${fontWeightSemibold};
     line-height: ${lineHeightBase500};
-    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL} ${spacingVerticalS};
+    font-weight: ${fontWeightSemibold};
+    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
   }
 
   .close {
@@ -85,7 +96,7 @@ export const styles = css`
   }
 
   .actions {
-    padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }
 
   .drawer {
@@ -95,10 +106,27 @@ export const styles = css`
     height: 100%;
     width: 100%;
     position: relative;
+    background: ${colorNeutralBackground1};
+    z-index: 1;
+  }
+
+  :host([toolbar]) .drawer {
+    grid-template-rows: 56px 34px auto 72px;
+  }
+
+  :host([toolbar]) .header {
+    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
+  }
+
+  .toolbar {
+    padding: ${spacingVerticalL} ${spacingHorizontalL};
+    height: 32px;
+    display: flex;
+    align-items: center;
   }
 
   .content {
-    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }
 
   ::slotted([slot='actions']) {
