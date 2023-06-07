@@ -81,6 +81,10 @@ const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaratio
  * @returns Duration in milliseconds
  */
 function toMs(s: string): number {
+  if (s.includes('auto')) {
+    return 0;
+  }
+
   if (s.includes('ms')) {
     return parseFloat(s);
   }
@@ -109,14 +113,20 @@ const getMaxCSSDuration = (durations: string[]) => {
 const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
   const getProp = (prop: string) => (computedStyle.getPropertyValue(prop) || '').split(',');
 
-  const durations = getProp('transition-duration');
-  const delays = getProp('transition-delay');
+  const transitionDuration = getProp('transition-duration');
+  const transitionDelay = getProp('transition-delay');
+  const animationDuration = getProp('animation-duration');
+  const animationDelay = getProp('animation-delay');
+  const totalTransitionDuration = getMaxCSSDuration(transitionDuration) + getMaxCSSDuration(transitionDelay);
+  const totalAnimationDuration = getMaxCSSDuration(animationDuration) + getMaxCSSDuration(animationDelay);
 
-  const totalDuration = getMaxCSSDuration(durations) + getMaxCSSDuration(delays);
+  const hasAnimation = totalAnimationDuration > 0;
+  const hasTransition = totalTransitionDuration > 0;
 
   return {
-    duration: totalDuration,
-    hasTransition: totalDuration > 0,
+    duration: Math.max(totalTransitionDuration, totalAnimationDuration),
+    hasAnimation,
+    hasTransition,
   };
 };
 
@@ -181,7 +191,7 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
     onExited();
   }, [onExited, onFinishedTransition]);
 
-  const onTransitionCanceled = React.useCallback(
+  const onMotionCanceled = React.useCallback(
     ({ target }) => {
       if (notCurrentElement(target)) {
         return;
@@ -201,22 +211,26 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
   }, [present]);
 
   React.useEffect(() => {
-    currentElement?.addEventListener('transitioncancel', onTransitionCanceled);
+    currentElement?.addEventListener('transitioncancel', onMotionCanceled);
+    currentElement?.addEventListener('animationcancel', onMotionCanceled);
 
-    return () => currentElement?.removeEventListener('transitioncancel', onTransitionCanceled);
-  }, [currentElement, onTransitionCanceled]);
+    return () => {
+      currentElement?.removeEventListener('transitioncancel', onMotionCanceled);
+      currentElement?.removeEventListener('animationcancel', onMotionCanceled);
+    };
+  }, [currentElement, onMotionCanceled]);
 
   React.useEffect(() => {
     if (!currentElement) {
       return;
     }
 
-    const { duration, hasTransition } = getTransitionInfo(computedStylesRef.current);
+    const { duration, hasTransition, hasAnimation } = getTransitionInfo(computedStylesRef.current);
 
     const animationFrame = requestAnimationFrame(() => {
       setVisible(present);
 
-      if (!hasTransition) {
+      if (!hasTransition && !hasAnimation) {
         setShouldRender(present);
       } else {
         if (present) {

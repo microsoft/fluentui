@@ -41,9 +41,6 @@ const useStyles = makeStyles({
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     willChange: 'opacity',
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.01ms',
-    },
   },
   backdropVisible: {
     opacity: 1,
@@ -73,6 +70,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     backdrop.className = mergeClasses(
       backdrop.className,
       styles.backdrop,
+      baseStyles.reducedMotion,
       state.backdropVisible && styles.backdropVisible,
     );
   }

@@ -29,8 +29,12 @@ export const useDrawerBaseStyles = makeStyles({
     justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
     transitionDuration: tokens.durationNormal,
+  },
+
+  /* Reduced motion */
+  reducedMotion: {
     '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.01ms',
+      transitionDuration: '0.001ms',
     },
   },
 
@@ -75,6 +79,7 @@ export const getDrawerBaseClassNames = (
   baseStyles: ReturnType<typeof useDrawerBaseStyles>,
 ) => {
   return mergeClasses(
+    baseStyles.reducedMotion,
     position && baseStyles[position],
     size && baseStyles[size],
     entering && baseStyles.entering,

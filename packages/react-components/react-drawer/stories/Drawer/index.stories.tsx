@@ -23,6 +23,7 @@ export { WithNavigation } from './DrawerWithNavigation.stories';
 export { WithScroll } from './DrawerWithScroll.stories';
 export { DisabledTransition } from './DrawerDisabledTransition.stories';
 export { CustomTransition } from './DrawerCustomTransition.stories';
+export { CustomAnimation } from './DrawerCustomAnimation.stories';
 export { AlwaysOpen } from './DrawerAlwaysOpen.stories';
 export { PreventClose } from './DrawerPreventClose.stories';
 export { Responsive } from './DrawerResponsive.stories';
