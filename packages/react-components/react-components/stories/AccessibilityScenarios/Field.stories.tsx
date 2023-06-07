@@ -204,7 +204,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                       : {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
-                            <div id="fullNameErrors">
+                            <>
                               {'required' in errors.fullName.types ? (
                                 <p>Full name is required.</p>
                               ) : (
@@ -223,7 +223,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                                   </ul>
                                 </>
                               )}
-                            </div>
+                            </>
                           ),
                         }
                   }
@@ -265,7 +265,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                       : {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
-                            <div id="nicknameErrors">
+                            <>
                               <p>Nickname is invalid. It must:</p>
                               <ul>
                                 {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
@@ -278,7 +278,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                                   <li>Start and end wit letter.</li>
                                 )}
                               </ul>
-                            </div>
+                            </>
                           ),
                         }
                   }
@@ -319,7 +319,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                       : {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
-                            <div id="passwordErrors">
+                            <>
                               {'required' in errors.password.types ? (
                                 <p>Password is required.</p>
                               ) : (
@@ -342,7 +342,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                                   </ul>
                                 </>
                               )}
-                            </div>
+                            </>
                           ),
                         }
                   }
@@ -389,7 +389,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                       : {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
-                            <div id="birthDateErrors">
+                            <>
                               {'required' in errors.birthDate.types ? (
                                 <p>Birth date is required.</p>
                               ) : (
@@ -400,7 +400,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                                   </ul>
                                 </>
                               )}
-                            </div>
+                            </>
                           ),
                         }
                   }
@@ -452,7 +452,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                       : {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
-                            <div id="emailErrors">
+                            <>
                               {'required' in errors.email.types ? (
                                 <p>E-mail is required.</p>
                               ) : (
@@ -465,7 +465,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                                   </ul>
                                 </>
                               )}
-                            </div>
+                            </>
                           ),
                         }
                   }
@@ -508,11 +508,11 @@ const TicketOrderFormFieldsAccessibility = () => {
                       : {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
-                            <div id="acceptTermsErrors">
+                            <>
                               {'required' in errors.acceptTerms.types && (
                                 <p>You have to accept the terms and conditions in order to order your ticket.</p>
                               )}
-                            </div>
+                            </>
                           ),
                         }
                   }
