@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import {
+  makeStyles,
+  shorthands,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  useId,
+} from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 const useStyles = makeStyles({
   container: {
@@ -27,6 +35,7 @@ export const AnchorToCustomTarget = () => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const styles = useStyles();
+  const id = useId();
 
   React.useEffect(() => {
     if (buttonRef.current) {
@@ -41,7 +50,7 @@ export const AnchorToCustomTarget = () => {
           <Button>Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface id={id} aria-labelledby={id}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

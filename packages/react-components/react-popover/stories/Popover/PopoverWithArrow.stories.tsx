@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface, useId } from '@fluentui/react-components';
+
+const id = useId();
 
 const useStyles = makeStyles({
   contentHeader: {
@@ -24,7 +26,7 @@ export const WithArrow = () => (
       <Button>Popover trigger</Button>
     </PopoverTrigger>
 
-    <PopoverSurface>
+    <PopoverSurface id={id} aria-labelledby={id}>
       <ExampleContent />
     </PopoverSurface>
   </Popover>

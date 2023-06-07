@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, useId } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -20,6 +20,7 @@ const ExampleContent = () => {
 };
 
 export const ControllingOpenAndClose = () => {
+  const id = useId();
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
 
@@ -33,7 +34,7 @@ export const ControllingOpenAndClose = () => {
         <PopoverTrigger disableButtonEnhancement>
           <Button>Controlled trigger</Button>
         </PopoverTrigger>
-        <PopoverSurface>
+        <PopoverSurface id={id} aria-labelledby={id}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
