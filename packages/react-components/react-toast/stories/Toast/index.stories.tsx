@@ -1,3 +1,4 @@
+import { Toast, ToastTitle, ToastBody, ToastFooter, Toaster } from '@fluentui/react-toast';
 export { Default } from './Default.stories';
 export { DefaultToastOptions } from './DefaultToastOptions.stories';
 export { CustomTimeout } from './CustomTimeout.stories';
@@ -17,6 +18,13 @@ import descriptionMd from './ToastDescription.md';
 
 export default {
   title: 'Preview Components/Toast',
+  component: Toast,
+  subcomponents: {
+    ToastTitle,
+    ToastBody,
+    ToastFooter,
+    Toaster,
+  },
   parameters: {
     docs: {
       description: {

@@ -1,11 +1,40 @@
 import * as React from 'react';
 import { ToastPosition, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, SpinButton } from '@fluentui/react-components';
+import { useId, Button, Field, SpinButton, RadioGroup, Radio, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  playground: {
+    display: 'grid',
+    gridTemplateColumns: '25% 75%',
+    columnGap: '20px',
+    rowGap: '20px',
+  },
+
+  horizontal: {
+    gridColumnEnd: 2,
+  },
+
+  vertical: {
+    gridRowStart: 2,
+    gridColumnEnd: 2,
+  },
+
+  positions: {
+    gridRowStart: 1,
+    gridRowEnd: 3,
+    gridColumnStart: 2,
+  },
+});
 
 export const Offset = () => {
+  const styles = useStyles();
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const notify = (position: ToastPosition) =>
+  const [horizontal, setHorizontal] = React.useState(10);
+  const [vertical, setVertical] = React.useState(10);
+  const [position, setPosition] = React.useState<ToastPosition>('bottom-end');
+
+  const notify = () =>
     dispatchToast(
       <Toast>
         <ToastTitle intent="info">
@@ -14,48 +43,53 @@ export const Offset = () => {
       </Toast>,
       { position },
     );
-  const [horizontal, setHorizontal] = React.useState(10);
-  const [vertical, setVertical] = React.useState(10);
 
   return (
     <>
-      <Field label="Horizontal offset">
-        <SpinButton
-          value={horizontal}
-          onChange={(e, data) => {
-            console.log(data.value);
-            if (data.value) {
-              setHorizontal(data.value);
-            } else if (data.displayValue !== undefined) {
-              const newValue = parseFloat(data.displayValue);
-              if (!Number.isNaN(newValue)) {
-                setHorizontal(newValue);
+      <div className={styles.playground}>
+        <Field label="Horizontal offset" className={styles.horizontal}>
+          <SpinButton
+            value={horizontal}
+            onChange={(e, data) => {
+              console.log(data.value);
+              if (data.value) {
+                setHorizontal(data.value);
+              } else if (data.displayValue !== undefined) {
+                const newValue = parseFloat(data.displayValue);
+                if (!Number.isNaN(newValue)) {
+                  setHorizontal(newValue);
+                }
               }
-            }
-          }}
-        />
-      </Field>
-      <Field label="Vertical offset">
-        <SpinButton
-          value={vertical}
-          onChange={(e, data) => {
-            console.log(data.value);
-            if (data.value) {
-              setVertical(data.value);
-            } else if (data.displayValue !== undefined) {
-              const newValue = parseFloat(data.displayValue);
-              if (!Number.isNaN(newValue)) {
-                setVertical(newValue);
+            }}
+          />
+        </Field>
+        <Field label="Vertical offset" className={styles.vertical}>
+          <SpinButton
+            value={vertical}
+            onChange={(e, data) => {
+              console.log(data.value);
+              if (data.value) {
+                setVertical(data.value);
+              } else if (data.displayValue !== undefined) {
+                const newValue = parseFloat(data.displayValue);
+                if (!Number.isNaN(newValue)) {
+                  setVertical(newValue);
+                }
               }
-            }
-          }}
-        />
-      </Field>
+            }}
+          />
+        </Field>
+        <Field label="Toast position" className={styles.positions}>
+          <RadioGroup value={position} onChange={(e, data) => setPosition(data.value as ToastPosition)}>
+            <Radio label="bottom-start" value="bottom-start" />
+            <Radio label="bottom-end" value="bottom-end" />
+            <Radio label="top-start" value="top-start" />
+            <Radio label="top-end" value="top-end" />
+          </RadioGroup>
+        </Field>
+      </div>
       <br />
-      <Button onClick={() => notify('bottom-start')}>bottom-start</Button>
-      <Button onClick={() => notify('bottom-end')}>bottom-end</Button>
-      <Button onClick={() => notify('top-start')}>top-start</Button>
-      <Button onClick={() => notify('top-end')}>top-end</Button>
+      <Button onClick={() => notify()}>Make toast</Button>
       <Toaster toasterId={toasterId} offset={{ horizontal, vertical }} />
     </>
   );
