@@ -4,11 +4,11 @@ import { useTimeout } from '@fluentui/react-utilities';
 const noop = () => null;
 
 /**
- * State for useTransitionPresence hook.
+ * State for useMotionPresence hook.
  */
-export type UseTransitionPresenceState<TElement extends HTMLElement> = {
+export type UseMotionPresenceState<TElement extends HTMLElement> = {
   /**
-   * Ref to the element that is being transitioned.
+   * Ref to the element.
    */
   ref: React.RefCallback<TElement>;
 
@@ -44,9 +44,9 @@ export type UseTransitionPresenceState<TElement extends HTMLElement> = {
 };
 
 /**
- * Events for useTransitionPresence hook.
+ * Events for useMotionPresence hook.
  */
-export type UseTransitionPresenceEvents = {
+export type UseMotionPresenceEvents = {
   /**
    * Callback for after the element enters the DOM.
    */
@@ -107,12 +107,12 @@ const getMaxCSSDuration = (durations: string[]) => {
 
 /**
  * @internal
- * Gets the transition information for a given element.
+ * Gets the motion information for a given element.
  *
  * @param computedStyle - Computed style of the element
- * @returns Transition information
+ * @returns motion information
  */
-const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
+const getMotionInfo = (computedStyle: CSSStyleDeclaration) => {
   const getProp = (prop: string) => (computedStyle?.getPropertyValue(prop) || '').split(',');
 
   const transitionDuration = getProp('transition-duration');
@@ -133,16 +133,15 @@ const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
 };
 
 /**
- * Hook to manage the presence of an element in the DOM based on its CSS transition state.
+ * Hook to manage the presence of an element in the DOM based on its CSS transition/animation state.
  *
  * @param present - Whether the element should be present in the DOM
- * @param events - Callbacks for when the element enters or exits the DOM - Only called when
- * the element has a transition
+ * @param events - Callbacks for when the element enters or exits the DOM
  */
-export const useTransitionPresence = <TElement extends HTMLElement>(
+export const useMotionPresence = <TElement extends HTMLElement>(
   present: boolean,
-  events?: UseTransitionPresenceEvents,
-): UseTransitionPresenceState<TElement> => {
+  events?: UseMotionPresenceEvents,
+): UseMotionPresenceState<TElement> => {
   const { onEntered = noop, onExited = noop } = events || {};
 
   const [shouldRender, setShouldRender] = React.useState(present);
@@ -167,7 +166,7 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
 
   const notCurrentElement = React.useCallback((target: TElement) => target !== currentElement, [currentElement]);
 
-  const onFinishedTransition = React.useCallback(() => {
+  const onFinishedMotion = React.useCallback(() => {
     setEntering(false);
     setExiting(false);
   }, []);
@@ -178,20 +177,20 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
   }, []);
 
   const onFinishedEntering = React.useCallback(() => {
-    onFinishedTransition();
+    onFinishedMotion();
     onEntered();
-  }, [onEntered, onFinishedTransition]);
+  }, [onEntered, onFinishedMotion]);
 
   const onStartExiting = React.useCallback(() => {
     setExiting(true);
   }, []);
 
   const onFinishedExiting = React.useCallback(() => {
-    onFinishedTransition();
+    onFinishedMotion();
     setVisible(false);
     setShouldRender(false);
     onExited();
-  }, [onExited, onFinishedTransition]);
+  }, [onExited, onFinishedMotion]);
 
   const onMotionCanceled = React.useCallback(
     ({ target }) => {
@@ -199,11 +198,11 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
         return;
       }
 
-      onFinishedTransition();
+      onFinishedMotion();
       setVisible(present);
       setShouldRender(present);
     },
-    [notCurrentElement, onFinishedTransition, present],
+    [notCurrentElement, onFinishedMotion, present],
   );
 
   React.useEffect(() => {
@@ -227,7 +226,7 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    const { duration, hasTransition, hasAnimation } = getTransitionInfo(computedStylesRef.current);
+    const { duration, hasTransition, hasAnimation } = getMotionInfo(computedStylesRef.current);
 
     const animationFrame = requestAnimationFrame(() => {
       setVisible(present);

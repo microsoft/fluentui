@@ -3,7 +3,7 @@ import {
   getNativeElementProps,
   useControllableState,
   useMergedRefs,
-  useTransitionPresence,
+  useMotionPresence,
 } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
@@ -30,7 +30,7 @@ export const useDrawerInline_unstable = (
     initialState: false,
   });
 
-  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useTransitionPresence<HTMLDivElement>(open);
+  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useMotionPresence<HTMLDivElement>(open);
 
   return {
     components: {

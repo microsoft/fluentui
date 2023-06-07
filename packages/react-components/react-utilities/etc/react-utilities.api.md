@@ -243,6 +243,25 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
+// @public
+export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseMotionPresenceEvents | undefined) => UseMotionPresenceState<TElement>;
+
+// @public
+export type UseMotionPresenceEvents = {
+    onEntered?: () => void;
+    onExited?: () => void;
+};
+
+// @public
+export type UseMotionPresenceState<TElement extends HTMLElement> = {
+    ref: React_2.RefCallback<TElement>;
+    shouldRender: boolean;
+    visible: boolean;
+    entering: boolean;
+    exiting: boolean;
+    animating: boolean;
+};
+
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;
@@ -266,25 +285,6 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
-
-// @public
-export const useTransitionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseTransitionPresenceEvents | undefined) => UseTransitionPresenceState<TElement>;
-
-// @public
-export type UseTransitionPresenceEvents = {
-    onEntered?: () => void;
-    onExited?: () => void;
-};
-
-// @public
-export type UseTransitionPresenceState<TElement extends HTMLElement> = {
-    ref: React_2.RefCallback<TElement>;
-    shouldRender: boolean;
-    visible: boolean;
-    entering: boolean;
-    exiting: boolean;
-    animating: boolean;
-};
 
 // (No @packageDocumentation comment for this package)
 

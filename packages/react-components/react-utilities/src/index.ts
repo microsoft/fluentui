@@ -36,14 +36,14 @@ export {
   usePrevious,
   useScrollbarWidth,
   useTimeout,
-  useTransitionPresence,
+  useMotionPresence,
 } from './hooks/index';
 export type {
   RefObjectFunction,
   UseControllableStateOptions,
   UseOnClickOrScrollOutsideOptions,
-  UseTransitionPresenceEvents,
-  UseTransitionPresenceState,
+  UseMotionPresenceEvents,
+  UseMotionPresenceState,
 } from './hooks/index';
 
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';

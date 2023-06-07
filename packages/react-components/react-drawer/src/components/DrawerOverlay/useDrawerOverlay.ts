@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  getNativeElementProps,
-  resolveShorthand,
-  useMergedRefs,
-  useTransitionPresence,
-} from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs, useMotionPresence } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
@@ -25,8 +20,8 @@ export const useDrawerOverlay_unstable = (
   const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
-  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useTransitionPresence<HTMLDivElement>(open);
-  const backdropPresence = useTransitionPresence<HTMLDivElement>(open);
+  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useMotionPresence<HTMLDivElement>(open);
+  const backdropPresence = useMotionPresence<HTMLDivElement>(open);
 
   const backdropProps = React.useMemo(() => {
     if (backdropPresence.shouldRender) {

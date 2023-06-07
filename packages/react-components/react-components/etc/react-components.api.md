@@ -979,6 +979,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
         columnId: TableColumnId;
         width: number;
     }) => void;
+    containerWidthOffset?: number;
 };
 
 // @public
@@ -4205,6 +4206,25 @@ export interface UseModalAttributesOptions {
 }
 
 // @public
+export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseMotionPresenceEvents | undefined) => UseMotionPresenceState<TElement>;
+
+// @public
+export type UseMotionPresenceEvents = {
+    onEntered?: () => void;
+    onExited?: () => void;
+};
+
+// @public
+export type UseMotionPresenceState<TElement extends HTMLElement> = {
+    ref: React_2.RefCallback<TElement>;
+    shouldRender: boolean;
+    visible: boolean;
+    entering: boolean;
+    exiting: boolean;
+    animating: boolean;
+};
+
+// @public
 export const useOption_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
 
 // @public
@@ -4514,25 +4534,6 @@ export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
 
 // @public (undocumented)
 export function useTooltipVisibility(): TooltipVisibilityContextValue;
-
-// @public
-export const useTransitionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseTransitionPresenceEvents | undefined) => UseTransitionPresenceState<TElement>;
-
-// @public
-export type UseTransitionPresenceEvents = {
-    onEntered?: () => void;
-    onExited?: () => void;
-};
-
-// @public
-export type UseTransitionPresenceState<TElement extends HTMLElement> = {
-    ref: React_2.RefCallback<TElement>;
-    shouldRender: boolean;
-    visible: boolean;
-    entering: boolean;
-    exiting: boolean;
-    animating: boolean;
-};
 
 // @public (undocumented)
 export type VerticalSpacingTokens = {

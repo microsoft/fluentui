@@ -151,6 +151,7 @@ export type DrawerOverlaySlots = {
 // @public
 export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & DrawerBaseState & {
     dialog: DialogProps;
+    backdropVisible: boolean;
 };
 
 // @public

@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { DrawerOverlay, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
-import {
-  Button,
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  tokens,
-  useTransitionPresence,
-} from '@fluentui/react-components';
+import { Button, makeStyles, mergeClasses, shorthands, tokens, useMotionPresence } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const visibleKeyframe = {
@@ -49,7 +42,7 @@ export const CustomAnimation = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const { ref, entering, exiting } = useTransitionPresence(isOpen);
+  const { ref, entering, exiting } = useMotionPresence(isOpen);
 
   return (
     <div>
