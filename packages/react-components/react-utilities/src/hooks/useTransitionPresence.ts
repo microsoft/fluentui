@@ -95,7 +95,7 @@ function toMs(s: string): number {
  * @param durations - List of CSS durations
  * @returns Maximum duration
  */
-const getMaxCssDuration = (durations: string[]) => {
+const getMaxCSSDuration = (durations: string[]) => {
   return Math.max(...durations.map(d => toMs(d.trim())));
 };
 
@@ -112,7 +112,7 @@ const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
   const durations = getProp('transition-duration');
   const delays = getProp('transition-delay');
 
-  const totalDuration = getMaxCssDuration(durations) + getMaxCssDuration(delays);
+  const totalDuration = getMaxCSSDuration(durations) + getMaxCSSDuration(delays);
 
   return {
     duration: totalDuration,
