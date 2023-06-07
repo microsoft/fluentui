@@ -51,10 +51,6 @@ export const CustomAnimation = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { ref, entering, exiting } = useTransitionPresence(isOpen);
 
-  React.useEffect(() => {
-    console.log({ entering, exiting });
-  }, [entering, exiting]);
-
   return (
     <div>
       <DrawerOverlay
