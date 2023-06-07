@@ -196,6 +196,7 @@ const TicketOrderFormFieldsAccessibility = () => {
               {isAlerting => (
                 <Field
                   label="Full name"
+                  aria-describedby="fullNameRequiredError fullNameInvalidError fullNameLengthError fullNameOnlyNameCharsError fullNameStartsAndEndsWithLetterError"
                   hint="Enter your name including first name, middle name and last name."
                   validationState={errors.fullName?.types ? 'error' : 'success'}
                   validationMessage={
@@ -206,19 +207,21 @@ const TicketOrderFormFieldsAccessibility = () => {
                           children: (
                             <>
                               {'required' in errors.fullName.types ? (
-                                <p>Full name is required.</p>
+                                <p id="fullNameRequiredError">Full name is required.</p>
                               ) : (
                                 <>
-                                  <p>Full name is invalid. It must:</p>
+                                  <p id="fullNameInvalidError">Full name is invalid. It must:</p>
                                   <ul>
                                     {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
-                                      <li>Have between 2 and 50 characters.</li>
+                                      <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
                                     )}
                                     {'onlyNameChars' in errors.fullName.types && (
-                                      <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                                      <li id="fullNameOnlyNameCharsError">
+                                        Contain only lowercase or uppercase letters, spaces or hyphens.
+                                      </li>
                                     )}
                                     {'startsAndEndsWithLetter' in errors.fullName.types && (
-                                      <li>Start and end wit letter.</li>
+                                      <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
                                     )}
                                   </ul>
                                 </>
@@ -258,6 +261,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                 <Field
                   label="Nickname"
                   hint="Enter how people use to call you."
+                  aria-describedby="nicknameInvalidError nicknameLengthError nicknameOnlyNameCharsError nicknameStartsAndEndsWithLetterError"
                   validationState={errors.nickname?.types ? 'error' : 'success'}
                   validationMessage={
                     !errors.nickname?.types
@@ -266,16 +270,18 @@ const TicketOrderFormFieldsAccessibility = () => {
                           role: isAlerting ? 'alert' : undefined,
                           children: (
                             <>
-                              <p>Nickname is invalid. It must:</p>
+                              <p id="nicknameInvalidError">Nickname is invalid. It must:</p>
                               <ul>
                                 {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
-                                  <li>Have between 2 and 20 characters.</li>
+                                  <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
                                 )}
                                 {'onlyNameChars' in errors.nickname.types && (
-                                  <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                                  <li id="nicknameOnlyNameCharsError">
+                                    Contain only lowercase or uppercase letters, spaces or hyphens.
+                                  </li>
                                 )}
                                 {'startsAndEndsWithLetter' in errors.nickname.types && (
-                                  <li>Start and end wit letter.</li>
+                                  <li id="nicknameStartsAndEndsWithLetterError">Start and end wit letter.</li>
                                 )}
                               </ul>
                             </>
@@ -312,6 +318,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                 <Field
                   label="Password"
                   hint="Use strong password."
+                  aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordCharsError"
                   validationState={errors.password?.types ? 'error' : 'success'}
                   validationMessage={
                     !errors.password?.types
@@ -321,20 +328,20 @@ const TicketOrderFormFieldsAccessibility = () => {
                           children: (
                             <>
                               {'required' in errors.password.types ? (
-                                <p>Password is required.</p>
+                                <p id="passwordRequiredError">Password is required.</p>
                               ) : (
                                 <>
-                                  <p>Password is invalid. It must:</p>
+                                  <p id="passwordInvalidError">Password is invalid. It must:</p>
                                   <ul>
                                     {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
-                                      <li>Have between 8 and 20 characters.</li>
+                                      <li id="passwordLengthError">Have between 8 and 20 characters.</li>
                                     )}
                                     {('hasLowercaseLetter' in errors.password.types ||
                                       'hasUppercaseLetter' in errors.password.types ||
                                       'hasSpecialChar' in errors.password.types ||
                                       'hasNumber' in errors.password.types ||
                                       'noWhitespace' in errors.password.types) && (
-                                      <li>
+                                      <li id="passwordCharsError">
                                         Contain at least one lower case letter, upper case letter, number, special
                                         character and no spaces.
                                       </li>
@@ -382,6 +389,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                 <Field
                   label="Birth date"
                   hint="We need this for special birthday offers."
+                  aria-describedby="birthDateRequiredError birthDateInvalidError birthDateCharsError"
                   validationState={errors.birthDate?.types ? 'error' : 'success'}
                   validationMessage={
                     !errors.birthDate?.types
@@ -391,12 +399,14 @@ const TicketOrderFormFieldsAccessibility = () => {
                           children: (
                             <>
                               {'required' in errors.birthDate.types ? (
-                                <p>Birth date is required.</p>
+                                <p id="birthDateRequiredError">Birth date is required.</p>
                               ) : (
                                 <>
-                                  <p>Birth date is invalid. It must:</p>
+                                  <p id="birthDateInvalidError">Birth date is invalid. It must:</p>
                                   <ul>
-                                    {'validDate' in errors.birthDate.types && <li>Be in the MM/DD/YYYY format.</li>}
+                                    {'validDate' in errors.birthDate.types && (
+                                      <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
+                                    )}
                                   </ul>
                                 </>
                               )}
@@ -444,6 +454,7 @@ const TicketOrderFormFieldsAccessibility = () => {
               {isAlerting => (
                 <Field
                   label="E-mail"
+                  aria-describedby="emailRequiredError emailInvalidError emailCharsError"
                   hint="We will send you newsletter to this e-mail."
                   validationState={errors.email?.types ? 'error' : 'success'}
                   validationMessage={
@@ -454,13 +465,13 @@ const TicketOrderFormFieldsAccessibility = () => {
                           children: (
                             <>
                               {'required' in errors.email.types ? (
-                                <p>E-mail is required.</p>
+                                <p id="emailRequiredError">E-mail is required.</p>
                               ) : (
                                 <>
-                                  <p>E-mail is invalid. It must:</p>
+                                  <p id="emailInvalidError">E-mail is invalid. It must:</p>
                                   <ul>
                                     {'validEmail' in errors.email.types && (
-                                      <li>Be a valid e-mail address, like name@example.com.</li>
+                                      <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
                                     )}
                                   </ul>
                                 </>
@@ -496,6 +507,7 @@ const TicketOrderFormFieldsAccessibility = () => {
               {isAlerting => (
                 <Field
                   label="I accept terms and conditions"
+                  aria-describedby="acceptTermsRequiredError"
                   hint={
                     <>
                       Check this field to confirm you have read and understand the <a href="#">terms and conditions</a>.
@@ -510,7 +522,9 @@ const TicketOrderFormFieldsAccessibility = () => {
                           children: (
                             <>
                               {'required' in errors.acceptTerms.types && (
-                                <p>You have to accept the terms and conditions in order to order your ticket.</p>
+                                <p id="acceptTermsRequiredError">
+                                  You have to accept the terms and conditions in order to order your ticket.
+                                </p>
                               )}
                             </>
                           ),

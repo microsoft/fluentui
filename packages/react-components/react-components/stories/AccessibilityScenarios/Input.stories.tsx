@@ -280,7 +280,7 @@ const RegistrationFormInputsAccessibility = () => {
                 id="password"
                 aria-required="true"
                 aria-invalid={!!errors.password}
-                aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordValidPasswordError"
+                aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordCharsError"
               />
             }
             rules={{
@@ -321,7 +321,7 @@ const RegistrationFormInputsAccessibility = () => {
                       'hasSpecialChar' in errors.password.types ||
                       'hasNumber' in errors.password.types ||
                       'noWhitespace' in errors.password.types) && (
-                      <li id="passwordValidPasswordError">
+                      <li id="passwordCharsError">
                         Contain at least one lower case letter, upper case letter, number, special character and no
                         spaces.
                       </li>
@@ -343,7 +343,7 @@ const RegistrationFormInputsAccessibility = () => {
                 placeholder="E.g. 3/21/1995"
                 aria-required="true"
                 aria-invalid={!!errors.birthDate}
-                aria-describedby="birthDateRequiredError birthDateInvalidError birthDateValidDateError"
+                aria-describedby="birthDateRequiredError birthDateInvalidError birthDateCharsError"
               />
             }
             rules={{
@@ -368,7 +368,7 @@ const RegistrationFormInputsAccessibility = () => {
                   <p id="birthDateInvalidError">Birth date is invalid. It must:</p>
                   <ul>
                     {'validDate' in errors.birthDate.types && (
-                      <li id="birthDateValidDateError">Be in the MM/DD/YYYY format.</li>
+                      <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
                     )}
                   </ul>
                 </>
@@ -389,7 +389,7 @@ const RegistrationFormInputsAccessibility = () => {
                 disabled={!isSendNewsletter}
                 aria-required={isSendNewsletter}
                 aria-invalid={!!errors.email}
-                aria-describedby="emailRequiredError emailInvalidError emailValidEmailError"
+                aria-describedby="emailRequiredError emailInvalidError emailCharsError"
               />
             }
             rules={{
@@ -414,7 +414,7 @@ const RegistrationFormInputsAccessibility = () => {
                   <p id="emailInvalidError">E-mail is invalid. It must:</p>
                   <ul>
                     {'validEmail' in errors.email.types && (
-                      <li id="emailValidEmailError">Be a valid e-mail address, like name@example.com.</li>
+                      <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
                     )}
                   </ul>
                 </>
