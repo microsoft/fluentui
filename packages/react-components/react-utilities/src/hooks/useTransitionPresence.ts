@@ -63,9 +63,11 @@ export type UseTransitionPresenceEvents = {
  * @param node - DOM node.
  * @returns - CSS styles.
  */
-const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
+const getElementComputedStyle = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
   if (node.nodeType !== 1) {
-    return {};
+    return {
+      getPropertyValue: () => '',
+    };
   }
 
   const window = node.ownerDocument?.defaultView;
@@ -111,7 +113,7 @@ const getMaxCSSDuration = (durations: string[]) => {
  * @returns Transition information
  */
 const getTransitionInfo = (computedStyle: CSSStyleDeclaration) => {
-  const getProp = (prop: string) => (computedStyle.getPropertyValue(prop) || '').split(',');
+  const getProp = (prop: string) => (computedStyle?.getPropertyValue(prop) || '').split(',');
 
   const transitionDuration = getProp('transition-duration');
   const transitionDelay = getProp('transition-delay');
@@ -159,7 +161,7 @@ export const useTransitionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    computedStylesRef.current = getStyleComputedProperty(node) as CSSStyleDeclaration;
+    computedStylesRef.current = getElementComputedStyle(node) as CSSStyleDeclaration;
     setCurrentElement(node);
   }, []);
 
