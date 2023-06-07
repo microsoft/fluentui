@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Layer propagates focus visible classname to its contents",
+  "comment": "fix: ContextualMenu should not include headers and dividers in ARIA index calculations",
   "packageName": "@fluentui/react",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"

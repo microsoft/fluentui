@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const ScrollLoading = () => {
   const styles = useStyles();
   const childLength = 1000;
   const minHeight = 42;
@@ -44,9 +44,11 @@ export const Default = () => {
       getItemSize={getItemSizeCallback}
       container={{ role: 'list', style: { maxHeight: '100vh' } }}
     >
-      {(index: number) => {
+      {(index: number, isScrolling = false) => {
         const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';
-        return (
+        return isScrolling ? (
+          <div style={{ minHeight: arraySize.current[index], backgroundColor }}>LOADING</div>
+        ) : (
           <div
             role={'listitem'}
             aria-posinset={index}
