@@ -11,7 +11,6 @@ export const breadcrumbDefaultValue: BreadcrumbContextValue = {
   iconPosition: 'before',
   size: 'medium',
   dividerType: 'chevron',
-  focusMode: 'tab',
 };
 
 /**

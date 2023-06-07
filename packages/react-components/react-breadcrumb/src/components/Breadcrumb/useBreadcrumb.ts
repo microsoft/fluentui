@@ -42,7 +42,6 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     }),
     list: resolveShorthand(list, { required: true, defaultProps: { role: 'list' } }),
     appearance,
-    focusMode,
     dividerType,
     iconPosition,
     size,

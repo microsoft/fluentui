@@ -4,7 +4,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
  * Data shared between breadcrumb components
  */
 export type BreadcrumbContextValue = Required<
-  Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'focusMode' | 'iconPosition' | 'size'>
+  Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'iconPosition' | 'size'>
 >;
 
 export type BreadcrumbContextValues = {
@@ -43,12 +43,9 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
    * `arrow`
    * This behaviour will cycle through all elements inside of the Breadcrumb when pressing the Arrow key.
    *
-   * `off`
-   * The Breadcrumb will not focusable.
-   *
    * @default 'tab'
    */
-  focusMode?: 'arrow' | 'tab' | 'off';
+  focusMode?: 'arrow' | 'tab';
 
   /**
    * Controls type of the divider.
@@ -76,4 +73,4 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
  * State used in rendering Breadcrumb
  */
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> &
-  Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType' | 'focusMode'>>;
+  Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;

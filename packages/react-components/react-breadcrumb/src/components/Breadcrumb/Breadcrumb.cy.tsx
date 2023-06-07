@@ -125,22 +125,6 @@ describe('Breadcrumb', () => {
         cy.get('#breadcrumb-button-1').should('be.focused');
       });
     });
-
-    describe('focusMode="off" (default)', () => {
-      it('should not be focusable', () => {
-        mountFluent(<BreadcrumbSampleWithButton focusMode="off" />);
-
-        cy.get('#before').focus();
-
-        cy.get('#breadcrumb-button-1').should('not.be.focused');
-        cy.get('#before').should('be.focused');
-
-        cy.realPress('Tab');
-
-        cy.get('#breadcrumb-button-1').should('not.be.focused');
-        cy.get('#after').should('be.focused');
-      });
-    });
   });
   describe('focus behaviors for BreadcrumbLink', () => {
     describe('focusMode="tab"(default)', () => {
@@ -178,22 +162,6 @@ describe('Breadcrumb', () => {
         cy.get('#breadcrumb-link-3').should('be.focused');
         cy.realPress('ArrowRight');
         cy.get('#breadcrumb-link-1').should('be.focused');
-      });
-    });
-
-    describe('focusMode="off" (default)', () => {
-      it('should not be focusable', () => {
-        mountFluent(<BreadcrumbSampleWithLink focusMode="off" />);
-
-        cy.get('#before').focus();
-
-        cy.get('#breadcrumb-link-1').should('not.be.focused');
-        cy.get('#before').should('be.focused');
-
-        cy.realPress('Tab');
-
-        cy.get('#breadcrumb-link-1').should('not.be.focused');
-        cy.get('#after').should('be.focused');
       });
     });
   });

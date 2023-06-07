@@ -16,7 +16,7 @@ export const useBreadcrumbLink_unstable = (
   props: BreadcrumbLinkProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbLinkState => {
-  const { appearance, iconPosition, focusMode, size } = useBreadcrumbContext_unstable();
+  const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
   const { current = false, disabled = false, icon, overflow = false, ...rest } = props;
 
   const linkAppearance = props.appearance || appearance;
@@ -30,7 +30,6 @@ export const useBreadcrumbLink_unstable = (
     root: getNativeElementProps('a', {
       'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
       ref,
-      tabIndex: focusMode === 'off' ? -1 : undefined,
       ...rest,
     }),
     appearance: linkAppearance === 'subtle' ? 'subtle' : 'default',
