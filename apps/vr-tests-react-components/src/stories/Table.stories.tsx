@@ -593,7 +593,7 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
 );
 
 const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativeElements, truncate }) => (
-  <Table noNativeElements={noNativeElements} style={{ width: '400px' }}>
+  <Table noNativeElements={noNativeElements} style={{ width: '400px', minWidth: 0 }}>
     <TableHeader>
       <TableRow>
         {columns.map(column => (
