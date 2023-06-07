@@ -7,6 +7,7 @@ export { Default } from './InfoLabelDefault.stories';
 export { Required } from './InfoLabelRequired.stories';
 export { Size } from './InfoLabelSize.stories';
 export { InField } from './InfoLabelInField.stories';
+export { Interactive } from './InfoLabelInteractive.stories';
 
 export default {
   title: 'Preview Components/InfoLabel',

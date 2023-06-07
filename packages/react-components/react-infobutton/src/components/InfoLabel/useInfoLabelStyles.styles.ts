@@ -7,6 +7,7 @@ export const infoLabelClassNames: SlotClassNames<InfoLabelSlots> = {
   root: 'fui-InfoLabel',
   label: 'fui-InfoLabel__label',
   infoButton: 'fui-InfoLabel__infoButton',
+  infoTip: 'fui-InfoLabel__infoTip',
 };
 
 const useLabelStyles = makeStyles({
@@ -49,6 +50,15 @@ export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelSta
       infoButtonStyles.base,
       state.size === 'large' && infoButtonStyles.large,
       state.infoButton.className,
+    );
+  }
+
+  if (state.infoTip) {
+    state.infoTip.className = mergeClasses(
+      infoLabelClassNames.infoTip,
+      infoButtonStyles.base,
+      state.size === 'large' && infoButtonStyles.large,
+      state.infoTip.className,
     );
   }
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { InfoLabel } from '@fluentui/react-components/unstable';
 
 export const Required = () => (
-  <InfoLabel info="Example info" required>
+  <InfoLabel interactive={false} info="Example info" required>
     Required label
   </InfoLabel>
 );

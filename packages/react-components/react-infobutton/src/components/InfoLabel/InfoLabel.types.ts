@@ -1,6 +1,7 @@
 import { Label } from '@fluentui/react-label';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton';
+import { InfoTip } from '../InfoTip/InfoTip';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { InfoButtonProps } from '../InfoButton';
 
 export type InfoLabelSlots = {
@@ -23,6 +24,13 @@ export type InfoLabelSlots = {
    * It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel.
    */
   infoButton: Slot<typeof InfoButton>;
+
+  /**
+   * The InfoTip component.
+   *
+   * It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel.
+   */
+  infoTip: Slot<typeof InfoTip>;
 };
 
 /**
@@ -33,9 +41,20 @@ export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & 
    * The content of the InfoButton's popover.
    */
   info?: InfoButtonProps['info'];
+
+  /**
+   * Whether the information provided is interactive.
+   *
+   * When an InfoLabel is interactive, the bubble will show a popover on click and will trap focus. When it is not interactive,
+   * the bubble will show a tooltip and will be triggered through hover or focus.
+   *
+   * **Note**: When the information provided is interactive, the InfoLabel must be set to interactive, otherwise the
+   * accessible experience will not be correct.
+   */
+  interactive: boolean;
 };
 
 /**
  * State used in rendering InfoLabel
  */
-export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
+export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size' | 'interactive'>;
