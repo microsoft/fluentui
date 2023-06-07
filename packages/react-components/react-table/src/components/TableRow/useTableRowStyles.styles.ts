@@ -29,6 +29,7 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
+    // width: 'max-content',
     color: tokens.colorNeutralForeground1,
     boxSizing: 'border-box',
     ...createCustomFocusIndicatorStyle(
