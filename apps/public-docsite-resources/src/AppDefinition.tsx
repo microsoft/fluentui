@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@fluentui/react-docsite-components';
 import { DetailsListBasicExample } from '@fluentui/react-examples/lib/react/DetailsList/DetailsList.Basic.Example';
+import { LegendsPage } from '@fluentui/react-examples/lib/react-charting/Legends/LegendsPage';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { AppThemes } from './theme/AppThemes';
 
@@ -513,6 +514,17 @@ export const AppDefinition: IAppDefinition = {
           key: 'ExtendedPeoplePicker',
           name: 'ExtendedPeoplePicker',
           url: '#/examples/extendedpeoplepicker',
+        },
+      ],
+    },
+    {
+      name: 'Charting',
+      links: [
+        {
+          component: LegendsPage,
+          key: 'Legends',
+          name: 'Legends',
+          url: '#/examples/Legends',
         },
       ],
     },
