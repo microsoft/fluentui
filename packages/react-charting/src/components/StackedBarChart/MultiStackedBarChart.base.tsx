@@ -113,7 +113,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           this.props.hideDenominator![index],
           this.props.href,
         );
-        return <div key={index}>{singleChartBars}</div>;
+        return (
+          <div key={index} id={getId('_MSBC_bar_')}>
+            {singleChartBars}
+          </div>
+        );
       });
 
       return (
@@ -233,7 +237,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
-
       return (
         <g
           key={index}
@@ -253,6 +256,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
+            id={getId('_MSBC_rect_')}
             x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
@@ -288,14 +292,30 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (data.chartData!.length === 0) {
         bars.push(
           <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={getId('_MSBC_rect_')}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
       if (barTotalValue === 0) {
         bars.push(
           <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={getId('_MSBC_rect_')}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }

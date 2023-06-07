@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adding component tests for Multi Stacked bar chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "none"
+}
