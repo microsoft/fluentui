@@ -47,6 +47,7 @@ export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
 // @public
 export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
     info?: InfoButtonProps['info'];
+    interactive: boolean;
 };
 
 // @public (undocumented)
@@ -54,10 +55,11 @@ export type InfoLabelSlots = {
     root: NonNullable<Slot<'span'>>;
     label: NonNullable<Slot<typeof Label>>;
     infoButton: Slot<typeof InfoButton>;
+    infoTip: Slot<typeof InfoTip>;
 };
 
 // @public
-export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
+export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size' | 'interactive'>;
 
 // @public
 export const InfoTip: ForwardRefComponent<InfoTipProps>;

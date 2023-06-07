@@ -1,9 +1,8 @@
 import * as React from 'react';
-
 import { Label } from '@fluentui/react-label';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { InfoTip } from '../InfoTip/InfoTip';
+import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
 /**
@@ -28,8 +27,8 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     style,
     ...labelProps
   } = props;
-  const infoRef = React.useRef<HTMLDivElement>(null);
   const baseId = useId('infolabel-');
+  const [open, setOpen] = React.useState(false);
 
   const root = resolveShorthand(rootShorthand, {
     required: true,
@@ -64,7 +63,6 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     ? resolveShorthand(infoTipShorthand, {
         required: !!info,
         defaultProps: {
-          id: baseId + '__infoTip',
           size,
           info,
         },
@@ -72,27 +70,43 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     : undefined;
 
   if (infoButton) {
-    infoButton.info = resolveShorthand(infoButton?.info, {
+    infoButton.popover = resolveShorthand(infoButton.popover, {
+      required: true,
+      defaultProps: {
+        onOpenChange: (e, data) => {
+          setOpen(data.open);
+        },
+      },
+    });
+
+    infoButton.info = resolveShorthand(infoButton.info, {
       defaultProps: {
         id: baseId + '__info',
-        ref: infoRef,
       },
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
-    root['aria-owns'] ??= infoButton.info?.id;
+
+    root['aria-owns'] = open ? infoButton.info?.id : undefined;
   }
 
   if (infoTip) {
-    infoTip.info = resolveShorthand(infoTip?.info, {
+    infoTip.tooltip = resolveShorthand(infoTip.tooltip, {
+      required: true,
       defaultProps: {
-        id: baseId + '__info',
-        ref: infoRef,
+        onVisibleChange: (e, data) => setOpen(data.visible),
       },
     });
 
-    infoTip['aria-labelledby'] ??= `${label.id} ${infoTip.info?.id}`;
-    root['aria-owns'] ??= infoTip.info?.id;
+    infoTip.tooltip;
+
+    infoTip.info = resolveShorthand(infoTip.info, {
+      defaultProps: {
+        id: baseId + '__info',
+      },
+    });
+
+    root['aria-owns'] = open ? infoTip.info?.id : undefined;
   }
 
   return {
