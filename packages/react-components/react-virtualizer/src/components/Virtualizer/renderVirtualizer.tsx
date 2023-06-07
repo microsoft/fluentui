@@ -2,10 +2,11 @@
 /** @jsx createElement */
 
 import * as React from 'react';
+import type { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
+import type { ReactNode } from 'react';
+
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
-import { ReactNode } from 'react';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { slots, slotProps } = getSlotsNext<VirtualizerSlots>(state);
