@@ -22,6 +22,7 @@ const defaultToastContainerProps: ToastContainerProps = {
   toastId: 'toast',
   updateId: 0,
   visible: true,
+  onStatusChange: () => null,
 };
 
 const runningTimerSelector = '[data-timer-status="running"]';
