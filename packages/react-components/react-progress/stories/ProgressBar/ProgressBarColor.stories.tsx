@@ -24,6 +24,14 @@ export const Color = () => {
       <Field validationMessage="Success ProgressBar" validationState="success">
         <ProgressBar value={1} color="success" />
       </Field>
+
+      <Field validationMessage="Default ProgressBar" validationState="none">
+        <ProgressBar value={0.8} color="brand" />
+      </Field>
+
+      <Field validationMessage="Striped ProgressBar" validationState="none">
+        <ProgressBar value={0.8} color="striped" />
+      </Field>
     </div>
   );
 };
