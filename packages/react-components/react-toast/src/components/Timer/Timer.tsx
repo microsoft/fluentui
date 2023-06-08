@@ -1,22 +1,16 @@
 import * as React from 'react';
 import { useStyles } from './useTimerStyles.styles';
 
-export const Timer: React.FC<{
+export type TimerProps = {
   running: boolean;
   timeout: number;
   onTimeout: () => void;
-}> = props => {
+  as?: 'span';
+};
+
+export const Timer = React.forwardRef<HTMLDivElement, TimerProps>((props, ref) => {
   const styles = useStyles();
   const { running, timeout, onTimeout } = props;
-  const ref = React.useRef<HTMLSpanElement>(null);
-
-  React.useEffect(() => {
-    if (ref.current) {
-      const timerElement = ref.current;
-      timerElement.addEventListener('animationend', onTimeout);
-      return () => timerElement.removeEventListener('animationend', onTimeout);
-    }
-  }, [onTimeout]);
 
   const style: React.CSSProperties = {
     animationDuration: `${timeout}ms`,
@@ -27,5 +21,15 @@ export const Timer: React.FC<{
     return null;
   }
 
-  return <span ref={ref} style={style} className={styles.progress} />;
-};
+  return (
+    <span
+      onAnimationEnd={onTimeout}
+      data-timer-status={style.animationPlayState}
+      ref={ref}
+      style={style}
+      className={styles.progress}
+    />
+  );
+});
+
+Timer.displayName = 'Timer';

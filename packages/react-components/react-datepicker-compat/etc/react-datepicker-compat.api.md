@@ -175,7 +175,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     positioning?: PositioningProps;
     placeholder?: string;
     today?: Date;
-    value?: Date;
+    value?: Date | null;
     formatDate?: (date?: Date) => string;
     parseDateFromString?: (dateStr: string) => Date | null;
     firstDayOfWeek?: DayOfWeek;

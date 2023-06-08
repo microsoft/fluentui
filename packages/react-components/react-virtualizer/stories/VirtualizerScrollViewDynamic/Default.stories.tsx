@@ -16,9 +16,9 @@ export const Default = () => {
   const childLength = 1000;
   const minHeight = 42;
   // Array size ref stores a list of random num for div sizing and callbacks
-  const arraySize = React.useRef<number[]>(new Array<number>(childLength).fill(minHeight));
+  const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
   // totalSize flag drives our callback update
-  const [totalSize, setTotalSize] = React.useState<number>(minHeight * childLength);
+  const [totalSize, setTotalSize] = React.useState(minHeight * childLength);
 
   useEffect(() => {
     let _totalSize = 0;

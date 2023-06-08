@@ -24,28 +24,28 @@ const useStyles = makeStyles({
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
   const styles = useStyles();
   const className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
-  if (state.bottomLeft) {
-    state.bottomLeft.className = className;
-    state.bottomLeft.style ??= {};
-    Object.assign(state.bottomLeft.style, getPositionStyles(TOAST_POSITIONS.bottomLeft, state.offset));
+  if (state.bottomStart) {
+    state.bottomStart.className = className;
+    state.bottomStart.style ??= {};
+    Object.assign(state.bottomStart.style, getPositionStyles(TOAST_POSITIONS.bottomStart, state.dir, state.offset));
   }
 
-  if (state.bottomRight) {
-    state.bottomRight.className = className;
-    state.bottomRight.style ??= {};
-    Object.assign(state.bottomRight.style, getPositionStyles(TOAST_POSITIONS.bottomRight, state.offset));
+  if (state.bottomEnd) {
+    state.bottomEnd.className = className;
+    state.bottomEnd.style ??= {};
+    Object.assign(state.bottomEnd.style, getPositionStyles(TOAST_POSITIONS.bottomEnd, state.dir, state.offset));
   }
 
-  if (state.topLeft) {
-    state.topLeft.className = className;
-    state.topLeft.style ??= {};
-    Object.assign(state.topLeft.style, getPositionStyles(TOAST_POSITIONS.topLeft, state.offset));
+  if (state.topStart) {
+    state.topStart.className = className;
+    state.topStart.style ??= {};
+    Object.assign(state.topStart.style, getPositionStyles(TOAST_POSITIONS.topStart, state.dir, state.offset));
   }
 
-  if (state.topRight) {
-    state.topRight.className = className;
-    state.topRight.style ??= {};
-    Object.assign(state.topRight.style, getPositionStyles(TOAST_POSITIONS.topRight, state.offset));
+  if (state.topEnd) {
+    state.topEnd.className = className;
+    state.topEnd.style ??= {};
+    Object.assign(state.topEnd.style, getPositionStyles(TOAST_POSITIONS.topEnd, state.dir, state.offset));
   }
 
   return state;
