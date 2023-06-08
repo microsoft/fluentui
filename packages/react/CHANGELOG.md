@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 07 Jun 2023 07:33:57 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2023 07:35:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.2)
+
+Thu, 08 Jun 2023 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.1..@fluentui/react_v8.110.2)
+
+### Patches
+
+- fix: ContextualMenu should not include headers and dividers in ARIA index calculations ([PR #28127](https://github.com/microsoft/fluentui/pull/28127) by sarah.higley@microsoft.com)
 
 ## [8.110.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.1)
 
