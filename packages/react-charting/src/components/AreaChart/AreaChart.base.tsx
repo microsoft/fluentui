@@ -106,6 +106,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   //enableComputationOptimization is used for optimized code to group data points by x value
   //from O(n^2) to O(n) using a map.
   private _enableComputationOptimization: boolean;
+  private _firstRenderOptimization: boolean;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -144,6 +145,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
     this._enableComputationOptimization = true;
+    this._firstRenderOptimization = true;
   }
 
   public componentDidUpdate() {
@@ -203,7 +205,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         getmargins={this._getMargins}
         customizedCallout={this._getCustomizedCallout()}
         onChartMouseLeave={this._handleChartMouseLeave}
-        enablePerfOptimization={this.props.enablePerfOptimization}
+        enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {

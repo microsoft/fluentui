@@ -170,6 +170,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _rectId: string;
   private _staticHighlightCircle: string;
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _firstRenderOptimization: boolean;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -201,6 +202,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle');
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
+    this._firstRenderOptimization = true;
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -285,7 +287,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
         onChartMouseLeave={this._handleChartMouseLeave}
-        enablePerfOptimization={this.props.enablePerfOptimization}
+        enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
