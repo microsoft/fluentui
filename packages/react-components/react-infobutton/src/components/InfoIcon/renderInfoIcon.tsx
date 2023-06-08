@@ -11,6 +11,9 @@ import type { InfoIconState, InfoIconSlots } from './InfoIcon.types';
 export const renderInfoIcon_unstable = (state: InfoIconState) => {
   const { slots, slotProps } = getSlotsNext<InfoIconSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.tooltip {...slotProps.tooltip}>
+      <slots.root {...slotProps.root} />
+    </slots.tooltip>
+  );
 };

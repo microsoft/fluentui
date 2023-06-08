@@ -15,6 +15,7 @@ import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const InfoButton: ForwardRefComponent<InfoButtonProps>;
@@ -44,15 +45,21 @@ export const InfoIcon: ForwardRefComponent<InfoIconProps>;
 export const infoIconClassNames: SlotClassNames<InfoIconSlots>;
 
 // @public
-export type InfoIconProps = ComponentProps<InfoIconSlots> & {};
+export type InfoIconProps = ComponentProps<Partial<InfoIconSlots>> & {
+    size?: 'small' | 'medium' | 'large';
+    info?: TooltipProps['content'];
+};
 
 // @public (undocumented)
 export type InfoIconSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'span'>>;
+    tooltip: NonNullable<Slot<Partial<TooltipProps>>>;
 };
 
 // @public
-export type InfoIconState = ComponentState<InfoIconSlots>;
+export type InfoIconState = ComponentState<InfoIconSlots> & Required<Pick<InfoIconProps, 'size'>> & {
+    open: boolean;
+};
 
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;

@@ -1,17 +1,39 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 export type InfoIconSlots = {
-  root: Slot<'div'>;
+  /**
+   * Root slot that wraps the icon.
+   */
+  root: NonNullable<Slot<'span'>>;
+
+  /**
+   * The Tooltip slot that wraps the icon. Use this to pass props to the Tooltip.
+   */
+  tooltip: NonNullable<Slot<Partial<TooltipProps>>>;
 };
 
 /**
  * InfoIcon Props
  */
-export type InfoIconProps = ComponentProps<InfoIconSlots> & {};
+export type InfoIconProps = ComponentProps<Partial<InfoIconSlots>> & {
+  /**
+   * Size of the InfoTip.
+   *
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
+
+  /**
+   * The information to be displayed in the tooltip.
+   */
+  info?: TooltipProps['content'];
+};
 
 /**
  * State used in rendering InfoIcon
  */
-export type InfoIconState = ComponentState<InfoIconSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from InfoIconProps.
-// & Required<Pick<InfoIconProps, 'propName'>>
+export type InfoIconState = ComponentState<InfoIconSlots> &
+  Required<Pick<InfoIconProps, 'size'>> & {
+    open: boolean;
+  };

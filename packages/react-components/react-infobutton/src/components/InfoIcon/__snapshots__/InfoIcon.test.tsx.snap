@@ -2,10 +2,40 @@
 
 exports[`InfoIcon renders a default state 1`] = `
 <div>
-  <div
+  <span
+    aria-label="Sample text"
     class="fui-InfoIcon"
+    role="img"
+    tabindex="0"
   >
-    Default InfoIcon
-  </div>
+    <svg
+      aria-hidden="true"
+      class="fui-Icon-filled"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2Zm.75 3.5a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM8 7c.28 0 .5.22.5.5v3a.5.5 0 0 1-1 0v-3c0-.28.22-.5.5-.5Z"
+        fill="currentColor"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="fui-Icon-regular"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 7c.28 0 .5.22.5.5v3a.5.5 0 0 1-1 0v-3c0-.28.22-.5.5-.5Zm0-.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8Zm6-5a5 5 0 1 0 0 10A5 5 0 0 0 8 3Z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
 </div>
 `;
