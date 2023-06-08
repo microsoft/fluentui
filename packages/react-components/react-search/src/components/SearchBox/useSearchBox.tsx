@@ -41,12 +41,12 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       type: 'search',
       input: {}, // defining here to have access in styles hook
       value,
+      ...inputProps,
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
         props.onChange?.(ev, { value: newValue });
         setValue(newValue);
       }),
-      ...inputProps,
     },
     contentBefore: resolveShorthand(contentBefore, {
       defaultProps: {
