@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
+import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render SearchBox.
@@ -15,24 +16,51 @@ import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLElement>): SearchBoxState => {
   const { contentBefore, dismiss, contentAfter, ...inputProps } = props;
 
-  return {
-    // TODO add appropriate props/defaults
+  const [value, setValue] = useControllableState({
+    state: props.value,
+    defaultState: props.defaultValue,
+    initialState: '',
+  });
+
+  const onDismissClick = React.useCallback(
+    ev => {
+      setValue('');
+    },
+    [setValue],
+  );
+
+  const state: SearchBoxState = {
     components: {
-      // TODO add each slot's element type or component
       root: Input,
       contentBefore: 'span',
       dismiss: 'span',
       contentAfter: 'span',
     },
 
-    // TODO add appropriate slots
     root: {
       type: 'search',
       input: {}, // defining here to have access in styles hook
+      value,
+      onChange: useEventCallback(ev => {
+        const newValue = ev.target.value;
+        setValue(newValue);
+      }),
       ...inputProps,
     },
-    contentBefore: resolveShorthand(contentBefore),
-    dismiss: resolveShorthand(dismiss, { required: true }),
+    contentBefore: resolveShorthand(contentBefore, {
+      defaultProps: {
+        children: <SearchRegular />,
+      },
+      required: true, // TODO need to allow users to remove
+    }),
+    dismiss: resolveShorthand(dismiss, {
+      defaultProps: {
+        children: <DismissRegular onClick={onDismissClick} />,
+      },
+      required: true,
+    }),
     contentAfter: resolveShorthand(contentAfter, { required: true }),
   };
+
+  return state;
 };
