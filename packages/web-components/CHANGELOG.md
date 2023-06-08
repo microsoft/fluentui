@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 24 May 2023 04:19:34 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2023 04:18:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.23)
+
+Thu, 08 Jun 2023 04:18:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.22..@fluentui/web-components_v3.0.0-alpha.23)
+
+### Changes
+
+- feat(text-input): add TextInput as a new web component ([PR #27348](https://github.com/microsoft/fluentui/pull/27348) by brianbrady@microsoft.com)
 
 ## [3.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.22)
 
