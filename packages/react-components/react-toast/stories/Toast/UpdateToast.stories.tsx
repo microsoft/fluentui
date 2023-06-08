@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId } from '@fluentui/react-components';
+import { useId, Button } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
   const toastId = useId('toast');
@@ -39,7 +39,18 @@ export const UpdateToast = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={onClick}>{dispatched ? 'Update toast' : 'Make toast'}</button>
+      <Button onClick={onClick}>{dispatched ? 'Update toast' : 'Make toast'}</Button>
     </>
   );
+};
+
+UpdateToast.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Use the `updateToast` imperative API to make changes to a Toast that is already visible. To do this',
+        'you **must** provide an id when dispatching the toast. Almost all options of a Toast can be updated.',
+      ].join('\n'),
+    },
+  },
 };
