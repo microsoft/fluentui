@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toaster, useToastController, ToastTitle, ToastTrigger, Toast } from '@fluentui/react-toast';
-import { useId, Link } from '@fluentui/react-components';
+import { useId, Link, Button } from '@fluentui/react-components';
 
 export const DismissToastWithAction = () => {
   const toasterId = useId('toaster');
@@ -25,7 +25,18 @@ export const DismissToastWithAction = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
+      <Button onClick={notify}>Make toast</Button>
     </>
   );
+};
+
+DismissToastWithAction.parameters = {
+  docs: {
+    description: {
+      story: [
+        "By wrapping a button or link with a  `ToastTrigger`, it's possible to make that actionable",
+        'element dismiss the toast with a click.',
+      ].join('\n'),
+    },
+  },
 };

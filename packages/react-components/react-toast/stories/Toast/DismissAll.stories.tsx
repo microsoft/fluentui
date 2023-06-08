@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId } from '@fluentui/react-components';
+import { useId, Button } from '@fluentui/react-components';
 
 export const DismissAll = () => {
   const toasterId = useId('toaster');
@@ -16,8 +16,16 @@ export const DismissAll = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
-      <button onClick={dismissAll}>Dismiss all</button>
+      <Button onClick={notify}>Make toast</Button>
+      <Button onClick={dismissAll}>Dismiss all toasts</Button>
     </>
   );
+};
+
+DismissAll.parameters = {
+  docs: {
+    description: {
+      story: ['The `dismissAllToasts imperative API will dismiss all rendered Toasts.'].join('\n'),
+    },
+  },
 };

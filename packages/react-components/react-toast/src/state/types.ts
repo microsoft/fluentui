@@ -5,17 +5,51 @@ export type ToastId = string;
 export type ToasterId = string;
 
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
+export type ToastPoliteness = 'assertive' | 'polite';
 
 export interface ToastOptions<TData = object> {
+  /**
+   * Uniquely identifies a toast, used for update and dismiss operations
+   */
   toastId: ToastId;
+  /**
+   * The position the toast should render to
+   */
   position: ToastPosition;
+  /**
+   * Toast content
+   */
   content: unknown;
+  /**
+   * Auto dismiss timeout in milliseconds
+   * @default 3000
+   */
   timeout: number;
+  /**
+   * Toast timeout pauses while focus is on another window
+   * @default false
+   */
   pauseOnWindowBlur: boolean;
+  /**
+   * Toast timeout pauses while user cursor is on the toast
+   * @default false
+   */
   pauseOnHover: boolean;
+  /**
+   * Toast belongs to a specific toaster
+   */
   toasterId: ToasterId | undefined;
+  /**
+   * Higher priority toasts will be rendered before lower priority toasts
+   */
   priority: number;
-  politeness: 'assertive' | 'polite';
+  /**
+   * Used to determine [aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) narration
+   */
+  politeness: ToastPoliteness;
+  /**
+   * Additional data that needs to be passed to the toast
+   */
   data: TData;
 }
 
@@ -34,9 +68,21 @@ export interface ToasterOptions
 }
 
 export interface Toast<TData = object> extends ToastOptions<TData> {
+  /**
+   * Determines the visiblity of a toast
+   */
   close: () => void;
+  /**
+   * Removes a toast completely
+   */
   remove: () => void;
+  /**
+   * A number used to track updates immutably
+   */
   updateId: number;
+  /**
+   * Used to determine default priority when the user does not set one
+   */
   dispatchedAt: number;
 }
 
