@@ -18,7 +18,7 @@ export type InfoIconSlots = {
  */
 export type InfoIconProps = ComponentProps<Partial<InfoIconSlots>> & {
   /**
-   * Size of the InfoTip.
+   * Size of the icon displayed by InfoIcon.
    *
    * @default medium
    */
