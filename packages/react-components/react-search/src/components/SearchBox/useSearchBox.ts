@@ -28,6 +28,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     // TODO add appropriate slots
     root: {
       type: 'search',
+      input: {}, // defining here to have access in styles hook
       ...inputProps,
     },
     contentBefore: resolveShorthand(contentBefore),

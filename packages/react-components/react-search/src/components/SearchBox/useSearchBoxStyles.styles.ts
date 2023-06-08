@@ -12,7 +12,16 @@ export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
 /**
  * Styles for the root slot
  */
-const useRootClassName = makeResetStyles({});
+// const useRootClassName = makeStyles({});
+
+const useInputClassName = makeResetStyles({
+  '::-webkit-search-decoration': {
+    display: 'none',
+  },
+  '::-webkit-search-cancel-button': {
+    display: 'none',
+  },
+});
 
 const useContentClassName = makeResetStyles({
   boxSizing: 'border-box',
@@ -26,16 +35,18 @@ const useContentClassName = makeResetStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  state.root.className = mergeClasses(useRootClassName(), state.root.className);
+  // mergeClasses(useRootClassName(), state.root.className);
+
+  state.root.input!.className = useInputClassName();
 
   const contentClasses = [useContentClassName()];
-  if (state.contentBefore) {
-    state.contentBefore.className = mergeClasses(
-      searchBoxClassNames.contentBefore,
-      ...contentClasses,
-      state.contentBefore.className,
-    );
-  }
+  // if (state.contentBefore) {
+  //   state.contentBefore.className = mergeClasses(
+  //     searchBoxClassNames.contentBefore,
+  //     ...contentClasses,
+  //     state.contentBefore.className,
+  //   );
+  // }
   if (state.contentAfter) {
     state.contentAfter.className = mergeClasses(
       searchBoxClassNames.contentAfter,
