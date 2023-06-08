@@ -8,18 +8,49 @@ import {
   ToastFooter,
   ToastStatus,
 } from '@fluentui/react-toast';
-import { useId, Link, Button, Text } from '@fluentui/react-components';
+import { useId, Link, Button, Text, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    ...shorthands.gap('20px'),
+  },
+
+  button: {
+    display: 'block',
+  },
+
+  log: {
+    boxShadow: tokens.shadow16,
+    position: 'relative',
+    minWidth: '200px',
+    minHeight: '200px',
+    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
+    ...shorthands.padding('12px', '12px'),
+    '::after': {
+      content: `'Status log'`,
+      position: 'absolute',
+      ...shorthands.padding('1px', '4px', '1px'),
+      top: '-2px',
+      left: '-2px',
+      fontFamily: 'monospace',
+      fontSize: '15px',
+      fontWeight: 900,
+      lineHeight: 1,
+      letterSpacing: '1px',
+      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackground,
+    },
+  },
+});
 
 export const ToastLifecycle = () => {
+  const styles = useStyles();
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const [status, setStatus] = React.useState<ToastStatus>('removed');
-  const toastExists = status !== 'removed';
+  const [statusLog, setStatusLog] = React.useState<[number, ToastStatus][]>([]);
+  const [dismissed, setDismissed] = React.useState(true);
   const notify = () => {
-    if (toastExists) {
-      return;
-    }
-
     dispatchToast(
       <Toast>
         <ToastTitle intent="success" action={<Link>Undo</Link>}>
@@ -31,21 +62,38 @@ export const ToastLifecycle = () => {
           <Link>Action</Link>
         </ToastFooter>
       </Toast>,
-      { onStatusChange: toastStatus => setStatus(toastStatus) },
+      {
+        onStatusChange: toastStatus => {
+          setDismissed(toastStatus === 'removed');
+          setStatusLog(prev => [...prev, [Date.now(), toastStatus]]);
+        },
+      },
     );
   };
 
   return (
     <>
-      <div>
-        <Text role="status">
-          Current status: <Text weight="bold">{status}</Text>
-        </Text>
+      <div className={styles.root}>
+        <div>
+          <Button className={styles.button} disabledFocusable={!dismissed} onClick={notify}>
+            Make toast
+          </Button>
+          <Button className={styles.button} onClick={() => setStatusLog([])}>
+            Clear log
+          </Button>
+        </div>
+        <div role="log" className={styles.log}>
+          {statusLog.map(([time, toastStatus]) => {
+            const date = new Date(time);
+            return (
+              <div key={time}>
+                {date.toLocaleTimeString()} <Text weight="bold">{toastStatus}</Text>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <Toaster toasterId={toasterId} />
-      <Button disabledFocusable={toastExists} onClick={notify}>
-        Make toast
-      </Button>
     </>
   );
 };
