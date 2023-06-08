@@ -52,9 +52,22 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
 
   React.useEffect(() => {
     formValidation.subscribe(id, alert);
+
+    // In the following, the empty >div> is needed as a fix for Safari not alerting the change
     return () => formValidation.unsubscribe(id, alert);
   }, [formValidation, alert, id]);
-  return <>{isAlerting ? <div role="alert">{children}</div> : <div>{children}</div>}</>;
+  return (
+    <>
+      {isAlerting ? (
+        <>
+          <div></div>
+          <div role="alert">{children}</div>
+        </>
+      ) : (
+        <div>{children}</div>
+      )}
+    </>
+  );
 };
 
 const useFormValidation = (

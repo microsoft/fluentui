@@ -200,35 +200,33 @@ const TicketOrderFormFieldsAccessibility = () => {
                   hint="Enter your name including first name, middle name and last name."
                   validationState={errors.fullName?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.fullName?.types
-                      ? undefined
-                      : {
-                          role: isAlerting ? 'alert' : undefined,
-                          children: (
+                    !errors.fullName?.types ? undefined : (
+                      <>
+                        <div></div>
+                        <div role={isAlerting ? 'alert' : undefined}>
+                          {'required' in errors.fullName.types ? (
+                            <p id="fullNameRequiredError">Full name is required.</p>
+                          ) : (
                             <>
-                              {'required' in errors.fullName.types ? (
-                                <p id="fullNameRequiredError">Full name is required.</p>
-                              ) : (
-                                <>
-                                  <p id="fullNameInvalidError">Full name is invalid. It must:</p>
-                                  <ul>
-                                    {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
-                                      <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
-                                    )}
-                                    {'onlyNameChars' in errors.fullName.types && (
-                                      <li id="fullNameOnlyNameCharsError">
-                                        Contain only lowercase or uppercase letters, spaces or hyphens.
-                                      </li>
-                                    )}
-                                    {'startsAndEndsWithLetter' in errors.fullName.types && (
-                                      <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
-                                    )}
-                                  </ul>
-                                </>
-                              )}
+                              <p id="fullNameInvalidError">Full name is invalid. It must:</p>
+                              <ul>
+                                {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
+                                  <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
+                                )}
+                                {'onlyNameChars' in errors.fullName.types && (
+                                  <li id="fullNameOnlyNameCharsError">
+                                    Contain only lowercase or uppercase letters, spaces or hyphens.
+                                  </li>
+                                )}
+                                {'startsAndEndsWithLetter' in errors.fullName.types && (
+                                  <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                                )}
+                              </ul>
                             </>
-                          ),
-                        }
+                          )}
+                        </div>
+                      </>
+                    )
                   }
                 >
                   <Controller
