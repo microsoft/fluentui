@@ -32,7 +32,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   const state: SearchBoxState = {
     components: {
       root: Input,
-      contentBefore: 'span',
       dismiss: 'span',
       contentAfter: 'span',
     },
@@ -41,19 +40,22 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       type: 'search',
       input: {}, // defining here to have access in styles hook
       value,
+
+      contentBefore: resolveShorthand(contentBefore, {
+        defaultProps: {
+          children: <SearchRegular />,
+        },
+        required: true, // TODO need to allow users to remove
+      }),
+
       ...inputProps,
+
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
         props.onChange?.(ev, { value: newValue });
         setValue(newValue);
       }),
     },
-    contentBefore: resolveShorthand(contentBefore, {
-      defaultProps: {
-        children: <SearchRegular />,
-      },
-      required: true, // TODO need to allow users to remove
-    }),
     dismiss: resolveShorthand(dismiss, {
       defaultProps: {
         children: <DismissRegular />,

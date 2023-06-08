@@ -15,7 +15,6 @@ export const renderSearchBox_unstable = (state: SearchBoxState) => {
 
   // TODO Add additional slots in the appropriate place
   const rootSlots = {
-    contentBefore: slotProps.contentBefore,
     contentAfter: slots.contentAfter && {
       ...slotProps.contentAfter,
       children: (

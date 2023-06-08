@@ -5,7 +5,6 @@ import { tokens } from '@fluentui/react-theme';
 
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
   root: 'fui-SearchBox',
-  contentBefore: 'fui-SearchBox__contentBefore',
   dismiss: 'fui-SearchBox__dismiss',
   contentAfter: 'fui-SearchBox__contentAfter',
 };
