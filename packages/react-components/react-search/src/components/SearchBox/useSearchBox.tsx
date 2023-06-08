@@ -55,7 +55,10 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     }),
     dismiss: resolveShorthand(dismiss, {
       defaultProps: {
-        children: <DismissRegular onClick={onDismissClick} />,
+        children: <DismissRegular />,
+        onClick: onDismissClick,
+        role: 'button',
+        'aria-label': 'clear',
       },
       required: true,
     }),
