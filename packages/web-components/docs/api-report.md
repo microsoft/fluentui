@@ -18,6 +18,7 @@ import { FASTButton } from '@microsoft/fast-foundation';
 import { FASTDivider } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { FASTFlipper } from '@microsoft/fast-foundation';
 import { FASTMenu } from '@microsoft/fast-foundation';
 import { FASTMenuItem } from '@microsoft/fast-foundation';
 import { FASTProgress } from '@microsoft/fast-foundation';
@@ -29,6 +30,7 @@ import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { FASTTabPanel } from '@microsoft/fast-foundation';
 import { FASTTabs } from '@microsoft/fast-foundation';
+import { FlipperDirection } from '@microsoft/fast-foundation';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
@@ -1509,9 +1511,6 @@ export const curveEasyEaseMax: CSSDesignToken<string>;
 export const curveLinear: CSSDesignToken<string>;
 
 // @public
-export const definition: FASTElementDefinition<typeof Switch>;
-
-// @public
 export class Divider extends FASTDivider {
     alignContent?: DividerAlignContent;
     appearance?: DividerAppearance;
@@ -1572,6 +1571,31 @@ export const durationUltraFast: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const durationUltraSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export class Flipper extends FASTFlipper {
+    size: FlipperSize;
+}
+
+// @public
+export const FlipperDefinition: FASTElementDefinition<typeof Flipper>;
+
+export { FlipperDirection }
+
+// @public
+export const FlipperSize: {
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type FlipperSize = ValuesOf<typeof FlipperSize>;
+
+// @public
+export const FlipperStyles: ElementStyles;
+
+// @public (undocumented)
+export const FlipperTemplate: ElementViewTemplate<Flipper>;
 
 // @public (undocumented)
 export const fontFamilyBase: CSSDesignToken<string>;
@@ -2058,6 +2082,9 @@ export class Switch extends FASTSwitch {
 }
 
 // @public
+export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
+
+// @public
 export const SwitchLabelPosition: {
     readonly above: "above";
     readonly after: "after";
@@ -2068,10 +2095,10 @@ export const SwitchLabelPosition: {
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
 
 // @public (undocumented)
-export const switchStyles: ElementStyles;
+export const SwitchStyles: ElementStyles;
 
 // @public (undocumented)
-export const switchTemplate: ElementViewTemplate<Switch>;
+export const SwitchTemplate: ElementViewTemplate<Switch>;
 
 // @public
 export class Tab extends FASTTab {
