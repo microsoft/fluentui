@@ -107,6 +107,18 @@ const useFormValidation = (
   };
 };
 
+interface AlertingValidationMessageProps {
+  isAlerting: boolean;
+}
+const AlertingValidationMessage: React.FC<AlertingValidationMessageProps> = ({ isAlerting, children }) => {
+  return (
+    <>
+      <div />
+      <div role={isAlerting ? 'alert' : undefined}>{children}</div>
+    </>
+  );
+};
+
 const TicketOrderFormFieldsAccessibility = () => {
   const { control, handleSubmit, errors, formState, unregister } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
@@ -200,33 +212,28 @@ const TicketOrderFormFieldsAccessibility = () => {
                   hint="Enter your name including first name, middle name and last name."
                   validationState={errors.fullName?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.fullName?.types ? undefined : (
-                      <>
-                        <div></div>
-                        <div role={isAlerting ? 'alert' : undefined}>
-                          {'required' in errors.fullName.types ? (
-                            <p id="fullNameRequiredError">Full name is required.</p>
-                          ) : (
-                            <>
-                              <p id="fullNameInvalidError">Full name is invalid. It must:</p>
-                              <ul>
-                                {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
-                                  <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
-                                )}
-                                {'onlyNameChars' in errors.fullName.types && (
-                                  <li id="fullNameOnlyNameCharsError">
-                                    Contain only lowercase or uppercase letters, spaces or hyphens.
-                                  </li>
-                                )}
-                                {'startsAndEndsWithLetter' in errors.fullName.types && (
-                                  <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
-                                )}
-                              </ul>
-                            </>
-                          )}
-                        </div>
-                      </>
-                    )
+                    <AlertingValidationMessage isAlerting={isAlerting}>
+                      {!errors.fullName?.types ? undefined : 'required' in errors.fullName.types ? (
+                        <p id="fullNameRequiredError">Full name is required.</p>
+                      ) : (
+                        <>
+                          <p id="fullNameInvalidError">Full name is invalid. It must:</p>
+                          <ul>
+                            {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
+                              <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
+                            )}
+                            {'onlyNameChars' in errors.fullName.types && (
+                              <li id="fullNameOnlyNameCharsError">
+                                Contain only lowercase or uppercase letters, spaces or hyphens.
+                              </li>
+                            )}
+                            {'startsAndEndsWithLetter' in errors.fullName.types && (
+                              <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                            )}
+                          </ul>
+                        </>
+                      )}
+                    </AlertingValidationMessage>
                   }
                 >
                   <Controller
@@ -262,29 +269,26 @@ const TicketOrderFormFieldsAccessibility = () => {
                   aria-describedby="nicknameInvalidError nicknameLengthError nicknameOnlyNameCharsError nicknameStartsAndEndsWithLetterError"
                   validationState={errors.nickname?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.nickname?.types
-                      ? undefined
-                      : {
-                          role: isAlerting ? 'alert' : undefined,
-                          children: (
-                            <>
-                              <p id="nicknameInvalidError">Nickname is invalid. It must:</p>
-                              <ul>
-                                {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
-                                  <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
-                                )}
-                                {'onlyNameChars' in errors.nickname.types && (
-                                  <li id="nicknameOnlyNameCharsError">
-                                    Contain only lowercase or uppercase letters, spaces or hyphens.
-                                  </li>
-                                )}
-                                {'startsAndEndsWithLetter' in errors.nickname.types && (
-                                  <li id="nicknameStartsAndEndsWithLetterError">Start and end wit letter.</li>
-                                )}
-                              </ul>
-                            </>
-                          ),
-                        }
+                    <AlertingValidationMessage isAlerting={isAlerting}>
+                      {!errors.nickname?.types ? undefined : (
+                        <>
+                          <p id="nicknameInvalidError">Nickname is invalid. It must:</p>
+                          <ul>
+                            {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
+                              <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
+                            )}
+                            {'onlyNameChars' in errors.nickname.types && (
+                              <li id="nicknameOnlyNameCharsError">
+                                Contain only lowercase or uppercase letters, spaces or hyphens.
+                              </li>
+                            )}
+                            {'startsAndEndsWithLetter' in errors.nickname.types && (
+                              <li id="nicknameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                            )}
+                          </ul>
+                        </>
+                      )}
+                    </AlertingValidationMessage>
                   }
                 >
                   <Controller
@@ -319,37 +323,30 @@ const TicketOrderFormFieldsAccessibility = () => {
                   aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordCharsError"
                   validationState={errors.password?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.password?.types
-                      ? undefined
-                      : {
-                          role: isAlerting ? 'alert' : undefined,
-                          children: (
-                            <>
-                              {'required' in errors.password.types ? (
-                                <p id="passwordRequiredError">Password is required.</p>
-                              ) : (
-                                <>
-                                  <p id="passwordInvalidError">Password is invalid. It must:</p>
-                                  <ul>
-                                    {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
-                                      <li id="passwordLengthError">Have between 8 and 20 characters.</li>
-                                    )}
-                                    {('hasLowercaseLetter' in errors.password.types ||
-                                      'hasUppercaseLetter' in errors.password.types ||
-                                      'hasSpecialChar' in errors.password.types ||
-                                      'hasNumber' in errors.password.types ||
-                                      'noWhitespace' in errors.password.types) && (
-                                      <li id="passwordCharsError">
-                                        Contain at least one lower case letter, upper case letter, number, special
-                                        character and no spaces.
-                                      </li>
-                                    )}
-                                  </ul>
-                                </>
-                              )}
-                            </>
-                          ),
-                        }
+                    <AlertingValidationMessage isAlerting={isAlerting}>
+                      {!errors.password?.types ? undefined : 'required' in errors.password.types ? (
+                        <p id="passwordRequiredError">Password is required.</p>
+                      ) : (
+                        <>
+                          <p id="passwordInvalidError">Password is invalid. It must:</p>
+                          <ul>
+                            {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
+                              <li id="passwordLengthError">Have between 8 and 20 characters.</li>
+                            )}
+                            {('hasLowercaseLetter' in errors.password.types ||
+                              'hasUppercaseLetter' in errors.password.types ||
+                              'hasSpecialChar' in errors.password.types ||
+                              'hasNumber' in errors.password.types ||
+                              'noWhitespace' in errors.password.types) && (
+                              <li id="passwordCharsError">
+                                Contain at least one lower case letter, upper case letter, number, special character and
+                                no spaces.
+                              </li>
+                            )}
+                          </ul>
+                        </>
+                      )}
+                    </AlertingValidationMessage>
                   }
                 >
                   <Controller
@@ -390,27 +387,20 @@ const TicketOrderFormFieldsAccessibility = () => {
                   aria-describedby="birthDateRequiredError birthDateInvalidError birthDateCharsError"
                   validationState={errors.birthDate?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.birthDate?.types
-                      ? undefined
-                      : {
-                          role: isAlerting ? 'alert' : undefined,
-                          children: (
-                            <>
-                              {'required' in errors.birthDate.types ? (
-                                <p id="birthDateRequiredError">Birth date is required.</p>
-                              ) : (
-                                <>
-                                  <p id="birthDateInvalidError">Birth date is invalid. It must:</p>
-                                  <ul>
-                                    {'validDate' in errors.birthDate.types && (
-                                      <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
-                                    )}
-                                  </ul>
-                                </>
-                              )}
-                            </>
-                          ),
-                        }
+                    <AlertingValidationMessage isAlerting={isAlerting}>
+                      {!errors.birthDate?.types ? undefined : 'required' in errors.birthDate.types ? (
+                        <p id="birthDateRequiredError">Birth date is required.</p>
+                      ) : (
+                        <>
+                          <p id="birthDateInvalidError">Birth date is invalid. It must:</p>
+                          <ul>
+                            {'validDate' in errors.birthDate.types && (
+                              <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
+                            )}
+                          </ul>
+                        </>
+                      )}
+                    </AlertingValidationMessage>
                   }
                 >
                   <Controller
@@ -456,27 +446,20 @@ const TicketOrderFormFieldsAccessibility = () => {
                   hint="We will send you newsletter to this e-mail."
                   validationState={errors.email?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.email?.types
-                      ? undefined
-                      : {
-                          role: isAlerting ? 'alert' : undefined,
-                          children: (
-                            <>
-                              {'required' in errors.email.types ? (
-                                <p id="emailRequiredError">E-mail is required.</p>
-                              ) : (
-                                <>
-                                  <p id="emailInvalidError">E-mail is invalid. It must:</p>
-                                  <ul>
-                                    {'validEmail' in errors.email.types && (
-                                      <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
-                                    )}
-                                  </ul>
-                                </>
-                              )}
-                            </>
-                          ),
-                        }
+                    <AlertingValidationMessage isAlerting={isAlerting}>
+                      {!errors.email?.types ? undefined : 'required' in errors.email.types ? (
+                        <p id="emailRequiredError">E-mail is required.</p>
+                      ) : (
+                        <>
+                          <p id="emailInvalidError">E-mail is invalid. It must:</p>
+                          <ul>
+                            {'validEmail' in errors.email.types && (
+                              <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
+                            )}
+                          </ul>
+                        </>
+                      )}
+                    </AlertingValidationMessage>
                   }
                 >
                   <Controller
@@ -513,20 +496,15 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                   validationState={errors.acceptTerms?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.acceptTerms?.types
-                      ? undefined
-                      : {
-                          role: isAlerting ? 'alert' : undefined,
-                          children: (
-                            <>
-                              {'required' in errors.acceptTerms.types && (
-                                <p id="acceptTermsRequiredError">
-                                  You have to accept the terms and conditions in order to order your ticket.
-                                </p>
-                              )}
-                            </>
-                          ),
-                        }
+                    <AlertingValidationMessage isAlerting={isAlerting}>
+                      {!errors.acceptTerms?.types
+                        ? undefined
+                        : 'required' in errors.acceptTerms.types && (
+                            <p id="acceptTermsRequiredError">
+                              You have to accept the terms and conditions in order to order your ticket.
+                            </p>
+                          )}
+                    </AlertingValidationMessage>
                   }
                 >
                   <Controller
