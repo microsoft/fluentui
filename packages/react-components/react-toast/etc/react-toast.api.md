@@ -53,6 +53,9 @@ export type ToastBodySlots = {
 export type ToastBodyState = ComponentState<ToastBodySlots>;
 
 // @public (undocumented)
+export type ToastChangeHandler = (status: ToastStatus, toast: ToastOptions & Pick<Toast_2, 'updateId'>) => void;
+
+// @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
 
 // @public
@@ -117,6 +120,9 @@ export type ToastSlots = {
 
 // @public
 export type ToastState = ComponentState<ToastSlots>;
+
+// @public (undocumented)
+export type ToastStatus = 'added' | 'visible' | 'closed' | 'removed' | 'updated';
 
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
