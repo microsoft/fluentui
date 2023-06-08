@@ -53,9 +53,6 @@ export type ToastBodySlots = {
 export type ToastBodyState = ComponentState<ToastBodySlots>;
 
 // @public (undocumented)
-export type ToastChangeHandler = (event: null, data: ToastChangeData) => void;
-
-// @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
 
 // @public
