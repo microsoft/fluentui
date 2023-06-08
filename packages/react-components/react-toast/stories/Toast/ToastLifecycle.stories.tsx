@@ -64,7 +64,7 @@ export const ToastLifecycle = () => {
       </Toast>,
       {
         onStatusChange: toastStatus => {
-          setDismissed(toastStatus === 'removed');
+          setDismissed(toastStatus === 'unmounted');
           setStatusLog(prev => [...prev, [Date.now(), toastStatus]]);
         },
       },
@@ -106,11 +106,10 @@ ToastLifecycle.parameters = {
         'The Toast API exposes its own lifecycle that users can hook into, and is already used in other',
         'documentation examples. The lifecycle stages are:',
         '',
-        '- added - The toast is queued until it can be made visible',
+        '- queued - The toast is queued until it can be made visible',
         '- visible - The toast is mounted and rendered, this is instance if the toast limit is not reached',
-        '- closed - The toast is visually invisible but still mounted',
-        '- removed - The toast has been completely unmounted and no longer exists',
-        '- updated - The toast has been updated',
+        '- dismissed - The toast is visually invisible but still mounted',
+        '- unounted - The toast has been completely unmounted and no longer exists',
         '',
         'Use the `onStatusChange` option when dispatching a toast to listen to lifecycle changes.',
       ].join('\n'),

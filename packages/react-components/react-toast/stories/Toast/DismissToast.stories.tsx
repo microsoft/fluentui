@@ -5,23 +5,23 @@ import { useId, Button } from '@fluentui/react-components';
 export const DismissToast = () => {
   const toasterId = useId('toaster');
   const toastId = useId('example');
-  const [removed, setRemoved] = React.useState(false);
+  const [unmounted, setUnmounted] = React.useState(false);
   const { dispatchToast, dismissToast } = useToastController(toasterId);
   const notify = () => {
     dispatchToast(
       <Toast>
         <ToastTitle intent="success">This is a toast</ToastTitle>
       </Toast>,
-      { toastId, onStatusChange: status => setRemoved(status === 'removed') },
+      { toastId, onStatusChange: status => setUnmounted(status === 'unmounted') },
     );
-    setRemoved(false);
+    setUnmounted(false);
   };
   const dismiss = () => dismissToast(toastId);
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <Button onClick={removed ? dismiss : notify}>{removed ? 'Make' : 'Dismiss'} toast</Button>
+      <Button onClick={unmounted ? dismiss : notify}>{unmounted ? 'Make' : 'Dismiss'} toast</Button>
     </>
   );
 };

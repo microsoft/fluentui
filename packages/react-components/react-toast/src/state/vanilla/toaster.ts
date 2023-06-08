@@ -140,7 +140,6 @@ export class Toaster {
     Object.assign(toastToUpdate, toastOptions);
     toastToUpdate.updateId++;
     this.onUpdate();
-    toastToUpdate.onStatusChange?.('updated', toastToUpdate);
   }
 
   private _dismissToast(toastId: ToastId) {
@@ -169,7 +168,7 @@ export class Toaster {
 
       this.visibleToasts.delete(toastId);
       this.onUpdate();
-      toast.onStatusChange?.('closed', toast);
+      toast.onStatusChange?.('dismissed', toast);
     };
 
     const remove = () => {
@@ -178,7 +177,7 @@ export class Toaster {
         return;
       }
 
-      toast.onStatusChange?.('removed', toast);
+      toast.onStatusChange?.('unmounted', toast);
       this.toasts.delete(toastId);
 
       if (this.visibleToasts.size < this.limit && this.queue.peek()) {
@@ -208,7 +207,7 @@ export class Toaster {
     assignDefined<Toast>(toast, toastOptions);
 
     this.toasts.set(toastId, toast);
-    toast.onStatusChange?.('added', toast);
+    toast.onStatusChange?.('queued', toast);
     if (this.visibleToasts.size >= this.limit) {
       this.queue.enqueue(toastId);
     } else {

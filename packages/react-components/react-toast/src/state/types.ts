@@ -6,7 +6,7 @@ export type ToasterId = string;
 
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 export type ToastPoliteness = 'assertive' | 'polite';
-export type ToastStatus = 'added' | 'visible' | 'closed' | 'removed' | 'updated';
+export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
 export type ToastChangeHandler = (status: ToastStatus, toast: ToastOptions & Pick<Toast, 'updateId'>) => void;
 
 export interface ToastOptions<TData = object> {

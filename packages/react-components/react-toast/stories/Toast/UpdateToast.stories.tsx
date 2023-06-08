@@ -5,7 +5,7 @@ import { useId, Button } from '@fluentui/react-components';
 export const UpdateToast = () => {
   const toastId = useId('toast');
   const toasterId = useId('toaster');
-  const [removed, setRemoved] = React.useState(true);
+  const [unmounted, setUnmounted] = React.useState(true);
 
   const { dispatchToast, updateToast } = useToastController(toasterId);
   const notify = () => {
@@ -13,9 +13,9 @@ export const UpdateToast = () => {
       <Toast>
         <ToastTitle intent="warning">This toast never closes</ToastTitle>
       </Toast>,
-      { toastId, timeout: -1, onStatusChange: status => setRemoved(status === 'removed') },
+      { toastId, timeout: -1, onStatusChange: status => setUnmounted(status === 'unmounted') },
     );
-    setRemoved(false);
+    setUnmounted(false);
   };
   const update = () =>
     updateToast({
@@ -31,7 +31,7 @@ export const UpdateToast = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <Button onClick={removed ? notify : update}>{removed ? 'Make toast' : 'Update toast'}</Button>
+      <Button onClick={unmounted ? notify : update}>{unmounted ? 'Make toast' : 'Update toast'}</Button>
     </>
   );
 };
