@@ -113,8 +113,14 @@ interface AlertingValidationMessageProps {
 const AlertingValidationMessage: React.FC<AlertingValidationMessageProps> = ({ isAlerting, children }) => {
   return (
     <>
-      <div />
-      <div role={isAlerting ? 'alert' : undefined}>{children}</div>
+      {isAlerting ? (
+        <>
+          <div />
+          <div role="alert">{children}</div>
+        </>
+      ) : (
+        <div>{children}</div>
+      )}
     </>
   );
 };
