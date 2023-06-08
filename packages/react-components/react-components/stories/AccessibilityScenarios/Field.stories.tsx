@@ -115,6 +115,7 @@ const AlertingValidationMessage: React.FC<AlertingValidationMessageProps> = ({ i
     <>
       {isAlerting ? (
         <>
+          {/* The following empty <div> fixes live region not alerting in Safari: */}
           <div />
           <div role="alert">{children}</div>
         </>
