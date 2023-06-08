@@ -20,33 +20,34 @@ const useStyles = makeStyles({
     display: 'block',
   },
 
+  logContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  logLabel: {
+    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: tokens.colorBrandBackground,
+    width: 'fit-content',
+    fontWeight: tokens.fontWeightBold,
+    ...shorthands.padding('2px', '12px'),
+  },
+
   log: {
+    overflowY: 'auto',
     boxShadow: tokens.shadow16,
     position: 'relative',
     minWidth: '200px',
-    minHeight: '200px',
+    height: '200px',
     ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
     ...shorthands.padding('12px', '12px'),
-    '::after': {
-      content: `'Status log'`,
-      position: 'absolute',
-      ...shorthands.padding('1px', '4px', '1px'),
-      top: '-2px',
-      left: '-2px',
-      fontFamily: 'monospace',
-      fontSize: '15px',
-      fontWeight: 900,
-      lineHeight: 1,
-      letterSpacing: '1px',
-      color: tokens.colorNeutralForegroundOnBrand,
-      backgroundColor: tokens.colorBrandBackground,
-    },
   },
 });
 
 export const ToastLifecycle = () => {
   const styles = useStyles();
   const toasterId = useId('toaster');
+  const labelId = useId();
   const { dispatchToast } = useToastController(toasterId);
   const [statusLog, setStatusLog] = React.useState<[number, ToastStatus][]>([]);
   const [dismissed, setDismissed] = React.useState(true);
@@ -63,6 +64,7 @@ export const ToastLifecycle = () => {
         </ToastFooter>
       </Toast>,
       {
+        timeout: 1000,
         onStatusChange: toastStatus => {
           setDismissed(toastStatus === 'unmounted');
           setStatusLog(prev => [...prev, [Date.now(), toastStatus]]);
@@ -82,15 +84,20 @@ export const ToastLifecycle = () => {
             Clear log
           </Button>
         </div>
-        <div role="log" className={styles.log}>
-          {statusLog.map(([time, toastStatus]) => {
-            const date = new Date(time);
-            return (
-              <div key={time}>
-                {date.toLocaleTimeString()} <Text weight="bold">{toastStatus}</Text>
-              </div>
-            );
-          })}
+        <div className={styles.logContainer}>
+          <div className={styles.logLabel} id={labelId}>
+            Status log
+          </div>
+          <div role="log" aria-labelledby={labelId} className={styles.log}>
+            {statusLog.map(([time, toastStatus]) => {
+              const date = new Date(time);
+              return (
+                <div key={time}>
+                  {date.toLocaleTimeString()} <Text weight="bold">{toastStatus}</Text>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <Toaster toasterId={toasterId} />
