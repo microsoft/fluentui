@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 08 Jun 2023 04:18:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.23",
+      "version": "3.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ac7f17ec809a50b1b709e5fd66e8566b4181f08e",
+            "comment": "feat(text-input): add TextInput as a new web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 04:19:34 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.22",
       "version": "3.0.0-alpha.22",
