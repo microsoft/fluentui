@@ -5,16 +5,18 @@ import { useId, Button } from '@fluentui/react-components';
 export const UpdateToast = () => {
   const toastId = useId('toast');
   const toasterId = useId('toaster');
-  const [dispatched, setDispatched] = React.useState(false);
+  const [removed, setRemoved] = React.useState(true);
 
   const { dispatchToast, updateToast } = useToastController(toasterId);
-  const notify = () =>
+  const notify = () => {
     dispatchToast(
       <Toast>
         <ToastTitle intent="warning">This toast never closes</ToastTitle>
       </Toast>,
-      { toastId, timeout: -1 },
+      { toastId, timeout: -1, onStatusChange: status => setRemoved(status === 'removed') },
     );
+    setRemoved(false);
+  };
   const update = () =>
     updateToast({
       content: (
@@ -26,20 +28,10 @@ export const UpdateToast = () => {
       timeout: 2000,
     });
 
-  const onClick = () => {
-    if (dispatched) {
-      update();
-      setDispatched(false);
-    } else {
-      notify();
-      setDispatched(true);
-    }
-  };
-
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <Button onClick={onClick}>{dispatched ? 'Update toast' : 'Make toast'}</Button>
+      <Button onClick={removed ? notify : update}>{removed ? 'Make toast' : 'Update toast'}</Button>
     </>
   );
 };

@@ -5,8 +5,8 @@ import { Toast as ToastProps } from './types';
 
 const noop = () => null;
 
-export function useToast<TElement extends HTMLElement>(options: ToastProps) {
-  const { pauseOnHover, pauseOnWindowBlur } = options;
+export function useToast<TElement extends HTMLElement>(options: ToastProps & { visible: boolean }) {
+  const { pauseOnHover, pauseOnWindowBlur, visible } = options;
 
   const forceRender = useForceUpdate();
   const [toast] = React.useState(() => new Toast());
@@ -14,7 +14,7 @@ export function useToast<TElement extends HTMLElement>(options: ToastProps) {
   const toastRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
-    if (toast && toastRef.current) {
+    if (visible && toast && toastRef.current) {
       toast.onUpdate = forceRender;
       toast.connectToDOM(toastRef.current, {
         pauseOnHover,
@@ -23,7 +23,7 @@ export function useToast<TElement extends HTMLElement>(options: ToastProps) {
 
       return () => toast.disconnect();
     }
-  }, [toast, pauseOnWindowBlur, pauseOnHover, forceRender]);
+  }, [toast, pauseOnWindowBlur, pauseOnHover, forceRender, visible]);
 
   if (!toast) {
     return {
