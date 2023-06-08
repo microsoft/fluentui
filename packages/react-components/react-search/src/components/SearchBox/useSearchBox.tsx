@@ -43,6 +43,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       value,
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
+        props.onChange?.(ev, { value: newValue });
         setValue(newValue);
       }),
       ...inputProps,

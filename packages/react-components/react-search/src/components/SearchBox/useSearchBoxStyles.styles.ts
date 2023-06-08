@@ -38,16 +38,16 @@ const useContentClassName = makeResetStyles({
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
   state.root.input!.className = mergeClasses(useRootClassName().input, state.root.className);
 
-  const contentClasses = [useContentClassName()];
+  const contentClasses = useContentClassName();
   if (state.contentAfter) {
     state.contentAfter.className = mergeClasses(
       searchBoxClassNames.contentAfter,
-      ...contentClasses,
+      contentClasses,
       state.contentAfter.className,
     );
   }
   if (state.dismiss) {
-    state.dismiss.className = mergeClasses(searchBoxClassNames.dismiss, ...contentClasses, state.dismiss.className);
+    state.dismiss.className = mergeClasses(searchBoxClassNames.dismiss, contentClasses, state.dismiss.className);
   }
 
   return state;
