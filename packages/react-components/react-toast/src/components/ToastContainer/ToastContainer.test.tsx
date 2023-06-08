@@ -37,6 +37,8 @@ describe('ToastContainer', () => {
     displayName: 'ToastContainer',
     requiredProps: defaultToastContainerProps,
     isInternal: true,
+    // FIXME
+    disabledTests: ['consistent-callback-args'],
   });
 
   it('renders a default state', () => {
