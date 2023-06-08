@@ -38,6 +38,23 @@ export type InfoButtonSlots = {
 export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
 
 // @public
+export const InfoIcon: ForwardRefComponent<InfoIconProps>;
+
+// @public (undocumented)
+export const infoIconClassNames: SlotClassNames<InfoIconSlots>;
+
+// @public
+export type InfoIconProps = ComponentProps<InfoIconSlots> & {};
+
+// @public (undocumented)
+export type InfoIconSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type InfoIconState = ComponentState<InfoIconSlots>;
+
+// @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 
 // @public (undocumented)
@@ -59,30 +76,13 @@ export type InfoLabelSlots = {
 export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
 
 // @public
-export const InfoTip: ForwardRefComponent<InfoTipProps>;
-
-// @public (undocumented)
-export const infoTipClassNames: SlotClassNames<InfoTipSlots>;
-
-// @public
-export type InfoTipProps = ComponentProps<InfoTipSlots> & {};
-
-// @public (undocumented)
-export type InfoTipSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type InfoTipState = ComponentState<InfoTipSlots>;
-
-// @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 
 // @public
-export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
+export const renderInfoIcon_unstable: (state: InfoIconState) => JSX.Element;
 
 // @public
-export const renderInfoTip_unstable: (state: InfoTipState) => JSX.Element;
+export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
 
 // @public
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
@@ -91,16 +91,16 @@ export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<H
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
 
 // @public
+export const useInfoIcon_unstable: (props: InfoIconProps, ref: React_2.Ref<HTMLElement>) => InfoIconState;
+
+// @public
+export const useInfoIconStyles_unstable: (state: InfoIconState) => InfoIconState;
+
+// @public
 export const useInfoLabel_unstable: (props: InfoLabelProps, ref: React_2.Ref<HTMLLabelElement>) => InfoLabelState;
 
 // @public
 export const useInfoLabelStyles_unstable: (state: InfoLabelState) => InfoLabelState;
-
-// @public
-export const useInfoTip_unstable: (props: InfoTipProps, ref: React_2.Ref<HTMLElement>) => InfoTipState;
-
-// @public
-export const useInfoTipStyles_unstable: (state: InfoTipState) => InfoTipState;
 
 // (No @packageDocumentation comment for this package)
 
