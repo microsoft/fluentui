@@ -168,7 +168,7 @@ export class Toaster {
 
       this.visibleToasts.delete(toastId);
       this.onUpdate();
-      toast.onStatusChange?.('dismissed', toast);
+      toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
     };
 
     const remove = () => {
@@ -177,7 +177,7 @@ export class Toaster {
         return;
       }
 
-      toast.onStatusChange?.('unmounted', toast);
+      toast.onStatusChange?.(null, { status: 'unmounted', ...toast });
       this.toasts.delete(toastId);
 
       if (this.visibleToasts.size < this.limit && this.queue.peek()) {
@@ -187,7 +187,7 @@ export class Toaster {
         }
 
         this.visibleToasts.add(nextToast.toastId);
-        toast.onStatusChange?.('visible', toast);
+        toast.onStatusChange?.(null, { status: 'visible', ...nextToast });
       }
       this.onUpdate();
     };
@@ -207,13 +207,13 @@ export class Toaster {
     assignDefined<Toast>(toast, toastOptions);
 
     this.toasts.set(toastId, toast);
-    toast.onStatusChange?.('queued', toast);
+    toast.onStatusChange?.(null, { status: 'queued', ...toast });
     if (this.visibleToasts.size >= this.limit) {
       this.queue.enqueue(toastId);
     } else {
       this.visibleToasts.add(toastId);
       this.onUpdate();
-      toast.onStatusChange?.('visible', toast);
+      toast.onStatusChange?.(null, { status: 'visible', ...toast });
     }
   }
 }

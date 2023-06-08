@@ -65,7 +65,7 @@ export const ToastLifecycle = () => {
       </Toast>,
       {
         timeout: 1000,
-        onStatusChange: toastStatus => {
+        onStatusChange: (e, { status: toastStatus }) => {
           setDismissed(toastStatus === 'unmounted');
           setStatusLog(prev => [...prev, [Date.now(), toastStatus]]);
         },

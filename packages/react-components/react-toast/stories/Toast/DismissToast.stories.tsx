@@ -12,7 +12,7 @@ export const DismissToast = () => {
       <Toast>
         <ToastTitle intent="success">This is a toast</ToastTitle>
       </Toast>,
-      { toastId, onStatusChange: status => setUnmounted(status === 'unmounted') },
+      { toastId, onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted') },
     );
     setUnmounted(false);
   };

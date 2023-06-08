@@ -13,7 +13,7 @@ export const UpdateToast = () => {
       <Toast>
         <ToastTitle intent="warning">This toast never closes</ToastTitle>
       </Toast>,
-      { toastId, timeout: -1, onStatusChange: status => setUnmounted(status === 'unmounted') },
+      { toastId, timeout: -1, onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted') },
     );
     setUnmounted(false);
   };

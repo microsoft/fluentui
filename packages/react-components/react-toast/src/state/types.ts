@@ -7,7 +7,11 @@ export type ToasterId = string;
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
-export type ToastChangeHandler = (status: ToastStatus, toast: ToastOptions & Pick<Toast, 'updateId'>) => void;
+export type ToastChangeHandler = (event: null, data: ToastChangeData) => void;
+
+export interface ToastChangeData extends ToastOptions, Pick<Toast, 'updateId'> {
+  status: ToastStatus;
+}
 
 export interface ToastOptions<TData = object> {
   /**
