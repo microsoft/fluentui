@@ -8,7 +8,7 @@ export { FileTypeIconMap } from './FileTypeIconMap';
 
 export { getFileTypeIconAsHTMLString } from './getFileTypeIconAsHTMLString';
 
-export { getFileTypeIconAsURL } from './getFileTypeIconAsURL';
+export { getFileTypeIconAsUrl } from './getFileTypeIconAsUrl';
 
 import './version';
 
