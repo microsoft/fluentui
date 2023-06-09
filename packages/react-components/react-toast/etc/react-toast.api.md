@@ -102,6 +102,9 @@ export type ToastId = string;
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
+export type ToastPoliteness = 'assertive' | 'polite';
+
+// @public (undocumented)
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
 // @public

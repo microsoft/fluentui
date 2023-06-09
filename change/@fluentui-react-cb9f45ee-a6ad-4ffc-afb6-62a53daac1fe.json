@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ContextualMenu should not include headers and dividers in ARIA index calculations",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

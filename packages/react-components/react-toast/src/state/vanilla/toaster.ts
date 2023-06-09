@@ -160,7 +160,7 @@ export class Toaster {
 
     const remove = () => {
       this.toasts.delete(toastId);
-      if (this.queue.peek()) {
+      if (this.visibleToasts.size < this.limit && this.queue.peek()) {
         const nextToast = this.queue.dequeue();
         this.toasts.set(nextToast.toastId, nextToast);
         this.visibleToasts.add(nextToast.toastId);
