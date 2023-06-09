@@ -23,13 +23,12 @@ export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
 // @public (undocumented)
 export type SearchBoxSlots = {
     root: NonNullable<Slot<typeof Input>>;
-    contentBefore?: Slot<'span'>;
     dismiss?: Slot<'span'>;
     contentAfter?: Slot<'span'>;
 };
 
 // @public
-export type SearchBoxState = ComponentState<SearchBoxSlots>;
+export type SearchBoxState = ComponentState<SearchBoxSlots> & Pick<InputState, 'size'>;
 
 // @public
 export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLElement>) => SearchBoxState;
