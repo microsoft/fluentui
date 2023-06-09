@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 
   resizableArea: {
     minWidth: '200px',
-    maxWidth: '800px',
+    // maxWidth: '800px',
     ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
     ...shorthands.padding('20px', '10px', '10px', '10px'),
     position: 'relative',
@@ -100,11 +100,9 @@ const OverflowGroupDivider: React.FC<{
   groupId: string;
   customDivider?: boolean;
 }> = props => {
-  const isGroupVisible = useIsOverflowGroupVisible(props.groupId);
-
-  if (isGroupVisible === 'hidden') {
-    return null;
-  } // TODO hide using overflow logic
+  // if (isGroupVisible === 'hidden') {
+  //   return null;
+  // } // TODO hide using overflow logic
 
   return (
     <OverflowDivider groupId={props.groupId}>

@@ -96,7 +96,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
       el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
 
       return () => {
-        overflowManager?.removeDivider(divider.groupId);
+        if (divider.groupId) {
+          overflowManager?.removeDivider(divider.groupId);
+        }
         el.removeAttribute(DATA_OVERFLOW_DIVIDER);
       };
     },

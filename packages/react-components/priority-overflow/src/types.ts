@@ -137,7 +137,7 @@ export interface OverflowManager {
   /**
    * TODO
    */
-  removeDivider: (element: OverflowDivider) => void;
+  removeDivider: (groupId: string) => void;
 
   /**
    * Unsets the overflow menu element
