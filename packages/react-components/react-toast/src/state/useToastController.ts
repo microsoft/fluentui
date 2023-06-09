@@ -10,6 +10,10 @@ import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './
 
 const noop = () => undefined;
 
+/**
+ * @param toasterId - If an id is provided all imperative methods control that specific toaster
+ * @returns Imperative methods to control toasts
+ */
 export function useToastController(toasterId?: ToasterId) {
   const { targetDocument } = useFluent();
 
