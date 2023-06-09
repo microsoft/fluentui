@@ -106,7 +106,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onCalendarOpenStateChange?: ComponentEventHandler<DatepickerProps & { value: Date }>;
+  onCalendarOpenStateChange?: ComponentEventHandler<DatepickerProps>;
 
   /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
@@ -263,13 +263,18 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
 
   const trySetOpenState = (
     newValue: boolean,
-    event: React.KeyboardEvent | React.MouseEvent | KeyboardEvent | MouseEvent | TouchEvent | WheelEvent,
+    event:
+      | React.SyntheticEvent
+      | React.KeyboardEvent
+      | React.MouseEvent
+      | KeyboardEvent
+      | MouseEvent
+      | TouchEvent
+      | WheelEvent,
   ) => {
-
     setOpenState(newValue);
     _.invoke(props, 'onCalendarOpenStateChange', event, { ...props, ...{ calendarOpenState: newValue } });
   };
-
 
   const calendarOptions: IDayGridOptions = {
     selectedDate,
