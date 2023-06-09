@@ -86,7 +86,6 @@ export const getDefaultChoiceGroupOptionStyles = (
       color: getChoiceGroupTextColor(props),
       '.ms-ChoiceFieldLabel': {
         color: getChoiceGroupTextColor(props),
-        paddingLeft: '32px',
       },
       '&:hover .ms-ChoiceFieldLabel': {
         color: getTextHoverColor(props),
@@ -99,9 +98,8 @@ export const getDefaultChoiceGroupOptionStyles = (
           height: '17px',
           margin: '2px',
         },
+        // the inner dot
         '::after': {
-          top: '5px',
-          left: '5px',
           width: '11px',
           height: '11px',
           background: getInnerCircleColor(props, false),
