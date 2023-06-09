@@ -1509,9 +1509,6 @@ export const curveEasyEaseMax: CSSDesignToken<string>;
 export const curveLinear: CSSDesignToken<string>;
 
 // @public
-export const definition: FASTElementDefinition<typeof Switch>;
-
-// @public
 export class Divider extends FASTDivider {
     alignContent?: DividerAlignContent;
     appearance?: DividerAppearance;
@@ -1572,6 +1569,13 @@ export const durationUltraFast: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const durationUltraSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const FluentDesignSystem: Readonly<{
+    prefix: "fluent";
+    shadowRootMode: "open";
+    registry: CustomElementRegistry;
+}>;
 
 // @public (undocumented)
 export const fontFamilyBase: CSSDesignToken<string>;
@@ -2058,6 +2062,9 @@ export class Switch extends FASTSwitch {
 }
 
 // @public
+export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
+
+// @public
 export const SwitchLabelPosition: {
     readonly above: "above";
     readonly after: "after";
@@ -2068,10 +2075,10 @@ export const SwitchLabelPosition: {
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
 
 // @public (undocumented)
-export const switchStyles: ElementStyles;
+export const SwitchStyles: ElementStyles;
 
 // @public (undocumented)
-export const switchTemplate: ElementViewTemplate<Switch>;
+export const SwitchTemplate: ElementViewTemplate<Switch>;
 
 // @public
 export class Tab extends FASTTab {
