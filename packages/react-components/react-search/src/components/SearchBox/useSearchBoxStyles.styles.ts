@@ -259,6 +259,16 @@ const useContentStyles = makeStyles({
   },
 });
 
+const useInputClassName = makeResetStyles({
+  // removes the WebKit pseudoelement styling
+  '::-webkit-search-decoration': {
+    display: 'none',
+  },
+  '::-webkit-search-cancel-button': {
+    display: 'none',
+  },
+});
+
 /**
  * Apply styling to the SearchBox slots based on the state
  */
@@ -271,6 +281,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const rootStyles = useRootStyles();
   const searchBoxStyles = useSearchBoxElementStyles();
   const contentStyles = useContentStyles();
+  const inputStyles = useInputClassName();
 
   state.root.className = mergeClasses(
     searchBoxClassNames.root,
@@ -287,6 +298,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   );
 
   state.input.className = mergeClasses(
+    inputStyles,
     searchBoxClassNames.input,
     useSearchBoxClassName(),
     size === 'large' && searchBoxStyles.large,

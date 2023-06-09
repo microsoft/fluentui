@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
+  mergeCallbacks,
   resolveShorthand,
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
+import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render SearchBox.
@@ -55,9 +57,21 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
         ...nativeProps.primary,
       },
     }),
-    contentBefore: resolveShorthand(props.contentBefore),
-    contentAfter: resolveShorthand(props.contentAfter),
-    dismiss: resolveShorthand(props.dismiss),
+    contentBefore: resolveShorthand(props.contentBefore, {
+      defaultProps: {
+        children: <SearchRegular />,
+      },
+      required: true,
+    }),
+    contentAfter: resolveShorthand(props.contentAfter, { required: true }),
+    dismiss: resolveShorthand(props.dismiss, {
+      defaultProps: {
+        children: <DismissRegular />,
+        role: 'button',
+        'aria-label': 'clear',
+      },
+      required: true,
+    }),
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: nativeProps.root,
@@ -70,6 +84,11 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     onChange?.(ev, { value: newValue });
     setValue(newValue);
   });
+
+  const onDismissClick = useEventCallback(mergeCallbacks(state.dismiss?.onClick, () => setValue('')));
+  if (state.dismiss) {
+    state.dismiss.onClick = onDismissClick;
+  }
 
   return state;
 };
