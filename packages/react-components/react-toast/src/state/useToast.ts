@@ -5,7 +5,11 @@ import { Toast as ToastProps } from './types';
 
 const noop = () => null;
 
-export function useToast<TElement extends HTMLElement>(options: ToastProps & { visible: boolean }) {
+interface UseToastOptions extends Pick<ToastProps, 'pauseOnHover' | 'pauseOnWindowBlur'> {
+  visible: boolean;
+}
+
+export function useToast<TElement extends HTMLElement>(options: UseToastOptions) {
   const { pauseOnHover, pauseOnWindowBlur, visible } = options;
 
   const forceRender = useForceUpdate();
