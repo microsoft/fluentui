@@ -421,7 +421,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
     // Focus function keeps changing, so we need to skip it in the deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, props.disabled]);
+  }, [isFirstMount, open, props.disabled]);
 
   const calendarShorthand = resolveShorthand(props.calendar, {
     required: true,
