@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Input } from '@fluentui/react-input';
+import { Input, InputState } from '@fluentui/react-input';
 
 export type SearchBoxSlots = {
   // Root of the component, wrapping the inputs
@@ -20,4 +20,4 @@ export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
 /**
  * State used in rendering SearchBox
  */
-export type SearchBoxState = ComponentState<SearchBoxSlots>;
+export type SearchBoxState = ComponentState<SearchBoxSlots> & Pick<InputState, 'size'>;

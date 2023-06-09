@@ -51,7 +51,7 @@ const useContentStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  const { size } = state.root;
+  const { size } = state;
   const disabled = state.root.input!.disabled;
 
   const contentClassName = useContentClassName();

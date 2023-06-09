@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { mergeCallbacks, resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
@@ -14,7 +14,7 @@ import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of SearchBox
  */
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLElement>): SearchBoxState => {
-  const { contentBefore, dismiss, contentAfter, ...inputProps } = props;
+  const { size = 'medium', contentBefore, dismiss, contentAfter, ...inputProps } = props;
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -22,14 +22,9 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     initialState: '',
   });
 
-  const onDismissClick = React.useCallback(
-    ev => {
-      setValue('');
-    },
-    [setValue],
-  );
-
   const state: SearchBoxState = {
+    size,
+
     components: {
       root: Input,
       dismiss: 'span',
@@ -59,7 +54,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     dismiss: resolveShorthand(dismiss, {
       defaultProps: {
         children: <DismissRegular />,
-        onClick: onDismissClick,
         role: 'button',
         'aria-label': 'clear',
       },
@@ -67,6 +61,11 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     }),
     contentAfter: resolveShorthand(contentAfter, { required: true }),
   };
+
+  const onDismissClick = useEventCallback(mergeCallbacks(state.dismiss?.onClick, () => setValue('')));
+  if (state.dismiss) {
+    state.dismiss.onClick = onDismissClick;
+  }
 
   return state;
 };
