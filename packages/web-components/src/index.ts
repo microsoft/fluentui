@@ -25,4 +25,5 @@ export * from './text/index.js';
 export * from './text-input/index.js';
 export * from './toggle-button/index.js';
 
+export * from './fluent-design-system.js';
 export * from './theme/index.js';
