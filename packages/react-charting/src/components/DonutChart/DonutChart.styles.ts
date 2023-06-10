@@ -1,31 +1,22 @@
-import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
+import { makeStyles, shorthands, typographyStyles } from '@fluentui/react-components';
 
-export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, theme } = props;
-  return {
-    root: [
-      theme.fonts.medium,
-      'ms-DonutChart',
-      {
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        height: '100%',
-      },
-      className,
-    ],
-    chart: {
-      width: width,
-      height: height,
-      boxSizing: 'content-box',
-      overflow: 'visible',
-      alignmentAdjust: 'center',
-      display: 'block',
-    },
-    legendContainer: {
-      paddingTop: '16px',
-      width: `${width}px`,
-    },
-  };
-};
+export const useStyles = makeStyles({
+  root: {
+    ...typographyStyles.body1,
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+  },
+  chart: {
+    boxSizing: 'content-box',
+    ...shorthands.overflow('visible'),
+    // overflow: 'visible',
+    alignmentAdjust: 'center',
+    display: 'block',
+  },
+  legendContainer: {
+    paddingTop: '16px',
+  },
+});

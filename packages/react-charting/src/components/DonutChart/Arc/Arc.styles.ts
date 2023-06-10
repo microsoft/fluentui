@@ -1,29 +1,27 @@
-import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette, FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
-export const getStyles = (props: IArcProps): IArcStyles => {
-  const { color, href, theme } = props;
-  return {
-    root: {
-      fill: color,
-      cursor: href ? 'pointer' : 'default',
-      stroke: DefaultPalette.white,
-      outline: 'transparent',
-      selectors: {
-        '::-moz-focus-inner': {
-          border: '0',
-        },
-      },
-    },
-    focusRing: {
-      stroke: theme.semanticColors.focusBorder,
-      strokeWidth: 4,
-      fill: 'transparent',
-    },
-    arcLabel: {
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.semibold,
-      fill: theme.palette.neutralPrimary,
-    },
-  };
-};
+export const useStyles = makeStyles({
+  href: {
+    cursor: 'pointer',
+  },
+  root: {
+    cursor: 'default',
+    stroke: tokens.colorNeutralStrokeOnBrand2,
+    ...shorthands.outline('0', 'transparent'),
+    // selectors: {
+    //   '::-moz-focus-inner': {
+    //     ...shorthands.border('0'),
+    //   },
+    // },
+  },
+  focusRing: {
+    stroke: tokens.colorNeutralStrokeAccessible,
+    strokeWidth: tokens.strokeWidthThickest,
+    fill: tokens.colorSubtleBackground, //in every theme it will remain transparent
+  },
+  arcLabel: {
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
+    fill: tokens.colorNeutralForeground1,
+  },
+});

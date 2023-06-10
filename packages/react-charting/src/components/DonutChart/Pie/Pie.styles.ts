@@ -1,19 +1,10 @@
-import { IPieStyleProps, IPieStyles } from './Pie.types';
-import { FontSizes, FontWeights, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
-export const getStyles = (props: IPieStyleProps): IPieStyles => {
-  const { theme } = props;
-  return {
-    root: {},
-    insideDonutString: {
-      fontSize: FontSizes.xLargePlus,
-      fontWeight: FontWeights.semibold,
-      fill: theme.semanticColors.bodyText,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
-    },
-  };
-};
+export const useStyles = makeStyles({
+  root: {},
+  insideDonutString: {
+    fontSize: tokens.fontSizeBase600,
+    fontWeight: tokens.fontWeightSemibold,
+    fill: tokens.colorNeutralForeground1Selected,
+  },
+});

@@ -1,326 +1,198 @@
 import * as React from 'react';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
-import * as scale from 'd3-scale';
-import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
+import { getId } from '@fluentui/react/lib/Utilities';
+import { IPalette } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
-import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
+import { IChartDataPoint, IChartProps, IDonutChartProps } from './index';
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
-
-const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
+import { tokens, webLightTheme } from '@fluentui/react-theme';
+import { FluentProvider, mergeClasses } from '@fluentui/react-components';
+import { useStyles } from './DonutChart.styles';
 const LEGEND_CONTAINER_HEIGHT = 40;
 
-export interface IDonutChartState {
-  showHover?: boolean;
-  value?: string | undefined;
-  legend?: string | undefined;
-  _width?: number | undefined;
-  _height?: number | undefined;
-  activeLegend?: string;
-  color?: string | undefined;
-  xCalloutValue?: string;
-  yCalloutValue?: string;
-  focusedArcId?: string;
-  selectedLegend: string;
-  dataPointCalloutProps?: IChartDataPoint;
-  callOutAccessibilityData?: IAccessibilityProps;
-  emptyChart?: boolean;
-}
+export const DonutChartBase = (props: IDonutChartProps) => {
+  const { innerRadius = 0, hideLabels = true } = props;
 
-export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
-  public static defaultProps: Partial<IDonutChartProps> = {
-    innerRadius: 0,
-    hideLabels: true,
-  };
-  public _colors: scale.ScaleOrdinal<string, {}>;
-  private _classNames: IProcessedStyleSet<IDonutChartStyles>;
-  private _rootElem: HTMLElement | null;
-  private _uniqText: string;
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  private _currentHoverElement: any;
-  private _calloutId: string;
-  private _calloutAnchorPoint: IChartDataPoint | null;
+  const _rootElem = React.useRef<HTMLDivElement>(null);
+  const _uniqText = React.useRef<string>(getId('_Pie_'));
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const _currentHoverElement = React.useRef<any>();
+  const _calloutId = React.useRef<string>(getId('callout'));
+  const _calloutAnchorPoint = React.useRef<IChartDataPoint | null>(null);
+  const _prevWidth = React.useRef<number>();
+  const _prevHeight = React.useRef<number>();
 
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<IDonutChartProps>,
-    prevState: Readonly<IDonutChartState>,
-  ): Partial<IDonutChartState> | null {
-    let widthState: { _width: number } | undefined;
-    if (nextProps.width && nextProps.width !== prevState._width) {
-      widthState = { _width: nextProps.width };
-    }
+  const [_width, setWidth] = React.useState<number>(props.width || 200);
+  const [_height, setHeight] = React.useState<number>(props.height || 200);
+  const [activeLegend, setActiveLegend] = React.useState<string>('');
+  const [selectedLegend, setSelectedLegend] = React.useState<string>('');
+  const [focusedArcId, setFocusedArcId] = React.useState<string>('');
+  const [showHover, setShowHover] = React.useState<boolean>(false);
+  const [emptyChart, setEmptyChart] = React.useState<boolean>(false);
+  // Can use a single state or reducer for the following:
+  const [value, setValue] = React.useState<string>('');
+  const [legend, setLegend] = React.useState<string>('');
+  const [color, setColor] = React.useState<string>('');
+  const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
+  const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
+  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IChartDataPoint>();
+  const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<IAccessibilityProps>();
 
-    let heightState: { _height: number } | undefined;
-    if (nextProps.height && nextProps.height !== prevState._height) {
-      heightState = { _height: nextProps.height - LEGEND_CONTAINER_HEIGHT };
-    }
-
-    return { ...widthState, ...heightState };
-  }
-
-  constructor(props: IDonutChartProps) {
-    super(props);
-    this.state = {
-      showHover: false,
-      value: '',
-      legend: '',
-      _width: this.props.width || 200,
-      _height: this.props.height || 200,
-      activeLegend: '',
-      color: '',
-      xCalloutValue: '',
-      yCalloutValue: '',
-      selectedLegend: '',
-      focusedArcId: '',
-      emptyChart: false,
-    };
-    this._hoverCallback = this._hoverCallback.bind(this);
-    this._focusCallback = this._focusCallback.bind(this);
-    this._hoverLeave = this._hoverLeave.bind(this);
-    this._calloutId = getId('callout');
-    this._uniqText = getId('_Pie_');
-  }
-  public componentDidMount(): void {
-    if (this._rootElem) {
-      this.setState({
-        _width: this._rootElem.offsetWidth,
-        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
-      });
-    }
+  React.useEffect(() => {
     const isChartEmpty = !(
-      this.props.data &&
-      this.props.data.chartData &&
-      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
+      props.data &&
+      props.data.chartData &&
+      props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
     );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
+    if (emptyChart !== isChartEmpty) {
+      setEmptyChart(isChartEmpty);
     }
-  }
+  }, [emptyChart, props.data]);
 
-  public render(): JSX.Element {
-    const { data, hideLegend = false } = this.props;
-    const { palette } = this.props.theme!;
+  React.useEffect(() => {
+    if (_rootElem.current) {
+      if (!props.width) {
+        setWidth(_rootElem.current.offsetWidth);
+      } else if (props.width !== _prevWidth.current) {
+        setWidth(props.width);
+        _prevWidth.current = props.width;
+      }
 
-    this._classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-      width: this.state._width!,
-      height: this.state._height!,
-      color: this.state.color!,
-      className: this.props.className!,
-    });
-
-    const legendBars = this._createLegends(data!, palette);
-    const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
-    const donutMarginVertical = this.props.hideLabels ? 0 : 40;
-    const outerRadius =
-      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
-    const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
-    return !this.state.emptyChart ? (
-      <div
-        className={this._classNames.root}
-        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
-        onMouseLeave={this._handleChartMouseLeave}
-      >
-        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
-          <div>
-            <svg
-              className={this._classNames.chart}
-              aria-label={data?.chartTitle}
-              ref={(node: SVGElement | null) => this._setViewBox(node)}
-            >
-              <Pie
-                width={this.state._width!}
-                height={this.state._height!}
-                outerRadius={outerRadius}
-                innerRadius={this.props.innerRadius!}
-                data={chartData!}
-                onFocusCallback={this._focusCallback}
-                hoverOnCallback={this._hoverCallback}
-                hoverLeaveCallback={this._hoverLeave}
-                uniqText={this._uniqText}
-                onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend()}
-                focusedArcId={this.state.focusedArcId || ''}
-                href={this.props.href!}
-                calloutId={this._calloutId}
-                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
-                theme={this.props.theme!}
-                showLabelsInPercent={this.props.showLabelsInPercent}
-                hideLabels={this.props.hideLabels}
-              />
-            </svg>
-          </div>
-        </FocusZone>
-        <Callout
-          target={this._currentHoverElement}
-          alignTargetEdge={true}
-          isBeakVisible={false}
-          directionalHint={DirectionalHint.topAutoEdge}
-          gapSpace={15}
-          hidden={!(!this.props.hideTooltip && this.state.showHover)}
-          id={this._calloutId}
-          onDismiss={this._closeCallout}
-          preventDismissOnLostFocus={true}
-          /** Keep the callout updated with details of focused/hovered arc */
-          shouldUpdateWhenHidden={true}
-          {...this.props.calloutProps!}
-          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
-        >
-          {this.props.onRenderCalloutPerDataPoint ? (
-            this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps!)
-          ) : (
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
-              color={this.state.color}
-              culture={this.props.culture}
-            />
-          )}
-        </Callout>
-        {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
-      </div>
-    ) : (
-      <div
-        id={getId('_DonutChart_')}
-        role={'alert'}
-        style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
-      />
-    );
-  }
-
-  private _closeCallout = () => {
-    this.setState({
-      showHover: false,
-    });
-  };
-
-  private _setViewBox(node: SVGElement | null): void {
-    if (node === null) {
-      return;
+      if (!props.height) {
+        setHeight(_rootElem.current.offsetHeight - LEGEND_CONTAINER_HEIGHT);
+      } else if (props.height !== _prevHeight.current) {
+        setHeight(props.height - LEGEND_CONTAINER_HEIGHT);
+        _prevHeight.current = props.height;
+      }
     }
+  }, [props.width, props.height]);
 
-    const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
+  const _closeCallout = React.useCallback(() => {
+    setShowHover(false);
+  }, []);
 
-    const heightVal =
-      node.parentElement && node.parentElement?.offsetHeight > this.state._height!
-        ? node.parentElement?.offsetHeight
-        : this.state._height;
-    const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
-    node.setAttribute('viewBox', viewbox);
-  }
-  private _createLegends(data: IChartProps, palette: IPalette): JSX.Element {
-    const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    const legendDataItems =
-      data &&
-      data!.chartData!.map((point: IChartDataPoint, index: number) => {
-        const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-        // mapping data to the format Legends component needs
-        const legend: ILegend = {
-          title: point.legend!,
-          color: color,
-          action: () => {
-            if (this.state.selectedLegend === point.legend) {
-              this.setState({ selectedLegend: '' });
-            } else {
-              this.setState({ selectedLegend: point.legend! });
-            }
-          },
-          hoverAction: () => {
-            this._handleChartMouseLeave();
-            this.setState({ activeLegend: point.legend! });
-          },
-          onMouseOutAction: () => {
-            this.setState({ activeLegend: '' });
-          },
-        };
-        return legend;
-      });
-    const legends = (
-      <Legends
-        legends={legendDataItems}
-        centerLegends
-        overflowProps={this.props.legendsOverflowProps}
-        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
-        overflowText={this.props.legendsOverflowText}
-        {...this.props.legendProps}
-      />
-    );
-    return legends;
-  }
-
-  private _focusCallback = (data: IChartDataPoint, id: string, element: SVGPathElement): void => {
-    this._currentHoverElement = element;
-    this.setState({
-      /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
-      showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
-      value: data.data!.toString(),
-      legend: data.legend,
-      color: data.color!,
-      xCalloutValue: data.xAxisCalloutData!,
-      yCalloutValue: data.yAxisCalloutData!,
-      focusedArcId: id,
-      dataPointCalloutProps: data,
-      callOutAccessibilityData: data.callOutAccessibilityData!,
-    });
-  };
-
-  private _hoverCallback = (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
-    if (this._calloutAnchorPoint !== data) {
-      this._calloutAnchorPoint = data;
-      this._currentHoverElement = e;
-      this.setState({
-        /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
-        showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
-        value: data.data!.toString(),
-        legend: data.legend,
-        color: data.color!,
-        xCalloutValue: data.xAxisCalloutData!,
-        yCalloutValue: data.yAxisCalloutData!,
-        dataPointCalloutProps: data,
-        callOutAccessibilityData: data.callOutAccessibilityData!,
-      });
-    }
-  };
-  private _onBlur = (): void => {
-    this.setState({ focusedArcId: '' });
-  };
-
-  private _hoverLeave(): void {
-    /**/
-  }
-
-  private _handleChartMouseLeave = () => {
-    this._calloutAnchorPoint = null;
-    this.setState({ showHover: false });
-  };
-
-  private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    const highlightedLegend = this._getHighlightedLegend();
-    if (valueInsideDonut !== undefined && highlightedLegend !== '' && !this.state.showHover) {
-      let legendValue = valueInsideDonut;
-      data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend === highlightedLegend) {
-          legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
-        }
+  const _setViewBox = React.useCallback(
+    (node: SVGElement | null): void => {
+      if (node === null) {
         return;
-      });
-      return legendValue;
-    } else {
-      return valueInsideDonut;
-    }
-  }
+      }
 
-  private _toLocaleString(data: string | number | undefined) {
-    const localeString = convertToLocaleString(data, this.props.culture);
-    if (!localeString) {
-      return data;
-    }
-    return localeString?.toString();
-  }
+      const widthVal = node.parentElement ? node.parentElement.clientWidth : _width;
+
+      const heightVal =
+        node.parentElement && node.parentElement?.offsetHeight > _height! ? node.parentElement?.offsetHeight : _height;
+      const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
+      node.setAttribute('viewBox', viewbox);
+    },
+    [_height, _width],
+  );
+
+  const _handleChartMouseLeave = React.useCallback(() => {
+    _calloutAnchorPoint.current = null;
+    setShowHover(false);
+  }, []);
+
+  const _createLegends = React.useCallback(
+    (data: IChartProps, palette: IPalette): JSX.Element => {
+      const defaultPalette: string[] = [
+        palette.blueLight, //-->further discussion required for color mapping
+        tokens.colorPaletteBlueBorderActive,
+        tokens.colorPaletteRoyalBlueBorderActive,
+        tokens.colorPaletteRedBorderActive,
+        tokens.colorStrokeFocus2,
+      ];
+      const legendDataItems =
+        data &&
+        data!.chartData!.map((point: IChartDataPoint, index: number) => {
+          const col: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          // mapping data to the format Legends component needs
+          const leg: ILegend = {
+            title: point.legend!,
+            color: col,
+            action: () => {
+              if (selectedLegend === point.legend) {
+                setSelectedLegend('');
+              } else {
+                setSelectedLegend(point.legend!);
+              }
+            },
+            hoverAction: () => {
+              _handleChartMouseLeave();
+              setActiveLegend(point.legend!);
+            },
+            onMouseOutAction: () => {
+              setActiveLegend('');
+            },
+          };
+          return leg;
+        });
+      const legends = (
+        <Legends
+          legends={legendDataItems}
+          centerLegends
+          overflowProps={props.legendsOverflowProps}
+          focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
+          overflowText={props.legendsOverflowText}
+          {...props.legendProps}
+        />
+      );
+      return legends;
+    },
+    [
+      _handleChartMouseLeave,
+      props.focusZonePropsForLegendsInHoverCard,
+      props.legendProps,
+      props.legendsOverflowProps,
+      props.legendsOverflowText,
+      selectedLegend,
+    ],
+  );
+
+  const _focusCallback = React.useCallback(
+    (data: IChartDataPoint, id: string, element: SVGPathElement): void => {
+      _currentHoverElement.current = element;
+      /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
+      setShowHover(selectedLegend === '' || selectedLegend === data.legend);
+      setValue(data.data!.toString());
+      setLegend(data.legend!);
+      setColor(data.color!);
+      setXCalloutValue(data.xAxisCalloutData!);
+      setYCalloutValue(data.yAxisCalloutData!);
+      setFocusedArcId(id);
+      setDataPointCalloutProps(data);
+      setCallOutAccessibilityData(data.callOutAccessibilityData!);
+    },
+    [selectedLegend],
+  );
+
+  const _hoverCallback = React.useCallback(
+    (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
+      if (_calloutAnchorPoint.current !== data) {
+        _calloutAnchorPoint.current = data;
+        _currentHoverElement.current = e;
+        /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
+        setShowHover(selectedLegend === '' || selectedLegend === data.legend);
+        setValue(data.data!.toString());
+        setLegend(data.legend!);
+        setColor(data.color!);
+        setXCalloutValue(data.xAxisCalloutData!);
+        setYCalloutValue(data.yAxisCalloutData!);
+        setDataPointCalloutProps(data);
+        setCallOutAccessibilityData(data.callOutAccessibilityData!);
+      }
+    },
+    [selectedLegend],
+  );
+
+  const _onBlur = React.useCallback((): void => {
+    setFocusedArcId('');
+  }, []);
+
+  const _hoverLeave = React.useCallback((): void => {
+    /**/
+  }, []);
 
   /**
    * This function returns
@@ -328,7 +200,126 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
    * or the hovered legend if none of the legends is selected.
    * Note: This won't work in case of multiple legends selection.
    */
-  private _getHighlightedLegend() {
-    return this.state.selectedLegend || this.state.activeLegend;
-  }
-}
+  const _getHighlightedLegend = React.useCallback(() => {
+    return selectedLegend || activeLegend;
+  }, [activeLegend, selectedLegend]);
+
+  const _valueInsideDonut = React.useCallback(
+    (valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) => {
+      const highlightedLegend = _getHighlightedLegend();
+      if (valueInsideDonut !== undefined && highlightedLegend !== '' && !showHover) {
+        let legendValue = valueInsideDonut;
+        data!.map((point: IChartDataPoint, index: number) => {
+          if (point.legend === highlightedLegend) {
+            legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+          }
+          return;
+        });
+        return legendValue;
+      } else {
+        return valueInsideDonut;
+      }
+    },
+    [_getHighlightedLegend, showHover],
+  );
+
+  const _toLocaleString = React.useCallback(
+    (data: string | number | undefined) => {
+      const localeString = convertToLocaleString(data, props.culture);
+      if (!localeString) {
+        return data;
+      }
+      return localeString?.toString();
+    },
+    [props.culture],
+  );
+
+  const { data, hideLegend = false } = props;
+  const { palette } = props.theme!;
+  const legendBars = _createLegends(data!, palette);
+  const donutMarginHorizontal = hideLabels ? 0 : 80;
+  const donutMarginVertical = hideLabels ? 0 : 40;
+  const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
+  const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
+  const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
+  const myStyle = useStyles();
+  return !emptyChart ? (
+    <FluentProvider theme={webLightTheme}>
+      <div
+        className={mergeClasses('ms-DonutChart', myStyle.root, props.className)}
+        ref={_rootElem}
+        onMouseLeave={_handleChartMouseLeave}
+      >
+        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
+          <div>
+            <svg
+              className={myStyle.chart}
+              style={{ width: _width, height: _height }}
+              aria-label={data?.chartTitle}
+              ref={(node: SVGElement | null) => _setViewBox(node)}
+            >
+              <Pie
+                width={_width!}
+                height={_height!}
+                outerRadius={outerRadius}
+                innerRadius={innerRadius!}
+                data={chartData!}
+                onFocusCallback={_focusCallback}
+                hoverOnCallback={_hoverCallback}
+                hoverLeaveCallback={_hoverLeave}
+                uniqText={_uniqText.current}
+                onBlurCallback={_onBlur}
+                activeArc={_getHighlightedLegend()}
+                focusedArcId={focusedArcId || ''}
+                href={props.href!}
+                calloutId={_calloutId.current}
+                valueInsideDonut={_toLocaleString(valueInsideDonut)}
+                theme={props.theme!}
+                showLabelsInPercent={props.showLabelsInPercent}
+                hideLabels={hideLabels}
+              />
+            </svg>
+          </div>
+        </FocusZone>
+        <Callout
+          target={_currentHoverElement.current}
+          alignTargetEdge={true}
+          isBeakVisible={false}
+          directionalHint={DirectionalHint.topAutoEdge}
+          gapSpace={15}
+          hidden={!(!props.hideTooltip && showHover)}
+          id={_calloutId.current}
+          onDismiss={_closeCallout}
+          preventDismissOnLostFocus={true}
+          /** Keep the callout updated with details of focused/hovered arc */
+          shouldUpdateWhenHidden={true}
+          {...props.calloutProps!}
+          {...getAccessibleDataObject(callOutAccessibilityData, 'text', false)}
+        >
+          {props.onRenderCalloutPerDataPoint ? (
+            props.onRenderCalloutPerDataPoint(dataPointCalloutProps!)
+          ) : (
+            <ChartHoverCard
+              Legend={xCalloutValue ? xCalloutValue : legend}
+              YValue={yCalloutValue ? yCalloutValue : value}
+              color={color}
+              culture={props.culture}
+            />
+          )}
+        </Callout>
+        {!hideLegend && (
+          <div className={myStyle.legendContainer} style={{ width: `${_width}px` }}>
+            {legendBars}
+          </div>
+        )}
+      </div>
+    </FluentProvider>
+  ) : (
+    <div
+      id={getId('_DonutChart_')}
+      role={'alert'}
+      style={{ opacity: '0' }}
+      aria-label={'Graph has no data to display'}
+    />
+  );
+};
