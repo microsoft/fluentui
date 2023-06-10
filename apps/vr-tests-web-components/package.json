@@ -4,11 +4,11 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/web-components",
   "scripts": {
-    "build": "build-storybook -o dist/storybook",
+    "build": "node node_modules/@storybook/html/bin/build -o dist/storybook",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
-    "start": "start-storybook",
+    "start": "node node_modules/@storybook/html/bin/index",
     "test": "just-scripts test",
     "type-check": "tsc",
     "vr:build": "yarn build",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^9.2.3",
-    "@fluentui/react-storybook-addon": "9.0.0-rc.1"
+    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
+    "@fluentui/web-components": "3.0.0-alpha.24"
   }
 }
