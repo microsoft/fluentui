@@ -62,7 +62,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
               data-is-focusable={true}
-              id="_Pie_1first20000"
+              id="_Pie_0first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -88,7 +88,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
               data-is-focusable={true}
-              id="_Pie_1second39000"
+              id="_Pie_0second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -114,7 +114,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
               data-is-focusable={true}
-              id="_Pie_1third45000"
+              id="_Pie_0third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -162,7 +162,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           }
       data-is-focusable={false}
       hidden={false}
-      id="callout0"
+      id="callout1"
       style={
         Object {
           "filter": "opacity(0)",
@@ -232,7 +232,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     opacity: 0.8;
                   }
             >
-               
+
             </div>
           </div>
           <div
@@ -698,7 +698,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
               data-is-focusable={true}
-              id="_Pie_1first20000"
+              id="_Pie_0first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -724,7 +724,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
               data-is-focusable={true}
-              id="_Pie_1second39000"
+              id="_Pie_0second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -750,7 +750,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
               data-is-focusable={true}
-              id="_Pie_1third45000"
+              id="_Pie_0third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -798,7 +798,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           }
       data-is-focusable={false}
       hidden={false}
-      id="callout0"
+      id="callout1"
       style={
         Object {
           "filter": "opacity(0)",
@@ -1252,7 +1252,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,56.06817542356052,-21.36257720109735L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20first20000"
+              id="_Pie_19first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1294,7 +1294,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M56.484185223414,-20.237016075673292A60,60,0,0,1,-24.40360777596704,54.81299049966861L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20second39000"
+              id="_Pie_19second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1336,7 +1336,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M-25.494913944568086,54.31398864895735A60,60,0,0,1,-0.5999900000499981,-59.99700002499991L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20third45000"
+              id="_Pie_19third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1774,7 +1774,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,56.06817542356052,-21.36257720109735L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24first20000"
+              id="_Pie_23first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1816,7 +1816,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M56.484185223414,-20.237016075673292A60,60,0,0,1,-24.40360777596704,54.81299049966861L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24second39000"
+              id="_Pie_23second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1858,7 +1858,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M-25.494913944568086,54.31398864895735A60,60,0,0,1,-0.5999900000499981,-59.99700002499991L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24third45000"
+              id="_Pie_23third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2296,7 +2296,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M1.141252199959434,-99.99348750501748A100,100,0,0,1,93.39656512824911,-35.736278796829446L51.18232065229373,-20.133803730189335A55,55,0,0,0,1.1412521999594298,-54.98815821080106Z"
               data-is-focusable={true}
-              id="_Pie_1first20000"
+              id="_Pie_0first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2322,7 +2322,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M94.18786514866262,-33.595327930195076A100,100,0,0,1,-40.54357552149029,91.41235411000646L-21.828478096689523,50.482844055999315A55,55,0,0,0,51.97362067270725,-17.992852863554965Z"
               data-is-focusable={true}
-              id="_Pie_1second39000"
+              id="_Pie_0second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2348,7 +2348,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M-42.61936939412394,90.46319335755958A100,100,0,0,1,-1.1412521999594463,-99.99348750501748L-1.1412521999594365,-54.98815821080106A55,55,0,0,0,-23.904271969323176,49.53368330355244Z"
               data-is-focusable={true}
-              id="_Pie_1third45000"
+              id="_Pie_0third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2770,7 +2770,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12first20000"
+              id="_Pie_11first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2796,7 +2796,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12second39000"
+              id="_Pie_11second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2822,7 +2822,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12third45000"
+              id="_Pie_11third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3244,7 +3244,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5first20000"
+              id="_Pie_4first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3270,7 +3270,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5second39000"
+              id="_Pie_4second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3296,7 +3296,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5third45000"
+              id="_Pie_4third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3378,7 +3378,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8first20000"
+              id="_Pie_7first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3404,7 +3404,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8second39000"
+              id="_Pie_7second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3430,7 +3430,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8third45000"
+              id="_Pie_7third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3852,7 +3852,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16first20000"
+              id="_Pie_15first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3878,7 +3878,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16second39000"
+              id="_Pie_15second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3904,7 +3904,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16third45000"
+              id="_Pie_15third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -4306,7 +4306,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone45"
+      data-focuszone-id="FocusZone91"
     >
       <div>
         <svg
@@ -4343,7 +4343,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     }
                 d="M1.4115358954766064,-129.9923365680292A130,130,0,0,1,121.44128057676454,-46.38981970083038L51.082733415847244,-20.38515015312577A55,55,0,0,0,1.4115358954765822,-54.98188398387037Z"
                 data-is-focusable="true"
-                id="_Pie_44first20000"
+                id="_Pie_89first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -4365,7 +4365,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     }
                 d="M122.41998483069258,-43.74182568266896A130,130,0,0,1,-52.772545117848296,118.80681159674586L-21.580063027258774,50.589533302250764A55,55,0,0,0,52.06143766977528,-17.737156134964344Z"
                 data-is-focusable="true"
-                id="_Pie_44second39000"
+                id="_Pie_89second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -4387,7 +4387,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     }
                 d="M-55.33995095762406,117.6328603240088A130,130,0,0,1,-1.4115358954766222,-129.9923365680292L-1.4115358954765767,-54.98188398387037A55,55,0,0,0,-24.14746886703452,49.415582029513715Z"
                 data-is-focusable="true"
-                id="_Pie_44third45000"
+                id="_Pie_89third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -4437,7 +4437,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone46"
+                data-focuszone-id="FocusZone92"
                 role="listbox"
               >
                 <div
@@ -4744,7 +4744,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone49"
+      data-focuszone-id="FocusZone97"
     >
       <div>
         <svg
@@ -4781,7 +4781,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     }
                 d="M1.4115358954766064,-129.9923365680292A130,130,0,0,1,121.44128057676454,-46.38981970083038L51.082733415847244,-20.38515015312577A55,55,0,0,0,1.4115358954765822,-54.98188398387037Z"
                 data-is-focusable="true"
-                id="_Pie_48first20000"
+                id="_Pie_95first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -4803,7 +4803,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     }
                 d="M122.41998483069258,-43.74182568266896A130,130,0,0,1,-52.772545117848296,118.80681159674586L-21.580063027258774,50.589533302250764A55,55,0,0,0,52.06143766977528,-17.737156134964344Z"
                 data-is-focusable="true"
-                id="_Pie_48second39000"
+                id="_Pie_95second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -4825,7 +4825,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     }
                 d="M-55.33995095762406,117.6328603240088A130,130,0,0,1,-1.4115358954766222,-129.9923365680292L-1.4115358954765767,-54.98188398387037A55,55,0,0,0,-24.14746886703452,49.415582029513715Z"
                 data-is-focusable="true"
-                id="_Pie_48third45000"
+                id="_Pie_95third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -4875,7 +4875,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone50"
+                data-focuszone-id="FocusZone98"
                 role="listbox"
               >
                 <div
@@ -5182,7 +5182,7 @@ exports[`Should hide callout on mouse leave 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone10"
     >
       <div>
         <svg
@@ -5219,7 +5219,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     }
                 d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
                 data-is-focusable="true"
-                id="_Pie_5first20000"
+                id="_Pie_4first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -5241,7 +5241,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     }
                 d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
                 data-is-focusable="true"
-                id="_Pie_5second39000"
+                id="_Pie_4second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -5263,7 +5263,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     }
                 d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
                 data-is-focusable="true"
-                id="_Pie_5third45000"
+                id="_Pie_4third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -5308,7 +5308,7 @@ exports[`Should hide callout on mouse leave 1`] = `
             }
         data-is-focusable="false"
         hidden=""
-        id="callout4"
+        id="callout9"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >
@@ -5363,7 +5363,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                       opacity: 0.8;
                     }
               >
-                 
+
               </div>
             </div>
             <div
@@ -5458,7 +5458,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone11"
                 role="listbox"
               >
                 <div
@@ -5778,7 +5778,7 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone41"
+        data-focuszone-id="FocusZone85"
       >
         <div>
           <svg
@@ -5815,7 +5815,7 @@ exports[`Should reflect theme change 1`] = `
                       }
                   d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
                   data-is-focusable="true"
-                  id="_Pie_40first20000"
+                  id="_Pie_83first20000"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -5837,7 +5837,7 @@ exports[`Should reflect theme change 1`] = `
                       }
                   d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
                   data-is-focusable="true"
-                  id="_Pie_40second39000"
+                  id="_Pie_83second39000"
                   opacity="1"
                   role="img"
                   tabindex="-1"
@@ -5859,7 +5859,7 @@ exports[`Should reflect theme change 1`] = `
                       }
                   d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
                   data-is-focusable="true"
-                  id="_Pie_40third45000"
+                  id="_Pie_83third45000"
                   opacity="1"
                   role="img"
                   tabindex="-1"
@@ -5909,7 +5909,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone42"
+                  data-focuszone-id="FocusZone86"
                   role="listbox"
                 >
                   <div
