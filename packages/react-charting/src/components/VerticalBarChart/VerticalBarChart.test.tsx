@@ -29,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-export const chartPoints = [
+const chartPoints = [
   {
     x: 0,
     y: 10000,
@@ -244,7 +244,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    wrapper = mount(<VerticalBarChart data={[]} />);
+    wrapper = mount(<VerticalBarChart data={[]} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(1);
   });
