@@ -106,7 +106,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   public componentDidMount(): void {
     const isChartEmpty =
-      this.state.emptyChart ||
+      this._points.length === 0 ||
+      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
+  public componentDidUpdate(): void {
+    const isChartEmpty =
       this._points.length === 0 ||
       (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
     if (this.state.emptyChart !== isChartEmpty) {
@@ -192,7 +200,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         }}
       />
     ) : (
-      <div id={getId('_VBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_VBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
