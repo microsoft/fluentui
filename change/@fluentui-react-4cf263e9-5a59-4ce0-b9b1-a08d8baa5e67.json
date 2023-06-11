@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Dropdown hover high contrast mode colors",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

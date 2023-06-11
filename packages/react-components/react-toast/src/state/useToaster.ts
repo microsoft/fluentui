@@ -31,7 +31,11 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterProps =
     toasts.forEach(toast => {
       const { position } = toast;
       toRender.has(position) || toRender.set(position, []);
-      toRender.get(position)!.push(toast);
+      if (position.startsWith('bottom')) {
+        toRender.get(position)!.push(toast);
+      } else {
+        toRender.get(position)!.unshift(toast);
+      }
     });
 
     return toRender;

@@ -8,6 +8,8 @@ export { FileTypeIconMap } from './FileTypeIconMap';
 
 export { getFileTypeIconAsHTMLString } from './getFileTypeIconAsHTMLString';
 
+export { getFileTypeIconAsUrl } from './getFileTypeIconAsUrl';
+
 import './version';
 
 export type { FileTypeIconSize, IFileTypeIconOptions, ImageFileType } from './getFileTypeIconProps';

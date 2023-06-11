@@ -66,21 +66,14 @@ function usePopupVisibility(props: DatePickerProps) {
 }
 
 function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
-  const [selectedDate, setSelectedDateState] = useControllableState({
-    initialState: undefined,
+  const [selectedDate, setSelectedDateState] = useControllableState<Date | null | undefined>({
+    initialState: null,
     state: value,
   });
   const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
-  const setSelectedDate = (newDate: Date | undefined) => {
-    if (
-      (selectedDate === undefined && newDate !== undefined) ||
-      (selectedDate !== undefined && newDate === undefined) ||
-      (newDate && selectedDate && (newDate > selectedDate || newDate < selectedDate))
-    ) {
-      onSelectDate?.(newDate);
-    }
-
+  const setSelectedDate = (newDate: Date | null | undefined) => {
+    onSelectDate?.(newDate);
     setSelectedDateState(newDate);
     setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
   };
@@ -215,7 +208,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   );
 
   const dismissDatePickerPopup = React.useCallback(
-    (newlySelectedDate?: Date): void => {
+    (newlySelectedDate?: Date | null): void => {
       if (open) {
         setOpen(false);
 
@@ -460,7 +453,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       focus,
       reset() {
         setOpen(false);
-        setSelectedDate(undefined);
+        setSelectedDate(null);
       },
       showDatePickerPopup,
     }),

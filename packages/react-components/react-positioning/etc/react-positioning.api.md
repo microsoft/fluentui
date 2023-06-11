@@ -34,6 +34,9 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public
+export function createSlideStyles(mainAxis: number): GriffelStyle;
+
+// @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @internal
