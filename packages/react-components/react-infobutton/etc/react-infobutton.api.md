@@ -23,6 +23,23 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
+export const InfoButtonLabel: ForwardRefComponent<InfoButtonLabelProps>;
+
+// @public (undocumented)
+export const infoButtonLabelClassNames: SlotClassNames<InfoButtonLabelSlots>;
+
+// @public
+export type InfoButtonLabelProps = ComponentProps<InfoButtonLabelSlots> & {};
+
+// @public (undocumented)
+export type InfoButtonLabelSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type InfoButtonLabelState = ComponentState<InfoButtonLabelSlots>;
+
+// @public
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
     size?: 'small' | 'medium' | 'large';
 };
@@ -79,6 +96,9 @@ export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProp
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 
 // @public
+export const renderInfoButtonLabel_unstable: (state: InfoButtonLabelState) => JSX.Element;
+
+// @public
 export const renderInfoIcon_unstable: (state: InfoIconState) => JSX.Element;
 
 // @public
@@ -86,6 +106,12 @@ export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
 
 // @public
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
+
+// @public
+export const useInfoButtonLabel_unstable: (props: InfoButtonLabelProps, ref: React_2.Ref<HTMLElement>) => InfoButtonLabelState;
+
+// @public
+export const useInfoButtonLabelStyles_unstable: (state: InfoButtonLabelState) => InfoButtonLabelState;
 
 // @public
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
