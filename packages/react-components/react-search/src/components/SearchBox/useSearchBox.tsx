@@ -23,8 +23,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   });
 
   const state: SearchBoxState = {
-    size,
-
     components: {
       root: Input,
       dismiss: 'span',
@@ -60,6 +58,8 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       required: true,
     }),
     contentAfter: resolveShorthand(contentAfter, { required: true }),
+
+    size,
   };
 
   const onDismissClick = useEventCallback(mergeCallbacks(state.dismiss?.onClick, () => setValue('')));

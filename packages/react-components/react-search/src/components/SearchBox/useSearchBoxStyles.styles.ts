@@ -22,7 +22,7 @@ const useRootClassName = makeResetStyles({
   },
 });
 
-const useContentClassName = makeResetStyles({
+const useDismissClassName = makeResetStyles({
   boxSizing: 'border-box',
   color: tokens.colorNeutralForeground3, // "icon color" in design spec
   display: 'flex',
@@ -31,7 +31,7 @@ const useContentClassName = makeResetStyles({
   '> svg': { fontSize: '20px' },
 });
 
-const useContentStyles = makeStyles({
+const useDismissStyles = makeStyles({
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
   },
@@ -40,7 +40,7 @@ const useContentStyles = makeStyles({
     '> svg': { fontSize: '16px' },
   },
   medium: {
-    // included in useContentClassName
+    // included in useDismissClassName
   },
   large: {
     '> svg': { fontSize: '24px' },
@@ -54,17 +54,17 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const { size } = state;
   const disabled = state.root.input!.disabled;
 
-  const contentClassName = useContentClassName();
-  const contentStyles = useContentStyles();
+  const DismissClassName = useDismissClassName();
+  const DismissStyles = useDismissStyles();
 
   state.root.input!.className = mergeClasses(useRootClassName(), state.root.className);
 
   if (state.dismiss) {
     state.dismiss.className = mergeClasses(
       searchBoxClassNames.dismiss,
-      contentClassName,
-      disabled && contentStyles.disabled,
-      contentStyles[size],
+      DismissClassName,
+      disabled && DismissStyles.disabled,
+      DismissStyles[size],
       state.dismiss.className,
     );
   }
