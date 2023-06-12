@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jun 2023 07:33:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.0)
+
+Mon, 12 Jun 2023 07:33:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.21..@fluentui/react-file-type-icons_v8.9.0)
+
+### Minor changes
+
+- feat(react-file-type-icons): add getFileTypeIconAsUrl to allow icons usage in React without global initialization ([PR #27336](https://github.com/microsoft/fluentui/pull/27336) by alinazaieva@microsoft.com)
 
 ## [8.8.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.21)
 

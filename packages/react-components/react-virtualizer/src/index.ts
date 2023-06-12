@@ -5,11 +5,13 @@ export {
   renderVirtualizer_unstable,
   useVirtualizerStyles_unstable,
 } from './Virtualizer';
+
 export type {
   VirtualizerProps,
   VirtualizerState,
   VirtualizerSlots,
   VirtualizerChildRenderFunction,
+  VirtualizerDataRef,
 } from './Virtualizer';
 
 export {
@@ -21,7 +23,14 @@ export {
 
 export type { ResizeCallbackWithRef, VirtualizerMeasureDynamicProps, VirtualizerMeasureProps } from './Hooks';
 
-export { VirtualizerContextProvider, useVirtualizerContext_unstable } from './Utilities';
+export type { ScrollToItemDynamicParams, ScrollToItemStaticParams, ScrollToInterface } from './Utilities';
+
+export {
+  VirtualizerContextProvider,
+  useVirtualizerContext_unstable,
+  scrollToItemStatic,
+  scrollToItemDynamic,
+} from './Utilities';
 
 export type { VirtualizerContextProps } from './Utilities';
 

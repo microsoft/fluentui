@@ -74,6 +74,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     cellHeight,
     cellWidth,
     cellBorderWidth,
+    onRenderColorCellContent,
   } = props;
 
   /**
@@ -244,7 +245,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    */
   const onCellClick = React.useCallback(
     (item: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>): void => {
-      if (disabled) {
+      if (disabled || item.disabled) {
         return;
       }
 
@@ -309,7 +310,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         idPrefix={id}
         color={item.color}
         styles={getColorGridCellStyles}
-        disabled={disabled}
+        disabled={disabled || item.disabled}
         onClick={onCellClick}
         onHover={onGridCellHovered}
         onFocus={onGridCellFocused}
@@ -321,6 +322,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         onMouseLeave={onMouseLeave}
         onWheel={setNavigationTimeout}
         onKeyDown={onKeyDown}
+        onRenderColorCellContent={onRenderColorCellContent}
         height={cellHeight}
         width={cellWidth}
         borderWidth={cellBorderWidth}
