@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 12 Jun 2023 04:17:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.24",
+      "version": "3.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7d890d73560b1fec4e8d1d280ce5417529a0530f",
+            "comment": "export fluent design system from web-components package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Jun 2023 04:18:00 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.23",
       "version": "3.0.0-alpha.23",
