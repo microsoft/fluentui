@@ -21,5 +21,5 @@ export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
  * State used in rendering SearchBox
  */
 export type SearchBoxState = ComponentState<SearchBoxSlots> &
-  Pick<InputState, 'size'> &
+  Required<Pick<InputState, 'size'>> &
   Required<Pick<SearchBoxProps, 'disabled'>>;
