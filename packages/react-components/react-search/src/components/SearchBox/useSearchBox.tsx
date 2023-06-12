@@ -14,7 +14,7 @@ import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of SearchBox
  */
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLElement>): SearchBoxState => {
-  const { size = 'medium', contentBefore, dismiss, contentAfter, ...inputProps } = props;
+  const { size = 'medium', disabled = false, contentBefore, dismiss, contentAfter, ...inputProps } = props;
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -59,6 +59,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     }),
     contentAfter: resolveShorthand(contentAfter, { required: true }),
 
+    disabled,
     size,
   };
 

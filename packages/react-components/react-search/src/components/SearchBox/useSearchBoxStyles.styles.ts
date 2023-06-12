@@ -51,8 +51,7 @@ const useDismissStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  const { size } = state;
-  const disabled = state.root.input!.disabled;
+  const { size, disabled } = state;
 
   const DismissClassName = useDismissClassName();
   const DismissStyles = useDismissStyles();
