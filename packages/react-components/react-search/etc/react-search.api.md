@@ -28,7 +28,7 @@ export type SearchBoxSlots = {
 };
 
 // @public
-export type SearchBoxState = ComponentState<SearchBoxSlots> & Pick<InputState, 'size'>;
+export type SearchBoxState = ComponentState<SearchBoxSlots> & Pick<InputState, 'size'> & Required<Pick<SearchBoxProps, 'disabled'>>;
 
 // @public
 export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLElement>) => SearchBoxState;
