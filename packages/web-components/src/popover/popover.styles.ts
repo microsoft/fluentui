@@ -2,7 +2,10 @@ import { css } from '@microsoft/fast-element';
 import * as tokens from '../theme/design-tokens.js';
 
 const borderWidth = '1px';
-const arrowEdgeLength = `${8 * 1.414}px`; // FIXME: will be improved when introducing size attribute
+const arrowEdgeLength = {
+  small: `${6 * 1.414}px`,
+  default: `${8 * 1.414}px` /* used for both medium and large */,
+};
 
 export const styles = css`
   :host {
@@ -20,7 +23,7 @@ export const styles = css`
     color: ${tokens.colorNeutralForeground1};
     background: ${tokens.colorNeutralBackground1};
     box-shadow: ${tokens.shadow16};
-    padding: ${tokens.spacingHorizontalM} ${tokens.spacingVerticalM};
+    padding: 16px; /* size="medium" */
     border-radius: ${tokens.borderRadiusMedium};
     border: 1px solid ${tokens.colorTransparentStroke};
     font-family: ${tokens.fontFamilyBase};
@@ -44,8 +47,13 @@ export const styles = css`
     background-color: inherit;
     visibility: hidden;
     z-index: -1;
-    width: ${arrowEdgeLength};
-    height: ${arrowEdgeLength};
+    width: ${arrowEdgeLength.default};
+    height: ${arrowEdgeLength.default};
+  }
+
+  :host([size='small']) .popover-arrow {
+    width: ${arrowEdgeLength.small};
+    height: ${arrowEdgeLength.small};
   }
 
   .popover-arrow::before {
@@ -80,5 +88,13 @@ export const styles = css`
   :host([data-popper-placement^='left']) .popover-arrow {
     right: -${borderWidth};
     --angle: 270deg;
+  }
+
+  :host([size='small']) .popover-content {
+    padding: 12px;
+  }
+
+  :host([size='large']) .popover-content {
+    padding: 20px;
   }
 `;

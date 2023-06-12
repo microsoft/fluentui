@@ -25,3 +25,11 @@ export const PopoverAppearance = {
 };
 
 export type PopoverAppearance = ValuesOf<typeof PopoverAppearance>;
+
+export const PopoverSize = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+};
+
+export type PopoverSize = ValuesOf<typeof PopoverSize>;

@@ -1,6 +1,6 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { arrow, autoUpdate, computePosition, offset } from '@floating-ui/dom';
-import { PopoverAlignment, PopoverAppearance, PopoverPosition } from './popover.options.js';
+import { PopoverAlignment, PopoverAppearance, PopoverPosition, PopoverSize } from './popover.options.js';
 import { toFloatingUIPlacement } from './toFloatingUIPlacement.js';
 
 /* Fixme: this is temporary debugging code. Will be removed before merging together with all console.* calls in the file.  */
@@ -132,6 +132,25 @@ export class Popover extends FASTElement {
     console.group(this.objId, 'arrowRefChanged');
 
     // ref might have changed -> force restart
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
+
+  @attr
+  /**
+   * Determines popover padding and arrow size.
+   *
+   * @public
+   * @default PopoverSize.medium
+   * @remarks
+   * HTML Attribute: size
+   */
+  public size?: PopoverSize;
+  protected sizeChanged() {
+    console.group(this.objId, 'sizeChanged');
+
+    // size attribute might have been changed or removed which affects positioning -> force restart
     this.handlePositioningStartStop(true);
 
     console.groupEnd();
@@ -369,11 +388,14 @@ export class Popover extends FASTElement {
       placement,
     });
 
+    const arrowOffset = shouldPositionArrow && this.size === 'small' ? 6 : 8; // FIXME: no magic numbers
+
     computePosition(this.anchorElement, this.popoverContentRef, {
       placement,
       middleware: [
         ...(shouldPositionArrow ? [arrow({ element: this.arrowRef!, padding: 10 })] : []),
-        ...(shouldPositionArrow ? [offset(8)] : []), // FIXME: once the popover supports offset, the two should be merged - see mergeArrowOffset in FUIR9
+        ...(shouldPositionArrow ? [offset(arrowOffset)] : []), // FIXME: once the popover supports offset, the two should be merged - see mergeArrowOffset in FUIR9
+        /* ^ should be either 6 or 8 depending on the `size` attribute */
       ],
 
       // strategy: 'fixed',

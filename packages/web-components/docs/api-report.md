@@ -1840,6 +1840,12 @@ export class Popover extends FASTElement {
     protected positionChanged(): void;
     // @internal
     protected registerChildPopover(popover: Popover): void;
+    // Warning: (ae-forgotten-export) The symbol "PopoverSize" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    size?: PopoverSize;
+    // (undocumented)
+    protected sizeChanged(): void;
     // @internal
     protected unregisterChildPopover(popover: Popover): void;
     // (undocumented)

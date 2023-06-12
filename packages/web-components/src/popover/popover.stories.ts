@@ -1,5 +1,5 @@
 import './define.js';
-import { PopoverAlignment, PopoverAppearance, PopoverPosition } from './popover.options.js';
+import { PopoverAlignment, PopoverAppearance, PopoverPosition, PopoverSize } from './popover.options.js';
 
 export default {
   title: 'Components/Popover',
@@ -32,10 +32,14 @@ export default {
       defaultValue: false,
       control: { type: 'boolean' },
     },
+    size: {
+      options: Object.values(PopoverSize),
+      control: { type: 'radio' },
+    },
   },
 };
 
-const PopoverTemplate = ({ open, position, popoverAlign, appearance, dir, withArrow }) => `
+const PopoverTemplate = ({ open, position, popoverAlign, appearance, dir, withArrow, size }) => `
 <div dir="${dir}">
   <fluent-popover
     ${open ? 'open' : ''}
@@ -43,6 +47,7 @@ const PopoverTemplate = ({ open, position, popoverAlign, appearance, dir, withAr
     ${popoverAlign ? `popover-align="${popoverAlign}"` : ''}
     ${appearance ? `appearance="${appearance}"` : ''}
     ${withArrow ? 'with-arrow' : ''}
+    ${size ? `size="${size}"` : ''}
     >
       <div slot="anchor" style="border: 1px dashed #ccc; height: 80px; width: 80px; line-height: 80px; text-align: center; margin: 40px auto">Anchor</div>
       <div>Popover content ${position || popoverAlign ? [position, popoverAlign].filter(Boolean).join('-') : ''}
@@ -83,7 +88,7 @@ Nested.parameters = {
 };
 
 export const Appearance = (): string => `
-<div style="display: flex; justify-content: space-evenly; margin-top: 2em;">
+<div style="display: flex; flex-direction: row; justify-content: center; gap: 7em; margin-top: 4em;">
   <fluent-popover open>
     <button slot="anchor">Default</button>
     <div>Default appearance</div>
@@ -124,6 +129,33 @@ WithArrow.parameters = {
   docs: {
     description: {
       story: ['The `with-arrow` attribute can be used to display an arrow pointing to the anchor.'].join('\\n'),
+    },
+  },
+};
+
+export const Size = (): string => `
+<div style="display: flex; flex-direction: row; justify-content: center; gap: 5em; margin-top: 4em;">
+  <fluent-popover open with-arrow size="small">
+    <button slot="anchor">Small</button>
+    <div>Small size</div>
+  </fluent-popover>
+  <fluent-popover open with-arrow>
+    <button slot="anchor">Medium (default)</button>
+    <div>Medium size</div>
+  </fluent-popover>
+  <fluent-popover open with-arrow size="large">
+    <button slot="anchor">Large</button>
+    <div>Large size</div>
+  </fluent-popover>
+</div>
+`;
+Size.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The size of the popover can be controlled using the `size` attribute.',
+        'It can be `small`, `medium` (default) or `large`.',
+      ].join('\n'),
     },
   },
 };
