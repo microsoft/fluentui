@@ -113,19 +113,25 @@ export const FilesListingInfoButtons: React.FunctionComponent = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {items.map(item => (
+          {items.map((item, index) => (
             <TableRow key={item.file.label}>
               <TableCell>
                 <TableCellLayout media={item.file.icon}>
                   {item.file.label}{' '}
-                  <InfoButton
-                    info={
-                      <>
-                        File format is {item.file.format}. <a href="#">Learn more</a> about this file format.
-                      </>
-                    }
-                    aria-label="Show file format"
-                  />
+                  <span aria-owns={`file${index}-popup`}>
+                    <InfoButton
+                      info={{
+                        id: `file${index}-popup`,
+                        children: (
+                          <>
+                            File format is {item.file.format}. <a href="#">Learn more</a> about this file format.
+                          </>
+                        ),
+                      }}
+                      aria-label="Show file format"
+                    />
+                  </span>
+                  ,
                 </TableCellLayout>
               </TableCell>
               <TableCell>
@@ -145,7 +151,15 @@ export const FilesListingInfoButtons: React.FunctionComponent = () => {
               </TableCell>
               <TableCell>
                 {item.lastUpdated.label}{' '}
-                <InfoButton info={`Last updated at ${item.lastUpdated.time} PST.`} aria-label="Show time" />
+                <span aria-owns={`lastUpdated${index}-popup`}>
+                  <InfoButton
+                    info={{
+                      id: `lastUpdated${index}-popup`,
+                      children: `Last updated at ${item.lastUpdated.time} PST.`,
+                    }}
+                    aria-label="Show full date and time"
+                  />
+                </span>
               </TableCell>
               <TableCell>
                 <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
