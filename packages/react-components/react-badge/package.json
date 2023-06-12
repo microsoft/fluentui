@@ -33,7 +33,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.196",
+    "@fluentui/react-icons": "^2.0.203",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.6",
     "@fluentui/react-shared-contexts": "^9.5.0",
     "@fluentui/react-theme": "^9.1.8",

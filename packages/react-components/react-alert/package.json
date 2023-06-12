@@ -35,7 +35,7 @@
   "dependencies": {
     "@fluentui/react-avatar": "^9.5.5",
     "@fluentui/react-button": "^9.3.16",
-    "@fluentui/react-icons": "^2.0.196",
+    "@fluentui/react-icons": "^2.0.203",
     "@fluentui/react-tabster": "^9.7.5",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.2",
