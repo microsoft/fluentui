@@ -17,6 +17,8 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Documentation
+- `Input`: Remove wrong recommendation - usage of role="search" #28168 @kolaps33 ([#28168](https://github.com/microsoft/fluentui/pull/28168))
 
 ### Fixes
 - `Datepicker`: add onCalendarOpenStateChange prop. @jurokapsiar ([#28136](https://github.com/microsoft/fluentui/pull/28136))
