@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 08 Jun 2023 04:18:00 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jun 2023 04:17:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.24)
+
+Mon, 12 Jun 2023 04:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.23..@fluentui/web-components_v3.0.0-alpha.24)
+
+### Changes
+
+- export fluent design system from web-components package ([PR #27905](https://github.com/microsoft/fluentui/pull/27905) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.23)
 

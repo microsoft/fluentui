@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "export fluent design system from web-components package",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}
