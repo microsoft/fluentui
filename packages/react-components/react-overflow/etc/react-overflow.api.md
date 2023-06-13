@@ -4,6 +4,12 @@
 
 ```ts
 
+import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ObserveOptions } from '@fluentui/priority-overflow';
+import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
+import type { OverflowDivider as OverflowDivider_2 } from '@fluentui/priority-overflow';
+import { OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
 // @public (undocumented)
