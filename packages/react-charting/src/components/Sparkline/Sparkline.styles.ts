@@ -5,7 +5,7 @@ export const useClasses = makeStyles({
     stroke: tokens.colorPaletteRedForeground2,
     fill: 'transparent',
     opacity: 1,
-    strokeWidth: '2px',
+    strokeWidth: tokens.strokeWidthThick,
   },
   area: {
     opacity: 1,
