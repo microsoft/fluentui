@@ -46,9 +46,9 @@ export const InfiniteScrolling = () => {
       ...(isLoading
         ? [
             {
-              value: 'isLoading',
+              value: 'loading-people',
               parentValue: 'people',
-              name: <Spinner size="tiny" />,
+              name: <Spinner aria-label="Loading more people" size="tiny" />,
             },
           ]
         : []),
