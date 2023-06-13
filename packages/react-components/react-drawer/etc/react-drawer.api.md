@@ -117,7 +117,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerBaseProps & DrawerBaseState & Pick<DrawerInlineProps, 'open' | 'separator'>;
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps & DrawerBaseState;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
