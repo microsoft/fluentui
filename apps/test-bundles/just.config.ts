@@ -1,7 +1,10 @@
-import { preset, task, resolveCwd } from '@fluentui/scripts-tasks';
+import * as path from 'path';
+import { preset, task, series } from '@fluentui/scripts-tasks';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore - parallel-webpack has no types
 import { run } from 'parallel-webpack';
+
+import { bundleSizeCollect } from './scripts/bundle-size-collect';
 
 preset();
 
@@ -9,6 +12,15 @@ preset();
 // (it only runs on src, not config files)
 task('code-style', 'prettier');
 
-task('bundle', done => {
-  run(resolveCwd('webpack.config.js'), {}, done);
+task('bundle-size-collect', () => {
+  const packageName = process.env.PACKAGE ?? '';
+  bundleSizeCollect({ packageName });
 });
+
+task('bundle', done => {
+  const configPath = path.join(__dirname, 'webpack.config.js');
+  const options = {};
+  run(configPath, options, done);
+});
+
+task('bundle-size', series('bundle', 'bundle-size-collect'));
