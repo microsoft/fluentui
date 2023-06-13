@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update DataGridBody RowRenderFunction props",
+  "packageName": "@fluentui/react-data-grid-react-window",
+  "email": "fengqi@microsoft.com",
+  "dependentChangeType": "patch"
+}
