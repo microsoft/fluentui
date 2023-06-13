@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, Drawer, DrawerProps } from '@fluentui/react-drawer';
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -15,6 +16,8 @@ const useStyles = makeStyles({
   content: {
     ...shorthands.margin(tokens.spacingVerticalXL, tokens.spacingHorizontalXL),
     ...shorthands.flex(1),
+
+    gridRowGap: tokens.spacingVerticalXXL,
   },
 });
 
@@ -42,17 +45,34 @@ export const Responsive = () => {
 
   return (
     <div className={styles.root}>
-      <p className={styles.content}>Resize the window to see the change</p>
-
-      <Drawer type={type} separator position="right" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <Drawer type={type} separator position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
-          <DrawerHeaderTitle>Responsive Drawer</DrawerHeaderTitle>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setIsOpen(false)}
+              />
+            }
+          >
+            Responsive Drawer
+          </DrawerHeaderTitle>
         </DrawerHeader>
 
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
       </Drawer>
+
+      <div className={styles.content}>
+        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+          Toggle
+        </Button>
+
+        <p>Resize the window to see the change</p>
+      </div>
     </div>
   );
 };
