@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "bundle-size": "just-scripts bundle-size",
+    "bundle-size-auditor": "just-scripts bundle-size",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts"

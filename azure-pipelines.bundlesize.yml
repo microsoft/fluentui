@@ -69,12 +69,12 @@ jobs:
       - script: yarn build --to @fluentui/react @fluentui/keyboard-key @fluentui/react-northstar
         displayName: build @fluentui/react, @fluentui/react-northstar
 
-      - script: yarn workspace @fluentui/test-bundles bundle-size
+      - script: yarn workspace @fluentui/test-bundles bundle-size-auditor
         displayName: create @fluentui/react bundle-size entries
         env:
           PACKAGE: '@fluentui/react'
 
-      - script: yarn workspace @fluentui/test-bundles bundle-size
+      - script: yarn workspace @fluentui/test-bundles bundle-size-auditor
         displayName: create @fluentui/react-northstar bundle-size entries
         env:
           PACKAGE: '@fluentui/react-northstar'
