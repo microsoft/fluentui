@@ -3,10 +3,11 @@ import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.typ
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 import { tokens } from '@fluentui/react-theme';
-import { HTMLAttributes } from 'react';
+import * as React from 'react';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
+  backdrop: 'fui-DrawerOverlay__backdrop',
 };
 
 /**
@@ -33,8 +34,12 @@ const useStyles = makeStyles({
   visible: {
     transform: 'translate3D(0, 0, 0)',
   },
+});
 
-  /* Backdrop */
+/**
+ * Styles for the backdrop slot
+ */
+const useBackdropStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
@@ -42,6 +47,7 @@ const useStyles = makeStyles({
     transitionTimingFunction: tokens.curveEasyEase,
     willChange: 'opacity',
   },
+
   backdropVisible: {
     opacity: 1,
   },
@@ -52,26 +58,27 @@ const useStyles = makeStyles({
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
   const baseStyles = useDrawerBaseStyles();
-  const styles = useStyles();
+  const rootStyles = useStyles();
+  const backdropStyles = useBackdropStyles();
+
+  const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement>;
 
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
     baseStyles.root,
-    styles.root,
+    rootStyles.root,
     getDrawerBaseClassNames(state, baseStyles),
-    state.position && styles[state.position],
-    state.visible && styles.visible,
+    state.position && rootStyles[state.position],
+    state.visible && rootStyles.visible,
     state.root.className,
   );
 
-  const backdrop = state.root.backdrop as HTMLAttributes<HTMLDivElement>;
-
   if (backdrop) {
     backdrop.className = mergeClasses(
+      drawerOverlayClassNames.backdrop,
+      backdropStyles.backdrop,
+      state.backdropVisible && backdropStyles.backdropVisible,
       backdrop.className,
-      styles.backdrop,
-      baseStyles.reducedMotion,
-      state.backdropVisible && styles.backdropVisible,
     );
   }
 

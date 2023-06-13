@@ -1,8 +1,8 @@
-import { DialogProps, DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogProps, DialogSurfaceProps, DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { DrawerBaseProps, DrawerBaseState } from '../../util/DrawerBase.types';
 
-export type DrawerOverlaySlots = {
+export type DrawerOverlaySlots = DialogSurfaceSlots & {
   root: Slot<DialogSurfaceProps>;
 };
 

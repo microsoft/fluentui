@@ -4,7 +4,7 @@ import { Button, makeStyles } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
-  drawer: {
+  disabledTransition: {
     transitionDuration: '0ms',
   },
 });
@@ -16,7 +16,14 @@ export const DisabledTransition = () => {
 
   return (
     <div>
-      <Drawer className={styles.drawer} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <Drawer
+        className={styles.disabledTransition}
+        backdrop={{
+          className: `TESTING ${styles.disabledTransition}`,
+        }}
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
