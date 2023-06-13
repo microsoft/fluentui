@@ -12,7 +12,7 @@ variables:
   - template: .devops/templates/variables.yml
 
 jobs:
-  - job: bundle-size
+  - job: bundle_size
     workspace:
       clean: all
     pool: '1ES-Host-Ubuntu'
@@ -53,7 +53,7 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
-  - job: bundle-size-auditor
+  - job: bundle_size_auditor
     workspace:
       clean: all
     timeoutInMinutes: 75
