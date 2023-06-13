@@ -22,3 +22,11 @@ export {
   useInfoIcon_unstable,
 } from './InfoIcon';
 export type { InfoIconProps, InfoIconSlots, InfoIconState } from './InfoIcon';
+export {
+  InfoIconLabel,
+  infoIconLabelClassNames,
+  renderInfoIconLabel_unstable,
+  useInfoIconLabelStyles_unstable,
+  useInfoIconLabel_unstable,
+} from './InfoIconLabel';
+export type { InfoIconLabelProps, InfoIconLabelSlots, InfoIconLabelState } from './InfoIconLabel';
