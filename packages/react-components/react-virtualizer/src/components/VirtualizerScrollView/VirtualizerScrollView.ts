@@ -1,4 +1,4 @@
-import { VirtualizerScrollViewProps } from './VirtualizerScrollView.types';
+import type { VirtualizerScrollViewProps } from './VirtualizerScrollView.types';
 import { useVirtualizerScrollView_unstable } from './useVirtualizerScrollView';
 import { renderVirtualizerScrollView_unstable } from './renderVirtualizerScrollView';
 import { useVirtualizerScrollViewStyles_unstable } from './useVirtualizerScrollViewStyles.styles';

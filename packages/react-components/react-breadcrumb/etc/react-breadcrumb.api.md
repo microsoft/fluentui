@@ -105,7 +105,7 @@ export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<
 // @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     appearance?: 'transparent' | 'subtle';
-    disableFocus?: boolean;
+    focusMode?: 'arrow' | 'tab';
     dividerType?: 'chevron' | 'slash';
     iconPosition?: 'before' | 'after';
     size?: 'small' | 'medium' | 'large';

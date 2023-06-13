@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toaster, useToastController, Toast, ToastTitle, ToastBody, ToastFooter } from '@fluentui/react-toast';
-import { useId, Link } from '@fluentui/react-components';
+import { useId, Link, Button } from '@fluentui/react-components';
 
 export const Default = () => {
   const toasterId = useId('toaster');
@@ -22,7 +22,7 @@ export const Default = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
+      <Button onClick={notify}>Make toast</Button>
     </>
   );
 };

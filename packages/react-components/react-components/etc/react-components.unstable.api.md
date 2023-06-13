@@ -12,6 +12,7 @@ import { MutableRefObject } from 'react';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import type { RefObject } from 'react';
 import type { SetStateAction } from 'react';
 
 // @public
@@ -144,7 +145,7 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
 export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseProps & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
 
 // @public (undocumented)
-export type DrawerOverlaySlots = {
+export type DrawerOverlaySlots = DialogSurfaceSlots & {
     root: Slot<DialogSurfaceProps>;
 };
 
@@ -155,7 +156,7 @@ export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBase
 };
 
 // @public
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & DrawerOverlayProps & DrawerInlineProps & {
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     type?: 'inline' | 'overlay';
 };
 
@@ -310,6 +311,39 @@ export interface ResizeCallbackWithRef {
     // (undocumented)
     (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: MutableRefObject<HTMLElement | null>): void;
 }
+
+// @public (undocumented)
+export type ScrollToInterface = {
+    scrollTo: (index: number, behavior?: ScrollBehavior, callback?: (index: number) => void) => void;
+};
+
+// @public (undocumented)
+export const scrollToItemDynamic: (params: ScrollToItemDynamicParams) => void;
+
+// @public (undocumented)
+export type ScrollToItemDynamicParams = {
+    index: number;
+    itemSizes: RefObject<number[]>;
+    totalSize: number;
+    scrollViewRef: RefObject<HTMLDivElement>;
+    axis?: 'horizontal' | 'vertical';
+    reversed?: boolean;
+    behavior?: ScrollBehavior;
+};
+
+// @public (undocumented)
+export const scrollToItemStatic: (params: ScrollToItemStaticParams) => void;
+
+// @public (undocumented)
+export type ScrollToItemStaticParams = {
+    index: number;
+    itemSize: number;
+    totalItems: number;
+    scrollViewRef: RefObject<HTMLDivElement>;
+    axis?: 'horizontal' | 'vertical';
+    reversed?: boolean;
+    behavior?: ScrollBehavior;
+};
 
 // @public
 export const Tree: React_2.ForwardRefExoticComponent<Omit<TreeSlots, "root"> & Omit<{
@@ -691,7 +725,7 @@ export const useVirtualizerStyles_unstable: (state: VirtualizerState) => Virtual
 export const Virtualizer: FC<VirtualizerProps>;
 
 // @public (undocumented)
-export type VirtualizerChildRenderFunction = (index: number) => React_2.ReactNode;
+export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React_2.ReactNode;
 
 // @public (undocumented)
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
@@ -736,11 +770,12 @@ export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynam
 export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
     itemSize: number;
     getItemSize: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
+    imperativeRef?: RefObject<ScrollToInterface>;
 };
 
 // @public (undocumented)
@@ -750,10 +785,11 @@ export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> & VirtualizerConfigState;
 
 // @public (undocumented)
-export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'imperativeVirtualizerRef'>> & {
     itemSize: number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
+    imperativeRef?: RefObject<ScrollToInterface>;
 };
 
 // @public (undocumented)

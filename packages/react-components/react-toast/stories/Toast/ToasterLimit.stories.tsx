@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId } from '@fluentui/react-components';
+import { useId, Button, Field, SpinButton } from '@fluentui/react-components';
 
 export const ToasterLimit = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
+  const [limit, setLimit] = React.useState(3);
   const notify = () =>
     dispatchToast(
       <Toast>
@@ -14,8 +15,35 @@ export const ToasterLimit = () => {
 
   return (
     <>
-      <Toaster toasterId={toasterId} limit={3} />
-      <button onClick={notify}>Make toast</button>
+      <Field label="Vertical offset">
+        <SpinButton
+          value={limit}
+          onChange={(e, data) => {
+            if (data.value) {
+              setLimit(data.value);
+            } else if (data.displayValue !== undefined) {
+              const newValue = parseFloat(data.displayValue);
+              if (!Number.isNaN(newValue)) {
+                setLimit(newValue);
+              }
+            }
+          }}
+        />
+      </Field>
+      <br />
+      <Toaster toasterId={toasterId} limit={limit} />
+      <Button onClick={notify}>Make toast</Button>
     </>
   );
+};
+
+ToasterLimit.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Use the `limit` prop on the `Toaster` to define the maximum number of toasts that can be rendered',
+        'at any one time. Any extra toasts will be queued and rendered when a toast has been dismissed.',
+      ].join('\n'),
+    },
+  },
 };
