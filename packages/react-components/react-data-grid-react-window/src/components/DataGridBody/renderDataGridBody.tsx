@@ -27,7 +27,7 @@ export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
           const row: TableRowData<unknown> = data[index];
           return (
             <TableRowIndexContextProvider value={state.ariaRowIndexStart + index}>
-              <TableRowIdContextProvider value={row.rowId}>{state.renderRow(row, style)}</TableRowIdContextProvider>
+              <TableRowIdContextProvider value={row.rowId}>{state.renderRow(row, style, index)}</TableRowIdContextProvider>
             </TableRowIndexContextProvider>
           );
         }}
