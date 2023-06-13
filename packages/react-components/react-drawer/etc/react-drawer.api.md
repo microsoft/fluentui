@@ -129,7 +129,7 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
 export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseProps & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
 
 // @public (undocumented)
-export type DrawerOverlaySlots = {
+export type DrawerOverlaySlots = DialogSurfaceSlots & {
     root: Slot<DialogSurfaceProps>;
 };
 
@@ -140,7 +140,7 @@ export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBase
 };
 
 // @public
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & DrawerOverlayProps & DrawerInlineProps & {
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     type?: 'inline' | 'overlay';
 };
 
