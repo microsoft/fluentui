@@ -3,13 +3,13 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import type { InfoTipState, InfoTipSlots } from './InfoTip.types';
+import type { InfoIconLabelState, InfoIconLabelSlots } from './InfoIconLabel.types';
 
 /**
- * Render the final JSX of InfoTip
+ * Render the final JSX of InfoIconLabel
  */
-export const renderInfoTip_unstable = (state: InfoTipState) => {
-  const { slots, slotProps } = getSlotsNext<InfoTipSlots>(state);
+export const renderInfoIconLabel_unstable = (state: InfoIconLabelState) => {
+  const { slots, slotProps } = getSlotsNext<InfoIconLabelSlots>(state);
 
   // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;

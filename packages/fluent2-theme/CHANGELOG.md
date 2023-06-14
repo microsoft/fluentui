@@ -1,8 +1,35 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Wed, 07 Jun 2023 07:33:58 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2023 07:38:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.22](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.22)
+
+Wed, 14 Jun 2023 07:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.21..@fluentui/fluent2-theme_v8.107.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.3 ([PR #28181](https://github.com/microsoft/fluentui/pull/28181) by beachball)
+
+## [8.107.21](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.21)
+
+Fri, 09 Jun 2023 07:33:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.20..@fluentui/fluent2-theme_v8.107.21)
+
+### Patches
+
+- [FIX] Recenters selection dot in choice group with icon. ([PR #28173](https://github.com/microsoft/fluentui/pull/28173) by matejera@microsoft.com)
+
+## [8.107.20](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.20)
+
+Thu, 08 Jun 2023 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.19..@fluentui/fluent2-theme_v8.107.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.2 ([PR #27864](https://github.com/microsoft/fluentui/pull/27864) by beachball)
 
 ## [8.107.19](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.19)
 

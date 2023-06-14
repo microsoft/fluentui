@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { InfoTip } from './InfoTip';
+import { InfoIconLabel } from './InfoIconLabel';
 import { isConformant } from '../../testing/isConformant';
 
-describe('InfoTip', () => {
+describe('InfoIconLabel', () => {
   isConformant({
-    Component: InfoTip,
-    displayName: 'InfoTip',
+    Component: InfoIconLabel,
+    displayName: 'InfoIconLabel',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<InfoTip>Default InfoTip</InfoTip>);
+    const result = render(<InfoIconLabel>Default InfoIconLabel</InfoIconLabel>);
     expect(result.container).toMatchSnapshot();
   });
 });

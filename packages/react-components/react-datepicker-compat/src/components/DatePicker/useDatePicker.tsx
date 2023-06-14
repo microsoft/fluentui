@@ -9,6 +9,7 @@ import {
   mergeCallbacks,
   resolveShorthand,
   useControllableState,
+  useFirstMount,
   useId,
   useMergedRefs,
   useOnClickOutside,
@@ -412,14 +413,15 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   }, [disableAutoFocus, open, props.disabled]);
 
+  const isFirstMount = useFirstMount();
   // When the popup is closed, focus should go back to the input.
   React.useEffect(() => {
-    if (!open && !props.disabled) {
+    if (!open && !props.disabled && !isFirstMount) {
       focus();
     }
     // Focus function keeps changing, so we need to skip it in the deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, props.disabled]);
+  }, [isFirstMount, open, props.disabled]);
 
   const calendarShorthand = resolveShorthand(props.calendar, {
     required: true,
