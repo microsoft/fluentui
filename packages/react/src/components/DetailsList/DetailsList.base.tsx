@@ -1326,6 +1326,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
+    let minimumWidth = 0;
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
       const baseColumn = {
@@ -1337,6 +1338,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         ...baseColumn,
         ...this._columnOverrides[column.key],
       };
+
+      // eslint-disable-next-line deprecation/deprecation
+      if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
+        minimumWidth += getPaddedWidth(baseColumn, props);
+      }
 
       totalWidth += getPaddedWidth(newColumn, props);
 
@@ -1359,8 +1365,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       // eslint-disable-next-line deprecation/deprecation
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsible || column.isCollapsable)) {
         const originalWidth = column.calculatedWidth!;
-        column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
-        totalWidth -= originalWidth - column.calculatedWidth;
+        if (minimumWidth < availableWidth) {
+          // Only adjust in cases where all the columns fit within the viewport
+          column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
+        }
+        totalWidth -= originalWidth - column.calculatedWidth!;
       } else {
         totalWidth -= getPaddedWidth(column, props);
         adjustedColumns.splice(lastIndex, 1);
