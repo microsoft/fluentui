@@ -8,11 +8,11 @@ export const useStyles = makeStyles({
     cursor: 'default',
     stroke: tokens.colorNeutralStrokeOnBrand2,
     ...shorthands.outline('0', 'transparent'),
-    // selectors: {
-    //   '::-moz-focus-inner': {
-    //     ...shorthands.border('0'),
-    //   },
-    // },
+    '&.selectors': {
+      '::-moz-focus-inner': {
+        ...shorthands.border('0'),
+      },
+    },
   },
   focusRing: {
     stroke: tokens.colorNeutralStrokeAccessible,
