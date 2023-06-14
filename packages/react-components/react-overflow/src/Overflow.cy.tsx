@@ -91,7 +91,17 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
         +{overflowCount}
       </button>
       <Portal>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: 200 }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            width: 200,
+            position: 'fixed',
+            bottom: 0,
+            right: 0,
+            border: '2px dotted magenta',
+          }}
+        >
           {Object.entries(itemVisibility).map(([id, visible]) => (
             <>
               <div>{id}</div>

@@ -5,8 +5,13 @@ import { Field } from '@fluentui/react-field';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Dropdown', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Dropdown,
     displayName: 'Dropdown',
