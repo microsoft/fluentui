@@ -11,7 +11,6 @@ import {
   MenuPopover,
   MenuTrigger,
   useIsOverflowItemVisible,
-  useIsOverflowGroupVisible,
   useOverflowMenu,
   Overflow,
   OverflowItem,

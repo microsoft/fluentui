@@ -1,4 +1,4 @@
-import { DATA_OVERFLOWING } from '../../react-overflow/src/constants';
+import { DATA_OVERFLOWING } from './consts';
 import { debounce } from './debounce';
 import { createPriorityQueue, PriorityQueue } from './priorityQueue';
 import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOptions, OverflowDivider } from './types';
