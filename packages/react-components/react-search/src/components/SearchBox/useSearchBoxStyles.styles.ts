@@ -12,13 +12,55 @@ export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
 /**
  * Styles for the root slot
  */
-const useRootClassName = makeResetStyles({
-  // removes the WebKit pseudoelement styling
-  '::-webkit-search-decoration': {
-    display: 'none',
+const useRootStyles = makeStyles({
+  small: {
+    columnGap: 0,
+    width: '468px',
+
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
   },
-  '::-webkit-search-cancel-button': {
-    display: 'none',
+  medium: {
+    columnGap: 0,
+    width: '468px',
+
+    paddingLeft: tokens.spacingHorizontalS,
+    paddingRight: tokens.spacingHorizontalS,
+  },
+  large: {
+    columnGap: 0,
+    width: '468px',
+
+    paddingLeft: tokens.spacingHorizontalMNudge,
+    paddingRight: tokens.spacingHorizontalMNudge,
+  },
+
+  input: {
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: 0,
+
+    // dismiss + contentAfter appear on focus
+    '& + span': {
+      display: 'none',
+    },
+    '&:focus + span': {
+      display: 'flex',
+    },
+
+    // removes the WebKit pseudoelement styling
+    '::-webkit-search-decoration': {
+      display: 'none',
+    },
+    '::-webkit-search-cancel-button': {
+      display: 'none',
+    },
+  },
+});
+
+const useContentAfterStyles = makeStyles({
+  contentAfter: {
+    paddingLeft: tokens.spacingHorizontalM,
+    columnGap: tokens.spacingHorizontalXS,
   },
 });
 
@@ -51,21 +93,34 @@ const useDismissStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  const { size, disabled } = state;
+  const { disabled, size } = state;
 
-  const DismissClassName = useDismissClassName();
-  const DismissStyles = useDismissStyles();
+  const rootStyles = useRootStyles();
+  const contentAfterStyles = useContentAfterStyles();
+  const dismissClassName = useDismissClassName();
+  const dismissStyles = useDismissStyles();
 
-  state.root.input!.className = mergeClasses(useRootClassName(), state.root.className);
+  state.root.className = mergeClasses(searchBoxClassNames.root, rootStyles[size], state.root.className);
+  state.root.input!.className = rootStyles.input;
 
   if (state.dismiss) {
     state.dismiss.className = mergeClasses(
       searchBoxClassNames.dismiss,
-      DismissClassName,
-      disabled && DismissStyles.disabled,
-      DismissStyles[size],
+      dismissClassName,
+      disabled && dismissStyles.disabled,
+      dismissStyles[size],
       state.dismiss.className,
     );
+  }
+
+  if (state.contentAfter) {
+    state.contentAfter!.className = mergeClasses(
+      searchBoxClassNames.contentAfter,
+      contentAfterStyles.contentAfter,
+      state.contentAfter.className,
+    );
+  } else if (state.dismiss) {
+    state.dismiss.className = mergeClasses(state.dismiss.className, contentAfterStyles.contentAfter);
   }
 
   return state;
