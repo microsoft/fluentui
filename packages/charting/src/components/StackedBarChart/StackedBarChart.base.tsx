@@ -107,12 +107,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData, 'text', false)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
                   <span>
@@ -122,7 +122,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               </div>
             )}
             {showNumber && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
                 <strong>{getChartData()}</strong>
               </div>
             )}
