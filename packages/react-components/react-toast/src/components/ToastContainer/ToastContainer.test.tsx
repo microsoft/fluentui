@@ -8,18 +8,12 @@ import { toastClassNames } from './useToastContainerStyles.styles';
 const defaultToastContainerProps: ToastContainerProps = {
   announce: () => null,
   close: () => null,
-  content: '',
   data: {},
-  dispatchedAt: 0,
   pauseOnHover: false,
   pauseOnWindowBlur: false,
   politeness: 'polite',
-  position: 'bottom-end',
-  priority: 0,
   remove: () => null,
   timeout: -1,
-  toasterId: 'toaster',
-  toastId: 'toast',
   updateId: 0,
   visible: true,
 };
