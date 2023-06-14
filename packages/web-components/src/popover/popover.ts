@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { arrow, autoUpdate, computePosition, offset } from '@floating-ui/dom';
+import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { PopoverAlignment, PopoverAppearance, PopoverPosition, PopoverSize } from './popover.options.js';
 import { toFloatingUIPlacement } from './toFloatingUIPlacement.js';
 
@@ -10,6 +10,11 @@ const getNextEmoji = () => {
   const emojis = ['🍇', '🍉', '🍊', '🍋', '🍌', '🍍', '🥭', '🍎', '🍏', '🍐', '🍑', '🍒', '🍓', '🫐', '🥝', '🍅', '🫒', '🥥', '🥑', '🍆', '🥔', '🥕', '🌽', '🌶', '🫑', '🧄', '🥨', '🚌'];
 
   return emojis[nextEmoji++ % emojis.length];
+};
+
+const arrowSize = {
+  small: 6,
+  default: 8 /* used for both medium and large */,
 };
 
 export class Popover extends FASTElement {
@@ -388,15 +393,14 @@ export class Popover extends FASTElement {
       placement,
     });
 
-    const arrowOffset = shouldPositionArrow && this.size === 'small' ? 6 : 8; // FIXME: no magic numbers
-
     computePosition(this.anchorElement, this.popoverContentRef, {
       placement,
       middleware: [
-        ...(shouldPositionArrow ? [arrow({ element: this.arrowRef!, padding: 10 })] : []),
-        ...(shouldPositionArrow ? [offset(arrowOffset)] : []), // FIXME: once the popover supports offset, the two should be merged - see mergeArrowOffset in FUIR9
-        /* ^ should be either 6 or 8 depending on the `size` attribute */
-      ],
+        shouldPositionArrow && offset(this.size === 'small' ? arrowSize.small : arrowSize.default), // FIXME: once the popover supports offset, the two should be merged - see mergeArrowOffset in FUIR9
+        flip({ fallbackStrategy: 'bestFit' }),
+        shift(),
+        shouldPositionArrow && arrow({ element: this.arrowRef!, padding: 10 }),
+      ].filter(Boolean),
 
       // strategy: 'fixed',
     }).then(({ x, y, middlewareData, placement: computedPlacement }) => {

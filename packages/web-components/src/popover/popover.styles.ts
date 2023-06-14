@@ -2,6 +2,8 @@ import { css } from '@microsoft/fast-element';
 import * as tokens from '../theme/design-tokens.js';
 
 const borderWidth = '1px';
+
+/* see also arrowSize in popover implementation */
 const arrowEdgeLength = {
   small: `${6 * 1.414}px`,
   default: `${8 * 1.414}px` /* used for both medium and large */,
