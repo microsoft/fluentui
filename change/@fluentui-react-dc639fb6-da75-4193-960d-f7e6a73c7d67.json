@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: revert column resize behavior for DetailsList",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
