@@ -79,10 +79,6 @@ jobs:
         env:
           PACKAGE: '@fluentui/react-northstar'
 
-      # - script: 'sudo apt-get install jq'
-      #   displayName: 'Install jq'
-
-      # - script: jq -c -s 'reduce .[] as $item ({}; . * $item)' apps/test-bundles/dist/react-northstar/bundlesize.json apps/test-bundles/dist/react/bundlesize.json > apps/test-bundles/dist/bundlesizes.json
       - script: yarn workspace @fluentui/test-bundles just-scripts bundle-size-merge
         displayName: 'Merge @fluentui/react, @fluentui/react-northstar to bundlesizes.json'
 
