@@ -13,6 +13,9 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
   dismissIcon: 'fui-Tag__dismissIcon',
 };
 
+export const tagSpacingMedium = '7px';
+export const tagSpacingSmall = '5px';
+
 /**
  * Base styles shared by Tag/TagButton
  */
@@ -21,15 +24,17 @@ export const useTagBaseStyles = makeStyles({
     ...shorthands.gridArea('media'),
     display: 'flex',
     alignItems: 'center',
-    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingLeft: '1px',
     paddingRight: tokens.spacingHorizontalS,
   },
   icon: {
     ...shorthands.gridArea('media'),
     display: 'flex',
     alignSelf: 'center',
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalXXS,
+    paddingLeft: tagSpacingMedium,
+    paddingRight: tokens.spacingHorizontalXS,
+    width: '20px',
+    fontSize: '20px',
   },
   primaryText: {
     gridColumnStart: 'primary',
@@ -39,10 +44,13 @@ export const useTagBaseStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tokens.spacingHorizontalXXS,
     whiteSpace: 'nowrap',
+    paddingBottom: tokens.spacingHorizontalXXS,
   },
   primaryTextWithSecondaryText: {
     ...shorthands.gridArea('primary'),
     ...typographyStyles.caption1,
+    paddingBottom: tokens.spacingHorizontalNone,
+    marginTop: '-2px',
   },
   secondaryText: {
     ...shorthands.gridArea('secondary'),
@@ -108,10 +116,10 @@ const useTagStyles = makeStyles({
     }),
   },
   rootWithoutMedia: {
-    paddingLeft: tokens.spacingHorizontalS,
+    paddingLeft: tagSpacingMedium,
   },
   rootWithoutDismiss: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: tagSpacingMedium,
   },
 
   dismissIcon: {
@@ -119,41 +127,59 @@ const useTagStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     fontSize: '20px',
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingLeft: tokens.spacingHorizontalXS,
+    paddingRight: tagSpacingMedium,
   },
 
   // TODO add additional classes for fill/outline appearance, different sizes, and state
+});
+
+const useSharedSmallTagStyles = makeStyles({
+  rootWithoutMedia: {
+    paddingLeft: tagSpacingSmall,
+  },
+  rootWithoutDismiss: {
+    paddingRight: tagSpacingSmall,
+  },
+
+  media: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  icon: {
+    paddingLeft: tagSpacingSmall,
+    paddingRight: tokens.spacingHorizontalXXS,
+  },
+  dismissIcon: {
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tagSpacingSmall,
+  },
+  primaryText: typographyStyles.caption1,
 });
 
 const useSmallTagStyles = makeStyles({
   root: {
     height: '24px',
   },
+  icon: {
+    width: '16px',
+    fontSize: '16px',
+  },
   dismissIcon: {
     fontSize: '16px',
   },
-  primaryText: typographyStyles.caption1,
 });
 
 const useExtraSmallTagStyles = makeStyles({
   root: {
     height: '20px',
   },
-  rootWithoutMedia: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
-  },
-  rootWithoutDismiss: {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
   icon: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    width: '12px',
+    fontSize: '12px',
   },
   dismissIcon: {
     fontSize: '12px',
-    paddingRight: tokens.spacingHorizontalXS,
   },
-  primaryText: typographyStyles.caption1,
 });
 
 /**
@@ -164,6 +190,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const resetButtonStyles = useResetButtonStyles();
   const styles = useTagStyles();
 
+  const sharedSmallStyles = useSharedSmallTagStyles();
   const smallStyles = useSmallTagStyles();
   const extraSmallStyles = useExtraSmallTagStyles();
 
@@ -178,19 +205,32 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
     state.size === 'small' && smallStyles.root,
     state.size === 'extra-small' && extraSmallStyles.root,
-    state.size === 'extra-small' && !state.media && !state.icon && extraSmallStyles.rootWithoutMedia,
-    state.size === 'extra-small' && !state.dismissIcon && extraSmallStyles.rootWithoutDismiss,
+
+    (state.size === 'small' || state.size === 'extra-small') &&
+      !state.media &&
+      !state.icon &&
+      sharedSmallStyles.rootWithoutMedia,
+    (state.size === 'small' || state.size === 'extra-small') &&
+      !state.dismissIcon &&
+      sharedSmallStyles.rootWithoutDismiss,
 
     state.root.className,
   );
 
   if (state.media) {
-    state.media.className = mergeClasses(tagClassNames.media, baseStyles.media, state.media.className);
+    state.media.className = mergeClasses(
+      tagClassNames.media,
+      baseStyles.media,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.media,
+      state.media.className,
+    );
   }
   if (state.icon) {
     state.icon.className = mergeClasses(
       tagClassNames.icon,
       baseStyles.icon,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.icon,
+      state.size === 'small' && smallStyles.icon,
       state.size === 'extra-small' && extraSmallStyles.icon,
       state.icon.className,
     );
@@ -201,8 +241,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       baseStyles.primaryText,
       state.secondaryText && baseStyles.primaryTextWithSecondaryText,
 
-      state.size === 'small' && smallStyles.primaryText,
-      state.size === 'extra-small' && extraSmallStyles.primaryText,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.primaryText,
 
       state.primaryText.className,
     );
@@ -219,6 +258,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       tagClassNames.dismissIcon,
       styles.dismissIcon,
 
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.dismissIcon,
       state.size === 'small' && smallStyles.dismissIcon,
       state.size === 'extra-small' && extraSmallStyles.dismissIcon,
 

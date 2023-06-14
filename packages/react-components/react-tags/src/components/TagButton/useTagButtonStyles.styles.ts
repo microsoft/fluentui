@@ -3,7 +3,7 @@ import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useResetButtonStyles, useTagBaseStyles } from '../Tag/index';
+import { useResetButtonStyles, useTagBaseStyles, tagSpacingMedium, tagSpacingSmall } from '../Tag/index';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     "media secondary"
     "media .        "
     `,
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: tagSpacingMedium,
 
     ...createCustomFocusIndicatorStyle(
       {
@@ -57,20 +57,24 @@ const useStyles = makeStyles({
   },
   circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
   contentWithoutMedia: {
-    paddingLeft: tokens.spacingHorizontalS,
+    paddingLeft: tagSpacingMedium,
   },
-  dismissibleContent: createCustomFocusIndicatorStyle({
-    borderTopRightRadius: tokens.borderRadiusNone,
-    borderBottomRightRadius: tokens.borderRadiusNone,
-  }),
+  dismissibleContent: {
+    paddingRight: tokens.spacingHorizontalS,
+    ...createCustomFocusIndicatorStyle({
+      borderTopRightRadius: tokens.borderRadiusNone,
+      borderBottomRightRadius: tokens.borderRadiusNone,
+    }),
+  },
 
   dismissButton: {
     display: 'flex',
     alignItems: 'center',
     fontSize: '20px',
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingLeft: '5px',
+    paddingRight: '5px',
 
+    // divider:
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
 
     borderTopLeftRadius: tokens.borderRadiusNone,
@@ -95,37 +99,54 @@ const useStyles = makeStyles({
   // TODO add additional classes for fill/outline appearance, different sizes, and state
 });
 
+const useSharedSmallTagButtonStyles = makeStyles({
+  content: {
+    paddingRight: tagSpacingSmall,
+  },
+  contentWithoutMedia: {
+    paddingLeft: tagSpacingSmall,
+  },
+  dismissibleContent: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  media: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  icon: {
+    paddingLeft: tagSpacingSmall,
+    paddingRight: tokens.spacingHorizontalXXS,
+  },
+  primaryText: typographyStyles.caption1,
+});
+
 const useSmallTagButtonStyles = makeStyles({
   root: {
     height: '24px',
   },
+  icon: {
+    width: '16px',
+    fontSize: '16px',
+  },
   dismissButton: {
     fontSize: '16px',
-    paddingLeft: tokens.spacingHorizontalXS,
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingLeft: '3px',
+    paddingRight: '3px',
   },
-  primaryText: typographyStyles.caption1,
 });
 
 const useExtraSmallTagButtonStyles = makeStyles({
   root: {
     height: '20px',
   },
-  content: {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-  contentWithoutMedia: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
-  },
   icon: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    width: '12px',
+    fontSize: '12px',
   },
   dismissButton: {
     fontSize: '12px',
-    paddingLeft: tokens.spacingHorizontalXS,
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingLeft: '5px',
+    paddingRight: '5px',
   },
-  primaryText: typographyStyles.caption1,
 });
 
 /**
@@ -136,6 +157,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   const resetButtonStyles = useResetButtonStyles();
   const styles = useStyles();
 
+  const sharedSmallStyles = useSharedSmallTagButtonStyles();
   const smallStyles = useSmallTagButtonStyles();
   const extraSmallStyles = useExtraSmallTagButtonStyles();
 
@@ -159,20 +181,33 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
       !state.media && !state.icon && styles.contentWithoutMedia,
       state.dismissible && styles.dismissibleContent,
 
-      state.size === 'extra-small' && extraSmallStyles.content,
-      state.size === 'extra-small' && !state.media && !state.icon && extraSmallStyles.contentWithoutMedia,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.content,
+      (state.size === 'small' || state.size === 'extra-small') &&
+        !state.media &&
+        !state.icon &&
+        sharedSmallStyles.contentWithoutMedia,
+      (state.size === 'small' || state.size === 'extra-small') &&
+        state.dismissible &&
+        sharedSmallStyles.dismissibleContent,
 
       state.content.className,
     );
   }
 
   if (state.media) {
-    state.media.className = mergeClasses(tagButtonClassNames.media, baseStyles.media, state.media.className);
+    state.media.className = mergeClasses(
+      tagButtonClassNames.media,
+      baseStyles.media,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.media,
+      state.media.className,
+    );
   }
   if (state.icon) {
     state.icon.className = mergeClasses(
       tagButtonClassNames.icon,
       baseStyles.icon,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.icon,
+      state.size === 'small' && smallStyles.icon,
       state.size === 'extra-small' && extraSmallStyles.icon,
       state.icon.className,
     );
@@ -183,8 +218,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
       baseStyles.primaryText,
       state.secondaryText && baseStyles.primaryTextWithSecondaryText,
 
-      state.size === 'small' && smallStyles.primaryText,
-      state.size === 'extra-small' && extraSmallStyles.primaryText,
+      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.primaryText,
 
       state.primaryText.className,
     );
