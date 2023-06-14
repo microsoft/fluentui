@@ -34,6 +34,9 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public
+export function createSlideStyles(mainAxis: number): GriffelStyle;
+
+// @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @internal
@@ -72,7 +75,7 @@ export type PositioningImperativeRef = {
 };
 
 // @public (undocumented)
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'pinned'> {
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'pinned' | 'useTransform'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }

@@ -167,6 +167,12 @@ export interface PositioningOptions {
    * its boundaries, use a specified fallback positions.
    */
   fallbackPositions?: PositioningShorthandValue[];
+
+  /**
+   * Modifies whether popover is positioned using transform.
+   * @default true
+   */
+  useTransform?: boolean;
 }
 
 export interface PositioningProps
@@ -182,6 +188,7 @@ export interface PositioningProps
     | 'autoSize'
     | 'coverTarget'
     | 'pinned'
+    | 'useTransform'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

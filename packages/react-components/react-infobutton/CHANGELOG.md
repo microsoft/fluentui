@@ -1,8 +1,88 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Mon, 24 Apr 2023 08:12:37 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 06:46:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.34)
+
+Wed, 31 May 2023 06:46:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.33..@fluentui/react-infobutton_v9.0.0-beta.34)
+
+### Changes
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-label to v9.1.15 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-popover to v9.6.0 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-tabster to v9.7.5 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+
+## [9.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.33)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.32..@fluentui/react-infobutton_v9.0.0-beta.33)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.14 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-popover to v9.5.15 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-tabster to v9.7.4 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.5 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+
+## [9.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.32)
+
+Wed, 24 May 2023 20:45:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.31..@fluentui/react-infobutton_v9.0.0-beta.32)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.13 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+- Bump @fluentui/react-popover to v9.5.14 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+- Bump @fluentui/react-tabster to v9.7.3 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+
+## [9.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.31)
+
+Thu, 18 May 2023 13:11:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.30..@fluentui/react-infobutton_v9.0.0-beta.31)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.5.13 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+- Bump @fluentui/react-tabster to v9.7.2 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+
+## [9.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.30)
+
+Thu, 18 May 2023 00:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.29..@fluentui/react-infobutton_v9.0.0-beta.30)
+
+### Changes
+
+- fix: Add aria-owns to InfoLabel. ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by esteban.230@hotmail.com)
+- Bump @fluentui/react-label to v9.1.12 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-popover to v9.5.12 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-tabster to v9.7.1 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.29)
+
+Fri, 12 May 2023 20:27:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.28..@fluentui/react-infobutton_v9.0.0-beta.29)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- chore: move makeStyles() calls to .styles.ts files ([PR #27710](https://github.com/microsoft/fluentui/pull/27710) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.1.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-popover to v9.5.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
 
 ## [9.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.28)
 

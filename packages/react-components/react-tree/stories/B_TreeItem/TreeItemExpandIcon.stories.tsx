@@ -11,36 +11,33 @@ export const ExpandIcon = () => {
   };
   return (
     <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
-      <TreeItem
-        value="tree-item-1"
-        expandIcon={openItems.includes('tree-item-1') ? <Add12Regular /> : <Subtract12Regular />}
-      >
-        <TreeItemLayout>level 1, item 1</TreeItemLayout>
+      <TreeItem itemType="branch" value="tree-item-1">
+        <TreeItemLayout expandIcon={openItems.includes('tree-item-1') ? <Add12Regular /> : <Subtract12Regular />}>
+          level 1, item 1
+        </TreeItemLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 2</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 3</TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem
-        value="tree-item-2"
-        expandIcon={openItems.includes('tree-item-2') ? <Add12Regular /> : <Subtract12Regular />}
-      >
-        <TreeItemLayout>level 1, item 2</TreeItemLayout>
+      <TreeItem itemType="branch" value="tree-item-2">
+        <TreeItemLayout expandIcon={openItems.includes('tree-item-2') ? <Add12Regular /> : <Subtract12Regular />}>
+          level 1, item 2
+        </TreeItemLayout>
         <Tree>
-          <TreeItem
-            value="tree-item-3"
-            expandIcon={openItems.includes('tree-item-3') ? <Add12Regular /> : <Subtract12Regular />}
-          >
-            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          <TreeItem itemType="branch" value="tree-item-3">
+            <TreeItemLayout expandIcon={openItems.includes('tree-item-3') ? <Add12Regular /> : <Subtract12Regular />}>
+              level 2, item 1
+            </TreeItemLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
             </Tree>

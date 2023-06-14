@@ -10,38 +10,38 @@ export function useNestedTreeNavigation() {
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
   const [walkerRef, rootRef] = useHTMLElementWalkerRef(treeItemFilter);
 
-  const getNextElement = (data: TreeNavigationData_unstable) => {
+  const getNextElement = (data: TreeNavigationData_unstable<unknown>) => {
     if (!walkerRef.current) {
       return;
     }
     const treeItemWalker = walkerRef.current;
     switch (data.type) {
-      case treeDataTypes.click:
+      case treeDataTypes.Click:
         return data.target;
-      case treeDataTypes.typeAhead:
+      case treeDataTypes.TypeAhead:
         treeItemWalker.currentElement = data.target;
         return nextTypeAheadElement(treeItemWalker, data.event.key);
-      case treeDataTypes.arrowLeft:
+      case treeDataTypes.ArrowLeft:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.parentElement();
-      case treeDataTypes.arrowRight:
+      case treeDataTypes.ArrowRight:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.firstChild();
-      case treeDataTypes.end:
+      case treeDataTypes.End:
         treeItemWalker.currentElement = treeItemWalker.root;
         return lastChildRecursive(treeItemWalker);
-      case treeDataTypes.home:
+      case treeDataTypes.Home:
         treeItemWalker.currentElement = treeItemWalker.root;
         return treeItemWalker.firstChild();
-      case treeDataTypes.arrowDown:
+      case treeDataTypes.ArrowDown:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.nextElement();
-      case treeDataTypes.arrowUp:
+      case treeDataTypes.ArrowUp:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.previousElement();
     }
   };
-  function navigate(data: TreeNavigationData_unstable) {
+  function navigate(data: TreeNavigationData_unstable<unknown>) {
     const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
