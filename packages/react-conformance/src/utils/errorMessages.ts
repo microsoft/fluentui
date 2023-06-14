@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import { EOL } from 'os';
 
 /** Console message colors used in the test. */
