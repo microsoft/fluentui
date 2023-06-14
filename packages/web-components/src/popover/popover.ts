@@ -37,7 +37,7 @@ export class Popover extends FASTElement {
   }
 
   @observable
-  public popoverContentRef?: FASTElement; // @FIXME: what type?
+  public popoverContentRef: HTMLElement | undefined;
 
   protected popoverContentRefChanged() {
     console.group(this.objId, 'popoverContentRefChanged');

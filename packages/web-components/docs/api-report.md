@@ -1831,7 +1831,7 @@ export class Popover extends FASTElement {
     // (undocumented)
     protected popoverAlignChanged(): void;
     // (undocumented)
-    popoverContentRef?: FASTElement;
+    popoverContentRef: HTMLElement | undefined;
     // (undocumented)
     protected popoverContentRefChanged(): void;
     // Warning: (ae-forgotten-export) The symbol "PopoverPosition" needs to be exported by the entry point index.d.ts

@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import * as tokens from '../theme/design-tokens.js';
 
 const borderWidth = '1px';
@@ -11,7 +12,7 @@ const arrowEdgeLength = {
 
 export const styles = css`
   :host {
-    display: contents;
+    ${display('contents')}
   }
 
   .popover-content ::slotted(*) {
