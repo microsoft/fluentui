@@ -47,11 +47,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
           width={225}
           x={602.5}
           y={10}
@@ -106,11 +104,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={130}
@@ -165,11 +161,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={208.75}
           y={260}
@@ -224,11 +218,9 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={331.25}
           y={260}
@@ -267,11 +259,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={208.75}
           y={345.2173913043478}
@@ -326,11 +316,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={331.25}
           y={345.2173913043478}
@@ -385,11 +373,9 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={130}
@@ -428,11 +414,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={102.5}
           x={471.25}
           y={260}
@@ -487,11 +471,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={102.5}
           x={593.75}
           y={260}
@@ -546,11 +528,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={130}
@@ -605,11 +585,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={102.5}
           x={733.75}
           y={260}
@@ -664,11 +642,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={102.5}
           x={856.25}
           y={260}
@@ -723,11 +699,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={102.5}
           x={733.75}
           y={345.2173913043478}
@@ -782,11 +756,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={130}
@@ -841,11 +813,9 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={260}
@@ -995,11 +965,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
           width={225}
           x={602.5}
           y={10}
@@ -1054,11 +1022,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={130}
@@ -1113,11 +1079,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={260}
@@ -1172,11 +1136,9 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={345.2173913043478}
@@ -1215,11 +1177,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={430.4347826086956}
@@ -1274,11 +1234,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={515.6521739130435}
@@ -1333,11 +1291,9 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={130}
@@ -1376,11 +1332,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={260}
@@ -1435,11 +1389,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={345.2173913043478}
@@ -1494,11 +1446,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={130}
@@ -1553,11 +1503,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={260}
@@ -1612,11 +1560,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={345.2173913043478}
@@ -1671,11 +1617,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={430.4347826086956}
@@ -1730,11 +1674,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={130}
@@ -1789,11 +1731,9 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={260}
@@ -1943,11 +1883,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
           width={225}
           x={602.5}
           y={10}
@@ -2002,11 +1940,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={130}
@@ -2061,11 +1997,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={208.75}
           y={260}
@@ -2120,11 +2054,9 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={331.25}
           y={260}
@@ -2163,11 +2095,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={208.75}
           y={345.2173913043478}
@@ -2222,11 +2152,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={102.5}
           x={331.25}
           y={345.2173913043478}
@@ -2281,11 +2209,9 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={130}
@@ -2324,11 +2250,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={260}
@@ -2383,11 +2307,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={345.2173913043478}
@@ -2442,11 +2364,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={130}
@@ -2501,11 +2421,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={102.5}
           x={733.75}
           y={260}
@@ -2560,11 +2478,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={102.5}
           x={856.25}
           y={260}
@@ -2619,11 +2535,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={102.5}
           x={733.75}
           y={345.2173913043478}
@@ -2678,11 +2592,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={130}
@@ -2737,11 +2649,9 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={260}
@@ -2891,11 +2801,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
           width={225}
           x={602.5}
           y={10}
@@ -2950,11 +2858,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
           width={225}
           x={208.75}
           y={130}
@@ -3009,11 +2915,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#881798"
-          tabIndex={0}
           width={225}
           x={471.25}
           y={130}
@@ -3068,11 +2972,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
           width={225}
           x={733.75}
           y={130}
@@ -3127,11 +3029,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-          data-is-focusable={true}
           height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
           width={225}
           x={996.25}
           y={130}

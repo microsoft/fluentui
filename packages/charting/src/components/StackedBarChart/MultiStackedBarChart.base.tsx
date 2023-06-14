@@ -221,18 +221,18 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData, 'text', false)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
                 <strong>{getChartData()}</strong>
                 {!hideDenominator && <span>/{convertToLocaleString(total, culture)}</span>}
               </div>
             )}
             {showNumber && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
                 <strong>{getChartData()}</strong>
               </div>
             )}

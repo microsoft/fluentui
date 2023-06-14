@@ -53,7 +53,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -61,7 +61,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -197,7 +197,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -205,7 +205,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -441,7 +441,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -449,7 +449,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -581,7 +581,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -589,7 +589,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -821,7 +821,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -829,7 +829,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -965,7 +965,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -973,7 +973,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1131,7 +1131,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1263,7 +1263,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1271,7 +1271,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1686,7 +1686,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1694,7 +1694,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1830,7 +1830,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               }
         >
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>
@@ -1838,7 +1838,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </strong>
           </div>
           <div
-            data-is-focusable={true}
+            data-is-focusable={false}
             role="text"
           >
             <strong>

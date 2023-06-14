@@ -94,7 +94,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     {points!.chartTitle && (
                       <div
                         className={this._classNames.chartDataText}
-                        {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}
+                        {...getAccessibleDataObject(points!.chartTitleAccessibilityData, 'text', false)}
                       >
                         {points!.chartTitle}
                       </div>
@@ -220,9 +220,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _getChartDataText = (data: IChartProps) => {
     return this.props.barChartCustomData ? (
-      <div data-is-focusable={true} role="text">
-        {this.props.barChartCustomData(data)}
-      </div>
+      <div role="text">{this.props.barChartCustomData(data)}</div>
     ) : (
       this._getDefaultTextData(data)
     );
@@ -235,7 +233,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData);
+    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     switch (chartDataMode) {
       case 'default':
         return (

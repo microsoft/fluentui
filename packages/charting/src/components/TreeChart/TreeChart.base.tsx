@@ -95,9 +95,7 @@ class StandardTree {
           height={rectangleHeight}
           x={xCoordinate}
           y={yCoordinate}
-          tabIndex={0}
           role={'text'}
-          data-is-focusable={true}
           aria-label={ariaLabel}
           className={this.styleClassNames.rectNode}
           stroke={fillColor}
