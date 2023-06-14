@@ -1,18 +1,13 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.base.wc.json",
   "compilerOptions": {
     "target": "ES2019",
-    "module": "commonjs",
-    "outDir": "lib",
-    "noEmit": true,
-    "jsx": "react",
-    "allowJs": true,
-    "checkJs": true,
-    "sourceMap": true,
+    "module": "ESNext",
     "experimentalDecorators": true,
-    "noUnusedLocals": true,
-    "preserveConstEnums": true,
-    "types": ["node", "jest"]
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node"
   },
   "include": ["./src", "./.storybook/*"]
 }
