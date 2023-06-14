@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2023 07:35:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.2)
+
+Thu, 08 Jun 2023 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.1..@fluentui/react_v8.110.2)
+
+### Patches
+
+- fix: ContextualMenu should not include headers and dividers in ARIA index calculations ([PR #28127](https://github.com/microsoft/fluentui/pull/28127) by sarah.higley@microsoft.com)
+
+## [8.110.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.1)
+
+Wed, 07 Jun 2023 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.0..@fluentui/react_v8.110.1)
+
+### Patches
+
+- fix: Layer propagates focus visible classname to its contents ([PR #28157](https://github.com/microsoft/fluentui/pull/28157) by sarah.higley@microsoft.com)
+
+## [8.110.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.0)
+
+Tue, 06 Jun 2023 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.11..@fluentui/react_v8.110.0)
+
+### Minor changes
+
+- add onRenderCellContent to override cell internals ([PR #28064](https://github.com/microsoft/fluentui/pull/28064) by prkalaga@microsoft.com)
+- Exposed disabled property in IColorCellProps to allow customers to disable color cells. ([PR #28015](https://github.com/microsoft/fluentui/pull/28015) by jesszhang782@gmail.com)
+
+## [8.109.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.11)
+
+Mon, 05 Jun 2023 07:37:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.10..@fluentui/react_v8.109.11)
+
+### Patches
+
+- fix: Dropdown hover high contrast mode colors ([PR #27306](https://github.com/microsoft/fluentui/pull/27306) by sarah.higley@microsoft.com)
+- MessageBar: Add SmallScreenSelector styles to use grid layout to properly place buttons ([PR #28100](https://github.com/microsoft/fluentui/pull/28100) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-focus to v8.8.28 ([PR #28125](https://github.com/microsoft/fluentui/pull/28125) by beachball)
 
 ## [8.109.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.10)
 

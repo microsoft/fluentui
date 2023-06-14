@@ -176,6 +176,7 @@ Dropdown contains collapsed items.
 | ------------ | -------------------------- | ------------- | -------------------------------- |
 | appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
 | dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
+| focusMode    | `tab`, `arrow`             | `tab`         | Sets focus mode                  |
 | iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
 | size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
 

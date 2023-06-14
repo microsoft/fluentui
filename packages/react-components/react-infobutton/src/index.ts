@@ -15,10 +15,18 @@ export {
 } from './InfoLabel';
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from './InfoLabel';
 export {
-  InfoTip,
-  infoTipClassNames,
-  renderInfoTip_unstable,
-  useInfoTipStyles_unstable,
-  useInfoTip_unstable,
-} from './InfoTip';
-export type { InfoTipProps, InfoTipSlots, InfoTipState } from './InfoTip';
+  InfoIcon,
+  infoIconClassNames,
+  renderInfoIcon_unstable,
+  useInfoIconStyles_unstable,
+  useInfoIcon_unstable,
+} from './InfoIcon';
+export type { InfoIconProps, InfoIconSlots, InfoIconState } from './InfoIcon';
+export {
+  InfoIconLabel,
+  infoIconLabelClassNames,
+  renderInfoIconLabel_unstable,
+  useInfoIconLabelStyles_unstable,
+  useInfoIconLabel_unstable,
+} from './InfoIconLabel';
+export type { InfoIconLabelProps, InfoIconLabelSlots, InfoIconLabelState } from './InfoIconLabel';

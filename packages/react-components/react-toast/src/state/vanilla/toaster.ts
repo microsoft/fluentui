@@ -48,7 +48,7 @@ export class Toaster {
       priority: 0,
       pauseOnHover: false,
       pauseOnWindowBlur: false,
-      position: 'bottom-right',
+      position: 'bottom-end',
       timeout: 3000,
     };
     this.queue = createPriorityQueue<Toast>((a, b) => {
@@ -160,7 +160,7 @@ export class Toaster {
 
     const remove = () => {
       this.toasts.delete(toastId);
-      if (this.queue.peek()) {
+      if (this.visibleToasts.size < this.limit && this.queue.peek()) {
         const nextToast = this.queue.dequeue();
         this.toasts.set(nextToast.toastId, nextToast);
         this.visibleToasts.add(nextToast.toastId);
@@ -177,6 +177,7 @@ export class Toaster {
       updateId: 0,
       toasterId,
       dispatchedAt: Date.now(),
+      data: {},
     };
 
     assignDefined<Toast>(toast, toastOptions);

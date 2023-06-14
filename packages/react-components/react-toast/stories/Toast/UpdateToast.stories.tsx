@@ -1,25 +1,56 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastAlert } from '@fluentui/react-toast';
-import { useId } from '@fluentui/react-components';
+import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
+import { useId, Button } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
+  const toastId = useId('toast');
   const toasterId = useId('toaster');
-  const toastId = useId('example');
+  const [dispatched, setDispatched] = React.useState(false);
+
   const { dispatchToast, updateToast } = useToastController(toasterId);
   const notify = () =>
-    dispatchToast(<ToastAlert intent="warning">This toast never closes</ToastAlert>, { toastId, timeout: -1 });
+    dispatchToast(
+      <Toast>
+        <ToastTitle intent="warning">This toast never closes</ToastTitle>
+      </Toast>,
+      { toastId, timeout: -1 },
+    );
   const update = () =>
     updateToast({
-      content: <ToastAlert intent="success">This toast will close soon</ToastAlert>,
+      content: (
+        <Toast>
+          <ToastTitle intent="success">This toast will close soon</ToastTitle>
+        </Toast>
+      ),
       toastId,
-      timeout: 1000,
+      timeout: 2000,
     });
+
+  const onClick = () => {
+    if (dispatched) {
+      update();
+      setDispatched(false);
+    } else {
+      notify();
+      setDispatched(true);
+    }
+  };
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
-      <button onClick={update}>Update toast</button>
+      <Button onClick={onClick}>{dispatched ? 'Update toast' : 'Make toast'}</Button>
     </>
   );
+};
+
+UpdateToast.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Use the `updateToast` imperative API to make changes to a Toast that is already visible. To do this',
+        'you **must** provide an id when dispatching the toast. Almost all options of a Toast can be updated.',
+      ].join('\n'),
+    },
+  },
 };

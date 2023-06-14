@@ -80,6 +80,11 @@ import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
+import { ScrollToInterface } from '@fluentui/react-virtualizer';
+import { scrollToItemDynamic } from '@fluentui/react-virtualizer';
+import { ScrollToItemDynamicParams } from '@fluentui/react-virtualizer';
+import { scrollToItemStatic } from '@fluentui/react-virtualizer';
+import { ScrollToItemStaticParams } from '@fluentui/react-virtualizer';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
@@ -330,6 +335,16 @@ export { renderVirtualizerScrollView_unstable }
 export { renderVirtualizerScrollViewDynamic_unstable }
 
 export { ResizeCallbackWithRef }
+
+export { ScrollToInterface }
+
+export { scrollToItemDynamic }
+
+export { ScrollToItemDynamicParams }
+
+export { scrollToItemStatic }
+
+export { ScrollToItemStaticParams }
 
 export { Tree }
 

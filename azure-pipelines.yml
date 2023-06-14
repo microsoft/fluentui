@@ -94,6 +94,23 @@ jobs:
           yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
 
+      - bash: |
+          mkdir -p apps/pr-deploy-site/sbom
+        displayName: 📒 Create dir for manifest Deploy-Site
+
+      - task: ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest Deploy-Site
+        inputs:
+          BuildDropPath: apps/pr-deploy-site/dist
+          ManifestDirPath: 'apps/pr-deploy-site/sbom'
+          Verbosity: Verbose
+
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest Deploy-Site
+        inputs:
+          artifactName: SBom-Deploy-Site-$(System.JobAttempt)
+          targetPath: apps/pr-deploy-site/sbom
+
       - task: AzureUpload@2
         displayName: Upload PR deploy site
         inputs:
