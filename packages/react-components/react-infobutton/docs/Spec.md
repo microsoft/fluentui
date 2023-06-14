@@ -138,7 +138,7 @@ After considering the options, we've decided to have two controls that will cove
 - An InfoButton is a button that has a Popover attached to it.
 - InfoButtons must use the pointer cursor to show this is a button and will have a backplate to differenciate the icon vs button.
 - InfoButtons do not open when focused/hovered, instead they open on click/space/enter.
-- InfoButton's bubble can be dismissed by pressing Escape, clicking outside the bubble, or clicking the button again.
+- InfoButton's bubble can be dismissed by pressing Escape, clicking outside the bubble, moving focus away from the bubble, or clicking the button again.
 - InfoButton has role note and moves focus to the Popover's surface.
 
 ## InfoButtonLabel and InfoIconLabel
