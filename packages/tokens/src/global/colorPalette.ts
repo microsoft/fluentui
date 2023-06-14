@@ -80,7 +80,7 @@ export const personaSharedColors: PersonaSharedColors = {
 };
 
 export const mappedStatusColors: MappedStatusColors = {
-  red,
+  cranberry,
   green,
   orange,
 };
