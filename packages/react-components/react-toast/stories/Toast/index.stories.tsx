@@ -9,6 +9,7 @@ export { DismissToast } from './DismissToast.stories';
 export { DismissAll } from './DismissAll.stories';
 export { PauseOnWindowBlur } from './PauseOnWindowBlur.stories';
 export { PauseOnHover } from './PauseOnHover.stories';
+export { ToastLifecycle } from './ToastLifecycle.stories';
 export { UpdateToast } from './UpdateToast.stories';
 export { MultipleToasters } from './MultipleToasters.stories';
 export { ToasterLimit } from './ToasterLimit.stories';

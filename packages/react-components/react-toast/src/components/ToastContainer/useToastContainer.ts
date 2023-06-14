@@ -36,7 +36,7 @@ export const useToastContainer_unstable = (
     politeness,
     ...rest
   } = props;
-  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props, content: children });
+  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props });
 
   React.useEffect(() => {
     if (visible) {
