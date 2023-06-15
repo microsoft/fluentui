@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 05 Jun 2023 07:37:24 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2023 07:38:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.3)
+
+Wed, 14 Jun 2023 07:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.2..@fluentui/react_v8.110.3)
+
+### Patches
+
+- fix: revert column resize behavior for DetailsList ([PR #27418](https://github.com/microsoft/fluentui/pull/27418) by seanmonahan@microsoft.com)
+
+## [8.110.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.2)
+
+Thu, 08 Jun 2023 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.1..@fluentui/react_v8.110.2)
+
+### Patches
+
+- fix: ContextualMenu should not include headers and dividers in ARIA index calculations ([PR #28127](https://github.com/microsoft/fluentui/pull/28127) by sarah.higley@microsoft.com)
+
+## [8.110.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.1)
+
+Wed, 07 Jun 2023 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.0..@fluentui/react_v8.110.1)
+
+### Patches
+
+- fix: Layer propagates focus visible classname to its contents ([PR #28157](https://github.com/microsoft/fluentui/pull/28157) by sarah.higley@microsoft.com)
+
+## [8.110.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.0)
+
+Tue, 06 Jun 2023 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.109.11..@fluentui/react_v8.110.0)
+
+### Minor changes
+
+- add onRenderCellContent to override cell internals ([PR #28064](https://github.com/microsoft/fluentui/pull/28064) by prkalaga@microsoft.com)
+- Exposed disabled property in IColorCellProps to allow customers to disable color cells. ([PR #28015](https://github.com/microsoft/fluentui/pull/28015) by jesszhang782@gmail.com)
 
 ## [8.109.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.109.11)
 
