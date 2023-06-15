@@ -40,17 +40,6 @@ export function createOverflowManager(): OverflowManager {
     update();
   });
 
-  function updateGroupVisibility(groupId: string) {
-    const group = groupManager.groups[groupId];
-    if (group.invisibleItemIds.size && group.visibleItemIds.size) {
-      groupManager.groupVisibility[groupId] = 'overflow';
-    } else if (group.visibleItemIds.size === 0) {
-      groupManager.groupVisibility[groupId] = 'hidden';
-    } else {
-      groupManager.groupVisibility[groupId] = 'visible';
-    }
-  }
-
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
     queueToEnqueue.enqueue(nextItem);
@@ -58,41 +47,52 @@ export function createOverflowManager(): OverflowManager {
   };
 
   const createGroupManager = () => {
+    const groupVisibility: Record<string, OverflowGroupState> = {};
+    const groups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
+    function updateGroupVisibility(groupId: string) {
+      const group = groups[groupId];
+      if (group.invisibleItemIds.size && group.visibleItemIds.size) {
+        groupVisibility[groupId] = 'overflow';
+      } else if (group.visibleItemIds.size === 0) {
+        groupVisibility[groupId] = 'hidden';
+      } else {
+        groupVisibility[groupId] = 'visible';
+      }
+    }
+    function isGroupVisible(groupId: string) {
+      return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
+    }
     return {
-      groupVisibility: {} as Record<string, OverflowGroupState>,
-      groups: {} as Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }>,
-      isGroupVisible(groupId: string) {
-        return this.groupVisibility[groupId] === 'visible' || this.groupVisibility[groupId] === 'overflow';
-      },
+      groupVisibility: () => groupVisibility,
       isSingleVisible(itemId: string, groupId: string) {
         return (
-          this.isGroupVisible(groupId) &&
-          this.groups[groupId].visibleItemIds.has(itemId) &&
-          this.groups[groupId].visibleItemIds.size === 1
+          isGroupVisible(groupId) &&
+          groups[groupId].visibleItemIds.has(itemId) &&
+          groups[groupId].visibleItemIds.size === 1
         );
       },
       addItem(itemId: string, groupId: string) {
-        this.groups[groupId] ??= {
+        groups[groupId] ??= {
           visibleItemIds: new Set<string>(),
           invisibleItemIds: new Set<string>(),
         };
 
-        this.groups[groupId].visibleItemIds.add(itemId);
+        groups[groupId].visibleItemIds.add(itemId);
         updateGroupVisibility(groupId);
       },
       removeItem(itemId: string, groupId: string) {
-        this.groups[groupId].invisibleItemIds.delete(itemId);
-        this.groups[groupId].visibleItemIds.delete(itemId);
+        groups[groupId].invisibleItemIds.delete(itemId);
+        groups[groupId].visibleItemIds.delete(itemId);
         updateGroupVisibility(groupId);
       },
       showItem(itemId: string, groupId: string) {
-        this.groups[groupId].invisibleItemIds.delete(itemId);
-        this.groups[groupId].visibleItemIds.add(itemId);
+        groups[groupId].invisibleItemIds.delete(itemId);
+        groups[groupId].visibleItemIds.add(itemId);
         updateGroupVisibility(groupId);
       },
       hideItem(itemId: string, groupId: string) {
-        this.groups[groupId].invisibleItemIds.add(itemId);
-        this.groups[groupId].visibleItemIds.delete(itemId);
+        groups[groupId].invisibleItemIds.add(itemId);
+        groups[groupId].visibleItemIds.delete(itemId);
         updateGroupVisibility(groupId);
       },
     };
@@ -186,7 +186,7 @@ export function createOverflowManager(): OverflowManager {
     const visibleItems = visibleItemIds.map(itemId => overflowItems[itemId]);
     const invisibleItems = invisibleItemIds.map(itemId => overflowItems[itemId]);
 
-    options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility: groupManager.groupVisibility });
+    options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility: groupManager.groupVisibility() });
   };
 
   const processOverflowItems = (): boolean => {
