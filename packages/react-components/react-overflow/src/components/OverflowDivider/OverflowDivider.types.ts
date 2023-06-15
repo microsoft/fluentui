@@ -7,7 +7,7 @@ export type OverflowDividerProps = {
   /**
    * Assigns the item to a group, group visibility can be watched.
    */
-  groupId?: string;
+  groupId: string;
   /**
    * The single child that has overflow item behavior attached.
    */
