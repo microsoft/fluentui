@@ -7,8 +7,6 @@ export type ToastTitleSlots = {
   action?: Slot<'div'>;
 };
 
-export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
-
 /**
  * ToastTitle Props
  */

@@ -14,6 +14,7 @@ const defaultToastContainerProps: ToastContainerProps = {
   politeness: 'polite',
   remove: () => null,
   timeout: -1,
+  intent: undefined,
   updateId: 0,
   visible: true,
 };
