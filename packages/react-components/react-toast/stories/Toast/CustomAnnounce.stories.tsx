@@ -19,7 +19,7 @@ let counter = 0;
 export const CustomAnnounce = () => {
   const styles = useStyles();
   const [alert, setAlert] = React.useState('');
-  const [status, setStatus] = React.useState('');
+  const [intent, setIntent] = React.useState('');
   const [politeness, setPoliteness] = React.useState<ToastPoliteness>('polite');
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
@@ -34,13 +34,13 @@ export const CustomAnnounce = () => {
     );
 
   const announce: ToasterProps['announce'] = (msg, options) => {
-    options.politeness === 'assertive' ? setAlert(msg) : setStatus(msg);
+    options.politeness === 'assertive' ? setAlert(msg) : setIntent(msg);
   };
 
   return (
     <>
-      <div role="status" className={styles.visuallyHidden}>
-        {status}
+      <div role="intent" className={styles.visuallyHidden}>
+        {intent}
       </div>
       <div role="alert" className={styles.visuallyHidden}>
         {alert}

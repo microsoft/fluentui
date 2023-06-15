@@ -6,15 +6,7 @@
 
 /// <reference types="react" />
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
 export const renderToast_unstable: (state: ToastState) => JSX.Element;
@@ -99,6 +91,12 @@ export type ToastFooterState = ComponentState<ToastFooterSlots>;
 export type ToastId = string;
 
 // @public (undocumented)
+export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
+
+// @public (undocumented)
+export type ToastLifecycleStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
+
+// @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
@@ -118,9 +116,6 @@ export type ToastSlots = {
 // @public
 export type ToastState = ComponentState<ToastSlots>;
 
-// @public (undocumented)
-export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
-
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
 
@@ -129,7 +124,7 @@ export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
 
 // @public
 export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {
-    intent?: 'info' | 'success' | 'error' | 'warning';
+    intent?: ToastIntent;
 };
 
 // @public (undocumented)

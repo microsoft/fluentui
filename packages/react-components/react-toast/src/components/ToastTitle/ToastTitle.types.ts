@@ -6,6 +6,8 @@ export type ToastTitleSlots = {
   action?: Slot<'div'>;
 };
 
+export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
+
 /**
  * ToastTitle Props
  */
@@ -14,7 +16,7 @@ export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {
    * The intent prop, if present, determines the icon to be rendered in the icon slot. The icon prop
    * overrides the intent prop
    */
-  intent?: 'info' | 'success' | 'error' | 'warning';
+  intent?: ToastIntent;
 };
 
 /**
