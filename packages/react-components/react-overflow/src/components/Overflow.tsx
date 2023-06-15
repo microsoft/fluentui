@@ -41,8 +41,8 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     const { visibleItems, invisibleItems, groupVisibility } = data;
 
     const itemVisibility: Record<string, boolean> = {};
-    visibleItems.forEach(x => {
-      itemVisibility[x.id] = true;
+    visibleItems.forEach(item => {
+      itemVisibility[item.id] = true;
     });
     invisibleItems.forEach(x => (itemVisibility[x.id] = false));
 
