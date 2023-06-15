@@ -1,10 +1,16 @@
 const DEFAULT_OVERFLOW_INDEX = 1;
 const DEFAULT_MAX_DISPLAYED_ITEMS = 6;
 
+type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc['length']]>;
+type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
+type PusitiveNumbers = NumberRange<0, 100>;
+
 export type PartitionBreadcrumbItemsOptions<T> = {
   items: readonly T[];
-  maxDisplayedItems?: number;
-  overflowIndex?: number;
+  maxDisplayedItems?: PusitiveNumbers;
+  overflowIndex?: PusitiveNumbers;
 };
 
 export type PartitionBreadcrumbItems<T> = {
@@ -36,7 +42,10 @@ export const partitionBreadcrumbItems = <T>(
   const numberItemsToHide = itemsCount - maxDisplayedItems;
 
   if (numberItemsToHide > 0) {
-    overflowIndex = overflowIndex === maxDisplayedItems ? overflowIndex - 1 : overflowIndex;
+    overflowIndex =
+      overflowIndex === maxDisplayedItems
+        ? ((overflowIndex - 1) as PusitiveNumbers)
+        : (overflowIndex as PusitiveNumbers);
     const menuLastItemIdx = overflowIndex + numberItemsToHide;
 
     startDisplayedItems = startDisplayedItems.slice(0, overflowIndex);
@@ -51,6 +60,6 @@ export const partitionBreadcrumbItems = <T>(
   };
 };
 
-function getMaxDisplayedItems(maxDisplayedItems: number | undefined) {
+function getMaxDisplayedItems(maxDisplayedItems: PusitiveNumbers | undefined) {
   return maxDisplayedItems && maxDisplayedItems >= 0 ? maxDisplayedItems : DEFAULT_MAX_DISPLAYED_ITEMS;
 }

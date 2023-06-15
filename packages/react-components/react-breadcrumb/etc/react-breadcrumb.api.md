@@ -121,6 +121,9 @@ export type BreadcrumbSlots = {
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
 
 // @public (undocumented)
+export const isTruncatableBreadcrumbContent: (content: string, maxLength: number) => boolean;
+
+// @public (undocumented)
 export type PartitionBreadcrumbItems<T> = {
     startDisplayedItems: readonly T[];
     overflowItems?: readonly T[];
@@ -133,8 +136,8 @@ export const partitionBreadcrumbItems: <T>(options: PartitionBreadcrumbItemsOpti
 // @public (undocumented)
 export type PartitionBreadcrumbItemsOptions<T> = {
     items: readonly T[];
-    maxDisplayedItems?: number;
-    overflowIndex?: number;
+    maxDisplayedItems?: PusitiveNumbers;
+    overflowIndex?: PusitiveNumbers;
 };
 
 // @public
@@ -153,10 +156,10 @@ export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.
 export const renderBreadcrumbLink_unstable: (state: BreadcrumbLinkState) => JSX.Element;
 
 // @public (undocumented)
-export const truncateBreadcrumbLongName: (content: string, maxLength?: number) => string;
+export const truncateBreadcrumbLongName: (content: string, maxLength?: number | undefined) => string;
 
 // @public (undocumented)
-export const truncateBreadcrumLongTooltip: (content: string, maxLength?: number) => string;
+export const truncateBreadcrumLongTooltip: (content: string, maxLength?: number | undefined) => string;
 
 // @public
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
