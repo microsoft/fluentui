@@ -1,5 +1,5 @@
 export { useToastController } from './state';
-export type { ToastPosition, ToastId, ToastOffset, ToastPoliteness, ToastStatus } from './state';
+export type { ToastPosition, ToastId, ToastOffset, ToastPoliteness, ToastStatus, ToastIntent } from './state';
 
 export { ToastTrigger } from './ToastTrigger';
 export type { ToastTriggerChildProps, ToastTriggerProps, ToastTriggerState } from './ToastTrigger';
@@ -21,7 +21,7 @@ export {
   renderToastTitle_unstable,
   toastTitleClassNames,
 } from './ToastTitle';
-export type { ToastTitleProps, ToastTitleState, ToastTitleSlots, ToastIntent } from './ToastTitle';
+export type { ToastTitleProps, ToastTitleState, ToastTitleSlots } from './ToastTitle';
 
 export {
   ToastBody,
