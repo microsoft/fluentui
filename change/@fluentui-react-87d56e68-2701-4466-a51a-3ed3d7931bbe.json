@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Recreate async helper in tooltiphost on remount",
+  "packageName": "@fluentui/react",
+  "email": "420834+andyrooger@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
