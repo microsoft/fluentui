@@ -69,7 +69,7 @@ jobs:
       - script: yarn lage bundle-size-auditor --verbose $(sinceArg)
         displayName: build packages & create reports
 
-      - script: yarn workspace @fluentui/scripts-bundle-size-auditor bundle-size-merge
+      - script: yarn bundle-size-auditor --create-report --report-path dist/bundle-size-auditor
         displayName: 'Merge generated bundlesize.json into bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
