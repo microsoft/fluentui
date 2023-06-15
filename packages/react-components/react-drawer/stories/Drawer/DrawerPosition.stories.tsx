@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Drawer } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-components';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
 export const Position = () => {
   const [leftOpen, setLeftOpen] = React.useState(false);
@@ -8,12 +9,26 @@ export const Position = () => {
 
   return (
     <div>
-      <Drawer position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
-        <Button appearance="outline" onClick={() => setLeftOpen(false)}>
-          Close
-        </Button>
-        <p>Left Drawer</p>
-      </Drawer>
+      <DrawerOverlay position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setLeftOpen(false)}
+              />
+            }
+          >
+            Left Drawer
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setLeftOpen(true)}>
         Toggle left
@@ -23,12 +38,26 @@ export const Position = () => {
         Toggle right
       </Button>
 
-      <Drawer position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
-        <Button appearance="outline" onClick={() => setRightOpen(false)}>
-          Close
-        </Button>
-        <p>Right Drawer</p>
-      </Drawer>
+      <DrawerOverlay position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setRightOpen(false)}
+              />
+            }
+          >
+            Right Drawer
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </DrawerOverlay>
     </div>
   );
 };

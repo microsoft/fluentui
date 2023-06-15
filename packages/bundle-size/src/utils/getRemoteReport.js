@@ -26,9 +26,11 @@ module.exports = async function getRemoteReport(branch, attempt = 1) {
     const { commitSHA } = result[result.length - 1];
 
     return { commitSHA, remoteReport };
-  } catch (e) {
-    console.log([chalk.yellow('[w]'), e.toString()].join(' '));
-    console.log([chalk.yellow('[w]'), 'Failed to fetch report from the remote. Retrying...'].join(' '));
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log([chalk.yellow('[w]'), err.toString()].join(' '));
+      console.log([chalk.yellow('[w]'), 'Failed to fetch report from the remote. Retrying...'].join(' '));
+    }
 
     if (attempt >= MAX_HTTP_ATTEMPT_COUNT) {
       console.error(

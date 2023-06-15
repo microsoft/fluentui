@@ -9,7 +9,7 @@ import {
   mergeCallbacks,
   resolveShorthand,
   useControllableState,
-  useEventCallback,
+  useFirstMount,
   useId,
   useMergedRefs,
   useOnClickOutside,
@@ -17,7 +17,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopupPositioning } from '../../utils/usePopupPositioning';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState, DatePickerValidationResultData } from './DatePicker.types';
@@ -67,21 +67,14 @@ function usePopupVisibility(props: DatePickerProps) {
 }
 
 function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
-  const [selectedDate, setSelectedDateState] = useControllableState({
-    initialState: undefined,
+  const [selectedDate, setSelectedDateState] = useControllableState<Date | null | undefined>({
+    initialState: null,
     state: value,
   });
   const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
-  const setSelectedDate = (newDate: Date | undefined) => {
-    if (
-      (selectedDate === undefined && newDate !== undefined) ||
-      (selectedDate !== undefined && newDate === undefined) ||
-      (newDate && selectedDate && (newDate > selectedDate || newDate < selectedDate))
-    ) {
-      onSelectDate?.(newDate);
-    }
-
+  const setSelectedDate = (newDate: Date | null | undefined) => {
+    onSelectDate?.(newDate);
     setSelectedDateState(newDate);
     setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
   };
@@ -151,11 +144,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const [open, setOpenState] = usePopupVisibility(props);
   const fieldContext = useFieldContext();
   const required = fieldContext?.required ?? props.required;
-  const popupSurfaceId = useId('datePicker-popoverSurface');
+  const popupSurfaceId = useId('datePicker-popupSurface');
 
   const validateTextInput = React.useCallback(
     (date: Date | null = null): void => {
-      let error: DatePickerValidationResultData['error'] | undefined;
+      let error: DatePickerValidationResultData['error'];
 
       if (allowTextInput) {
         if (formattedDate || date) {
@@ -216,7 +209,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   );
 
   const dismissDatePickerPopup = React.useCallback(
-    (newlySelectedDate?: Date): void => {
+    (newlySelectedDate?: Date | null): void => {
       if (open) {
         setOpen(false);
 
@@ -321,7 +314,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const onInputClick: React.MouseEventHandler<HTMLInputElement> = React.useCallback((): void => {
     // default openOnClick to !props.disableAutoFocus for legacy support of disableAutoFocus behavior
-    if ((openOnClick || !disableAutoFocus) && !open && !props.disabled) {
+    if ((props.openOnClick || !props.disableAutoFocus) && !open && !props.disabled) {
       showDatePickerPopup();
       return;
     }
@@ -331,11 +324,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   }, [
     allowTextInput,
-    disableAutoFocus,
     dismissDatePickerPopup,
-    openOnClick,
     open,
     props.disabled,
+    props.disableAutoFocus,
+    props.openOnClick,
     showDatePickerPopup,
   ]);
 
@@ -366,14 +359,15 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       readOnly: !allowTextInput,
       role: 'combobox',
       root: {
+        'aria-owns': open ? popupSurfaceId : undefined,
         ref: useMergedRefs(triggerWrapperRef, ref),
-        'aria-owns': popupSurfaceId,
       },
       input: {
         ref: rootRef,
       },
     },
   });
+
   rootShorthand.onChange = mergeCallbacks(rootShorthand.onChange, onInputChange);
   rootShorthand.onBlur = mergeCallbacks(rootShorthand.onBlur, onInputBlur);
   rootShorthand.onKeyDown = mergeCallbacks(rootShorthand.onKeyDown, onInputKeyDown);
@@ -410,27 +404,24 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     disabled: !open,
   });
 
-  const { findFirstFocusable } = useFocusFinders();
+  // When the popup is opened, focus should go to the calendar.
+  // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using a
+  // useEffect hook.
   React.useEffect(() => {
-    if (disableAutoFocus) {
-      return;
+    if (open && !props.disabled && calendar.current) {
+      calendar.current.focus();
     }
+  }, [disableAutoFocus, open, props.disabled]);
 
-    if (open && popupRef.current) {
-      const firstFocusable = findFirstFocusable(popupRef.current);
-      firstFocusable?.focus();
+  const isFirstMount = useFirstMount();
+  // When the popup is closed, focus should go back to the input.
+  React.useEffect(() => {
+    if (!open && !props.disabled && !isFirstMount) {
+      focus();
     }
-  }, [disableAutoFocus, findFirstFocusable, open, popupRef]);
-
-  const popupOnClick = useEventCallback(
-    mergeCallbacks((ev: React.MouseEvent<HTMLDivElement>) => {
-      rootRef.current?.focus();
-    }, popupSurfaceShorthand?.onClick),
-  );
-
-  if (popupSurfaceShorthand) {
-    popupSurfaceShorthand.onClick = popupOnClick;
-  }
+    // Focus function keeps changing, so we need to skip it in the deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFirstMount, open, props.disabled]);
 
   const calendarShorthand = resolveShorthand(props.calendar, {
     required: true,
@@ -445,7 +436,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       isMonthPickerVisible,
       maxDate,
       minDate,
-      onDismiss: calendarDismissed,
       showCloseButton,
       showGoToToday,
       showMonthPickerAsOverlay,
@@ -456,13 +446,16 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     },
   });
 
+  calendarShorthand.onDismiss = mergeCallbacks(calendarShorthand.onDismiss, calendarDismissed);
+  calendarShorthand.onSelectDate = mergeCallbacks(calendarShorthand.onSelectDate, calendarDismissed);
+
   React.useImperativeHandle(
     props.componentRef,
     () => ({
       focus,
       reset() {
         setOpen(false);
-        setSelectedDate(undefined);
+        setSelectedDate(null);
       },
       showDatePickerPopup,
     }),
@@ -485,7 +478,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   };
 
   state.root.value = formattedDate;
-  state.calendar.onSelectDate = mergeCallbacks(state.calendar.onSelectDate, calendarDismissed);
 
   return state;
 };

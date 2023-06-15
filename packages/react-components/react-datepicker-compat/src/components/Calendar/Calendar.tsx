@@ -269,6 +269,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
 
         case Escape:
+          ev.stopPropagation();
           onDismiss?.();
           break;
 

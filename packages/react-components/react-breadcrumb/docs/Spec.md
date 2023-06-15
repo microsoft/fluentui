@@ -176,6 +176,7 @@ Dropdown contains collapsed items.
 | ------------ | -------------------------- | ------------- | -------------------------------- |
 | appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
 | dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
+| focusMode    | `tab`, `arrow`             | `tab`         | Sets focus mode                  |
 | iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
 | size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
 
@@ -279,7 +280,7 @@ Usage
 ```
 
 Type of the divider is passed from the `Breadcrumb` component. In case if partner wants to have a custom divider it should be passed as `children` prop.
-Slash divider can be only for small Breadcrumb.
+The slash divider is only used in a small breadcrumb.
 
 ```jsx
 <Breadcrumb size="large" >
@@ -321,111 +322,6 @@ Under the hood @fluentui/react-button component is used.
 | iconPosition | `before`, `after` | `before` | Sets icon position     |
 
 For Link @fluentui/react-link component is used.
-
-## Migration
-
-### Fabric (v8) property mapping
-
-This should be moved to MIGRATION.md later.
-Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrumb` component:
-
-#### New props
-
-- `appearance`
-
-#### Props no longer supported with an equivalent functionality in Breadcrumb V9:
-
-- `maxDisplayedItems`and `overflowIndex` - will be part of `partitionBreadcrumbItems` method
-- `className` => Slot system supports it by default. We don't need to provide it explicitly.
-- `items` => Use `children` prop instead.
-- `componentRef`
-- `dividerAs` => Divider is a separate component. Type of divider is passed to the Breadcrumb component.
-- `focusZoneProps` => use `focusMode` instead.
-- `overflowButtonAs` => Custom component for the overflow button. - use custom overflow button instead.
-- `styles`
-- `theme`
-- `overflowAriaLabel` => Aria label for the overflow button.
-
-#### Props no longer supported
-
-- `onRenderOverflowIcon` => Render a custom overflow icon in place of the default icon `...`.
-- `onGrowData` => Method that determines how to group the length of the breadcrumb. Return undefined to never increase breadcrumb length.
-- `onReduceData` => Method that determines how to reduce the length of the breadcrumb. Return undefined to never reduce breadcrumb length.
-
-As BreadcrumbItem part of `children` prop, a user decides how to render an item.
-The following props are not needed anymore.
-
-- `onRenderItem` => Custom render function to render each crumb. Default renders as a link.
-- `onRenderItemContent` => Custom render function to render the content within a crumb. Default renders the text.
-- `tooltipHostProps` => Extra props for the TooltipHost which wraps each breadcrumb item.
-
-Fabric Breadcrumb `items` prop as part of `IBreadcrumbData` interface contains the following props:
-BreadcrumbItem component contains similar props in V9.
-
-- `key` => not supported
-- `text` => use `children` prop of BreadcrumbItem component.
-- `as` => type('h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a') - Optional prop to render the item as a heading of your choice. You can also use this to force items to render as links instead of buttons (by default, any item with a href renders as a link, and any item without a href renders as a button). This is not generally recommended because it may prevent activating the link using the keyboard. In V9 It's part of BreadcrumbItem prop.
-- `href` => URL to navigate to when this breadcrumb item is clicked. If provided, the breadcrumb will be rendered as a link.
-- `isCurrentItem` => Whether this is the breadcrumb item the user is currently navigated to. If true, aria-current="page" will be applied to this breadcrumb item.
-- `onClick` => Callback for when the breadcrumb item is selected.
-- `onRender` => A function to render the outer content of the crumb (the link).
-- `onRenderContent` => A function to render the inner content of the crumb (the text inside the link).
-- `role` => Optional role for the breadcrumb item (which renders as a button by default)
-
-#### Property Mapping
-
-| v8 `Breadcrumb`     | v9 `Breadcrumb` |
-| ------------------- | --------------- |
-| `ariaLabel`         |                 |
-| `className`         |                 |
-| `componentRef`      |                 |
-| `dividerAs`         |                 |
-| `focusZoneProps`    |                 |
-| `maxDisplayedItems` |                 |
-
-### Northstar property mapping
-
-#### Props which are repeating in each component
-
-These props are the same in all the components.
-`as` prop had different defaults in different components.
-BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has `nav`.
-
-- `accessibility` => Accessibility behavior if overridden by the user.
-- `as` => type React.ElementType - An element type to render as (string or component).
-- `className`
-- `content` => Shorthand for primary content.
-- `design` => type ComponentDesignProp
-- `styles` =>
-- `variables` => Override for theme site variables to allow modifications of component styling via themes.
-
-#### Property Mapping
-
-| Northstar `Breadcrumb` | v9 `Breadcrumb` |
-| ---------------------- | --------------- |
-| `accessibility`        |                 |
-| `as`                   |                 |
-| `className`            |                 |
-| `content`              |                 |
-| `design`               |                 |
-| `styles`               |                 |
-| `variables`            |                 |
-
-#### Breadcrumb component:
-
-- `size` => use as it is.
-
-#### BreadcrumbItem component:
-
-- `active` => Indicates if the link is the active.
-- `disabled` => The Breadcrumb Item can be disabled.
-
-#### Property Mapping
-
-| Northstar `BreadcrumbItem` | v9 `BreadcrumbItem` |
-| -------------------------- | ------------------- |
-| `active`                   | `current`           |
-| `disabled`                 | `disabled`          |
 
 ## Behaviors
 
@@ -500,6 +396,7 @@ It should be done by the partners using JSX composition.
 For Menu `@fluentui/react-menu` component should be used.
 
 `maxDisplayedItems` and `overflowIndex` are part of `partitionBreadcrumbItems` which is helper in Breadcrumb utils.
+For non-clickable items tooltip is shown instead of overflow menu.
 
 #### Truncate long names:
 

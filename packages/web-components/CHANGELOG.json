@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/web-components_v2.5.15",
+      "version": "2.5.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "629df3c452dd3d0fd83472eb78ab8c98e22eb96e",
+            "comment": "fix listbox-option selected indicator position in RTL instances"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Apr 2023 07:40:25 GMT",
       "tag": "@fluentui/web-components_v2.5.14",
       "version": "2.5.14",

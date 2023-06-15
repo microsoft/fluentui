@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update E2E tests",
+  "packageName": "@fluentui/react-overflow",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

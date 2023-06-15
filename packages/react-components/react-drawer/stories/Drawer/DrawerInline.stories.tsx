@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Drawer } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
 import { Button, makeStyles, shorthands } from '@fluentui/react-components';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -28,12 +29,26 @@ export const Inline = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer type="inline" position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
-        <Button appearance="outline" onClick={() => setLeftOpen(false)}>
-          Close
-        </Button>
-        <p>Left Drawer</p>
-      </Drawer>
+      <DrawerInline open={leftOpen}>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setLeftOpen(false)}
+              />
+            }
+          >
+            Left Inline Drawer
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </DrawerInline>
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
@@ -45,12 +60,26 @@ export const Inline = () => {
         </Button>
       </div>
 
-      <Drawer type="inline" position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
-        <Button appearance="outline" onClick={() => setRightOpen(false)}>
-          Close
-        </Button>
-        <p>Right Drawer</p>
-      </Drawer>
+      <DrawerInline position="right" open={rightOpen}>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setRightOpen(false)}
+              />
+            }
+          >
+            Right Inline Drawer
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </DrawerInline>
     </div>
   );
 };
