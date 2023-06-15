@@ -3,6 +3,7 @@ import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
+import { LineChartBase } from './LineChart.base';
 
 const points: ILineChartPoints[] = [
   {
@@ -38,21 +39,21 @@ const chartPoints = {
 
 
 const samplePoints: ILineChartPoints[] = [
-  {
-    legend: 'metaData1',
-    data: [
-      {
-        x: new Date('2020-03-03T00:00:00.000Z'),
-        y: 297000,
+    {
+      data: [
+        { x: new Date('2018/01/01'), y: 30 },
+        { x: new Date('2018/02/01'), y: 50 },
+        { x: new Date('2018/03/01'), y: 30 },
+        { x: new Date('2018/04/01'), y: 50 },
+        { x: new Date('2018/05/01'), y: 30 },
+        { x: new Date('2018/06/01'), y: 50 },
+      ],
+      legend: 'First',
+      lineOptions: {
+        lineBorderWidth: '4',
       },
-      {
-        x: new Date('2020-03-04T00:00:00.000Z'),
-        y: 284000,
-      }
-    ],
-    color: 'red',
-  }
-];
+    }
+  ];
 
 const sampleChartPoints = {
   chartTitle: 'LineChart',
@@ -61,42 +62,26 @@ const sampleChartPoints = {
 
 describe('Line chart rendering', () => {
   test('Should render the Line chart with numeric x-axis data', () => {
-    const { container } = render(<LineChart data={chartPoints} />);
+    const { container } = render(<LineChart data={chartPoints}/>);
     expect(container).toMatchSnapshot();
   });
 
-  // test('Should render the Line chart with date x-axis data', () => {
-  //   const { container } = render(<LineChart data={sampleChartPoints}/>);
-  //   expect(container).toMatchSnapshot();
-  // });
+  test('Should render the Line chart with date x-axis data', () => {
+    const { container } = render(<LineChart data={sampleChartPoints}/>);
+    expect(container).toMatchSnapshot();
+  });
 });
 
 describe('Line chart - Subcomponent line', () => {
   test('Should render the lines with the specified colors', async () => {
     // Arrange
-    // colors mentioned in the data points itself
-    const { container } = render(<LineChart data={chartPoints}/>);
+    const { container } = render(<LineChart data={chartPoints} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     const lines = getById(container, /lineID/i);
-
     // Assert
     expect(lines[0].getAttribute('stroke')).toEqual('yellow');
     expect(lines[1].getAttribute('stroke')).toEqual('green');
     expect(lines[2].getAttribute('stroke')).toEqual('red');
-  });
-
-  test('Should hide callout on mouse leave on line', () => {
-    // Arrange
-    const { container } = render(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }}/>);
-    // Act
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-
-    // Assert
-    fireEvent.mouseOver(getById(container, /line/i)[0]);
-    expect(getByClass(container, /callout/i)[0]).toBeDefined();
-    fireEvent.mouseLeave(getById(container, /line/i)[0]);
-    expect(!getByClass(container, /callout/i)[0]).toBeDefined();
   });
 });
 
@@ -104,12 +89,9 @@ describe('Line chart - Subcomponent legend', () => {
 test('Should highlight the corresponding Line on mouse over on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} />);
-
-  // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
   fireEvent.mouseOver(legend!);
-
   // Assert
   const getById = queryAllByAttribute.bind(null, 'id');
   const lines = getById(container, /lineID/i);
@@ -121,12 +103,9 @@ test('Should highlight the corresponding Line on mouse over on legends', () => {
 test('Should highlight the corresponding Legend on mouse over on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} />);
-
-  // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
   fireEvent.mouseOver(legend!);
-
   // Assert
   expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
 });
@@ -134,12 +113,9 @@ test('Should highlight the corresponding Legend on mouse over on legends', () =>
 test('Should select legend on single mouse click on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} hideLegend={false} />);
-
-  // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
   fireEvent.click(legend!);
-
   // Assert
   const getById = queryAllByAttribute.bind(null, 'id');
   expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
@@ -151,8 +127,6 @@ test('Should select legend on single mouse click on legends', () => {
 test('Should deselect legend on double mouse click on legends', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} hideLegend={false} />);
-
-  // Act
   const legend = screen.queryByText('metaData1');
   expect(legend).toBeDefined();
 
@@ -163,10 +137,8 @@ test('Should deselect legend on double mouse click on legends', () => {
   const firstLegend = screen.queryByText('metaData1')?.closest('button');
   expect(firstLegend).toHaveAttribute('aria-selected', 'true');
   expect(firstLegend).toHaveAttribute('tabIndex', '0');
-
   // double click on same first legend
   fireEvent.click(legend!);
-
   // Assert
   expect(firstLegend).toHaveAttribute('aria-selected', 'false');
 });
@@ -175,40 +147,42 @@ test('Should highlight the data points and render the corresponding callout', ()
   // Arrange
   const { container } = render(<LineChart data={chartPoints} />);
   const getById = queryAllByAttribute.bind(null, 'id');
-  // const firstPointonLine = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle')[0];
   const firstPointonLine = getById(container, /lineID/)[0];
   expect(firstPointonLine).toBeDefined();
   fireEvent.mouseOver(firstPointonLine);
   // Assert
-  // expect(firstPointonLine.getAttribute('visibility')).toEqual('visibility');
   expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
 });
 
-test('Should not show any rendered legends when hideLegend is true', () => {
-  const { container } = render(<LineChart data={chartPoints} hideLegend={true} />);
-  const getByClass = queryAllByAttribute.bind(null, 'class');
-  expect(getByClass(container, /rect/i)).toHaveLength(0);
-});
-
-test('Should render the lines with tooltip hidden', () => {
+test('Should not show any tooltip when hideTooltip is true', () => {
   // Arrange
   const { container } = render(<LineChart data={chartPoints} hideTooltip={true} />);
   const getByClass = queryAllByAttribute.bind(null, 'class');
-
   // Assert
   expect(getByClass(container, /toolTipcallout/i)).toHaveLength(0);
 });
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <LineChart culture={window.navigator.language} data={chartPoints} />
-    </ThemeProvider>,
-  );
-  // Assert
-  // expect(container).toMatchSnapshot();
+describe('Line chart - Subcomponent xAxis Labels', () => {
+  test('Should show the x-axis labels tooltip when hovered', async () => {
+    // Arrange
+    const { container } = render(<LineChart data={sampleChartPoints} showXAxisLablesTooltip={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    const getById = queryAllByAttribute.bind(null, 'id');
+    const xAxisLabels = getById(container, /showDots/i);
+    fireEvent.mouseOver(xAxisLabels[0]);
+    await new Promise(resolve => setTimeout(resolve));
+    // Assert
+    expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
+  });
+
+  test('Should show rotated x-axis labels', async () => {
+    // Arrange
+    const { container } = render(<LineChart data={sampleChartPoints} rotateXAxisLables={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+    expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
+  });
 });
 
 describe('Screen resolution', () => {
@@ -225,56 +199,35 @@ describe('Screen resolution', () => {
   test('Should remain unchanged on zoom in', () => {
     // Arrange
     const { container } = render(<LineChart data={chartPoints} width={300} height={300} />);
-
-    // Act
     global.innerWidth = window.innerWidth / 2;
     global.innerHeight = window.innerHeight / 2;
     act(() => {
       global.dispatchEvent(new Event('resize'));
     });
-
     // Assert
-    // expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('Should remain unchanged on zoom out', () => {
     // Arrange
     const { container } = render(<LineChart data={chartPoints} width={300} height={300} />);
-
-    // Act
     global.innerWidth = window.innerWidth * 2;
     global.innerHeight = window.innerHeight * 2;
     act(() => {
       global.dispatchEvent(new Event('resize'));
     });
-
     // Assert
-  //  expect(container).toMatchSnapshot();
+   expect(container).toMatchSnapshot();
   });
 });
 
-// test('Should display legends callout on mouse over', async () => {
-//   // Arrange
-//   // const { container } = render(<LineChart data={chartPoints} width={200} height={300} tickValues={[ 20, 30, 40 ]} />);
-//   const { container } = render(<LineChart data={chartPoints} width={200} height={300} legendsOverflowText={'Overflow Items'}/>);
-//   // await new Promise(resolve => setTimeout(resolve));
-//   // Act
-
-//   global.innerHeight = 300;
-//   global.innerWidth = 200;
-//   act(() => {
-//     global.dispatchEvent(new Event('resize'));
-//     const legend = screen.queryByText('more');
-//   expect(legend).toBeDefined();
-//   // screen.debug(container, 500000);
-//   fireEvent.mouseOver(legend!);
-//   });
-
-
-//   // Assert
-
-//   const getByClass = queryAllByAttribute.bind(null, 'class');
-//   expect(getByClass(container, /callout/i)[0]).toBeDefined();
-
-
-// });
+test('Should reflect theme change', () => {
+  // Arrange
+  const { container } = render(
+    <ThemeProvider theme={DarkTheme}>
+      <LineChart culture={window.navigator.language} data={chartPoints} />
+    </ThemeProvider>,
+  );
+  // Assert
+  expect(container).toMatchSnapshot();
+});
