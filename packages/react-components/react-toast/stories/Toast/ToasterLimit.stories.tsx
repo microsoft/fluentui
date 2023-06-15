@@ -9,8 +9,9 @@ export const ToasterLimit = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success">Limited to 3 toasts</ToastTitle>
+        <ToastTitle>Limited to 3 toasts</ToastTitle>
       </Toast>,
+      { intent: 'success' },
     );
 
   return (

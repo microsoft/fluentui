@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Announce } from '../AriaLive/AriaLive.types';
-import { Toast } from '../../state';
+import { Toast, ToastIntent } from '../../state';
 import { ToastContextValue } from '../../contexts/toastContext';
 import { TimerProps } from '../Timer/Timer';
 
@@ -24,13 +24,14 @@ export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
   > & {
     visible: boolean;
     announce: Announce;
+    intent: ToastIntent | undefined;
   };
 
 /**
  * State used in rendering ToastContainer
  */
 export type ToastContainerState = ComponentState<ToastContainerSlots> &
-  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible'> & {
+  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> & {
     transitionTimeout: number;
     timerTimeout: number;
     running: boolean;

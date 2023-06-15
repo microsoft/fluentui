@@ -12,14 +12,16 @@ export const MultipleToasters = () => {
     if (toaster === first) {
       dispatchFirstToast(
         <Toast>
-          <ToastTitle intent="info">First toaster</ToastTitle>
+          <ToastTitle>First toaster</ToastTitle>
         </Toast>,
+        { intent: 'info' },
       );
     } else {
       dispatchSecondToast(
         <Toast>
-          <ToastTitle intent="info">Second toaster</ToastTitle>
+          <ToastTitle>Second toaster</ToastTitle>
         </Toast>,
+        { intent: 'info' },
       );
     }
   };
