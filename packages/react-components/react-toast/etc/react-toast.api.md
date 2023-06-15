@@ -102,9 +102,6 @@ export type ToastId = string;
 export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
 
 // @public (undocumented)
-export type ToastLifecycleStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
-
-// @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
@@ -123,6 +120,9 @@ export type ToastSlots = {
 
 // @public
 export type ToastState = ComponentState<ToastSlots>;
+
+// @public (undocumented)
+export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
 
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
