@@ -23,7 +23,7 @@ jobs:
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
-          fluentVersion: web-components
+          fluentVersion: webcomponents
           vrTestPackageName: '@fluentui/vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
 
