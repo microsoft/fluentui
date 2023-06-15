@@ -17,4 +17,4 @@ export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};
 /**
  * State used in rendering ToastTitle
  */
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastContextValue, 'intent'>>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContextValue, 'intent'>;

@@ -51,7 +51,7 @@ export const useToastContainer_unstable = (
       return;
     }
 
-    const politeness = desiredPoliteness ? desiredPoliteness : intentPolitenessMap[intent];
+    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
     announce(toastRef.current?.textContent ?? '', { politeness });
   }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
 

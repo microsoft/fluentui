@@ -71,7 +71,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
       toastTitleClassNames.media,
       styles.media,
       state.media.className,
-      intentIconStyles[intent],
+      intent && intentIconStyles[intent],
     );
   }
 

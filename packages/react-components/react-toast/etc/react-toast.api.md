@@ -141,7 +141,7 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastContextValue, 'intent'>>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContextValue, 'intent'>;
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;
