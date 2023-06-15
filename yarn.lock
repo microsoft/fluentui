@@ -20641,7 +20641,7 @@ parallel-transform@^1.1.0:
     inherits "^2.0.3"
     readable-stream "^2.1.5"
 
-parallel-webpack@^2.6.0:
+parallel-webpack@2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/parallel-webpack/-/parallel-webpack-2.6.0.tgz#8a8401adfdeb25ebe9d322cd310801e5ea0c18a9"
   integrity sha512-aOOLfQ40yWWRt8214F0zNWp0DWbeCs7tJaEur0/XUlYU8Yht1sMTYt+eNrbY4VkM4O/SRSme7cdZJTtIantiOw==
