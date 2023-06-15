@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 15 Jun 2023 12:23:46 GMT",
+      "tag": "@fluentui/react-examples_v0.15.15",
+      "version": "0.15.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.23.25",
+            "author": "kumarkshitij@microsoft.com",
+            "commit": "ccc36ec6b4acfea0cffa8a65e1c5073353a74886",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 May 2023 12:22:15 GMT",
       "tag": "@fluentui/react-examples_v0.15.15",
       "version": "0.15.15",

@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 15 Jun 2023 12:23:46 GMT",
+      "tag": "@uifabric/charting_v4.23.25",
+      "version": "4.23.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Disable focus on non-interactive elements",
+            "author": "kumarkshitij@microsoft.com",
+            "commit": "ccc36ec6b4acfea0cffa8a65e1c5073353a74886",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jan 2023 12:23:20 GMT",
       "tag": "@uifabric/charting_v4.23.24",
       "version": "4.23.24",

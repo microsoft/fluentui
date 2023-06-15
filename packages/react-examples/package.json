@@ -38,7 +38,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.7.10",
     "@uifabric/azure-themes": "^7.10.37",
-    "@uifabric/charting": "^4.23.24",
+    "@uifabric/charting": "^4.23.25",
     "@uifabric/date-time": "^7.23.33",
     "@uifabric/example-app-base": "^7.22.33",
     "@uifabric/example-data": "^7.1.6",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 27 Jan 2023 12:23:20 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jun 2023 12:23:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.25](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.25)
+
+Thu, 15 Jun 2023 12:23:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.24..@uifabric/charting_v4.23.25)
+
+### Patches
+
+- Disable focus on non-interactive elements ([PR #28214](https://github.com/microsoft/fluentui/pull/28214) by kumarkshitij@microsoft.com)
 
 ## [4.23.24](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.24)
 
