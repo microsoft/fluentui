@@ -15,6 +15,12 @@ import {
 } from './utils';
 import { Config } from './types';
 
+export function copyBundles(cwd: string, reportPath: string) {
+  const reportFullPath = path.join(cwd, reportPath);
+
+  fs.cpSync(path.join(cwd, FIXTURE_BUILD_PATH), reportFullPath, { recursive: true });
+}
+
 export function bundle(
   options: {
     cwd: string;
