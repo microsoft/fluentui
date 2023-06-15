@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Added support for custom divider",
   "packageName": "@fluentui/priority-overflow",
   "email": "vkozlova@microsoft.com",
