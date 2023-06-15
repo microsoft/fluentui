@@ -1,11 +1,14 @@
 {
-  "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "rules": {
-    "@fluentui/no-restricted-imports": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/jsx-no-bind": "off",
-    "deprecation/deprecation": "off",
-    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }

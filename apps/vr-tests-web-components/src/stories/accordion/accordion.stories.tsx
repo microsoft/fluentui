@@ -9,7 +9,7 @@ accordionItemDefinition.define(FluentDesignSystem.registry);
 export default {
   title: 'Accordion',
   decorators: [
-    (story: any) => {
+    (story: () => React.ReactElement) => {
       return (
         <StoryWright
           steps={new Steps()
