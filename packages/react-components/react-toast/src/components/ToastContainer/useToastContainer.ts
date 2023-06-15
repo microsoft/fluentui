@@ -101,5 +101,6 @@ export const useToastContainer_unstable = (
     onTransitionEntering,
     updateId,
     nodeRef: toastRef,
+    intent,
   };
 };
