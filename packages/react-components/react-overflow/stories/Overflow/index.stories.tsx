@@ -10,7 +10,7 @@ export { OverflowByPriority } from './OverflowByPriority.stories';
 export { Wrapped } from './Wrapped.stories';
 export { Pinned } from './Pinned.stories';
 export { Dividers } from './Dividers.stories';
-export { CustomDividers } from './CustomDividers.stories';
+export { LargerDividers } from './LargerDividers.stories';
 export { PriorityWithDividers } from './PriorityWithDividers.stories';
 
 export default {

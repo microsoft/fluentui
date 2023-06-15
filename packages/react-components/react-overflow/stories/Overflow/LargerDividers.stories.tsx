@@ -53,7 +53,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const CustomDividers = () => {
+export const LargerDividers = () => {
   const styles = useStyles();
 
   return (
@@ -160,10 +160,14 @@ const OverflowMenuDivider: React.FC<{
   return <MenuDivider />;
 };
 
-CustomDividers.parameters = {
+LargerDividers.parameters = {
   docs: {
     description: {
-      story: ['OverflowDivider should be used for larger dividers to include its width to the calculation.'].join('\n'),
+      story: [
+        'For smaller dividers a padding can be set to take into account the unmeasured space that the divider takes up.',
+        'When the larger divider is used its width is not calculated. It causes items to overflow later then it has to be.',
+        "That's why `OverflowDivider` should be used for larger dividers to include its width to the calculation.",
+      ].join('\n'),
     },
   },
 };

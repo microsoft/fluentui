@@ -19,13 +19,13 @@ export interface OverflowItemEntry {
   groupId?: string;
 }
 
-export interface OverflowDivider {
+export interface OverflowDividerEntry {
   /**
    * HTML element that will be disappear when overflowed
    */
   element: HTMLElement;
 
-  groupId?: string;
+  groupId: string;
 }
 
 /**
@@ -123,7 +123,7 @@ export interface OverflowManager {
   /**
    * Add overflow divider
    */
-  addDivider: (divider: OverflowDivider) => void;
+  addDivider: (divider: OverflowDividerEntry) => void;
 
   /**
    * Remove overflow divider
