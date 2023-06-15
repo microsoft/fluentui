@@ -320,7 +320,7 @@ jobs:
         name: GetLatestGreenCIBuild
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
+          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
         condition: eq(variables['vrTestSkip'], 'no')
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-web-components" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
