@@ -131,9 +131,7 @@ export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
 
 // @public
-export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {
-    intent?: ToastIntent;
-};
+export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};
 
 // @public (undocumented)
 export type ToastTitleSlots = {
@@ -143,7 +141,7 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastTitleProps, 'intent'>>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastContextValue, 'intent'>>;
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;

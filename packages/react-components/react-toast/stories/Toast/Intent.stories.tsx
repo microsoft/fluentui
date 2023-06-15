@@ -13,7 +13,6 @@ export const Intent = () => {
           <Toast>
             <ToastTitle media={<Spinner size="tiny" />}>Progress toast</ToastTitle>
           </Toast>,
-          { timeout: -1 },
         );
         break;
       case 'avatar':
@@ -29,8 +28,9 @@ export const Intent = () => {
       case 'warning':
         dispatchToast(
           <Toast>
-            <ToastTitle intent={intent}>Toast intent: {intent}</ToastTitle>
+            <ToastTitle>Toast intent: {intent}</ToastTitle>
           </Toast>,
+          { intent },
         );
         break;
     }
@@ -67,8 +67,8 @@ Intent.parameters = {
         'Each intent affects the default icon in the title and its colour. These icon slots can be overriden',
         'to render other content such as progress spinners or avatars.',
         '',
-        '>⚠️ intent does **not** determine urgency of the screen reader aria-live narration,',
-        'use the `politeness` option when dispatching a toast',
+        '>intent determines the urgency of the screen reader aria-live narration.',
+        'To retain default intent styles, use the`politeness` option to override the urgency or aria-live narration.',
       ].join('\n'),
     },
   },

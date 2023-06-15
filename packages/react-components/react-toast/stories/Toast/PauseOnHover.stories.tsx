@@ -8,9 +8,9 @@ export const PauseOnHover = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="info">Hover me!</ToastTitle>
+        <ToastTitle>Hover me!</ToastTitle>
       </Toast>,
-      { pauseOnHover: true },
+      { pauseOnHover: true, intent: 'info' },
     );
 
   return (
