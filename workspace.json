@@ -1097,11 +1097,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/test-bundles": {
-      "root": "apps/test-bundles",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
     "@fluentui/test-utilities": {
       "root": "packages/test-utilities",
       "projectType": "library",
