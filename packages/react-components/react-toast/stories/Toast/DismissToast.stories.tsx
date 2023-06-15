@@ -10,9 +10,9 @@ export const DismissToast = () => {
   const notify = () => {
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success">This is a toast</ToastTitle>
+        <ToastTitle>This is a toast</ToastTitle>
       </Toast>,
-      { toastId, onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted') },
+      { toastId, intent: 'success', onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted') },
     );
     setUnmounted(false);
   };

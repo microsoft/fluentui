@@ -21,7 +21,7 @@ export {
   renderToastTitle_unstable,
   toastTitleClassNames,
 } from './ToastTitle';
-export type { ToastTitleProps, ToastTitleState, ToastTitleSlots } from './ToastTitle';
+export type { ToastTitleProps, ToastTitleState, ToastTitleSlots, ToastIntent } from './ToastTitle';
 
 export {
   ToastBody,

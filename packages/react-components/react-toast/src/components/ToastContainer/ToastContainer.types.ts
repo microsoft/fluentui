@@ -20,7 +20,15 @@ export type ToastContainerSlots = {
 export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
   Pick<
     Toast,
-    'close' | 'remove' | 'updateId' | 'data' | 'timeout' | 'politeness' | 'pauseOnHover' | 'pauseOnWindowBlur'
+    | 'close'
+    | 'remove'
+    | 'updateId'
+    | 'data'
+    | 'timeout'
+    | 'politeness'
+    | 'pauseOnHover'
+    | 'pauseOnWindowBlur'
+    | 'intent'
   > & {
     visible: boolean;
     announce: Announce;

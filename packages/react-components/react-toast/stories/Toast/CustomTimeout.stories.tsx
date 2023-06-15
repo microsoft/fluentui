@@ -15,12 +15,11 @@ export const CustomTimeout = () => {
               <Link>Dismiss</Link>
             </ToastTrigger>
           }
-          intent="info"
         >
           {timeout >= 0 ? `Custom timeout ${timeout}ms` : `Dismiss manually`}
         </ToastTitle>
       </Toast>,
-      { timeout },
+      { timeout, intent: 'info' },
     );
 
   return (

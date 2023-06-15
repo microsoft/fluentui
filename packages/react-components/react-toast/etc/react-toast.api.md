@@ -99,6 +99,9 @@ export type ToastFooterState = ComponentState<ToastFooterSlots>;
 export type ToastId = string;
 
 // @public (undocumented)
+export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
+
+// @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
@@ -128,9 +131,7 @@ export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
 
 // @public
-export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {
-    intent?: 'info' | 'success' | 'error' | 'warning';
-};
+export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};
 
 // @public (undocumented)
 export type ToastTitleSlots = {
@@ -140,7 +141,7 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastTitleProps, 'intent'>>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContextValue, 'intent'>;
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;
