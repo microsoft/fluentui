@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'vr-tests-react-components',
+  displayName: 'vr-tests-web-components',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {

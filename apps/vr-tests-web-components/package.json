@@ -6,11 +6,10 @@
   "type": "module",
   "scripts": {
     "build": "build-storybook -o dist/storybook",
-    "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
-    "lint": "just-scripts lint",
+    "lint": "eslint src --ext .ts,.tsx",
     "start": "start-storybook",
-    "test": "just-scripts test",
+    "test": "jest",
     "type-check": "tsc",
     "vr:build": "yarn build",
     "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
