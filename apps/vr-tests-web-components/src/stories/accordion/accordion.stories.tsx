@@ -11,7 +11,7 @@ export default {
   decorators: [
     (story: any) => {
       return (
-        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+        <StoryWright steps={new Steps().click('#accordion-0').snapshot('opened', { cropTo: '.testWrapper' }).end()}>
           <div className="testWrapper" style={{ width: '300px' }}>
             {story()}
           </div>
