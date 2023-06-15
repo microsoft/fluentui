@@ -13,5 +13,7 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@fluentui/scripts-webpack": "*"
+  }
 }
