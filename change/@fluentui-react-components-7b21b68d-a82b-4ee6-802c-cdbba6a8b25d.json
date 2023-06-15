@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Added Overflow divider",
+  "comment": "feat: Added Overflow divider",
   "packageName": "@fluentui/react-components",
   "email": "vkozlova@microsoft.com",
   "dependentChangeType": "patch"
