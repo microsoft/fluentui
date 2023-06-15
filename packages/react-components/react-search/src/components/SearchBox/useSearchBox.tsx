@@ -30,6 +30,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     },
 
     root: {
+      ref,
       type: 'search',
       input: {}, // defining here to have access in styles hook
       value,
