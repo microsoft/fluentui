@@ -7,6 +7,7 @@ export type ToasterId = string;
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
+export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
 export type ToastChangeHandler = (event: null, data: ToastChangeData) => void;
 
 export interface ToastChangeData extends ToastOptions, Pick<Toast, 'updateId'> {
@@ -51,8 +52,16 @@ export interface ToastOptions<TData = object> {
   priority: number;
   /**
    * Used to determine [aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) narration
+   * This will override the intent prop
    */
-  politeness: ToastPoliteness;
+  politeness?: ToastPoliteness;
+
+  /**
+   * Default toast types that determine the urgency or [aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) narration
+   * The UI layer may use these intents to apply specific styling.
+   * @default info
+   */
+  intent?: ToastIntent;
   /**
    * Additional data that needs to be passed to the toast
    */

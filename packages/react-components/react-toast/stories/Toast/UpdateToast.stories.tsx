@@ -11,9 +11,14 @@ export const UpdateToast = () => {
   const notify = () => {
     dispatchToast(
       <Toast>
-        <ToastTitle intent="warning">This toast never closes</ToastTitle>
+        <ToastTitle>This toast never closes</ToastTitle>
       </Toast>,
-      { toastId, timeout: -1, onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted') },
+      {
+        toastId,
+        intent: 'warning',
+        timeout: -1,
+        onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted'),
+      },
     );
     setUnmounted(false);
   };
@@ -21,9 +26,10 @@ export const UpdateToast = () => {
     updateToast({
       content: (
         <Toast>
-          <ToastTitle intent="success">This toast will close soon</ToastTitle>
+          <ToastTitle>This toast will close soon</ToastTitle>
         </Toast>
       ),
+      intent: 'success',
       toastId,
       timeout: 2000,
     });

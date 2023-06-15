@@ -11,6 +11,13 @@ import type { ToastContainerProps, ToastContainerState } from './ToastContainer.
 import { useToast } from '../../state';
 import { Timer, TimerProps } from '../Timer/Timer';
 
+const intentPolitenessMap = {
+  success: 'assertive',
+  warning: 'assertive',
+  error: 'assertive',
+  info: 'polite',
+} as const;
+
 /**
  * Create the state required to render ToastContainer.
  *
@@ -33,16 +40,20 @@ export const useToastContainer_unstable = (
     announce,
     data,
     timeout: timerTimeout,
-    politeness,
+    politeness: desiredPoliteness,
+    intent = 'info',
     ...rest
   } = props;
   const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props });
 
   React.useEffect(() => {
-    if (visible) {
-      announce(toastRef.current?.textContent ?? '', { politeness });
+    if (!visible) {
+      return;
     }
-  }, [announce, politeness, toastRef, visible, updateId]);
+
+    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
+    announce(toastRef.current?.textContent ?? '', { politeness });
+  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
 
   // It's impossible to animate to height: auto in CSS, the actual pixel value must be known
   // Get the height of the toast before animation styles have been applied and set a CSS

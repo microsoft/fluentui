@@ -36,15 +36,43 @@ const useStyles = makeStyles({
   },
 });
 
+const useIntentIconStyles = makeStyles({
+  success: {
+    // FIXME https://github.com/microsoft/fluentui/issues/28219
+    color: tokens.colorPaletteGreenForeground3,
+  },
+  error: {
+    // FIXME https://github.com/microsoft/fluentui/issues/28219
+    color: tokens.colorPaletteCranberryForeground2,
+  },
+  warning: {
+    // FIXME https://github.com/microsoft/fluentui/issues/28219
+    color: tokens.colorPaletteDarkOrangeForeground1,
+  },
+  info: {
+    color: tokens.colorNeutralForeground2,
+  },
+  progress: {
+    color: tokens.colorNeutralForegroundInverted2,
+  },
+});
+
 /**
  * Apply styling to the ToastTitle slots based on the state
  */
 export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitleState => {
   const styles = useStyles();
+  const intentIconStyles = useIntentIconStyles();
+  const { intent } = state;
   state.root.className = mergeClasses(toastTitleClassNames.root, styles.root, state.root.className);
 
   if (state.media) {
-    state.media.className = mergeClasses(toastTitleClassNames.media, styles.media, state.media.className);
+    state.media.className = mergeClasses(
+      toastTitleClassNames.media,
+      styles.media,
+      state.media.className,
+      intent && intentIconStyles[intent],
+    );
   }
 
   if (state.action) {

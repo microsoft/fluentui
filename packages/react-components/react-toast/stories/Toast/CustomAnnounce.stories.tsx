@@ -26,11 +26,11 @@ export const CustomAnnounce = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success">
+        <ToastTitle>
           {politeness === 'polite' ? 'Polite' : 'Assertive'} toast {counter++}
         </ToastTitle>
       </Toast>,
-      { politeness },
+      { intent: 'success' },
     );
 
   const announce: ToasterProps['announce'] = (msg, options) => {
