@@ -40,12 +40,12 @@ const useRootStyles = makeStyles({
     paddingRight: 0,
 
     // dismiss + contentAfter appear on focus
-    '& + span': {
-      display: 'none',
-    },
-    '&:focus + span': {
-      display: 'flex',
-    },
+    // '& + span': {
+    //   display: 'none',
+    // },
+    // '&:focus + span': {
+    //   display: 'flex',
+    // },
 
     // removes the WebKit pseudoelement styling
     '::-webkit-search-decoration': {
@@ -61,6 +61,12 @@ const useContentAfterStyles = makeStyles({
   contentAfter: {
     paddingLeft: tokens.spacingHorizontalM,
     columnGap: tokens.spacingHorizontalXS,
+  },
+  focused: {
+    display: 'flex',
+  },
+  default: {
+    display: 'none',
   },
 });
 
@@ -93,7 +99,7 @@ const useDismissStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  const { disabled, size } = state;
+  const { focused, disabled, size } = state;
 
   const rootStyles = useRootStyles();
   const contentAfterStyles = useContentAfterStyles();
@@ -117,6 +123,8 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     state.contentAfter!.className = mergeClasses(
       searchBoxClassNames.contentAfter,
       contentAfterStyles.contentAfter,
+      focused && contentAfterStyles.focused,
+      !focused && contentAfterStyles.default,
       state.contentAfter.className,
     );
   } else if (state.dismiss) {
