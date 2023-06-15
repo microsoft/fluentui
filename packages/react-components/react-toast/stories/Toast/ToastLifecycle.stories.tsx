@@ -6,7 +6,7 @@ import {
   ToastTitle,
   ToastBody,
   ToastFooter,
-  ToastLifecycleStatus,
+  ToastStatus,
 } from '@fluentui/react-toast';
 import { useId, Link, Button, Text, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
@@ -49,7 +49,7 @@ export const ToastLifecycle = () => {
   const toasterId = useId('toaster');
   const labelId = useId();
   const { dispatchToast } = useToastController(toasterId);
-  const [intentLog, setLifecycleStatusLog] = React.useState<[number, ToastLifecycleStatus][]>([]);
+  const [statusLog, setStatusLog] = React.useState<[number, ToastStatus][]>([]);
   const [dismissed, setDismissed] = React.useState(true);
   const notify = () => {
     dispatchToast(
@@ -67,7 +67,7 @@ export const ToastLifecycle = () => {
         timeout: 1000,
         onStatusChange: (e, { status: toastStatus }) => {
           setDismissed(toastStatus === 'unmounted');
-          setLifecycleStatusLog(prev => [[Date.now(), toastStatus], ...prev]);
+          setStatusLog(prev => [[Date.now(), toastStatus], ...prev]);
         },
       },
     );
@@ -80,20 +80,20 @@ export const ToastLifecycle = () => {
           <Button className={styles.button} disabledFocusable={!dismissed} onClick={notify}>
             Make toast
           </Button>
-          <Button className={styles.button} onClick={() => setLifecycleStatusLog([])}>
+          <Button className={styles.button} onClick={() => setStatusLog([])}>
             Clear log
           </Button>
         </div>
         <div className={styles.logContainer}>
           <div className={styles.logLabel} id={labelId}>
-            LifecycleStatus log
+            Status log
           </div>
           <div role="log" aria-labelledby={labelId} className={styles.log}>
-            {intentLog.map(([time, toastLifecycleStatus]) => {
+            {statusLog.map(([time, toastStatus]) => {
               const date = new Date(time);
               return (
                 <div key={time}>
-                  {date.toLocaleTimeString()} <Text weight="bold">{toastLifecycleStatus}</Text>
+                  {date.toLocaleTimeString()} <Text weight="bold">{toastStatus}</Text>
                 </div>
               );
             })}
@@ -118,7 +118,7 @@ ToastLifecycle.parameters = {
         '- dismissed - The toast is visually invisible but still mounted',
         '- unounted - The toast has been completely unmounted and no longer exists',
         '',
-        'Use the `onLifecycleStatusChange` option when dispatching a toast to listen to lifecycle changes.',
+        'Use the `onStatusChange` option when dispatching a toast to listen to lifecycle changes.',
       ].join('\n'),
     },
   },
