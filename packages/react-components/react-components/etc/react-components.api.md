@@ -542,6 +542,7 @@ import { optionGroupClassNames } from '@fluentui/react-combobox';
 import { OptionGroupProps } from '@fluentui/react-combobox';
 import { OptionGroupSlots } from '@fluentui/react-combobox';
 import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionOnSelectData } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
@@ -765,6 +766,7 @@ import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import { SelectionMethods } from '@fluentui/react-utilities';
 import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
+import { SelectionEvents } from '@fluentui/react-combobox';
 import { SelectOnChangeData } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
@@ -2495,6 +2497,8 @@ export { OptionGroupSlots }
 
 export { OptionGroupState }
 
+export { OptionOnSelectData }
+
 export { OptionProps }
 
 export { OptionSlots }
@@ -2940,6 +2944,8 @@ export { SelectionItemId }
 export { SelectionMethods }
 
 export { SelectionMode_2 as SelectionMode }
+
+export { SelectionEvents }
 
 export { SelectOnChangeData }
 

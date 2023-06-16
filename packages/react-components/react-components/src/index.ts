@@ -385,12 +385,14 @@ export type {
   ListboxProps,
   ListboxSlots,
   ListboxState,
+  OptionOnSelectData,
   OptionProps,
   OptionSlots,
   OptionState,
   OptionGroupProps,
   OptionGroupSlots,
   OptionGroupState,
+  SelectionEvents,
 } from '@fluentui/react-combobox';
 export {
   Divider,
