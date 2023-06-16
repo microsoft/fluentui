@@ -141,7 +141,7 @@ export function createOverflowManager(): OverflowManager {
 
   function computeSizeChange(entry: OverflowItemEntry) {
     const dividerWidth =
-      entry.groupId && groupManager.isSingleVisible(entry.id, entry.groupId) && overflowDividers[entry.groupId]
+      entry.groupId && groupManager.isSingleItemVisible(entry.id, entry.groupId) && overflowDividers[entry.groupId]
         ? getOffsetSize(overflowDividers[entry.groupId].element)
         : 0;
 
@@ -155,7 +155,7 @@ export function createOverflowManager(): OverflowManager {
     if (item.groupId) {
       groupManager.showItem(item.id, item.groupId);
 
-      if (groupManager.isSingleVisible(item.id, item.groupId)) {
+      if (groupManager.isSingleItemVisible(item.id, item.groupId)) {
         overflowDividers[item.groupId]?.element.removeAttribute(DATA_OVERFLOWING);
       }
     }
@@ -169,7 +169,7 @@ export function createOverflowManager(): OverflowManager {
     options.onUpdateItemVisibility({ item, visible: false });
 
     if (item.groupId) {
-      if (groupManager.isSingleVisible(item.id, item.groupId)) {
+      if (groupManager.isSingleItemVisible(item.id, item.groupId)) {
         overflowDividers[item.groupId]?.element.setAttribute(DATA_OVERFLOWING, '');
       }
 
