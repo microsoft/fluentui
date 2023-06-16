@@ -8,7 +8,7 @@ import type {
   OnUpdateItemVisibility,
   OnUpdateOverflow,
   OverflowItemEntry,
-  OverflowDivider,
+  OverflowDividerEntry,
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
@@ -80,7 +80,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   );
 
   const registerDivider = React.useCallback(
-    (divider: OverflowDivider) => {
+    (divider: OverflowDividerEntry) => {
       const el = divider.element;
       overflowManager?.addDivider(divider);
       el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');

@@ -1,4 +1,4 @@
-import type { OverflowGroupState, OverflowItemEntry, OverflowDivider } from '@fluentui/priority-overflow';
+import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { ContextSelector, createContext, useContextSelector, Context } from '@fluentui/react-context-selector';
 
 /**
@@ -10,7 +10,7 @@ export interface OverflowContextValue {
   hasOverflow: boolean;
   registerItem: (item: OverflowItemEntry) => () => void;
   registerOverflowMenu: (el: HTMLElement) => () => void;
-  registerDivider: (divider: OverflowDivider) => () => void;
+  registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
 }
 

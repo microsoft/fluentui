@@ -13,7 +13,7 @@ export function useOverflowDivider<TElement extends HTMLElement>(groupId?: strin
   const registerDivider = useOverflowContext(v => v.registerDivider);
 
   useIsomorphicLayoutEffect(() => {
-    if (ref.current) {
+    if (ref.current && groupId) {
       return registerDivider({
         element: ref.current,
         groupId,

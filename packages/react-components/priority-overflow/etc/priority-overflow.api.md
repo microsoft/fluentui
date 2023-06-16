@@ -38,10 +38,10 @@ export type OverflowAxis = 'horizontal' | 'vertical';
 export type OverflowDirection = 'start' | 'end';
 
 // @public (undocumented)
-export interface OverflowDivider {
+export interface OverflowDividerEntry {
     element: HTMLElement;
     // (undocumented)
-    groupId?: string;
+    groupId: string;
 }
 
 // @public
@@ -68,7 +68,7 @@ export interface OverflowItemEntry {
 
 // @internal (undocumented)
 export interface OverflowManager {
-    addDivider: (divider: OverflowDivider) => void;
+    addDivider: (divider: OverflowDividerEntry) => void;
     addItem: (items: OverflowItemEntry) => void;
     addOverflowMenu: (element: HTMLElement) => void;
     disconnect: () => void;
