@@ -6,14 +6,16 @@ import { createOverflowManager } from '@fluentui/priority-overflow';
  */
 import type {
   OnUpdateItemVisibility,
+  OnUpdateDividerVisibility,
   OnUpdateOverflow,
   OverflowItemEntry,
+  OverflowDivider,
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
 /**
  * @internal
@@ -25,7 +27,14 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
   options: Omit<ObserveOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
-  const { overflowAxis, overflowDirection, padding, minimumVisible, onUpdateItemVisibility } = options;
+  const {
+    overflowAxis,
+    overflowDirection,
+    padding,
+    minimumVisible,
+    onUpdateItemVisibility,
+    onUpdateDividerVisibility,
+  } = options;
 
   // DOM ref to the overflow container element
   const containerRef = React.useRef<TElement>(null);
@@ -47,6 +56,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
         padding: padding ?? 10,
         minimumVisible: minimumVisible ?? 0,
         onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
+        onUpdateDividerVisibility: onUpdateDividerVisibility ?? (() => undefined),
         onUpdateOverflow: updateOverflowItems ?? (() => undefined),
       });
 
@@ -62,6 +72,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     padding,
     minimumVisible,
     onUpdateItemVisibility,
+    onUpdateDividerVisibility,
   ]);
 
   const registerItem = React.useCallback(
@@ -73,6 +84,22 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
         item.element.removeAttribute(DATA_OVERFLOWING);
         item.element.removeAttribute(DATA_OVERFLOW_ITEM);
         overflowManager?.removeItem(item.id);
+      };
+    },
+    [overflowManager],
+  );
+
+  const registerDivider = React.useCallback(
+    (divider: OverflowDivider) => {
+      const el = divider.element;
+      overflowManager?.addDivider(divider);
+      el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+
+      return () => {
+        if (divider.groupId) {
+          overflowManager?.removeDivider(divider.groupId);
+        }
+        el.removeAttribute(DATA_OVERFLOW_DIVIDER);
       };
     },
     [overflowManager],
@@ -100,6 +127,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     registerItem,
     updateOverflow,
     registerOverflowMenu,
+    registerDivider,
   };
 };
 
@@ -108,5 +136,13 @@ export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visibl
     item.element.removeAttribute(DATA_OVERFLOWING);
   } else {
     item.element.setAttribute(DATA_OVERFLOWING, '');
+  }
+};
+
+export const updateDividerVisibilityAttribute: OnUpdateDividerVisibility = ({ divider, groupVisible }) => {
+  if (groupVisible) {
+    divider.element.removeAttribute(DATA_OVERFLOWING);
+  } else {
+    divider.element.setAttribute(DATA_OVERFLOWING, '');
   }
 };

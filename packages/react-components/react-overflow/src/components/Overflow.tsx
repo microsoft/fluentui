@@ -4,7 +4,11 @@ import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@flue
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 
 import { OverflowContext } from '../overflowContext';
-import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
+import {
+  updateDividerVisibilityAttribute,
+  updateVisibilityAttribute,
+  useOverflowContainer,
+} from '../useOverflowContainer';
 import { useOverflowStyles } from './useOverflowStyles.styles';
 
 interface OverflowState {
@@ -41,7 +45,9 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     const { visibleItems, invisibleItems, groupVisibility } = data;
 
     const itemVisibility: Record<string, boolean> = {};
-    visibleItems.forEach(x => (itemVisibility[x.id] = true));
+    visibleItems.forEach(x => {
+      itemVisibility[x.id] = true;
+    });
     invisibleItems.forEach(x => (itemVisibility[x.id] = false));
 
     setOverflowState(() => {
@@ -53,13 +59,17 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     });
   };
 
-  const { containerRef, registerItem, updateOverflow, registerOverflowMenu } = useOverflowContainer(update, {
-    overflowDirection,
-    overflowAxis,
-    padding,
-    minimumVisible,
-    onUpdateItemVisibility: updateVisibilityAttribute,
-  });
+  const { containerRef, registerItem, updateOverflow, registerOverflowMenu, registerDivider } = useOverflowContainer(
+    update,
+    {
+      overflowDirection,
+      overflowAxis,
+      padding,
+      minimumVisible,
+      onUpdateItemVisibility: updateVisibilityAttribute,
+      onUpdateDividerVisibility: updateDividerVisibilityAttribute,
+    },
+  );
 
   const clonedChild = applyTriggerPropsToChildren(children, {
     ref: useMergedRefs(containerRef, ref),
@@ -75,6 +85,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
         registerItem,
         updateOverflow,
         registerOverflowMenu,
+        registerDivider,
       }}
     >
       {clonedChild}
