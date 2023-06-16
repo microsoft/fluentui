@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
-  // eslint-disable-next-line deprecation/deprecation
+
   const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();
   const primaryStory = stories[0];

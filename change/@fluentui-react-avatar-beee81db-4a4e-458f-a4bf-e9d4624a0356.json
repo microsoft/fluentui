@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add `shape` to AvatarContext",
-  "packageName": "@fluentui/react-avatar",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

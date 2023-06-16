@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
-import { TITLE_ACTION_GRID_AREA, TITLE_GRID_AREA } from '../../contexts/constants';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
@@ -15,15 +14,22 @@ export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    gridRowStart: 1,
+    gridRowEnd: 1,
+    gridColumnStart: 1,
+    gridColumnEnd: 3,
     ...typographyStyles.subtitle1,
-    ...shorthands.gridArea(TITLE_GRID_AREA),
     ...shorthands.margin(0),
   },
-  rootWithoutCloseButton: {
-    ...shorthands.gridArea(TITLE_GRID_AREA, TITLE_GRID_AREA, TITLE_ACTION_GRID_AREA, TITLE_ACTION_GRID_AREA),
+  rootWithoutAction: {
+    gridColumnEnd: 4,
   },
   action: {
-    ...shorthands.gridArea(TITLE_ACTION_GRID_AREA),
+    gridRowStart: 1,
+    gridRowEnd: 1,
+    gridColumnStart: 3,
+    justifySelf: 'end',
+    alignSelf: 'start',
   },
 });
 
@@ -58,7 +64,7 @@ export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTi
   state.root.className = mergeClasses(
     dialogTitleClassNames.root,
     styles.root,
-    !state.action && styles.rootWithoutCloseButton,
+    !state.action && styles.rootWithoutAction,
     state.root.className,
   );
   if (state.action) {

@@ -5,7 +5,7 @@ import { launch } from '@fluentui/scripts-puppeteer';
 import CDP from 'chrome-remote-interface';
 
 export type Page = {
-  executeJavaScript: <R>(code: string) => Promise<R>;
+  executeJavaScript: (code: string) => Promise<unknown>;
   close: () => Promise<void>;
 };
 

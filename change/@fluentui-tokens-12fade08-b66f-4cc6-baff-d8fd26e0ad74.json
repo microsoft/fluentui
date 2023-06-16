@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: exclude .swcrc from being published",
-  "packageName": "@fluentui/tokens",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

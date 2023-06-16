@@ -1,0 +1,64 @@
+{
+  "name": "@fluentui/react-drawer",
+  "entries": [
+    {
+      "date": "Wed, 31 May 2023 06:46:13 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "update yarn.lock"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "2780b2fc152fafe57d35a236f8911424b39cb48b",
+            "comment": "feat: release react-drawer to unstable"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "bumps Griffel version to 1.5.7 from 1.5.2"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4",
+            "comment": "chore: move styles to .styles.ts files [react-drawer & react-toast]"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.9",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ]
+      }
+    }
+  ]
+}

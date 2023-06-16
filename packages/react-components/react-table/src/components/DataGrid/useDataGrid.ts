@@ -34,7 +34,10 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     resizableColumns,
     columnSizingOptions,
     onColumnResize,
+    containerWidthOffset,
   } = props;
+
+  const widthOffset = containerWidthOffset ?? (selectionMode ? -CELL_WIDTH : 0);
 
   const navigable = focusMode !== 'none';
   const keyboardNavAttr = useArrowNavigationGroup({
@@ -58,7 +61,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       columnSizingOptions,
       // The selection cell is not part of the columns, therefore its width needs to be subtracted
       // from the container to make sure the columns don't overflow the table.
-      containerWidthOffset: selectionMode ? -CELL_WIDTH : 0,
+      containerWidthOffset: widthOffset,
     }),
   ]);
 
