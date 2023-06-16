@@ -42,7 +42,8 @@ describe(`cypress-component-configuration`, () => {
     expect(tree.read('packages/one/cypress.config.ts', 'utf-8')).toMatchInlineSnapshot(`
       "import { baseConfig } from '@fluentui/scripts-cypress';
 
-      export default baseConfig;"
+      export default baseConfig;
+      "
     `);
     expect(readJson(tree, 'packages/one/tsconfig.json').references).toEqual(
       expect.arrayContaining([

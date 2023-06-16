@@ -1,4 +1,4 @@
-import { stripIndents, Tree, updateJson, writeJson } from '@nrwl/devkit';
+import { stripIndents, Tree, updateJson, generateFiles, joinPathFragments } from '@nrwl/devkit';
 import * as path from 'path';
 
 import { PackageJson, TsConfig } from '../../../types';
@@ -25,9 +25,7 @@ const templates = {
 type Options = ReturnType<typeof getProjectConfig>;
 
 export function addFiles(tree: Tree, options: Options) {
-  tree.write(options.paths.cypressConfig, templates.config);
-
-  writeJson<TsConfig>(tree, options.paths.tsconfig.cypress, templates.tsconfig);
+  generateFiles(tree, joinPathFragments(__dirname, '../files'), options.projectConfig.root, { tmpl: '' });
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
