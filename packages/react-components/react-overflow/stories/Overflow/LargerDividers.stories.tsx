@@ -165,7 +165,7 @@ LargerDividers.parameters = {
     description: {
       story: [
         'For smaller dividers a padding can be set to take into account the unmeasured space that the divider takes up.',
-        'When the larger divider is used its width is not calculated. It causes items to overflow later then it has to be.',
+        'When a larger divider is used its width is not calculated. This causes items to overflow later than needed.',
         "That's why `OverflowDivider` should be used for larger dividers to include its width to the calculation.",
       ].join('\n'),
     },
