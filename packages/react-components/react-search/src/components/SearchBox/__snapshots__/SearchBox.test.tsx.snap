@@ -30,6 +30,7 @@ exports[`SearchBox renders a default state 1`] = `
     />
     <span
       class="fui-Input__contentAfter fui-SearchBox__contentAfter"
+      tabindex="-1"
     >
       <span
         aria-label="clear"
