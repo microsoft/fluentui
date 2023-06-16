@@ -10,15 +10,17 @@ export const tagGroupClassNames: SlotClassNames<TagGroupSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
+const useRootStyles = makeStyles({
+  base: {
     display: 'inline-flex',
+  },
+  medium: {
     columnGap: tokens.spacingHorizontalS,
   },
-  rootSmall: {
+  small: {
     columnGap: tokens.spacingHorizontalSNudge,
   },
-  rootExtraSmall: {
+  'extra-small': {
     columnGap: tokens.spacingHorizontalXS,
   },
 });
@@ -27,14 +29,9 @@ const useStyles = makeStyles({
  * Apply styling to the TagGroup slots based on the state
  */
 export const useTagGroupStyles_unstable = (state: TagGroupState): TagGroupState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(
-    tagGroupClassNames.root,
-    styles.root,
-    state.size === 'small' && styles.rootSmall,
-    state.size === 'extra-small' && styles.rootExtraSmall,
-    state.root.className,
-  );
+  const styles = useRootStyles();
+  const { size } = state;
+  state.root.className = mergeClasses(tagGroupClassNames.root, styles.base, styles[size], state.root.className);
 
   return state;
 };
