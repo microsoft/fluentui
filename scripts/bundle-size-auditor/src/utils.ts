@@ -13,10 +13,16 @@ export const FIXTURE_BUILD_PATH = path.join(FIXTURE_PATH, 'build');
 export function createWebpackConfigTemplate(cwd: string, entries: Entries, packageName: string) {
   const rootDir = path.posix.join(cwd, FIXTURE_PATH);
   const bundleRootPath = path.posix.join(cwd, FIXTURE_BUILD_PATH);
+
+  const webpackConfig: Parameters<typeof createWebpackConfig>[0] = {
+    entries: entries,
+    packageName: packageName,
+    bundleRootPath: bundleRootPath,
+  };
   const template = `
     const { createWebpackConfig } = require('@fluentui/scripts-bundle-size-auditor');
 
-    module.exports = createWebpackConfig('${JSON.stringify(entries)}', '${packageName}', '${bundleRootPath}');
+    module.exports = createWebpackConfig(${JSON.stringify(webpackConfig, null, 2)});
  `;
 
   const webpackConfigPath = path.join(rootDir, 'webpack.bundle-size-auditor.config.js');
@@ -26,9 +32,8 @@ export function createWebpackConfigTemplate(cwd: string, entries: Entries, packa
   return webpackConfigPath;
 }
 
-export function createWebpackConfig(options: { entriesJson: string; packageName: string; bundleRootPath: string }) {
-  const { bundleRootPath, entriesJson, packageName } = options;
-  const entries: Entries = JSON.parse(entriesJson);
+export function createWebpackConfig(options: { entries: Entries; packageName: string; bundleRootPath: string }) {
+  const { bundleRootPath, entries, packageName } = options;
 
   const cssRule = {
     test: /\.css$/,
