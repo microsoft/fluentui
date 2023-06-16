@@ -41,7 +41,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           "display": "block",
         }
       }
-      width={150}
+      width={126}
     >
       <g
         className=
@@ -158,7 +158,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={70.30769230769232}
+            x={61.07692307692308}
             y={20}
           />
           <text
@@ -171,7 +171,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={78.30769230769232}
+            x={69.07692307692308}
             y={14}
           >
             50.0k
@@ -196,7 +196,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={103.76923076923076}
+            x={80.6923076923077}
             y={122}
           />
           <text
@@ -209,7 +209,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={111.76923076923076}
+            x={88.6923076923077}
             y={116}
           >
             30.0k
@@ -748,7 +748,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           "display": "block",
         }
       }
-      width={150}
+      width={126}
     >
       <g
         className=
@@ -865,7 +865,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={70.30769230769232}
+            x={61.07692307692308}
             y={20}
           />
           <text
@@ -878,7 +878,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={78.30769230769232}
+            x={69.07692307692308}
             y={14}
           >
             50.0k
@@ -903,7 +903,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={103.76923076923076}
+            x={80.6923076923077}
             y={122}
           />
           <text
@@ -916,7 +916,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={111.76923076923076}
+            x={88.6923076923077}
             y={116}
           >
             30.0k

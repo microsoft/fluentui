@@ -698,24 +698,52 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this.props.onChartMouseLeave && this.props.onChartMouseLeave();
   };
 
-  /*
-    TODO:
-    1. Use reduced width for rotated and wrapped x-axis labels
-    2. Check margins when x-axis labels don't start from the leftmost end
-  */
   private _calculateChartMinWidth = (): number => {
-    // TODO: Include label rotation and wrapping in calculation. labels
-    const maxLabelWidth =
-      Math.ceil(calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`)) + 10;
-    let minChartWidth = this.margins.left! + this.margins.right! + maxLabelWidth * (this._tickValues.length - 1);
+    let labelWidth = 10; // label padding
+    // Case: rotated labels
+    if (
+      !this.props.wrapXAxisLables &&
+      this.props.rotateXAxisLables &&
+      this.props.xAxisType! === XAxisTypes.StringAxis
+    ) {
+      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
+    }
+    // Case: truncated labels
+    else if (this.props.showXAxisLablesTooltip) {
+      const tickValues = this._tickValues.map(val => {
+        const numChars = this.props.noOfCharsToTruncate || 4;
+        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+    // Case: wrapped labels
+    else if (this.props.wrapXAxisLables) {
+      const words: string[] = [];
+      this._tickValues.forEach((val: string) => {
+        words.push(...val.toString().split(/\s+/));
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
+    }
+    // Default case
+    else {
+      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+
+    let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
 
     if (
       [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
         this.props.chartType,
       )
     ) {
-      const maxDomainMargin = 8 + 12; // MIN_DOMAIN_MARGIN + maxBarWidth / 2
-      minChartWidth += maxDomainMargin * 2;
+      const minDomainMargin = 8;
+      minChartWidth += minDomainMargin * 2;
     }
 
     return minChartWidth;

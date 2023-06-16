@@ -749,7 +749,7 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
       const fontFamily = styles.getPropertyValue('font-family');
       ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
     } else {
-      ctx.font = 'bold 10px "Segoe UI"';
+      ctx.font = '600 10px "Segoe UI"';
     }
 
     labels.forEach(label => {
