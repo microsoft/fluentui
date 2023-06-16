@@ -671,6 +671,8 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
         },
       };
 
+      stableJson.exports = stableJson.exports ?? {};
+
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
@@ -758,6 +760,7 @@ function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) 
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts ?? {};
     Object.assign(json.scripts, scripts);
 
     return json;
@@ -821,6 +824,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
         storybook: `start-storybook`,
         start: 'yarn storybook',
       };
+      json.scripts = json.scripts ?? {};
       Object.assign(json.scripts, scripts);
 
       return json;
