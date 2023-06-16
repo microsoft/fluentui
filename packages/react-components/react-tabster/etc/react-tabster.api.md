@@ -58,7 +58,7 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {

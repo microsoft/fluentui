@@ -5,8 +5,13 @@ import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Combobox', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',

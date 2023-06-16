@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+
 // @ts-check
 const {
   buildEntries,
@@ -8,21 +10,38 @@ const {
   createEntry,
 } = require('./webpackUtils');
 
-const packageName = process.env.PACKAGE;
+/**
+ *
+ * @param {string} packageName
+ * @returns
+ */
+function getEntries(packageName) {
+  if (packageName === '@fluentui/react-northstar') {
+    createFluentNorthstarFixtures();
+    const entries = buildEntries('@fluentui/react-northstar');
+    return entries;
+  }
 
-let entries;
-if (packageName === '@fluentui/react-northstar') {
-  createFluentNorthstarFixtures();
-  entries = buildEntries('@fluentui/react-northstar');
-} else if (packageName === '@fluentui/react') {
-  createFluentReactFixtures();
-  createEntry('@fluentui/keyboard-key');
+  if (packageName === '@fluentui/react') {
+    createFluentReactFixtures();
+    createEntry('@fluentui/keyboard-key');
 
-  entries = buildEntries('@fluentui/react');
-  entries['keyboard-key'] = buildEntry('@fluentui/keyboard-key');
-} else {
-  console.error('🚨 No packageName provided!');
+    const entries = buildEntries('@fluentui/react');
+    entries['keyboard-key'] = buildEntry('@fluentui/keyboard-key');
+    return entries;
+  }
+
+  console.error('🚨 packageName needs to be one of `@fluentui/react` or `@fluentui/react-northstar`!');
   process.exit(1);
 }
 
-module.exports = createWebpackConfig(entries, packageName);
+const packageName = process.env.PACKAGE ?? '';
+
+if (!packageName) {
+  console.error('🚨 No packageName provided! Set it via env variable name "PACKAGE"');
+  process.exit(1);
+}
+const entries = getEntries(packageName);
+const config = createWebpackConfig(entries, packageName);
+
+module.exports = config;

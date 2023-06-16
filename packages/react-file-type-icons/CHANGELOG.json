@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Mon, 12 Jun 2023 07:33:50 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.9.0",
+      "version": "8.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "alinazaieva@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "711a734d30fab93fd8359e2880329beacd237e2a",
+            "comment": "feat(react-file-type-icons): add getFileTypeIconAsUrl to allow icons usage in React without global initialization"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jun 2023 07:38:37 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.8.21",
       "version": "8.8.21",

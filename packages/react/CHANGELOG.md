@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 08 Jun 2023 07:35:14 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2023 07:38:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.3)
+
+Wed, 14 Jun 2023 07:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.2..@fluentui/react_v8.110.3)
+
+### Patches
+
+- fix: revert column resize behavior for DetailsList ([PR #27418](https://github.com/microsoft/fluentui/pull/27418) by seanmonahan@microsoft.com)
 
 ## [8.110.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.2)
 
