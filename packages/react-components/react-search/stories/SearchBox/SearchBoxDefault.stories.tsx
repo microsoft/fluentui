@@ -10,5 +10,10 @@ export const Default = (props: Partial<SearchBoxProps>) => (
     <SearchBox {...props} contentAfter={<FilterRegular />} size="large" placeholder="large" />
     <SearchBox {...props} contentAfter={null} placeholder="no contentAfter" />
     <SearchBox {...props} contentAfter={<FilterRegular />} disabled placeholder="disabled" />
+    <SearchBox
+      {...props}
+      contentAfter={<FilterRegular onClick={() => console.log('clicked')} />}
+      placeholder="contentAfter button"
+    />
   </>
 );
