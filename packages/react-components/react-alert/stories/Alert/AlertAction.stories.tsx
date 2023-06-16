@@ -11,7 +11,8 @@ export const Action = () => (
     <Alert
       intent="error"
       action={{
-        icon: <DismissCircleRegular aria-label="dismiss message" />,
+        icon: <DismissCircleRegular />,
+        'aria-label': 'dismiss message',
       }}
     >
       Save failed
