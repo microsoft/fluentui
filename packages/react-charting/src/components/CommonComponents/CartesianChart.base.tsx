@@ -8,6 +8,7 @@ import {
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
+  IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
 import {
   ChartHoverCard,
@@ -28,7 +29,7 @@ import {
   rotateXAxisLabels,
   Points,
   pointTypes,
-  calculateLongestYAxisLabel,
+  calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
 } from '../../utilities/index';
@@ -73,6 +74,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private idForGraph: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
+  private _tickValues: (string | number)[];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
@@ -118,7 +120,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this.props.showYAxisLables &&
       this.yAxisElement
     ) {
-      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.yAxisElement!);
+      const maxYAxisLabelLength = calculateLongestLabelWidth(
+        this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        `.${this._classNames.yAxis} text`,
+      );
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -166,7 +171,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this.props.showYAxisLables &&
       this.yAxisElement
     ) {
-      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.yAxisElement!);
+      const maxYAxisLabelLength = calculateLongestLabelWidth(
+        this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        `.${this._classNames.yAxis} text`,
+      );
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -257,27 +265,34 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let xScale: any;
+    let tickValues: (string | number)[];
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, this.props.chartType, culture);
+        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(
+        ({ xScale, tickValues } = createDateXAxis(
           XAxisParams,
           this.props.tickParams!,
           culture,
           dateLocalizeOptions,
           timeFormatLocale,
           customDateTimeFormatter,
-        );
+        ));
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
+        ({ xScale, tickValues } = createStringXAxis(
+          XAxisParams,
+          this.props.tickParams!,
+          this.props.datasetForXAxisDomain!,
+          culture,
+        ));
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams, this.props.chartType, culture);
+        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
     }
     this._xScale = xScale;
+    this._tickValues = tickValues;
 
     /*
      * To enable wrapping of x axis tick values or to display complete x axis tick values,
@@ -404,7 +419,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this._onChartLeave}
       >
-        <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
+        <FocusZone direction={focusDirection} className={this._classNames.chartWrapper} {...svgFocusZoneProps}>
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}
@@ -647,7 +662,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       }
       if (this.props.parentRef || this.chartContainer) {
         const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-        const currentContainerWidth = container.getBoundingClientRect().width;
+        const currentContainerWidth = Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth());
         const currentContainerHeight =
           container.getBoundingClientRect().height > legendContainerHeight
             ? container.getBoundingClientRect().height
@@ -681,5 +696,28 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   private _onChartLeave = (): void => {
     this.props.onChartMouseLeave && this.props.onChartMouseLeave();
+  };
+
+  /*
+    TODO:
+    1. Use reduced width for rotated and wrapped x-axis labels
+    2. Check margins when x-axis labels don't start from the leftmost end
+  */
+  private _calculateChartMinWidth = (): number => {
+    // TODO: Include label rotation and wrapping in calculation. labels
+    const maxLabelWidth =
+      Math.ceil(calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`)) + 10;
+    let minChartWidth = this.margins.left! + this.margins.right! + maxLabelWidth * (this._tickValues.length - 1);
+
+    if (
+      [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
+        this.props.chartType,
+      )
+    ) {
+      const maxDomainMargin = 8 + 12; // MIN_DOMAIN_MARGIN + maxBarWidth / 2
+      minChartWidth += maxDomainMargin * 2;
+    }
+
+    return minChartWidth;
   };
 }

@@ -26,6 +26,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -38,7 +41,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           "display": "block",
         }
       }
-      width={0}
+      width={140}
     >
       <g
         className=
@@ -115,7 +118,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
+          width={40}
           x={40}
           y={4}
         />
@@ -136,7 +139,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-37.5}
+          width={50}
           x={40}
           y={106}
         />
@@ -157,7 +160,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-40}
+          width={80}
           x={40}
           y={192.7}
         />
@@ -178,7 +181,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-15}
+          width={20}
           x={40}
           y={233.5}
         />
@@ -1205,6 +1208,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1765,6 +1771,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1894,6 +1903,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone12"
     onFocus={[Function]}
@@ -2442,6 +2454,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone17"
     onFocus={[Function]}

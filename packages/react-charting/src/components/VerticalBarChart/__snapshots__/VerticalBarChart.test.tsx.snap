@@ -26,6 +26,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -38,7 +41,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           "display": "block",
         }
       }
-      width={0}
+      width={150}
     >
       <g
         className=
@@ -155,7 +158,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={12.615384615384617}
+            x={70.30769230769232}
             y={20}
           />
           <text
@@ -168,7 +171,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={20.615384615384617}
+            x={78.30769230769232}
             y={14}
           >
             50.0k
@@ -193,7 +196,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-40.46153846153846}
+            x={103.76923076923076}
             y={122}
           />
           <text
@@ -206,7 +209,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={-32.46153846153846}
+            x={111.76923076923076}
             y={116}
           >
             30.0k
@@ -730,6 +733,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -742,7 +748,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           "display": "block",
         }
       }
-      width={0}
+      width={150}
     >
       <g
         className=
@@ -859,7 +865,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={12.615384615384617}
+            x={70.30769230769232}
             y={20}
           />
           <text
@@ -872,7 +878,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={20.615384615384617}
+            x={78.30769230769232}
             y={14}
           >
             50.0k
@@ -897,7 +903,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-40.46153846153846}
+            x={103.76923076923076}
             y={122}
           />
           <text
@@ -910,7 +916,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={-32.46153846153846}
+            x={111.76923076923076}
             y={116}
           >
             30.0k
@@ -1352,6 +1358,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone37"
     onFocus={[Function]}
@@ -1803,6 +1812,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2253,6 +2265,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2683,6 +2698,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2792,6 +2810,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone12"
     onFocus={[Function]}
@@ -3243,6 +3264,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone22"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3693,6 +3717,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4142,6 +4169,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone32"
     onFocus={[Function]}

@@ -146,6 +146,11 @@ export interface ICartesianChartStyles {
    * styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: IStyle;
 }
 
 export interface ICartesianChartProps {
