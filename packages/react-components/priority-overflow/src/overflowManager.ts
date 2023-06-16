@@ -64,7 +64,7 @@ export function createOverflowManager(): OverflowManager {
     }
     return {
       groupVisibility: () => groupVisibility,
-      isSingleVisible(itemId: string, groupId: string) {
+      isSingleItemVisible(itemId: string, groupId: string) {
         return (
           isGroupVisible(groupId) &&
           groups[groupId].visibleItemIds.has(itemId) &&
