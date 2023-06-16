@@ -13,46 +13,200 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
   dismissIcon: 'fui-Tag__dismissIcon',
 };
 
-export const tagSpacingMedium = '7px';
-export const tagSpacingSmall = '5px';
-
 /**
- * Base styles shared by Tag/TagButton
+ * Inner horizontal space left and right of Tag
  */
-export const useTagBaseStyles = makeStyles({
-  media: {
-    ...shorthands.gridArea('media'),
-    display: 'flex',
+const tagSpacingMedium = '7px';
+const tagSpacingSmall = '5px';
+const tagSpacingExtraSmall = '5px';
+
+const mediumIconSize = '20px';
+const smallIconSize = '16px';
+const extraSmallIconSize = '12px';
+
+const useRootStyles = makeStyles({
+  base: {
+    // TODO use makeResetStyle when styles are settled
+
+    // reset default button style:
+    fontFamily: 'inherit',
+    ...shorthands.padding(0),
+    appearance: 'button',
+    textAlign: 'unset',
+
+    display: 'inline-grid',
     alignItems: 'center',
-    paddingLeft: '1px',
-    paddingRight: tokens.spacingHorizontalS,
+    gridTemplateAreas: `
+    "media primary   dismissIcon"
+    "media secondary dismissIcon"
+    `,
+    boxSizing: 'border-box',
+    width: 'fit-content',
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
-  icon: {
+
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      },
+      { enableOutline: true },
+    ),
+  },
+  circular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.borderRadius(tokens.borderRadiusCircular),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      },
+      { enableOutline: true },
+    ),
+  },
+
+  medium: {
+    height: '32px',
+  },
+  small: {
+    height: '24px',
+  },
+  'extra-small': {
+    height: '20px',
+  },
+});
+/**
+ * Styles for root slot when Tag is without leading media/icon
+ */
+const useRootWithoutMediaStyles = makeStyles({
+  medium: {
+    paddingLeft: tagSpacingMedium,
+  },
+  small: {
+    paddingLeft: tagSpacingSmall,
+  },
+  'extra-small': {
+    paddingLeft: tagSpacingExtraSmall,
+  },
+});
+/**
+ * Styles for root slot when Tag is without dismiss icon
+ */
+const useRootWithoutDismissStyles = makeStyles({
+  medium: {
+    paddingRight: tagSpacingMedium,
+  },
+  small: {
+    paddingRight: tagSpacingSmall,
+  },
+  'extra-small': {
+    paddingRight: tagSpacingExtraSmall,
+  },
+});
+
+export const useIconStyles = makeStyles({
+  base: {
     ...shorthands.gridArea('media'),
     display: 'flex',
-    alignSelf: 'center',
+  },
+  medium: {
     paddingLeft: tagSpacingMedium,
     paddingRight: tokens.spacingHorizontalXS,
-    width: '20px',
-    fontSize: '20px',
+    width: mediumIconSize,
+    fontSize: mediumIconSize,
   },
-  primaryText: {
+  small: {
+    paddingLeft: tagSpacingSmall,
+    paddingRight: tokens.spacingHorizontalXXS,
+    width: smallIconSize,
+    fontSize: smallIconSize,
+  },
+  'extra-small': {
+    paddingLeft: tagSpacingExtraSmall,
+    paddingRight: tokens.spacingHorizontalXXS,
+    width: extraSmallIconSize,
+    fontSize: extraSmallIconSize,
+  },
+});
+
+export const useMediaStyles = makeStyles({
+  base: {
+    ...shorthands.gridArea('media'),
+    display: 'flex',
+    paddingLeft: '1px',
+  },
+  medium: {
+    paddingRight: tokens.spacingHorizontalS,
+  },
+  small: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  'extra-small': {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+});
+
+const useDismissIconStyles = makeStyles({
+  base: {
+    ...shorthands.gridArea('dismissIcon'),
+    display: 'flex',
+  },
+  medium: {
+    paddingLeft: tokens.spacingHorizontalXS,
+    paddingRight: tagSpacingMedium,
+    fontSize: mediumIconSize,
+  },
+  small: {
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tagSpacingSmall,
+    fontSize: smallIconSize,
+  },
+  'extra-small': {
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tagSpacingExtraSmall,
+    fontSize: extraSmallIconSize,
+  },
+});
+
+export const usePrimaryTextStyles = makeStyles({
+  base: {
+    whiteSpace: 'nowrap',
+    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingRight: tokens.spacingHorizontalXXS,
+  },
+
+  medium: {
+    ...typographyStyles.body1,
+  },
+  small: {
+    ...typographyStyles.caption1,
+  },
+  'extra-small': {
+    ...typographyStyles.caption1,
+  },
+
+  withoutSecondaryText: {
     gridColumnStart: 'primary',
     gridRowStart: 'primary',
     gridRowEnd: 'secondary',
-    ...typographyStyles.body1,
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalXXS,
-    whiteSpace: 'nowrap',
     paddingBottom: tokens.spacingHorizontalXXS,
   },
-  primaryTextWithSecondaryText: {
+  withSecondaryText: {
     ...shorthands.gridArea('primary'),
     ...typographyStyles.caption1,
-    paddingBottom: tokens.spacingHorizontalNone,
     marginTop: '-2px',
   },
-  secondaryText: {
+});
+
+export const useSecondaryTextStyles = makeStyles({
+  base: {
     ...shorthands.gridArea('secondary'),
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tokens.spacingHorizontalXXS,
@@ -61,158 +215,31 @@ export const useTagBaseStyles = makeStyles({
   },
 });
 
-export const useResetButtonStyles = makeStyles({
-  resetButton: {
-    color: 'inherit',
-    fontFamily: 'inherit',
-    lineHeight: 'normal',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
-    ...shorthands.borderStyle('none'),
-    appearance: 'button',
-    textAlign: 'unset',
-    backgroundColor: 'transparent',
-  },
-});
-
-const useTagStyles = makeStyles({
-  root: {
-    // TODO use makeResetStyle when styles are settled
-    display: 'inline-grid',
-    alignItems: 'center',
-    gridTemplateRows: '1fr auto auto 1fr',
-    gridTemplateAreas: `
-    "media .         dismissIcon"
-    "media primary   dismissIcon"
-    "media secondary dismissIcon"
-    "media .         dismissIcon"
-    `,
-
-    boxSizing: 'border-box',
-    height: '32px',
-    width: 'fit-content',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      },
-      { enableOutline: true },
-    ),
-
-    ':hover': {
-      cursor: 'pointer',
-    },
-  },
-  rootCircular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    }),
-  },
-  rootWithoutMedia: {
-    paddingLeft: tagSpacingMedium,
-  },
-  rootWithoutDismiss: {
-    paddingRight: tagSpacingMedium,
-  },
-
-  dismissIcon: {
-    ...shorthands.gridArea('dismissIcon'),
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '20px',
-    paddingLeft: tokens.spacingHorizontalXS,
-    paddingRight: tagSpacingMedium,
-  },
-
-  // TODO add additional classes for fill/outline appearance, different sizes, and state
-});
-
-const useSharedSmallTagStyles = makeStyles({
-  rootWithoutMedia: {
-    paddingLeft: tagSpacingSmall,
-  },
-  rootWithoutDismiss: {
-    paddingRight: tagSpacingSmall,
-  },
-
-  media: {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-  icon: {
-    paddingLeft: tagSpacingSmall,
-    paddingRight: tokens.spacingHorizontalXXS,
-  },
-  dismissIcon: {
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tagSpacingSmall,
-  },
-  primaryText: typographyStyles.caption1,
-});
-
-const useSmallTagStyles = makeStyles({
-  root: {
-    height: '24px',
-  },
-  icon: {
-    width: '16px',
-    fontSize: '16px',
-  },
-  dismissIcon: {
-    fontSize: '16px',
-  },
-});
-
-const useExtraSmallTagStyles = makeStyles({
-  root: {
-    height: '20px',
-  },
-  icon: {
-    width: '12px',
-    fontSize: '12px',
-  },
-  dismissIcon: {
-    fontSize: '12px',
-  },
-});
-
 /**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  const baseStyles = useTagBaseStyles();
-  const resetButtonStyles = useResetButtonStyles();
-  const styles = useTagStyles();
+  const rootStyles = useRootStyles();
+  const rootWithoutMediaStyles = useRootWithoutMediaStyles();
+  const rootWithoutDismissStyles = useRootWithoutDismissStyles();
 
-  const sharedSmallStyles = useSharedSmallTagStyles();
-  const smallStyles = useSmallTagStyles();
-  const extraSmallStyles = useExtraSmallTagStyles();
+  const iconStyles = useIconStyles();
+  const mediaStyles = useMediaStyles();
+  const dismissIconStyles = useDismissIconStyles();
+  const primaryTextStyles = usePrimaryTextStyles();
+  const secondaryTextStyles = useSecondaryTextStyles();
+
+  const { shape, size } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
-    resetButtonStyles.resetButton,
 
-    styles.root,
-    state.shape === 'circular' && styles.rootCircular,
-    !state.media && !state.icon && styles.rootWithoutMedia,
-    !state.dismissIcon && styles.rootWithoutDismiss,
+    rootStyles.base,
+    rootStyles[shape],
+    rootStyles[size],
 
-    state.size === 'small' && smallStyles.root,
-    state.size === 'extra-small' && extraSmallStyles.root,
-
-    (state.size === 'small' || state.size === 'extra-small') &&
-      !state.media &&
-      !state.icon &&
-      sharedSmallStyles.rootWithoutMedia,
-    (state.size === 'small' || state.size === 'extra-small') &&
-      !state.dismissIcon &&
-      sharedSmallStyles.rootWithoutDismiss,
+    !state.media && !state.icon && rootWithoutMediaStyles[size],
+    !state.dismissIcon && rootWithoutDismissStyles[size],
 
     state.root.className,
   );
@@ -220,28 +247,22 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   if (state.media) {
     state.media.className = mergeClasses(
       tagClassNames.media,
-      baseStyles.media,
-      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.media,
+      mediaStyles.base,
+      mediaStyles[size],
       state.media.className,
     );
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      tagClassNames.icon,
-      baseStyles.icon,
-      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.icon,
-      state.size === 'small' && smallStyles.icon,
-      state.size === 'extra-small' && extraSmallStyles.icon,
-      state.icon.className,
-    );
+    state.icon.className = mergeClasses(tagClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
       tagClassNames.primaryText,
-      baseStyles.primaryText,
-      state.secondaryText && baseStyles.primaryTextWithSecondaryText,
 
-      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.primaryText,
+      primaryTextStyles.base,
+      primaryTextStyles[size],
+
+      state.secondaryText ? primaryTextStyles.withSecondaryText : primaryTextStyles.withoutSecondaryText,
 
       state.primaryText.className,
     );
@@ -249,19 +270,15 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       tagClassNames.secondaryText,
-      baseStyles.secondaryText,
+      secondaryTextStyles.base,
       state.secondaryText.className,
     );
   }
   if (state.dismissIcon) {
     state.dismissIcon.className = mergeClasses(
       tagClassNames.dismissIcon,
-      styles.dismissIcon,
-
-      (state.size === 'small' || state.size === 'extra-small') && sharedSmallStyles.dismissIcon,
-      state.size === 'small' && smallStyles.dismissIcon,
-      state.size === 'extra-small' && extraSmallStyles.dismissIcon,
-
+      dismissIconStyles.base,
+      dismissIconStyles[size],
       state.dismissIcon.className,
     );
   }
