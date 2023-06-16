@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { resources } from '@fluentui/scripts-webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
 
 type Entry = { entryPath: string; includeStats: boolean };
 type Entries = { [entryName: string]: Entry };
@@ -26,83 +26,98 @@ export function createWebpackConfigTemplate(cwd: string, entries: Entries, packa
   return webpackConfigPath;
 }
 
-export function createWebpackConfig(entriesJson: string, packageName: string, bundleRootPath: string) {
+export function createWebpackConfig(options: { entriesJson: string; packageName: string; bundleRootPath: string }) {
+  const { bundleRootPath, entriesJson, packageName } = options;
   const entries: Entries = JSON.parse(entriesJson);
 
-  return Object.keys(entries).map(entryName => {
-    let anaylizerPluginOptions: BundleAnalyzerPlugin.Options = {
+  const cssRule = {
+    test: /\.css$/,
+    include: /node_modules/,
+    use: ['style-loader', 'css-loader'],
+  };
+
+  /**
+   * As of webpack 5, you have to add the `es5` target for IE 11 compatibility.
+   * Otherwise it will output lambdas for smaller bundle size.
+   * https://webpack.js.org/migrate/5/#need-to-support-an-older-browser-like-ie-11
+   */
+  const target = ['web', 'es5'];
+
+  return Object.entries(entries).map(([entryName, entryDefinition]) => {
+    const { entryPath, includeStats } = entryDefinition;
+
+    const anaylizerPluginOptions: BundleAnalyzerPlugin.Options = {
       analyzerMode: 'static',
       reportFilename: entryName + '.stats.html',
       openAnalyzer: false,
       generateStatsFile: false,
       logLevel: 'warn',
+      ...(includeStats
+        ? {
+            generateStatsFile: true,
+            statsFilename: entryName + '.stats.json',
+            /**
+             * https://webpack.js.org/configuration/stats
+             */
+            statsOptions: {
+              assets: true,
+              modules: true,
+
+              builtAt: false,
+              outputPath: false,
+              chunkModules: false,
+              // namedChunkGroups: false,
+              chunkGroups: false,
+              logging: false,
+              children: false,
+              source: false,
+              reasons: false,
+              chunks: false,
+              cached: false,
+              cachedAssets: false,
+              performance: false,
+              timings: false,
+            },
+          }
+        : null),
     };
 
-    const { entryPath, includeStats } = entries[entryName];
-
-    if (includeStats) {
-      anaylizerPluginOptions = {
-        ...anaylizerPluginOptions,
-        generateStatsFile: true,
-        /**
-         * https://webpack.js.org/configuration/stats
-         */
-        statsOptions: {
-          assets: true,
-          modules: true,
-
-          builtAt: false,
-          outputPath: false,
-          chunkModules: false,
-          // namedChunkGroups: false,
-          chunkGroups: false,
-          logging: false,
-          children: false,
-          source: false,
-          reasons: false,
-          chunks: false,
-          cached: false,
-          cachedAssets: false,
-          performance: false,
-          timings: false,
-        },
-        statsFilename: entryName + '.stats.json',
-      };
-    }
-
-    const config = resources.createConfig(
-      entryName,
-      true,
-      {
-        entry: {
-          [entryName]: entryPath,
-        },
-        output: {
-          filename: `[name].min.js`,
-          path: bundleRootPath,
-        },
-        externals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
-        optimization: {
-          minimize: true,
-          minimizer: [
-            new TerserPlugin({
-              extractComments: false,
-            }),
-          ],
-        },
-        plugins: [new BundleAnalyzerPlugin(anaylizerPluginOptions)],
+    const config: webpack.Configuration = {
+      mode: 'production',
+      entry: {
+        [entryName]: entryPath,
       },
-      true,
-      true,
-    )[0];
-
-    if (packageName === '@fluentui/react-northstar') {
+      output: {
+        filename: `[name].min.js`,
+        path: bundleRootPath,
+      },
+      externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+      module: {
+        noParse: [/autoit.js/],
+        rules: [cssRule],
+      },
       // This is used most of the configs for IE 11 compat, which northstar doesn't need
-      delete config.target;
-    }
+      ...(packageName == '@fluentui/react-northstar' ? null : { target }),
+      devtool: undefined,
+      optimization: {
+        minimize: true,
+        minimizer: [
+          new TerserPlugin({
+            extractComments: false,
+          }),
+        ],
+      },
+      plugins: [
+        // This is needed because Webpack 5 no longer automatically resolves process.env values.
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
+        new BundleAnalyzerPlugin(anaylizerPluginOptions),
+      ],
+    };
 
     return config;
   });
