@@ -31,6 +31,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     initialState: '',
   });
 
+  // Tracks the focus of the component for the contentAfter and dismiss button
   const [focused, setFocused] = React.useState(false);
 
   const onFocus = useEventCallback(() => {

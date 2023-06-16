@@ -3,6 +3,7 @@ import { SearchBox, SearchBoxProps } from '@fluentui/react-search';
 
 import { FilterRegular } from '@fluentui/react-icons';
 
+// TODO: split into different stories
 export const Default = (props: Partial<SearchBoxProps>) => (
   <>
     <SearchBox {...props} contentAfter={<FilterRegular />} size="small" placeholder="small" />
