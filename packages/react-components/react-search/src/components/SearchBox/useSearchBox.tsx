@@ -38,7 +38,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   });
 
   const onBlur: React.FocusEventHandler<HTMLSpanElement> = useEventCallback(ev => {
-    setFocused(searchBoxRootRef.current?.contains(ev.relatedTarget));
+    setFocused(searchBoxRootRef.current!.contains(ev.relatedTarget));
   });
 
   const state: SearchBoxState = {
@@ -88,9 +88,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       required: true,
     }),
     contentAfter: resolveShorthand(contentAfter, {
-      defaultProps: {
-        tabIndex: -1,
-      },
       required: true,
     }),
 
