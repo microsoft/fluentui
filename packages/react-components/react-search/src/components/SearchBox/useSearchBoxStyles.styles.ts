@@ -39,13 +39,13 @@ const useRootStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalSNudge,
     paddingRight: 0,
 
-    // dismiss + contentAfter appear on focus
-    '& + span': {
-      display: 'none',
-    },
-    '&:focus + span': {
-      display: 'flex',
-    },
+    // // dismiss + contentAfter appear on focus
+    // '& + span': {
+    //   display: 'none',
+    // },
+    // '&:focus + span': {
+    //   display: 'flex',
+    // },
 
     // removes the WebKit pseudoelement styling
     '::-webkit-search-decoration': {
@@ -115,14 +115,22 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       dismissClassName,
       disabled && dismissStyles.disabled,
       dismissStyles[size],
+
+      focused && contentAfterStyles.focused,
+      !focused && contentAfterStyles.default,
+
       state.dismiss.className,
     );
   }
 
   if (state.contentAfter) {
-    state.contentAfter!.className = mergeClasses(
+    state.contentAfter.className = mergeClasses(
       searchBoxClassNames.contentAfter,
       contentAfterStyles.contentAfter,
+
+      focused && contentAfterStyles.focused,
+      !focused && contentAfterStyles.default,
+
       state.contentAfter.className,
     );
   } else if (state.dismiss) {

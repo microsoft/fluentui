@@ -55,6 +55,9 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       ref: useMergedRefs(searchBoxRef, ref),
       type: 'search',
       input: {}, // defining here to have access in styles hook
+
+      disabled,
+      size,
       value,
 
       root: {
@@ -89,8 +92,8 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     }),
     contentAfter: resolveShorthand(contentAfter, { required: true }),
 
-    focused,
     disabled,
+    focused,
     size,
   };
 
