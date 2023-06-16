@@ -163,6 +163,7 @@ import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
+import { DATA_OVERFLOW_DIVIDER } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
@@ -407,6 +408,7 @@ import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
 import { Overflow } from '@fluentui/react-overflow';
+import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
@@ -1341,6 +1343,8 @@ export { createTeamsDarkTheme }
 
 export { CurveTokens }
 
+export { DATA_OVERFLOW_DIVIDER }
+
 export { DATA_OVERFLOW_ITEM }
 
 export { DATA_OVERFLOW_MENU }
@@ -1828,6 +1832,8 @@ export { OptionSlots }
 export { OptionState }
 
 export { Overflow }
+
+export { OverflowDivider }
 
 export { OverflowItem }
 
