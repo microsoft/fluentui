@@ -33,6 +33,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.203",
+    "@fluentui/react-input": "^9.4.16",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.6",
     "@fluentui/react-theme": "^9.1.8",
     "@fluentui/react-utilities": "^9.9.2",
