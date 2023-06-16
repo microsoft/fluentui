@@ -22,7 +22,7 @@ import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLInputElement>): SearchBoxState => {
   const { size = 'medium', disabled = false, contentBefore, dismiss, contentAfter, ...inputProps } = props;
 
-  const rootRef = React.useRef<HTMLDivElement>(null);
+  const searchBoxRootRef = React.useRef<HTMLDivElement>(null);
   const searchBoxRef = React.useRef<HTMLInputElement>(null);
 
   const [value, setValue] = useControllableState({
@@ -38,7 +38,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   });
 
   const onBlur: React.FocusEventHandler<HTMLSpanElement> = useEventCallback(ev => {
-    setFocused(rootRef.current!.contains(ev.relatedTarget));
+    setFocused(searchBoxRootRef.current?.contains(ev.relatedTarget));
   });
 
   const state: SearchBoxState = {
@@ -58,7 +58,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       value,
 
       root: {
-        ref: rootRef,
+        ref: searchBoxRootRef,
         onFocus,
         onBlur,
       },

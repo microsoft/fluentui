@@ -65,7 +65,7 @@ const useContentAfterStyles = makeStyles({
   focused: {
     display: 'flex',
   },
-  default: {
+  unfocused: {
     display: 'none',
   },
 });
@@ -116,8 +116,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       disabled && dismissStyles.disabled,
       dismissStyles[size],
 
-      focused && contentAfterStyles.focused,
-      !focused && contentAfterStyles.default,
+      focused ? contentAfterStyles.focused : contentAfterStyles.unfocused,
 
       state.dismiss.className,
     );
@@ -128,8 +127,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       searchBoxClassNames.contentAfter,
       contentAfterStyles.contentAfter,
 
-      focused && contentAfterStyles.focused,
-      !focused && contentAfterStyles.default,
+      focused ? contentAfterStyles.focused : contentAfterStyles.unfocused,
 
       state.contentAfter.className,
     );
