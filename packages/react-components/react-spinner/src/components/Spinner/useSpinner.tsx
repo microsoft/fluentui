@@ -3,6 +3,7 @@ import { getNativeElementProps, resolveShorthand, useId, useTimeout } from '@flu
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultSvg } from './DefaultSvg';
+import { useSpinnerContext } from '../../contexts/SpinnerContext';
 
 /**
  * Create the state required to render Spinner.
@@ -15,7 +16,8 @@ import { DefaultSvg } from './DefaultSvg';
  */
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
   // Props
-  const { appearance = 'primary', labelPosition = 'after', size = 'medium', delay = 0 } = props;
+  const { size: contextSize } = useSpinnerContext();
+  const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
   const { role = 'progressbar', tabIndex, ...rest } = props;
