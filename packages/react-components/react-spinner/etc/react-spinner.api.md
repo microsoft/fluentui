@@ -4,13 +4,7 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
@@ -21,13 +15,25 @@ export const Spinner: ForwardRefComponent<SpinnerProps>;
 // @public (undocumented)
 export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
 
+// @internal (undocumented)
+export const SpinnerContextProvider: React_2.Provider<SpinnerContextValue | undefined>;
+
+// @internal (undocumented)
+export interface SpinnerContextValue {
+    // (undocumented)
+    size?: SpinnerSize;
+}
+
 // @public
 export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
     appearance?: 'primary' | 'inverted';
     delay?: number;
     labelPosition?: 'above' | 'below' | 'before' | 'after';
-    size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+    size?: SpinnerSize;
 };
+
+// @public
+export type SpinnerSize = 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 
 // @public (undocumented)
 export type SpinnerSlots = {
@@ -43,6 +49,9 @@ export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerP
 
 // @public
 export const useSpinner_unstable: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;
+
+// @internal (undocumented)
+export const useSpinnerContext: () => SpinnerContextValue;
 
 // @public
 export const useSpinnerStyles_unstable: (state: SpinnerState) => SpinnerState;

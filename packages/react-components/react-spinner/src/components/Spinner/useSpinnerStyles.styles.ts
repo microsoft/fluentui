@@ -274,6 +274,10 @@ const useLabelStyles = makeStyles({
 
   primary: {}, // no change
 
+  'extra-tiny': {
+    ...typographyStyles.body1,
+  },
+
   tiny: {
     ...typographyStyles.body1,
   },
