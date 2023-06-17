@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add extra-tiny value to size prop of Spinner",
+  "packageName": "@fluentui/react-spinner",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
