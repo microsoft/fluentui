@@ -9,5 +9,6 @@ export type {
   OverflowEventPayload,
   OverflowGroupState,
   OverflowItemEntry,
+  OverflowDividerEntry,
   OverflowManager,
 } from './types';

@@ -37,6 +37,7 @@ export const useTagBaseStyles = makeStyles({
     ...typographyStyles.body1,
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tokens.spacingHorizontalXXS,
+    whiteSpace: 'nowrap',
   },
   primaryTextWithSecondaryText: {
     ...shorthands.gridArea('primary'),
@@ -47,6 +48,7 @@ export const useTagBaseStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tokens.spacingHorizontalXXS,
     ...typographyStyles.caption2,
+    whiteSpace: 'nowrap',
   },
 });
 
