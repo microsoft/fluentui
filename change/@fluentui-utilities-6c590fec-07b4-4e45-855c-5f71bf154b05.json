@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: cast to String keys interpolated within string literals",
+  "packageName": "@fluentui/utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

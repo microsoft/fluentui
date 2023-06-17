@@ -170,7 +170,7 @@ export const useToastBodyStyles_unstable: (state: ToastBodyState) => ToastBodySt
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {
-    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions | undefined) => void;
+    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions) => void;
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
     updateToast: (options: UpdateToastOptions) => void;
