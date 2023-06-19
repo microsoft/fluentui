@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Mon, 19 Jun 2023 07:36:38 GMT",
+      "tag": "@fluentui/api-docs_v8.2.11",
+      "version": "8.2.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "commit": "cf6b94ba6559236150bc1f1814b023607edaeb20",
+            "comment": "chore: bump api-extractor-model to support typescript 4.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 07:38:38 GMT",
       "tag": "@fluentui/api-docs_v8.2.10",
       "version": "8.2.10",

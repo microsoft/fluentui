@@ -28,3 +28,7 @@ export function getTemplate(src: string, substitutions: Record<string, unknown>)
     throw err;
   }
 }
+
+export function uniqueArray<T extends unknown>(value: T[]) {
+  return Array.from(new Set(value));
+}

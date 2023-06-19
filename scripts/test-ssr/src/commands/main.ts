@@ -15,8 +15,6 @@ import { renderToHTML } from '../utils/renderToHTML';
 import { visitPage } from '../utils/visitPage';
 
 const EXCLUDED_STORIES = [
-  // TODO: https://github.com/microsoft/fluentui/issues/27957
-  '**/react-datepicker-compat/**',
   // Portals currently do not support hydration
   // https://github.com/facebook/react/issues/13097
   '**/react-portal/**',
