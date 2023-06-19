@@ -2,9 +2,9 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
 import { useTableContext } from '../../contexts/tableContext';
-import { useARIAButtonProps } from '@fluentui/react-aria';
 
 const sortIcons = {
   ascending: <ArrowUpRegular fontSize={12} />,
@@ -28,10 +28,6 @@ export const useTableHeaderCell_unstable = (
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
 
-  // The button slot should only have button semantics if the header is sortable
-  const buttonSlot = resolveShorthand(props.button, { required: true });
-  const ariaButtonSlot = useARIAButtonProps('div', buttonSlot);
-
   return {
     components: {
       root: rootComponent,
@@ -50,7 +46,16 @@ export const useTableHeaderCell_unstable = (
       required: !!props.sortDirection,
       defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },
     }),
-    button: sortable ? ariaButtonSlot : buttonSlot,
+    button: useARIAButtonShorthand(props.button, {
+      required: true,
+      defaultProps: {
+        as: 'div',
+        ...(!sortable && {
+          role: 'presentation',
+          tabIndex: undefined,
+        }),
+      },
+    }),
     sortable,
     noNativeElements,
   };

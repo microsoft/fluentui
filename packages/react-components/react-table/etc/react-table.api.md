@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
@@ -407,7 +408,7 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
 export type TableHeaderCellSlots = {
     root: Slot<'th', 'div'>;
     sortIcon: Slot<'span'>;
-    button: NonNullable<Slot<'div'>>;
+    button: NonNullable<ARIAButtonSlotProps>;
     aside: Slot<'span'>;
 };
 

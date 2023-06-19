@@ -115,6 +115,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
+
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,
