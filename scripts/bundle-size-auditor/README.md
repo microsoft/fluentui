@@ -23,6 +23,19 @@ Add task to your package.json
 }
 ```
 
+### Options
+
+#### `--report-path`
+
+While fixtures and bundles will be created locally within your package `./temp/fixtures/`,
+this path should point to same folder for all packages using this tool within monorepo, as we will process that path for CI.
+
+#### `--create-report`
+
+> mostly used on CI
+
+if used `--report-path` is mandatory. this will generate a merged `bundlesizes.json` metadata from all provided bundle within report-path folder.
+
 ## How it works
 
 1. creates fixtures for your modules within a package
@@ -46,10 +59,13 @@ Ligtrail service is configured within monorepo root [sizeauditor.json](./sizeaud
 
 Those `drop` values need to be the same as artifact name being uploaded on CI
 
+[pipeline config](../../azure-pipelines.bundlesize.yml)
+
 ```yml
 - task: PublishBuildArtifacts@1
         displayName: 'Publish Merged Bundle Size information for lightrail processing'
         inputs:
           PathtoPublish: 'dist/bundle-size-auditor/bundlesizes.json'
+          # This one needs to be identical to "devopsDropFolderName" and "devopsAssemblyArtifactName" within sizeauditor.json
           ArtifactName: drop
 ```
