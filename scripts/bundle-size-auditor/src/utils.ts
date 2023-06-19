@@ -18,6 +18,7 @@ export function createWebpackConfigTemplate(cwd: string, entries: Entries, packa
     entries: entries,
     packageName: packageName,
     bundleRootPath: bundleRootPath,
+    transpileToEs5: packageName !== '@fluentui/react-northstar',
   };
   const template = `
     const { createWebpackConfig } = require('@fluentui/scripts-bundle-size-auditor');
@@ -32,8 +33,13 @@ export function createWebpackConfigTemplate(cwd: string, entries: Entries, packa
   return webpackConfigPath;
 }
 
-export function createWebpackConfig(options: { entries: Entries; packageName: string; bundleRootPath: string }) {
-  const { bundleRootPath, entries, packageName } = options;
+export function createWebpackConfig(options: {
+  entries: Entries;
+  packageName: string;
+  bundleRootPath: string;
+  transpileToEs5: boolean;
+}) {
+  const { bundleRootPath, entries, transpileToEs5 } = options;
 
   const cssRule = {
     test: /\.css$/,
@@ -44,9 +50,11 @@ export function createWebpackConfig(options: { entries: Entries; packageName: st
   /**
    * As of webpack 5, you have to add the `es5` target for IE 11 compatibility.
    * Otherwise it will output lambdas for smaller bundle size.
-   * https://webpack.js.org/migrate/5/#need-to-support-an-older-browser-like-ie-11
+   * @see https://webpack.js.org/migrate/5/#need-to-support-an-older-browser-like-ie-11
+   *
+   * NOTE: IE 11 compat is still needed? for fluentui/react (v8) ?
    */
-  const target = ['web', 'es5'];
+  const target = ['web', transpileToEs5 ? 'es5' : null].filter(Boolean) as string[];
 
   return Object.entries(entries).map(([entryName, entryDefinition]) => {
     const { entryPath, includeStats } = entryDefinition;
@@ -101,11 +109,11 @@ export function createWebpackConfig(options: { entries: Entries; packageName: st
         'react-dom': 'ReactDOM',
       },
       module: {
+        /* TODO: this should be no longer needed ? - https://github.com/webpack/webpack/issues/1721 */
         noParse: [/autoit.js/],
         rules: [cssRule],
       },
-      // This is used most of the configs for IE 11 compat, which northstar doesn't need
-      ...(packageName == '@fluentui/react-northstar' ? null : { target }),
+      target,
       devtool: undefined,
       optimization: {
         minimize: true,
