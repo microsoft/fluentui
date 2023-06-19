@@ -13,6 +13,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Link } from '@fluentui/react-link';
+import { LinkProps } from '@fluentui/react-link';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -83,7 +84,7 @@ export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps>;
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots>;
 
 // @public
-export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & {
+export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<LinkProps, 'appearance' | 'disabled'> & {
     current?: boolean;
     iconPosition?: 'before' | 'after';
     overflow?: boolean;
@@ -97,13 +98,14 @@ export type BreadcrumbLinkSlots = {
 };
 
 // @public
-export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Required<Pick<BreadcrumbLinkProps, 'iconPosition' | 'disabled' | 'overflow' | 'current' | 'size'>> & {
+export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<Omit<BreadcrumbLinkProps, 'size'>> & Required<Pick<BreadcrumbLinkProps, 'size'>> & {
     iconOnly: boolean;
 };
 
 // @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     appearance?: 'transparent' | 'subtle';
+    focusMode?: 'arrow' | 'tab';
     dividerType?: 'chevron' | 'slash';
     iconPosition?: 'before' | 'after';
     size?: 'small' | 'medium' | 'large';
@@ -117,6 +119,23 @@ export type BreadcrumbSlots = {
 
 // @public
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
+
+// @public (undocumented)
+export type PartitionBreadcrumbItems<T> = {
+    startDisplayedItems: readonly T[];
+    overflowItems?: readonly T[];
+    endDisplayedItems?: readonly T[];
+};
+
+// @public
+export const partitionBreadcrumbItems: <T>(options: PartitionBreadcrumbItemsOptions<T>) => PartitionBreadcrumbItems<T>;
+
+// @public (undocumented)
+export type PartitionBreadcrumbItemsOptions<T> = {
+    items: readonly T[];
+    maxDisplayedItems?: number;
+    overflowIndex?: number;
+};
 
 // @public
 export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSX.Element;
@@ -132,6 +151,12 @@ export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.
 
 // @public
 export const renderBreadcrumbLink_unstable: (state: BreadcrumbLinkState) => JSX.Element;
+
+// @public (undocumented)
+export const truncateBreadcrumbLongName: (content: string, maxLength?: number) => string;
+
+// @public (undocumented)
+export const truncateBreadcrumLongTooltip: (content: string, maxLength?: number) => string;
 
 // @public
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;

@@ -1,22 +1,22 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "lib",
-    "target": "es6",
-    "module": "commonjs",
+    "target": "ES2019",
+    "noEmit": true,
     "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
     "isolatedModules": true,
-    "lib": ["es2017", "dom"],
-    "types": ["jest", "node"]
+    "importHelpers": true,
+    "preserveConstEnums": true,
+    "noUnusedLocals": true
   },
-  "include": ["src"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

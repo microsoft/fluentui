@@ -589,6 +589,29 @@ export {
 } from '@fluentui/react-select';
 export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 export {
+  Skeleton,
+  renderSkeleton_unstable,
+  skeletonClassNames,
+  useSkeletonStyles_unstable,
+  useSkeleton_unstable,
+  SkeletonItem,
+  renderSkeletonItem_unstable,
+  skeletonItemClassNames,
+  useSkeletonItemStyles_unstable,
+  useSkeletonItem_unstable,
+  SkeletonContextProvider,
+  useSkeletonContext,
+} from '@fluentui/react-skeleton';
+export type {
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonState,
+  SkeletonItemProps,
+  SkeletonItemSlots,
+  SkeletonItemState,
+  SkeletonContextValue,
+} from '@fluentui/react-skeleton';
+export {
   Slider,
   sliderClassNames,
   sliderCSSVars,
@@ -809,6 +832,7 @@ export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@flue
 export {
   Overflow,
   OverflowItem,
+  OverflowDivider,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
   useOverflowCount,
@@ -816,6 +840,7 @@ export {
   DATA_OVERFLOWING,
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
+  DATA_OVERFLOW_DIVIDER,
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';

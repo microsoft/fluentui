@@ -92,6 +92,11 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDataGridHeaderStyles_unstable: CustomStyleHook;
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+    useDrawerStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerHeaderStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -179,6 +184,11 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDataGridHeaderStyles_unstable: CustomStyleHook;
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+    useDrawerStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerHeaderStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -266,6 +276,11 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDataGridHeaderStyles_unstable: CustomStyleHook;
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
+    useDrawerStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerHeaderStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
@@ -316,7 +331,7 @@ export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextVa
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue_unstable" which is marked as @internal
 //
 // @public (undocumented)
 export function useOverrides_unstable(): OverridesContextValue_unstable;

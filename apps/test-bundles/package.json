@@ -5,14 +5,13 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "bundle:size": "just-scripts bundle",
+    "bundle-size-auditor": "just-scripts bundle-size",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "parallel-webpack": "^2.6.0",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"
   }

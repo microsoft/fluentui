@@ -229,7 +229,7 @@ export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
 
 // @public
-export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLElement>) => DialogTitleState;
+export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLDivElement>) => DialogTitleState;
 
 // @public
 export const useDialogTitleStyles_unstable: (state: DialogTitleState) => DialogTitleState;
