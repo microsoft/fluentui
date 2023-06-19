@@ -24,7 +24,13 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
         children: toastsToRender.get(toastPosition)?.map(toast => (
-          <ToastContainer {...toast} announce={announce} key={toast.toastId} visible={isToastVisible(toast.toastId)}>
+          <ToastContainer
+            {...toast}
+            intent={toast.intent}
+            announce={announce}
+            key={toast.toastId}
+            visible={isToastVisible(toast.toastId)}
+          >
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),

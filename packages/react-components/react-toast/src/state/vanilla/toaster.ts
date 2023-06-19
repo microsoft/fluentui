@@ -45,7 +45,6 @@ export class Toaster {
     this.onUpdate = () => null;
     this.toastOptions = {
       onStatusChange: undefined,
-      politeness: 'polite',
       priority: 0,
       pauseOnHover: false,
       pauseOnWindowBlur: false,

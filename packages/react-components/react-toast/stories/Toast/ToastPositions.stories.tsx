@@ -9,9 +9,9 @@ export const ToastPositions = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success">This toast is {position}</ToastTitle>
+        <ToastTitle>This toast is {position}</ToastTitle>
       </Toast>,
-      { position },
+      { position, intent: 'success' },
     );
 
   return (

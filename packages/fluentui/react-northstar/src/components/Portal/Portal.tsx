@@ -99,7 +99,7 @@ export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalPr
 
   const renderPortal = (): JSX.Element | undefined => {
     const contentToRender = childrenExist(children) ? children : content;
-    const focusTrapZoneProps = (_.keys(trapFocus).length && trapFocus) || {};
+    const focusTrapZoneProps = typeof trapFocus === 'boolean' ? {} : trapFocus;
     return (
       open && (
         <Ref innerRef={portalRef}>

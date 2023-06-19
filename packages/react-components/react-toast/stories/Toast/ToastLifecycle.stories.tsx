@@ -54,9 +54,7 @@ export const ToastLifecycle = () => {
   const notify = () => {
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success" action={<Link>Undo</Link>}>
-          Email sent
-        </ToastTitle>
+        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
           <Link>Action</Link>
@@ -65,6 +63,7 @@ export const ToastLifecycle = () => {
       </Toast>,
       {
         timeout: 1000,
+        intent: 'success',
         onStatusChange: (e, { status: toastStatus }) => {
           setDismissed(toastStatus === 'unmounted');
           setStatusLog(prev => [[Date.now(), toastStatus], ...prev]);
