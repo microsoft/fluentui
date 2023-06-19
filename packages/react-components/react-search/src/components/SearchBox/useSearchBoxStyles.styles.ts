@@ -54,8 +54,10 @@ const useContentAfterStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalM,
     columnGap: tokens.spacingHorizontalXS,
   },
-  unfocused: {
-    display: 'none',
+  rest: {
+    opacity: 0,
+    height: 0,
+    weight: 0,
   },
 });
 
@@ -114,7 +116,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       searchBoxClassNames.contentAfter,
       contentAfterStyles.contentAfter,
 
-      !focused && contentAfterStyles.unfocused,
+      !focused && contentAfterStyles.rest,
 
       state.contentAfter.className,
     );

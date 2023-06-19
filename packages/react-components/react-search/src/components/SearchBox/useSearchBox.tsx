@@ -67,7 +67,9 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
 
       ...inputProps,
 
-      root: resolveShorthand(root),
+      root: resolveShorthand(root, {
+        required: true,
+      }),
 
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
@@ -94,13 +96,9 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   };
 
   const searchBoxRoot = state.root.root as InputState['root'];
-  const onRootFocus = useEventCallback(mergeCallbacks(searchBoxRoot.onFocus, onFocus));
-  const onRootBlur = useEventCallback(mergeCallbacks(searchBoxRoot.onBlur, onBlur));
-  if (searchBoxRoot) {
-    searchBoxRoot.ref = searchBoxRootRef;
-    searchBoxRoot.onFocus = onRootFocus;
-    searchBoxRoot.onBlur = onRootBlur;
-  }
+  searchBoxRoot.ref = searchBoxRootRef;
+  searchBoxRoot.onFocus = useEventCallback(mergeCallbacks(searchBoxRoot.onFocus, onFocus));
+  searchBoxRoot.onBlur = useEventCallback(mergeCallbacks(searchBoxRoot.onBlur, onBlur));
 
   const onDismissClick = useEventCallback(mergeCallbacks(state.dismiss?.onClick, () => setValue('')));
   if (state.dismiss) {
