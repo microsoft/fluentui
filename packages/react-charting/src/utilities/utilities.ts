@@ -244,6 +244,7 @@ export function createDateXAxis(
   }
   const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
     const tickFormat = xAxis.tickFormat();
+    // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
     return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date);
   });
   return { xScale: xAxisScale, tickValues };
