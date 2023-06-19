@@ -73,7 +73,7 @@ jobs:
         displayName: 'Merge generated bundlesize.json into bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Merged Bundle Size information'
+        displayName: 'Publish Merged Bundle Size information for lightrail processing'
         inputs:
           PathtoPublish: 'dist/bundle-size-auditor/bundlesizes.json'
           ArtifactName: drop
