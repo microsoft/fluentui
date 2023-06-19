@@ -20,7 +20,7 @@ const iconSizes = {
 const fieldHeights = {
   small: '10px',
   medium: '20px',
-  large: '30px',
+  large: '90px',
 };
 
 /* Since the <select> element must span the full width and cannot have children,
