@@ -20,7 +20,7 @@ import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of SearchBox
  */
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLInputElement>): SearchBoxState => {
-  const { size = 'medium', disabled = false, contentBefore, dismiss, contentAfter, ...inputProps } = props;
+  const { size = 'medium', disabled = false, root, contentBefore, dismiss, contentAfter, ...inputProps } = props;
 
   const searchBoxRootRef = React.useRef<HTMLDivElement>(null);
   const searchBoxRef = React.useRef<HTMLInputElement>(null);
@@ -58,12 +58,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       size,
       value,
 
-      root: {
-        ref: searchBoxRootRef,
-        onFocus,
-        onBlur,
-      },
-
       contentBefore: resolveShorthand(contentBefore, {
         defaultProps: {
           children: <SearchRegular />,
@@ -72,6 +66,14 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       }),
 
       ...inputProps,
+
+      root: resolveShorthand(root, {
+        defaultProps: {
+          ref: searchBoxRootRef,
+          onFocus,
+          onBlur,
+        },
+      }),
 
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;

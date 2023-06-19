@@ -105,8 +105,6 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       disabled && dismissStyles.disabled,
       dismissStyles[size],
 
-      !focused && contentAfterStyles.unfocused,
-
       state.dismiss.className,
     );
   }
