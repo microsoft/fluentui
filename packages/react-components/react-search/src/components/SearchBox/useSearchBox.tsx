@@ -6,7 +6,7 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { Input } from '@fluentui/react-input';
+import { Input, InputState } from '@fluentui/react-input';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 
@@ -67,13 +67,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
 
       ...inputProps,
 
-      root: resolveShorthand(root, {
-        defaultProps: {
-          ref: searchBoxRootRef,
-          onFocus,
-          onBlur,
-        },
-      }),
+      root: resolveShorthand(root),
 
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
@@ -98,6 +92,15 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     focused,
     size,
   };
+
+  const searchBoxRoot = state.root.root as InputState['root'];
+  const onRootFocus = useEventCallback(mergeCallbacks(searchBoxRoot.onFocus, onFocus));
+  const onRootBlur = useEventCallback(mergeCallbacks(searchBoxRoot.onBlur, onBlur));
+  if (searchBoxRoot) {
+    searchBoxRoot.ref = searchBoxRootRef;
+    searchBoxRoot.onFocus = onRootFocus;
+    searchBoxRoot.onBlur = onRootBlur;
+  }
 
   const onDismissClick = useEventCallback(mergeCallbacks(state.dismiss?.onClick, () => setValue('')));
   if (state.dismiss) {

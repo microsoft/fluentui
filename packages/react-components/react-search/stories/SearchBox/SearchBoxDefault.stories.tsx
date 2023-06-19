@@ -16,5 +16,6 @@ export const Default = (props: Partial<SearchBoxProps>) => (
       contentAfter={<FilterRegular tabIndex={0} onClick={() => console.log('clicked')} />}
       placeholder="contentAfter button"
     />
+    <SearchBox root={{ onFocus: () => console.log('test') }} placeholder="custom onFocus" />
   </>
 );
