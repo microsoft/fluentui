@@ -408,7 +408,7 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
 export type TableHeaderCellSlots = {
     root: Slot<'th', 'div'>;
     sortIcon: Slot<'span'>;
-    button: NonNullable<ARIAButtonSlotProps>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
     aside: Slot<'span'>;
 };
 
