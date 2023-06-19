@@ -76,9 +76,10 @@ jobs:
         displayName: 'Publish Merged Bundle Size information'
         inputs:
           PathtoPublish: 'dist/bundle-size-auditor/bundlesizes.json'
+          ArtifactName: drop
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
+        displayName: 'Publish bundled artifacts for debug'
         inputs:
           PathtoPublish: 'dist/bundle-size-auditor'
           ArtifactName: distdrop
