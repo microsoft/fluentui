@@ -41,7 +41,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           "display": "block",
         }
       }
-      width={116}
+      width={0}
     >
       <g
         className=
@@ -201,7 +201,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={72}
+              x={-44}
               y={127.88461538461539}
             />
             <rect
@@ -225,7 +225,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={72}
+              x={-44}
               y={29.807692307692307}
             />
           </g>
@@ -241,7 +241,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={80}
+            x={-36}
             y={23.807692307692307}
           >
             50
@@ -690,7 +690,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           "display": "block",
         }
       }
-      width={116}
+      width={0}
     >
       <g
         className=
@@ -850,7 +850,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={72}
+              x={-44}
               y={127.88461538461539}
             />
             <rect
@@ -874,7 +874,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={72}
+              x={-44}
               y={29.807692307692307}
             />
           </g>
@@ -890,7 +890,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={80}
+            x={-36}
             y={23.807692307692307}
           >
             50
@@ -1257,7 +1257,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           "display": "block",
         }
       }
-      width={116}
+      width={0}
     >
       <g
         className=
@@ -1408,7 +1408,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={72}
+              x={-44}
               y={127.88461538461539}
             />
             <rect
@@ -1423,7 +1423,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               key="2"
               transform="translate(0, 0)"
               width={16}
-              x={72}
+              x={-44}
               y={29.807692307692307}
             />
           </g>
@@ -1439,7 +1439,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={80}
+            x={-36}
             y={23.807692307692307}
           >
             50
@@ -1455,7 +1455,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           strokeWidth={3}
           transform="translate(0, 0)"
           x1={56}
-          x2={80}
+          x2={-36}
           y1={201.4423076923077}
           y2={127.88461538461539}
         />
@@ -1472,7 +1472,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           visibility="visibility"
         />
         <circle
-          cx={80}
+          cx={-36}
           cy={127.88461538461539}
           fill="#ffffff"
           key="0-1-dot"

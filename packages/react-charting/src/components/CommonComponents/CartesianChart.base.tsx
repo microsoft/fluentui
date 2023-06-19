@@ -662,7 +662,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       }
       if (this.props.parentRef || this.chartContainer) {
         const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-        const currentContainerWidth = Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth());
+        const currentContainerWidth = this.props.enableReflow
+          ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
+          : container.getBoundingClientRect().width;
         const currentContainerHeight =
           container.getBoundingClientRect().height > legendContainerHeight
             ? container.getBoundingClientRect().height
@@ -699,7 +701,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   };
 
   private _calculateChartMinWidth = (): number => {
-    let labelWidth = 10; // label padding
+    let labelWidth = 10; // Total padding on the left and right sides of the label
+
     // Case: rotated labels
     if (
       !this.props.wrapXAxisLables &&
