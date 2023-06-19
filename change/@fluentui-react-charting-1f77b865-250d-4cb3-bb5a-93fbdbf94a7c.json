@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix overlapping axis labels on smaller viewports",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -26,6 +26,9 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -547,6 +550,9 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -965,6 +971,9 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
@@ -1385,6 +1394,9 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone85"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1718,6 +1730,9 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
@@ -2053,6 +2068,9 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone41"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2367,6 +2385,9 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2540,6 +2561,9 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone30"
     onFocus={[Function]}
@@ -2875,6 +2899,9 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone52"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3209,6 +3236,9 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone63"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3542,6 +3572,9 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone74"
     onFocus={[Function]}
