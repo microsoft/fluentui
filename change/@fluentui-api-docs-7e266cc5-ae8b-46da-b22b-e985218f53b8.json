@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: bump api-extractor-model to support typescript 4.7",
-  "packageName": "@fluentui/api-docs",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
