@@ -7,7 +7,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const FIXTURE_PATH = 'temp/fixtures/';
 
+/**
+ *
+ * @param {{[entryName:string]:{entryPath:string, includeStats:boolean}}} entries
+ * @param {string} packageName
+ * @returns
+ */
 function createWebpackConfig(entries, packageName) {
+  const normalizedPkgName = packageName.replace('@fluentui/', '');
   return Object.keys(entries).map(entryName => {
     /** @type {BundleAnalyzerPlugin.Options} */
     let anaylizerPluginOptions = {
@@ -52,6 +59,10 @@ function createWebpackConfig(entries, packageName) {
       {
         entry: {
           [entryName]: entryPath,
+        },
+        output: {
+          filename: `[name].min.js`,
+          path: path.resolve(__dirname, 'dist', normalizedPkgName),
         },
         externals: {
           react: 'React',
@@ -130,6 +141,9 @@ function createFluentReactFixtures() {
   });
 }
 
+/**
+ * @param {string} packageName
+ */
 function createEntry(packageName) {
   try {
     // import everything from a single package
@@ -145,11 +159,13 @@ function createEntry(packageName) {
 /**
  * Build webpack entries from created fixtures.
  *
+ * @param {string} packageName
+ * @param {{[entryName:string]:{entryPath:string, includeStats:boolean}}} [entries]
  * @param {boolean} [includeStats] - Stats are generated and used by the size auditor report
- * to check more details on what caused the bundle size change. Due to stats generation being slow,
- * and therefore slowing down CI significantly, setting this to true to avoid stats generation.
- * If bundle size is changed unexpectedly, developers can drill down deeper on the problem by
- * locally running bundle tests.
+to check more details on what caused the bundle size change. Due to stats generation being slow,
+and therefore slowing down CI significantly, setting this to true to avoid stats generation.
+If bundle size is changed unexpectedly, developers can drill down deeper on the problem by
+locally running bundle tests.
  */
 function buildEntries(packageName, entries = {}, includeStats = true) {
   const folderName = getFolderName(packageName);
@@ -169,6 +185,8 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
 
 /**
  * Build entries for single fixture with top level import.
+ * @param {string} packageName
+ * @param {boolean} [includeStats]
  */
 function buildEntry(packageName, includeStats = true) {
   const folderName = getFolderName(packageName);
@@ -179,6 +197,9 @@ function buildEntry(packageName, includeStats = true) {
   };
 }
 
+/**
+ * @param {string} packageName
+ */
 function getFolderName(packageName) {
   return packageName.replace('@fluentui/', '');
 }

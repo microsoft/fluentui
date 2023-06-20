@@ -7,12 +7,13 @@ describe('SearchBox', () => {
   isConformant({
     Component: SearchBox,
     displayName: 'SearchBox',
+    primarySlot: 'input',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<SearchBox>Default SearchBox</SearchBox>);
+    const result = render(<SearchBox />);
     expect(result.container).toMatchSnapshot();
   });
 });

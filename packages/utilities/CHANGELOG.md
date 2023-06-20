@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Jun 2023 07:36:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.17](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.17)
+
+Mon, 19 Jun 2023 07:36:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.16..@fluentui/utilities_v8.13.17)
+
+### Patches
+
+- fix: cast to String keys interpolated within string literals ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
 
 ## [8.13.16](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.16)
 

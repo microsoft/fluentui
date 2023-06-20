@@ -9,7 +9,6 @@ export const DismissToastWithAction = () => {
     dispatchToast(
       <Toast>
         <ToastTitle
-          intent="success"
           action={
             <ToastTrigger>
               <Link>Dismiss</Link>
@@ -19,7 +18,7 @@ export const DismissToastWithAction = () => {
           Dismiss me
         </ToastTitle>
       </Toast>,
-      { timeout: -1 },
+      { timeout: -1, intent: 'success' },
     );
 
   return (
