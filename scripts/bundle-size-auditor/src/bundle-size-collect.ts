@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-// @ts-ignore - no type defs available
 import { run } from 'parallel-webpack';
 
 import {
@@ -12,43 +11,48 @@ import {
   FIXTURE_PATH,
   FIXTURE_BUILD_PATH,
   writeFileSync,
+  Entries,
 } from './utils';
-import { Config } from './types';
+import type { Config } from './types';
 
-export function copyBundles(cwd: string, reportPath: string) {
-  const reportFullPath = path.join(cwd, reportPath);
+export async function copyBundles(rootDir: string, reportPath: string) {
+  const reportFullPath = path.isAbsolute(reportPath) ? reportPath : path.join(rootDir, reportPath);
 
-  fs.cpSync(path.join(cwd, FIXTURE_BUILD_PATH), reportFullPath, { recursive: true });
+  return fs.cpSync(path.join(rootDir, FIXTURE_BUILD_PATH), reportFullPath, { recursive: true });
 }
 
-export function bundle(
+export function prepareEntries(
   options: {
-    cwd: string;
+    rootDir: string;
     packageName: string;
   } & Config,
-): Promise<void> {
+) {
   const writeFixture = (entryName: string, content: string) => {
-    writeFileSync(path.join(cwd, FIXTURE_PATH, entryName), content, 'utf-8');
+    writeFileSync(path.join(rootDir, FIXTURE_PATH, entryName), content, 'utf-8');
   };
 
-  const { cwd, packageName, extraEntries = [], createFixtures } = options;
+  const { rootDir, packageName, extraEntries = [], createFixtures } = options;
 
   createFixtures({ writeFixture });
 
   extraEntries.forEach(extraEntry => {
-    createEntry(cwd, extraEntry);
+    createEntry(rootDir, extraEntry);
   });
 
-  const entries = buildEntries(cwd, packageName);
+  const entries = buildEntries(rootDir, packageName);
 
   extraEntries.forEach(extraEntry => {
-    const newEntry = buildEntry(cwd, extraEntry);
+    const newEntry = buildEntry(rootDir, extraEntry);
     Object.assign(entries, newEntry);
   });
 
-  const configPath = createWebpackConfigTemplate(cwd, entries, packageName);
+  return entries;
+}
 
-  return run(configPath, {});
+export async function bundleEntries(options: { rootDir: string; packageName: string; entries: Entries }) {
+  const configPath = createWebpackConfigTemplate(options);
+
+  return await run(configPath, {});
 }
 
 /**
@@ -57,10 +61,10 @@ export function bundle(
  *
  * It is uploaded as an artifact by the build definition in Azure Dev Ops and used to compare baseline and PR file size information which gets reported by Size Auditor
  */
-export function bundleSizeCollect(config: { cwd: string; packageName: string; filename?: string }) {
-  const { cwd, filename: outputFilename = 'bundlesize.json' } = config;
+export function bundleSizeCollect(config: { rootDir: string; packageName: string; filename: string }) {
+  const { rootDir, filename: outputFilename } = config;
 
-  const distRoot = path.join(cwd, FIXTURE_BUILD_PATH);
+  const distRoot = path.join(rootDir, FIXTURE_BUILD_PATH);
   const bundlesizeJsonPath = path.join(distRoot, outputFilename);
 
   const sizes: Record<string, number> = {};

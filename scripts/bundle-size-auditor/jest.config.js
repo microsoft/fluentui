@@ -7,7 +7,12 @@ module.exports = {
   displayName: 'scripts-bundle-size-auditor',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        isolatedModules: true,
+      },
+    ],
   },
   coverageDirectory: './coverage',
   testEnvironment: 'node',

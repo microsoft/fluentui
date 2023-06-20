@@ -5,14 +5,16 @@ import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 
 type Entry = { entryPath: string; includeStats: boolean };
-type Entries = { [entryName: string]: Entry };
+export type Entries = { [entryName: string]: Entry };
 
 export const FIXTURE_PATH = 'temp/fixtures';
 export const FIXTURE_BUILD_PATH = path.join(FIXTURE_PATH, 'build');
+export const CONFIG_NAME = 'bundle-size-auditor.config.js';
 
-export function createWebpackConfigTemplate(cwd: string, entries: Entries, packageName: string) {
-  const rootDir = path.posix.join(cwd, FIXTURE_PATH);
-  const bundleRootPath = path.posix.join(cwd, FIXTURE_BUILD_PATH);
+export function createWebpackConfigTemplate(options: { rootDir: string; entries: Entries; packageName: string }) {
+  const { entries, packageName, rootDir } = options;
+  const projectRootDir = path.posix.join(rootDir, FIXTURE_PATH);
+  const bundleRootPath = path.posix.join(rootDir, FIXTURE_BUILD_PATH);
 
   const webpackConfig: Parameters<typeof createWebpackConfig>[0] = {
     entries: entries,
@@ -26,7 +28,7 @@ export function createWebpackConfigTemplate(cwd: string, entries: Entries, packa
     module.exports = createWebpackConfig(${JSON.stringify(webpackConfig, null, 2)});
  `;
 
-  const webpackConfigPath = path.join(rootDir, 'webpack.bundle-size-auditor.config.js');
+  const webpackConfigPath = path.join(projectRootDir, 'webpack.bundle-size-auditor.config.js');
 
   fs.writeFileSync(webpackConfigPath, template, 'utf-8');
 
@@ -143,6 +145,8 @@ export function createEntry(cwd: string, packageName: string) {
     const folderName = getFolderName(packageName);
     const entryPath = path.join(cwd, FIXTURE_PATH, folderName, 'index.js');
     writeFileSync(entryPath, importStatement, 'utf-8');
+
+    return entryPath;
   } catch (err) {
     console.log(err);
   }
