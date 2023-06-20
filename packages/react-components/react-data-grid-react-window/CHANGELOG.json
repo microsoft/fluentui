@@ -2,6 +2,51 @@
   "name": "@fluentui/react-data-grid-react-window",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 12:38:57 GMT",
+      "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.30",
+      "version": "9.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "54316f1ded96bffa3505140ec68031afd0cebdb6",
+            "comment": "Fixed an issue where columns would overflow when resizableColumns is on"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-table to v9.4.0",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-components to v9.22.0",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 06:46:23 GMT",
       "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.29",
       "version": "9.0.0-beta.29",

@@ -9,6 +9,7 @@ export { Media } from './TagButtonMedia.stories';
 export { SecondaryText } from './TagButtonSecondaryText.stories';
 export { Dismiss } from './TagButtonDismiss.stories';
 export { Shape } from './TagButtonShape.stories';
+export { Size } from './TagButtonSize.stories';
 
 export default {
   title: 'Preview Components/Tag/TagButton',
