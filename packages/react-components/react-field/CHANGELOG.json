@@ -2,6 +2,57 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 12:38:58 GMT",
+      "tag": "@fluentui/react-field_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "8a5ae3aa00faa327c58887a99a5698b18f2930ee",
+            "comment": "chore: update @fluentui/react-icons to 2.0.203"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.1.16",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 06:46:14 GMT",
       "tag": "@fluentui/react-field_v9.1.6",
       "version": "9.1.6",
