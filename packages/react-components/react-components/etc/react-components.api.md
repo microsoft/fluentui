@@ -4,32 +4,1029 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { __css } from '@griffel/react';
 import { __resetCSS } from '@griffel/react';
 import { __resetStyles } from '@griffel/react';
 import { __styles } from '@griffel/react';
+import { Accordion } from '@fluentui/react-accordion';
+import { accordionClassNames } from '@fluentui/react-accordion';
+import { AccordionContextValue } from '@fluentui/react-accordion';
+import { AccordionContextValues } from '@fluentui/react-accordion';
+import { AccordionHeader } from '@fluentui/react-accordion';
+import { accordionHeaderClassNames } from '@fluentui/react-accordion';
+import { AccordionHeaderContextValue } from '@fluentui/react-accordion';
+import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
+import { AccordionHeaderExpandIconPosition } from '@fluentui/react-accordion';
+import { AccordionHeaderProps } from '@fluentui/react-accordion';
+import { AccordionHeaderSize } from '@fluentui/react-accordion';
+import { AccordionHeaderSlots } from '@fluentui/react-accordion';
+import { AccordionHeaderState } from '@fluentui/react-accordion';
+import { AccordionIndex } from '@fluentui/react-accordion';
+import { AccordionItem } from '@fluentui/react-accordion';
+import { accordionItemClassNames } from '@fluentui/react-accordion';
+import { AccordionItemContextValue } from '@fluentui/react-accordion';
+import { AccordionItemContextValues } from '@fluentui/react-accordion';
+import { AccordionItemProps } from '@fluentui/react-accordion';
+import { AccordionItemProvider } from '@fluentui/react-accordion';
+import { AccordionItemSlots } from '@fluentui/react-accordion';
+import { AccordionItemState } from '@fluentui/react-accordion';
+import { AccordionItemValue } from '@fluentui/react-accordion';
+import { AccordionPanel } from '@fluentui/react-accordion';
+import { accordionPanelClassNames } from '@fluentui/react-accordion';
+import { AccordionPanelProps } from '@fluentui/react-accordion';
+import { AccordionPanelSlots } from '@fluentui/react-accordion';
+import { AccordionPanelState } from '@fluentui/react-accordion';
+import { AccordionProps } from '@fluentui/react-accordion';
+import { AccordionProvider } from '@fluentui/react-accordion';
+import { AccordionSlots } from '@fluentui/react-accordion';
+import { AccordionState } from '@fluentui/react-accordion';
+import { AccordionToggleData } from '@fluentui/react-accordion';
+import { AccordionToggleEvent } from '@fluentui/react-accordion';
+import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { arrowHeights } from '@fluentui/react-popover';
+import { Avatar } from '@fluentui/react-avatar';
+import { avatarClassNames } from '@fluentui/react-avatar';
+import { AvatarGroup } from '@fluentui/react-avatar';
+import { avatarGroupClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupContextValue } from '@fluentui/react-avatar';
+import { AvatarGroupContextValues } from '@fluentui/react-avatar';
+import { AvatarGroupItem } from '@fluentui/react-avatar';
+import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupPopover } from '@fluentui/react-avatar';
+import { avatarGroupPopoverClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverProps } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverSlots } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverState } from '@fluentui/react-avatar';
+import { AvatarGroupProps } from '@fluentui/react-avatar';
+import { AvatarGroupProvider } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupState } from '@fluentui/react-avatar';
+import { AvatarNamedColor } from '@fluentui/react-avatar';
+import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
+import { AvatarSizes } from '@fluentui/react-avatar';
+import { AvatarSlots } from '@fluentui/react-avatar';
+import { AvatarState } from '@fluentui/react-avatar';
+import { Badge } from '@fluentui/react-badge';
+import { badgeClassNames } from '@fluentui/react-badge';
+import { BadgeProps } from '@fluentui/react-badge';
+import { BadgeSlots } from '@fluentui/react-badge';
+import { BadgeState } from '@fluentui/react-badge';
+import { Body1 } from '@fluentui/react-text';
+import { body1ClassNames } from '@fluentui/react-text';
+import { Body1Strong } from '@fluentui/react-text';
+import { body1StrongClassNames } from '@fluentui/react-text';
+import { Body1Stronger } from '@fluentui/react-text';
+import { body1StrongerClassNames } from '@fluentui/react-text';
+import { Body2 } from '@fluentui/react-text';
+import { body2ClassNames } from '@fluentui/react-text';
+import { BorderRadiusTokens } from '@fluentui/react-theme';
+import { BrandVariants } from '@fluentui/react-theme';
+import { Button } from '@fluentui/react-button';
+import { buttonClassNames } from '@fluentui/react-button';
+import { ButtonProps } from '@fluentui/react-button';
+import { ButtonSlots } from '@fluentui/react-button';
+import { ButtonState } from '@fluentui/react-button';
+import { Caption1 } from '@fluentui/react-text';
+import { caption1ClassNames } from '@fluentui/react-text';
+import { Caption1Strong } from '@fluentui/react-text';
+import { caption1StrongClassNames } from '@fluentui/react-text';
+import { Caption1Stronger } from '@fluentui/react-text';
+import { caption1StrongerClassNames } from '@fluentui/react-text';
+import { Caption2 } from '@fluentui/react-text';
+import { caption2ClassNames } from '@fluentui/react-text';
+import { Caption2Strong } from '@fluentui/react-text';
+import { caption2StrongClassNames } from '@fluentui/react-text';
+import { Card } from '@fluentui/react-card';
+import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
+import { CardFooter } from '@fluentui/react-card';
+import { cardFooterClassNames } from '@fluentui/react-card';
+import { CardFooterProps } from '@fluentui/react-card';
+import { CardFooterSlots } from '@fluentui/react-card';
+import { CardFooterState } from '@fluentui/react-card';
+import { CardHeader } from '@fluentui/react-card';
+import { cardHeaderClassNames } from '@fluentui/react-card';
+import { cardHeaderCSSVars } from '@fluentui/react-card';
+import { CardHeaderProps } from '@fluentui/react-card';
+import { CardHeaderSlots } from '@fluentui/react-card';
+import { CardHeaderState } from '@fluentui/react-card';
+import { CardPreview } from '@fluentui/react-card';
+import { cardPreviewClassNames } from '@fluentui/react-card';
+import { CardPreviewProps } from '@fluentui/react-card';
+import { CardPreviewSlots } from '@fluentui/react-card';
+import { CardPreviewState } from '@fluentui/react-card';
+import { CardProps } from '@fluentui/react-card';
+import { CardSlots } from '@fluentui/react-card';
+import { CardState } from '@fluentui/react-card';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { checkboxClassNames } from '@fluentui/react-checkbox';
+import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
+import { CheckboxSlots } from '@fluentui/react-checkbox';
+import { CheckboxState } from '@fluentui/react-checkbox';
+import { ColorPaletteTokens } from '@fluentui/react-theme';
+import { ColorTokens } from '@fluentui/react-theme';
+import { Combobox } from '@fluentui/react-combobox';
+import { comboboxClassNames } from '@fluentui/react-combobox';
+import { ComboboxContextValue } from '@fluentui/react-combobox';
+import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
+import { ComboboxOpenEvents } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxProvider } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
+import { ComboboxState } from '@fluentui/react-combobox';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { CompoundButton } from '@fluentui/react-button';
+import { compoundButtonClassNames } from '@fluentui/react-button';
+import { CompoundButtonProps } from '@fluentui/react-button';
+import { CompoundButtonSlots } from '@fluentui/react-button';
+import { CompoundButtonState } from '@fluentui/react-button';
+import { CounterBadge } from '@fluentui/react-badge';
+import { counterBadgeClassNames } from '@fluentui/react-badge';
+import { CounterBadgeProps } from '@fluentui/react-badge';
+import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
+import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
-import { FC } from 'react';
-import type { FunctionComponent } from 'react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
+import { createHighContrastTheme } from '@fluentui/react-theme';
+import { createLightTheme } from '@fluentui/react-theme';
+import { createTableColumn } from '@fluentui/react-table';
+import { CreateTableColumnOptions } from '@fluentui/react-table';
+import { createTeamsDarkTheme } from '@fluentui/react-theme';
+import { CurveTokens } from '@fluentui/react-theme';
+import { DATA_OVERFLOW_DIVIDER } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
+import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { DataGrid } from '@fluentui/react-table';
+import { DataGridBody } from '@fluentui/react-table';
+import { dataGridBodyClassNames } from '@fluentui/react-table';
+import { DataGridBodyProps } from '@fluentui/react-table';
+import { DataGridBodySlots } from '@fluentui/react-table';
+import { DataGridBodyState } from '@fluentui/react-table';
+import { DataGridCell } from '@fluentui/react-table';
+import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellProps } from '@fluentui/react-table';
+import { DataGridCellSlots } from '@fluentui/react-table';
+import { DataGridCellState } from '@fluentui/react-table';
+import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextValue } from '@fluentui/react-table';
+import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridHeader } from '@fluentui/react-table';
+import { DataGridHeaderCell } from '@fluentui/react-table';
+import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
+import { DataGridHeaderCellProps } from '@fluentui/react-table';
+import { DataGridHeaderCellSlots } from '@fluentui/react-table';
+import { DataGridHeaderCellState } from '@fluentui/react-table';
+import { dataGridHeaderClassNames } from '@fluentui/react-table';
+import { DataGridHeaderProps } from '@fluentui/react-table';
+import { DataGridHeaderSlots } from '@fluentui/react-table';
+import { DataGridHeaderState } from '@fluentui/react-table';
+import { DataGridProps } from '@fluentui/react-table';
+import { DataGridRow } from '@fluentui/react-table';
+import { dataGridRowClassNames } from '@fluentui/react-table';
+import { DataGridRowProps } from '@fluentui/react-table';
+import { DataGridRowSlots } from '@fluentui/react-table';
+import { DataGridRowState } from '@fluentui/react-table';
+import { DataGridSelectionCell } from '@fluentui/react-table';
+import { dataGridSelectionCellClassNames } from '@fluentui/react-table';
+import { DataGridSelectionCellProps } from '@fluentui/react-table';
+import { DataGridSelectionCellSlots } from '@fluentui/react-table';
+import { DataGridSelectionCellState } from '@fluentui/react-table';
+import { DataGridSlots } from '@fluentui/react-table';
+import { DataGridState } from '@fluentui/react-table';
+import { Dialog } from '@fluentui/react-dialog';
+import { DialogActions } from '@fluentui/react-dialog';
+import { dialogActionsClassNames } from '@fluentui/react-dialog';
+import { DialogActionsPosition } from '@fluentui/react-dialog';
+import { DialogActionsProps } from '@fluentui/react-dialog';
+import { DialogActionsSlots } from '@fluentui/react-dialog';
+import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBody } from '@fluentui/react-dialog';
+import { dialogBodyClassNames } from '@fluentui/react-dialog';
+import { DialogBodyProps } from '@fluentui/react-dialog';
+import { DialogBodySlots } from '@fluentui/react-dialog';
+import { DialogBodyState } from '@fluentui/react-dialog';
+import { DialogContent } from '@fluentui/react-dialog';
+import { dialogContentClassNames } from '@fluentui/react-dialog';
+import { DialogContentProps } from '@fluentui/react-dialog';
+import { DialogContentSlots } from '@fluentui/react-dialog';
+import { DialogContentState } from '@fluentui/react-dialog';
+import { DialogOpenChangeData } from '@fluentui/react-dialog';
+import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
+import { DialogProps } from '@fluentui/react-dialog';
+import { DialogSlots } from '@fluentui/react-dialog';
+import { DialogState } from '@fluentui/react-dialog';
+import { DialogSurface } from '@fluentui/react-dialog';
+import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import { DialogSurfaceState } from '@fluentui/react-dialog';
+import { DialogTitle } from '@fluentui/react-dialog';
+import { dialogTitleClassNames } from '@fluentui/react-dialog';
+import { DialogTitleProps } from '@fluentui/react-dialog';
+import { DialogTitleSlots } from '@fluentui/react-dialog';
+import { DialogTitleState } from '@fluentui/react-dialog';
+import { DialogTrigger } from '@fluentui/react-dialog';
+import { DialogTriggerAction } from '@fluentui/react-dialog';
+import { DialogTriggerChildProps } from '@fluentui/react-dialog';
+import { DialogTriggerProps } from '@fluentui/react-dialog';
+import { DialogTriggerState } from '@fluentui/react-dialog';
+import { Display } from '@fluentui/react-text';
+import { displayClassNames } from '@fluentui/react-text';
+import { Divider } from '@fluentui/react-divider';
+import { dividerClassNames } from '@fluentui/react-divider';
+import { DividerProps } from '@fluentui/react-divider';
+import { DividerSlots } from '@fluentui/react-divider';
+import { DividerState } from '@fluentui/react-divider';
+import { Dropdown } from '@fluentui/react-combobox';
+import { dropdownClassNames } from '@fluentui/react-combobox';
+import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownOpenChangeData } from '@fluentui/react-combobox';
+import { DropdownOpenEvents } from '@fluentui/react-combobox';
+import { DropdownProps } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
+import { DropdownState } from '@fluentui/react-combobox';
+import { DurationTokens } from '@fluentui/react-theme';
+import { Field } from '@fluentui/react-field';
+import { fieldClassNames } from '@fluentui/react-field';
+import { FieldContextProvider } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
+import { FieldControlProps } from '@fluentui/react-field';
+import { FieldControlPropsOptions } from '@fluentui/react-field';
+import { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
+import { FieldState } from '@fluentui/react-field';
+import { FluentProvider } from '@fluentui/react-provider';
+import { fluentProviderClassNames } from '@fluentui/react-provider';
+import { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import { FluentProviderProps } from '@fluentui/react-provider';
+import { FluentProviderSlots } from '@fluentui/react-provider';
+import { FluentProviderState } from '@fluentui/react-provider';
+import { FontFamilyTokens } from '@fluentui/react-theme';
+import { FontSizeTokens } from '@fluentui/react-theme';
+import { FontWeightTokens } from '@fluentui/react-theme';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
-import { JSXElementConstructor } from 'react';
+import { HorizontalSpacingTokens } from '@fluentui/react-theme';
+import { IdPrefixProvider } from '@fluentui/react-utilities';
+import { Image as Image_2 } from '@fluentui/react-image';
+import { imageClassNames } from '@fluentui/react-image';
+import { ImageProps } from '@fluentui/react-image';
+import { ImageSlots } from '@fluentui/react-image';
+import { ImageState } from '@fluentui/react-image';
+import { Input } from '@fluentui/react-input';
+import { inputClassNames } from '@fluentui/react-input';
+import { InputOnChangeData } from '@fluentui/react-input';
+import { InputProps } from '@fluentui/react-input';
+import { InputSlots } from '@fluentui/react-input';
+import { InputState } from '@fluentui/react-input';
+import { Label } from '@fluentui/react-label';
+import { labelClassNames } from '@fluentui/react-label';
+import { LabelProps } from '@fluentui/react-label';
+import { LabelSlots } from '@fluentui/react-label';
+import { LabelState } from '@fluentui/react-label';
+import { LargeTitle } from '@fluentui/react-text';
+import { largeTitleClassNames } from '@fluentui/react-text';
+import { LineHeightTokens } from '@fluentui/react-theme';
+import { Link } from '@fluentui/react-link';
+import { linkClassNames } from '@fluentui/react-link';
+import { LinkProps } from '@fluentui/react-link';
+import { LinkSlots } from '@fluentui/react-link';
+import { LinkState } from '@fluentui/react-link';
+import { Listbox } from '@fluentui/react-combobox';
+import { listboxClassNames } from '@fluentui/react-combobox';
+import { ListboxContextValue } from '@fluentui/react-combobox';
+import { ListboxContextValues } from '@fluentui/react-combobox';
+import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxProvider } from '@fluentui/react-combobox';
+import { ListboxSlots } from '@fluentui/react-combobox';
+import { ListboxState } from '@fluentui/react-combobox';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
+import { Menu } from '@fluentui/react-menu';
+import { MenuButton } from '@fluentui/react-button';
+import { menuButtonClassNames } from '@fluentui/react-button';
+import { MenuButtonProps } from '@fluentui/react-button';
+import { MenuButtonSlots } from '@fluentui/react-button';
+import { MenuButtonState } from '@fluentui/react-button';
+import { MenuCheckedValueChangeData } from '@fluentui/react-menu';
+import { MenuCheckedValueChangeEvent } from '@fluentui/react-menu';
+import { MenuContextValue } from '@fluentui/react-menu';
+import { MenuContextValues } from '@fluentui/react-menu';
+import { MenuDivider } from '@fluentui/react-menu';
+import { menuDividerClassNames } from '@fluentui/react-menu';
+import { MenuDividerProps } from '@fluentui/react-menu';
+import { MenuDividerSlots } from '@fluentui/react-menu';
+import { MenuDividerState } from '@fluentui/react-menu';
+import { MenuGroup } from '@fluentui/react-menu';
+import { menuGroupClassNames } from '@fluentui/react-menu';
+import { MenuGroupContextProvider } from '@fluentui/react-menu';
+import { MenuGroupContextValue } from '@fluentui/react-menu';
+import { MenuGroupContextValues } from '@fluentui/react-menu';
+import { MenuGroupHeader } from '@fluentui/react-menu';
+import { menuGroupHeaderClassNames } from '@fluentui/react-menu';
+import { MenuGroupHeaderProps } from '@fluentui/react-menu';
+import { MenuGroupHeaderSlots } from '@fluentui/react-menu';
+import { MenuGroupHeaderState } from '@fluentui/react-menu';
+import { MenuGroupProps } from '@fluentui/react-menu';
+import { MenuGroupSlots } from '@fluentui/react-menu';
+import { MenuGroupState } from '@fluentui/react-menu';
+import { MenuItem } from '@fluentui/react-menu';
+import { MenuItemCheckbox } from '@fluentui/react-menu';
+import { menuItemCheckboxClassNames } from '@fluentui/react-menu';
+import { MenuItemCheckboxProps } from '@fluentui/react-menu';
+import { MenuItemCheckboxState } from '@fluentui/react-menu';
+import { menuItemClassNames } from '@fluentui/react-menu';
+import { MenuItemProps } from '@fluentui/react-menu';
+import { MenuItemRadio } from '@fluentui/react-menu';
+import { menuItemRadioClassNames } from '@fluentui/react-menu';
+import { MenuItemRadioProps } from '@fluentui/react-menu';
+import { MenuItemRadioState } from '@fluentui/react-menu';
+import { MenuItemSelectableProps } from '@fluentui/react-menu';
+import { MenuItemSelectableState } from '@fluentui/react-menu';
+import { MenuItemSlots } from '@fluentui/react-menu';
+import { MenuItemState } from '@fluentui/react-menu';
+import { MenuList } from '@fluentui/react-menu';
+import { menuListClassNames } from '@fluentui/react-menu';
+import { MenuListContextValue } from '@fluentui/react-menu';
+import { MenuListContextValues } from '@fluentui/react-menu';
+import { MenuListProps } from '@fluentui/react-menu';
+import { MenuListProvider } from '@fluentui/react-menu';
+import { MenuListSlots } from '@fluentui/react-menu';
+import { MenuListState } from '@fluentui/react-menu';
+import { MenuOpenChangeData } from '@fluentui/react-menu';
+import { MenuOpenEvent } from '@fluentui/react-menu';
+import { MenuOpenEvents } from '@fluentui/react-menu';
+import { MenuPopover } from '@fluentui/react-menu';
+import { menuPopoverClassNames } from '@fluentui/react-menu';
+import { MenuPopoverProps } from '@fluentui/react-menu';
+import { MenuPopoverSlots } from '@fluentui/react-menu';
+import { MenuPopoverState } from '@fluentui/react-menu';
+import { MenuProps } from '@fluentui/react-menu';
+import { MenuProvider } from '@fluentui/react-menu';
+import { MenuSlots } from '@fluentui/react-menu';
+import { MenuSplitGroup } from '@fluentui/react-menu';
+import { menuSplitGroupClassNames } from '@fluentui/react-menu';
+import { MenuSplitGroupProps } from '@fluentui/react-menu';
+import { MenuSplitGroupSlots } from '@fluentui/react-menu';
+import { MenuSplitGroupState } from '@fluentui/react-menu';
+import { MenuState } from '@fluentui/react-menu';
+import { MenuTrigger } from '@fluentui/react-menu';
+import { MenuTriggerChildProps } from '@fluentui/react-menu';
+import { MenuTriggerContextProvider } from '@fluentui/react-menu';
+import { MenuTriggerProps } from '@fluentui/react-menu';
+import { MenuTriggerState } from '@fluentui/react-menu';
 import { mergeClasses } from '@griffel/react';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
-import * as React_2 from 'react';
-import { ReactElement } from 'react';
-import { ReactNode } from 'react';
-import type { RefObject } from 'react';
+import { OnOpenChangeData } from '@fluentui/react-popover';
+import { OnVisibleChangeData } from '@fluentui/react-tooltip';
+import { OpenPopoverEvents } from '@fluentui/react-popover';
+import { Option as Option_2 } from '@fluentui/react-combobox';
+import { optionClassNames } from '@fluentui/react-combobox';
+import { OptionGroup } from '@fluentui/react-combobox';
+import { optionGroupClassNames } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionProps } from '@fluentui/react-combobox';
+import { OptionSlots } from '@fluentui/react-combobox';
+import { OptionState } from '@fluentui/react-combobox';
+import { Overflow } from '@fluentui/react-overflow';
+import { OverflowDivider } from '@fluentui/react-overflow';
+import { OverflowItem } from '@fluentui/react-overflow';
+import { OverflowItemProps } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
+import { PartialTheme } from '@fluentui/react-theme';
+import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
+import { Persona } from '@fluentui/react-persona';
+import { personaClassNames } from '@fluentui/react-persona';
+import { PersonaProps } from '@fluentui/react-persona';
+import { PersonaSlots } from '@fluentui/react-persona';
+import { PersonaState } from '@fluentui/react-persona';
+import { Popover } from '@fluentui/react-popover';
+import { PopoverContextValue } from '@fluentui/react-popover';
+import { PopoverProps } from '@fluentui/react-popover';
+import { PopoverProvider } from '@fluentui/react-popover';
+import { PopoverSize } from '@fluentui/react-popover';
+import { PopoverState } from '@fluentui/react-popover';
+import { PopoverSurface } from '@fluentui/react-popover';
+import { popoverSurfaceClassNames } from '@fluentui/react-popover';
+import { PopoverSurfaceProps } from '@fluentui/react-popover';
+import { PopoverSurfaceSlots } from '@fluentui/react-popover';
+import { PopoverSurfaceState } from '@fluentui/react-popover';
+import { PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverTriggerChildProps } from '@fluentui/react-popover';
+import { PopoverTriggerProps } from '@fluentui/react-popover';
+import { PopoverTriggerState } from '@fluentui/react-popover';
+import { Portal } from '@fluentui/react-portal';
+import { PortalProps } from '@fluentui/react-portal';
+import { PortalState } from '@fluentui/react-portal';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
+import { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { PresenceBadge } from '@fluentui/react-badge';
+import { presenceBadgeClassNames } from '@fluentui/react-badge';
+import { PresenceBadgeProps } from '@fluentui/react-badge';
+import { PresenceBadgeState } from '@fluentui/react-badge';
+import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { ProgressBar } from '@fluentui/react-progress';
+import { progressBarClassNames } from '@fluentui/react-progress';
+import { ProgressBarProps } from '@fluentui/react-progress';
+import { ProgressBarSlots } from '@fluentui/react-progress';
+import { ProgressBarState } from '@fluentui/react-progress';
+import { Radio } from '@fluentui/react-radio';
+import { radioClassNames } from '@fluentui/react-radio';
+import { RadioGroup } from '@fluentui/react-radio';
+import { radioGroupClassNames } from '@fluentui/react-radio';
+import { RadioGroupContextValue } from '@fluentui/react-radio';
+import { RadioGroupContextValues } from '@fluentui/react-radio';
+import { RadioGroupOnChangeData } from '@fluentui/react-radio';
+import { RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupProvider } from '@fluentui/react-radio';
+import { RadioGroupSlots } from '@fluentui/react-radio';
+import { RadioGroupState } from '@fluentui/react-radio';
+import { RadioOnChangeData } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
+import { RadioSlots } from '@fluentui/react-radio';
+import { RadioState } from '@fluentui/react-radio';
+import { RegisterTabEventHandler } from '@fluentui/react-tabs';
+import { renderAccordion_unstable } from '@fluentui/react-accordion';
+import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
+import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
+import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAvatar_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { renderBadge_unstable } from '@fluentui/react-badge';
+import { renderButton_unstable } from '@fluentui/react-button';
+import { renderCard_unstable } from '@fluentui/react-card';
+import { renderCardFooter_unstable } from '@fluentui/react-card';
+import { renderCardHeader_unstable } from '@fluentui/react-card';
+import { renderCardPreview_unstable } from '@fluentui/react-card';
+import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderCombobox_unstable } from '@fluentui/react-combobox';
+import { renderCompoundButton_unstable } from '@fluentui/react-button';
+import { renderDataGrid_unstable } from '@fluentui/react-table';
+import { renderDataGridBody_unstable } from '@fluentui/react-table';
+import { renderDataGridCell_unstable } from '@fluentui/react-table';
+import { renderDataGridHeader_unstable } from '@fluentui/react-table';
+import { renderDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { renderDataGridRow_unstable } from '@fluentui/react-table';
+import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
+import { renderDialog_unstable } from '@fluentui/react-dialog';
+import { renderDialogActions_unstable } from '@fluentui/react-dialog';
+import { renderDialogBody_unstable } from '@fluentui/react-dialog';
+import { renderDialogContent_unstable } from '@fluentui/react-dialog';
+import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
+import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
+import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
+import { renderDivider_unstable } from '@fluentui/react-divider';
+import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
+import { renderField_unstable } from '@fluentui/react-field';
+import { renderFluentProvider_unstable } from '@fluentui/react-provider';
+import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInput_unstable } from '@fluentui/react-input';
+import { renderLabel_unstable } from '@fluentui/react-label';
+import { renderLink_unstable } from '@fluentui/react-link';
+import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderMenu_unstable } from '@fluentui/react-menu';
+import { renderMenuButton_unstable } from '@fluentui/react-button';
+import { renderMenuDivider_unstable } from '@fluentui/react-menu';
+import { renderMenuGroup_unstable } from '@fluentui/react-menu';
+import { renderMenuGroupHeader_unstable } from '@fluentui/react-menu';
+import { renderMenuItem_unstable } from '@fluentui/react-menu';
+import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuList_unstable } from '@fluentui/react-menu';
+import { renderMenuPopover_unstable } from '@fluentui/react-menu';
+import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
+import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderOption_unstable } from '@fluentui/react-combobox';
+import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
+import { renderPersona_unstable } from '@fluentui/react-persona';
+import { renderPopover_unstable } from '@fluentui/react-popover';
+import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
+import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
+import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderProgressBar_unstable } from '@fluentui/react-progress';
+import { renderRadio_unstable } from '@fluentui/react-radio';
+import { renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { renderSelect_unstable } from '@fluentui/react-select';
+import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
+import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
+import { renderSlider_unstable } from '@fluentui/react-slider';
+import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { renderSpinner_unstable } from '@fluentui/react-spinner';
+import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSwitch_unstable } from '@fluentui/react-switch';
+import { renderTab_unstable } from '@fluentui/react-tabs';
+import { renderTable_unstable } from '@fluentui/react-table';
+import { renderTableBody_unstable } from '@fluentui/react-table';
+import { renderTableCell_unstable } from '@fluentui/react-table';
+import { renderTableCellActions_unstable } from '@fluentui/react-table';
+import { renderTableCellLayout_unstable } from '@fluentui/react-table';
+import { renderTableHeader_unstable } from '@fluentui/react-table';
+import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
+import { renderTableResizeHandle_unstable } from '@fluentui/react-table';
+import { renderTableRow_unstable } from '@fluentui/react-table';
+import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
+import { renderTabList_unstable } from '@fluentui/react-tabs';
+import { renderText_unstable } from '@fluentui/react-text';
+import { renderTextarea_unstable } from '@fluentui/react-textarea';
+import { renderToggleButton_unstable } from '@fluentui/react-button';
+import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
+import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { ResolveShorthandFunction } from '@fluentui/react-utilities';
+import { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import { Select } from '@fluentui/react-select';
+import { SelectableHandler } from '@fluentui/react-menu';
+import { selectClassNames } from '@fluentui/react-select';
+import { SelectOnChangeData } from '@fluentui/react-select';
+import { SelectProps } from '@fluentui/react-select';
+import { SelectSlots } from '@fluentui/react-select';
+import { SelectState } from '@fluentui/react-select';
+import { SelectTabData } from '@fluentui/react-tabs';
+import { SelectTabEvent } from '@fluentui/react-tabs';
+import { SelectTabEventHandler } from '@fluentui/react-tabs';
+import { ShadowBrandTokens } from '@fluentui/react-theme';
+import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
-import { Types } from 'tabster';
+import { Skeleton } from '@fluentui/react-skeleton';
+import { skeletonClassNames } from '@fluentui/react-skeleton';
+import { SkeletonContextProvider } from '@fluentui/react-skeleton';
+import { SkeletonContextValue } from '@fluentui/react-skeleton';
+import { SkeletonItem } from '@fluentui/react-skeleton';
+import { skeletonItemClassNames } from '@fluentui/react-skeleton';
+import { SkeletonItemProps } from '@fluentui/react-skeleton';
+import { SkeletonItemSlots } from '@fluentui/react-skeleton';
+import { SkeletonItemState } from '@fluentui/react-skeleton';
+import { SkeletonProps } from '@fluentui/react-skeleton';
+import { SkeletonSlots } from '@fluentui/react-skeleton';
+import { SkeletonState } from '@fluentui/react-skeleton';
+import { Slider } from '@fluentui/react-slider';
+import { sliderClassNames } from '@fluentui/react-slider';
+import { sliderCSSVars } from '@fluentui/react-slider';
+import { SliderOnChangeData } from '@fluentui/react-slider';
+import { SliderProps } from '@fluentui/react-slider';
+import { SliderSlots } from '@fluentui/react-slider';
+import { SliderState } from '@fluentui/react-slider';
+import { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotPropsRecord } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
+import { SortDirection } from '@fluentui/react-table';
+import { SpacingTokens } from '@fluentui/react-theme';
+import { SpinButton } from '@fluentui/react-spinbutton';
+import { SpinButtonBounds } from '@fluentui/react-spinbutton';
+import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
+import { spinButtonClassNames } from '@fluentui/react-spinbutton';
+import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
+import { SpinButtonProps } from '@fluentui/react-spinbutton';
+import { SpinButtonSlots } from '@fluentui/react-spinbutton';
+import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
+import { SpinButtonState } from '@fluentui/react-spinbutton';
+import { Spinner } from '@fluentui/react-spinner';
+import { spinnerClassNames } from '@fluentui/react-spinner';
+import { SpinnerProps } from '@fluentui/react-spinner';
+import { SpinnerSlots } from '@fluentui/react-spinner';
+import { SpinnerState } from '@fluentui/react-spinner';
+import { SplitButton } from '@fluentui/react-button';
+import { splitButtonClassNames } from '@fluentui/react-button';
+import { SplitButtonProps } from '@fluentui/react-button';
+import { SplitButtonSlots } from '@fluentui/react-button';
+import { SplitButtonState } from '@fluentui/react-button';
+import { SSRProvider } from '@fluentui/react-utilities';
+import { StrokeWidthTokens } from '@fluentui/react-theme';
+import { Subtitle1 } from '@fluentui/react-text';
+import { subtitle1ClassNames } from '@fluentui/react-text';
+import { Subtitle2 } from '@fluentui/react-text';
+import { subtitle2ClassNames } from '@fluentui/react-text';
+import { Subtitle2Stronger } from '@fluentui/react-text';
+import { subtitle2StrongerClassNames } from '@fluentui/react-text';
+import { Switch } from '@fluentui/react-switch';
+import { switchClassNames } from '@fluentui/react-switch';
+import { SwitchOnChangeData } from '@fluentui/react-switch';
+import { SwitchProps } from '@fluentui/react-switch';
+import { SwitchSlots } from '@fluentui/react-switch';
+import { SwitchState } from '@fluentui/react-switch';
+import { Tab } from '@fluentui/react-tabs';
+import { tabClassNames } from '@fluentui/react-tabs';
+import { Table } from '@fluentui/react-table';
+import { TableBody } from '@fluentui/react-table';
+import { tableBodyClassName } from '@fluentui/react-table';
+import { tableBodyClassNames } from '@fluentui/react-table';
+import { TableBodyProps } from '@fluentui/react-table';
+import { TableBodySlots } from '@fluentui/react-table';
+import { TableBodyState } from '@fluentui/react-table';
+import { TableCell } from '@fluentui/react-table';
+import { TableCellActions } from '@fluentui/react-table';
+import { tableCellActionsClassNames } from '@fluentui/react-table';
+import { TableCellActionsProps } from '@fluentui/react-table';
+import { TableCellActionsSlots } from '@fluentui/react-table';
+import { TableCellActionsState } from '@fluentui/react-table';
+import { tableCellClassName } from '@fluentui/react-table';
+import { tableCellClassNames } from '@fluentui/react-table';
+import { TableCellLayout } from '@fluentui/react-table';
+import { tableCellLayoutClassNames } from '@fluentui/react-table';
+import { TableCellLayoutProps } from '@fluentui/react-table';
+import { TableCellLayoutSlots } from '@fluentui/react-table';
+import { TableCellLayoutState } from '@fluentui/react-table';
+import { TableCellProps } from '@fluentui/react-table';
+import { TableCellSlots } from '@fluentui/react-table';
+import { TableCellState } from '@fluentui/react-table';
+import { tableClassName } from '@fluentui/react-table';
+import { tableClassNames } from '@fluentui/react-table';
+import { TableColumnDefinition } from '@fluentui/react-table';
+import { TableColumnId } from '@fluentui/react-table';
+import { TableColumnSizingOptions } from '@fluentui/react-table';
+import { TableContextProvider } from '@fluentui/react-table';
+import { TableContextValue } from '@fluentui/react-table';
+import { TableContextValues } from '@fluentui/react-table';
+import { TableFeaturePlugin } from '@fluentui/react-table';
+import { TableFeaturesState } from '@fluentui/react-table';
+import { TableHeader } from '@fluentui/react-table';
+import { TableHeaderCell } from '@fluentui/react-table';
+import { tableHeaderCellClassName } from '@fluentui/react-table';
+import { tableHeaderCellClassNames } from '@fluentui/react-table';
+import { TableHeaderCellProps } from '@fluentui/react-table';
+import { TableHeaderCellSlots } from '@fluentui/react-table';
+import { TableHeaderCellState } from '@fluentui/react-table';
+import { tableHeaderClassName } from '@fluentui/react-table';
+import { tableHeaderClassNames } from '@fluentui/react-table';
+import { TableHeaderProps } from '@fluentui/react-table';
+import { TableHeaderSlots } from '@fluentui/react-table';
+import { TableHeaderState } from '@fluentui/react-table';
+import { TableProps } from '@fluentui/react-table';
+import { TableResizeHandle } from '@fluentui/react-table';
+import { tableResizeHandleClassNames } from '@fluentui/react-table';
+import { TableRow } from '@fluentui/react-table';
+import { tableRowClassName } from '@fluentui/react-table';
+import { tableRowClassNames } from '@fluentui/react-table';
+import { TableRowData } from '@fluentui/react-table';
+import { TableRowId } from '@fluentui/react-table';
+import { TableRowIdContextProvider } from '@fluentui/react-table';
+import { TableRowProps } from '@fluentui/react-table';
+import { TableRowSlots } from '@fluentui/react-table';
+import { TableRowState } from '@fluentui/react-table';
+import { TableSelectionCell } from '@fluentui/react-table';
+import { tableSelectionCellClassNames } from '@fluentui/react-table';
+import { TableSelectionCellProps } from '@fluentui/react-table';
+import { TableSelectionCellSlots } from '@fluentui/react-table';
+import { TableSelectionCellState } from '@fluentui/react-table';
+import { TableSelectionState } from '@fluentui/react-table';
+import { TableSlots } from '@fluentui/react-table';
+import { TableSortState } from '@fluentui/react-table';
+import { TableState } from '@fluentui/react-table';
+import { TabList } from '@fluentui/react-tabs';
+import { tabListClassNames } from '@fluentui/react-tabs';
+import { TabListContextValue } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import { TabListProps } from '@fluentui/react-tabs';
+import { TabListProvider } from '@fluentui/react-tabs';
+import { TabListSlots } from '@fluentui/react-tabs';
+import { TabListState } from '@fluentui/react-tabs';
+import { TabProps } from '@fluentui/react-tabs';
+import { TabRegisterData } from '@fluentui/react-tabs';
+import { TabSlots } from '@fluentui/react-tabs';
+import { TabState } from '@fluentui/react-tabs';
+import { TabValue } from '@fluentui/react-tabs';
+import { teamsDarkTheme } from '@fluentui/react-theme';
+import { teamsHighContrastTheme } from '@fluentui/react-theme';
+import { teamsLightTheme } from '@fluentui/react-theme';
+import { Text as Text_2 } from '@fluentui/react-text';
+import { Textarea } from '@fluentui/react-textarea';
+import { textareaClassNames } from '@fluentui/react-textarea';
+import { TextareaOnChangeData } from '@fluentui/react-textarea';
+import { TextareaProps } from '@fluentui/react-textarea';
+import { TextareaSlots } from '@fluentui/react-textarea';
+import { TextareaState } from '@fluentui/react-textarea';
+import { textClassNames } from '@fluentui/react-text';
+import { TextPresetProps } from '@fluentui/react-text';
+import { TextProps } from '@fluentui/react-text';
+import { TextSlots } from '@fluentui/react-text';
+import { TextState } from '@fluentui/react-text';
+import { Theme } from '@fluentui/react-theme';
+import { themeToTokensObject } from '@fluentui/react-theme';
+import { Title1 } from '@fluentui/react-text';
+import { title1ClassNames } from '@fluentui/react-text';
+import { Title2 } from '@fluentui/react-text';
+import { title2ClassNames } from '@fluentui/react-text';
+import { Title3 } from '@fluentui/react-text';
+import { title3ClassNames } from '@fluentui/react-text';
+import { ToggleButton } from '@fluentui/react-button';
+import { toggleButtonClassNames } from '@fluentui/react-button';
+import { ToggleButtonProps } from '@fluentui/react-button';
+import { ToggleButtonState } from '@fluentui/react-button';
+import { tokens } from '@fluentui/react-theme';
+import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButton } from '@fluentui/react-toolbar';
+import { ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonState } from '@fluentui/react-toolbar';
+import { toolbarClassNames } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
+import { ToolbarDivider } from '@fluentui/react-toolbar';
+import { ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarGroup } from '@fluentui/react-toolbar';
+import { toolbarGroupClassNames } from '@fluentui/react-toolbar';
+import { ToolbarGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarGroupState } from '@fluentui/react-toolbar';
+import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButton } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroup } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupState } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
+import { Tooltip } from '@fluentui/react-tooltip';
+import { tooltipClassNames } from '@fluentui/react-tooltip';
+import { TooltipProps } from '@fluentui/react-tooltip';
+import { TooltipSlots } from '@fluentui/react-tooltip';
+import { TooltipState } from '@fluentui/react-tooltip';
+import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypographyStyle } from '@fluentui/react-theme';
+import { TypographyStyles } from '@fluentui/react-theme';
+import { typographyStyles } from '@fluentui/react-theme';
+import { UninitializedMenuListState } from '@fluentui/react-menu';
+import { useAccordion_unstable } from '@fluentui/react-accordion';
+import { useAccordionContext_unstable } from '@fluentui/react-accordion';
+import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
+import { useAccordionHeader_unstable } from '@fluentui/react-accordion';
+import { useAccordionHeaderContextValues_unstable } from '@fluentui/react-accordion';
+import { useAccordionHeaderStyles_unstable } from '@fluentui/react-accordion';
+import { useAccordionItem_unstable } from '@fluentui/react-accordion';
+import { useAccordionItemContext_unstable } from '@fluentui/react-accordion';
+import { useAccordionItemContextValues_unstable } from '@fluentui/react-accordion';
+import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
+import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
+import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
+import { useAvatar_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupContext_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
+import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
+import { useBadge_unstable } from '@fluentui/react-badge';
+import { useBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useButton_unstable } from '@fluentui/react-button';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useCard_unstable } from '@fluentui/react-card';
+import { useCardFooter_unstable } from '@fluentui/react-card';
+import { useCardFooterStyles_unstable } from '@fluentui/react-card';
+import { useCardHeader_unstable } from '@fluentui/react-card';
+import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
+import { useCardPreview_unstable } from '@fluentui/react-card';
+import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
+import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useCheckbox_unstable } from '@fluentui/react-checkbox';
+import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
+import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxContextValues } from '@fluentui/react-combobox';
+import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
+import { useCompoundButton_unstable } from '@fluentui/react-button';
+import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
+import { useCounterBadge_unstable } from '@fluentui/react-badge';
+import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useDataGrid_unstable } from '@fluentui/react-table';
+import { useDataGridBody_unstable } from '@fluentui/react-table';
+import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
+import { useDataGridCell_unstable } from '@fluentui/react-table';
+import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContextValues_unstable } from '@fluentui/react-table';
+import { useDataGridHeader_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderStyles_unstable } from '@fluentui/react-table';
+import { useDataGridRow_unstable } from '@fluentui/react-table';
+import { useDataGridRowStyles_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCell_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridStyles_unstable } from '@fluentui/react-table';
+import { useDialog_unstable } from '@fluentui/react-dialog';
+import { useDialogActions_unstable } from '@fluentui/react-dialog';
+import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogBody_unstable } from '@fluentui/react-dialog';
+import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContent_unstable } from '@fluentui/react-dialog';
+import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
+import { useDivider_unstable } from '@fluentui/react-divider';
+import { useDividerStyles_unstable } from '@fluentui/react-divider';
+import { useDropdown_unstable } from '@fluentui/react-combobox';
+import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldStyles_unstable } from '@fluentui/react-field';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFluentProvider_unstable } from '@fluentui/react-provider';
+import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
+import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusWithin } from '@fluentui/react-tabster';
+import { useId } from '@fluentui/react-utilities';
+import { useImage_unstable } from '@fluentui/react-image';
+import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInput_unstable } from '@fluentui/react-input';
+import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
+import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
+import { useIsSSR } from '@fluentui/react-utilities';
+import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
+import { useLabel_unstable } from '@fluentui/react-label';
+import { useLabelStyles_unstable } from '@fluentui/react-label';
+import { useLink_unstable } from '@fluentui/react-link';
+import { useLinkState_unstable } from '@fluentui/react-link';
+import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxContextValues } from '@fluentui/react-combobox';
+import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useMenu_unstable } from '@fluentui/react-menu';
+import { useMenuButton_unstable } from '@fluentui/react-button';
+import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
+import { useMenuContext_unstable } from '@fluentui/react-menu';
+import { useMenuContextValues_unstable } from '@fluentui/react-menu';
+import { useMenuDivider_unstable } from '@fluentui/react-menu';
+import { useMenuDividerStyles_unstable } from '@fluentui/react-menu';
+import { useMenuGroup_unstable } from '@fluentui/react-menu';
+import { useMenuGroupContext_unstable } from '@fluentui/react-menu';
+import { useMenuGroupContextValues_unstable } from '@fluentui/react-menu';
+import { useMenuGroupHeader_unstable } from '@fluentui/react-menu';
+import { useMenuGroupHeaderStyles_unstable } from '@fluentui/react-menu';
+import { useMenuGroupStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItem_unstable } from '@fluentui/react-menu';
+import { useMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { useMenuItemCheckboxStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuList_unstable } from '@fluentui/react-menu';
+import { useMenuListContext_unstable } from '@fluentui/react-menu';
+import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
+import { useMenuListStyles_unstable } from '@fluentui/react-menu';
+import { useMenuPopover_unstable } from '@fluentui/react-menu';
+import { useMenuPopoverStyles_unstable } from '@fluentui/react-menu';
+import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
+import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
+import { useMenuTrigger_unstable } from '@fluentui/react-menu';
+import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
+import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useMotionPresence } from '@fluentui/react-utilities';
+import { UseMotionPresenceEvents } from '@fluentui/react-utilities';
+import { UseMotionPresenceState } from '@fluentui/react-utilities';
+import { useOption_unstable } from '@fluentui/react-combobox';
+import { useOptionGroup_unstable } from '@fluentui/react-combobox';
+import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionStyles_unstable } from '@fluentui/react-combobox';
+import { useOverflowCount } from '@fluentui/react-overflow';
+import { useOverflowMenu } from '@fluentui/react-overflow';
+import { usePersona_unstable } from '@fluentui/react-persona';
+import { usePersonaStyles_unstable } from '@fluentui/react-persona';
+import { usePopover_unstable } from '@fluentui/react-popover';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { usePopoverSurface_unstable } from '@fluentui/react-popover';
+import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
+import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
+import { usePortal_unstable } from '@fluentui/react-portal';
+import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useProgressBar_unstable } from '@fluentui/react-progress';
+import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
+import { useRadio_unstable } from '@fluentui/react-radio';
+import { useRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValues } from '@fluentui/react-radio';
+import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
+import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useScrollbarWidth } from '@fluentui/react-utilities';
+import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelectStyles_unstable } from '@fluentui/react-select';
+import { useSkeleton_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonContext } from '@fluentui/react-skeleton';
+import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
+import { useSlider_unstable } from '@fluentui/react-slider';
+import { useSliderState_unstable } from '@fluentui/react-slider';
+import { useSliderStyles_unstable } from '@fluentui/react-slider';
+import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
+import { useSpinner_unstable } from '@fluentui/react-spinner';
+import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
+import { useSplitButton_unstable } from '@fluentui/react-button';
+import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSwitch_unstable } from '@fluentui/react-switch';
+import { useSwitchStyles_unstable } from '@fluentui/react-switch';
+import { useTab_unstable } from '@fluentui/react-tabs';
+import { useTable_unstable } from '@fluentui/react-table';
+import { useTableBody_unstable } from '@fluentui/react-table';
+import { useTableBodyStyles_unstable } from '@fluentui/react-table';
+import { useTableCell_unstable } from '@fluentui/react-table';
+import { useTableCellActions_unstable } from '@fluentui/react-table';
+import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
+import { useTableCellLayout_unstable } from '@fluentui/react-table';
+import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
+import { useTableCellStyles_unstable } from '@fluentui/react-table';
+import { useTableColumnSizing_unstable } from '@fluentui/react-table';
+import { useTableContext } from '@fluentui/react-table';
+import { useTableFeatures } from '@fluentui/react-table';
+import { UseTableFeaturesOptions } from '@fluentui/react-table';
+import { useTableHeader_unstable } from '@fluentui/react-table';
+import { useTableHeaderCell_unstable } from '@fluentui/react-table';
+import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { useTableResizeHandle_unstable } from '@fluentui/react-table';
+import { useTableResizeHandleStyles_unstable } from '@fluentui/react-table';
+import { useTableRow_unstable } from '@fluentui/react-table';
+import { useTableRowIdContext } from '@fluentui/react-table';
+import { useTableRowStyles_unstable } from '@fluentui/react-table';
+import { useTableSelection } from '@fluentui/react-table';
+import { useTableSelectionCell_unstable } from '@fluentui/react-table';
+import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useTableSort } from '@fluentui/react-table';
+import { useTableStyles_unstable } from '@fluentui/react-table';
+import { useTabList_unstable } from '@fluentui/react-tabs';
+import { useTabListContext_unstable } from '@fluentui/react-tabs';
+import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
+import { useTabListStyles_unstable } from '@fluentui/react-tabs';
+import { useTabStyles_unstable } from '@fluentui/react-tabs';
+import { useText_unstable } from '@fluentui/react-text';
+import { useTextarea_unstable } from '@fluentui/react-textarea';
+import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
+import { useTextStyles_unstable } from '@fluentui/react-text';
+import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useToggleButton_unstable } from '@fluentui/react-button';
+import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useToggleState } from '@fluentui/react-button';
+import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDivider_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useTooltip_unstable } from '@fluentui/react-tooltip';
+import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
+import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
+import { VerticalSpacingTokens } from '@fluentui/react-theme';
+import { webDarkTheme } from '@fluentui/react-theme';
+import { webLightTheme } from '@fluentui/react-theme';
 
 export { __css }
 
@@ -39,1649 +1036,623 @@ export { __resetStyles }
 
 export { __styles }
 
-// @public
-export const Accordion: ForwardRefComponent<AccordionProps>;
-
-// @public (undocumented)
-export const accordionClassNames: SlotClassNames<AccordionSlots>;
-
-// @public (undocumented)
-export type AccordionContextValue = Required<Pick<AccordionProps, 'collapsible'>> & Pick<AccordionProps, 'navigation'> & {
-    openItems: AccordionItemValue[];
-    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-};
-
-// @public (undocumented)
-export type AccordionContextValues = {
-    accordion: AccordionContextValue;
-};
-
-// @public
-export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
-
-// @public (undocumented)
-export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
-
-// @public (undocumented)
-export type AccordionHeaderContextValue = Required<Pick<AccordionHeaderProps, 'expandIconPosition' | 'size'>> & {
-    disabled: boolean;
-    open: boolean;
-};
-
-// @public (undocumented)
-export type AccordionHeaderContextValues = {
-    accordionHeader: AccordionHeaderContextValue;
-};
-
-// @public (undocumented)
-export type AccordionHeaderExpandIconPosition = 'start' | 'end';
-
-// @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & {
-    expandIconPosition?: AccordionHeaderExpandIconPosition;
-    inline?: boolean;
-    size?: AccordionHeaderSize;
-};
-
-// @public (undocumented)
-export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
-
-// @public (undocumented)
-export type AccordionHeaderSlots = {
-    root: NonNullable<Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>>;
-    button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
-    expandIcon?: Slot<'span'>;
-    icon?: Slot<'div'>;
-};
-
-// @public (undocumented)
-export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> & Required<Pick<AccordionHeaderProps, 'inline'>> & AccordionHeaderContextValue;
-
-// @public (undocumented)
-export type AccordionIndex = number | number[];
-
-// @public
-export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
-
-// @public (undocumented)
-export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
-
-// @public (undocumented)
-export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
-    onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
-    open: boolean;
-};
-
-// @public (undocumented)
-export type AccordionItemContextValues = {
-    accordionItem: AccordionItemContextValue;
-};
-
-// @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
-    disabled?: boolean;
-    value: AccordionItemValue;
-};
-
-// @public (undocumented)
-export const AccordionItemProvider: React_2.Provider<AccordionItemContextValue>;
-
-// @public (undocumented)
-export type AccordionItemSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public (undocumented)
-export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemContextValue;
-
-// @public (undocumented)
-export type AccordionItemValue = unknown;
-
-// @public
-export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
-
-// @public (undocumented)
-export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
+export { Accordion }
 
-// @public (undocumented)
-export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
-
-// @public (undocumented)
-export type AccordionPanelSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public (undocumented)
-export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
-    open: boolean;
-};
-
-// @public (undocumented)
-export type AccordionProps = ComponentProps<AccordionSlots> & {
-    defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
-    collapsible?: boolean;
-    multiple?: boolean;
-    navigation?: 'linear' | 'circular';
-    onToggle?: AccordionToggleEventHandler;
-    openItems?: AccordionItemValue | AccordionItemValue[];
-};
-
-// @public (undocumented)
-export const AccordionProvider: Provider<AccordionContextValue> & FC<ProviderProps<AccordionContextValue>>;
-
-// @public (undocumented)
-export type AccordionSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public (undocumented)
-export type AccordionState = ComponentState<AccordionSlots> & AccordionContextValue;
-
-// @public (undocumented)
-export type AccordionToggleData = {
-    value: AccordionItemValue;
-};
-
-// @public (undocumented)
-export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E>;
-
-// @public (undocumented)
-export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-
-// @public (undocumented)
-export const arrowHeights: Record<PopoverSize, number>;
-
-// @public (undocumented)
-export const Avatar: ForwardRefComponent<AvatarProps>;
-
-// @public (undocumented)
-export const avatarClassNames: SlotClassNames<AvatarSlots>;
-
-// @public
-export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
-
-// @public (undocumented)
-export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
-
-// @public (undocumented)
-export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
-    isOverflow?: boolean;
-};
-
-// @public (undocumented)
-export type AvatarGroupContextValues = {
-    avatarGroup: AvatarGroupContextValue;
-};
-
-// @public
-export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
-
-// @public (undocumented)
-export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
-
-// @public
-export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
-
-// @public (undocumented)
-export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div', 'li'>>;
-    avatar: NonNullable<Slot<typeof Avatar>>;
-    overflowLabel: NonNullable<Slot<'span'>>;
-};
-
-// @public
-export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
-    isOverflowItem?: boolean;
-    layout: AvatarGroupProps['layout'];
-    size: AvatarSize;
-};
-
-// @public
-export const AvatarGroupPopover: React_2.FC<AvatarGroupPopoverProps>;
-
-// @public (undocumented)
-export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots>;
-
-// @public
-export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & {
-    indicator?: 'count' | 'icon';
-    count?: number;
-    children: React_2.ReactNode;
-};
-
-// @public (undocumented)
-export type AvatarGroupPopoverSlots = {
-    root: NonNullable<Slot<PopoverProps>>;
-    triggerButton: NonNullable<Slot<'button'>>;
-    content: NonNullable<Slot<'ul'>>;
-    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
-    tooltip: NonNullable<Slot<TooltipProps>>;
-};
-
-// @public
-export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
-    popoverOpen: boolean;
-    layout: AvatarGroupProps['layout'];
-    size: AvatarSize;
-};
-
-// @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
-    layout?: 'spread' | 'stack' | 'pie';
-    size?: AvatarSize;
-};
-
-// @public (undocumented)
-export const AvatarGroupProvider: Provider<AvatarGroupContextValue> & FC<ProviderProps<AvatarGroupContextValue>>;
-
-// @public (undocumented)
-export type AvatarGroupSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size'>>;
-
-// @public
-export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
-
-// @public
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
-    active?: 'active' | 'inactive' | 'unset';
-    activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-    idForColor?: string | undefined;
-    name?: string;
-    shape?: AvatarShape;
-    size?: AvatarSize;
-};
-
-// @public
-export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
-
-// @public @deprecated
-export type AvatarSizes = AvatarSize;
-
-// @public (undocumented)
-export type AvatarSlots = {
-    root: Slot<'span'>;
-    image?: Slot<'img'>;
-    initials?: Slot<'span'>;
-    icon?: Slot<'span'>;
-    badge?: Slot<typeof PresenceBadge>;
-};
-
-// @public
-export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
-    color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
-    activeAriaLabelElement?: JSX.Element;
-};
-
-// @public
-export const Badge: ForwardRefComponent<BadgeProps>;
-
-// @public (undocumented)
-export const badgeClassNames: SlotClassNames<BadgeSlots>;
-
-// @public (undocumented)
-export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
-    appearance?: 'filled' | 'ghost' | 'outline' | 'tint';
-    color?: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
-    iconPosition?: 'before' | 'after';
-    shape?: 'circular' | 'rounded' | 'square';
-    size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-};
-
-// @public (undocumented)
-export type BadgeSlots = {
-    root: Slot<'div'>;
-    icon?: Slot<'span'>;
-};
-
-// @public (undocumented)
-export type BadgeState = ComponentState<BadgeSlots> & Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size'>>;
-
-// @public
-export const Body1: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const body1ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Body1Strong: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const body1StrongClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Body1Stronger: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const body1StrongerClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Body2: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const body2ClassNames: SlotClassNames<TextSlots>;
-
-// @public (undocumented)
-export type BorderRadiusTokens = {
-    borderRadiusNone: string;
-    borderRadiusSmall: string;
-    borderRadiusMedium: string;
-    borderRadiusLarge: string;
-    borderRadiusXLarge: string;
-    borderRadiusCircular: string;
-};
-
-// @public (undocumented)
-export type BrandVariants = Record<Brands, string>;
-
-// @public
-export const Button: ForwardRefComponent<ButtonProps>;
-
-// @public (undocumented)
-export const buttonClassNames: SlotClassNames<ButtonSlots>;
-
-// @public (undocumented)
-export type ButtonProps = ComponentProps<ButtonSlots> & {
-    appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
-    disabledFocusable?: boolean;
-    disabled?: boolean;
-    iconPosition?: 'before' | 'after';
-    shape?: 'rounded' | 'circular' | 'square';
-    size?: ButtonSize;
-};
-
-// @public (undocumented)
-export type ButtonSlots = {
-    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
-    icon?: Slot<'span'>;
-};
-
-// @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
-    iconOnly: boolean;
-};
-
-// @public
-export const Caption1: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption1ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Caption1Strong: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption1StrongClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Caption1Stronger: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption1StrongerClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Caption2: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption2ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Caption2Strong: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption2StrongClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Card: ForwardRefComponent<CardProps>;
-
-// @public
-export const cardClassNames: SlotClassNames<CardSlots>;
-
-// @public
-export const cardCSSVars: {
-    cardSizeVar: string;
-    cardBorderRadiusVar: string;
-};
-
-// @public
-export const CardFooter: ForwardRefComponent<CardFooterProps>;
-
-// @public
-export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
-
-// @public
-export type CardFooterProps = ComponentProps<CardFooterSlots>;
-
-// @public
-export type CardFooterSlots = {
-    root: Slot<'div'>;
-    action?: Slot<'div'>;
-};
-
-// @public
-export type CardFooterState = ComponentState<CardFooterSlots>;
-
-// @public
-export const CardHeader: ForwardRefComponent<CardHeaderProps>;
-
-// @public
-export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
-
-// @public
-export const cardHeaderCSSVars: {
-    cardHeaderGapVar: string;
-};
-
-// @public
-export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
-
-// @public
-export type CardHeaderSlots = {
-    root: Slot<'div'>;
-    image: Slot<'div', 'img'>;
-    header: Slot<'div'>;
-    description: Slot<'div'>;
-    action?: Slot<'div'>;
-};
-
-// @public
-export type CardHeaderState = ComponentState<CardHeaderSlots>;
-
-// @public
-export const CardPreview: ForwardRefComponent<CardPreviewProps>;
-
-// @public
-export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
-
-// @public
-export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
-
-// @public
-export type CardPreviewSlots = {
-    root: Slot<'div'>;
-    logo?: Slot<'div', 'img'>;
-};
-
-// @public
-export type CardPreviewState = ComponentState<CardPreviewSlots>;
-
-// @public
-export type CardProps = ComponentProps<CardSlots> & {
-    appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
-    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
-    orientation?: 'horizontal' | 'vertical';
-    size?: 'small' | 'medium' | 'large';
-    selected?: boolean;
-    defaultSelected?: boolean;
-    onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
-};
-
-// @public
-export type CardSlots = {
-    root: Slot<'div'>;
-    floatingAction?: Slot<'div'>;
-    checkbox?: Slot<'input'>;
-};
-
-// @public
-export type CardState = ComponentState<CardSlots> & CardContextValue & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
-    interactive: boolean;
-    selectable: boolean;
-    selected: boolean;
-    selectFocused: boolean;
-}>;
-
-// @public
-export const Checkbox: ForwardRefComponent<CheckboxProps>;
-
-// @public (undocumented)
-export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
-
-// @public
-export interface CheckboxOnChangeData {
-    // (undocumented)
-    checked: 'mixed' | boolean;
-}
-
-// @public
-export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
-    checked?: 'mixed' | boolean;
-    children?: never;
-    defaultChecked?: 'mixed' | boolean;
-    labelPosition?: 'before' | 'after';
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
-    shape?: 'square' | 'circular';
-    size?: 'medium' | 'large';
-};
-
-// @public (undocumented)
-export type CheckboxSlots = {
-    root: NonNullable<Slot<'span'>>;
-    label?: Slot<typeof Label>;
-    input: NonNullable<Slot<'input'>>;
-    indicator: Slot<'div'>;
-};
-
-// @public
-export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
-
-// @public (undocumented)
-export type ColorPaletteTokens = StatusColorPaletteTokens & PersonaColorPaletteTokens;
-
-// @public
-export type ColorTokens = {
-    colorNeutralForeground1: string;
-    colorNeutralForeground1Hover: string;
-    colorNeutralForeground1Pressed: string;
-    colorNeutralForeground1Selected: string;
-    colorNeutralForeground2: string;
-    colorNeutralForeground2Hover: string;
-    colorNeutralForeground2Pressed: string;
-    colorNeutralForeground2Selected: string;
-    colorNeutralForeground2BrandHover: string;
-    colorNeutralForeground2BrandPressed: string;
-    colorNeutralForeground2BrandSelected: string;
-    colorNeutralForeground3: string;
-    colorNeutralForeground3Hover: string;
-    colorNeutralForeground3Pressed: string;
-    colorNeutralForeground3Selected: string;
-    colorNeutralForeground3BrandHover: string;
-    colorNeutralForeground3BrandPressed: string;
-    colorNeutralForeground3BrandSelected: string;
-    colorNeutralForeground4: string;
-    colorNeutralForegroundDisabled: string;
-    colorNeutralForegroundInvertedDisabled: string;
-    colorBrandForegroundLink: string;
-    colorBrandForegroundLinkHover: string;
-    colorBrandForegroundLinkPressed: string;
-    colorBrandForegroundLinkSelected: string;
-    colorNeutralForeground2Link: string;
-    colorNeutralForeground2LinkHover: string;
-    colorNeutralForeground2LinkPressed: string;
-    colorNeutralForeground2LinkSelected: string;
-    colorCompoundBrandForeground1: string;
-    colorCompoundBrandForeground1Hover: string;
-    colorCompoundBrandForeground1Pressed: string;
-    colorBrandForeground1: string;
-    colorBrandForeground2: string;
-    colorNeutralForeground1Static: string;
-    colorNeutralForegroundInverted: string;
-    colorNeutralForegroundInvertedHover: string;
-    colorNeutralForegroundInvertedPressed: string;
-    colorNeutralForegroundInvertedSelected: string;
-    colorNeutralForegroundInverted2: string;
-    colorNeutralForegroundOnBrand: string;
-    colorNeutralForegroundStaticInverted: string;
-    colorNeutralForegroundInvertedLink: string;
-    colorNeutralForegroundInvertedLinkHover: string;
-    colorNeutralForegroundInvertedLinkPressed: string;
-    colorNeutralForegroundInvertedLinkSelected: string;
-    colorBrandForegroundInverted: string;
-    colorBrandForegroundInvertedHover: string;
-    colorBrandForegroundInvertedPressed: string;
-    colorBrandForegroundOnLight: string;
-    colorBrandForegroundOnLightHover: string;
-    colorBrandForegroundOnLightPressed: string;
-    colorBrandForegroundOnLightSelected: string;
-    colorNeutralBackground1: string;
-    colorNeutralBackground1Hover: string;
-    colorNeutralBackground1Pressed: string;
-    colorNeutralBackground1Selected: string;
-    colorNeutralBackground2: string;
-    colorNeutralBackground2Hover: string;
-    colorNeutralBackground2Pressed: string;
-    colorNeutralBackground2Selected: string;
-    colorNeutralBackground3: string;
-    colorNeutralBackground3Hover: string;
-    colorNeutralBackground3Pressed: string;
-    colorNeutralBackground3Selected: string;
-    colorNeutralBackground4: string;
-    colorNeutralBackground4Hover: string;
-    colorNeutralBackground4Pressed: string;
-    colorNeutralBackground4Selected: string;
-    colorNeutralBackground5: string;
-    colorNeutralBackground5Hover: string;
-    colorNeutralBackground5Pressed: string;
-    colorNeutralBackground5Selected: string;
-    colorNeutralBackground6: string;
-    colorNeutralBackgroundInverted: string;
-    colorNeutralBackgroundStatic: string;
-    colorNeutralBackgroundAlpha: string;
-    colorNeutralBackgroundAlpha2: string;
-    colorSubtleBackground: string;
-    colorSubtleBackgroundHover: string;
-    colorSubtleBackgroundPressed: string;
-    colorSubtleBackgroundSelected: string;
-    colorSubtleBackgroundLightAlphaHover: string;
-    colorSubtleBackgroundLightAlphaPressed: string;
-    colorSubtleBackgroundLightAlphaSelected: string;
-    colorSubtleBackgroundInverted: string;
-    colorSubtleBackgroundInvertedHover: string;
-    colorSubtleBackgroundInvertedPressed: string;
-    colorSubtleBackgroundInvertedSelected: string;
-    colorTransparentBackground: string;
-    colorTransparentBackgroundHover: string;
-    colorTransparentBackgroundPressed: string;
-    colorTransparentBackgroundSelected: string;
-    colorNeutralBackgroundDisabled: string;
-    colorNeutralBackgroundInvertedDisabled: string;
-    colorNeutralStencil1: string;
-    colorNeutralStencil2: string;
-    colorNeutralStencil1Alpha: string;
-    colorNeutralStencil2Alpha: string;
-    colorBackgroundOverlay: string;
-    colorScrollbarOverlay: string;
-    colorBrandBackground: string;
-    colorBrandBackgroundHover: string;
-    colorBrandBackgroundPressed: string;
-    colorBrandBackgroundSelected: string;
-    colorCompoundBrandBackground: string;
-    colorCompoundBrandBackgroundHover: string;
-    colorCompoundBrandBackgroundPressed: string;
-    colorBrandBackgroundStatic: string;
-    colorBrandBackground2: string;
-    colorBrandBackgroundInverted: string;
-    colorBrandBackgroundInvertedHover: string;
-    colorBrandBackgroundInvertedPressed: string;
-    colorBrandBackgroundInvertedSelected: string;
-    colorNeutralStrokeAccessible: string;
-    colorNeutralStrokeAccessibleHover: string;
-    colorNeutralStrokeAccessiblePressed: string;
-    colorNeutralStrokeAccessibleSelected: string;
-    colorNeutralStroke1: string;
-    colorNeutralStroke1Hover: string;
-    colorNeutralStroke1Pressed: string;
-    colorNeutralStroke1Selected: string;
-    colorNeutralStroke2: string;
-    colorNeutralStroke3: string;
-    colorNeutralStrokeOnBrand: string;
-    colorNeutralStrokeOnBrand2: string;
-    colorNeutralStrokeOnBrand2Hover: string;
-    colorNeutralStrokeOnBrand2Pressed: string;
-    colorNeutralStrokeOnBrand2Selected: string;
-    colorBrandStroke1: string;
-    colorBrandStroke2: string;
-    colorCompoundBrandStroke: string;
-    colorCompoundBrandStrokeHover: string;
-    colorCompoundBrandStrokePressed: string;
-    colorNeutralStrokeDisabled: string;
-    colorNeutralStrokeInvertedDisabled: string;
-    colorTransparentStroke: string;
-    colorTransparentStrokeInteractive: string;
-    colorTransparentStrokeDisabled: string;
-    colorNeutralStrokeAlpha: string;
-    colorStrokeFocus1: string;
-    colorStrokeFocus2: string;
-    colorNeutralShadowAmbient: string;
-    colorNeutralShadowKey: string;
-    colorNeutralShadowAmbientLighter: string;
-    colorNeutralShadowKeyLighter: string;
-    colorNeutralShadowAmbientDarker: string;
-    colorNeutralShadowKeyDarker: string;
-    colorBrandShadowAmbient: string;
-    colorBrandShadowKey: string;
-};
-
-// @public
-export const Combobox: ForwardRefComponent<ComboboxProps>;
-
-// @public (undocumented)
-export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
-
-// @public
-export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption' | 'setOpen' | 'size'>;
-
-// @public (undocumented)
-export type ComboboxContextValues = ComboboxBaseContextValues;
-
-// @public (undocumented)
-export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;
-
-// @public (undocumented)
-export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
-
-// @public
-export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
-    freeform?: boolean;
-    children?: React_2.ReactNode;
-};
-
-// @public (undocumented)
-export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps<ComboboxContextValue>>;
-
-// @public (undocumented)
-export type ComboboxSlots = {
-    root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
-    input: NonNullable<Slot<'input'>>;
-    listbox?: Slot<typeof Listbox>;
-};
-
-// @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
-
-// @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
-
-// @public
-export type ComponentState<Slots extends SlotPropsRecord> = {
-    components: {
-        [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    };
-} & {
-    [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
-};
-
-// @public
-export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
-
-// @public (undocumented)
-export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
-
-// @public (undocumented)
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
-
-// @public (undocumented)
-export type CompoundButtonSlots = ButtonSlots & {
-    secondaryContent?: Slot<'span'>;
-    contentContainer: NonNullable<Slot<'span'>>;
-};
-
-// @public (undocumented)
-export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'>;
-
-// @public
-export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
-
-// @public (undocumented)
-export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
-
-// @public (undocumented)
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape'> & {
-    appearance?: 'filled' | 'ghost';
-    color?: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
-    count?: number;
-    dot?: boolean;
-    overflowCount?: number;
-    shape?: 'circular' | 'rounded';
-    showZero?: boolean;
-};
-
-// @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
-
-// @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
-
-// @public (undocumented)
-export interface CreateCustomFocusIndicatorStyleOptions {
-    // @deprecated
-    enableOutline?: boolean;
-    selector?: 'focus' | 'focus-within';
-}
-
-// @public (undocumented)
-export const createDarkTheme: (brand: BrandVariants) => Theme;
+export { accordionClassNames }
+
+export { AccordionContextValue }
+
+export { AccordionContextValues }
+
+export { AccordionHeader }
+
+export { accordionHeaderClassNames }
+
+export { AccordionHeaderContextValue }
+
+export { AccordionHeaderContextValues }
+
+export { AccordionHeaderExpandIconPosition }
+
+export { AccordionHeaderProps }
+
+export { AccordionHeaderSize }
+
+export { AccordionHeaderSlots }
+
+export { AccordionHeaderState }
+
+export { AccordionIndex }
+
+export { AccordionItem }
+
+export { accordionItemClassNames }
+
+export { AccordionItemContextValue }
+
+export { AccordionItemContextValues }
+
+export { AccordionItemProps }
+
+export { AccordionItemProvider }
+
+export { AccordionItemSlots }
+
+export { AccordionItemState }
+
+export { AccordionItemValue }
+
+export { AccordionPanel }
+
+export { accordionPanelClassNames }
+
+export { AccordionPanelProps }
+
+export { AccordionPanelSlots }
+
+export { AccordionPanelState }
+
+export { AccordionProps }
+
+export { AccordionProvider }
+
+export { AccordionSlots }
+
+export { AccordionState }
+
+export { AccordionToggleData }
+
+export { AccordionToggleEvent }
+
+export { AccordionToggleEventHandler }
+
+export { arrowHeights }
+
+export { Avatar }
+
+export { avatarClassNames }
+
+export { AvatarGroup }
+
+export { avatarGroupClassNames }
+
+export { AvatarGroupContextValue }
+
+export { AvatarGroupContextValues }
+
+export { AvatarGroupItem }
+
+export { avatarGroupItemClassNames }
+
+export { AvatarGroupItemProps }
+
+export { AvatarGroupItemSlots }
+
+export { AvatarGroupItemState }
+
+export { AvatarGroupPopover }
+
+export { avatarGroupPopoverClassNames }
+
+export { AvatarGroupPopoverProps }
+
+export { AvatarGroupPopoverSlots }
+
+export { AvatarGroupPopoverState }
+
+export { AvatarGroupProps }
+
+export { AvatarGroupProvider }
+
+export { AvatarGroupSlots }
+
+export { AvatarGroupState }
+
+export { AvatarNamedColor }
+
+export { AvatarProps }
+
+export { AvatarSize }
+
+export { AvatarSizes }
+
+export { AvatarSlots }
+
+export { AvatarState }
+
+export { Badge }
+
+export { badgeClassNames }
+
+export { BadgeProps }
+
+export { BadgeSlots }
+
+export { BadgeState }
+
+export { Body1 }
+
+export { body1ClassNames }
+
+export { Body1Strong }
+
+export { body1StrongClassNames }
+
+export { Body1Stronger }
+
+export { body1StrongerClassNames }
+
+export { Body2 }
+
+export { body2ClassNames }
+
+export { BorderRadiusTokens }
+
+export { BrandVariants }
+
+export { Button }
+
+export { buttonClassNames }
+
+export { ButtonProps }
+
+export { ButtonSlots }
+
+export { ButtonState }
+
+export { Caption1 }
+
+export { caption1ClassNames }
+
+export { Caption1Strong }
+
+export { caption1StrongClassNames }
+
+export { Caption1Stronger }
+
+export { caption1StrongerClassNames }
+
+export { Caption2 }
+
+export { caption2ClassNames }
+
+export { Caption2Strong }
+
+export { caption2StrongClassNames }
+
+export { Card }
+
+export { cardClassNames }
+
+export { cardCSSVars }
+
+export { CardFooter }
+
+export { cardFooterClassNames }
+
+export { CardFooterProps }
+
+export { CardFooterSlots }
+
+export { CardFooterState }
+
+export { CardHeader }
+
+export { cardHeaderClassNames }
+
+export { cardHeaderCSSVars }
+
+export { CardHeaderProps }
+
+export { CardHeaderSlots }
+
+export { CardHeaderState }
+
+export { CardPreview }
+
+export { cardPreviewClassNames }
+
+export { CardPreviewProps }
+
+export { CardPreviewSlots }
+
+export { CardPreviewState }
+
+export { CardProps }
+
+export { CardSlots }
+
+export { CardState }
+
+export { Checkbox }
+
+export { checkboxClassNames }
+
+export { CheckboxOnChangeData }
+
+export { CheckboxProps }
+
+export { CheckboxSlots }
+
+export { CheckboxState }
+
+export { ColorPaletteTokens }
+
+export { ColorTokens }
+
+export { Combobox }
+
+export { comboboxClassNames }
+
+export { ComboboxContextValue }
+
+export { ComboboxContextValues }
+
+export { ComboboxOpenChangeData }
+
+export { ComboboxOpenEvents }
+
+export { ComboboxProps }
+
+export { ComboboxProvider }
+
+export { ComboboxSlots }
+
+export { ComboboxState }
+
+export { ComponentProps }
+
+export { ComponentState }
+
+export { CompoundButton }
+
+export { compoundButtonClassNames }
+
+export { CompoundButtonProps }
+
+export { CompoundButtonSlots }
+
+export { CompoundButtonState }
+
+export { CounterBadge }
+
+export { counterBadgeClassNames }
+
+export { CounterBadgeProps }
+
+export { CounterBadgeState }
+
+export { createCustomFocusIndicatorStyle }
+
+export { CreateCustomFocusIndicatorStyleOptions }
+
+export { createDarkTheme }
 
 export { createDOMRenderer }
 
-// @public
-export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
-
-// @public (undocumented)
-export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
-    enableOutline?: boolean;
-    // (undocumented)
-    style?: Partial<FocusOutlineStyleOptions>;
-}
-
-// @public (undocumented)
-export const createHighContrastTheme: () => Theme;
-
-// @public (undocumented)
-export const createLightTheme: (brand: BrandVariants) => Theme;
-
-// @public
-export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
-    columnId: TableColumnId;
-    renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: () => ReactNode;
-    compare: (a: TItem, b: TItem) => number;
-};
-
-// @public (undocumented)
-export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefinition<TItem>> {
-    // (undocumented)
-    columnId: TableColumnId;
-}
-
-// @public (undocumented)
-export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
-
-// @public (undocumented)
-export type CurveTokens = {
-    curveAccelerateMax: string;
-    curveAccelerateMid: string;
-    curveAccelerateMin: string;
-    curveDecelerateMax: string;
-    curveDecelerateMid: string;
-    curveDecelerateMin: string;
-    curveEasyEaseMax: string;
-    curveEasyEase: string;
-    curveLinear: string;
-};
-
-// @public (undocumented)
-export const DATA_OVERFLOW_ITEM = "data-overflow-item";
-
-// @public (undocumented)
-export const DATA_OVERFLOW_MENU = "data-overflow-menu";
-
-// @public (undocumented)
-export const DATA_OVERFLOWING = "data-overflowing";
-
-// @public
-export const DataGrid: ForwardRefComponent<DataGridProps>;
-
-// @public
-export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
-
-// @public (undocumented)
-export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
-
-// @public
-export type DataGridBodyProps<TItem = unknown> = Omit<TableBodyProps, 'children'> & {
-    children: RowRenderFunction<TItem>;
-};
-
-// @public (undocumented)
-export type DataGridBodySlots = TableBodySlots;
-
-// @public
-export type DataGridBodyState = TableBodyState & {
-    rows: TableRowData<unknown>[];
-    renderRow: RowRenderFunction;
-};
-
-// @public
-export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
-
-// @public (undocumented)
-export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
-
-// @public
-export type DataGridCellProps = TableCellProps;
-
-// @public (undocumented)
-export type DataGridCellSlots = TableCellSlots;
-
-// @public
-export type DataGridCellState = TableCellState;
-
-// @public (undocumented)
-export const dataGridClassNames: SlotClassNames<DataGridSlots>;
-
-// @public (undocumented)
-export type DataGridContextValue = TableFeaturesState<any> & {
-    focusMode: DataGridFocusMode;
-    selectableRows: boolean;
-    subtleSelection: boolean;
-    selectionAppearance: TableRowProps['appearance'];
-    resizableColumns?: boolean;
-};
+export { createFocusOutlineStyle }
 
-// @public (undocumented)
-export type DataGridContextValues = TableContextValues & {
-    dataGrid: DataGridContextValue;
-};
+export { CreateFocusOutlineStyleOptions }
 
-// @public
-export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
+export { createHighContrastTheme }
 
-// @public
-export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
+export { createLightTheme }
 
-// @public (undocumented)
-export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
+export { createTableColumn }
 
-// @public
-export type DataGridHeaderCellProps = TableHeaderCellProps;
-
-// @public (undocumented)
-export type DataGridHeaderCellSlots = TableHeaderCellSlots;
+export { CreateTableColumnOptions }
 
-// @public
-export type DataGridHeaderCellState = TableHeaderCellState;
+export { createTeamsDarkTheme }
 
-// @public (undocumented)
-export const dataGridHeaderClassNames: SlotClassNames<DataGridHeaderSlots>;
+export { CurveTokens }
 
-// @public
-export type DataGridHeaderProps = TableHeaderProps;
+export { DATA_OVERFLOW_DIVIDER }
 
-// @public (undocumented)
-export type DataGridHeaderSlots = TableHeaderSlots;
+export { DATA_OVERFLOW_ITEM }
 
-// @public
-export type DataGridHeaderState = TableHeaderState;
+export { DATA_OVERFLOW_MENU }
 
-// @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
-    onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
-    onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
-    selectionMode?: SelectionMode_2;
-    columnSizingOptions?: TableColumnSizingOptions;
-    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
-        columnId: TableColumnId;
-        width: number;
-    }) => void;
-    containerWidthOffset?: number;
-};
+export { DATA_OVERFLOWING }
 
-// @public
-export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
+export { DataGrid }
 
-// @public (undocumented)
-export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
+export { DataGridBody }
 
-// @public
-export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
-    children: CellRenderFunction<TItem>;
-};
+export { dataGridBodyClassNames }
 
-// @public (undocumented)
-export type DataGridRowSlots = TableRowSlots & {
-    selectionCell?: Slot<typeof TableSelectionCell>;
-};
+export { DataGridBodyProps }
 
-// @public
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
-    renderCell: CellRenderFunction;
-    columnDefs: TableColumnDefinition<any>[];
-    dataGridContextValue: DataGridContextValue;
-};
-
-// @public
-export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
-
-// @public (undocumented)
-export const dataGridSelectionCellClassNames: SlotClassNames<DataGridSelectionCellSlots>;
-
-// @public
-export type DataGridSelectionCellProps = TableSelectionCellProps;
-
-// @public (undocumented)
-export type DataGridSelectionCellSlots = TableSelectionCellSlots;
-
-// @public
-export type DataGridSelectionCellState = TableSelectionCellState;
-
-// @public (undocumented)
-export type DataGridSlots = TableSlots;
-
-// @public
-export type DataGridState = TableState & {
-    tableState: TableFeaturesState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'>;
-
-// @public
-export const Dialog: React_2.FC<DialogProps>;
-
-// @public
-export const DialogActions: ForwardRefComponent<DialogActionsProps>;
-
-// @public (undocumented)
-export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots>;
-
-// @public (undocumented)
-export type DialogActionsPosition = 'start' | 'end';
-
-// @public
-export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
-    position?: DialogActionsPosition;
-    fluid?: boolean;
-};
-
-// @public (undocumented)
-export type DialogActionsSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
-
-// @public
-export const DialogBody: ForwardRefComponent<DialogBodyProps>;
-
-// @public (undocumented)
-export const dialogBodyClassNames: SlotClassNames<DialogBodySlots>;
-
-// @public
-export type DialogBodyProps = ComponentProps<DialogBodySlots> & {};
-
-// @public (undocumented)
-export type DialogBodySlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type DialogBodyState = ComponentState<DialogBodySlots>;
-
-// @public
-export const DialogContent: ForwardRefComponent<DialogContentProps>;
-
-// @public (undocumented)
-export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
-
-// @public
-export type DialogContentProps = ComponentProps<DialogContentSlots>;
-
-// @public (undocumented)
-export type DialogContentSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type DialogContentState = ComponentState<DialogContentSlots>;
-
-// @public (undocumented)
-export type DialogOpenChangeData = {
-    type: 'escapeKeyDown';
-    open: boolean;
-    event: React_2.KeyboardEvent<DialogSurfaceElement>;
-} | {
-    type: 'backdropClick';
-    open: boolean;
-    event: React_2.MouseEvent<DialogSurfaceElement>;
-} | {
-    type: 'triggerClick';
-    open: boolean;
-    event: React_2.MouseEvent<DialogSurfaceElement>;
-};
-
-// @public (undocumented)
-export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
-
-// @public (undocumented)
-export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
-    modalType?: DialogModalType;
-    open?: boolean;
-    defaultOpen?: boolean;
-    onOpenChange?: DialogOpenChangeEventHandler;
-    children: [JSX.Element, JSX.Element] | JSX.Element;
-    inertTrapFocus?: boolean;
-};
-
-// @public (undocumented)
-export type DialogSlots = {};
-
-// @public (undocumented)
-export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
-    content: React_2.ReactNode;
-    trigger: React_2.ReactNode;
-};
-
-// @public
-export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
-
-// @public (undocumented)
-export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
-
-// @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
-
-// @public (undocumented)
-export type DialogSurfaceSlots = {
-    backdrop?: Slot<'div'>;
-    root: Slot<'div'>;
-};
-
-// @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
-
-// @public
-export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
-
-// @public (undocumented)
-export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
-
-// @public
-export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
-
-// @public (undocumented)
-export type DialogTitleSlots = {
-    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
-    action?: Slot<'div'>;
-};
-
-// @public
-export type DialogTitleState = ComponentState<DialogTitleSlots>;
-
-// @public
-export const DialogTrigger: React_2.FC<DialogTriggerProps>;
-
-// @public (undocumented)
-export type DialogTriggerAction = 'open' | 'close';
-
-// @public
-export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
-    'aria-haspopup'?: 'dialog';
-}>;
-
-// @public (undocumented)
-export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
-    action?: DialogTriggerAction;
-    disableButtonEnhancement?: boolean;
-};
-
-// @public (undocumented)
-export type DialogTriggerState = {
-    children: React_2.ReactElement | null;
-};
-
-// @public
-export const Display: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const displayClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Divider: ForwardRefComponent<DividerProps>;
-
-// @public (undocumented)
-export const dividerClassNames: SlotClassNames<DividerSlots>;
-
-// @public (undocumented)
-export type DividerProps = ComponentProps<Partial<DividerSlots>> & {
-    alignContent?: 'start' | 'center' | 'end';
-    appearance?: 'brand' | 'default' | 'strong' | 'subtle';
-    inset?: boolean;
-    vertical?: boolean;
-};
-
-// @public (undocumented)
-export type DividerSlots = {
-    root: NonNullable<Slot<'div'>>;
-    wrapper: NonNullable<Slot<'div'>>;
-};
-
-// @public (undocumented)
-export type DividerState = ComponentState<DividerSlots> & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset' | 'vertical'>>;
-
-// @public
-export const Dropdown: ForwardRefComponent<DropdownProps>;
-
-// @public (undocumented)
-export const dropdownClassNames: SlotClassNames<DropdownSlots>;
-
-// @public (undocumented)
-export type DropdownContextValues = ComboboxBaseContextValues;
-
-// @public (undocumented)
-export type DropdownOpenChangeData = ComboboxBaseOpenChangeData;
-
-// @public (undocumented)
-export type DropdownOpenEvents = ComboboxBaseOpenEvents;
-
-// @public
-export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & ComboboxBaseProps;
-
-// @public (undocumented)
-export type DropdownSlots = {
-    root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
-    button: NonNullable<Slot<'button'>>;
-    listbox?: Slot<typeof Listbox>;
-};
-
-// @public
-export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
-    placeholderVisible: boolean;
-};
-
-// @public (undocumented)
-export type DurationTokens = {
-    durationUltraFast: string;
-    durationFaster: string;
-    durationFast: string;
-    durationNormal: string;
-    durationSlow: string;
-    durationSlower: string;
-    durationUltraSlow: string;
-};
-
-// @public (undocumented)
-export const Field: ForwardRefComponent<FieldProps>;
-
-// @public (undocumented)
-export const fieldClassNames: SlotClassNames<FieldSlots>;
-
-// @public (undocumented)
-export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
-    labelFor?: string | undefined;
-    labelId?: string | undefined;
-    validationMessageId?: string | undefined;
-    hintId?: string | undefined;
-}> | undefined>;
-
-// @public (undocumented)
-export type FieldContextValue = Readonly<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
-    labelFor?: string;
-    labelId?: string;
-    validationMessageId?: string;
-    hintId?: string;
-}>;
-
-// @public (undocumented)
-export type FieldContextValues = {
-    field: FieldContextValue;
-};
-
-// @public
-export type FieldControlProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'>;
-
-// @public
-export type FieldControlPropsOptions = {
-    supportsLabelFor?: boolean;
-    supportsRequired?: boolean;
-    supportsSize?: boolean;
-};
-
-// @public
-export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
-    children?: React_2.ReactNode | ((props: FieldControlProps) => React_2.ReactNode);
-    orientation?: 'vertical' | 'horizontal';
-    validationState?: 'error' | 'warning' | 'success' | 'none';
-    required?: boolean;
-    size?: 'small' | 'medium' | 'large';
-};
-
-// @public
-export type FieldSlots = {
-    root: NonNullable<Slot<'div'>>;
-    label?: Slot<typeof Label>;
-    validationMessage?: Slot<'div'>;
-    validationMessageIcon?: Slot<'span'>;
-    hint?: Slot<'div'>;
-};
-
-// @public
-export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> & Pick<FieldProps, 'children'> & {
-    generatedControlId: string;
-};
-
-// @public (undocumented)
-export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
-    applyStylesToPortals?: boolean | undefined;
-    customStyleHooks_unstable?: Partial<{
-        useAccordionHeaderStyles_unstable: (state: unknown) => void;
-        useAccordionItemStyles_unstable: (state: unknown) => void;
-        useAccordionPanelStyles_unstable: (state: unknown) => void;
-        useAccordionStyles_unstable: (state: unknown) => void;
-        useAvatarStyles_unstable: (state: unknown) => void;
-        useAvatarGroupStyles_unstable: (state: unknown) => void;
-        useAvatarGroupItemStyles_unstable: (state: unknown) => void;
-        useAvatarGroupPopoverStyles_unstable: (state: unknown) => void;
-        useBadgeStyles_unstable: (state: unknown) => void;
-        useCounterBadgeStyles_unstable: (state: unknown) => void;
-        useCardHeaderStyles_unstable: (state: unknown) => void;
-        useCardStyles_unstable: (state: unknown) => void;
-        useCardFooterStyles_unstable: (state: unknown) => void;
-        useCardPreviewStyles_unstable: (state: unknown) => void;
-        usePresenceBadgeStyles_unstable: (state: unknown) => void;
-        useButtonStyles_unstable: (state: unknown) => void;
-        useCompoundButtonStyles_unstable: (state: unknown) => void;
-        useMenuButtonStyles_unstable: (state: unknown) => void;
-        useSplitButtonStyles_unstable: (state: unknown) => void;
-        useToggleButtonStyles_unstable: (state: unknown) => void;
-        useCheckboxStyles_unstable: (state: unknown) => void;
-        useComboboxStyles_unstable: (state: unknown) => void;
-        useDropdownStyles_unstable: (state: unknown) => void;
-        useListboxStyles_unstable: (state: unknown) => void;
-        useOptionStyles_unstable: (state: unknown) => void;
-        useOptionGroupStyles_unstable: (state: unknown) => void;
-        useDividerStyles_unstable: (state: unknown) => void;
-        useInputStyles_unstable: (state: unknown) => void;
-        useImageStyles_unstable: (state: unknown) => void;
-        useLabelStyles_unstable: (state: unknown) => void;
-        useLinkStyles_unstable: (state: unknown) => void;
-        useMenuDividerStyles_unstable: (state: unknown) => void;
-        useMenuGroupHeaderStyles_unstable: (state: unknown) => void;
-        useMenuGroupStyles_unstable: (state: unknown) => void;
-        useMenuItemCheckboxStyles_unstable: (state: unknown) => void;
-        useMenuItemRadioStyles_unstable: (state: unknown) => void;
-        useMenuItemStyles_unstable: (state: unknown) => void;
-        useMenuListStyles_unstable: (state: unknown) => void;
-        useMenuPopoverStyles_unstable: (state: unknown) => void;
-        useMenuSplitGroupStyles_unstable: (state: unknown) => void;
-        usePersonaStyles_unstable: (state: unknown) => void;
-        usePopoverSurfaceStyles_unstable: (state: unknown) => void;
-        useRadioGroupStyles_unstable: (state: unknown) => void;
-        useRadioStyles_unstable: (state: unknown) => void;
-        useSelectStyles_unstable: (state: unknown) => void;
-        useSliderStyles_unstable: (state: unknown) => void;
-        useSpinButtonStyles_unstable: (state: unknown) => void;
-        useSpinnerStyles_unstable: (state: unknown) => void;
-        useSwitchStyles_unstable: (state: unknown) => void;
-        useTabStyles_unstable: (state: unknown) => void;
-        useTabListStyles_unstable: (state: unknown) => void;
-        useTextStyles_unstable: (state: unknown) => void;
-        useTextareaStyles_unstable: (state: unknown) => void;
-        useTooltipStyles_unstable: (state: unknown) => void;
-        useDialogTitleStyles_unstable: (state: unknown) => void;
-        useDialogBodyStyles_unstable: (state: unknown) => void;
-        useDialogActionsStyles_unstable: (state: unknown) => void;
-        useDialogSurfaceStyles_unstable: (state: unknown) => void;
-        useDialogContentStyles_unstable: (state: unknown) => void;
-        useProgressBarStyles_unstable: (state: unknown) => void;
-        useToolbarButtonStyles_unstable: (state: unknown) => void;
-        useToolbarRadioButtonStyles_unstable: (state: unknown) => void;
-        useToolbarGroupStyles_unstable: (state: unknown) => void;
-        useToolbarToggleButtonStyles_unstable: (state: unknown) => void;
-        useToolbarDividerStyles_unstable: (state: unknown) => void;
-        useToolbarStyles_unstable: (state: unknown) => void;
-        useTableCellStyles_unstable: (state: unknown) => void;
-        useTableRowStyles_unstable: (state: unknown) => void;
-        useTableBodyStyles_unstable: (state: unknown) => void;
-        useTableStyles_unstable: (state: unknown) => void;
-        useTableHeaderStyles_unstable: (state: unknown) => void;
-        useTableHeaderCellStyles_unstable: (state: unknown) => void;
-        useTableResizeHandleStyles_unstable: (state: unknown) => void;
-        useTableSelectionCellStyles_unstable: (state: unknown) => void;
-        useTableCellActionsStyles_unstable: (state: unknown) => void;
-        useTableCellLayoutStyles_unstable: (state: unknown) => void;
-        useDataGridCellStyles_unstable: (state: unknown) => void;
-        useDataGridRowStyles_unstable: (state: unknown) => void;
-        useDataGridBodyStyles_unstable: (state: unknown) => void;
-        useDataGridStyles_unstable: (state: unknown) => void;
-        useDataGridHeaderStyles_unstable: (state: unknown) => void;
-        useDataGridHeaderCellStyles_unstable: (state: unknown) => void;
-        useDataGridSelectionCellStyles_unstable: (state: unknown) => void;
-        useDrawerStyles_unstable: (state: unknown) => void;
-        useDrawerBodyStyles_unstable: (state: unknown) => void;
-        useDrawerHeaderStyles_unstable: (state: unknown) => void;
-        useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
-        useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
-    }> | undefined;
-    dir?: "ltr" | "rtl" | undefined;
-    targetDocument?: Document | undefined;
-    theme?: Partial<Theme> | undefined;
-    overrides_unstable?: OverridesContextValue | undefined;
-} & React_2.RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
-
-// @public (undocumented)
-export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'> & {
-    provider: ProviderContextValue;
-    themeClassName: ThemeClassNameContextValue;
-    textDirection: 'ltr' | 'rtl';
-    tooltip: TooltipVisibilityContextValue;
-};
-
-// @public (undocumented)
-export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue;
-
-// @public (undocumented)
-export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
-    applyStylesToPortals?: boolean;
-    customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
-    dir?: 'ltr' | 'rtl';
-    targetDocument?: Document;
-    theme?: PartialTheme;
-    overrides_unstable?: OverridesContextValue;
-};
-
-// @public (undocumented)
-export type FluentProviderSlots = {
-    root: Slot<'div'>;
-};
-
-// @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
-    theme: ThemeContextValue;
-    themeClassName: string;
-    serverStyleProps: {
-        cssRule: string;
-        attributes: Record<string, string>;
-    };
-};
-
-// @public (undocumented)
-export type FontFamilyTokens = {
-    fontFamilyBase: string;
-    fontFamilyMonospace: string;
-    fontFamilyNumeric: string;
-};
-
-// @public (undocumented)
-export type FontSizeTokens = {
-    fontSizeBase100: string;
-    fontSizeBase200: string;
-    fontSizeBase300: string;
-    fontSizeBase400: string;
-    fontSizeBase500: string;
-    fontSizeBase600: string;
-    fontSizeHero700: string;
-    fontSizeHero800: string;
-    fontSizeHero900: string;
-    fontSizeHero1000: string;
-};
-
-// @public (undocumented)
-export type FontWeightTokens = {
-    fontWeightRegular: number;
-    fontWeightMedium: number;
-    fontWeightSemibold: number;
-    fontWeightBold: number;
-};
-
-// @public
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
-
-// @public
-export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
-
-// @public
-export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
-    primarySlotTagName: keyof JSX.IntrinsicElements;
-    props: Props;
-    excludedPropNames?: ExcludedPropKeys[] | undefined;
-}) => {
-    root: {
-        style: React_2.CSSProperties | undefined;
-        className: string | undefined;
-    };
-    primary: Omit<Props, ExcludedPropKeys>;
-};
-
-// @public
-export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
-    slots: Slots<R>;
-    slotProps: ObjectSlotProps<R>;
-};
+export { DataGridBodySlots }
+
+export { DataGridBodyState }
+
+export { DataGridCell }
+
+export { dataGridCellClassNames }
+
+export { DataGridCellProps }
+
+export { DataGridCellSlots }
+
+export { DataGridCellState }
+
+export { dataGridClassNames }
+
+export { DataGridContextValue }
+
+export { DataGridContextValues }
+
+export { DataGridHeader }
+
+export { DataGridHeaderCell }
+
+export { dataGridHeaderCellClassNames }
+
+export { DataGridHeaderCellProps }
+
+export { DataGridHeaderCellSlots }
+
+export { DataGridHeaderCellState }
+
+export { dataGridHeaderClassNames }
+
+export { DataGridHeaderProps }
+
+export { DataGridHeaderSlots }
+
+export { DataGridHeaderState }
+
+export { DataGridProps }
+
+export { DataGridRow }
+
+export { dataGridRowClassNames }
+
+export { DataGridRowProps }
+
+export { DataGridRowSlots }
+
+export { DataGridRowState }
+
+export { DataGridSelectionCell }
+
+export { dataGridSelectionCellClassNames }
+
+export { DataGridSelectionCellProps }
+
+export { DataGridSelectionCellSlots }
+
+export { DataGridSelectionCellState }
+
+export { DataGridSlots }
+
+export { DataGridState }
+
+export { Dialog }
+
+export { DialogActions }
+
+export { dialogActionsClassNames }
+
+export { DialogActionsPosition }
+
+export { DialogActionsProps }
+
+export { DialogActionsSlots }
+
+export { DialogActionsState }
+
+export { DialogBody }
+
+export { dialogBodyClassNames }
+
+export { DialogBodyProps }
+
+export { DialogBodySlots }
+
+export { DialogBodyState }
+
+export { DialogContent }
+
+export { dialogContentClassNames }
+
+export { DialogContentProps }
+
+export { DialogContentSlots }
+
+export { DialogContentState }
+
+export { DialogOpenChangeData }
+
+export { DialogOpenChangeEvent }
+
+export { DialogProps }
+
+export { DialogSlots }
+
+export { DialogState }
+
+export { DialogSurface }
+
+export { dialogSurfaceClassNames }
+
+export { DialogSurfaceProps }
+
+export { DialogSurfaceSlots }
+
+export { DialogSurfaceState }
+
+export { DialogTitle }
+
+export { dialogTitleClassNames }
+
+export { DialogTitleProps }
+
+export { DialogTitleSlots }
+
+export { DialogTitleState }
+
+export { DialogTrigger }
+
+export { DialogTriggerAction }
+
+export { DialogTriggerChildProps }
+
+export { DialogTriggerProps }
+
+export { DialogTriggerState }
+
+export { Display }
+
+export { displayClassNames }
+
+export { Divider }
+
+export { dividerClassNames }
+
+export { DividerProps }
+
+export { DividerSlots }
+
+export { DividerState }
+
+export { Dropdown }
+
+export { dropdownClassNames }
+
+export { DropdownContextValues }
+
+export { DropdownOpenChangeData }
+
+export { DropdownOpenEvents }
+
+export { DropdownProps }
+
+export { DropdownSlots }
+
+export { DropdownState }
+
+export { DurationTokens }
+
+export { Field }
+
+export { fieldClassNames }
+
+export { FieldContextProvider }
+
+export { FieldContextValue }
+
+export { FieldContextValues }
+
+export { FieldControlProps }
+
+export { FieldControlPropsOptions }
+
+export { FieldProps }
+
+export { FieldSlots }
+
+export { FieldState }
+
+export { FluentProvider }
+
+export { fluentProviderClassNames }
+
+export { FluentProviderContextValues }
+
+export { FluentProviderCustomStyleHooks }
+
+export { FluentProviderProps }
+
+export { FluentProviderSlots }
+
+export { FluentProviderState }
+
+export { FontFamilyTokens }
+
+export { FontSizeTokens }
+
+export { FontWeightTokens }
+
+export { ForwardRefComponent }
+
+export { getNativeElementProps }
+
+export { getPartitionedNativeProps }
+
+export { getSlots }
 
 export { GriffelRenderer }
 
 export { GriffelStyle }
 
-// @public (undocumented)
-export type HorizontalSpacingTokens = {
-    spacingHorizontalNone: string;
-    spacingHorizontalXXS: string;
-    spacingHorizontalXS: string;
-    spacingHorizontalSNudge: string;
-    spacingHorizontalS: string;
-    spacingHorizontalMNudge: string;
-    spacingHorizontalM: string;
-    spacingHorizontalL: string;
-    spacingHorizontalXL: string;
-    spacingHorizontalXXL: string;
-    spacingHorizontalXXXL: string;
-};
+export { HorizontalSpacingTokens }
 
-// @public
-export const IdPrefixProvider: React_2.Provider<string | undefined>;
+export { IdPrefixProvider }
 
-// @public
-const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
-// @public (undocumented)
-export const imageClassNames: SlotClassNames<ImageSlots>;
+export { imageClassNames }
 
-// @public (undocumented)
-export type ImageProps = ComponentProps<ImageSlots> & {
-    block?: boolean;
-    bordered?: boolean;
-    fit?: 'none' | 'center' | 'contain' | 'cover' | 'default';
-    shadow?: boolean;
-    shape?: 'square' | 'circular' | 'rounded';
-};
+export { ImageProps }
 
-// @public (undocumented)
-export type ImageSlots = {
-    root: Slot<'img'>;
-};
+export { ImageSlots }
 
-// @public (undocumented)
-export type ImageState = ComponentState<ImageSlots> & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
+export { ImageState }
 
-// @public
-export const Input: ForwardRefComponent<InputProps>;
+export { Input }
 
-// @public (undocumented)
-export const inputClassNames: SlotClassNames<InputSlots>;
+export { inputClassNames }
 
-// @public
-export type InputOnChangeData = {
-    value: string;
-};
+export { InputOnChangeData }
 
-// @public (undocumented)
-export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
-    children?: never;
-    size?: 'small' | 'medium' | 'large';
-    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
-    defaultValue?: string;
-    value?: string;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
-    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
-};
+export { InputProps }
 
-// @public (undocumented)
-export type InputSlots = {
-    root: NonNullable<Slot<'span'>>;
-    input: NonNullable<Slot<'input'>>;
-    contentBefore?: Slot<'span'>;
-    contentAfter?: Slot<'span'>;
-};
+export { InputSlots }
 
-// @public
-export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
+export { InputState }
 
-// @public
-export const Label: ForwardRefComponent<LabelProps>;
+export { Label }
 
-// @public (undocumented)
-export const labelClassNames: SlotClassNames<LabelSlots>;
+export { labelClassNames }
 
-// @public
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
-    disabled?: boolean;
-    required?: boolean | Slot<'span'>;
-    size?: 'small' | 'medium' | 'large';
-    weight?: 'regular' | 'semibold';
-};
+export { LabelProps }
 
-// @public (undocumented)
-export type LabelSlots = {
-    root: Slot<'label'>;
-    required?: Slot<'span'>;
-};
+export { LabelSlots }
 
-// @public
-export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'weight'>>;
+export { LabelState }
 
-// @public
-export const LargeTitle: FunctionComponent<TextPresetProps>;
+export { LargeTitle }
 
-// @public (undocumented)
-export const largeTitleClassNames: SlotClassNames<TextSlots>;
+export { largeTitleClassNames }
 
-// @public (undocumented)
-export type LineHeightTokens = {
-    lineHeightBase100: string;
-    lineHeightBase200: string;
-    lineHeightBase300: string;
-    lineHeightBase400: string;
-    lineHeightBase500: string;
-    lineHeightBase600: string;
-    lineHeightHero700: string;
-    lineHeightHero800: string;
-    lineHeightHero900: string;
-    lineHeightHero1000: string;
-};
+export { LineHeightTokens }
 
-// @public
-export const Link: ForwardRefComponent<LinkProps>;
+export { Link }
 
-// @public (undocumented)
-export const linkClassNames: SlotClassNames<LinkSlots>;
+export { linkClassNames }
 
-// @public (undocumented)
-export type LinkProps = ComponentProps<LinkSlots> & {
-    appearance?: 'default' | 'subtle';
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-    inline?: boolean;
-};
+export { LinkProps }
 
-// @public (undocumented)
-export type LinkSlots = {
-    root: Slot<'a', 'button'>;
-};
+export { LinkSlots }
 
-// @public (undocumented)
-export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>>;
+export { LinkState }
 
-// @public
-export const Listbox: ForwardRefComponent<ListboxProps>;
+export { Listbox }
 
-// @public (undocumented)
-export const listboxClassNames: SlotClassNames<ListboxSlots>;
+export { listboxClassNames }
 
-// @public
-export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'>;
+export { ListboxContextValue }
 
-// @public (undocumented)
-export type ListboxContextValues = {
-    listbox: ListboxContextValue;
-};
+export { ListboxContextValues }
 
-// @public
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export { ListboxProps }
 
-// @public (undocumented)
-export const ListboxProvider: Provider<ListboxContextValue> & FC<ProviderProps<ListboxContextValue>>;
+export { ListboxProvider }
 
-// @public (undocumented)
-export type ListboxSlots = {
-    root: Slot<'div'>;
-};
+export { ListboxSlots }
 
-// @public
-export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & Pick<SelectionProps, 'multiselect'> & SelectionState & {
-    activeOption?: OptionValue;
-    focusVisible: boolean;
-    selectOption(event: SelectionEvents, option: OptionValue): void;
-    setActiveOption(option?: OptionValue): void;
-};
+export { ListboxState }
 
 export { makeResetStyles }
 
@@ -1689,2872 +1660,1419 @@ export { makeStaticStyles }
 
 export { makeStyles }
 
-// @public
-export const Menu: React_2.FC<MenuProps>;
+export { Menu }
 
-// @public
-export const MenuButton: ForwardRefComponent<MenuButtonProps>;
+export { MenuButton }
 
-// @public (undocumented)
-export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
+export { menuButtonClassNames }
 
-// @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
+export { MenuButtonProps }
 
-// @public (undocumented)
-export type MenuButtonSlots = ButtonSlots & {
-    menuIcon?: Slot<'span'>;
-};
+export { MenuButtonSlots }
 
-// @public (undocumented)
-export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
+export { MenuButtonState }
 
-// @public (undocumented)
-export type MenuCheckedValueChangeData = {
-    checkedItems: string[];
-    name: string;
-};
+export { MenuCheckedValueChangeData }
 
-// @public (undocumented)
-export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
+export { MenuCheckedValueChangeEvent }
 
-// @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
-    open: boolean;
-    triggerId: string;
-    defaultCheckedValues?: Record<string, string[]>;
-};
+export { MenuContextValue }
 
-// @public (undocumented)
-export type MenuContextValues = {
-    menu: MenuContextValue;
-};
+export { MenuContextValues }
 
-// @public
-export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
+export { MenuDivider }
 
-// @public (undocumented)
-export const menuDividerClassNames: SlotClassNames<MenuDividerSlots>;
+export { menuDividerClassNames }
 
-// @public (undocumented)
-export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
+export { MenuDividerProps }
 
-// @public (undocumented)
-export type MenuDividerSlots = {
-    root: Slot<'div'>;
-};
+export { MenuDividerSlots }
 
-// @public (undocumented)
-export type MenuDividerState = ComponentState<MenuDividerSlots>;
+export { MenuDividerState }
 
-// @public
-export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
+export { MenuGroup }
 
-// @public (undocumented)
-export const menuGroupClassNames: SlotClassNames<MenuGroupSlots>;
+export { menuGroupClassNames }
 
-// @public (undocumented)
-export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
+export { MenuGroupContextProvider }
 
-// @public
-export type MenuGroupContextValue = {
-    headerId: string;
-};
+export { MenuGroupContextValue }
 
-// @public (undocumented)
-export type MenuGroupContextValues = {
-    menuGroup: MenuGroupContextValue;
-};
+export { MenuGroupContextValues }
 
-// @public
-export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
+export { MenuGroupHeader }
 
-// @public (undocumented)
-export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots>;
-
-// @public (undocumented)
-export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
-
-// @public (undocumented)
-export type MenuGroupHeaderSlots = {
-    root: Slot<'div'>;
-};
-
-// @public (undocumented)
-export type MenuGroupHeaderState = ComponentState<MenuGroupHeaderSlots>;
-
-// @public (undocumented)
-export type MenuGroupProps = ComponentProps<MenuGroupSlots>;
-
-// @public (undocumented)
-export type MenuGroupSlots = {
-    root: Slot<'div'>;
-};
-
-// @public (undocumented)
-export type MenuGroupState = ComponentState<MenuGroupSlots> & {
-    headerId: string;
-};
-
-// @public
-export const MenuItem: ForwardRefComponent<MenuItemProps>;
-
-// @public
-export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
-
-// @public (undocumented)
-export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
-
-// @public (undocumented)
-export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
-
-// @public (undocumented)
-export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
-
-// @public (undocumented)
-export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
-
-// @public (undocumented)
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
-    hasSubmenu?: boolean;
-    persistOnClick?: boolean;
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-};
-
-// @public
-export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
-
-// @public (undocumented)
-export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
-
-// @public (undocumented)
-export type MenuItemRadioProps = MenuItemProps & MenuItemSelectableProps;
-
-// @public (undocumented)
-export type MenuItemRadioState = MenuItemState & MenuItemSelectableState;
-
-// @public
-export type MenuItemSelectableProps = {
-    name: string;
-    value: string;
-};
-
-// @public
-export type MenuItemSelectableState = MenuItemSelectableProps & {
-    checked: boolean;
-};
-
-// @public (undocumented)
-export type MenuItemSlots = {
-    root: Slot<'div'>;
-    icon?: Slot<'span'>;
-    checkmark?: Slot<'span'>;
-    submenuIndicator?: Slot<'span'>;
-    content?: Slot<'span'>;
-    secondaryContent?: Slot<'span'>;
-};
-
-// @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
-
-// @public
-export const MenuList: ForwardRefComponent<MenuListProps>;
-
-// @public (undocumented)
-export const menuListClassNames: SlotClassNames<MenuListSlots>;
-
-// @public
-export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIcons' | 'hasCheckmarks'> & {
-    setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
-    toggleCheckbox?: SelectableHandler;
-    selectRadio?: SelectableHandler;
-    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
-};
-
-// @public (undocumented)
-export type MenuListContextValues = {
-    menuList: MenuListContextValue;
-};
-
-// @public (undocumented)
-export type MenuListProps = ComponentProps<MenuListSlots> & {
-    checkedValues?: Record<string, string[]>;
-    defaultCheckedValues?: Record<string, string[]>;
-    hasCheckmarks?: boolean;
-    hasIcons?: boolean;
-    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
-};
-
-// @public (undocumented)
-export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.FC<React_2.ProviderProps<MenuListContextValue>>;
-
-// @public (undocumented)
-export type MenuListSlots = {
-    root: Slot<'div'>;
-};
-
-// @public (undocumented)
-export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
-    selectRadio: SelectableHandler;
-    setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
-    toggleCheckbox: SelectableHandler;
-};
-
-// @public
-export type MenuOpenChangeData = {
-    bubble?: boolean;
-    keyboard?: boolean;
-    open: boolean;
-} & ({
-    type: 'menuTriggerContextMenu';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuTriggerClick';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuTriggerMouseEnter';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuTriggerMouseLeave';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuTriggerMouseMove';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuTriggerKeyDown';
-    event: React_2.KeyboardEvent<HTMLElement>;
-} | {
-    type: 'menuItemClick';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuPopoverMouseEnter';
-    event: React_2.MouseEvent<HTMLElement>;
-} | {
-    type: 'menuPopoverKeyDown';
-    event: React_2.KeyboardEvent<HTMLElement>;
-} | {
-    type: 'clickOutside';
-    event: MouseEvent | TouchEvent;
-} | {
-    type: 'scrollOutside';
-    event: MouseEvent | TouchEvent;
-} | {
-    type: 'menuMouseEnter';
-    event: MouseEvent | TouchEvent;
-});
-
-// @public
-export type MenuOpenEvent = MenuOpenChangeData['event'];
-
-// @public @deprecated (undocumented)
-export type MenuOpenEvents = MenuOpenEvent;
-
-// @public
-export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
-
-// @public (undocumented)
-export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots>;
-
-// @public
-export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
-
-// @public (undocumented)
-export type MenuPopoverSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
-    inline: boolean;
-};
-
-// @public
-export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
-    children: [JSX.Element, JSX.Element] | JSX.Element;
-    hoverDelay?: number;
-    inline?: boolean;
-    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
-    open?: boolean;
-    defaultOpen?: boolean;
-    openOnContext?: boolean;
-    openOnHover?: boolean;
-    persistOnItemClick?: boolean;
-    positioning?: PositioningShorthand;
-    closeOnScroll?: boolean;
-};
-
-// @public (undocumented)
-export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
-
-// @public (undocumented)
-export type MenuSlots = {};
-
-// @public
-export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
-
-// @public (undocumented)
-export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots>;
-
-// @public
-export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots>;
-
-// @public (undocumented)
-export type MenuSplitGroupSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
-
-// @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
-    contextTarget?: PositioningVirtualElement;
-    isSubmenu: boolean;
-    menuPopover: React_2.ReactNode;
-    menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
-    menuTrigger: React_2.ReactNode;
-    setContextTarget: SetVirtualMouseTarget;
-    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
-    triggerId: string;
-    triggerRef: React_2.MutableRefObject<HTMLElement>;
-    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
-    defaultCheckedValues?: Record<string, string[]>;
-};
-
-// @public
-export const MenuTrigger: React_2.FC<MenuTriggerProps>;
-
-// @public
-export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
-    'aria-haspopup'?: 'menu';
-    'aria-expanded'?: boolean;
-    id: string;
-    ref: React_2.Ref<never>;
-    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseMove: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-}>;
-
-// @public (undocumented)
-export const MenuTriggerContextProvider: React_2.Provider<boolean>;
-
-// @public (undocumented)
-export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
-    disableButtonEnhancement?: boolean;
-};
-
-// @public (undocumented)
-export type MenuTriggerState = {
-    children: React_2.ReactElement | null;
-    isSubmenu: boolean;
-};
+export { menuGroupHeaderClassNames }
+
+export { MenuGroupHeaderProps }
+
+export { MenuGroupHeaderSlots }
+
+export { MenuGroupHeaderState }
+
+export { MenuGroupProps }
+
+export { MenuGroupSlots }
+
+export { MenuGroupState }
+
+export { MenuItem }
+
+export { MenuItemCheckbox }
+
+export { menuItemCheckboxClassNames }
+
+export { MenuItemCheckboxProps }
+
+export { MenuItemCheckboxState }
+
+export { menuItemClassNames }
+
+export { MenuItemProps }
+
+export { MenuItemRadio }
+
+export { menuItemRadioClassNames }
+
+export { MenuItemRadioProps }
+
+export { MenuItemRadioState }
+
+export { MenuItemSelectableProps }
+
+export { MenuItemSelectableState }
+
+export { MenuItemSlots }
+
+export { MenuItemState }
+
+export { MenuList }
+
+export { menuListClassNames }
+
+export { MenuListContextValue }
+
+export { MenuListContextValues }
+
+export { MenuListProps }
+
+export { MenuListProvider }
+
+export { MenuListSlots }
+
+export { MenuListState }
+
+export { MenuOpenChangeData }
+
+export { MenuOpenEvent }
+
+export { MenuOpenEvents }
+
+export { MenuPopover }
+
+export { menuPopoverClassNames }
+
+export { MenuPopoverProps }
+
+export { MenuPopoverSlots }
+
+export { MenuPopoverState }
+
+export { MenuProps }
+
+export { MenuProvider }
+
+export { MenuSlots }
+
+export { MenuSplitGroup }
+
+export { menuSplitGroupClassNames }
+
+export { MenuSplitGroupProps }
+
+export { MenuSplitGroupSlots }
+
+export { MenuSplitGroupState }
+
+export { MenuState }
+
+export { MenuTrigger }
+
+export { MenuTriggerChildProps }
+
+export { MenuTriggerContextProvider }
+
+export { MenuTriggerProps }
+
+export { MenuTriggerState }
 
 export { mergeClasses }
 
-// @public
-export type OnOpenChangeData = {
-    open: boolean;
-};
+export { OnOpenChangeData }
 
-// @public
-export type OnVisibleChangeData = {
-    visible: boolean;
-};
+export { OnVisibleChangeData }
 
-// @public
-export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
+export { OpenPopoverEvents }
 
-// @public
-const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
-// @public (undocumented)
-export const optionClassNames: SlotClassNames<OptionSlots>;
-
-// @public
-export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
-
-// @public (undocumented)
-export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
-
-// @public
-export type OptionGroupProps = ComponentProps<Partial<OptionGroupSlots>>;
-
-// @public (undocumented)
-export type OptionGroupSlots = {
-    root: NonNullable<Slot<'div'>>;
-    label?: Slot<'span'>;
-};
-
-// @public
-export type OptionGroupState = ComponentState<OptionGroupSlots>;
-
-// @public
-export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
-    disabled?: boolean;
-    value?: string;
-} & ({
-    text?: string;
-    children: string;
-} | {
-    text: string;
-    children?: React_2.ReactNode;
-});
-
-// @public (undocumented)
-export type OptionSlots = {
-    root: NonNullable<Slot<'div'>>;
-    checkIcon: Slot<'span'>;
-};
-
-// @public
-export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disabled'> & {
-    active: boolean;
-    focusVisible: boolean;
-    multiselect?: boolean;
-    selected: boolean;
-};
-
-// @public
-export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
-    children: React_2.ReactElement;
-} & React_2.RefAttributes<unknown>>;
-
-// @public
-export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps & React_2.RefAttributes<unknown>>;
-
-// @public
-export type OverflowItemProps = {
-    id: string;
-    groupId?: string;
-    priority?: number;
-    children: React_2.ReactElement;
-};
-
-// @public
-export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>> & {
-    children: React_2.ReactElement;
-};
-
-// @public (undocumented)
-export type PartialTheme = Partial<Theme>;
-
-// @public (undocumented)
-export type PartitionAvatarGroupItems<T> = {
-    inlineItems: readonly T[];
-    overflowItems?: readonly T[];
-};
-
-// @public
-export const partitionAvatarGroupItems: <T>(options: PartitionAvatarGroupItemsOptions<T>) => PartitionAvatarGroupItems<T>;
-
-// @public (undocumented)
-export type PartitionAvatarGroupItemsOptions<T> = {
-    items: readonly T[];
-    layout?: 'spread' | 'stack' | 'pie';
-    maxInlineItems?: number;
-};
-
-// @public
-export const Persona: ForwardRefComponent<PersonaProps>;
-
-// @public (undocumented)
-export const personaClassNames: SlotClassNames<PersonaSlots>;
-
-// @public
-export type PersonaProps = ComponentProps<PersonaSlots> & {
-    name?: string;
-    presenceOnly?: boolean;
-    size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
-    textPosition?: 'after' | 'before' | 'below';
-    textAlignment?: 'center' | 'start';
-};
-
-// @public (undocumented)
-export type PersonaSlots = {
-    root: NonNullable<Slot<'div'>>;
-    avatar?: Slot<typeof Avatar>;
-    presence?: Slot<typeof PresenceBadge>;
-    primaryText?: Slot<'span'>;
-    secondaryText?: Slot<'span'>;
-    tertiaryText?: Slot<'span'>;
-    quaternaryText?: Slot<'span'>;
-};
-
-// @public
-export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaProps, 'presenceOnly' | 'size' | 'textAlignment' | 'textPosition'>> & {
-    numTextLines: number;
-};
-
-// @public
-export const Popover: React_2.FC<PopoverProps>;
-
-// @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inertTrapFocus' | 'inline'>;
-
-// @public
-export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
-    appearance?: 'brand' | 'inverted';
-    children: [JSX.Element, JSX.Element] | JSX.Element;
-    closeOnScroll?: boolean;
-    defaultOpen?: boolean;
-    inline?: boolean;
-    mouseLeaveDelay?: number;
-    withArrow?: boolean;
-    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
-    open?: boolean;
-    openOnContext?: boolean;
-    openOnHover?: boolean;
-    positioning?: PositioningShorthand;
-    size?: PopoverSize;
-    trapFocus?: boolean;
-    legacyTrapFocus?: boolean;
-    inertTrapFocus?: boolean;
-    unstable_disableAutoFocus?: boolean;
-};
-
-// @public (undocumented)
-export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
-
-// @public
-export type PopoverSize = 'small' | 'medium' | 'large';
-
-// @public
-export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
-    arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
-    contentRef: React_2.MutableRefObject<HTMLElement | null>;
-    contextTarget: PositioningVirtualElement | undefined;
-    popoverSurface: React_2.ReactElement | undefined;
-    popoverTrigger: React_2.ReactElement | undefined;
-    setContextTarget: SetVirtualMouseTarget;
-    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
-    size: NonNullable<PopoverProps['size']>;
-    toggleOpen: (e: OpenPopoverEvents) => void;
-    triggerRef: React_2.MutableRefObject<HTMLElement | null>;
-};
-
-// @public
-export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
-
-// @public (undocumented)
-export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
-
-// @public
-export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
-
-// @public
-export type PopoverSurfaceSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'size' | 'withArrow'> & {
-    arrowClassName?: string;
-};
-
-// @public
-export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
-
-// @public
-export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
-    'aria-expanded'?: 'true' | 'false';
-    ref: React_2.Ref<unknown>;
-    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-}>;
-
-// @public
-export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps> & {
-    disableButtonEnhancement?: boolean;
-};
-
-// @public
-export type PopoverTriggerState = {
-    children: React_2.ReactElement | null;
-};
-
-// @public
-export const Portal: React_2.FC<PortalProps>;
-
-// @public (undocumented)
-export type PortalProps = {
-    children?: React_2.ReactNode;
-    mountNode?: HTMLElement | null | {
-        element?: HTMLElement | null;
-        className?: string;
-    };
-};
-
-// @public (undocumented)
-export type PortalState = Pick<PortalProps, 'children'> & {
-    mountNode: HTMLElement | null | undefined;
-    virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
-};
-
-// @public (undocumented)
-export type PositioningImperativeRef = {
-    updatePosition: () => void;
-    setTarget: (target: TargetElement) => void;
-};
-
-// @public (undocumented)
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'pinned' | 'useTransform'> {
-    positioningRef?: React_2.Ref<PositioningImperativeRef>;
-    target?: TargetElement | null;
-}
-
-// @public (undocumented)
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
-
-// @public (undocumented)
-export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
-
-// @public (undocumented)
-export type PositioningVirtualElement = {
-    getBoundingClientRect: () => {
-        x: number;
-        y: number;
-        top: number;
-        left: number;
-        bottom: number;
-        right: number;
-        width: number;
-        height: number;
-    };
-    contextElement?: Element;
-};
-
-// @public
-export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
-
-// @public (undocumented)
-export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
-
-// @public (undocumented)
-export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> & Pick<BadgeProps, 'size'> & {
-    status?: PresenceBadgeStatus;
-    outOfOffice?: boolean;
-};
-
-// @public (undocumented)
-export type PresenceBadgeState = ComponentState<BadgeSlots> & BadgeState & Required<Pick<PresenceBadgeProps, 'status' | 'outOfOffice'>>;
-
-// @public (undocumented)
-export type PresenceBadgeStatus = 'busy' | 'out-of-office' | 'away' | 'available' | 'offline' | 'do-not-disturb' | 'unknown' | 'blocked';
-
-// @public
-export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
-
-// @public (undocumented)
-export const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
-
-// @public
-export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
-    shape?: 'rounded' | 'square';
-    value?: number;
-    max?: number;
-    thickness?: 'medium' | 'large';
-    color?: 'brand' | 'success' | 'warning' | 'error';
-};
-
-// @public (undocumented)
-export type ProgressBarSlots = {
-    root: NonNullable<Slot<'div'>>;
-    bar?: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'color'>;
-
-// @public
-export const Radio: ForwardRefComponent<RadioProps>;
-
-// @public (undocumented)
-export const radioClassNames: SlotClassNames<RadioSlots>;
-
-// @public
-export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
-
-// @public (undocumented)
-export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
-
-// @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;
-
-// @public (undocumented)
-export type RadioGroupContextValues = {
-    radioGroup: RadioGroupContextValue;
-};
-
-// @public
-export type RadioGroupOnChangeData = {
-    value: string;
-};
-
-// @public (undocumented)
-export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
-    name?: string;
-    value?: string;
-    defaultValue?: string;
-    onChange?: (ev: React_2.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
-    layout?: 'vertical' | 'horizontal' | 'horizontal-stacked';
-    disabled?: boolean;
-    required?: boolean;
-};
-
-// @public (undocumented)
-export const RadioGroupProvider: React_2.Provider<RadioGroupContextValue | undefined>;
-
-// @public (undocumented)
-export type RadioGroupSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
-
-// @public
-export type RadioOnChangeData = {
-    value: string;
-};
-
-// @public
-export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onChange' | 'size'> & {
-    value?: string;
-    labelPosition?: 'after' | 'below';
-    disabled?: boolean;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
-};
-
-// @public (undocumented)
-export type RadioSlots = {
-    root: NonNullable<Slot<'span'>>;
-    label: Slot<typeof Label>;
-    input: NonNullable<Slot<'input'>>;
-    indicator: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'labelPosition'>>;
-
-// @public (undocumented)
-export type RegisterTabEventHandler = (data: TabRegisterData) => void;
-
-// @public
-export const renderAccordion_unstable: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
-
-// @public
-export const renderAccordionHeader_unstable: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
-
-// @public
-export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
-
-// @public
-export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
-
-// @public (undocumented)
-export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
-
-// @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
-
-// @public
-export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
-
-// @public
-export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSX.Element;
-
-// @public (undocumented)
-export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
-
-// @public
-const renderButton_unstable: (state: ButtonState) => JSX.Element;
+export { optionClassNames }
+
+export { OptionGroup }
+
+export { optionGroupClassNames }
+
+export { OptionGroupProps }
+
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
+
+export { Overflow }
+
+export { OverflowDivider }
+
+export { OverflowItem }
+
+export { OverflowItemProps }
+
+export { OverflowProps }
+
+export { PartialTheme }
+
+export { PartitionAvatarGroupItems }
+
+export { partitionAvatarGroupItems }
+
+export { PartitionAvatarGroupItemsOptions }
+
+export { Persona }
+
+export { personaClassNames }
+
+export { PersonaProps }
+
+export { PersonaSlots }
+
+export { PersonaState }
+
+export { Popover }
+
+export { PopoverContextValue }
+
+export { PopoverProps }
+
+export { PopoverProvider }
+
+export { PopoverSize }
+
+export { PopoverState }
+
+export { PopoverSurface }
+
+export { popoverSurfaceClassNames }
+
+export { PopoverSurfaceProps }
+
+export { PopoverSurfaceSlots }
+
+export { PopoverSurfaceState }
+
+export { PopoverTrigger }
+
+export { PopoverTriggerChildProps }
+
+export { PopoverTriggerProps }
+
+export { PopoverTriggerState }
+
+export { Portal }
+
+export { PortalProps }
+
+export { PortalState }
+
+export { PositioningImperativeRef }
+
+export { PositioningProps }
+
+export { PositioningShorthand }
+
+export { PositioningShorthandValue }
+
+export { PositioningVirtualElement }
+
+export { PresenceBadge }
+
+export { presenceBadgeClassNames }
+
+export { PresenceBadgeProps }
+
+export { PresenceBadgeState }
+
+export { PresenceBadgeStatus }
+
+export { ProgressBar }
+
+export { progressBarClassNames }
+
+export { ProgressBarProps }
+
+export { ProgressBarSlots }
+
+export { ProgressBarState }
+
+export { Radio }
+
+export { radioClassNames }
+
+export { RadioGroup }
+
+export { radioGroupClassNames }
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
+
+export { RadioGroupOnChangeData }
+
+export { RadioGroupProps }
+
+export { RadioGroupProvider }
+
+export { RadioGroupSlots }
+
+export { RadioGroupState }
+
+export { RadioOnChangeData }
+
+export { RadioProps }
+
+export { RadioSlots }
+
+export { RadioState }
+
+export { RegisterTabEventHandler }
+
+export { renderAccordion_unstable }
+
+export { renderAccordionHeader_unstable }
+
+export { renderAccordionItem_unstable }
+
+export { renderAccordionPanel_unstable }
+
+export { renderAvatar_unstable }
+
+export { renderAvatarGroup_unstable }
+
+export { renderAvatarGroupItem_unstable }
+
+export { renderAvatarGroupPopover_unstable }
+
+export { renderBadge_unstable }
+
 export { renderButton_unstable }
-export { renderButton_unstable as renderToggleButton_unstable }
 
-// @public
-export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSX.Element;
+export { renderCard_unstable }
 
-// @public
-export const renderCardFooter_unstable: (state: CardFooterState) => JSX.Element;
+export { renderCardFooter_unstable }
 
-// @public
-export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
+export { renderCardHeader_unstable }
 
-// @public
-export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
+export { renderCardPreview_unstable }
 
-// @public (undocumented)
-export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;
+export { renderCheckbox_unstable }
 
-// @public
-export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
+export { renderCombobox_unstable }
 
-// @public
-export const renderCompoundButton_unstable: (state: CompoundButtonState) => JSX.Element;
+export { renderCompoundButton_unstable }
 
-// @public
-export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
+export { renderDataGrid_unstable }
 
-// @public
-export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
+export { renderDataGridBody_unstable }
 
-// @public
-export const renderDataGridCell_unstable: (state: DataGridCellState) => JSX.Element;
+export { renderDataGridCell_unstable }
 
-// @public
-export const renderDataGridHeader_unstable: (state: DataGridHeaderState) => JSX.Element;
+export { renderDataGridHeader_unstable }
 
-// @public
-export const renderDataGridHeaderCell_unstable: (state: DataGridHeaderCellState) => JSX.Element;
+export { renderDataGridHeaderCell_unstable }
 
-// @public
-export const renderDataGridRow_unstable: (state: DataGridRowState) => JSX.Element;
+export { renderDataGridRow_unstable }
 
-// @public
-export const renderDataGridSelectionCell_unstable: (state: DataGridSelectionCellState) => JSX.Element;
+export { renderDataGridSelectionCell_unstable }
 
-// @public
-export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;
+export { renderDialog_unstable }
 
-// @public
-export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.Element;
+export { renderDialogActions_unstable }
 
-// @public
-export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
+export { renderDialogBody_unstable }
 
-// @public
-export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
+export { renderDialogContent_unstable }
 
-// @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
+export { renderDialogSurface_unstable }
 
-// @public
-export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;
+export { renderDialogTitle_unstable }
 
-// @public
-export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export { renderDialogTrigger_unstable }
 
-// @public
-export const renderDivider_unstable: (state: DividerState) => JSX.Element;
+export { renderDivider_unstable }
 
-// @public
-export const renderDropdown_unstable: (state: DropdownState, contextValues: DropdownContextValues) => JSX.Element;
+export { renderDropdown_unstable }
 
 export { RendererProvider }
 
-// @public
-export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
+export { renderField_unstable }
 
-// @public
-export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
+export { renderFluentProvider_unstable }
 
-// @public
-export const renderImage_unstable: (state: ImageState) => JSX.Element;
+export { renderImage_unstable }
 
-// @public
-export const renderInput_unstable: (state: InputState) => JSX.Element;
+export { renderInput_unstable }
 
-// @public
-export const renderLabel_unstable: (state: LabelState) => JSX.Element;
+export { renderLabel_unstable }
 
-// @public
-export const renderLink_unstable: (state: LinkState) => JSX.Element;
+export { renderLink_unstable }
 
-// @public
-export const renderListbox_unstable: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
+export { renderListbox_unstable }
 
-// @public
-export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export { renderMenu_unstable }
 
-// @public
-export const renderMenuButton_unstable: (state: MenuButtonState) => JSX.Element;
+export { renderMenuButton_unstable }
 
-// @public
-export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
+export { renderMenuDivider_unstable }
 
-// @public
-export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
+export { renderMenuGroup_unstable }
 
-// @public
-export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSX.Element;
+export { renderMenuGroupHeader_unstable }
 
-// @public
-export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
+export { renderMenuItem_unstable }
 
-// @public
-export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
+export { renderMenuItemCheckbox_unstable }
 
-// @public
-export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
+export { renderMenuItemRadio_unstable }
 
-// @public
-export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
+export { renderMenuList_unstable }
 
-// @public
-export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
+export { renderMenuPopover_unstable }
 
-// @public
-export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState) => JSX.Element;
+export { renderMenuSplitGroup_unstable }
 
-// @public
-export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
+export { renderMenuTrigger_unstable }
 
-// @public
-export const renderOption_unstable: (state: OptionState) => JSX.Element;
+export { renderOption_unstable }
 
-// @public
-export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
+export { renderOptionGroup_unstable }
 
-// @public
-export const renderPersona_unstable: (state: PersonaState) => JSX.Element;
+export { renderPersona_unstable }
 
-// @public
-export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
+export { renderPopover_unstable }
 
-// @public
-export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element;
+export { renderPopoverSurface_unstable }
 
-// @public
-export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export { renderPopoverTrigger_unstable }
 
-// @public
-export const renderPortal_unstable: (state: PortalState) => React_2.ReactElement;
+export { renderPortal_unstable }
 
-// @public
-export const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;
+export { renderProgressBar_unstable }
 
-// @public
-export const renderRadio_unstable: (state: RadioState) => JSX.Element;
+export { renderRadio_unstable }
 
-// @public
-export const renderRadioGroup_unstable: (state: RadioGroupState, contextValues: RadioGroupContextValues) => JSX.Element;
+export { renderRadioGroup_unstable }
 
-// @public
-export const renderSelect_unstable: (state: SelectState) => JSX.Element;
+export { renderSelect_unstable }
 
-// @public
-export const renderSkeleton_unstable: (state: SkeletonState, contextValues: SkeletonContextValues) => JSX.Element;
+export { renderSkeleton_unstable }
 
-// @public
-export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSX.Element;
+export { renderSkeletonItem_unstable }
 
-// @public
-export const renderSlider_unstable: (state: SliderState) => JSX.Element;
+export { renderSlider_unstable }
 
-// @public
-export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
+export { renderSpinButton_unstable }
 
-// @public
-export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
+export { renderSpinner_unstable }
 
-// @public
-export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Element;
+export { renderSplitButton_unstable }
 
-// @public
-export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
+export { renderSwitch_unstable }
 
-// @public
-export const renderTab_unstable: (state: TabState) => JSX.Element;
+export { renderTab_unstable }
 
-// @public
-export const renderTable_unstable: (state: TableState, contextValues: TableContextValues) => JSX.Element;
+export { renderTable_unstable }
 
-// @public
-export const renderTableBody_unstable: (state: TableBodyState) => JSX.Element;
+export { renderTableBody_unstable }
 
-// @public
-export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
+export { renderTableCell_unstable }
 
-// @public
-export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
+export { renderTableCellActions_unstable }
 
-// @public
-export const renderTableCellLayout_unstable: (state: TableCellLayoutState, contextValues: TableCellLayoutContextValues) => JSX.Element;
+export { renderTableCellLayout_unstable }
 
-// @public
-export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
+export { renderTableHeader_unstable }
 
-// @public
-export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
+export { renderTableHeaderCell_unstable }
 
-// @public
-export const renderTableResizeHandle_unstable: (state: TableResizeHandleState) => JSX.Element;
+export { renderTableResizeHandle_unstable }
 
-// @public
-export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
+export { renderTableRow_unstable }
 
-// @public
-export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSX.Element;
+export { renderTableSelectionCell_unstable }
 
-// @public
-export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
+export { renderTabList_unstable }
 
-// @public
-export const renderText_unstable: (state: TextState) => JSX.Element;
+export { renderText_unstable }
 
-// @public
-export const renderTextarea_unstable: (state: TextareaState) => JSX.Element;
+export { renderTextarea_unstable }
 
-// @public
-export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
+export { renderToggleButton_unstable }
 
-// @public
-export const renderToolbarGroup_unstable: (state: ToolbarGroupState) => JSX.Element;
+export { renderToolbar_unstable }
 
-// @public
-export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
+export { renderToolbarGroup_unstable }
+
+export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 
-// @public
-export function resetIdsForTests(): void;
+export { resetIdsForTests }
 
-// @public
-export const resolveShorthand: ResolveShorthandFunction;
+export { resolveShorthand }
 
-// @public (undocumented)
-export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
-    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
-};
+export { ResolveShorthandFunction }
 
-// @public (undocumented)
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
-    required: true;
-    defaultProps?: Props;
-} : {
-    required?: Required;
-    defaultProps?: Props;
-};
+export { ResolveShorthandOptions }
 
-// @public
-export const Select: ForwardRefComponent<SelectProps>;
+export { Select }
 
-// @public (undocumented)
-export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;
+export { SelectableHandler }
 
-// @public (undocumented)
-export const selectClassNames: SlotClassNames<SelectSlots>;
+export { selectClassNames }
 
-// @public
-export type SelectOnChangeData = {
-    value: string;
-};
+export { SelectOnChangeData }
 
-// @public (undocumented)
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
-    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
-    onChange?: (ev: React_2.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
-    size?: 'small' | 'medium' | 'large';
-};
+export { SelectProps }
 
-// @public (undocumented)
-export type SelectSlots = {
-    root: NonNullable<Slot<'span'>>;
-    select: NonNullable<Slot<'select'>>;
-    icon: Slot<'span'>;
-};
+export { SelectSlots }
 
-// @public (undocumented)
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
+export { SelectState }
 
-// @public (undocumented)
-export type SelectTabData = {
-    value: TabValue;
-};
+export { SelectTabData }
 
-// @public (undocumented)
-export type SelectTabEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E>;
+export { SelectTabEvent }
 
-// @public (undocumented)
-export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData) => void;
+export { SelectTabEventHandler }
 
-// @public (undocumented)
-export type ShadowBrandTokens = {
-    shadow2Brand: string;
-    shadow4Brand: string;
-    shadow8Brand: string;
-    shadow16Brand: string;
-    shadow28Brand: string;
-    shadow64Brand: string;
-};
+export { ShadowBrandTokens }
 
-// @public
-export type ShadowTokens = {
-    shadow2: string;
-    shadow4: string;
-    shadow8: string;
-    shadow16: string;
-    shadow28: string;
-    shadow64: string;
-};
+export { ShadowTokens }
 
 export { shorthands }
 
-// @public
-export const Skeleton: ForwardRefComponent<SkeletonProps>;
-
-// @public (undocumented)
-export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
-
-// @public (undocumented)
-export const SkeletonContextProvider: React_2.Provider<SkeletonContextValue | undefined>;
-
-// @public (undocumented)
-export interface SkeletonContextValue {
-    // (undocumented)
-    animation?: 'wave' | 'pulse';
-    // (undocumented)
-    appearance?: 'opaque' | 'translucent';
-}
-
-// @public (undocumented)
-export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
-
-// @public (undocumented)
-export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
-
-// @public
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
-    animation?: 'wave' | 'pulse';
-    appearance?: 'opaque' | 'translucent';
-    size?: SkeletonItemSize;
-    shape?: 'circle' | 'square' | 'rectangle';
-};
-
-// @public (undocumented)
-export type SkeletonItemSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>>;
-
-// @public
-export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
-    animation?: 'wave' | 'pulse';
-    appearance?: 'opaque' | 'translucent';
-    width?: number | string;
-};
-
-// @public (undocumented)
-export type SkeletonSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
-
-// @public
-export const Slider: ForwardRefComponent<SliderProps>;
-
-// @public (undocumented)
-export const sliderClassNames: SlotClassNames<SliderSlots>;
-
-// @public (undocumented)
-export const sliderCSSVars: {
-    sliderDirectionVar: string;
-    sliderProgressVar: string;
-    sliderStepsPercentVar: string;
-};
-
-// @public (undocumented)
-export type SliderOnChangeData = {
-    value: number;
-};
-
-// @public (undocumented)
-export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
-    defaultValue?: number;
-    disabled?: boolean;
-    max?: number;
-    min?: number;
-    size?: 'small' | 'medium';
-    step?: number;
-    value?: number;
-    vertical?: boolean;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
-};
-
-// @public (undocumented)
-export type SliderSlots = {
-    root: NonNullable<Slot<'div'>>;
-    rail: NonNullable<Slot<'div'>>;
-    thumb: NonNullable<Slot<'div'>>;
-    input: NonNullable<Slot<'input'>> & {
-        orient?: 'horizontal' | 'vertical';
-    };
-};
-
-// @public (undocumented)
-export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disabled' | 'size' | 'vertical'>;
-
-// @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
-    as?: Type;
-} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
-    [As in AlternateAs]: {
-        as: As;
-    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
-}[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
-
-// @public
-export type SlotClassNames<Slots> = {
-    [SlotName in keyof Slots]-?: string;
-};
-
-// @public
-export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
-
-// @public (undocumented)
-export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => React_2.ReactNode;
-
-// @public (undocumented)
-export type SortDirection = 'ascending' | 'descending';
-
-// @public (undocumented)
-export type SpacingTokens = {
-    none: string;
-    xxs: string;
-    xs: string;
-    sNudge: string;
-    s: string;
-    mNudge: string;
-    m: string;
-    l: string;
-    xl: string;
-    xxl: string;
-    xxxl: string;
-};
-
-// @public
-export const SpinButton: ForwardRefComponent<SpinButtonProps>;
-
-// @public (undocumented)
-export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
-
-// @public (undocumented)
-export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | React_2.ChangeEvent<HTMLElement> | React_2.FocusEvent<HTMLInputElement> | React_2.KeyboardEvent<HTMLInputElement>;
-
-// @public (undocumented)
-export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
-
-// @public (undocumented)
-export type SpinButtonOnChangeData = {
-    value?: number | null;
-    displayValue?: string;
-};
-
-// @public
-export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
-    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
-    defaultValue?: number | null;
-    displayValue?: string;
-    max?: number;
-    min?: number;
-    onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
-    precision?: number;
-    size?: 'small' | 'medium';
-    step?: number;
-    stepPage?: number;
-    value?: number | null;
-};
-
-// @public (undocumented)
-export type SpinButtonSlots = {
-    root: NonNullable<Slot<'span'>>;
-    input: NonNullable<Slot<'input'>>;
-    incrementButton: NonNullable<Slot<'button'>>;
-    decrementButton: NonNullable<Slot<'button'>>;
-};
-
-// @public (undocumented)
-export type SpinButtonSpinState = 'rest' | 'up' | 'down';
-
-// @public
-export type SpinButtonState = ComponentState<SpinButtonSlots> & Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
-    spinState: SpinButtonSpinState;
-    atBound: SpinButtonBounds;
-};
-
-// @public
-export const Spinner: ForwardRefComponent<SpinnerProps>;
-
-// @public (undocumented)
-export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
-
-// @public
-export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
-    appearance?: 'primary' | 'inverted';
-    delay?: number;
-    labelPosition?: 'above' | 'below' | 'before' | 'after';
-    size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
-};
-
-// @public (undocumented)
-export type SpinnerSlots = {
-    root: NonNullable<Slot<'div'>>;
-    spinner?: Slot<'span'>;
-    label?: Slot<typeof Label>;
-};
-
-// @public
-export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
-    shouldRenderSpinner: boolean;
-};
-
-// @public
-export const SplitButton: ForwardRefComponent<SplitButtonProps>;
-
-// @public (undocumented)
-export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
-
-// @public (undocumented)
-export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
-
-// @public (undocumented)
-export type SplitButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
-    menuButton?: Slot<typeof MenuButton>;
-    primaryActionButton?: Slot<typeof Button>;
-};
-
-// @public (undocumented)
-export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonState, 'components' | 'iconOnly' | 'root'> & Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
-
-// @public
-export const SSRProvider: React_2.FC<{
-    children: React_2.ReactNode;
-}>;
-
-// @public (undocumented)
-export type StrokeWidthTokens = {
-    strokeWidthThin: string;
-    strokeWidthThick: string;
-    strokeWidthThicker: string;
-    strokeWidthThickest: string;
-};
-
-// @public
-export const Subtitle1: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const subtitle1ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Subtitle2: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const subtitle2ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Subtitle2Stronger: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const subtitle2StrongerClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Switch: ForwardRefComponent<SwitchProps>;
-
-// @public (undocumented)
-export const switchClassNames: SlotClassNames<SwitchSlots>;
-
-// @public (undocumented)
-export type SwitchOnChangeData = {
-    checked: boolean;
-};
-
-// @public
-export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange'> & {
-    checked?: boolean;
-    defaultChecked?: boolean;
-    labelPosition?: 'above' | 'after' | 'before';
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
-};
-
-// @public (undocumented)
-export type SwitchSlots = {
-    root: NonNullable<Slot<'div'>>;
-    indicator: NonNullable<Slot<'div'>>;
-    input: NonNullable<Slot<'input'>>;
-    label?: Slot<typeof Label>;
-};
-
-// @public
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition'>>;
-
-// @public
-export const Tab: ForwardRefComponent<TabProps>;
-
-// @public (undocumented)
-export const tabClassNames: SlotClassNames<TabSlots>;
-
-// @public
-export const Table: ForwardRefComponent<TableProps>;
-
-// @public
-export const TableBody: ForwardRefComponent<TableBodyProps>;
-
-// @public (undocumented)
-export const tableBodyClassName = "fui-TableBody";
-
-// @public (undocumented)
-export const tableBodyClassNames: SlotClassNames<TableBodySlots>;
-
-// @public
-export type TableBodyProps = ComponentProps<TableBodySlots>;
-
-// @public (undocumented)
-export type TableBodySlots = {
-    root: Slot<'tbody', 'div'>;
-};
-
-// @public
-export type TableBodyState = ComponentState<TableBodySlots> & Pick<TableContextValue, 'noNativeElements'>;
-
-// @public
-export const TableCell: ForwardRefComponent<TableCellProps>;
-
-// @public
-export const TableCellActions: ForwardRefComponent<TableCellActionsProps>;
-
-// @public (undocumented)
-export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots>;
-
-// @public
-export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {
-    visible?: boolean;
-};
-
-// @public (undocumented)
-export type TableCellActionsSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type TableCellActionsState = ComponentState<TableCellActionsSlots> & Pick<Required<TableCellActionsProps>, 'visible'>;
-
-// @public (undocumented)
-export const tableCellClassName = "fui-TableCell";
-
-// @public (undocumented)
-export const tableCellClassNames: SlotClassNames<TableCellSlots>;
-
-// @public
-export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
-
-// @public (undocumented)
-export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
-
-// @public
-export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
-    appearance?: 'primary';
-    truncate?: boolean;
-};
-
-// @public (undocumented)
-export type TableCellLayoutSlots = {
-    root: Slot<'div'>;
-    media: Slot<'span'>;
-    main: Slot<'span'>;
-    description: Slot<'span'>;
-    content: Slot<'div'>;
-};
-
-// @public
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance' | 'truncate'> & {
-    avatarSize: AvatarSize | undefined;
-} & Pick<TableContextValue, 'size'>;
-
-// @public
-export type TableCellProps = ComponentProps<TableCellSlots> & {};
-
-// @public (undocumented)
-export type TableCellSlots = {
-    root: Slot<'td', 'div'>;
-};
-
-// @public
-export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
-
-// @public (undocumented)
-export const tableClassName = "fui-Table";
-
-// @public (undocumented)
-export const tableClassNames: SlotClassNames<TableSlots>;
-
-// @public (undocumented)
-export interface TableColumnDefinition<TItem> {
-    // (undocumented)
-    columnId: TableColumnId;
-    // (undocumented)
-    compare: (a: TItem, b: TItem) => number;
-    // (undocumented)
-    renderCell: (item: TItem) => React_2.ReactNode;
-    // (undocumented)
-    renderHeaderCell: () => React_2.ReactNode;
-}
-
-// @public (undocumented)
-export type TableColumnId = string | number;
-
-// @public (undocumented)
-export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
-    defaultWidth?: number;
-}>;
-
-// @public (undocumented)
-export const TableContextProvider: React_2.Provider<TableContextValue | undefined>;
-
-// @public (undocumented)
-export type TableContextValue = {
-    size: 'extra-small' | 'small' | 'medium';
-    noNativeElements: boolean;
-    sortable: boolean;
-};
-
-// @public (undocumented)
-export type TableContextValues = {
-    table: TableContextValue;
-};
-
-// @public (undocumented)
-export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
-
-// @public (undocumented)
-export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
-    columns: TableColumnDefinition<TItem>[];
-    columnSizing_unstable: TableColumnSizingState;
-    getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
-    selection: TableSelectionState;
-    sort: TableSortState<TItem>;
-    tableRef: React_2.Ref<HTMLDivElement>;
-}
-
-// @public
-export const TableHeader: ForwardRefComponent<TableHeaderProps>;
-
-// @public
-export const TableHeaderCell: ForwardRefComponent<TableHeaderCellProps>;
-
-// @public (undocumented)
-export const tableHeaderCellClassName = "fui-TableHeaderCell";
-
-// @public (undocumented)
-export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
-
-// @public
-export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
-    sortDirection?: SortDirection;
-};
-
-// @public (undocumented)
-export type TableHeaderCellSlots = {
-    root: Slot<'th', 'div'>;
-    sortIcon: Slot<'span'>;
-    button: NonNullable<Slot<ARIAButtonSlotProps>>;
-    aside: Slot<'span'>;
-};
-
-// @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
-
-// @public (undocumented)
-export const tableHeaderClassName = "fui-TableHeader";
-
-// @public (undocumented)
-export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
-
-// @public
-export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
-
-// @public (undocumented)
-export type TableHeaderSlots = {
-    root: Slot<'thead', 'div'>;
-};
-
-// @public
-export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableContextValue, 'noNativeElements'>;
-
-// @public
-export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
-
-// @public
-export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
-
-// @public (undocumented)
-export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
-
-// @public
-export const TableRow: ForwardRefComponent<TableRowProps>;
-
-// @public (undocumented)
-export const tableRowClassName = "fui-TableRow";
-
-// @public (undocumented)
-export const tableRowClassNames: SlotClassNames<TableRowSlots>;
-
-// @public (undocumented)
-export interface TableRowData<TItem> {
-    item: TItem;
-    rowId: TableRowId;
-}
-
-// @public (undocumented)
-export type TableRowId = string | number;
-
-// @public (undocumented)
-export const TableRowIdContextProvider: React_2.Provider<TableRowId | undefined>;
-
-// @public
-export type TableRowProps = ComponentProps<TableRowSlots> & {
-    appearance?: 'brand' | 'neutral' | 'none';
-};
-
-// @public (undocumented)
-export type TableRowSlots = {
-    root: Slot<'tr', 'div'>;
-};
-
-// @public
-export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'> & Pick<Required<TableRowProps>, 'appearance'> & {
-    isHeaderRow: boolean;
-};
-
-// @public
-export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
-
-// @public (undocumented)
-export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
-
-// @public
-export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellSlots>> & {
-    type?: 'checkbox' | 'radio';
-    checked?: CheckboxProps['checked'];
-    subtle?: boolean;
-    hidden?: boolean;
-};
-
-// @public (undocumented)
-export type TableSelectionCellSlots = {
-    checkboxIndicator: Slot<typeof Checkbox>;
-    radioIndicator: Slot<typeof Radio>;
-} & Pick<TableCellSlots, 'root'>;
-
-// @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
-
-// @public (undocumented)
-export interface TableSelectionState {
-    allRowsSelected: boolean;
-    clearRows: (e: React_2.SyntheticEvent) => void;
-    deselectRow: (e: React_2.SyntheticEvent, rowId: TableRowId) => void;
-    isRowSelected: (rowId: TableRowId) => boolean;
-    selectedRows: Set<TableRowId>;
-    // (undocumented)
-    selectionMode: SelectionMode_2;
-    selectRow: (e: React_2.SyntheticEvent, rowId: TableRowId) => void;
-    someRowsSelected: boolean;
-    toggleAllRows: (e: React_2.SyntheticEvent) => void;
-    toggleRow: (e: React_2.SyntheticEvent, rowId: TableRowId) => void;
-}
-
-// @public (undocumented)
-export type TableSlots = {
-    root: Slot<'table', 'div'>;
-};
-
-// @public (undocumented)
-export interface TableSortState<TItem> {
-    getSortDirection: (columnId: TableColumnId) => SortDirection | undefined;
-    setColumnSort: (event: React_2.SyntheticEvent, columnId: TableColumnId, sortDirection: SortDirection) => void;
-    sort: <TRowState extends TableRowData<TItem>>(rows: TRowState[]) => TRowState[];
-    sortColumn: TableColumnId | undefined;
-    sortDirection: SortDirection;
-    toggleColumnSort: (event: React_2.SyntheticEvent, columnId: TableColumnId) => void;
-}
-
-// @public
-export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
-
-// @public
-export const TabList: ForwardRefComponent<TabListProps>;
-
-// @public (undocumented)
-export const tabListClassNames: SlotClassNames<TabListSlots>;
-
-// @public (undocumented)
-export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
-    onRegister: RegisterTabEventHandler;
-    onUnregister: RegisterTabEventHandler;
-    onSelect: SelectTabEventHandler;
-    getRegisteredTabs: () => {
-        selectedValue?: TabValue;
-        previousSelectedValue?: TabValue;
-        registeredTabs: Record<string, TabRegisterData>;
-    };
-};
-
-// @public
-export type TabListContextValues = {
-    tabList: TabListContextValue;
-};
-
-// @public
-export type TabListProps = ComponentProps<TabListSlots> & {
-    appearance?: 'transparent' | 'subtle';
-    reserveSelectedTabSpace?: boolean;
-    defaultSelectedValue?: TabValue;
-    disabled?: boolean;
-    onTabSelect?: SelectTabEventHandler;
-    selectedValue?: TabValue;
-    size?: 'small' | 'medium' | 'large';
-    vertical?: boolean;
-};
-
-// @public (undocumented)
-export const TabListProvider: Provider<TabListContextValue> & FC<ProviderProps<TabListContextValue>>;
-
-// @public (undocumented)
-export type TabListSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
-
-// @public
-export type TabProps = ComponentProps<Partial<TabSlots>> & {
-    disabled?: boolean;
-    value: TabValue;
-};
-
-// @public (undocumented)
-export type TabRegisterData = {
-    value: TabValue;
-    ref: React_2.RefObject<HTMLElement>;
-};
-
-// @public (undocumented)
-export type TabSlots = {
-    root: Slot<'button'>;
-    icon?: Slot<'span'>;
-    content: NonNullable<Slot<'span'>>;
-};
-
-// @public
-export type TabState = ComponentState<TabSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
-    appearance?: 'transparent' | 'subtle';
-    iconOnly: boolean;
-    selected: boolean;
-    contentReservedSpaceClassName?: string;
-    size: 'small' | 'medium' | 'large';
-    vertical: boolean;
-};
-
-// @public
-export type TabValue = unknown;
-
-// @public (undocumented)
-export const teamsDarkTheme: Theme;
-
-// @public (undocumented)
-export const teamsHighContrastTheme: Theme;
-
-// @public (undocumented)
-export const teamsLightTheme: Theme;
-
-// @public
-const Text_2: ForwardRefComponent<TextProps>;
+export { Skeleton }
+
+export { skeletonClassNames }
+
+export { SkeletonContextProvider }
+
+export { SkeletonContextValue }
+
+export { SkeletonItem }
+
+export { skeletonItemClassNames }
+
+export { SkeletonItemProps }
+
+export { SkeletonItemSlots }
+
+export { SkeletonItemState }
+
+export { SkeletonProps }
+
+export { SkeletonSlots }
+
+export { SkeletonState }
+
+export { Slider }
+
+export { sliderClassNames }
+
+export { sliderCSSVars }
+
+export { SliderOnChangeData }
+
+export { SliderProps }
+
+export { SliderSlots }
+
+export { SliderState }
+
+export { Slot }
+
+export { SlotClassNames }
+
+export { SlotPropsRecord }
+
+export { SlotRenderFunction }
+
+export { SortDirection }
+
+export { SpacingTokens }
+
+export { SpinButton }
+
+export { SpinButtonBounds }
+
+export { SpinButtonChangeEvent }
+
+export { spinButtonClassNames }
+
+export { SpinButtonOnChangeData }
+
+export { SpinButtonProps }
+
+export { SpinButtonSlots }
+
+export { SpinButtonSpinState }
+
+export { SpinButtonState }
+
+export { Spinner }
+
+export { spinnerClassNames }
+
+export { SpinnerProps }
+
+export { SpinnerSlots }
+
+export { SpinnerState }
+
+export { SplitButton }
+
+export { splitButtonClassNames }
+
+export { SplitButtonProps }
+
+export { SplitButtonSlots }
+
+export { SplitButtonState }
+
+export { SSRProvider }
+
+export { StrokeWidthTokens }
+
+export { Subtitle1 }
+
+export { subtitle1ClassNames }
+
+export { Subtitle2 }
+
+export { subtitle2ClassNames }
+
+export { Subtitle2Stronger }
+
+export { subtitle2StrongerClassNames }
+
+export { Switch }
+
+export { switchClassNames }
+
+export { SwitchOnChangeData }
+
+export { SwitchProps }
+
+export { SwitchSlots }
+
+export { SwitchState }
+
+export { Tab }
+
+export { tabClassNames }
+
+export { Table }
+
+export { TableBody }
+
+export { tableBodyClassName }
+
+export { tableBodyClassNames }
+
+export { TableBodyProps }
+
+export { TableBodySlots }
+
+export { TableBodyState }
+
+export { TableCell }
+
+export { TableCellActions }
+
+export { tableCellActionsClassNames }
+
+export { TableCellActionsProps }
+
+export { TableCellActionsSlots }
+
+export { TableCellActionsState }
+
+export { tableCellClassName }
+
+export { tableCellClassNames }
+
+export { TableCellLayout }
+
+export { tableCellLayoutClassNames }
+
+export { TableCellLayoutProps }
+
+export { TableCellLayoutSlots }
+
+export { TableCellLayoutState }
+
+export { TableCellProps }
+
+export { TableCellSlots }
+
+export { TableCellState }
+
+export { tableClassName }
+
+export { tableClassNames }
+
+export { TableColumnDefinition }
+
+export { TableColumnId }
+
+export { TableColumnSizingOptions }
+
+export { TableContextProvider }
+
+export { TableContextValue }
+
+export { TableContextValues }
+
+export { TableFeaturePlugin }
+
+export { TableFeaturesState }
+
+export { TableHeader }
+
+export { TableHeaderCell }
+
+export { tableHeaderCellClassName }
+
+export { tableHeaderCellClassNames }
+
+export { TableHeaderCellProps }
+
+export { TableHeaderCellSlots }
+
+export { TableHeaderCellState }
+
+export { tableHeaderClassName }
+
+export { tableHeaderClassNames }
+
+export { TableHeaderProps }
+
+export { TableHeaderSlots }
+
+export { TableHeaderState }
+
+export { TableProps }
+
+export { TableResizeHandle }
+
+export { tableResizeHandleClassNames }
+
+export { TableRow }
+
+export { tableRowClassName }
+
+export { tableRowClassNames }
+
+export { TableRowData }
+
+export { TableRowId }
+
+export { TableRowIdContextProvider }
+
+export { TableRowProps }
+
+export { TableRowSlots }
+
+export { TableRowState }
+
+export { TableSelectionCell }
+
+export { tableSelectionCellClassNames }
+
+export { TableSelectionCellProps }
+
+export { TableSelectionCellSlots }
+
+export { TableSelectionCellState }
+
+export { TableSelectionState }
+
+export { TableSlots }
+
+export { TableSortState }
+
+export { TableState }
+
+export { TabList }
+
+export { tabListClassNames }
+
+export { TabListContextValue }
+
+export { TabListContextValues }
+
+export { TabListProps }
+
+export { TabListProvider }
+
+export { TabListSlots }
+
+export { TabListState }
+
+export { TabProps }
+
+export { TabRegisterData }
+
+export { TabSlots }
+
+export { TabState }
+
+export { TabValue }
+
+export { teamsDarkTheme }
+
+export { teamsHighContrastTheme }
+
+export { teamsLightTheme }
+
 export { Text_2 as Text }
 
-// @public
-export const Textarea: ForwardRefComponent<TextareaProps>;
-
-// @public (undocumented)
-export const textareaClassNames: SlotClassNames<TextareaSlots>;
-
-// @public
-export type TextareaOnChangeData = {
-    value: string;
-};
-
-// @public
-export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
-    appearance?: 'outline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
-    defaultValue?: string;
-    onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
-    resize?: 'none' | 'horizontal' | 'vertical' | 'both';
-    size?: 'small' | 'medium' | 'large';
-    value?: string;
-};
-
-// @public (undocumented)
-export type TextareaSlots = {
-    root: NonNullable<Slot<'span'>>;
-    textarea: NonNullable<Slot<'textarea'>>;
-};
-
-// @public
-export type TextareaState = ComponentState<TextareaSlots> & Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>>;
-
-// @public (undocumented)
-export const textClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
-
-// @public
-export type TextProps = ComponentProps<TextSlots> & {
-    align?: 'start' | 'center' | 'end' | 'justify';
-    block?: boolean;
-    font?: 'base' | 'monospace' | 'numeric';
-    italic?: boolean;
-    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
-    strikethrough?: boolean;
-    truncate?: boolean;
-    underline?: boolean;
-    weight?: 'regular' | 'medium' | 'semibold' | 'bold';
-    wrap?: boolean;
-};
-
-// @public
-export type TextSlots = {
-    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
-};
-
-// @public
-export type TextState = ComponentState<TextSlots> & Required<Pick<TextProps, 'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'>>;
-
-// @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
-
-// @public
-export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
-
-// @public
-export const Title1: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const title1ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Title2: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const title2ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const Title3: FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const title3ClassNames: SlotClassNames<TextSlots>;
-
-// @public
-export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
-
-// @public (undocumented)
-export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
-
-// @public (undocumented)
-export type ToggleButtonProps = ButtonProps & {
-    defaultChecked?: boolean;
-    checked?: boolean;
-};
-
-// @public (undocumented)
-export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
-
-// @public (undocumented)
-export const tokens: Record<keyof Theme, string>;
-
-// @public
-export const Toolbar: ForwardRefComponent<ToolbarProps>;
-
-// @public
-export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
-
-// @public
-export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
-    appearance?: 'primary' | 'subtle';
-} & {
-    vertical?: boolean;
-};
-
-// @public
-export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState & Required<Pick<ToolbarButtonProps, 'vertical'>>;
-
-// @public (undocumented)
-export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
-
-// @public (undocumented)
-export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
-    handleToggleButton?: ToggableHandler;
-    handleRadio?: ToggableHandler;
-};
-
-// @public (undocumented)
-export type ToolbarContextValues = {
-    toolbar: ToolbarContextValue;
-};
-
-// @public
-export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
-
-// @public
-export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
-    vertical?: boolean;
-};
-
-// @public
-export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
-
-// @public
-export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
-
-// @public (undocumented)
-export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
-
-// @public
-export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
-
-// @public
-export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
-
-// @public
-export type ToolbarProps = ComponentProps<ToolbarSlots> & {
-    size?: 'small' | 'medium' | 'large';
-    vertical?: boolean;
-    checkedValues?: Record<string, string[]>;
-    defaultCheckedValues?: Record<string, string[]>;
-    onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
-};
-
-// @public
-export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
-
-// @public
-export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
-    appearance?: 'primary' | 'subtle';
-    name: string;
-    value: string;
-};
-
-// @public
-export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
-
-// @public
-export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
-
-// @public
-export type ToolbarRadioGroupProps = ComponentProps<ToolbarRadioGroupSlots>;
-
-// @public
-export type ToolbarRadioGroupState = ComponentState<ToolbarRadioGroupSlots>;
-
-// @public (undocumented)
-export type ToolbarSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size' | 'checkedValues' | 'vertical'>> & Pick<ToolbarProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
-    handleToggleButton: ToggableHandler;
-    handleRadio: ToggableHandler;
-};
-
-// @public
-export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
-
-// @public
-export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
-    appearance?: 'primary' | 'subtle';
-    name: string;
-    value: string;
-};
-
-// @public
-export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarToggleButtonProps, 'name' | 'value'>;
-
-// @public
-export const Tooltip: React_2.FC<TooltipProps>;
-
-// @public (undocumented)
-export const tooltipClassNames: SlotClassNames<TooltipSlots>;
-
-// @public
-export type TooltipProps = ComponentProps<TooltipSlots> & TriggerProps<TooltipTriggerProps> & Pick<PortalProps, 'mountNode'> & {
-    appearance?: 'normal' | 'inverted';
-    hideDelay?: number;
-    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    positioning?: PositioningShorthand;
-    relationship: 'label' | 'description' | 'inaccessible';
-    showDelay?: number;
-    visible?: boolean;
-    withArrow?: boolean;
-};
-
-// @public
-export type TooltipSlots = {
-    content: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mountNode' | 'relationship'> & Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
-    children?: React_2.ReactElement | null;
-    shouldRenderTooltip?: boolean;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
-    arrowClassName?: string;
-};
-
-// @public
-export type TooltipTriggerProps = {
-    ref?: React_2.Ref<unknown>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave'>;
-
-// @public (undocumented)
-export type TypographyStyle = {
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-    lineHeight: string;
-};
-
-// @public (undocumented)
-export type TypographyStyles = {
-    body1: TypographyStyle;
-    body1Strong: TypographyStyle;
-    body1Stronger: TypographyStyle;
-    body2: TypographyStyle;
-    caption1: TypographyStyle;
-    caption1Strong: TypographyStyle;
-    caption1Stronger: TypographyStyle;
-    caption2: TypographyStyle;
-    caption2Strong: TypographyStyle;
-    subtitle1: TypographyStyle;
-    subtitle2: TypographyStyle;
-    subtitle2Stronger: TypographyStyle;
-    title1: TypographyStyle;
-    title2: TypographyStyle;
-    title3: TypographyStyle;
-    largeTitle: TypographyStyle;
-    display: TypographyStyle;
-};
-
-// @public
-export const typographyStyles: TypographyStyles;
-
-// @public @deprecated (undocumented)
-export type UninitializedMenuListState = Omit<MenuListState, 'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'> & Partial<Pick<MenuListState, 'checkedValues'>>;
-
-// @public
-export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
-
-// @public (undocumented)
-export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
-
-// @public (undocumented)
-export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;
-
-// @public
-export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
-
-// @public (undocumented)
-export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues;
-
-// @public
-export const useAccordionHeaderStyles_unstable: (state: AccordionHeaderState) => AccordionHeaderState;
-
-// @public
-export const useAccordionItem_unstable: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
-
-// @public (undocumented)
-export const useAccordionItemContext_unstable: () => AccordionItemContextValue;
-
-// @public (undocumented)
-export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues;
-
-// @public (undocumented)
-export const useAccordionItemStyles_unstable: (state: AccordionItemState) => AccordionItemState;
-
-// @public
-export const useAccordionPanel_unstable: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
-
-// @public
-export const useAccordionPanelStyles_unstable: (state: AccordionPanelState) => AccordionPanelState;
-
-// @public (undocumented)
-export const useAccordionStyles_unstable: (state: AccordionState) => AccordionState;
-
-// @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
+export { Textarea }
 
-// @public (undocumented)
-export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
-    circular?: boolean;
-    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
-    memorizeCurrent?: boolean;
-    tabbable?: boolean;
-    unstable_hasDefault?: boolean;
-}
+export { textareaClassNames }
 
-// @public (undocumented)
-export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+export { TextareaOnChangeData }
 
-// @public
-export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+export { TextareaProps }
 
-// @public (undocumented)
-export const useAvatarGroupContext_unstable: <T>(selector: ContextSelector<AvatarGroupContextValue, T>) => T;
+export { TextareaSlots }
 
-// @public (undocumented)
-export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;
+export { TextareaState }
 
-// @public
-export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;
+export { textClassNames }
 
-// @public
-export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
+export { TextPresetProps }
 
-// @public
-export const useAvatarGroupPopover_unstable: (props: AvatarGroupPopoverProps) => AvatarGroupPopoverState;
+export { TextProps }
 
-// @public
-export const useAvatarGroupPopoverStyles_unstable: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;
+export { TextSlots }
 
-// @public
-export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarGroupState;
+export { TextState }
 
-// @public (undocumented)
-export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
+export { Theme }
 
-// @public
-export const useBadge_unstable: (props: BadgeProps, ref: React_2.Ref<HTMLElement>) => BadgeState;
+export { themeToTokensObject }
 
-// @public
-export const useBadgeStyles_unstable: (state: BadgeState) => BadgeState;
+export { Title1 }
 
-// @public
-export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
+export { title1ClassNames }
 
-// @public (undocumented)
-export const useButtonStyles_unstable: (state: ButtonState) => ButtonState;
+export { Title2 }
 
-// @public
-export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
+export { title2ClassNames }
 
-// @public
-export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;
+export { Title3 }
 
-// @public
-export const useCardFooterStyles_unstable: (state: CardFooterState) => CardFooterState;
+export { title3ClassNames }
 
-// @public
-export const useCardHeader_unstable: (props: CardHeaderProps, ref: React_2.Ref<HTMLElement>) => CardHeaderState;
+export { ToggleButton }
 
-// @public
-export const useCardHeaderStyles_unstable: (state: CardHeaderState) => CardHeaderState;
+export { toggleButtonClassNames }
 
-// @public
-export const useCardPreview_unstable: (props: CardPreviewProps, ref: React_2.Ref<HTMLElement>) => CardPreviewState;
+export { ToggleButtonProps }
 
-// @public
-export const useCardPreviewStyles_unstable: (state: CardPreviewState) => CardPreviewState;
+export { ToggleButtonState }
 
-// @public
-export const useCardStyles_unstable: (state: CardState) => CardState;
+export { tokens }
 
-// @public
-export const useCheckbox_unstable: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+export { Toolbar }
 
-// @public
-export const useCheckboxStyles_unstable: (state: CheckboxState) => CheckboxState;
+export { ToolbarButton }
 
-// @public
-export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => void;
+export { ToolbarButtonProps }
 
-// @public
-export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
+export { ToolbarButtonState }
 
-// @public (undocumented)
-export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues;
+export { toolbarClassNames }
 
-// @public
-export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;
+export { ToolbarContextValue }
 
-// @public
-export const useCompoundButton_unstable: ({ contentContainer, secondaryContent, ...props }: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
+export { ToolbarContextValues }
 
-// @public (undocumented)
-export const useCompoundButtonStyles_unstable: (state: CompoundButtonState) => CompoundButtonState;
+export { ToolbarDivider }
 
-// @public
-export const useCounterBadge_unstable: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>) => CounterBadgeState;
+export { ToolbarDividerProps }
 
-// @public
-export const useCounterBadgeStyles_unstable: (state: CounterBadgeState) => CounterBadgeState;
+export { ToolbarDividerState }
 
-// @public
-export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
+export { ToolbarGroup }
 
-// @public
-export const useDataGridBody_unstable: (props: DataGridBodyProps, ref: React_2.Ref<HTMLElement>) => DataGridBodyState;
+export { toolbarGroupClassNames }
 
-// @public
-export const useDataGridBodyStyles_unstable: (state: DataGridBodyState) => DataGridBodyState;
+export { ToolbarGroupProps }
 
-// @public
-export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.Ref<HTMLElement>) => DataGridCellState;
+export { ToolbarGroupState }
 
-// @public
-export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
+export { ToolbarProps }
 
-// @public (undocumented)
-export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
+export { ToolbarRadioButton }
 
-// @public
-export const useDataGridHeader_unstable: (props: DataGridHeaderProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderState;
+export { ToolbarRadioButtonProps }
 
-// @public
-export const useDataGridHeaderCell_unstable: (props: DataGridHeaderCellProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderCellState;
+export { ToolbarRadioButtonState }
 
-// @public
-export const useDataGridHeaderCellStyles_unstable: (state: DataGridHeaderCellState) => DataGridHeaderCellState;
+export { ToolbarRadioGroup }
 
-// @public
-export const useDataGridHeaderStyles_unstable: (state: DataGridHeaderState) => DataGridHeaderState;
+export { ToolbarRadioGroupProps }
 
-// @public
-export const useDataGridRow_unstable: (props: DataGridRowProps, ref: React_2.Ref<HTMLElement>) => DataGridRowState;
+export { ToolbarRadioGroupState }
 
-// @public
-export const useDataGridRowStyles_unstable: (state: DataGridRowState) => DataGridRowState;
+export { ToolbarSlots }
 
-// @public
-export const useDataGridSelectionCell_unstable: (props: DataGridSelectionCellProps, ref: React_2.Ref<HTMLElement>) => DataGridSelectionCellState;
+export { ToolbarState }
 
-// @public
-export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionCellState) => DataGridSelectionCellState;
+export { ToolbarToggleButton }
 
-// @public
-export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
+export { ToolbarToggleButtonProps }
 
-// @public
-export const useDialog_unstable: (props: DialogProps) => DialogState;
+export { ToolbarToggleButtonState }
 
-// @public
-export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLElement>) => DialogActionsState;
+export { Tooltip }
 
-// @public
-export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
+export { tooltipClassNames }
 
-// @public
-export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;
+export { TooltipProps }
 
-// @public
-export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
+export { TooltipSlots }
 
-// @public
-export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
+export { TooltipState }
 
-// @public
-export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
+export { TooltipTriggerProps }
 
-// @public
-export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
+export { TypographyStyle }
 
-// @public
-export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
+export { TypographyStyles }
 
-// @public
-export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLDivElement>) => DialogTitleState;
+export { typographyStyles }
 
-// @public
-export const useDialogTitleStyles_unstable: (state: DialogTitleState) => DialogTitleState;
+export { UninitializedMenuListState }
 
-// @public
-export const useDialogTrigger_unstable: (props: DialogTriggerProps) => DialogTriggerState;
+export { useAccordion_unstable }
 
-// @public
-export const useDivider_unstable: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
+export { useAccordionContext_unstable }
 
-// @public (undocumented)
-export const useDividerStyles_unstable: (state: DividerState) => DividerState;
+export { useAccordionContextValues_unstable }
 
-// @public
-export const useDropdown_unstable: (props: DropdownProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownState;
+export { useAccordionHeader_unstable }
 
-// @public
-export const useDropdownStyles_unstable: (state: DropdownState) => DropdownState;
+export { useAccordionHeaderContextValues_unstable }
 
-// @public
-export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+export { useAccordionHeaderStyles_unstable }
 
-// @public (undocumented)
-export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
-    labelFor?: string | undefined;
-    labelId?: string | undefined;
-    validationMessageId?: string | undefined;
-    hintId?: string | undefined;
-}> | undefined;
+export { useAccordionItem_unstable }
 
-// @public
-export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
+export { useAccordionItemContext_unstable }
 
-// @public
-export function useFieldControlProps_unstable(): FieldControlProps | undefined;
+export { useAccordionItemContextValues_unstable }
 
-// @public
-export function useFieldControlProps_unstable<Props extends FieldControlProps>(props: Props, options?: FieldControlPropsOptions): Props;
+export { useAccordionItemStyles_unstable }
 
-// @public
-export const useFieldStyles_unstable: (state: FieldState) => void;
+export { useAccordionPanel_unstable }
 
-// @public (undocumented)
-export function useFluent(): ProviderContextValue;
+export { useAccordionPanelStyles_unstable }
 
-// @public
-export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
+export { useAccordionStyles_unstable }
 
-// @public (undocumented)
-export function useFluentProviderContextValues_unstable(state: FluentProviderState): FluentProviderContextValues;
+export { useArrowNavigationGroup }
 
-// @public
-export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
+export { UseArrowNavigationGroupOptions }
 
-// @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export { useAvatar_unstable }
 
-// @public (undocumented)
-export interface UseFocusableGroupOptions {
-    tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
-}
+export { useAvatarGroup_unstable }
 
-// @public
-export const useFocusFinders: () => {
-    findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
-    findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
-};
+export { useAvatarGroupContext_unstable }
 
-// @public
-export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
+export { useAvatarGroupContextValues }
 
-// @public
-export function useId(prefix?: string, providedId?: string): string;
+export { useAvatarGroupItem_unstable }
 
-// @public
-export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
+export { useAvatarGroupItemStyles_unstable }
 
-// @public (undocumented)
-export const useImageStyles_unstable: (state: ImageState) => void;
+export { useAvatarGroupPopover_unstable }
 
-// @public
-export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
+export { useAvatarGroupPopoverStyles_unstable }
 
-// @public
-export const useInputStyles_unstable: (state: InputState) => InputState;
+export { useAvatarGroupStyles_unstable }
 
-// @public
-export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
+export { useAvatarStyles_unstable }
 
-// @public (undocumented)
-export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
+export { useBadge_unstable }
 
-// @public (undocumented)
-export function useIsOverflowItemVisible(id: string): boolean;
+export { useBadgeStyles_unstable }
 
-// @public
-export function useIsSSR(): boolean;
+export { useButton_unstable }
 
-// @public
-export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
+export { useButtonStyles_unstable }
 
-// @public
-export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
+export { useCard_unstable }
 
-// @public
-export const useLabelStyles_unstable: (state: LabelState) => LabelState;
+export { useCardFooter_unstable }
 
-// @public
-export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
+export { useCardFooterStyles_unstable }
 
-// @public
-export const useLinkState_unstable: (state: LinkState) => LinkState;
+export { useCardHeader_unstable }
 
-// @public (undocumented)
-export const useLinkStyles_unstable: (state: LinkState) => LinkState;
+export { useCardHeaderStyles_unstable }
 
-// @public
-export const useListbox_unstable: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
+export { useCardPreview_unstable }
 
-// @public (undocumented)
-export function useListboxContextValues(state: ListboxState): ListboxContextValues;
+export { useCardPreviewStyles_unstable }
 
-// @public
-export const useListboxStyles_unstable: (state: ListboxState) => ListboxState;
+export { useCardStyles_unstable }
 
-// @public
-export const useMenu_unstable: (props: MenuProps) => MenuState;
+export { useCheckbox_unstable }
 
-// @public
-export const useMenuButton_unstable: ({ menuIcon, ...props }: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
+export { useCheckboxStyles_unstable }
 
-// @public (undocumented)
-export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
+export { useCheckmarkStyles_unstable }
 
-// @public (undocumented)
-export const useMenuContext_unstable: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
+export { useCombobox_unstable }
 
-// @public (undocumented)
-export function useMenuContextValues_unstable(state: MenuState): MenuContextValues;
+export { useComboboxContextValues }
 
-// @public
-export const useMenuDivider_unstable: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
+export { useComboboxStyles_unstable }
 
-// @public (undocumented)
-export const useMenuDividerStyles_unstable: (state: MenuDividerState) => MenuDividerState;
+export { useCompoundButton_unstable }
 
-// @public
-export function useMenuGroup_unstable(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>): MenuGroupState;
+export { useCompoundButtonStyles_unstable }
 
-// @public (undocumented)
-export const useMenuGroupContext_unstable: () => MenuGroupContextValue;
+export { useCounterBadge_unstable }
 
-// @public (undocumented)
-export function useMenuGroupContextValues_unstable(state: MenuGroupState): MenuGroupContextValues;
+export { useCounterBadgeStyles_unstable }
 
-// @public
-export function useMenuGroupHeader_unstable(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>): MenuGroupHeaderState;
+export { useDataGrid_unstable }
 
-// @public (undocumented)
-export const useMenuGroupHeaderStyles_unstable: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
+export { useDataGridBody_unstable }
 
-// @public (undocumented)
-export const useMenuGroupStyles_unstable: (state: MenuGroupState) => MenuGroupState;
+export { useDataGridBodyStyles_unstable }
 
-// @public
-export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemState;
+export { useDataGridCell_unstable }
 
-// @public
-export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemCheckboxState;
+export { useDataGridCellStyles_unstable }
 
-// @public (undocumented)
-export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
+export { useDataGridContextValues_unstable }
 
-// @public
-export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemRadioState;
+export { useDataGridHeader_unstable }
 
-// @public (undocumented)
-export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
+export { useDataGridHeaderCell_unstable }
 
-// @public
-export const useMenuItemStyles_unstable: (state: MenuItemState) => void;
+export { useDataGridHeaderCellStyles_unstable }
 
-// @public
-export const useMenuList_unstable: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
+export { useDataGridHeaderStyles_unstable }
 
-// @public (undocumented)
-export const useMenuListContext_unstable: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
+export { useDataGridRow_unstable }
 
-// @public (undocumented)
-export function useMenuListContextValues_unstable(state: MenuListState): MenuListContextValues;
+export { useDataGridRowStyles_unstable }
 
-// @public
-export const useMenuListStyles_unstable: (state: MenuListState) => MenuListState;
+export { useDataGridSelectionCell_unstable }
 
-// @public
-export const useMenuPopover_unstable: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
+export { useDataGridSelectionCellStyles_unstable }
 
-// @public
-export const useMenuPopoverStyles_unstable: (state: MenuPopoverState) => MenuPopoverState;
+export { useDataGridStyles_unstable }
 
-// @public
-export const useMenuSplitGroup_unstable: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
+export { useDialog_unstable }
 
-// @public
-export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => MenuSplitGroupState;
+export { useDialogActions_unstable }
 
-// @public
-export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;
+export { useDialogActionsStyles_unstable }
 
-// @public (undocumented)
-export const useMenuTriggerContext_unstable: () => boolean;
+export { useDialogBody_unstable }
 
-// @public
-export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
+export { useDialogBodyStyles_unstable }
 
-// @public
-export const useModalAttributes: (options?: UseModalAttributesOptions) => {
-    modalAttributes: Types.TabsterDOMAttribute;
-    triggerAttributes: Types.TabsterDOMAttribute;
-};
+export { useDialogContent_unstable }
 
-// @public (undocumented)
-export interface UseModalAttributesOptions {
-    alwaysFocusable?: boolean;
-    id?: string;
-    legacyTrapFocus?: boolean;
-    trapFocus?: boolean;
-}
+export { useDialogContentStyles_unstable }
 
-// @public
-export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseMotionPresenceEvents | undefined) => UseMotionPresenceState<TElement>;
+export { useDialogSurface_unstable }
 
-// @public
-export type UseMotionPresenceEvents = {
-    onEntered?: () => void;
-    onExited?: () => void;
-};
+export { useDialogSurfaceStyles_unstable }
 
-// @public
-export type UseMotionPresenceState<TElement extends HTMLElement> = {
-    ref: React_2.RefCallback<TElement>;
-    shouldRender: boolean;
-    visible: boolean;
-    entering: boolean;
-    exiting: boolean;
-    animating: boolean;
-};
+export { useDialogTitle_unstable }
 
-// @public
-export const useOption_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
+export { useDialogTitleStyles_unstable }
 
-// @public
-export const useOptionGroup_unstable: (props: OptionGroupProps, ref: React_2.Ref<HTMLElement>) => OptionGroupState;
+export { useDialogTrigger_unstable }
 
-// @public
-export const useOptionGroupStyles_unstable: (state: OptionGroupState) => OptionGroupState;
+export { useDivider_unstable }
 
-// @public
-export const useOptionStyles_unstable: (state: OptionState) => OptionState;
+export { useDividerStyles_unstable }
 
-// @public (undocumented)
-export const useOverflowCount: () => number;
+export { useDropdown_unstable }
 
-// @public (undocumented)
-export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
-    ref: React_2.RefObject<TElement>;
-    overflowCount: number;
-    isOverflowing: boolean;
-};
+export { useDropdownStyles_unstable }
 
-// @public
-export const usePersona_unstable: (props: PersonaProps, ref: React_2.Ref<HTMLElement>) => PersonaState;
+export { useField_unstable }
 
-// @public
-export const usePersonaStyles_unstable: (state: PersonaState) => PersonaState;
+export { useFieldContext_unstable }
 
-// @public
-export const usePopover_unstable: (props: PopoverProps) => PopoverState;
+export { useFieldContextValues_unstable }
 
-// @public (undocumented)
-export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+export { useFieldControlProps_unstable }
 
-// @public
-export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
+export { useFieldStyles_unstable }
 
-// @public
-export const usePopoverSurfaceStyles_unstable: (state: PopoverSurfaceState) => PopoverSurfaceState;
+export { useFluent }
 
-// @public
-export const usePopoverTrigger_unstable: (props: PopoverTriggerProps) => PopoverTriggerState;
+export { useFluentProvider_unstable }
 
-// @public
-export const usePortal_unstable: (props: PortalProps) => PortalState;
+export { useFluentProviderContextValues_unstable }
 
-// @public
-export const usePresenceBadge_unstable: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>) => PresenceBadgeState;
+export { useFluentProviderStyles_unstable }
 
-// @public
-export const usePresenceBadgeStyles_unstable: (state: PresenceBadgeState) => PresenceBadgeState;
+export { useFocusableGroup }
 
-// @public
-export const useProgressBar_unstable: (props: ProgressBarProps, ref: React_2.Ref<HTMLElement>) => ProgressBarState;
+export { UseFocusableGroupOptions }
 
-// @public
-export const useProgressBarStyles_unstable: (state: ProgressBarState) => ProgressBarState;
+export { useFocusFinders }
 
-// @public
-export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
+export { useFocusWithin }
 
-// @public
-export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
+export { useId }
 
-// @public @deprecated (undocumented)
-export const useRadioGroupContext_unstable: <T>(selector: (ctx: RadioGroupContextValue) => T) => T;
+export { useImage_unstable }
 
-// @public
-export const useRadioGroupContextValue_unstable: () => RadioGroupContextValue;
+export { useImageStyles_unstable }
 
-// @public (undocumented)
-export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;
+export { useInput_unstable }
 
-// @public
-export const useRadioGroupStyles_unstable: (state: RadioGroupState) => void;
+export { useInputStyles_unstable }
 
-// @public
-export const useRadioStyles_unstable: (state: RadioState) => void;
+export { useIsomorphicLayoutEffect }
 
-// @public (undocumented)
-export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
+export { useIsOverflowGroupVisible }
 
-// @public
-export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;
+export { useIsOverflowItemVisible }
 
-// @public
-export const useSelectStyles_unstable: (state: SelectState) => SelectState;
+export { useIsSSR }
 
-// @public
-export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
+export { useKeyboardNavAttribute }
 
-// @public (undocumented)
-export const useSkeletonContext: () => SkeletonContextValue;
+export { useLabel_unstable }
 
-// @public
-export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
+export { useLabelStyles_unstable }
 
-// @public
-export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;
+export { useLink_unstable }
 
-// @public
-export const useSkeletonStyles_unstable: (state: SkeletonState) => SkeletonState;
+export { useLinkState_unstable }
 
-// @public (undocumented)
-export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
+export { useLinkStyles_unstable }
 
-// @public (undocumented)
-export const useSliderState_unstable: (state: SliderState, props: SliderProps) => SliderState;
+export { useListbox_unstable }
 
-// @public
-export const useSliderStyles_unstable: (state: SliderState) => SliderState;
+export { useListboxContextValues }
 
-// @public
-export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLInputElement>) => SpinButtonState;
+export { useListboxStyles_unstable }
 
-// @public
-export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;
+export { useMenu_unstable }
 
-// @public
-export const useSpinner_unstable: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;
+export { useMenuButton_unstable }
 
-// @public
-export const useSpinnerStyles_unstable: (state: SpinnerState) => SpinnerState;
+export { useMenuButtonStyles_unstable }
 
-// @public
-export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export { useMenuContext_unstable }
 
-// @public (undocumented)
-export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;
+export { useMenuContextValues_unstable }
 
-// @public
-export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;
+export { useMenuDivider_unstable }
 
-// @public
-export const useSwitchStyles_unstable: (state: SwitchState) => SwitchState;
+export { useMenuDividerStyles_unstable }
 
-// @public
-export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+export { useMenuGroup_unstable }
 
-// @public
-export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
+export { useMenuGroupContext_unstable }
 
-// @public
-export const useTableBody_unstable: (props: TableBodyProps, ref: React_2.Ref<HTMLElement>) => TableBodyState;
+export { useMenuGroupContextValues_unstable }
 
-// @public
-export const useTableBodyStyles_unstable: (state: TableBodyState) => TableBodyState;
+export { useMenuGroupHeader_unstable }
 
-// @public
-export const useTableCell_unstable: (props: TableCellProps, ref: React_2.Ref<HTMLElement>) => TableCellState;
+export { useMenuGroupHeaderStyles_unstable }
 
-// @public
-export const useTableCellActions_unstable: (props: TableCellActionsProps, ref: React_2.Ref<HTMLElement>) => TableCellActionsState;
+export { useMenuGroupStyles_unstable }
 
-// @public
-export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) => TableCellActionsState;
+export { useMenuItem_unstable }
 
-// @public
-export const useTableCellLayout_unstable: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
+export { useMenuItemCheckbox_unstable }
 
-// @public
-export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) => TableCellLayoutState;
+export { useMenuItemCheckboxStyles_unstable }
 
-// @public
-export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
+export { useMenuItemRadio_unstable }
 
-// @public (undocumented)
-export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export { useMenuItemRadioStyles_unstable }
 
-// @public (undocumented)
-export const useTableContext: () => TableContextValue;
+export { useMenuItemStyles_unstable }
 
-// @public (undocumented)
-export function useTableFeatures<TItem>(options: UseTableFeaturesOptions<TItem>, plugins?: TableFeaturePlugin[]): TableFeaturesState<TItem>;
+export { useMenuList_unstable }
 
-// @public (undocumented)
-export interface UseTableFeaturesOptions<TItem> {
-    // (undocumented)
-    columns: TableColumnDefinition<TItem>[];
-    // (undocumented)
-    getRowId?: (item: TItem) => TableRowId;
-    // (undocumented)
-    items: TItem[];
-}
+export { useMenuListContext_unstable }
 
-// @public
-export const useTableHeader_unstable: (props: TableHeaderProps, ref: React_2.Ref<HTMLElement>) => TableHeaderState;
+export { useMenuListContextValues_unstable }
 
-// @public
-export const useTableHeaderCell_unstable: (props: TableHeaderCellProps, ref: React_2.Ref<HTMLElement>) => TableHeaderCellState;
+export { useMenuListStyles_unstable }
 
-// @public
-export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) => TableHeaderCellState;
+export { useMenuPopover_unstable }
 
-// @public
-export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHeaderState;
+export { useMenuPopoverStyles_unstable }
 
-// @public
-export const useTableResizeHandle_unstable: (props: TableResizeHandleProps, ref: React_2.Ref<HTMLElement>) => TableResizeHandleState;
+export { useMenuSplitGroup_unstable }
 
-// @public
-export const useTableResizeHandleStyles_unstable: (state: TableResizeHandleState) => TableResizeHandleState;
+export { useMenuSplitGroupStyles_unstable }
 
-// @public
-export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;
+export { useMenuTrigger_unstable }
 
-// @public (undocumented)
-export const useTableRowIdContext: () => TableRowId;
+export { useMenuTriggerContext_unstable }
 
-// @public
-export const useTableRowStyles_unstable: (state: TableRowState) => TableRowState;
+export { useMergedRefs }
 
-// @public (undocumented)
-export function useTableSelection<TItem>(options: UseTableSelectionOptions): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export { useModalAttributes }
 
-// @public
-export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellState;
+export { UseModalAttributesOptions }
 
-// @public
-export const useTableSelectionCellStyles_unstable: (state: TableSelectionCellState) => TableSelectionCellState;
+export { useMotionPresence }
 
-// @public (undocumented)
-export function useTableSort<TItem>(options: UseTableSortOptions): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export { UseMotionPresenceEvents }
 
-// @public
-export const useTableStyles_unstable: (state: TableState) => TableState;
+export { UseMotionPresenceState }
 
-// @public
-export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+export { useOption_unstable }
 
-// @public (undocumented)
-export const useTabListContext_unstable: <T>(selector: ContextSelector<TabListContextValue, T>) => T;
+export { useOptionGroup_unstable }
 
-// @public (undocumented)
-export function useTabListContextValues_unstable(state: TabListState): TabListContextValues;
+export { useOptionGroupStyles_unstable }
 
-// @public
-export const useTabListStyles_unstable: (state: TabListState) => TabListState;
+export { useOptionStyles_unstable }
 
-// @public
-export const useTabStyles_unstable: (state: TabState) => TabState;
+export { useOverflowCount }
 
-// @public
-export const useText_unstable: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;
+export { useOverflowMenu }
 
-// @public
-export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
+export { usePersona_unstable }
 
-// @public
-export const useTextareaStyles_unstable: (state: TextareaState) => TextareaState;
+export { usePersonaStyles_unstable }
 
-// @public
-export const useTextStyles_unstable: (state: TextState) => TextState;
+export { usePopover_unstable }
 
-// @public (undocumented)
-export function useThemeClassName(): ThemeClassNameContextValue;
+export { usePopoverContext_unstable }
 
-// @public
-export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+export { usePopoverSurface_unstable }
 
-// @public (undocumented)
-export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
+export { usePopoverSurfaceStyles_unstable }
 
-// @public (undocumented)
-export function useToggleState<TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable'>, TButtonState extends Pick<ButtonState, 'root'>, TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
+export { usePopoverTrigger_unstable }
 
-// @public
-export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
+export { usePortal_unstable }
 
-// @public
-export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
+export { usePresenceBadge_unstable }
 
-// @public
-export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => void;
+export { usePresenceBadgeStyles_unstable }
 
-// @public
-export const useToolbarDivider_unstable: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;
+export { useProgressBar_unstable }
 
-// @public
-export const useToolbarDividerStyles_unstable: (state: ToolbarDividerState) => ToolbarDividerState;
+export { useProgressBarStyles_unstable }
 
-// @public
-export const useToolbarGroup_unstable: (props: ToolbarGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarGroupState;
+export { useRadio_unstable }
 
-// @public
-export const useToolbarGroupStyles_unstable: (state: ToolbarGroupState) => ToolbarGroupState;
+export { useRadioGroup_unstable }
 
-// @public
-export const useToolbarRadioButton_unstable: (props: ToolbarRadioButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarRadioButtonState;
+export { useRadioGroupContext_unstable }
 
-// @public
-export const useToolbarRadioButtonStyles_unstable: (state: ToolbarRadioButtonState) => void;
+export { useRadioGroupContextValue_unstable }
 
-// @public
-export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
+export { useRadioGroupContextValues }
 
-// @public
-export const useToolbarToggleButton_unstable: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonState;
+export { useRadioGroupStyles_unstable }
 
-// @public
-export const useToolbarToggleButtonStyles_unstable: (state: ToolbarToggleButtonState) => void;
+export { useRadioStyles_unstable }
 
-// @public
-export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
+export { useScrollbarWidth }
 
-// @public
-export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
+export { useSelect_unstable }
 
-// @public (undocumented)
-export function useTooltipVisibility(): TooltipVisibilityContextValue;
+export { useSelectStyles_unstable }
 
-// @public (undocumented)
-export type VerticalSpacingTokens = {
-    spacingVerticalNone: string;
-    spacingVerticalXXS: string;
-    spacingVerticalXS: string;
-    spacingVerticalSNudge: string;
-    spacingVerticalS: string;
-    spacingVerticalMNudge: string;
-    spacingVerticalM: string;
-    spacingVerticalL: string;
-    spacingVerticalXL: string;
-    spacingVerticalXXL: string;
-    spacingVerticalXXXL: string;
-};
+export { useSkeleton_unstable }
 
-// @public (undocumented)
-export const webDarkTheme: Theme;
+export { useSkeletonContext }
 
-// @public (undocumented)
-export const webLightTheme: Theme;
+export { useSkeletonItem_unstable }
+
+export { useSkeletonItemStyles_unstable }
+
+export { useSkeletonStyles_unstable }
+
+export { useSlider_unstable }
+
+export { useSliderState_unstable }
+
+export { useSliderStyles_unstable }
+
+export { useSpinButton_unstable }
+
+export { useSpinButtonStyles_unstable }
+
+export { useSpinner_unstable }
+
+export { useSpinnerStyles_unstable }
+
+export { useSplitButton_unstable }
+
+export { useSplitButtonStyles_unstable }
+
+export { useSwitch_unstable }
+
+export { useSwitchStyles_unstable }
+
+export { useTab_unstable }
+
+export { useTable_unstable }
+
+export { useTableBody_unstable }
+
+export { useTableBodyStyles_unstable }
+
+export { useTableCell_unstable }
+
+export { useTableCellActions_unstable }
+
+export { useTableCellActionsStyles_unstable }
+
+export { useTableCellLayout_unstable }
+
+export { useTableCellLayoutStyles_unstable }
+
+export { useTableCellStyles_unstable }
+
+export { useTableColumnSizing_unstable }
+
+export { useTableContext }
+
+export { useTableFeatures }
+
+export { UseTableFeaturesOptions }
+
+export { useTableHeader_unstable }
+
+export { useTableHeaderCell_unstable }
+
+export { useTableHeaderCellStyles_unstable }
+
+export { useTableHeaderStyles_unstable }
+
+export { useTableResizeHandle_unstable }
+
+export { useTableResizeHandleStyles_unstable }
+
+export { useTableRow_unstable }
+
+export { useTableRowIdContext }
+
+export { useTableRowStyles_unstable }
+
+export { useTableSelection }
+
+export { useTableSelectionCell_unstable }
+
+export { useTableSelectionCellStyles_unstable }
+
+export { useTableSort }
+
+export { useTableStyles_unstable }
+
+export { useTabList_unstable }
+
+export { useTabListContext_unstable }
+
+export { useTabListContextValues_unstable }
+
+export { useTabListStyles_unstable }
+
+export { useTabStyles_unstable }
+
+export { useText_unstable }
+
+export { useTextarea_unstable }
+
+export { useTextareaStyles_unstable }
+
+export { useTextStyles_unstable }
+
+export { useThemeClassName }
+
+export { useToggleButton_unstable }
+
+export { useToggleButtonStyles_unstable }
+
+export { useToggleState }
+
+export { useToolbar_unstable }
+
+export { useToolbarButton_unstable }
+
+export { useToolbarButtonStyles_unstable }
+
+export { useToolbarDivider_unstable }
+
+export { useToolbarDividerStyles_unstable }
+
+export { useToolbarGroup_unstable }
+
+export { useToolbarGroupStyles_unstable }
+
+export { useToolbarRadioButton_unstable }
+
+export { useToolbarRadioButtonStyles_unstable }
+
+export { useToolbarStyles_unstable }
+
+export { useToolbarToggleButton_unstable }
+
+export { useToolbarToggleButtonStyles_unstable }
+
+export { useTooltip_unstable }
+
+export { useTooltipStyles_unstable }
+
+export { useTooltipVisibility }
+
+export { VerticalSpacingTokens }
+
+export { webDarkTheme }
+
+export { webLightTheme }
 
 // (No @packageDocumentation comment for this package)
 
