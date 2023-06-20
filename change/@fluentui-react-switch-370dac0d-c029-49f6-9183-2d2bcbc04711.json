@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update @fluentui/react-icons to 2.0.203",
-  "packageName": "@fluentui/react-switch",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

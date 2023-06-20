@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 12:38:54 GMT",
+      "tag": "@fluentui/priority-overflow_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "4dedf40597f3b5cfa63d8f2e28a79276eb816bda",
+            "comment": "feat: Added support for custom divider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 20:45:22 GMT",
       "tag": "@fluentui/priority-overflow_v9.0.3",
       "version": "9.0.3",

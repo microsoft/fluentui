@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: getNativeElementProps should support animation event handlers",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
