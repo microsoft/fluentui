@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 08 Jun 2023 07:35:14 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 07:36:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.44)
+
+Tue, 20 Jun 2023 07:36:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.43..@fluentui/react-charting_v5.16.44)
+
+### Patches
+
+- Fix overlapping axis labels on smaller viewports ([PR #28239](https://github.com/microsoft/fluentui/pull/28239) by kumarkshitij@microsoft.com)
+
+## [5.16.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.43)
+
+Mon, 19 Jun 2023 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.42..@fluentui/react-charting_v5.16.43)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.29 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
+- Bump @fluentui/theme-samples to v8.7.97 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
+- Bump @fluentui/react to v8.110.4 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
+
+## [5.16.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.42)
+
+Wed, 14 Jun 2023 07:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.41..@fluentui/react-charting_v5.16.42)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.96 ([PR #28181](https://github.com/microsoft/fluentui/pull/28181) by beachball)
+- Bump @fluentui/react to v8.110.3 ([PR #28181](https://github.com/microsoft/fluentui/pull/28181) by beachball)
 
 ## [5.16.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.41)
 

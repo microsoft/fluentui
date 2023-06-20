@@ -1,5 +1,20 @@
-const { createV8Config: createConfig } = require('@fluentui/scripts-jest');
+// @ts-check
 
-const config = createConfig({});
-
-module.exports = config;
+/**
+ * @type {import('@jest/types').Config.InitialOptions}
+ */
+module.exports = {
+  displayName: 'react-conformance',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      isolatedModules: true,
+    },
+  },
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  coverageDirectory: './coverage',
+  setupFilesAfterEnv: ['./config/tests.js'],
+};
