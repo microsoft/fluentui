@@ -67,12 +67,9 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
 
       ...inputProps,
 
-      root: {
-        ref: searchBoxRootRef,
-        ...resolveShorthand(root, {
-          required: true,
-        }),
-      },
+      root: resolveShorthand(root, {
+        required: true,
+      }),
 
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
@@ -99,6 +96,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   };
 
   const searchBoxRoot = state.root.root as InputState['root'];
+  searchBoxRoot.ref = useMergedRefs(searchBoxRoot.ref, searchBoxRootRef);
   searchBoxRoot.onFocus = useEventCallback(mergeCallbacks(searchBoxRoot.onFocus, onFocus));
   searchBoxRoot.onBlur = useEventCallback(mergeCallbacks(searchBoxRoot.onBlur, onBlur));
 
