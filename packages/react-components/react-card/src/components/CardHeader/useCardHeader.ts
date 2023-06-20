@@ -21,15 +21,25 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
   } = useCardContext_unstable();
   const headerRef = React.useRef<HTMLDivElement>(null);
 
+  const hasChildId = React.useRef(false);
   const generatedId = useId(cardHeaderClassNames.header, referenceId);
 
   React.useEffect(() => {
-    if (header && headerRef.current) {
-      const { id } = headerRef.current;
+    const refId = !hasChildId.current && headerRef.current?.id;
+    const childWithId = React.Children.toArray(header).find(element => {
+      if (!React.isValidElement(element)) {
+        return false;
+      }
 
-      setReferenceId(id ? id : generatedId);
-    }
-  }, [header, setReferenceId, generatedId]);
+      const { id } = element.props;
+
+      return !!id;
+    }) as React.ReactElement | undefined;
+
+    hasChildId.current = !!childWithId;
+
+    setReferenceId(refId ? refId : childWithId?.props.id ? childWithId?.props.id : generatedId);
+  }, [generatedId, header, setReferenceId]);
 
   return {
     components: {
@@ -49,7 +59,7 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       required: true,
       defaultProps: {
         ref: headerRef,
-        id: referenceId,
+        id: !hasChildId.current ? referenceId : undefined,
       },
     }),
     description: resolveShorthand(description),
