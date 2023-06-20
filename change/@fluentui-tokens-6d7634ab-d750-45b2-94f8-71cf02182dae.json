@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix:  cast to String keys interpolated within string literals",
-  "packageName": "@fluentui/tokens",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

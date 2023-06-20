@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Wed, 31 May 2023 06:46:09 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:38:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.52)
+
+Tue, 20 Jun 2023 12:38:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.51..@fluentui/react-alert_v9.0.0-beta.52)
+
+### Changes
+
+- chore: update @fluentui/react-icons to 2.0.203 ([PR #28203](https://github.com/microsoft/fluentui/pull/28203) by ololubek@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.6 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-button to v9.3.17 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-tabster to v9.8.0 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-theme to v9.1.9 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-utilities to v9.9.3 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
 
 ## [9.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.51)
 
