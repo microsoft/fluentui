@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Map mhtml extension to html icon",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "alinazaieva@microsoft.com",
+  "dependentChangeType": "patch"
+}
