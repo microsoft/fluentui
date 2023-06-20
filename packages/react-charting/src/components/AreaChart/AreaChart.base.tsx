@@ -103,6 +103,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
   private _highlightedCircleId: string;
+  //enableComputationOptimization is used for optimized code to group data points by x value
+  //from O(n^2) to O(n) using a map.
   private _enableComputationOptimization: boolean;
 
   public constructor(props: IAreaChartProps) {
