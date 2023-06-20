@@ -9,6 +9,7 @@ module.exports = {
     lint: ['build'],
     clean: [],
     test: ['build'],
+    'generate-api': ['^generate-api'],
     'test-ssr': [],
     'type-check': ['build'],
     'code-style': [],

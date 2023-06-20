@@ -8,9 +8,9 @@ export const PauseOnWindowBlur = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="info">Click on another window!</ToastTitle>
+        <ToastTitle>Click on another window!</ToastTitle>
       </Toast>,
-      { pauseOnWindowBlur: true },
+      { pauseOnWindowBlur: true, intent: 'info' },
     );
 
   return (

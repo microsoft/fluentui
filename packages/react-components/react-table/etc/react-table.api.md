@@ -66,7 +66,9 @@ export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
 export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
 
 // @public
-export type DataGridCellProps = TableCellProps;
+export type DataGridCellProps = TableCellProps & {
+    focusMode?: 'group';
+};
 
 // @public (undocumented)
 export type DataGridCellSlots = TableCellSlots;
