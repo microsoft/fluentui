@@ -42,7 +42,8 @@ Sizes.storyName = 'Sizes';
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A TagGroup supports `medium`, `small` and `extra-small` size. Default size is `medium`.',
+      story:
+        'A TagGroup can set default size for all its tags. It supports `medium`, `small` and `extra-small` size. Default value is `medium`.',
     },
   },
 };
