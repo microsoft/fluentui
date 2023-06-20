@@ -8,12 +8,6 @@ export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   textarea: 'fui-Textarea__textarea',
 };
 
-const textareaHeight = {
-  small: '24px',
-  medium: '32px',
-  large: '40px',
-};
-
 /**
  * Styles for the root(wrapper) slot
  */
@@ -162,7 +156,6 @@ const useTextareaStyles = makeStyles({
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
     height: '100%',
-    maxHeight: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
@@ -188,30 +181,30 @@ const useTextareaStyles = makeStyles({
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
-    height: textareaHeight.small,
     minHeight: '40px',
     ...shorthands.padding(
       tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
+    maxHeight: '200px',
     ...typographyStyles.caption1,
   },
   medium: {
-    height: textareaHeight.medium,
     minHeight: '52px',
     ...shorthands.padding(
       tokens.spacingVerticalSNudge,
       `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
+    maxHeight: '260px',
     ...typographyStyles.body1,
   },
   large: {
-    height: textareaHeight.large,
     minHeight: '64px',
     ...shorthands.padding(
       tokens.spacingVerticalS,
       `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
     ),
+    maxHeight: '320px',
     ...typographyStyles.body2,
   },
 });

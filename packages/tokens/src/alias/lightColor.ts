@@ -39,6 +39,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorCompoundBrandForeground1Pressed: brand[60], // #005a9e Global.Color.Brand.60
   colorBrandForeground1: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandForeground2: brand[70], // #106ebe Global.Color.Brand.70
+  colorBrandForeground2Hover: brand[60], // #005a9e Global.Color.Brand.60
+  colorBrandForeground2Pressed: brand[30], // #043862 Global.Color.Brand.30
   colorNeutralForeground1Static: grey[14], // #242424 Global.Color.Grey.14
   colorNeutralForegroundStaticInverted: white, // #ffffff Global.Color.White
   colorNeutralForegroundInverted: white, // #ffffff Global.Color.White
@@ -115,6 +117,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorCompoundBrandBackgroundPressed: brand[60], // #005a9e Global.Color.Brand.60
   colorBrandBackgroundStatic: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandBackground2: brand[160], // #eff6fc Global.Color.Brand.160
+  colorBrandBackground2Hover: brand[150], // #deecf9 Global.Color.Brand.150
+  colorBrandBackground2Pressed: brand[130], // #82c7ff Global.Color.Brand.130
   colorBrandBackgroundInverted: white, // #ffffff Global.Color.White
   colorBrandBackgroundInvertedHover: brand[160], // #eff6fc Global.Color.Brand.160
   colorBrandBackgroundInvertedPressed: brand[140], // #c7e0f4 Global.Color.Brand.140
@@ -129,6 +133,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralStroke1Selected: grey[74], // #bdbdbd Global.Color.Grey.74
   colorNeutralStroke2: grey[88], // #e0e0e0 Global.Color.Grey.88
   colorNeutralStroke3: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralStrokeSubtle: grey[88], // #e0e0e0 Global.Color.Grey.88
   colorNeutralStrokeOnBrand: white, // #ffffff Global.Color.White
   colorNeutralStrokeOnBrand2: white, // #ffffff Global.Color.White
   colorNeutralStrokeOnBrand2Hover: white, // #ffffff Global.Color.White
@@ -136,6 +141,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralStrokeOnBrand2Selected: white, // #ffffff Global.Color.White
   colorBrandStroke1: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandStroke2: brand[140], // #c7e0f4 Global.Color.Brand.140
+  colorBrandStroke2Hover: brand[120], // #6cb8f6 Global.Color.Brand.120
+  colorBrandStroke2Pressed: brand[80], // #0078d4 Global.Color.Brand.80
   colorCompoundBrandStroke: brand[80], // #0078d4 Global.Color.Brand.80
   colorCompoundBrandStrokeHover: brand[70], // #106ebe Global.Color.Brand.70
   colorCompoundBrandStrokePressed: brand[60], // #005a9e Global.Color.Brand.60

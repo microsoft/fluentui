@@ -31,10 +31,10 @@ export class Toaster {
   private targetDocument?: Document;
   private toastOptions: Pick<
     ToastOptions,
-    'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout' | 'politeness'
+    'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout' | 'politeness' | 'onStatusChange'
   >;
   private toasterId?: ToasterId;
-  private queue: PriorityQueue<Toast>;
+  private queue: PriorityQueue<ToastId>;
   private limit: number;
 
   private listeners = new Map<keyof ToastListenerMap, ToastListenerMap[keyof ToastListenerMap]>();
@@ -44,14 +44,20 @@ export class Toaster {
     this.visibleToasts = new Set<ToastId>();
     this.onUpdate = () => null;
     this.toastOptions = {
-      politeness: 'polite',
+      onStatusChange: undefined,
       priority: 0,
       pauseOnHover: false,
       pauseOnWindowBlur: false,
       position: 'bottom-end',
       timeout: 3000,
     };
-    this.queue = createPriorityQueue<Toast>((a, b) => {
+    this.queue = createPriorityQueue<ToastId>((ta, tb) => {
+      const a = this.toasts.get(ta);
+      const b = this.toasts.get(tb);
+      if (!a || !b) {
+        return 0;
+      }
+
       if (a.priority === b.priority) {
         return a.dispatchedAt - b.dispatchedAt;
       }
@@ -154,16 +160,33 @@ export class Toaster {
     }
 
     const close = () => {
+      const toast = this.toasts.get(toastId);
+      if (!toast) {
+        return;
+      }
+
       this.visibleToasts.delete(toastId);
       this.onUpdate();
+      toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
     };
 
     const remove = () => {
+      const toast = this.toasts.get(toastId);
+      if (!toast) {
+        return;
+      }
+
+      toast.onStatusChange?.(null, { status: 'unmounted', ...toast });
       this.toasts.delete(toastId);
-      if (this.queue.peek()) {
-        const nextToast = this.queue.dequeue();
-        this.toasts.set(nextToast.toastId, nextToast);
+
+      if (this.visibleToasts.size < this.limit && this.queue.peek()) {
+        const nextToast = this.toasts.get(this.queue.dequeue());
+        if (!nextToast) {
+          return;
+        }
+
         this.visibleToasts.add(nextToast.toastId);
+        toast.onStatusChange?.(null, { status: 'visible', ...nextToast });
       }
       this.onUpdate();
     };
@@ -182,12 +205,14 @@ export class Toaster {
 
     assignDefined<Toast>(toast, toastOptions);
 
+    this.toasts.set(toastId, toast);
+    toast.onStatusChange?.(null, { status: 'queued', ...toast });
     if (this.visibleToasts.size >= this.limit) {
-      this.queue.enqueue(toast);
+      this.queue.enqueue(toastId);
     } else {
-      this.toasts.set(toastId, toast);
       this.visibleToasts.add(toastId);
       this.onUpdate();
+      toast.onStatusChange?.(null, { status: 'visible', ...toast });
     }
   }
 }

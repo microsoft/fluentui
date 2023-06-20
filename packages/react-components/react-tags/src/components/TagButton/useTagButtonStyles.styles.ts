@@ -3,7 +3,12 @@ import type { TagButtonSlots, TagButtonState } from './TagButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { useResetButtonStyles, useTagBaseStyles } from '../Tag/index';
+import {
+  useIconStyles,
+  useMediaStyles,
+  usePrimaryTextStyles,
+  useSecondaryTextStyles,
+} from '../Tag/useTagStyles.styles';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
@@ -15,153 +20,262 @@ export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   dismissButton: 'fui-TagButton__dismissButton',
 };
 
-const useStyles = makeStyles({
-  root: {
-    // TODO use makeResetStyle when styles are settled
-    display: 'inline-flex',
+const mediumIconSize = '20px';
+const smallIconSize = '16px';
+const extraSmallIconSize = '12px';
 
+const useRootStyles = makeStyles({
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
     boxSizing: 'border-box',
-    height: '32px',
     width: 'fit-content',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
   },
-  rootCircular: shorthands.borderRadius(tokens.borderRadiusCircular),
 
-  content: {
+  rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
+  circular: shorthands.borderRadius(tokens.borderRadiusCircular),
+
+  medium: {
+    height: '32px',
+  },
+  small: {
+    height: '24px',
+  },
+  'extra-small': {
+    height: '20px',
+  },
+});
+
+const useContentButtonStyles = makeStyles({
+  base: {
+    // TODO use makeResetStyle when styles are settled
+
+    // reset default button style:
+    color: 'inherit',
+    fontFamily: 'inherit',
+    ...shorthands.padding(0),
+    ...shorthands.borderStyle('none'),
+    appearance: 'button',
+    textAlign: 'unset',
+    backgroundColor: 'transparent',
+
     display: 'inline-grid',
-    gridTemplateRows: '1fr auto auto 1fr',
+    height: '100%',
+    alignItems: 'center',
     gridTemplateAreas: `
-    "media .        "
     "media primary  "
     "media secondary"
-    "media .        "
     `,
-    paddingRight: tokens.spacingHorizontalS,
-
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-        zIndex: 1,
-      },
-      { enableOutline: true },
-    ),
 
     ':hover': {
       cursor: 'pointer',
     },
   },
-  circularContent: createCustomFocusIndicatorStyle(shorthands.borderRadius(tokens.borderRadiusCircular)),
-  contentWithoutMedia: {
-    paddingLeft: tokens.spacingHorizontalS,
+
+  rounded: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      zIndex: 1,
+    },
+    { enableOutline: true },
+  ),
+  circular: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      zIndex: 1,
+    },
+    { enableOutline: true },
+  ),
+
+  medium: {
+    paddingRight: '7px',
   },
-  dismissibleContent: createCustomFocusIndicatorStyle({
+  small: {
+    paddingRight: '5px',
+  },
+  'extra-small': {
+    paddingRight: '5px',
+  },
+});
+/**
+ * Styles for content slot when TagButton is without leading media/icon
+ */
+const useContentButtonWithoutMediaStyles = makeStyles({
+  medium: {
+    paddingLeft: '7px',
+  },
+  small: {
+    paddingLeft: '5px',
+  },
+  'extra-small': {
+    paddingLeft: '5px',
+  },
+});
+/**
+ * Styles for content slot when TagButton has dismiss button
+ */
+const useDismissibleContentButtonStyles = makeStyles({
+  base: createCustomFocusIndicatorStyle({
     borderTopRightRadius: tokens.borderRadiusNone,
     borderBottomRightRadius: tokens.borderRadiusNone,
   }),
+  medium: {
+    paddingRight: tokens.spacingHorizontalS,
+  },
+  small: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  'extra-small': {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+});
 
-  dismissButton: {
+const useDismissButtonStyles = makeStyles({
+  base: {
+    // reset default button style:
+    color: 'inherit',
+    fontFamily: 'inherit',
+    ...shorthands.padding(0),
+    ...shorthands.borderStyle('none'),
+    appearance: 'button',
+    textAlign: 'unset',
+    backgroundColor: 'transparent',
+
     display: 'flex',
+    height: '100%',
     alignItems: 'center',
-    fontSize: '20px',
-    paddingLeft: '6px',
-    paddingRight: '6px',
 
+    // divider:
     ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
-
     borderTopLeftRadius: tokens.borderRadiusNone,
     borderBottomLeftRadius: tokens.borderRadiusNone,
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      borderTopLeftRadius: tokens.borderRadiusNone,
-      borderBottomLeftRadius: tokens.borderRadiusNone,
-      borderTopRightRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
-    }),
 
     ':hover': {
       cursor: 'pointer',
     },
   },
-  dismissButtonCircular: createCustomFocusIndicatorStyle({
+
+  rounded: createCustomFocusIndicatorStyle({
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    borderTopLeftRadius: tokens.borderRadiusNone,
+    borderBottomLeftRadius: tokens.borderRadiusNone,
+    borderTopRightRadius: tokens.borderRadiusMedium,
+    borderBottomRightRadius: tokens.borderRadiusMedium,
+  }),
+  circular: createCustomFocusIndicatorStyle({
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    borderTopLeftRadius: tokens.borderRadiusNone,
+    borderBottomLeftRadius: tokens.borderRadiusNone,
     borderTopRightRadius: tokens.borderRadiusCircular,
     borderBottomRightRadius: tokens.borderRadiusCircular,
   }),
 
-  // TODO add additional classes for fill/outline appearance, different sizes, and state
-});
-
-const useSmallTagButtonStyles = makeStyles({
-  root: {
-    height: '24px',
+  medium: {
+    fontSize: mediumIconSize,
+    paddingLeft: '5px',
+    paddingRight: '5px',
   },
-  // TODO add additional styles for sizes
+  small: {
+    fontSize: smallIconSize,
+    paddingLeft: '3px',
+    paddingRight: '3px',
+  },
+  'extra-small': {
+    fontSize: extraSmallIconSize,
+    paddingLeft: '5px',
+    paddingRight: '5px',
+  },
 });
 
 /**
  * Apply styling to the TagButton slots based on the state
  */
 export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonState => {
-  const baseStyles = useTagBaseStyles();
-  const resetButtonStyles = useResetButtonStyles();
-  const styles = useStyles();
-  const smallStyles = useSmallTagButtonStyles();
+  const rootStyles = useRootStyles();
+
+  const contentButtonStyles = useContentButtonStyles();
+  const contentButtonWithoutMediaStyles = useContentButtonWithoutMediaStyles();
+  const dismissibleContentButtonStyles = useDismissibleContentButtonStyles();
+
+  const iconStyles = useIconStyles();
+  const mediaStyles = useMediaStyles();
+  const primaryTextStyles = usePrimaryTextStyles();
+  const secondaryTextStyles = useSecondaryTextStyles();
+  const dismissButtonStyles = useDismissButtonStyles();
+
+  const { shape, size } = state;
 
   state.root.className = mergeClasses(
     tagButtonClassNames.root,
-    styles.root,
-    state.shape === 'circular' && styles.rootCircular,
-
-    state.size === 'small' && smallStyles.root,
-
+    rootStyles.base,
+    rootStyles[shape],
+    rootStyles[size],
     state.root.className,
   );
+
   if (state.content) {
     state.content.className = mergeClasses(
       tagButtonClassNames.content,
 
-      resetButtonStyles.resetButton,
-      styles.content,
-      state.shape === 'circular' && styles.circularContent,
-      !state.media && !state.icon && styles.contentWithoutMedia,
-      state.dismissible && styles.dismissibleContent,
+      contentButtonStyles.base,
+      contentButtonStyles[shape],
+      contentButtonStyles[size],
+
+      !state.media && !state.icon && contentButtonWithoutMediaStyles[size],
+      state.dismissible && dismissibleContentButtonStyles.base,
+      state.dismissible && dismissibleContentButtonStyles[size],
 
       state.content.className,
     );
   }
 
   if (state.media) {
-    state.media.className = mergeClasses(tagButtonClassNames.media, baseStyles.media, state.media.className);
+    state.media.className = mergeClasses(
+      tagButtonClassNames.media,
+      mediaStyles.base,
+      mediaStyles[size],
+      state.media.className,
+    );
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(tagButtonClassNames.icon, baseStyles.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      tagButtonClassNames.icon,
+      iconStyles.base,
+      iconStyles[size],
+      state.icon.className,
+    );
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
       tagButtonClassNames.primaryText,
-      baseStyles.primaryText,
-      state.secondaryText && baseStyles.primaryTextWithSecondaryText,
+
+      primaryTextStyles.base,
+      primaryTextStyles[size],
+
+      state.secondaryText ? primaryTextStyles.withSecondaryText : primaryTextStyles.withoutSecondaryText,
+
       state.primaryText.className,
     );
   }
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       tagButtonClassNames.secondaryText,
-      baseStyles.secondaryText,
+      secondaryTextStyles.base,
       state.secondaryText.className,
     );
   }
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       tagButtonClassNames.dismissButton,
-      resetButtonStyles.resetButton,
-
-      styles.dismissButton,
-      state.shape === 'circular' && styles.dismissButtonCircular,
+      dismissButtonStyles.base,
+      dismissButtonStyles[shape],
+      dismissButtonStyles[size],
       state.dismissButton.className,
     );
   }
