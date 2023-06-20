@@ -7,8 +7,8 @@ import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagButtonAvatarSizeMap = {
   medium: 28,
-  small: 24,
-  'extra-small': 20,
+  small: 20,
+  'extra-small': 16,
 } as const;
 
 const tagButtonAvatarShapeMap = {
