@@ -36,6 +36,8 @@ const useStyles = makeStyles({
 
   visible: {
     display: 'block',
+    ...shorthands.overflow('hidden'),
+    textOverflow: 'ellipsis',
   },
 
   inverted: {

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "patch: updated styles for tooltip",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}
