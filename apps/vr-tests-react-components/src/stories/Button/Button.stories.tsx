@@ -21,7 +21,7 @@ export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
 export const AsAnAnchor = () => (
   <Button id={buttonId} as="a" href="#">
-    Hello, world
+    Hello, world This
   </Button>
 );
 
@@ -29,19 +29,19 @@ AsAnAnchor.storyName = 'As an anchor';
 
 export const Circular = () => (
   <Button id={buttonId} shape="circular">
-    Hello, world
+    Hello, world is
   </Button>
 );
 
 export const Outline = () => (
   <Button id={buttonId} appearance="outline">
-    Hello, world
+    Hello, world it
   </Button>
 );
 
 export const Primary = () => (
   <Button id={buttonId} appearance="primary">
-    Hello, world
+    Hello, world a
   </Button>
 );
 
@@ -50,7 +50,7 @@ export const PrimaryDarkMode = getStoryVariant(Primary, DARK_MODE);
 
 export const Subtle = () => (
   <Button id={buttonId} appearance="subtle">
-    Hello, world
+    Hello, world b
   </Button>
 );
 
@@ -59,7 +59,7 @@ export const SubtleDarkMode = getStoryVariant(Subtle, DARK_MODE);
 
 export const Transparent = () => (
   <Button id={buttonId} appearance="transparent">
-    Hello, world
+    Hello, world c
   </Button>
 );
 
@@ -68,7 +68,7 @@ export const TransparentDarkMode = getStoryVariant(Transparent, DARK_MODE);
 
 export const Disabled = () => (
   <Button id={buttonId} disabled>
-    Hello, world
+    Hello, world d
   </Button>
 );
 
@@ -77,7 +77,7 @@ export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 
 export const OutlineDisabled = () => (
   <Button id={buttonId} appearance="outline" disabled>
-    Hello, world
+    Hello, world e
   </Button>
 );
 
@@ -86,7 +86,7 @@ export const OutlineDisabledDarkMode = getStoryVariant(OutlineDisabled, DARK_MOD
 
 export const PrimaryDisabled = () => (
   <Button id={buttonId} appearance="primary" disabled>
-    Hello, world
+    Hello, world f
   </Button>
 );
 
@@ -95,7 +95,7 @@ export const PrimaryDisabledDarkMode = getStoryVariant(PrimaryDisabled, DARK_MOD
 
 export const SubtleDisabled = () => (
   <Button id={buttonId} appearance="subtle" disabled>
-    Hello, world
+    Hello, world g
   </Button>
 );
 
@@ -104,7 +104,7 @@ export const SubtleDisabledDarkMode = getStoryVariant(SubtleDisabled, DARK_MODE)
 
 export const TransparentDisabled = () => (
   <Button id={buttonId} appearance="transparent" disabled>
-    Hello, world
+    Hello, world h
   </Button>
 );
 
@@ -113,7 +113,7 @@ export const TransparentDisabledDarkMode = getStoryVariant(TransparentDisabled, 
 
 export const SizeSmall = () => (
   <Button id={buttonId} icon={<CalendarMonth />} size="small">
-    Hello, world
+    Hello, world i
   </Button>
 );
 

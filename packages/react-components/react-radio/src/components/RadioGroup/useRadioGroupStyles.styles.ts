@@ -8,8 +8,8 @@ export const radioGroupClassNames: SlotClassNames<RadioGroupSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    alignItems: 'flex-start',
+    display: 'block',
+    alignItems: 'center',
   },
 
   vertical: {

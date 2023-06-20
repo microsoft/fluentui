@@ -17,9 +17,9 @@ const iconSizes = {
 
 //TODO: Should fieldHeights be a set of global design tokens or constants?
 const fieldHeights = {
-  small: '24px',
-  medium: '32px',
-  large: '40px',
+  small: '33px',
+  medium: '52px',
+  large: '60px',
 };
 
 /* Since the <select> element must span the full width and cannot have children,
