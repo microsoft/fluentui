@@ -36,7 +36,7 @@ function getReferenceId(
   }
 
   if (childWithId?.props.id) {
-    return childWithId?.props.id;
+    return childWithId.props.id;
   }
 
   return generatedId;
