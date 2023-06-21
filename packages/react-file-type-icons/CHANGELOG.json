@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 07:36:29 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.9.2",
+      "version": "8.9.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "alinazaieva@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "88f01346113e912c48078427326ec425da9d4ff0",
+            "comment": "Map mhtml extension to html icon"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Jun 2023 07:36:39 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.9.1",
       "version": "8.9.1",

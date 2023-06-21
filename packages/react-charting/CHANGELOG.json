@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 07:36:29 GMT",
+      "tag": "@fluentui/react-charting_v5.16.44",
+      "version": "5.16.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "53292d2fbbb7de5f9ac7df47ab8756480dbd7bc9",
+            "comment": "Fix overlapping axis labels on smaller viewports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Jun 2023 07:36:39 GMT",
       "tag": "@fluentui/react-charting_v5.16.43",
       "version": "5.16.43",
