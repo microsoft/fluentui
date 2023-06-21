@@ -1,5 +1,6 @@
 import type { Slot } from '@fluentui/react-utilities';
 import { EVENTS } from './constants';
+import * as React from 'react';
 
 export type ToastId = string;
 export type ToasterId = string;
@@ -85,6 +86,7 @@ export interface ToasterOptions
   offset?: ToastOffset;
   toasterId?: ToasterId;
   limit?: number;
+  isFocusShortcut?: (e: KeyboardEvent) => boolean;
 }
 
 export interface Toast<TData = object> extends ToastOptions<TData> {
@@ -104,6 +106,8 @@ export interface Toast<TData = object> extends ToastOptions<TData> {
    * Used to determine default priority when the user does not set one
    */
   dispatchedAt: number;
+
+  imperativeRef: React.RefObject<ToastImperativeRef>;
 }
 
 export interface CommonToastDetail {
@@ -142,3 +146,21 @@ export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toaste
 export interface UpdateToastOptions extends UpdateToastEventDetail {
   root?: RootSlot;
 }
+
+export type ToastImperativeRef = {
+  /**
+   * Focuses the Toast.
+   * If there are no focusable elements in the Toast, the Toast itself is focused.
+   */
+  focus: () => void;
+
+  /**
+   * Resumes the timeout of a paused toast
+   */
+  play: () => void;
+
+  /**
+   * Pauses the timeout of a toast
+   */
+  pause: () => void;
+};

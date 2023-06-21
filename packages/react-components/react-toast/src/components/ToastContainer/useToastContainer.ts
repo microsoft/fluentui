@@ -10,6 +10,7 @@ import {
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 const intentPolitenessMap = {
   success: 'assertive',
@@ -44,13 +45,52 @@ export const useToastContainer_unstable = (
     intent = 'info',
     pauseOnHover,
     pauseOnWindowBlur,
+    imperativeRef,
     ...rest
   } = props;
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
+  const imperativePauseRef = React.useRef(false);
   const pause = useEventCallback(() => setRunning(false));
-  const play = useEventCallback(() => setRunning(true));
+  const play = useEventCallback(() => {
+    if (imperativePauseRef.current) {
+      return;
+    }
+    const containsActive = !!toastRef.current?.contains(targetDocument?.activeElement ?? null);
+    // TODO test this
+    if (timerTimeout < 0) {
+      setRunning(true);
+    } else if (timerTimeout >= 0 && !containsActive) {
+      setRunning(true);
+    }
+  });
+
+  const { findFirstFocusable } = useFocusFinders();
+
+  React.useImperativeHandle(imperativeRef, () => ({
+    focus: () => {
+      if (!toastRef.current) {
+        return;
+      }
+
+      const firstFocusable = findFirstFocusable(toastRef.current);
+      if (firstFocusable) {
+        firstFocusable.focus();
+      } else {
+        toastRef.current.focus();
+      }
+    },
+
+    play: () => {
+      imperativePauseRef.current = false;
+      play();
+    },
+    pause: () => {
+      imperativePauseRef.current = true;
+      pause();
+    },
+  }));
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -119,6 +159,7 @@ export const useToastContainer_unstable = (
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, toastRef),
       children,
+      tabIndex: -1,
       ...rest,
       ...userRootSlot,
       onAnimationEnd,

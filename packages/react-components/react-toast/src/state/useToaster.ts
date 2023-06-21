@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, useForceUpdate } from '@fluentui/react-utilities';
+import { isHTMLElement, useEventCallback, useForceUpdate } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { createToaster } from './vanilla';
 import type {
@@ -11,18 +11,70 @@ import type {
   ToasterId,
   ToasterOptions,
 } from './types';
-import { ToasterProps } from '../components/Toaster';
 import { EVENTS } from './constants';
 
-export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
+export function useToaster<TElement extends HTMLElement = HTMLDivElement>(options: Partial<ToasterOptions> = {}) {
   const forceUpdate = useForceUpdate();
-  const toasterOptions = useToasterOptions(options);
-  const [toaster] = React.useState(() => createToaster(toasterOptions));
+  const { toasterId: userToasterId, isFocusShortcut: userIsFocusShortcut } = options;
+  // Currently the toaster options can never be changed at runtime
+  const [toaster] = React.useState(() => createToaster(options));
   const { targetDocument } = useFluent();
 
+  const lastActiveElementRef = React.useRef<HTMLElement | null>(null);
+
   const isCorrectToaster = useEventCallback((toasterId: ToasterId | undefined) => {
-    return toasterId === toasterOptions.toasterId;
+    return toasterId === userToasterId;
   });
+
+  const isFocusShortcut = useEventCallback((e: KeyboardEvent) => {
+    if (userIsFocusShortcut) {
+      return userIsFocusShortcut(e);
+    }
+
+    if (e.ctrlKey && e.key === 'm') {
+      return true;
+    }
+
+    return false;
+  });
+
+  const tryRestoreFocus = React.useCallback(() => {
+    lastActiveElementRef.current?.focus();
+    lastActiveElementRef.current = null;
+  }, []);
+
+  const pauseAllToasts = React.useCallback(() => {
+    for (const toastId of toaster.visibleToasts) {
+      const toast = toaster.toasts.get(toastId);
+      toast?.imperativeRef.current?.pause();
+    }
+  }, [toaster]);
+
+  const playAllToasts = React.useCallback(() => {
+    for (const toastId of toaster.visibleToasts) {
+      const toast = toaster.toasts.get(toastId);
+      toast?.imperativeRef.current?.play();
+    }
+  }, [toaster]);
+
+  const getMostRecentToast = React.useCallback(() => {
+    return Array.from(toaster.visibleToasts).reduce((cur, next) => {
+      const toast = toaster.toasts.get(next);
+      if (!toast) {
+        return cur;
+      }
+
+      if (!cur) {
+        return toast;
+      }
+
+      if (cur.dispatchedAt < toast?.dispatchedAt) {
+        return toast;
+      }
+
+      return cur;
+    }, undefined as Toast | undefined);
+  }, [toaster]);
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -67,13 +119,31 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterProps =
     const cleanupDismissListener = addToastListener(EVENTS.dismiss, dismissToast);
     const cleanupDismissAllListener = addToastListener(EVENTS.dismissAll, dismissAllToasts);
 
+    const focusShortcutListener = (e: KeyboardEvent) => {
+      if (isFocusShortcut(e)) {
+        pauseAllToasts();
+        const mostRecentToast = getMostRecentToast();
+
+        if (mostRecentToast) {
+          lastActiveElementRef.current = isHTMLElement(targetDocument.activeElement)
+            ? targetDocument.activeElement
+            : null;
+          mostRecentToast.imperativeRef.current?.focus();
+        }
+      }
+    };
+
+    targetDocument.addEventListener('keydown', focusShortcutListener);
+
     return () => {
       cleanupBuildListener();
       cleanupDismissAllListener();
       cleanupUpdateListener();
       cleanupDismissListener();
+
+      targetDocument.removeEventListener('keydown', focusShortcutListener);
     };
-  }, [toaster, forceUpdate, targetDocument, isCorrectToaster]);
+  }, [toaster, forceUpdate, targetDocument, isCorrectToaster, pauseAllToasts, getMostRecentToast, isFocusShortcut]);
 
   const toastsToRender = (() => {
     if (!toaster) {
@@ -99,21 +169,8 @@ export function useToaster<TElement extends HTMLElement>(options: ToasterProps =
   return {
     isToastVisible: toaster.isToastVisible,
     toastsToRender,
+    pauseAllToasts,
+    playAllToasts,
+    tryRestoreFocus,
   };
-}
-
-function useToasterOptions(options: ToasterProps): Partial<ToasterOptions> {
-  const { pauseOnHover, pauseOnWindowBlur, position, timeout, limit, toasterId } = options;
-
-  return React.useMemo<Partial<ToasterOptions>>(
-    () => ({
-      pauseOnHover,
-      pauseOnWindowBlur,
-      position,
-      timeout,
-      limit,
-      toasterId,
-    }),
-    [pauseOnHover, pauseOnWindowBlur, position, timeout, limit, toasterId],
-  );
 }
