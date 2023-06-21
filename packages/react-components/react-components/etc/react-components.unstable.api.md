@@ -9,6 +9,31 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
+import { Breadcrumb } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButton } from '@fluentui/react-breadcrumb';
+import { breadcrumbButtonClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonState } from '@fluentui/react-breadcrumb';
+import { breadcrumbClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { breadcrumbDividerClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItem } from '@fluentui/react-breadcrumb';
+import { breadcrumbItemClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbLink } from '@fluentui/react-breadcrumb';
+import { breadcrumbLinkClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbLinkProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbLinkSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbLinkState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbState } from '@fluentui/react-breadcrumb';
 import { Drawer } from '@fluentui/react-drawer';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { drawerBodyClassNames } from '@fluentui/react-drawer';
@@ -60,7 +85,15 @@ import { InfoLabelProps } from '@fluentui/react-infobutton';
 import { InfoLabelSlots } from '@fluentui/react-infobutton';
 import { InfoLabelState } from '@fluentui/react-infobutton';
 import { NestedTreeItem } from '@fluentui/react-tree';
+import { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { partitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { PartitionBreadcrumbItemsOptions } from '@fluentui/react-breadcrumb';
 import { renderAlert_unstable } from '@fluentui/react-alert';
+import { renderBreadcrumb_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbButton_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbDivider_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbItem_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbLink_unstable } from '@fluentui/react-breadcrumb';
 import { renderDrawer_unstable } from '@fluentui/react-drawer';
 import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
 import { renderDrawerFooter_unstable } from '@fluentui/react-drawer';
@@ -118,8 +151,20 @@ import { TreeProps } from '@fluentui/react-tree';
 import { TreeProvider } from '@fluentui/react-tree';
 import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
+import { truncateBreadcrumbLongName } from '@fluentui/react-breadcrumb';
+import { truncateBreadcrumLongTooltip } from '@fluentui/react-breadcrumb';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useBreadcrumb_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbButton_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbButtonStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDivider_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDividerStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItem_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItemStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbLink_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbLinkStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbStyles_unstable } from '@fluentui/react-breadcrumb';
 import { useDrawer_unstable } from '@fluentui/react-drawer';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
@@ -193,6 +238,56 @@ export { AlertProps }
 export { AlertSlots }
 
 export { AlertState }
+
+export { Breadcrumb }
+
+export { BreadcrumbButton }
+
+export { breadcrumbButtonClassNames }
+
+export { BreadcrumbButtonProps }
+
+export { BreadcrumbButtonSlots }
+
+export { BreadcrumbButtonState }
+
+export { breadcrumbClassNames }
+
+export { BreadcrumbDivider }
+
+export { breadcrumbDividerClassNames }
+
+export { BreadcrumbDividerProps }
+
+export { BreadcrumbDividerSlots }
+
+export { BreadcrumbDividerState }
+
+export { BreadcrumbItem }
+
+export { breadcrumbItemClassNames }
+
+export { BreadcrumbItemProps }
+
+export { BreadcrumbItemSlots }
+
+export { BreadcrumbItemState }
+
+export { BreadcrumbLink }
+
+export { breadcrumbLinkClassNames }
+
+export { BreadcrumbLinkProps }
+
+export { BreadcrumbLinkSlots }
+
+export { BreadcrumbLinkState }
+
+export { BreadcrumbProps }
+
+export { BreadcrumbSlots }
+
+export { BreadcrumbState }
 
 export { Drawer }
 
@@ -296,7 +391,23 @@ export { InfoLabelState }
 
 export { NestedTreeItem }
 
+export { PartitionBreadcrumbItems }
+
+export { partitionBreadcrumbItems }
+
+export { PartitionBreadcrumbItemsOptions }
+
 export { renderAlert_unstable }
+
+export { renderBreadcrumb_unstable }
+
+export { renderBreadcrumbButton_unstable }
+
+export { renderBreadcrumbDivider_unstable }
+
+export { renderBreadcrumbItem_unstable }
+
+export { renderBreadcrumbLink_unstable }
 
 export { renderDrawer_unstable }
 
@@ -412,9 +523,33 @@ export { TreeSlots }
 
 export { TreeState }
 
+export { truncateBreadcrumbLongName }
+
+export { truncateBreadcrumLongTooltip }
+
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
+
+export { useBreadcrumb_unstable }
+
+export { useBreadcrumbButton_unstable }
+
+export { useBreadcrumbButtonStyles_unstable }
+
+export { useBreadcrumbDivider_unstable }
+
+export { useBreadcrumbDividerStyles_unstable }
+
+export { useBreadcrumbItem_unstable }
+
+export { useBreadcrumbItemStyles_unstable }
+
+export { useBreadcrumbLink_unstable }
+
+export { useBreadcrumbLinkStyles_unstable }
+
+export { useBreadcrumbStyles_unstable }
 
 export { useDrawer_unstable }
 
