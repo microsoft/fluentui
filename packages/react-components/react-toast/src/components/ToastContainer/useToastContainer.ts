@@ -48,7 +48,6 @@ export const useToastContainer_unstable = (
   } = props;
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
-  // const { play, toastRef } = useToast<HTMLDivElement>({ ...props });
   const [running, setRunning] = React.useState(false);
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => setRunning(true));
@@ -61,14 +60,11 @@ export const useToastContainer_unstable = (
     if (pauseOnWindowBlur) {
       targetDocument.defaultView?.addEventListener('focus', play);
       targetDocument.defaultView?.addEventListener('blur', pause);
-    }
-
-    return () => {
-      if (pauseOnWindowBlur) {
+      return () => {
         targetDocument.defaultView?.removeEventListener('focus', play);
         targetDocument.defaultView?.removeEventListener('blur', pause);
-      }
-    };
+      };
+    }
   }, [targetDocument, pause, play, pauseOnWindowBlur]);
 
   React.useEffect(() => {

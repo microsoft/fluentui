@@ -45,4 +45,22 @@ describe('useToaster', () => {
     expect(toaster.dismissAllToasts).toHaveBeenCalledTimes(1);
     expect(toaster.dismissToast).toHaveBeenCalledTimes(1);
   });
+
+  it('should respect toasterId for events', () => {
+    const toaster = mockToaster();
+    renderHook(() => useToaster({ toasterId: 'foo' }));
+
+    const detail = { toasterId: 'bar' };
+    act(() => {
+      document.dispatchEvent(new CustomEvent(EVENTS.dismiss, { detail }));
+      document.dispatchEvent(new CustomEvent(EVENTS.update, { detail }));
+      document.dispatchEvent(new CustomEvent(EVENTS.dismissAll, { detail }));
+      document.dispatchEvent(new CustomEvent(EVENTS.show, { detail }));
+    });
+
+    expect(toaster.buildToast).toHaveBeenCalledTimes(0);
+    expect(toaster.updateToast).toHaveBeenCalledTimes(0);
+    expect(toaster.dismissAllToasts).toHaveBeenCalledTimes(0);
+    expect(toaster.dismissToast).toHaveBeenCalledTimes(0);
+  });
 });

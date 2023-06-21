@@ -10,6 +10,17 @@ function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
     }
   }
 }
+const defaulToastOptions: Pick<
+  ToastOptions,
+  'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout' | 'politeness' | 'onStatusChange'
+> = {
+  onStatusChange: undefined,
+  priority: 0,
+  pauseOnHover: false,
+  pauseOnWindowBlur: false,
+  position: 'bottom-end',
+  timeout: 3000,
+};
 
 /**
  * Toast are managed outside of the react lifecycle because they can be
@@ -20,19 +31,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
   const { limit = Number.POSITIVE_INFINITY } = options;
   const visibleToasts = new Set<ToastId>();
   const toasts = new Map<ToastId, Toast>();
-  const defaulToastOptions: Pick<
-    ToastOptions,
-    'priority' | 'pauseOnHover' | 'pauseOnWindowBlur' | 'position' | 'timeout' | 'politeness' | 'onStatusChange'
-  > = {
-    onStatusChange: undefined,
-    priority: 0,
-    pauseOnHover: false,
-    pauseOnWindowBlur: false,
-    position: 'bottom-end',
-    timeout: 3000,
-  };
-
-  assignDefined(defaulToastOptions, options);
 
   const queue = createPriorityQueue<ToastId>((ta, tb) => {
     const a = toasts.get(ta);
@@ -137,7 +135,8 @@ export function createToaster(options: Partial<ToasterOptions>) {
       data: {},
     };
 
-    assignDefined<Toast>(toast, toastOptions);
+    assignDefined(toast, options);
+    assignDefined(toast, toastOptions);
 
     toasts.set(toastId, toast);
     toast.onStatusChange?.(null, { status: 'queued', ...toast });
