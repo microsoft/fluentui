@@ -57,7 +57,7 @@ const useContentAfterStyles = makeStyles({
   rest: {
     opacity: 0,
     height: 0,
-    weight: 0,
+    width: 0,
   },
 });
 
