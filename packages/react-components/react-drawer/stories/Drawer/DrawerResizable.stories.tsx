@@ -90,3 +90,11 @@ export const Resizable = () => {
     </div>
   );
 };
+
+Resizable.parameters = {
+  docs: {
+    description: {
+      story: 'This example shows how to implement a resizable drawer.',
+    },
+  },
+};

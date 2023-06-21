@@ -58,3 +58,15 @@ export const WithNavigation = () => {
     </div>
   );
 };
+
+WithNavigation.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Drawers can have any type of content and one great case is to have a toolbar in the header.',
+        'Drawer ships with a `DrawerHeaderNavigation` component that can be used to display a toolbar in the header of the drawer.',
+        'This can be combined with `DrawerHeaderTitle` to display a title in the header.',
+      ].join('\n'),
+    },
+  },
+};

@@ -70,3 +70,11 @@ export const CustomSize = () => {
     </div>
   );
 };
+
+CustomSize.parameters = {
+  docs: {
+    description: {
+      story: 'The Drawer can be sized to any custom width, by overriding the `width` style property.',
+    },
+  },
+};
