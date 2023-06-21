@@ -183,7 +183,7 @@ const RegistrationFormInputsAccessibility = () => {
       <h1>Registration form</h1>
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
-          <Label htmlFor="fullName">Full name</Label>
+          <Label htmlFor="fullName">Full name*</Label>
           <Controller
             name="fullName"
             control={control}
@@ -218,7 +218,7 @@ const RegistrationFormInputsAccessibility = () => {
                 <p id="fullNameRequiredError">Full name is required.</p>
               ) : (
                 <>
-                  <p id="fullNameInvalidError">Full name is invalid. It must:</p>
+                  <p id="fullNameInvalidError">Full name doesn't meet these requirements: </p>
                   <ul>
                     {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
                       <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
@@ -266,7 +266,7 @@ const RegistrationFormInputsAccessibility = () => {
           />
           {errors.nickname?.types && (
             <ValidationMessage id="nickname" formValidation={formValidation}>
-              <p id="nicknameInvalidError">Nickname is invalid. It must:</p>
+              <p id="nicknameInvalidError">Nickname doesn't meet these requirements: </p>
               <ul>
                 {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
                   <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
@@ -283,7 +283,7 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Password*</Label>
           <Controller
             name="password"
             control={control}
@@ -299,7 +299,7 @@ const RegistrationFormInputsAccessibility = () => {
             rules={{
               required: true,
               minLength: 8,
-              maxLength: 20,
+              maxLength: 50,
               validate: {
                 hasLowercaseLetter: value => validations.hasLowercaseLetter(value),
                 hasUppercaseLetter: value => validations.hasUppercaseLetter(value),
@@ -324,10 +324,10 @@ const RegistrationFormInputsAccessibility = () => {
                 <p id="passwordRequiredError">Password is required.</p>
               ) : (
                 <>
-                  <p id="passwordInvalidError">Password is invalid. It must:</p>
+                  <p id="passwordInvalidError">Password doesn't meet these requirements: </p>
                   <ul>
                     {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
-                      <li id="passwordLengthError">Have between 8 and 20 characters.</li>
+                      <li id="passwordLengthError">Have between 8 and 50 characters.</li>
                     )}
                     {('hasLowercaseLetter' in errors.password.types ||
                       'hasUppercaseLetter' in errors.password.types ||
@@ -345,7 +345,7 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="birthDate">Birth date</Label>
+          <Label htmlFor="birthDate">Birth date*</Label>
           <Controller
             name="birthDate"
             control={control}
@@ -378,7 +378,7 @@ const RegistrationFormInputsAccessibility = () => {
                 <p id="birthDateRequiredError">Birth date is required.</p>
               ) : (
                 <>
-                  <p id="birthDateInvalidError">Birth date is invalid. It must:</p>
+                  <p id="birthDateInvalidError">Birth date doesn't meet these requirements: </p>
                   <ul>
                     {'validDate' in errors.birthDate.types && (
                       <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
@@ -391,7 +391,7 @@ const RegistrationFormInputsAccessibility = () => {
 
           <Checkbox label="Send me newsletter" onChange={onSendNewsletterChange} />
 
-          <Label htmlFor="email">E-mail</Label>
+          <Label htmlFor="email">E-mail*</Label>
           <Controller
             name="email"
             control={control}
@@ -424,7 +424,7 @@ const RegistrationFormInputsAccessibility = () => {
                 <p id="emailRequiredError">E-mail is required.</p>
               ) : (
                 <>
-                  <p id="emailInvalidError">E-mail is invalid. It must:</p>
+                  <p id="emailInvalidError">E-mail doesn't meet these requirements: </p>
                   <ul>
                     {'validEmail' in errors.email.types && (
                       <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
@@ -437,6 +437,7 @@ const RegistrationFormInputsAccessibility = () => {
 
           <Label htmlFor="securityCode">Your security code</Label>
           <Input type="text" id="securityCode" value={securityCode} readOnly />
+          <p>Fields marked with * are required.</p>
 
           <Button type="submit">Register</Button>
         </form>
