@@ -20,7 +20,12 @@ function getReferenceId(
   if (refId) {
     return refId;
   }
-  return childWithId?.props.id ? childWithId.props.id : generatedId;
+
+  if (childWithId?.props.id) {
+    return childWithId?.props.id;
+  }
+
+  return generatedId;
 }
 
 /**
