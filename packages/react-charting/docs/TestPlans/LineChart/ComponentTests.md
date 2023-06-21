@@ -25,7 +25,7 @@
 |- HideTooltip prop set to “false”|Should mount callout when hideTootip is false|Enzyme|
 |- onRenderCalloutPerStack prop is not given|Should not render onRenderCalloutPerStack|Pending|
 |- onRenderCalloutPerDataPoint is given|Should render onRenderCalloutPerDataPoint|Pending|
-|- onRenderCalloutPerDataPoint is given|Should not render onRenderCalloutPerDataPoint|Pending|
+|- onRenderCalloutPerDataPoint is not given|Should not render onRenderCalloutPerDataPoint|Pending|
 |Test 3: Render calling with respective to props|||
 |- No prop changes: Mount line chart and then set the same props again|Render function should have been called twice|Enzyme|
 |- Prop changes: Mount line chart and then set some other prop|Render function should have been called twice|Enzyme|
@@ -36,14 +36,14 @@
 |- Customized callout on a line |Should render customized callout correctly on mouseover|Enzyme|
 |- Customized callout on a line from one line to other line|Should render customized callout for stack on mouseover|Enzyme|
 |Test 5: Render empty chart aria label div when chart is empty|||
-|- Vertical bar chart mounted with non-empty data|No empty chart aria label div rendered|Enzyme|
-|- Vertical bar chart mounted with empty data|Empty chart aria label div rendered|Enzyme|
+|- Line chart mounted with non-empty data|No empty chart aria label div rendered|Enzyme|
+|- Line chart mounted with empty data|Empty chart aria label div rendered|Enzyme|
 |Test 6: Render empty chart calling with respective to props|||
-|- No prop changes: Mount vertical bar chart with non-empty data and then set the same props again|Render function should have been called twice|Enzyme|
-|- prop changes: Mount vertical bar chart with empty data and then set the props|Render function should have been called 3 times|Enzyme|
+|- No prop changes: Mount line chart with non-empty data and then set the same props again|Render function should have been called twice|Enzyme|
+|- prop changes: Mount line chart with empty data and then set the props|Render function should have been called 3 times|Enzyme|
 |Test 7: [Sub-Component]: Line|||
 |- Specify line data|Should render line with the data provided|RTL|
-|- Hover mouse over the data points|Should highlight the data points (No callout is rendered when we hover only on the line. Callout appears on hover over the bars only.)|RTL|
+|- Hover mouse over the data points|Should highlight the data points (No callout is rendered when we hover only on the line. Callout appears on hover over the lines only.)|RTL|
 |Test 8: [Sub-Component]: Legends|||
 |- Hide legends |Should not show any rendered legends |RTL|
 |- Hover mouse over line legends|Should reduce the opacity of the other lines|RTL|
@@ -51,11 +51,11 @@
 |- Single mouse click on legends|Should select legend on single mouse click on respective legend|RTL|
 |- Double mouse click on legends|Should deselect legend on double mouse click on respective legend|RTL|
 |Test 9: [Sub-Component]: Callout|||
-|- Hover mouse over a bar|Should call the handler on mouse over bar|RTL|
-|- Hover mouse over a bar|Should show the default callout over that bar|RTL|
+|- Hover mouse over a line|Should call the handler on mouse over line|RTL|
+|- Hover mouse over a Line|Should show the default callout over that line|RTL|
 |- Hover mouse over the line|Should show the default callout over that line|RTL|
-|- Specify custom callout and hover mouse over a bar|Should show the custom callout over that bar|RTL|
-|- Specify custom callout and hover mouse over the line|Should not show the custom callout over that line as custom callout is rendered only on mouse over on the bars.|RTL|
+|- Specify custom callout and hover mouse over a line|Should show the custom callout over that line|RTL|
+|- Specify custom callout and hover mouse over the line|Should not show the custom callout over that line as custom callout is rendered only on mouse over on the line.|RTL|
 |Test 10: [Sub-Component]: x-axis labels|||
 |- Truncate x-axis labels|Should show the x-axis labels tooltip when hovered|RTL|
 |- Rotate x-axis labels|Should rotate the x-axis labels by 45 degrees|RTL|
