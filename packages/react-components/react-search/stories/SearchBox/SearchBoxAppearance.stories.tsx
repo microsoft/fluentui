@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands, tokens, useId, SearchBox, Label } from '@fluentui/react-components';
+import { SearchBox } from '@fluentui/react-search';
+import { makeStyles, mergeClasses, shorthands, tokens, useId, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '400px',
+    maxWidth: '490px',
   },
   field: {
     display: 'grid',

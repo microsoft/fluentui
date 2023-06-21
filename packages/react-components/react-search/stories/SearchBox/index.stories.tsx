@@ -4,6 +4,8 @@ import descriptionMd from './SearchBoxDescription.md';
 import bestPracticesMd from './SearchBoxBestPractices.md';
 
 export { Default } from './SearchBoxDefault.stories';
+export { Appearance } from './SearchBoxAppearance.stories';
+export { ContentBeforeAfter } from './SearchBoxContentBeforeAfter.stories';
 
 export default {
   title: 'Preview Components/SearchBox',
