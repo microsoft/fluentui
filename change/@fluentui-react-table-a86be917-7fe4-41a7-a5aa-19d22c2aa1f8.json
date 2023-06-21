@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: TableHeaderCell should not render button when not sortable",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

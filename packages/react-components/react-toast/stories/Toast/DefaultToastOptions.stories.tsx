@@ -8,8 +8,9 @@ export const DefaultToastOptions = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="info">Options configured in Toaster</ToastTitle>
+        <ToastTitle>Options configured in Toaster</ToastTitle>
       </Toast>,
+      { intent: 'info' },
     );
 
   return (
