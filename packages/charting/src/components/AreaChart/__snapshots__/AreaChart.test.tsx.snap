@@ -26,6 +26,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -377,6 +380,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone31"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -708,6 +714,9 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -892,6 +901,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone22"
     onFocus={[Function]}
@@ -1244,6 +1256,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone40"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1595,6 +1610,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone49"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1945,6 +1963,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone58"
     onFocus={[Function]}

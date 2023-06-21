@@ -26,6 +26,9 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -367,6 +370,9 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone5"
     onFocus={[Function]}
@@ -799,6 +805,9 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -974,6 +983,9 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone11"
     onFocus={[Function]}
@@ -1316,6 +1328,9 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone15"
     onFocus={[Function]}

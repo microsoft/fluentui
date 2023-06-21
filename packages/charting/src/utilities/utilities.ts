@@ -5,6 +5,15 @@ import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
+  timeSecond as d3TimeSecond,
+  timeMinute as d3TimeMinute,
+  timeHour as d3TimeHour,
+  timeDay as d3TimeDay,
+  timeMonth as d3TimeMonth,
+  timeWeek as d3TimeWeek,
+  timeYear as d3TimeYear,
+} from 'd3-time';
+import {
   IAccessibilityProps,
   IEventsAnnotationProps,
   ILineChartPoints,
@@ -147,7 +156,36 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
       .selectAll('text')
       .attr('aria-hidden', 'true');
   }
-  return xAxisScale;
+  const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues };
+}
+
+function multiFormat(date: Date, locale?: d3TimeFormat.TimeLocaleObject) {
+  const timeFormat = locale ? locale.format : d3TimeFormat.timeFormat;
+  const formatMillisecond = timeFormat('.%L');
+  const formatSecond = timeFormat(':%S');
+  const formatMinute = timeFormat('%I:%M');
+  const formatHour = timeFormat('%I %p');
+  const formatDay = timeFormat('%a %d');
+  const formatWeek = timeFormat('%b %d');
+  const formatMonth = timeFormat('%B');
+  const formatYear = timeFormat('%Y');
+
+  return (d3TimeSecond(date) < date
+    ? formatMillisecond
+    : d3TimeMinute(date) < date
+    ? formatSecond
+    : d3TimeHour(date) < date
+    ? formatMinute
+    : d3TimeDay(date) < date
+    ? formatHour
+    : d3TimeMonth(date) < date
+    ? d3TimeWeek(date) < date
+      ? formatDay
+      : formatWeek
+    : d3TimeYear(date) < date
+    ? formatMonth
+    : formatYear)(date);
 }
 
 /**
@@ -173,7 +211,12 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
       .selectAll('text')
       .attr('aria-hidden', 'true');
   }
-  return xAxisScale;
+  const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
+    const tickFormat = xAxis.tickFormat();
+    // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
+    return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date);
+  });
+  return { xScale: xAxisScale, tickValues };
 }
 
 /**
@@ -210,7 +253,8 @@ export function createStringXAxis(
       .selectAll('text')
       .attr('aria-hidden', 'true');
   }
-  return xAxisScale;
+  const tickValues = dataset.map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues };
 }
 
 /**
@@ -509,6 +553,34 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   });
   return removeVal > 0 ? removeVal : 0;
 }
+
+/**
+ * Calculates the width of the longest axis label in pixels
+ */
+export const calculateLongestLabelWidth = (labels: (string | number)[], query: string = 'none'): number => {
+  let maxLabelWidth = 0;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  if (ctx) {
+    const axisText = document.querySelector(query);
+    if (axisText) {
+      const styles = window.getComputedStyle(axisText, null);
+      const fontWeight = styles.getPropertyValue('font-weight');
+      const fontSize = styles.getPropertyValue('font-size');
+      const fontFamily = styles.getPropertyValue('font-family');
+      ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
+    } else {
+      ctx.font = '600 10px "Segoe UI"';
+    }
+
+    labels.forEach(label => {
+      maxLabelWidth = Math.max(ctx.measureText(label.toString()).width, maxLabelWidth);
+    });
+  }
+
+  return maxLabelWidth;
+};
 
 /**
  * This method displays a tooltip to the x axis lables(tick values)

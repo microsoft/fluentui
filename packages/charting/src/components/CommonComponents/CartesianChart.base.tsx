@@ -27,6 +27,8 @@ import {
   createWrapOfXLabels,
   Points,
   pointTypes,
+  calculateLongestLabelWidth,
+  ChartTypes,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 
@@ -67,6 +69,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private idForGraph: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
+  private _tickValues: (string | number)[];
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -157,19 +160,26 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let xScale: any;
+    let tickValues: (string | number)[];
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, culture);
+        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, culture));
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
+        ({ xScale, tickValues } = createDateXAxis(XAxisParams, this.props.tickParams!));
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
+        ({ xScale, tickValues } = createStringXAxis(
+          XAxisParams,
+          this.props.tickParams!,
+          this.props.datasetForXAxisDomain!,
+          culture,
+        ));
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams, culture);
+        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, culture));
     }
+    this._tickValues = tickValues;
 
     /*
      * To enable wrapping of x axis tick values or to disaply complete x axis tick values,
@@ -244,7 +254,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this.props.onChartMouseLeave}
       >
-        <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
+        <FocusZone direction={focusDirection} className={this._classNames.chartWrapper} {...svgFocusZoneProps}>
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}
@@ -471,7 +481,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           parseFloat(legendContainerComputedStyles.marginBottom || '0');
       }
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
+      const currentContainerWidth = this.props.enableReflow
+        ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
+        : container.getBoundingClientRect().width;
       const currentContainerHeight =
         container.getBoundingClientRect().height > legendContainerHeight
           ? container.getBoundingClientRect().height
@@ -498,5 +510,43 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this.state.containerWidth,
         this.xAxisElement,
       );
+  };
+
+  private _calculateChartMinWidth = (): number => {
+    let labelWidth = 10; // Total padding on the left and right sides of the label
+
+    // Case: truncated labels
+    if (this.props.showXAxisLablesTooltip) {
+      const tickValues = this._tickValues.map(val => {
+        const numChars = this.props.noOfCharsToTruncate || 4;
+        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+    // Case: wrapped labels
+    else if (this.props.wrapXAxisLables) {
+      const words: string[] = [];
+      this._tickValues.forEach((val: string) => {
+        words.push(...val.toString().split(/\s+/));
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
+    }
+    // Default case
+    else {
+      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+
+    let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
+
+    if (this.props.chartType === ChartTypes.VerticalBarChart && this.props.xAxisType === XAxisTypes.NumericAxis) {
+      minChartWidth += this.props.barwidth || 32;
+    }
+
+    return minChartWidth;
   };
 }

@@ -26,6 +26,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -611,6 +614,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone19"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1176,6 +1182,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1416,6 +1425,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone13"
     onFocus={[Function]}
@@ -2002,6 +2014,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone25"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2587,6 +2602,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone31"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3171,6 +3189,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone37"
     onFocus={[Function]}
