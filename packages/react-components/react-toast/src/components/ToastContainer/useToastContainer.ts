@@ -7,8 +7,8 @@ import {
   useEventCallback,
   resolveShorthand,
 } from '@fluentui/react-utilities';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
-import { useToast } from '../../state';
 import { Timer, TimerProps } from '../Timer/Timer';
 
 const intentPolitenessMap = {
@@ -42,9 +42,30 @@ export const useToastContainer_unstable = (
     timeout: timerTimeout,
     politeness: desiredPoliteness,
     intent = 'info',
+    pauseOnHover,
+    pauseOnWindowBlur,
     ...rest
   } = props;
-  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props });
+  const toastRef = React.useRef<HTMLDivElement | null>(null);
+  const { targetDocument } = useFluent_unstable();
+  const [running, setRunning] = React.useState(false);
+  const pause = useEventCallback(() => setRunning(false));
+  const play = useEventCallback(() => setRunning(true));
+
+  React.useEffect(() => {
+    if (!targetDocument) {
+      return;
+    }
+
+    if (pauseOnWindowBlur) {
+      targetDocument.defaultView?.addEventListener('focus', play);
+      targetDocument.defaultView?.addEventListener('blur', pause);
+      return () => {
+        targetDocument.defaultView?.removeEventListener('focus', play);
+        targetDocument.defaultView?.removeEventListener('blur', pause);
+      };
+    }
+  }, [targetDocument, pause, play, pauseOnWindowBlur]);
 
   React.useEffect(() => {
     if (!visible) {
@@ -76,6 +97,16 @@ export const useToastContainer_unstable = (
     userRootSlot?.onAnimationEnd?.(e);
   });
 
+  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    pause();
+    userRootSlot?.onMouseEnter?.(e);
+  });
+
+  const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    play();
+    userRootSlot?.onMouseEnter?.(e);
+  });
+
   return {
     components: {
       timer: Timer,
@@ -91,6 +122,8 @@ export const useToastContainer_unstable = (
       ...rest,
       ...userRootSlot,
       onAnimationEnd,
+      onMouseEnter,
+      onMouseLeave,
     }),
     timerTimeout,
     transitionTimeout: 500,
