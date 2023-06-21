@@ -336,7 +336,7 @@ describe('Line chart - Subcomponent line', () => {
 
   test('Should render line with gaps', async () => {
     // Arrange
-    const { container } = render(<LineChart data={chartPoints} />);
+    const { container } = render(<LineChart data={chartPointsWithGaps} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     const lines = getById(container, /lineID/i);
     expect(lines.length == 9);
