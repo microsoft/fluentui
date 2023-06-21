@@ -7,9 +7,9 @@ import {
   useEventCallback,
   resolveShorthand,
 } from '@fluentui/react-utilities';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
-import { useFluent_unstable } from '../../../../react-shared-contexts/src/index';
 
 const intentPolitenessMap = {
   success: 'assertive',
