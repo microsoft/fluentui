@@ -136,8 +136,8 @@ export const partitionBreadcrumbItems: <T>(options: PartitionBreadcrumbItemsOpti
 // @public (undocumented)
 export type PartitionBreadcrumbItemsOptions<T> = {
     items: readonly T[];
-    maxDisplayedItems?: PusitiveNumbers;
-    overflowIndex?: PusitiveNumbers;
+    maxDisplayedItems?: number;
+    overflowIndex?: number;
 };
 
 // @public
