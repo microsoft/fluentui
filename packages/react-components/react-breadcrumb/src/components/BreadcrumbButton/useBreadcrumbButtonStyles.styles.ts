@@ -49,6 +49,9 @@ const useStyles = makeStyles({
     ':hover:active': {
       ...defaultButtonStyles,
     },
+    ':disabled': {
+      ...defaultButtonStyles,
+    },
   },
   currentSmall: {
     ...typographyStyles.caption1Strong,
