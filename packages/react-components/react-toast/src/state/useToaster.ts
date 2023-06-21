@@ -1,24 +1,74 @@
 import * as React from 'react';
-import { useForceUpdate } from '@fluentui/react-utilities';
+import { useEventCallback, useForceUpdate } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { Toaster } from './vanilla/toaster';
-import { Toast, ToastPosition, ToasterOptions } from './types';
+import { createToaster } from './vanilla';
+import { Toast, ToastListenerMap, ToastPosition, ToasterId, ToasterOptions } from './types';
 import { ToasterProps } from '../components/Toaster';
+import { EVENTS } from './constants';
 
 export function useToaster<TElement extends HTMLElement>(options: ToasterProps = {}) {
-  const forceRender = useForceUpdate();
+  const forceUpdate = useForceUpdate();
   const toasterOptions = useToasterOptions(options);
-  const [toaster] = React.useState(() => new Toaster());
+  const [toaster] = React.useState(() => createToaster(toasterOptions));
   const { targetDocument } = useFluent();
 
+  const isCorrectToaster = useEventCallback((toasterId: ToasterId | undefined) => {
+    return toasterId === toasterOptions.toasterId;
+  });
+
   React.useEffect(() => {
-    if (targetDocument) {
-      toaster.connectToDOM(targetDocument, toasterOptions);
-      toaster.onUpdate = forceRender;
+    if (!targetDocument) {
+      return;
     }
 
-    return () => toaster.disconnect();
-  }, [toaster, forceRender, toasterOptions, targetDocument]);
+    const buildToast: ToastListenerMap[typeof EVENTS.show] = e => {
+      if (!isCorrectToaster(e.detail.toasterId)) {
+        return;
+      }
+
+      toaster.buildToast(e.detail, forceUpdate);
+      forceUpdate();
+    };
+
+    const dismissToast: ToastListenerMap[typeof EVENTS.dismiss] = e => {
+      if (!isCorrectToaster(e.detail.toasterId)) {
+        return;
+      }
+
+      toaster.dismissToast(e.detail.toastId);
+      forceUpdate();
+    };
+
+    const updateToast: ToastListenerMap[typeof EVENTS.update] = e => {
+      if (!isCorrectToaster(e.detail.toasterId)) {
+        return;
+      }
+
+      toaster.updateToast(e.detail);
+      forceUpdate();
+    };
+
+    const dismissAllToasts: ToastListenerMap[typeof EVENTS.dismissAll] = e => {
+      if (!isCorrectToaster(e.detail.toasterId)) {
+        return;
+      }
+
+      toaster.dismissAllToasts();
+      forceUpdate();
+    };
+
+    targetDocument.addEventListener(EVENTS.show, buildToast as () => void);
+    targetDocument.addEventListener(EVENTS.dismiss, dismissToast as () => void);
+    targetDocument.addEventListener(EVENTS.update, updateToast as () => void);
+    targetDocument.addEventListener(EVENTS.dismissAll, dismissAllToasts as () => void);
+
+    return () => {
+      targetDocument.removeEventListener(EVENTS.show, buildToast as () => void);
+      targetDocument.removeEventListener(EVENTS.dismiss, dismissToast as () => void);
+      targetDocument.removeEventListener(EVENTS.update, updateToast as () => void);
+      targetDocument.removeEventListener(EVENTS.dismissAll, dismissAllToasts as () => void);
+    };
+  }, [toaster, forceUpdate, isCorrectToaster, targetDocument]);
 
   const toastsToRender = (() => {
     if (!toaster) {

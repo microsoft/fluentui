@@ -8,8 +8,8 @@ import {
   resolveShorthand,
 } from '@fluentui/react-utilities';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
-import { useToast } from '../../state';
 import { Timer, TimerProps } from '../Timer/Timer';
+import { useFluent_unstable } from '../../../../react-shared-contexts/src/index';
 
 const intentPolitenessMap = {
   success: 'assertive',
@@ -42,9 +42,34 @@ export const useToastContainer_unstable = (
     timeout: timerTimeout,
     politeness: desiredPoliteness,
     intent = 'info',
+    pauseOnHover,
+    pauseOnWindowBlur,
     ...rest
   } = props;
-  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props });
+  const toastRef = React.useRef<HTMLDivElement | null>(null);
+  const { targetDocument } = useFluent_unstable();
+  // const { play, toastRef } = useToast<HTMLDivElement>({ ...props });
+  const [running, setRunning] = React.useState(false);
+  const pause = useEventCallback(() => setRunning(false));
+  const play = useEventCallback(() => setRunning(true));
+
+  React.useEffect(() => {
+    if (!targetDocument) {
+      return;
+    }
+
+    if (pauseOnWindowBlur) {
+      targetDocument.defaultView?.addEventListener('focus', play);
+      targetDocument.defaultView?.addEventListener('blur', pause);
+    }
+
+    return () => {
+      if (pauseOnWindowBlur) {
+        targetDocument.defaultView?.removeEventListener('focus', play);
+        targetDocument.defaultView?.removeEventListener('blur', pause);
+      }
+    };
+  }, [targetDocument, pause, play, pauseOnWindowBlur]);
 
   React.useEffect(() => {
     if (!visible) {
@@ -76,6 +101,16 @@ export const useToastContainer_unstable = (
     userRootSlot?.onAnimationEnd?.(e);
   });
 
+  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    pause();
+    userRootSlot?.onMouseEnter?.(e);
+  });
+
+  const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    play();
+    userRootSlot?.onMouseEnter?.(e);
+  });
+
   return {
     components: {
       timer: Timer,
@@ -91,6 +126,8 @@ export const useToastContainer_unstable = (
       ...rest,
       ...userRootSlot,
       onAnimationEnd,
+      onMouseEnter,
+      onMouseLeave,
     }),
     timerTimeout,
     transitionTimeout: 500,
