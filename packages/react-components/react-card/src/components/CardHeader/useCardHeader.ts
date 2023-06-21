@@ -63,12 +63,12 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
   const generatedId = useId(cardHeaderClassNames.header, referenceId);
 
   React.useEffect(() => {
-    const refId = !hasChildId.current ? headerRef.current?.id : undefined;
+    const headerId = !hasChildId.current ? headerRef.current?.id : undefined;
     const childWithId = getChildWithId(header);
 
     hasChildId.current = Boolean(childWithId);
 
-    setReferenceId(getReferenceId(refId, childWithId, generatedId));
+    setReferenceId(getReferenceId(headerId, childWithId, generatedId));
   }, [generatedId, header, setReferenceId]);
 
   return {
