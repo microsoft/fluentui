@@ -64,8 +64,8 @@ Appearance.parameters = {
   docs: {
     description: {
       story:
-        'An input can have different appearances.\n' +
-        `The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
+        'A SearchBox can have different appearances.\n' +
+        `The colors adjacent to the SearchBox should have a sufficient contrast. Particularly, the color of SearchBox with
       filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
       surrounding color to pass accessibility requirements.`,
     },
