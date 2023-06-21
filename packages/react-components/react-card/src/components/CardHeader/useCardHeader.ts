@@ -4,6 +4,11 @@ import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
 
+/**
+ * Finds the first child of CardHeader with an id prop.
+ *
+ * @param header - the header prop of CardHeader
+ */
 function getChildWithId(header: CardHeaderProps['header']) {
   function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement {
     return React.isValidElement(element) && Boolean(element.props.id);
@@ -12,13 +17,22 @@ function getChildWithId(header: CardHeaderProps['header']) {
   return React.Children.toArray(header).find(isReactElementWithIdProp);
 }
 
+/**
+ * Returns the id to use for the CardHeader root element.
+ *
+ * @param headerId - the id prop of the CardHeader component
+ * @param childWithId - the first child of the CardHeader component with an id prop
+ * @param generatedId - a generated id
+ *
+ * @returns the id to use for the CardHeader root element
+ */
 function getReferenceId(
-  refId: string | undefined,
+  headerId: string | undefined,
   childWithId: React.ReactElement | undefined,
   generatedId: string,
 ): string {
-  if (refId) {
-    return refId;
+  if (headerId) {
+    return headerId;
   }
 
   if (childWithId?.props.id) {
