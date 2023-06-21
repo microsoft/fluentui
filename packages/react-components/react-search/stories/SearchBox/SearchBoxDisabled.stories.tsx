@@ -15,13 +15,13 @@ const useStyles = makeStyles({
 });
 
 export const Disabled = () => {
-  const inputId = useId('input');
+  const searchBoxId = useId('searchBox');
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={inputId}>Disabled SearchBox</Label>
-      <SearchBox disabled id={inputId} defaultValue="disabled value" />
+      <Label htmlFor={searchBoxId}>Disabled SearchBox</Label>
+      <SearchBox disabled id={searchBoxId} defaultValue="disabled value" />
     </div>
   );
 };

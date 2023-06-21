@@ -29,10 +29,10 @@ const useStyles = makeStyles({
 });
 
 export const Appearance = () => {
-  const outlineId = useId('input-outline');
-  const underlineId = useId('input-underline');
-  const filledLighterId = useId('input-filledLighter');
-  const filledDarkerId = useId('input-filledDarker');
+  const outlineId = useId('searchBox-outline');
+  const underlineId = useId('searchBox-underline');
+  const filledLighterId = useId('searchBox-filledLighter');
+  const filledDarkerId = useId('searchBox-filledDarker');
   const styles = useStyles();
 
   return (

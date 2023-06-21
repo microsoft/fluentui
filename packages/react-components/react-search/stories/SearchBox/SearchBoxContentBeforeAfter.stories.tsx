@@ -41,7 +41,7 @@ export const ContentBeforeAfter = () => {
 
       <div>
         <Label htmlFor={afterId}>First name</Label>
-        <SearchBox contentAfter={<MicButton aria-label="Enter by voice" />} id={afterId} />
+        <SearchBox contentAfter={<MicRegular aria-label="Enter by voice" />} id={afterId} />
         <Body1>
           A SearchBox with a button in the <code>contentAfter</code> slot.
         </Body1>
@@ -57,7 +57,7 @@ export const ContentBeforeAfter = () => {
           }
           contentAfter={
             <Text size={400} id={afterLabelId}>
-              ?
+              Filter
             </Text>
           }
           aria-labelledby={`${beforeAndAfterId} ${beforeLabelId} ${afterLabelId}`}
@@ -78,7 +78,7 @@ ContentBeforeAfter.parameters = {
       story:
         'A SearchBox supports a custom element such as an icon or a button before the input text. ' +
         'Additionally, a SearchBox supports an custom element that appears on focus, following the input text and before the dismiss button. ' +
-        'These elements are displayed inside the input border.',
+        'These elements are displayed inside the SearchBox border.',
     },
   },
 };

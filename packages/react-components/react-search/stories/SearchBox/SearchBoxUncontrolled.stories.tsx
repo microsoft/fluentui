@@ -5,6 +5,7 @@ import type { SearchBoxProps } from '@fluentui/react-search';
 
 const useStyles = makeStyles({
   root: {
+    // Stack the label above the field
     display: 'flex',
     flexDirection: 'column',
     // Use 2px gap below the label (per the design system)
@@ -14,31 +15,28 @@ const useStyles = makeStyles({
   },
 });
 
-export const Controlled = () => {
-  const searchBoxId = useId('searchBox');
-  const [value, setValue] = React.useState('initial value');
-  const styles = useStyles();
+const onChange: SearchBoxProps['onChange'] = (ev, data) => {
+  console.log(`New value: "${data.value}"`);
+};
 
-  const onChange: SearchBoxProps['onChange'] = (ev, data) => {
-    if (data.value.length <= 20) {
-      setValue(data.value);
-    }
-  };
+export const Uncontrolled = () => {
+  const searchBoxId = useId('searchBox');
+  const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={searchBoxId}>Controlled SearchBox limiting the value to 20 characters</Label>
-      <SearchBox value={value} onChange={onChange} id={searchBoxId} />
+      <Label htmlFor={searchBoxId}>Uncontrolled SearchBox with default value</Label>
+      <SearchBox defaultValue="default value" onChange={onChange} id={searchBoxId} />
     </div>
   );
 };
 
-Controlled.parameters = {
+Uncontrolled.parameters = {
   docs: {
     description: {
       story:
-        "A SearchBox can be controlled: the consuming component tracks the SearchBox's value in its state " +
-        'and manually handles all updates.',
+        'By default, a SearchBox is uncontrolled: it tracks all updates internally. ' +
+        'You can optionally provide a default value.',
     },
   },
 };
