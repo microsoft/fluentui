@@ -8,6 +8,40 @@ describe('createToaster', () => {
     }
   }
 
+  it('should have defaults without user config', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toast).toEqual({
+      close: expect.any(Function),
+      content: 'foo',
+      data: {},
+      dispatchedAt: expect.any(Number),
+      onStatusChange: undefined,
+      pauseOnHover: false,
+      pauseOnWindowBlur: false,
+      position: 'bottom-end',
+      priority: 0,
+      remove: expect.any(Function),
+      timeout: 3000,
+      toastId: 'foo',
+      toasterId: undefined,
+      updateId: 0,
+    });
+  });
+
+  it('should make a toast visible', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+
+    expect(toaster.toasts.size).toBe(1);
+    expect(toaster.visibleToasts.size).toBe(1);
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+  });
+
   it('should make a toast visible', () => {
     const toaster = createToaster({});
 
@@ -71,7 +105,8 @@ describe('createToaster', () => {
     const toast = toaster.toasts.get('foo');
     assertToast(toast);
 
-    expect(toast?.content).toBe('bar');
+    expect(toast.content).toBe('bar');
+    expect(toast.updateId).toBe(1);
   });
 
   it('should not have more visible toasts than the limit', () => {

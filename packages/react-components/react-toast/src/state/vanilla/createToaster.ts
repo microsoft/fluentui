@@ -30,8 +30,10 @@ export function createToaster(options: Partial<ToasterOptions>) {
     pauseOnWindowBlur: false,
     position: 'bottom-end',
     timeout: 3000,
-    ...options,
   };
+
+  assignDefined(defaulToastOptions, options);
+
   const queue = createPriorityQueue<ToastId>((ta, tb) => {
     const a = toasts.get(ta);
     const b = toasts.get(tb);
