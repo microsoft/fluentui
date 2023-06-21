@@ -71,6 +71,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
+          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
@@ -134,6 +135,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
+          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
@@ -196,6 +198,7 @@ jobs:
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
+          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
