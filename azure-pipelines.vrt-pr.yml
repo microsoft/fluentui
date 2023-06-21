@@ -138,25 +138,16 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
+      - bash: vr-app run-diff --screenshotsDirectory ./vrscreenshotv8 --buildType release --clientType "FLUENTUI" --ciDefinitionId 205 --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
 
         displayName: 'Run fluentui-screenshotdiff'
         env:
-          API_URL: $(System.CollectionUri)
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          API_REPOSITORY: $(Build.Repository.Name)
-          API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv8
-          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
-          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
-          GITHUB_REPO_OWNER: 'microsoft'
-          GITHUB_REPO_NAME: 'fluentui'
-          # VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
-          VR_APP_API_URL: 'https://vrapprovalfunction-prod.azurewebsites.net/api/'
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
+          VR_APP_API_URL: 'https://vrapprovalfunction-prod.azurewebsites.net/api/'
+          # VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
         condition: eq(variables['vrTestSkip'], 'no')
 
   - job: VisualRegressionTest_V0
