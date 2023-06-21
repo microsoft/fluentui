@@ -39,7 +39,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   });
 
   const onBlur: React.FocusEventHandler<HTMLSpanElement> = useEventCallback(ev => {
-    setFocused(searchBoxRootRef.current?.contains(ev.relatedTarget) ?? false);
+    setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
   });
 
   const state: SearchBoxState = {
