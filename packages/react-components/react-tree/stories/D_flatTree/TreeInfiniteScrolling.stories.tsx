@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 import story from './TreeInfiniteScrolling.md';
-import { Spinner } from '../../../react-spinner/src/Spinner';
 
 interface Result {
   results: { name: string }[];
@@ -59,7 +58,6 @@ export const InfiniteScrolling = () => {
   const styles = useStyles();
 
   const flatTree = useFlatTree_unstable(items, { defaultOpenItems: ['pinned', 'people'] });
-  const listRef = React.useRef<HTMLDivElement>(null);
 
   const fetchMoreItems = () => {
     setIsLoading(true);
@@ -89,18 +87,16 @@ export const InfiniteScrolling = () => {
   };
 
   return (
-    <div ref={listRef} onScroll={handleScroll} className={styles.container}>
-      <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-        {Array.from(flatTree.items(), flatTreeItem => {
-          const { name, ...treeItemProps } = flatTreeItem.getTreeItemProps();
-          return (
-            <TreeItem {...treeItemProps} key={flatTreeItem.value}>
-              <TreeItemLayout>{name}</TreeItemLayout>
-            </TreeItem>
-          );
-        })}
-      </Tree>
-    </div>
+    <Tree {...flatTree.getTreeProps()} aria-label="Tree" onScroll={handleScroll} className={styles.container}>
+      {Array.from(flatTree.items(), flatTreeItem => {
+        const { name, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+        return (
+          <TreeItem {...treeItemProps} key={flatTreeItem.value}>
+            <TreeItemLayout>{name}</TreeItemLayout>
+          </TreeItem>
+        );
+      })}
+    </Tree>
   );
 };
 
