@@ -400,6 +400,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   chartTitle?: string;
 
+  xAxisTitle?: string;
+
+  yAxisTitle?: string;
+
   /**
    * Only used for Area chart
    * Value used to draw y axis of that chart.

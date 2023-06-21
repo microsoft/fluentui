@@ -15,7 +15,6 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         width: '100%',
         height: '100%',
         flexDirection: 'column',
-        overflow: 'hidden',
       },
       className,
     ],
