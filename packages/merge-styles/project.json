@@ -2,5 +2,7 @@
   "name": "@fluentui/merge-styles",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "sourceRoot": "packages/merge-styles/src",
+  "tags": ["v8"]
 }

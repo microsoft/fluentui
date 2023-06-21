@@ -2,5 +2,7 @@
   "name": "@fluentui/foundation-legacy",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "sourceRoot": "packages/foundation-legacy/src",
+  "tags": ["v8"]
 }

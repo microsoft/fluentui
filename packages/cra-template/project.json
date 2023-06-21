@@ -2,5 +2,7 @@
   "name": "@fluentui/cra-template",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "sourceRoot": "packages/cra-template/src",
+  "tags": ["v8"]
 }

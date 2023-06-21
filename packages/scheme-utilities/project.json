@@ -2,5 +2,7 @@
   "name": "@fluentui/scheme-utilities",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "sourceRoot": "packages/scheme-utilities/src",
+  "tags": ["v8"]
 }

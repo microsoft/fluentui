@@ -2,5 +2,7 @@
   "name": "@fluentui/react-examples",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-examples/src",
+  "tags": ["v8"]
 }
