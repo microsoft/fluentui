@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix overlapping axis labels on smaller viewports",
+  "packageName": "@uifabric/charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
