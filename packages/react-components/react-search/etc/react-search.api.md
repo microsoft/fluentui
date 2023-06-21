@@ -35,7 +35,9 @@ export type SearchBoxSlots = {
 };
 
 // @public
-export type SearchBoxState = ComponentState<SearchBoxSlots> & Required<Pick<InputState, 'size'>> & Required<Pick<SearchBoxProps, 'disabled'>>;
+export type SearchBoxState = ComponentState<SearchBoxSlots> & Required<Pick<InputState, 'size'>> & Required<Pick<SearchBoxProps, 'disabled'>> & {
+    focused: boolean;
+};
 
 // @public
 export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLInputElement>) => SearchBoxState;
