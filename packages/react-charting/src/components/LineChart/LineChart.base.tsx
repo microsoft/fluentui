@@ -264,8 +264,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       ...this.props.calloutProps,
     };
     const tickParams = {
-      tickValues,
-      tickFormat,
+      tickValues: tickValues,
+      tickFormat: tickFormat,
     };
 
     return !this.state.emptyChart ? (
@@ -410,7 +410,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color,
+        color: color,
         action: () => {
           if (isLegendMultiSelectEnabled) {
             this._handleMultipleLineLegendSelectionAction(point);
