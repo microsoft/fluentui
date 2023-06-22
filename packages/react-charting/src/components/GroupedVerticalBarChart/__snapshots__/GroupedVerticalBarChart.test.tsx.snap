@@ -26,6 +26,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -775,6 +778,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1444,6 +1450,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2025,6 +2034,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2586,6 +2598,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2826,6 +2841,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone12"
     onFocus={[Function]}
@@ -3408,6 +3426,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone22"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3989,6 +4010,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4569,6 +4593,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone32"
     onFocus={[Function]}

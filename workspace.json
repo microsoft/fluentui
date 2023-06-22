@@ -376,6 +376,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-colorpicker-compat": {
+      "root": "packages/react-components/react-colorpicker-compat",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-colorpicker-compat/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-combobox": {
       "root": "packages/react-components/react-combobox",
       "projectType": "library",
@@ -411,8 +418,9 @@
     "@fluentui/react-conformance": {
       "root": "packages/react-conformance",
       "projectType": "library",
+      "sourceRoot": "packages/react-conformance/src",
       "implicitDependencies": [],
-      "tags": ["v8", "platform:node"]
+      "tags": ["vNext", "platform:node"]
     },
     "@fluentui/react-conformance-griffel": {
       "root": "packages/react-components/react-conformance-griffel",

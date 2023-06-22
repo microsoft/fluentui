@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     ...shorthands.overflow('unset'),
     ...shorthands.gap(DIALOG_GAP),
     gridTemplateRows: 'auto 1fr',
+    gridTemplateColumns: '1fr 1fr auto',
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
       gridTemplateRows: 'auto 1fr auto',

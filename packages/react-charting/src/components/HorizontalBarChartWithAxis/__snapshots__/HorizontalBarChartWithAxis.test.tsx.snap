@@ -26,6 +26,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1205,6 +1208,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1765,6 +1771,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1895,6 +1904,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1978,9 +1990,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
+          transform="translate(0,-5.125)"
           width={-12}
           x={40}
-          y={30.25}
+          y={14.25}
         />
          
          
@@ -2442,6 +2455,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2525,9 +2541,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
+          transform="translate(0,-5.125)"
           width={-12}
           x={40}
-          y={30.25}
+          y={14.25}
         />
          
          

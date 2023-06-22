@@ -254,10 +254,11 @@ export const defaultTests: TestObject = {
 
   /** Component file has assigned and exported static classnames object */
   'component-has-static-classnames-object': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const { componentPath, Component, requiredProps, renderOptions } = testInfo;
+    const { componentPath, Component, testOptions = {}, requiredProps, renderOptions } = testInfo;
 
     const componentName = componentInfo.displayName;
-    const componentClassName = `fui-${componentName}`;
+    const classNamePrefix = testOptions?.['component-has-static-classname']?.prefix ?? 'fui';
+    const componentClassName = `${classNamePrefix}-${componentName}`;
     const exportName = `${componentName[0].toLowerCase()}${componentName.slice(1)}ClassNames`;
     const indexPath = path.join(getPackagePath(componentPath), 'src', 'index');
     let handledClassNamesObjectExport = false;
@@ -309,7 +310,6 @@ export const defaultTests: TestObject = {
         return;
       }
 
-      const { testOptions = {} } = testInfo;
       const staticClassNameVariants = testOptions['has-static-classnames'] ?? [{ props: {} }];
 
       for (const staticClassNames of staticClassNameVariants) {

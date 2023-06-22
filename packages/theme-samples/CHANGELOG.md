@@ -1,8 +1,73 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Wed, 31 May 2023 07:38:40 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Jun 2023 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.97](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.97)
+
+Mon, 19 Jun 2023 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.96..@fluentui/theme-samples_v8.7.97)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.4 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.34 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
+
+## [8.7.96](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.96)
+
+Wed, 14 Jun 2023 07:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.95..@fluentui/theme-samples_v8.7.96)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.3 ([PR #28181](https://github.com/microsoft/fluentui/pull/28181) by beachball)
+
+## [8.7.95](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.95)
+
+Thu, 08 Jun 2023 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.94..@fluentui/theme-samples_v8.7.95)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.2 ([PR #27864](https://github.com/microsoft/fluentui/pull/27864) by beachball)
+
+## [8.7.94](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.94)
+
+Wed, 07 Jun 2023 07:33:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.93..@fluentui/theme-samples_v8.7.94)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.1 ([PR #28157](https://github.com/microsoft/fluentui/pull/28157) by beachball)
+
+## [8.7.93](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.93)
+
+Tue, 06 Jun 2023 07:35:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.92..@fluentui/theme-samples_v8.7.93)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.0 ([PR #28092](https://github.com/microsoft/fluentui/pull/28092) by beachball)
+
+## [8.7.92](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.92)
+
+Mon, 05 Jun 2023 07:37:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.91..@fluentui/theme-samples_v8.7.92)
+
+### Patches
+
+- Bump @fluentui/react to v8.109.11 ([PR #28125](https://github.com/microsoft/fluentui/pull/28125) by beachball)
+
+## [8.7.91](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.91)
+
+Thu, 01 Jun 2023 07:38:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.90..@fluentui/theme-samples_v8.7.91)
+
+### Patches
+
+- Bump @fluentui/react to v8.109.10 ([PR #28080](https://github.com/microsoft/fluentui/pull/28080) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.33 ([PR #28080](https://github.com/microsoft/fluentui/pull/28080) by beachball)
 
 ## [8.7.90](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.90)
 

@@ -65,16 +65,26 @@ describe('TableHeaderCell', () => {
     expect(container.querySelector('svg')).toBe(null);
   });
 
+  it('should have interactive button when sortable', () => {
+    const { getByRole } = render(
+      <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true, sortable: true }}>
+        <TableHeaderCell>Cell</TableHeaderCell>
+      </TableContextProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(button?.getAttribute('tabindex')).toEqual('0');
+  });
+
   it('should not have interactive button when not sortable', () => {
-    const { container } = render(
+    const { queryByRole } = render(
       <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true, sortable: false }}>
         <TableHeaderCell>Cell</TableHeaderCell>
       </TableContextProvider>,
     );
 
-    const button = container.querySelector('button');
-    expect(button?.getAttribute('role')).toEqual('presentation');
-    expect(button?.getAttribute('tabindex')).toEqual('-1');
+    const button = queryByRole('button');
+    expect(button).toBeNull();
   });
 
   it.each<SortDirection>(['ascending', 'descending'])(

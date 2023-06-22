@@ -14,7 +14,7 @@ const requiredProps: TagProps = {
 };
 
 describe('Tag', () => {
-  isConformant({
+  isConformant<TagProps>({
     Component: Tag,
     displayName: 'Tag',
     requiredProps,

@@ -24,11 +24,11 @@ const onFormatDate = (date?: Date): string => {
 export const CustomDateFormatting = () => {
   const styles = useStyles();
 
-  const [value, setValue] = React.useState<Date | undefined>();
+  const [value, setValue] = React.useState<Date | null | undefined>(null);
   const datePickerRef = React.useRef<IDatePicker>(null);
 
   const onClick = React.useCallback((): void => {
-    setValue(undefined);
+    setValue(null);
     datePickerRef.current?.focus();
   }, []);
 
