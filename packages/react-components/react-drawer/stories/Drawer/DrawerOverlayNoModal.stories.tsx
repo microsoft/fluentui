@@ -3,12 +3,12 @@ import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@flu
 import { Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-export const Overlay = () => {
+export const OverlayNoModal = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <div>
-      <DrawerOverlay open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <DrawerOverlay modalType="non-modal" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -29,8 +29,8 @@ export const Overlay = () => {
         </DrawerBody>
       </DrawerOverlay>
 
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
-        Open Drawer
+      <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+        Toggle
       </Button>
     </div>
   );
