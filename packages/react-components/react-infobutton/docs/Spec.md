@@ -116,3 +116,31 @@ There's no migration guide as `v0` and `v8` do not have an InfoButton component.
   - When focused on the button, pressing `Enter` or `Space` should open the Popover.
   - When the Popover is open, focus is moved to the `PopoverSurface`.
   - When focused on the `PopoverSurface` or content within it, pressing `Escape` should close the Popover.
+
+## InfoButton vs. InfoIcon
+
+There are two use cases we want to tackle, covering these means covering the 80-90% of use cases:
+
+1. When the bubble has a few words and no interactive elements.
+2. When the bubble may have more than a few sentences and interactive elements.
+
+After considering the options, we've decided to have two controls that will cover these use cases. The first one will be InfoIcon which will cover the first use case and the second one will be InfoButton which will cover the second use case.
+
+### InfoIcon - Icon with a Tooltip
+
+- An InfoIcon is an icon that has a tooltip.
+- InfoIcons must keep the default cursor even when hovered.
+- InfoIcons are opened when hovered or focused.
+- InfoIcons do not move focus when opened.
+
+### InfoButton - InfoButton with a Popover
+
+- An InfoButton is a button that has a Popover attached to it.
+- InfoButtons must use the pointer cursor to show this is a button and will have a backplate to differenciate the icon vs button.
+- InfoButtons do not open when focused/hovered, instead they open on click/space/enter.
+- InfoButton's bubble can be dismissed by pressing Escape, clicking outside the bubble, moving focus away from the bubble, or clicking the button again.
+- InfoButton has role note and moves focus to the Popover's surface.
+
+## InfoButtonLabel and InfoIconLabel
+
+To avoid having accessibility issues, we will be providing these controls in the form of InfoIconLabel and InfoButtonLabel. These will provide an out of the box accessibility ready experience.

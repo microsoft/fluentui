@@ -7,9 +7,16 @@ import {
   useEventCallback,
   resolveShorthand,
 } from '@fluentui/react-utilities';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
-import { useToast } from '../../state';
 import { Timer, TimerProps } from '../Timer/Timer';
+
+const intentPolitenessMap = {
+  success: 'assertive',
+  warning: 'assertive',
+  error: 'assertive',
+  info: 'polite',
+} as const;
 
 /**
  * Create the state required to render ToastContainer.
@@ -33,16 +40,41 @@ export const useToastContainer_unstable = (
     announce,
     data,
     timeout: timerTimeout,
-    politeness,
+    politeness: desiredPoliteness,
+    intent = 'info',
+    pauseOnHover,
+    pauseOnWindowBlur,
     ...rest
   } = props;
-  const { play, running, toastRef } = useToast<HTMLDivElement>({ ...props, content: children });
+  const toastRef = React.useRef<HTMLDivElement | null>(null);
+  const { targetDocument } = useFluent_unstable();
+  const [running, setRunning] = React.useState(false);
+  const pause = useEventCallback(() => setRunning(false));
+  const play = useEventCallback(() => setRunning(true));
 
   React.useEffect(() => {
-    if (visible) {
-      announce(toastRef.current?.textContent ?? '', { politeness });
+    if (!targetDocument) {
+      return;
     }
-  }, [announce, politeness, toastRef, visible, updateId]);
+
+    if (pauseOnWindowBlur) {
+      targetDocument.defaultView?.addEventListener('focus', play);
+      targetDocument.defaultView?.addEventListener('blur', pause);
+      return () => {
+        targetDocument.defaultView?.removeEventListener('focus', play);
+        targetDocument.defaultView?.removeEventListener('blur', pause);
+      };
+    }
+  }, [targetDocument, pause, play, pauseOnWindowBlur]);
+
+  React.useEffect(() => {
+    if (!visible) {
+      return;
+    }
+
+    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
+    announce(toastRef.current?.textContent ?? '', { politeness });
+  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
 
   // It's impossible to animate to height: auto in CSS, the actual pixel value must be known
   // Get the height of the toast before animation styles have been applied and set a CSS
@@ -65,6 +97,16 @@ export const useToastContainer_unstable = (
     userRootSlot?.onAnimationEnd?.(e);
   });
 
+  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    pause();
+    userRootSlot?.onMouseEnter?.(e);
+  });
+
+  const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    play();
+    userRootSlot?.onMouseEnter?.(e);
+  });
+
   return {
     components: {
       timer: Timer,
@@ -80,6 +122,8 @@ export const useToastContainer_unstable = (
       ...rest,
       ...userRootSlot,
       onAnimationEnd,
+      onMouseEnter,
+      onMouseLeave,
     }),
     timerTimeout,
     transitionTimeout: 500,
@@ -90,5 +134,6 @@ export const useToastContainer_unstable = (
     onTransitionEntering,
     updateId,
     nodeRef: toastRef,
+    intent,
   };
 };

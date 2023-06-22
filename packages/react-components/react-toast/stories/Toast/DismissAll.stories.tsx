@@ -8,8 +8,9 @@ export const DismissAll = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success">'This is a toast</ToastTitle>
+        <ToastTitle>'This is a toast</ToastTitle>
       </Toast>,
+      { intent: 'info' },
     );
   const dismissAll = () => dismissAllToasts();
 

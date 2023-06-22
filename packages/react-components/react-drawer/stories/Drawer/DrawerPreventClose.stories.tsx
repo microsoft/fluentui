@@ -30,8 +30,19 @@ export const PreventClose = () => {
       </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setOpen(true)}>
-        Toggle
+        Open Drawer
       </Button>
     </div>
   );
+};
+
+PreventClose.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By setting the `modalType` prop to `alert`, the Drawer will not be closable by clicking outside nor using the "ESC" key.',
+        'This is useful for scenarios where the user must interact with the Drawer before continuing, when opening a Drawer is a critical action or when multiple Drawers are open at the same time.',
+      ].join('\n'),
+    },
+  },
 };

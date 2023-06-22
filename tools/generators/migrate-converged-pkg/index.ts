@@ -20,7 +20,8 @@ import * as path from 'path';
 import * as os from 'os';
 import * as ts from 'typescript';
 
-import { getTemplate } from './lib/utils';
+import { getTemplate, uniqueArray } from './lib/utils';
+import setupCypressComponentTesting from '../cypress-component-configuration';
 import { PackageJson, TsConfig } from '../../types';
 import {
   arePromptsEnabled,
@@ -576,10 +577,6 @@ function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
   return tree.exists(options.paths.conformanceSetup);
 }
 
-function uniqueArray<T extends unknown>(value: T[]) {
-  return Array.from(new Set(value));
-}
-
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   const packageType = getPackageType(tree, options);
   const tags = {
@@ -671,6 +668,8 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
         },
       };
 
+      stableJson.exports = stableJson.exports ?? {};
+
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
@@ -758,6 +757,7 @@ function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) 
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts ?? {};
     Object.assign(json.scripts, scripts);
 
     return json;
@@ -821,6 +821,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
         storybook: `start-storybook`,
         start: 'yarn storybook',
       };
+      json.scripts = json.scripts ?? {};
       Object.assign(json.scripts, scripts);
 
       return json;
@@ -917,47 +918,16 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function setupCypress(tree: Tree, options: NormalizedSchema) {
-  const template = {
-    exclude: ['**/*.cy.ts', '**/*.cy.tsx'],
-  };
+async function setupCypress(tree: Tree, options: NormalizedSchema) {
+  const shouldSetupCypress = tree.exists(options.paths.tsconfig.cypress);
 
-  if (!shouldSetupCypress(tree, options)) {
+  if (!shouldSetupCypress) {
     return tree;
   }
 
-  writeJson<TsConfig>(tree, options.paths.tsconfig.cypress, templates.cypress.tsconfig);
-
-  updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
-    json.references?.push({
-      path: `./${path.basename(options.paths.tsconfig.cypress)}`,
-    });
-
-    return json;
-  });
-
-  // update lib ts with new exclude globs
-  updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
-    json.exclude = json.exclude || [];
-    json.exclude.push(...template.exclude);
-    json.exclude = uniqueArray(json.exclude);
-
-    return json;
-  });
-
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'cypress run --component';
-    json.scripts['e2e:local'] = 'cypress open --component';
-
-    return json;
-  });
+  await setupCypressComponentTesting(tree, { project: options.name });
 
   return tree;
-}
-
-function shouldSetupCypress(tree: Tree, options: NormalizedSchema) {
-  return tree.exists(options.paths.tsconfig.cypress);
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {

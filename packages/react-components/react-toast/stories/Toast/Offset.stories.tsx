@@ -37,11 +37,11 @@ export const Offset = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="info">
+        <ToastTitle>
           Offset: {horizontal}, {vertical}
         </ToastTitle>
       </Toast>,
-      { position },
+      { position, intent: 'info' },
     );
 
   return (

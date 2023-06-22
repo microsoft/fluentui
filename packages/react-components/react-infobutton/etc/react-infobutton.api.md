@@ -89,6 +89,9 @@ export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 export const renderInfoIcon_unstable: (state: InfoIconState) => JSX.Element;
 
 // @public
+export const renderInfoIconLabel_unstable: (state: InfoIconLabelState) => JSX.Element;
+
+// @public
 export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
 
 // @public
@@ -99,6 +102,12 @@ export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButto
 
 // @public
 export const useInfoIcon_unstable: (props: InfoIconProps, ref: React_2.Ref<HTMLElement>) => InfoIconState;
+
+// @public
+export const useInfoIconLabel_unstable: (props: InfoIconLabelProps, ref: React_2.Ref<HTMLElement>) => InfoIconLabelState;
+
+// @public
+export const useInfoIconLabelStyles_unstable: (state: InfoIconLabelState) => InfoIconLabelState;
 
 // @public
 export const useInfoIconStyles_unstable: (state: InfoIconState) => InfoIconState;
