@@ -30,7 +30,7 @@ export const PreventClose = () => {
       </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setOpen(true)}>
-        Toggle
+        Open Drawer
       </Button>
     </div>
   );

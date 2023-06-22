@@ -14,5 +14,6 @@
 
 - Don't use Breadcrumbs as a primary way to navigate an app or site.
 - Avoid using custom dividers.
+- Do not wrap breadcrumb items.
 
 </details>
