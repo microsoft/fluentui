@@ -26,6 +26,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -388,6 +391,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone19"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -730,6 +736,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -836,6 +845,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone13"
     onFocus={[Function]}
@@ -1199,6 +1211,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone37"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1560,6 +1575,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone25"
     onFocus={[Function]}
@@ -1923,6 +1941,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone31"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2284,6 +2305,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone43"
     onFocus={[Function]}
