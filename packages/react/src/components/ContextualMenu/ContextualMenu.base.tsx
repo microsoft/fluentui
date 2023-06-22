@@ -71,6 +71,18 @@ const DEFAULT_PROPS: Partial<IContextualMenuProps> = {
   beakWidth: 16,
 };
 
+/* return number of menu items, excluding headers and dividers */
+function getItemCount(items: IContextualMenuItem[]): number {
+  let totalItemCount = 0;
+  for (const item of items) {
+    if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
+      const itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+      totalItemCount += itemCount;
+    }
+  }
+  return totalItemCount;
+}
+
 export function getSubmenuItems(
   item: IContextualMenuItem,
   options?: {
@@ -949,7 +961,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
             key: `section-${sectionProps.title}-title`,
             itemType: ContextualMenuItemType.Header,
             text: sectionProps.title,
-            id: id,
+            id,
           };
           ariaLabelledby = id;
         } else {
@@ -975,23 +987,34 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       }
 
       if (sectionProps.items && sectionProps.items.length > 0) {
+        let correctedIndex = 0;
         return (
           <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
             <div {...groupProps}>
               <ul className={menuClassNames.list} role="presentation">
                 {sectionProps.topDivider && renderSeparator(index, itemClassNames, true, true)}
                 {headerItem && renderListItem(headerItem, sectionItem.key || index, itemClassNames, sectionItem.title)}
-                {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
-                  renderMenuItem(
+                {sectionProps.items.map((contextualMenuItem, itemsIndex) => {
+                  const menuItem = renderMenuItem(
                     contextualMenuItem,
                     itemsIndex,
-                    itemsIndex,
-                    sectionProps.items.length,
+                    correctedIndex,
+                    getItemCount(sectionProps.items),
                     hasCheckmarks,
                     hasIcons,
                     menuClassNames,
-                  ),
-                )}
+                  );
+                  if (
+                    contextualMenuItem.itemType !== ContextualMenuItemType.Divider &&
+                    contextualMenuItem.itemType !== ContextualMenuItemType.Header
+                  ) {
+                    const indexIncrease = contextualMenuItem.customOnRenderListLength
+                      ? contextualMenuItem.customOnRenderListLength
+                      : 1;
+                    correctedIndex += indexIncrease;
+                  }
+                  return menuItem;
+                })}
                 {sectionProps.bottomDivider && renderSeparator(index, itemClassNames, false, true)}
               </ul>
             </div>
@@ -1062,9 +1085,9 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         onItemMouseEnter: onItemMouseEnterBase,
         onItemMouseLeave: onMouseItemLeave,
         onItemMouseMove: onItemMouseMoveBase,
-        onItemMouseDown: onItemMouseDown,
-        executeItemClick: executeItemClick,
-        onItemKeyDown: onItemKeyDown,
+        onItemMouseDown,
+        executeItemClick,
+        onItemKeyDown,
         expandedMenuItemKey,
         openSubMenu,
         dismissSubMenu: onSubMenuDismiss,
@@ -1160,7 +1183,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       ? getMenuClassNames(theme!, className)
       : getClassNames(styles, {
           theme: theme!,
-          className: className,
+          className,
         });
 
     const hasIcons = itemsHaveIcons(items);
@@ -1217,13 +1240,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
-      let totalItemCount = 0;
-      for (const item of items) {
-        if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
-          const itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
-          totalItemCount += itemCount;
-        }
-      }
+      const totalItemCount = getItemCount(items);
 
       const calloutStyles = classNames.subComponentStyles
         ? (classNames.subComponentStyles.callout as IStyleFunctionOrObject<

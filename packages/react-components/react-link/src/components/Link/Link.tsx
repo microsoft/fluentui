@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useLink_unstable } from './useLink';
-import { useLinkStyles_unstable } from './useLinkStyles';
+import { useLinkStyles_unstable } from './useLinkStyles.styles';
 import { renderLink_unstable } from './renderLink';
 import type { LinkProps } from './Link.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

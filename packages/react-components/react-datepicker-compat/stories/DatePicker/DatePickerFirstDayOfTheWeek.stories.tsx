@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { makeStyles, useId } from '@fluentui/react-components';
-import { Dropdown, Option } from '@fluentui/react-combobox';
 import { DatePicker, DayOfWeek } from '@fluentui/react-datepicker-compat';
-import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
+import { Dropdown, Field, makeStyles, Option, useId } from '@fluentui/react-components';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -19,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const FirstDayOfTheWeek = (props: Partial<DatePickerProps>) => {
+export const FirstDayOfTheWeek = () => {
   const dropdownId = useId('dropdown-default');
   const styles = useStyles();
 
@@ -36,7 +34,9 @@ export const FirstDayOfTheWeek = (props: Partial<DatePickerProps>) => {
 
   return (
     <div className={styles.root}>
-      <DatePicker firstDayOfWeek={firstDayOfWeek} placeholder="Select a date..." label="Start date" {...props} />
+      <Field label="Start date">
+        <DatePicker firstDayOfWeek={firstDayOfWeek} placeholder="Select a date..." />
+      </Field>
       <div className={styles.firstDaySelector}>
         <label id={dropdownId}>Select the first day of the week</label>
         <Dropdown aria-labelledby={dropdownId} onOptionSelect={onOptionSelect} value={days[firstDayOfWeek]}>

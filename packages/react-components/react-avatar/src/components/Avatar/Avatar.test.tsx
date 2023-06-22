@@ -2,7 +2,7 @@ import * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
-import { avatarClassNames } from './useAvatarStyles';
+import { avatarClassNames } from './useAvatarStyles.styles';
 import { DEFAULT_STRINGS } from './useAvatar';
 
 describe('Avatar', () => {
@@ -246,5 +246,11 @@ describe('Avatar', () => {
     const root = screen.getAllByRole('img')[0];
     expect(root.getAttribute('aria-label')).toBe('First Last');
     expect(root.getAttribute('aria-labelledby')).toBeFalsy();
+  });
+
+  it('does not render an image when the src attribute is undefined', () => {
+    render(<Avatar image={{ src: undefined, alt: 'test-image' }} />);
+
+    expect(screen.queryByAltText('test-image')).toBeNull();
   });
 });

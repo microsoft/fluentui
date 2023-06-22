@@ -1,17 +1,29 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { DrawerOverlayProps } from '../DrawerOverlay/DrawerOverlay.types';
+import { DrawerInlineProps } from '../DrawerInline/DrawerInline.types';
 
 export type DrawerSlots = {
-  root: Slot<'div'>;
+  /**
+   * Root slot of the Drawer.
+   */
+  root: Slot<DrawerOverlayProps | DrawerInlineProps>;
 };
 
 /**
  * Drawer Props
  */
-export type DrawerProps = ComponentProps<DrawerSlots> & {};
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
+  /**
+   * Type of the drawer.
+   * @default overlay
+   *
+   * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
+   * - 'inline' - Drawer is stacked with the content
+   */
+  type?: 'inline' | 'overlay';
+};
 
 /**
  * State used in rendering Drawer
  */
 export type DrawerState = ComponentState<DrawerSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from DrawerProps.
-// & Required<Pick<DrawerProps, 'propName'>>

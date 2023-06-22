@@ -16,6 +16,8 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   verbose: false,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   testEnvironment: 'jsdom',
+  restoreMocks: true,
+  clearMocks: true,
   ...customConfig,
   moduleNameMapper: {
     ...getLernaAliases({
@@ -24,6 +26,11 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
       directory: workspaceRoot,
     }),
     ...customConfig.moduleNameMapper,
+  },
+  // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future
+  snapshotFormat: {
+    escapeString: true,
+    printBasicPrototype: true,
   },
 });
 

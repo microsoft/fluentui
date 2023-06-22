@@ -1,11 +1,13 @@
-import gutil from 'gulp-util';
+import fs from 'fs';
 import path from 'path';
+import { Transform } from 'stream';
+
+import doctrine from 'doctrine';
+import gutil from 'gulp-util';
+import _ from 'lodash';
 import through2, { TransformFunction } from 'through2';
 import Vinyl from 'vinyl';
-import _ from 'lodash';
-import fs from 'fs';
-import doctrine from 'doctrine';
-import { Transform } from 'stream';
+
 import config from '../config';
 
 const { paths } = config;
@@ -115,12 +117,15 @@ export default () => {
         cb();
       }
     } catch (err) {
+      if (!(err instanceof Error)) {
+        return;
+      }
       const pluginError = new gutil.PluginError(pluginName, err);
       const relativePath = path.relative(process.cwd(), file.path);
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack),
+        gutil.colors.gray(err.stack ?? 'error stack is empty'),
       ].join('\n\n');
       this.emit('error', pluginError);
     }

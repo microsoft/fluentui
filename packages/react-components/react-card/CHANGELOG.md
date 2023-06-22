@@ -1,8 +1,144 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 21 Mar 2023 21:23:26 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.15)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.14..@fluentui/react-card_v9.0.15)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.8.0 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-theme to v9.1.9 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-utilities to v9.9.3 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-button to v9.3.17 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+
+## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.14)
+
+Wed, 31 May 2023 06:46:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.13..@fluentui/react-card_v9.0.14)
+
+### Patches
+
+- fix: createFocusOutlineStyle cannot work with CSS variables ([PR #27966](https://github.com/microsoft/fluentui/pull/27966) by marcosvmmoura@gmail.com)
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+- fix: make selected styles have higher priority ([PR #27985](https://github.com/microsoft/fluentui/pull/27985) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.7.5 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+- Bump @fluentui/react-button to v9.3.16 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.13)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.12..@fluentui/react-card_v9.0.13)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.4 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.5 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+- Bump @fluentui/react-button to v9.3.15 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.12)
+
+Wed, 24 May 2023 20:45:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.11..@fluentui/react-card_v9.0.12)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.3 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+- Bump @fluentui/react-button to v9.3.14 ([PR #27989](https://github.com/microsoft/fluentui/pull/27989) by beachball)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.11)
+
+Thu, 18 May 2023 13:11:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.10..@fluentui/react-card_v9.0.11)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.2 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+- Bump @fluentui/react-button to v9.3.13 ([PR #27540](https://github.com/microsoft/fluentui/pull/27540) by beachball)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.10)
+
+Thu, 18 May 2023 00:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.9..@fluentui/react-card_v9.0.10)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.7.1 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.4 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+- Bump @fluentui/react-button to v9.3.12 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.9)
+
+Fri, 12 May 2023 20:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.8..@fluentui/react-card_v9.0.9)
+
+### Patches
+
+- chore: move makeStyles() calls to .styles.ts files ([PR #27707](https://github.com/microsoft/fluentui/pull/27707) by olfedias@microsoft.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-tabster to v9.7.0 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.21 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-button to v9.3.11 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.8)
+
+Mon, 24 Apr 2023 08:12:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.7..@fluentui/react-card_v9.0.8)
+
+### Patches
+
+- chore: adopt custom JSX pragma ([PR #27606](https://github.com/microsoft/fluentui/pull/27606) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+- Bump @fluentui/react-button to v9.3.10 ([commit](https://github.com/microsoft/fluentui/commit/505433ac64f144c9cca456097413d6af4582e5ee) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.7)
+
+Mon, 17 Apr 2023 17:53:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.6..@fluentui/react-card_v9.0.7)
+
+### Patches
+
+- fix: add support for Windows High Contrast Mode ([PR #27556](https://github.com/microsoft/fluentui/pull/27556) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.6.5 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+- Bump @fluentui/react-button to v9.3.9 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.6)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.5..@fluentui/react-card_v9.0.6)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-button to v9.3.8 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.5)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.3..@fluentui/react-card_v9.0.5)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.6.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-button to v9.3.7 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.3)
 

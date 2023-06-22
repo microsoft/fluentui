@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`List by default renders List correctly when \`renderEarly={true}\` 1`] = `
+<div
+  className="ms-List"
+>
+  <div
+    className="ms-List-surface"
+    role="presentation"
+  />
+</div>
+`;
+
 exports[`List renders List correctly 1`] = `
 <div
   className="ms-List"

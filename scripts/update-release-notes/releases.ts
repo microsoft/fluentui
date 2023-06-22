@@ -1,4 +1,4 @@
-import { repoDetails, github } from './init';
+import { github, repoDetails } from './init';
 import { IRelease } from './types';
 
 /**
@@ -19,7 +19,7 @@ export async function getReleases(tags?: string[]): Promise<Map<string, IRelease
         const release = (await github.repos.getReleaseByTag({ ...repoDetails, tag })).data;
         releases.set(release.tag_name, { id: release.id, tagName: release.tag_name });
       } catch (err) {
-        if (err.status === 404) {
+        if (isGithubRestApiError(err) && err.status === 404) {
           // This tag probably isn't released yet, which is fine in this context
           console.warn('Tag not yet released: ' + tag);
         } else {
@@ -47,4 +47,11 @@ export async function getReleases(tags?: string[]): Promise<Map<string, IRelease
   console.log(`Found ${releases.size}${tags ? ' recent' : ''} releases on github.\n`);
 
   return releases;
+}
+
+function isGithubRestApiError(err: unknown): err is Error & { status: number } {
+  if (typeof err === 'object' && Object.prototype.hasOwnProperty.call(err, 'status')) {
+    return true;
+  }
+  return false;
 }

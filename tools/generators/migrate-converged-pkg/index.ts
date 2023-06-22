@@ -13,10 +13,15 @@ import {
   updateProjectConfiguration,
   serializeJson,
   offsetFromRoot,
+  applyChangesToString,
+  ChangeType,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
+import * as ts from 'typescript';
 
+import { getTemplate, uniqueArray } from './lib/utils';
+import setupCypressComponentTesting from '../cypress-component-configuration';
 import { PackageJson, TsConfig } from '../../types';
 import {
   arePromptsEnabled,
@@ -144,6 +149,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   setupSwcConfig(tree, options);
   setupJustConfig(tree, options);
+  updateConformanceSetup(tree, options);
 }
 
 // ==== helpers ====
@@ -159,7 +165,6 @@ const templates = {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
         mainEntryPointFilePath:
-          // eslint-disable-next-line @fluentui/max-len
           '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
         apiReport: {
           enabled: true,
@@ -302,7 +307,7 @@ const templates = {
         globals: {
           'ts-jest': {
             tsconfig: '<rootDir>/tsconfig.spec.json',
-            diagnostics: false,
+            isolatedModules: true,
           },
         },
         transform: {
@@ -392,6 +397,13 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
+    .swcrc
+
+    # exclude gitignore patterns explicitly
+    !lib
+    !lib-commonjs
+    !lib-amd
+    !dist/*.d.ts
   ` + os.EOL,
   swcConfig: () => {
     return {
@@ -425,12 +437,8 @@ const templates = {
       sourceMaps: true,
     };
   },
-  justConfig: stripIndents`
-    import { preset, task } from '@fluentui/scripts-tasks';
-
-    preset();
-
-    task('build', 'build:react-components').cached?.();`,
+  // why not inline template ? this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  justConfig: getTemplate(joinPathFragments(__dirname, 'files/just-config.ts__tmpl__'), {}),
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -569,10 +577,6 @@ function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
   return tree.exists(options.paths.conformanceSetup);
 }
 
-function uniqueArray<T extends unknown>(value: T[]) {
-  return Array.from(new Set(value));
-}
-
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   const packageType = getPackageType(tree, options);
   const tags = {
@@ -664,6 +668,8 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
         },
       };
 
+      stableJson.exports = stableJson.exports ?? {};
+
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
@@ -694,6 +700,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   function setupScripts(json: PackageJson) {
     const scripts = {
       test: 'jest --passWithNoTests',
+      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'tsc -b tsconfig.json',
     };
 
@@ -750,6 +757,7 @@ function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) 
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts ?? {};
     Object.assign(json.scripts, scripts);
 
     return json;
@@ -813,6 +821,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
         storybook: `start-storybook`,
         start: 'yarn storybook',
       };
+      json.scripts = json.scripts ?? {};
       Object.assign(json.scripts, scripts);
 
       return json;
@@ -909,47 +918,16 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function setupCypress(tree: Tree, options: NormalizedSchema) {
-  const template = {
-    exclude: ['**/*.cy.ts', '**/*.cy.tsx'],
-  };
+async function setupCypress(tree: Tree, options: NormalizedSchema) {
+  const shouldSetupCypress = tree.exists(options.paths.tsconfig.cypress);
 
-  if (!shouldSetupCypress(tree, options)) {
+  if (!shouldSetupCypress) {
     return tree;
   }
 
-  writeJson<TsConfig>(tree, options.paths.tsconfig.cypress, templates.cypress.tsconfig);
-
-  updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
-    json.references?.push({
-      path: `./${path.basename(options.paths.tsconfig.cypress)}`,
-    });
-
-    return json;
-  });
-
-  // update lib ts with new exclude globs
-  updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
-    json.exclude = json.exclude || [];
-    json.exclude.push(...template.exclude);
-    json.exclude = uniqueArray(json.exclude);
-
-    return json;
-  });
-
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'cypress run --component';
-    json.scripts['e2e:local'] = 'cypress open --component';
-
-    return json;
-  });
+  await setupCypressComponentTesting(tree, { project: options.name });
 
   return tree;
-}
-
-function shouldSetupCypress(tree: Tree, options: NormalizedSchema) {
-  return tree.exists(options.paths.tsconfig.cypress);
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
@@ -973,6 +951,52 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
+  }
+
+  return tree;
+}
+
+function updateConformanceSetup(tree: Tree, options: NormalizedSchema) {
+  if (!tree.exists(options.paths.conformanceSetup)) {
+    logger.warn('no conformance setup present. skipping...');
+    return;
+  }
+
+  const conformanceSetupContent = tree.read(options.paths.conformanceSetup, 'utf-8') as string;
+  const sourceFile = ts.createSourceFile('is-conformant.ts', conformanceSetupContent, ts.ScriptTarget.Latest, true);
+  const addition = `\ntsConfig: { configName: 'tsconfig.spec.json' },`;
+
+  let start: number | undefined;
+  getConfigObjectFirstPropertyIndex(sourceFile);
+
+  if (!start) {
+    return;
+  }
+
+  const updatedContent = applyChangesToString(conformanceSetupContent, [
+    {
+      type: ChangeType.Insert,
+      index: start,
+      text: addition,
+    },
+  ]);
+
+  tree.write(options.paths.conformanceSetup, updatedContent);
+
+  function getConfigObjectFirstPropertyIndex(node: ts.Node) {
+    if (ts.isVariableStatement(node)) {
+      const defaultOptionsVar = node.declarationList.declarations[0].name.getText();
+      if (defaultOptionsVar === 'defaultOptions') {
+        const initializer = node.declarationList.declarations[0].initializer;
+        if (initializer && ts.isObjectLiteralExpression(initializer)) {
+          const firstProp = initializer.properties[0];
+          start = firstProp.pos;
+          return;
+        }
+      }
+    }
+
+    ts.forEachChild(node, getConfigObjectFirstPropertyIndex);
   }
 
   return tree;

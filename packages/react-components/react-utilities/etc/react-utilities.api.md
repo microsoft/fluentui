@@ -28,6 +28,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
     [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
 };
 
+// @internal (undocumented)
+export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
+
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
@@ -70,6 +73,12 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
+// @public
+export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
+    slots: Slots<R>;
+    slotProps: ObjectSlotProps<R>;
+};
+
 // @internal
 export function getTriggerChild<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children']): (React_2.ReactElement<Partial<TriggerChildProps>> & {
     ref?: React_2.Ref<any>;
@@ -107,6 +116,26 @@ export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
+// @internal (undocumented)
+export interface PriorityQueue<T> {
+    // (undocumented)
+    all: () => T[];
+    // (undocumented)
+    clear: () => void;
+    // (undocumented)
+    contains: (item: T) => boolean;
+    // (undocumented)
+    dequeue: () => T;
+    // (undocumented)
+    enqueue: (item: T) => void;
+    // (undocumented)
+    peek: () => T | null;
+    // (undocumented)
+    remove: (item: T) => void;
+    // (undocumented)
+    size: () => number;
+}
+
 // @public (undocumented)
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
@@ -143,6 +172,9 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
+// @internal
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
+
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
@@ -173,6 +205,11 @@ export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
+};
+
+// @public
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
 };
 
 // @internal

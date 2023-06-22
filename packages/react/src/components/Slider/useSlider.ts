@@ -264,6 +264,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
   };
 
   const calculateCurrentSteps = (event: DragChangeEvent) => {
+    // eslint-disable-next-line deprecation/deprecation
     const sliderPositionRect: ClientRect = sliderLine.current!.getBoundingClientRect();
     const sliderLength: number = !props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;

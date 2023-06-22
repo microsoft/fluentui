@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
 import { addDays, DatePicker } from '@fluentui/react-datepicker-compat';
+import { Button, Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -19,25 +19,26 @@ const useStyles = makeStyles({
 export const Controlled = () => {
   const styles = useStyles();
 
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
+  const [selectedDate, setSelectedDate] = React.useState<Date | null | undefined>(null);
 
   const goPrevious = React.useCallback(() => {
-    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, -1) : undefined));
+    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, -1) : null));
   }, []);
 
   const goNext = React.useCallback(() => {
-    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, 1) : undefined));
+    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, 1) : null));
   }, []);
 
   return (
     <div className={styles.root}>
-      <DatePicker
-        value={selectedDate}
-        onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
-        placeholder="Select a date..."
-        aria-label="Select a date"
-        className={styles.control}
-      />
+      <Field label="Select a date">
+        <DatePicker
+          value={selectedDate}
+          onSelectDate={setSelectedDate}
+          placeholder="Select a date..."
+          className={styles.control}
+        />
+      </Field>
       <div>
         <Button className={styles.button} onClick={goPrevious}>
           Previous
@@ -53,7 +54,9 @@ export const Controlled = () => {
 Controlled.parameters = {
   docs: {
     description: {
-      story: 'A DatePicker can be controlled by manually keeping track of the state and updating it.',
+      story:
+        'A DatePicker can be controlled by manually keeping track of the state and updating it. When controlled,' +
+        ' the value prop should use null instead of undefined to clear the value of the DatePicker.',
     },
   },
 };

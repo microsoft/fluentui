@@ -14,19 +14,21 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
 
 // @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    // @deprecated
     enableOutline?: boolean;
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: ({ selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
-export interface CreateFocusOutlineStyleOptions extends CreateCustomFocusIndicatorStyleOptions {
+export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
+    enableOutline?: boolean;
     // (undocumented)
     style?: Partial<FocusOutlineStyleOptions>;
 }
@@ -47,7 +49,7 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions)
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+    axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
     circular?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
@@ -56,7 +58,7 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {

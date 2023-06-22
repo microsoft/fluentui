@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Tue, 21 Mar 2023 21:23:11 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:39:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.13)
+
+Tue, 20 Jun 2023 12:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.12..@fluentui/react-theme-sass_v9.0.0-alpha.13)
+
+### Changes
+
+- Add theme tokens ([PR #27791](https://github.com/microsoft/fluentui/pull/27791) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.9 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.12)
+
+Fri, 12 May 2023 20:27:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.11..@fluentui/react-theme-sass_v9.0.0-alpha.12)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.8 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.11)
+
+Mon, 17 Apr 2023 17:54:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.10..@fluentui/react-theme-sass_v9.0.0-alpha.11)
+
+### Changes
+
+- fix: add "style" to exports field ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.10)
 

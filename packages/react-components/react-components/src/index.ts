@@ -561,7 +561,8 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable,
+  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
   useRadioGroupStyles_unstable,
@@ -587,6 +588,29 @@ export {
   useSelect_unstable,
 } from '@fluentui/react-select';
 export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
+export {
+  Skeleton,
+  renderSkeleton_unstable,
+  skeletonClassNames,
+  useSkeletonStyles_unstable,
+  useSkeleton_unstable,
+  SkeletonItem,
+  renderSkeletonItem_unstable,
+  skeletonItemClassNames,
+  useSkeletonItemStyles_unstable,
+  useSkeletonItem_unstable,
+  SkeletonContextProvider,
+  useSkeletonContext,
+} from '@fluentui/react-skeleton';
+export type {
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonState,
+  SkeletonItemProps,
+  SkeletonItemSlots,
+  SkeletonItemState,
+  SkeletonContextValue,
+} from '@fluentui/react-skeleton';
 export {
   Slider,
   sliderClassNames,
@@ -808,12 +832,15 @@ export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@flue
 export {
   Overflow,
   OverflowItem,
+  OverflowDivider,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
+  useOverflowCount,
   useOverflowMenu,
   DATA_OVERFLOWING,
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
+  DATA_OVERFLOW_DIVIDER,
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
@@ -1073,3 +1100,24 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
+
+export {
+  Field,
+  fieldClassNames,
+  FieldContextProvider,
+  renderField_unstable,
+  useFieldContext_unstable,
+  useFieldContextValues_unstable,
+  useFieldControlProps_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
+export type {
+  FieldContextValue,
+  FieldContextValues,
+  FieldControlProps,
+  FieldControlPropsOptions,
+  FieldProps,
+  FieldSlots,
+  FieldState,
+} from '@fluentui/react-field';

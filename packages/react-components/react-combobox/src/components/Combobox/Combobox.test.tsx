@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Combobox', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',
@@ -662,6 +668,58 @@ describe('Combobox', () => {
     });
   });
 
+  /* Freeform space key behavior */
+  it('inserts space character when typing in a freeform combobox', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole } = render(
+      <Combobox onOptionSelect={onOptionSelect} freeform>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.type(getByRole('combobox'), 're ');
+
+    expect(onOptionSelect).not.toHaveBeenCalled();
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('re ');
+  });
+
+  it('uses space to select after arrowing through options in a freeform combobox', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole } = render(
+      <Combobox onOptionSelect={onOptionSelect} freeform>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.type(getByRole('combobox'), 're{ArrowDown} ');
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('inserts space character in closed freeform combobox', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole } = render(
+      <Combobox onOptionSelect={onOptionSelect} freeform>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.type(getByRole('combobox'), 'r{ArrowDown}{Escape} ');
+
+    expect(onOptionSelect).not.toHaveBeenCalled();
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('r ');
+  });
+
   /* Active option */
   it('should set active option on click', () => {
     const { getByTestId } = render(
@@ -847,5 +905,26 @@ describe('Combobox', () => {
     userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Combobox>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+      </Field>,
+    );
+
+    const combobox = result.getByRole('combobox') as HTMLInputElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(combobox.id).toEqual(label.htmlFor);
+    expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(combobox.getAttribute('aria-invalid')).toEqual('true');
+    expect(combobox.required).toBe(true);
   });
 });

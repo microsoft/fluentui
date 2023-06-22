@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: make Option's checkIcon slot render conditionally",
-  "packageName": "@fluentui/react-combobox",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

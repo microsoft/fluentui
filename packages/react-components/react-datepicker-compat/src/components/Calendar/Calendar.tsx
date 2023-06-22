@@ -14,7 +14,7 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { useCalendarStyles_unstable } from './useCalendarStyles';
+import { useCalendarStyles_unstable } from './useCalendarStyles.styles';
 import type { ICalendarDay } from '../CalendarDay/CalendarDay.types';
 import type { ICalendarMonth } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarProps } from './Calendar.types';
@@ -269,6 +269,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
 
         case Escape:
+          ev.stopPropagation();
           onDismiss?.();
           break;
 

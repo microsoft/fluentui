@@ -1,6 +1,7 @@
 import * as React from 'react';
-import type { DataGridProps, DataGridState } from '@fluentui/react-table';
+import { DataGridProps, DataGridState, TABLE_SELECTION_CELL_WIDTH } from '@fluentui/react-table';
 import { useDataGrid_unstable as useBaseState } from '@fluentui/react-table';
+import { useFluent, useScrollbarWidth } from '@fluentui/react-components';
 
 /**
  * Create the state required to render DataGrid.
@@ -12,5 +13,15 @@ import { useDataGrid_unstable as useBaseState } from '@fluentui/react-table';
  * @param ref - reference to root HTMLElement of DataGrid
  */
 export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLElement>): DataGridState => {
-  return useBaseState({ ...props, 'aria-rowcount': props.items.length }, ref);
+  const { targetDocument } = useFluent();
+  const scrollbarWidth = useScrollbarWidth({ targetDocument });
+
+  let containerWidthOffset = props.containerWidthOffset;
+
+  if (containerWidthOffset === undefined) {
+    containerWidthOffset = props.selectionMode ? -TABLE_SELECTION_CELL_WIDTH : 0;
+    containerWidthOffset -= scrollbarWidth || 0;
+  }
+
+  return useBaseState({ ...props, 'aria-rowcount': props.items.length, containerWidthOffset }, ref);
 };

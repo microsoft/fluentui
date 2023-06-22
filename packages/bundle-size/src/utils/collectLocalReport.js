@@ -26,16 +26,21 @@ async function readReportForPackage(reportFile) {
     );
   }
 
-  const packageName = path.basename(packageRoot);
-  const packageReportJSON = await fs.readFile(reportFilePath, 'utf8');
-
   try {
+    const packageName = path.basename(packageRoot);
+    const packageReportJSON = await fs.readFile(reportFilePath, 'utf8');
     /** @type {BuildResult[]} */
     const packageReport = JSON.parse(packageReportJSON);
 
     return { packageName, packageReport };
-  } catch (e) {
-    throw new Error([`Failed to read JSON from "${reportFilePath}":`, e.toString()].join('\n'));
+  } catch (err) {
+    if (err instanceof SyntaxError) {
+      throw new Error([`Invalid JSON in "${reportFilePath}"`, err.toString()].join('\n'));
+    }
+    if (err instanceof Error) {
+      throw new Error([`Failed to read JSON from "${reportFilePath}":`, err.toString()].join('\n'));
+    }
+    throw new Error(`Unexpected error: ${err}`);
   }
 }
 

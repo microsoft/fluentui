@@ -262,6 +262,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   csv: {
     extensions: ['csv'],
   },
+  designer: {
+    extensions: ['design'],
+  },
   desktopfolder: {},
   docset: {},
   documentsfolder: {},
@@ -285,7 +288,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   form: {},
   genericfile: {},
   html: {
-    extensions: ['htm', 'html', 'mht'],
+    extensions: ['htm', 'html', 'mht', 'mhtml'],
   },
   ipynb: {
     extensions: ['nnb', 'ipynb'],

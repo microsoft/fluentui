@@ -9,7 +9,6 @@ import {
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { isEscapeKeyDismiss } from '../../utils';
-import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render DialogSurface.
@@ -26,7 +25,7 @@ export const useDialogSurface_unstable = (
 ): DialogSurfaceState => {
   const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
-  const inertTrapFocus = useDialogContext_unstable(ctx => ctx.inertTrapFocus);
+  const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
@@ -58,11 +57,6 @@ export const useDialogSurface_unstable = (
       // e,g: nested Dialog, Popover, Menu and Tooltip
       event.stopPropagation();
     }
-  });
-
-  const { modalAttributes } = useModalAttributes({
-    trapFocus: modalType !== 'non-modal',
-    legacyTrapFocus: !inertTrapFocus,
   });
 
   return {
