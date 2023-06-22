@@ -50,7 +50,7 @@ jobs:
               "nonBlockingPipeline":{
                 "$(pipelineId)": {
                   "pipelineStatus": "PENDING",
-                  "pipelineName": "E2E Tests-v9"
+                  "pipelineName": "$(pipelineName)"
                 }
               },
               "postPolicy": '${postPolicy}',
@@ -113,7 +113,7 @@ jobs:
               "nonBlockingPipeline":{
                 "$(pipelineId)": {
                   "pipelineStatus": "PENDING",
-                  "pipelineName": "E2E Tests-v8"
+                  "pipelineName": "$(pipelineName)"
                 }
               },
               "postPolicy": '${postPolicy}',
@@ -177,7 +177,7 @@ jobs:
               "nonBlockingPipeline":{
                 "$(pipelineId)": {
                   "pipelineStatus": "PENDING",
-                  "pipelineName": "E2E Tests-v0"
+                  "pipelineName": "$(pipelineName)"
                 }
               },
               "postPolicy": '${postPolicy}',
