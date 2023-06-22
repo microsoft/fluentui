@@ -35,3 +35,14 @@ export const OverlayNoModal = () => {
     </div>
   );
 };
+
+OverlayNoModal.parameters = {
+  docs: {
+    description: {
+      story: [
+        "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario.",
+        'By setting the `modalType` prop to `non-modal`, the Drawer will not be blocking and the user can interact with the background content.',
+      ].join('\n'),
+    },
+  },
+};

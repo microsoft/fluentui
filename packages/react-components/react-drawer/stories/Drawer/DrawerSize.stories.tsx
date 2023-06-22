@@ -76,3 +76,11 @@ export const Size = () => {
     </div>
   );
 };
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: 'The `size` prop controls the width of the drawer. The default is `small`.',
+    },
+  },
+};
