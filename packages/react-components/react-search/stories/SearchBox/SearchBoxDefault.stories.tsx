@@ -19,11 +19,9 @@ export const Default = (props: SearchBoxProps) => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
-      <Field label="Sample SearchBox">
+      <Field className={styles.root} label="Sample SearchBox">
         <SearchBox id={searchBoxId} {...props} />
       </Field>
-    </div>
   );
 };
 
