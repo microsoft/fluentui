@@ -129,6 +129,26 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 };
 ```
 
+Overriding the transition on the Application side:
+
+```tsx
+import * as React from 'react';
+import { Drawer } from '@fluentui/react-drawer';
+import { makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  customDuration: {
+    transitionDuration: '500ms',
+  },
+});
+
+export const CustomDuration = () => {
+  const styles = useStyles();
+
+  return <Drawer className={styles.customDuration} />;
+};
+```
+
 #### How it works?
 
 The hook accepts a boolean value that represents the "presence" state. It internally tracks the animation/transition and return boolean values related to its motion state and a ref that needs to be assigned to the element we are tracking.
@@ -193,7 +213,7 @@ Events can be provided as a second argument of the hook.:
       // Called when the element finished the "enter" animation/transition
     };
     onExited: () => {
-      /// Called when the element finished the "leave" animation/transition
+      // Called when the element finished the "leave" animation/transition
     };
   })
 ```
@@ -212,7 +232,7 @@ Other events can be implemented, like `onBeforeEnter` or `onBeforeLeave`.
 - 👍 Easy styling of components based on their state.
 - 👍 Offers the flexibility to declare both transitions and animations.
 - 👍 Can be applied to multiple elements simultaneously.
-- 👍 Animations/Transitions can be easily overridden on the application side.
+- 👍 Users can easily override Animations/Transitions just by changing CSS.
 
 #### Cons
 
