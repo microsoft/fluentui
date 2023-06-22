@@ -6,15 +6,9 @@ import type { SearchBoxProps } from '@fluentui/react-search';
 
 export const Default = (props: SearchBoxProps) => {
   return (
-<<<<<<< HEAD
-      <Field className={styles.root} label="Sample SearchBox">
-        <SearchBox id={searchBoxId} {...props} />
-=======
-    <div>
-      <Field label="Sample SearchBox">
-        <SearchBox {...props} />
->>>>>>> 53c2ce229b (remove unnecessary styles)
-      </Field>
+    <Field label="Sample SearchBox">
+      <SearchBox {...props} />
+    </Field>
   );
 };
 
