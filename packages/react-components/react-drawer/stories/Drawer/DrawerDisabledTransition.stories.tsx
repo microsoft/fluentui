@@ -18,9 +18,7 @@ export const DisabledTransition = () => {
     <div>
       <Drawer
         className={styles.disabledTransition}
-        backdrop={{
-          className: `TESTING ${styles.disabledTransition}`,
-        }}
+        backdrop={{ className: `${styles.disabledTransition}` }}
         open={isOpen}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
