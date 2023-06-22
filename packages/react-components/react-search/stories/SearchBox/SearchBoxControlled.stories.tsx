@@ -1,20 +1,10 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { SearchBoxProps } from '@fluentui/react-search';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    // Prevent the example from taking the full width of the page (optional)
-    maxWidth: '400px',
-  },
-});
 
 export const Controlled = () => {
   const [value, setValue] = React.useState('initial value');
-  const styles = useStyles();
 
   const onChange: SearchBoxProps['onChange'] = (ev, data) => {
     if (data.value.length <= 20) {
@@ -23,11 +13,9 @@ export const Controlled = () => {
   };
 
   return (
-    <div className={styles.root}>
-      <Field label="Controlled SearchBox limiting the value to 20 characters">
-        <SearchBox value={value} onChange={onChange} />
-      </Field>
-    </div>
+    <Field label="Controlled SearchBox limiting the value to 20 characters">
+      <SearchBox value={value} onChange={onChange} />
+    </Field>
   );
 };
 

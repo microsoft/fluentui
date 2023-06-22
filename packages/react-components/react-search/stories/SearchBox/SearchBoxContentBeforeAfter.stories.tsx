@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { Field, makeStyles, shorthands, Body1, Text, tokens } from '@fluentui/react-components';
+import { Field, makeStyles, shorthands, Text, tokens } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -19,27 +19,42 @@ export const ContentBeforeAfter = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Field className={styles.fieldWrapper} label="Full name">
+      <Field
+        className={styles.fieldWrapper}
+        label="Full name"
+        hint={
+          <>
+            A SearchBox with a custom icon in the <code>contentBefore</code> slot.
+          </>
+        }
+      >
         <SearchBox contentBefore={<PersonRegular />} />
       </Field>
-      <Body1>
-        A SearchBox with a custom icon in the <code>contentBefore</code> slot.
-      </Body1>
 
-      <Field className={styles.fieldWrapper} label="First name">
+      <Field
+        className={styles.fieldWrapper}
+        label="First name"
+        hint={
+          <>
+            A SearchBox with a custom icon in the <code>contentAfter</code> slot.
+          </>
+        }
+      >
         <SearchBox contentAfter={<MicRegular aria-label="Enter by voice" />} />
       </Field>
-      <Body1>
-        A SearchBox with a custom icon in the <code>contentAfter</code> slot.
-      </Body1>
 
-      <Field className={styles.fieldWrapper} label="Amount to Pay">
+      <Field
+        className={styles.fieldWrapper}
+        label="Amount to Pay"
+        hint={
+          <>
+            A SearchBox with a presentational value in the <code>contentBefore</code> slot and another presentational
+            value in the <code>contentAfter</code> slot.
+          </>
+        }
+      >
         <SearchBox contentBefore={<Text size={400}>Search:</Text>} contentAfter={<Text size={400}>Filter</Text>} />
       </Field>
-      <Body1>
-        A SearchBox with a presentational value in the <code>contentBefore</code> slot and another presentational value
-        in the <code>contentAfter</code> slot.
-      </Body1>
     </div>
   );
 };

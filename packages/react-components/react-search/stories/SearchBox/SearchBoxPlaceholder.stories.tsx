@@ -1,25 +1,12 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { Field, makeStyles } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '5px',
-    maxWidth: '300px',
-  },
-});
+import { Field } from '@fluentui/react-components';
 
 export const Placeholder = () => {
-  const styles = useStyles();
-
   return (
-    <div className={styles.root}>
-      <Field label="SearchBox with a placeholder">
-        <SearchBox placeholder="This is a placeholder" />
-      </Field>
-    </div>
+    <Field label="SearchBox with a placeholder">
+      <SearchBox placeholder="This is a placeholder" />
+    </Field>
   );
 };
 

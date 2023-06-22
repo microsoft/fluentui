@@ -1,26 +1,19 @@
 import * as React from 'react';
 import { ArgTypes } from '@storybook/api';
 import { SearchBox } from '@fluentui/react-search';
-import { Field, makeStyles, useId } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { SearchBoxProps } from '@fluentui/react-search';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field
-    display: 'flex',
-    flexDirection: 'column',
-    // Prevent the example from taking the full width of the page (optional)
-    maxWidth: '400px',
-  },
-});
-
 export const Default = (props: SearchBoxProps) => {
-  const searchBoxId = useId('searchbox');
-  const styles = useStyles();
-
   return (
+<<<<<<< HEAD
       <Field className={styles.root} label="Sample SearchBox">
         <SearchBox id={searchBoxId} {...props} />
+=======
+    <div>
+      <Field label="Sample SearchBox">
+        <SearchBox {...props} />
+>>>>>>> 53c2ce229b (remove unnecessary styles)
       </Field>
   );
 };
