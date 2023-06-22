@@ -202,3 +202,32 @@ export type {
   DrawerHeaderNavigationSlots,
   DrawerHeaderNavigationState,
 } from '@fluentui/react-drawer';
+
+export {
+  Tag,
+  tagClassNames,
+  renderTag_unstable,
+  useTagStyles_unstable,
+  useTag_unstable,
+  TagButton,
+  tagButtonClassNames,
+  renderTagButton_unstable,
+  useTagButtonStyles_unstable,
+  useTagButton_unstable,
+  TagGroup,
+  tagGroupClassNames,
+  renderTagGroup_unstable,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+} from '@fluentui/react-tags';
+export type {
+  TagProps,
+  TagSlots,
+  TagState,
+  TagButtonProps,
+  TagButtonSlots,
+  TagButtonState,
+  TagGroupProps,
+  TagGroupSlots,
+  TagGroupState,
+} from '@fluentui/react-tags';
