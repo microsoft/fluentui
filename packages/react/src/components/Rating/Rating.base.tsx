@@ -168,8 +168,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
             break;
         }
 
-        const shouldSelectStar = newRating !== starNum || which === KeyCodes.enter || which === KeyCodes.space;
-        if (shouldSelectStar && (rating === undefined || Math.ceil(rating) !== newRating)) {
+        if (newRating !== starNum && (rating === undefined || Math.ceil(rating) !== newRating)) {
           setRating(newRating, event);
         }
       };
