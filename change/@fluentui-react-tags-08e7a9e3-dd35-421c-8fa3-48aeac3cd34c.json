@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add react-tags to Preview Components",
+  "packageName": "@fluentui/react-tags",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
