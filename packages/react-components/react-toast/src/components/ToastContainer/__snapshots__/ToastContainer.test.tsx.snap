@@ -5,6 +5,7 @@ exports[`ToastContainer renders a default state 1`] = `
   <div
     class="fui-ToastContainer"
     style="--fui-toast-height: 0px;"
+    tabindex="-1"
   >
     Default ToastContainer
   </div>
