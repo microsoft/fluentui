@@ -36,7 +36,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: vr-app run-diff --buildType release  --screenshotsDirectory ./screenshots/ --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
+      - bash: vr-app run-diff --buildType release  --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
