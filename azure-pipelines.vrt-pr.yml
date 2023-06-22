@@ -131,7 +131,6 @@ jobs:
           vrTestPackagePath: 'apps/vr-tests'
 
       - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
-
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
