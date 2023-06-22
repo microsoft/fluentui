@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Remove componentRef since it's no longer necessary, fix ref forwarding, and fix focus movement when closing/opening popup.",
+  "comment": "breaking: Remove componentRef since it's no longer necessary, fix ref forwarding, and fix focus movement when closing/opening popup.",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
