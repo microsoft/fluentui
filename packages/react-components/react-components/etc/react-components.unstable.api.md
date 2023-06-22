@@ -71,6 +71,9 @@ import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
 import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { renderTag_unstable } from '@fluentui/react-tags';
+import { renderTagButton_unstable } from '@fluentui/react-tags';
+import { renderTagGroup_unstable } from '@fluentui/react-tags';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemAside_unstable } from '@fluentui/react-tree';
@@ -85,6 +88,21 @@ import { scrollToItemDynamic } from '@fluentui/react-virtualizer';
 import { ScrollToItemDynamicParams } from '@fluentui/react-virtualizer';
 import { scrollToItemStatic } from '@fluentui/react-virtualizer';
 import { ScrollToItemStaticParams } from '@fluentui/react-virtualizer';
+import { Tag } from '@fluentui/react-tags';
+import { TagButton } from '@fluentui/react-tags';
+import { tagButtonClassNames } from '@fluentui/react-tags';
+import { TagButtonProps } from '@fluentui/react-tags';
+import { TagButtonSlots } from '@fluentui/react-tags';
+import { TagButtonState } from '@fluentui/react-tags';
+import { tagClassNames } from '@fluentui/react-tags';
+import { TagGroup } from '@fluentui/react-tags';
+import { tagGroupClassNames } from '@fluentui/react-tags';
+import { TagGroupProps } from '@fluentui/react-tags';
+import { TagGroupSlots } from '@fluentui/react-tags';
+import { TagGroupState } from '@fluentui/react-tags';
+import { TagProps } from '@fluentui/react-tags';
+import { TagSlots } from '@fluentui/react-tags';
+import { TagState } from '@fluentui/react-tags';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
@@ -144,6 +162,12 @@ import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
+import { useTag_unstable } from '@fluentui/react-tags';
+import { useTagButton_unstable } from '@fluentui/react-tags';
+import { useTagButtonStyles_unstable } from '@fluentui/react-tags';
+import { useTagGroup_unstable } from '@fluentui/react-tags';
+import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagStyles_unstable } from '@fluentui/react-tags';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
@@ -318,6 +342,12 @@ export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
 
+export { renderTag_unstable }
+
+export { renderTagButton_unstable }
+
+export { renderTagGroup_unstable }
+
 export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
@@ -345,6 +375,36 @@ export { ScrollToItemDynamicParams }
 export { scrollToItemStatic }
 
 export { ScrollToItemStaticParams }
+
+export { Tag }
+
+export { TagButton }
+
+export { tagButtonClassNames }
+
+export { TagButtonProps }
+
+export { TagButtonSlots }
+
+export { TagButtonState }
+
+export { tagClassNames }
+
+export { TagGroup }
+
+export { tagGroupClassNames }
+
+export { TagGroupProps }
+
+export { TagGroupSlots }
+
+export { TagGroupState }
+
+export { TagProps }
+
+export { TagSlots }
+
+export { TagState }
 
 export { Tree }
 
@@ -463,6 +523,18 @@ export { useIntersectionObserver }
 export { useResizeObserverRef_unstable }
 
 export { useStaticVirtualizerMeasure }
+
+export { useTag_unstable }
+
+export { useTagButton_unstable }
+
+export { useTagButtonStyles_unstable }
+
+export { useTagGroup_unstable }
+
+export { useTagGroupStyles_unstable }
+
+export { useTagStyles_unstable }
 
 export { useTree_unstable }
 
