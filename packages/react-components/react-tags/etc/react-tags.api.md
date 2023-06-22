@@ -16,18 +16,6 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
-
-// @public
-export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
-
-// @public
-export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
-
-// @public
-export const Tag: ForwardRefComponent<TagProps>;
-
-// @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
 
 // @public (undocumented)
@@ -45,6 +33,18 @@ export type InteractionTagSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
 
 // @public
 export type InteractionTagState = ComponentState<InteractionTagSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
+
+// @public
+export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
+
+// @public
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
+
+// @public
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
+
+// @public
+export const Tag: ForwardRefComponent<TagProps>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
@@ -99,13 +99,13 @@ export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appea
 }>;
 
 // @public
-export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
-
-// @public
 export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;
 
 // @public
 export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
+
+// @public
+export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
 
 // @public
 export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
