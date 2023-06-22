@@ -11,7 +11,7 @@ interface UseFocusObservedOptions {
 
 /**
  *
- * @param name The observed element to focus
+ * @param name - The observed element to focus
  * @returns Function that will focus the
  */
 export function useFocusObserved(
