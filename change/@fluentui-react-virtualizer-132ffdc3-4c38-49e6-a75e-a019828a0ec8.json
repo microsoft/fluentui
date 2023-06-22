@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feature: Add scrollTo index hook and callbacks, isScrolling flag",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,59 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 12:39:00 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "cf6b94ba6559236150bc1f1814b023607edaeb20",
+            "comment": "chore: migrate to ts 4.7 which wont emit undefined anymore for optional arguments"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "8a5ae3aa00faa327c58887a99a5698b18f2930ee",
+            "comment": "chore: update @fluentui/react-icons to 2.0.203"
+          }
+        ],
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "7516a6bde1bd7b8c957ca479ffcb0e737e9ca693",
+            "comment": "Add/update theme tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.22.0",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 06:46:15 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.2.16",
       "version": "9.2.16",

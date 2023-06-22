@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Mon, 05 Jun 2023 07:37:25 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:38:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.0)
+
+Tue, 20 Jun 2023 12:38:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.16.3..@fluentui/react-conformance_v0.17.0)
+
+### Minor changes
+
+- BREAKING CHANGE: migrate package to v9 setup in order to be able to run generate-api task without build ([PR #28215](https://github.com/microsoft/fluentui/pull/28215) by martinhochel@microsoft.com)
 
 ## [0.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.16.3)
 

@@ -7,14 +7,12 @@ exports[`DataGridHeaderCell renders a default state 1`] = `
     role="columnheader"
     tabindex="0"
   >
-    <button
+    <div
       class="fui-DataGridHeaderCell__button fui-TableHeaderCell__button"
       role="presentation"
-      tabindex="-1"
-      type="button"
     >
       Default DataGridHeaderCell
-    </button>
+    </div>
   </div>
 </div>
 `;
