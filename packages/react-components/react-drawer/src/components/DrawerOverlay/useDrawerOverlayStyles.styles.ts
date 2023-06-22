@@ -1,9 +1,10 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
-import { tokens } from '@fluentui/react-theme';
 import * as React from 'react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
+import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
@@ -61,7 +62,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   const rootStyles = useStyles();
   const backdropStyles = useBackdropStyles();
 
-  const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement>;
+  const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,

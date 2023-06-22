@@ -5,8 +5,9 @@ import { useId, Button } from '@fluentui/react-components';
 export const DismissToast = () => {
   const toasterId = useId('toaster');
   const toastId = useId('example');
-  const [unmounted, setUnmounted] = React.useState(false);
+  const [unmounted, setUnmounted] = React.useState(true);
   const { dispatchToast, dismissToast } = useToastController(toasterId);
+  console.log(unmounted);
   const notify = () => {
     dispatchToast(
       <Toast>
@@ -21,7 +22,7 @@ export const DismissToast = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <Button onClick={unmounted ? dismiss : notify}>{unmounted ? 'Make' : 'Dismiss'} toast</Button>
+      <Button onClick={unmounted ? notify : dismiss}>{unmounted ? 'Make' : 'Dismiss'} toast</Button>
     </>
   );
 };

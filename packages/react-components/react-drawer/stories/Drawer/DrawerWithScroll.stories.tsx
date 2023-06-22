@@ -73,3 +73,14 @@ export const WithScroll = () => {
     </div>
   );
 };
+
+WithScroll.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default, the drawer will not scroll its content when it overflows.',
+        'To enable this behavior, the DrawerBody component can be used to wrap the content of the drawer.',
+      ].join('\n'),
+    },
+  },
+};

@@ -126,7 +126,13 @@ export type DrawerInlineSlots = {
 };
 
 // @public
+<<<<<<< HEAD
 export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps & DrawerBaseState;
+||||||| 9b5b3f33ad
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerBaseTypes & Pick<DrawerInlineProps, 'open' | 'separator'>;
+=======
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps;
+>>>>>>> master
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -143,7 +149,13 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
 };
 
 // @public
+<<<<<<< HEAD
 export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & DrawerBaseState & {
+||||||| 9b5b3f33ad
+export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseTypes & {
+=======
+export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & {
+>>>>>>> master
     dialog: DialogProps;
     backdropVisible: boolean;
 };

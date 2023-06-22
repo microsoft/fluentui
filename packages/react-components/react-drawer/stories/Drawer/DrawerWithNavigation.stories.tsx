@@ -7,10 +7,12 @@ import {
   DrawerHeaderTitle,
 } from '@fluentui/react-drawer';
 import { Button, Toolbar, ToolbarGroup, ToolbarButton, makeStyles } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
-import { ArrowClockwise24Regular } from '@fluentui/react-icons';
-import { Settings24Regular } from '@fluentui/react-icons';
-import { ArrowLeft24Regular } from '@fluentui/react-icons';
+import {
+  Dismiss24Regular,
+  ArrowClockwise24Regular,
+  Settings24Regular,
+  ArrowLeft24Regular,
+} from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   toolbar: {
@@ -53,8 +55,20 @@ export const WithNavigation = () => {
       </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
-        Open
+        Open Drawer
       </Button>
     </div>
   );
+};
+
+WithNavigation.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Drawers can have any type of content and one great case is to have a toolbar in the header.',
+        'Drawer ships with a `DrawerHeaderNavigation` component that can be used to display a toolbar in the header of the drawer.',
+        'This can be combined with `DrawerHeaderTitle` to display a title in the header.',
+      ].join('\n'),
+    },
+  },
 };

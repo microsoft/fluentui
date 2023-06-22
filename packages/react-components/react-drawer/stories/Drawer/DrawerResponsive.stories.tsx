@@ -76,3 +76,14 @@ export const Responsive = () => {
     </div>
   );
 };
+
+Responsive.parameters = {
+  docs: {
+    description: {
+      story: [
+        'When using the `Drawer` component, the `type` prop can be used to change the drawer type based on the viewport size.',
+        'The example below will change the drawer type to `overlay` when the viewport is smaller than 720px.',
+      ].join('\n'),
+    },
+  },
+};

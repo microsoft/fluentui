@@ -84,3 +84,15 @@ export const Inline = () => {
     </div>
   );
 };
+
+Inline.parameters = {
+  docs: {
+    description: {
+      story: [
+        'DrawerInline is often used for navigation that is not dismissible.',
+        'As it is on the same level as the main surface, users can still interact with other UI elements.',
+        'This could be useful for swapping between different items in the main surface.',
+      ].join('\n'),
+    },
+  },
+};
