@@ -16,10 +16,6 @@ const useStyles = makeStyles({
   },
 });
 
-const MicButton: React.FC<ButtonProps> = props => {
-  return <Button {...props} appearance="transparent" icon={<MicRegular />} size="small" />;
-};
-
 export const ContentBeforeAfter = () => {
   const styles = useStyles();
 
@@ -43,7 +39,7 @@ export const ContentBeforeAfter = () => {
         <Label htmlFor={afterId}>First name</Label>
         <SearchBox contentAfter={<MicRegular aria-label="Enter by voice" />} id={afterId} />
         <Body1>
-          A SearchBox with a button in the <code>contentAfter</code> slot.
+          A SearchBox with a custom icon in the <code>contentAfter</code> slot.
         </Body1>
       </div>
 
