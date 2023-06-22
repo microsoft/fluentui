@@ -29,29 +29,27 @@ export const Appearance = () => {
   const styles = useStyles();
   return (
     <div className={styles.base}>
-      <div className={styles.fieldWrapper}>
-        <Field label="Outline appearance (default)">
-          <SearchBox appearance="outline" />
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Outline appearance (default)">
+        <SearchBox appearance="outline" />
+      </Field>
 
-      <div className={styles.fieldWrapper}>
-        <Field label="Underline appearance">
-          <SearchBox appearance="underline" />
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Underline appearance">
+        <SearchBox appearance="underline" />
+      </Field>
 
-      <div className={mergeClasses(styles.fieldWrapper, styles.filledLighter)}>
-        <Field label={{ children: 'Filled lighter appearance', className: styles.filledLighterLabel }}>
-          <SearchBox appearance="filled-lighter" />
-        </Field>
-      </div>
+      <Field
+        className={mergeClasses(styles.fieldWrapper, styles.filledLighter)}
+        label={{ children: 'Filled lighter appearance', className: styles.filledLighterLabel }}
+      >
+        <SearchBox appearance="filled-lighter" />
+      </Field>
 
-      <div className={mergeClasses(styles.fieldWrapper, styles.filledDarker)}>
-        <Field label={{ children: 'Filled darker appearance', className: styles.filledDarkerLabel }}>
-          <SearchBox appearance="filled-darker" />
-        </Field>
-      </div>
+      <Field
+        className={mergeClasses(styles.fieldWrapper, styles.filledDarker)}
+        label={{ children: 'Filled darker appearance', className: styles.filledDarkerLabel }}
+      >
+        <SearchBox appearance="filled-darker" />
+      </Field>
     </div>
   );
 };

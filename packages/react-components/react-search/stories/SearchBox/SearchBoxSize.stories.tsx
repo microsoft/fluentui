@@ -18,23 +18,17 @@ export const Size = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.fieldWrapper}>
-        <Field label="Small SearchBox">
-          <SearchBox size="small" />
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Small SearchBox">
+        <SearchBox size="small" />
+      </Field>
 
-      <div className={styles.fieldWrapper}>
-        <Field label="Medium SearchBox">
-          <SearchBox size="medium" />
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Medium SearchBox">
+        <SearchBox size="medium" />
+      </Field>
 
-      <div className={styles.fieldWrapper}>
-        <Field label="Large SearchBox">
-          <SearchBox size="large" />
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Large SearchBox">
+        <SearchBox size="large" />
+      </Field>
     </div>
   );
 };

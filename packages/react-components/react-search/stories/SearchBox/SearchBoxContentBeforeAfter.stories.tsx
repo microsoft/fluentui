@@ -19,33 +19,27 @@ export const ContentBeforeAfter = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <div className={styles.fieldWrapper}>
-        <Field label="Full name">
-          <SearchBox contentBefore={<PersonRegular />} />
-          <Body1>
-            A SearchBox with a custom icon in the <code>contentBefore</code> slot.
-          </Body1>
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Full name">
+        <SearchBox contentBefore={<PersonRegular />} />
+      </Field>
+      <Body1>
+        A SearchBox with a custom icon in the <code>contentBefore</code> slot.
+      </Body1>
 
-      <div className={styles.fieldWrapper}>
-        <Field label="First name">
-          <SearchBox contentAfter={<MicRegular aria-label="Enter by voice" />} />
-          <Body1>
-            A SearchBox with a custom icon in the <code>contentAfter</code> slot.
-          </Body1>
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="First name">
+        <SearchBox contentAfter={<MicRegular aria-label="Enter by voice" />} />
+      </Field>
+      <Body1>
+        A SearchBox with a custom icon in the <code>contentAfter</code> slot.
+      </Body1>
 
-      <div className={styles.fieldWrapper}>
-        <Field label="Amount to Pay">
-          <SearchBox contentBefore={<Text size={400}>Search:</Text>} contentAfter={<Text size={400}>Filter</Text>} />
-          <Body1>
-            A SearchBox with a presentational value in the <code>contentBefore</code> slot and another presentational
-            value in the <code>contentAfter</code> slot.
-          </Body1>
-        </Field>
-      </div>
+      <Field className={styles.fieldWrapper} label="Amount to Pay">
+        <SearchBox contentBefore={<Text size={400}>Search:</Text>} contentAfter={<Text size={400}>Filter</Text>} />
+      </Field>
+      <Body1>
+        A SearchBox with a presentational value in the <code>contentBefore</code> slot and another presentational value
+        in the <code>contentAfter</code> slot.
+      </Body1>
     </div>
   );
 };
