@@ -3,9 +3,7 @@ import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { IEventsAnnotationProps, ILineChartPoints, LineChart } from './index';
-import { LineChartBase } from './LineChart.base';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { chartPoints } from '../DonutChart/DonutChart.test';
 
 const basicPoints: ILineChartPoints[] = [
   {
@@ -342,6 +340,7 @@ describe('Line chart - Subcomponent line', () => {
     expect(lines.length == 9);
   });
 });
+
 
 describe('Line chart - Subcomponent legend', () => {
 test('Should highlight the corresponding Line on mouse over on legends', () => {
