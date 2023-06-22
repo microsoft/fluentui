@@ -45,6 +45,23 @@ export const InfoIcon: ForwardRefComponent<InfoIconProps>;
 export const infoIconClassNames: SlotClassNames<InfoIconSlots>;
 
 // @public
+export const InfoIconLabel: ForwardRefComponent<InfoIconLabelProps>;
+
+// @public (undocumented)
+export const infoIconLabelClassNames: SlotClassNames<InfoIconLabelSlots>;
+
+// @public
+export type InfoIconLabelProps = ComponentProps<InfoIconLabelSlots> & {};
+
+// @public (undocumented)
+export type InfoIconLabelSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type InfoIconLabelState = ComponentState<InfoIconLabelSlots>;
+
+// @public
 export type InfoIconProps = ComponentProps<Partial<InfoIconSlots>> & {
     size?: 'small' | 'medium' | 'large';
     info?: TooltipProps['content'];
