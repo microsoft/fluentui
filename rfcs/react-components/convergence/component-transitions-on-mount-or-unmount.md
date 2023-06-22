@@ -129,7 +129,7 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 };
 ```
 
-Overriding the transition on the Application side:
+Overriding the transition/animation on the Application side:
 
 ```tsx
 import * as React from 'react';
