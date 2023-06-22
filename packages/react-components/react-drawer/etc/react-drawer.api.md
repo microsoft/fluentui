@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { DialogProps } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -115,7 +116,7 @@ export const DrawerInline: ForwardRefComponent<DrawerInlineProps>;
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots>;
 
 // @public
-export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> & DrawerBaseTypes & {
+export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> & DrawerBaseProps & {
     separator?: boolean;
 };
 
@@ -125,7 +126,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerBaseTypes & Pick<DrawerInlineProps, 'open' | 'separator'>;
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -134,20 +135,20 @@ export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
 
 // @public
-export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseTypes & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
+export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseProps & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
 
 // @public (undocumented)
-export type DrawerOverlaySlots = {
+export type DrawerOverlaySlots = DialogSurfaceSlots & {
     root: Slot<DialogSurfaceProps>;
 };
 
 // @public
-export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseTypes & {
+export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & {
     dialog: DialogProps;
 };
 
 // @public
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & DrawerOverlayProps & DrawerInlineProps & {
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     type?: 'inline' | 'overlay';
 };
 
