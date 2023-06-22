@@ -53,7 +53,7 @@ export const WithNavigation = () => {
       </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
-        Toggle
+        Open Drawer
       </Button>
     </div>
   );
