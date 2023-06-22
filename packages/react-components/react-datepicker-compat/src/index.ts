@@ -14,7 +14,7 @@ export {
   useDatePicker_unstable,
   useDatePickerStyles_unstable,
 } from './DatePicker';
-export type { DatePickerErrorType, DatePickerProps, DatePickerValidationResultData, IDatePicker } from './DatePicker';
+export type { DatePickerErrorType, DatePickerProps, DatePickerValidationResultData } from './DatePicker';
 
 export {
   DAYS_IN_WEEK,

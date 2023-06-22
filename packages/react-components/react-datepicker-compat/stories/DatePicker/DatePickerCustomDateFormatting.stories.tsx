@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, Field, makeStyles } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import type { IDatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +24,7 @@ export const CustomDateFormatting = () => {
   const styles = useStyles();
 
   const [value, setValue] = React.useState<Date | null | undefined>(null);
-  const datePickerRef = React.useRef<IDatePicker>(null);
+  const datePickerRef = React.useRef<HTMLInputElement>(null);
 
   const onClick = React.useCallback((): void => {
     setValue(null);
@@ -55,7 +54,7 @@ export const CustomDateFormatting = () => {
     <div className={styles.root}>
       <Field label="Select a date. Input format is day slash month slash year.">
         <DatePicker
-          componentRef={datePickerRef}
+          ref={datePickerRef}
           allowTextInput
           value={value}
           onSelectDate={setValue as (date?: Date | null) => void}

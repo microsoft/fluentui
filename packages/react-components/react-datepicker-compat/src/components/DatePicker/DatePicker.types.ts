@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Input } from '@fluentui/react-input';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
@@ -12,25 +11,7 @@ export type DatePickerSlots = {
   popupSurface?: Slot<'div'>;
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IDatePicker {
-  /** Sets focus to the input */
-  focus(): void;
-
-  /** Reset the state of the picker to the default */
-  reset(): void;
-
-  /** Open the datepicker popup */
-  showDatePickerPopup(): void;
-}
-
 export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
-  /**
-   * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: React.RefObject<IDatePicker>;
-
   /**
    * Callback issued when a date is selected
    */
