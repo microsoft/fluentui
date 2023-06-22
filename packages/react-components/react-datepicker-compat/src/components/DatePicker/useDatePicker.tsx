@@ -207,9 +207,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       if (!open && !props.disabled) {
         focus();
       }
-      if (open && !props.disabled) {
-        calendar.current?.focus();
-      }
     },
     // Focus function keeps changing, so we need to skip it in the deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -418,6 +415,15 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     refs: [triggerWrapperRef, popupRef],
     disabled: !open,
   });
+
+  // When the popup is opened, focus should go to the calendar.
+  // In v8 this was done by focusing after the callout was positioned, but in v9 this can be simulated by using a
+  // useEffect hook.
+  React.useEffect(() => {
+    if (open && !props.disabled && calendar.current) {
+      calendar.current.focus();
+    }
+  }, [disableAutoFocus, open, props.disabled]);
 
   const calendarShorthand = resolveShorthand(props.calendar, {
     required: true,
