@@ -4,14 +4,17 @@
 import { createElement } from '@fluentui/react-jsx-runtime';
 
 import { getSlotsNext } from '@fluentui/react-utilities';
-import type { TagButtonState, TagButtonSlots, TagButtonContextValues } from './TagButton.types';
+import type { InteractionTagState, InteractionTagSlots, InteractionTagContextValues } from './InteractionTag.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 
 /**
- * Render the final JSX of TagButton
+ * Render the final JSX of InteractionTag
  */
-export const renderTagButton_unstable = (state: TagButtonState, contextValues: TagButtonContextValues) => {
-  const { slots, slotProps } = getSlotsNext<TagButtonSlots>(state);
+export const renderInteractionTag_unstable = (
+  state: InteractionTagState,
+  contextValues: InteractionTagContextValues,
+) => {
+  const { slots, slotProps } = getSlotsNext<InteractionTagSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { TagButton, TagButtonProps } from '@fluentui/react-tags';
+import { InteractionTag, InteractionTagProps } from '@fluentui/react-tags';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-components';
 
 // TODO I added many examples here for easier implementation. This story will be simplified to keep only the default example
-export const Default = (props: Partial<TagButtonProps>) => (
+export const Default = (props: Partial<InteractionTagProps>) => (
   <div style={{ display: 'flex', columnGap: 28 }}>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
-      <TagButton
+      <InteractionTag
         media={
           <Avatar
             {...{
@@ -24,8 +24,8 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         media={
           <Avatar
             {...{
@@ -41,8 +41,8 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         media={
           <Avatar
             {...{
@@ -57,8 +57,8 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         icon={<Calendar3Day20Regular />}
         secondaryText="Secondary text"
         dismissible={true}
@@ -66,17 +66,17 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
+      </InteractionTag>
+      <InteractionTag icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
         Primary text
-      </TagButton>
-      <TagButton icon={<Calendar3Day20Regular />} {...props}>
+      </InteractionTag>
+      <InteractionTag icon={<Calendar3Day20Regular />} {...props}>
         Primary text
-      </TagButton>
-      <TagButton {...props}>Primary text</TagButton>
+      </InteractionTag>
+      <InteractionTag {...props}>Primary text</InteractionTag>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 28 }}>
-      <TagButton
+      <InteractionTag
         shape="circular"
         media={
           <Avatar
@@ -94,8 +94,8 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         shape="circular"
         media={
           <Avatar
@@ -112,8 +112,8 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         shape="circular"
         media={
           <Avatar
@@ -129,8 +129,8 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         shape="circular"
         icon={<Calendar3Day20Regular />}
         secondaryText="Secondary text"
@@ -139,16 +139,16 @@ export const Default = (props: Partial<TagButtonProps>) => (
         {...props}
       >
         Primary text
-      </TagButton>
-      <TagButton shape="circular" icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
+      </InteractionTag>
+      <InteractionTag shape="circular" icon={<Calendar3Day20Regular />} dismissible={true} {...props}>
         Primary text
-      </TagButton>
-      <TagButton shape="circular" icon={<Calendar3Day20Regular />} {...props}>
+      </InteractionTag>
+      <InteractionTag shape="circular" icon={<Calendar3Day20Regular />} {...props}>
         Primary text
-      </TagButton>
-      <TagButton shape="circular" {...props}>
+      </InteractionTag>
+      <InteractionTag shape="circular" {...props}>
         Primary text
-      </TagButton>
+      </InteractionTag>
     </div>
   </div>
 );

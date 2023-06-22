@@ -1,4 +1,4 @@
-import { TagButton } from './TagButton';
+import { InteractionTag } from './InteractionTag';
 import { isConformant } from '../../testing/isConformant';
 
 const requiredProps = {
@@ -9,10 +9,10 @@ const requiredProps = {
   dismissible: true,
 };
 
-describe('TagButton', () => {
+describe('InteractionTag', () => {
   isConformant({
-    Component: TagButton,
-    displayName: 'TagButton',
+    Component: InteractionTag,
+    displayName: 'InteractionTag',
     requiredProps,
   });
 });

@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TagButtonSlots, TagButtonState } from './TagButton.types';
+import type { InteractionTagSlots, InteractionTagState } from './InteractionTag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -10,14 +10,14 @@ import {
   useSecondaryTextStyles,
 } from '../Tag/useTagStyles.styles';
 
-export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
-  root: 'fui-TagButton',
-  content: 'fui-TagButton__content',
-  media: 'fui-TagButton__media',
-  icon: 'fui-TagButton__icon',
-  primaryText: 'fui-TagButton__primaryText',
-  secondaryText: 'fui-TagButton__secondaryText',
-  dismissButton: 'fui-TagButton__dismissButton',
+export const interactionTagClassNames: SlotClassNames<InteractionTagSlots> = {
+  root: 'fui-InteractionTag',
+  content: 'fui-InteractionTag__content',
+  media: 'fui-InteractionTag__media',
+  icon: 'fui-InteractionTag__icon',
+  primaryText: 'fui-InteractionTag__primaryText',
+  secondaryText: 'fui-InteractionTag__secondaryText',
+  dismissButton: 'fui-InteractionTag__dismissButton',
 };
 
 const mediumIconSize = '20px';
@@ -104,7 +104,7 @@ const useContentButtonStyles = makeStyles({
   },
 });
 /**
- * Styles for content slot when TagButton is without leading media/icon
+ * Styles for content slot when InteractionTag is without leading media/icon
  */
 const useContentButtonWithoutMediaStyles = makeStyles({
   medium: {
@@ -118,7 +118,7 @@ const useContentButtonWithoutMediaStyles = makeStyles({
   },
 });
 /**
- * Styles for content slot when TagButton has dismiss button
+ * Styles for content slot when InteractionTag has dismiss button
  */
 const useDismissibleContentButtonStyles = makeStyles({
   base: createCustomFocusIndicatorStyle({
@@ -194,9 +194,9 @@ const useDismissButtonStyles = makeStyles({
 });
 
 /**
- * Apply styling to the TagButton slots based on the state
+ * Apply styling to the InteractionTag slots based on the state
  */
-export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonState => {
+export const useInteractionTagStyles_unstable = (state: InteractionTagState): InteractionTagState => {
   const rootStyles = useRootStyles();
 
   const contentButtonStyles = useContentButtonStyles();
@@ -212,7 +212,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   const { shape, size } = state;
 
   state.root.className = mergeClasses(
-    tagButtonClassNames.root,
+    interactionTagClassNames.root,
     rootStyles.base,
     rootStyles[shape],
     rootStyles[size],
@@ -221,7 +221,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
 
   if (state.content) {
     state.content.className = mergeClasses(
-      tagButtonClassNames.content,
+      interactionTagClassNames.content,
 
       contentButtonStyles.base,
       contentButtonStyles[shape],
@@ -237,7 +237,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
 
   if (state.media) {
     state.media.className = mergeClasses(
-      tagButtonClassNames.media,
+      interactionTagClassNames.media,
       mediaStyles.base,
       mediaStyles[size],
       state.media.className,
@@ -245,7 +245,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   }
   if (state.icon) {
     state.icon.className = mergeClasses(
-      tagButtonClassNames.icon,
+      interactionTagClassNames.icon,
       iconStyles.base,
       iconStyles[size],
       state.icon.className,
@@ -253,7 +253,7 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
-      tagButtonClassNames.primaryText,
+      interactionTagClassNames.primaryText,
 
       primaryTextStyles.base,
       primaryTextStyles[size],
@@ -265,14 +265,14 @@ export const useTagButtonStyles_unstable = (state: TagButtonState): TagButtonSta
   }
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
-      tagButtonClassNames.secondaryText,
+      interactionTagClassNames.secondaryText,
       secondaryTextStyles.base,
       state.secondaryText.className,
     );
   }
   if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
-      tagButtonClassNames.dismissButton,
+      interactionTagClassNames.dismissButton,
       dismissButtonStyles.base,
       dismissButtonStyles[shape],
       dismissButtonStyles[size],
