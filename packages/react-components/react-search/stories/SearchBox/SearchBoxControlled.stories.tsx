@@ -1,21 +1,18 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { makeStyles, shorthands, useId, Label } from '@fluentui/react-components';
+import { Field, makeStyles } from '@fluentui/react-components';
 import type { SearchBoxProps } from '@fluentui/react-search';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },
 });
 
 export const Controlled = () => {
-  const searchBoxId = useId('searchBox');
   const [value, setValue] = React.useState('initial value');
   const styles = useStyles();
 
@@ -27,8 +24,9 @@ export const Controlled = () => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={searchBoxId}>Controlled SearchBox limiting the value to 20 characters</Label>
-      <SearchBox value={value} onChange={onChange} id={searchBoxId} />
+      <Field label="Controlled SearchBox limiting the value to 20 characters">
+        <SearchBox value={value} onChange={onChange} />
+      </Field>
     </div>
   );
 };

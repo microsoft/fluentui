@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ArgTypes } from '@storybook/api';
 import { SearchBox } from '@fluentui/react-search';
-import { makeStyles, shorthands, useId, Label } from '@fluentui/react-components';
+import { Field, makeStyles, useId } from '@fluentui/react-components';
 import type { SearchBoxProps } from '@fluentui/react-search';
 
 const useStyles = makeStyles({
@@ -9,8 +9,6 @@ const useStyles = makeStyles({
     // Stack the label above the field
     display: 'flex',
     flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },
@@ -22,10 +20,9 @@ export const Default = (props: SearchBoxProps) => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={searchBoxId} size={props.size} disabled={props.disabled}>
-        Sample SearchBox
-      </Label>
-      <SearchBox id={searchBoxId} {...props} />
+      <Field label="Sample SearchBox">
+        <SearchBox id={searchBoxId} {...props} />
+      </Field>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { makeStyles, useId, Label } from '@fluentui/react-components';
+import { Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -12,13 +12,13 @@ const useStyles = makeStyles({
 });
 
 export const Placeholder = () => {
-  const searchBoxId = useId('searchBox-with-placeholder');
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={searchBoxId}>SearchBox with a placeholder</Label>
-      <SearchBox placeholder="This is a placeholder" id={searchBoxId} />
+      <Field label="SearchBox with a placeholder">
+        <SearchBox placeholder="This is a placeholder" />
+      </Field>
     </div>
   );
 };

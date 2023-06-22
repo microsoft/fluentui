@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { makeStyles, mergeClasses, shorthands, tokens, useId, Label } from '@fluentui/react-components';
+import { Field, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
@@ -8,53 +8,49 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     maxWidth: '490px',
   },
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    ...shorthands.padding(tokens.spacingHorizontalMNudge),
-  },
   filledLighter: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+  },
+  filledLighterLabel: {
+    color: tokens.colorNeutralForegroundInverted2,
   },
   filledDarker: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+  },
+  filledDarkerLabel: {
+    color: tokens.colorNeutralForegroundInverted2,
+  },
+  fieldWrapper: {
+    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
   },
 });
 
 export const Appearance = () => {
-  const outlineId = useId('searchBox-outline');
-  const underlineId = useId('searchBox-underline');
-  const filledLighterId = useId('searchBox-filledLighter');
-  const filledDarkerId = useId('searchBox-filledDarker');
   const styles = useStyles();
-
   return (
     <div className={styles.base}>
-      <div className={styles.field}>
-        <Label htmlFor={outlineId}>Outline appearance (default)</Label>
-        <SearchBox appearance="outline" id={outlineId} />
+      <div className={styles.fieldWrapper}>
+        <Field label="Outline appearance (default)">
+          <SearchBox appearance="outline" />
+        </Field>
       </div>
 
-      <div className={styles.field}>
-        <Label htmlFor={underlineId}>Underline appearance</Label>
-        <SearchBox appearance="underline" id={underlineId} />
+      <div className={styles.fieldWrapper}>
+        <Field label="Underline appearance">
+          <SearchBox appearance="underline" />
+        </Field>
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={filledLighterId}>Filled lighter appearance</Label>
-        <SearchBox appearance="filled-lighter" id={filledLighterId} />
+      <div className={mergeClasses(styles.fieldWrapper, styles.filledLighter)}>
+        <Field label={{ children: 'Filled lighter appearance', className: styles.filledLighterLabel }}>
+          <SearchBox appearance="filled-lighter" />
+        </Field>
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
-        <SearchBox appearance="filled-darker" id={filledDarkerId} />
+      <div className={mergeClasses(styles.fieldWrapper, styles.filledDarker)}>
+        <Field label={{ children: 'Filled darker appearance', className: styles.filledDarkerLabel }}>
+          <SearchBox appearance="filled-darker" />
+        </Field>
       </div>
     </div>
   );
