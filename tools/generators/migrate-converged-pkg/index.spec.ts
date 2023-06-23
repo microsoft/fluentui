@@ -438,22 +438,21 @@ describe('migrate-converged-pkg generator', () => {
          * @type {import('@jest/types').Config.InitialOptions}
          */
         module.exports = {
-          displayName: 'react-dummy',
-          preset: '../../../jest.preset.js',
-          globals: {
-            'ts-jest': {
-              tsconfig: '<rootDir>/tsconfig.spec.json',
-              isolatedModules: true,
-            },
-          },
-          transform: {
-            '^.+\\\\\\\\.tsx?$': 'ts-jest',
-          },
-          coverageDirectory: './coverage',
-          setupFilesAfterEnv: ['./config/tests.js'],
-          snapshotSerializers: ['@griffel/jest-serializer'],
-        };
-        "
+        displayName: 'react-dummy',
+        preset: '../../../jest.preset.js',
+        transform: {
+        '^.+\\\\\\\\.tsx?$': [
+        'ts-jest',
+        {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        isolatedModules: true,
+        }
+        ],
+        },
+        coverageDirectory: './coverage',
+        setupFilesAfterEnv: ['./config/tests.js'],
+        snapshotSerializers: ['@griffel/jest-serializer'],
+        };"
       `);
     });
 
