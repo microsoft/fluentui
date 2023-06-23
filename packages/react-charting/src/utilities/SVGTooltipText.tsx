@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/react/lib/Tooltip';
 import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
 
-interface ITooltipTextProps {
+interface ISVGTooltipTextProps {
   /**
    * Number of milliseconds to delay closing the tooltip, so that the user has time to hover over
    * the tooltip and interact with it. Hovering over the tooltip will count as hovering over the
@@ -41,15 +41,26 @@ interface ITooltipTextProps {
    */
   maxHeight?: number;
 
-  /** */
+  /**
+   * Function to wrap text within specified width and height
+   * and return a boolean value indicating whether the text overflowed
+   */
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
 }
 
-interface ITooltipTextState {
+interface ISVGTooltipTextState {
   isTooltipVisible: boolean;
+  isOverflowing: boolean;
 }
 
-export class TooltipText extends React.Component<ITooltipTextProps, ITooltipTextState> implements ITooltipHost {
+/**
+ * Component to render an SVG text element with an optional tooltip.
+ * The tooltip appears on hovering and focusing the element when its content overflows.
+ */
+export class SVGTooltipText
+  extends React.Component<ISVGTooltipTextProps, ISVGTooltipTextState>
+  implements ITooltipHost
+{
   public static defaultProps = {
     delay: TooltipDelay.medium,
   };
@@ -64,13 +75,13 @@ export class TooltipText extends React.Component<ITooltipTextProps, ITooltipText
   private _openTimerId: number;
   private _tooltipHostId = getId('tooltip-host');
   private _ignoreNextFocusEvent: boolean;
-  private _textOverflow = false;
 
-  constructor(props: ITooltipTextProps) {
+  constructor(props: ISVGTooltipTextProps) {
     super(props);
 
     this.state = {
       isTooltipVisible: false,
+      isOverflowing: false,
     };
 
     this._async = new Async(this);
@@ -106,6 +117,7 @@ export class TooltipText extends React.Component<ITooltipTextProps, ITooltipText
           onMouseEnter={this._onTooltipMouseEnter}
           onMouseLeave={this._onTooltipMouseLeave}
           onKeyDown={this._onTooltipKeyDown}
+          data-is-focusable={this.state.isOverflowing}
         >
           {content}
         </text>
@@ -118,15 +130,15 @@ export class TooltipText extends React.Component<ITooltipTextProps, ITooltipText
     this._wrapContent();
   }
 
-  public componentDidUpdate(prevProps: Readonly<ITooltipTextProps>): void {
+  public componentDidUpdate(prevProps: Readonly<ISVGTooltipTextProps>): void {
     if (this.props.maxWidth !== prevProps.maxWidth || this.props.maxHeight !== prevProps.maxHeight) {
       this._wrapContent();
     }
   }
 
   public componentWillUnmount(): void {
-    if (TooltipText._currentVisibleTooltip && TooltipText._currentVisibleTooltip === this) {
-      TooltipText._currentVisibleTooltip = undefined;
+    if (SVGTooltipText._currentVisibleTooltip && SVGTooltipText._currentVisibleTooltip === this) {
+      SVGTooltipText._currentVisibleTooltip = undefined;
     }
 
     this._async.dispose();
@@ -175,12 +187,12 @@ export class TooltipText extends React.Component<ITooltipTextProps, ITooltipText
   private _onTooltipMouseEnter = (ev: any): void => {
     const { delay } = this.props;
 
-    if (TooltipText._currentVisibleTooltip && TooltipText._currentVisibleTooltip !== this) {
-      TooltipText._currentVisibleTooltip.dismiss();
+    if (SVGTooltipText._currentVisibleTooltip && SVGTooltipText._currentVisibleTooltip !== this) {
+      SVGTooltipText._currentVisibleTooltip.dismiss();
     }
-    TooltipText._currentVisibleTooltip = this;
+    SVGTooltipText._currentVisibleTooltip = this;
 
-    if (!this._textOverflow) {
+    if (!this.state.isOverflowing) {
       return;
     }
 
@@ -218,8 +230,8 @@ export class TooltipText extends React.Component<ITooltipTextProps, ITooltipText
       this._toggleTooltip(false);
     }
 
-    if (TooltipText._currentVisibleTooltip === this) {
-      TooltipText._currentVisibleTooltip = undefined;
+    if (SVGTooltipText._currentVisibleTooltip === this) {
+      SVGTooltipText._currentVisibleTooltip = undefined;
     }
   };
 
@@ -264,8 +276,14 @@ export class TooltipText extends React.Component<ITooltipTextProps, ITooltipText
 
   private _wrapContent = () => {
     const { content, wrapContent, maxWidth = Number.POSITIVE_INFINITY, maxHeight } = this.props;
-    if (content) {
-      this._textOverflow = wrapContent ? wrapContent(content, this._tooltipHostId, maxWidth, maxHeight) : false;
+
+    let isOverflowing = false;
+    if (content && wrapContent && wrapContent(content, this._tooltipHostId, maxWidth, maxHeight)) {
+      isOverflowing = true;
+    }
+
+    if (this.state.isOverflowing !== isOverflowing) {
+      this.setState({ isOverflowing });
     }
   };
 }

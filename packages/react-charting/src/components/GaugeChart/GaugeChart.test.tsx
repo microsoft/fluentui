@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { GaugeChart, GaugeValueFormat, IGaugeChartProps } from './index';
-import { ARC_PADDING, BREAKPOINTS, FONT_SIZES, GaugeChartBase, IGaugeChartState } from './GaugeChart.base';
+import { ARC_PADDING, GaugeChartBase, IGaugeChartState, BREAKPOINTS } from './GaugeChart.base';
 import { resetIds, setRTL } from '../../Utilities';
 import { DataVizPalette } from '../../utilities/colors';
 import toJson from 'enzyme-to-json';
@@ -9,7 +9,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 
-// Wrapper of the DonutChart to be tested.
+// Wrapper of the GaugeChart to be tested.
 let wrapper: ReactWrapper<IGaugeChartProps, IGaugeChartState, GaugeChartBase> | undefined;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SVGElement: any = window.SVGElement;
@@ -50,8 +50,8 @@ describe('GaugeChart - snapshot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should not render min and max values of the gauge when the hideLimits prop is true', () => {
-    wrapper = mount(<GaugeChart segments={segments} chartValue={25} hideLimits />);
+  it('should not render min and max values of the gauge when the hideMinMax prop is true', () => {
+    wrapper = mount(<GaugeChart segments={segments} chartValue={25} hideMinMax />);
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
@@ -90,7 +90,7 @@ describe('GaugeChart - snapshot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should render a placeholder color for the segment with no color', () => {
+  it('should render a color from DataVizPalette for the segment with no color', () => {
     wrapper = mount(
       <GaugeChart
         segments={[
@@ -135,7 +135,7 @@ describe('GaugeChart - event listeners testing', () => {
 
     originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
     SVGElement.prototype.getComputedTextLength = () => {
-      return 10;
+      return 0;
     };
   });
 
@@ -185,7 +185,7 @@ describe('GaugeChart - event listeners testing', () => {
   it(`should show a callout when the mouse moves over the chart value and
   hide it when the mouse leaves the chart`, () => {
     const { container } = render(
-      <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
+      <GaugeChart segments={segments} chartValue={25} width={252} height={128} calloutProps={{ doNotLayer: true }} />,
     );
 
     const chartValue = screen.getByText('25%');
@@ -289,17 +289,22 @@ describe('GaugeChart - event listeners testing', () => {
   });
 
   it('should update the font size of the chart value when the chart resizes', () => {
-    SVGElement.prototype.getComputedTextLength = () => {
-      return 0;
-    };
-
     const { rerender } = render(<GaugeChart segments={segments} chartValue={25} />);
 
-    const bounds = [80, ...BREAKPOINTS.map(bp => bp * 2 + 32), 1000];
+    const bounds = [80, ...BREAKPOINTS.map(bp => bp.minRadius * 2 + 32), 1000];
     for (let i = 1; i < bounds.length; i++) {
       const width = Math.floor(Math.random() * (bounds[i] - bounds[i - 1]) + bounds[i - 1]);
-      rerender(<GaugeChart segments={segments} chartValue={25} hideLimits width={width} height={1000} />);
-      expect(screen.getByText('25%')).toHaveStyle(`font-size: ${i < 2 ? FONT_SIZES[0] : FONT_SIZES[i - 2]}px`);
+      rerender(<GaugeChart segments={segments} chartValue={25} hideMinMax width={width} height={1000} />);
+      expect(screen.getByText('25%')).toHaveStyle(
+        `font-size: ${i < 2 ? BREAKPOINTS[0].fontSize : BREAKPOINTS[i - 2].fontSize}px`,
+      );
     }
+  });
+
+  it('should not show a callout when the hideTooltip prop is true', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} hideTooltip />);
+
+    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
+    expect(container.querySelector('.ms-Callout')).toBeNull();
   });
 });

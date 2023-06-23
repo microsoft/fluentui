@@ -16,7 +16,7 @@ export interface IGaugeChartSegment {
   size: number;
 
   /**
-   * Color of the segment. If not provided, a placeholder color will be used.
+   * Color of the segment
    */
   color?: string;
 
@@ -59,6 +59,7 @@ export interface IGaugeChartProps {
 
   /**
    * Minimum value of the gauge
+   * @defaultvalue 0
    */
   minValue?: number;
 
@@ -76,16 +77,16 @@ export interface IGaugeChartProps {
    * Hide the min and max values of the gauge
    * @defaultvalue false
    */
-  hideLimits?: boolean;
+  hideMinMax?: boolean;
 
   /**
    * Format of the chart value
    * @defaultvalue GaugeValueFormat.Percentage
    */
-  chartValueFormat?: GaugeValueFormat;
+  chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
 
   /**
-   * Decides wether to show/hide legends
+   * Decides whether to show/hide legends
    * @defaultvalue false
    */
   hideLegend?: boolean;
@@ -117,7 +118,7 @@ export interface IGaugeChartProps {
   styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
 
   /**
-   * Prop to define the culture to localize the numbers and dates
+   * Defines the culture to localize the numbers and dates
    */
   culture?: string;
 
@@ -141,12 +142,12 @@ export interface IGaugeChartStyleProps {
   /**
    * Width of the chart
    */
-  width?: number;
+  chartWidth?: number;
 
   /**
    * Height of the chart
    */
-  height?: number;
+  chartHeight?: number;
 
   /**
    * Additional CSS class(es) to apply to the chart
@@ -171,7 +172,7 @@ export interface IGaugeChartStyles {
   root?: IStyle;
 
   /**
-   * Styles for the chart container
+   * Styles for the chart
    */
   chart?: IStyle;
 
@@ -204,6 +205,11 @@ export interface IGaugeChartStyles {
    * Styles for the segments
    */
   segment?: IStyle;
+
+  /**
+   * Styles for the legends container
+   */
+  legendsContainer?: IStyle;
 
   /**
    * Styles for callout root-content

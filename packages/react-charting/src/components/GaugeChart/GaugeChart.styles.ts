@@ -2,15 +2,23 @@ import { FontSizes, FontWeights, HighContrastSelector, HighContrastSelectorBlack
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const { theme, chartValueSize, width, height, className, lineColor, toDrawShape } = props;
+  const { theme, chartValueSize, chartWidth, chartHeight, className, lineColor, toDrawShape } = props;
 
   return {
-    root: [theme.fonts.medium, 'ms-GaugeChart', { width }, className],
+    root: [
+      theme.fonts.medium,
+      'ms-GaugeChart',
+      {
+        width: '100%',
+        height: '100%',
+      },
+      className,
+    ],
 
     chart: {
       display: 'block',
-      width,
-      height,
+      width: chartWidth,
+      height: chartHeight,
     },
 
     limits: {
@@ -44,6 +52,10 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     segment: {
       outline: 'none',
       stroke: theme.semanticColors.focusBorder,
+    },
+
+    legendsContainer: {
+      width: chartWidth,
     },
 
     calloutContentRoot: [

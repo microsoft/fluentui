@@ -15,13 +15,14 @@ import {
   formatValueWithSIPrefix,
   getAccessibleDataObject,
   getColorFromToken,
+  getNextColor,
   pointTypes,
 } from '../../utilities/index';
 import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
-import { TooltipText } from '../../utilities/TooltipText';
+import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
 
 const GAUGE_MARGIN = 16;
@@ -31,9 +32,14 @@ const LABEL_OFFSET = 4;
 const TITLE_OFFSET = 11;
 const EXTRA_NEEDLE_LENGTH = 4;
 export const ARC_PADDING = 2;
-export const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
-const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
-export const FONT_SIZES = [20, 24, 32, 32, 40, 40];
+export const BREAKPOINTS = [
+  { minRadius: 52, arcWidth: 12, fontSize: 20 },
+  { minRadius: 70, arcWidth: 16, fontSize: 24 },
+  { minRadius: 88, arcWidth: 20, fontSize: 32 },
+  { minRadius: 106, arcWidth: 24, fontSize: 32 },
+  { minRadius: 124, arcWidth: 28, fontSize: 40 },
+  { minRadius: 142, arcWidth: 32, fontSize: 40 },
+];
 
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
@@ -43,12 +49,14 @@ interface IYValue extends Omit<IYValueHover, 'y'> {
 export interface IGaugeChartState {
   hoveredLegend: string;
   selectedLegend: string;
-  focusedElement: string;
+  focusedElement?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   calloutTarget: any;
   isCalloutVisible: boolean;
   hoverXValue: string | number;
   hoverYValues: IYValue[];
+  width: number;
+  height: number;
 }
 
 export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> {
@@ -60,9 +68,15 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _segments: IGaugeChartSegment[];
   private _sweepFraction: number[];
   private _calloutAnchor: string;
+  private _rootElem: HTMLDivElement | null;
+  private _margins: { left: number; right: number; top: number; bottom: number };
+  private _legendsHeight: number;
 
   constructor(props: IGaugeChartProps) {
     super(props);
+
+    this._margins = this._getMargins();
+    this._legendsHeight = !this.props.hideLegend ? 24 : 0;
 
     this.state = {
       hoveredLegend: '',
@@ -72,27 +86,37 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       isCalloutVisible: false,
       hoverXValue: '',
       hoverYValues: [],
+      width: 140 + this._margins.left + this._margins.right,
+      height: 70 + this._margins.top + this._margins.bottom + this._legendsHeight,
     };
 
     this._isRTL = getRTL();
     this._calloutAnchor = '';
   }
 
-  public render(): React.ReactNode {
-    const margins = this._getMargins();
-    const legendsHeight = !this.props.hideLegend ? 24 : 0;
+  public componentDidMount(): void {
+    if (this._rootElem) {
+      this.setState({
+        width: this._rootElem.clientWidth,
+        height: this._rootElem.clientHeight,
+      });
+    }
+  }
 
-    const width = this.props.width || 140 + margins.left + margins.right;
-    const height = this.props.height || 70 + margins.top + margins.bottom + legendsHeight;
+  public render(): React.ReactNode {
+    this._margins = this._getMargins();
+    this._legendsHeight = !this.props.hideLegend ? 24 : 0;
+
+    const width = this.props.width || this.state.width;
+    const height = this.props.height || this.state.height;
 
     this._outerRadius = Math.min(
-      (width - (margins.left + margins.right)) / 2,
-      height - (margins.top + margins.bottom + legendsHeight),
+      (width - (this._margins.left + this._margins.right)) / 2,
+      height - (this._margins.top + this._margins.bottom + this._legendsHeight),
     );
 
-    const breakpointIndex = this._getBreakpointIndex();
-    this._innerRadius = this._outerRadius - ARC_WIDTHS[breakpointIndex];
-    const chartValueSize = FONT_SIZES[breakpointIndex];
+    const { arcWidth, chartValueSize } = this._getStylesBasedOnBreakpoint();
+    this._innerRadius = this._outerRadius - arcWidth;
 
     const { minValue, maxValue, segments, arcs } = this._initProps();
     this._minValue = minValue;
@@ -102,13 +126,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       className: this.props.className,
-      width,
-      height: height - legendsHeight,
+      chartWidth: width,
+      chartHeight: height - this._legendsHeight,
       chartValueSize,
     });
 
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
@@ -116,7 +140,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
             onMouseLeave={this._handleMouseOut}
           >
-            <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendsHeight)})`}>
+            <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (
                 <text
                   x={0}
@@ -127,7 +151,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   {this.props.chartTitle}
                 </text>
               )}
-              {!this.props.hideLimits && (
+              {!this.props.hideMinMax && (
                 <>
                   <text
                     x={(this._isRTL ? 1 : -1) * (this._outerRadius + LABEL_OFFSET)}
@@ -187,9 +211,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                 onMouseEnter={e => this._handleMouseOver(e, 'Chart value')}
                 onMouseMove={e => this._handleMouseOver(e, 'Chart value')}
               >
-                <TooltipText
+                <SVGTooltipText
                   content={
-                    this.props.chartValueFormat === GaugeValueFormat.Fraction
+                    typeof this.props.chartValueFormat === 'function'
+                      ? this.props.chartValueFormat(this._sweepFraction)
+                      : this.props.chartValueFormat === GaugeValueFormat.Fraction
                       ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
                       : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
                   }
@@ -209,7 +235,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                 />
               </g>
               {this.props.sublabel && (
-                <TooltipText
+                <SVGTooltipText
                   content={this.props.sublabel}
                   textProps={{
                     x: 0,
@@ -248,23 +274,29 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   }
 
   private _getMargins = () => {
-    const { hideLimits, chartTitle, sublabel } = this.props;
+    const { hideMinMax, chartTitle, sublabel } = this.props;
 
     return {
-      left: (!hideLimits ? LABEL_OFFSET + LABEL_WIDTH : 0) + GAUGE_MARGIN,
-      right: (!hideLimits ? LABEL_OFFSET + LABEL_WIDTH : 0) + GAUGE_MARGIN,
+      left: (!hideMinMax ? LABEL_OFFSET + LABEL_WIDTH : 0) + GAUGE_MARGIN,
+      right: (!hideMinMax ? LABEL_OFFSET + LABEL_WIDTH : 0) + GAUGE_MARGIN,
       top: (chartTitle ? TITLE_OFFSET + LABEL_HEIGHT : EXTRA_NEEDLE_LENGTH / 2) + GAUGE_MARGIN,
       bottom: (sublabel ? LABEL_OFFSET + LABEL_HEIGHT : 0) + GAUGE_MARGIN,
     };
   };
 
-  private _getBreakpointIndex = () => {
+  private _getStylesBasedOnBreakpoint = () => {
     for (let index = BREAKPOINTS.length - 1; index >= 0; index -= 1) {
-      if (this._outerRadius >= BREAKPOINTS[index]) {
-        return index;
+      if (this._outerRadius >= BREAKPOINTS[index].minRadius) {
+        return {
+          arcWidth: BREAKPOINTS[index].arcWidth,
+          chartValueSize: BREAKPOINTS[index].fontSize,
+        };
       }
     }
-    return 0;
+    return {
+      arcWidth: BREAKPOINTS[0].arcWidth,
+      chartValueSize: BREAKPOINTS[0].fontSize,
+    };
   };
 
   private _initProps = () => {
@@ -272,12 +304,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     const segments = Array.from(this.props.segments);
 
     let total = minValue;
-    segments.forEach(segment => {
+    segments.forEach((segment, index) => {
       total += segment.size;
       segment.color =
         typeof segment.color !== 'undefined'
           ? getColorFromToken(segment.color, theme!.isInverted)
-          : theme!.palette.neutralLight;
+          : getNextColor(index, 0, theme!.isInverted);
     });
     if (typeof maxValue !== 'undefined' && total < maxValue) {
       segments.push({
@@ -372,7 +404,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       };
     });
 
-    return <Legends legends={legends} centerLegends {...this.props.legendProps} />;
+    return (
+      <div className={this._classNames.legendsContainer}>
+        <Legends legends={legends} centerLegends {...this.props.legendProps} />
+      </div>
+    );
   };
 
   /**
@@ -395,94 +431,83 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   private _handleFocus = (focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) => {
+    this._showCallout(focusEvent.target, focusedElement, true);
+  };
+
+  private _handleBlur = () => {
+    this._hideCallout(true);
+  };
+
+  private _handleMouseOver = (mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string) => {
+    this._showCallout(mouseEvent.target, hoveredElement, false);
+  };
+
+  private _handleMouseOut = () => {
+    this._hideCallout(false);
+  };
+
+  private _handleCalloutDismiss = () => {
+    this._hideCallout(false);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _showCallout = (target: any, anchor: string, isFocusEvent: boolean) => {
+    if (this._calloutAnchor === anchor) {
+      return;
+    }
+
+    this._calloutAnchor = anchor;
     const hoverXValue: string =
       'Current value is ' +
       (this.props.chartValueFormat === GaugeValueFormat.Fraction
         ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
         : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`);
-    let total = this._minValue - 1;
-    const hoverYValues: IYValue[] = this._segments.map(segment => {
+    let total = this._minValue;
+    const hoverYValues: IYValue[] = this._segments.map((segment, index) => {
       const yValue: IYValue = {
         legend: segment.legend,
-        y: `${total + 1} - ${total + segment.size}`,
+        y: `${total + (index > 0 ? 1 : 0)} - ${total + segment.size}`,
         color: segment.color,
       };
       total += segment.size;
       return yValue;
     });
     this.setState({
-      focusedElement,
-      calloutTarget: focusEvent.target,
+      calloutTarget: target,
       isCalloutVisible: true,
       hoverXValue,
       hoverYValues,
+      ...(isFocusEvent ? { focusedElement: anchor } : {}),
     });
   };
 
-  private _handleBlur = () => {
+  private _hideCallout = (isBlurEvent?: boolean) => {
+    this._calloutAnchor = '';
     this.setState({
-      focusedElement: '',
       calloutTarget: null,
       isCalloutVisible: false,
       hoverXValue: '',
       hoverYValues: [],
+      ...(isBlurEvent ? { focusedElement: '' } : {}),
     });
-  };
-
-  private _handleCalloutDismiss = () => {
-    this.setState({ isCalloutVisible: false });
-  };
-
-  private _handleMouseOver = (mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string) => {
-    if (this._calloutAnchor === hoveredElement) {
-      return;
-    }
-
-    this._calloutAnchor = hoveredElement;
-    const hoverXValue: string =
-      'Current value is ' +
-      (this.props.chartValueFormat === GaugeValueFormat.Fraction
-        ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
-        : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`);
-    let total = this._minValue - 1;
-    const hoverYValues: IYValue[] = this._segments.map(segment => {
-      const yValue: IYValue = {
-        legend: segment.legend,
-        y: `${total + 1} - ${total + segment.size}`,
-        color: segment.color,
-      };
-      total += segment.size;
-      return yValue;
-    });
-    this.setState({
-      calloutTarget: mouseEvent.target,
-      isCalloutVisible: true,
-      hoverXValue,
-      hoverYValues,
-    });
-  };
-
-  private _handleMouseOut = () => {
-    this._calloutAnchor = '';
-    this.setState({ calloutTarget: null, isCalloutVisible: false, hoverXValue: '', hoverYValues: [] });
   };
 
   private _wrapContent = (content: string, id: string, maxWidth: number) => {
-    const text = d3Select<SVGTextElement, {}>(`#${id}`);
-    text.text(content);
-    if (!text.node()) {
+    const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
+    textElement.text(content);
+    if (!textElement.node()) {
       return false;
     }
 
-    let textOverflow = false;
-    let textLength = text.node()!.getComputedTextLength();
+    let isOverflowing = false;
+    let textLength = textElement.node()!.getComputedTextLength();
     while (textLength > maxWidth && content.length > 0) {
       content = content.slice(0, -1);
-      text.text(content + '...');
-      textOverflow = true;
-      textLength = text.node()!.getComputedTextLength();
+      textElement.text(content + '...');
+      isOverflowing = true;
+      textLength = textElement.node()!.getComputedTextLength();
     }
-    return textOverflow;
+    return isOverflowing;
   };
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method
