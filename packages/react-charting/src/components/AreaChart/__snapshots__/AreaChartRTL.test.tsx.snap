@@ -1,0 +1,497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Vertical bar chart rendering Should re-render the vertical bar chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_AreaChart_empty5"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should re-render the vertical bar chart with data 2`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_7"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone8"
+    >
+      <svg
+        aria-label="Area chart basic example"
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_7"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_7"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <rect
+            fill="transparent"
+            height="-20"
+            id="rectangle3"
+            width="-20"
+          />
+        </g>
+        <g>
+          <path
+            d="M40,-15.75C38.57142857142857,-14.375,37.142857142857146,-13.000000000000002,35.714285714285715,-10.25C34.28571428571429,-7.5,32.85714285714286,-1.9999999999999991,31.428571428571434,0.75C30.000000000000004,3.5000000000000058,28.571428571428573,6.25,27.142857142857142,6.25C25.714285714285715,6.25,24.28571428571429,-1.8899999999999997,22.85714285714286,-4.749999999999998C21.42857142857143,-7.610000000000004,20,-7.4724999999999975,18.57142857142857,-10.910000000000002C17.14285714285714,-14.347500000000002,15.714285714285712,-25.375,14.285714285714283,-25.375C12.857142857142856,-25.375,11.428571428571427,20,10,20C8.571428571428573,20,7.142857142857146,17.25,5.714285714285719,11.75C4.285714285714288,6.249999999999987,2.8571428571428577,-32.25,1.428571428571427,-32.25C-1.7763568394002505e-15,-32.25,-1.4285714285714306,-2,-2.8571428571428594,-2C-4.2857142857142865,-2,-5.7142857142857135,-16.091,-7.142857142857141,-16.091C-8.57142857142857,-16.091,-9.999999999999998,-2,-11.428571428571427,-2C-12.857142857142858,-2,-14.285714285714286,-15.75,-15.714285714285717,-15.75C-17.142857142857146,-15.75,-18.571428571428573,-11.625,-20,-7.5"
+            fill="transparent"
+            id="0-line-areaChart_0"
+            opacity="1"
+            stroke="#0099BC"
+            stroke-width="3"
+          />
+          <path
+            d="M40,-15.75C38.57142857142857,-14.375,37.142857142857146,-13.000000000000002,35.714285714285715,-10.25C34.28571428571429,-7.5,32.85714285714286,-1.9999999999999991,31.428571428571434,0.75C30.000000000000004,3.5000000000000058,28.571428571428573,6.25,27.142857142857142,6.25C25.714285714285715,6.25,24.28571428571429,-1.8899999999999997,22.85714285714286,-4.749999999999998C21.42857142857143,-7.610000000000004,20,-7.4724999999999975,18.57142857142857,-10.910000000000002C17.14285714285714,-14.347500000000002,15.714285714285712,-25.375,14.285714285714283,-25.375C12.857142857142856,-25.375,11.428571428571427,20,10,20C8.571428571428573,20,7.142857142857146,17.25,5.714285714285719,11.75C4.285714285714288,6.249999999999987,2.8571428571428577,-32.25,1.428571428571427,-32.25C-1.7763568394002505e-15,-32.25,-1.4285714285714306,-2,-2.8571428571428594,-2C-4.2857142857142865,-2,-5.7142857142857135,-16.091,-7.142857142857141,-16.091C-8.57142857142857,-16.091,-9.999999999999998,-2,-11.428571428571427,-2C-12.857142857142858,-2,-14.285714285714286,-15.75,-15.714285714285717,-15.75C-17.142857142857146,-15.75,-18.571428571428573,-11.625,-20,-7.5L-20,-35C-18.571428571428573,-35,-17.142857142857146,-35,-15.714285714285717,-35C-14.285714285714286,-35,-12.857142857142858,-35,-11.428571428571427,-35C-9.999999999999998,-35,-8.57142857142857,-35,-7.142857142857141,-35C-5.7142857142857135,-35,-4.2857142857142865,-35,-2.8571428571428594,-35C-1.4285714285714306,-35,-1.7763568394002505e-15,-35,1.428571428571427,-35C2.8571428571428577,-35,4.285714285714288,-35,5.714285714285719,-35C7.142857142857146,-35,8.571428571428573,-35,10,-35C11.428571428571427,-35,12.857142857142856,-35,14.285714285714283,-35C15.714285714285712,-35,17.14285714285714,-35,18.57142857142857,-35C20,-35,21.42857142857143,-35,22.85714285714286,-35C24.28571428571429,-35,25.714285714285715,-35,27.142857142857142,-35C28.571428571428573,-35,30.000000000000004,-35,31.428571428571434,-35C32.85714285714286,-35,34.28571428571429,-35,35.714285714285715,-35C37.142857142857146,-35,38.57142857142857,-35,40,-35Z"
+            fill="#0099BC"
+            fill-opacity="0.7"
+            id="0-graph-areaChart_0"
+            opacity="1"
+          />
+          <g
+            clip-path="url(#clip)"
+            d="M40,-15.75C38.57142857142857,-14.375,37.142857142857146,-13.000000000000002,35.714285714285715,-10.25C34.28571428571429,-7.5,32.85714285714286,-1.9999999999999991,31.428571428571434,0.75C30.000000000000004,3.5000000000000058,28.571428571428573,6.25,27.142857142857142,6.25C25.714285714285715,6.25,24.28571428571429,-1.8899999999999997,22.85714285714286,-4.749999999999998C21.42857142857143,-7.610000000000004,20,-7.4724999999999975,18.57142857142857,-10.910000000000002C17.14285714285714,-14.347500000000002,15.714285714285712,-25.375,14.285714285714283,-25.375C12.857142857142856,-25.375,11.428571428571427,20,10,20C8.571428571428573,20,7.142857142857146,17.25,5.714285714285719,11.75C4.285714285714288,6.249999999999987,2.8571428571428577,-32.25,1.428571428571427,-32.25C-1.7763568394002505e-15,-32.25,-1.4285714285714306,-2,-2.8571428571428594,-2C-4.2857142857142865,-2,-5.7142857142857135,-16.091,-7.142857142857141,-16.091C-8.57142857142857,-16.091,-9.999999999999998,-2,-11.428571428571427,-2C-12.857142857142858,-2,-14.285714285714286,-15.75,-15.714285714285717,-15.75C-17.142857142857146,-15.75,-18.571428571428573,-11.625,-20,-7.5L-20,-35C-18.571428571428573,-35,-17.142857142857146,-35,-15.714285714285717,-35C-14.285714285714286,-35,-12.857142857142858,-35,-11.428571428571427,-35C-9.999999999999998,-35,-8.57142857142857,-35,-7.142857142857141,-35C-5.7142857142857135,-35,-4.2857142857142865,-35,-2.8571428571428594,-35C-1.4285714285714306,-35,-1.7763568394002505e-15,-35,1.428571428571427,-35C2.8571428571428577,-35,4.285714285714288,-35,5.714285714285719,-35C7.142857142857146,-35,8.571428571428573,-35,10,-35C11.428571428571427,-35,12.857142857142856,-35,14.285714285714283,-35C15.714285714285712,-35,17.14285714285714,-35,18.57142857142857,-35C20,-35,21.42857142857143,-35,22.85714285714286,-35C24.28571428571429,-35,25.714285714285715,-35,27.142857142857142,-35C28.571428571428573,-35,30.000000000000004,-35,31.428571428571434,-35C32.85714285714286,-35,34.28571428571429,-35,35.714285714285715,-35C37.142857142857146,-35,38.57142857142857,-35,40,-35Z"
+          >
+            <circle
+              aria-label="2018/01/01. legend1, 10%."
+              cx="40"
+              cy="-15.75"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_0"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="0"
+            />
+            <circle
+              aria-label="2018/01/15. legend1, 18%."
+              cx="35.714285714285715"
+              cy="-10.25"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_1"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/01/28. legend1, 24%."
+              cx="31.428571428571434"
+              cy="0.75"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_2"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/02/01. legend1, 25%."
+              cx="27.142857142857142"
+              cy="6.25"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_3"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/03/01. legend1, 15%."
+              cx="22.85714285714286"
+              cy="-4.749999999999998"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_4"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/03/15. legend1, 30%."
+              cx="18.57142857142857"
+              cy="-10.910000000000002"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_5"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/03/28. legend1, 18%."
+              cx="14.285714285714283"
+              cy="-25.375"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_6"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/04/04. legend1, 32%."
+              cx="10"
+              cy="20"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_7"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/04/15. legend1, 29%."
+              cx="5.714285714285719"
+              cy="11.75"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_8"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/05/05. legend1, 43%."
+              cx="1.428571428571427"
+              cy="-32.25"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_9"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/06/01. legend1, 45%."
+              cx="-2.8571428571428594"
+              cy="-2"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_10"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/01/15. legend1, 18%."
+              cx="-7.142857142857141"
+              cy="-16.091"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_11"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/04/30. legend1, 55%."
+              cx="-11.428571428571427"
+              cy="-2"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_12"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/05/04. legend1, 12%."
+              cx="-15.714285714285717"
+              cy="-15.75"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_13"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="2018/06/01. legend1, 45%."
+              cx="-20"
+              cy="-7.5"
+              data-is-focusable="true"
+              fill="#0099BC"
+              id="circle2_14"
+              r="0"
+              role="img"
+              stroke="#0099BC"
+              stroke-width="3"
+              tabindex="-1"
+            />
+          </g>
+          <line
+            id="verticalLine_1"
+            opacity="0.5"
+            stroke="#0099BC"
+            stroke-dasharray="5.5"
+            stroke-width="1"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="0"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone9"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="legend1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="1"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0099BC;
+                              border-color: #0099BC;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0099BC, #0099BC);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        legend1
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
