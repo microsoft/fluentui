@@ -451,12 +451,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _showCallout = (target: any, anchor: string, isFocusEvent: boolean) => {
-    if (this._calloutAnchor === anchor) {
+  private _showCallout = (target: any, legend: string, isFocusEvent: boolean) => {
+    if (this._calloutAnchor === legend) {
       return;
     }
 
-    this._calloutAnchor = anchor;
+    this._calloutAnchor = legend;
     const hoverXValue: string =
       'Current value is ' +
       (this.props.chartValueFormat === GaugeValueFormat.Fraction
@@ -474,10 +474,14 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
     this.setState({
       calloutTarget: target,
-      isCalloutVisible: true,
+      /** Show the callout if highlighted arc is hovered/focused and Hide it if unhighlighted arc is hovered/focused */
+      isCalloutVisible:
+        ['Needle', 'Chart value'].includes(legend) ||
+        this.state.selectedLegend === '' ||
+        this.state.selectedLegend === legend,
       hoverXValue,
       hoverYValues,
-      ...(isFocusEvent ? { focusedElement: anchor } : {}),
+      ...(isFocusEvent ? { focusedElement: legend } : {}),
     });
   };
 
