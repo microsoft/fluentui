@@ -137,6 +137,20 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public componentDidUpdate() {
+    const isChartEmpty: boolean = !(
+      (
+        this.props.data &&
+        this.props.data.lineChartData &&
+        this.props.data.lineChartData.length > 0 &&
+        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+      )
+      // if all the data sets have no data
+      // filtering all items which have no data and checking if the length of the filtered array is 0
+      // which means chart is not empty
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
     if (this.state.isShowCalloutPending) {
       this.setState({
         refSelected: `#${this._highlightedCircleId}`,
@@ -222,7 +236,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
     return (
       <div
-        id={getId('_AreaChart_')}
+        id={getId('_AreaChart_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
