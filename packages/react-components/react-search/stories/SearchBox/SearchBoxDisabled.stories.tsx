@@ -5,7 +5,7 @@ import { Field } from '@fluentui/react-components';
 export const Disabled = () => {
   return (
     <Field label="Disabled SearchBox">
-      <SearchBox defaultValue="disabled value" />
+      <SearchBox disabled defaultValue="disabled value" />
     </Field>
   );
 };

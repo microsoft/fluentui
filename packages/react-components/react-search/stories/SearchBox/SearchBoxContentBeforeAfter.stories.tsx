@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search';
-import { Field, makeStyles, shorthands, Text, tokens } from '@fluentui/react-components';
+import { Button, ButtonProps, Field, makeStyles, shorthands, Text, tokens } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -15,13 +15,17 @@ const useStyles = makeStyles({
   },
 });
 
+const MicButton: React.FC<ButtonProps> = props => {
+  return <Button {...props} appearance="transparent" icon={<MicRegular />} size="small" />;
+};
+
 export const ContentBeforeAfter = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
       <Field
         className={styles.fieldWrapper}
-        label="Full name"
+        label="Search by name"
         hint={
           <>
             A SearchBox with a custom icon in the <code>contentBefore</code> slot.
@@ -33,19 +37,19 @@ export const ContentBeforeAfter = () => {
 
       <Field
         className={styles.fieldWrapper}
-        label="First name"
+        label="Search by voice"
         hint={
           <>
-            A SearchBox with a custom icon in the <code>contentAfter</code> slot.
+            A SearchBox with a button in the <code>contentAfter</code> slot.
           </>
         }
       >
-        <SearchBox contentAfter={<MicRegular aria-label="Enter by voice" />} />
+        <SearchBox contentAfter={<MicButton aria-label="Search by voice" />} />
       </Field>
 
       <Field
         className={styles.fieldWrapper}
-        label="Amount to Pay"
+        label="Search with filter"
         hint={
           <>
             A SearchBox with a presentational value in the <code>contentBefore</code> slot and another presentational

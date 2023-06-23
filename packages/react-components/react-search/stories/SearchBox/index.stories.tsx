@@ -9,7 +9,6 @@ export { ContentBeforeAfter } from './SearchBoxContentBeforeAfter.stories';
 export { Disabled } from './SearchBoxDisabled.stories';
 export { Placeholder } from './SearchBoxPlaceholder.stories';
 export { Size } from './SearchBoxSize.stories';
-export { Uncontrolled } from './SearchBoxUncontrolled.stories';
 export { Controlled } from './SearchBoxControlled.stories';
 
 export default {
