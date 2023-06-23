@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Combobox adds aria-invalid when in an error state\"",
+  "comment": "fix: Combobox adds aria-invalid when in an error state",
   "packageName": "@fluentui/react",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"
