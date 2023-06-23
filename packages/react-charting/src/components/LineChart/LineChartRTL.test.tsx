@@ -2,8 +2,7 @@ import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-li
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import { IEventsAnnotationProps, ILineChartPoints, LineChart } from './index';
-import { mergeStyles } from '@fluentui/react/lib/Styling';
+import {  ILineChartPoints, LineChart } from './index';
 
 const basicPoints: ILineChartPoints[] = [
   {
@@ -57,129 +56,6 @@ const datePoints: ILineChartPoints[] = [
 const dateChartPoints = {
   chartTitle: 'LineChart',
   lineChartData: datePoints,
-};
-
-
-const calloutItemStyle = mergeStyles({
-  borderBottom: '1px solid #D9D9D9',
-  padding: '3px',
-});
-
-const eventsData: IEventsAnnotationProps = {
-  events: [
-    {
-      event: 'event 1',
-      date: new Date('2020-03-04T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
-    },
-    {
-      event: 'event 2',
-      date: new Date('2020-03-04T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
-    },
-    {
-      event: 'event 3',
-      date: new Date('2020-03-04T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
-    },
-    {
-      event: 'event 4',
-      date: new Date('2020-03-06T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
-    },
-    {
-      event: 'event 5',
-      date: new Date('2020-03-08T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
-    },
-  ],
-  strokeColor: '#111111',
-  labelColor: '#111111',
-  labelHeight: 18,
-  labelWidth: 50,
-  mergedLabel: (count: number) => `${count} events`,
-};
-
-const eventPoints: ILineChartPoints[] = [
-  {
-    legend: 'From_Legacy_to_O365',
-    data: [
-      {
-        x: new Date('2020-03-03T00:00:00.000Z'),
-        y: 297,
-      },
-      {
-        x: new Date('2020-03-04T00:00:00.000Z'),
-        y: 284,
-      },
-      {
-        x: new Date('2020-03-05T00:00:00.000Z'),
-        y: 282,
-      },
-      {
-        x: new Date('2020-03-06T00:00:00.000Z'),
-        y: 294,
-      },
-      {
-        x: new Date('2020-03-07T00:00:00.000Z'),
-        y: 294,
-      },
-      {
-        x: new Date('2020-03-08T00:00:00.000Z'),
-        y: 300,
-      },
-      {
-        x: new Date('2020-03-09T00:00:00.000Z'),
-        y: 298,
-      },
-    ],
-    color: 'green',
-    lineOptions: {
-      lineBorderWidth: '4',
-    },
-  },
-  {
-    legend: 'All',
-    data: [
-      {
-        x: new Date('2020-03-03T00:00:00.000Z'),
-        y: 292,
-      },
-      {
-        x: new Date('2020-03-04T00:00:00.000Z'),
-        y: 287,
-      },
-      {
-        x: new Date('2020-03-05T00:00:00.000Z'),
-        y: 287,
-      },
-      {
-        x: new Date('2020-03-06T00:00:00.000Z'),
-        y: 292,
-      },
-      {
-        x: new Date('2020-03-07T00:00:00.000Z'),
-        y: 287,
-      },
-      {
-        x: new Date('2020-03-08T00:00:00.000Z'),
-        y: 297,
-      },
-      {
-        x: new Date('2020-03-09T00:00:00.000Z'),
-        y: 292,
-      },
-    ],
-    color: 'yellow',
-    lineOptions: {
-      lineBorderWidth: '4',
-    },
-  }
-];
-
-const eventAnnotationChatPoints = {
-chartTitle: 'LineChart',
-lineChartData: eventPoints,
 };
 
 const colorFillBarData = [
@@ -298,13 +174,13 @@ describe('Line chart - Subcomponent Time Range', () => {
     const { container } = render(<LineChart data={dateChartPoints} colorFillBars={colorFillBarData} />);
     await new Promise(resolve => setTimeout(resolve));
     const getByClass = queryAllByAttribute.bind(null, 'class');
+    // Assert
     expect(getByClass(container, /rect/i).length > 0);
   });
 
   test('Should highlight corresponding time range on legend click', async () => {
     // Arrange
     const { container } = render(<LineChart data={dateChartPoints} colorFillBars={colorFillBarData} />);
-
     const legend = screen.queryByText('Time range 1');
     expect(legend).toBeDefined();
     fireEvent.click(legend!);
@@ -337,6 +213,7 @@ describe('Line chart - Subcomponent line', () => {
     const { container } = render(<LineChart data={chartPointsWithGaps} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     const lines = getById(container, /lineID/i);
+    // Assert
     expect(lines.length == 9);
   });
 });

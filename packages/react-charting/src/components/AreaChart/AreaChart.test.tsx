@@ -75,7 +75,7 @@ describe('AreaChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideLegend hhh correctly', () => {
+  it('renders hideLegend correctly', () => {
     const component = renderer.create(<AreaChart data={chartPoints} hideLegend={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
