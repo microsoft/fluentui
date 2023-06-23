@@ -63,3 +63,14 @@ export const Position = () => {
     </div>
   );
 };
+
+Position.parameters = {
+  docs: {
+    description: {
+      story: [
+        'When a Drawer is invoked, it slides in from either the left or right side of the screen.',
+        'This can be specified by the `position` prop.',
+      ].join('\n'),
+    },
+  },
+};

@@ -84,3 +84,14 @@ export const Separator = () => {
     </div>
   );
 };
+
+Separator.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `separator` prop adds a line separator between the drawer and the content.',
+        'Its placement will be determined by the `position` prop',
+      ].join('\n'),
+    },
+  },
+};
