@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { queryAllByAttribute, render, screen, waitFor } from '@testing-library/react';
+import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { chartPoints } from './VerticalBarChart.test';
 import { VerticalBarChart } from './VerticalBarChart';
 
@@ -10,7 +10,6 @@ describe('Vertical bar chart rendering', () => {
     const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
-    screen.debug(container, 500000);
     expect(getById(container, /_VBC_empty/i)).toHaveLength(1);
     // Act
     rerender(<VerticalBarChart data={chartPoints} />);
