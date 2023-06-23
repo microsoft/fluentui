@@ -2,7 +2,7 @@ import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-li
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import {  ILineChartPoints, LineChart } from './index';
+import { ILineChartPoints, LineChart } from './index';
 
 const basicPoints: ILineChartPoints[] = [
   {
@@ -37,21 +37,21 @@ const basicChartPoints = {
 };
 
 const datePoints: ILineChartPoints[] = [
-    {
-      data: [
-        { x: new Date('2020/01/01'), y: 30 },
-        { x: new Date('2020/02/01'), y: 50 },
-        { x: new Date('2020/03/01'), y: 30 },
-        { x: new Date('2020/04/01'), y: 50 },
-        { x: new Date('2020/05/01'), y: 30 },
-        { x: new Date('2020/06/01'), y: 50 },
-      ],
-      legend: 'First',
-      lineOptions: {
-        lineBorderWidth: '4',
-      },
-    }
-  ];
+  {
+    data: [
+      { x: new Date('2020/01/01'), y: 30 },
+      { x: new Date('2020/02/01'), y: 50 },
+      { x: new Date('2020/03/01'), y: 30 },
+      { x: new Date('2020/04/01'), y: 50 },
+      { x: new Date('2020/05/01'), y: 30 },
+      { x: new Date('2020/06/01'), y: 50 },
+    ],
+    legend: 'First',
+    lineOptions: {
+      lineBorderWidth: '4',
+    },
+  }
+];
 
 const dateChartPoints = {
   chartTitle: 'LineChart',
@@ -150,19 +150,19 @@ const pointsWithGaps: ILineChartPoints[] = [
 ];
 
 const chartPointsWithGaps = {
-chartTitle: 'LineChart',
-lineChartData: pointsWithGaps,
+  chartTitle: 'LineChart',
+  lineChartData: pointsWithGaps,
 };
 
 
 describe('Line chart rendering', () => {
   test('Should render the Line chart with numeric x-axis data', () => {
-    const { container } = render(<LineChart data={basicChartPoints}/>);
+    const { container } = render(<LineChart data={basicChartPoints} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render the Line chart with date x-axis data', () => {
-    const { container } = render(<LineChart data={dateChartPoints}/>);
+    const { container } = render(<LineChart data={dateChartPoints} />);
     expect(container).toMatchSnapshot();
   });
 });
@@ -188,7 +188,7 @@ describe('Line chart - Subcomponent Time Range', () => {
     const getById = queryAllByAttribute.bind(null, 'id');
     const lines = getById(container, /lineID/i);
     const filledBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-  // Assert
+    // Assert
     expect(timeRangeLegend).toHaveAttribute('aria-selected', 'true');
     expect(lines[0].getAttribute('opacity')).toEqual('0.1');
     expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
@@ -220,81 +220,81 @@ describe('Line chart - Subcomponent line', () => {
 
 
 describe('Line chart - Subcomponent legend', () => {
-test('Should highlight the corresponding Line on mouse over on legends', () => {
-  // Arrange
-  const { container } = render(<LineChart data={basicChartPoints} />);
-  const legend = screen.queryByText('metaData1');
-  expect(legend).toBeDefined();
-  fireEvent.mouseOver(legend!);
-  // Assert
-  const getById = queryAllByAttribute.bind(null, 'id');
-  const lines = getById(container, /lineID/i);
-  expect(lines[0].getAttribute('opacity')).toEqual('0.1');
-  expect(lines[1].getAttribute('opacity')).toEqual('0.1');
-  expect(lines[2].getAttribute('opacity')).toEqual('1');
-});
+  test('Should highlight the corresponding Line on mouse over on legends', () => {
+    // Arrange
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    const legend = screen.queryByText('metaData1');
+    expect(legend).toBeDefined();
+    fireEvent.mouseOver(legend!);
+    // Assert
+    const getById = queryAllByAttribute.bind(null, 'id');
+    const lines = getById(container, /lineID/i);
+    expect(lines[0].getAttribute('opacity')).toEqual('0.1');
+    expect(lines[1].getAttribute('opacity')).toEqual('0.1');
+    expect(lines[2].getAttribute('opacity')).toEqual('1');
+  });
 
-test('Should highlight the corresponding Legend on mouse over on legends', () => {
-  // Arrange
-  const { container } = render(<LineChart data={basicChartPoints} />);
-  const legend = screen.queryByText('metaData1');
-  expect(legend).toBeDefined();
-  fireEvent.mouseOver(legend!);
-  // Assert
-  expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
-});
+  test('Should highlight the corresponding Legend on mouse over on legends', () => {
+    // Arrange
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    const legend = screen.queryByText('metaData1');
+    expect(legend).toBeDefined();
+    fireEvent.mouseOver(legend!);
+    // Assert
+    expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
+  });
 
-test('Should select legend on single mouse click on legends', () => {
-  // Arrange
-  const { container } = render(<LineChart data={basicChartPoints} hideLegend={false} />);
-  const legend = screen.queryByText('metaData1');
-  expect(legend).toBeDefined();
-  fireEvent.click(legend!);
-  // Assert
-  const getById = queryAllByAttribute.bind(null, 'id');
-  expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
-  const firstLegend = screen.queryByText('metaData1')?.closest('button');
-  expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-  expect(firstLegend).toHaveAttribute('tabIndex', '0');
-});
+  test('Should select legend on single mouse click on legends', () => {
+    // Arrange
+    const { container } = render(<LineChart data={basicChartPoints} hideLegend={false} />);
+    const legend = screen.queryByText('metaData1');
+    expect(legend).toBeDefined();
+    fireEvent.click(legend!);
+    // Assert
+    const getById = queryAllByAttribute.bind(null, 'id');
+    expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
+    const firstLegend = screen.queryByText('metaData1')?.closest('button');
+    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+    expect(firstLegend).toHaveAttribute('tabIndex', '0');
+  });
 
-test('Should deselect legend on double mouse click on legends', () => {
-  // Arrange
-  const { container } = render(<LineChart data={basicChartPoints} hideLegend={false} />);
-  const legend = screen.queryByText('metaData1');
-  expect(legend).toBeDefined();
+  test('Should deselect legend on double mouse click on legends', () => {
+    // Arrange
+    const { container } = render(<LineChart data={basicChartPoints} hideLegend={false} />);
+    const legend = screen.queryByText('metaData1');
+    expect(legend).toBeDefined();
 
-  //single click on first legend
-  fireEvent.click(legend!);
-  const getById = queryAllByAttribute.bind(null, 'id');
-  expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
-  const firstLegend = screen.queryByText('metaData1')?.closest('button');
-  expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-  expect(firstLegend).toHaveAttribute('tabIndex', '0');
-  // double click on same first legend
-  fireEvent.click(legend!);
-  // Assert
-  expect(firstLegend).toHaveAttribute('aria-selected', 'false');
-});
+    //single click on first legend
+    fireEvent.click(legend!);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
+    const firstLegend = screen.queryByText('metaData1')?.closest('button');
+    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+    expect(firstLegend).toHaveAttribute('tabIndex', '0');
+    // double click on same first legend
+    fireEvent.click(legend!);
+    // Assert
+    expect(firstLegend).toHaveAttribute('aria-selected', 'false');
+  });
 
-test('Should highlight the data points and render the corresponding callout', () => {
-  // Arrange
-  const { container } = render(<LineChart data={basicChartPoints} />);
-  const getById = queryAllByAttribute.bind(null, 'id');
-  const firstPointonLine = getById(container, /lineID/)[0];
-  expect(firstPointonLine).toBeDefined();
-  fireEvent.mouseOver(firstPointonLine);
-  // Assert
-  expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
-});
+  test('Should highlight the data points and render the corresponding callout', () => {
+    // Arrange
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    const firstPointonLine = getById(container, /lineID/)[0];
+    expect(firstPointonLine).toBeDefined();
+    fireEvent.mouseOver(firstPointonLine);
+    // Assert
+    expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
+  });
 
-test('Should not show any tooltip when hideTooltip is true', () => {
-  // Arrange
-  const { container } = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
-  const getByClass = queryAllByAttribute.bind(null, 'class');
-  // Assert
-  expect(getByClass(container, /toolTipcallout/i)).toHaveLength(0);
-});
+  test('Should not show any tooltip when hideTooltip is true', () => {
+    // Arrange
+    const { container } = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+    // Assert
+    expect(getByClass(container, /toolTipcallout/i)).toHaveLength(0);
+  });
 });
 
 describe('Line chart - Subcomponent xAxis Labels', () => {
@@ -351,7 +351,7 @@ describe('Screen resolution', () => {
       global.dispatchEvent(new Event('resize'));
     });
     // Assert
-   expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
 

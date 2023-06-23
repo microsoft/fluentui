@@ -338,20 +338,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
       ? lineChartData.map((item: ILineChartPoints, index: number) => {
-          let color: string;
-          // isInverted property is applicable to v8 themes only
-          if (typeof item.color === 'undefined') {
-            color = getNextColor(index, 0, this.props.theme?.isInverted);
-          } else {
-            color = getColorFromToken(item.color, this.props.theme?.isInverted);
-          }
+        let color: string;
+        // isInverted property is applicable to v8 themes only
+        if (typeof item.color === 'undefined') {
+          color = getNextColor(index, 0, this.props.theme?.isInverted);
+        } else {
+          color = getColorFromToken(item.color, this.props.theme?.isInverted);
+        }
 
-          return {
-            ...item,
-            index: allowMultipleShapesForPoints ? index : -1,
-            color,
-          };
-        })
+        return {
+          ...item,
+          index: allowMultipleShapesForPoints ? index : -1,
+          color,
+        };
+      })
       : [];
   };
 
@@ -359,8 +359,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return this.props.onRenderCalloutPerStack
       ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
       : this.props.onRenderCalloutPerDataPoint
-      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-      : null;
+        ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+        : null;
   };
 
   private _getMargins = (margins: IMargins) => {
@@ -433,31 +433,31 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
-          const title = colorFillBar.legend;
-          // isInverted property is applicable to v8 themes only
-          const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
-          const legend: ILegend = {
-            title,
-            color,
-            action: () => {
-              if (isLegendMultiSelectEnabled) {
-                this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
-              } else {
-                this._handleSingleLegendSelectionAction(colorFillBar);
-              }
-            },
-            onMouseOutAction: () => {
-              this.setState({ activeLegend: '' });
-            },
-            hoverAction: () => {
-              this._handleChartMouseLeave();
-              this.setState({ activeLegend: title });
-            },
-            opacity: this._getColorFillBarOpacity(colorFillBar),
-            stripePattern: colorFillBar.applyPattern,
-          };
-          return legend;
-        })
+        const title = colorFillBar.legend;
+        // isInverted property is applicable to v8 themes only
+        const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
+        const legend: ILegend = {
+          title,
+          color,
+          action: () => {
+            if (isLegendMultiSelectEnabled) {
+              this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
+            } else {
+              this._handleSingleLegendSelectionAction(colorFillBar);
+            }
+          },
+          onMouseOutAction: () => {
+            this.setState({ activeLegend: '' });
+          },
+          hoverAction: () => {
+            this._handleChartMouseLeave();
+            this.setState({ activeLegend: title });
+          },
+          opacity: this._getColorFillBarOpacity(colorFillBar),
+          stripePattern: colorFillBar.applyPattern,
+        };
+        return legend;
+      })
       : [];
 
     const legends = (
@@ -668,9 +668,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               {...this._getClickHandler(this._points[i].onLineClick)}
               opacity={1}
               role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
-                this._points[i].data.length
-              } data points.`}
+              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${this._points[i].data.length
+                } data points.`}
             />,
           );
         } else {
@@ -686,9 +685,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
               opacity={0.1}
               role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
-                this._points[i].data.length
-              } data points.`}
+              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${this._points[i].data.length
+                } data points.`}
             />,
           );
         }
@@ -926,7 +924,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
-      } catch (e) {}
+      } catch (e) { }
     }
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
@@ -934,7 +932,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
-      } catch (e) {}
+      } catch (e) { }
       const tooltipProps = {
         tooltipCls: classNames.tooltip!,
         id: this._tooltipId,

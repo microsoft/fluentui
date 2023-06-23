@@ -237,12 +237,12 @@ const chartDataWithDates = {
 
 describe('Area chart rendering', () => {
   test('Should render the area chart with numeric x-axis data', () => {
-    const { container } = render(<AreaChart data={chartData}/>);
+    const { container } = render(<AreaChart data={chartData} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render the area chart with date x-axis data', () => {
-    const { container } = render(<AreaChart data={chartDataWithDates}/>);
+    const { container } = render(<AreaChart data={chartDataWithDates} />);
     expect(container).toMatchSnapshot();
   });
 });
@@ -314,24 +314,24 @@ describe('Area chart - Subcomponent legend', () => {
   });
 
 
-test('Should deselect legend on double mouse click on legends', () => {
-  // Arrange
-  const { container } = render(<AreaChart data={chartData} hideLegend={false} />);
-  const legend = screen.queryByText('legend1');
-  expect(legend).toBeDefined();
+  test('Should deselect legend on double mouse click on legends', () => {
+    // Arrange
+    const { container } = render(<AreaChart data={chartData} hideLegend={false} />);
+    const legend = screen.queryByText('legend1');
+    expect(legend).toBeDefined();
 
-  //single click on first legend
-  fireEvent.click(legend!);
-  const getById = queryAllByAttribute.bind(null, 'id');
-  expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
-  const firstLegend = screen.queryByText('legend1')?.closest('button');
-  expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-  expect(firstLegend).toHaveAttribute('tabIndex', '0');
-  // double click on same first legend
-  fireEvent.click(legend!);
-  // Assert
-  expect(firstLegend).toHaveAttribute('aria-selected', 'false');
-});
+    //single click on first legend
+    fireEvent.click(legend!);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
+    const firstLegend = screen.queryByText('legend1')?.closest('button');
+    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+    expect(firstLegend).toHaveAttribute('tabIndex', '0');
+    // double click on same first legend
+    fireEvent.click(legend!);
+    // Assert
+    expect(firstLegend).toHaveAttribute('aria-selected', 'false');
+  });
 });
 
 
@@ -390,7 +390,7 @@ describe('Screen resolution', () => {
       global.dispatchEvent(new Event('resize'));
     });
     // Assert
-   expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
 
