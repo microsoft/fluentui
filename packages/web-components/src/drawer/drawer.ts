@@ -1,6 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyEscape, keyTab } from '@microsoft/fast-web-utilities';
-import { isTabbable } from 'tabbable';
+import { keyEscape } from '@microsoft/fast-web-utilities';
 import { DrawerPosition, DrawerSize } from './drawer.options.js';
 
 export interface OpenEvent {
@@ -16,6 +15,7 @@ export class Drawer extends FASTElement {
     super.connectedCallback();
     document.addEventListener('keydown', this.handleDocumentKeydown);
     this.updateTrapFocus();
+    this.setDrawerWidth();
   }
 
   public disconnectedCallback(): void {
@@ -50,9 +50,29 @@ export class Drawer extends FASTElement {
    * @remarks
    * HTML Attribute: open
    */
+  @observable
   @attr({ mode: 'boolean' })
   public open: boolean = false;
 
+  /**
+   * Associated DrawerSwitcher Icon
+   * @public
+   * @remarks
+   * HTML Attribute: icon
+   */
+  @observable icon: SVGElement | null = null;
+
+  public getIcon(): string | null {
+    const slot = this.shadowRoot?.querySelector('slot[name="icon"]') as HTMLSlotElement;
+    const assignedNodes = slot?.assignedNodes();
+    const node: SVGElement = (assignedNodes?.[0] as SVGElement) || null;
+
+    if (node) {
+      return node.outerHTML;
+    }
+
+    return null;
+  }
   /**
    * Determines whether the drawer should be displayed as modal or non-modal.
    * When in modal mode, an overlay is applied over the rest of the view.
@@ -169,6 +189,7 @@ export class Drawer extends FASTElement {
    * @internal
    */
   public openChanged(prev: boolean, next: boolean): void {
+    console.log('openChanged', prev, next);
     if (this.$fastController.isConnected) {
       const eventDetail: OpenEvent = {
         open: this.open,
@@ -198,16 +219,6 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * Handles changes to the `controlSize` property.
-   * @param prev - The previous value of `controlSize`.
-   * @param next - The new value of `controlSize`.
-   * @internal
-   */
-  public controlSizeChanged(prev: DrawerSize | number | undefined, next: DrawerSize | number | undefined): void {
-    this.setDrawerWidth();
-  }
-
-  /**
    * Focuses the target element within the drawer.
    * @internal
    */
@@ -230,16 +241,7 @@ export class Drawer extends FASTElement {
    * @private
    */
   private setDrawerWidth(): void {
-    /**
-     * The value of the control size attribute.
-     * @type {DrawerSize | number | undefined}
-     */
     const sizeValue: DrawerSize | number | undefined = this.controlSize;
-
-    /**
-     * The width of the drawer.
-     * @type {number | undefined}
-     */
     let width: number | undefined;
 
     if (typeof sizeValue === 'string' && Object.values(DrawerSize).includes(sizeValue as DrawerSize)) {
@@ -309,10 +311,6 @@ export class Drawer extends FASTElement {
           this.hide();
           e.preventDefault();
           break;
-
-        case keyTab:
-          this.handleTabKeyDown(e);
-          break;
       }
     }
   };
@@ -327,47 +325,6 @@ export class Drawer extends FASTElement {
       this.focusFirstElement();
       e.preventDefault();
     }
-  };
-
-  /**
-   * Handles the keydown event when the Tab key is pressed.
-   * @param e - The KeyboardEvent object.
-   * @internal
-   */
-  private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.trapFocus || !this.open) {
-      return;
-    }
-
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-
-    if (bounds.length === 0) {
-      return;
-    }
-
-    const firstFocusableElement = bounds[0] as HTMLElement;
-    const lastFocusableElement = bounds[bounds.length - 1] as HTMLElement;
-
-    if (e.shiftKey && e.target === firstFocusableElement) {
-      lastFocusableElement.focus();
-      e.preventDefault();
-    } else if (!e.shiftKey && e.target === lastFocusableElement) {
-      firstFocusableElement.focus();
-      e.preventDefault();
-    }
-  };
-
-  /**
-   * Retrieves the tabbable elements within the drawer.
-   * @returns An array of tabbable elements.
-   * @internal
-   */
-  private getTabQueueBounds = (): (HTMLElement | SVGElement)[] => {
-    const bounds: HTMLElement[] = [];
-    if (this._drawer) {
-      return Drawer.reduceTabbableItems(bounds, this._drawer);
-    }
-    return bounds;
   };
 
   /**
@@ -420,54 +377,5 @@ export class Drawer extends FASTElement {
     } else {
       document.removeEventListener('focusin', this.handleDocumentFocus);
     }
-  }
-
-  /**
-   * Reduces the tabbable items within an element.
-   * @param elements - An array to store the tabbable elements.
-   * @param element - The element to search for tabbable items.
-   * @returns An array of tabbable elements.
-   * @internal
-   */
-  private static reduceTabbableItems(elements: HTMLElement[], element: Element): HTMLElement[] {
-    if (element.getAttribute('tabindex') === '-1') {
-      return elements;
-    }
-
-    if (
-      isTabbable(element as HTMLElement) ||
-      (Drawer.isFocusableFastElement(element as FASTElement) && Drawer.hasTabbableShadow(element as FASTElement))
-    ) {
-      elements.push(element as HTMLElement);
-      return elements;
-    }
-
-    if (element.childElementCount) {
-      return elements.concat(Array.from(element.children).reduce(Drawer.reduceTabbableItems, []));
-    }
-
-    return elements;
-  }
-
-  /**
-   * Checks if a FAST Element is focusable.
-   * @param element - The FAST Element to check.
-   * @returns True if the FAST Element is focusable, false otherwise.
-   * @internal
-   */
-  private static isFocusableFastElement(element: FASTElement | Element): boolean {
-    return !!(element as FASTElement).$fastController?.definition.shadowOptions?.delegatesFocus;
-  }
-
-  /**
-   * Checks if a FAST Element's shadow DOM has any tabbable elements.
-   * @param element - The FAST Element with shadow DOM to check.
-   * @returns True if the shadow DOM has tabbable elements, false otherwise.
-   * @internal
-   */
-  private static hasTabbableShadow(element: FASTElement): boolean {
-    return Array.from(element.shadowRoot?.querySelectorAll('*') ?? []).some(x => {
-      return isTabbable(x);
-    });
   }
 }

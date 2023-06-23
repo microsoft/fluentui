@@ -5,21 +5,25 @@ import type { Drawer } from './drawer.js';
  * The template for the Drawer component.
  * @public
  */
+
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
     <template
       role="complementary"
       ?open="${x => x.open}"
+      ?modal="${x => x.modal}"
+      control-size="${x => x.controlSize}"
       position="${x => x.position}"
       focus-target="${x => x.focusTarget}"
       aria-disabled="${x => x.ariaDisabled}"
       aria-hidden="${x => (x.open ? 'false' : 'true')}"
       aria-label="${x => x.ariaLabel}"
-      trap-focus="${x => x.trapFocus}"
+      ?trap-focus="${x => x.trapFocus}"
       tabindex="${x => (x.open ? '0' : '-1')}"
       aria-modal="${x => (x.modal ? 'true' : 'false')}"
     >
       <div class="root" part="root">
+        <slot name="icon"></slot>
         <div
           class="drawer"
           part="drawer"
