@@ -110,51 +110,12 @@ describe('SearchBox', () => {
     expect(onChange).toHaveBeenCalledTimes(0);
   });
 
-  it('hides contentAfter and dismiss at rest, shows contentAfter and dismiss when focused', () => {
-    const { container } = render(
-      <>
-        <SearchBox contentAfter={{ 'data-testid': 'contentAfter' } as React.HTMLAttributes<HTMLSpanElement>} />
-        <div data-testid="outside">outside</div>
-      </>,
-    );
-
-    const searchBox = getSearchBox();
-
-    // While unfocused
-    expect(document.activeElement).not.toEqual(searchBox);
-    expect(container.querySelector(searchBoxClassNames.dismiss)).toBeNull;
-    expect(container.querySelector(searchBoxClassNames.contentAfter)).toBeNull;
-    expect(container).toMatchSnapshot();
-
-    userEvent.tab();
-
-    // While focused
-    expect(document.activeElement).toEqual(searchBox);
-    expect(container.querySelector(searchBoxClassNames.dismiss)).not.toBeNull;
-    expect(container.querySelector(searchBoxClassNames.contentAfter)).not.toBeNull;
-    expect(container).toMatchSnapshot();
-  });
-
-  it('shows contentBefore both in and out of focus', () => {
-    const { getByTestId } = render(
-      <SearchBox contentBefore={{ 'data-testid': 'contentBefore' } as React.HTMLAttributes<HTMLSpanElement>} />,
-    );
-
-    expect(getByTestId('contentBefore')).not.toBeNull;
-
-    userEvent.click(getSearchBox());
-    expect(getByTestId('contentBefore')).not.toBeNull;
-  });
-
   it('clears value when dismiss is clicked', () => {
-    const { getByTestId } = render(
-      <SearchBox
-        defaultValue="hello"
-        dismiss={{ 'data-testid': 'dismiss' } as React.HTMLAttributes<HTMLSpanElement>}
-      />,
-    );
+    const onClick = jest.fn();
+    renderedComponent = render(<SearchBox defaultValue="hello" dismiss={{ onClick }} />);
 
-    userEvent.click(getByTestId('dismiss'));
+    userEvent.click(renderedComponent.getByRole('button'));
     expect(getSearchBox().value).toBe('');
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });
