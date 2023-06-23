@@ -68,8 +68,8 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
           width={this.state.width}
           height={this.state.height}
           segments={[
-            { size: this.state.chartValue, color: DataVizPalette.color6, legend: 'Used' },
-            { size: 100 - this.state.chartValue, legend: 'Available' },
+            { size: this.state.chartValue, legend: 'Used' },
+            { size: 100 - this.state.chartValue, color: DataVizPalette.disabled, legend: 'Available' },
           ]}
           chartValue={this.state.chartValue}
           chartTitle="Storage capacity"

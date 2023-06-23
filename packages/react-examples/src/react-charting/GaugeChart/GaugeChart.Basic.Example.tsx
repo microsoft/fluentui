@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { DataVizPalette, GaugeChart } from '@fluentui/react-charting';
-import { Stack, StackItem } from '@fluentui/react';
+import { Stack, StackItem, Checkbox } from '@fluentui/react';
 
 interface IGCBasicExampleState {
   width: number;
   height: number;
   chartValue: number;
+  hideMinMax: boolean;
 }
 
 export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleState> {
@@ -16,6 +17,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
       width: 252,
       height: 128,
       chartValue: 50,
+      hideMinMax: false,
     };
   }
 
@@ -63,6 +65,12 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             <span>{this.state.chartValue}</span>
           </StackItem>
         </Stack>
+        <Checkbox
+          label="Hide min and max values"
+          checked={this.state.hideMinMax}
+          onChange={this._onHideMinMaxCheckChange}
+          styles={{ root: { marginTop: '20px' } }}
+        />
 
         <GaugeChart
           width={this.state.width}
@@ -73,6 +81,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
           ]}
           chartValue={this.state.chartValue}
+          hideMinMax={this.state.hideMinMax}
         />
       </>
     );
@@ -86,5 +95,9 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
   };
   private _onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ chartValue: parseInt(e.target.value, 10) });
+  };
+
+  private _onHideMinMaxCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideMinMax: checked });
   };
 }
