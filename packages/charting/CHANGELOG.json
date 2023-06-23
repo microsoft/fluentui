@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 23 Jun 2023 12:23:04 GMT",
+      "tag": "@uifabric/charting_v4.23.26",
+      "version": "4.23.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix overlapping axis labels on smaller viewports",
+            "author": "kumarkshitij@microsoft.com",
+            "commit": "69fb28e07ff868f7e291f943ca5152b36ae1c253",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Jun 2023 12:23:46 GMT",
       "tag": "@uifabric/charting_v4.23.25",
       "version": "4.23.25",

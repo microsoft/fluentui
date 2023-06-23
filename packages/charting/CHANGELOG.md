@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 15 Jun 2023 12:23:46 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jun 2023 12:23:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.26](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.26)
+
+Fri, 23 Jun 2023 12:23:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.23.25..@uifabric/charting_v4.23.26)
+
+### Patches
+
+- Fix overlapping axis labels on smaller viewports ([PR #28273](https://github.com/microsoft/fluentui/pull/28273) by kumarkshitij@microsoft.com)
 
 ## [4.23.25](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.23.25)
 

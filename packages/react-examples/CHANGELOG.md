@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 15 Jun 2023 12:23:46 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jun 2023 12:23:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.15)
+
+Fri, 23 Jun 2023 12:23:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.15.15..@fluentui/react-examples_v0.15.15)
+
+### Patches
+
+- Bump @uifabric/charting to v4.23.26 ([PR #28273](https://github.com/microsoft/fluentui/pull/28273) by kumarkshitij@microsoft.com)
 
 ## [0.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.15)
 
