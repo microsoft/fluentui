@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: removed universal selector applying flexGrow",
+  "packageName": "@fluentui/react-card",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}
