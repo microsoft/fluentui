@@ -277,3 +277,15 @@ export const BreadcrumbWithOverflow = () => {
     </div>
   );
 };
+
+BreadcrumbWithOverflow.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The maximum number of items in a breadcrumb can be customized. We recommend a maximum of 6 items or fewer.',
+        'When the maximum number is exceeded, items in the middle auto-collapse into an overflow menu.',
+        '\nThe first and last items should always appear  in the breadcrumb. Breadcrumbs should never wrap.',
+      ].join('\n'),
+    },
+  },
+};

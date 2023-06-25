@@ -2,6 +2,39 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Tue, 20 Jun 2023 12:39:01 GMT",
+      "tag": "@fluentui/react-portal_v9.2.13",
+      "version": "9.2.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "cbdfdd61ae2ea8954fad2eb53d62c2b036416101",
+            "comment": "fix: use `position: absolute` to prevent scroll jumps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.1",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.8.0",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 06:46:16 GMT",
       "tag": "@fluentui/react-portal_v9.2.12",
       "version": "9.2.12",

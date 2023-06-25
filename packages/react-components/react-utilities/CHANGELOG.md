@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 31 May 2023 06:46:22 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:39:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.3)
+
+Tue, 20 Jun 2023 12:39:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.9.2..@fluentui/react-utilities_v9.9.3)
+
+### Patches
+
+- fix: getNativeElementProps should support animation event handlers ([PR #28094](https://github.com/microsoft/fluentui/pull/28094) by lingfangao@hotmail.com)
 
 ## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.2)
 

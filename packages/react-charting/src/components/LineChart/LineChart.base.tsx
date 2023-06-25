@@ -317,6 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 </g>
                 {eventAnnotationProps && (
                   <EventsAnnotation
+                    theme={this.props.theme}
                     {...eventAnnotationProps}
                     scale={props.xScale!}
                     chartYTop={this.margins.top! + this.eventLabelHeight}

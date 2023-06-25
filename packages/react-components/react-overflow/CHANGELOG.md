@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Wed, 31 May 2023 06:46:16 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:39:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.20)
+
+Tue, 20 Jun 2023 12:39:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.19..@fluentui/react-overflow_v9.0.20)
+
+### Patches
+
+- Added support for custom divider ([PR #28011](https://github.com/microsoft/fluentui/pull/28011) by vkozlova@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.1.0 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.23 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-theme to v9.1.9 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-utilities to v9.9.3 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
 
 ## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.19)
 

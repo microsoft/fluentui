@@ -22,6 +22,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -1382,4 +1383,15 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
     }
     idx += 1;
   });
+}
+
+export function formatValueWithSIPrefix(value: number) {
+  let specifier: string;
+  if (value < 1000) {
+    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
+  } else {
+    specifier = '.1'; // upto 1 decimal place
+  }
+
+  return d3FormatPrefix(specifier, value)(value);
 }

@@ -23,6 +23,7 @@ export const useDrawerOverlay_unstable = (
   return {
     components: {
       root: DialogSurface,
+      backdrop: 'div',
     },
 
     root: getNativeElementProps('div', {
