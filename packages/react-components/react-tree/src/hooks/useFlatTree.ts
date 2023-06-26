@@ -167,9 +167,9 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
     },
   );
 
-  const getElementFromItem = useEventCallback((item: FlatTreeItem<Props>) => {
+  const getElementFromItem = React.useCallback((item: FlatTreeItem<Props>) => {
     return treeRef.current?.querySelector(`[${dataTreeItemValueAttrName}="${item.value}"]`) as HTMLElement | null;
-  });
+  }, []);
 
   const ref = useMergedRefs(treeRef, navigationRef as React.Ref<HTMLDivElement>);
 
