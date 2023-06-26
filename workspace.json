@@ -1055,6 +1055,12 @@
       "projectType": "library",
       "tags": ["tools"]
     },
+    "@fluentui/scripts-bundle-size-auditor": {
+      "root": "scripts/bundle-size-auditor",
+      "sourceRoot": "scripts/bundle-size-auditor/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
     "@fluentui/set-version": {
       "root": "packages/set-version",
       "projectType": "library",
@@ -1095,11 +1101,6 @@
     "@fluentui/styles": {
       "root": "packages/fluentui/styles",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/test-bundles": {
-      "root": "apps/test-bundles",
-      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/test-utilities": {
