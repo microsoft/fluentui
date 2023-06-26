@@ -516,6 +516,7 @@
       },
       {
         "packages": [
+          "@fluentui/vr-tests-web-components",
           "@fluentui/web-components"
         ],
         "dependencies": [
