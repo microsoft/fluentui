@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing re-render issue for all charts when empty",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}
