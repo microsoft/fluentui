@@ -47,11 +47,11 @@ const useStyles = makeStyles({
 export const Axis = () => {
   const styles = useStyles();
   const [axis, setAxis] = React.useState<UseArrowNavigationGroupOptions['axis']>('horizontal');
-  const attr = useArrowNavigationGroup({ axis });
+  const atributes = useArrowNavigationGroup({ axis });
 
   return (
     <>
-      <Field label="Select a position">
+      <Field label="Select an axis">
         <RadioGroup value={axis} onChange={(e, data) => setAxis(data.value as UseArrowNavigationGroupOptions['axis'])}>
           <Radio label="Horizontal" value="horizontal" />
           <Radio label="Vertical" value="vertical" />
@@ -63,7 +63,7 @@ export const Axis = () => {
       <div
         aria-label="Editor toolbar example"
         role="toolbar"
-        {...attr}
+        {...atributes}
         className={mergeClasses(styles.container, axis && styles[axis])}
       >
         <Button aria-label="Bold" icon={<TextBoldRegular />} />

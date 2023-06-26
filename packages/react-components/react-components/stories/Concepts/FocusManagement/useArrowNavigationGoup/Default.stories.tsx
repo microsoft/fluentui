@@ -21,10 +21,10 @@ const useStyles = makeStyles({
 
 export const Default = () => {
   const styles = useStyles();
-  const attr = useArrowNavigationGroup({ axis: 'horizontal' });
+  const attributes = useArrowNavigationGroup({ axis: 'horizontal' });
 
   return (
-    <div aria-label="Editor toolbar example" role="toolbar" {...attr} className={styles.container}>
+    <div aria-label="Editor toolbar example" role="toolbar" {...attributes} className={styles.container}>
       <Button aria-label="Bold" icon={<TextBoldRegular />} />
       <Button aria-label="Underline" icon={<TextUnderlineRegular />} />
       <Button aria-label="Italic" icon={<TextItalicRegular />} />
