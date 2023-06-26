@@ -10,7 +10,7 @@ export interface SpinnerContextValue {
   size?: SpinnerSize;
 }
 
-const SpinnerContextDefaultValue: SpinnerContextValue = {};
+const SpinnerContextDefaultValue: SpinnerContextValue = { size: 'medium' };
 
 /**
  * @internal
