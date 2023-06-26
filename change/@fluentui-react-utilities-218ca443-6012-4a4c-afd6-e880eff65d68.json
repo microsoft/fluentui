@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add compatibility with shadow",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

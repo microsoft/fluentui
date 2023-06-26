@@ -2,6 +2,59 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 26 Jun 2023 09:53:53 GMT",
+      "tag": "@fluentui/react-components_v9.22.1",
+      "version": "9.22.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d93cb0b8cb80f56e753ad18c645eeb84a9c10256",
+            "comment": "fix: remove overflow menu if the last overflowed item can take its place"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "1a34d5cde97318e5af25d7b9951a76625ee3d94b",
+            "comment": "fix: infer a11y id from immediate header element"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e968c73521601209372b661dc925528da6bfa7e3",
+            "comment": "bugfix: adds grid-template-columns to DialogBody styles to ensure grid template layout"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "5819305ffc114a586a60598206361e62a44b1dc0",
+            "comment": "bugfix: enables Escape to dismiss alert Dialog"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "64fb6d6be07cd309c26a49d6fa31ed60e7030c79",
+            "comment": "fix: added overflowWrap to make sure content does not exceed the tooltip container and added vr test for the same"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "025ea2c9c6fb2184e67505081a7a307e95c6c009",
+            "comment": "fix: add compatibility with shadow"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "a47ce5f6b2cede1df976530eb35e86bd7e44a21a",
+            "comment": "docs: improve types descriptions and fix TS circular references"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Jun 2023 12:38:53 GMT",
       "tag": "@fluentui/react-components_v9.22.0",
       "version": "9.22.0",

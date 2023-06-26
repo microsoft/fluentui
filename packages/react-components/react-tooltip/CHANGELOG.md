@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jun 2023 09:53:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.18)
+
+Mon, 26 Jun 2023 09:53:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.17..@fluentui/react-tooltip_v9.2.18)
+
+### Patches
+
+- fix: added overflowWrap to make sure content does not exceed the tooltip container and added vr test for the same ([PR #28264](https://github.com/microsoft/fluentui/pull/28264) by kakrookaran@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-portal to v9.2.14 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-positioning to v9.7.1 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-utilities to v9.9.4 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
 
 ## [9.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.17)
 

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Tue, 20 Jun 2023 12:39:03 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jun 2023 09:53:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.19)
+
+Mon, 26 Jun 2023 09:53:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.18..@fluentui/react-switch_v9.1.19)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.8 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-label to v9.1.17 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-tabster to v9.8.1 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-utilities to v9.9.4 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
 
 ## [9.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.18)
 

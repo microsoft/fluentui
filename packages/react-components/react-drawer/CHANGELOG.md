@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jun 2023 09:53:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.3)
+
+Mon, 26 Jun 2023 09:53:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.2..@fluentui/react-drawer_v9.0.0-beta.3)
+
+### Changes
+
+- docs: improve types descriptions and fix TS circular references ([PR #28282](https://github.com/microsoft/fluentui/pull/28282) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.5.11 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-utilities to v9.9.4 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.2)
 
