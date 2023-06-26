@@ -26,7 +26,7 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> &
+export type TreeItemState = ComponentState<Pick<TreeItemSlots, 'root'>> &
   TreeItemContextValue & {
     level: number;
     itemType: TreeItemType;

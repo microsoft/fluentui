@@ -52,15 +52,6 @@ export type {
   TreeItemPersonaLayoutState,
 } from './TreeItemPersonaLayout';
 
-export {
-  TreeItemAside,
-  treeItemAsideClassNames,
-  renderTreeItemAside_unstable,
-  useTreeItemAsideStyles_unstable,
-  useTreeItemAside_unstable,
-} from './TreeItemAside';
-export type { TreeItemAsideProps, TreeItemAsideSlots, TreeItemAsideState } from './TreeItemAside';
-
 export { useFlatTree_unstable } from './hooks/index';
 export type { FlatTreeItem, FlatTreeItemProps, FlatTreeProps, FlatTree } from './hooks/index';
 

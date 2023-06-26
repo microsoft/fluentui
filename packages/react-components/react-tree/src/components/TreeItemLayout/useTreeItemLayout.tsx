@@ -17,22 +17,33 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, expandIcon, as = 'span' } = props;
+  const { iconAfter, iconBefore, as = 'span', expandIcon, aside, actions } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
+  const isActionsVisible = useTreeItemContext_unstable(ctx => ctx.isActionsVisible);
+  const isAsideVisible = useTreeItemContext_unstable(ctx => ctx.isAsideVisible);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
+  const actionsRef = useMergedRefs(
+    isResolvedShorthand(actions) ? actions.ref : undefined,
+    useTreeItemContext_unstable(ctx => ctx.actionsRef),
+  );
 
   return {
     components: {
       root: 'div',
-      expandIcon: 'div',
       iconBefore: 'div',
       iconAfter: 'div',
+      expandIcon: 'div',
+      actions: 'div',
+      aside: 'div',
     },
+    buttonContextValue: { size: 'small' },
     root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
     iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
     iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
+    aside: isAsideVisible ? resolveShorthand(aside) : undefined,
+    actions: isActionsVisible ? resolveShorthand(actions, { defaultProps: { ref: actionsRef } }) : undefined,
     expandIcon: resolveShorthand(expandIcon, {
       required: isBranch,
       defaultProps: {
