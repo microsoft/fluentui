@@ -1,0 +1,29 @@
+{
+  "name": "@fluentui/vr-tests-web-components",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Visual regression tests for @fluentui/web-components",
+  "type": "module",
+  "scripts": {
+    "build": "build-storybook -o dist/storybook",
+    "format": "prettier . -w --ignore-path ../../.prettierignore",
+    "lint": "eslint src --ext .ts,.tsx",
+    "start": "start-storybook",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc",
+    "vr:build": "yarn build",
+    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "html-react-parser": "4.0.0",
+    "typescript": "4.7.4"
+  },
+  "dependencies": {
+    "@fluentui/react-button": "^9.2.3",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/web-components": "3.0.0-alpha.24",
+    "tslib": "^2.1.0"
+  }
+}
