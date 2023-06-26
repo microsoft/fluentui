@@ -1,41 +1,63 @@
 import * as React from 'react';
+import { CopyRegular, DeleteRegular } from '@fluentui/react-icons';
 import {
-  TextBoldRegular,
-  TextUnderlineRegular,
-  TextItalicRegular,
-  TextAlignLeftRegular,
-  TextAlignCenterRegular,
-  TextAlignRightRegular,
-  CopyRegular,
-  ClipboardPasteRegular,
-  CutRegular,
-} from '@fluentui/react-icons';
-import { Button, useFocusableGroup, makeStyles, shorthands } from '@fluentui/react-components';
+  Button,
+  useFocusableGroup,
+  makeStyles,
+  shorthands,
+  tokens,
+  createFocusOutlineStyle,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('5px'),
+    ...shorthands.padding('10px'),
+
     display: 'flex',
     ...shorthands.gap('5px'),
-    maxWidth: 'fit-content',
+    position: 'relative',
+
+    backgroundColor: tokens.colorBrandBackground2,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+
+    ...createFocusOutlineStyle(),
+  },
+  body: {
+    flexGrow: 1,
+    alignSelf: 'center',
+  },
+  actions: {
+    display: 'flex',
+    ...shorthands.gap('5px'),
+  },
+  pane: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
   },
 });
 
 export const Limited = () => {
   const styles = useStyles();
-  const attr = useFocusableGroup({ tabBehavior: 'limited' });
+  const attributes = useFocusableGroup({ tabBehavior: 'limited' });
 
   return (
-    <div tabIndex={0} aria-label="Editor toolbar example" role="toolbar" {...attr} className={styles.container}>
-      <Button aria-label="Bold" icon={<TextBoldRegular />} />
-      <Button aria-label="Underline" icon={<TextUnderlineRegular />} />
-      <Button aria-label="Italic" icon={<TextItalicRegular />} />
-      <Button aria-label="Align Left" icon={<TextAlignLeftRegular />} />
-      <Button aria-label="Align Center" icon={<TextAlignCenterRegular />} />
-      <Button aria-label="Align Right" icon={<TextAlignRightRegular />} />
-      <Button aria-label="Copy" icon={<CopyRegular />} />
-      <Button aria-label="Cut" icon={<CutRegular />} />
-      <Button aria-label="Paste" icon={<ClipboardPasteRegular />} />
+    <div className={styles.pane}>
+      <div tabIndex={0} aria-label="A chat message" {...attributes} className={styles.container}>
+        <div className={styles.body}>Hello world!</div>
+        <div className={styles.actions}>
+          <Button aria-label="Copy message" icon={<CopyRegular />} size="small" />
+          <Button aria-label="Delete message" icon={<DeleteRegular />} size="small" />
+        </div>
+      </div>
+
+      <div tabIndex={0} aria-label="A chat message" {...attributes} className={styles.container}>
+        <div className={styles.body}>How are you doing?</div>
+        <div className={styles.actions}>
+          <Button aria-label="Copy message" icon={<CopyRegular />} size="small" />
+          <Button aria-label="Delete message" icon={<DeleteRegular />} size="small" />
+        </div>
+      </div>
     </div>
   );
 };
