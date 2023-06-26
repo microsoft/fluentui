@@ -20,7 +20,6 @@ describe(`utils`, () => {
       const packageRootPath = path.join('packages', options.packageName);
       const packageRootAbsolutePath = path.join(rootDir, packageRootPath);
       const paths = {
-        // workspaceJsonPath: path.join(rootDir, 'workspace.json'),
         nxJsonPath: path.join(rootDir, 'nx.json'),
         projectJsonPath: path.join(packageRootAbsolutePath, 'project.json'),
         rootTsconfigPath: path.join(rootDir, 'tsconfig.base.json'),

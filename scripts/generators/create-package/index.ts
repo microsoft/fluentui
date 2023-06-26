@@ -296,28 +296,3 @@ function updateNxProject(_answers: Answers, config: { projectName: string; proje
     implicitDependencies: [],
   });
 }
-
-// function updateNxWorkspace(_answers: Answers, config: { root: string; projectName: string; projectRoot: string }) {
-//   const paths = {
-//     workspace: `${config.root}/workspace.json`,
-//     config: `${config.root}/nx.json`,
-//   };
-
-//   const templates = {
-//     workspace: {
-//       [config.projectName]: {
-//         root: config.projectRoot,
-//         projectType: 'library',
-//         implicitDependencies: [],
-//       },
-//     },
-//   };
-
-//   const nxWorkspaceContent = fs.readFileSync(paths.workspace, 'utf-8');
-//   const nxWorkspace: ProjectsConfigurations = jju.parse(nxWorkspaceContent);
-//   Object.assign(nxWorkspace.projects, templates.workspace);
-
-//   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
-
-//   fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
-// }
