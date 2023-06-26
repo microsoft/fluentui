@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 26 Jun 2023 07:35:04 GMT",
+      "tag": "@fluentui/react-charting_v5.16.45",
+      "version": "5.16.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e1a473bd42b2c6076b5202bb9c025083e9e584ea",
+            "comment": "Add gauge chart"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-charting",
+            "commit": "1eb6224bc604aa6b422cfbeb43d56b7d448865be",
+            "comment": "event annotation text and stroke color fixed in line chart, such that by default it is black in light theme, and white in dark theme."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Jun 2023 07:36:29 GMT",
       "tag": "@fluentui/react-charting_v5.16.44",
       "version": "5.16.44",
