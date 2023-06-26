@@ -1,16 +1,47 @@
 import * as React from 'react';
-import { Button, useObservedElement, useFocusObserved, Field, RadioGroup, Radio } from '@fluentui/react-components';
+import {
+  Button,
+  useObservedElement,
+  useFocusObserved,
+  Field,
+  RadioGroup,
+  Radio,
+  makeStyles,
+  tokens,
+  shorthands,
+  Title3,
+  ToggleButton,
+} from '@fluentui/react-components';
 
 type ObservedNames = 'first' | 'second';
 
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
+
+    backgroundColor: tokens.colorBrandBackground2,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.padding('10px'),
+  },
+});
+
 export const MultipleNames = () => {
+  const styles = useStyles();
   const firstName = 'first' as const;
   const secondName = 'second' as const;
   const [observedName, setObservedName] = React.useState<ObservedNames>('first');
-  const attr = useObservedElement([firstName, secondName]);
+  const attributes = useObservedElement([firstName, secondName]);
   const focus = useFocusObserved(observedName);
 
   const [mounted, setMounted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (mounted) {
@@ -19,24 +50,37 @@ export const MultipleNames = () => {
   }, [mounted, focus]);
 
   const onClick = () => {
-    focus();
     if (mounted) {
       setMounted(false);
+      setLoading(false);
     } else {
-      setTimeout(() => setMounted(true), 1000);
+      setLoading(true);
+      setTimeout(() => {
+        setMounted(true);
+        setLoading(false);
+      }, 1000);
     }
   };
 
   return (
     <div>
-      <Field label="Select a position">
+      <Field label="Select a name">
         <RadioGroup value={observedName} onChange={(e, data) => setObservedName(data.value as ObservedNames)}>
           <Radio label="First observed name" value="first" />
           <Radio label="Second observed name" value="second" />
         </RadioGroup>
       </Field>
-      <Button onClick={onClick}>{mounted ? 'Reset' : 'Load and Focus'}</Button>
-      {mounted ? <Button {...attr}>Observed</Button> : null}
+      <ToggleButton checked={mounted} disabledFocusable={loading} onClick={onClick}>
+        {mounted ? 'Reset' : 'Load and Focus'}
+      </ToggleButton>
+      {mounted ? (
+        <div className={styles.card}>
+          <Title3>Hello world!</Title3>
+          <div>
+            <Button {...attributes}>Focused on load</Button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -1,12 +1,42 @@
 import * as React from 'react';
-import { Button, useObservedElement, useFocusObserved, useId } from '@fluentui/react-components';
+import {
+  Button,
+  useObservedElement,
+  useFocusObserved,
+  useId,
+  makeStyles,
+  shorthands,
+  tokens,
+  ToggleButton,
+  Title3,
+} from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
+
+    backgroundColor: tokens.colorBrandBackground2,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.padding('10px'),
+  },
+});
 
 export const Default = () => {
+  const styles = useStyles();
   const observedName = useId('observed');
-  const attr = useObservedElement(observedName);
+
+  const attributes = useObservedElement(observedName);
   const focus = useFocusObserved(observedName);
 
   const [mounted, setMounted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (mounted) {
@@ -15,18 +45,34 @@ export const Default = () => {
   }, [mounted, focus]);
 
   const onClick = () => {
-    focus();
     if (mounted) {
       setMounted(false);
+      setLoading(false);
     } else {
-      setTimeout(() => setMounted(true), 1000);
+      setLoading(true);
+      setTimeout(() => {
+        setMounted(true);
+        setLoading(false);
+      }, 1000);
     }
   };
 
   return (
-    <div>
-      <Button onClick={onClick}>{mounted ? 'Reset' : 'Load and Focus'}</Button>
-      {mounted ? <Button {...attr}>LoadAndFocus</Button> : null}
+    <div className={styles.container}>
+      <div>
+        <ToggleButton checked={mounted} disabledFocusable={loading} onClick={onClick}>
+          {mounted ? 'Reset' : 'Load and Focus'}
+        </ToggleButton>
+      </div>
+
+      {mounted ? (
+        <div className={styles.card}>
+          <Title3>Hello world!</Title3>
+          <div>
+            <Button {...attributes}>Focused on load</Button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
