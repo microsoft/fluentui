@@ -22,7 +22,12 @@ export {
   useBreadcrumbItem_unstable,
 } from './BreadcrumbItem';
 export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem';
-export { partitionBreadcrumbItems, truncateBreadcrumbLongName, truncateBreadcrumLongTooltip } from './utils/index';
+export {
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
+} from './utils/index';
 export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from './utils/index';
 export {
   BreadcrumbButton,

@@ -18,12 +18,12 @@ import { useTreeItemContextValues_unstable } from './useTreeItemContextValues';
  * When a TreeItem has nested child subtree, an expand/collapse control is displayed,
  * allowing the user to show or hide the children.
  */
-export const TreeItem = React.forwardRef((props, ref) => {
+export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((props, ref) => {
   const state = useTreeItem_unstable(props, ref);
 
   useTreeItemStyles_unstable(state);
   const contextValues = useTreeItemContextValues_unstable(state);
   return renderTreeItem_unstable(state, contextValues);
-}) as ForwardRefComponent<TreeItemProps> & (<Value = string>(props: TreeItemProps<Value>) => JSX.Element);
+});
 
 TreeItem.displayName = 'TreeItem';

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Add null to value prop for controlled cases to work correctly.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

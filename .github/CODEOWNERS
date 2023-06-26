@@ -102,6 +102,7 @@ scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
+scripts/bundle-size-auditor @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -124,7 +125,6 @@ apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
-apps/test-bundles @microsoft/fluentui-react
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build

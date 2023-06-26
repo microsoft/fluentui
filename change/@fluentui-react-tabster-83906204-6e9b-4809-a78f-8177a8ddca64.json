@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "useArrowNavigationGroup grid-linear axis",
-  "packageName": "@fluentui/react-tabster",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "patch"
-}

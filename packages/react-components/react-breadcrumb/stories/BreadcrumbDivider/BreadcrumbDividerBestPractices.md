@@ -5,7 +5,7 @@
 
 ### Do
 
-- Use `slash` dividers only for small and non-interactive breadcrums.
+- Use `slash` dividers only for small and non-interactive breadcrums. Use it to describe file paths.
 
 ### Don't
 
