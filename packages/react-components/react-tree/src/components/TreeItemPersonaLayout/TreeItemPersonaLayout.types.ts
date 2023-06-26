@@ -23,10 +23,6 @@ export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | '
   description?: Slot<'div'>;
 };
 
-export type TreeItemPersonaLayoutInternalSlots = TreeItemPersonaLayoutSlots & {
-  actions?: Slot<'div'>;
-};
-
 /**
  * TreeItemPersonaLayout Props
  */
@@ -35,7 +31,7 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
 /**
  * State used in rendering TreeItemPersonaLayout
  */
-export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutInternalSlots> & {
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
   avatarSize: AvatarSize;
   buttonContextValue: ButtonContextValue;
 };

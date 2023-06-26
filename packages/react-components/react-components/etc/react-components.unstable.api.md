@@ -73,7 +73,6 @@ import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
-import { renderTreeItemAside_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
@@ -89,11 +88,6 @@ import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeItem } from '@fluentui/react-tree';
-import { TreeItemAside } from '@fluentui/react-tree';
-import { treeItemAsideClassNames } from '@fluentui/react-tree';
-import { TreeItemAsideProps } from '@fluentui/react-tree';
-import { TreeItemAsideSlots } from '@fluentui/react-tree';
-import { TreeItemAsideState } from '@fluentui/react-tree';
 import { treeItemClassNames } from '@fluentui/react-tree';
 import { TreeItemLayout } from '@fluentui/react-tree';
 import { treeItemLayoutClassNames } from '@fluentui/react-tree';
@@ -147,8 +141,6 @@ import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
-import { useTreeItemAside_unstable } from '@fluentui/react-tree';
-import { useTreeItemAsideStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemContext_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
@@ -322,8 +314,6 @@ export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
 
-export { renderTreeItemAside_unstable }
-
 export { renderTreeItemLayout_unstable }
 
 export { renderTreeItemPersonaLayout_unstable }
@@ -353,16 +343,6 @@ export { treeClassNames }
 export { TreeContextValue }
 
 export { TreeItem }
-
-export { TreeItemAside }
-
-export { treeItemAsideClassNames }
-
-export { TreeItemAsideProps }
-
-export { TreeItemAsideSlots }
-
-export { TreeItemAsideState }
 
 export { treeItemClassNames }
 
@@ -469,10 +449,6 @@ export { useTree_unstable }
 export { useTreeContext_unstable }
 
 export { useTreeItem_unstable }
-
-export { useTreeItemAside_unstable }
-
-export { useTreeItemAsideStyles_unstable }
 
 export { useTreeItemContext_unstable }
 

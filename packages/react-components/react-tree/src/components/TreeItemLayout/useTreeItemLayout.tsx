@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps, isResolvedShorthand, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  ExtractSlotProps,
+  getNativeElementProps,
+  isResolvedShorthand,
+  resolveShorthand,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 import { TreeItemChevron } from '../TreeItemChevron';
@@ -45,10 +51,9 @@ export const useTreeItemLayout_unstable = (
     iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
     aside: isAsideVisible ? resolveShorthand(aside) : undefined,
     actions: isActionsVisible
-      ? resolveShorthand(
-          isResolvedShorthand(actions)
-            ? ({ ...actions, visible: undefined } as TreeItemLayoutSlots['actions'])
-            : actions,
+      ? resolveShorthand<ExtractSlotProps<TreeItemLayoutSlots['actions']>>(
+          // visible props should not be propagated to the DOM
+          isResolvedShorthand(actions) ? { ...actions, visible: undefined } : actions,
           {
             defaultProps: { ref: actionsRef },
           },

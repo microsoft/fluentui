@@ -3,14 +3,14 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import type { TreeItemLayoutState, TreeItemLayoutInternalSlots } from './TreeItemLayout.types';
+import type { TreeItemLayoutState, TreeItemLayoutSlots } from './TreeItemLayout.types';
 import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemLayout
  */
 export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
-  const { slots, slotProps } = getSlotsNext<TreeItemLayoutInternalSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TreeItemLayoutSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

@@ -104,7 +104,7 @@ export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
 
 // @public (undocumented)
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutInternalSlots>;
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots>;
 
 // @public
 export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
@@ -122,7 +122,7 @@ export type TreeItemLayoutSlots = {
 };
 
 // @public
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutInternalSlots> & {
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
     buttonContextValue: ButtonContextValue;
 };
 
@@ -133,7 +133,7 @@ export const treeItemLevelToken: "--fluent-TreeItem--level";
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
 
 // @public (undocumented)
-export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutInternalSlots>;
+export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots>;
 
 // @public
 export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;
@@ -147,7 +147,7 @@ export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | '
 };
 
 // @public
-export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutInternalSlots> & {
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
     avatarSize: AvatarSize;
     buttonContextValue: ButtonContextValue;
 };

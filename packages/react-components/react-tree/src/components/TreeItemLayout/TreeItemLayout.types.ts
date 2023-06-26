@@ -33,10 +33,6 @@ export type TreeItemLayoutSlots = {
   >;
 };
 
-export type TreeItemLayoutInternalSlots = Omit<TreeItemLayoutSlots, 'actions'> & {
-  actions?: Slot<'div'>;
-};
-
 /**
  * TreeItemLayout Props
  */
@@ -45,6 +41,6 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 /**
  * State used in rendering TreeItemLayout
  */
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutInternalSlots> & {
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
   buttonContextValue: ButtonContextValue;
 };
