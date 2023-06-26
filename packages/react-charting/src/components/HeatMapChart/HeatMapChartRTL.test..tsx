@@ -3,8 +3,8 @@ import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { HeatMapChart } from './index';
 import { HeatMapData } from './HeatMapChart.test';
 
-describe('Grouped Vertical Bar chart rendering', () => {
-  test('Should re-render the Grouped Vertical Bar chart with data', async () => {
+describe('HeatMap chart rendering', () => {
+  test('Should re-render the HeatMap chart with data', async () => {
     // Arrange
     const { container, rerender } = render(
       <HeatMapChart

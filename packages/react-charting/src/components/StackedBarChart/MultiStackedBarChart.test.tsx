@@ -69,7 +69,7 @@ const secondChartPoints: IChartDataPoint[] = [
   },
 ];
 
-const chartPoints: IChartProps[] = [
+export const chartPoints: IChartProps[] = [
   {
     chartTitle: 'Monitored',
     chartData: firstChartPoints,
@@ -80,7 +80,7 @@ const chartPoints: IChartProps[] = [
   },
 ];
 
-const emptyChartPoints: IChartProps[] = [
+export const emptyChartPoints: IChartProps[] = [
   {
     chartTitle: 'Monitored',
     chartData: [],

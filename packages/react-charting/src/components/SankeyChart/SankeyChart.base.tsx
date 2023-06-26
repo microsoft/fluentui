@@ -95,6 +95,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public componentDidUpdate(prevProps: ISankeyChartProps): void {
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.SankeyChartData &&
+      this.props.data.SankeyChartData.nodes.length > 0 &&
+      this.props.data.SankeyChartData.links.length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
     if (prevProps.shouldResize !== this.props.shouldResize) {
       this._fitParentContainer();
     }
@@ -173,7 +182,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
     return (
       <div
-        id={getId('_SankeyChart_')}
+        id={getId('_SankeyChart_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

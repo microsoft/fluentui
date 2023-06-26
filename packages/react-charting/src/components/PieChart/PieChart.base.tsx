@@ -35,6 +35,17 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
     }
   }
 
+  public componentDidUpdate(): void {
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.y > 0).length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
     const { data, width, height, colors, chartTitle } = this.props;
 
@@ -64,7 +75,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
       </div>
     ) : (
       <div
-        id={getId('_PieChart_')}
+        id={getId('_PieChart_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

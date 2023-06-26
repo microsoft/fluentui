@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Area chart rendering Should re-render the Area chart with data 1`] = `
+exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar chart with data 1`] = `
 <div>
   <div
     aria-label="Graph has no data to display"
@@ -11,7 +11,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 1`] = `
 </div>
 `;
 
-exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
+exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar chart with data 2`] = `
 <div>
   <div
     class=
@@ -120,7 +120,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
             focusable="false"
           >
             <g
-              id="_HorizontalLine_5y0hdv_0"
+              id="_HorizontalLine_yy4c5u_0"
             >
               <rect
                 aria-label="2020/04/30, 94%."
@@ -258,7 +258,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
             focusable="false"
           >
             <g
-              id="_HorizontalLine_5y0hdv_1"
+              id="_HorizontalLine_yy4c5u_1"
             >
               <rect
                 aria-label="2020/04/30, 19%."

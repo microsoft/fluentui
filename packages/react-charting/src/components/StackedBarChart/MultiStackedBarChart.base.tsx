@@ -85,6 +85,17 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
+  public componentDidUpdate(): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.chartData && item.chartData.length === 0).length === 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
     if (!this.state.emptyChart) {
       const { data, theme, culture } = this.props;
@@ -147,7 +158,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       );
     }
     return (
-      <div id={getId('_MSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_MSBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 

@@ -70,6 +70,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
+  public componentDidUpdate(): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.chartData &&
+      this.props.data.chartData.length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
     if (!this.state.emptyChart) {
       this._adjustProps();
@@ -194,7 +205,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       );
     }
     return (
-      <div id={getId('_SBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_SBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 

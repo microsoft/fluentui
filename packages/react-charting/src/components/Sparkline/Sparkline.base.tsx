@@ -53,7 +53,8 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     );
     if (this.state._emptyChart !== isChartEmpty) {
       this.setState({ _emptyChart: isChartEmpty });
-    } else {
+    }
+    if (this.state._emptyChart === false) {
       const area = d3Area()
         /* eslint-disable @typescript-eslint/no-explicit-any */
         .x((d: any) => this.x(d.x))
@@ -87,6 +88,18 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       this.setState({
         _points: points,
       });
+    }
+  }
+
+  public componentDidUpdate(): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+    );
+    if (this.state._emptyChart !== isChartEmpty) {
+      this.setState({ _emptyChart: isChartEmpty });
     }
   }
 
@@ -144,7 +157,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       </FocusZone>
     ) : (
       <div
-        id={getId('_SparklineChart_')}
+        id={getId('_SparklineChart_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

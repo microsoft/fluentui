@@ -206,6 +206,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
     /** note that height and width are not used to resize or set as dimesions of the chart,
      * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
      */
@@ -330,7 +339,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     ) : (
       <div
-        id={getId('_LineChart_')}
+        id={getId('_LineChart_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
