@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { SearchBox } from '../../../../packages/react-components/react-search';
+import { SearchBox } from '@fluentui/react-search';
 import { ArrowEnterLeftRegular, MicRegular, PersonRegular } from '@fluentui/react-icons';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import { FluentProvider } from '@fluentui/react-provider';
