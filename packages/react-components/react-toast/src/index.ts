@@ -40,3 +40,5 @@ export {
   toastFooterClassNames,
 } from './ToastFooter';
 export type { ToastFooterProps, ToastFooterState, ToastFooterSlots } from './ToastFooter';
+
+export { ToastContextProvider } from './contexts/toastContext';
