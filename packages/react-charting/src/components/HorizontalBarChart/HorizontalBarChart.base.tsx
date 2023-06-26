@@ -69,6 +69,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
+  public componentDidUpdate(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
     const { data, theme } = this.props;
     this._adjustProps();
@@ -171,7 +178,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         </Callout>
       </div>
     ) : (
-      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_HBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 

@@ -1,5 +1,5 @@
-import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-library/react';
-import { chartPoints } from './DonutChart.test';
+import { render, screen, queryAllByAttribute, fireEvent, act, waitFor } from '@testing-library/react';
+import { chartPoints, emptyChartPoints } from './DonutChart.test';
 import { DonutChart } from './index';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -201,4 +201,22 @@ test('Should change value inside donut with the legend value on mouseOver legend
 
   // Assert
   expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
+});
+
+describe('Donut chart rendering', () => {
+  test('Should re-render the Donut chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<DonutChart data={emptyChartPoints} />);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_DonutChart_empty/i)).toHaveLength(1);
+    // Act
+    rerender(<DonutChart data={chartPoints} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_DonutChart_empty/i)).toHaveLength(0);
+    });
+  });
 });

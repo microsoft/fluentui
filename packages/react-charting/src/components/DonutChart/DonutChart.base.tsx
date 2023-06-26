@@ -89,6 +89,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
       });
     }
+  }
+  public componentDidUpdate(): void {
     const isChartEmpty = !(
       this.props.data &&
       this.props.data.chartData &&
@@ -184,7 +186,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       </div>
     ) : (
       <div
-        id={getId('_DonutChart_')}
+        id={getId('_DonutChart_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

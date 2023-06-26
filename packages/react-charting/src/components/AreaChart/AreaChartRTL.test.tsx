@@ -121,8 +121,8 @@ const emptyChartData = {
   lineChartData: emptyChartPoints,
 };
 
-describe('Vertical bar chart rendering', () => {
-  test('Should re-render the vertical bar chart with data', async () => {
+describe('Area chart rendering', () => {
+  test('Should re-render the Area chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<AreaChart data={emptyChartData} />);
     const getById = queryAllByAttribute.bind(null, 'id');

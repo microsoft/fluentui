@@ -31,7 +31,7 @@ function sharedAfterEach() {
 const yPoint: string[] = ['p1', 'p2'];
 
 const xPoint: Date[] = [new Date('2020-03-03'), new Date('2020-03-04')];
-const HeatMapData: IHeatMapChartProps['data'] = [
+export const HeatMapData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Execllent (0-200)',

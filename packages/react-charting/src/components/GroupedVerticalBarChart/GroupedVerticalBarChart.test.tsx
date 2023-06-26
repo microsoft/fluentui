@@ -31,7 +31,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints = [
+export const chartPoints = [
   {
     name: '2000',
     series: [
@@ -80,7 +80,7 @@ const chartPoints = [
   },
 ];
 
-const emptyChartPoints = [
+export const emptyChartPoints = [
   {
     name: 'Empty chart',
     series: [],

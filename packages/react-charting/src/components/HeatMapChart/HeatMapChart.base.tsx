@@ -162,6 +162,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     }
   }
 
+  public componentDidUpdte(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): React.ReactNode {
     const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
       this.props;
@@ -230,7 +237,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     ) : (
       <div
-        id={getId('_HeatMap_')}
+        id={getId('_HeatMap_empty')}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

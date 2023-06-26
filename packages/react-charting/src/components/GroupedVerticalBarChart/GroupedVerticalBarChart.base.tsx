@@ -126,6 +126,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   }
 
+  public componentDidUpdate(): void {
+    const isChartEmpty = !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): React.ReactNode {
     const points = this.props.data;
     const { keys, xAxisLabels, datasetForBars } = this._createSet(points);
@@ -196,7 +207,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         }}
       />
     ) : (
-      <div id={getId('_GVBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_GVBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
