@@ -9,7 +9,7 @@ import type { Drawer } from './drawer.js';
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
     <template
-      role="complementary"
+      role="${x => (x.modal ? 'dialog' : 'complementary')}"
       ?open="${x => x.open}"
       ?modal="${x => x.modal}"
       control-size="${x => x.controlSize}"

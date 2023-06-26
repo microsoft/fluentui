@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates, ViewTemplate } from '@microsoft/fast-element';
 import { keyEscape } from '@microsoft/fast-web-utilities';
 import { DrawerPosition, DrawerSize } from './drawer.options.js';
 
@@ -11,16 +11,19 @@ export interface OpenEvent {
 export class Drawer extends FASTElement {
   private hasInteracted: boolean = false;
 
+  // The previous active element before opening the drawer.
+  private previousActiveElement?: HTMLElement;
+
   public connectedCallback(): void {
     super.connectedCallback();
-    document.addEventListener('keydown', this.handleDocumentKeydown);
+
     this.updateTrapFocus();
     this.setDrawerWidth();
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    document.removeEventListener('keydown', this.handleDocumentKeydown);
+
     this.updateTrapFocus(false);
   }
 
@@ -54,25 +57,6 @@ export class Drawer extends FASTElement {
   @attr({ mode: 'boolean' })
   public open: boolean = false;
 
-  /**
-   * Associated DrawerSwitcher Icon
-   * @public
-   * @remarks
-   * HTML Attribute: icon
-   */
-  @observable icon: SVGElement | null = null;
-
-  public getIcon(): string | null {
-    const slot = this.shadowRoot?.querySelector('slot[name="icon"]') as HTMLSlotElement;
-    const assignedNodes = slot?.assignedNodes();
-    const node: SVGElement = (assignedNodes?.[0] as SVGElement) || null;
-
-    if (node) {
-      return node.outerHTML;
-    }
-
-    return null;
-  }
   /**
    * Determines whether the drawer should be displayed as modal or non-modal.
    * When in modal mode, an overlay is applied over the rest of the view.
@@ -139,24 +123,24 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'focus-target' })
   public focusTarget?: string;
 
-  // The previous active element before opening the drawer.
-  private previousActiveElement?: HTMLElement;
-
   /**
    * Shows the drawer.
    * @public
    */
-  public show(): void {
+  public openDrawer(): void {
     this.previousActiveElement = document.activeElement as HTMLElement;
     this.open = true;
+    this.$emit('opened', { open: true, position: this.position, controlSize: this.controlSize });
   }
 
   /**
    * Hides the drawer.
    * @public
    */
-  public hide(): void {
+  public closeDrawer(): void {
     this.open = false;
+    this.$emit('closed', { open: false, position: this.position, controlSize: this.controlSize });
+
     if (this.previousActiveElement) {
       Updates.enqueue(() => this.previousActiveElement?.focus());
     }
@@ -189,7 +173,6 @@ export class Drawer extends FASTElement {
    * @internal
    */
   public openChanged(prev: boolean, next: boolean): void {
-    console.log('openChanged', prev, next);
     if (this.$fastController.isConnected) {
       const eventDetail: OpenEvent = {
         open: this.open,
@@ -304,16 +287,13 @@ export class Drawer extends FASTElement {
    * @param e - The KeyboardEvent object.
    * @internal
    */
-  private handleDocumentKeydown = (e: KeyboardEvent): void => {
-    if (!e.defaultPrevented && this.open) {
-      switch (e.key) {
-        case keyEscape:
-          this.hide();
-          e.preventDefault();
-          break;
-      }
+  public handleKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Escape') {
+      // Handle the Escape key press
+      this.closeDrawer();
+      e.preventDefault();
     }
-  };
+  }
 
   /**
    * Handles the focus event on the document.

@@ -98,7 +98,7 @@ const toggleDrawer = (drawerID: string, containerID: string) => {
 
 const hideDrawer = (drawerID: string) => {
   const drawer = document.getElementById(drawerID) as FluentDrawer;
-  drawer.hide();
+  drawer.closeDrawer();
 };
 
 const storyTemplate = html<DrawerStoryArgs>`
@@ -451,11 +451,11 @@ export const DrawerControlSizeLarge = renderComponent(html<DrawerStoryArgs>`
               </fluent-button>
             </div>
           </div>
-          
+
           <fluent-text style="margin-bottom: 20px; display: block;">
           To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.
           </fluent-text>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; row-gap: 16px; flex-direction: row;">    
+          <div style="display: grid; grid-template-columns: 1fr 1fr; row-gap: 16px; flex-direction: row;">
             <div style="display: flex; row-gap: 16px; flex-direction: column;">
               <div>
                 <fluent-label>First Name</fluent-label>
@@ -523,7 +523,7 @@ export const DrawerWithCustomSize = renderComponent(html`
           </div>
           <div style="display: flex; row-gap: 16px; flex-direction: column;">
             <fluent-text>
-            To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.            </fluent-text>    
+            To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.            </fluent-text>
             <div>
               <fluent-label>First Name</fluent-label>
               <fluent-text-input id="abc" type="text"></fluent-text-input>
@@ -563,7 +563,7 @@ export const DrawerWithToolbar = renderComponent(html`
               ${arrowLeft16Regular}
               </fluent-button>
             </div>
-            <div style="display: flex">     
+            <div style="display: flex">
               <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
                   ${arrowClockwise16Regular}
                 </fluent-button>
@@ -586,7 +586,7 @@ export const DrawerWithToolbar = renderComponent(html`
         <fluent-text>
             The toolbar attribute in the Drawer component enables the presence of a toolbar within the drawer. When the toolbar attribute is set to true, a toolbar section is displayed at the top of the drawer, allowing the inclusion of additional controls, actions, or information specific to the drawer's content.
             The toolbar provides a convenient space for placing buttons, icons, or other interactive elements that can enhance user interactions or provide quick access to specific features or functionalities within the drawer.
-            By utilizing the toolbar attribute, you can enhance the usability and flexibility of the Drawer component by incorporating a dedicated section for toolbar-related content, promoting a clean and organized user interface.          
+            By utilizing the toolbar attribute, you can enhance the usability and flexibility of the Drawer component by incorporating a dedicated section for toolbar-related content, promoting a clean and organized user interface.
         </fluent-text>
         <div>
           <fluent-label>First Name</fluent-label>
@@ -623,7 +623,7 @@ export const DrawerAsModal = renderComponent(html`
           <div style="display: flex; row-gap: 16px; flex-direction: column;">
             <fluent-text>
               Rendering the Drawer as a modal enables a blocking overlay that signifies that the users full attention is required when making configurations.
-            </fluent-text>    
+            </fluent-text>
             <div>
               <fluent-label>First Name</fluent-label>
               <fluent-text-input id="abc" type="text"></fluent-text-input>

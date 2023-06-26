@@ -1,17 +1,23 @@
-import { html, repeat } from '@microsoft/fast-element';
-import type { Drawer } from '../drawer/drawer.js';
+import { ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import type { DrawerSwitcher } from './drawer-switcher.js';
 
-export const template = html<DrawerSwitcher>`
-  <template>
-    ${repeat(
-      x => x.drawerElements,
-      html<Drawer>`
-        <fluent-button icon-only @click="${(x, ctx) => ctx.parent.toggleDrawer(x)}">
-          ${x => x.getIcon()}
-        </fluent-button>
-      `,
-    )}
-    <slot></slot>
-  </template>
-`;
+export function drawerSwitcherTemplate<
+  T extends DrawerSwitcher & { items: any[]; toggleButtons: any[] }
+>(): ElementViewTemplate<T> {
+  return html<T>`
+    <template @keydown="${(x, c) => (x as any).handleKeydown(c.event as KeyboardEvent)}">
+      <slot name="toggle-buttons" ${slotted('toggleButtons' as keyof T & string)}></slot>
+      <slot name="drawers" ${slotted('drawers' as keyof T & string)}></slot>
+    </template>
+  `;
+}
+
+/**
+ * The template for the Drawer Switcher component.
+ * @public
+ */
+export const template: ElementViewTemplate<
+  DrawerSwitcher & { items: any[]; toggleButtons: any[] }
+> = drawerSwitcherTemplate<DrawerSwitcher & { items: any[]; toggleButtons: any[] }>() as ElementViewTemplate<
+  DrawerSwitcher & { items: any[]; toggleButtons: any[] }
+>;

@@ -34,7 +34,7 @@ export const styles = css`
   :host {
     position: fixed;
     left: auto;
-    right: 0;
+    right: 0; /* Use the CSS custom property */
     top: 0;
     height: 100%;
     z-index: 1;
@@ -48,7 +48,10 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    box-shadow: ${shadow64};
+  }
+
+  :host([data-context='drawer-switcher']) {
+    right: 32px;
   }
 
   :host([open]) {
@@ -108,6 +111,7 @@ export const styles = css`
     position: relative;
     background: ${colorNeutralBackground1};
     z-index: 1;
+    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.12), 0px 32px 64px rgba(0, 0, 0, 0.14), 0px 0px 0px rgba(0, 0, 0, 0);
   }
 
   :host([toolbar]) .drawer {
