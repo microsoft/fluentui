@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { Calendar3Day20Regular } from '@fluentui/react-icons';
 
-import { TagButton } from '@fluentui/react-tags';
+import { InteractionTag } from '@fluentui/react-tags';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -16,17 +16,17 @@ export const Dismiss = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <TagButton dismissible>Primary text</TagButton>
-      <TagButton dismissible icon={<Calendar3Day20Regular />}>
+      <InteractionTag dismissible>Primary text</InteractionTag>
+      <InteractionTag dismissible icon={<Calendar3Day20Regular />}>
         Primary text
-      </TagButton>
-      <TagButton
+      </InteractionTag>
+      <InteractionTag
         dismissible
         media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
         secondaryText="Secondary text"
       >
         Primary text
-      </TagButton>
+      </InteractionTag>
     </div>
   );
 };
@@ -35,7 +35,7 @@ Dismiss.storyName = 'Dismiss';
 Dismiss.parameters = {
   docs: {
     description: {
-      story: 'A TagButton can have a button that dismisses it',
+      story: 'A InteractionTag can have a button that dismisses it',
     },
   },
 };

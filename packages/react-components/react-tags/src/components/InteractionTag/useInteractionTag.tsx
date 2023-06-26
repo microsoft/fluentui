@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
-import type { TagButtonProps, TagButtonState } from './TagButton.types';
+import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
-const tagButtonAvatarSizeMap = {
+const interactionTagAvatarSizeMap = {
   medium: 28,
   small: 20,
   'extra-small': 16,
 } as const;
 
-const tagButtonAvatarShapeMap = {
+const interactionTagAvatarShapeMap = {
   rounded: 'square',
   circular: 'circular',
 } as const;
@@ -19,15 +19,18 @@ const tagButtonAvatarShapeMap = {
 const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
- * Create the state required to render TagButton.
+ * Create the state required to render InteractionTag.
  *
- * The returned state can be modified with hooks such as useTagButtonStyles_unstable,
- * before being passed to renderTagButton_unstable.
+ * The returned state can be modified with hooks such as useInteractionTagStyles_unstable,
+ * before being passed to renderInteractionTag_unstable.
  *
- * @param props - props from this instance of TagButton
- * @param ref - reference to root HTMLElement of TagButton
+ * @param props - props from this instance of InteractionTag
+ * @param ref - reference to root HTMLElement of InteractionTag
  */
-export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTMLElement>): TagButtonState => {
+export const useInteractionTag_unstable = (
+  props: InteractionTagProps,
+  ref: React.Ref<HTMLElement>,
+): InteractionTagState => {
   const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
@@ -66,8 +69,8 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
 
   return {
     appearance,
-    avatarShape: tagButtonAvatarShapeMap[shape],
-    avatarSize: tagButtonAvatarSizeMap[size],
+    avatarShape: interactionTagAvatarShapeMap[shape],
+    avatarSize: interactionTagAvatarSizeMap[size],
     disabled,
     dismissible,
     shape,
