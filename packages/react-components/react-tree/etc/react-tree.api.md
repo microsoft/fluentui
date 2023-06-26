@@ -139,16 +139,11 @@ export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayo
 export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;
 
 // @public (undocumented)
-export type TreeItemPersonaLayoutSlots = {
+export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon'> & {
     root: NonNullable<Slot<'div'>>;
     media: NonNullable<Slot<'div'>>;
     main: NonNullable<Slot<'div'>>;
     description?: Slot<'div'>;
-    expandIcon?: Slot<'div'>;
-    aside?: Slot<'div'>;
-    actions?: Slot<ExtractSlotProps<Slot<'div'> & {
-        visible?: boolean;
-    }>>;
 };
 
 // @public
@@ -174,7 +169,7 @@ export type TreeItemSlots = {
 };
 
 // @public
-export type TreeItemState = ComponentState<Pick<TreeItemSlots, 'root'>> & TreeItemContextValue & {
+export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue & {
     level: number;
     itemType: TreeItemType;
 };

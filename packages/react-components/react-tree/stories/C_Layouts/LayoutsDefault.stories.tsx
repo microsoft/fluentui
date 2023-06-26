@@ -32,25 +32,28 @@ export const Default = () => {
               <CounterBadge count={1} color="danger" size="small" />
             </>
           }
-          actions={
-            <>
-              <Button aria-label="Edit" appearance="subtle" icon={<FlagRegular />} />
-              <Menu>
-                <MenuTrigger disableButtonEnhancement>
-                  <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
-                </MenuTrigger>
+          actions={{
+            visible: true,
+            children: (
+              <>
+                <Button aria-label="Edit" appearance="subtle" icon={<FlagRegular />} />
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+                  </MenuTrigger>
 
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem>New </MenuItem>
-                    <MenuItem>New Window</MenuItem>
-                    <MenuItem disabled>Open File</MenuItem>
-                    <MenuItem>Open Folder</MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            </>
-          }
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem>New </MenuItem>
+                      <MenuItem>New Window</MenuItem>
+                      <MenuItem disabled>Open File</MenuItem>
+                      <MenuItem>Open Folder</MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              </>
+            ),
+          }}
           iconBefore={<CalendarMonthRegular />}
           iconAfter={
             <>

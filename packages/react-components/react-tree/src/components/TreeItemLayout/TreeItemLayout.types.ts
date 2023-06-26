@@ -33,7 +33,7 @@ export type TreeItemLayoutSlots = {
   >;
 };
 
-export type TreeItemLayoutInternalSlots = TreeItemLayoutSlots & {
+export type TreeItemLayoutInternalSlots = Omit<TreeItemLayoutSlots, 'actions'> & {
   actions?: Slot<'div'>;
 };
 
