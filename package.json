@@ -400,8 +400,7 @@
       "apps/!(react-18-tests-v8|react-18-tests-v9)/package.json",
       "packages/web-components/package.json",
       "packages/react-components/*/package.json",
-      "packages/fluentui/*/package.json",
-      "scripts/package.json"
+      "packages/fluentui/*/package.json"
     ],
     "versionGroups": [
       {
@@ -497,14 +496,6 @@
       },
       {
         "packages": [
-          "@fluentui/react-conformance"
-        ],
-        "dependencies": [
-          "chalk"
-        ]
-      },
-      {
-        "packages": [
           "@fluentui/bundle-size"
         ],
         "dependencies": [
@@ -513,14 +504,6 @@
           "workspace-tools",
           "ci-info",
           "node-fetch"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/react-conformance-griffel"
-        ],
-        "dependencies": [
-          "@fluentui/react-conformance"
         ]
       }
     ]
