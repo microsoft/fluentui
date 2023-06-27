@@ -6,6 +6,7 @@ import {
   Slot,
   useEventCallback,
   resolveShorthand,
+  useId,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
@@ -49,6 +50,7 @@ export const useToastContainer_unstable = (
     tryRestoreFocus,
     ...rest
   } = props;
+  const titleId = useId('toast-title');
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
@@ -207,5 +209,6 @@ export const useToastContainer_unstable = (
     updateId,
     nodeRef: toastRef,
     intent,
+    titleId,
   };
 };

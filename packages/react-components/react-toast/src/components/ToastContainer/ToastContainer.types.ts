@@ -40,7 +40,8 @@ export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
  * State used in rendering ToastContainer
  */
 export type ToastContainerState = ComponentState<ToastContainerSlots> &
-  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> & {
+  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> &
+  Pick<ToastContextValue, 'titleId'> & {
     transitionTimeout: number;
     timerTimeout: number;
     running: boolean;
