@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbButton, BreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbButton,
+  BreadcrumbDivider,
+  BreadcrumbProps,
+} from '@fluentui/react-breadcrumb';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular, GridDots20Regular } from '@fluentui/react-icons';
-import { ButtonProps } from '@fluentui/react-components';
+import { ButtonProps, RadioGroup, Radio, Label } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
@@ -90,16 +96,28 @@ function renderButton(el: Item, isLastItem: boolean = false) {
     </React.Fragment>
   );
 }
-export const Default = () => (
-  <>
-    <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbButton" size="small">
-      {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
-    </Breadcrumb>
-    <Breadcrumb aria-label="Subtle breadcrumb" appearance="subtle">
-      {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
-    </Breadcrumb>
-    <Breadcrumb aria-label="Large breadcrumb with BreadcrumbButton" size="large">
-      {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
-    </Breadcrumb>
-  </>
-);
+export const Default = () => {
+  const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
+  return (
+    <>
+      <Label>Appearance (see the difference on `hover`)</Label>
+      <RadioGroup
+        aria-labelledby="breadcrumb-appearance"
+        value={appearance}
+        onChange={(_, data) => setAppearance(data.value as BreadcrumbProps['appearance'])}
+      >
+        <Radio value="transparent" label="Transparent" />
+        <Radio value="subtle" label="Subtle" />
+      </RadioGroup>
+      <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbButton" size="small" appearance={appearance}>
+        {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
+      </Breadcrumb>
+      <Breadcrumb aria-label="Subtle breadcrumb" appearance={appearance}>
+        {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
+      </Breadcrumb>
+      <Breadcrumb aria-label="Large breadcrumb with BreadcrumbButton" size="large" appearance={appearance}>
+        {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
+      </Breadcrumb>
+    </>
+  );
+};

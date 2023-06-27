@@ -16,6 +16,7 @@ import {
   OverflowItem,
   MenuItem,
   OverflowDivider,
+  Tooltip,
 } from '@fluentui/react-components';
 import {
   CalendarMonthFilled,
@@ -30,13 +31,16 @@ import {
   BreadcrumbButton,
   BreadcrumbDivider,
   partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
 } from '@fluentui/react-breadcrumb';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
-type Item = {
+type ButtonItem = {
   key: number;
   item?: string;
   buttonProps?: {
@@ -47,7 +51,12 @@ type Item = {
   };
 };
 
-const buttonItems: Item[] = [
+type Item = {
+  key: number;
+  item: string;
+};
+
+const buttonItems: ButtonItem[] = [
   {
     key: 0,
     item: 'Item 0',
@@ -110,6 +119,49 @@ const buttonItems: Item[] = [
   },
 ];
 
+const items: Item[] = [
+  {
+    key: 0,
+    item: 'Item 1',
+  },
+  {
+    key: 1,
+    item: 'Item 2',
+  },
+  {
+    key: 2,
+    item: 'Item 3',
+  },
+  {
+    key: 3,
+    item: 'Item 4',
+  },
+  {
+    key: 4,
+    item: 'Item 5 which is longer than 30 characters',
+  },
+  {
+    key: 5,
+    item: "Item 6 is long even for tooltip. Don't think about what you want to be, but what you want to do.",
+  },
+];
+
+function renderItem(entry: Item, isLastItem: boolean) {
+  return (
+    <React.Fragment key={`item-${entry.key}`}>
+      {isTruncatableBreadcrumbContent(entry.item, 30) ? (
+        <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
+          <BreadcrumbItem current={isLastItem}>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbItem>
+        </Tooltip>
+      ) : (
+        <BreadcrumbItem current={isLastItem}>{entry.item}</BreadcrumbItem>
+      )}
+
+      {!isLastItem && <BreadcrumbDivider />}
+    </React.Fragment>
+  );
+}
+
 const useOverflowMenuStyles = makeStyles({
   menu: {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -147,7 +199,7 @@ const useStyles = makeStyles({
   },
 });
 
-const OverflowBreadcrumbButton: React.FC<{ id: string; item: Item }> = props => {
+const OverflowBreadcrumbButton: React.FC<{ id: string; item: ButtonItem }> = props => {
   const { item, id } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -168,7 +220,7 @@ const OverflowGroupDivider: React.FC<{
   );
 };
 
-const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
+const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<ButtonItem>) => {
   const { overflowItems, startDisplayedItems, endDisplayedItems } = props;
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
 
@@ -193,16 +245,16 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
       <MenuPopover>
         <MenuList className={styles.menu}>
           {isOverflowing &&
-            startDisplayedItems.map((item: Item) => (
+            startDisplayedItems.map((item: ButtonItem) => (
               <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
             ))}
           {overflowItems &&
-            overflowItems.map((item: Item) => (
+            overflowItems.map((item: ButtonItem) => (
               <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
             ))}
           {isOverflowing &&
             endDisplayedItems &&
-            endDisplayedItems.map((item: Item) => (
+            endDisplayedItems.map((item: ButtonItem) => (
               <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
             ))}
         </MenuList>
@@ -213,7 +265,7 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
 const BreadcrumbControlledOverflowExample = () => {
   const styles = useExampleStyles();
 
-  const { startDisplayedItems, overflowItems, endDisplayedItems }: PartitionBreadcrumbItems<Item> =
+  const { startDisplayedItems, overflowItems, endDisplayedItems }: PartitionBreadcrumbItems<ButtonItem> =
     partitionBreadcrumbItems({
       items: buttonItems,
       maxDisplayedItems: 4,
@@ -223,7 +275,7 @@ const BreadcrumbControlledOverflowExample = () => {
     <div className={mergeClasses(styles.example, styles.horizontal)}>
       <Overflow>
         <Breadcrumb>
-          {startDisplayedItems.map((item: Item) => {
+          {startDisplayedItems.map((item: ButtonItem) => {
             return (
               <React.Fragment key={`start-items-${item.key}`}>
                 <OverflowItem id={`${item.key}`} groupId={item.key.toString()}>
@@ -242,7 +294,7 @@ const BreadcrumbControlledOverflowExample = () => {
           />
           <BreadcrumbDivider />
           {endDisplayedItems &&
-            endDisplayedItems.map((item: Item) => {
+            endDisplayedItems.map((item: ButtonItem) => {
               const isLastItem = item.key === buttonItems.length - 1;
 
               return (
@@ -268,12 +320,50 @@ const BreadcrumbControlledOverflowExample = () => {
   );
 };
 
+const getTooltipContent = (breadcrumbItems: readonly Item[]) => {
+  return breadcrumbItems.reduce((acc, initialValue, idx, arr) => {
+    return (
+      <div style={{ display: 'flex' }}>
+        {acc}
+        {arr[0].item !== initialValue.item && <BreadcrumbDivider />}
+        {initialValue.item}
+      </div>
+    );
+  }, <div style={{ display: 'flex' }} />);
+};
+
+const BreadcrumbItemOverflowExample = () => {
+  const { startDisplayedItems, overflowItems, endDisplayedItems }: PartitionBreadcrumbItems<Item> =
+    partitionBreadcrumbItems({
+      items,
+      maxDisplayedItems: 3,
+    });
+  const lastIdx = items.length - 1;
+  return (
+    <Breadcrumb aria-label="breadcrumb-with-overflow">
+      {startDisplayedItems.map(item => renderItem(item, lastIdx === item.key))}
+      {overflowItems && (
+        <BreadcrumbItem>
+          <Tooltip withArrow content={getTooltipContent(overflowItems)} relationship="label">
+            <BreadcrumbButton icon={<MoreHorizontal />} aria-label={`more items`} />
+          </Tooltip>
+        </BreadcrumbItem>
+      )}
+      {endDisplayedItems && endDisplayedItems.map(item => renderItem(item, lastIdx === item.key))}
+    </Breadcrumb>
+  );
+};
+
 export const BreadcrumbWithOverflow = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
+      <h2>Interactive Breadcrumb with overflow</h2>
       <BreadcrumbControlledOverflowExample />
+      <h2>Non-interactive Breadcrumb with overflow</h2>
+      For non-interactive Breadcrumbs tooltips are used instead of overflow menu.
+      <BreadcrumbItemOverflowExample />
     </div>
   );
 };
