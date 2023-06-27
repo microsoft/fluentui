@@ -945,7 +945,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <button
@@ -1766,7 +1766,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <div
