@@ -62,6 +62,8 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         'data-toaster-position': toastPosition,
         onFocus: onFocusPositionSlot,
         onBlur: onBlurPositionSlot,
+        'aria-modal': false,
+        role: 'dialog',
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
     });

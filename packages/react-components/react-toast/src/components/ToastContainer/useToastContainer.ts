@@ -185,8 +185,7 @@ export const useToastContainer_unstable = (
       { required: true },
     ),
     root: getNativeElementProps('div', {
-      role: 'dialog',
-      'aria-modal': false,
+      role: 'group',
       ref: useMergedRefs(ref, toastRef),
       children,
       tabIndex: -1,
