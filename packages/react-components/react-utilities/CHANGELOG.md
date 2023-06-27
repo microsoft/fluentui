@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 20 Jun 2023 12:39:06 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jun 2023 09:53:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.4)
+
+Mon, 26 Jun 2023 09:53:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.9.3..@fluentui/react-utilities_v9.9.4)
+
+### Patches
+
+- fix: add compatibility with shadow ([PR #28307](https://github.com/microsoft/fluentui/pull/28307) by olfedias@microsoft.com)
 
 ## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.3)
 

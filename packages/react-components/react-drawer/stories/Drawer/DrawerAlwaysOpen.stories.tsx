@@ -41,3 +41,14 @@ export const AlwaysOpen = () => {
     </div>
   );
 };
+
+AlwaysOpen.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A drawer can be always open, in which case it will not be able to be closed by the user.',
+        'This is useful for drawers that are used for navigation, and should always be visible.',
+      ].join('\n'),
+    },
+  },
+};

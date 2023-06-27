@@ -22310,6 +22310,13 @@ react-select@^3.2.0:
     react-input-autosize "^3.0.0"
     react-transition-group "^4.3.0"
 
+react-shadow@20.2.0:
+  version "20.2.0"
+  resolved "https://registry.yarnpkg.com/react-shadow/-/react-shadow-20.2.0.tgz#9fd1e27db6c30ad0fa023a7dcf74aae93e07a6ee"
+  integrity sha512-K4rC5vM/9bxRRD9dH0FcjUj/Pxf4DPIIh5K7+dH542IVrPG30uXJCzWmZBDYyIYUktcIrlA4l+RlCKc4wTmOXw==
+  dependencies:
+    humps "^2.0.1"
+
 react-shallow-renderer@^16.13.1:
   version "16.15.0"
   resolved "https://registry.yarnpkg.com/react-shallow-renderer/-/react-shallow-renderer-16.15.0.tgz#48fb2cf9b23d23cde96708fe5273a7d3446f4457"

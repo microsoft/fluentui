@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 26 Jun 2023 09:53:54 GMT",
+      "tag": "@fluentui/react-utilities_v9.9.4",
+      "version": "9.9.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "025ea2c9c6fb2184e67505081a7a307e95c6c009",
+            "comment": "fix: add compatibility with shadow"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Jun 2023 12:39:06 GMT",
       "tag": "@fluentui/react-utilities_v9.9.3",
       "version": "9.9.3",
