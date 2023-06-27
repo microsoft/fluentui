@@ -20,7 +20,7 @@ export const FocusKeyboardShortcut = () => {
 
   return (
     <>
-      <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'M' }} toasterId={toasterId} />
+      <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} toasterId={toasterId} />
       <Button onClick={notify}>Make toast</Button>
     </>
   );
