@@ -15,7 +15,7 @@ import { EVENTS } from './constants';
 
 export function useToaster<TElement extends HTMLElement = HTMLDivElement>(options: Partial<ToasterOptions> = {}) {
   const forceUpdate = useForceUpdate();
-  const { toasterId: userToasterId, isFocusShortcut: userIsFocusShortcut } = options;
+  const { toasterId: userToasterId, shortcuts } = options;
   // Currently the toaster options can never be changed at runtime
   const [toaster] = React.useState(() => createToaster(options));
   const { targetDocument } = useFluent();
@@ -27,15 +27,9 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
   });
 
   const isFocusShortcut = useEventCallback((e: KeyboardEvent) => {
-    if (userIsFocusShortcut) {
-      return userIsFocusShortcut(e);
+    if (shortcuts?.focus) {
+      return shortcuts.focus(e);
     }
-
-    if (e.ctrlKey && e.key === 'm') {
-      return true;
-    }
-
-    return false;
   });
 
   const tryRestoreFocus = React.useCallback(() => {

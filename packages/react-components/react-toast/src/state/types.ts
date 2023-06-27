@@ -81,12 +81,16 @@ export interface ToastOffsetObject {
 
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
+export interface ToasterShortcuts {
+  focus: (e: KeyboardEvent) => boolean;
+}
+
 export interface ToasterOptions
   extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover' | 'priority'> {
   offset?: ToastOffset;
   toasterId?: ToasterId;
   limit?: number;
-  isFocusShortcut?: (e: KeyboardEvent) => boolean;
+  shortcuts: ToasterShortcuts;
 }
 
 export interface Toast<TData = object> extends ToastOptions<TData> {

@@ -20,7 +20,7 @@ export const FocusKeyboardShortcut = () => {
 
   return (
     <>
-      <Toaster isFocusShortcut={e => e.ctrlKey && e.key === 'Enter'} toasterId={toasterId} />
+      <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'M' }} toasterId={toasterId} />
       <Button onClick={notify}>Make toast</Button>
     </>
   );
@@ -30,9 +30,9 @@ FocusKeyboardShortcut.parameters = {
   docs: {
     description: {
       story: [
-        'By default `CTRL+M` will move focus to the most recent toast.',
-        'This can be cusomized using the `isFocusShortcut` prop on the `Toaster`. This example',
-        'customizes the shortcut to be `CTRL+Enter`',
+        'Developers can be define a shortcut to focus on the most recent visible toast . This example',
+        'configures the shortcut to be `CTRL+M`. Once a toast is focused, all toasts belonging to that toaster',
+        'are paused and will not timeout.',
       ].join('\n'),
     },
   },
