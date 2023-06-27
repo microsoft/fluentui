@@ -1,3 +1,9 @@
+# Date Picker
+
+## Component Description
+
+lorem ipsum
+
 ## Design Spec
 
 [Link to Design Spec in Figma](https://www.figma.com/file/9EHmS5y1Rr7DCh7KgJBwuz/DatePicker?type=design&mode=design&t=E6sL2ffuuZfwCSRp-0)
@@ -41,3 +47,14 @@
 - `link` - link at the bottom right of the base of the calendar (e.g. "Go to today")
 - `navicon-left` - left icon on header to navigate backwards for months, years, or range of years
 - `navicon-right` - right icon on header to navigate forwards for months, yeras, or range of years
+
+### CSS Variables
+
+None
+
+## Accessibility
+
+- [ ] Find the matching component through [WCAG's patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
+  - There is no date picker WCAG pattern
+- [ ] Are there any accessibility elements unique to this component?
+- [ ] List ARIA attributes: `role, aria-labelledby, aria-label, aria-haspopup, aria-expanded, aria-pressed`
