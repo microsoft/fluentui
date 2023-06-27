@@ -4,6 +4,7 @@ import { ToastContainer } from './ToastContainer';
 import { isConformant } from '../../testing/isConformant';
 import { ToastContainerProps } from './ToastContainer.types';
 import { toastClassNames } from './useToastContainerStyles.styles';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 const defaultToastContainerProps: ToastContainerProps = {
   announce: () => null,
@@ -34,6 +35,7 @@ const pausedTimerSelector = '[data-timer-status="paused"]';
 describe('ToastContainer', () => {
   beforeEach(() => {
     jest.useRealTimers();
+    resetIdsForTests();
   });
 
   isConformant({

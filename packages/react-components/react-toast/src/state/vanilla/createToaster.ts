@@ -23,9 +23,8 @@ const defaulToastOptions: Pick<
   timeout: 3000,
 };
 
-// Multiple toasts can be dispatched in a single tick
-// Use a counter as a timestamp
-let timestamp = 0;
+// Multiple toasts can be dispatched in a single tick, use counter to prevent collisions
+let counter = 0;
 
 /**
  * Toast are managed outside of the react lifecycle because they can be
@@ -134,7 +133,7 @@ export function createToaster(options: Partial<ToasterOptions>) {
       content,
       updateId: 0,
       toasterId,
-      order: timestamp++,
+      order: counter++,
       data: {},
       imperativeRef: React.createRef<ToastImperativeRef>(),
     };
