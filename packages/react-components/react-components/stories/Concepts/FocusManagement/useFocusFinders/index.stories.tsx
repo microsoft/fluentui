@@ -9,7 +9,7 @@ export { FindNext } from './FindNext.stories';
 export { FindPrevious } from './FindPrevious.stories';
 
 export default {
-  title: 'Concepts/Developer/Focus Management/useFocusFinders',
+  title: 'Utilities/Focus Management/useFocusFinders',
   component: useFocusFinders,
   parameters: {
     docs: {

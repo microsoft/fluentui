@@ -5,7 +5,7 @@ export { Default } from './Default.stories';
 export { MultipleNames } from './MultipleNames.stories';
 
 export default {
-  title: 'Concepts/Developer/Focus Management/useObservedElement',
+  title: 'Utilities/Focus Management/useObservedElement',
   component: useFocusableGroup,
   parameters: {
     docs: {

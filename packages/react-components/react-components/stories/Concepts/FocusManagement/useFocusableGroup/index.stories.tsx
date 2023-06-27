@@ -6,7 +6,7 @@ export { Limited } from './Limited.stories';
 export { LimitedTrapFocus } from './LimitedTrapFocus.stories';
 
 export default {
-  title: 'Concepts/Developer/Focus Management/useFocusableGroup',
+  title: 'Utilities/Focus Management/useFocusableGroup',
   component: useFocusableGroup,
   parameters: {
     docs: {

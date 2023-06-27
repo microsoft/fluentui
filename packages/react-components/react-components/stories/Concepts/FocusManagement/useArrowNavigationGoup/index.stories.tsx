@@ -7,7 +7,7 @@ export { CircularNavigation } from './CircularNavigation.stories';
 export { Memorize } from './Memorize.stories';
 
 export default {
-  title: 'Concepts/Developer/Focus Management/useArrowNavigationGroup',
+  title: 'Utilities/Focus Management/useArrowNavigationGroup',
   component: useArrowNavigationGroup,
   parameters: {
     docs: {

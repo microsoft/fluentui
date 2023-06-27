@@ -5,7 +5,7 @@ export { Default } from './Default.stories';
 export { InertFocusTrap } from './InertFocusTrap.stories';
 
 export default {
-  title: 'Concepts/Developer/Focus Management/useModalAttributes',
+  title: 'Utilities/Focus Management/useModalAttributes',
   component: useModalAttributes,
   parameters: {
     docs: {
