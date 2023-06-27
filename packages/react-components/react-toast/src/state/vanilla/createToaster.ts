@@ -107,7 +107,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
         return;
       }
 
-      toast.onStatusChange?.(null, { status: 'unmounted', ...toast });
       toasts.delete(toastId);
 
       if (visibleToasts.size < limit && queue.peek()) {
@@ -117,7 +116,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
         }
 
         visibleToasts.add(nextToast.toastId);
-        toast.onStatusChange?.(null, { status: 'visible', ...nextToast });
       }
 
       onUpdate();
@@ -144,7 +142,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
       queue.enqueue(toastId);
     } else {
       visibleToasts.add(toastId);
-      toast.onStatusChange?.(null, { status: 'visible', ...toast });
     }
   };
 
