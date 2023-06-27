@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Checking for the existence of addEventListener on element coming from context in useFocusRects.",
+  "packageName": "@fluentui/utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
