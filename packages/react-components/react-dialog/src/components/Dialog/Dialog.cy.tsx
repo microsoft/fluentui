@@ -484,7 +484,7 @@ describe('Dialog', () => {
     });
   });
   describe('modalType = alert', () => {
-    it('should not close with escape keydown', () => {
+    it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger disableButtonEnhancement>
@@ -512,7 +512,7 @@ describe('Dialog', () => {
       );
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.focused().realType('{esc}');
-      cy.get(dialogSurfaceSelector).should('exist');
+      cy.get(dialogSurfaceSelector).should('not.exist');
     });
     it('should lock body scroll when dialog open', () => {
       mount(

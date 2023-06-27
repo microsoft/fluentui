@@ -1,17 +1,16 @@
 import { FlatTreeItemProps } from '../hooks/useFlatTree';
 import { TreeItemProps } from '../TreeItem';
 
-export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree' | 'itemType'> & {
+export type NestedTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
   subtree?: NestedTreeItem<Props>[];
 };
 
-export type FlattenedTreeItem<Props extends TreeItemProps<unknown>> = FlatTreeItemProps<NonNullable<Props['value']>> &
-  Props;
+export type FlattenedTreeItem<Props extends TreeItemProps> = FlatTreeItemProps & Props;
 
 let count = 1;
-function flattenTreeRecursive<Props extends TreeItemProps<unknown>>(
+function flattenTreeRecursive<Props extends TreeItemProps>(
   items: NestedTreeItem<Props>[],
-  parent?: FlatTreeItemProps<Props['value']> & Props,
+  parent?: FlatTreeItemProps & Props,
   level = 1,
 ): FlattenedTreeItem<Props>[] {
   return items.reduce<FlattenedTreeItem<Props>[]>((acc, { subtree, ...item }, index) => {
@@ -73,6 +72,6 @@ function flattenTreeRecursive<Props extends TreeItemProps<unknown>>(
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const flattenTree_unstable = <Props extends TreeItemProps<unknown>>(
+export const flattenTree_unstable = <Props extends TreeItemProps>(
   items: NestedTreeItem<Props>[],
 ): FlattenedTreeItem<Props>[] => flattenTreeRecursive(items);

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 19 Jun 2023 07:36:38 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2023 07:35:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.5)
+
+Tue, 27 Jun 2023 07:35:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.4..@fluentui/react_v8.110.5)
+
+### Patches
+
+- fix: change rating in response to keyboard events, not focus events ([PR #28303](https://github.com/microsoft/fluentui/pull/28303) by sarah.higley@microsoft.com)
+- fix: Calendar uses month-only selection string when only month picker is used ([PR #28301](https://github.com/microsoft/fluentui/pull/28301) by sarah.higley@microsoft.com)
 
 ## [8.110.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.4)
 

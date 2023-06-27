@@ -88,10 +88,10 @@ export const ToastLifecycle = () => {
             Status log
           </div>
           <div role="log" aria-labelledby={labelId} className={styles.log}>
-            {statusLog.map(([time, toastStatus]) => {
+            {statusLog.map(([time, toastStatus], i) => {
               const date = new Date(time);
               return (
-                <div key={time}>
+                <div key={i}>
                   {date.toLocaleTimeString()} <Text weight="bold">{toastStatus}</Text>
                 </div>
               );

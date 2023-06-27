@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
+import { KeyCodes } from '../../Utilities';
 import { isConformant } from '../../common/isConformant';
 import type { IRatingProps, IRating } from './Rating.types';
 
@@ -34,7 +35,7 @@ describe('Rating', () => {
     expect(ref.current?.rating).toBe(1);
     _checkState(rating, [100, 0, 0, 0, 0]);
 
-    rating.find('.ms-Rating-button').at(1).simulate('focus');
+    rating.find('.ms-Rating-button').at(0).simulate('keyDown', { which: KeyCodes.right });
 
     expect(ref.current?.rating).toBe(2);
     _checkState(rating, [100, 100, 0, 0, 0]);
