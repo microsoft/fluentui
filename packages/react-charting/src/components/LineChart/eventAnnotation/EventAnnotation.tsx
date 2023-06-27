@@ -77,9 +77,9 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
     // base case 2
     if (currentIdx === lineDefs.length - 1) {
       if (lastX < leftXBoundary) {
-        return [{ x, anchor: 'end', aggregatedIdx: [currentIdx] }];
+        return [{ x: x, anchor: 'end', aggregatedIdx: [currentIdx] }];
       } else if (x + textWidth < maxX) {
-        return [{ x, anchor: 'start', aggregatedIdx: [currentIdx] }];
+        return [{ x: x, anchor: 'start', aggregatedIdx: [currentIdx] }];
       }
 
       return [];
