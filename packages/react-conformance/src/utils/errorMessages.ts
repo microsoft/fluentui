@@ -1,5 +1,9 @@
-import chalk from 'chalk';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - chalk types use old `export = chalk` which works only with esModuleImports. We should switch to esModuleImports in the future for proper compatibility on type level with swc transpile output, for now we ignore TS here as temporary workaround.
+import _chalk from 'chalk';
 import { EOL } from 'os';
+
+const chalk: typeof import('chalk') = _chalk;
 
 /** Console message colors used in the test. */
 export const errorMessageColors = {
