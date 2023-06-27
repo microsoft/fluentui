@@ -2,6 +2,55 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 27 Jun 2023 11:21:22 GMT",
+      "tag": "@fluentui/react-components_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4",
+            "comment": "feat: Observed element hooks"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4",
+            "comment": "feat: Observed element hooks"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "56143ef533ed77608a3590e81b1d6fb3bca1357c",
+            "comment": "bugfix: react-tree remove TreeItemAside component"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "60c84a848b060241768ad62097443755c4c2bee5",
+            "comment": "fix: Calendar uses month-only selection string when only month picker is used"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "90acd97916fbb771d436062cad6a3f85be974e39",
+            "comment": "bugfix: makes value property on TreeItem less generic to simplify internals"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "56143ef533ed77608a3590e81b1d6fb3bca1357c",
+            "comment": "bugfix: rollback to actions and aside as a slot to ensure positioning of internals"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Jun 2023 09:53:53 GMT",
       "tag": "@fluentui/react-components_v9.22.1",
       "version": "9.22.1",
