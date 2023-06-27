@@ -86,11 +86,21 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
+
+  inverted: {
+    color: tokens.colorBrandForegroundInverted,
+    ':hover': {
+      color: tokens.colorBrandForegroundInvertedHover,
+    },
+    ':active': {
+      color: tokens.colorBrandForegroundInvertedPressed,
+    },
+  },
 });
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
-  const { appearance, disabled, inline, root } = state;
+  const { appearance, disabled, inline, root, backgroundAppearance } = state;
 
   state.root.className = mergeClasses(
     linkClassNames.root,
@@ -101,6 +111,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     appearance === 'subtle' && styles.subtle,
     inline && styles.inline,
     disabled && styles.disabled,
+    backgroundAppearance === 'inverted' && styles.inverted,
     state.root.className,
   );
 
