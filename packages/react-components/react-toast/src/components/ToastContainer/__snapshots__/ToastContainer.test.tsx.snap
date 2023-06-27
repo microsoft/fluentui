@@ -3,9 +3,7 @@
 exports[`ToastContainer renders a default state 1`] = `
 <div>
   <div
-    aria-modal="false"
     class="fui-ToastContainer"
-    role="dialog"
     style="--fui-toast-height: 0px;"
     tabindex="-1"
   >
