@@ -12,54 +12,51 @@ import {
  * @public
  */
 export const styles = css`
-  :host {
+  img[is='fluent-image'] {
     contain: content;
-  }
-
-  :host ::slotted(img) {
     box-sizing: border-box;
     min-height: 8px;
     min-width: 8px;
     display: inline-block;
   }
-  :host([block]) ::slotted(img) {
+  img[is='fluent-image'][block] {
     width: 100%;
     height: auto;
   }
-  :host([bordered]) ::slotted(img) {
+  img[is='fluent-image'][bordered] {
     border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
-  :host([fit='none']) ::slotted(img) {
+  img[is='fluent-image'][fit='none'] {
     object-fit: none;
     object-position: top left;
     height: 100%;
     width: 100%;
   }
-  :host([fit='center']) ::slotted(img) {
+  img[is='fluent-image'][fit='center'] {
     object-fit: none;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host([fit='contain']) ::slotted(img) {
+  img[is='fluent-image'][fit='contain'] {
     object-fit: contain;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host([fit='cover']) ::slotted(img) {
+  img[is='fluent-image'][fit='cover'] {
     object-fit: cover;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host([shadow]) ::slotted(img) {
+  img[is='fluent-image'][shadow] {
     box-shadow: ${shadow4};
   }
-  :host([shape='circular']) ::slotted(img) {
+  img[is='fluent-image'][shape='circular'] {
     border-radius: ${borderRadiusCircular};
   }
-  :host([shape='rounded']) ::slotted(img) {
+  img[is='fluent-image'][shape='rounded'] {
     border-radius: ${borderRadiusMedium};
   }
 `;

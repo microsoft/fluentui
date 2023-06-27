@@ -29,12 +29,15 @@ import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { FASTTabPanel } from '@microsoft/fast-foundation';
 import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTTextField } from '@microsoft/fast-foundation';
+import { MenuItemRole } from '@microsoft/fast-foundation';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import { TabsOrientation } from '@microsoft/fast-foundation';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
@@ -1628,8 +1631,10 @@ export const fontWeightRegular: CSSDesignToken<string>;
 // @public (undocumented)
 export const fontWeightSemibold: CSSDesignToken<string>;
 
+// Warning: (ae-forgotten-export) The symbol "Image_base" needs to be exported by the entry point index.d.ts
+//
 // @public
-class Image_2 extends FASTElement {
+class Image_2 extends Image_base {
     block?: boolean;
     bordered?: boolean;
     fit?: ImageFit;
@@ -1637,9 +1642,6 @@ class Image_2 extends FASTElement {
     shape?: ImageShape;
 }
 export { Image_2 as Image }
-
-// @public
-export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
 
 // @public
 export const ImageFit: {
@@ -1665,9 +1667,6 @@ export type ImageShape = ValuesOf<typeof ImageShape>;
 
 // @public
 export const ImageStyles: ElementStyles;
-
-// @public
-export const ImageTemplate: ElementViewTemplate<Image_2>;
 
 // @public
 export class Label extends FASTElement {
@@ -1769,6 +1768,8 @@ export type MenuItemColumnCount = 0 | 1 | 2;
 
 // @public
 export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+
+export { MenuItemRole }
 
 // @public
 export const MenuItemStyles: ElementStyles;
@@ -2187,6 +2188,46 @@ export const TextFont: {
 
 // @public
 export type TextFont = ValuesOf<typeof TextFont>;
+
+// @public
+export class TextInput extends FASTTextField {
+    appearance?: TextInputAppearance;
+    controlSize?: TextInputControlSize;
+}
+
+// @public
+export const TextInputAppearance: {
+    readonly outline: "outline";
+    readonly underline: "underline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public
+export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
+
+// @public
+export const TextInputControlSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
+
+// @public
+export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
+
+// @public
+export const TextInputStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextInputTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextInputTemplate: ElementViewTemplate<TextInput>;
+
+export { TextInputType }
 
 // @public
 export const TextSize: {

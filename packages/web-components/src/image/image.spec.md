@@ -31,7 +31,7 @@ Images, like photos and illustrations, help reinforce a message and express your
 
 ### Slots
 
-1 slot for developer to add <img/> element.
+N/A
 
 ## Accessibility
 
@@ -39,7 +39,7 @@ The image element requires an alt tag when not used in role: presentation.
 
 ## Preparation
 
-This will extend the FASTElement.
+This will extend the FASTElement as a customzied built-in using `FASTElement.from()`.
 
 Open GitHub issues related to Image component
 

@@ -1,11 +1,19 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, customElement, FASTElement } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { ImageFit, ImageShape } from './image.options.js';
+import { styles as FluentImageStyles } from './image.styles.js';
 
 /**
  * The base class used for constucting a fluent image custom element
  * @public
  */
-export class Image extends FASTElement {
+@customElement({
+  name: `${FluentDesignSystem.prefix}-image`,
+  elementOptions: { extends: 'img' },
+  styles: FluentImageStyles,
+  shadowOptions: null,
+})
+export class Image extends FASTElement.from(HTMLImageElement) {
   /**
    * Image layout
    *
