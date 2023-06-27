@@ -28,7 +28,7 @@ export const MultipleToasters = () => {
 
   return (
     <>
-      <Field label="Toast politeness">
+      <Field label="Choose toaster">
         <RadioGroup value={toaster} onChange={(e, data) => setToaster(data.value)}>
           <Radio label="First toaster" value={first} />
           <Radio label="Second toaster" value={second} />

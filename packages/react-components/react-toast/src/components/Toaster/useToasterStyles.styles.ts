@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { ToasterSlots, ToasterState } from './Toaster.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TOAST_POSITIONS, getPositionStyles } from '../../state/index';
@@ -10,20 +10,18 @@ export const toasterClassNames: SlotClassNames<ToasterSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    position: 'fixed',
-    width: '292px',
-    pointerEvents: 'none',
-  },
+const useRootBaseClassName = makeResetStyles({
+  position: 'fixed',
+  width: '292px',
+  pointerEvents: 'none',
 });
 
 /**
  * Apply styling to the Toaster slots based on the state
  */
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
-  const styles = useStyles();
-  const className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+  const rootBaseClassName = useRootBaseClassName();
+  const className = mergeClasses(toasterClassNames.root, rootBaseClassName, state.root.className);
   if (state.bottomStart) {
     state.bottomStart.className = className;
     state.bottomStart.style ??= {};
