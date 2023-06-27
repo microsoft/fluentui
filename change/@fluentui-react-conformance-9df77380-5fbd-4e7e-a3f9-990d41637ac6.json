@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bump chalk to 4.1",
+  "packageName": "@fluentui/react-conformance",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
