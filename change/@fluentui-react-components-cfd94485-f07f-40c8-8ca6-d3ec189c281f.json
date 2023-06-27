@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: react-tree remove TreeItemAside component",
+  "packageName": "@fluentui/react-components",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
