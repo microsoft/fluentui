@@ -5,6 +5,7 @@ import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
 import { treeDataTypes } from '../../utils/tokens';
+import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 
 /**
  * Create the state required to render TreeItem.
@@ -15,23 +16,12 @@ import { treeDataTypes } from '../../utils/tokens';
  * @param props - props from this instance of TreeItem
  * @param ref - reference to root HTMLElement of TreeItem
  */
-export function useTreeItem_unstable<Value = string>(
-  props: TreeItemProps<Value>,
-  ref: React.Ref<HTMLDivElement>,
-): TreeItemState {
+export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
   const contextLevel = useTreeContext_unstable(ctx => ctx.level);
 
-  const id = useId('fui-TreeItem-', props.id);
+  const value = useId('fuiTreeItemValue-', props.value?.toString());
 
-  const {
-    onClick,
-    onKeyDown,
-    as = 'div',
-    value = id,
-    itemType = 'leaf',
-    'aria-level': level = contextLevel,
-    ...rest
-  } = props;
+  const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
 
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
@@ -87,12 +77,12 @@ export function useTreeItem_unstable<Value = string>(
       case treeDataTypes.ArrowDown:
       case treeDataTypes.ArrowLeft:
       case treeDataTypes.ArrowRight:
-        return requestTreeResponse({ event, itemType, value, type: event.key });
+        return requestTreeResponse({ event, value, itemType, type: event.key });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
-      requestTreeResponse({ event, itemType, value, type: treeDataTypes.TypeAhead });
+      requestTreeResponse({ event, value, itemType, type: treeDataTypes.TypeAhead });
     }
   });
 
@@ -137,11 +127,11 @@ export function useTreeItem_unstable<Value = string>(
     root: getNativeElementProps(as, {
       tabIndex: -1,
       ...rest,
-      id,
       ref,
-      'aria-level': level,
-      'aria-expanded': itemType === 'branch' ? open : undefined,
       role: 'treeitem',
+      'aria-level': level,
+      [dataTreeItemValueAttrName]: value,
+      'aria-expanded': itemType === 'branch' ? open : undefined,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
       onMouseOver: handleActionsVisible,

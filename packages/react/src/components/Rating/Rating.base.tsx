@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { classNamesFunction, css, format, divProperties, getNativeProps, useFocusRects } from '../../Utilities';
+import {
+  classNamesFunction,
+  css,
+  format,
+  divProperties,
+  getNativeProps,
+  KeyCodes,
+  useFocusRects,
+} from '../../Utilities';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { RatingSize } from './Rating.types';
@@ -137,6 +145,34 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
         }
       };
 
+      const onStarKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+        // eslint-disable-next-line deprecation/deprecation
+        const { which } = event;
+        let newRating = starNum;
+        switch (which) {
+          case KeyCodes.right:
+          case KeyCodes.down:
+            newRating = Math.min(max, newRating + 1);
+            break;
+          case KeyCodes.left:
+          case KeyCodes.up:
+            newRating = Math.max(1, newRating - 1);
+            break;
+          case KeyCodes.home:
+          case KeyCodes.pageUp:
+            newRating = 1;
+            break;
+          case KeyCodes.end:
+          case KeyCodes.pageDown:
+            newRating = max;
+            break;
+        }
+
+        if (newRating !== starNum && (rating === undefined || Math.ceil(rating) !== newRating)) {
+          setRating(newRating, event);
+        }
+      };
+
       stars.push(
         <button
           className={css(
@@ -146,8 +182,8 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           id={getStarId(id, starNum)}
           key={starNum}
           {...(starNum === Math.ceil(displayRating) && { 'data-is-current': true })}
-          onFocus={onSelectStar}
-          onClick={onSelectStar} // For Safari & Firefox on OSX
+          onKeyDown={onStarKeyDown}
+          onClick={onSelectStar}
           disabled={!!(disabled || readOnly)}
           role="radio"
           aria-hidden={readOnly ? 'true' : undefined}

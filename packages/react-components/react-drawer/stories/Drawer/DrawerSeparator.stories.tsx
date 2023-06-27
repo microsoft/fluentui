@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands } from '@fluentui/react-components';
+import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    columnGap: tokens.spacingHorizontalXS,
   },
 });
 
@@ -29,7 +30,7 @@ export const Separator = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline position="right" open={leftOpen}>
+      <DrawerInline position="left" open={leftOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -82,4 +83,15 @@ export const Separator = () => {
       </DrawerInline>
     </div>
   );
+};
+
+Separator.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `separator` prop adds a line separator between the drawer and the content.',
+        'Its placement will be determined by the `position` prop',
+      ].join('\n'),
+    },
+  },
 };

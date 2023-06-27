@@ -4,6 +4,10 @@ export interface MigrateV8PkgGeneratorSchema {
    */
   name?: string;
   /**
+   * Run generator on all v8 packages
+   */
+  all?: boolean;
+  /**
    * Get statistics for how many projects have been migrated
    */
   stats?: boolean;

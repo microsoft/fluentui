@@ -6,7 +6,7 @@ import type { BreadcrumbLinkProps } from './BreadcrumbLink.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * BreadcrumbLink component - TODO: add more docs
+ * A link component which is used inside the Breadcrumb.
  */
 export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbLink_unstable(props, ref);

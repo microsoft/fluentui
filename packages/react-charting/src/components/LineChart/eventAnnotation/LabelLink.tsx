@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Callout, FocusZone, FocusZoneDirection, List } from '@fluentui/react';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
 import { Textbox } from './Textbox';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { getColorFromToken } from '../../../utilities/colors';
 
 export interface ILineDef extends IEventAnnotation {
   x: number;
@@ -20,7 +22,8 @@ interface ILabelLinkProps {
   textWidth: number;
   textLineHeight: number;
   textFontSize: string;
-  textColor: string;
+  textColor: string | undefined;
+  theme: ITheme | undefined;
   mergedLabel: (count: number) => string;
 }
 
@@ -56,8 +59,10 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   }
 
   let text: string;
-  const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-  const fill: string | undefined = darkThemeMq.matches ? 'rgb(255,255,255)' : props.textColor;
+  const fill: string | undefined = props.textColor
+    ? getColorFromToken(props.textColor, props.theme?.isInverted)
+    : props.theme?.palette.black;
+
   if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
   } else {

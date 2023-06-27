@@ -60,6 +60,29 @@ const CardSample = (props: CardProps) => (
   </>
 );
 
+const CardWithCustomHeader = ({
+  customHeaderId = 'custom-header-id',
+  ...props
+}: CardProps & { customHeaderId: string }) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+
+    <Card id="card" {...props}>
+      <CardHeader
+        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        header={<b id={customHeaderId}>App Name</b>}
+        description={<span>Developer</span>}
+      />
+    </Card>
+
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
+
 const CardWithPreview = (props: CardProps) => (
   <>
     <p tabIndex={0} id="before">
@@ -420,6 +443,17 @@ describe('Card', () => {
         cy.get(`.${cardClassNames.checkbox}`).then(slot => {
           expect(header.attr('id')).equals(slot.attr('aria-labelledby'));
         });
+      });
+    });
+
+    it('should sync selectable aria-labelledby with card header immediate child', () => {
+      const customHeaderId = 'custom-header';
+
+      mountFluent(<CardWithCustomHeader customHeaderId={customHeaderId} selected />);
+
+      cy.get(`.${cardHeaderClassNames.header}`).should('not.have.attr', 'id');
+      cy.get(`.${cardClassNames.checkbox}`).then(slot => {
+        cy.get(`#${customHeaderId}`).then(() => expect(customHeaderId).equals(slot.attr('aria-labelledby')));
       });
     });
 
