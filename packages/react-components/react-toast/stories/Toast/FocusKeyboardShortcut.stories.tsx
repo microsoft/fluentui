@@ -8,12 +8,8 @@ export const FocusKeyboardShortcut = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastTitle action={null}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
-        <ToastFooter>
-          <Link>Action</Link>
-          <Link>Action</Link>
-        </ToastFooter>
       </Toast>,
       { intent: 'success' },
     );

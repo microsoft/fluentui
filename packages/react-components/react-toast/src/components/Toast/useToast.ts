@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { ToastProps, ToastState } from './Toast.types';
-import { useToastContext } from '../../contexts/toastContext';
 
 /**
  * Create the state required to render Toast.
@@ -13,16 +12,12 @@ import { useToastContext } from '../../contexts/toastContext';
  * @param ref - reference to root HTMLElement of Toast
  */
 export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
-  const { titleId, bodyId } = useToastContext();
   return {
     components: {
       root: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
-      role: 'group',
-      'aria-labelledby': titleId,
-      'aria-describedby': bodyId,
       ...props,
     }),
   };
