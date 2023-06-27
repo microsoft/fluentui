@@ -20,7 +20,7 @@ export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
     runMigrationOnProject(host, validatedSchema, userLog);
   }
 
-  formatFiles(host);
+  await formatFiles(host);
 
   return () => {
     printUserLogs(userLog);

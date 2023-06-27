@@ -20,23 +20,23 @@ describe(`utils`, () => {
       const packageRootPath = path.join('packages', options.packageName);
       const packageRootAbsolutePath = path.join(rootDir, packageRootPath);
       const paths = {
-        workspaceJsonPath: path.join(rootDir, 'workspace.json'),
+        nxJsonPath: path.join(rootDir, 'nx.json'),
+        projectJsonPath: path.join(packageRootAbsolutePath, 'project.json'),
         rootTsconfigPath: path.join(rootDir, 'tsconfig.base.json'),
         packageJson: path.join(packageRootAbsolutePath, 'package.json'),
         preset: path.join(packageRootAbsolutePath, 'preset.js'),
       };
 
-      // setup workspace
+      // setup project
+      fs.writeFileSync(paths.nxJsonPath, JSON.stringify({ npmScope: 'proj' }, null, 2), 'utf-8');
+      fs.mkdirSync(packageRootAbsolutePath, { recursive: true });
       fs.writeFileSync(
-        paths.workspaceJsonPath,
+        paths.projectJsonPath,
         JSON.stringify(
           {
-            projects: {
-              [`${npmScope}/${options.packageName}`]: {
-                root: packageRootPath,
-                sourceRoot: path.join(packageRootPath, 'src'),
-              },
-            },
+            name: `${npmScope}/${options.packageName}`,
+            root: packageRootPath,
+            sourceRoot: path.join(packageRootPath, 'src'),
           },
           null,
           2,
