@@ -8,11 +8,6 @@ describe(`v8 preset`, () => {
 
     expect(actual).toEqual(
       expect.objectContaining({
-        globals: {
-          'ts-jest': {
-            isolatedModules: true,
-          },
-        },
         moduleDirectories: [
           'node_modules',
           `${workspaceRoot}/scripts/jest/node_modules`,
@@ -33,7 +28,12 @@ describe(`v8 preset`, () => {
         },
         testEnvironment: 'jsdom',
         transform: {
-          '^.+\\.tsx?$': 'ts-jest',
+          '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+              isolatedModules: true,
+            },
+          ],
         },
         restoreMocks: true,
         clearMocks: true,

@@ -27,6 +27,11 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
     }),
     ...customConfig.moduleNameMapper,
   },
+  // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future
+  snapshotFormat: {
+    escapeString: true,
+    printBasicPrototype: true,
+  },
 });
 
 module.exports = createConfig;

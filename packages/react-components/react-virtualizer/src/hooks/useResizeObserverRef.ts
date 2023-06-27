@@ -20,6 +20,7 @@ export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWith
 
   React.useEffect(() => {
     // Update our state when resizeCallback changes
+    container.current = null;
     resizeObserver?.disconnect();
     setResizeObserver(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,6 +28,7 @@ export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWith
 
   React.useEffect(() => {
     return () => {
+      container.current = null;
       resizeObserver?.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

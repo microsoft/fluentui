@@ -56,17 +56,23 @@ describe('workspace-generator generator', () => {
 
     expect(content).toMatchInlineSnapshot(`
       "import * as path from 'path';
-      import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
+      import {
+        Tree,
+        formatFiles,
+        installPackagesTask,
+        names,
+        generateFiles,
+      } from '@nrwl/devkit';
       import { libraryGenerator } from '@nrwl/workspace/generators';
 
       import { getProjectConfig } from '../../utils';
 
-      import { CustomGeneratorSchema } from './schema'
+      import { CustomGeneratorSchema } from './schema';
 
       interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
-      export default async function(tree: Tree, schema: CustomGeneratorSchema) {
-        await libraryGenerator(tree, {name: schema.name});
+      export default async function (tree: Tree, schema: CustomGeneratorSchema) {
+        await libraryGenerator(tree, { name: schema.name });
 
         const normalizedOptions = normalizeOptions(tree, schema);
 
@@ -75,14 +81,11 @@ describe('workspace-generator generator', () => {
         await formatFiles(tree);
 
         return () => {
-          installPackagesTask(tree)
-        }
+          installPackagesTask(tree);
+        };
       }
 
-      function normalizeOptions(
-        tree: Tree,
-        options: CustomGeneratorSchema
-      ) {
+      function normalizeOptions(tree: Tree, options: CustomGeneratorSchema) {
         const project = getProjectConfig(tree, { packageName: options.name });
 
         return {
@@ -136,7 +139,7 @@ describe('workspace-generator generator', () => {
           await generator(appTree, options);
           const config = readProjectConfiguration(appTree, 'test');
           expect(config).toBeDefined();
-        })
+        });
       });
       "
     `);

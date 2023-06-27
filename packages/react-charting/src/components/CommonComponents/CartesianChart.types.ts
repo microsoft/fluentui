@@ -146,6 +146,11 @@ export interface ICartesianChartStyles {
    * styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: IStyle;
 }
 
 export interface ICartesianChartProps {
@@ -228,6 +233,17 @@ export interface ICartesianChartProps {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
+
+  /**
+   * Secondary y-scale options
+   * By default this is not defined, meaning there will be no secondary y-scale.
+   */
+  secondaryYScaleOptions?: {
+    /** Minimum value (0 by default) */
+    yMinValue?: number;
+    /** Maximum value (100 by default) */
+    yMaxValue?: number;
+  };
 
   /**
    * minimum  data value point in y-axis
@@ -358,6 +374,12 @@ export interface ICartesianChartProps {
    * props for the svg; use this to include aria-* or other attributes on the tag
    */
   svgProps?: React.SVGProps<SVGSVGElement>;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default True for LineChart but False for other charts
+   */
+  enableReflow?: boolean;
 }
 
 export interface IYValueHover {
@@ -376,6 +398,8 @@ export interface IChildProps {
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScale?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yScaleSecondary?: any;
   containerHeight?: number;
   containerWidth?: number;
 }

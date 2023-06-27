@@ -17,7 +17,6 @@ import {
 } from '@nrwl/devkit';
 
 import generator from './index';
-import { MovePackagesGeneratorSchema } from './schema';
 import { TsConfig } from '../../types';
 import { setupCodeowners } from '../../utils-testing';
 
@@ -211,6 +210,7 @@ describe('move-packages generator', () => {
     });
 
     it(`should move all v9 packages in batch`, async () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const projects = [
         options.name,
         '@proj/react-foo',
@@ -238,6 +238,7 @@ describe('move-packages generator', () => {
     });
 
     it(`should move all v8 packages in batch`, async () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const projects = [
         options.name,
         '@proj/react-foo',

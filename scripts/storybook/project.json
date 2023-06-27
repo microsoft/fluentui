@@ -1,0 +1,7 @@
+{
+  "name": "@fluentui/scripts-storybook",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "scripts/storybook/src",
+  "projectType": "library",
+  "tags": ["tools"]
+}

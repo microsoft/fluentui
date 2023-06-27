@@ -163,6 +163,7 @@ import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
+import { DATA_OVERFLOW_DIVIDER } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
@@ -407,6 +408,7 @@ import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
 import { Overflow } from '@fluentui/react-overflow';
+import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
@@ -868,6 +870,7 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusObserved } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
@@ -919,6 +922,7 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
@@ -1340,6 +1344,8 @@ export { CreateTableColumnOptions }
 export { createTeamsDarkTheme }
 
 export { CurveTokens }
+
+export { DATA_OVERFLOW_DIVIDER }
 
 export { DATA_OVERFLOW_ITEM }
 
@@ -1828,6 +1834,8 @@ export { OptionSlots }
 export { OptionState }
 
 export { Overflow }
+
+export { OverflowDivider }
 
 export { OverflowItem }
 
@@ -2751,6 +2759,8 @@ export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
 
+export { useFocusObserved }
+
 export { useFocusWithin }
 
 export { useId }
@@ -2852,6 +2862,8 @@ export { useMergedRefs }
 export { useModalAttributes }
 
 export { UseModalAttributesOptions }
+
+export { useObservedElement }
 
 export { useOption_unstable }
 

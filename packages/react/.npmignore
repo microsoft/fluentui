@@ -30,6 +30,9 @@ tsd.json
 tslint.json
 typings
 visualtests
+project.json
+
+# exclude gitignore patterns explicitly
 !lib
 !lib-commonjs
 !lib-amd

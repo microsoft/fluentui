@@ -34,6 +34,9 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public
+export function createSlideStyles(mainAxis: number): GriffelStyle;
+
+// @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @internal
@@ -72,7 +75,7 @@ export type PositioningImperativeRef = {
 };
 
 // @public (undocumented)
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'pinned'> {
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'pinned' | 'useTransform'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }
@@ -108,7 +111,7 @@ export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | un
 export function usePositioning(options: UsePositioningOptions): UsePositioningReturn;
 
 // @internal
-export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // (No @packageDocumentation comment for this package)
 
