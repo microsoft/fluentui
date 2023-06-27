@@ -29,6 +29,7 @@ describe('createToaster', () => {
       toastId: 'foo',
       toasterId: undefined,
       updateId: 0,
+      imperativeRef: { current: null },
     });
   });
 

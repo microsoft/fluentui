@@ -17,6 +17,8 @@ const defaultToastContainerProps: ToastContainerProps = {
   intent: undefined,
   updateId: 0,
   visible: true,
+  imperativeRef: { current: null },
+  tryRestoreFocus: () => null,
 };
 
 const runningTimerSelector = '[data-timer-status="running"]';
