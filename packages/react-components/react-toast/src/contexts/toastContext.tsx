@@ -4,11 +4,13 @@ import { ToastIntent } from '../state/types';
 export type ToastContextValue = {
   close: () => void;
   intent: ToastIntent | undefined;
+  titleId: string;
 };
 
 const toastContextDefaultValue: ToastContextValue = {
   close: () => null,
   intent: undefined,
+  titleId: '',
 };
 
 const toastContext = React.createContext<ToastContextValue | undefined>(undefined);
