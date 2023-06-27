@@ -13,14 +13,16 @@ import { useToastContext } from '../../contexts/toastContext';
  * @param ref - reference to root HTMLElement of Toast
  */
 export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
-  const { titleId } = useToastContext();
+  const { titleId, bodyId } = useToastContext();
   return {
     components: {
       root: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
+      role: 'group',
       'aria-labelledby': titleId,
+      'aria-describedby': bodyId,
       ...props,
     }),
   };

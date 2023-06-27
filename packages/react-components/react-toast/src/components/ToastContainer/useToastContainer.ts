@@ -51,6 +51,7 @@ export const useToastContainer_unstable = (
     ...rest
   } = props;
   const titleId = useId('toast-title');
+  const bodyId = useId('toast-body');
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
@@ -73,7 +74,10 @@ export const useToastContainer_unstable = (
     // TODO test this
     if (timerTimeout < 0) {
       setRunning(true);
-    } else if (timerTimeout >= 0 && !containsActive) {
+      return;
+    }
+
+    if (!containsActive) {
       setRunning(true);
     }
   });
@@ -187,8 +191,6 @@ export const useToastContainer_unstable = (
       { required: true },
     ),
     root: getNativeElementProps('div', {
-      role: 'dialog',
-      'aria-modal': false,
       ref: useMergedRefs(ref, toastRef),
       children,
       tabIndex: -1,
@@ -210,5 +212,6 @@ export const useToastContainer_unstable = (
     nodeRef: toastRef,
     intent,
     titleId,
+    bodyId,
   };
 };

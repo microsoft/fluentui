@@ -41,7 +41,7 @@ export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
  */
 export type ToastContainerState = ComponentState<ToastContainerSlots> &
   Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> &
-  Pick<ToastContextValue, 'titleId'> & {
+  Pick<ToastContextValue, 'titleId' | 'bodyId'> & {
     transitionTimeout: number;
     timerTimeout: number;
     running: boolean;
