@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Observed element hooks",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
