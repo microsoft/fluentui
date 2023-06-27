@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add bundle-size-auditor task which replaces global test-bundles application approach",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

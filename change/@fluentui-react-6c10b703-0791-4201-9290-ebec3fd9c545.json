@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: change rating in response to keyboard events, not focus events",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
