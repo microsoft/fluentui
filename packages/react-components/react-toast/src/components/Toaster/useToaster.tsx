@@ -50,6 +50,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         children: toastsToRender.get(toastPosition)?.map(toast => (
           <ToastContainer
             {...toast}
+            tryRestoreFocus={tryRestoreFocus}
             intent={toast.intent}
             announce={announce}
             key={toast.toastId}

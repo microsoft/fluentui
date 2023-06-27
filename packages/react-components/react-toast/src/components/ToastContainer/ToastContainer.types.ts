@@ -33,6 +33,7 @@ export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
     visible: boolean;
     announce: Announce;
     intent: ToastIntent | undefined;
+    tryRestoreFocus: () => void;
   };
 
 /**

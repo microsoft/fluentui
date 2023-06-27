@@ -57,7 +57,7 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
     }
   }, [toaster]);
 
-  const getMostRecentToast = React.useCallback(() => {
+  const getMostRecentVisibleToast = React.useCallback(() => {
     return Array.from(toaster.visibleToasts).reduce((cur, next) => {
       const toast = toaster.toasts.get(next);
       if (!toast) {
@@ -122,7 +122,7 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
     const focusShortcutListener = (e: KeyboardEvent) => {
       if (isFocusShortcut(e)) {
         pauseAllToasts();
-        const mostRecentToast = getMostRecentToast();
+        const mostRecentToast = getMostRecentVisibleToast();
 
         if (mostRecentToast) {
           lastActiveElementRef.current = isHTMLElement(targetDocument.activeElement)
@@ -143,7 +143,15 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
 
       targetDocument.removeEventListener('keydown', focusShortcutListener);
     };
-  }, [toaster, forceUpdate, targetDocument, isCorrectToaster, pauseAllToasts, getMostRecentToast, isFocusShortcut]);
+  }, [
+    toaster,
+    forceUpdate,
+    targetDocument,
+    isCorrectToaster,
+    pauseAllToasts,
+    getMostRecentVisibleToast,
+    isFocusShortcut,
+  ]);
 
   const toastsToRender = (() => {
     if (!toaster) {

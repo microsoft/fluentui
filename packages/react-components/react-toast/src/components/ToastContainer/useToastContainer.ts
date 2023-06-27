@@ -35,7 +35,7 @@ export const useToastContainer_unstable = (
   const {
     visible,
     children,
-    close,
+    close: closeProp,
     remove,
     updateId,
     announce,
@@ -46,12 +46,22 @@ export const useToastContainer_unstable = (
     pauseOnHover,
     pauseOnWindowBlur,
     imperativeRef,
+    tryRestoreFocus,
     ...rest
   } = props;
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
   const imperativePauseRef = React.useRef(false);
+  const focusedToastBeforeClose = React.useRef(false);
+  const close = useEventCallback(() => {
+    const activeElement = targetDocument?.activeElement;
+    if (activeElement && toastRef.current?.contains(activeElement)) {
+      focusedToastBeforeClose.current = true;
+    }
+
+    closeProp();
+  });
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => {
     if (imperativePauseRef.current) {
@@ -107,15 +117,6 @@ export const useToastContainer_unstable = (
     }
   }, [targetDocument, pause, play, pauseOnWindowBlur]);
 
-  React.useEffect(() => {
-    if (!visible) {
-      return;
-    }
-
-    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
-    announce(toastRef.current?.textContent ?? '', { politeness });
-  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
-
   // It's impossible to animate to height: auto in CSS, the actual pixel value must be known
   // Get the height of the toast before animation styles have been applied and set a CSS
   // variable with its height. The CSS variable will be used by the styles
@@ -147,6 +148,33 @@ export const useToastContainer_unstable = (
     userRootSlot?.onMouseEnter?.(e);
   });
 
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      close();
+    }
+
+    userRootSlot?.onKeyDown?.(e);
+  });
+
+  React.useEffect(() => {
+    if (!visible) {
+      return;
+    }
+
+    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
+    announce(toastRef.current?.textContent ?? '', { politeness });
+  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
+
+  React.useEffect(() => {
+    return () => {
+      if (focusedToastBeforeClose.current) {
+        focusedToastBeforeClose.current = false;
+        tryRestoreFocus();
+      }
+    };
+  }, [tryRestoreFocus]);
+
   return {
     components: {
       timer: Timer,
@@ -157,6 +185,8 @@ export const useToastContainer_unstable = (
       { required: true },
     ),
     root: getNativeElementProps('div', {
+      role: 'dialog',
+      'aria-modal': false,
       ref: useMergedRefs(ref, toastRef),
       children,
       tabIndex: -1,
@@ -165,6 +195,7 @@ export const useToastContainer_unstable = (
       onAnimationEnd,
       onMouseEnter,
       onMouseLeave,
+      onKeyDown,
     }),
     timerTimeout,
     transitionTimeout: 500,
