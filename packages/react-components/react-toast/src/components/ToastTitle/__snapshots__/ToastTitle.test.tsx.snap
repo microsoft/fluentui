@@ -4,6 +4,7 @@ exports[`ToastTitle renders a default state 1`] = `
 <div>
   <div
     class="fui-ToastTitle"
+    id=""
   >
     Default ToastTitle
   </div>

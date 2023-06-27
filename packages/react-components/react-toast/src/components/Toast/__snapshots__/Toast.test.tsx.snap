@@ -3,6 +3,7 @@
 exports[`Toast renders a default state 1`] = `
 <div>
   <div
+    aria-labelledby=""
     class="fui-Toast"
   >
     Default Toast

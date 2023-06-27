@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { createPriorityQueue } from '@fluentui/react-utilities';
-import { Toast, ToasterOptions, ToastId, ToastOptions, UpdateToastEventDetail } from '../types';
+import { Toast, ToasterOptions, ToastId, ToastImperativeRef, ToastOptions, UpdateToastEventDetail } from '../types';
 
 function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
   // This cast is required, as Object.entries will return string as key which is not indexable
@@ -21,6 +22,10 @@ const defaulToastOptions: Pick<
   position: 'bottom-end',
   timeout: 3000,
 };
+
+// Multiple toasts can be dispatched in a single tick
+// Use a counter as a timestamp
+let timestamp = 0;
 
 /**
  * Toast are managed outside of the react lifecycle because they can be
@@ -131,8 +136,9 @@ export function createToaster(options: Partial<ToasterOptions>) {
       content,
       updateId: 0,
       toasterId,
-      dispatchedAt: Date.now(),
+      dispatchedAt: timestamp++,
       data: {},
+      imperativeRef: React.createRef<ToastImperativeRef>(),
     };
 
     assignDefined(toast, options);
