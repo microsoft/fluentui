@@ -17,12 +17,27 @@ import {
   shorthands,
   useFocusFinders,
   Body1Stronger,
+  tokens,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     ...shorthands.gap('5px'),
+    ...shorthands.padding('10px'),
+
+    ...shorthands.border('2px', 'solid', tokens.colorBrandStroke1),
+    borderBottomLeftRadius: tokens.borderRadiusMedium,
+    borderBottomRightRadius: tokens.borderRadiusMedium,
+  },
+  note: {
+    display: 'block',
+    backgroundColor: tokens.colorBrandStroke1,
+    color: tokens.colorNeutralForegroundOnBrand,
+
+    ...shorthands.padding('4px'),
+    borderTopLeftRadius: tokens.borderRadiusMedium,
+    borderTopRightRadius: tokens.borderRadiusMedium,
   },
 });
 
@@ -41,7 +56,7 @@ export const Default = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.note}>
         <Body1Stronger>{count} focusable elements below</Body1Stronger>
       </div>
       <div
@@ -57,9 +72,9 @@ export const Default = () => {
         <Button aria-label="Align Left" icon={<TextAlignLeftRegular />} />
         <Button aria-label="Align Center" icon={<TextAlignCenterRegular />} />
         <Button aria-label="Align Right" icon={<TextAlignRightRegular />} />
-        <Button aria-label="Copy" icon={<CopyRegular />} />
-        <Button aria-label="Cut" icon={<CutRegular />} />
-        <Button aria-label="Paste" icon={<ClipboardPasteRegular />} />
+        <Button aria-label="Copy" disabled icon={<CopyRegular />} />
+        <Button aria-label="Cut" disabled icon={<CutRegular />} />
+        <Button aria-label="Paste" disabled icon={<ClipboardPasteRegular />} />
       </div>
     </>
   );

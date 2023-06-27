@@ -18,12 +18,27 @@ import {
   shorthands,
   useFocusFinders,
   Body1Stronger,
+  tokens,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     ...shorthands.gap('5px'),
+    ...shorthands.padding('10px'),
+
+    ...shorthands.border('2px', 'solid', tokens.colorBrandStroke1),
+    borderBottomLeftRadius: tokens.borderRadiusMedium,
+    borderBottomRightRadius: tokens.borderRadiusMedium,
+  },
+  note: {
+    display: 'block',
+    backgroundColor: tokens.colorBrandStroke1,
+    color: tokens.colorNeutralForegroundOnBrand,
+
+    ...shorthands.padding('4px'),
+    borderTopLeftRadius: tokens.borderRadiusMedium,
+    borderTopRightRadius: tokens.borderRadiusMedium,
   },
 });
 
@@ -42,7 +57,7 @@ export const FindAllWhere = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.note}>
         <Body1Stronger>{count} toggle buttons below</Body1Stronger>
       </div>
       <div

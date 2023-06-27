@@ -10,13 +10,23 @@ import {
   ClipboardPasteRegular,
   CutRegular,
 } from '@fluentui/react-icons';
-import { Button, useArrowNavigationGroup, makeStyles, shorthands, useFocusFinders } from '@fluentui/react-components';
+import {
+  Button,
+  useArrowNavigationGroup,
+  makeStyles,
+  shorthands,
+  useFocusFinders,
+  tokens,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     marginTop: '5px',
     display: 'flex',
     ...shorthands.gap('5px'),
+    ...shorthands.padding('10px'),
+    ...shorthands.border('2px', 'solid', tokens.colorBrandStroke1),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
 });
 
@@ -51,8 +61,8 @@ export const FindLast = () => {
         <Button aria-label="Align Center" icon={<TextAlignCenterRegular />} />
         <Button aria-label="Align Right" icon={<TextAlignRightRegular />} />
         <Button aria-label="Copy" icon={<CopyRegular />} />
-        <Button aria-label="Cut" icon={<CutRegular />} />
-        <Button appearance="primary" aria-label="Paste" icon={<ClipboardPasteRegular />} />
+        <Button appearance="primary" aria-label="Cut" icon={<CutRegular />} />
+        <Button disabled aria-label="Paste" icon={<ClipboardPasteRegular />} />
       </div>
     </>
   );

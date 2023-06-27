@@ -63,16 +63,18 @@ export const MultipleNames = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Field label="Select a name">
         <RadioGroup value={observedName} onChange={(e, data) => setObservedName(data.value as ObservedNames)}>
           <Radio label="First observed name" value="first" />
           <Radio label="Second observed name" value="second" />
         </RadioGroup>
       </Field>
-      <ToggleButton checked={mounted} disabledFocusable={loading} onClick={onClick}>
-        {mounted ? 'Reset' : 'Load and Focus'}
-      </ToggleButton>
+      <div>
+        <ToggleButton checked={mounted} disabledFocusable={loading} onClick={onClick}>
+          {mounted ? 'Reset' : 'Load and Focus'}
+        </ToggleButton>
+      </div>
       {mounted ? (
         <div className={styles.card}>
           <Title3>Hello world!</Title3>
