@@ -90,7 +90,7 @@ export interface ToasterOptions
   offset?: ToastOffset;
   toasterId?: ToasterId;
   limit?: number;
-  shortcuts: ToasterShortcuts;
+  shortcuts?: ToasterShortcuts;
 }
 
 export interface Toast<TData = object> extends ToastOptions<TData> {
