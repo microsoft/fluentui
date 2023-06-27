@@ -18,7 +18,7 @@ describe('createToaster', () => {
       close: expect.any(Function),
       content: 'foo',
       data: {},
-      dispatchedAt: expect.any(Number),
+      order: expect.any(Number),
       onStatusChange: undefined,
       pauseOnHover: false,
       pauseOnWindowBlur: false,

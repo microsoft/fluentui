@@ -45,7 +45,7 @@ export function createToaster(options: Partial<ToasterOptions>) {
     }
 
     if (a.priority === b.priority) {
-      return a.dispatchedAt - b.dispatchedAt;
+      return a.order - b.order;
     }
 
     return a.priority - b.priority;
@@ -136,7 +136,7 @@ export function createToaster(options: Partial<ToasterOptions>) {
       content,
       updateId: 0,
       toasterId,
-      dispatchedAt: timestamp++,
+      order: timestamp++,
       data: {},
       imperativeRef: React.createRef<ToastImperativeRef>(),
     };

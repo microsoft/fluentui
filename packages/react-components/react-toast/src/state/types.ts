@@ -108,8 +108,9 @@ export interface Toast<TData = object> extends ToastOptions<TData> {
   updateId: number;
   /**
    * Used to determine default priority when the user does not set one
+   * Simple counter of toasts dispatched.
    */
-  dispatchedAt: number;
+  order: number;
 
   imperativeRef: React.RefObject<ToastImperativeRef>;
 }

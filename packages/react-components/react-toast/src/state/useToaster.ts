@@ -62,7 +62,7 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
         return toast;
       }
 
-      if (cur.dispatchedAt < toast?.dispatchedAt) {
+      if (cur.order < toast?.order) {
         return toast;
       }
 
