@@ -174,12 +174,6 @@ const TicketOrderFormFieldsAccessibility = () => {
     }
   }, [errors, formState, formValidation]);
 
-  React.useEffect(() => {
-    if (isSubmittedAndValid) {
-      document.getElementById('validMessage')?.focus();
-    }
-  }, [isSubmittedAndValid]);
-
   const onSubmit = (data: FormInputs, event?: React.BaseSyntheticEvent) => {
     event?.preventDefault();
     if (formState.isValid) {
@@ -200,7 +194,7 @@ const TicketOrderFormFieldsAccessibility = () => {
     <Scenario pageTitle="Ticket order form fields">
       <h1>Ticket order form</h1>
 
-      {!isSubmittedAndValid ? (
+      {!isSubmittedAndValid && (
         <>
           <p>Please fill the following form to order your ticket.</p>
           <form onSubmit={formValidation.handleSubmit(onSubmit)}>
@@ -539,11 +533,10 @@ const TicketOrderFormFieldsAccessibility = () => {
             <Button type="submit">Order ticket</Button>
           </form>
         </>
-      ) : (
-        <p id="validMessage" role="alert" tabIndex={-1}>
-          The form is valid and would have been submitted.
-        </p>
       )}
+      <div role="status" id="statusMessage">
+        {isSubmittedAndValid && <p>The form is valid and would have been submitted.</p>}
+      </div>
     </Scenario>
   );
 };

@@ -156,12 +156,6 @@ const RegistrationFormInputsAccessibility = () => {
     }
   }, [errors, formState, formValidation]);
 
-  React.useEffect(() => {
-    if (isSubmittedAndValid) {
-      document.getElementById('validMessage')?.focus();
-    }
-  }, [isSubmittedAndValid]);
-
   const onSubmit = (data: FormInputs, event?: React.BaseSyntheticEvent) => {
     event?.preventDefault();
     if (formState.isValid) {
@@ -181,7 +175,7 @@ const RegistrationFormInputsAccessibility = () => {
   return (
     <Scenario pageTitle="Registration form inputs">
       <h1>Registration form</h1>
-      {!isSubmittedAndValid ? (
+      {!isSubmittedAndValid && (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
           <Label htmlFor="fullName">Full name*</Label>
           <Controller
@@ -441,11 +435,10 @@ const RegistrationFormInputsAccessibility = () => {
 
           <Button type="submit">Register</Button>
         </form>
-      ) : (
-        <p id="validMessage" role="alert" tabIndex={-1}>
-          The form is valid and would have been submitted.
-        </p>
       )}
+      <div role="status" id="statusMessage">
+        {isSubmittedAndValid && <p>The form is valid and would have been submitted.</p>}
+      </div>
     </Scenario>
   );
 };
