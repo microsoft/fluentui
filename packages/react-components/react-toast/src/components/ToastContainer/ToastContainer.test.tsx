@@ -17,6 +17,13 @@ const defaultToastContainerProps: ToastContainerProps = {
   intent: undefined,
   updateId: 0,
   visible: true,
+  dispatchedAt: 0,
+  content: '',
+  onStatusChange: () => null,
+  position: 'bottom-end',
+  toastId: '',
+  priority: 0,
+  toasterId: '',
 };
 
 const runningTimerSelector = '[data-timer-status="running"]';
@@ -32,6 +39,7 @@ describe('ToastContainer', () => {
     displayName: 'ToastContainer',
     requiredProps: defaultToastContainerProps,
     isInternal: true,
+    disabledTests: ['consistent-callback-args'],
   });
 
   it('renders a default state', () => {

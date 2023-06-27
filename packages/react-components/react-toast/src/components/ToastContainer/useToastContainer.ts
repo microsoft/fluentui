@@ -8,6 +8,7 @@ import {
   resolveShorthand,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
 
@@ -51,6 +52,11 @@ export const useToastContainer_unstable = (
   const [running, setRunning] = React.useState(false);
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => setRunning(true));
+  const onStatusChange = useEventCallback((status: ToastStatus) => props.onStatusChange?.(null, { status, ...props }));
+
+  React.useEffect(() => {
+    return () => onStatusChange('unmounted');
+  }, [onStatusChange]);
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -91,11 +97,23 @@ export const useToastContainer_unstable = (
   // Users never actually use ToastContainer as a JSX but imperatively through useToastContainerController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
 
-  const onAnimationEnd = useEventCallback((e: React.AnimationEvent<HTMLDivElement>) => {
-    // start toast once it's fully animated in
-    play();
-    userRootSlot?.onAnimationEnd?.(e);
-  });
+  // Using a ref callback here because addEventListener supports `once`
+  const toastAnimationRef = React.useCallback(
+    (el: HTMLDivElement | null) => {
+      if (el && toastRef.current) {
+        toastRef.current.addEventListener(
+          'animationend',
+          () => {
+            // start toast once it's fully animated in
+            play();
+            onStatusChange('visible');
+          },
+          { once: true },
+        );
+      }
+    },
+    [play, onStatusChange],
+  );
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
     pause();
@@ -117,11 +135,10 @@ export const useToastContainer_unstable = (
       { required: true },
     ),
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, toastRef),
+      ref: useMergedRefs(ref, toastRef, toastAnimationRef),
       children,
       ...rest,
       ...userRootSlot,
-      onAnimationEnd,
       onMouseEnter,
       onMouseLeave,
     }),
