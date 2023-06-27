@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 26 Jun 2023 09:53:53 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2023 11:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.23.0)
+
+Tue, 27 Jun 2023 11:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.22.1..@fluentui/react-components_v9.23.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Observed element hooks ([PR #28291](https://github.com/microsoft/fluentui/pull/28291) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - feat: Observed element hooks ([PR #28291](https://github.com/microsoft/fluentui/pull/28291) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - bugfix: react-tree remove TreeItemAside component ([PR #28318](https://github.com/microsoft/fluentui/pull/28318) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Calendar uses month-only selection string when only month picker is used ([PR #28301](https://github.com/microsoft/fluentui/pull/28301) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - bugfix: makes value property on TreeItem less generic to simplify internals ([PR #28257](https://github.com/microsoft/fluentui/pull/28257) by bernardo.sunderhus@gmail.com)
+  - bugfix: rollback to actions and aside as a slot to ensure positioning of internals ([PR #28318](https://github.com/microsoft/fluentui/pull/28318) by bernardo.sunderhus@gmail.com)
 
 ## [9.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.22.1)
 

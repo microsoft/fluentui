@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bugfix: rollback to actions and aside as a slot to ensure positioning of internals",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

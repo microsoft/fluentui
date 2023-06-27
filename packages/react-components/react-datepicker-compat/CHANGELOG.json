@@ -2,6 +2,39 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Tue, 27 Jun 2023 11:21:22 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "60c84a848b060241768ad62097443755c4c2bee5",
+            "comment": "fix: Calendar uses month-only selection string when only month picker is used"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.7.2",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-portal to v9.2.15",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.9.0",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Jun 2023 09:53:55 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.1.7",
       "version": "0.1.7",
