@@ -232,4 +232,51 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make').click().get(`#action`).focus().wait(700).get(`.${toastClassNames.root}`).should('have.length', 5);
   });
+
+  it('should follow lifecycle', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const [log, setLog] = React.useState<string[]>([]);
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 500, onStatusChange: (_, data) => setLog(s => [...s, data.status]) },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <ul>
+            {log.map(msg => (
+              <li key={msg}>{msg}</li>
+            ))}
+          </ul>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get('li')
+      .should('have.length', 4)
+      .get('li')
+      .eq(0)
+      .should('have.text', 'queued')
+      .get('li')
+      .eq(1)
+      .should('have.text', 'visible')
+      .get('li')
+      .eq(2)
+      .should('have.text', 'dismissed')
+      .get('li')
+      .eq(3)
+      .should('have.text', 'unmounted');
+  });
 });
