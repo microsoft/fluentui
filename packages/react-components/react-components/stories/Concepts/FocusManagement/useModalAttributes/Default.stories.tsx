@@ -14,7 +14,6 @@ const useStyles = makeStyles({
     position: 'fixed',
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.inset(0),
-    ...shorthands.padding(0),
     ...shorthands.padding('10px'),
     ...shorthands.margin('auto'),
     ...shorthands.borderStyle('none'),
