@@ -36,7 +36,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.3",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.8",
-    "@fluentui/react-shared-contexts": "9.5.1",
+    "@fluentui/react-shared-contexts": "^9.5.1",
     "@fluentui/react-tabster": "^9.9.0",
     "@fluentui/react-theme": "^9.1.9",
     "@fluentui/react-utilities": "^9.9.4",
