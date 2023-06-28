@@ -20,8 +20,14 @@ describe('Tag', () => {
     requiredProps,
   });
 
-  it('should render root as a button', () => {
-    const { getByRole } = render(<Tag>Tag</Tag>);
+  it('should render root as a span', () => {
+    const { getByTestId } = render(<Tag data-testid="testid">Tag</Tag>);
+    expect(getByTestId('testid').tagName).toBe('SPAN');
+    expect(getByTestId('testid').className.includes(tagClassNames.root)).toBe(true);
+  });
+
+  it('should render root as a button for dismissible tag', () => {
+    const { getByRole } = render(<Tag dismissible>Tag</Tag>);
     expect(getByRole('button').className.includes(tagClassNames.root)).toBe(true);
   });
 });
