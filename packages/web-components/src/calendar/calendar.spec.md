@@ -60,7 +60,7 @@ None
 ## Accessibility
 
 - [ ] Find the matching component through [WCAG's patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
-  - There is no calendar WCAG pattern
+  - [Date Picker Combobox Example](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-datepicker/)
 - [ ] Are there any accessibility elements unique to this component?
 - [ ] List ARIA attributes: `role, aria-labelledby, aria-label, aria-pressed, aria-selected, aria-live`
 - [ ] Does the component support 400% zoom?
