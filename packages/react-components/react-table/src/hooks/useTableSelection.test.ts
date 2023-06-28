@@ -58,7 +58,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.size).toBe(items.length);
         expect(Array.from(result.current.selection.selectedRows)).toEqual(items.map((_, i) => i));
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith({}, { selectedItems: new Set([0, 1, 2, 3]) });
+        expect(onSelectionChange).toHaveBeenCalledWith(mockSyntheticEvent(), { selectedItems: new Set([0, 1, 2, 3]) });
       });
 
       it('should deselect all rows', () => {
@@ -77,7 +77,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set() });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
     });
     describe('clearRows', () => {
@@ -96,7 +96,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set() });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
     });
 
@@ -113,7 +113,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith({}, { selectedItems: new Set([1]) });
+        expect(onSelectionChange).toHaveBeenCalledWith(mockSyntheticEvent(), { selectedItems: new Set([1]) });
       });
 
       it('should select multiple rows', () => {
@@ -134,7 +134,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set([1, 2]) });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set([1, 2]) });
       });
     });
 
@@ -155,7 +155,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set() });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
     });
 
@@ -173,7 +173,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith({}, { selectedItems: new Set([1]) });
+        expect(onSelectionChange).toHaveBeenCalledWith(mockSyntheticEvent(), { selectedItems: new Set([1]) });
       });
 
       it('should deselect selected row', () => {
@@ -193,7 +193,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set() });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
 
       it('should select another unselected row', () => {
@@ -214,7 +214,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set([1, 2]) });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set([1, 2]) });
       });
     });
 
@@ -252,7 +252,6 @@ describe('useTableSelectionState', () => {
         act(() => {
           result.current.selection.deselectRow(mockSyntheticEvent(), 1);
         });
-
         expect(result.current.selection.selectedRows.size).toBe(3);
         expect(result.current.selection.allRowsSelected).toBe(false);
       });
@@ -292,7 +291,7 @@ describe('useTableSelectionState', () => {
         );
 
         expect(result.current.selection.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
-          `"[react-table]: \`toggleAllItems\` should not be used in single selection mode"`,
+          `"[react-utilities]: \`toggleAllItems\` should not be used in single selection mode"`,
         );
         expect(onSelectionChange).toHaveBeenCalledTimes(0);
       });
@@ -327,7 +326,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set() });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
     });
 
@@ -344,7 +343,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith({}, { selectedItems: new Set([1]) });
+        expect(onSelectionChange).toHaveBeenCalledWith(mockSyntheticEvent(), { selectedItems: new Set([1]) });
       });
 
       it('should select another row', () => {
@@ -364,7 +363,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set([2]) });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set([2]) });
       });
     });
 
@@ -385,7 +384,7 @@ describe('useTableSelectionState', () => {
 
         expect(result.current.selection.selectedRows.size).toBe(0);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set() });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
     });
 
@@ -403,7 +402,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(1);
-        expect(onSelectionChange).toHaveBeenCalledWith({}, { selectedItems: new Set([1]) });
+        expect(onSelectionChange).toHaveBeenCalledWith(mockSyntheticEvent(), { selectedItems: new Set([1]) });
       });
 
       it('should deselect selected row', () => {
@@ -423,7 +422,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.size).toBe(1);
         expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set([2]) });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set([2]) });
       });
 
       it('should select another unselected row', () => {
@@ -444,7 +443,7 @@ describe('useTableSelectionState', () => {
         expect(result.current.selection.selectedRows.has(1)).toBe(false);
         expect(result.current.selection.selectedRows.has(2)).toBe(true);
         expect(onSelectionChange).toHaveBeenCalledTimes(2);
-        expect(onSelectionChange).toHaveBeenNthCalledWith(2, {}, { selectedItems: new Set([2]) });
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set([2]) });
       });
     });
 

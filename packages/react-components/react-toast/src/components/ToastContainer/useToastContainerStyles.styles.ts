@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -9,22 +9,22 @@ export const toastClassNames: SlotClassNames<ToastContainerSlots> = {
   timer: 'fui-ToastContainer__timer',
 };
 
+const useRootBaseClassName = makeResetStyles({
+  boxSizing: 'border-box',
+  marginTop: '16px',
+  minHeight: '44px',
+  pointerEvents: 'all',
+  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  '--fui-toast-height': '44px',
+  ...createCustomFocusIndicatorStyle({
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  }),
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    boxSizing: 'border-box',
-    marginTop: '16px',
-    minHeight: '44px',
-    pointerEvents: 'all',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    '--fui-toast-height': '44px',
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-    }),
-  },
-
   enter: {
     animationDuration: '200ms, 400ms',
     animationDelay: '0ms, 200ms',
@@ -82,11 +82,12 @@ const useStyles = makeStyles({
  * Apply styling to the ToastContainer slots based on the state
  */
 export const useToastContainerStyles_unstable = (state: ToastContainerState): ToastContainerState => {
+  const rootBaseClassName = useRootBaseClassName();
   const styles = useStyles();
   state.root.className = mergeClasses(
     toastClassNames.root,
+    rootBaseClassName,
     state.visible ? styles.enter : styles.exit,
-    styles.root,
     state.root.className,
   );
 

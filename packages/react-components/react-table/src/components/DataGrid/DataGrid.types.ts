@@ -4,13 +4,12 @@ import type {
   SortState,
   TableFeaturesState,
   UseTableSortOptions,
-  SelectionMode,
-  UseTableSelectionOptions,
   OnSelectionChangeData,
   TableColumnSizingOptions,
   TableColumnId,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
+import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
 
 export type DataGridSlots = TableSlots;
 
@@ -61,7 +60,7 @@ export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> &
   Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
-  Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+  Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
     /**

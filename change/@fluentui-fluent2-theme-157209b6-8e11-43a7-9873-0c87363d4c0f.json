@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: update .npmignore to unify v8 packages and exclude project.json",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

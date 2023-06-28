@@ -304,14 +304,14 @@ const templates = {
       module.exports = {
         displayName: '${options.pkgName}',
         preset: '../../../jest.preset.js',
-        globals: {
-          'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-            isolatedModules: true,
-          },
-        },
         transform: {
-          '^.+\\.tsx?$': 'ts-jest',
+          '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+              tsconfig: '<rootDir>/tsconfig.spec.json',
+              isolatedModules: true,
+            }
+          ],
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],

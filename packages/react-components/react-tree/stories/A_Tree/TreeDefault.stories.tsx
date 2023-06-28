@@ -31,6 +31,9 @@ export const Default = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
+      <TreeItem itemType="leaf">
+        <TreeItemLayout>level 1, item 3</TreeItemLayout>
+      </TreeItem>
     </Tree>
   );
 };
