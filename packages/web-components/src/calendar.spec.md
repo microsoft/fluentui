@@ -21,16 +21,17 @@ Due to the incomplete nature of the v9 calendar design spec, work on the compone
 - @attr `month-picker-overlay`: boolean | `false` - If true, show month picker on top of date picker when visible
 - @attr `week-numbers`: boolean | `false` - If true, show week numbers (1-53) before each week row
 - @attr `min-weeks`: number | minimum number of weeks shown in a month
-- @attr `filter`: `week`, `work-week`, `4`, `3`, `2`, `1` | allow user to view selected date with a range filter
-- @attr `work-week`: the days that are selectable with the filter `work-week`. If the filter is not set to `work-week`, this does nothing.
+- @attr `filter`: `week`, `work-week`, `4, 3, 2, 1` | allow user to view selected date with a range filter
+- @attr `work-week`: `[0, 1, 2, 3, 4, 5, 6]` | the days that are selectable with the filter `work-week`. If the filter is not set to `work-week`, this does nothing.
 - @attr `first-day-of-week`: number | the first day of the week for your locale 0-6
-- @attr `show-link`: boolean | `true` - If true, show 'Go to today' link at link slot
+- @attr `first-week-of-year`: `0, 1, 2` | enum that defines when the first week of the yera should start: first day (`0`), first full week (`1`), first four day week (`2`)
+- @attr `min-date`: string | The minimum allowable date
+- @attr `max-date`: string | The maximum allowable date
+- @attr `show-link`: boolean | `true` - If false, link at link slot is hidden
 - @attr `highlight-current-month`: boolean | `false` - Whether the month picker should highlight the current month
 - @attr `highlight-selected-month`: boolean | `false` - Whether the month picker should highlight the selected month
 - @attr `today`: string | value of today
-- @attr `selected-dates`: string
-- @attr `start-date`: string | start date when type is set to `range-picker`
-- @attr `end-date`: string | end date when type is set to `range-picker`
+- @attr `selected-dates`: string[]
 
 ### Outputs
 
@@ -59,4 +60,61 @@ None
 - [ ] Find the matching component through [WCAG's patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
   - There is no calendar WCAG pattern
 - [ ] Are there any accessibility elements unique to this component?
-- [ ] List ARIA attributes: `role, aria-labelledby, aria-label, aria-haspopup, aria-expanded, aria-pressed`
+- [ ] List ARIA attributes: `role, aria-labelledby, aria-label, aria-pressed, aria-selected, aria-live`
+- [ ] Does the component support 400% zoom?
+- [ ] What keyboard behaviors does the component support?
+  - [ ] Arrows - Moves focus according to the grid behavior
+  - [ ] Enter - Select the date
+  - [ ] Home - Moves focus to the first day (e.g. Sunday) of the current week
+  - [ ] End - Moves focus to the last day (e.g. Satuday) of the current week
+  - [ ] Page Up - Changes the grid of dates to the previous month
+  - [ ] Shift + Page Up - Changes the grid of dates to the previous year
+  - [ ] Page Down - Changes the grid of dates to the next month
+  - [ ] Shift + Page Down - Changes the grid of dates to the next year
+
+## Preparation
+
+- [x] This component will inherit from and document the [FAST Calendar Component](https://github.com/microsoft/fast/tree/master/packages/web-components/fast-foundation/src/calendar)
+
+- [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document:
+
+  - [Fluent UI React v8 Calendar Component Spec](https://developer.microsoft.com/en-us/fluentui#/controls/web/calendar)
+  - [Fluent UI React v9 Date Picker Component Spec](https://github.com/microsoft/fluentui/blob/master/specs/Datepicker.md)
+
+  Differences
+
+  - The Calendar component in Fluent React v8 handles picking a range of dates differently from the v9 Date Picker component. The v9 Calendar should handle date ranges in the same way as the v9 Date Picker.
+  - Fluent UI has a Close button for the calendar, but the v9 Date Picker design spec does not
+
+- [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document:
+
+  - [Fluent React V9 Date Picker](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/compat-components-datepicker--default)
+
+- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
+
+- [x] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec)
+  - [ ] And [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
+
+## Implementation
+
+- [ ] Initial conformance and unit tests (validate basic functionality)
+- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
+  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
+  - [ ] README.md covering basic usage
+- [ ] Uses design tokens for styling
+- [ ] Renders correctly in High Contrast mode
+
+## Validation
+
+- [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
+  - [ ] Unit and conformance tests
+  - [ ] Bundle size fixtures
+  - [ ] Performance test scenario
+  - [ ] Accessibility behavior tests
+  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
+- [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
+- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
+  - [ ] Review and add any missing Storybook stories
+  - [ ] Finalize migration guide
+  - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
+  - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`
