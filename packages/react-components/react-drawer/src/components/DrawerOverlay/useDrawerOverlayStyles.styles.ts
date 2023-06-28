@@ -14,7 +14,7 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const useDrawerRootStyles = makeStyles({
   root: {
     position: 'fixed',
     top: 0,
@@ -44,13 +44,26 @@ const useBackdropStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
-    transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     willChange: 'opacity',
   },
 
   backdropVisible: {
     opacity: 1,
+  },
+
+  // Transition duration based on size
+  small: {
+    transitionDuration: tokens.durationNormal,
+  },
+  medium: {
+    transitionDuration: tokens.durationSlow,
+  },
+  large: {
+    transitionDuration: tokens.durationSlower,
+  },
+  full: {
+    transitionDuration: tokens.durationUltraSlow,
   },
 });
 
@@ -59,7 +72,7 @@ const useBackdropStyles = makeStyles({
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
   const baseStyles = useDrawerBaseStyles();
-  const rootStyles = useStyles();
+  const rootStyles = useDrawerRootStyles();
   const backdropStyles = useBackdropStyles();
 
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
@@ -79,6 +92,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
       drawerOverlayClassNames.backdrop,
       backdropStyles.backdrop,
       state.backdropVisible && backdropStyles.backdropVisible,
+      state.size && backdropStyles[state.size],
       backdrop.className,
     );
   }
