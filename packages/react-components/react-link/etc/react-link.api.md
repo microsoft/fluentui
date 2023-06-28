@@ -33,7 +33,7 @@ export type LinkSlots = {
 
 // @public (undocumented)
 export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
-    backgroundAppearance: BackgroundAppearanceContextValue;
+    backgroundAppearance?: BackgroundAppearanceContextValue;
 };
 
 // @public
