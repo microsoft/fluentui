@@ -78,10 +78,21 @@ storiesOf('Link Converged - Rendered as anchor', module)
     </div>
   ))
   .addStory(
-    'On inverted background',
+    'Inverted',
     () => (
       <InvertedBackground>
         <AnchorLink>Link on inverted background</AnchorLink>
+      </InvertedBackground>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'Inverted disabled',
+    () => (
+      <InvertedBackground>
+        <AnchorLink disabled disabledFocusable>
+          Disabled link on inverted background
+        </AnchorLink>
       </InvertedBackground>
     ),
     { includeDarkMode: true, includeHighContrast: true },
@@ -159,10 +170,21 @@ storiesOf('Link Converged - Rendered as button', module)
     </div>
   ))
   .addStory(
-    'On inverted background',
+    'Inverted',
     () => (
       <InvertedBackground>
         <ButtonLink>Link on inverted background</ButtonLink>
+      </InvertedBackground>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'Inverted disabled',
+    () => (
+      <InvertedBackground>
+        <AnchorLink disabled disabledFocusable>
+          Disabled link on inverted background
+        </AnchorLink>
       </InvertedBackground>
     ),
     { includeDarkMode: true, includeHighContrast: true },

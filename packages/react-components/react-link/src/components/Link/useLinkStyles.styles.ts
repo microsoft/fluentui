@@ -109,9 +109,9 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
+    backgroundAppearance === 'inverted' && styles.inverted,
     inline && styles.inline,
     disabled && styles.disabled,
-    backgroundAppearance === 'inverted' && styles.inverted,
     state.root.className,
   );
 
