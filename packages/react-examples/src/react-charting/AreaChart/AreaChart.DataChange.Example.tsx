@@ -47,6 +47,7 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
       },
     };
     this._changeData = this._changeData.bind(this);
+    this._changeXData = this._changeXData.bind(this);
   }
 
   public render(): JSX.Element {
@@ -97,7 +98,8 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
               allowFocusOnLegends: true,
             }}
           />
-          <DefaultButton text="Change data" onClick={this._changeData} />
+          <DefaultButton text="Change Ydata" onClick={this._changeData} />
+          <DefaultButton text="Change Xdata" onClick={this._changeXData} />
         </div>
       </>
     );
@@ -135,7 +137,48 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
       },
     });
   }
+  private _changeXData(): void {
+    const xChangedValue1 = this._randomX();
+    const xChangedValue2 = xChangedValue1 + 2;
+    const xChangedValue3 = xChangedValue2 + 3;
+    this.setState({
+      dynamicData: {
+        chartTitle: 'Area chart with dynamic data',
+        lineChartData: [
+          {
+            legend: 'Chart 1',
+            data: [
+              { x: xChangedValue1, y: 10 },
+              { x: xChangedValue2, y: 20 },
+              { x: xChangedValue3, y: 40 },
+            ],
+          },
+          {
+            legend: 'Chart 2',
+            data: [
+              { x: xChangedValue1, y: 20 },
+              { x: xChangedValue2, y: 30 },
+              { x: xChangedValue3, y: 50 },
+            ],
+          },
+          {
+            legend: 'Chart 3',
+            data: [
+              { x: xChangedValue1, y: 25 },
+              { x: xChangedValue2, y: 35 },
+              { x: xChangedValue3, y: 55 },
+            ],
+          },
+        ],
+      },
+    });
+  }
   private _randomY(): number {
     return Math.random() * 60 + 5;
+  }
+  private _randomX(): number {
+    const randomNumber = Math.random() * 50 + 5;
+    const roundedNumber = Math.round(randomNumber);
+    return roundedNumber;
   }
 }
