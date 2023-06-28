@@ -1,6 +1,14 @@
 export interface NormalizePackageDependenciesGeneratorSchema {
   /**
-   * Library name
+   * filter generator to  library or application. If not specified all projects are being used
    */
-  name: string;
+  projectType?: 'application' | 'library' | 'any';
+  /**
+   * filter generator to be applied only on projects that contain provided tag
+   */
+  tag?: string;
+  /**
+   * Verify package.json dependencies for all projects
+   */
+  verify?: boolean;
 }

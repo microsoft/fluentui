@@ -4,14 +4,20 @@
   "id": "normalize-package-dependencies",
   "type": "object",
   "properties": {
-    "name": {
+    "projectType": {
       "type": "string",
-      "description": "Library name",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
+      "description": "filter generator to  library or application. If not specified all projects are being used",
+      "enum": ["application", "library", "any"],
+      "default": "any"
+    },
+    "tag": {
+      "type": "string",
+      "description": "filter generator to be applied only on projects that contain provided tag"
+    },
+    "verify": {
+      "type": "boolean",
+      "description": "Verify package.json dependencies for all projects"
     }
   },
-  "required": ["name"]
+  "required": []
 }
