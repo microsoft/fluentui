@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 27 Jun 2023 07:35:49 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2023 07:37:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.6)
+
+Wed, 28 Jun 2023 07:37:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.5..@fluentui/react_v8.110.6)
+
+### Patches
+
+- fix: Dropdown and ComboBox do not use separator role ([PR #27403](https://github.com/microsoft/fluentui/pull/27403) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.43 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.23 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/react-focus to v8.8.30 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/react-hooks to v8.6.29 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/style-utilities to v8.9.16 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/theme to v2.6.34 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/utilities to v8.13.18 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/common-styles to v1.2.32 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
 
 ## [8.110.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.5)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Dropdown and ComboBox do not use separator role",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
