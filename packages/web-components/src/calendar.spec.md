@@ -16,22 +16,24 @@ Due to the incomplete nature of the v9 calendar design spec, work on the compone
 
 ### Inputs
 
-- @attr `type`: `date`, `month`, `week`, `year`, `range-picker` | the type of the calendar
-- @attr `month-picker-visible`: boolean | `true` - Whether the month picker is shown beside the day picker or hidden
-- @attr `month-picker-overlay`: boolean | `false` - If true, show month picker on top of date picker when visible
-- @attr `week-numbers`: boolean | `false` - If true, show week numbers (1-53) before each week row
-- @attr `min-weeks`: number | minimum number of weeks shown in a month
-- @attr `filter`: `week`, `work-week`, `4, 3, 2, 1` | allow user to view selected date with a range filter
-- @attr `work-week`: `[0, 1, 2, 3, 4, 5, 6]` | the days that are selectable with the filter `work-week`. If the filter is not set to `work-week`, this does nothing.
-- @attr `first-day-of-week`: number | the first day of the week for your locale 0-6
-- @attr `first-week-of-year`: `0, 1, 2` | enum that defines when the first week of the yera should start: first day (`0`), first full week (`1`), first four day week (`2`)
-- @attr `min-date`: string | The minimum allowable date
-- @attr `max-date`: string | The maximum allowable date
-- @attr `show-link`: boolean | `true` - If false, link at link slot is hidden
-- @attr `highlight-current-month`: boolean | `false` - Whether the month picker should highlight the current month
-- @attr `highlight-selected-month`: boolean | `false` - Whether the month picker should highlight the selected month
-- @attr `today`: string | value of today
-- @attr `selected-dates`: string[]
+| attribute                  | type                                                    | default           | description                                                                                                                       |
+| -------------------------- | ------------------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                     | "date" \| "month" \| "week" \| "year" \| "range-picker" | "date"            | The type of the calendar                                                                                                          |
+| `month-picker-visible`     | boolean                                                 | `true`            | Whether the month picker is shown beside the day picker or hidden                                                                 |
+| `month-picker-overlay`     | boolean                                                 | `false`           | If true, show month picker on top of date picker when visible                                                                     |
+| `week-numbers`             | boolean                                                 | `false`           | If true, show week numbers (1-53) before each week row                                                                            |
+| `min-weeks`                | number                                                  | -                 | Minimum number of weeks shown in a month                                                                                          |
+| `filter`                   | "week" \| "work-week" \| "4" \| "3" \| "2" \| "1"       | -                 | Allow user to view selected date with a range filter                                                                              |
+| `work-week`                | `[0, 1, 2, 3, 4, 5, 6]`                                 | `[1, 2, 3, 4, 5]` | The days that are selectable with the filter `work-week`. If the filter is not set to `work-week`, this does nothing.             |
+| `first-day-of-week`        | `0, 1, 2, 3, 4, 5, 6`                                   | `0`               | The first day of the week for locale                                                                                              |
+| `first-week-of-year`       | `0, 1, 2`                                               | `0`               | Enum that defines when the first week of the yera should start: first day (`0`), first full week (`1`), first four day week (`2`) |
+| `min-date`                 | string                                                  | -                 | The minimum allowable date                                                                                                        |
+| `max-date`                 | string                                                  | -                 | The maximum allowable date                                                                                                        |
+| `show-link`                | boolean                                                 | `true`            | If false, link at link slot is hidden                                                                                             |
+| `highlight-current-month`  | boolean                                                 | `false`           | Whether the month picker should highlight the current month                                                                       |
+| `highlight-selected-month` | boolean                                                 | `false`           | Whether the month picker should highlight the selected month                                                                      |
+| `today`                    | string                                                  | -                 | value of today                                                                                                                    |
+| `selected-dates`           | string[]                                                | -                 | selected dates                                                                                                                    |
 
 ### Outputs
 
