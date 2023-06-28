@@ -108,10 +108,26 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
       toaster.dismissAllToasts();
     };
 
+    const pauseToast: ToastListenerMap[typeof EVENTS.pause] = e => {
+      const toast = toaster.toasts.get(e.detail.toastId);
+      if (toast) {
+        toast.imperativeRef.current?.pause();
+      }
+    };
+
+    const playToast: ToastListenerMap[typeof EVENTS.play] = e => {
+      const toast = toaster.toasts.get(e.detail.toastId);
+      if (toast) {
+        toast.imperativeRef.current?.play();
+      }
+    };
+
     const cleanupBuildListener = addToastListener(EVENTS.show, buildToast);
     const cleanupUpdateListener = addToastListener(EVENTS.update, updateToast);
     const cleanupDismissListener = addToastListener(EVENTS.dismiss, dismissToast);
     const cleanupDismissAllListener = addToastListener(EVENTS.dismissAll, dismissAllToasts);
+    const cleanupPauseListener = addToastListener(EVENTS.pause, pauseToast);
+    const cleanupPlayListener = addToastListener(EVENTS.play, playToast);
 
     const focusShortcutListener = (e: KeyboardEvent) => {
       if (isFocusShortcut(e)) {
@@ -134,6 +150,8 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
       cleanupDismissAllListener();
       cleanupUpdateListener();
       cleanupDismissListener();
+      cleanupPauseListener();
+      cleanupPlayListener();
 
       targetDocument.removeEventListener('keydown', focusShortcutListener);
     };
