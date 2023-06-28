@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "bugfix: aligns TreeItem leaf and branch nodes",
+  "packageName": "@fluentui/react-tree",
+  "email": "petrduda@microsoft.com",
+  "dependentChangeType": "none"
+}
