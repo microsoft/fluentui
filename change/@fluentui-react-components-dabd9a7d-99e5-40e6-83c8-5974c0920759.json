@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: exports context creation hooks for the tree",
+  "packageName": "@fluentui/react-components",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
