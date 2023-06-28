@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RefObject, classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { ILegend, Legends } from '../Legends/index';
 import {
