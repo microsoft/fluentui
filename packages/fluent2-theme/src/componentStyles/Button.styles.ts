@@ -13,8 +13,8 @@ type FocusStyleType = {
 const getFocusStyle = (borderColor: string, borderRadius: string, outlineColor: string): FocusStyleType => ({
   '.ms-Fabric--isFocusVisible &:focus::after': {
     border: `1px solid ${borderColor}`,
-    borderRadius,
-    inset: '0',
+    borderRadius: '2px',
+    inset: '1px',
     outline: `2px solid ${outlineColor}`,
   },
 });
@@ -38,7 +38,7 @@ export function getStandardButtonStyles(theme: ITheme): Partial<IButtonStyles> {
     root: {
       borderColor: semanticColors.buttonBorder,
       color: semanticColors.buttonText,
-      ...getFocusStyle('transparent', effects.roundedCorner4, semanticColors.focusBorder),
+      ...getFocusStyle('transparent', effects.roundedCorner2, semanticColors.focusBorder),
     },
     rootHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
