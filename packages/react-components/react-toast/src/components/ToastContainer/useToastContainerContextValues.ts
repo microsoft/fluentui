@@ -4,7 +4,7 @@ import { ToastContainerContextValues, ToastContainerState } from './ToastContain
 export function useToastContainerContextValues_unstable(state: ToastContainerState): ToastContainerContextValues {
   const { close, intent } = state;
 
-  const toastContext = React.useMemo(
+  const toastContainerContext = React.useMemo(
     () => ({
       close,
       intent,
@@ -13,6 +13,6 @@ export function useToastContainerContextValues_unstable(state: ToastContainerSta
   );
 
   return {
-    toast: toastContext,
+    toast: toastContainerContext,
   };
 }

@@ -1,14 +1,11 @@
 import * as React from 'react';
-import { ToastIntent } from '../state/types';
 
 export type ToastContextValue = {
-  close: () => void;
-  intent: ToastIntent | undefined;
+  appearance?: 'inverted';
 };
 
 const toastContextDefaultValue: ToastContextValue = {
-  close: () => null,
-  intent: undefined,
+  appearance: undefined,
 };
 
 const toastContext = React.createContext<ToastContextValue | undefined>(undefined);

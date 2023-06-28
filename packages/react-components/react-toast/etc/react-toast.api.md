@@ -17,7 +17,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const renderToast_unstable: (state: ToastState) => JSX.Element;
+export const renderToast_unstable: (state: ToastState, contexts: ToastContextValues) => JSX.Element;
 
 // @public
 export const renderToastBody_unstable: (state: ToastBodyState) => JSX.Element;
@@ -50,7 +50,7 @@ export type ToastBodySlots = {
 };
 
 // @public
-export type ToastBodyState = ComponentState<ToastBodySlots>;
+export type ToastBodyState = ComponentState<ToastBodySlots> & Pick<ToastContextValue, 'appearance'>;
 
 // @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
@@ -111,7 +111,7 @@ export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
 // @public
-export type ToastProps = ComponentProps<ToastSlots> & {};
+export type ToastProps = ComponentProps<ToastSlots> & Pick<ToastContextValue, 'appearance'>;
 
 // @public (undocumented)
 export type ToastSlots = {
@@ -119,7 +119,7 @@ export type ToastSlots = {
 };
 
 // @public
-export type ToastState = ComponentState<ToastSlots>;
+export type ToastState = ComponentState<ToastSlots> & Pick<ToastProps, 'appearance'>;
 
 // @public (undocumented)
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
@@ -141,7 +141,7 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContextValue, 'intent'>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContainerContextValue, 'intent'> & Pick<ToastContextValue, 'appearance'>;
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;
