@@ -182,15 +182,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
-  private _adjustBarSpacing(): void {
-    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
-    if (svgWidth) {
-      const BAR_SPACING_FACTOR = 200;
-      const currentBarSpacing = clamp(BAR_SPACING_FACTOR / svgWidth, 1, 0.2);
-      this.setState({ barSpacing: currentBarSpacing });
-    }
-  }
-
   private _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
     this._refArray.push({ index: legendTitle, refElement: element });
   }
@@ -304,11 +295,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
+  // Adjusts the margin percentage, based on the width of the svg (inversly propotional)
+  private _adjustBarSpacing(): void {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
+    if (svgWidth) {
+      const BAR_SPACING_FACTOR = 200;
+      const currentBarSpacing = clamp(BAR_SPACING_FACTOR / svgWidth, 1, 0.2);
+      this.setState({ barSpacing: currentBarSpacing });
+    }
+  }
+
   /**
-   * The Create bar functions returns an array of <rect> elements, which form the bars
+   * This functions returns an array of <rect> elements, which form the bars
    * For each bar an x value, and a width needs to be specified
    * The computations are done based on percentages
-   * Extra margin is also provided, in the x value to provide some spacing
+   * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
@@ -317,7 +318,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         (count: number, point: IChartDataPoint) => (count += (point.horizontalBarChartdata?.x || 0) > 0 ? 1 : 0),
         0,
       ) || 1;
-    const totalMargin = this.state.barSpacing * (noOfBars - 1);
+    const totalSpacing = this.state.barSpacing * (noOfBars - 1);
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -327,12 +328,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       0,
     );
 
-    total += (totalMargin * total) / (100 - totalMargin);
+    total += (totalSpacing * total) / (100 - totalSpacing);
 
     let prevPosition = 0;
     let value = 0;
 
-    let sumOfPercent = totalMargin;
+    let sumOfPercent = totalSpacing;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       value = (pointData / total) * 100;
