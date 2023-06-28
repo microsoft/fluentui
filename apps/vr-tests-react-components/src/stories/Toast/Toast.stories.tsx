@@ -136,3 +136,86 @@ export const TitleOnly = () => {
     </>
   );
 };
+
+export const FullToastInverted = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    for (const intent of toastIntents) {
+      dispatchToast(
+        <Toast ref={toastRef} appearance="inverted">
+          <ToastTitle action={<Link>Action</Link>}>This is a toast</ToastTitle>
+          <ToastBody subtitle="This is a toast">This is a toast</ToastBody>
+          <ToastFooter>
+            <Link>Action</Link>
+            <Link>Action</Link>
+          </ToastFooter>
+        </Toast>,
+        {
+          intent,
+          timeout: -1,
+          onStatusChange,
+        },
+      );
+    }
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const WithoutSubtitleInverted = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    for (const intent of toastIntents) {
+      dispatchToast(
+        <Toast appearance="inverted" ref={toastRef}>
+          <ToastTitle action={<Link>Action</Link>}>This is a toast</ToastTitle>
+          <ToastBody>This is a toast</ToastBody>
+          <ToastFooter>
+            <Link>Action</Link>
+            <Link>Action</Link>
+          </ToastFooter>
+        </Toast>,
+        { intent, timeout: -1, onStatusChange },
+      );
+    }
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const TitleOnlyInverted = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    for (const intent of toastIntents) {
+      dispatchToast(
+        <Toast appearance="inverted" ref={toastRef}>
+          <ToastTitle action={<Link>Action</Link>}>This is a toast</ToastTitle>
+        </Toast>,
+        { intent, onStatusChange, timeout: -1 },
+      );
+    }
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
