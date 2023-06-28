@@ -6,11 +6,13 @@ import {
   Slot,
   useEventCallback,
   resolveShorthand,
+  useId,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 const intentPolitenessMap = {
   success: 'assertive',
@@ -35,7 +37,7 @@ export const useToastContainer_unstable = (
   const {
     visible,
     children,
-    close,
+    close: closeProp,
     remove,
     updateId,
     announce,
@@ -45,14 +47,68 @@ export const useToastContainer_unstable = (
     intent = 'info',
     pauseOnHover,
     pauseOnWindowBlur,
+    imperativeRef,
+    tryRestoreFocus,
     ...rest
   } = props;
+  const titleId = useId('toast-title');
+  const bodyId = useId('toast-body');
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
-  const pause = useEventCallback(() => setRunning(false));
-  const play = useEventCallback(() => setRunning(true));
+  const imperativePauseRef = React.useRef(false);
+  const focusedToastBeforeClose = React.useRef(false);
+
+  const close = useEventCallback(() => {
+    const activeElement = targetDocument?.activeElement;
+    if (activeElement && toastRef.current?.contains(activeElement)) {
+      focusedToastBeforeClose.current = true;
+    }
+
+    closeProp();
+  });
   const onStatusChange = useEventCallback((status: ToastStatus) => props.onStatusChange?.(null, { status, ...props }));
+  const pause = useEventCallback(() => setRunning(false));
+  const play = useEventCallback(() => {
+    if (imperativePauseRef.current) {
+      return;
+    }
+    const containsActive = !!toastRef.current?.contains(targetDocument?.activeElement ?? null);
+    if (timerTimeout < 0) {
+      setRunning(true);
+      return;
+    }
+
+    if (!containsActive) {
+      setRunning(true);
+    }
+  });
+
+  const { findFirstFocusable } = useFocusFinders();
+
+  React.useImperativeHandle(imperativeRef, () => ({
+    focus: () => {
+      if (!toastRef.current) {
+        return;
+      }
+
+      const firstFocusable = findFirstFocusable(toastRef.current);
+      if (firstFocusable) {
+        firstFocusable.focus();
+      } else {
+        toastRef.current.focus();
+      }
+    },
+
+    play: () => {
+      imperativePauseRef.current = false;
+      play();
+    },
+    pause: () => {
+      imperativePauseRef.current = true;
+      pause();
+    },
+  }));
 
   React.useEffect(() => {
     return () => onStatusChange('unmounted');
@@ -72,15 +128,6 @@ export const useToastContainer_unstable = (
       };
     }
   }, [targetDocument, pause, play, pauseOnWindowBlur]);
-
-  React.useEffect(() => {
-    if (!visible) {
-      return;
-    }
-
-    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
-    announce(toastRef.current?.textContent ?? '', { politeness });
-  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
 
   // It's impossible to animate to height: auto in CSS, the actual pixel value must be known
   // Get the height of the toast before animation styles have been applied and set a CSS
@@ -125,6 +172,33 @@ export const useToastContainer_unstable = (
     userRootSlot?.onMouseEnter?.(e);
   });
 
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      close();
+    }
+
+    userRootSlot?.onKeyDown?.(e);
+  });
+
+  React.useEffect(() => {
+    if (!visible) {
+      return;
+    }
+
+    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
+    announce(toastRef.current?.textContent ?? '', { politeness });
+  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
+
+  React.useEffect(() => {
+    return () => {
+      if (focusedToastBeforeClose.current) {
+        focusedToastBeforeClose.current = false;
+        tryRestoreFocus();
+      }
+    };
+  }, [tryRestoreFocus]);
+
   return {
     components: {
       timer: Timer,
@@ -137,10 +211,15 @@ export const useToastContainer_unstable = (
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, toastRef, toastAnimationRef),
       children,
+      tabIndex: -1,
+      role: 'group',
+      'aria-labelledby': titleId,
+      'aria-describedby': bodyId,
       ...rest,
       ...userRootSlot,
       onMouseEnter,
       onMouseLeave,
+      onKeyDown,
     }),
     timerTimeout,
     transitionTimeout: 500,
@@ -152,5 +231,7 @@ export const useToastContainer_unstable = (
     updateId,
     nodeRef: toastRef,
     intent,
+    titleId,
+    bodyId,
   };
 };
