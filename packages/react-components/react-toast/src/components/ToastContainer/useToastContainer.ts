@@ -74,7 +74,6 @@ export const useToastContainer_unstable = (
       return;
     }
     const containsActive = !!toastRef.current?.contains(targetDocument?.activeElement ?? null);
-    // TODO test this
     if (timerTimeout < 0) {
       setRunning(true);
       return;
