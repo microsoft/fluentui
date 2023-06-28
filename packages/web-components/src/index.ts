@@ -22,7 +22,9 @@ export * from './tabs/index.js';
 export * from './tab/index.js';
 export * from './tab-panel/index.js';
 export * from './text/index.js';
+export * from './text-input/index.js';
 export * from './toggle-button/index.js';
 export * from './toolbar/index.js';
 
+export * from './fluent-design-system.js';
 export * from './theme/index.js';

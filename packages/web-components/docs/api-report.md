@@ -1578,6 +1578,13 @@ export const durationUltraFast: CSSDesignToken<string>;
 export const durationUltraSlow: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const FluentDesignSystem: Readonly<{
+    prefix: "fluent";
+    shadowRootMode: "open";
+    registry: CustomElementRegistry;
+}>;
+
+// @public (undocumented)
 export const fontFamilyBase: CSSDesignToken<string>;
 
 // @public (undocumented)
