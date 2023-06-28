@@ -15,7 +15,6 @@ import {
   fontWeightSemibold,
   lineHeightBase300,
   lineHeightBase500,
-  shadow64,
   spacingHorizontalL,
   spacingHorizontalS,
   spacingHorizontalXXL,
@@ -38,8 +37,7 @@ export const styles = css`
     top: 0;
     height: 100%;
     z-index: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     width: 0;
     transition: width ${durationNormal} ${curveDecelerateMid};
     font-size: ${fontSizeBase300};
@@ -48,7 +46,6 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.12), 0px 32px 64px rgba(0, 0, 0, 0.14), 0px 0px 0px rgba(0, 0, 0, 0);
   }
 
   .root {
@@ -63,6 +60,7 @@ export const styles = css`
   :host([open]) {
     width: var(--pane-width, 595px);
     transition: width ${durationNormal} ${curveAccelerateMid};
+    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.12), 0px 32px 64px rgba(0, 0, 0, 0.14), 0px 0px 0px rgba(0, 0, 0, 0);
   }
 
   :host([open][control-size='small']) {
@@ -78,13 +76,20 @@ export const styles = css`
     width: 100%;
   }
 
-  .overlay {
+  :host([modal][open]) {
+    /* This will create an overlay effect */
+    z-index: 1000;
+  }
+
+  :host([modal][open])::before {
+    content: '';
     position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     background-color: ${colorBackgroundOverlay};
+    z-index: -1;
   }
 
   .header {
@@ -119,7 +124,9 @@ export const styles = css`
     width: 100%;
     position: relative;
     z-index: 1;
+    overflow: hidden;
     background: ${colorNeutralBackground1};
+    padding: ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }
 
   :host([toolbar]) .pane {
@@ -135,6 +142,8 @@ export const styles = css`
     height: 32px;
     display: flex;
     align-items: center;
+    position: relative; /* to be on top of the overlay */
+    z-index: 1;
   }
 
   .content {

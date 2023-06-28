@@ -66,15 +66,18 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
       <fluent-pane-switcher>
         <fluent-button icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
-        <fluent-pane id="one" position="right" trap-focus control-size="small">
+        <fluent-pane trap-focus id="one" position="right" trap-focus control-size="small" modal>
           <div>Content</div>
           <div>
             <fluent-label>First Name</fluent-label>
             <fluent-text-input id="abc" type="text"></fluent-text-input>
+            <button>Click me</button>
+            <button>Click me 2</button>
+            <button>Click me 3</button>
           </div>
         </fluent-pane>
         <fluent-button icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
-        <fluent-pane id="two" position="right" trap-focus modal>
+        <fluent-pane id="two" position="right" trap-focus>
           <div>Content</div>
         </fluent-pane>
         <fluent-button icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>

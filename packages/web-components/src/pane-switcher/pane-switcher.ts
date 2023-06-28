@@ -1,16 +1,25 @@
 import { FASTElement } from '@microsoft/fast-element';
+import { isHTMLElement, keyArrowDown, keyArrowUp } from '@microsoft/fast-web-utilities';
 import { Pane } from '../pane/pane.js';
 
 export class PaneSwitcher extends FASTElement {
   private activePaneIndex: number | null = null;
+  private toggleButtons: HTMLElement[] = [];
+  private panes: Pane[] = [];
 
   public connectedCallback(): void {
     super.connectedCallback();
+    this.addEventListener('focus', this.handleFocus);
+    this.addEventListener('keydown', this.handleKeyDown);
+    this.toggleButtons = Array.from(this.querySelectorAll('[slot="toggle-buttons"]'));
     this.setupToggleButtons();
+    this.setupPanes();
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
+    this.removeEventListener('focus', this.handleFocus);
+    this.removeEventListener('keydown', this.handleKeyDown);
   }
 
   constructor() {
@@ -19,8 +28,6 @@ export class PaneSwitcher extends FASTElement {
   }
 
   protected setupToggleButtons(): void {
-    console.log('setupToggleButtons');
-
     const setup = (slot: HTMLSlotElement) => {
       if (slot.name === 'toggle-buttons') {
         const buttons = slot.assignedElements();
@@ -45,6 +52,33 @@ export class PaneSwitcher extends FASTElement {
     slots?.forEach(setup);
   }
 
+  /**
+   * check if the item is a pane
+   */
+  private dialogRoles = ['dialog', 'complementary'];
+  private isPaneElement = (el: HTMLElement | Pane): boolean => {
+    return el instanceof Pane || (isHTMLElement(el) && this.dialogRoles.includes(el.getAttribute('role') as string));
+  };
+
+  protected setupPanes(): void {
+    const slottedPanes = this.querySelectorAll<Pane>('fluent-pane');
+    this.panes = Array.from(slottedPanes);
+
+    /**
+     * Set the context of the Pane
+     * When the pane is a child component of the PaneSwitcher
+     * we want to signal this through an attribute to update styles.
+     */
+    const filteredPaneItems = this.panes?.filter(this.isPaneElement);
+
+    filteredPaneItems?.forEach((item: HTMLElement, index: number) => {
+      console.log(item);
+      if (item instanceof Pane) {
+        item.setAttribute('data-context', `pane-switcher`);
+      }
+    });
+  }
+
   public handleToggle(index: number, panes: NodeListOf<Pane>): void {
     // Close the previously opened pane, if any
     if (this.activePaneIndex !== null) {
@@ -67,4 +101,26 @@ export class PaneSwitcher extends FASTElement {
       clickedPane.openPane();
     }
   }
+
+  public handleFocus = () => {
+    if (this.toggleButtons.length > 0) {
+      this.toggleButtons[0].focus();
+    }
+  };
+
+  public handleKeyDown = (event: KeyboardEvent) => {
+    const currentFocusedIndex = this.toggleButtons.findIndex(btn => btn === document.activeElement);
+
+    if (event.key === keyArrowDown) {
+      event.preventDefault();
+      const nextButton = this.toggleButtons[(currentFocusedIndex + 1) % this.toggleButtons.length];
+      nextButton.focus();
+    } else if (event.key === keyArrowUp) {
+      event.preventDefault();
+      const prevButton = this.toggleButtons[
+        (currentFocusedIndex - 1 + this.toggleButtons.length) % this.toggleButtons.length
+      ];
+      prevButton.focus();
+    }
+  };
 }
