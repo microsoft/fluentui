@@ -44,7 +44,7 @@ export const styles = css`
     justify-content: flex-start;
   }
   ::slotted([slot='label']) {
-    margin-right: var(--toolbar-item-gap);
+    margin-inline-end: var(--toolbar-item-gap);
   }
   ::slotted([slot='start']) {
     margin: 0 var(--toolbar-item-gap);
@@ -78,7 +78,7 @@ export const styles = css`
     flex-direction: column;
   }
   :host([orientation='vertical']) ::slotted([slot='label']) {
-    margin-bottom: var(--toolbar-item-gap);
+    margin-block-end: var(--toolbar-item-gap);
   }
   :host([orientation='vertical']) ::slotted([slot='start']) {
     margin: var(--toolbar-item-gap) 0;
