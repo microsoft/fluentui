@@ -4,6 +4,10 @@ import { ButtonContextValue } from '@fluentui/react-button';
 export type TreeItemLayoutSlots = {
   root: Slot<'div'>;
   /**
+   * Content. Children of the root slot are automatically rendered here
+   */
+  content: NonNullable<Slot<'div'>>;
+  /**
    * Icon slot that renders right before main content
    */
   iconBefore?: Slot<'div'>;
