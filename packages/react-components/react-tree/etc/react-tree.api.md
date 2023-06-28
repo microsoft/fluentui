@@ -277,6 +277,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React_2.Ref<HTML
 // @public (undocumented)
 export const useTreeItemContext_unstable: <T>(selector: ContextSelector<TreeItemContextValue, T>) => T;
 
+// @public (undocumented)
+export function useTreeItemContextValues_unstable(state: Pick<TreeItemState, keyof TreeItemContextValue>): TreeItemContextValues;
+
 // @public
 export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;
 
