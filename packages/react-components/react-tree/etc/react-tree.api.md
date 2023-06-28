@@ -112,6 +112,7 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
     root: Slot<'div'>;
+    content: NonNullable<Slot<'div'>>;
     iconBefore?: Slot<'div'>;
     iconAfter?: Slot<'div'>;
     expandIcon?: Slot<'div'>;
@@ -142,7 +143,7 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
 export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon'> & {
     root: NonNullable<Slot<'div'>>;
     media: NonNullable<Slot<'div'>>;
-    main: NonNullable<Slot<'div'>>;
+    content: NonNullable<Slot<'div'>>;
     description?: Slot<'div'>;
 };
 
@@ -276,6 +277,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React_2.Ref<HTML
 
 // @public (undocumented)
 export const useTreeItemContext_unstable: <T>(selector: ContextSelector<TreeItemContextValue, T>) => T;
+
+// @public (undocumented)
+export function useTreeItemContextValues_unstable(state: Pick<TreeItemState, keyof TreeItemContextValue>): TreeItemContextValues;
 
 // @public
 export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;

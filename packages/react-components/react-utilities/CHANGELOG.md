@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 26 Jun 2023 09:53:54 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2023 11:12:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.10.0)
+
+Wed, 28 Jun 2023 11:12:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.9.4..@fluentui/react-utilities_v9.10.0)
+
+### Minor changes
+
+- feat: creates useSelection hook ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by bernardo.sunderhus@gmail.com)
 
 ## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.9.4)
 

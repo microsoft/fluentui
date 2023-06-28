@@ -140,8 +140,10 @@ import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
 import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
@@ -448,9 +450,13 @@ export { useTree_unstable }
 
 export { useTreeContext_unstable }
 
+export { useTreeContextValues_unstable }
+
 export { useTreeItem_unstable }
 
 export { useTreeItemContext_unstable }
+
+export { useTreeItemContextValues_unstable }
 
 export { useTreeItemLayout_unstable }
 

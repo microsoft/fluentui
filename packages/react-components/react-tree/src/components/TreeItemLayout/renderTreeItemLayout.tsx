@@ -16,7 +16,7 @@ export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
     <slots.root {...slotProps.root}>
       {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
       {slots.iconBefore && <slots.iconBefore {...slotProps.iconBefore} />}
-      {slotProps.root.children}
+      <slots.content {...slotProps.content}>{slotProps.root.children}</slots.content>
       {slots.iconAfter && <slots.iconAfter {...slotProps.iconAfter} />}
       <ButtonContextProvider value={state.buttonContextValue}>
         {slots.actions && <slots.actions {...slotProps.actions} />}
