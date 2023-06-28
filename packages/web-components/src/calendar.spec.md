@@ -2,7 +2,7 @@
 
 ## Component Description
 
-lorem ipsum
+The Calendar lets users view and select a single date or a range of dates. The calendar has five different views: date, month, week, year, and range-picker.
 
 ## Design Spec
 
