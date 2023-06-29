@@ -116,6 +116,59 @@ describe('Toast', () => {
       .should('not.exist');
   });
 
+  it('should play and pause toast', () => {
+    const Example = () => {
+      const toastId = 'foo';
+      const { dispatchToast, playToast, pauseToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { toastId, timeout: 200 },
+        );
+      };
+
+      const pause = () => {
+        pauseToast(toastId);
+      };
+
+      const play = () => {
+        playToast(toastId);
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <button id="pause" onClick={pause}>
+            Pause toast
+          </button>
+          <button id="play" onClick={play}>
+            Play toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('exist')
+      .get('#pause')
+      .click()
+      .wait(1000)
+      .get(`.${toastClassNames.root}`)
+      .should('exist')
+      .get('#play')
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('not.exist');
+  });
+
   it('should be update toast', () => {
     const Example = () => {
       const toastId = 'foo';

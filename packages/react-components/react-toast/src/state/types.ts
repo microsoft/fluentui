@@ -131,6 +131,14 @@ export interface DismissToastEventDetail extends CommonToastDetail {
   toastId: ToastId;
 }
 
+export interface PauseToastEventDetail extends CommonToastDetail {
+  toastId: ToastId;
+}
+
+export interface PlayToastEventDetail extends CommonToastDetail {
+  toastId: ToastId;
+}
+
 export interface DismissAllToastsEventDetail extends CommonToastDetail {}
 
 type EventListener<TDetail> = (e: CustomEvent<TDetail>) => void;
@@ -140,6 +148,8 @@ export type ToastListenerMap = {
   [EVENTS.dismiss]: EventListener<DismissToastEventDetail>;
   [EVENTS.dismissAll]: EventListener<DismissAllToastsEventDetail>;
   [EVENTS.update]: EventListener<UpdateToastEventDetail>;
+  [EVENTS.play]: EventListener<PlayToastEventDetail>;
+  [EVENTS.pause]: EventListener<PauseToastEventDetail>;
 };
 
 type RootSlot = Slot<'div'>;
