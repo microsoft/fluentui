@@ -122,8 +122,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -285,8 +283,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -624,8 +620,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -787,8 +781,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -1033,8 +1025,6 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -1164,8 +1154,6 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -1312,8 +1300,6 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
@@ -1461,8 +1447,6 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
           className=
 
               {
-                border-width: 2px;
-                border: #ffffff;
                 display: block;
                 height: 12px;
                 overflow: visible;
