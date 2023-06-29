@@ -45,16 +45,12 @@ storiesOf('SearchBox Converged', module)
       <SearchBox disabled appearance="filled-lighter" value="Disabled" />
     </div>
   ))
-  .addStory(
-    'WIth contentAfter',
-    () => <SearchBox contentAfter={<Mic20Regular />} placeholder="Placeholder" />,
-    { includeRtl: true },
-  )
-  .addStory(
-    'With custom dismiss',
-    () => <SearchBox dismiss={<ArrowEnterLeftRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
-    { includeRtl: true },
-  );
+  .addStory('WIth contentAfter', () => <SearchBox contentAfter={<MicRegular />} placeholder="Placeholder" />, {
+    includeRtl: true,
+  })
+  .addStory('With custom dismiss', () => <SearchBox dismiss={<ArrowEnterLeftRegular />} placeholder="Placeholder" />, {
+    includeRtl: true,
+  });
 
 // Focused & unfocused stories
 storiesOf('SearchBox Converged', module)
@@ -63,9 +59,11 @@ storiesOf('SearchBox Converged', module)
     <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .click('input')
+        .keys('input', 'Tab')
         .wait(250) // let focus border animation finish
-        .snapshot('focused', { cropTo: '.testWrapper' })
+        .snapshot('input focused', { cropTo: '.testWrapper' })
+        .focus('[role=button]')
+        .snapshot('dismiss focused', { cropTo: '.testWrapper' })
         .click('[role=button]')
         .snapshot('dismiss clicked', { cropTo: '.testWrapper' })
         .end()}
@@ -74,3 +72,4 @@ storiesOf('SearchBox Converged', module)
     </StoryWright>
   ))
   .addStory('Clears value', () => <SearchBox defaultValue="Value!" />);
+x`x`;
