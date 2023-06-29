@@ -282,6 +282,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
+import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
@@ -870,6 +871,7 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusObserved } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
@@ -921,6 +923,7 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
@@ -1580,6 +1583,8 @@ export { getPartitionedNativeProps }
 export { getSlots }
 
 export { GriffelRenderer }
+
+export { GriffelResetStyle }
 
 export { GriffelStyle }
 
@@ -2757,6 +2762,8 @@ export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
 
+export { useFocusObserved }
+
 export { useFocusWithin }
 
 export { useId }
@@ -2858,6 +2865,8 @@ export { useMergedRefs }
 export { useModalAttributes }
 
 export { UseModalAttributesOptions }
+
+export { useObservedElement }
 
 export { useOption_unstable }
 

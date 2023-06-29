@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -24,7 +24,7 @@ describe('migrate-fixed-versions generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
     tree = setupDummyPackage(tree, options);
   });
 

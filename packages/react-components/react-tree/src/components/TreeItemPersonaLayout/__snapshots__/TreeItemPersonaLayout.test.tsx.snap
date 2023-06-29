@@ -11,11 +11,7 @@ exports[`TreeItemPersonaLayout renders a default state 1`] = `
     <div
       class="fui-TreeItemPersonaLayout__content"
     >
-      <div
-        class="fui-TreeItemPersonaLayout__main"
-      >
-        Default TreeItemPersonaLayout
-      </div>
+      Default TreeItemPersonaLayout
     </div>
   </div>
 </div>

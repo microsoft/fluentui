@@ -18,20 +18,19 @@ export type ToastContainerSlots = {
  * ToastContainer Props
  */
 export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
-  Pick<
-    Toast,
-    'close' | 'remove' | 'updateId' | 'data' | 'timeout' | 'politeness' | 'pauseOnHover' | 'pauseOnWindowBlur'
-  > & {
+  Toast & {
     visible: boolean;
     announce: Announce;
     intent: ToastIntent | undefined;
+    tryRestoreFocus: () => void;
   };
 
 /**
  * State used in rendering ToastContainer
  */
 export type ToastContainerState = ComponentState<ToastContainerSlots> &
-  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> & {
+  Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> &
+  Pick<ToastContextValue, 'titleId' | 'bodyId'> & {
     transitionTimeout: number;
     timerTimeout: number;
     running: boolean;

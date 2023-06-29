@@ -4,6 +4,7 @@ import { ToastContainer } from './ToastContainer';
 import { isConformant } from '../../testing/isConformant';
 import { ToastContainerProps } from './ToastContainer.types';
 import { toastClassNames } from './useToastContainerStyles.styles';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 const defaultToastContainerProps: ToastContainerProps = {
   announce: () => null,
@@ -17,6 +18,15 @@ const defaultToastContainerProps: ToastContainerProps = {
   intent: undefined,
   updateId: 0,
   visible: true,
+  imperativeRef: { current: null },
+  tryRestoreFocus: () => null,
+  order: 0,
+  content: '',
+  onStatusChange: () => null,
+  position: 'bottom-end',
+  toastId: '',
+  priority: 0,
+  toasterId: '',
 };
 
 const runningTimerSelector = '[data-timer-status="running"]';
@@ -25,6 +35,7 @@ const pausedTimerSelector = '[data-timer-status="paused"]';
 describe('ToastContainer', () => {
   beforeEach(() => {
     jest.useRealTimers();
+    resetIdsForTests();
   });
 
   isConformant({
@@ -32,6 +43,7 @@ describe('ToastContainer', () => {
     displayName: 'ToastContainer',
     requiredProps: defaultToastContainerProps,
     isInternal: true,
+    disabledTests: ['consistent-callback-args'],
   });
 
   it('renders a default state', () => {

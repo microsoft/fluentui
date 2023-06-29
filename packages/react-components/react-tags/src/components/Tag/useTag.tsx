@@ -65,7 +65,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size,
 
     components: {
-      root: 'button',
+      root: dismissible ? 'button' : 'span',
       media: 'span',
       icon: 'span',
       primaryText: 'span',

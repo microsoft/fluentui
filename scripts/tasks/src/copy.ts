@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { findGitRoot, getProjectMetadata } from '@fluentui/scripts-monorepo';
+import { getProjectMetadata } from '@fluentui/scripts-monorepo';
 import * as fs from 'fs-extra';
 import { TaskFunction, copyInstructionsTask, copyTask, logger, resolveCwd, series } from 'just-scripts';
 
@@ -41,7 +41,6 @@ export function expandSourcePath(pattern: string): string | null {
  */
 export function copyCompiled() {
   const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
-  const root = findGitRoot();
 
   const packageDir = process.cwd();
   const tsConfig = tsConfigs.lib;
@@ -60,10 +59,10 @@ export function copyCompiled() {
     return;
   }
 
-  const projectMetadata = getProjectMetadata({ root, name: packageJson.name });
+  const projectMetadata = getProjectMetadata(packageJson.name);
 
   if (!projectMetadata.sourceRoot) {
-    throw new Error(`${packageJson.name} is missing 'sourceRoot' in workspace.json`);
+    throw new Error(`${packageJson.name} is missing 'sourceRoot' in project.json`);
   }
 
   const paths = {

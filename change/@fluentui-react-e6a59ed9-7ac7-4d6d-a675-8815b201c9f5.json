@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Calendar uses month-only selection string when only month picker is used",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

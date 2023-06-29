@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Mon, 26 Jun 2023 09:53:55 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2023 11:12:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.16)
+
+Wed, 28 Jun 2023 11:12:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.15..@fluentui/react-portal_v9.2.16)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.9.1 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-utilities to v9.10.0 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+
+## [9.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.15)
+
+Tue, 27 Jun 2023 11:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.2.14..@fluentui/react-portal_v9.2.15)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.9.0 ([PR #28291](https://github.com/microsoft/fluentui/pull/28291) by beachball)
 
 ## [9.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.2.14)
 
