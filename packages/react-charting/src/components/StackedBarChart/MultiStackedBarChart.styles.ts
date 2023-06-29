@@ -70,7 +70,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       cursor: 'default',
       selectors: {
         '&:focus': {
-          stroke: theme.palette.black,
+          stroke: theme.palette.blue,
           strokeWidth: '2px',
         },
       },
