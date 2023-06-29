@@ -1,14 +1,18 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, addProjectConfiguration, writeJson, getProjects, readJson, joinPathFragments } from '@nrwl/devkit';
+import * as chalk from 'chalk';
 
 import generator from './index';
 import { PackageJson } from '../../types';
+import { disableChalk } from '../../utils-testing';
 
 describe('normalize-package-dependencies generator', () => {
   let tree: Tree;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-  const errorLogSpy = jest.spyOn(console, 'error').mockImplementation(noop);
+  disableChalk(chalk);
+
+  const logLogSpy = jest.spyOn(console, 'log').mockImplementation(noop);
   const infoLogSpy = jest.spyOn(console, 'info').mockImplementation(noop);
 
   beforeEach(() => {
@@ -140,13 +144,13 @@ describe('normalize-package-dependencies generator', () => {
         `"package dependency violations found"`,
       );
 
-      expect(errorLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
+      expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "[1m[31m@proj/react-two has following dependency version issues:[39m[22m",
-          "[1m[31m  - @proj/react-one[39m[22m",
-          "[1m[31m@proj/react-app has following dependency version issues:[39m[22m",
-          "[1m[31m  - @proj/react-one[39m[22m",
-          "[1m[31m  - @proj/react-two[39m[22m",
+          "@proj/react-two has following dependency version issues:",
+          "  - @proj/react-one",
+          "@proj/react-app has following dependency version issues:",
+          "  - @proj/react-one",
+          "  - @proj/react-two",
         ]
       `);
       expect(infoLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
@@ -162,11 +166,11 @@ describe('normalize-package-dependencies generator', () => {
         generator(tree, { verify: true, projectType: 'application' }),
       ).rejects.toThrowErrorMatchingInlineSnapshot(`"package dependency violations found"`);
 
-      expect(errorLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
+      expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "[1m[31m@proj/react-app has following dependency version issues:[39m[22m",
-          "[1m[31m  - @proj/react-one[39m[22m",
-          "[1m[31m  - @proj/react-two[39m[22m",
+          "@proj/react-app has following dependency version issues:",
+          "  - @proj/react-one",
+          "  - @proj/react-two",
         ]
       `);
       expect(infoLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
@@ -182,7 +186,7 @@ describe('normalize-package-dependencies generator', () => {
         undefined,
       );
 
-      expect(errorLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`Array []`);
+      expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`Array []`);
       expect(infoLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`Array []`);
     });
   });

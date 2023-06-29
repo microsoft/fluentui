@@ -12,6 +12,7 @@ import {
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';
 import { PackageJson } from '../../types';
+import * as chalk from 'chalk';
 
 type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
@@ -119,10 +120,10 @@ function reportPackageJsonDependenciesIssues(issues: ProjectIssues) {
   }
 
   issueEntries.forEach(([projectName, dependencyIssues]) => {
-    logger.error(`${projectName} has following dependency version issues:`);
+    logger.log(chalk.bold(chalk.red(`${projectName} has following dependency version issues:`)));
     // eslint-disable-next-line guard-for-in
     for (const dep in dependencyIssues) {
-      logger.error(`  - ${dep}`);
+      logger.log(chalk.red(`  - ${dep}`));
     }
   });
 
