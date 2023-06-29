@@ -15,11 +15,11 @@ The date picker is an input box with a pop-up control that allows the user to pi
 | attribute                  | type                                                   | default           | description                                                                                                                       |
 | -------------------------- | ------------------------------------------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `type`                     | "date" \| "month" \| "week" \| "year" \| "range-picker | "date"            | The type of the date picker                                                                                                       |
-| `open`                     | boolean                                                | `false`           | If true, the date picker pop-up is open                                                                                           |
-| `allow-text-input`         | boolean                                                | `false`           | If true, allow the user to select date by typing manually in keyboard                                                             |
+| `open`                     | boolean                                                | -                 | If true, the date picker pop-up is open                                                                                           |
+| `allow-text-input`         | boolean                                                | -                 | If true, allow the user to select date by typing manually in keyboard                                                             |
 | `month-picker-visible`     | boolean                                                | `true`            | Whether the month picker is shown beside the day picker or hidden                                                                 |
-| `month-picker-overlay`     | boolean                                                | `false`           | If true, show month picker on top of date picker when visible                                                                     |
-| `week-numbers`             | boolean                                                | `false`           | If true, show week numbers (1-53) before each week row                                                                            |
+| `month-picker-overlay`     | boolean                                                | -                 | If true, show month picker on top of date picker when visible                                                                     |
+| `week-numbers`             | boolean                                                | -                 | If true, show week numbers (1-53) before each week row                                                                            |
 | `min-weeks`                | number                                                 | -                 | Minimum number of weeks shown in a month                                                                                          |
 | `filter`                   | "week" \| "work-week" \| "4" \| "3" \| "2" \| "1"      | -                 | Allow user to view selected date with a range filter                                                                              |
 | `work-week`                | `[0, 1, 2, 3, 4, 5, 6]`                                | `[1, 2, 3, 4, 5]` | The days that are selectable with the filter `work-week`. If the filter is not set to `work-week`, this does nothing.             |
@@ -28,8 +28,8 @@ The date picker is an input box with a pop-up control that allows the user to pi
 | `min-date`                 | string                                                 | -                 | The minimum allowable date                                                                                                        |
 | `max-date`                 | string                                                 | -                 | The maximum allowable date                                                                                                        |
 | `show-link`                | boolean                                                | `true`            | If false, link at link slot is hidden                                                                                             |
-| `highlight-current-month`  | boolean                                                | `false`           | Whether the month picker should highlight the current month                                                                       |
-| `highlight-selected-month` | boolean                                                | `false`           | Whether the month picker should highlight the selected month                                                                      |
+| `highlight-current-month`  | boolean                                                | -                 | Whether the month picker should highlight the current month                                                                       |
+| `highlight-selected-month` | boolean                                                | -                 | Whether the month picker should highlight the selected month                                                                      |
 | `today`                    | string                                                 | -                 | value of today                                                                                                                    |
 | `selected-dates`           | string[]                                               | -                 | selected dates                                                                                                                    |
 
@@ -89,7 +89,7 @@ None
 
   Differences
 
-  - Fluent UI has a Close button for the calendar, but the v9 Date Picker design spec does not
+  - Fluent UI has a Close button for the calendar, but the Date Picker Figma design spec does not. The date picker should close on ESC or when the user clicks outside of it.
   - The React Date Picker has a `disabled` property that is not in the date picker Figma design spec
 
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document:
@@ -102,8 +102,6 @@ None
   - The React Date Picker has property `underlined` that deermines whether or not the input of the Date Picker is underlined. This is not part of the date picker Figma design spec.
   - The React Date Picker has property `initialPickerDate`, whereas in the web component implementation this is handled by `selected-dates`. However, this approach might change if necessary during implementation.
   - The React Date Picker has property `openOnClick` that determines whether the date picker should open when the input is clicked. This is always true for the web component date picker.
-
-- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
 
 - [x] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec)
   - [ ] And [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
