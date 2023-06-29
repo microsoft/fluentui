@@ -13,6 +13,7 @@ import {
   MenuGroupHeader,
   MenuDivider,
   MenuSplitGroup,
+  MenuItemLink,
 } from '@fluentui/react-menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
@@ -39,6 +40,34 @@ storiesOf('Menu Converged - basic', module)
     ),
     { includeRtl: true },
   );
+
+storiesOf('Menu Converged - MenuItemLinks', module)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().hover('[role="menuitem"]').snapshot('hover menuitemlink').end()}>
+      {story()}
+    </StoryWright>
+  ))
+  .addStory('default', () => (
+    <Menu open>
+      <MenuTrigger>
+        <button>Toggle menu</button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItemLink href="#" icon={<CutRegular />}>
+            Cut
+          </MenuItemLink>
+          <MenuItemLink href="#" icon={<EditRegular />}>
+            Edit
+          </MenuItemLink>
+          <MenuItemLink href="#" icon={<ClipboardPasteRegular />}>
+            Paste
+          </MenuItemLink>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  ));
 
 storiesOf('Menu Converged - secondary content', module)
   .addDecorator(story => (
