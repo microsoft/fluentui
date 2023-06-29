@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Tue, 27 Jun 2023 11:21:23 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2023 11:12:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.64)
+
+Wed, 28 Jun 2023 11:12:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.63..@fluentui/react-portal-compat_v9.0.64)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.9.1 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-components to v9.23.1 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
 
 ## [9.0.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.63)
 

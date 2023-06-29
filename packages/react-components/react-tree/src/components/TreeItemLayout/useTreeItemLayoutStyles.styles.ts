@@ -9,6 +9,7 @@ import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
   root: 'fui-TreeItemLayout',
   iconBefore: 'fui-TreeItemLayout__iconBefore',
+  content: 'fui-TreeItemLayout__content',
   iconAfter: 'fui-TreeItemLayout__iconAfter',
   expandIcon: 'fui-TreeItemLayout__expandIcon',
   aside: 'fui-TreeItemLayout__aside',
@@ -50,11 +51,9 @@ const useRootStyles = makeStyles({
     paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
   },
   medium: {
-    columnGap: tokens.spacingHorizontalSNudge,
     ...typographyStyles.body1,
   },
   small: {
-    columnGap: tokens.spacingHorizontalXS,
     minHeight: '24px',
     ...typographyStyles.caption1,
   },
@@ -77,21 +76,6 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
-});
-
-/**
- * Styles for the before/after icon slot
- */
-const useIconStyles = makeStyles({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    color: tokens.colorNeutralForeground2,
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
-  },
-  iconBefore: {},
-  iconAfter: {},
 });
 
 /**
@@ -139,15 +123,60 @@ const useExpandIconStyles = makeStyles({
 });
 
 /**
+ * Styles for the content slot
+ */
+const useContentStyles = makeStyles({
+  base: {
+    ...shorthands.padding(0, tokens.spacingHorizontalXXS),
+  },
+});
+
+/**
+ * Styles for the before/after icon slot
+ */
+const useIconStyles = makeStyles({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    color: tokens.colorNeutralForeground2,
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
+  },
+});
+
+const useIconBeforeStyles = makeStyles({
+  medium: {
+    paddingRight: tokens.spacingHorizontalXS,
+  },
+  small: {
+    paddingRight: tokens.spacingHorizontalXXS,
+  },
+});
+
+const useIconAfterStyles = makeStyles({
+  medium: {
+    paddingLeft: tokens.spacingHorizontalXS,
+  },
+  small: {
+    paddingLeft: tokens.spacingHorizontalXXS,
+  },
+});
+
+/**
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, root } = state;
+  const { content, iconAfter, iconBefore, expandIcon, root } = state;
   const rootStyles = useRootStyles();
-  const iconStyles = useIconStyles();
   const actionsStyles = useActionsStyles();
   const asideStyles = useAsideStyles();
+
+  const contentStyles = useContentStyles();
+
   const expandIconStyles = useExpandIconStyles();
+  const iconStyles = useIconStyles();
+  const iconBeforeStyles = useIconBeforeStyles();
+  const iconAfterStyles = useIconAfterStyles();
 
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
@@ -162,11 +191,21 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     root.className,
   );
 
+  content.className = mergeClasses(treeItemLayoutClassNames.content, contentStyles.base, content.className);
+
+  if (expandIcon) {
+    expandIcon.className = mergeClasses(
+      treeItemLayoutClassNames.expandIcon,
+      expandIconStyles.base,
+      expandIcon.className,
+    );
+  }
+
   if (iconBefore) {
     iconBefore.className = mergeClasses(
       treeItemLayoutClassNames.iconBefore,
       iconStyles.base,
-      iconStyles.iconBefore,
+      iconBeforeStyles[size],
       iconBefore.className,
     );
   }
@@ -175,7 +214,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     iconAfter.className = mergeClasses(
       treeItemLayoutClassNames.iconAfter,
       iconStyles.base,
-      iconStyles.iconAfter,
+      iconAfterStyles[size],
       iconAfter.className,
     );
   }

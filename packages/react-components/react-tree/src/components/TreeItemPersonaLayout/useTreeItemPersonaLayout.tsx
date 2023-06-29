@@ -18,7 +18,7 @@ export const useTreeItemPersonaLayout_unstable = (
   props: TreeItemPersonaLayoutProps,
   ref: React.Ref<HTMLSpanElement>,
 ): TreeItemPersonaLayoutState => {
-  const { media, children, main, description } = props;
+  const { media, children, content, description } = props;
 
   const treeItemLayoutState = useTreeItemLayout_unstable(
     {
@@ -34,7 +34,7 @@ export const useTreeItemPersonaLayout_unstable = (
     ...treeItemLayoutState,
     components: {
       expandIcon: 'div',
-      main: 'div',
+      content: 'div',
       description: 'div',
       root: 'div',
       media: 'div',
@@ -42,7 +42,7 @@ export const useTreeItemPersonaLayout_unstable = (
       actions: 'div',
     },
     avatarSize: treeAvatarSize[size],
-    main: resolveShorthand(main, { required: true, defaultProps: { children } }),
+    content: resolveShorthand(content, { required: true, defaultProps: { children } }),
     media: resolveShorthand(media, { required: true }),
     description: resolveShorthand(description),
   };

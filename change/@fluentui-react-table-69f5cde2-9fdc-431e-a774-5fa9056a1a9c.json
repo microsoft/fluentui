@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "uses useSelection from react-utilities instead of local implementation",
-  "packageName": "@fluentui/react-table",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
