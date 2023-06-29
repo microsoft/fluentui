@@ -4,6 +4,10 @@
 
 The Calendar lets users view and select a single date or a range of dates. The calendar has five different views: date, month, week, year, and range-picker.
 
+### Calendar vs. Date Picker
+
+The calendar and the date picker have significant overlap in inputs, outputs, and events. The difference is that the date picker is essentially a calendar combined with an input field, in which the input field can can interact with the calendar by opening and closing the calendar and displaying/modifying the selected dates of the calendar. It is important to note that the calendar is the component that stores the selected dates, which is then exposed to the date picker.
+
 ## Design Spec
 
 Due to the incomplete nature of the v9 calendar design spec, work on the component will be based on the calendar from the v8 api while using the skin of the calendar in the v9 date picker design spec.
