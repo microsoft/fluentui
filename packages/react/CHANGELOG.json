@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 29 Jun 2023 07:35:33 GMT",
+      "tag": "@fluentui/react_v8.110.7",
+      "version": "8.110.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b0d5687040f698f12b87e954f80226ebd60c361b",
+            "comment": "chore: Exporting CSS files in @fluentui/react package."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:34 GMT",
       "tag": "@fluentui/react_v8.110.6",
       "version": "8.110.6",
