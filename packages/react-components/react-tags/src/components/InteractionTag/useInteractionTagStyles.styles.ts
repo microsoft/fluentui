@@ -32,19 +32,6 @@ const useRootStyles = makeStyles({
     width: 'fit-content',
   },
 
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
-  },
-  outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
-  },
-  brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-  },
-
   rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
   circular: shorthands.borderRadius(tokens.borderRadiusCircular),
 
@@ -56,24 +43,6 @@ const useRootStyles = makeStyles({
   },
   'extra-small': {
     height: '20px',
-  },
-});
-
-const useRootDisabledStyles = makeStyles({
-  filled: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-  },
-  outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-  },
-  brand: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
 });
 
@@ -109,6 +78,8 @@ const useContentButtonStyles = makeStyles({
   },
 
   filled: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorNeutralBackground3Hover,
@@ -121,6 +92,8 @@ const useContentButtonStyles = makeStyles({
     // TODO ':focus' - design have it filled
   },
   outline: {
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForeground2,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
@@ -133,6 +106,8 @@ const useContentButtonStyles = makeStyles({
     },
   },
   brand: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
@@ -142,10 +117,6 @@ const useContentButtonStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorBrandForeground2Pressed,
     },
-  },
-
-  disabled: {
-    cursor: 'not-allowed',
   },
 
   rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -161,6 +132,27 @@ const useContentButtonStyles = makeStyles({
     paddingRight: '5px',
   },
 });
+const useContentButtonDisabledStyles = makeStyles({
+  filled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
+  },
+  outline: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+  },
+  brand: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
+  },
+});
+
 /**
  * Styles for content slot when InteractionTag is without leading media/icon
  */
@@ -227,6 +219,8 @@ const useDismissButtonStyles = makeStyles({
   },
 
   filled: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorNeutralBackground3Hover,
@@ -238,6 +232,8 @@ const useDismissButtonStyles = makeStyles({
     },
   },
   outline: {
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForeground2,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
@@ -250,7 +246,9 @@ const useDismissButtonStyles = makeStyles({
     },
   },
   brand: {
-    borderLeftColor: tokens.colorBrandStroke2,
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
+    borderLeftColor: tokens.colorBrandStroke2, // divider
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
@@ -260,11 +258,6 @@ const useDismissButtonStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorBrandForeground2Pressed,
     },
-  },
-
-  disabled: {
-    cursor: 'not-allowed',
-    borderLeftColor: tokens.colorNeutralStrokeDisabled,
   },
 
   rounded: {
@@ -292,30 +285,53 @@ const useDismissButtonStyles = makeStyles({
     paddingRight: '5px',
   },
 });
+const useDismissButtonDisabledStyles = makeStyles({
+  filled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
+    borderLeftColor: tokens.colorNeutralStrokeDisabled, // divider
+  },
+  outline: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+  },
+  brand: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
+    borderLeftColor: tokens.colorNeutralStrokeDisabled, // divider
+  },
+});
 
 /**
  * Apply styling to the InteractionTag slots based on the state
  */
 export const useInteractionTagStyles_unstable = (state: InteractionTagState): InteractionTagState => {
   const rootStyles = useRootStyles();
-  const rootDisabledStyles = useRootDisabledStyles();
 
   const contentButtonStyles = useContentButtonStyles();
+  const contentButtonDisabledStyles = useContentButtonDisabledStyles();
   const contentButtonWithoutMediaStyles = useContentButtonWithoutMediaStyles();
   const dismissibleContentButtonStyles = useDismissibleContentButtonStyles();
+
+  const dismissButtonStyles = useDismissButtonStyles();
+  const dismissButtonDisabledStyles = useDismissButtonDisabledStyles();
 
   const iconStyles = useIconStyles();
   const mediaStyles = useMediaStyles();
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextStyles = useSecondaryTextStyles();
-  const dismissButtonStyles = useDismissButtonStyles();
 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagClassNames.root,
     rootStyles.base,
-    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
     state.root.className,
@@ -326,7 +342,7 @@ export const useInteractionTagStyles_unstable = (state: InteractionTagState): In
       interactionTagClassNames.content,
 
       contentButtonStyles.base,
-      state.disabled ? contentButtonStyles.disabled : contentButtonStyles[appearance],
+      state.disabled ? contentButtonDisabledStyles[appearance] : contentButtonStyles[appearance],
       contentButtonStyles[shape],
       contentButtonStyles[size],
 
@@ -377,7 +393,7 @@ export const useInteractionTagStyles_unstable = (state: InteractionTagState): In
     state.dismissButton.className = mergeClasses(
       interactionTagClassNames.dismissButton,
       dismissButtonStyles.base,
-      state.disabled ? dismissButtonStyles.disabled : dismissButtonStyles[appearance],
+      state.disabled ? dismissButtonDisabledStyles[appearance] : dismissButtonStyles[appearance],
       dismissButtonStyles[shape],
       dismissButtonStyles[size],
       state.dismissButton.className,
