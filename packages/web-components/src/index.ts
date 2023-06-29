@@ -26,5 +26,9 @@ export * from './text/index.js';
 export * from './text-input/index.js';
 export * from './toggle-button/index.js';
 
+// Export all customized built-in elements
+export * from './customized-built-ins/index.js';
+
+// Export design system and theming utils
 export * from './fluent-design-system.js';
 export * from './theme/index.js';
