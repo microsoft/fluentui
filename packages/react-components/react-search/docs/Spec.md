@@ -54,18 +54,27 @@ The v0 component has a fixed width that can be changed to span the length of its
 
 [Documentation for v0 Input](https://fluentsite.z22.web.core.windows.net/0.59.0/components/input/definition)
 
-```
-<Input
-    icon={<SearchIcon />}
-    iconPosition="start"
-    label="Search"
-    placeholder="Search..."
-/>
-```
+#### Conclusion
+
+- The v9 component will support a leading icon that is a search icon by default.
+- There will be support for a clear button that appears at the end of the search bar when the component is in focus and the search box is not empty.
+- Flipping of elements in right-to-left locales will be supported.
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```
+<SearchBox
+  appearance="underline"
+  className="rootClass"
+  input={{ className: 'searchBoxClass' }}
+  id="searchBox1"
+  value="something"
+  onChange={(ev, data) => console.log(data.value)}
+  contentBefore={<SearchIcon />}
+  contentAfter={<MicIcon />}
+  dismiss={<ClearIcon />}
+/>
+```
 
 ## Variants
 
@@ -80,7 +89,7 @@ Search supports the same appearance variants as Input, as follows:
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+See [SearchBox.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-search/src/components/SearchBox/SearchBox.types.ts)
 
 ## Structure
 
