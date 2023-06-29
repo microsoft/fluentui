@@ -14,14 +14,16 @@ Comprised of components: text input, button with chevron icon, and a listbox. Th
 
 ### Inputs
 
-- @attr `appearance`: `outline` `transparent` `filled-darker` `filled-lighter` | `outline` - The appearance of the input field.
-- @attr `autocomplete`: `inline` `list` `both` `none` | `none` - The autocomplete behavior of the input field.
-- @attr `block`: boolean - If true, fill the width of parent container.
-- @attr `disabled`: boolean - Disables the control.
-- @attr `freeform`: boolean | `false` - If true, the user input is not restricted to items in the list of selectable options.
-- @attr `selectionModel`: `single-select`, `multi-select` or `pill-select` - The selection model for the listbox.
-- @attr `size`: `small` `medium` `large` | `medium` - The height of the input field.
-- @attr `value`: string | `''` - The value of the control.
+| Attribute        | Values                                                   | Default         | Description                                                                           |
+| ---------------- | -------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------- |
+| `appearance`     | `outline` `transparent` `filled-darker` `filled-lighter` | `outline`       | The appearance of the input field.                                                    |
+| `autocomplete`   | `inline` `list` `both` `none`                            | `none`          | The autocomplete behavior of the input field.                                         |
+| `block`          | `boolean`                                                | -               | If true, fill the width of parent container.                                          |
+| `disabled`       | `boolean`                                                | -               | Disables the control.                                                                 |
+| `freeform`       | `boolean`                                                | `false`         | If true, the user input is not restricted to items in the list of selectable options. |
+| `selectionModel` | `single-select`, `multi-select` or `pill-select`         | `single-select` | The selection model for the listbox.                                                  |
+| `size`           | `small` `medium` `large`                                 | `medium`        | The height of the input field.                                                        |
+| `value`          | `string`                                                 | `''`            | The value of the control.                                                             |
 
 ### Outputs
 
