@@ -12,7 +12,6 @@ export const useStyles = makeStyles({
   chart: {
     boxSizing: 'content-box',
     ...shorthands.overflow('visible'),
-    // overflow: 'visible',
     alignmentAdjust: 'center',
     display: 'block',
   },
