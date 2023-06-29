@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: updates internal to use `useSelection` hook",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

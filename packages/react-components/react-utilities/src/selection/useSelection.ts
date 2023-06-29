@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { SelectionHookParams, SelectionItemId, SelectionMethods } from './types';
+import { SelectionHookParams, SelectionMethods, SelectionValue } from './types';
 import { useControllableState } from '../hooks/useControllableState';
 import { createSetFromIterable } from '../utils/createSetFromIterable';
 
-function useSelectionState(params: Omit<SelectionHookParams, 'selectionMode'>) {
-  const [selected, setSelected] = useControllableState<Set<SelectionItemId>>({
+function useSelectionState<Value>(params: Omit<SelectionHookParams<Value>, 'selectionMode'>) {
+  const [selected, setSelected] = useControllableState<Set<Value>>({
     initialState: new Set(),
     defaultState: React.useMemo(
       () => params.defaultSelectedItems && createSetFromIterable(params.defaultSelectedItems),
@@ -15,77 +15,78 @@ function useSelectionState(params: Omit<SelectionHookParams, 'selectionMode'>) {
       [params.selectedItems],
     ),
   });
-  const changeSelection = (event: React.SyntheticEvent, nextSelectedItems: Set<SelectionItemId>) => {
-    params.onSelectionChange?.(event, { selectedItems: nextSelectedItems });
-    setSelected(nextSelectedItems);
+  const dispatchSelectedAndReturn = (nextSelected: Set<Value>) => {
+    setSelected(nextSelected);
+    return nextSelected;
   };
-  return [selected, changeSelection] as const;
+  return [selected, dispatchSelectedAndReturn] as const;
 }
 
-function useSingleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) {
-  const [selected, changeSelection] = useSelectionState(params);
-  const methods: SelectionMethods = {
-    deselectItem: event => changeSelection(event, new Set()),
-    selectItem: (event, itemId) => changeSelection(event, new Set([itemId])),
+function useSingleSelection<Value>(params: Omit<SelectionHookParams<Value>, 'selectionMode'>) {
+  const [selected, setSelection] = useSelectionState<Value>(params);
+  const methods: SelectionMethods<Value> = {
+    deselectItem: () => setSelection(new Set<Value>()),
+    selectItem: value => setSelection(new Set([value])),
     toggleAllItems: () => {
       if (process.env.NODE_ENV !== 'production') {
         throw new Error('[react-utilities]: `toggleAllItems` should not be used in single selection mode');
       }
+      return selected;
     },
-    toggleItem: (event, itemId) => changeSelection(event, new Set([itemId])),
-    clearItems: event => changeSelection(event, new Set()),
-    isSelected: itemId => selected.has(itemId) ?? false,
+    toggleItem: value => setSelection(new Set([value])),
+    clearItems: () => setSelection(new Set()),
+    isSelected: value => selected.has(value) ?? false,
   };
   return [selected, methods] as const;
 }
 
-function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) {
-  const [selected, changeSelection] = useSelectionState(params);
-  const methods: SelectionMethods = {
-    toggleItem: (event, itemId) => {
+function useMultipleSelection<Value>(params: Omit<SelectionHookParams<Value>, 'selectionMode'>) {
+  const [selected, setSelection] = useSelectionState<Value>(params);
+  const methods: SelectionMethods<Value> = {
+    toggleItem: value => {
       const nextSelectedItems = new Set(selected);
-      if (selected.has(itemId)) {
-        nextSelectedItems.delete(itemId);
+      if (selected.has(value)) {
+        nextSelectedItems.delete(value);
       } else {
-        nextSelectedItems.add(itemId);
+        nextSelectedItems.add(value);
       }
-      changeSelection(event, nextSelectedItems);
+      return setSelection(nextSelectedItems);
     },
-    selectItem: (event, itemId) => {
+    selectItem: value => {
       const nextSelectedItems = new Set(selected);
-      nextSelectedItems.add(itemId);
-      changeSelection(event, nextSelectedItems);
+      nextSelectedItems.add(value);
+      return setSelection(nextSelectedItems);
     },
-    deselectItem: (event, itemId) => {
+    deselectItem: value => {
       const nextSelectedItems = new Set(selected);
-      nextSelectedItems.delete(itemId);
-      changeSelection(event, nextSelectedItems);
+      nextSelectedItems.delete(value);
+      return setSelection(nextSelectedItems);
     },
-    clearItems: event => {
-      changeSelection(event, new Set());
+    clearItems: () => {
+      return setSelection(new Set());
     },
-    isSelected: itemId => selected.has(itemId),
-    toggleAllItems: (event, itemIds) => {
-      const allItemsSelected = itemIds.every(itemId => selected.has(itemId));
+    isSelected: value => selected.has(value),
+    toggleAllItems: values => {
+      const allItemsSelected = values.every(value => selected.has(value));
       const nextSelectedItems = new Set(selected);
       if (allItemsSelected) {
         nextSelectedItems.clear();
       } else {
-        itemIds.forEach(itemId => nextSelectedItems.add(itemId));
+        values.forEach(value => nextSelectedItems.add(value));
       }
-      changeSelection(event, nextSelectedItems);
+      return setSelection(nextSelectedItems);
     },
   };
   return [selected, methods] as const;
 }
 
-export function useSelection(params: SelectionHookParams) {
+export function useSelection<Value = SelectionValue>(params: SelectionHookParams<Value>) {
   if (params.selectionMode === 'multiselect') {
     // selectionMode is a static value, so we can safely ignore rules-of-hooks
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useMultipleSelection(params);
+    return useMultipleSelection<Value>(params);
   }
   // selectionMode is a static value, so we can safely ignore rules-of-hooks
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useSingleSelection(params);
+  return useSingleSelection<Value>(params);
 }

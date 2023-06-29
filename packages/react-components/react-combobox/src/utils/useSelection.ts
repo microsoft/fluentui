@@ -1,49 +1,38 @@
-import { useCallback } from 'react';
-import { useControllableState } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { useEventCallback, useSelection as useUtilsSelection } from '@fluentui/react-utilities';
 import { OptionValue } from './OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionState } from './Selection.types';
 
 export const useSelection = (props: SelectionProps): SelectionState => {
-  const { defaultSelectedOptions, multiselect, onOptionSelect } = props;
+  const { multiselect, onOptionSelect } = props;
 
-  const [selectedOptions, setSelectedOptions] = useControllableState({
-    state: props.selectedOptions,
-    defaultState: defaultSelectedOptions,
-    initialState: [],
+  const [selectedOptions, selectionMethods] = useUtilsSelection<string>({
+    selectionMode: multiselect ? 'multiselect' : 'single',
+    selectedItems: props.selectedOptions,
+    defaultSelectedItems: props.defaultSelectedOptions,
   });
 
-  const selectOption = useCallback(
-    (event: SelectionEvents, option: OptionValue) => {
-      // if the option is disabled, do nothing
-      if (option.disabled) {
-        return;
-      }
-
-      // for single-select, always return the selected option
-      let newSelection = [option.value];
-
-      // toggle selected state of the option for multiselect
-      if (multiselect) {
-        const selectedIndex = selectedOptions.findIndex(o => o === option.value);
-        if (selectedIndex > -1) {
-          // deselect option
-          newSelection = [...selectedOptions.slice(0, selectedIndex), ...selectedOptions.slice(selectedIndex + 1)];
-        } else {
-          // select option
-          newSelection = [...selectedOptions, option.value];
-        }
-      }
-
-      setSelectedOptions(newSelection);
-      onOptionSelect?.(event, { optionValue: option.value, optionText: option.text, selectedOptions: newSelection });
-    },
-    [onOptionSelect, multiselect, selectedOptions, setSelectedOptions],
-  );
+  const selectOption = useEventCallback((event: SelectionEvents, option: OptionValue) => {
+    // if the option is disabled, do nothing
+    if (option.disabled) {
+      return;
+    }
+    const nextSelectedOptions = selectionMethods.toggleItem(option.value);
+    onOptionSelect?.(event, {
+      optionValue: option.value,
+      optionText: option.text,
+      selectedOptions: Array.from(nextSelectedOptions),
+    });
+  });
 
   const clearSelection = (event: SelectionEvents) => {
-    setSelectedOptions([]);
+    selectionMethods.clearItems();
     onOptionSelect?.(event, { optionValue: undefined, optionText: undefined, selectedOptions: [] });
   };
 
-  return { clearSelection, selectOption, selectedOptions };
+  return {
+    clearSelection,
+    selectOption,
+    selectedOptions: React.useMemo(() => Array.from(selectedOptions), [selectedOptions]),
+  };
 };

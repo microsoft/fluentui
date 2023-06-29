@@ -1,36 +1,27 @@
-import * as React from 'react';
-
 export type SelectionMode = 'single' | 'multiselect';
 
-export interface SelectionMethods {
-  toggleItem(event: React.SyntheticEvent, id: SelectionItemId): void;
-  selectItem(event: React.SyntheticEvent, id: SelectionItemId): void;
-  deselectItem(event: React.SyntheticEvent, id: SelectionItemId): void;
-  clearItems(event: React.SyntheticEvent): void;
-  isSelected(id: SelectionItemId): boolean;
-  toggleAllItems(event: React.SyntheticEvent, itemIds: SelectionItemId[]): void;
+/**
+ * @internal
+ */
+export type SelectionValue = string | number;
+
+export interface SelectionMethods<Value = SelectionValue> {
+  toggleItem(value: Value): Set<Value>;
+  selectItem(value: Value): Set<Value>;
+  deselectItem(value: Value): Set<Value>;
+  clearItems(): Set<Value>;
+  isSelected(value: Value): boolean;
+  toggleAllItems(values: Value[]): Set<Value>;
 }
 
-export type SelectionItemId = string | number;
-
-export type OnSelectionChangeCallback = (event: React.SyntheticEvent, selectedItems: Set<SelectionItemId>) => void;
-
-export type OnSelectionChangeData = {
-  selectedItems: Set<SelectionItemId>;
-};
-
-export type SelectionHookParams = {
+export type SelectionHookParams<Value = SelectionValue> = {
   selectionMode: SelectionMode;
   /**
    * Used in uncontrolled mode to set initial selected items on mount
    */
-  defaultSelectedItems?: Iterable<SelectionItemId>;
+  defaultSelectedItems?: Iterable<Value>;
   /**
    * Used to control selected items
    */
-  selectedItems?: Iterable<SelectionItemId>;
-  /**
-   * Called when selection changes
-   */
-  onSelectionChange?(event: React.SyntheticEvent, data: OnSelectionChangeData): void;
+  selectedItems?: Iterable<Value>;
 };

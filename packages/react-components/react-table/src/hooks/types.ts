@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
 import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
-import { SelectionMode } from '@fluentui/react-utilities';
+import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;
@@ -14,6 +14,10 @@ export interface SortState {
 export interface OnSelectionChangeData {
   selectedItems: Set<TableRowId>;
 }
+
+export type TableSelectionHookParams = SelectionHookParams & {
+  onSelectionChange?(event: React.SyntheticEvent, data: { selectedItems: Set<string | number> }): void;
+};
 
 export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefinition<TItem>> {
   columnId: TableColumnId;

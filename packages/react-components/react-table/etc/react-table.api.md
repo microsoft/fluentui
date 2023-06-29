@@ -674,7 +674,7 @@ export const useTableRowIdContext: () => TableRowId;
 export const useTableRowStyles_unstable: (state: TableRowState) => TableRowState;
 
 // @public (undocumented)
-export function useTableSelection<TItem>(options: SelectionHookParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export function useTableSelection<TItem>(options: TableSelectionHookParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 // @public
 export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellState;

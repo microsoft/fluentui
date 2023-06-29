@@ -116,14 +116,6 @@ export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
-// @public (undocumented)
-export type OnSelectionChangeCallback = (event: React_2.SyntheticEvent, selectedItems: Set<SelectionItemId>) => void;
-
-// @public (undocumented)
-export type OnSelectionChangeData = {
-    selectedItems: Set<SelectionItemId>;
-};
-
 // @internal (undocumented)
 export interface PriorityQueue<T> {
     // (undocumented)
@@ -172,30 +164,26 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = R
 };
 
 // @public (undocumented)
-export type SelectionHookParams = {
+export type SelectionHookParams<Value = SelectionValue> = {
     selectionMode: SelectionMode_2;
-    defaultSelectedItems?: Iterable<SelectionItemId>;
-    selectedItems?: Iterable<SelectionItemId>;
-    onSelectionChange?(event: React_2.SyntheticEvent, data: OnSelectionChangeData): void;
+    defaultSelectedItems?: Iterable<Value>;
+    selectedItems?: Iterable<Value>;
 };
 
 // @public (undocumented)
-export type SelectionItemId = string | number;
-
-// @public (undocumented)
-export interface SelectionMethods {
+export interface SelectionMethods<Value = SelectionValue> {
     // (undocumented)
-    clearItems(event: React_2.SyntheticEvent): void;
+    clearItems(): Set<Value>;
     // (undocumented)
-    deselectItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    deselectItem(value: Value): Set<Value>;
     // (undocumented)
-    isSelected(id: SelectionItemId): boolean;
+    isSelected(value: Value): boolean;
     // (undocumented)
-    selectItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    selectItem(value: Value): Set<Value>;
     // (undocumented)
-    toggleAllItems(event: React_2.SyntheticEvent, itemIds: SelectionItemId[]): void;
+    toggleAllItems(values: Value[]): Set<Value>;
     // (undocumented)
-    toggleItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    toggleItem(value: Value): Set<Value>;
 }
 
 // @public (undocumented)
@@ -304,7 +292,7 @@ export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType |
 export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
 
 // @public (undocumented)
-export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
+export function useSelection<Value = SelectionValue>(params: SelectionHookParams<Value>): readonly [Set<Value>, SelectionMethods<Value>];
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];

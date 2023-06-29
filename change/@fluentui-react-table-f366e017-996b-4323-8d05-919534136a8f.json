@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "updates internal to modifications on `useSelection`",
+  "packageName": "@fluentui/react-table",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
