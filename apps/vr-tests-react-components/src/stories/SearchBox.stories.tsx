@@ -47,7 +47,7 @@ storiesOf('SearchBox Converged', module)
   ))
   .addStory(
     'WIth contentAfter',
-    () => <SearchBox contentAfter={<MicRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
+    () => <SearchBox contentAfter={<Mic20Regular />} placeholder="Placeholder" />,
     { includeRtl: true },
   )
   .addStory(
