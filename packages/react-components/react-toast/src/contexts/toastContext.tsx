@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export type ToastContextValue = {
-  appearance?: 'inverted';
+  appearance: 'inverted' | undefined;
 };
 
 const toastContextDefaultValue: ToastContextValue = {

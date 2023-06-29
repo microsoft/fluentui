@@ -111,7 +111,7 @@ export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
 // @public
-export type ToastProps = ComponentProps<ToastSlots> & Pick<ToastContextValue, 'appearance'>;
+export type ToastProps = ComponentProps<ToastSlots> & Pick<Partial<ToastContextValue>, 'appearance'>;
 
 // @public (undocumented)
 export type ToastSlots = {
@@ -119,7 +119,7 @@ export type ToastSlots = {
 };
 
 // @public
-export type ToastState = ComponentState<ToastSlots> & Pick<ToastProps, 'appearance'>;
+export type ToastState = ComponentState<ToastSlots> & Pick<ToastContextValue, 'appearance'>;
 
 // @public (undocumented)
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';

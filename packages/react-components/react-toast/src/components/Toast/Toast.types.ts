@@ -12,9 +12,9 @@ export type ToastContextValues = {
 /**
  * Toast Props
  */
-export type ToastProps = ComponentProps<ToastSlots> & Pick<ToastContextValue, 'appearance'>;
+export type ToastProps = ComponentProps<ToastSlots> & Pick<Partial<ToastContextValue>, 'appearance'>;
 
 /**
  * State used in rendering Toast
  */
-export type ToastState = ComponentState<ToastSlots> & Pick<ToastProps, 'appearance'>;
+export type ToastState = ComponentState<ToastSlots> & Pick<ToastContextValue, 'appearance'>;
