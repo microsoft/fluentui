@@ -59,6 +59,9 @@ export { DataGridSelectionCell }
 
 export { DataGridSelectionCellProps }
 
+// @public (undocumented)
+export type RowRenderFunction<TItem = unknown> = (row: TableRowData<TItem>, style: React_2.CSSProperties) => React_2.ReactNode;
+
 // (No @packageDocumentation comment for this package)
 
 ```
