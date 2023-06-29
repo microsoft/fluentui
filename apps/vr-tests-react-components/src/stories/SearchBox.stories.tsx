@@ -72,4 +72,3 @@ storiesOf('SearchBox Converged', module)
     </StoryWright>
   ))
   .addStory('Clears value', () => <SearchBox defaultValue="Value!" />);
-x`x`;
