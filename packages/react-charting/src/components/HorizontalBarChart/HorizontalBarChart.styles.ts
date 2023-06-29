@@ -27,7 +27,14 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       display: 'block',
       overflow: 'visible',
     },
-    barWrapper: {},
+    barWrapper: {
+      selectors: {
+        '&:focus': {
+          stroke: theme.palette.black,
+          strokeWidth: 2,
+        },
+      },
+    },
     chartTitle: {
       ...theme.fonts.small,
       display: 'flex',
