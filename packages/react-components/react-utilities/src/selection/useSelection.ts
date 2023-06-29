@@ -3,7 +3,7 @@ import { SelectionHookParams, SelectionItemId, SelectionMethods } from './types'
 import { useControllableState } from '../hooks/useControllableState';
 import { createSetFromIterable } from '../utils/createSetFromIterable';
 
-function useSingleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) {
+function useSelectionState(params: Omit<SelectionHookParams, 'selectionMode'>) {
   const [selected, setSelected] = useControllableState<Set<SelectionItemId>>({
     initialState: new Set(),
     defaultState: React.useMemo(
@@ -17,10 +17,13 @@ function useSingleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) 
   });
   const changeSelection = (event: React.SyntheticEvent, nextSelectedItems: Set<SelectionItemId>) => {
     params.onSelectionChange?.(event, { selectedItems: nextSelectedItems });
-    if (!event.isDefaultPrevented()) {
-      setSelected(nextSelectedItems);
-    }
+    setSelected(nextSelectedItems);
   };
+  return [selected, changeSelection] as const;
+}
+
+function useSingleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) {
+  const [selected, changeSelection] = useSelectionState(params);
   const methods: SelectionMethods = {
     deselectItem: event => changeSelection(event, new Set()),
     selectItem: (event, itemId) => changeSelection(event, new Set([itemId])),
@@ -37,23 +40,7 @@ function useSingleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) 
 }
 
 function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) {
-  const [selected, setSelected] = useControllableState<Set<SelectionItemId>>({
-    initialState: new Set(),
-    defaultState: React.useMemo(
-      () => params.defaultSelectedItems && createSetFromIterable(params.defaultSelectedItems),
-      [params.defaultSelectedItems],
-    ),
-    state: React.useMemo(
-      () => params.selectedItems && createSetFromIterable(params.selectedItems),
-      [params.selectedItems],
-    ),
-  });
-  const changeSelection = (event: React.SyntheticEvent, nextSelectedItems: Set<SelectionItemId>) => {
-    params.onSelectionChange?.(event, { selectedItems: nextSelectedItems });
-    if (!event.isDefaultPrevented()) {
-      setSelected(nextSelectedItems);
-    }
-  };
+  const [selected, changeSelection] = useSelectionState(params);
   const methods: SelectionMethods = {
     toggleItem: (event, itemId) => {
       const nextSelectedItems = new Set(selected);
