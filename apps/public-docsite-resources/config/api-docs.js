@@ -12,6 +12,7 @@ module.exports = {
   apiJsonPaths: [
     'packages/react',
     ...findRepoDeps({ cwd: path.join(gitRoot, 'packages/react'), dev: false }).map(dep => dep.packagePath),
+    ...findRepoDeps({ cwd: path.join(gitRoot, 'packages/react-charting'), dev: false }).map(dep => dep.packagePath),
   ]
     .map(packagePath => path.join(gitRoot, packagePath, 'dist', path.basename(packagePath) + '.api.json'))
     .filter(apiJsonPath => fs.existsSync(apiJsonPath)),
@@ -88,6 +89,7 @@ module.exports = {
       'TimePicker',
       'Toggle',
       'Tooltip',
+      'Legends',
     ],
   },
 };

@@ -6,12 +6,20 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { CustomPoints, Points } from '../../utilities/utilities';
 
+/**
+ * {@docCategory Legends}
+ * ILegendOverflowData interface.
+ */
 export interface ILegendOverflowData {
   primary: ILegend[];
 
   overflow?: ILegend[];
 }
 
+/**
+ * {@docCategory Legends}
+ * ILegendSubComponentStyles interface.
+ */
 export interface ILegendSubComponentStyles {
   hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
