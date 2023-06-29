@@ -93,9 +93,14 @@ See [SearchBox.types.ts](../src/components/SearchBox/SearchBox.types.ts)
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+SearchBox uses Input as its root element, making`input` the primary slot. Per the [native element props/primary slot RFC](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/native-element-props.md), this means that most top-level props will go to `input`, but the top-level `className` and `style` will go to the actual root element.
+
+The `contentAfter` and `dismiss` are bundled into one div and used as
+
+Notes on the HTML rendering:
+
+- Using `span` rather than `div` prevents nesting errors if the Input is rendered inline within a `<p>`.
+- The root is visually styled as the input (with borders etc) and the `contentBefore`, `contentAfter`, and actual `input` elements are positioned inside it.\
 
 ## Migration
 
@@ -103,28 +108,26 @@ See [MIGRATION.md](MIGRATION.md)
 
 ## Behaviors
 
-We don't implement enter to search, this would come from the consuming team
-The clear button is not in the tab order and should not receive focus
+The input behavior is inherited from the native `<input>` element.
 
-_Explain how the component will behave in use, including:_
+The component has the following interactive states:
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+- Rest
+- Hover: change stroke color
+- Pressed: apply focus border style as animation
+- Focused: currently indicated by a thick brand color stroke on the bottom border only (regardless of whether focus was by keyboard or mouse)
+
+Keyboard, cursor, touch, and screen reader interaction will be handled automatically by the internal `<input>`.
+
+The dismiss button will appear when the component is in focus. When pressed, it will clear the value in the input. Note that this button is not in the tab order.
+
+We don't implement enter to search, this would come from the consuming team.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+Most interaction and screen reader behavior will be handled automatically by the internal `<input type="search">`.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- The `<input>` is visible and shows the placeholder or value text.
+- The component doesn't provide a built-in label, so it's important for the user to pass in appropriate attributes such as `id` (associated with a label using `htmlFor`), `aria-label`, or `aria-labelledby`.
+- The clear button is not in the tab order and should not recieve focus; otherwise, no features in the initial implementation require manipulation of focus, tab order, or key handling.
+- Visual states for focus and hover will be applied to `root` rather than the `<input>` itself (which is rendered without a border and only used to show the text), because the `contentBefore`, `contentAfter`, and `dismiss` slots need to visually appear to be within the input.
