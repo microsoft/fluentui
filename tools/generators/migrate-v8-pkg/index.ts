@@ -1,4 +1,3 @@
-import * as path from 'path';
 import type { Linter } from 'eslint';
 import {
   logger,
@@ -9,11 +8,13 @@ import {
   readJson,
   joinPathFragments,
   ProjectConfiguration,
+  stripIndents,
+  updateProjectConfiguration,
 } from '@nrwl/devkit';
 
 import { printStats } from '../print-stats';
 
-import { getProjectConfig, getProjects, isV8Package } from '../../utils';
+import { getProjectConfig, getProjects, isV8Package, printUserLogs, UserLog } from '../../utils';
 
 import { MigrateV8PkgGeneratorSchema } from './schema';
 import { PackageJson, TsConfig } from '../../types';
@@ -28,6 +29,7 @@ interface AssertedSchema extends MigrateV8PkgGeneratorSchema {
 const noop = () => {};
 
 export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
+  const userLog: UserLog = [];
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
@@ -52,14 +54,19 @@ export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) 
     return noop;
   }
 
+  if (hasSchemaFlag(validatedSchema, 'all')) {
+    runBatchMigration(tree, userLog);
+  }
+
   if (hasSchemaFlag(validatedSchema, 'name')) {
-    console.log('THIS ISNT DOING ANYTHING YET, use --stats 🤝');
-    const normalizedOptions = normalizeOptions(tree, validatedSchema);
+    runMigrationOnProject(tree, validatedSchema);
   }
 
   await formatFiles(tree);
 
-  return noop;
+  return () => {
+    printUserLogs(userLog);
+  };
 }
 
 function normalizeOptions(tree: Tree, options: AssertedSchema) {
@@ -90,8 +97,16 @@ async function validateSchema(tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
     throw new Error('--name and --stats are mutually exclusive');
   }
 
+  if (newSchema.name && newSchema.all) {
+    throw new Error('--name and --all are mutually exclusive');
+  }
+
+  if (newSchema.stats && newSchema.all) {
+    throw new Error('--stats and --all are mutually exclusive');
+  }
+
   const shouldValidateNameInput = () => {
-    return !newSchema.name && !newSchema.stats;
+    return !newSchema.name && !(newSchema.all || newSchema.stats);
   };
 
   if (shouldValidateNameInput()) {
@@ -152,4 +167,104 @@ function getProjectMetadata(tree: Tree, project: ProjectConfiguration) {
       return eslintConfig;
     }
   }
+}
+
+function runBatchMigration(tree: Tree, userLog: UserLog) {
+  const projects = getProjects(tree);
+  projects.forEach((projectConfig, projectName) => {
+    if (!isV8Package(tree, projectConfig)) {
+      userLog.push({ type: 'error', message: `${projectName} is not v8 package. Skipping migration...` });
+      return;
+    }
+
+    runMigrationOnProject(tree, { name: projectName });
+  });
+
+  return tree;
+}
+
+function runMigrationOnProject(tree: Tree, schema: AssertedSchema) {
+  const options = normalizeOptions(tree, schema);
+
+  if (options.projectConfig.projectType === 'application') {
+    logger.warn(
+      stripIndents`
+      NOTE: you're trying to migrate an Application - ${options.name}.
+      We apply limited migration steps at the moment.
+      `,
+    );
+    return;
+  }
+
+  // updates start
+
+  setupNpmIgnoreConfig(tree, options);
+  updateNxProject(tree, options);
+
+  return tree;
+}
+
+function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
+
+  return tree;
+}
+
+function updateNxProject(tree: Tree, options: NormalizedSchema) {
+  updateProjectConfiguration(tree, options.name, {
+    ...options.projectConfig,
+    sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'v8']),
+    implicitDependencies: uniqueArray([...(options.projectConfig.implicitDependencies ?? [])]),
+  });
+
+  return tree;
+}
+
+const templates = {
+  npmIgnoreConfig: stripIndents`
+*.api.json
+*.config.js
+*.log
+*.nuspec
+*.test.*
+*.yml
+.editorconfig
+.eslintrc*
+.eslintcache
+.gitattributes
+.gitignore
+.vscode
+coverage
+dist/storybook
+dist/*.stats.html
+dist/*.stats.json
+dist/demo
+fabric-test*
+gulpfile.js
+images
+index.html
+jsconfig.json
+node_modules
+results
+src/**/*
+!src/**/*.types.ts
+temp
+tsconfig.json
+tsd.json
+tslint.json
+typings
+visualtests
+project.json
+
+# exclude gitignore patterns explicitly
+!lib
+!lib-commonjs
+!lib-amd
+!dist
+`,
+};
+
+function uniqueArray<T extends unknown>(value: T[]) {
+  return Array.from(new Set(value));
 }

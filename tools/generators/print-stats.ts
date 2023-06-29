@@ -23,7 +23,7 @@ export function printStats<T extends ProjectConfiguration>(tree: Tree, options: 
 
   projects.forEach((project, projectName) => {
     if (!project.projectType) {
-      throw new Error(`${projectName}: is missing "projectType" categorization in workspace.json!`);
+      throw new Error(`${projectName}: is missing "projectType" categorization in project.json!`);
     }
     if (!shouldProcessPackage(tree, project)) {
       return;

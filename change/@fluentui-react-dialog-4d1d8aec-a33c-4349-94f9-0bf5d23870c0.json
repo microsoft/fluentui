@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: enables Escape to dismiss alert Dialog",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

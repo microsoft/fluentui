@@ -56,7 +56,7 @@ describe('useTableSortState', () => {
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('ascending');
       expect(onSortChange).toHaveBeenCalledTimes(1);
-      expect(onSortChange).toHaveBeenCalledWith({}, { sortColumn: 1, sortDirection: 'ascending' });
+      expect(onSortChange).toHaveBeenCalledWith(mockSyntheticEvent(), { sortColumn: 1, sortDirection: 'ascending' });
     });
 
     it('should toggle sort direction on a column', () => {
@@ -80,7 +80,10 @@ describe('useTableSortState', () => {
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('descending');
       expect(onSortChange).toHaveBeenCalledTimes(2);
-      expect(onSortChange).toHaveBeenNthCalledWith(2, {}, { sortColumn: 1, sortDirection: 'descending' });
+      expect(onSortChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), {
+        sortColumn: 1,
+        sortDirection: 'descending',
+      });
     });
   });
 
@@ -102,7 +105,7 @@ describe('useTableSortState', () => {
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('ascending');
       expect(onSortChange).toHaveBeenCalledTimes(1);
-      expect(onSortChange).toHaveBeenCalledWith({}, { sortColumn: 1, sortDirection: 'ascending' });
+      expect(onSortChange).toHaveBeenCalledWith(mockSyntheticEvent(), { sortColumn: 1, sortDirection: 'ascending' });
     });
 
     it('should sort a column in descending order', () => {
@@ -122,7 +125,7 @@ describe('useTableSortState', () => {
       expect(result.current.sort.sortColumn).toBe(1);
       expect(result.current.sort.sortDirection).toBe('descending');
       expect(onSortChange).toHaveBeenCalledTimes(1);
-      expect(onSortChange).toHaveBeenCalledWith({}, { sortColumn: 1, sortDirection: 'descending' });
+      expect(onSortChange).toHaveBeenCalledWith(mockSyntheticEvent(), { sortColumn: 1, sortDirection: 'descending' });
     });
   });
 

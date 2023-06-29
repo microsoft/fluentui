@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: infer a11y id from immediate header element",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

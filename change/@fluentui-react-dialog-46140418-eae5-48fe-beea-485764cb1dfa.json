@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: adds grid-template-columns to DialogBody styles to ensure grid template layout",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

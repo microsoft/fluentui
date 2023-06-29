@@ -34,10 +34,10 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.203",
-    "@fluentui/react-input": "^9.4.17",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.7",
+    "@fluentui/react-input": "^9.4.19",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.9",
     "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.9.3",
+    "@fluentui/react-utilities": "^9.10.0",
     "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },

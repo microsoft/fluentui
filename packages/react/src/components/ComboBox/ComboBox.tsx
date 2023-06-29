@@ -1521,7 +1521,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { index, key } = item;
 
     if (index && index > 0) {
-      return <div role="separator" key={key} className={this._classNames.divider} />;
+      return <div role="presentation" key={key} className={this._classNames.divider} />;
     }
     return null;
   }

@@ -16,7 +16,7 @@ export const ToasterLimit = () => {
 
   return (
     <>
-      <Field label="Vertical offset">
+      <Field label="Toaster Limit">
         <SpinButton
           value={limit}
           onChange={(e, data) => {

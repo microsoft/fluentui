@@ -38,6 +38,8 @@ export {
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
+  useObservedElement,
+  useFocusObserved,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,

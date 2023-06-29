@@ -128,7 +128,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-0"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -285,7 +285,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-1"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -442,7 +442,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-2"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -599,7 +599,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-3"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -756,7 +756,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-4"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -977,7 +977,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-0"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1134,7 +1134,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-1"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1292,7 +1292,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-2"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1449,7 +1449,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-3"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1606,7 +1606,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-4"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >

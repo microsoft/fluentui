@@ -21,10 +21,10 @@ export const ReadUnread = () => {
       </TreeItem>
       <TreeItem itemType="leaf" aria-description="New message">
         <TreeItemPersonaLayout
+          expandIcon="•"
           description={{ className: styles.unread, children: 'Secondary text content' }}
           className={styles.unread}
           media={<Avatar />}
-          expandIcon="•"
         >
           Unread content message
         </TreeItemPersonaLayout>

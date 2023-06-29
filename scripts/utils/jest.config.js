@@ -7,7 +7,13 @@ module.exports = {
   displayName: 'scripts-utils',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        isolatedModules: true,
+      },
+    ],
   },
   coverageDirectory: './coverage',
   testEnvironment: 'node',

@@ -756,7 +756,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const { index, key } = item;
     const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
     if (index! > 0) {
-      return <div role="separator" key={key} className={separatorClassName} />;
+      return <div role="presentation" key={key} className={separatorClassName} />;
     }
     return null;
   }

@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, writeJson, readJson, updateJson } from '@nrwl/devkit';
 
 import generator from './index';
@@ -9,7 +9,7 @@ describe('tsconfig-base-all generator', () => {
   const options: TsconfigBaseAllGeneratorSchema = {};
 
   beforeEach(() => {
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
     writeJson(tree, '/tsconfig.base.v0.json', {
       compilerOptions: {
         paths: {

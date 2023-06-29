@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/fluent2-theme",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/fluent2-theme/src",
+  "tags": ["v8"]
+}
