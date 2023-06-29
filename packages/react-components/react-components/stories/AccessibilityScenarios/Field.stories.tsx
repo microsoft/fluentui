@@ -192,10 +192,9 @@ const TicketOrderFormFieldsAccessibility = () => {
 
   return (
     <Scenario pageTitle="Ticket order form fields">
-      <h1>Ticket order form</h1>
-
       {!isSubmittedAndValid && (
         <>
+          <h1>Ticket order form</h1>
           <p>Please fill the following form to order your ticket.</p>
           <form onSubmit={formValidation.handleSubmit(onSubmit)}>
             <Field
@@ -514,7 +513,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                     control={control}
                     as={<Checkbox aria-required="true" />}
                     rules={{
-                      required: true,
+                      required: false,
                       validate: {
                         always: () => {
                           if (!formState.isSubmitting) {
@@ -534,8 +533,9 @@ const TicketOrderFormFieldsAccessibility = () => {
           </form>
         </>
       )}
+      {isSubmittedAndValid && <h1>Ticket order successful</h1>}
       <div role="status" id="statusMessage">
-        {isSubmittedAndValid && <p>The form is valid and would have been submitted.</p>}
+        {isSubmittedAndValid && <p>Thank you. The ticket order has been sucessfully submitted.</p>}
       </div>
     </Scenario>
   );

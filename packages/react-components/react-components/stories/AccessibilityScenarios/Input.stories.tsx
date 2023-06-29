@@ -174,270 +174,273 @@ const RegistrationFormInputsAccessibility = () => {
 
   return (
     <Scenario pageTitle="Registration form inputs">
-      <h1>Registration form</h1>
       {!isSubmittedAndValid && (
-        <form onSubmit={formValidation.handleSubmit(onSubmit)}>
-          <Label htmlFor="fullName">Full name*</Label>
-          <Controller
-            name="fullName"
-            control={control}
-            as={
-              <Input
-                type="text"
-                id="fullName"
-                aria-required="true"
-                aria-invalid={!!errors.fullName}
-                aria-describedby="fullNameRequiredError fullNameInvalidError fullNameLengthError fullNameOnlyNameCharsError fullNameStartsAndEndsWithLetterError"
-              />
-            }
-            rules={{
-              required: true,
-              minLength: 2,
-              maxLength: 50,
-              validate: {
-                onlyNameChars: value => validations.onlyNameChars(value),
-                startsAndEndsWithLetter: value => validations.startsAndEndsWithLetter(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated('fullName');
-                  }
-                  return true;
+        <>
+          <h1>Registration form</h1>
+          <form onSubmit={formValidation.handleSubmit(onSubmit)}>
+            <Label htmlFor="fullName">Full name*</Label>
+            <Controller
+              name="fullName"
+              control={control}
+              as={
+                <Input
+                  type="text"
+                  id="fullName"
+                  aria-required="true"
+                  aria-invalid={!!errors.fullName}
+                  aria-describedby="fullNameRequiredError fullNameInvalidError fullNameLengthError fullNameOnlyNameCharsError fullNameStartsAndEndsWithLetterError"
+                />
+              }
+              rules={{
+                required: true,
+                minLength: 2,
+                maxLength: 50,
+                validate: {
+                  onlyNameChars: value => validations.onlyNameChars(value),
+                  startsAndEndsWithLetter: value => validations.startsAndEndsWithLetter(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated('fullName');
+                    }
+                    return true;
+                  },
                 },
-              },
-            }}
-          />
-          {errors.fullName?.types && (
-            <ValidationMessage id="fullName" formValidation={formValidation}>
-              {'required' in errors.fullName.types ? (
-                <p id="fullNameRequiredError">Full name is required.</p>
-              ) : (
-                <>
-                  <p id="fullNameInvalidError">Full name doesn't meet these requirements: </p>
-                  <ul>
-                    {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
-                      <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
-                    )}
-                    {'onlyNameChars' in errors.fullName.types && (
-                      <li id="fullNameOnlyNameCharsError">
-                        Contain only lowercase or uppercase letters, spaces or hyphens.
-                      </li>
-                    )}
-                    {'startsAndEndsWithLetter' in errors.fullName.types && (
-                      <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
-                    )}
-                  </ul>
-                </>
-              )}
-            </ValidationMessage>
-          )}
-
-          <Label htmlFor="nickname">Nickname</Label>
-          <Controller
-            name="nickname"
-            control={control}
-            as={
-              <Input
-                type="text"
-                id="nickname"
-                aria-invalid={!!errors.nickname}
-                aria-describedby="nicknameInvalidError nicknameLengthError nicknameOnlyNameCharsError nicknameStartsAndEndsWithLetterError"
-              />
-            }
-            rules={{
-              minLength: 2,
-              maxLength: 20,
-              validate: {
-                onlyNameChars: value => validations.onlyNameChars(value),
-                startsAndEndsWithLetter: value => validations.startsAndEndsWithLetter(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated('nickname');
-                  }
-                  return true;
-                },
-              },
-            }}
-          />
-          {errors.nickname?.types && (
-            <ValidationMessage id="nickname" formValidation={formValidation}>
-              <p id="nicknameInvalidError">Nickname doesn't meet these requirements: </p>
-              <ul>
-                {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
-                  <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
+              }}
+            />
+            {errors.fullName?.types && (
+              <ValidationMessage id="fullName" formValidation={formValidation}>
+                {'required' in errors.fullName.types ? (
+                  <p id="fullNameRequiredError">Full name is required.</p>
+                ) : (
+                  <>
+                    <p id="fullNameInvalidError">Full name doesn't meet these requirements: </p>
+                    <ul>
+                      {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
+                        <li id="fullNameLengthError">Have between 2 and 50 characters.</li>
+                      )}
+                      {'onlyNameChars' in errors.fullName.types && (
+                        <li id="fullNameOnlyNameCharsError">
+                          Contain only lowercase or uppercase letters, spaces or hyphens.
+                        </li>
+                      )}
+                      {'startsAndEndsWithLetter' in errors.fullName.types && (
+                        <li id="fullNameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                      )}
+                    </ul>
+                  </>
                 )}
-                {'onlyNameChars' in errors.nickname.types && (
-                  <li id="nicknameOnlyNameCharsError">
-                    Contain only lowercase or uppercase letters, spaces or hyphens.
-                  </li>
+              </ValidationMessage>
+            )}
+
+            <Label htmlFor="nickname">Nickname</Label>
+            <Controller
+              name="nickname"
+              control={control}
+              as={
+                <Input
+                  type="text"
+                  id="nickname"
+                  aria-invalid={!!errors.nickname}
+                  aria-describedby="nicknameInvalidError nicknameLengthError nicknameOnlyNameCharsError nicknameStartsAndEndsWithLetterError"
+                />
+              }
+              rules={{
+                minLength: 2,
+                maxLength: 20,
+                validate: {
+                  onlyNameChars: value => validations.onlyNameChars(value),
+                  startsAndEndsWithLetter: value => validations.startsAndEndsWithLetter(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated('nickname');
+                    }
+                    return true;
+                  },
+                },
+              }}
+            />
+            {errors.nickname?.types && (
+              <ValidationMessage id="nickname" formValidation={formValidation}>
+                <p id="nicknameInvalidError">Nickname doesn't meet these requirements: </p>
+                <ul>
+                  {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
+                    <li id="nicknameLengthError">Have between 2 and 20 characters.</li>
+                  )}
+                  {'onlyNameChars' in errors.nickname.types && (
+                    <li id="nicknameOnlyNameCharsError">
+                      Contain only lowercase or uppercase letters, spaces or hyphens.
+                    </li>
+                  )}
+                  {'startsAndEndsWithLetter' in errors.nickname.types && (
+                    <li id="nicknameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+                  )}
+                </ul>
+              </ValidationMessage>
+            )}
+
+            <Label htmlFor="password">Password*</Label>
+            <Controller
+              name="password"
+              control={control}
+              as={
+                <Input
+                  type={isPasswordVisible ? 'text' : 'password'}
+                  id="password"
+                  aria-required="true"
+                  aria-invalid={!!errors.password}
+                  aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordCharsError"
+                />
+              }
+              rules={{
+                required: true,
+                minLength: 8,
+                maxLength: 50,
+                validate: {
+                  hasLowercaseLetter: value => validations.hasLowercaseLetter(value),
+                  hasUppercaseLetter: value => validations.hasUppercaseLetter(value),
+                  hasNumber: value => validations.hasNumber(value),
+                  hasSpecialChar: value => validations.hasSpecialChar(value),
+                  noWhitespace: value => validations.noWhitespace(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated('password');
+                    }
+                    return true;
+                  },
+                },
+              }}
+            />
+
+            <Checkbox label="Show password" onChange={onShowPasswordChange} />
+
+            {errors.password?.types && (
+              <ValidationMessage id="password" formValidation={formValidation}>
+                {'required' in errors.password.types ? (
+                  <p id="passwordRequiredError">Password is required.</p>
+                ) : (
+                  <>
+                    <p id="passwordInvalidError">Password doesn't meet these requirements: </p>
+                    <ul>
+                      {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
+                        <li id="passwordLengthError">Have between 8 and 50 characters.</li>
+                      )}
+                      {('hasLowercaseLetter' in errors.password.types ||
+                        'hasUppercaseLetter' in errors.password.types ||
+                        'hasSpecialChar' in errors.password.types ||
+                        'hasNumber' in errors.password.types ||
+                        'noWhitespace' in errors.password.types) && (
+                        <li id="passwordCharsError">
+                          Contain at least one lower case letter, upper case letter, number, special character and no
+                          spaces.
+                        </li>
+                      )}
+                    </ul>
+                  </>
                 )}
-                {'startsAndEndsWithLetter' in errors.nickname.types && (
-                  <li id="nicknameStartsAndEndsWithLetterError">Start and end wit letter.</li>
+              </ValidationMessage>
+            )}
+
+            <Label htmlFor="birthDate">Birth date*</Label>
+            <Controller
+              name="birthDate"
+              control={control}
+              as={
+                <Input
+                  type="text"
+                  id="birthDate"
+                  placeholder="E.g. 3/21/1995"
+                  aria-required="true"
+                  aria-invalid={!!errors.birthDate}
+                  aria-describedby="birthDateRequiredError birthDateInvalidError birthDateCharsError"
+                />
+              }
+              rules={{
+                required: true,
+                validate: {
+                  validDate: value => validations.validDate(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated('birthDate');
+                    }
+                    return true;
+                  },
+                },
+              }}
+            />
+            {errors.birthDate?.types && (
+              <ValidationMessage id="birthDate" formValidation={formValidation}>
+                {'required' in errors.birthDate.types ? (
+                  <p id="birthDateRequiredError">Birth date is required.</p>
+                ) : (
+                  <>
+                    <p id="birthDateInvalidError">Birth date doesn't meet these requirements: </p>
+                    <ul>
+                      {'validDate' in errors.birthDate.types && (
+                        <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
+                      )}
+                    </ul>
+                  </>
                 )}
-              </ul>
-            </ValidationMessage>
-          )}
+              </ValidationMessage>
+            )}
 
-          <Label htmlFor="password">Password*</Label>
-          <Controller
-            name="password"
-            control={control}
-            as={
-              <Input
-                type={isPasswordVisible ? 'text' : 'password'}
-                id="password"
-                aria-required="true"
-                aria-invalid={!!errors.password}
-                aria-describedby="passwordRequiredError passwordInvalidError passwordLengthError passwordCharsError"
-              />
-            }
-            rules={{
-              required: true,
-              minLength: 8,
-              maxLength: 50,
-              validate: {
-                hasLowercaseLetter: value => validations.hasLowercaseLetter(value),
-                hasUppercaseLetter: value => validations.hasUppercaseLetter(value),
-                hasNumber: value => validations.hasNumber(value),
-                hasSpecialChar: value => validations.hasSpecialChar(value),
-                noWhitespace: value => validations.noWhitespace(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated('password');
-                  }
-                  return true;
+            <Checkbox label="Send me newsletter" onChange={onSendNewsletterChange} />
+
+            <Label htmlFor="email">E-mail*</Label>
+            <Controller
+              name="email"
+              control={control}
+              as={
+                <Input
+                  type="text"
+                  id="email"
+                  disabled={!isSendNewsletter}
+                  aria-required={isSendNewsletter}
+                  aria-invalid={!!errors.email}
+                  aria-describedby="emailRequiredError emailInvalidError emailCharsError"
+                />
+              }
+              rules={{
+                required: isSendNewsletter,
+                validate: {
+                  validEmail: value => !isSendNewsletter || validations.validEmail(value),
+                  always: () => {
+                    if (!formState.isSubmitting) {
+                      formValidation.onFieldValidated('email');
+                    }
+                    return true;
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+            {errors.email?.types && (
+              <ValidationMessage id="email" formValidation={formValidation}>
+                {'required' in errors.email.types ? (
+                  <p id="emailRequiredError">E-mail is required.</p>
+                ) : (
+                  <>
+                    <p id="emailInvalidError">E-mail doesn't meet these requirements: </p>
+                    <ul>
+                      {'validEmail' in errors.email.types && (
+                        <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
+                      )}
+                    </ul>
+                  </>
+                )}
+              </ValidationMessage>
+            )}
 
-          <Checkbox label="Show password" onChange={onShowPasswordChange} />
+            <Label htmlFor="securityCode">Your security code</Label>
+            <Input type="text" id="securityCode" value={securityCode} readOnly />
+            <p>Fields marked with * are required.</p>
 
-          {errors.password?.types && (
-            <ValidationMessage id="password" formValidation={formValidation}>
-              {'required' in errors.password.types ? (
-                <p id="passwordRequiredError">Password is required.</p>
-              ) : (
-                <>
-                  <p id="passwordInvalidError">Password doesn't meet these requirements: </p>
-                  <ul>
-                    {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
-                      <li id="passwordLengthError">Have between 8 and 50 characters.</li>
-                    )}
-                    {('hasLowercaseLetter' in errors.password.types ||
-                      'hasUppercaseLetter' in errors.password.types ||
-                      'hasSpecialChar' in errors.password.types ||
-                      'hasNumber' in errors.password.types ||
-                      'noWhitespace' in errors.password.types) && (
-                      <li id="passwordCharsError">
-                        Contain at least one lower case letter, upper case letter, number, special character and no
-                        spaces.
-                      </li>
-                    )}
-                  </ul>
-                </>
-              )}
-            </ValidationMessage>
-          )}
-
-          <Label htmlFor="birthDate">Birth date*</Label>
-          <Controller
-            name="birthDate"
-            control={control}
-            as={
-              <Input
-                type="text"
-                id="birthDate"
-                placeholder="E.g. 3/21/1995"
-                aria-required="true"
-                aria-invalid={!!errors.birthDate}
-                aria-describedby="birthDateRequiredError birthDateInvalidError birthDateCharsError"
-              />
-            }
-            rules={{
-              required: true,
-              validate: {
-                validDate: value => validations.validDate(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated('birthDate');
-                  }
-                  return true;
-                },
-              },
-            }}
-          />
-          {errors.birthDate?.types && (
-            <ValidationMessage id="birthDate" formValidation={formValidation}>
-              {'required' in errors.birthDate.types ? (
-                <p id="birthDateRequiredError">Birth date is required.</p>
-              ) : (
-                <>
-                  <p id="birthDateInvalidError">Birth date doesn't meet these requirements: </p>
-                  <ul>
-                    {'validDate' in errors.birthDate.types && (
-                      <li id="birthDateCharsError">Be in the MM/DD/YYYY format.</li>
-                    )}
-                  </ul>
-                </>
-              )}
-            </ValidationMessage>
-          )}
-
-          <Checkbox label="Send me newsletter" onChange={onSendNewsletterChange} />
-
-          <Label htmlFor="email">E-mail*</Label>
-          <Controller
-            name="email"
-            control={control}
-            as={
-              <Input
-                type="text"
-                id="email"
-                disabled={!isSendNewsletter}
-                aria-required={isSendNewsletter}
-                aria-invalid={!!errors.email}
-                aria-describedby="emailRequiredError emailInvalidError emailCharsError"
-              />
-            }
-            rules={{
-              required: isSendNewsletter,
-              validate: {
-                validEmail: value => !isSendNewsletter || validations.validEmail(value),
-                always: () => {
-                  if (!formState.isSubmitting) {
-                    formValidation.onFieldValidated('email');
-                  }
-                  return true;
-                },
-              },
-            }}
-          />
-          {errors.email?.types && (
-            <ValidationMessage id="email" formValidation={formValidation}>
-              {'required' in errors.email.types ? (
-                <p id="emailRequiredError">E-mail is required.</p>
-              ) : (
-                <>
-                  <p id="emailInvalidError">E-mail doesn't meet these requirements: </p>
-                  <ul>
-                    {'validEmail' in errors.email.types && (
-                      <li id="emailCharsError">Be a valid e-mail address, like name@example.com.</li>
-                    )}
-                  </ul>
-                </>
-              )}
-            </ValidationMessage>
-          )}
-
-          <Label htmlFor="securityCode">Your security code</Label>
-          <Input type="text" id="securityCode" value={securityCode} readOnly />
-          <p>Fields marked with * are required.</p>
-
-          <Button type="submit">Register</Button>
-        </form>
+            <Button type="submit">Register</Button>
+          </form>
+        </>
       )}
+      {isSubmittedAndValid && <h1>Registration successful</h1>}
       <div role="status" id="statusMessage">
-        {isSubmittedAndValid && <p>The form is valid and would have been submitted.</p>}
+        {isSubmittedAndValid && <p>Thank you. The registration has been sucessfully submitted.</p>}
       </div>
     </Scenario>
   );
