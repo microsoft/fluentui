@@ -1,4 +1,4 @@
-# Date Picker
+# DatePicker
 
 ## Component Description
 
@@ -6,7 +6,7 @@ The date picker is an input box with a pop-up control that allows the user to pi
 
 ## Design Spec
 
-[Date Picker design spec in Figma](https://www.figma.com/file/9EHmS5y1Rr7DCh7KgJBwuz/DatePicker?type=design&mode=design&t=E6sL2ffuuZfwCSRp-0)
+[DatePicker design spec in Figma](https://www.figma.com/file/9EHmS5y1Rr7DCh7KgJBwuz/DatePicker?type=design&mode=design&t=E6sL2ffuuZfwCSRp-0)
 
 ## Engineering Spec
 
