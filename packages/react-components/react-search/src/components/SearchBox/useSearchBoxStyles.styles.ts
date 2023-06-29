@@ -15,21 +15,21 @@ export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
 const useRootStyles = makeStyles({
   small: {
     columnGap: 0,
-    width: '468px',
+    maxWidth: '468px',
 
     paddingLeft: tokens.spacingHorizontalSNudge,
     paddingRight: tokens.spacingHorizontalSNudge,
   },
   medium: {
     columnGap: 0,
-    width: '468px',
+    maxWidth: '468px',
 
     paddingLeft: tokens.spacingHorizontalS,
     paddingRight: tokens.spacingHorizontalS,
   },
   large: {
     columnGap: 0,
-    width: '468px',
+    maxWidth: '468px',
 
     paddingLeft: tokens.spacingHorizontalMNudge,
     paddingRight: tokens.spacingHorizontalMNudge,
