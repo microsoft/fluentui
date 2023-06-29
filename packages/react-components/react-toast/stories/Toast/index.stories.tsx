@@ -15,7 +15,7 @@ export { PauseOnHover } from './PauseOnHover.stories';
 export { ToastLifecycle } from './ToastLifecycle.stories';
 export { MultipleToasters } from './MultipleToasters.stories';
 export { ToasterLimit } from './ToasterLimit.stories';
-export { CustomAnnounce } from './CustomAnnounce.stories';
+export { FocusKeyboardShortcut } from './FocusKeyboardShortcut.stories';
 
 import descriptionMd from './ToastDescription.md';
 
