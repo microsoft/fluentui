@@ -5,6 +5,7 @@ import type {
   DataGridBodySlots as DataGridBodySlotsBase,
   DataGridBodyState as DataGridBodyStateBase,
 } from '@fluentui/react-table';
+import { ListChildComponentProps } from 'react-window';
 
 export type DataGridBodySlots = DataGridBodySlotsBase;
 
@@ -49,5 +50,5 @@ export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyPropsBase, 'ch
 export type DataGridBodyState = Omit<DataGridBodyStateBase, 'renderRow'> &
   Pick<DataGridBodyProps, 'itemSize' | 'height'> &
   Pick<Required<DataGridBodyProps>, 'width' | 'ariaRowIndexStart'> & {
-    renderRow: RowRenderFunction;
+    virtualizedRow: (props: ListChildComponentProps) => React.ReactElement;
   };

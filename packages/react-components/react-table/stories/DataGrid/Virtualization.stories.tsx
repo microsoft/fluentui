@@ -7,6 +7,7 @@ import {
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
+  MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import {
   TableColumnDefinition,
@@ -16,6 +17,13 @@ import {
   Avatar,
   useScrollbarWidth,
   useFluent,
+  TableCellActions,
+  Menu,
+  MenuTrigger,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  Button,
 } from '@fluentui/react-components';
 import {
   DataGridBody,
@@ -24,6 +32,7 @@ import {
   DataGridHeader,
   DataGridCell,
   DataGridHeaderCell,
+  RowRenderFunction,
 } from '@fluentui/react-data-grid-react-window';
 
 type FileCell = {
@@ -109,6 +118,21 @@ const columns: TableColumnDefinition<Item>[] = [
         <TableCellLayout media={item.file.icon}>
           <strong>[{item.index}] </strong>
           {item.file.label}
+          <TableCellActions>
+            <Menu>
+              <MenuTrigger>
+                <Button appearance="subtle" aria-label="more" icon={<MoreHorizontalRegular />} />
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>Item</MenuItem>
+                  <MenuItem>Item</MenuItem>
+                  <MenuItem>Item</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </TableCellActions>
         </TableCellLayout>
       );
     },
@@ -158,6 +182,15 @@ export const Virtualization = () => {
   const { targetDocument } = useFluent();
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
 
+  const renderRow: RowRenderFunction<Item> = React.useCallback(
+    ({ item, rowId }, style) => (
+      <DataGridRow<Item> key={rowId} style={style}>
+        {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      </DataGridRow>
+    ),
+    [],
+  );
+
   return (
     <DataGrid items={items} columns={columns} focusMode="cell" sortable selectionMode="multiselect">
       <DataGridHeader style={{ paddingRight: scrollbarWidth }}>
@@ -166,11 +199,7 @@ export const Virtualization = () => {
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item> itemSize={50} height={400}>
-        {({ item, rowId }, style) => (
-          <DataGridRow<Item> key={rowId} style={style}>
-            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
-          </DataGridRow>
-        )}
+        {renderRow}
       </DataGridBody>
     </DataGrid>
   );
