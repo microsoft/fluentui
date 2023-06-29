@@ -13,7 +13,7 @@ export {
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
-export type { GriffelStyle, GriffelRenderer } from '@griffel/react';
+export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassNames,

@@ -282,6 +282,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
+import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
@@ -1582,6 +1583,8 @@ export { getPartitionedNativeProps }
 export { getSlots }
 
 export { GriffelRenderer }
+
+export { GriffelResetStyle }
 
 export { GriffelStyle }
 
