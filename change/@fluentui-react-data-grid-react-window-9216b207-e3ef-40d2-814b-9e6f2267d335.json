@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixed an issue where columns would overflow when resizableColumns is on",
-  "packageName": "@fluentui/react-data-grid-react-window",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

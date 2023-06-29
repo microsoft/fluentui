@@ -7,14 +7,16 @@ export { DismissToastWithAction } from './DismissToastWithAction.stories';
 export { ToastPositions } from './ToastPositions.stories';
 export { Offset } from './Offset.stories';
 export { DismissToast } from './DismissToast.stories';
+export { UpdateToast } from './UpdateToast.stories';
+export { ProgressToast } from './ProgressToast.stories';
 export { DismissAll } from './DismissAll.stories';
+export { PauseAndPlay } from './PauseAndPlay.stories';
 export { PauseOnWindowBlur } from './PauseOnWindowBlur.stories';
 export { PauseOnHover } from './PauseOnHover.stories';
 export { ToastLifecycle } from './ToastLifecycle.stories';
-export { UpdateToast } from './UpdateToast.stories';
 export { MultipleToasters } from './MultipleToasters.stories';
 export { ToasterLimit } from './ToasterLimit.stories';
-export { CustomAnnounce } from './CustomAnnounce.stories';
+export { FocusKeyboardShortcut } from './FocusKeyboardShortcut.stories';
 
 import descriptionMd from './ToastDescription.md';
 

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
 import { useTableContext } from '../../contexts/tableContext';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
 
 const sortIcons = {
   ascending: <ArrowUpRegular fontSize={12} />,
@@ -27,10 +27,11 @@ export const useTableHeaderCell_unstable = (
   const { noNativeElements, sortable } = useTableContext();
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
+
   return {
     components: {
       root: rootComponent,
-      button: 'button',
+      button: 'div',
       sortIcon: 'span',
       aside: 'span',
     },
@@ -48,11 +49,9 @@ export const useTableHeaderCell_unstable = (
     button: useARIAButtonShorthand(props.button, {
       required: true,
       defaultProps: {
-        role: 'presentation',
-        tabIndex: -1,
-        type: 'button',
-        ...(sortable && {
-          role: undefined,
+        as: 'div',
+        ...(!sortable && {
+          role: 'presentation',
           tabIndex: undefined,
         }),
       },

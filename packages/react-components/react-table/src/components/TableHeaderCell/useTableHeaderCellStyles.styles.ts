@@ -33,6 +33,7 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
+    fontWeight: tokens.fontWeightRegular,
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
     ...createCustomFocusIndicatorStyle(
       {
@@ -114,6 +115,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
+
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,

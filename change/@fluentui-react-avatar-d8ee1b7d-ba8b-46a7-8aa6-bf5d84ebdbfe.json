@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Do not render the image when src prop is undefined.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -143,6 +143,10 @@ export interface ILineChartState extends IBasestate {
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
+  public static defaultProps: Partial<ILineChartProps> = {
+    enableReflow: true,
+  };
+
   private _points: LineChartDataWithIndex[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any[];
@@ -313,6 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 </g>
                 {eventAnnotationProps && (
                   <EventsAnnotation
+                    theme={this.props.theme}
                     {...eventAnnotationProps}
                     scale={props.xScale!}
                     chartYTop={this.margins.top! + this.eventLabelHeight}

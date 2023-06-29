@@ -10,4 +10,5 @@ module.exports = {
   ...require('./getDefaultEnvironmentVars'),
   ...require('./get-lerna-aliases'),
   ...require('./utils'),
+  ...require('./tree'),
 };

@@ -73,7 +73,7 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
-// @public
+// @internal
 export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
@@ -115,6 +115,14 @@ export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
+// @public (undocumented)
+export type OnSelectionChangeCallback = (event: React_2.SyntheticEvent, selectedItems: Set<SelectionItemId>) => void;
+
+// @public (undocumented)
+export type OnSelectionChangeData = {
+    selectedItems: Set<SelectionItemId>;
+};
 
 // @internal (undocumented)
 export interface PriorityQueue<T> {
@@ -162,6 +170,37 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = R
     required?: Required;
     defaultProps?: Props;
 };
+
+// @public (undocumented)
+export type SelectionHookParams = {
+    selectionMode: SelectionMode_2;
+    defaultSelectedItems?: Iterable<SelectionItemId>;
+    selectedItems?: Iterable<SelectionItemId>;
+    onSelectionChange?(event: React_2.SyntheticEvent, data: OnSelectionChangeData): void;
+};
+
+// @public (undocumented)
+export type SelectionItemId = string | number;
+
+// @public (undocumented)
+export interface SelectionMethods {
+    // (undocumented)
+    clearItems(event: React_2.SyntheticEvent): void;
+    // (undocumented)
+    deselectItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    // (undocumented)
+    isSelected(id: SelectionItemId): boolean;
+    // (undocumented)
+    selectItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    // (undocumented)
+    toggleAllItems(event: React_2.SyntheticEvent, itemIds: SelectionItemId[]): void;
+    // (undocumented)
+    toggleItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+}
+
+// @public (undocumented)
+type SelectionMode_2 = 'single' | 'multiselect';
+export { SelectionMode_2 as SelectionMode }
 
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
@@ -263,6 +302,9 @@ export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType |
 
 // @public (undocumented)
 export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
+
+// @public (undocumented)
+export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];

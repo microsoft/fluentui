@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "[FEATURE] Imperative scrolling functionality for react-virtualizer",
-  "packageName": "@fluentui/react-components",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

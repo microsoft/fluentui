@@ -28,7 +28,7 @@ function isConvergedPackage(options = {}) {
     throw new Error(`package.json doesn't exist`);
   }
 
-  const metadata = getProjectMetadata({ name: packageJson.name });
+  const metadata = getProjectMetadata(packageJson.name);
 
   if (projectType !== 'all' && metadata.projectType !== projectType) {
     return false;
@@ -56,7 +56,7 @@ function shipsAMD(options = {}) {
     throw new Error(`package.json doesn't exist`);
   }
 
-  const metadata = getProjectMetadata({ name: packageJson.name });
+  const metadata = getProjectMetadata(packageJson.name);
 
   if (metadata.projectType !== 'library') {
     return false;

@@ -11,11 +11,11 @@ import {
   MenuPopover,
   MenuTrigger,
   useIsOverflowItemVisible,
-  useIsOverflowGroupVisible,
   useOverflowMenu,
   Overflow,
   OverflowItem,
   MenuItem,
+  OverflowDivider,
 } from '@fluentui/react-components';
 import {
   CalendarMonthFilled,
@@ -161,12 +161,11 @@ const OverflowBreadcrumbButton: React.FC<{ id: string; item: Item }> = props => 
 const OverflowGroupDivider: React.FC<{
   groupId: number;
 }> = props => {
-  const groupVisibility = useIsOverflowGroupVisible(props.groupId.toString());
-  if (groupVisibility === 'hidden') {
-    return null;
-  }
-
-  return <BreadcrumbDivider data-group={props.groupId} />;
+  return (
+    <OverflowDivider groupId={props.groupId.toString()}>
+      <BreadcrumbDivider data-group={props.groupId} />
+    </OverflowDivider>
+  );
 };
 
 const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
@@ -277,4 +276,16 @@ export const BreadcrumbWithOverflow = () => {
       <BreadcrumbControlledOverflowExample />
     </div>
   );
+};
+
+BreadcrumbWithOverflow.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The maximum number of items in a breadcrumb can be customized. We recommend a maximum of 6 items or fewer.',
+        'When the maximum number is exceeded, items in the middle auto-collapse into an overflow menu.',
+        '\nThe first and last items should always appear  in the breadcrumb. Breadcrumbs should never wrap.',
+      ].join('\n'),
+    },
+  },
 };

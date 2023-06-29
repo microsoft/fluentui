@@ -7,8 +7,8 @@ import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
 
 const tagAvatarSizeMap = {
   medium: 28,
-  small: 24,
-  'extra-small': 20,
+  small: 20,
+  'extra-small': 16,
 } as const;
 
 const tagAvatarShapeMap = {
@@ -65,7 +65,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size,
 
     components: {
-      root: 'button',
+      root: dismissible ? 'button' : 'span',
       media: 'span',
       icon: 'span',
       primaryText: 'span',

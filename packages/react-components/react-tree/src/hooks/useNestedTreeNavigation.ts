@@ -10,7 +10,7 @@ export function useNestedTreeNavigation() {
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
   const [walkerRef, rootRef] = useHTMLElementWalkerRef(treeItemFilter);
 
-  const getNextElement = (data: TreeNavigationData_unstable<unknown>) => {
+  const getNextElement = (data: TreeNavigationData_unstable) => {
     if (!walkerRef.current) {
       return;
     }
@@ -41,7 +41,7 @@ export function useNestedTreeNavigation() {
         return treeItemWalker.previousElement();
     }
   };
-  function navigate(data: TreeNavigationData_unstable<unknown>) {
+  function navigate(data: TreeNavigationData_unstable) {
     const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
