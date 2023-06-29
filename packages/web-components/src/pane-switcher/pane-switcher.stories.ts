@@ -93,6 +93,7 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
         <fluent-button icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
         <fluent-pane id="settings" position="right" trap-focus>
           <fluent-pane-settings-item toggle-target="toggle-1">
+            <fluent-icon slot="icon"></fluent-icon>
             <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 1</fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p"
               >A short description in which Pane 1 is described.</fluent-text

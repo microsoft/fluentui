@@ -6,4 +6,7 @@ import { display } from '@microsoft/fast-foundation';
  */
 export const styles = css`
   ${display('flex')}
+  :host {
+    display: flex;
+  }
 `;
