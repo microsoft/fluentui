@@ -10,6 +10,8 @@ import '../text-input/define.js';
 import '../radio-group/define.js';
 import '../radio/define.js';
 import '../switch/define.js';
+import '../pane-settings/define.js';
+import '../pane-settings-item/define.js';
 
 type PaneSwitcherStoryArgs = Args & PaneSwitcher;
 type PaneSwitcherStoryMeta = Meta<PaneSwitcherStoryArgs>;
@@ -65,8 +67,8 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
     </style>
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
       <fluent-pane-switcher>
-        <fluent-button icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
-        <fluent-pane trap-focus id="one" position="right" trap-focus control-size="small" modal>
+        <fluent-button id="toggle-1" icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
+        <fluent-pane id="pane-1" trap-focus id="one" position="right" trap-focus control-size="small" modal>
           <div>Content</div>
           <div>
             <fluent-label>First Name</fluent-label>
@@ -76,13 +78,48 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
             <button>Click me 3</button>
           </div>
         </fluent-pane>
-        <fluent-button icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
-        <fluent-pane id="two" position="right" trap-focus>
+        <fluent-button id="toggle-2" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
+        <fluent-pane id="pane-2" position="right" trap-focus>
+          <div>Content</div>
+        </fluent-pane>
+        <fluent-button id="toggle-3" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
+        <fluent-pane id="pane-3" position="right" trap-focus control-size="large">
+          <div>Content</div>
+        </fluent-pane>
+        <fluent-button id="toggle-4" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
+        <fluent-pane id="pane-4" position="right" trap-focus>
           <div>Content</div>
         </fluent-pane>
         <fluent-button icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
-        <fluent-pane id="three" position="right" trap-focus control-size="large">
-          <div>Content</div>
+        <fluent-pane id="settings" position="right" trap-focus>
+          <fluent-pane-settings-item toggle-target="toggle-1">
+            <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 1</fluent-text>
+            <fluent-text slot="body" weight="regular" size="300" as="p"
+              >A short description in which Pane 1 is described.</fluent-text
+            >
+            <fluent-switch></fluent-switch>
+          </fluent-pane-settings-item>
+          <fluent-pane-settings-item toggle-target="toggle-2">
+            <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 2</fluent-text>
+            <fluent-text slot="body" weight="regular" size="300" as="p"
+              >A short description in which Pane 2 is described.</fluent-text
+            >
+            <fluent-switch></fluent-switch>
+          </fluent-pane-settings-item>
+          <fluent-pane-settings-item toggle-target="toggle-3">
+            <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 3</fluent-text>
+            <fluent-text slot="body" weight="regular" size="300" as="p"
+              >A short description in which Pane 3 is described.</fluent-text
+            >
+            <fluent-switch></fluent-switch>
+          </fluent-pane-settings-item>
+          <fluent-pane-settings-item toggle-target="toggle-4">
+            <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 4</fluent-text>
+            <fluent-text slot="body" weight="regular" size="300" as="p"
+              >A short description in which Pane 4 is described.</fluent-text
+            >
+            <fluent-switch></fluent-switch>
+          </fluent-pane-settings-item>
         </fluent-pane>
       </fluent-pane-switcher>
     </div>

@@ -179,9 +179,7 @@ export class Pane extends FASTElement {
   };
 
   protected setItems(): void {
-    console.log('setItems');
     const slottedPanes = this.querySelectorAll<Pane>('fluent-pane');
-    console.log('slottedPanes', slottedPanes);
     this.panes = Array.from(slottedPanes);
 
     /**
@@ -192,7 +190,6 @@ export class Pane extends FASTElement {
     const filteredPaneItems = this.panes?.filter(this.isPaneElement);
 
     filteredPaneItems?.forEach((item: HTMLElement, index: number) => {
-      console.log(item);
       if (item instanceof Pane) {
         item.setAttribute('data-context', `pane-switcher`);
       }

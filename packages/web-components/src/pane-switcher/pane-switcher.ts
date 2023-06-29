@@ -1,16 +1,27 @@
-import { FASTElement } from '@microsoft/fast-element';
+import { FASTElement, attr } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp } from '@microsoft/fast-web-utilities';
 import { Pane } from '../pane/pane.js';
+import { PaneSettingsItem } from '../pane-settings-item/pane-settings-items.js';
 
 export class PaneSwitcher extends FASTElement {
   private activePaneIndex: number | null = null;
   private toggleButtons: HTMLElement[] = [];
   private panes: Pane[] = [];
 
+  /**
+   * Indicates whether the settings pane is present
+   * @public
+   * @remarks
+   * HTML Attribute: setting
+   */
+  @attr({ mode: 'boolean' })
+  public settings: boolean = false;
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('focus', this.handleFocus);
     this.addEventListener('keydown', this.handleKeyDown);
+    this.addEventListener('toggle-panes', this.handleTogglePanes as EventListener);
     this.toggleButtons = Array.from(this.querySelectorAll('[slot="toggle-buttons"]'));
     this.setupToggleButtons();
     this.setupPanes();
@@ -20,6 +31,7 @@ export class PaneSwitcher extends FASTElement {
     super.disconnectedCallback();
     this.removeEventListener('focus', this.handleFocus);
     this.removeEventListener('keydown', this.handleKeyDown);
+    this.removeEventListener('toggle-panes', this.handleTogglePanes as EventListener);
   }
 
   constructor() {
@@ -72,7 +84,6 @@ export class PaneSwitcher extends FASTElement {
     const filteredPaneItems = this.panes?.filter(this.isPaneElement);
 
     filteredPaneItems?.forEach((item: HTMLElement, index: number) => {
-      console.log(item);
       if (item instanceof Pane) {
         item.setAttribute('data-context', `pane-switcher`);
       }
@@ -100,6 +111,30 @@ export class PaneSwitcher extends FASTElement {
     if (clickedPane) {
       clickedPane.openPane();
     }
+  }
+
+  private handleTogglePanes(event: CustomEvent<{ toggleTarget: string; switchState: boolean }>): void {
+    const { toggleTarget, switchState } = event.detail;
+    // Perform the necessary actions based on the switch state and toggle target
+    // For example, hide the corresponding toggle button
+    this.hideToggleButton(event, toggleTarget, switchState);
+  }
+
+  private hideToggleButton(event: Event, toggleTarget: string, switchState: boolean): void {
+    const toggleButton = this.getToggleButtonByTarget(event, toggleTarget);
+    console.log('3 ' + toggleButton);
+    if (toggleButton) {
+      toggleButton.hidden = switchState;
+    }
+  }
+
+  private getToggleButtonByTarget(event: Event, toggleTarget: string): HTMLElement | null {
+    const eventTarget = event.target as HTMLElement;
+    const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
+    if (paneSwitcher) {
+      return paneSwitcher.querySelector(`#${toggleTarget}`);
+    }
+    return null;
   }
 
   public handleFocus = () => {
