@@ -15,8 +15,9 @@ Comprised of components: text input, button with chevron icon, and a listbox. Th
 ### Inputs
 
 - @attr `appearance`: `outline` `transparent` `filled-darker` `filled-lighter` | `outline` - The appearance of the input field.
-- @attr `block`: boolean | `false` - If true, fill the width of parent container.
-- @attr `disabled`: boolean | `false` - Disables the control.
+- @attr `autocomplete`: `inline` `list` `both` `none` | `none` - The autocomplete behavior of the input field.
+- @attr `block`: boolean - If true, fill the width of parent container.
+- @attr `disabled`: boolean - Disables the control.
 - @attr `freeform`: boolean | `false` - If true, the user input is not restricted to items in the list of selectable options.
 - @attr `selectionModel`: `single-select`, `multi-select` or `pill-select` - The selection model for the listbox.
 - @attr `size`: `small` `medium` `large` | `medium` - The height of the input field.
@@ -46,6 +47,124 @@ None
 
 - Clicking on the chevron button or the input field triggers the listbox view.
 - Typing in the input field triggers the listbox view.
+
+## Examples
+
+Default appearance `outline`, size `medium`, selection model `single-select`, and autocomplete `none` are built in to the component. The following examples show how to customize the component.
+
+### Appearance
+
+```typescript
+<fluent-combobox placeholder="Type to search" appearance="transparent">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" appearance="filled-darker">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" appearance="filled-lighter">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+### Autocomplete
+
+```typescript
+<fluent-combobox placeholder="Type to search" autocomplete="inline">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" autocomplete="list">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" autocomplete="both">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+### Size
+
+```typescript
+<fluent-combobox placeholder="Type to search" size="small">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" size="large">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+### Selection Model
+
+```typescript
+<fluent-combobox placeholder="Type to search" select="multi-select">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" select="pill-select">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+### Block, Disabled and Freeform
+
+```typescript
+<fluent-combobox placeholder="Type to search" block>
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" disabled>
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
+
+```typescript
+<fluent-combobox placeholder="Type to search" freeform="true">
+  <fluent-option>Option 1</fluent-option>
+  <fluent-option>Option 2</fluent-option>
+  <fluent-option>Option 3</fluent-option>
+</fluent-combobox>
+```
 
 ## Accessibility
 
