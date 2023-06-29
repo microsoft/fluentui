@@ -89,7 +89,7 @@ Search supports the same appearance variants as Input, as follows:
 
 ## API
 
-See [SearchBox.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-search/src/components/SearchBox/SearchBox.types.ts)
+See [SearchBox.types.ts](../src/components/SearchBox/SearchBox.types.ts)
 
 ## Structure
 
@@ -99,10 +99,7 @@ See [SearchBox.types.ts](https://github.com/microsoft/fluentui/blob/master/packa
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See [MIGRATION.md](MIGRATION.md)
 
 ## Behaviors
 
