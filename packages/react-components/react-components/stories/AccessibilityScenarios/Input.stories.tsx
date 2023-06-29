@@ -439,7 +439,7 @@ const RegistrationFormInputsAccessibility = () => {
         </>
       )}
       {isSubmittedAndValid && <h1>Registration successful</h1>}
-      <div role="status" id="statusMessage">
+      <div id="statusMessage" aria-live="assertive">
         {isSubmittedAndValid && <p>Thank you. The registration has been sucessfully submitted.</p>}
       </div>
     </Scenario>

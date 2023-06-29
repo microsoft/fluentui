@@ -513,7 +513,7 @@ const TicketOrderFormFieldsAccessibility = () => {
                     control={control}
                     as={<Checkbox aria-required="true" />}
                     rules={{
-                      required: false,
+                      required: true,
                       validate: {
                         always: () => {
                           if (!formState.isSubmitting) {
@@ -534,7 +534,7 @@ const TicketOrderFormFieldsAccessibility = () => {
         </>
       )}
       {isSubmittedAndValid && <h1>Ticket order successful</h1>}
-      <div role="status" id="statusMessage">
+      <div id="statusMessage" aria-live="assertive">
         {isSubmittedAndValid && <p>Thank you. The ticket order has been sucessfully submitted.</p>}
       </div>
     </Scenario>
