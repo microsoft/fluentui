@@ -174,6 +174,8 @@ export function useToastController(toasterId?: ToasterId): {
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
     updateToast: (options: UpdateToastOptions) => void;
+    pauseToast: (toastId: ToastId) => void;
+    playToast: (toastId: ToastId) => void;
 };
 
 // @public

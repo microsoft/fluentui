@@ -16,7 +16,7 @@ import { useToastContext } from '../../contexts/toastContext';
  * @param ref - reference to root HTMLElement of ToastTitle
  */
 export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HTMLElement>): ToastTitleState => {
-  const { intent } = useToastContext();
+  const { intent, titleId } = useToastContext();
 
   /** Determine the role and media to render based on the intent */
   let defaultIcon;
@@ -47,6 +47,7 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
     root: getNativeElementProps('div', {
       ref,
       children: props.children,
+      id: titleId,
       ...props,
     }),
   };
