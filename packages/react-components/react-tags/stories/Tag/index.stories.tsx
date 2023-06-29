@@ -10,6 +10,7 @@ export { SecondaryText } from './TagSecondaryText.stories';
 export { Dismiss } from './TagDismiss.stories';
 export { Shape } from './TagShape.stories';
 export { Size } from './TagSize.stories';
+export { Appearance } from './TagAppearance.stories';
 
 export default {
   title: 'Preview Components/Tag/Tag',

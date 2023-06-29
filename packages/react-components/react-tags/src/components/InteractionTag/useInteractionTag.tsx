@@ -36,7 +36,7 @@ export const useInteractionTag_unstable = (
   const id = useId('fui-Tag', props.id);
 
   const {
-    appearance = 'filled-lighter',
+    appearance = 'filled',
     disabled = false,
     dismissible = contextDismissible,
     shape = 'rounded',

@@ -37,7 +37,7 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-  appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+  appearance?: 'filled' | 'outline' | 'brand';
   disabled?: boolean;
   dismissible?: boolean;
   shape?: 'rounded' | 'circular';
