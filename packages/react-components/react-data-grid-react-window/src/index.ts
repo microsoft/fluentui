@@ -13,4 +13,4 @@ export type {
   DataGridProps,
 } from '@fluentui/react-table';
 
-export type { DataGridBodyProps, RowRenderFunction } from './DataGridBody';
+export type { DataGridBodyProps, RowRenderer } from './DataGridBody';

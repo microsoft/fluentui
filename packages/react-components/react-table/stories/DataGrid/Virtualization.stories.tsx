@@ -32,7 +32,7 @@ import {
   DataGridHeader,
   DataGridCell,
   DataGridHeaderCell,
-  RowRenderFunction,
+  RowRenderer,
 } from '@fluentui/react-data-grid-react-window';
 
 type FileCell = {
@@ -178,18 +178,15 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const renderRow: RowRenderer<Item> = ({ item, rowId }, style) => (
+  <DataGridRow<Item> key={rowId} style={style}>
+    {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+  </DataGridRow>
+);
+
 export const Virtualization = () => {
   const { targetDocument } = useFluent();
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
-
-  const renderRow: RowRenderFunction<Item> = React.useCallback(
-    ({ item, rowId }, style) => (
-      <DataGridRow<Item> key={rowId} style={style}>
-        {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
-      </DataGridRow>
-    ),
-    [],
-  );
 
   return (
     <DataGrid items={items} columns={columns} focusMode="cell" sortable selectionMode="multiselect">

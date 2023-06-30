@@ -9,10 +9,7 @@ import { ListChildComponentProps } from 'react-window';
 
 export type DataGridBodySlots = DataGridBodySlotsBase;
 
-export type RowRenderFunction<TItem = unknown> = (
-  row: TableRowData<TItem>,
-  style: React.CSSProperties,
-) => React.ReactNode;
+export type RowRenderer<TItem = unknown> = (row: TableRowData<TItem>, style: React.CSSProperties) => React.ReactNode;
 
 /**
  * DataGridBody Props
@@ -34,7 +31,7 @@ export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyPropsBase, 'ch
   /**
    * Children render function for rows
    */
-  children: RowRenderFunction<TItem>;
+  children: RowRenderer<TItem>;
   /**
    * All virtualized rows must have the [aria-rowindex](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindex)
    * attribute for correct screen reader navigation. The default start index is 2 since we assume that there is only
