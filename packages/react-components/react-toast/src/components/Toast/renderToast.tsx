@@ -9,7 +9,7 @@ import type { ToastState, ToastSlots, ToastContextValues } from './Toast.types';
 /**
  * Render the final JSX of Toast
  */
-export const renderToast_unstable = (state: ToastState, contexts: ToastContextValues) => {
+export const renderToast_unstable = (state: ToastState, contextValues: ToastContextValues) => {
   const { slots, slotProps } = getSlotsNext<ToastSlots>(state);
 
   return (
