@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Initial release",
+  "packageName": "@fluentui/react-toast",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
