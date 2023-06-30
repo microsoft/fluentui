@@ -4,7 +4,7 @@ import { Types } from 'tabster';
 /**
  * Merges a collection of tabster attributes.
  *
- * >⚠️The attributes passed as arguments to this  hook cannot change at runtime.
+ * ⚠️The attributes passed as arguments to this  hook cannot change at runtime.
  * @internal
  * @param attributes - collection of tabster attributes from other react-tabster hooks
  * @returns single merged tabster attribute
