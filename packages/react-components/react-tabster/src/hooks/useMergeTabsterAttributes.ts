@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Types } from 'tabster';
 
 /**
- * Merges a collection of tabster attributes. The attributes passed as arguments to this
- * hook cannot change at runtime.
+ * Merges a collection of tabster attributes.
+ *
+ * >⚠️The attributes passed as arguments to this  hook cannot change at runtime.
  * @internal
- * @param attributes
- * @returns
+ * @param attributes - collection of tabster attributes from other react-tabster hooks
+ * @returns single merged tabster attribute
  */
 export const useMergedTabsterAttributes_unstable: (
   ...attributes: Types.TabsterDOMAttribute[]
