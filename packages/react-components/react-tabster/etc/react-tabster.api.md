@@ -75,6 +75,9 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
+export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
+
+// @public (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
 
 // @public
@@ -96,6 +99,9 @@ export interface UseModalAttributesOptions {
     legacyTrapFocus?: boolean;
     trapFocus?: boolean;
 }
+
+// @public (undocumented)
+export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
 
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

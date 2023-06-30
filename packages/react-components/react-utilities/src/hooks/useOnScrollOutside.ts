@@ -13,7 +13,9 @@ export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions) =>
     const contains: UseOnClickOrScrollOutsideOptions['contains'] =
       containsProp || ((parent, child) => !!parent?.contains(child));
 
-    const isOutside = refs.every(ref => !contains(ref.current || null, ev.target as HTMLElement));
+    const target = ev.composedPath()[0] as HTMLElement;
+    const isOutside = refs.every(ref => !contains(ref.current || null, target));
+
     if (isOutside && !disabled) {
       callback(ev);
     }

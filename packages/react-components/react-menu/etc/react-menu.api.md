@@ -130,6 +130,25 @@ export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
 // @public (undocumented)
 export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 
+// @public
+export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
+
+// @public (undocumented)
+export const menuItemLinkClassNames: SlotClassNames<MenuItemLinkSlots>;
+
+// @public
+export type MenuItemLinkProps = ComponentProps<MenuItemLinkSlots> & Pick<MenuItemProps, 'disabled'> & {
+    href: string;
+};
+
+// @public (undocumented)
+export type MenuItemLinkSlots = {
+    root: Slot<'a'>;
+} & Pick<MenuItemSlots, 'icon' | 'content' | 'secondaryContent' | 'checkmark'>;
+
+// @public
+export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
+
 // @public (undocumented)
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
     hasSubmenu?: boolean;
@@ -386,6 +405,9 @@ export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
 export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
 
 // @public
+export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSX.Element;
+
+// @public
 export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
 
 // @public
@@ -450,6 +472,12 @@ export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: R
 
 // @public (undocumented)
 export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
+
+// @public
+export const useMenuItemLink_unstable: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
+
+// @public
+export const useMenuItemLinkStyles_unstable: (state: MenuItemLinkState) => MenuItemLinkState;
 
 // @public
 export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemRadioState;

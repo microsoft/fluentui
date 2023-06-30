@@ -1,4 +1,4 @@
-import { Tree, updateJson, getProjects, logger, formatFiles, readJson } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
 import { MigrateFixedVersionsGeneratorSchema } from './schema';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
@@ -13,7 +13,7 @@ export default async function (host: Tree, schema: MigrateFixedVersionsGenerator
     runMigrationOnProject(host, validatedSchema, userLog);
   }
 
-  formatFiles(host);
+  await formatFiles(host);
 
   return () => {
     printUserLogs(userLog);
@@ -81,6 +81,7 @@ function isPackageConverged(packageName: string, host: Tree) {
   return packageJson.version.startsWith('9.');
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type NormalizedSchema = ReturnType<typeof normalizeOptions>;
 
 function normalizeOptions(host: Tree, options: ValidatedSchema) {

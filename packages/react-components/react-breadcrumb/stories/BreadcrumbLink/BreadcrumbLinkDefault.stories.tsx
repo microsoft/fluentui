@@ -5,7 +5,9 @@ import {
   BreadcrumbLink,
   BreadcrumbDivider,
   BreadcrumbLinkProps,
+  BreadcrumbProps,
 } from '@fluentui/react-breadcrumb';
+import { RadioGroup, Radio, Label } from '@fluentui/react-components';
 
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -96,16 +98,28 @@ function renderLink(el: Item, isLastItem: boolean = false) {
   );
 }
 
-export const Default = () => (
-  <>
-    <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbLink" size="small">
-      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
-    </Breadcrumb>
-    <Breadcrumb aria-label="Subtle breadcrumb" appearance="subtle">
-      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
-    </Breadcrumb>
-    <Breadcrumb aria-label="Large breadcrumb with BreadcrumbLink" size="large">
-      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
-    </Breadcrumb>
-  </>
-);
+export const Default = () => {
+  const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
+  return (
+    <>
+      <Label>Appearance (see the difference on `hover`)</Label>
+      <RadioGroup
+        aria-labelledby="breadcrumb-appearance"
+        value={appearance}
+        onChange={(_, data) => setAppearance(data.value as BreadcrumbProps['appearance'])}
+      >
+        <Radio value="transparent" label="Transparent" />
+        <Radio value="subtle" label="Subtle" />
+      </RadioGroup>
+      <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbLink" size="small" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      </Breadcrumb>
+      <Breadcrumb aria-label="Subtle breadcrumb" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      </Breadcrumb>
+      <Breadcrumb aria-label="Large breadcrumb with BreadcrumbLink" size="large" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      </Breadcrumb>
+    </>
+  );
+};

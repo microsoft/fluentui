@@ -20,5 +20,6 @@ export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>
       ref,
       ...props,
     }),
+    backgroundAppearance: props.appearance,
   };
 };

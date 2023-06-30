@@ -4,6 +4,7 @@
 
 ```ts
 
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -31,7 +32,9 @@ export type LinkSlots = {
 };
 
 // @public (undocumented)
-export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>>;
+export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
+    backgroundAppearance?: BackgroundAppearanceContextValue;
+};
 
 // @public
 export const renderLink_unstable: (state: LinkState) => JSX.Element;

@@ -10,3 +10,4 @@ export { getDefaultEnvironmentVars } from './getDefaultEnvironmentVars';
 export { getProjectMetadata, workspaceRoot, getUncommittedFiles, getUntrackedFiles } from './utils';
 export * as eslintConstants from './eslint-constants';
 export { getNthCommit } from './getNthCommit';
+export { tree, flushTreeChanges } from './tree';

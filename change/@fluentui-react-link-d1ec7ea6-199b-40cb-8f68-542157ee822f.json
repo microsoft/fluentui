@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add styles for inverted background",
+  "packageName": "@fluentui/react-link",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

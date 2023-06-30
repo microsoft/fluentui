@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/global-context",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/global-context/src",
+  "tags": ["vNext", "platform:web"]
+}

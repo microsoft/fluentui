@@ -208,6 +208,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
             data={chartData}
             legendsOverflowText={'Overflow Items'}
             yAxisTickFormat={d3.format('$,')}
+            enablePerfOptimization={true}
             legendProps={{
               allowFocusOnLegends: true,
             }}

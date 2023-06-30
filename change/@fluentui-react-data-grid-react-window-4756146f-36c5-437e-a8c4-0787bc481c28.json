@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Memoize virtualized renderer",
+  "packageName": "@fluentui/react-data-grid-react-window",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

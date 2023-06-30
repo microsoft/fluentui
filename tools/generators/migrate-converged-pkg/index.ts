@@ -3,7 +3,6 @@ import {
   formatFiles,
   updateJson,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   joinPathFragments,
   readJson,
   stripIndents,
@@ -15,6 +14,7 @@ import {
   offsetFromRoot,
   applyChangesToString,
   ChangeType,
+  readNxJson,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -143,7 +143,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
-  updateNxWorkspace(tree, options);
+  updateNxProject(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
 
@@ -304,14 +304,14 @@ const templates = {
       module.exports = {
         displayName: '${options.pkgName}',
         preset: '../../../jest.preset.js',
-        globals: {
-          'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-            isolatedModules: true,
-          },
-        },
         transform: {
-          '^.+\\.tsx?$': 'ts-jest',
+          '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+              tsconfig: '<rootDir>/tsconfig.spec.json',
+              isolatedModules: true,
+            }
+          ],
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],
@@ -398,6 +398,7 @@ const templates = {
     .git*
     .prettierignore
     .swcrc
+    project.json
 
     # exclude gitignore patterns explicitly
     !lib
@@ -577,7 +578,7 @@ function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
   return tree.exists(options.paths.conformanceSetup);
 }
 
-function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+function updateNxProject(tree: Tree, options: NormalizedSchema) {
   const packageType = getPackageType(tree, options);
   const tags = {
     web: 'platform:web',
@@ -1060,8 +1061,8 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const publishedNpmScope = `@${workspaceConfig.npmScope}`;
+  const workspaceConfig = readNxJson(tree);
+  const publishedNpmScope = `@${workspaceConfig?.npmScope}`;
   const allProjects = getProjects(tree);
 
   const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);

@@ -1,14 +1,12 @@
-import { makeStyles } from '@griffel/react';
+import { makeResetStyles } from '@griffel/react';
 
-export const useStyles = makeStyles({
-  progress: {
-    animationName: {
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 0,
-      },
+export const useBaseAnimationStyles = makeResetStyles({
+  animationName: {
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 0,
     },
   },
 });

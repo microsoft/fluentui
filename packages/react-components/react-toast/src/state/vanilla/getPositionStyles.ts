@@ -15,7 +15,7 @@ export const getPositionStyles = (position: ToastPosition, dir: 'rtl' | 'ltr', o
 
   const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};
 
-  const { horizontal = 0, vertical = 0 } = offsetStyles;
+  const { horizontal = 20, vertical = 16 } = offsetStyles;
   const start = dir === 'ltr' ? 'left' : 'right';
   const end = dir === 'ltr' ? 'right' : 'left';
 

@@ -14,11 +14,11 @@ import { useTreeContextValues_unstable } from './useTreeContextValues';
  * an item representing a folder can be expanded to reveal the contents of the folder,
  * which may be files, folders, or both.
  */
-export const Tree = React.forwardRef((props, ref) => {
+export const Tree: ForwardRefComponent<TreeProps> = React.forwardRef((props, ref) => {
   const state = useTree_unstable(props, ref);
   useTreeStyles_unstable(state);
   const contextValues = useTreeContextValues_unstable(state);
   return renderTree_unstable(state, contextValues);
-}) as ForwardRefComponent<TreeProps> & (<Value = string>(props: TreeProps<Value>) => JSX.Element);
+});
 
 Tree.displayName = 'Tree';
