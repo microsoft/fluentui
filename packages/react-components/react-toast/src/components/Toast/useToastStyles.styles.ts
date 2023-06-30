@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ToastSlots, ToastState } from './Toast.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,12 +21,25 @@ const useRootBaseClassName = makeResetStyles({
   backgroundColor: tokens.colorNeutralBackground1,
 });
 
+const useStyles = makeStyles({
+  inverted: {
+    color: tokens.colorNeutralForegroundInverted2,
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+  },
+});
+
 /**
  * Apply styling to the Toast slots based on the state
  */
 export const useToastStyles_unstable = (state: ToastState): ToastState => {
   const rootBaseClassName = useRootBaseClassName();
-  state.root.className = mergeClasses(toastClassNames.root, rootBaseClassName, state.root.className);
+  const styles = useStyles();
+  state.root.className = mergeClasses(
+    toastClassNames.root,
+    rootBaseClassName,
+    state.backgroundAppearance === 'inverted' && styles.inverted,
+    state.root.className,
+  );
 
   return state;
 };

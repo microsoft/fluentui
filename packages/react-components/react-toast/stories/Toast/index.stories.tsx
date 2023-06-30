@@ -1,6 +1,7 @@
 import { Toast, ToastTitle, ToastBody, ToastFooter, Toaster } from '@fluentui/react-toast';
 export { Default } from './Default.stories';
 export { Intent } from './Intent.stories';
+export { InvertedAppearance } from './InvertedAppearance.stories';
 export { DefaultToastOptions } from './DefaultToastOptions.stories';
 export { CustomTimeout } from './CustomTimeout.stories';
 export { DismissToastWithAction } from './DismissToastWithAction.stories';
