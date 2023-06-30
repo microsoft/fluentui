@@ -6,7 +6,7 @@ import type { MenuItemLinkProps } from './MenuItemLink.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * MenuItemLink component - TODO: add more docs
+ * MenuItemLink component
  */
 export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps> = React.forwardRef((props, ref) => {
   const state = useMenuItemLink_unstable(props, ref);
