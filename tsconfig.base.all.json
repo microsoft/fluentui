@@ -142,6 +142,7 @@
       "@fluentui/react-storybook-addon-codesandbox": [
         "packages/react-components/react-storybook-addon-codesandbox/src/index.ts"
       ],
+      "@fluentui/react-swatch-color-picker": ["packages/react-components/react-swatch-color-picker/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],

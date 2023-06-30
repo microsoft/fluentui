@@ -239,6 +239,8 @@ packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
 packages/react-components/react-search-preview @microsoft/cxe-coastal
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
+packages/react-components/react-swatch-color-picker @microsoft/cxe-prg
+packages/react-components/react-tree-preview @microsoft/teams-prg
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
