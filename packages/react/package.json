@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.110.6",
+  "version": "8.110.7",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -70,6 +70,7 @@
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
+    "./dist/css/*": "./dist/css/*",
     "./dist/sass/*": "./dist/sass/*",
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",
