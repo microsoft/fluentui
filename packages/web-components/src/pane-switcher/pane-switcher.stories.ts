@@ -10,7 +10,6 @@ import '../text-input/define.js';
 import '../radio-group/define.js';
 import '../radio/define.js';
 import '../switch/define.js';
-import '../pane-settings/define.js';
 import '../pane-settings-item/define.js';
 
 type PaneSwitcherStoryArgs = Args & PaneSwitcher;
@@ -19,8 +18,8 @@ type PaneSwitcherStoryMeta = Meta<PaneSwitcherStoryArgs>;
 const settings16Regular = html`<svg
   fill="currentColor"
   aria-hidden="true"
-  width="16"
-  height="16"
+  width="20"
+  height="20"
   viewBox="0 0 16 16"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -67,59 +66,70 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
     </style>
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
       <fluent-pane-switcher>
-        <fluent-button id="toggle-1" icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
-        <fluent-pane id="pane-1" trap-focus id="one" position="right" trap-focus control-size="small" modal>
-          <div>Content</div>
+
+        <fluent-button bind-id="pane1" icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
+        <fluent-pane bind-id="pane1" trap-focus id="one" position="right" trap-focus control-size="small">
+          <span slot="close-icon">${dismissed16Regular}</span>
+          <fluent-text slot="header">Pane 1</fluent-text>
           <div>
             <fluent-label>First Name</fluent-label>
             <fluent-text-input id="abc" type="text"></fluent-text-input>
-            <button>Click me</button>
-            <button>Click me 2</button>
-            <button>Click me 3</button>
+            <fluent-button>Click me</fluent-button>
           </div>
         </fluent-pane>
-        <fluent-button id="toggle-2" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
-        <fluent-pane id="pane-2" position="right" trap-focus>
-          <div>Content</div>
+
+        <fluent-button bind-id="pane2" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
+        <fluent-pane bind-id="pane2" position="right" trap-focus toolbar>
+          <span slot="close-icon">${dismissed16Regular}</span>
+          <fluent-text slot="header">Pane 2</fluent-text>
         </fluent-pane>
-        <fluent-button id="toggle-3" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
-        <fluent-pane id="pane-3" position="right" trap-focus control-size="large">
-          <div>Content</div>
+
+        <fluent-button bind-id="pane3" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
+        <fluent-pane bind-id="pane3" position="right" trap-focus control-size="small">
+          <span slot="close-icon">${dismissed16Regular}</span>
+          <fluent-text slot="header">Pane 3</fluent-text>
         </fluent-pane>
-        <fluent-button id="toggle-4" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
-        <fluent-pane id="pane-4" position="right" trap-focus>
-          <div>Content</div>
+        
+        <fluent-button bind-id="pane4" icon-only slot="toggle-buttons">${dismissed16Regular}</fluent-button>
+        <fluent-pane bind-id="pane4" position="right" trap-focus>
+           <span slot="close-icon" appearance="transparent" icon-only>${dismissed16Regular}</fluent-button>
+           <fluent-text slot="header">Pane 4</fluent-text>
         </fluent-pane>
+
         <fluent-button icon-only slot="toggle-buttons">${settings16Regular}</fluent-button>
-        <fluent-pane id="settings" position="right" trap-focus>
-          <fluent-pane-settings-item toggle-target="toggle-1">
-            <fluent-icon slot="icon"></fluent-icon>
-            <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 1</fluent-text>
-            <fluent-text slot="body" weight="regular" size="300" as="p"
-              >A short description in which Pane 1 is described.</fluent-text
-            >
-            <fluent-switch></fluent-switch>
+        <fluent-pane id="settings" position="right" trap-focus control-size="small" compact>
+
+          <span slot="header" block weight="bold">Customize Pane Switcher</span>
+          <span slot="subheader" block weight="bold">Panes</span>
+          <span slot="close-icon">${dismissed16Regular}</span>
+
+          <fluent-pane-settings-item bind-id="pane1">
+            <span slot="icon">${settings16Regular}</span>
+            <fluent-text slot="header" block weight="bold"><span>Pane 1</span></fluent-text>
+            <fluent-text slot="body" weight="regular" size="300" as="p">
+              A short description in which Pane 1 is described.
+              </fluent-text>
           </fluent-pane-settings-item>
-          <fluent-pane-settings-item toggle-target="toggle-2">
+
+          <fluent-pane-settings-item bind-id="pane2">
             <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 2</fluent-text>
-            <fluent-text slot="body" weight="regular" size="300" as="p"
-              >A short description in which Pane 2 is described.</fluent-text
-            >
-            <fluent-switch></fluent-switch>
+            <fluent-text slot="body" weight="regular" size="300" as="p">
+              A short description in which Pane 2 is described.
+            </fluent-text>
           </fluent-pane-settings-item>
-          <fluent-pane-settings-item toggle-target="toggle-3">
+
+          <fluent-pane-settings-item bind-id="pane3">
             <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 3</fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p"
               >A short description in which Pane 3 is described.</fluent-text
             >
-            <fluent-switch></fluent-switch>
           </fluent-pane-settings-item>
-          <fluent-pane-settings-item toggle-target="toggle-4">
+
+          <fluent-pane-settings-item bind-id="pane4">
             <fluent-text slot="header" weight="bold" size="700" as="h3">Pane 4</fluent-text>
-            <fluent-text slot="body" weight="regular" size="300" as="p"
-              >A short description in which Pane 4 is described.</fluent-text
-            >
-            <fluent-switch></fluent-switch>
+            <fluent-text slot="body" weight="regular" size="300" as="p">
+              A short description in which Pane 4 is described.
+            </fluent-text>
           </fluent-pane-settings-item>
         </fluent-pane>
       </fluent-pane-switcher>

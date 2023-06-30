@@ -8,7 +8,7 @@ import type { PaneSettingsItem } from './pane-settings-items.js';
 
 export function paneSettingsItemTemplate<T extends PaneSettingsItem>(): ElementViewTemplate<T> {
   return html<T>`
-    <template>
+    <template bind-id="${x => x.bindID}">
       <div class="root">
         <div class="icon">
           <slot name="icon"></slot>
@@ -20,7 +20,8 @@ export function paneSettingsItemTemplate<T extends PaneSettingsItem>(): ElementV
         <div class="toggle">
           <fluent-switch
             @change="${(x, c) => x.handleSwitchChange()}"
-            toggle-target="${x => x.toggleTarget}"
+            bind-id="${x => x.bindID}"
+            size="small"
           ></fluent-switch>
         </div>
       </div>

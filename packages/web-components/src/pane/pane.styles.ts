@@ -10,10 +10,12 @@ import {
   durationNormal,
   fontFamilyBase,
   fontSizeBase300,
+  fontSizeBase400,
   fontSizeBase500,
   fontWeightRegular,
   fontWeightSemibold,
   lineHeightBase300,
+  lineHeightBase400,
   lineHeightBase500,
   spacingHorizontalL,
   spacingHorizontalS,
@@ -92,15 +94,21 @@ export const styles = css`
     z-index: -1;
   }
 
-  .header {
+  .header-container {
     height: 32px;
-    display: flex;
+    display: grid;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  .header {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
-    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
+  }
+  .subheader {
+    height: 28px;
   }
 
   .close {
@@ -110,6 +118,7 @@ export const styles = css`
     padding: 0;
     font: inherit;
     cursor: pointer;
+    justify-self: flex-end;
   }
 
   .actions {
@@ -117,9 +126,8 @@ export const styles = css`
   }
 
   .pane {
-    display: grid;
-    grid-template-rows: 64px auto 72px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     position: relative;
@@ -127,6 +135,23 @@ export const styles = css`
     overflow: hidden;
     background: ${colorNeutralBackground1};
     padding: ${spacingHorizontalXXL} ${spacingVerticalXXL};
+  }
+
+  .toolbar-container {
+    display: grid;
+  }
+
+  :host([compact]) .pane {
+    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
+  }
+
+  :host([compact]) .header {
+    font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
+    font-weight: ${fontWeightSemibold};
+  }
+  :host([compact]) .header-container {
+    height: 28px;
   }
 
   :host([toolbar]) .pane {
@@ -161,5 +186,8 @@ export const styles = css`
     left: 0;
     margin-left: 0;
     column-gap: ${spacingHorizontalS};
+  }
+  [hidden] {
+    display: none;
   }
 `;

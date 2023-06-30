@@ -1,7 +1,6 @@
-import { FASTElement, attr } from '@microsoft/fast-element';
+import { attr, FASTElement } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp } from '@microsoft/fast-web-utilities';
 import { Pane } from '../pane/pane.js';
-import { PaneSettingsItem } from '../pane-settings-item/pane-settings-items.js';
 
 export class PaneSwitcher extends FASTElement {
   private activePaneIndex: number | null = null;
@@ -91,48 +90,45 @@ export class PaneSwitcher extends FASTElement {
   }
 
   public handleToggle(index: number, panes: NodeListOf<Pane>): void {
-    // Close the previously opened pane, if any
-    if (this.activePaneIndex !== null) {
-      const previouslyOpenedPane = panes[this.activePaneIndex] as Pane | null;
-      if (previouslyOpenedPane) {
-        previouslyOpenedPane.closePane();
-        if (index === this.activePaneIndex) {
-          this.activePaneIndex = null; // Reset the activePaneIndex since the pane is closed
-          return;
+    // Get the clicked pane
+    const clickedPane = panes[index] as Pane | null;
+
+    // Check if the clicked pane is already open
+    const isPaneOpen = clickedPane?.open;
+
+    // Close the clicked pane if it's already open, or open it if it's closed
+    if (isPaneOpen) {
+      clickedPane?.closePane();
+      this.activePaneIndex = null; // Reset the activePaneIndex since the pane is closed
+    } else {
+      // Close the previously opened pane, if any
+      if (this.activePaneIndex !== null) {
+        const previouslyOpenedPane = panes[this.activePaneIndex] as Pane | null;
+        if (previouslyOpenedPane) {
+          previouslyOpenedPane.closePane();
         }
       }
-    }
 
-    // Update the activePaneIndex to the newly opened pane
-    this.activePaneIndex = index;
-
-    // Open the clicked pane, if it exists
-    const clickedPane = panes[index] as Pane | null;
-    if (clickedPane) {
-      clickedPane.openPane();
+      // Open the clicked pane
+      clickedPane?.openPane();
+      this.activePaneIndex = index; // Update the activePaneIndex to the newly opened pane
     }
   }
 
-  private handleTogglePanes(event: CustomEvent<{ toggleTarget: string; switchState: boolean }>): void {
-    const { toggleTarget, switchState } = event.detail;
-    // Perform the necessary actions based on the switch state and toggle target
-    // For example, hide the corresponding toggle button
-    this.hideToggleButton(event, toggleTarget, switchState);
-  }
+  private handleTogglePanes(event: CustomEvent<{ bindID: string; switchState: boolean }>): void {
+    const { bindID, switchState } = event.detail;
+    const paneElements = this.getElementsByBindId(event, bindID);
 
-  private hideToggleButton(event: Event, toggleTarget: string, switchState: boolean): void {
-    const toggleButton = this.getToggleButtonByTarget(event, toggleTarget);
-    console.log('3 ' + toggleButton);
-    if (toggleButton) {
-      toggleButton.hidden = switchState;
+    if (paneElements) {
+      paneElements.hidden = switchState;
     }
   }
 
-  private getToggleButtonByTarget(event: Event, toggleTarget: string): HTMLElement | null {
+  private getElementsByBindId(event: Event, bindID: string): HTMLElement | null {
     const eventTarget = event.target as HTMLElement;
     const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
     if (paneSwitcher) {
-      return paneSwitcher.querySelector(`#${toggleTarget}`);
+      return paneSwitcher.querySelector(`[bind-id="${bindID}"]`);
     }
     return null;
   }

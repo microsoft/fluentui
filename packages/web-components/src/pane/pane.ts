@@ -26,7 +26,7 @@ export class Pane extends FASTElement {
     this.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  private hasInteracted: boolean = false;
+  // private hasInteracted: boolean = false;
 
   // The previous active element before opening the pane.
   private previousActiveElement?: HTMLElement;
@@ -49,6 +49,15 @@ export class Pane extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public modal: boolean = false;
+
+  /**
+   * Determines whether the pane renders with compact styling.
+   * @public
+   * @remarks
+   * HTML Attribute: modal
+   */
+  @attr({ mode: 'boolean' })
+  public compact: boolean = false;
 
   /**
    * Sets the position of the pane (left/right).
@@ -131,10 +140,10 @@ export class Pane extends FASTElement {
    * @public
    */
   public togglePane(): void {
-    if (!this.open && !this.hasInteracted) {
-      // Only update the hasInteracted flag if the pane is closed and hasn't been interacted with yet
-      this.hasInteracted = true;
-    }
+    // if (!this.open && !this.hasInteracted) {
+    //   // Only update the hasInteracted flag if the pane is closed and hasn't been interacted with yet
+    //   this.hasInteracted = true;
+    // }
 
     if (!this.open) {
       this.previousActiveElement = document.activeElement as HTMLElement;
@@ -153,6 +162,7 @@ export class Pane extends FASTElement {
    */
   public openPane(): void {
     this.previousActiveElement = document.activeElement as HTMLElement;
+    // this.hasInteracted = true;
     this.open = true;
     this.$emit('opened', { open: true, position: this.position, controlSize: this.controlSize });
     if (this.open) this.handleFocus();
