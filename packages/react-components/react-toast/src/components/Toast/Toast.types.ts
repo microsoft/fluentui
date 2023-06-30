@@ -13,7 +13,7 @@ export type ToastContextValues = {
  * Toast Props
  */
 export type ToastProps = ComponentProps<ToastSlots> & {
-  appearance: BackgroundAppearanceContextValue;
+  appearance?: BackgroundAppearanceContextValue;
 };
 
 /**

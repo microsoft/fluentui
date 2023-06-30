@@ -115,7 +115,7 @@ export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-sta
 
 // @public
 export type ToastProps = ComponentProps<ToastSlots> & {
-    appearance: BackgroundAppearanceContextValue;
+    appearance?: BackgroundAppearanceContextValue;
 };
 
 // @public (undocumented)
