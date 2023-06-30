@@ -1,0 +1,3 @@
+{
+  "extends": "@fluentui/scripts-api-extractor/api-extractor.common.json"
+}

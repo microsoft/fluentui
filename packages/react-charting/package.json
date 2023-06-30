@@ -31,6 +31,7 @@
     "@fluentui/react": "^8.110.7",
     "@types/react-addons-test-utils": "0.14.18",
     "@fluentui/jest-serializer-merge-styles": "^8.0.29",
+    "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*",
