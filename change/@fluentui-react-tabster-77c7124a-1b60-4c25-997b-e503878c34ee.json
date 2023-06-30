@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Implmenent useMergeTabsterAttributes_unstable",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
