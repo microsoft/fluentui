@@ -23,7 +23,6 @@ const useStyles = makeStyles({
     textDecorationColor: 'initial',
   },
 
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
