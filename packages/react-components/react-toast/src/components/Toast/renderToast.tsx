@@ -13,7 +13,7 @@ export const renderToast_unstable = (state: ToastState, contextValues: ToastCont
   const { slots, slotProps } = getSlotsNext<ToastSlots>(state);
 
   return (
-    <BackgroundAppearanceProvider value={contexts.backgroundAppearance}>
+    <BackgroundAppearanceProvider value={contextValues.backgroundAppearance}>
       <slots.root {...slotProps.root} />
     </BackgroundAppearanceProvider>
   );

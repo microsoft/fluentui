@@ -18,7 +18,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const renderToast_unstable: (state: ToastState, contexts: ToastContextValues) => JSX.Element;
+export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSX.Element;
 
 // @public
 export const renderToastBody_unstable: (state: ToastBodyState) => JSX.Element;
