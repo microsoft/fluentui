@@ -44,6 +44,9 @@ export type FocusOutlineStyleOptions = {
     outlineOffset?: string | FocusOutlineOffset;
 };
 
+// @public (undocumented)
+export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
@@ -85,6 +88,9 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): Re
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
+
+// @internal
+export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
