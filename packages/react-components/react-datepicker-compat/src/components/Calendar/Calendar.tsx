@@ -317,9 +317,12 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       );
     }
     if (dateTimeFormatter && strings!.selectedDateFormatString) {
+      const dateStringFormatter = monthPickerOnly
+        ? dateTimeFormatter.formatMonthYear
+        : dateTimeFormatter.formatMonthDayYear;
       selectedDateString = strings!.selectedDateFormatString.replace(
         '{0}',
-        dateTimeFormatter.formatMonthDayYear(selectedDate, strings!),
+        dateStringFormatter(selectedDate, strings!),
       );
     }
     const selectionAndTodayString = selectedDateString + ', ' + todayDateString;

@@ -1,6 +1,6 @@
-import { VirtualizerScrollViewState } from './VirtualizerScrollView.types';
+import type { VirtualizerScrollViewState } from './VirtualizerScrollView.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { VirtualizerScrollViewSlots } from './VirtualizerScrollView.types';
+import type { VirtualizerScrollViewSlots } from './VirtualizerScrollView.types';
 import { useVirtualizerStyles_unstable, virtualizerClassNames } from '../Virtualizer/useVirtualizerStyles.styles';
 import { makeStyles, mergeClasses } from '@griffel/react';
 

@@ -4,6 +4,7 @@ import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled }
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 
 import type { ToastTitleProps, ToastTitleState } from './ToastTitle.types';
+import { useToastContext } from '../../contexts/toastContext';
 
 /**
  * Create the state required to render ToastTitle.
@@ -15,7 +16,7 @@ import type { ToastTitleProps, ToastTitleState } from './ToastTitle.types';
  * @param ref - reference to root HTMLElement of ToastTitle
  */
 export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HTMLElement>): ToastTitleState => {
-  const { intent = 'info' } = props;
+  const { intent, titleId } = useToastContext();
 
   /** Determine the role and media to render based on the intent */
   let defaultIcon;
@@ -41,11 +42,12 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
       media: 'div',
       action: 'div',
     },
-    media: resolveShorthand(props.media, { required: !!props.intent, defaultProps: { children: defaultIcon } }),
+    media: resolveShorthand(props.media, { required: !!intent, defaultProps: { children: defaultIcon } }),
     intent,
     root: getNativeElementProps('div', {
       ref,
       children: props.children,
+      id: titleId,
       ...props,
     }),
   };

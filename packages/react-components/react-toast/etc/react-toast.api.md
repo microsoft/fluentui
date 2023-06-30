@@ -99,7 +99,13 @@ export type ToastFooterState = ComponentState<ToastFooterSlots>;
 export type ToastId = string;
 
 // @public (undocumented)
+export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
+
+// @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
+
+// @public (undocumented)
+export type ToastPoliteness = 'assertive' | 'polite';
 
 // @public (undocumented)
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
@@ -115,6 +121,9 @@ export type ToastSlots = {
 // @public
 export type ToastState = ComponentState<ToastSlots>;
 
+// @public (undocumented)
+export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
+
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
 
@@ -122,9 +131,7 @@ export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
 
 // @public
-export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {
-    intent?: 'info' | 'success' | 'error' | 'warning';
-};
+export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};
 
 // @public (undocumented)
 export type ToastTitleSlots = {
@@ -134,7 +141,7 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastTitleProps, 'intent'>>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContextValue, 'intent'>;
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;
@@ -163,10 +170,12 @@ export const useToastBodyStyles_unstable: (state: ToastBodyState) => ToastBodySt
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {
-    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions | undefined) => void;
+    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions) => void;
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
     updateToast: (options: UpdateToastOptions) => void;
+    pauseToast: (toastId: ToastId) => void;
+    playToast: (toastId: ToastId) => void;
 };
 
 // @public

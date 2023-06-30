@@ -28,7 +28,6 @@ describe('Breadcrumb', () => {
         <nav
           aria-label="breadcrumb"
           class="fui-Breadcrumb"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <ol
             class="fui-Breadcrumb__list"
@@ -62,7 +61,6 @@ describe('Breadcrumb', () => {
         <nav
           aria-label="breadcrumb"
           class="fui-Breadcrumb"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <ol
             class="fui-Breadcrumb__list"
@@ -102,7 +100,6 @@ describe('Breadcrumb', () => {
         <nav
           aria-label="breadcrumb"
           class="fui-Breadcrumb"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <ol
             class="fui-Breadcrumb__list"

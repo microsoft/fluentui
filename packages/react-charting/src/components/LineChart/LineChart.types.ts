@@ -79,8 +79,8 @@ export interface ILineChartProps extends ICartesianChartProps {
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];
-  strokeColor: string;
-  labelColor: string;
+  strokeColor?: string;
+  labelColor?: string;
   labelHeight?: number;
   labelWidth?: number;
   mergedLabel: (count: number) => string;

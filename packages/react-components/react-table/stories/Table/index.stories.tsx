@@ -17,6 +17,7 @@ export { NonNativeElements } from './NonNativeElements.stories';
 export { CellActions } from './CellActions.stories';
 export { PrimaryCell } from './PrimaryCell.stories';
 export { CellNavigation } from './CellNavigation.stories';
+export { FocusableElementsInCells } from './FocusableElements.Cells.stories';
 export { RowNavigation } from './RowNavigation.stories';
 
 export { Sort } from './Sort.stories';

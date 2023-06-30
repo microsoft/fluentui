@@ -2,7 +2,7 @@ import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as chalk from 'chalk';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -60,7 +60,7 @@ describe('migrate-converged-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
     tree = setupCodeowners(tree, { content: `` });
     tree.write(
       'jest.config.js',
@@ -118,7 +118,7 @@ describe('migrate-converged-pkg generator', () => {
 
       it(`should throw error if provided name doesn't match existing package`, async () => {
         await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
-          `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
+          `[Error: Cannot find configuration for '@proj/non-existent-lib']`,
         );
       });
 
@@ -435,24 +435,25 @@ describe('migrate-converged-pkg generator', () => {
         "// @ts-check
 
         /**
-        * @type {import('@jest/types').Config.InitialOptions}
-        */
+         * @type {import('@jest/types').Config.InitialOptions}
+         */
         module.exports = {
-        displayName: 'react-dummy',
-        preset: '../../../jest.preset.js',
-        globals: {
-        'ts-jest': {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-        isolatedModules: true,
-        },
-        },
-        transform: {
-        '^.+\\\\\\\\.tsx?$': 'ts-jest',
-        },
-        coverageDirectory: './coverage',
-        setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-        };"
+          displayName: 'react-dummy',
+          preset: '../../../jest.preset.js',
+          transform: {
+            '^.+\\\\\\\\.tsx?$': [
+              'ts-jest',
+              {
+                tsconfig: '<rootDir>/tsconfig.spec.json',
+                isolatedModules: true,
+              },
+            ],
+          },
+          coverageDirectory: './coverage',
+          setupFilesAfterEnv: ['./config/tests.js'],
+          snapshotSerializers: ['@griffel/jest-serializer'],
+        };
+        "
       `);
     });
 
@@ -492,7 +493,10 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       expect(tree.exists(jestSetupFilePath)).toBeTruthy();
-      expect(getJestSetupFile()).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
+      expect(getJestSetupFile()).toMatchInlineSnapshot(`
+        "/** Jest test setup file. */
+        "
+      `);
     });
   });
 
@@ -583,18 +587,24 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "const rootMain = require('../../../../.storybook/main');
 
-        module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
-        ...rootMain,
-        stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
-        addons: [...rootMain.addons],
-        webpackFinal: (config, options) => {
-        const localConfig = { ...rootMain.webpackFinal(config, options) };
+        module.exports =
+          /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+            ...rootMain,
+            stories: [
+              ...rootMain.stories,
+              '../stories/**/*.stories.mdx',
+              '../stories/**/index.stories.@(ts|tsx)',
+            ],
+            addons: [...rootMain.addons],
+            webpackFinal: (config, options) => {
+              const localConfig = { ...rootMain.webpackFinal(config, options) };
 
-        // add your own webpack tweaks if needed
+              // add your own webpack tweaks if needed
 
-        return localConfig;
-        },
-        });"
+              return localConfig;
+            },
+          });
+        "
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
@@ -604,7 +614,8 @@ describe('migrate-converged-pkg generator', () => {
         export const decorators = [...rootPreview.decorators];
 
         /** @type {typeof rootPreview.parameters} */
-        export const parameters = { ...rootPreview.parameters };"
+        export const parameters = { ...rootPreview.parameters };
+        "
       `);
     });
 
@@ -1047,6 +1058,7 @@ describe('migrate-converged-pkg generator', () => {
         .git*
         .prettierignore
         .swcrc
+        project.json
 
         # exclude gitignore patterns explicitly
         !lib
@@ -1290,23 +1302,26 @@ describe('migrate-converged-pkg generator', () => {
         import griffelTests from '@proj/react-conformance-griffel';
 
         export function isConformant<TProps = {}>(
-        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+          testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & {
+            componentPath?: string;
+          }
         ) {
-        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
-        tsConfig: { configName: 'tsconfig.spec.json' },
-        componentPath: require.main?.filename.replace('.test', ''),
-        extraTests: griffelTests as TestObject<TProps>,
-        testOptions: {
-        'make-styles-overrides-win': {
-        callCount: 2,
-        },
-        // TODO: https://github.com/microsoft/fluentui/issues/19618
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } as any,
-        };
+          const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+            tsConfig: { configName: 'tsconfig.spec.json' },
+            componentPath: require.main?.filename.replace('.test', ''),
+            extraTests: griffelTests as TestObject<TProps>,
+            testOptions: {
+              'make-styles-overrides-win': {
+                callCount: 2,
+              },
+              // TODO: https://github.com/microsoft/fluentui/issues/19618
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any,
+          };
 
-        baseIsConformant(defaultOptions, testInfo);
-        }"
+          baseIsConformant(defaultOptions, testInfo);
+        }
+        "
       `);
     });
   });

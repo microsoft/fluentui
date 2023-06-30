@@ -34,6 +34,9 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public
+export function createSlideStyles(mainAxis: number): GriffelStyle;
+
+// @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @internal
@@ -108,7 +111,7 @@ export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | un
 export function usePositioning(options: UsePositioningOptions): UsePositioningReturn;
 
 // @internal
-export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // (No @packageDocumentation comment for this package)
 

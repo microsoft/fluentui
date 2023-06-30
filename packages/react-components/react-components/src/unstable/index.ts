@@ -52,7 +52,10 @@ export {
   useVirtualizerScrollViewDynamic_unstable,
   renderVirtualizerScrollViewDynamic_unstable,
   useVirtualizerScrollViewDynamicStyles_unstable,
+  scrollToItemDynamic,
+  scrollToItemStatic,
 } from '@fluentui/react-virtualizer';
+
 export type {
   VirtualizerProps,
   VirtualizerState,
@@ -68,6 +71,9 @@ export type {
   VirtualizerMeasureDynamicProps,
   VirtualizerMeasureProps,
   ResizeCallbackWithRef,
+  ScrollToInterface,
+  ScrollToItemDynamicParams,
+  ScrollToItemStaticParams,
 } from '@fluentui/react-virtualizer';
 
 export {
@@ -77,30 +83,27 @@ export {
   TreeItemLayout,
   TreeItemProvider,
   TreeItemPersonaLayout,
-  TreeItemAside,
   useTreeContext_unstable,
+  useTreeContextValues_unstable,
   useTreeItemContext_unstable,
+  useTreeItemContextValues_unstable,
   useTree_unstable,
   useTreeItem_unstable,
   useTreeItemLayout_unstable,
   useTreeItemPersonaLayout_unstable,
-  useTreeItemAside_unstable,
   renderTree_unstable,
   renderTreeItem_unstable,
   renderTreeItemPersonaLayout_unstable,
   renderTreeItemLayout_unstable,
-  renderTreeItemAside_unstable,
   useTreeStyles_unstable,
   useTreeItemStyles_unstable,
   useTreeItemPersonaLayoutStyles_unstable,
   useTreeItemLayoutStyles_unstable,
-  useTreeItemAsideStyles_unstable,
   treeItemPersonaLayoutClassNames,
   treeItemLevelToken,
   treeItemLayoutClassNames,
   treeItemClassNames,
   treeClassNames,
-  treeItemAsideClassNames,
   useFlatTree_unstable,
   flattenTree_unstable,
 } from '@fluentui/react-tree';
@@ -128,9 +131,6 @@ export type {
   FlatTreeProps,
   FlatTreeItemProps,
   FlatTreeItem,
-  TreeItemAsideProps,
-  TreeItemAsideSlots,
-  TreeItemAsideState,
 } from '@fluentui/react-tree';
 
 export {

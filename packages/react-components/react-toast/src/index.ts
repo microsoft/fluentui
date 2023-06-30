@@ -1,5 +1,5 @@
 export { useToastController } from './state';
-export type { ToastPosition, ToastId, ToastOffset } from './state';
+export type { ToastPosition, ToastId, ToastOffset, ToastPoliteness, ToastStatus, ToastIntent } from './state';
 
 export { ToastTrigger } from './ToastTrigger';
 export type { ToastTriggerChildProps, ToastTriggerProps, ToastTriggerState } from './ToastTrigger';

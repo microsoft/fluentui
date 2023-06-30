@@ -49,7 +49,7 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions)
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+    axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
     circular?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
@@ -58,7 +58,7 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
@@ -73,6 +73,9 @@ export const useFocusFinders: () => {
     findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
     findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
 };
+
+// @public (undocumented)
+export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
 
 // @public (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
@@ -96,6 +99,9 @@ export interface UseModalAttributesOptions {
     legacyTrapFocus?: boolean;
     trapFocus?: boolean;
 }
+
+// @public (undocumented)
+export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
 
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

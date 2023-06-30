@@ -135,8 +135,11 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
 
   /**
    * Default value of the DatePicker, if any
+   *
+   * When the component is controlled, `null` should be used instead of `undefined` to avoid controlled vs. uncontrolled
+   * ambiguity.
    */
-  value?: Date;
+  value?: Date | null;
 
   /**
    * Optional method to format the chosen date to a string to display in the DatePicker

@@ -22,23 +22,19 @@ type ItemProps = FlatTreeItemProps & { content: string };
 
 const defaultItems: ItemProps[] = [
   {
-    id: 'flatTreeItem_lvl-1_item-1',
     value: 'flatTreeItem_lvl-1_item-1',
     content: `Level 1, item 1`,
   },
   ...Array.from({ length: 300 }, (_, i) => ({
-    id: `flatTreeItem_lvl-1_item-1--child:${i}`,
     value: `flatTreeItem_lvl-1_item-1--child:${i}`,
     parentValue: 'flatTreeItem_lvl-1_item-1',
     content: `Item ${i + 1}`,
   })),
   {
-    id: 'flatTreeItem_lvl-1_item-2',
     value: 'flatTreeItem_lvl-1_item-2',
     content: `Level 1, item 2`,
   },
   ...Array.from({ length: 300 }, (_, index) => ({
-    id: `flatTreeItem_lvl-1_item-2--child:${index}`,
     value: `flatTreeItem_lvl-1_item-2--child:${index}`,
     parentValue: 'flatTreeItem_lvl-1_item-2',
     content: `Item ${index + 1}`,
@@ -88,7 +84,7 @@ export const Virtualization = () => {
     if (!nextItem) {
       return;
     }
-    if (!document.getElementById(nextItem.value)) {
+    if (!flatTree.getElementFromItem(nextItem)) {
       listRef.current?.scrollToItem(nextItem.index);
       return requestAnimationFrame(() => flatTree.navigate(data));
     }

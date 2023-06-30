@@ -105,4 +105,39 @@ describe('DataGrid', () => {
     cy.contains('4-1').focus().realPress(['Control', 'End']);
     cy.focused().should('have.text', '7-3');
   });
+
+  const NestedFocusableExample = () => (
+    <DataGrid items={testItems} columns={testColumns}>
+      <DataGridHeader>
+        <DataGridRow<Item>>{({ renderHeaderCell }) => <DataGridCell>{renderHeaderCell()}</DataGridCell>}</DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item }) => (
+          <DataGridRow<Item>>
+            {({ renderCell }) => (
+              <DataGridCell focusMode="group">
+                <button>{renderCell(item)}-1</button>
+                <button>{renderCell(item)}-2</button>
+              </DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+
+  it('should use focusable group for cells', () => {
+    mount(<NestedFocusableExample />);
+
+    cy.contains('1-1-11-1-2').focus().realPress('Enter');
+    cy.focused().should('have.text', '1-1-1').realPress('Tab');
+    cy.focused().should('have.text', '1-1-2').realPress('Tab');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowDown');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowUp');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowLeft');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowRight');
+    cy.focused().should('have.text', '1-1-1').realPress('Escape');
+    cy.focused().should('have.text', '1-1-11-1-2').realPress('ArrowRight');
+    cy.focused().should('have.text', '1-2-11-2-2');
+  });
 });
