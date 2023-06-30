@@ -172,6 +172,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
             data={chartData}
             legendsOverflowText={'Overflow Items'}
             yAxisTickFormat={d3.format('$,')}
+            enablePerfOptimization={true}
             legendProps={{
               allowFocusOnLegends: true,
             }}
