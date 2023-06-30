@@ -8,6 +8,7 @@
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -50,7 +51,9 @@ export type ToastBodySlots = {
 };
 
 // @public
-export type ToastBodyState = ComponentState<ToastBodySlots> & Pick<ToastContextValue, 'appearance'>;
+export type ToastBodyState = ComponentState<ToastBodySlots> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+};
 
 // @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
@@ -111,7 +114,9 @@ export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 
 // @public
-export type ToastProps = ComponentProps<ToastSlots> & Pick<Partial<ToastContextValue>, 'appearance'>;
+export type ToastProps = ComponentProps<ToastSlots> & {
+    appearance: BackgroundAppearanceContextValue;
+};
 
 // @public (undocumented)
 export type ToastSlots = {
@@ -119,7 +124,9 @@ export type ToastSlots = {
 };
 
 // @public
-export type ToastState = ComponentState<ToastSlots> & Pick<ToastContextValue, 'appearance'>;
+export type ToastState = ComponentState<ToastSlots> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+};
 
 // @public (undocumented)
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
@@ -141,7 +148,9 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContainerContextValue, 'intent'> & Pick<ToastContextValue, 'appearance'>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContainerContextValue, 'intent'> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+};
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;

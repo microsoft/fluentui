@@ -47,7 +47,7 @@ export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodySta
   state.root.className = mergeClasses(
     toastBodyClassNames.root,
     rootBaseClassName,
-    state.appearance === 'inverted' && invertedStyles.root,
+    state.backgroundAppearance === 'inverted' && invertedStyles.root,
     state.root.className,
   );
 
@@ -55,7 +55,7 @@ export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodySta
     state.subtitle.className = mergeClasses(
       toastBodyClassNames.subtitle,
       subtitleBaseClassName,
-      state.appearance === 'inverted' && invertedStyles.subtitle,
+      state.backgroundAppearance === 'inverted' && invertedStyles.subtitle,
       state.subtitle.className,
     );
   }

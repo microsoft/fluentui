@@ -3,8 +3,8 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
+import { BackgroundAppearanceProvider } from '@fluentui/react-shared-contexts';
 import type { ToastState, ToastSlots, ToastContextValues } from './Toast.types';
-import { ToastContextProvider } from '../../contexts/toastContext';
 
 /**
  * Render the final JSX of Toast
@@ -13,8 +13,8 @@ export const renderToast_unstable = (state: ToastState, contexts: ToastContextVa
   const { slots, slotProps } = getSlotsNext<ToastSlots>(state);
 
   return (
-    <ToastContextProvider value={contexts.toast}>
+    <BackgroundAppearanceProvider value={contexts.backgroundAppearance}>
       <slots.root {...slotProps.root} />
-    </ToastContextProvider>
+    </BackgroundAppearanceProvider>
   );
 };

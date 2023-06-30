@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ToastBodyProps, ToastBodyState } from './ToastBody.types';
-import { useToastContext } from '../../contexts/toastContext';
 import { useToastContainerContext } from '../../contexts/toastContainerContext';
+import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render ToastBody.
@@ -14,7 +14,7 @@ import { useToastContainerContext } from '../../contexts/toastContainerContext';
  * @param ref - reference to root HTMLElement of ToastBody
  */
 export const useToastBody_unstable = (props: ToastBodyProps, ref: React.Ref<HTMLElement>): ToastBodyState => {
-  const { appearance } = useToastContext();
+  const backgroundAppearance = useBackgroundAppearance();
   const { bodyId } = useToastContainerContext();
   return {
     components: {
@@ -27,6 +27,6 @@ export const useToastBody_unstable = (props: ToastBodyProps, ref: React.Ref<HTML
       id: bodyId,
       ...props,
     }),
-    appearance,
+    backgroundAppearance,
   };
 };

@@ -1,25 +1,6 @@
 import * as React from 'react';
 import { Toaster, useToastController, Toast, ToastTitle, ToastBody, ToastFooter } from '@fluentui/react-toast';
-import { useId, Link, Button, makeStyles, tokens, LinkProps } from '@fluentui/react-components';
-
-// TODO https://github.com/microsoft/fluentui/issues/28338
-const useInvertedLinkStyles = makeStyles({
-  root: {
-    color: tokens.colorBrandForegroundInverted,
-    ':hover': {
-      color: tokens.colorBrandForegroundInvertedHover,
-    },
-    ':active': {
-      color: tokens.colorBrandForegroundInvertedPressed,
-    },
-  },
-});
-
-// TODO https://github.com/microsoft/fluentui/issues/28338
-const InvertedLink: React.FC<LinkProps> = props => {
-  const styles = useInvertedLinkStyles();
-  return <Link {...props} className={styles.root} />;
-};
+import { useId, Link, Button } from '@fluentui/react-components';
 
 export const InvertedAppearance = () => {
   const toasterId = useId('toaster');
@@ -27,11 +8,11 @@ export const InvertedAppearance = () => {
   const notify = () =>
     dispatchToast(
       <Toast appearance="inverted">
-        <ToastTitle action={<InvertedLink>Undo</InvertedLink>}>Email sent</ToastTitle>
+        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
-          <InvertedLink>Action</InvertedLink>
-          <InvertedLink>Action</InvertedLink>
+          <Link>Action</Link>
+          <Link>Action</Link>
         </ToastFooter>
       </Toast>,
       { intent: 'success' },

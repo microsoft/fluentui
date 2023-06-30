@@ -37,7 +37,7 @@ export const useToastStyles_unstable = (state: ToastState): ToastState => {
   state.root.className = mergeClasses(
     toastClassNames.root,
     rootBaseClassName,
-    state.appearance === 'inverted' && styles.inverted,
+    state.backgroundAppearance === 'inverted' && styles.inverted,
     state.root.className,
   );
 

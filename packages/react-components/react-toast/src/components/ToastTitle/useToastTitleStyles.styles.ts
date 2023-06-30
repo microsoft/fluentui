@@ -1,7 +1,7 @@
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { ToastTitleSlots, ToastTitleState } from './ToastTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { ToastTitleSlots, ToastTitleState } from './ToastTitle.types';
 
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots> = {
   root: 'fui-ToastTitle',
@@ -97,7 +97,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   state.root.className = mergeClasses(
     toastTitleClassNames.root,
     rootBaseClassName,
-    state.appearance === 'inverted' && invertedStyles.root,
+    state.backgroundAppearance === 'inverted' && invertedStyles.root,
     state.root.className,
   );
 
@@ -105,10 +105,10 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
     state.media.className = mergeClasses(
       toastTitleClassNames.media,
       mediaBaseClassName,
-      state.appearance === 'inverted' && invertedStyles.media,
+      state.backgroundAppearance === 'inverted' && invertedStyles.media,
       state.media.className,
       intent && intentIconStyles[intent],
-      intent && state.appearance === 'inverted' && intentIconStylesInverted[intent],
+      intent && state.backgroundAppearance === 'inverted' && intentIconStylesInverted[intent],
     );
   }
 
@@ -116,7 +116,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
     state.action.className = mergeClasses(
       toastTitleClassNames.action,
       actionBaseClassName,
-      state.appearance === 'inverted' && invertedStyles.action,
+      state.backgroundAppearance === 'inverted' && invertedStyles.action,
       state.action.className,
     );
   }
