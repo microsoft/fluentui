@@ -2,12 +2,19 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type SwatchColorPikerCellSlots = {
   root: Slot<'div'>;
+  svg?: Slot<'svg'>; //SVGProps<SVGSVGElement>
 };
 
 /**
  * SwatchColorPikerCell Props
  */
-export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots> & {};
+export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots> & {
+  shape?: 'circular' | 'square';
+  size?: number;
+  selected?: boolean; // if this color is selected
+  disabled?: boolean;
+  color: string;
+};
 
 /**
  * State used in rendering SwatchColorPikerCell

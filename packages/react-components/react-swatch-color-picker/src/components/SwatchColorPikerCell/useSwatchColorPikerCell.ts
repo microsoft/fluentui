@@ -15,17 +15,18 @@ export const useSwatchColorPikerCell_unstable = (
   props: SwatchColorPikerCellProps,
   ref: React.Ref<HTMLElement>,
 ): SwatchColorPikerCellState => {
+  const { color = 'orange', ...rest } = props;
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      svg: 'svg',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
-      ...props,
+      ...rest,
     }),
+    svg: {
+      color,
+    },
   };
 };

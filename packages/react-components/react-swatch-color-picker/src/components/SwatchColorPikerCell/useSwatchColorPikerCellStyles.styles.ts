@@ -12,9 +12,7 @@ export const swatchColorPikerCellClassNames: SlotClassNames<SwatchColorPikerCell
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
+  root: {},
 
   // TODO add additional classes for different states and/or slots
 });
