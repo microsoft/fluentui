@@ -3,5 +3,6 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { LegendsPageProps } from './LegendsPage.doc';
 
 export const TimePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...LegendsPageProps[props.platform]} />;
+  const { platform } = props;
+  return <ControlsAreaPage {...props} {...LegendsPageProps[platform!]} />;
 };
