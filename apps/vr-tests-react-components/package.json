@@ -46,6 +46,7 @@
     "@fluentui/react-progress": "^9.1.19",
     "@fluentui/react-provider": "^9.7.6",
     "@fluentui/react-radio": "^9.1.21",
+    "@fluentui/react-search": "9.0.0-alpha.0",
     "@fluentui/react-select": "^9.1.19",
     "@fluentui/react-shared-contexts": "^9.5.1",
     "@fluentui/react-skeleton": "^9.0.7",
