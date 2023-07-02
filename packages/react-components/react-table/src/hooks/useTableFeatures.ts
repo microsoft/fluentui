@@ -10,6 +10,7 @@ import type {
 import { defaultTableSelectionState } from './useTableSelection';
 import { defaultTableSortState } from './useTableSort';
 import { defaultColumnSizingState } from './useTableColumnSizing';
+import { defaultColumnReorderingState } from './useTableColumnReordering';
 
 const defaultRowEnhancer: RowEnhancer<unknown, TableRowData<unknown>> = row => row;
 
@@ -22,6 +23,8 @@ export const defaultTableState: TableFeaturesState<unknown> = {
   columns: [],
   // eslint-disable-next-line @typescript-eslint/naming-convention
   columnSizing_unstable: defaultColumnSizingState,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnReordering_unstable: defaultColumnReorderingState,
   tableRef: React.createRef<HTMLDivElement>(),
 };
 
@@ -44,6 +47,8 @@ export function useTableFeatures<TItem>(
     sort: defaultTableSortState as TableSortState<TItem>,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: defaultColumnSizingState,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnReordering_unstable: defaultColumnReorderingState,
     tableRef: React.createRef(),
   };
 

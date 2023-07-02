@@ -8,6 +8,7 @@ import {
   TableSelectionState,
   TableSortState,
   defaultColumnSizingState,
+  defaultColumnReorderingState,
 } from '../hooks';
 
 interface Item {
@@ -44,6 +45,8 @@ export function mockDataGridContext(
     selectionAppearance: 'brand',
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: defaultColumnSizingState,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnReordering_unstable: defaultColumnReorderingState,
     tableRef: React.createRef(),
     ...options,
   };

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added Column Reordering plugin",
+  "packageName": "@fluentui/react-table",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}

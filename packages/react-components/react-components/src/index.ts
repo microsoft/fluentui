@@ -1005,6 +1005,7 @@ export {
   TableRowIdContextProvider,
   useTableRowIdContext,
   useTableColumnSizing_unstable,
+  useTableColumnReordering_unstable,
 } from '@fluentui/react-table';
 
 export type {
