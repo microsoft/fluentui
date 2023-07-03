@@ -5,6 +5,8 @@ import {
   dismissToast as dismissToastVanilla,
   dismissAllToasts as dismissAllToastsVanilla,
   updateToast as updateToastVanilla,
+  playToast as playToastVanilla,
+  pauseToast as pauseToastVanilla,
 } from './vanilla';
 import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
 
@@ -24,6 +26,8 @@ export function useToastController(toasterId?: ToasterId) {
         dismissToast: noop,
         dismissAllToasts: noop,
         updateToast: noop,
+        pauseToast: noop,
+        playToast: noop,
       };
     }
 
@@ -39,6 +43,12 @@ export function useToastController(toasterId?: ToasterId) {
       },
       updateToast: (options: UpdateToastOptions) => {
         updateToastVanilla({ ...options, data: { root: options.root }, toasterId }, targetDocument);
+      },
+      pauseToast: (toastId: ToastId) => {
+        pauseToastVanilla(toastId, toasterId, targetDocument);
+      },
+      playToast: (toastId: ToastId) => {
+        playToastVanilla(toastId, toasterId, targetDocument);
       },
     };
   }, [targetDocument, toasterId]);

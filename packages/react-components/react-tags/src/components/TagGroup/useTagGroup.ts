@@ -3,7 +3,7 @@ import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentu
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { tagButtonClassNames } from '../TagButton/useTagButtonStyles.styles';
+import { interactionTagClassNames } from '../InteractionTag/useInteractionTagStyles.styles';
 
 /**
  * Create the state required to render TagGroup.
@@ -35,7 +35,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
       }
 
       // if there is no next focusable, focus on the previous focusable
-      if (activeElement?.className.includes(tagButtonClassNames.dismissButton)) {
+      if (activeElement?.className.includes(interactionTagClassNames.dismissButton)) {
         const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container: innerRef.current });
         prev?.focus();
       } else {

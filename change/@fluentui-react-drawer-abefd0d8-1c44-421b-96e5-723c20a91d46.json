@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "docs: improve types descriptions and fix TS circular references",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

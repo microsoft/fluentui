@@ -1,5 +1,5 @@
 import { Tree, addProjectConfiguration, stripIndents } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { addCodeowner } from './add-codeowners';
 import { setupCodeowners } from '../utils-testing';
 import { workspacePaths } from '../utils';
@@ -8,7 +8,7 @@ describe(`#addCodeowner`, () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
 
     addProjectConfiguration(tree, '@proj/react-one', {
       root: '/packages/react-one',
@@ -53,27 +53,27 @@ describe(`#addCodeowner`, () => {
     createCodeowners(tree);
 
     expect(tree.read(workspacePaths.github.codeowners, 'utf8')).toMatchInlineSnapshot(`
-      "/packages/react-one @org/team-one
-      /packages/react-one @org/team-two
+      "packages/react-one @org/team-one
+      packages/react-one @org/team-two
       # <%= NX-CODEOWNER-PLACEHOLDER %>"
     `);
 
     addCodeowner(tree, { packageName: '@proj/react-three', owner: '@org/team-three' });
 
     expect(tree.read(workspacePaths.github.codeowners, 'utf8')).toMatchInlineSnapshot(`
-      "/packages/react-one @org/team-one
-      /packages/react-one @org/team-two
-      /packages/react-three @org/team-three
+      "packages/react-one @org/team-one
+      packages/react-one @org/team-two
+      packages/react-three @org/team-three
       # <%= NX-CODEOWNER-PLACEHOLDER %>"
     `);
 
     addCodeowner(tree, { packageName: '@proj/react-four', owner: '@org/team-four' });
 
     expect(tree.read(workspacePaths.github.codeowners, 'utf8')).toMatchInlineSnapshot(`
-      "/packages/react-one @org/team-one
-      /packages/react-one @org/team-two
-      /packages/react-three @org/team-three
-      /packages/react-four @org/team-four
+      "packages/react-one @org/team-one
+      packages/react-one @org/team-two
+      packages/react-three @org/team-three
+      packages/react-four @org/team-four
       # <%= NX-CODEOWNER-PLACEHOLDER %>"
     `);
   });
@@ -82,8 +82,8 @@ describe(`#addCodeowner`, () => {
 function createCodeowners(tree: Tree, options: { withPlaceholder?: boolean } = {}) {
   setupCodeowners(tree, {
     content: stripIndents`
-     /packages/react-one @org/team-one
-      /packages/react-one @org/team-two
+     packages/react-one @org/team-one
+     packages/react-one @org/team-two
      `,
     ...options,
   });

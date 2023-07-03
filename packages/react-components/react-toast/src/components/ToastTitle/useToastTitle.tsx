@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 
 import type { ToastTitleProps, ToastTitleState } from './ToastTitle.types';
-import { useToastContext } from '../../contexts/toastContext';
+import { useToastContainerContext } from '../../contexts/toastContainerContext';
 
 /**
  * Create the state required to render ToastTitle.
@@ -16,7 +17,8 @@ import { useToastContext } from '../../contexts/toastContext';
  * @param ref - reference to root HTMLElement of ToastTitle
  */
 export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HTMLElement>): ToastTitleState => {
-  const { intent } = useToastContext();
+  const { intent, titleId } = useToastContainerContext();
+  const backgroundAppearance = useBackgroundAppearance();
 
   /** Determine the role and media to render based on the intent */
   let defaultIcon;
@@ -43,11 +45,13 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
       action: 'div',
     },
     media: resolveShorthand(props.media, { required: !!intent, defaultProps: { children: defaultIcon } }),
-    intent,
     root: getNativeElementProps('div', {
       ref,
       children: props.children,
+      id: titleId,
       ...props,
     }),
+    intent,
+    backgroundAppearance,
   };
 };

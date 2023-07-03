@@ -9,13 +9,13 @@ export type TreeItemContextValue = {
   expandIconRef: React.Ref<HTMLDivElement>;
   layoutRef: React.Ref<HTMLDivElement>;
   subtreeRef: React.Ref<HTMLDivElement>;
-  value: unknown;
   itemType: TreeItemType;
+  value: string;
   open: boolean;
 };
 
 const defaultContextValue: TreeItemContextValue = {
-  value: undefined,
+  value: '',
   isActionsVisible: false,
   isAsideVisible: true,
   actionsRef: React.createRef(),

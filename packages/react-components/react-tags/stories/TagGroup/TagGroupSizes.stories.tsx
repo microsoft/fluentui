@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TagGroup, Tag, TagButton } from '@fluentui/react-tags';
+import { TagGroup, Tag, InteractionTag } from '@fluentui/react-tags';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { Calendar3DayRegular } from '@fluentui/react-icons';
 import { TagSize } from '../../src/Tag';
@@ -28,9 +28,9 @@ export const Sizes = () => {
             <Tag icon={<Calendar3DayRegular />} shape="circular">
               {size}
             </Tag>
-            <TagButton dismissible icon={<Calendar3DayRegular />}>
+            <InteractionTag dismissible icon={<Calendar3DayRegular />}>
               {size}
-            </TagButton>
+            </InteractionTag>
           </TagGroup>
         </div>
       ))}

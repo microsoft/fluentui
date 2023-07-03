@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "event annotation text and stroke color fixed in line chart, such that by default it is black in light theme, and white in dark theme.",
-  "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}
