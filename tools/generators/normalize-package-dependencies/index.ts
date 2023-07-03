@@ -90,7 +90,6 @@ function shouldBeProjectProcessed(projectConfig: ProjectConfiguration, filters: 
 }
 
 function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConfiguration, graph: ProjectGraph) {
-  // const projectDependencies = getDependentPackagesForProject(graph, projectConfig.name!);
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
 
