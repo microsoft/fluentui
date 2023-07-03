@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { ArrowDown, ArrowRight, Escape, Enter, keyCodes, ArrowUp } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowRight, Escape, keyCodes, ArrowUp } from '@fluentui/keyboard-keys';
 import {
   useArrowNavigationGroup,
   useFocusableGroup,
