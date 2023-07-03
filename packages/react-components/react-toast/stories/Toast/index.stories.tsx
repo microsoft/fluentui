@@ -1,4 +1,4 @@
-import { Toast, ToastTitle, ToastBody, ToastFooter, Toaster } from '@fluentui/react-toast';
+import { Toast, ToastTitle, ToastBody, ToastFooter, Toaster } from '@fluentui/react-components';
 export { Default } from './Default.stories';
 export { Intent } from './Intent.stories';
 export { InvertedAppearance } from './InvertedAppearance.stories';

@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, RadioGroup, Radio } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  RadioGroup,
+  Radio,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 export const MultipleToasters = () => {
   const first = useId('toaster-1');
