@@ -2,6 +2,111 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 11:57:11 GMT",
+      "tag": "@fluentui/react-components_v9.24.0",
+      "version": "9.24.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "10b70d6a6da6cda0ca201ddae56a4880b1ad57bc",
+            "comment": "re-export GriffelResetStyle type"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0cbd837b6d45c236d03f5e46898c6cacc6ef3afd",
+            "comment": "feat: Implement MenuItemLink components"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e7a838bfd1ce4b077d265295fcbef8dc2177e724",
+            "comment": "feat: Release Toast component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: re-export PortalMountNodeProvider & usePortalMountNode"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "7ad45a9f4e696e416c4420286cbac3f57a4b3a6f",
+            "comment": "feat: Add styles for inverted background"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0cbd837b6d45c236d03f5e46898c6cacc6ef3afd",
+            "comment": "feat: Implement MenuItemLink components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: support rendering to a mountNode from PortalMountNodeContext"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "7ad45a9f4e696e416c4420286cbac3f57a4b3a6f",
+            "comment": "feat: Background appearance context"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: export PortalMountNodeProvider & usePortalMountNode"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "e7a838bfd1ce4b077d265295fcbef8dc2177e724",
+            "comment": "feat: Initial release"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "1745a0bfdb5ad5a0757fe57e2c698bc170a34cfe",
+            "comment": "fix: Memoize virtualized renderer"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "53e6485547ab6a454940c40fac2dbdaa1f00efb2",
+            "comment": "chore: updates dependencies version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "7d519bdcaef0a3249b6eae721fea0e5f096f6d35",
+            "comment": "bugfix: removes default prevention verification on selection"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "cbfa9a3717782183ebc86149abcde6468f97afa8",
+            "comment": "chore: adds internal tag on jsdoc for getSlotsNext"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "chore: fix a typo in code"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:21 GMT",
       "tag": "@fluentui/react-components_v9.23.1",
       "version": "9.23.1",

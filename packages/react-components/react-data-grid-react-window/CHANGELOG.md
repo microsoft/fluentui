@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-data-grid-react-window
 
-This log was last generated on Wed, 28 Jun 2023 11:12:25 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2023 11:57:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-data-grid-react-window_v9.0.0-beta.34)
+
+Mon, 03 Jul 2023 11:57:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-data-grid-react-window_v9.0.0-beta.33..@fluentui/react-data-grid-react-window_v9.0.0-beta.34)
+
+### Changes
+
+- fix: Memoize virtualized renderer ([PR #28372](https://github.com/microsoft/fluentui/pull/28372) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-table to v9.4.4 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-components to v9.24.0 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
 
 ## [9.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-data-grid-react-window_v9.0.0-beta.33)
 
