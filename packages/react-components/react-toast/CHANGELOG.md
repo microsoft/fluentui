@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Mon, 03 Jul 2023 13:34:28 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2023 20:43:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.0.2)
+
+Mon, 03 Jul 2023 20:43:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.0.1..@fluentui/react-toast_v9.0.2)
+
+### Patches
+
+- fix: Toaster should play toasts on action dismiss ([PR #28420](https://github.com/microsoft/fluentui/pull/28420) by lingfan.gao@microsoft.com)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.0.1)
 

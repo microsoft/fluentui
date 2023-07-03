@@ -16,7 +16,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.25.0",
+    "@fluentui/react-components": "^9.25.1",
     "@fluentui/react-icons": "^2.0.203",
     "@fluentui/react-theme": "^9.1.9",
     "@fluentui/react-provider": "^9.7.8",
