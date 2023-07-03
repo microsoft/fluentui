@@ -12,7 +12,9 @@ import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-context
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -31,6 +33,9 @@ export const renderToastFooter_unstable: (state: ToastFooterState) => JSX.Elemen
 
 // @public
 export const renderToastTitle_unstable: (state: ToastTitleState) => JSX.Element;
+
+// @public
+export const renderToastTrigger_unstable: (state: ToastTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
 
 // @public
 export const Toast: ForwardRefComponent<ToastProps>;
@@ -207,6 +212,9 @@ export const useToastTitle_unstable: (props: ToastTitleProps, ref: React_2.Ref<H
 
 // @public
 export const useToastTitleStyles_unstable: (state: ToastTitleState) => ToastTitleState;
+
+// @public
+export const useToastTrigger_unstable: (props: ToastTriggerProps) => ToastTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

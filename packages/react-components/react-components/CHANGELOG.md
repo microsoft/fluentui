@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 28 Jun 2023 11:12:21 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2023 20:43:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.25.1)
+
+Mon, 03 Jul 2023 20:43:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.25.0..@fluentui/react-components_v9.25.1)
+
+### Patches
+
+- `@fluentui/react-toast`
+  - fix: Toaster should play toasts on action dismiss ([PR #28420](https://github.com/microsoft/fluentui/pull/28420) by lingfan.gao@microsoft.com)
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.25.0)
+
+Mon, 03 Jul 2023 13:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.24.0..@fluentui/react-components_v9.25.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Export useTableCompositeNavigation hook ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by lingfan.gao@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Implement composite navigation for Table and DataGrid ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: Implmenent useMergeTabsterAttributes_unstable ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: menu item disabled style ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by kakrookaran@gmail.com)
+
+## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.24.0)
+
+Mon, 03 Jul 2023 11:57:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.23.1..@fluentui/react-components_v9.24.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - re-export GriffelResetStyle type ([PR #28367](https://github.com/microsoft/fluentui/pull/28367) by olfedias@microsoft.com)
+  - feat: Implement MenuItemLink components ([PR #28369](https://github.com/microsoft/fluentui/pull/28369) by lingfan.gao@microsoft.com)
+  - feat: Release Toast component ([PR #28399](https://github.com/microsoft/fluentui/pull/28399) by lingfan.gao@microsoft.com)
+  - feat: re-export PortalMountNodeProvider & usePortalMountNode ([PR #28395](https://github.com/microsoft/fluentui/pull/28395) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - feat: Add styles for inverted background ([PR #28341](https://github.com/microsoft/fluentui/pull/28341) by lingfan.gao@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: Implement MenuItemLink components ([PR #28369](https://github.com/microsoft/fluentui/pull/28369) by lingfan.gao@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: support rendering to a mountNode from PortalMountNodeContext ([PR #28395](https://github.com/microsoft/fluentui/pull/28395) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Background appearance context ([PR #28341](https://github.com/microsoft/fluentui/pull/28341) by lingfan.gao@microsoft.com)
+  - feat: export PortalMountNodeProvider & usePortalMountNode ([PR #28395](https://github.com/microsoft/fluentui/pull/28395) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: Initial release ([PR #28399](https://github.com/microsoft/fluentui/pull/28399) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-migration-v8-v9`
+  - chore: updates dependencies version ([PR #28366](https://github.com/microsoft/fluentui/pull/28366) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - bugfix: removes default prevention verification on selection ([PR #28365](https://github.com/microsoft/fluentui/pull/28365) by bernardo.sunderhus@gmail.com)
+  - chore: adds internal tag on jsdoc for getSlotsNext ([PR #28348](https://github.com/microsoft/fluentui/pull/28348) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-data-grid-react-window`
+  - fix: Memoize virtualized renderer ([PR #28372](https://github.com/microsoft/fluentui/pull/28372) by lingfan.gao@microsoft.com)
 
 ## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.23.1)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export PortalMountNodeProvider & usePortalMountNode",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

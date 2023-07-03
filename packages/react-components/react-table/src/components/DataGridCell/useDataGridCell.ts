@@ -17,7 +17,7 @@ import { useColumnIdContext } from '../../contexts/columnIdContext';
 export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Ref<HTMLElement>): DataGridCellState => {
   const { focusMode } = props;
   const columnId = useColumnIdContext();
-  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode === 'cell');
+  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode === 'cell' || ctx.focusMode === 'composite');
   const resizableColumns = useDataGridContext_unstable(ctx => ctx.resizableColumns);
   const columnSizing = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable);
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });

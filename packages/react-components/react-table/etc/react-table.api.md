@@ -20,6 +20,7 @@ import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
@@ -88,6 +89,7 @@ export type DataGridContextValue = TableFeaturesState<any> & {
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
     resizableColumns?: boolean;
+    compositeRowTabsterAttribute: TabsterDOMAttribute;
 };
 
 // @public (undocumented)
@@ -96,7 +98,7 @@ export type DataGridContextValues = TableContextValues & {
 };
 
 // @public (undocumented)
-export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
+export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable' | 'composite';
 
 // @public
 export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
@@ -185,7 +187,7 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: TableFeaturesState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
 export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
@@ -620,6 +622,13 @@ export const useTableCellStyles_unstable: (state: TableCellState) => TableCellSt
 
 // @public (undocumented)
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+
+// @public (undocumented)
+export function useTableCompositeNavigation(): {
+    onTableKeyDown: React_2.KeyboardEventHandler;
+    tableTabsterAttribute: TabsterDOMAttribute;
+    tableRowTabsterAttribute: TabsterDOMAttribute;
+};
 
 // @public (undocumented)
 export const useTableContext: () => TableContextValue;

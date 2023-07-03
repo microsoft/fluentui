@@ -1,5 +1,10 @@
 import * as React from 'react';
 import {
+  useId,
+  Link,
+  Button,
+  ProgressBar,
+  Text,
   Toaster,
   useToastController,
   Toast,
@@ -7,8 +12,7 @@ import {
   ToastBody,
   ToastFooter,
   ToastTrigger,
-} from '@fluentui/react-toast';
-import { useId, Link, Button, ProgressBar, Text } from '@fluentui/react-components';
+} from '@fluentui/react-components';
 
 const intervalDelay = 100;
 const intervalIncrement = 5;

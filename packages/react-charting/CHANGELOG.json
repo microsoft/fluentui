@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 07:35:23 GMT",
+      "tag": "@fluentui/react-charting_v5.16.49",
+      "version": "5.16.49",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8fde9701e1ce88a9564a8669fef859e80e14fe8f",
+            "comment": "Optimizing code for perfromance improvement"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Jun 2023 07:35:33 GMT",
       "tag": "@fluentui/react-charting_v5.16.48",
       "version": "5.16.48",
