@@ -13,7 +13,7 @@ export {
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
-export type { GriffelStyle, GriffelRenderer } from '@griffel/react';
+export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassNames,
@@ -38,6 +38,8 @@ export {
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
+  useObservedElement,
+  useFocusObserved,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
@@ -87,6 +89,8 @@ export {
   useFluent_unstable as useFluent,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
+  PortalMountNodeProvider,
+  usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
@@ -405,6 +409,7 @@ export {
   MenuGroupContextProvider,
   MenuGroupHeader,
   MenuItem,
+  MenuItemLink,
   MenuItemCheckbox,
   MenuItemRadio,
   MenuList,
@@ -419,6 +424,7 @@ export {
   menuGroupHeaderClassNames,
   menuItemCheckboxClassNames,
   menuItemClassNames,
+  menuItemLinkClassNames,
   menuItemRadioClassNames,
   menuListClassNames,
   menuPopoverClassNames,
@@ -428,6 +434,7 @@ export {
   renderMenuGroup_unstable,
   renderMenuGroupHeader_unstable,
   renderMenuItem_unstable,
+  renderMenuItemLink_unstable,
   renderMenuItemCheckbox_unstable,
   renderMenuItemRadio_unstable,
   renderMenuList_unstable,
@@ -447,11 +454,13 @@ export {
   useMenuGroupHeaderStyles_unstable,
   useMenuGroupStyles_unstable,
   useMenuItem_unstable,
+  useMenuItemLink_unstable,
   useMenuItemCheckbox_unstable,
   useMenuItemCheckboxStyles_unstable,
   useMenuItemRadio_unstable,
   useMenuItemRadioStyles_unstable,
   useMenuItemStyles_unstable,
+  useMenuItemLinkStyles_unstable,
   useMenuList_unstable,
   useMenuListContext_unstable,
   useMenuListContextValues_unstable,
@@ -482,12 +491,15 @@ export type {
   MenuItemCheckboxProps,
   MenuItemCheckboxState,
   MenuItemProps,
+  MenuItemLinkProps,
   MenuItemRadioProps,
   MenuItemRadioState,
   MenuItemSelectableProps,
   MenuItemSelectableState,
   MenuItemSlots,
   MenuItemState,
+  MenuItemLinkSlots,
+  MenuItemLinkState,
   MenuListContextValue,
   MenuListContextValues,
   MenuListProps,

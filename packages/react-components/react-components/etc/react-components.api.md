@@ -282,6 +282,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
+import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
@@ -354,6 +355,11 @@ import { menuItemCheckboxClassNames } from '@fluentui/react-menu';
 import { MenuItemCheckboxProps } from '@fluentui/react-menu';
 import { MenuItemCheckboxState } from '@fluentui/react-menu';
 import { menuItemClassNames } from '@fluentui/react-menu';
+import { MenuItemLink } from '@fluentui/react-menu';
+import { menuItemLinkClassNames } from '@fluentui/react-menu';
+import { MenuItemLinkProps } from '@fluentui/react-menu';
+import { MenuItemLinkSlots } from '@fluentui/react-menu';
+import { MenuItemLinkState } from '@fluentui/react-menu';
 import { MenuItemProps } from '@fluentui/react-menu';
 import { MenuItemRadio } from '@fluentui/react-menu';
 import { menuItemRadioClassNames } from '@fluentui/react-menu';
@@ -437,6 +443,7 @@ import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
+import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
@@ -518,6 +525,7 @@ import { renderMenuGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuGroupHeader_unstable } from '@fluentui/react-menu';
 import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
@@ -870,6 +878,7 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusObserved } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
@@ -905,6 +914,8 @@ import { useMenuGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItem_unstable } from '@fluentui/react-menu';
 import { useMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { useMenuItemCheckboxStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemLink_unstable } from '@fluentui/react-menu';
+import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
@@ -924,6 +935,7 @@ import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import { useMotionPresence } from '@fluentui/react-utilities';
 import { UseMotionPresenceEvents } from '@fluentui/react-utilities';
 import { UseMotionPresenceState } from '@fluentui/react-utilities';
+import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
@@ -938,6 +950,7 @@ import { usePopoverSurface_unstable } from '@fluentui/react-popover';
 import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
+import { usePortalMountNode } from '@fluentui/react-shared-contexts';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
@@ -1584,6 +1597,8 @@ export { getSlots }
 
 export { GriffelRenderer }
 
+export { GriffelResetStyle }
+
 export { GriffelStyle }
 
 export { HorizontalSpacingTokens }
@@ -1727,6 +1742,16 @@ export { MenuItemCheckboxProps }
 export { MenuItemCheckboxState }
 
 export { menuItemClassNames }
+
+export { MenuItemLink }
+
+export { menuItemLinkClassNames }
+
+export { MenuItemLinkProps }
+
+export { MenuItemLinkSlots }
+
+export { MenuItemLinkState }
 
 export { MenuItemProps }
 
@@ -1894,6 +1919,8 @@ export { PopoverTriggerState }
 
 export { Portal }
 
+export { PortalMountNodeProvider }
+
 export { PortalProps }
 
 export { PortalState }
@@ -2055,6 +2082,8 @@ export { renderMenuGroupHeader_unstable }
 export { renderMenuItem_unstable }
 
 export { renderMenuItemCheckbox_unstable }
+
+export { renderMenuItemLink_unstable }
 
 export { renderMenuItemRadio_unstable }
 
@@ -2760,6 +2789,8 @@ export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
 
+export { useFocusObserved }
+
 export { useFocusWithin }
 
 export { useId }
@@ -2830,6 +2861,10 @@ export { useMenuItemCheckbox_unstable }
 
 export { useMenuItemCheckboxStyles_unstable }
 
+export { useMenuItemLink_unstable }
+
+export { useMenuItemLinkStyles_unstable }
+
 export { useMenuItemRadio_unstable }
 
 export { useMenuItemRadioStyles_unstable }
@@ -2867,6 +2902,7 @@ export { useMotionPresence }
 export { UseMotionPresenceEvents }
 
 export { UseMotionPresenceState }
+export { useObservedElement }
 
 export { useOption_unstable }
 
@@ -2895,6 +2931,8 @@ export { usePopoverSurfaceStyles_unstable }
 export { usePopoverTrigger_unstable }
 
 export { usePortal_unstable }
+
+export { usePortalMountNode }
 
 export { usePresenceBadge_unstable }
 

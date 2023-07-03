@@ -30,8 +30,8 @@ export const Offset = () => {
   const styles = useStyles();
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const [horizontal, setHorizontal] = React.useState(10);
-  const [vertical, setVertical] = React.useState(10);
+  const [horizontal, setHorizontal] = React.useState(20);
+  const [vertical, setVertical] = React.useState(16);
   const [position, setPosition] = React.useState<ToastPosition>('bottom-end');
 
   const notify = () =>

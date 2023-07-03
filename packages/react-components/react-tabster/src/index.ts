@@ -7,6 +7,8 @@ export {
   useKeyboardNavAttribute,
   useModalAttributes,
   useTabsterAttributes,
+  useObservedElement,
+  useFocusObserved,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

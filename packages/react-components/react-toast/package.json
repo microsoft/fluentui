@@ -23,7 +23,9 @@
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -34,13 +36,14 @@
   },
   "dependencies": {
     "react-transition-group": "^4.4.1",
-    "@fluentui/react-aria": "^9.3.23",
+    "@fluentui/react-aria": "^9.3.25",
     "@fluentui/react-icons": "^2.0.203",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.7",
-    "@fluentui/react-portal": "^9.2.13",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.9",
+    "@fluentui/react-portal": "^9.2.16",
     "@fluentui/react-shared-contexts": "^9.5.1",
+    "@fluentui/react-tabster": "^9.9.1",
     "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.9.3",
+    "@fluentui/react-utilities": "^9.10.0",
     "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },

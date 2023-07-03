@@ -7,7 +7,7 @@ export const DismissToast = () => {
   const toastId = useId('example');
   const [unmounted, setUnmounted] = React.useState(true);
   const { dispatchToast, dismissToast } = useToastController(toasterId);
-  console.log(unmounted);
+
   const notify = () => {
     dispatchToast(
       <Toast>

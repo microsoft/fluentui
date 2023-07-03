@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove overflow menu if the last overflowed item can take its place",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

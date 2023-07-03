@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 20 Jun 2023 12:38:55 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2023 11:12:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.20)
+
+Wed, 28 Jun 2023 11:12:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.19..@fluentui/react-button_v9.3.20)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.25 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.9 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-tabster to v9.9.1 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-utilities to v9.10.0 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+
+## [9.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.19)
+
+Tue, 27 Jun 2023 11:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.18..@fluentui/react-button_v9.3.19)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.9.0 ([PR #28291](https://github.com/microsoft/fluentui/pull/28291) by beachball)
+
+## [9.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.18)
+
+Mon, 26 Jun 2023 09:53:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.17..@fluentui/react-button_v9.3.18)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.24 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-tabster to v9.8.1 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-utilities to v9.9.4 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
 
 ## [9.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.17)
 
