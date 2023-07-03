@@ -38,14 +38,16 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
   }, []);
 
   const pauseAllToasts = React.useCallback(() => {
-    for (const toastId of toaster.visibleToasts) {
+    const visibleToasts = Array.from(toaster.visibleToasts.values());
+    for (const toastId of visibleToasts) {
       const toast = toaster.toasts.get(toastId);
       toast?.imperativeRef.current?.pause();
     }
   }, [toaster]);
 
   const playAllToasts = React.useCallback(() => {
-    for (const toastId of toaster.visibleToasts) {
+    const visibleToasts = Array.from(toaster.visibleToasts.values());
+    for (const toastId of visibleToasts) {
       const toast = toaster.toasts.get(toastId);
       toast?.imperativeRef.current?.play();
     }
