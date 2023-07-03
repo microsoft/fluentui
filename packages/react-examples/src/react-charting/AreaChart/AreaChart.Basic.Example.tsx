@@ -183,6 +183,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
             width={this.state.width}
             data={chartData}
             showYAxisGridLines={true}
+            enablePerfOptimization={true}
             // eslint-disable-next-line react/jsx-no-bind
             onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
               props && this.state.isCalloutselected ? (

@@ -12,7 +12,7 @@ import { TreeItemRequest } from '../../contexts/index';
  * @param props - props from this instance of Tree
  * @param ref - reference to root HTMLElement of Tree
  */
-export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.Ref<HTMLElement>): TreeState {
+export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium' } = props;
@@ -20,7 +20,7 @@ export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.
   const [openItems, updateOpenItems] = useOpenItemsState(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
-  const requestOpenChange = (data: TreeOpenChangeData<Value>) => {
+  const requestOpenChange = (data: TreeOpenChangeData) => {
     props.onOpenChange?.(data.event, data);
     if (data.event.isDefaultPrevented()) {
       return;
@@ -28,7 +28,7 @@ export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.
     return updateOpenItems(data);
   };
 
-  const requestNavigation = (data: TreeNavigationData_unstable<Value>) => {
+  const requestNavigation = (data: TreeNavigationData_unstable) => {
     props.onNavigation_unstable?.(data.event, data);
     if (data.event.isDefaultPrevented()) {
       return;
@@ -44,7 +44,7 @@ export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.
     value,
     itemType,
     type,
-  }: Extract<TreeItemRequest<Value>, { type: 'Click' | 'ExpandIconClick' }>) => {
+  }: Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>) => {
     ReactDOM.unstable_batchedUpdates(() => {
       requestOpenChange({
         event,
@@ -59,10 +59,10 @@ export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.
 
   const handleTreeItemKeyDown = ({
     event,
-    value,
     type,
+    value,
     itemType,
-  }: Exclude<TreeItemRequest<Value>, { type: 'Click' | 'ExpandIconClick' }>) => {
+  }: Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>) => {
     const open = openItems.has(value);
     switch (type) {
       case treeDataTypes.ArrowRight:
@@ -107,14 +107,14 @@ export function useRootTree<Value = string>(props: TreeProps<Value>, ref: React.
     }
   };
 
-  const requestTreeResponse = useEventCallback((request: TreeItemRequest<Value>) => {
+  const requestTreeResponse = useEventCallback((request: TreeItemRequest) => {
     switch (request.event.type) {
       case 'click':
         // casting is required here as we're narrowing down the event to only click events
-        return handleTreeItemClick(request as Extract<TreeItemRequest<Value>, { type: 'Click' | 'ExpandIconClick' }>);
+        return handleTreeItemClick(request as Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>);
       case 'keydown':
         // casting is required here as we're narrowing down the event to only keyboard events
-        return handleTreeItemKeyDown(request as Exclude<TreeItemRequest<Value>, { type: 'Click' | 'ExpandIconClick' }>);
+        return handleTreeItemKeyDown(request as Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>);
     }
   });
 

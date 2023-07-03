@@ -9,6 +9,7 @@ import {
   TableHeaderCell,
   TableRow,
   createTableColumn,
+  useId,
   useTableColumnSizing_unstable,
   useTableFeatures,
   useTableSort,
@@ -239,20 +240,24 @@ export const ResizableColumnsControlled = () => {
 
   const rows = sort(getRows());
 
+  const inputId = useId('first-column');
+
   return (
     <>
       <p>
-        <Label>First column width: </Label>
+        <Label htmlFor={`${inputId}-width`}>First column width: </Label>
         <Input
           type="number"
+          id={`${inputId}-width`}
           onChange={onWidthChange}
           value={columnSizingOptions.file.idealWidth ? columnSizingOptions.file.idealWidth.toString() : ''}
         />
       </p>
       <p>
-        <Label>First column minWidth: </Label>
+        <Label htmlFor={`${inputId}-minwidth`}>First column minWidth: </Label>
         <Input
           type="number"
+          id={`${inputId}-minwidth`}
           onChange={onMinWidthChange}
           value={columnSizingOptions.file.minWidth ? columnSizingOptions.file.minWidth?.toString() : ''}
         />
