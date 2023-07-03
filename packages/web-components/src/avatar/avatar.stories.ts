@@ -89,6 +89,13 @@ export const Icon = renderComponent(html<AvatarStoryArgs>`
       ></path></svg
   ></fluent-avatar>
 `);
+Icon.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar can display an icon. The icon will only be shown when there is no image or initials available.',
+    },
+  },
+};
 
 export const Badge = renderComponent(html<AvatarStoryArgs>` <fluent-avatar name="Lydia Bauer"
   ><fluent-badge slot="badge" size="extra-small"></fluent-badge
@@ -97,7 +104,7 @@ export const Badge = renderComponent(html<AvatarStoryArgs>` <fluent-avatar name=
 export const ColorBrand = renderComponent(html<AvatarStoryArgs>`<fluent-avatar color="brand"></fluent-avatar>`);
 
 export const Color = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 8px;">
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
     <fluent-avatar color="neutral" name="Neutral avatar"></fluent-avatar>
     <fluent-avatar color="brand" name="Brand avatar"></fluent-avatar>
     <fluent-avatar color="dark-red" name="dark-red avatar"></fluent-avatar>
@@ -134,7 +141,7 @@ export const Color = renderComponent(html<AvatarStoryArgs>`
 `);
 
 export const Colorful = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 8px;">
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
     <fluent-avatar color="colorful" name="Mona Kane"></fluent-avatar>
     <fluent-avatar color="colorful" name="Tim Deboer"></fluent-avatar>
     <fluent-avatar color="colorful" name="Kevin Sturgis"></fluent-avatar>
@@ -156,7 +163,7 @@ export const Shape = renderComponent(html<AvatarStoryArgs>`
 `);
 
 export const Active = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 24px;">
+  <div style="display: flex; gap: 24px; flex-wrap: wrap;">
     <fluent-avatar>U</fluent-avatar>
     <fluent-avatar active="active">A</fluent-avatar>
     <fluent-avatar active="inactive">I</fluent-avatar>
@@ -165,7 +172,7 @@ export const Active = renderComponent(html<AvatarStoryArgs>`
 `);
 
 export const ActiveAppearance = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 24px;">
+  <div style="display: flex; gap: 24px; flex-wrap: wrap;">
     <fluent-avatar active="active" appearance="ring">R</fluent-avatar>
     <fluent-avatar active="active" appearance="shadow">S</fluent-avatar>
     <fluent-avatar active="active" appearance="ring-shadow">RS</fluent-avatar>
@@ -175,7 +182,7 @@ export const ActiveAppearance = renderComponent(html<AvatarStoryArgs>`
 export const CustomInitials = renderComponent(html<AvatarStoryArgs>` <fluent-avatar initials="CRF"></fluent-avatar> `);
 
 export const Size = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 24px">
+  <div style="display: flex; gap: 24px; flex-wrap: wrap;">
     <fluent-avatar name="Jane Doe" size="16">16</fluent-avatar>
     <fluent-avatar name="Lydia Bauer" size="20">20</fluent-avatar>
     <fluent-avatar name="Amanda Brady" size="24">24</fluent-avatar>

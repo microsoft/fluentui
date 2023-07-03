@@ -1,0 +1,65 @@
+/* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
+.sbdocs-preview,
+#docs-root .innerZoomElementWrapper > div /*  */ {
+  font-family: var(--fontFamilyBase);
+  background: var(--colorNeutralBackground2);
+  color: var(--colorNeutralForeground2);
+}
+
+/*
+ * The shared .storybook/docs-root.css applies var(--colorNeutralStroke1, #e1dfdd) to the story border.
+ * However, the Web Components storybook currently changes this token on theme switch for the entire page, not just stories.
+ * This causes the story border to change color when the theme is switched.
+ * Instead, we hard code the border color to the token's default light theme value.
+ */
+#docs-root .sbdocs-preview {
+  border-color: #d1d1d1;
+}
+
+#docs-root .innerZoomElementWrapper > div {
+  padding: 48px 24px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+/*
+ * Theme Switcher
+ */
+#switches-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 12px;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 22%);
+  z-index: 10;
+}
+
+#switches-container select {
+  padding: 5px var(--spacingHorizontalM);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+  width: 140px;
+}
+
+/* Add a little more room for the page title under the theme switcher */
+#docs-root h1.sbdocs-title {
+  margin-top: 72px;
+}
+
+.custom-fullscreen #switches-container {
+  display: none;
+}
+
+.custom-fullscreen .sbdocs-wrapper {
+  padding: 20px;
+}
+
+.custom-fullscreen .sbdocs-content {
+  max-width: unset;
+}

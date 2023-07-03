@@ -9,17 +9,15 @@ type ImageStoryArgs = Args & FluentImage;
 type ImageStoryMeta = Meta<ImageStoryArgs>;
 
 const imageTemplate = html<ImageStoryArgs>`
-  <div style="padding: 48px 24px; background-color: rgb(250, 250, 250);">
-    <fluent-image
-      ?block=${x => x.block}
-      ?bordered=${x => x.bordered}
-      fit=${x => x.fit}
-      ?shadow=${x => x.shadow}
-      shape=${x => x.shape}
-    >
-      <img alt="Short image description" src="https://picsum.photos/300/100" />
-    </fluent-image>
-  </div>
+  <fluent-image
+    ?block=${x => x.block}
+    ?bordered=${x => x.bordered}
+    fit=${x => x.fit}
+    ?shadow=${x => x.shadow}
+    shape=${x => x.shape}
+  >
+    <img alt="Short image description" src="https://picsum.photos/300/100" />
+  </fluent-image>
 `;
 
 export default {

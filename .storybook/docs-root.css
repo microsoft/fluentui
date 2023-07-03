@@ -1,3 +1,8 @@
+/*
+ * Heads Up!
+ * This file is used in both React v9 (via Storybook logic) and Web Components (via symlink).
+ * All CSS must apply to both implementations.
+ */
 #docs-root .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
@@ -332,6 +337,7 @@
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
   border-radius: 2px;
+  width: fit-content; /* prevent wrapping kebab-case words when they'll fit on one line */
 }
 
 .os-content-glue {
