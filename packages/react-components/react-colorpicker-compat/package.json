@@ -31,9 +31,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.9",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.10",
     "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.10.0",
+    "@fluentui/react-utilities": "^9.10.1",
     "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },

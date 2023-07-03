@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
 import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
-import { useId, Button, ToggleButton } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  ToggleButton,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 export const PauseAndPlay = () => {
   const toasterId = useId('toaster');

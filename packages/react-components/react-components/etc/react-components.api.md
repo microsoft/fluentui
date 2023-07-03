@@ -563,6 +563,12 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
+import { renderToast_unstable } from '@fluentui/react-toast';
+import { renderToastBody_unstable } from '@fluentui/react-toast';
+import { renderToaster_unstable } from '@fluentui/react-toast';
+import { renderToastFooter_unstable } from '@fluentui/react-toast';
+import { renderToastTitle_unstable } from '@fluentui/react-toast';
+import { renderToastTrigger_unstable } from '@fluentui/react-toast';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
@@ -747,6 +753,40 @@ import { Title2 } from '@fluentui/react-text';
 import { title2ClassNames } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
 import { title3ClassNames } from '@fluentui/react-text';
+import { Toast } from '@fluentui/react-toast';
+import { ToastBody } from '@fluentui/react-toast';
+import { toastBodyClassNames } from '@fluentui/react-toast';
+import { ToastBodyProps } from '@fluentui/react-toast';
+import { ToastBodySlots } from '@fluentui/react-toast';
+import { ToastBodyState } from '@fluentui/react-toast';
+import { Toaster } from '@fluentui/react-toast';
+import { toasterClassNames } from '@fluentui/react-toast';
+import { ToasterProps } from '@fluentui/react-toast';
+import { ToasterSlots } from '@fluentui/react-toast';
+import { ToasterState } from '@fluentui/react-toast';
+import { ToastFooter } from '@fluentui/react-toast';
+import { toastFooterClassNames } from '@fluentui/react-toast';
+import { ToastFooterProps } from '@fluentui/react-toast';
+import { ToastFooterSlots } from '@fluentui/react-toast';
+import { ToastFooterState } from '@fluentui/react-toast';
+import { ToastId } from '@fluentui/react-toast';
+import { ToastIntent } from '@fluentui/react-toast';
+import { ToastOffset } from '@fluentui/react-toast';
+import { ToastPoliteness } from '@fluentui/react-toast';
+import { ToastPosition } from '@fluentui/react-toast';
+import { ToastProps } from '@fluentui/react-toast';
+import { ToastSlots } from '@fluentui/react-toast';
+import { ToastState } from '@fluentui/react-toast';
+import { ToastStatus } from '@fluentui/react-toast';
+import { ToastTitle } from '@fluentui/react-toast';
+import { toastTitleClassNames } from '@fluentui/react-toast';
+import { ToastTitleProps } from '@fluentui/react-toast';
+import { ToastTitleSlots } from '@fluentui/react-toast';
+import { ToastTitleState } from '@fluentui/react-toast';
+import { ToastTrigger } from '@fluentui/react-toast';
+import { ToastTriggerChildProps } from '@fluentui/react-toast';
+import { ToastTriggerProps } from '@fluentui/react-toast';
+import { ToastTriggerState } from '@fluentui/react-toast';
 import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
@@ -989,6 +1029,7 @@ import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableColumnSizing_unstable } from '@fluentui/react-table';
+import { useTableCompositeNavigation } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableFeatures } from '@fluentui/react-table';
 import { UseTableFeaturesOptions } from '@fluentui/react-table';
@@ -1016,6 +1057,18 @@ import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useToast_unstable } from '@fluentui/react-toast';
+import { useToastBody_unstable } from '@fluentui/react-toast';
+import { useToastBodyStyles_unstable } from '@fluentui/react-toast';
+import { useToastController } from '@fluentui/react-toast';
+import { useToaster_unstable } from '@fluentui/react-toast';
+import { useToasterStyles_unstable } from '@fluentui/react-toast';
+import { useToastFooter_unstable } from '@fluentui/react-toast';
+import { useToastFooterStyles_unstable } from '@fluentui/react-toast';
+import { useToastStyles_unstable } from '@fluentui/react-toast';
+import { useToastTitle_unstable } from '@fluentui/react-toast';
+import { useToastTitleStyles_unstable } from '@fluentui/react-toast';
+import { useToastTrigger_unstable } from '@fluentui/react-toast';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
@@ -2156,6 +2209,18 @@ export { renderText_unstable }
 
 export { renderTextarea_unstable }
 
+export { renderToast_unstable }
+
+export { renderToastBody_unstable }
+
+export { renderToaster_unstable }
+
+export { renderToastFooter_unstable }
+
+export { renderToastTitle_unstable }
+
+export { renderToastTrigger_unstable }
+
 export { renderToggleButton_unstable }
 
 export { renderToolbar_unstable }
@@ -2523,6 +2588,74 @@ export { title2ClassNames }
 export { Title3 }
 
 export { title3ClassNames }
+
+export { Toast }
+
+export { ToastBody }
+
+export { toastBodyClassNames }
+
+export { ToastBodyProps }
+
+export { ToastBodySlots }
+
+export { ToastBodyState }
+
+export { Toaster }
+
+export { toasterClassNames }
+
+export { ToasterProps }
+
+export { ToasterSlots }
+
+export { ToasterState }
+
+export { ToastFooter }
+
+export { toastFooterClassNames }
+
+export { ToastFooterProps }
+
+export { ToastFooterSlots }
+
+export { ToastFooterState }
+
+export { ToastId }
+
+export { ToastIntent }
+
+export { ToastOffset }
+
+export { ToastPoliteness }
+
+export { ToastPosition }
+
+export { ToastProps }
+
+export { ToastSlots }
+
+export { ToastState }
+
+export { ToastStatus }
+
+export { ToastTitle }
+
+export { toastTitleClassNames }
+
+export { ToastTitleProps }
+
+export { ToastTitleSlots }
+
+export { ToastTitleState }
+
+export { ToastTrigger }
+
+export { ToastTriggerChildProps }
+
+export { ToastTriggerProps }
+
+export { ToastTriggerState }
 
 export { ToggleButton }
 
@@ -3008,6 +3141,8 @@ export { useTableCellStyles_unstable }
 
 export { useTableColumnSizing_unstable }
 
+export { useTableCompositeNavigation }
+
 export { useTableContext }
 
 export { useTableFeatures }
@@ -3061,6 +3196,30 @@ export { useTextareaStyles_unstable }
 export { useTextStyles_unstable }
 
 export { useThemeClassName }
+
+export { useToast_unstable }
+
+export { useToastBody_unstable }
+
+export { useToastBodyStyles_unstable }
+
+export { useToastController }
+
+export { useToaster_unstable }
+
+export { useToasterStyles_unstable }
+
+export { useToastFooter_unstable }
+
+export { useToastFooterStyles_unstable }
+
+export { useToastStyles_unstable }
+
+export { useToastTitle_unstable }
+
+export { useToastTitleStyles_unstable }
+
+export { useToastTrigger_unstable }
 
 export { useToggleButton_unstable }
 

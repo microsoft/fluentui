@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
 import type {
   SortState,
@@ -9,11 +11,10 @@ import type {
   TableColumnId,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
-import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
 
 export type DataGridSlots = TableSlots;
 
-export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
+export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable' | 'composite';
 
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
@@ -51,6 +52,8 @@ export type DataGridContextValue = TableFeaturesState<any> & {
    * Enables column resizing
    */
   resizableColumns?: boolean;
+
+  compositeRowTabsterAttribute: TabsterDOMAttribute;
 };
 
 /**
@@ -92,5 +95,11 @@ export type DataGridProps = TableProps &
  */
 export type DataGridState = TableState & { tableState: TableFeaturesState<unknown> } & Pick<
     DataGridContextValue,
-    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'
+    | 'focusMode'
+    | 'selectableRows'
+    | 'subtleSelection'
+    | 'selectionAppearance'
+    | 'getRowId'
+    | 'resizableColumns'
+    | 'compositeRowTabsterAttribute'
   >;

@@ -3,7 +3,7 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from '../..';
+import { Toaster, ToastTitle, Toast, useToastController, toastClassNames, ToastTrigger } from '../..';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -488,7 +488,7 @@ describe('Toast', () => {
       .should('be.focused');
   });
 
-  it('should revert focus on tab out', () => {
+  it('should revert focus and resume toasts on tab out', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();
       const makeToast = () => {
@@ -525,6 +525,61 @@ describe('Toast', () => {
       .should('be.focused')
       .realPress(['Shift', 'Tab']);
 
-    cy.get('#make').should('be.focused');
+    cy.get('#make').should('be.focused').get('#toast').should('not.exist');
+  });
+
+  it('should resume toasts after dismissing with action', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle
+              action={
+                <ToastTrigger>
+                  <button id="dismiss">dismiss</button>
+                </ToastTrigger>
+              }
+            >
+              This is a toast
+            </ToastTitle>
+          </Toast>,
+          { timeout: 200, root: { id: 'toast' } },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+
+    cy.get('#make')
+      .click()
+      .get('#dismiss')
+      .focus()
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('have.length', 2)
+      .get(`.${toastClassNames.root}`)
+      .should('not.exist');
   });
 });

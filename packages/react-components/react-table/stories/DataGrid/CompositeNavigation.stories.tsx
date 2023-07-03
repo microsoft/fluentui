@@ -91,9 +91,6 @@ const items: Item[] = [
 const columns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
-    compare: (a, b) => {
-      return a.file.label.localeCompare(b.file.label);
-    },
     renderHeaderCell: () => {
       return 'File';
     },
@@ -103,9 +100,6 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
     renderHeaderCell: () => {
       return 'Author';
     },
@@ -123,9 +117,6 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
     renderHeaderCell: () => {
       return 'Last updated';
     },
@@ -136,9 +127,6 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
     renderHeaderCell: () => {
       return 'Last update';
     },
@@ -148,9 +136,9 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const RowNavigation = () => {
+export const CompositeNavigation = () => {
   return (
-    <DataGrid items={items} columns={columns} focusMode="row_unstable">
+    <DataGrid selectionMode="multiselect" items={items} columns={columns} focusMode="composite">
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
@@ -165,19 +153,4 @@ export const RowNavigation = () => {
       </DataGridBody>
     </DataGrid>
   );
-};
-
-RowNavigation.storyName = 'Row Navigation (unstable)';
-RowNavigation.parameters = {
-  docs: {
-    description: {
-      story: [
-        'Different keyboard navigation strategies are supported through  the `focusMode` prop.',
-        '',
-        "> ⚠️ The Fluent UI team doesn't currently know all the a11y specifics of row navigation yet to provide",
-        'accurate guidance for this scenario. Until then, if using the unstable mode of this keyboard navigation',
-        'strategy, the user is responsible for the accessibility of the component.',
-      ].join('\n'),
-    },
-  },
 };

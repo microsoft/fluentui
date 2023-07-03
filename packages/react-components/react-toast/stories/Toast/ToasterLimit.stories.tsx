@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, SpinButton } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  SpinButton,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 export const ToasterLimit = () => {
   const toasterId = useId('toaster');
