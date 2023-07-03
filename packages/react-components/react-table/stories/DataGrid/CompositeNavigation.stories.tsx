@@ -138,7 +138,7 @@ const columns: TableColumnDefinition<Item>[] = [
 
 export const CompositeNavigation = () => {
   return (
-    <DataGrid items={items} columns={columns} focusMode="composite">
+    <DataGrid selectionMode="multiselect" items={items} columns={columns} focusMode="composite">
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}

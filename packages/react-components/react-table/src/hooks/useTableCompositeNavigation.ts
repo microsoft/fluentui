@@ -6,6 +6,7 @@ import {
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
   TabsterDOMAttribute,
+  useFocusFinders,
 } from '@fluentui/react-tabster';
 import { isHTMLElement } from '@fluentui/react-utilities';
 
@@ -17,6 +18,7 @@ export function useTableCompositeNavigation(): {
   const horizontalAttr = useArrowNavigationGroup({ axis: 'horizontal' });
   const gridAttr = useArrowNavigationGroup({ axis: 'grid' });
   const groupperAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+  const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent();
 
   const rowAttr = useMergedTabsterAttributes_unstable(horizontalAttr, groupperAttr);
@@ -34,8 +36,8 @@ export function useTableCompositeNavigation(): {
       const activeElementRole = activeElement.getAttribute('role');
 
       // Enter groupper when in row focus mode to navigate cells
-      if (e.key === ArrowRight && activeElementRole === 'row') {
-        activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: Enter, keyCode: keyCodes.Enter }));
+      if (e.key === ArrowRight && activeElementRole === 'row' && isHTMLElement(activeElement)) {
+        findFirstFocusable(activeElement)?.focus();
       }
 
       if (activeElementRole === 'row') {
@@ -64,7 +66,7 @@ export function useTableCompositeNavigation(): {
         activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, keyCode: e.keyCode }));
       }
     },
-    [targetDocument],
+    [targetDocument, findFirstFocusable],
   );
 
   return {
