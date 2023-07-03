@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Optimizing code for perfromance improvement",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}
