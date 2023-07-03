@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Exporting CSS files in @fluentui/react package.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

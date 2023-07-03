@@ -11,6 +11,7 @@ import {
 } from '@fluentui/react-toast';
 import { Link } from '@fluentui/react-link';
 import { Steps, StoryWright } from 'storywright';
+import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../../utilities/getStoryVariant';
 
 export default {
   title: 'Toast',
@@ -86,6 +87,10 @@ export const FullToast = () => {
   );
 };
 
+export const FullToastDarkMode = getStoryVariant(FullToast, DARK_MODE);
+export const FullToastHighContrastMode = getStoryVariant(FullToast, HIGH_CONTRAST);
+export const FullToastRTL = getStoryVariant(FullToast, RTL);
+
 export const WithoutSubtitle = () => {
   const { dispatchToast } = useToastController();
   const { toastRef, onStatusChange } = useToastScreenshotData();
@@ -114,6 +119,10 @@ export const WithoutSubtitle = () => {
   );
 };
 
+export const WithoutSubtitleDarkMode = getStoryVariant(WithoutSubtitle, DARK_MODE);
+export const WithoutSubtitleHighContrastMode = getStoryVariant(WithoutSubtitle, HIGH_CONTRAST);
+export const WithoutSubtitleRTL = getStoryVariant(WithoutSubtitle, RTL);
+
 export const TitleOnly = () => {
   const { dispatchToast } = useToastController();
   const { toastRef, onStatusChange } = useToastScreenshotData();
@@ -136,3 +145,99 @@ export const TitleOnly = () => {
     </>
   );
 };
+
+export const TitleOnlyDarkMode = getStoryVariant(TitleOnly, DARK_MODE);
+export const TitleOnlyHighContrastMode = getStoryVariant(TitleOnly, HIGH_CONTRAST);
+export const TitleOnlyRTL = getStoryVariant(TitleOnly, RTL);
+
+export const FullToastInverted = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    for (const intent of toastIntents) {
+      dispatchToast(
+        <Toast ref={toastRef} appearance="inverted">
+          <ToastTitle action={<Link>Action</Link>}>This is a toast</ToastTitle>
+          <ToastBody subtitle="This is a toast">This is a toast</ToastBody>
+          <ToastFooter>
+            <Link>Action</Link>
+            <Link>Action</Link>
+          </ToastFooter>
+        </Toast>,
+        {
+          intent,
+          timeout: -1,
+          onStatusChange,
+        },
+      );
+    }
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const FullToastInvertedDarkMode = getStoryVariant(FullToastInverted, DARK_MODE);
+export const FullToastInvertedHighContrastMode = getStoryVariant(FullToastInverted, HIGH_CONTRAST);
+
+export const WithoutSubtitleInverted = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    for (const intent of toastIntents) {
+      dispatchToast(
+        <Toast appearance="inverted" ref={toastRef}>
+          <ToastTitle action={<Link>Action</Link>}>This is a toast</ToastTitle>
+          <ToastBody>This is a toast</ToastBody>
+          <ToastFooter>
+            <Link>Action</Link>
+            <Link>Action</Link>
+          </ToastFooter>
+        </Toast>,
+        { intent, timeout: -1, onStatusChange },
+      );
+    }
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const WithoutSubtitleInvertedDarkMode = getStoryVariant(WithoutSubtitleInverted, DARK_MODE);
+export const WithoutSubtitleInvertedHighContrastMode = getStoryVariant(WithoutSubtitleInverted, HIGH_CONTRAST);
+
+export const TitleOnlyInverted = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    for (const intent of toastIntents) {
+      dispatchToast(
+        <Toast appearance="inverted" ref={toastRef}>
+          <ToastTitle action={<Link>Action</Link>}>This is a toast</ToastTitle>
+        </Toast>,
+        { intent, onStatusChange, timeout: -1 },
+      );
+    }
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const TitleOnlyInvertedDarkMode = getStoryVariant(TitleOnlyInverted, DARK_MODE);
+export const TitleOnlyInvertedHighContrastMode = getStoryVariant(TitleOnlyInverted, HIGH_CONTRAST);

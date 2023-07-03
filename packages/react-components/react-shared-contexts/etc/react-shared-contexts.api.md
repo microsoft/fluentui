@@ -8,6 +8,12 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
+export type BackgroundAppearanceContextValue = 'inverted' | undefined;
+
+// @internal (undocumented)
+export const BackgroundAppearanceProvider: React_2.Provider<BackgroundAppearanceContextValue>;
+
+// @internal (undocumented)
 export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useAccordionHeaderStyles_unstable: CustomStyleHook;
     useAccordionItemStyles_unstable: CustomStyleHook;
@@ -292,6 +298,9 @@ export type OverridesContextValue_unstable = {
 export const OverridesProvider_unstable: React_2.Provider<OverridesContextValue_unstable | undefined>;
 
 // @internal (undocumented)
+export const PortalMountNodeProvider: React_2.Provider<PortalMountNodeContextValue>;
+
+// @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
@@ -325,6 +334,11 @@ export type TooltipVisibilityContextValue_unstable = {
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "useBackgroundAppearance" is marked as @public, but its signature references "BackgroundAppearanceContextValue" which is marked as @internal
+//
+// @public (undocumented)
+export function useBackgroundAppearance(): BackgroundAppearanceContextValue;
+
 // @public
 export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextValue_unstable) => CustomStyleHook;
 
@@ -335,6 +349,9 @@ export function useFluent_unstable(): ProviderContextValue_unstable;
 //
 // @public (undocumented)
 export function useOverrides_unstable(): OverridesContextValue_unstable;
+
+// @public (undocumented)
+export function usePortalMountNode(): PortalMountNodeContextValue;
 
 // @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;

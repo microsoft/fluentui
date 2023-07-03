@@ -1,6 +1,12 @@
 import * as React from 'react';
 import type { DataGridBodyProps, DataGridBodyState } from './DataGridBody.types';
-import { useDataGridBody_unstable as useDataGridBodyBase_unstable, RowRenderFunction } from '@fluentui/react-table';
+import {
+  useDataGridBody_unstable as useDataGridBodyBase_unstable,
+  RowRenderFunction,
+  TableRowData,
+  TableRowIdContextProvider,
+} from '@fluentui/react-table';
+import { TableRowIndexContextProvider } from '../../contexts/rowIndexContext';
 
 /**
  * Create the state required to render DataGridBody.
@@ -18,11 +24,23 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
   const renderRowWithUnknown = children as RowRenderFunction;
   const baseState = useDataGridBodyBase_unstable({ ...props, children: renderRowWithUnknown }, ref);
 
+  const virtualizedRow: DataGridBodyState['virtualizedRow'] = React.useCallback(
+    ({ data, index, style }) => {
+      const row: TableRowData<unknown> = data[index];
+      return (
+        <TableRowIndexContextProvider value={ariaRowIndexStart + index}>
+          <TableRowIdContextProvider value={row.rowId}>{children(row, style)}</TableRowIdContextProvider>
+        </TableRowIndexContextProvider>
+      );
+    },
+    [ariaRowIndexStart, children],
+  );
+
   return {
     ...baseState,
     itemSize,
     height,
-    renderRow: children,
+    virtualizedRow,
     width,
     ariaRowIndexStart,
   };
