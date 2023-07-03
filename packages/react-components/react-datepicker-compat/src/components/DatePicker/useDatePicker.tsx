@@ -30,13 +30,13 @@ function useFocusLogic() {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const preventFocusOpeningPicker = React.useRef(false);
 
-  const focus = () => {
+  const focus = React.useCallback(() => {
     inputRef.current?.focus?.();
-  };
+  }, []);
 
-  const preventNextFocusOpeningPicker = () => {
+  const preventNextFocusOpeningPicker = React.useCallback(() => {
     preventFocusOpeningPicker.current = true;
-  };
+  }, []);
 
   return [focus, inputRef, preventFocusOpeningPicker, preventNextFocusOpeningPicker] as const;
 }
@@ -208,9 +208,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
         focus();
       }
     },
-    // Focus function keeps changing, so we need to skip it in the deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [disableAutoFocus, onOpenChange, setOpenState, props.disabled],
+    [focus, onOpenChange, props.disabled, setOpenState],
   );
 
   const dismissDatePickerPopup = React.useCallback(
