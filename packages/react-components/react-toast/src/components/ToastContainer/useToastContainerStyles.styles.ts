@@ -87,7 +87,7 @@ export const useToastContainerStyles_unstable = (state: ToastContainerState): To
   state.root.className = mergeClasses(
     toastClassNames.root,
     rootBaseClassName,
-    state.visible ? styles.enter : styles.exit,
+    state.motionVisible ? styles.enter : styles.exit,
     state.root.className,
   );
 
