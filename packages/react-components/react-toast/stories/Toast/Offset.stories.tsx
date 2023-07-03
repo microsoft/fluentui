@@ -1,6 +1,18 @@
 import * as React from 'react';
-import { ToastPosition, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, SpinButton, RadioGroup, Radio, makeStyles } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  SpinButton,
+  RadioGroup,
+  Radio,
+  makeStyles,
+  ToastPosition,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   playground: {
