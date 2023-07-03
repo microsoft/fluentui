@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 03 Jul 2023 11:57:11 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2023 13:34:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.25.0)
+
+Mon, 03 Jul 2023 13:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.24.0..@fluentui/react-components_v9.25.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Export useTableCompositeNavigation hook ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by lingfan.gao@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Implement composite navigation for Table and DataGrid ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: Implmenent useMergeTabsterAttributes_unstable ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: menu item disabled style ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by kakrookaran@gmail.com)
 
 ## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.24.0)
 

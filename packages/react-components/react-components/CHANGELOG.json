@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 13:34:27 GMT",
+      "tag": "@fluentui/react-components_v9.25.0",
+      "version": "9.25.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Export useTableCompositeNavigation hook"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Implement composite navigation for Table and DataGrid"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Implmenent useMergeTabsterAttributes_unstable"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd",
+            "comment": "fix: menu item disabled style"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 11:57:11 GMT",
       "tag": "@fluentui/react-components_v9.24.0",
       "version": "9.24.0",

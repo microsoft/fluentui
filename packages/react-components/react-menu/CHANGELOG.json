@@ -2,6 +2,33 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 13:34:27 GMT",
+      "tag": "@fluentui/react-menu_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd",
+            "comment": "fix: menu item disabled style"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.3.1",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.10.0",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 11:57:12 GMT",
       "tag": "@fluentui/react-menu_v9.9.0",
       "version": "9.9.0",

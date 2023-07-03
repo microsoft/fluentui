@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 03 Jul 2023 11:57:12 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2023 13:34:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.9.1)
+
+Mon, 03 Jul 2023 13:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.9.0..@fluentui/react-menu_v9.9.1)
+
+### Patches
+
+- fix: menu item disabled style ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by kakrookaran@gmail.com)
+- Bump @fluentui/react-portal to v9.3.1 ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by beachball)
+- Bump @fluentui/react-tabster to v9.10.0 ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by beachball)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.9.0)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 13:34:28 GMT",
+      "tag": "@fluentui/react-button_v9.3.22",
+      "version": "9.3.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.10.0",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 11:57:14 GMT",
       "tag": "@fluentui/react-button_v9.3.21",
       "version": "9.3.21",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export useTableCompositeNavigation hook",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
