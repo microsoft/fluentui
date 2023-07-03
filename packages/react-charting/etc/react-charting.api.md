@@ -141,6 +141,7 @@ export interface IAccessibilityProps {
 export interface IAreaChartProps extends ICartesianChartProps {
     culture?: string;
     data: IChartProps;
+    enablePerfOptimization?: boolean;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
