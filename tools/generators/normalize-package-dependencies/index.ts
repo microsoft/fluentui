@@ -143,7 +143,6 @@ function getPackageJsonDependenciesIssues(
   projectConfig: ProjectConfiguration,
   graph: ProjectGraph,
 ): Record<string, string> | null {
-  // const projectDependencies = getDependentPackagesForProject(graph, projectConfig.name!);
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
   const packageJson = readJson<PackageJson>(tree, packageJsonPath);
