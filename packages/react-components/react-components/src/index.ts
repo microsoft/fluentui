@@ -965,6 +965,7 @@ export {
   useTableFeatures,
   useTableSelection,
   useTableSort,
+  useTableCompositeNavigation,
   createTableColumn,
   DataGridCell,
   dataGridCellClassNames,

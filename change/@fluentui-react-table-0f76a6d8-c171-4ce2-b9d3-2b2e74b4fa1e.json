@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Implement composite navigation for Table and DataGrid",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
