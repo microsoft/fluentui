@@ -281,20 +281,21 @@ export class DetailsHeaderBase
             ]
           : null}
         {showGroupExpander ? (
-          <div
-            className={classNames.cellIsGroupExpander}
-            onClick={this._onToggleCollapseAll}
-            data-is-focusable={true}
-            aria-label={ariaLabelForToggleAllGroupsButton}
-            aria-expanded={!isAllCollapsed}
-            role="columnheader"
-          >
-            <IconComponent
-              className={classNames.collapseButton}
-              iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
-            />
-            {/* Use this span in addition to aria-label, otherwise VoiceOver ignores the column */}
-            <span className={classNames.accessibleLabel}>{ariaLabelForToggleAllGroupsButton}</span>
+          <div role="columnheader" className={classNames.cellIsGroupExpander}>
+            <div
+              onClick={this._onToggleCollapseAll}
+              data-is-focusable={true}
+              aria-label={ariaLabelForToggleAllGroupsButton}
+              aria-expanded={!isAllCollapsed}
+              role="button"
+            >
+              <IconComponent
+                className={classNames.collapseButton}
+                iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
+              />
+              {/* Use this span in addition to aria-label, otherwise VoiceOver ignores the column */}
+              <span className={classNames.accessibleLabel}>{ariaLabelForToggleAllGroupsButton}</span>
+            </div>
           </div>
         ) : hasGroupExpander ? (
           <div className={classNames.cellIsGroupExpander} data-is-focusable={false} role="columnheader">
