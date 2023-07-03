@@ -1,10 +1,37 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, addProjectConfiguration, writeJson, getProjects, readJson, joinPathFragments } from '@nrwl/devkit';
+import {
+  Tree,
+  addProjectConfiguration,
+  writeJson,
+  getProjects,
+  readJson,
+  joinPathFragments,
+  ProjectGraph,
+  readProjectConfiguration,
+  updateJson,
+} from '@nrwl/devkit';
 import * as chalk from 'chalk';
 
 import generator from './index';
 import { PackageJson } from '../../types';
 import { disableChalk } from '../../utils-testing';
+
+const graphMock: ProjectGraph = {
+  dependencies: {},
+  nodes: {},
+  externalNodes: {},
+};
+
+jest.mock('@nrwl/devkit', () => {
+  async function createProjectGraphAsyncMock(): Promise<ProjectGraph> {
+    return graphMock;
+  }
+
+  return {
+    ...jest.requireActual('@nrwl/devkit'),
+    createProjectGraphAsync: createProjectGraphAsyncMock,
+  };
+});
 
 describe('normalize-package-dependencies generator', () => {
   let tree: Tree;
@@ -28,6 +55,11 @@ describe('normalize-package-dependencies generator', () => {
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
+      projectName: 'react-three',
+      deps: { dev: {}, prod: { react: '17.x.x', '@proj/react-two': '^1.0.0' }, peer: {} },
+      tags: ['platform:any', 'scope:two'],
+    });
+    tree = createProject(tree, {
       projectName: 'react-app',
       projectType: 'application',
       deps: { dev: {}, prod: { react: '17.x.x', '@proj/react-one': '^1.0.0', '@proj/react-two': '^1.0.0' }, peer: {} },
@@ -36,14 +68,22 @@ describe('normalize-package-dependencies generator', () => {
   });
 
   it(`should update workspace dependencies to "*" for version`, async () => {
+    // this tests that dependency which has different major version (thus is installed from npm) will not be updated to '*'
+    addNonWorkspaceDependency(tree, '@proj/react-three', { pkgName: '@proj/react-one', pkgVersion: '^0.1.0' });
+
     await generator(tree, {});
 
-    const { reactApp, reactOne, reactTwo } = getPackageJsonForAllProjects(tree);
+    const { reactApp, reactOne, reactTwo, reactThree } = getPackageJsonForAllProjects(tree);
 
     expect(reactOne.dependencies).toEqual({ react: '17.x.x' });
     expect(reactTwo.dependencies).toEqual({
       react: '17.x.x',
       '@proj/react-one': '*',
+    });
+    expect(reactThree.dependencies).toEqual({
+      react: '17.x.x',
+      '@proj/react-one': '^0.1.0',
+      '@proj/react-two': '*',
     });
     expect(reactApp.dependencies).toEqual({
       react: '17.x.x',
@@ -148,6 +188,8 @@ describe('normalize-package-dependencies generator', () => {
         Array [
           "@proj/react-two has following dependency version issues:",
           "  - @proj/react-one",
+          "@proj/react-three has following dependency version issues:",
+          "  - @proj/react-two",
           "@proj/react-app has following dependency version issues:",
           "  - @proj/react-one",
           "  - @proj/react-two",
@@ -197,11 +239,13 @@ function getPackageJsonForAllProjects(tree: Tree) {
 
   const reactOne = projects.get('@proj/react-one');
   const reactTwo = projects.get('@proj/react-two');
+  const reactThree = projects.get('@proj/react-three');
   const reactApp = projects.get('@proj/react-app');
 
   return {
     reactOne: readJson<PackageJson>(tree, joinPathFragments(reactOne!.root, 'package.json')),
     reactTwo: readJson<PackageJson>(tree, joinPathFragments(reactTwo!.root, 'package.json')),
+    reactThree: readJson<PackageJson>(tree, joinPathFragments(reactThree!.root, 'package.json')),
     reactApp: readJson<PackageJson>(tree, joinPathFragments(reactApp!.root, 'package.json')),
   };
 }
@@ -232,5 +276,39 @@ function createProject(
     projectType,
     ...(tags ? { tags } : null),
   });
+
+  const depKeys = [...Object.keys(deps.prod), ...Object.keys(deps.dev), ...Object.keys(deps.peer)];
+
+  graphMock.dependencies[packageName] = depKeys.map(value => {
+    return { source: packageName, target: value, type: 'static' };
+  });
+  graphMock.nodes[packageName] = {
+    name: packageName,
+    type: projectType === 'library' ? 'lib' : 'app',
+    data: { name: packageName, root: rootPath, files: [] },
+  };
+
+  return tree;
+}
+
+function addNonWorkspaceDependency(
+  tree: Tree,
+  projectName: string,
+  dependency: { pkgName: string; pkgVersion: string },
+) {
+  const project = readProjectConfiguration(tree, projectName);
+  updateJson(tree, joinPathFragments(project.root, 'package.json'), json => {
+    json.dependencies = json.dependencies ?? {};
+    json.dependencies[dependency.pkgName] = dependency.pkgVersion;
+
+    return json;
+  });
+
+  graphMock.dependencies[projectName].push({
+    source: projectName,
+    target: `npm:${dependency.pkgName}`,
+    type: 'static',
+  });
+
   return tree;
 }

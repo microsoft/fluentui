@@ -5,9 +5,10 @@ import {
   ProjectConfiguration,
   updateJson,
   joinPathFragments,
-  readProjectConfiguration,
   readJson,
   logger,
+  createProjectGraphAsync,
+  ProjectGraph,
 } from '@nrwl/devkit';
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';
@@ -21,6 +22,8 @@ type NormalizedSchema = ReturnType<typeof normalizeOptions>;
 export default async function (tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, schema);
 
+  const graph = await createProjectGraphAsync();
+
   const filters = getActiveFilters(normalizedOptions);
   const projects = getProjects(tree);
   const issues: ProjectIssues = {};
@@ -31,7 +34,7 @@ export default async function (tree: Tree, schema: NormalizePackageDependenciesG
     }
 
     if (normalizedOptions.verify) {
-      const foundIssues = getPackageJsonDependenciesIssues(tree, projectConfig);
+      const foundIssues = getPackageJsonDependenciesIssues(tree, projectConfig, graph);
 
       if (foundIssues) {
         issues[projectConfig.name!] = foundIssues;
@@ -39,7 +42,7 @@ export default async function (tree: Tree, schema: NormalizePackageDependenciesG
       return;
     }
 
-    normalizePackageJsonDependencies(tree, projectConfig);
+    normalizePackageJsonDependencies(tree, projectConfig, graph);
   });
 
   reportPackageJsonDependenciesIssues(issues);
@@ -86,7 +89,9 @@ function shouldBeProjectProcessed(projectConfig: ProjectConfiguration, filters: 
   return true;
 }
 
-function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConfiguration) {
+function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConfiguration, graph: ProjectGraph) {
+  // const projectDependencies = getDependentPackagesForProject(graph, projectConfig.name!);
+  const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
 
   updateJson(tree, packageJsonPath, json => {
@@ -105,7 +110,7 @@ function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConf
     }
 
     for (const packageName in deps) {
-      if (isWorkspaceProject(tree, packageName)) {
+      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies)) {
         deps[packageName] = '*';
       }
     }
@@ -136,7 +141,10 @@ function reportPackageJsonDependenciesIssues(issues: ProjectIssues) {
 function getPackageJsonDependenciesIssues(
   tree: Tree,
   projectConfig: ProjectConfiguration,
+  graph: ProjectGraph,
 ): Record<string, string> | null {
+  // const projectDependencies = getDependentPackagesForProject(graph, projectConfig.name!);
+  const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
   const packageJson = readJson<PackageJson>(tree, packageJsonPath);
 
@@ -154,7 +162,7 @@ function getPackageJsonDependenciesIssues(
     }
 
     for (const packageName in deps) {
-      if (isWorkspaceProject(tree, packageName) && deps[packageName] !== '*') {
+      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies) && deps[packageName] !== '*') {
         issues = issues ?? {};
         issues[packageName] = deps[packageName];
       }
@@ -164,13 +172,23 @@ function getPackageJsonDependenciesIssues(
   }
 }
 
-function isWorkspaceProject(tree: Tree, projectName: string): boolean {
-  try {
-    readProjectConfiguration(tree, projectName);
-    return true;
-  } catch {
+function getProjectDependenciesFromGraph(projectName: string, graph: ProjectGraph): string[] {
+  const projectDeps = graph.dependencies[projectName];
+  return projectDeps.map(value => value.target);
+}
+
+function isProjectDependencyAnWorkspaceProject(
+  graph: ProjectGraph,
+  dependencyName: string,
+  projectDependenciesFromGraph: string[],
+) {
+  const projectDeps = graph.dependencies[dependencyName];
+
+  if (!projectDeps) {
     return false;
   }
+
+  return projectDependenciesFromGraph.indexOf(dependencyName) !== -1;
 }
 
 function normalizeOptions(tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
