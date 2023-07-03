@@ -67,7 +67,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '1'
+      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
@@ -129,7 +129,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
+      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
@@ -191,7 +191,7 @@ jobs:
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '1'
+      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
