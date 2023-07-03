@@ -38,19 +38,17 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
   }, []);
 
   const pauseAllToasts = React.useCallback(() => {
-    const visibleToasts = Array.from(toaster.visibleToasts.values());
-    for (const toastId of visibleToasts) {
+    toaster.visibleToasts.forEach(toastId => {
       const toast = toaster.toasts.get(toastId);
       toast?.imperativeRef.current?.pause();
-    }
+    });
   }, [toaster]);
 
   const playAllToasts = React.useCallback(() => {
-    const visibleToasts = Array.from(toaster.visibleToasts.values());
-    for (const toastId of visibleToasts) {
+    toaster.visibleToasts.forEach(toastId => {
       const toast = toaster.toasts.get(toastId);
       toast?.imperativeRef.current?.play();
-    }
+    });
   }, [toaster]);
 
   const getMostRecentVisibleToast = React.useCallback(() => {
