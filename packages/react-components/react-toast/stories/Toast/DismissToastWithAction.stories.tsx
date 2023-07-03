@@ -26,7 +26,7 @@ export const DismissToastWithAction = () => {
           Dismiss me
         </ToastTitle>
       </Toast>,
-      { timeout: -1, intent: 'success' },
+      { intent: 'success' },
     );
 
   return (
