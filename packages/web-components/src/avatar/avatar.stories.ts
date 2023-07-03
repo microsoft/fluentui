@@ -89,13 +89,6 @@ export const Icon = renderComponent(html<AvatarStoryArgs>`
       ></path></svg
   ></fluent-avatar>
 `);
-Icon.parameters = {
-  docs: {
-    description: {
-      story: 'An avatar can display an icon. The icon will only be shown when there is no image or initials available.',
-    },
-  },
-};
 
 export const Badge = renderComponent(html<AvatarStoryArgs>` <fluent-avatar name="Lydia Bauer"
   ><fluent-badge slot="badge" size="extra-small"></fluent-badge

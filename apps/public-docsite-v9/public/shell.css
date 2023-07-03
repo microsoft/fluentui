@@ -56,7 +56,8 @@
   background: transparent;
 }
 
-/* remove 10px top space added to the main right hand side by Storybook */
+/* remove Storybook's 10px top on the main (right hand side) of the docs */
+/* this affects only whitespace in React v9 docs, but the theme switcher in Web Components */
 [role='main'] {
   top: 0 !important;
 }
