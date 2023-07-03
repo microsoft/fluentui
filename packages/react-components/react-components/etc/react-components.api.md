@@ -443,6 +443,7 @@ import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
+import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
@@ -986,6 +987,7 @@ import { usePopoverSurface_unstable } from '@fluentui/react-popover';
 import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
+import { usePortalMountNode } from '@fluentui/react-shared-contexts';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
@@ -1965,6 +1967,8 @@ export { PopoverTriggerProps }
 export { PopoverTriggerState }
 
 export { Portal }
+
+export { PortalMountNodeProvider }
 
 export { PortalProps }
 
@@ -3051,6 +3055,8 @@ export { usePopoverSurfaceStyles_unstable }
 export { usePopoverTrigger_unstable }
 
 export { usePortal_unstable }
+
+export { usePortalMountNode }
 
 export { usePresenceBadge_unstable }
 

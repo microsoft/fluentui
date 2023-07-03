@@ -89,6 +89,8 @@ export {
   useFluent_unstable as useFluent,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
+  PortalMountNodeProvider,
+  usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,

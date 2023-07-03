@@ -35,7 +35,7 @@ const useActionBaseClassName = makeResetStyles({
 
 const useInvertedStyles = makeStyles({
   root: {
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundInverted2,
   },
 
   action: {

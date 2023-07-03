@@ -298,6 +298,9 @@ export type OverridesContextValue_unstable = {
 export const OverridesProvider_unstable: React_2.Provider<OverridesContextValue_unstable | undefined>;
 
 // @internal (undocumented)
+export const PortalMountNodeProvider: React_2.Provider<PortalMountNodeContextValue>;
+
+// @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
@@ -346,6 +349,9 @@ export function useFluent_unstable(): ProviderContextValue_unstable;
 //
 // @public (undocumented)
 export function useOverrides_unstable(): OverridesContextValue_unstable;
+
+// @public (undocumented)
+export function usePortalMountNode(): PortalMountNodeContextValue;
 
 // @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;
