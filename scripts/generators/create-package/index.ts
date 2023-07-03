@@ -1,7 +1,7 @@
 import { spawnSync } from 'child_process';
 import * as path from 'path';
 
-import { PackageJson, findGitRoot, getProjectMetadata, tree } from '@fluentui/scripts-monorepo';
+import { PackageJson, findGitRoot, flushTreeChanges, getProjectMetadata, tree } from '@fluentui/scripts-monorepo';
 import { addProjectConfiguration } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
@@ -295,4 +295,6 @@ function updateNxProject(_answers: Answers, config: { projectName: string; proje
     projectType: 'library',
     implicitDependencies: [],
   });
+
+  flushTreeChanges();
 }
