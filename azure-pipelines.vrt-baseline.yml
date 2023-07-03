@@ -34,9 +34,8 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
-          VR_APP_API_URL: 'https://vrapprovalfunction-prod.azurewebsites.net/api/'
-          # VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)
 
   - job: VRToolUpdateBaseline_V8
     workspace:
@@ -57,9 +56,8 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
-          VR_APP_API_URL: 'https://vrapprovalfunction-prod.azurewebsites.net/api/'
-          # VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)
 
   - job: VRToolUpdateBaseline_V0
     workspace:
@@ -80,6 +78,5 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: '288a69b6-760d-4c1f-ad6d-0183b5e5740f'
-          VR_APP_API_URL: 'https://vrapprovalfunction-prod.azurewebsites.net/api/'
-          # VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)
