@@ -154,7 +154,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   iconOnly?: boolean;
 
   /**
-   * Props for the tooltip when in `iconOnly` mode.
+   * Props for the tooltip.
    */
   tooltipHostProps?: ITooltipHostProps;
 
