@@ -22,7 +22,7 @@ export { FocusKeyboardShortcut } from './FocusKeyboardShortcut.stories';
 import descriptionMd from './ToastDescription.md';
 
 export default {
-  title: 'Preview Components/Toast',
+  title: 'Components/Toast',
   component: Toast,
   subcomponents: {
     ToastTitle,
