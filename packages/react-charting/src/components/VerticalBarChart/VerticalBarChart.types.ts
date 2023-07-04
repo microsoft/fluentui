@@ -91,43 +91,43 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   chartLabel?: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisText?: IStyle;
 
   /**
    * Style for the line representing the domain of the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisText?: IStyle;
 
