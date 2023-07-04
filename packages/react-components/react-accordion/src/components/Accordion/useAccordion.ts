@@ -30,8 +30,9 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
   });
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
-    onToggle?.(event, data);
-    setOpenItems(previousOpenItems => updateOpenItems(data.value, previousOpenItems, multiple, collapsible));
+    const currentOpenItems = updateOpenItems(data.value, openItems, multiple, collapsible);
+    onToggle?.(event, { value: data.value, openItems: currentOpenItems });
+    setOpenItems(currentOpenItems);
   });
 
   return {

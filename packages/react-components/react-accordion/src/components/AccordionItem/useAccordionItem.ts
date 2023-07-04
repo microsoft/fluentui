@@ -18,7 +18,7 @@ export const useAccordionItem_unstable = (
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
   const open = useAccordionContext_unstable(ctx => ctx.openItems.includes(value));
   const onAccordionHeaderClick = React.useCallback(
-    (ev: AccordionToggleEvent) => requestToggle(ev, { value }),
+    (ev: AccordionToggleEvent) => requestToggle(ev, { value, openItems: [] }),
     [requestToggle, value],
   );
 
@@ -30,7 +30,7 @@ export const useAccordionItem_unstable = (
       root: 'div',
     },
     root: getNativeElementProps('div', {
-      ref: ref,
+      ref,
       ...props,
     }),
   };

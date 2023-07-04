@@ -159,6 +159,7 @@ export type AccordionState = ComponentState<AccordionSlots> & AccordionContextVa
 // @public (undocumented)
 export type AccordionToggleData = {
     value: AccordionItemValue;
+    openItems: AccordionItemValue[];
 };
 
 // @public (undocumented)

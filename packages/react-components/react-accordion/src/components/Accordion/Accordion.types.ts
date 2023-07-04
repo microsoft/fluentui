@@ -31,6 +31,7 @@ export type AccordionSlots = {
 
 export type AccordionToggleData = {
   value: AccordionItemValue;
+  openItems: AccordionItemValue[];
 };
 
 export type AccordionProps = ComponentProps<AccordionSlots> & {
