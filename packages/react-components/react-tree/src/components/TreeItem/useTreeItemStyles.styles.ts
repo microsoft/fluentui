@@ -22,14 +22,9 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     cursor: 'pointer',
-    display: 'grid',
+    display: 'flex',
+    flexDirection: 'column',
     boxSizing: 'border-box',
-    gridTemplateRows: 'auto auto',
-    gridTemplateColumns: 'minmax(0, 100%) minmax(0px, min-content)',
-    gridTemplateAreas: `
-    "layout  aside"
-    "subtree subtree"
-    `,
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     paddingRight: tokens.spacingHorizontalNone,

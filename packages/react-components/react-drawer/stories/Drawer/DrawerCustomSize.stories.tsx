@@ -54,7 +54,7 @@ export const CustomSize = () => {
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>
-          Toggle Drawer
+          Open Drawer
         </Button>
 
         <div className={styles.field}>
@@ -69,4 +69,12 @@ export const CustomSize = () => {
       </div>
     </div>
   );
+};
+
+CustomSize.parameters = {
+  docs: {
+    description: {
+      story: 'The Drawer can be sized to any custom width, by overriding the `width` style property.',
+    },
+  },
 };

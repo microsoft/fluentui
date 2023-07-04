@@ -11,12 +11,12 @@ export type TreeContextValue = {
   /**
    * requests root Tree component to respond to some tree item event,
    */
-  requestTreeResponse(request: TreeItemRequest<unknown>): void;
+  requestTreeResponse(request: TreeItemRequest): void;
 };
 
-export type TreeItemRequest<Value> = { itemType: TreeItemType } & (
-  | OmitWithoutExpanding<TreeOpenChangeData<Value>, 'open' | 'target'>
-  | OmitWithoutExpanding<TreeNavigationData_unstable<Value>, 'target'>
+export type TreeItemRequest = { itemType: TreeItemType } & (
+  | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'target'>
+  | OmitWithoutExpanding<TreeNavigationData_unstable, 'target'>
 );
 
 // helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit

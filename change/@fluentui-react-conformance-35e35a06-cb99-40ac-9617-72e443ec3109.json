@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING CHANGE: migrate package to v9 setup in order to be able to run generate-api task without build",
-  "packageName": "@fluentui/react-conformance",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added support for custom divider",
-  "packageName": "@fluentui/react-overflow",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

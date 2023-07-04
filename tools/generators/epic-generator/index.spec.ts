@@ -1,5 +1,5 @@
 import { addProjectConfiguration, ProjectType, stripIndents, writeJson } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { execSync, spawnSync, SpawnSyncReturns } from 'child_process';
 import { workspacePaths } from '../../utils';
 import epicGenerator from './index';
@@ -16,7 +16,7 @@ type Package = {
 };
 
 function setupTest(packages: Package[]) {
-  const tree = createTreeWithEmptyV1Workspace();
+  const tree = createTreeWithEmptyWorkspace();
 
   // Initialize NX package structure
   packages.forEach(pckg => {
@@ -80,7 +80,7 @@ function setupTest(packages: Package[]) {
 describe('epic-generator', () => {
   describe('validation', () => {
     it('requires a non-empty title', () => {
-      const tree = createTreeWithEmptyV1Workspace();
+      const tree = createTreeWithEmptyWorkspace();
 
       expect(() =>
         epicGenerator(tree, { title: ' ', repository: 'microsoft/fluentui' }),
@@ -88,7 +88,7 @@ describe('epic-generator', () => {
     });
 
     it('requires a well formatted repository', () => {
-      const tree = createTreeWithEmptyV1Workspace();
+      const tree = createTreeWithEmptyWorkspace();
 
       expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }))
         .toThrowErrorMatchingInlineSnapshot(`
@@ -103,7 +103,7 @@ describe('epic-generator', () => {
       spawnSyncMock.mockReturnValueOnce({
         error: new Error('command not found.'),
       });
-      const tree = createTreeWithEmptyV1Workspace();
+      const tree = createTreeWithEmptyWorkspace();
 
       expect(() => epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui' }))
         .toThrowErrorMatchingInlineSnapshot(`
@@ -117,7 +117,7 @@ describe('epic-generator', () => {
         output: [['You are not logged into any GitHub hosts. Run gh auth login to authenticate.']],
       });
 
-      const tree = createTreeWithEmptyV1Workspace();
+      const tree = createTreeWithEmptyWorkspace();
 
       expect(() =>
         epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui' }),
