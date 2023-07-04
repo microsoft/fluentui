@@ -96,6 +96,7 @@ function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConf
   updateJson(tree, packageJsonPath, json => {
     updateDepType(json, 'dependencies');
     updateDepType(json, 'devDependencies');
+    updateDepType(json, 'peerDependencies');
 
     return json;
   });
