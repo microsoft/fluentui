@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feature: implements new slot methods (slot and assertSlots)",
+  "comment": "feat: implement new slot methods (slot and assertSlots)",
   "packageName": "@fluentui/react-utilities",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
