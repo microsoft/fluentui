@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: removes default prevention verification on selection",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

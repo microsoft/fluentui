@@ -4,6 +4,7 @@ export {
   useTableSort,
   createTableColumn,
   useTableColumnSizing_unstable,
+  useTableCompositeNavigation,
 } from './hooks';
 
 export type {

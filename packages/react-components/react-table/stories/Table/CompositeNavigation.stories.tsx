@@ -11,8 +11,6 @@ import {
 import {
   PresenceBadgeStatus,
   Avatar,
-  Button,
-  useArrowNavigationGroup,
   TableBody,
   TableCell,
   TableRow,
@@ -20,6 +18,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
+  useTableCompositeNavigation,
 } from '@fluentui/react-components';
 
 const items = [
@@ -68,26 +67,33 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const RowNavigation = () => {
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+export const CompositeNavigation = () => {
+  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
 
   return (
-    <Table {...keyboardNavAttr} role="grid" aria-label="Table with grid keyboard navigation">
+    <Table
+      role="grid"
+      aria-label="Table with grid keyboard navigation"
+      noNativeElements
+      onKeyDown={onTableKeyDown}
+      {...tableTabsterAttribute}
+    >
       <TableHeader>
         <TableRow>
           {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+            <TableHeaderCell tabIndex={0} key={column.columnKey}>
+              {column.label}
+            </TableHeaderCell>
           ))}
-          <TableHeaderCell />
         </TableRow>
       </TableHeader>
       <TableBody>
         {items.map(item => (
-          <TableRow tabIndex={0} key={item.file.label}>
+          <TableRow tabIndex={0} key={item.file.label} {...tableRowTabsterAttribute}>
             <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell role="gridcell">
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout
                 media={
                   <Avatar
@@ -100,14 +106,11 @@ export const RowNavigation = () => {
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell role="gridcell">{item.lastUpdated.label}</TableCell>
-            <TableCell role="gridcell">
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            <TableCell tabIndex={0} role="gridcell">
+              {item.lastUpdated.label}
             </TableCell>
-            <TableCell role="gridcell">
-              <TableCellLayout>
-                <Button icon={<EditRegular />}>Edit</Button>
-              </TableCellLayout>
+            <TableCell tabIndex={0} role="gridcell">
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>
         ))}
@@ -115,17 +118,13 @@ export const RowNavigation = () => {
     </Table>
   );
 };
-
-RowNavigation.storyName = 'Row Navigation (unstable)';
-RowNavigation.parameters = {
+CompositeNavigation.parameters = {
   docs: {
     description: {
       story: [
         'Different keyboard navigation strategies are supported through  the `focusMode` prop.',
-        '',
-        "> ⚠️ The Fluent UI team doesn't currently know know all the a11y specifics of row navigation yet to provide",
-        'accurate guidance for this scenario. Until then, if using the unstable mode of this keyboard navigation',
-        'strategy, the user is responsible for the accessibility of the component.',
+        'Composite navigation combines row focus and cell focus. By default the user navigates the table',
+        'by row. When the user presses the right arrow key, focus mode switches to cells of the current row.',
       ].join('\n'),
     },
   },
