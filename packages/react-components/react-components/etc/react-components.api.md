@@ -973,7 +973,6 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import { useObservedElement } from '@fluentui/react-tabster';
-import { useOnMenuMouseEnter } from '@fluentui/react-menu';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
@@ -3029,8 +3028,6 @@ export { useModalAttributes }
 export { UseModalAttributesOptions }
 
 export { useObservedElement }
-
-export { useOnMenuMouseEnter }
 
 export { useOption_unstable }
 

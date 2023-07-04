@@ -462,7 +462,6 @@ export {
   useMenuListContext_unstable,
   useMenuListContextValues_unstable,
   useMenuListStyles_unstable,
-  useOnMenuMouseEnter,
   useMenuPopover_unstable,
   useMenuPopoverStyles_unstable,
   useMenuSplitGroup_unstable,
