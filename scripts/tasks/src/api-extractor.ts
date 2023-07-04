@@ -76,8 +76,8 @@ export function apiExtractor(): TaskFunction {
       taskName,
 
       apiExtractorVerifyTask({
-        showVerboseMessages: true,
-        showDiagnostics: true,
+        showVerboseMessages: args.verbose,
+        showDiagnostics: args.diagnostics,
         typescriptCompilerFolder: args['typescript-compiler-folder'],
         configJsonFilePath: args.config ?? configPath,
         localBuild: isLocalBuild,

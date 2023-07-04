@@ -501,7 +501,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * To enable callout for individualbar or complete stack. Using for only Vertical stacked bar chart.
    * @default false
-   * @type {boolean}
+   * @type \{boolean \}
    */
   isCalloutForStack?: boolean;
 
