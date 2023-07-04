@@ -70,7 +70,6 @@ function getActiveFilters(options: NormalizedSchema) {
 
   return {
     hasActive: activeCount > 0,
-    hasActiveMultiple: activeCount > 1,
     filters: active,
   };
 }
@@ -78,12 +77,8 @@ function getActiveFilters(options: NormalizedSchema) {
 function shouldBeProjectProcessed(projectConfig: ProjectConfiguration, filters: ReturnType<typeof getActiveFilters>) {
   const filterPredicates = Object.values(filters.filters);
 
-  if (filters.hasActiveMultiple) {
-    return filterPredicates.every(predicate => predicate(projectConfig));
-  }
-
   if (filters.hasActive) {
-    return filterPredicates.some(predicate => predicate(projectConfig));
+    return filterPredicates.every(predicate => predicate(projectConfig));
   }
 
   return true;
