@@ -398,11 +398,10 @@
     "peer": false,
     "source": [
       "package.json",
-      "apps/!(react-18-tests-v8|react-18-tests-v9)/package.json",
+      "packages/*/package.json",
       "packages/web-components/package.json",
       "packages/react-components/*/package.json",
-      "packages/fluentui/*/package.json",
-      "scripts/package.json"
+      "packages/fluentui/!(e2e|docs|circulars-test|local-sandbox|perf-test-northstar|perf|projects-test)/package.json"
     ],
     "versionGroups": [
       {
@@ -458,34 +457,11 @@
       },
       {
         "packages": [
-          "@fluentui/accessibility",
-          "@fluentui/code-sandbox",
-          "@fluentui/docs-components",
-          "@fluentui/docs",
-          "@fluentui/e2e",
-          "@fluentui/perf",
-          "@fluentui/perf-test-northstar",
-          "@fluentui/react-component-event-listener",
-          "@fluentui/react-component-nesting-registry",
-          "@fluentui/react-component-ref",
-          "@fluentui/react-icons-northstar",
-          "@fluentui/react-northstar-fela-renderer",
-          "@fluentui/react-northstar-styles-renderer",
-          "@fluentui/react-proptypes",
-          "@fluentui/react-telemetry",
           "@fluentui/react-bindings",
-          "@fluentui/react-builder",
-          "@fluentui/react-northstar",
-          "@fluentui/react-northstar-prototypes",
-          "@fluentui/state",
-          "@fluentui/styles"
+          "@fluentui/react-northstar"
         ],
         "dependencies": [
-          "@fluentui/a11y-testing",
-          "@fluentui/dom-utilities",
-          "@fluentui/react",
-          "@fluentui/react-conformance",
-          "stylis"
+          "@fluentui/dom-utilities"
         ]
       },
       {
@@ -514,14 +490,6 @@
           "workspace-tools",
           "ci-info",
           "node-fetch"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/react-conformance-griffel"
-        ],
-        "dependencies": [
-          "@fluentui/react-conformance"
         ]
       }
     ]
