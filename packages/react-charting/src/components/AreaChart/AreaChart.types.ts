@@ -59,12 +59,6 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Optimize area chart rendering for large data set.
    */
   optimizeLargeData?: boolean;
-
-  /**
-   * @default false
-   * The prop used to enable the perf optimization
-   */
-  enablePerfOptimization?: boolean;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}
