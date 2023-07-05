@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 28 Jun 2023 11:12:35 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2023 11:57:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.10.1)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.10.0..@fluentui/react-utilities_v9.10.1)
+
+### Patches
+
+- bugfix: removes default prevention verification on selection ([PR #28365](https://github.com/microsoft/fluentui/pull/28365) by bernardo.sunderhus@gmail.com)
+- chore: adds internal tag on jsdoc for getSlotsNext ([PR #28348](https://github.com/microsoft/fluentui/pull/28348) by bernardo.sunderhus@gmail.com)
 
 ## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.10.0)
 

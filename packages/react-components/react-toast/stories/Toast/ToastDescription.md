@@ -1,16 +1,3 @@
-<!-- Don't allow prettier to collapse code block into single line -->
-<!-- prettier-ignore -->
-> **⚠️ Preview components are considered unstable:**
->
-> ```jsx
->
-> import { Toast } from '@fluentui/react-components/unstable';
->
-> ```
->
-> - Features and APIs may change before final release
-> - Please contact us if you intend to use this in your product
-
 A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by
 user action or a application timeout. Toasts are typically used in the following situations:
 

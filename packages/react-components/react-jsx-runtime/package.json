@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.0-alpha.9",
+  "version": "9.0.0-alpha.10",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.10.0",
+    "@fluentui/react-utilities": "^9.10.1",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

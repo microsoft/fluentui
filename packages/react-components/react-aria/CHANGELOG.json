@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 11:57:14 GMT",
+      "tag": "@fluentui/react-aria_v9.3.26",
+      "version": "9.3.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:22 GMT",
       "tag": "@fluentui/react-aria_v9.3.25",
       "version": "9.3.25",
