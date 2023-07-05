@@ -1,44 +1,26 @@
-/* React v9 Storybook hides the "Control" in the props table */
-/* Web Components makes proper use of the controls, so show them */
-#docs-root .docblock-argstable-head > tr > th:nth-child(4),
-#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
-  display: table-cell;
-}
-
-/* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
-.sbdocs-preview,
-#docs-root .innerZoomElementWrapper > div /*  */ {
+/* Mimic React v9 Provider styles:
+ *   - apply font, background, and foreground colors
+ *   - apply padding for story content
+ */
+#docs-root .innerZoomElementWrapper > div > div {
+  padding: 48px 24px;
   font-family: var(--fontFamilyBase);
   background: var(--colorNeutralBackground2);
   color: var(--colorNeutralForeground2);
 }
 
 /*
- * The shared .storybook/docs-root.css applies var(--colorNeutralStroke1, #e1dfdd) to the story border.
- * However, the Web Components storybook currently changes this token on theme switch for the entire page, not just stories.
- * This causes the story border to change color when the theme is switched.
- * Instead, we hard code the border color to the token's default light theme value.
- */
-#docs-root .sbdocs-preview {
-  border-color: #d1d1d1;
-}
-
-#docs-root .innerZoomElementWrapper > div {
-  padding: 48px 24px;
-  box-sizing: border-box;
-  overflow: auto;
-}
-
-/*
  * Theme Switcher
  */
 #switches-container {
+  position: sticky;
   display: flex;
   gap: 20px;
   align-items: center;
   padding: 12px;
-  position: fixed;
   width: 100%;
+  top: 0;
+  box-sizing: border-box; /* keep from overflowing body making x scroll bar*/
   background: #fff;
   box-shadow: 0px 0px 3px rgb(0 0 0 / 22%);
   z-index: 10;
@@ -46,17 +28,12 @@
 
 #switches-container select {
   padding: 5px var(--spacingHorizontalM);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--strokeWidthThin) solid #d1d1d1 /* --colorNeutralStroke1, without theme switching */;
   border-radius: var(--borderRadiusMedium);
   font-size: var(--fontSizeBase300);
   font-weight: var(--fontWeightSemibold);
   line-height: var(--lineHeightBase300);
   width: 140px;
-}
-
-/* Add a little more room for the page title under the theme switcher */
-#docs-root h1.sbdocs-title {
-  margin-top: 72px;
 }
 
 .custom-fullscreen #switches-container {
