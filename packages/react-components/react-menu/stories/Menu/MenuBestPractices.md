@@ -10,6 +10,7 @@
 - Create nested menus as separate components.
 - Use the `hasIcons` prop for alignment if only some menu items have icons.
 - Use the `hasCheckmarks` prop for alignment if only some menu items are selectable.
+- Use `MenuItemLink` if the menu item should navigate to a new page
 
 ### Don't
 

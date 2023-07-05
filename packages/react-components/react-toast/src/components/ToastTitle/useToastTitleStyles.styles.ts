@@ -1,7 +1,7 @@
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { ToastTitleSlots, ToastTitleState } from './ToastTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { ToastTitleSlots, ToastTitleState } from './ToastTitle.types';
 
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots> = {
   root: 'fui-ToastTitle',
@@ -13,6 +13,7 @@ const useRootBaseClassName = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
   gridColumnEnd: 3,
+  color: tokens.colorNeutralForeground1,
 });
 
 const useMediaBaseClassName = makeResetStyles({
@@ -21,6 +22,7 @@ const useMediaBaseClassName = makeResetStyles({
   gridColumnEnd: 2,
   paddingRight: '8px',
   fontSize: '16px',
+  color: tokens.colorNeutralForeground1,
 });
 
 const useActionBaseClassName = makeResetStyles({
@@ -29,6 +31,20 @@ const useActionBaseClassName = makeResetStyles({
   paddingLeft: '12px',
   gridColumnEnd: -1,
   color: tokens.colorBrandForeground1,
+});
+
+const useInvertedStyles = makeStyles({
+  root: {
+    color: tokens.colorNeutralForegroundInverted2,
+  },
+
+  action: {
+    color: tokens.colorBrandForegroundInverted,
+  },
+
+  media: {
+    color: tokens.colorNeutralForegroundInverted,
+  },
 });
 
 const useIntentIconStyles = makeStyles({
@@ -47,7 +63,22 @@ const useIntentIconStyles = makeStyles({
   info: {
     color: tokens.colorNeutralForeground2,
   },
-  progress: {
+});
+
+const useIntentIconStylesInverted = makeStyles({
+  success: {
+    // FIXME https://github.com/microsoft/fluentui/issues/28219
+    color: tokens.colorPaletteGreenForegroundInverted,
+  },
+  error: {
+    // FIXME https://github.com/microsoft/fluentui/issues/28219
+    color: tokens.colorPaletteRedForegroundInverted,
+  },
+  warning: {
+    // FIXME https://github.com/microsoft/fluentui/issues/28219
+    color: tokens.colorPaletteYellowForegroundInverted,
+  },
+  info: {
     color: tokens.colorNeutralForegroundInverted2,
   },
 });
@@ -60,20 +91,34 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   const actionBaseClassName = useActionBaseClassName();
   const mediaBaseClassName = useMediaBaseClassName();
   const intentIconStyles = useIntentIconStyles();
+  const intentIconStylesInverted = useIntentIconStylesInverted();
   const { intent } = state;
-  state.root.className = mergeClasses(toastTitleClassNames.root, rootBaseClassName, state.root.className);
+  const invertedStyles = useInvertedStyles();
+  state.root.className = mergeClasses(
+    toastTitleClassNames.root,
+    rootBaseClassName,
+    state.backgroundAppearance === 'inverted' && invertedStyles.root,
+    state.root.className,
+  );
 
   if (state.media) {
     state.media.className = mergeClasses(
       toastTitleClassNames.media,
       mediaBaseClassName,
+      state.backgroundAppearance === 'inverted' && invertedStyles.media,
       state.media.className,
       intent && intentIconStyles[intent],
+      intent && state.backgroundAppearance === 'inverted' && intentIconStylesInverted[intent],
     );
   }
 
   if (state.action) {
-    state.action.className = mergeClasses(toastTitleClassNames.action, actionBaseClassName, state.action.className);
+    state.action.className = mergeClasses(
+      toastTitleClassNames.action,
+      actionBaseClassName,
+      state.backgroundAppearance === 'inverted' && invertedStyles.action,
+      state.action.className,
+    );
   }
 
   return state;
