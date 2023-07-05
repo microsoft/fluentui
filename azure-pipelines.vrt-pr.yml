@@ -18,7 +18,7 @@ jobs:
   - job: VisualRegressionTest_V9
     variables:
       pipelineId: '311'
-      pipelineName: 'fluent-ui VRT Pipeline v9'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v9'
 
     workspace:
       clean: all
@@ -81,7 +81,7 @@ jobs:
   - job: VisualRegressionTest_V8
     variables:
       pipelineId: '312'
-      pipelineName: 'fluent-ui VRT Pipeline v8'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v8'
     workspace:
       clean: all
     steps:
@@ -143,7 +143,7 @@ jobs:
   - job: VisualRegressionTest_V0
     variables:
       pipelineId: '313'
-      pipelineName: 'fluent-ui VRT Pipeline v0'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v0'
 
     workspace:
       clean: all
