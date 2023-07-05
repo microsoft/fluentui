@@ -22,12 +22,12 @@ export interface IAzureSemanticColors {
       upsell: string;
     };
     icon: {
-      default: string;
       okay: string;
       error: string;
       warning: string;
       information: string;
       upsell: string;
+      disabled: string;
     };
   };
   text: {

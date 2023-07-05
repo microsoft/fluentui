@@ -146,6 +146,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   sliderDisabledInActiveBackground: string;
   statusDefaultBackground: string;
   statusDefaultBorder: string;
+  statusDisabledIcon: string;
   statusErrorBackground: string;
   statusErrorBorder: string;
   statusErrorIcon: string;
@@ -155,6 +156,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   statusInformationText: string;
   statusLink: string;
   statusLinkHover: string;
+  statusUpsellIcon: string;
   statusSuccessBackground: string;
   statusSuccessBorder: string;
   statusSuccessIcon: string;
