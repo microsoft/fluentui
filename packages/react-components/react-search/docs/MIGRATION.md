@@ -74,7 +74,7 @@ interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentProps, Ch
 | onSearch                     | n/a                                                   | not supported                           |
 | container className          | `className?: string`                                  | top-level `className`                   |
 | input className              | `inputClassName?: string`                             |                                         |
-| aria label                   | `ariaLabel?: string`                                  | `'aria-label'?: string`                 |
+| aria-label                   | `ariaLabel?: string`                                  | `'aria-label'?: string`                 |
 | clearable                    | n/a                                                   | `dismiss` slot                          |
 | style overrides              | `styles?: IStyleFunctionOrObject<...>`                | className, slot classNames              |
 | accessibility                | `Accessibility<InputBehaviorProps>` (see below)       | individual props                        |
