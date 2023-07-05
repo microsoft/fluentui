@@ -510,7 +510,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                             color: rgb(255, 255, 255);
                           }
                     >
-
+                       
                       metaData1
                     </div>
                     <div
@@ -1449,7 +1449,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone77"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1768,7 +1768,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone69"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2486,7 +2486,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone61"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2571,7 +2571,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       </g>
       <g>
         <path
-          d="M10,17.885Z"
+          d="M10,29.808Z"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -2597,7 +2597,8 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <g
           clipPath="url(#clip)"
-          d="M10,17.885L10,-35Z"
+          d="M10,29.808L10,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
@@ -2830,7 +2831,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone29"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3169,7 +3170,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone14"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3367,7 +3368,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3726,7 +3727,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone37"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4085,7 +4086,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone45"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4444,7 +4445,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone53"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

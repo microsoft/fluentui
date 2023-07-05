@@ -441,7 +441,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                     opacity: 0.8;
                   }
             >
-
+               
             </div>
           </div>
           <div
@@ -928,7 +928,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1361,7 +1361,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1542,7 +1542,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1884,7 +1884,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

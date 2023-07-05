@@ -42,7 +42,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -124,7 +124,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -151,10 +151,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -492,7 +492,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                             color: rgb(255, 255, 255);
                           }
                     >
-
+                       
                       metaData1
                     </div>
                     <div
@@ -566,7 +566,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -648,7 +648,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -675,10 +675,10 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -988,7 +988,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -1070,7 +1070,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -1097,10 +1097,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -1397,7 +1397,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone85"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1410,7 +1410,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -1492,7 +1492,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -1519,10 +1519,10 @@ exports[`LineChart snapShot testing Should render with default colors when line 
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="#637cef"
@@ -1751,7 +1751,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -1833,7 +1833,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -1860,10 +1860,10 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2079,7 +2079,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone41"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2092,7 +2092,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2174,7 +2174,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -2201,10 +2201,10 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2400,7 +2400,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2413,7 +2413,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2495,7 +2495,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={130.625}
             y2={20}
           />
@@ -2522,10 +2522,10 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2580,7 +2580,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone30"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2593,7 +2593,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2675,7 +2675,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -2702,10 +2702,10 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2921,7 +2921,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone52"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2934,7 +2934,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -3016,7 +3016,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -3043,10 +3043,10 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -3262,7 +3262,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone63"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3275,7 +3275,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           "display": "block",
         }
       }
-      width={0}
+      width={140}
     >
       <g
         className=
@@ -3357,7 +3357,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={120}
             y1={115.625}
             y2={20}
           />
@@ -3384,10 +3384,10 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M119.5 20
+     A0.5 0.5 0 1 0 120.5 20
+     M119.5 20
+     A 0.5 0.5 0 1 1 120.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -3603,7 +3603,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone74"
+    data-focuszone-id="FocusZone9"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3616,7 +3616,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -3698,7 +3698,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
+            x2={80}
             y1={115.625}
             y2={20}
           />
@@ -3725,10 +3725,10 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"

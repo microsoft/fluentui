@@ -693,7 +693,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     opacity: 0.8;
                   }
             >
-
+               
             </div>
           </div>
           <div
@@ -2048,7 +2048,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2623,7 +2623,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2875,7 +2875,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3470,7 +3470,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone22"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4065,7 +4065,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone27"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4660,7 +4660,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
