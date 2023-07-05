@@ -8,7 +8,7 @@ SearchBox is an input designated for the purpose of search.
 
 ### Usage
 
-Import Input:
+Import SearchBox:
 
 ```js
 import { SearchBox } from '@fluentui/react-components';
