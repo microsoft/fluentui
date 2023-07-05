@@ -118,7 +118,7 @@ jobs:
               "postPolicy": '${postPolicy}',
               "policyType": "OPTIONAL"
             }'
-        displayName: 'Call policy State Api'
+        displayName: 'Call policy State Apis'
         env:
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
