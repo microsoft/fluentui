@@ -14,8 +14,12 @@ export function paneSettingsItemTemplate<T extends PaneSettingsItem>(): ElementV
           <slot name="icon"></slot>
         </div>
         <div class="content">
-          <slot name="header"></slot>
-          <slot name="body"></slot>
+          <div class="header">
+            <slot name="header"></slot>
+          </div>
+          <div class="body">
+            <slot name="body"></slot>
+          </div>
         </div>
         <div class="toggle">
           <fluent-switch

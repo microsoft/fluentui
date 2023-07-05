@@ -18,6 +18,7 @@ import {
   lineHeightBase400,
   lineHeightBase500,
   spacingHorizontalL,
+  spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalXXL,
   spacingVerticalL,
@@ -96,7 +97,7 @@ export const styles = css`
 
   .header-container {
     height: 32px;
-    display: grid;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -110,25 +111,10 @@ export const styles = css`
   .subheader {
     height: 28px;
   }
-
-  .close {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    justify-self: flex-end;
-  }
-
-  .actions {
-    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
-  }
-
   .pane {
-    display: flex;
+    display: grid;
+    grid-template-rows: 34px auto 72px;
     flex-direction: column;
-    height: 100%;
     width: 100%;
     position: relative;
     z-index: 1;
@@ -142,7 +128,7 @@ export const styles = css`
   }
 
   :host([compact]) .pane {
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
+    padding: ${spacingVerticalS} ${spacingHorizontalM};
   }
 
   :host([compact]) .header {
@@ -172,10 +158,11 @@ export const styles = css`
   }
 
   .content {
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    padding: ${spacingVerticalS} 0 ${spacingVerticalXXL};
   }
 
-  ::slotted([slot='actions']) {
+  .footer {
+    align-self: flex-end;
     display: flex;
     flex-direction: row;
     column-gap: ${spacingHorizontalS};

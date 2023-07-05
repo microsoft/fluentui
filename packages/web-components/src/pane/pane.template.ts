@@ -47,25 +47,27 @@ export function paneTemplate<T extends Pane>(): ElementViewTemplate<T> {
         aria-labelledby="${x => x.ariaLabelledby}"
         aria-label="${x => x.ariaLabel}"
       >
-      <div class="toolbar-container" ?hidden="${x => !x.toolbar}">
-        <div class="close">
-          <fluent-button appearance="transparent" icon-only @click="${x => x.closePane()}">
-            <slot name="close-icon"></slot>
-          </fluent-button>
+        <div class="header-container">
+          <div class="header">
+            <slot name="header"></slot>
+          </div>
+          <div class="close">
+            <fluent-button
+              tabindex="${x => (x.open ? '0' : '-1')}"
+              appearance="transparent"
+              icon-only
+              @click="${x => x.closePane()}"
+            >
+              <slot name="close-icon"></slot>
+            </fluent-button>
+          </div>
         </div>
-      </div>
-      <div class="header-container">
-        <div class="header"><slot name="header"></slot></div>
-        <div ?hidden="${x => x.toolbar}" class="close">
-          <fluent-button appearance="transparent" icon-only @click="${x => x.closePane()}">
-            <slot name="close-icon"></slot>
-          </fluent-button>
+        <div class="content">
+          <slot></slot>
         </div>
-      </div>
-      <div class="subheader-container">
-        <slot name="subheader"><slot>
-      </div>
-      <slot></slot>
+        <div class="footer">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </template>
   `;

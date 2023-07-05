@@ -1,4 +1,4 @@
-import { spacingHorizontalS, spacingHorizontalXXS } from '@fluentui/web-components';
+import { spacingHorizontalS } from '@fluentui/web-components';
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 
@@ -8,11 +8,19 @@ import { display } from '@microsoft/fast-foundation';
 export const styles = css`
   ${display('flex')}
 
+  .content {
+    padding: 0 5px 0 0;
+  }
+  .body {
+    padding-top: 4px;
+  }
   :host {
-    padding: 0 ${spacingHorizontalS};
+    padding: 8px ${spacingHorizontalS};
   }
   .root {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 7fr 1fr;
+    align-items: flex-start;
   }
   .content {
     display: flex;
@@ -21,5 +29,8 @@ export const styles = css`
   .icon {
     width: 28px;
     flex-shrink: 0;
+  }
+  .toggle {
+    width: 34px;
   }
 `;

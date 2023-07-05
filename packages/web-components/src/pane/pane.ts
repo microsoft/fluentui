@@ -38,7 +38,7 @@ export class Pane extends FASTElement {
    * HTML Attribute: pane
    */
   @observable
-  public _pane?: HTMLElement;
+  public _pane?: Pane;
 
   /**
    * Determines whether the pane should be displayed as modal or non-modal.
@@ -78,7 +78,7 @@ export class Pane extends FASTElement {
    * @public
    */
   @attr({ attribute: 'control-size' })
-  public controlSize?: PaneSize | number | undefined;
+  public controlSize?: PaneSize;
 
   /**
    * Indicates whether the pane is open or closed.
@@ -109,15 +109,6 @@ export class Pane extends FASTElement {
   public focusTarget?: string;
 
   /**
-   * Determines whether the focus should be trapped within the Pane when it is open.
-   * @public
-   * @remarks
-   * HTML Attribute: no-trap-focus
-   */
-  @attr({ attribute: 'trap-focus', mode: 'boolean' })
-  public trapFocus: boolean = false;
-
-  /**
    * Sets the aria-labelledby attribute of the pane.
    * @public
    * @remarks
@@ -140,11 +131,6 @@ export class Pane extends FASTElement {
    * @public
    */
   public togglePane(): void {
-    // if (!this.open && !this.hasInteracted) {
-    //   // Only update the hasInteracted flag if the pane is closed and hasn't been interacted with yet
-    //   this.hasInteracted = true;
-    // }
-
     if (!this.open) {
       this.previousActiveElement = document.activeElement as HTMLElement;
     } else if (this.previousActiveElement) {
@@ -153,7 +139,9 @@ export class Pane extends FASTElement {
     this.open = !this.open;
 
     this.$emit('toggled', { open: this.open, position: this.position, controlSize: this.controlSize });
-    if (this.open) this.handleFocus();
+    if (this.open) {
+      this.focus();
+    }
   }
 
   /**
@@ -165,7 +153,9 @@ export class Pane extends FASTElement {
     // this.hasInteracted = true;
     this.open = true;
     this.$emit('opened', { open: true, position: this.position, controlSize: this.controlSize });
-    if (this.open) this.handleFocus();
+    if (this.open) {
+      this.focus();
+    }
   }
   /**
    * Hides the pane.
@@ -212,56 +202,10 @@ export class Pane extends FASTElement {
    * @public
    */
   public handleKeyDown = (event: KeyboardEvent): void => {
-    if (this.trapFocus && this.open && event.key === keyTab) {
-      const focusableElements: HTMLElement[] = Array.from(
-        this.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
-      );
-
-      // No focusable elements, no need to trap focus
-      if (focusableElements.length === 0) return;
-
-      const firstFocusableElement: HTMLElement = focusableElements[0];
-      const lastFocusableElement: HTMLElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === firstFocusableElement) {
-        event.preventDefault();
-        lastFocusableElement.focus();
-      } else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
-        event.preventDefault();
-        firstFocusableElement.focus();
-      }
-    }
-    // Close pane and return focus to the toggle button when the escape key is pressed
     if (event.key === keyEscape) {
+      // Close pane and return focus to the toggle button when the escape key is pressed
       event.preventDefault();
       this.closePane();
     }
   };
-
-  public handleFocus(): void {
-    setTimeout(() => {
-      let focusableElements: NodeListOf<Element> | null = null;
-
-      // Search in the shadowRoot if it exists
-      if (this.shadowRoot) {
-        focusableElements = this.shadowRoot.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-        );
-      }
-
-      // If no focusable elements in the shadowRoot, search in the regular DOM
-      if (!focusableElements || focusableElements.length === 0) {
-        focusableElements = this.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-        );
-      }
-
-      if (focusableElements && focusableElements.length > 0) {
-        (focusableElements[0] as HTMLElement).focus();
-      } else {
-        // If no focusable elements, set focus on the pane itself
-        this.focus();
-      }
-    }, 0);
-  }
 }

@@ -42,6 +42,14 @@ export const styles = css`
     user-select: none;
     contain: content;
   }
+  :host([size='small']) .switch {
+    height: 16px;
+    width: 32px;
+  }
+  :host([size='small']) .checked-indicator {
+    height: 10px;
+    width: 10px;
+  }
   :host([label-position='before']) {
     flex-direction: row;
   }
@@ -80,7 +88,6 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
     outline: none;
     cursor: pointer;
-    margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
   :host(:hover) .switch {
     background: none;
@@ -122,6 +129,10 @@ export const styles = css`
   :host([aria-checked='true']) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
     transform: translateX(20px);
+  }
+  :host([aria-checked='true'][size='small']) .checked-indicator {
+    background-color: ${colorNeutralForegroundInverted};
+    transform: translateX(16px);
   }
   :host([aria-checked='true']:hover) .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};

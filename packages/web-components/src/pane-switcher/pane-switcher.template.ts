@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ref, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, elements, html, ref, slotted, when } from '@microsoft/fast-element';
 import type { PaneSwitcher } from './pane-switcher.js';
 import '../button/define.js';
 
@@ -27,7 +27,7 @@ export function paneSwitcherTemplate<T extends PaneSwitcher>(): ElementViewTempl
         <slot name="toggle-buttons"> </slot>
       </div>
       <div class="panes">
-        <slot> </slot>
+        <slot ${slotted({ property: 'panes', filter: elements() })}> </slot>
       </div>
     </div>
   `;

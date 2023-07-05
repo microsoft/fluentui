@@ -15,3 +15,18 @@ export const SwitchLabelPosition = {
  * @public
  */
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
+
+/**
+ * SwitchSize Constants
+ * @public
+ */
+export const SwitchSize = {
+  small: 'small',
+  medium: 'medium',
+} as const;
+
+/**
+ * Applies size variation
+ * @public
+ */
+export type SwitchSize = ValuesOf<typeof SwitchSize>;

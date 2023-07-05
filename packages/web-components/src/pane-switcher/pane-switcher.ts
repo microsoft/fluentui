@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { isHTMLElement, keyArrowDown, keyArrowUp } from '@microsoft/fast-web-utilities';
+import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnter, keySpace, keyTab } from '@microsoft/fast-web-utilities';
 import { Pane } from '../pane/pane.js';
 
 export class PaneSwitcher extends FASTElement {
@@ -43,7 +43,7 @@ export class PaneSwitcher extends FASTElement {
       if (slot.name === 'toggle-buttons') {
         const buttons = slot.assignedElements();
 
-        const panes = this.querySelectorAll('fluent-pane') as NodeListOf<Pane>; // Add type assertion here
+        const panes = this.querySelectorAll<Pane>('fluent-pane'); // Use querySelectorAll<Pane> to get NodeListOf<Pane>
 
         buttons.forEach((button, index) => {
           button.addEventListener('click', () => {
@@ -128,7 +128,7 @@ export class PaneSwitcher extends FASTElement {
     const eventTarget = event.target as HTMLElement;
     const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
     if (paneSwitcher) {
-      return paneSwitcher.querySelector(`[bind-id="${bindID}"]`);
+      return paneSwitcher.querySelector(`#${bindID}`);
     }
     return null;
   }
@@ -141,17 +141,37 @@ export class PaneSwitcher extends FASTElement {
 
   public handleKeyDown = (event: KeyboardEvent) => {
     const currentFocusedIndex = this.toggleButtons.findIndex(btn => btn === document.activeElement);
+    const nextButton = this.toggleButtons[(currentFocusedIndex + 1) % this.toggleButtons.length];
+    const prevButton = this.toggleButtons[
+      (currentFocusedIndex - 1 + this.toggleButtons.length) % this.toggleButtons.length
+    ];
 
-    if (event.key === keyArrowDown) {
-      event.preventDefault();
-      const nextButton = this.toggleButtons[(currentFocusedIndex + 1) % this.toggleButtons.length];
-      nextButton.focus();
-    } else if (event.key === keyArrowUp) {
-      event.preventDefault();
-      const prevButton = this.toggleButtons[
-        (currentFocusedIndex - 1 + this.toggleButtons.length) % this.toggleButtons.length
-      ];
-      prevButton.focus();
+    switch (event.key) {
+      case keyArrowDown:
+        event.preventDefault();
+        nextButton.focus();
+        break;
+      case keyArrowUp:
+        event.preventDefault();
+        prevButton.focus();
+        break;
+      case keyTab:
+        event.preventDefault();
+        break;
+      case keyEnter:
+      case keySpace: {
+        event.preventDefault();
+        const clickedButton = this.toggleButtons[currentFocusedIndex];
+        const index = this.toggleButtons.indexOf(clickedButton);
+        const clickedPane = this.panes[index];
+        if (clickedPane) {
+          this.handleToggle(index, document.querySelectorAll<Pane>('fluent-pane'));
+          clickedPane.focus();
+        }
+        break;
+      }
+      default:
+        break;
     }
   };
 }

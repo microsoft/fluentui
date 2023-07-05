@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTSwitch } from '@microsoft/fast-foundation';
-import { SwitchLabelPosition } from './switch.options.js';
+import { SwitchLabelPosition, SwitchSize } from './switch.options.js';
 
 export class Switch extends FASTSwitch {
   /**
@@ -13,4 +13,15 @@ export class Switch extends FASTSwitch {
    */
   @attr({ attribute: 'label-position' })
   public labelPosition: SwitchLabelPosition | undefined;
+
+  /**
+   * The label position of the switch
+   *
+   * @public
+   * @default 'after'
+   * @remarks
+   * HTML Attribute: labelposition
+   */
+  @attr
+  public size: SwitchSize | undefined;
 }
