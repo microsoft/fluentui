@@ -376,7 +376,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   root.root = rootShorthand;
 
   const inputShorthand = resolveShorthand(props.input, { required: true });
-  inputShorthand.ref = useMergedRefs(ref, rootRef, inputShorthand.ref);
+  inputShorthand.ref = useMergedRefs(inputShorthand.ref, ref, rootRef);
   root.input = inputShorthand;
 
   root.onChange = mergeCallbacks(root.onChange, onInputChange);
