@@ -26,7 +26,7 @@
 | onSearch                     | `(newValue: any) => void`                                   | not supported                           |
 | container className          |                                                             | top-level `className`                   |
 | input className              | `input.className?: `                                        |                                         |
-| aria label                   | `'aria-label'?: string`                                     | `'aria-label'?: string`                 |
+| aria-label                   | `'aria-label'?: string`                                     | `'aria-label'?: string`                 |
 | clearable                    | `clearable?: boolean`                                       | `dismiss` slot                          |
 | style overrides              | `styles?: ComponentSlotStyles<...>`                         | className, slot classNames              |
 | accessibility                | individual props                                            | individual props                        |
