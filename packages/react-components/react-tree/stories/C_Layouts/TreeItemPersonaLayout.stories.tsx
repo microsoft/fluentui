@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar, CounterBadge, makeStyles, shorthands, tokens } from '@fluentui/react-components';
-import { Tree, TreeItem, TreeItemAside, TreeItemPersonaLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemPersonaLayout } from '@fluentui/react-tree';
 import { Important16Regular } from '@fluentui/react-icons';
 import story from './TreeItemPersonaLayout.md';
 
@@ -28,13 +28,18 @@ export const Layout = () => {
   return (
     <Tree aria-label="Tree">
       <TreeItem itemType="branch" aria-description="1 new message, important">
-        <TreeItemPersonaLayout description="Secondary text slot" media={<Avatar />}>
+        <TreeItemPersonaLayout
+          aside={
+            <>
+              <span>00:00 AM</span>
+              <Badges />
+            </>
+          }
+          description="Secondary text slot"
+          media={<Avatar />}
+        >
           Primary text slot
         </TreeItemPersonaLayout>
-        <TreeItemAside>
-          <span>00:00 AM</span>
-          <Badges />
-        </TreeItemAside>
         <Tree>
           <TreeItem itemType="branch">
             <TreeItemPersonaLayout description="description" media={<Avatar />}>
@@ -51,13 +56,18 @@ export const Layout = () => {
         </Tree>
       </TreeItem>
       <TreeItem itemType="branch" aria-description="1 message, important">
-        <TreeItemPersonaLayout description="Secondary text slot" media={<Avatar />}>
+        <TreeItemPersonaLayout
+          aside={
+            <>
+              <span>00:00 AM</span>
+              <Badges />
+            </>
+          }
+          description="Secondary text slot"
+          media={<Avatar />}
+        >
           Primary text slot
         </TreeItemPersonaLayout>
-        <TreeItemAside>
-          <span>00:00 AM</span>
-          <Badges />
-        </TreeItemAside>
         <Tree>
           <TreeItem itemType="leaf">
             <TreeItemPersonaLayout media={<Avatar />}>content</TreeItemPersonaLayout>

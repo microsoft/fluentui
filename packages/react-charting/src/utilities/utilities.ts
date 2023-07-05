@@ -22,6 +22,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -479,64 +480,69 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
  * @param values
  */
 
-type DataPoint = {
-  legend: string;
-  y: number;
-  x: number | Date | string;
-  color: string;
-  yAxisCalloutData: string;
-  index?: number;
-  callOutAccessibilityData?: IAccessibilityProps;
-};
-
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: {
+  let combinedResult: (ILineChartDataPoint & {
     legend: string;
-    y: number;
-    x: number | Date | string;
-    color: string;
-    yAxisCalloutData?: string | { [id: string]: number };
-    callOutAccessibilityData?: IAccessibilityProps;
-  }[] = [];
+    color?: string;
+    index?: number;
+  })[] = [];
 
-  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data
-      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
-      .map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+  values.forEach((line: ILineChartPoints & { index?: number }) => {
+    const elements = line.data
+      .filter((point: ILineChartDataPoint) => !point.hideCallout)
+      .map((point: ILineChartDataPoint) => {
+        return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
   });
 
-  const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach((e1: DataPoint, index: number) => {
-    e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
-    const filteredValues = [
-      {
-        legend: e1.legend,
-        y: e1.y,
-        color: e1.color,
-        yAxisCalloutData: e1.yAxisCalloutData,
-        callOutAccessibilityData: e1.callOutAccessibilityData,
-        index: e1.index,
-      },
-    ];
-    combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
-      e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
-      if (e1.x === e2.x) {
-        filteredValues.push({
-          legend: e2.legend,
-          y: e2.y,
-          color: e2.color,
-          yAxisCalloutData: e2.yAxisCalloutData,
-          callOutAccessibilityData: e2.callOutAccessibilityData,
-          index: e2.index,
-        });
-      }
-    });
-    result.push({ x: e1.x, values: filteredValues });
+  const xValToDataPoints: {
+    [key: number]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+    [key: string]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+  } = {};
+  combinedResult.forEach(ele => {
+    const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
+    if (xValue in xValToDataPoints) {
+      xValToDataPoints[xValue].push({
+        legend: ele.legend,
+        y: ele.y,
+        color: ele.color!,
+        yAxisCalloutData: ele.yAxisCalloutData,
+        callOutAccessibilityData: ele.callOutAccessibilityData,
+        index: ele.index,
+      });
+    } else {
+      xValToDataPoints[xValue] = [
+        {
+          legend: ele.legend,
+          y: ele.y,
+          color: ele.color!,
+          yAxisCalloutData: ele.yAxisCalloutData,
+          callOutAccessibilityData: ele.callOutAccessibilityData,
+          index: ele.index,
+        },
+      ];
+    }
   });
-  return getUnique(result, 'x');
+
+  const result = Object.keys(xValToDataPoints).map(xValue => {
+    return { x: Number(xValue), values: xValToDataPoints[xValue] };
+  });
+  return result;
 }
 
 export function getUnique(
@@ -1382,4 +1388,15 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
     }
     idx += 1;
   });
+}
+
+export function formatValueWithSIPrefix(value: number) {
+  let specifier: string;
+  if (value < 1000) {
+    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
+  } else {
+    specifier = '.1'; // upto 1 decimal place
+  }
+
+  return d3FormatPrefix(specifier, value)(value);
 }

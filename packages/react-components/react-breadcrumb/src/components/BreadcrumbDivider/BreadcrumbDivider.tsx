@@ -6,7 +6,7 @@ import type { BreadcrumbDividerProps } from './BreadcrumbDivider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * BreadcrumbDivider component - TODO: add more docs
+ * A divider component which is used inside the Breadcrumb
  */
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbDivider_unstable(props, ref);

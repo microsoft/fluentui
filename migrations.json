@@ -1,36 +1,52 @@
 {
   "migrations": [
     {
+      "version": "15.7.0-beta.0",
+      "description": "Split global configuration files into individual project.json files. This migration has been added automatically to the beginning of your migration set to retroactively make them work with the new version of Nx.",
       "cli": "nx",
-      "version": "15.0.0-beta.1",
-      "description": "Replace implicitDependencies with namedInputs + target inputs",
-      "implementation": "./src/migrations/update-15-0-0/migrate-to-inputs",
-      "package": "nx",
-      "name": "15.0.0-migrate-to-inputs"
+      "implementation": "./src/migrations/update-15-7-0/split-configuration-into-project-json-files",
+      "package": "@nrwl/workspace",
+      "name": "15-7-0-split-configuration-into-project-json-files"
     },
     {
       "cli": "nx",
-      "version": "15.0.0-beta.1",
-      "description": "Prefix outputs with {workspaceRoot}/{projectRoot} if needed",
-      "implementation": "./src/migrations/update-15-0-0/prefix-outputs",
+      "version": "15.8.2-beta.0",
+      "description": "Updates the nx wrapper.",
+      "implementation": "./src/migrations/update-15-8-2/update-nxw",
       "package": "nx",
-      "name": "15.0.0-prefix-outputs"
+      "name": "15.8.2-update-nx-wrapper"
     },
     {
       "cli": "nx",
-      "version": "15.0.12-beta.1",
-      "description": "Set project names in project.json files",
-      "implementation": "./src/migrations/update-15-1-0/set-project-names",
-      "package": "nx",
-      "name": "15.1.0-set-project-names"
+      "version": "15.8.0-beta.0",
+      "description": "Rename .lib.swcrc to .swcrc for better SWC support throughout the workspace",
+      "factory": "./src/migrations/update-15-8-0/rename-swcrc-config",
+      "package": "@nrwl/js",
+      "name": "rename-swcrc-config"
     },
     {
-      "version": "15.0.0-beta.0",
+      "version": "15.7.0-beta.0",
+      "description": "Split global configuration files (e.g., workspace.json) into individual project.json files.",
       "cli": "nx",
-      "description": "Stop hashing jest spec files and config files for build targets and dependent tasks",
-      "factory": "./src/migrations/update-15-0-0/add-jest-inputs",
+      "implementation": "./src/migrations/update-15-7-0/split-configuration-into-project-json-files",
+      "package": "@nrwl/workspace",
+      "name": "15-7-0-split-configuration-into-project-json-files"
+    },
+    {
+      "version": "15.8.0-beta.0",
+      "cli": "nx",
+      "description": "Update jest configs to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-configs-jest-29",
       "package": "@nrwl/jest",
-      "name": "add-jest-inputs"
+      "name": "update-configs-jest-29"
+    },
+    {
+      "version": "15.8.0-beta.0",
+      "cli": "nx",
+      "description": "Update jest test files to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-tests-jest-29",
+      "package": "@nrwl/jest",
+      "name": "update-tests-jest-29"
     }
   ]
 }
