@@ -131,3 +131,4 @@ Most interaction and screen reader behavior will be handled automatically by the
 - The component doesn't provide a built-in label, so it's important for the user to pass in appropriate attributes such as `id` (associated with a label using `htmlFor`), `aria-label`, or `aria-labelledby`.
 - The clear button is not in the tab order and should not recieve focus; otherwise, no features in the initial implementation require manipulation of focus, tab order, or key handling.
 - Visual states for focus and hover will be applied to `root` rather than the `<input>` itself (which is rendered without a border and only used to show the text), because the `contentBefore`, `contentAfter`, and `dismiss` slots need to visually appear to be within the input.
+- Authors using SearchBox for a top-level site search are encouraged to wrap the component in a landmark with `role="search"`
