@@ -1,3 +1,10 @@
+/* React v9 Storybook hides the "Control" in the props table */
+/* Web Components makes proper use of the controls, so show them */
+#docs-root .docblock-argstable-head > tr > th:nth-child(4),
+#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
+  display: table-cell;
+}
+
 /* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
 .sbdocs-preview,
 #docs-root .innerZoomElementWrapper > div /*  */ {
