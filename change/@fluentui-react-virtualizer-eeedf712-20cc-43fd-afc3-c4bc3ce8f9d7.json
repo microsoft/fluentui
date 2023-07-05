@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix: Ensure 'start buffer' is margin padded into the non-virtualized space on horizontal layouts",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
