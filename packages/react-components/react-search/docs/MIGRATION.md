@@ -45,7 +45,7 @@ interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentProps, Ch
 }
 ```
 
-## Migrations from v0
+## Migrations from v8
 
 | Prop/concept                 | v8                                                    | v9                                      |
 | ---------------------------- | ----------------------------------------------------- | --------------------------------------- |
