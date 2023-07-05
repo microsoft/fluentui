@@ -10,7 +10,7 @@ import type {
   UnionToIntersection,
   UnknownSlotProps,
 } from './types';
-import { isSlot } from './slot';
+import { isSlot } from './isSlot';
 
 export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>

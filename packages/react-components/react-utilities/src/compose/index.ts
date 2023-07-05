@@ -5,3 +5,5 @@ export * from './isResolvedShorthand';
 export * from './constants';
 export * from './getSlotsNext';
 export * from './slot';
+export * from './isSlot';
+export * from './assertSlots';

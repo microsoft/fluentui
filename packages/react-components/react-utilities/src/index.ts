@@ -7,6 +7,8 @@ export {
   resolveShorthand,
   isResolvedShorthand,
   SLOT_COMPONENT_METADATA_SYMBOL,
+  // eslint-disable-next-line deprecation/deprecation
+  SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
 export type {
   ExtractSlotProps,

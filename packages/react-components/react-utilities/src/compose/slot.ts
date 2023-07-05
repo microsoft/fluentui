@@ -1,17 +1,14 @@
-import { isValidElement } from 'react';
 import type {
   AsIntrinsicElement,
-  ComponentState,
-  ExtractSlotProps,
   SlotComponent,
   SlotComponentMetadata,
-  SlotPropsRecord,
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
 } from './types';
 import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
 import * as React from 'react';
+import { isSlot } from './isSlot';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
@@ -22,7 +19,7 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
 
 /**
  * Creates a slot from a slot shorthand or properties (`props.SLOT_NAME` or `props` itself)
- *
+ * @param value - the value of the slot, it can be a slot shorthand, a slot component or a slot properties
  * @param options - optional values you can pass to alter the signature of a slot, those values are:
  *
  * * `elementType` - the base element type of a slot, defaults to `'div'`
@@ -96,8 +93,13 @@ export function slot<Props extends UnknownSlotProps>(
     [SLOT_COMPONENT_METADATA_SYMBOL]: metadata,
   } as SlotComponent<Props>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement<any>(value)) {
+  if (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    Array.isArray(value) ||
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    React.isValidElement<any>(value)
+  ) {
     propsWithMetadata.children = value;
   } else if (typeof value === 'object') {
     Object.assign(propsWithMetadata, value);
@@ -108,65 +110,4 @@ export function slot<Props extends UnknownSlotProps>(
   }
 
   return propsWithMetadata;
-}
-
-/**
- * Guard method to ensure a given element is a slot.
- * This is mainly used internally to ensure a slot is being used as a component.
- */
-export function isSlot<Props extends {}>(element: unknown): element is SlotComponent<Props> {
-  return Boolean((element as {} | undefined)?.hasOwnProperty(SLOT_COMPONENT_METADATA_SYMBOL));
-}
-
-type SlotComponents<Slots extends SlotPropsRecord> = {
-  [K in keyof Slots]: SlotComponent<ExtractSlotProps<Slots[K]>>;
-};
-
-/**
- * @internal
- * Assertion method to ensure state slots properties are properly declared.
- * A properly declared slot must be declared by using the `slot` method.
- *
- * @example
- * ```tsx
- * export const renderInput_unstable = (state: InputState) => {
-    assertSlots<InputSlots>(state);
-    return (
-      <state.root>
-        {state.contentBefore && <state.contentBefore />}
-        <state.input />
-        {state.contentAfter && <state.contentAfter />}
-      </state.root>
-    );
-  };
- * ```
- */
-export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots> {
-  /**
-   * This verification is not necessary in production
-   * as we're verifying static properties that will not change between environments
-   */
-  if (process.env.NODE_ENV !== 'production') {
-    const typedState = state as ComponentState<Slots>;
-    for (const slotName of Object.keys(typedState.components)) {
-      const slotElement = typedState[slotName];
-      if (slotElement === undefined) {
-        continue;
-      }
-      if (!isSlot(slotElement)) {
-        throw new Error(
-          `${assertSlots.name} error: state.${slotName} is not a slot.\n` +
-            `Be sure to create slots properly by using ${slot.name}`,
-        );
-      } else {
-        const metadata = slotElement[SLOT_COMPONENT_METADATA_SYMBOL];
-        if (metadata.elementType !== typedState.components[slotName]) {
-          throw new TypeError(
-            `${assertSlots.name} error: state.${slotName} element type differs from state.components.${slotName}, ${metadata.elementType} !== ${typedState.components[slotName]}. \n` +
-              `Be sure to create slots properly by using ${slot.name} with the correct elementType`,
-          );
-        }
-      }
-    }
-  }
 }

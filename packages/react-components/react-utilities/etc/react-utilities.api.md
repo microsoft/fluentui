@@ -235,6 +235,9 @@ export function slot<Props extends UnknownSlotProps>(value: SlotComponent<Props>
 // @internal
 export const SLOT_COMPONENT_METADATA_SYMBOL: unique symbol;
 
+// @internal @deprecated
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
+
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
