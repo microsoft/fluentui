@@ -10,12 +10,14 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <template
       slot="drawer"
       role="${x => (x.modal ? 'dialog' : 'complementary')}"
+      ?open="${x => x.open}"
       ?compact="${x => x.compact}"
       ?modal="${x => x.modal}"
       control-size="${x => x.controlSize}"
       position="${x => x.position}"
       aria-disabled="${x => x.ariaDisabled}"
       aria-modal="${x => (x.modal ? 'true' : 'false')}"
+      tabindex="${x => (x.expanded ? '0' : '-1')}"
     >
       <div
         class="drawer"
@@ -30,7 +32,12 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
             <slot name="header"></slot>
           </div>
           <div class="close">
-            <fluent-button tabindex="${x => (x.open ? '0' : '-1')}" appearance="transparent" icon-only>
+            <fluent-button
+              @click="${(x, c) => x.close()}"
+              tabindex="${x => (x.expanded ? '0' : '-1')}"
+              appearance="transparent"
+              icon-only
+            >
               <slot name="close-icon"></slot>
             </fluent-button>
           </div>

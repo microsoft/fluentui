@@ -35,6 +35,7 @@ export const styles = css`
 
   :host {
     position: fixed;
+    z-index: 1000;
     left: auto;
     right: 0; /* Use the CSS custom property */
     top: 0;
@@ -57,20 +58,20 @@ export const styles = css`
   }
 
   :host([data-context='drawer-switcher']) {
-    right: 32px;
+    right: 34px;
   }
 
-  :host([open]) {
+  :host([expanded]) {
     width: var(--drawer-width, 595px);
     transition: width ${durationNormal} ${curveAccelerateMid};
     box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.12), 0px 32px 64px rgba(0, 0, 0, 0.14), 0px 0px 0px rgba(0, 0, 0, 0);
   }
 
-  :host([open][control-size='small']) {
+  :host([expanded][control-size='small']) {
     width: 320px;
   }
 
-  :host([open][control-size='large']) {
+  :host([expanded][control-size='large']) {
     width: 940px;
   }
 
@@ -79,12 +80,12 @@ export const styles = css`
     width: 100%;
   }
 
-  :host([modal][open]) {
+  :host([modal][expanded]) {
     /* This will create an overlay effect */
     z-index: 1000;
   }
 
-  :host([modal][open])::before {
+  :host([modal][expanded])::before {
     content: '';
     position: fixed;
     top: 0;

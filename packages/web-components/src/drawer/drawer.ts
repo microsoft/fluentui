@@ -3,7 +3,7 @@ import { isHTMLElement, keyEscape } from '@microsoft/fast-web-utilities';
 import { DrawerPosition, DrawerSize } from './drawer.options.js';
 
 export interface OpenEvent {
-  open: boolean;
+  expanded: boolean;
   position?: string;
   controlSize?: DrawerSize | number;
 }
@@ -35,13 +35,13 @@ export class Drawer extends FASTElement {
   public modal: boolean = false;
 
   /**
-   * Determines the open state of the drawer
+   * Determines the expanded state of the drawer
    * @public
    * @remarks
    * HTML Attribute: modal
    */
   @attr({ mode: 'boolean' })
-  public open: boolean = false;
+  public expanded: boolean = false;
 
   /**
    * Determines whether the drawer renders with compact styling.
@@ -91,6 +91,14 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
+  public open() {
+    this.expanded = true;
+  }
+
+  public close() {
+    this.expanded = false;
+  }
+
   /**
    * check if the item is a drawer
    */
@@ -127,7 +135,7 @@ export class Drawer extends FASTElement {
       case keyEscape:
         // Close drawer and return focus to the toggle button when the escape key is pressed
         event.preventDefault();
-        this.closeDrawer();
+        this.close();
         break;
       default:
         break;

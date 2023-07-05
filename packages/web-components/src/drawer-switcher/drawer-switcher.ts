@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { keyArrowDown, keyArrowUp, keyEnd, keyHome, limit, uniqueId } from '@microsoft/fast-web-utilities';
+import { keyArrowDown, keyArrowUp, keyEnd, keyEscape, keyHome, limit, uniqueId } from '@microsoft/fast-web-utilities';
 import { Drawer } from '../drawer/drawer.js';
 import { DrawerToggle } from '../drawer-toggle/drawer-toggle.js';
 
@@ -17,6 +17,12 @@ import { DrawerToggle } from '../drawer-toggle/drawer-toggle.js';
  * @public
  */
 export class DrawerSwitcher extends FASTElement {
+  /**
+   * A reference to the active toggleButton
+   * @public
+   */
+  public activeToggleButton?: HTMLElement;
+
   /**
    * The id of the active drawer
    *
@@ -60,6 +66,7 @@ export class DrawerSwitcher extends FASTElement {
    */
   @observable
   public drawers: HTMLElement[] = [];
+
   /**
    * @internal
    */
@@ -73,11 +80,64 @@ export class DrawerSwitcher extends FASTElement {
     }
   }
 
-  /**
-   * A reference to the active toggleButton
-   * @public
-   */
-  public activeToggleButton?: HTMLElement;
+  public openDrawer = (): void => {
+    const drawerToOpen = this.drawers[this.activeToggleButtonIndex] as Drawer;
+    if (!drawerToOpen.expanded) {
+      if (typeof drawerToOpen.open === 'function') {
+        this.closeAllDrawers();
+        drawerToOpen.open();
+        drawerToOpen.focus();
+      }
+    }
+  };
+
+  public closeDrawer = (): void => {
+    const drawerToClose = this.drawers[this.activeToggleButtonIndex] as Drawer;
+    console.log(drawerToClose.expanded);
+    if (drawerToClose.expanded) {
+      if (typeof drawerToClose.close === 'function') {
+        drawerToClose.close();
+        // After closing the drawer, check if the associated toggle button exists and has a `focus` method
+        if (this.activeToggleButton && typeof this.activeToggleButton.focus === 'function') {
+          // Move the focus to the associated toggle button
+          this.activeToggleButton.focus();
+        }
+      }
+    }
+  };
+
+  public toggleDrawer = (): void => {
+    const drawerToToggle = this.drawers[this.activeToggleButtonIndex] as Drawer;
+    if (!drawerToToggle.expanded) {
+      if (typeof drawerToToggle.open === 'function') {
+        this.closeAllDrawers();
+        drawerToToggle.open();
+      }
+      if (typeof drawerToToggle.focus === 'function') {
+        // Check if the focus method is available
+        drawerToToggle.focus(); // Move focus to the drawer
+      }
+    } else if (drawerToToggle.expanded) {
+      if (typeof drawerToToggle.close === 'function') {
+        drawerToToggle.close();
+        // After closing the drawer, check if the associated toggle button exists and has a `focus` method
+        if (this.activeToggleButton && typeof this.activeToggleButton.focus === 'function') {
+          // Move the focus to the associated toggle button
+          this.activeToggleButton.focus();
+        }
+      }
+    }
+  };
+
+  private closeAllDrawers = (): void => {
+    this.drawers.forEach(drawer => {
+      if (drawer instanceof Drawer && drawer.expanded) {
+        if (typeof drawer.close === 'function') {
+          drawer.close();
+        }
+      }
+    });
+  };
 
   private prevActiveToggleButtonIndex: number = 0;
   private activeToggleButtonIndex: number = 0;
@@ -135,14 +195,13 @@ export class DrawerSwitcher extends FASTElement {
         drawer.setAttribute('id', drawerId);
         drawer.setAttribute('aria-labelledby', toggleButtonId);
         drawer.setAttribute('data-context', 'drawer-switcher');
-        this.activeToggleButtonIndex !== index ? drawer.removeAttribute('open') : drawer.setAttribute('open', '');
       }
     });
   };
 
   private getToggleButtonIds(): Array<string> {
     return this.togglebuttons.map((toggleButton: HTMLElement) => {
-      return toggleButton.getAttribute('id') ?? `toggleButton-${uniqueId()}`;
+      return toggleButton.getAttribute('id') ?? `togglebutton-${uniqueId()}`;
     });
   }
 
@@ -166,10 +225,13 @@ export class DrawerSwitcher extends FASTElement {
       this.prevActiveToggleButtonIndex = this.activeToggleButtonIndex;
       this.activeToggleButtonIndex = this.togglebuttons.indexOf(selectedToggleButton);
       this.setComponent();
+      this.toggleDrawer();
     }
   };
 
   private handleToggleButtonKeyDown = (event: KeyboardEvent): void => {
+    const keyEnter = 'Enter';
+    const keySpace = ' ';
     switch (event.key) {
       case keyArrowUp:
         event.preventDefault();
@@ -179,8 +241,17 @@ export class DrawerSwitcher extends FASTElement {
         event.preventDefault();
         this.adjustForward(event);
         break;
-    }
-    switch (event.key) {
+      case keyEnter:
+      case keySpace:
+        event.preventDefault();
+        // Code to open the drawer associated with the currently active toggle button
+        this.openDrawer();
+        break;
+      case keyEscape:
+        event.preventDefault();
+        // Code to close the drawer associated with the currently active toggle button
+        this.closeDrawer();
+        break;
       case keyHome:
         event.preventDefault();
         this.adjust(-this.activeToggleButtonIndex);

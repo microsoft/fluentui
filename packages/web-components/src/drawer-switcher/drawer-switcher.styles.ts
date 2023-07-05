@@ -10,6 +10,7 @@ export const styles = css`
   :host {
     flex-direction: column;
     position: absolute;
+    z-index: 999;
     right: 0;
     top: 0;
   }
