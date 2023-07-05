@@ -1,19 +1,22 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import type { PaneSwitcher } from './pane-switcher.js';
+import type { DrawerSwitcher } from './drawer-switcher.js';
 import './define.js';
-import '../pane/define.js';
+import '../drawer/define.js';
+import '../drawer-toggle/define.js';
 import '../button/define.js';
 import '../label/define.js';
 import '../text-input/define.js';
 import '../radio-group/define.js';
 import '../radio/define.js';
 import '../switch/define.js';
-import '../pane-settings-item/define.js';
+// import '../drawer-settings-item/define.js';
 
-type PaneSwitcherStoryArgs = Args & PaneSwitcher;
-type PaneSwitcherStoryMeta = Meta<PaneSwitcherStoryArgs>;
+type DrawerSwitcherStoryArgs = Args & DrawerSwitcher;
+type DrawerSwitcherStoryMeta = Meta<DrawerSwitcherStoryArgs>;
+
+const paneIds = ['first-pane', 'second-pane', 'third-pane', 'fourth-pane'];
 
 const settings20Regular = html`<svg
   fill="currentColor"
@@ -106,7 +109,7 @@ const dismissed16Regular = html`
   </svg>
 `;
 
-const storyTemplate = html<PaneSwitcherStoryArgs>`
+const storyTemplate = html<DrawerSwitcherStoryArgs>`
   <div>
     <style>
       div.docs-story > div:first-child {
@@ -126,11 +129,11 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
       }
     </style>
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-      <fluent-pane-switcher>
-        <fluent-button bind-id="pane1" icon-only slot="toggle-buttons">${animalTurtle20Regular}</fluent-button>
-        <fluent-pane bind-id="pane1" trap-focus id="one" position="right" control-size="small">
+      <fluent-drawer-switcher>
+        <fluent-drawer-toggle id=${paneIds[0] + '-togglebutton'}>${animalTurtle20Regular}</fluent-drawer-toggle>
+        <fluent-drawer id=${paneIds[0]} trap-focus id="one" position="right" control-size="small">
           <span slot="close-icon">${dismissed16Regular}</span>
-          <fluent-text slot="header">Pane 1</fluent-text>
+          <fluent-text slot="header">Drawer 1</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
             <div>
               <fluent-label id="firstName" weight="bold">First Name</fluent-label>
@@ -153,12 +156,13 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
             <fluent-button tabindex="0" appearance="primary">Button 1</fluent-button>
             <fluent-button tabindex="0" appearance="subtle">Button 2</fluent-button>
           </div>
-        </fluent-pane>
+        </fluent-drawer>
 
-        <fluent-button bind-id="pane2" icon-only slot="toggle-buttons">${animalCat20Regular}</fluent-button>
-        <fluent-pane bind-id="pane2" position="right" trap-focus>
+        <fluent-drawer-toggle id=${paneIds[1] + '-togglebutton'}>${animalCat20Regular}</fluent-drawer-toggle>
+
+        <fluent-drawer id=${paneIds[1]} position="right" trap-focus>
           <span slot="close-icon">${dismissed16Regular}</span>
-          <fluent-text slot="header">Pane 2</fluent-text>
+          <fluent-text slot="header">Drawer 2</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
             <div>
               <fluent-label weight="bold">First Name</fluent-label>
@@ -182,12 +186,13 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
             <fluent-button appearance="subtle">Button 2</fluent-button>
           </div>
           
-        </fluent-pane>
+        </fluent-drawer>
 
-        <fluent-button bind-id="pane3" icon-only slot="toggle-buttons">${animalDog20regular}</fluent-button>
-        <fluent-pane bind-id="pane3" position="right" trap-focus control-size="small">
+        <fluent-drawer-toggle id=${paneIds[2] + '-togglebutton'}>${animalDog20regular}</fluent-drawer-toggle>
+
+        <fluent-drawer id=${paneIds[2]} position="right" trap-focus control-size="small">
           <span slot="close-icon">${dismissed16Regular}</span>
-          <fluent-text slot="header">Pane 3</fluent-text>
+          <fluent-text slot="header">Drawer 3</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
             <div>
               <fluent-label weight="bold">First Name</fluent-label>
@@ -210,12 +215,13 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
             <fluent-button appearance="primary">Button 1</fluent-button>
             <fluent-button appearance="subtle">Button 2</fluent-button>
           </div>
-        </fluent-pane>
+        </fluent-drawer>
         
-        <fluent-button bind-id="pane4" icon-only slot="toggle-buttons">${animalRabbit20Regular}</fluent-button>
-        <fluent-pane bind-id="pane4" position="right" trap-focus>
+        <fluent-drawer-toggle id=${paneIds[3] + '-togglebutton'}>${animalRabbit20Regular}</fluent-drawer-toggle>
+
+        <fluent-drawer id=${paneIds[3]} position="right" trap-focus>
            <span slot="close-icon">${dismissed16Regular}</span>
-           <fluent-text slot="header">Pane 4</fluent-text>
+           <fluent-text slot="header">Drawer 4</fluent-text>
            <div style="display: flex; flex-direction: column; row-gap: 14px;">
             <div>
               <fluent-label weight="bold">First Name</fluent-label>
@@ -238,54 +244,54 @@ const storyTemplate = html<PaneSwitcherStoryArgs>`
             <fluent-button appearance="primary">Button 1</fluent-button>
             <fluent-button appearance="subtle">Button 2</fluent-button>
           </div>
-        </fluent-pane>
+        </fluent-drawer>
 
-        <fluent-button bind-id="settings" icon-only slot="toggle-buttons">${settings20Regular}</fluent-button>
-        <fluent-pane bind-id="settings" id="settings" position="right" trap-focus control-size="small" compact>
+        <!-- <fluent-button bind-id="settings" icon-only slot="toggle-buttons">${settings20Regular}</fluent-button>
+        <fluent-drawer bind-id="settings" id="settings" position="right" trap-focus control-size="small" compact>
 
-          <span slot="header" block weight="bold">Customize Pane Switcher</span>
+          <span slot="header" block weight="bold">Customize Drawer Switcher</span>
           <span slot="close-icon">${dismissed16Regular}</span>
 
-          <fluent-pane-settings-item bind-id="pane1">
+          <fluent-drawer-settings-item bind-id="drawer1">
             <span slot="icon">${animalTurtle20Regular}</span>
-            <fluent-text slot="header" block weight="bold"><span>Pane 1</span></fluent-text>
+            <fluent-text slot="header" block weight="bold"><span>Drawer 1</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
-                A short description of Pane 1.
+                A short description of Drawer 1.
             </fluent-text>
-          </fluent-pane-settings-item>
+          </fluent-drawer-settings-item>
 
-          <fluent-pane-settings-item bind-id="pane2">
+          <fluent-drawer-settings-item bind-id="drawer2">
             <span slot="icon">${animalCat20Regular}</span>
-            <fluent-text slot="header" block weight="bold"><span>Pane 2</span></fluent-text>
+            <fluent-text slot="header" block weight="bold"><span>Drawer 2</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
-            A short description of Pane 2.
+            A short description of Drawer 2.
             </fluent-text>
-          </fluent-pane-settings-item>
+          </fluent-drawer-settings-item>
 
-          <fluent-pane-settings-item bind-id="pane3">
+          <fluent-drawer-settings-item bind-id="drawer3">
             <span slot="icon">${animalDog20regular}</span>
-            <fluent-text slot="header" block weight="bold"><span>Pane 3</span></fluent-text>
+            <fluent-text slot="header" block weight="bold"><span>Drawer 3</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
-              A short description of Pane 3.
+              A short description of Drawer 3.
             </fluent-text>
-          </fluent-pane-settings-item>
+          </fluent-drawer-settings-item>
 
-          <fluent-pane-settings-item bind-id="pane4">
+          <fluent-drawer-settings-item bind-id="drawer4">
             <span slot="icon">${animalRabbit20Regular}</span>
-            <fluent-text slot="header" block weight="bold"><span>Pane 4</span></fluent-text>
+            <fluent-text slot="header" block weight="bold"><span>Drawer 4</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
-              A short description of Pane 4.
+              A short description of Drawer 4.
             </fluent-text>
-          </fluent-pane-settings-item>
-        </fluent-pane>
-      </fluent-pane-switcher>
+          </fluent-drawer-settings-item>
+        </fluent-drawer>
+      </fluent-drawer-switcher> -->
     </div>
   </div>
 `;
 
 export default {
-  title: 'Components/PaneSwitcher',
+  title: 'Components/DrawerSwitcher',
   args: {},
-} as PaneSwitcherStoryMeta;
+} as DrawerSwitcherStoryMeta;
 
 export const Default = renderComponent(storyTemplate).bind({});

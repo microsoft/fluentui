@@ -31,11 +31,9 @@ export function paneTemplate<T extends Pane>(): ElementViewTemplate<T> {
       ?modal="${x => x.modal}"
       control-size="${x => x.controlSize}"
       position="${x => x.position}"
-      focus-target="${x => x.focusTarget}"
       aria-disabled="${x => x.ariaDisabled}"
       aria-hidden="${x => (x.open ? 'false' : 'true')}"
       aria-label="${x => x.ariaLabel}"
-      ?trap-focus="${x => x.trapFocus}"
       tabindex="${x => (x.open ? '0' : '-1')}"
       aria-modal="${x => (x.modal ? 'true' : 'false')}"
     >

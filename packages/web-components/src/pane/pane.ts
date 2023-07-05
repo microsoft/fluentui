@@ -26,20 +26,6 @@ export class Pane extends FASTElement {
     this.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  // private hasInteracted: boolean = false;
-
-  // The previous active element before opening the pane.
-  private previousActiveElement?: HTMLElement;
-
-  /**
-   * The pane element.
-   * @public
-   * @remarks
-   * HTML Attribute: pane
-   */
-  @observable
-  public _pane?: Pane;
-
   /**
    * Determines whether the pane should be displayed as modal or non-modal.
    * When in modal mode, an overlay is applied over the rest of the view.
@@ -91,24 +77,6 @@ export class Pane extends FASTElement {
   public open: boolean = false;
 
   /**
-   * Indicates the presence of the toolbar.
-   * @public
-   * @remarks
-   * HTML Attribute: toolbar
-   */
-  @attr({ mode: 'boolean' })
-  public toolbar?: boolean = false;
-
-  /**
-   * The element to receive focus when the pane opens.
-   * @public
-   * @remarks
-   * HTML Attribute: focus-target
-   */
-  @attr({ attribute: 'focus-target' })
-  public focusTarget?: string;
-
-  /**
    * Sets the aria-labelledby attribute of the pane.
    * @public
    * @remarks
@@ -131,11 +99,6 @@ export class Pane extends FASTElement {
    * @public
    */
   public togglePane(): void {
-    if (!this.open) {
-      this.previousActiveElement = document.activeElement as HTMLElement;
-    } else if (this.previousActiveElement) {
-      Updates.enqueue(() => this.previousActiveElement?.focus());
-    }
     this.open = !this.open;
 
     this.$emit('toggled', { open: this.open, position: this.position, controlSize: this.controlSize });
@@ -149,8 +112,6 @@ export class Pane extends FASTElement {
    * @public
    */
   public openPane(): void {
-    this.previousActiveElement = document.activeElement as HTMLElement;
-    // this.hasInteracted = true;
     this.open = true;
     this.$emit('opened', { open: true, position: this.position, controlSize: this.controlSize });
     if (this.open) {
@@ -164,10 +125,6 @@ export class Pane extends FASTElement {
   public closePane(): void {
     this.open = false;
     this.$emit('closed', { open: false, position: this.position, controlSize: this.controlSize });
-
-    if (this.previousActiveElement) {
-      Updates.enqueue(() => this.previousActiveElement?.focus());
-    }
   }
 
   /**
@@ -202,10 +159,14 @@ export class Pane extends FASTElement {
    * @public
    */
   public handleKeyDown = (event: KeyboardEvent): void => {
-    if (event.key === keyEscape) {
-      // Close pane and return focus to the toggle button when the escape key is pressed
-      event.preventDefault();
-      this.closePane();
+    switch (event.key) {
+      case keyEscape:
+        // Close pane and return focus to the toggle button when the escape key is pressed
+        event.preventDefault();
+        this.closePane();
+        break;
+      default:
+        break;
     }
   };
 }

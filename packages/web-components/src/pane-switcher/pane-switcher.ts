@@ -1,17 +1,39 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnter, keySpace, keyTab } from '@microsoft/fast-web-utilities';
 import { Pane } from '../pane/pane.js';
+
+interface PanePair {
+  toggleButtonId: string;
+  paneId: string;
+}
 
 export class PaneSwitcher extends FASTElement {
   private activePaneIndex: number | null = null;
   private toggleButtons: HTMLElement[] = [];
   private panes: Pane[] = [];
+  private panePairs: PanePair[] = [];
+
+  /**
+   * The slotted toggle button elements.
+   * @public
+   * @remarks
+   */
+  @observable
+  public slottedToggleButtons?: HTMLElement[];
+
+  /**
+   * The slotted pane elements.
+   * @public
+   * @remarks
+   */
+  @observable
+  public slottedPanes?: Pane[];
 
   /**
    * Indicates whether the settings pane is present
    * @public
    * @remarks
-   * HTML Attribute: setting
+   * HTML Attribute: settings
    */
   @attr({ mode: 'boolean' })
   public settings: boolean = false;
@@ -20,9 +42,8 @@ export class PaneSwitcher extends FASTElement {
     super.connectedCallback();
     this.addEventListener('focus', this.handleFocus);
     this.addEventListener('keydown', this.handleKeyDown);
-    this.addEventListener('toggle-panes', this.handleTogglePanes as EventListener);
+    this.addEventListener('toggle-panes', this.togglePaneSwitcherPaneVisibility as EventListener);
     this.toggleButtons = Array.from(this.querySelectorAll('[slot="toggle-buttons"]'));
-    this.setupToggleButtons();
     this.setupPanes();
   }
 
@@ -30,7 +51,7 @@ export class PaneSwitcher extends FASTElement {
     super.disconnectedCallback();
     this.removeEventListener('focus', this.handleFocus);
     this.removeEventListener('keydown', this.handleKeyDown);
-    this.removeEventListener('toggle-panes', this.handleTogglePanes as EventListener);
+    this.removeEventListener('toggle-panes', this.togglePaneSwitcherPaneVisibility as EventListener);
   }
 
   constructor() {
@@ -38,29 +59,21 @@ export class PaneSwitcher extends FASTElement {
     this.activePaneIndex = null;
   }
 
-  protected setupToggleButtons(): void {
-    const setup = (slot: HTMLSlotElement) => {
-      if (slot.name === 'toggle-buttons') {
-        const buttons = slot.assignedElements();
+  public slottedToggleButtonsChanged(oldValue: any, newValue: any): void {
+    if (this.$fastController.isConnected) {
+      this.setToggleButtons();
+    }
+  }
 
-        const panes = this.querySelectorAll<Pane>('fluent-pane'); // Use querySelectorAll<Pane> to get NodeListOf<Pane>
-
-        buttons.forEach((button, index) => {
-          button.addEventListener('click', () => {
-            this.handleToggle(index, panes);
-          });
+  protected setToggleButtons(): void {
+    this.toggleButtons.forEach((button, index) => {
+      const bindID = button.getAttribute('bind-id');
+      if (bindID) {
+        button.addEventListener('click', () => {
+          this.handleToggle(bindID, this.panes);
         });
       }
-    };
-
-    // Add the slotchange listener
-    this.addEventListener('slotchange', e => {
-      setup(e.target as HTMLSlotElement);
     });
-
-    // Run the setup immediately for the existing slots
-    const slots = this.shadowRoot?.querySelectorAll('slot');
-    slots?.forEach(setup);
   }
 
   /**
@@ -89,33 +102,38 @@ export class PaneSwitcher extends FASTElement {
     });
   }
 
-  public handleToggle(index: number, panes: NodeListOf<Pane>): void {
+  public handleToggle(bindID: string, panes: Pane[]): void {
     // Get the clicked pane
-    const clickedPane = panes[index] as Pane | null;
+    const clickedPane = panes.find(pane => pane.getAttribute('bind-id') === bindID);
+
+    if (!clickedPane) {
+      return;
+    }
 
     // Check if the clicked pane is already open
-    const isPaneOpen = clickedPane?.open;
+    const isPaneOpen = clickedPane.open;
 
     // Close the clicked pane if it's already open, or open it if it's closed
     if (isPaneOpen) {
-      clickedPane?.closePane();
+      clickedPane.closePane();
       this.activePaneIndex = null; // Reset the activePaneIndex since the pane is closed
     } else {
       // Close the previously opened pane, if any
       if (this.activePaneIndex !== null) {
-        const previouslyOpenedPane = panes[this.activePaneIndex] as Pane | null;
+        const previouslyOpenedPane = panes[this.activePaneIndex];
+
         if (previouslyOpenedPane) {
           previouslyOpenedPane.closePane();
         }
       }
 
       // Open the clicked pane
-      clickedPane?.openPane();
-      this.activePaneIndex = index; // Update the activePaneIndex to the newly opened pane
+      clickedPane.openPane();
+      this.activePaneIndex = panes.indexOf(clickedPane); // Update the activePaneIndex to the newly opened pane
     }
   }
 
-  private handleTogglePanes(event: CustomEvent<{ bindID: string; switchState: boolean }>): void {
+  private togglePaneSwitcherPaneVisibility(event: CustomEvent<{ bindID: string; switchState: boolean }>): void {
     const { bindID, switchState } = event.detail;
     const paneElements = this.getElementsByBindId(event, bindID);
 
@@ -165,7 +183,7 @@ export class PaneSwitcher extends FASTElement {
         const index = this.toggleButtons.indexOf(clickedButton);
         const clickedPane = this.panes[index];
         if (clickedPane) {
-          this.handleToggle(index, document.querySelectorAll<Pane>('fluent-pane'));
+          this.handleToggle(clickedButton.getAttribute('bind-id')!, this.panes);
           clickedPane.focus();
         }
         break;
