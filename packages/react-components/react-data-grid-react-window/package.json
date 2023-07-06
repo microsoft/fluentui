@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-data-grid-react-window",
-  "version": "9.0.0-beta.29",
+  "version": "9.0.0-beta.36",
   "description": "Virtualized DataGrid components and utilities powered by react-window",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,19 +25,19 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.22",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.23",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-table": "^9.3.0",
-    "@fluentui/react-utilities": "^9.9.2",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.6",
+    "@fluentui/react-table": "^9.5.0",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.10",
     "@swc/helpers": "^0.4.14",
     "react-window": "^1.8.6"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.21.0",
+    "@fluentui/react-components": "^9.25.1",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",

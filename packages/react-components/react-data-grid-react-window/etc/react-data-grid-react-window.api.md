@@ -32,7 +32,7 @@ export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'chil
     itemSize: number;
     height: number;
     width?: string | number;
-    children: RowRenderFunction<TItem>;
+    children: RowRenderer<TItem>;
     ariaRowIndexStart?: number;
 };
 
@@ -58,6 +58,9 @@ export { DataGridRowProps }
 export { DataGridSelectionCell }
 
 export { DataGridSelectionCellProps }
+
+// @public (undocumented)
+export type RowRenderer<TItem = unknown> = (row: TableRowData<TItem>, style: React_2.CSSProperties) => React_2.ReactNode;
 
 // (No @packageDocumentation comment for this package)
 

@@ -6,7 +6,8 @@ import type { BreadcrumbItemProps } from './BreadcrumbItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * BreadcrumbItem component - TODO: add more docs
+ * BreadcrumbItem component is a wrapper for BreadcrumbLink and BreadcrumbButton.
+ * It can be used as a non-interactive item.
  */
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbItem_unstable(props, ref);

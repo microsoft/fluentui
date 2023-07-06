@@ -2,6 +2,65 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 11:57:13 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "7ad45a9f4e696e416c4420286cbac3f57a4b3a6f",
+            "comment": "feat: Background appearance context"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: export PortalMountNodeProvider & usePortalMountNode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:31 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:03 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "cf6b94ba6559236150bc1f1814b023607edaeb20",
+            "comment": "chore: re-generate api.md"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 20:45:32 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.5.0",
       "version": "9.5.0",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: Ensures dialog actions stretches on breakpoints",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
