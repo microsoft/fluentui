@@ -12,13 +12,7 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright
-          steps={new Steps()
-            .snapshot('normal', { cropTo: '.testWrapper' })
-            .click('#accordion-0')
-            .snapshot('opened', { cropTo: '.testWrapper' })
-            .end()}
-        >
+        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
           <div className="testWrapper" style={{ width: '300px' }}>
             {story()}
           </div>
