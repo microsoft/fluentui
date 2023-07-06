@@ -11,12 +11,12 @@ import '../text-input/define.js';
 import '../radio-group/define.js';
 import '../radio/define.js';
 import '../switch/define.js';
-// import '../drawer-settings-item/define.js';
+import '../drawer-settings-section/define.js';
 
 type DrawerSwitcherStoryArgs = Args & DrawerSwitcher;
 type DrawerSwitcherStoryMeta = Meta<DrawerSwitcherStoryArgs>;
 
-const paneIds = ['first-pane', 'second-pane', 'third-pane', 'fourth-pane'];
+const paneIds = ['first-drawer', 'second-drawer', 'third-drawer', 'fourth-drawer', 'fifth-drawer'];
 
 const settings20Regular = html`<svg
   fill="currentColor"
@@ -124,14 +124,14 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
         border: none;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-sections: center;
         padding: 2px;
       }
     </style>
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-      <fluent-drawer-switcher>
-        <fluent-drawer-toggle id=${paneIds[0] + '-togglebutton'}>${animalTurtle20Regular}</fluent-drawer-toggle>
-        <fluent-drawer id=${paneIds[0]} trap-focus id="one" position="right" control-size="small">
+      <fluent-drawer-switcher settings>
+        <fluent-drawer-toggle>${animalTurtle20Regular}</fluent-drawer-toggle>
+        <fluent-drawer position="right" control-size="small">
           <span slot="close-icon">${dismissed16Regular}</span>
           <fluent-text slot="header">Drawer 1</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
@@ -158,9 +158,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           </div>
         </fluent-drawer>
 
-        <fluent-drawer-toggle id=${paneIds[1] + '-togglebutton'}>${animalCat20Regular}</fluent-drawer-toggle>
+        <fluent-drawer-toggle>${animalCat20Regular}</fluent-drawer-toggle>
 
-        <fluent-drawer id=${paneIds[1]} position="right" trap-focus>
+        <fluent-drawer position="right" trap-focus>
           <span slot="close-icon">${dismissed16Regular}</span>
           <fluent-text slot="header">Drawer 2</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
@@ -188,9 +188,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           
         </fluent-drawer>
 
-        <fluent-drawer-toggle id=${paneIds[2] + '-togglebutton'}>${animalDog20regular}</fluent-drawer-toggle>
+        <fluent-drawer-toggle>${animalDog20regular}</fluent-drawer-toggle>
 
-        <fluent-drawer id=${paneIds[2]} position="right" trap-focus control-size="small">
+        <fluent-drawer position="right" trap-focus control-size="small">
           <span slot="close-icon">${dismissed16Regular}</span>
           <fluent-text slot="header">Drawer 3</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
@@ -217,9 +217,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           </div>
         </fluent-drawer>
         
-        <fluent-drawer-toggle id=${paneIds[3] + '-togglebutton'}>${animalRabbit20Regular}</fluent-drawer-toggle>
+        <fluent-drawer-toggle>${animalRabbit20Regular}</fluent-drawer-toggle>
 
-        <fluent-drawer id=${paneIds[3]} position="right" trap-focus>
+        <fluent-drawer position="right" trap-focus>
            <span slot="close-icon">${dismissed16Regular}</span>
            <fluent-text slot="header">Drawer 4</fluent-text>
            <div style="display: flex; flex-direction: column; row-gap: 14px;">
@@ -246,45 +246,45 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           </div>
         </fluent-drawer>
 
-        <!-- <fluent-button bind-id="settings" icon-only slot="toggle-buttons">${settings20Regular}</fluent-button>
-        <fluent-drawer bind-id="settings" id="settings" position="right" trap-focus control-size="small" compact>
+        <fluent-drawer-toggle slot="toggle-buttons">${settings20Regular}</fluent-drawer-toggle>
+        <fluent-drawer position="right"  control-size="small" compact>
 
           <span slot="header" block weight="bold">Customize Drawer Switcher</span>
           <span slot="close-icon">${dismissed16Regular}</span>
 
-          <fluent-drawer-settings-item bind-id="drawer1">
+          <fluent-drawer-settings-section>
             <span slot="icon">${animalTurtle20Regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 1</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
                 A short description of Drawer 1.
             </fluent-text>
-          </fluent-drawer-settings-item>
+          </fluent-drawer-settings-section>
 
-          <fluent-drawer-settings-item bind-id="drawer2">
+          <fluent-drawer-settings-section>
             <span slot="icon">${animalCat20Regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 2</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
             A short description of Drawer 2.
             </fluent-text>
-          </fluent-drawer-settings-item>
+          </fluent-drawer-settings-section>
 
-          <fluent-drawer-settings-item bind-id="drawer3">
+          <fluent-drawer-settings-section>
             <span slot="icon">${animalDog20regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 3</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
               A short description of Drawer 3.
             </fluent-text>
-          </fluent-drawer-settings-item>
+          </fluent-drawer-settings-section>
 
-          <fluent-drawer-settings-item bind-id="drawer4">
+          <fluent-drawer-settings-section>
             <span slot="icon">${animalRabbit20Regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 4</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
               A short description of Drawer 4.
             </fluent-text>
-          </fluent-drawer-settings-item>
+          </fluent-drawer-settings-section>
         </fluent-drawer>
-      </fluent-drawer-switcher> -->
+      </fluent-drawer-switcher>
     </div>
   </div>
 `;

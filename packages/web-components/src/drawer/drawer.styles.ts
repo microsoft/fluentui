@@ -49,7 +49,7 @@ export const styles = css`
     font-family: ${fontFamilyBase};
     font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    /* border: ${strokeWidthThin} solid ${colorTransparentStroke}; */
   }
 
   .root {

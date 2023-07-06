@@ -7,7 +7,7 @@ import type { DrawerToggle } from './drawer-toggle.js';
  */
 export function drawerToggleTemplate<T extends DrawerToggle>(): ElementViewTemplate<T> {
   return html<T>`
-    <template slot="togglebuttons" aria-disabled="${x => x.disabled}">
+    <template slot="togglebuttons" aria-disabled="${x => x.disabled}" tabindex="0">
       <fluent-button icon-only><slot></slot></fluent-button>
     </template>
   `;
