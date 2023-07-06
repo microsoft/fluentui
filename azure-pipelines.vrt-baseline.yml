@@ -32,7 +32,7 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
@@ -54,7 +54,7 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
@@ -76,7 +76,7 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING:  $(BLOB-CONNECTION-STRING)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
