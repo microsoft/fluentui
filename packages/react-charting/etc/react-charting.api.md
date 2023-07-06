@@ -878,7 +878,7 @@ export interface ILineChartPoints {
     opacity?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ILineChartProps extends ICartesianChartProps {
     allowMultipleShapesForPoints?: boolean;
     // (undocumented)
@@ -1443,7 +1443,7 @@ export const Legends: React_2.FunctionComponent<ILegendsProps>;
 // @public
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
 
-// @public (undocumented)
+// @public
 export const LineChart: React_2.FunctionComponent<ILineChartProps>;
 
 // @public (undocumented)

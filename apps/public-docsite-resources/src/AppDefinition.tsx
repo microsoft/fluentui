@@ -520,10 +520,16 @@ export const AppDefinition: IAppDefinition = {
       name: 'Charting',
       links: [
         {
-          component: require<any>('./components/pages/LegendsPage').LegendsPage,
+          component: require<any>('./components/pages/Charting/LegendsPage').LegendsPage,
           key: 'Legends',
           name: 'Legends',
           url: '#/examples/Legends',
+        },
+        {
+          component: require<any>('./components/pages/Charting/LineChartPage').LineChartPage,
+          key: 'LineChart',
+          name: 'LineChart',
+          url: '#/examples/LineChart',
         },
       ],
     },
