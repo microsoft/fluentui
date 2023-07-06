@@ -7,4 +7,7 @@ import {} from '../theme/design-tokens.js';
  */
 export const styles = css`
   ${display('flex')}
+  :host {
+    flex-direction: row;
+  }
 `;

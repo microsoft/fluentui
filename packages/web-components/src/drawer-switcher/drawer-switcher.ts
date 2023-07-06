@@ -1,7 +1,7 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, volatile } from '@microsoft/fast-element';
 import { keyArrowDown, keyArrowUp, keyEnd, keyEscape, keyHome, limit, uniqueId } from '@microsoft/fast-web-utilities';
 import { Drawer } from '../drawer/drawer.js';
-import { DrawerToggle } from '../drawer-toggle/drawer-toggle.js';
+import { DrawerSwitcherToggleButton } from '../drawer-switcher-toggle-button/drawer-switcher-toggle-button.js';
 import { DrawerSettingsSection } from '../drawer-settings-section/drawer-settings-section.js';
 
 /**
@@ -21,6 +21,29 @@ export class DrawerSwitcher extends FASTElement {
   /**
    * @internal
    */
+  public connectedCallback(): void {
+    super.connectedCallback();
+    this.addEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
+
+    // Now you can access the referenced switch element and its slotted content
+    this.toggleButtonIds = this.getToggleButtonIds();
+    this.drawersIds = this.getDrawerIds();
+    this.switchIds = this.getSwitchIds();
+    this.activeToggleButtonIndex = this.getActiveIndex();
+    this.settingsSections = this.settings;
+    this.setSwitches();
+    this.setToggleButtons();
+    this.setDrawers();
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
+  }
+
+  /**
+   * @internal
+   */
   @observable
   public drawers: HTMLElement[] = [];
 
@@ -34,7 +57,7 @@ export class DrawerSwitcher extends FASTElement {
    * @internal
    */
   @observable
-  public settingsSection: HTMLElement[] = [];
+  public settingsSections: HTMLElement[] = [];
 
   /**
    * @internal
@@ -73,7 +96,6 @@ export class DrawerSwitcher extends FASTElement {
       this.switchIds = this.getSwitchIds();
       this.setToggleButtons();
       this.setDrawers();
-      this.setSwitches();
     }
   }
 
@@ -83,20 +105,18 @@ export class DrawerSwitcher extends FASTElement {
       this.drawersIds = this.getDrawerIds();
       this.switchIds = this.getSwitchIds();
 
+      this.setSwitches();
       this.setToggleButtons();
       this.setDrawers();
-      this.setSwitches();
     }
   }
 
-  public settingsSectionChanged(): void {
+  public settingsSectionsChanged(): void {
     if (this.$fastController.isConnected && this.drawers.length <= this.togglebuttons.length) {
       this.toggleButtonIds = this.getToggleButtonIds();
       this.drawersIds = this.getDrawerIds();
       this.switchIds = this.getSwitchIds();
-
       this.setToggleButtons();
-      this.setDrawers();
       this.setSwitches();
     }
   }
@@ -187,10 +207,10 @@ export class DrawerSwitcher extends FASTElement {
     }
   }
 
-  protected setToggleButtons = (): void => {
+  protected setToggleButtons(): void {
     this.activeToggleButtonIndex = this.getActiveIndex();
     this.togglebuttons.forEach((toggleButton: HTMLElement, index: number) => {
-      if (toggleButton instanceof DrawerToggle && toggleButton.slot === 'togglebuttons') {
+      if (toggleButton instanceof DrawerSwitcherToggleButton && toggleButton.slot === 'togglebuttons') {
         const isActiveToggleButton = this.activeToggleButtonIndex === index && this.isFocusableElement(toggleButton);
 
         const toggleButtonId: string = this.toggleButtonIds[index];
@@ -201,13 +221,14 @@ export class DrawerSwitcher extends FASTElement {
         toggleButton.addEventListener('click', this.handleToggleButtonClick);
         toggleButton.addEventListener('keydown', this.handleToggleButtonKeyDown);
         toggleButton.setAttribute('tabindex', isActiveToggleButton ? '0' : '-1');
+
         if (isActiveToggleButton) {
           this.activeToggleButton = toggleButton;
           this.activeid = toggleButtonId;
         }
       }
     });
-  };
+  }
 
   private setDrawers = (): void => {
     this.drawers.forEach((drawer: HTMLElement, index: number) => {
@@ -222,7 +243,7 @@ export class DrawerSwitcher extends FASTElement {
   };
 
   private setSwitches = (): void => {
-    this.settingsSection.forEach((switchElement: HTMLElement, index: number) => {
+    this.settingsSections.forEach((switchElement: HTMLElement, index: number) => {
       if (switchElement instanceof DrawerSettingsSection) {
         const toggleButtonId: string = this.toggleButtonIds[index];
         const switchId: string = this.switchIds[index];
@@ -231,6 +252,21 @@ export class DrawerSwitcher extends FASTElement {
       }
     });
   };
+
+  /**
+   * The component is collapsible when in single-selection mode with no size attribute.
+   *
+   * @internal
+   */
+  public get settings(): HTMLElement[] {
+    const settingsSection = Array.from(
+      this.querySelectorAll('fluent-drawer-settings-section'),
+    ) as DrawerSettingsSection[];
+    settingsSection.forEach((section: HTMLElement) => {
+      this.settingsSections.push(section as DrawerSettingsSection);
+    });
+    return this.settingsSections;
+  }
 
   private getToggleButtonIds(): Array<string> {
     return this.togglebuttons.map((toggleButton: HTMLElement) => {
@@ -387,45 +423,19 @@ export class DrawerSwitcher extends FASTElement {
 
   private togglePaneToggleVisibility(event: CustomEvent<{ switchTarget: string; switchState: boolean }>): void {
     const { switchTarget, switchState } = event.detail;
-    const toggleButtonElement = this.getElementsByBindId(event, switchTarget);
+    const toggleButtonElement = this.getDrawerSwitcherToggleButton(event, switchTarget);
 
     if (toggleButtonElement) {
-      toggleButtonElement.hidden = switchState;
+      toggleButtonElement.hidden = !switchState;
     }
   }
 
-  private getElementsByBindId(event: Event, switchTarget: string): HTMLElement | null {
+  private getDrawerSwitcherToggleButton(event: Event, switchTarget: string): HTMLElement | null {
     const eventTarget = event.target as HTMLElement;
     const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
     if (paneSwitcher) {
       return paneSwitcher.querySelector(`#${switchTarget}`);
     }
     return null;
-  }
-
-  /**
-   * @internal
-   */
-  public connectedCallback(): void {
-    super.connectedCallback();
-    this.addEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
-
-    // Now you can access the referenced switch element and its slotted content
-    this.toggleButtonIds = this.getToggleButtonIds();
-    this.drawersIds = this.getDrawerIds();
-    this.switchIds = this.getSwitchIds();
-    this.activeToggleButtonIndex = this.getActiveIndex();
-    // Query for settingsSection within the shadow DOM
-    const settingsSection = Array.from(
-      this.querySelectorAll('fluent-drawer-settings-section'),
-    ) as DrawerSettingsSection[];
-    settingsSection.forEach((section: HTMLElement) => {
-      this.settingsSection.push(section as HTMLElement);
-    });
-  }
-
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.removeEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
   }
 }

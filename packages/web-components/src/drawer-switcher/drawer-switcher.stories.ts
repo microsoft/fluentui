@@ -4,13 +4,15 @@ import { renderComponent } from '../helpers.stories.js';
 import type { DrawerSwitcher } from './drawer-switcher.js';
 import './define.js';
 import '../drawer/define.js';
-import '../drawer-toggle/define.js';
+import '../drawer-toolbar/define.js';
+import '../drawer-switcher-toggle-button/define.js';
 import '../button/define.js';
 import '../label/define.js';
 import '../text-input/define.js';
 import '../radio-group/define.js';
 import '../radio/define.js';
 import '../switch/define.js';
+import '../text/define.js';
 import '../drawer-settings-section/define.js';
 
 type DrawerSwitcherStoryArgs = Args & DrawerSwitcher;
@@ -130,10 +132,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
     </style>
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
       <fluent-drawer-switcher settings>
-        <fluent-drawer-toggle>${animalTurtle20Regular}</fluent-drawer-toggle>
+        <fluent-drawer-switcher-toggle-button>${animalTurtle20Regular}</fluent-drawer-switcher-toggle-button>
         <fluent-drawer position="right" control-size="small">
-          <span slot="close-icon">${dismissed16Regular}</span>
-          <fluent-text slot="header">Drawer 1</fluent-text>
+          <div slot="toolbar"><fluent-drawer-toolbar></fluent-drawer-toolbar></div>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
             <div>
               <fluent-label id="firstName" weight="bold">First Name</fluent-label>
@@ -152,13 +153,13 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
               </fluent-radio-group>
             </div>
           </div>
-          <div slot="footer">
+          <div slot="end">
             <fluent-button tabindex="0" appearance="primary">Button 1</fluent-button>
             <fluent-button tabindex="0" appearance="subtle">Button 2</fluent-button>
           </div>
         </fluent-drawer>
 
-        <fluent-drawer-toggle>${animalCat20Regular}</fluent-drawer-toggle>
+        <fluent-drawer-switcher-toggle-button>${animalCat20Regular}</fluent-drawer-switcher-toggle-button>
 
         <fluent-drawer position="right" trap-focus>
           <span slot="close-icon">${dismissed16Regular}</span>
@@ -188,7 +189,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           
         </fluent-drawer>
 
-        <fluent-drawer-toggle>${animalDog20regular}</fluent-drawer-toggle>
+        <fluent-drawer-switcher-toggle-button>${animalDog20regular}</fluent-drawer-switcher-toggle-button>
 
         <fluent-drawer position="right" trap-focus control-size="small">
           <span slot="close-icon">${dismissed16Regular}</span>
@@ -217,7 +218,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           </div>
         </fluent-drawer>
         
-        <fluent-drawer-toggle>${animalRabbit20Regular}</fluent-drawer-toggle>
+        <fluent-drawer-switcher-toggle-button>${animalRabbit20Regular}</fluent-drawer-switcher-toggle-button>
 
         <fluent-drawer position="right" trap-focus>
            <span slot="close-icon">${dismissed16Regular}</span>
@@ -246,13 +247,13 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           </div>
         </fluent-drawer>
 
-        <fluent-drawer-toggle slot="toggle-buttons">${settings20Regular}</fluent-drawer-toggle>
+        <fluent-drawer-switcher-toggle-button slot="toggle-buttons">${settings20Regular}</fluent-drawer-switcher-toggle-button>
         <fluent-drawer position="right"  control-size="small" compact>
-
-          <span slot="header" block weight="bold">Customize Drawer Switcher</span>
-          <span slot="close-icon">${dismissed16Regular}</span>
-
-          <fluent-drawer-settings-section>
+          <div slot="start">
+            <fluent-text block="" size="400" weight="bold"><span>Settings</span></fluent-text>
+            <fluent-text block="" size="300" weight="semibold" style="display: block; margin: 2px 0 0 4px;">Settings</fluent-text>
+          </div>
+          <fluent-drawer-settings-section default-checked>
             <span slot="icon">${animalTurtle20Regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 1</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">

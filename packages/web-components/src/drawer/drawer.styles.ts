@@ -74,11 +74,6 @@ export const styles = css`
     width: 940px;
   }
 
-  ::slotted([slot='header']),
-  ::slotted([slot='toolbar']) {
-    width: 100%;
-  }
-
   :host([modal][expanded]) {
     /* This will create an overlay effect */
     z-index: 1000;
@@ -95,26 +90,7 @@ export const styles = css`
     z-index: -1;
   }
 
-  .header-container {
-    height: 32px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .header {
-    font-size: ${fontSizeBase500};
-    line-height: ${lineHeightBase500};
-    font-weight: ${fontWeightSemibold};
-  }
-  .subheader {
-    height: 28px;
-  }
   .drawer {
-    display: grid;
-    grid-template-rows: 34px auto 72px;
-    flex-direction: column;
     width: 100%;
     position: relative;
     z-index: 1;
@@ -123,49 +99,8 @@ export const styles = css`
     padding: ${spacingHorizontalXXL} ${spacingVerticalXXL};
   }
 
-  .toolbar-container {
-    display: grid;
-  }
-
   :host([compact]) .drawer {
     padding: ${spacingVerticalS} ${spacingHorizontalM};
-  }
-
-  :host([compact]) .header {
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
-    font-weight: ${fontWeightSemibold};
-  }
-  :host([compact]) .header-container {
-    height: 28px;
-  }
-
-  :host([toolbar]) .drawer {
-    grid-template-rows: 56px 34px auto 72px;
-  }
-
-  :host([toolbar]) .header {
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
-  }
-
-  .toolbar {
-    padding: ${spacingVerticalL} ${spacingHorizontalL};
-    height: 32px;
-    display: flex;
-    align-items: center;
-    position: relative; /* to be on top of the overlay */
-    z-index: 1;
-  }
-
-  .content {
-    padding: ${spacingVerticalS} 0 ${spacingVerticalXXL};
-  }
-
-  .footer {
-    align-self: flex-end;
-    display: flex;
-    flex-direction: row;
-    column-gap: ${spacingHorizontalS};
   }
 
   :host([position='left']) {

@@ -15,7 +15,7 @@ export const styles = css`
     padding-top: 4px;
   }
   :host {
-    padding: 8px ${spacingHorizontalS};
+    padding: 8px 4px;
   }
   .root {
     display: grid;

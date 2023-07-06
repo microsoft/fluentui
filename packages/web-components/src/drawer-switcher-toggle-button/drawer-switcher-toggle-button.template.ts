@@ -1,11 +1,11 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import type { DrawerToggle } from './drawer-toggle.js';
+import type { DrawerSwitcherToggleButton } from './drawer-switcher-toggle-button.js';
 
 /**
  * The template for the DrawerToggle component.
  * @public
  */
-export function drawerToggleTemplate<T extends DrawerToggle>(): ElementViewTemplate<T> {
+export function drawerSwitcherToggleButtonTemplate<T extends DrawerSwitcherToggleButton>(): ElementViewTemplate<T> {
   return html<T>`
     <template slot="togglebuttons" aria-disabled="${x => x.disabled}" tabindex="0">
       <fluent-button icon-only><slot></slot></fluent-button>
@@ -13,4 +13,4 @@ export function drawerToggleTemplate<T extends DrawerToggle>(): ElementViewTempl
   `;
 }
 
-export const template: ElementViewTemplate<DrawerToggle> = drawerToggleTemplate();
+export const template: ElementViewTemplate<DrawerSwitcherToggleButton> = drawerSwitcherToggleButtonTemplate();

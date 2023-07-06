@@ -15,6 +15,7 @@ export class Drawer extends FASTElement {
     super.connectedCallback();
     // Register event listener
     this.addEventListener('keydown', this.handleKeyDown);
+    this.addEventListener('close-drawer', this.close);
     this.setItems();
   }
 
@@ -22,6 +23,7 @@ export class Drawer extends FASTElement {
     super.disconnectedCallback();
     // Unregister event listener
     this.removeEventListener('keydown', this.handleKeyDown);
+    this.removeEventListener('close-drawer', this.close);
   }
 
   /**
@@ -96,6 +98,7 @@ export class Drawer extends FASTElement {
   }
 
   public close() {
+    console.log('close');
     this.expanded = false;
   }
 

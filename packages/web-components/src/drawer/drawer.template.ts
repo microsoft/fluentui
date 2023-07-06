@@ -1,4 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { endSlotTemplate, startSlotTemplate } from '@microsoft/fast-foundation';
 import type { Drawer } from './drawer.js';
 
 /**
@@ -27,27 +28,10 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
         aria-labelledby="${x => x.ariaLabelledby}"
         aria-label="${x => x.ariaLabel}"
       >
-        <div class="header-container">
-          <div class="header">
-            <slot name="header"></slot>
-          </div>
-          <div class="close">
-            <fluent-button
-              @click="${(x, c) => x.close()}"
-              tabindex="${x => (x.expanded ? '0' : '-1')}"
-              appearance="transparent"
-              icon-only
-            >
-              <slot name="close-icon"></slot>
-            </fluent-button>
-          </div>
-        </div>
-        <div class="content">
-          <slot></slot>
-        </div>
-        <div class="footer">
-          <slot name="footer"></slot>
-        </div>
+        <slot name="toolbar" part="toolbar"></slot>
+        ${startSlotTemplate({})}
+        <slot></slot>
+        ${endSlotTemplate({})}
       </div>
     </template>
   `;
