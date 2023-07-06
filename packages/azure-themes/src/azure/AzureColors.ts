@@ -183,7 +183,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     background: {
       default: BaseColors.BLUE_00245B,
-      okay: BaseColors.GREEN_393D1B,
+      success: BaseColors.GREEN_393D1B,
       error: BaseColors.RED_442726,
       warning: BaseColors.ORANGE_4F2A0F,
       information: BaseColors.BLUE_00245B,
@@ -198,7 +198,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
       upsell: BaseColors.PURPLE_38134A,
     },
     icon: {
-      okay: BaseColors.GREEN_57A300,
+      success: BaseColors.GREEN_57A300,
       error: BaseColors.RED_E00B1C,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,
@@ -466,7 +466,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     },
     background: {
       default: BaseColors.TRANSPARENT,
-      okay: BaseColors.TRANSPARENT,
+      success: BaseColors.TRANSPARENT,
       error: BaseColors.TRANSPARENT,
       warning: BaseColors.TRANSPARENT,
       information: BaseColors.TRANSPARENT,
@@ -481,7 +481,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       upsell: BaseColors.PURPLE_38134A,
     },
     icon: {
-      okay: BaseColors.GREEN_57A300,
+      success: BaseColors.GREEN_57A300,
       error: BaseColors.RED_E00B1C,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,
@@ -749,7 +749,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     },
     background: {
       default: BaseColors.BLUE_F0F6FF,
-      okay: BaseColors.GREEN_F8FFF0,
+      success: BaseColors.GREEN_F8FFF0,
       error: BaseColors.RED_FEF0F1,
       warning: BaseColors.ORANGE_FFF8F0,
       information: BaseColors.BLUE_F0F6FF,
@@ -764,7 +764,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
       upsell: BaseColors.PURPLE_F9F3FC,
     },
     icon: {
-      okay: BaseColors.GREEN_57A300,
+      success: BaseColors.GREEN_57A300,
       error: BaseColors.RED_A4262C,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,
@@ -1032,7 +1032,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     },
     background: {
       default: BaseColors.TRANSPARENT,
-      okay: BaseColors.TRANSPARENT,
+      success: BaseColors.TRANSPARENT,
       error: BaseColors.TRANSPARENT,
       warning: BaseColors.TRANSPARENT,
       information: BaseColors.TRANSPARENT,
@@ -1047,7 +1047,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       upsell: BaseColors.PURPLE_F9F3FC,
     },
     icon: {
-      okay: BaseColors.GREEN_57A300,
+      success: BaseColors.GREEN_57A300,
       error: BaseColors.RED_E00B1C,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,

@@ -7,7 +7,7 @@ export interface IAzureSemanticColors {
     };
     background: {
       default: string;
-      okay: string;
+      success: string;
       error: string;
       warning: string;
       information: string;
@@ -22,7 +22,7 @@ export interface IAzureSemanticColors {
       upsell: string;
     };
     icon: {
-      okay: string;
+      success: string;
       error: string;
       warning: string;
       information: string;
