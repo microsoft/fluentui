@@ -30,8 +30,20 @@ export const Overlay = () => {
       </DrawerOverlay>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
-        Toggle
+        Open Drawer
       </Button>
     </div>
   );
+};
+
+Overlay.parameters = {
+  docs: {
+    description: {
+      story: [
+        'DrawerOverlay contains supplementary content and are used for complex creation, edit, or management experiences.',
+        'For example, viewing details about an item in a list or editing settings.',
+        'By default, drawer is blocking and signifies that the users full attention is required when making configurations.',
+      ].join('\n'),
+    },
+  },
 };

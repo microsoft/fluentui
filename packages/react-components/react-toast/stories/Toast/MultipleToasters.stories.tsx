@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, RadioGroup, Radio } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  RadioGroup,
+  Radio,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 export const MultipleToasters = () => {
   const first = useId('toaster-1');
@@ -12,21 +21,23 @@ export const MultipleToasters = () => {
     if (toaster === first) {
       dispatchFirstToast(
         <Toast>
-          <ToastTitle intent="info">First toaster</ToastTitle>
+          <ToastTitle>First toaster</ToastTitle>
         </Toast>,
+        { intent: 'info' },
       );
     } else {
       dispatchSecondToast(
         <Toast>
-          <ToastTitle intent="info">Second toaster</ToastTitle>
+          <ToastTitle>Second toaster</ToastTitle>
         </Toast>,
+        { intent: 'info' },
       );
     }
   };
 
   return (
     <>
-      <Field label="Toast politeness">
+      <Field label="Choose toaster">
         <RadioGroup value={toaster} onChange={(e, data) => setToaster(data.value)}>
           <Radio label="First toaster" value={first} />
           <Radio label="Second toaster" value={second} />

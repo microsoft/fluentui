@@ -105,4 +105,72 @@ describe('DataGrid', () => {
     cy.contains('4-1').focus().realPress(['Control', 'End']);
     cy.focused().should('have.text', '7-3');
   });
+
+  it('should use focusable group for cells', () => {
+    const NestedFocusableExample = () => (
+      <DataGrid items={testItems} columns={testColumns}>
+        <DataGridHeader>
+          <DataGridRow<Item>>{({ renderHeaderCell }) => <DataGridCell>{renderHeaderCell()}</DataGridCell>}</DataGridRow>
+        </DataGridHeader>
+        <DataGridBody<Item>>
+          {({ item }) => (
+            <DataGridRow<Item>>
+              {({ renderCell }) => (
+                <DataGridCell focusMode="group">
+                  <button>{renderCell(item)}-1</button>
+                  <button>{renderCell(item)}-2</button>
+                </DataGridCell>
+              )}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    );
+    mount(<NestedFocusableExample />);
+
+    cy.contains('1-1-11-1-2').focus().realPress('Enter');
+    cy.focused().should('have.text', '1-1-1').realPress('Tab');
+    cy.focused().should('have.text', '1-1-2').realPress('Tab');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowDown');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowUp');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowLeft');
+    cy.focused().should('have.text', '1-1-1').realPress('ArrowRight');
+    cy.focused().should('have.text', '1-1-1').realPress('Escape');
+    cy.focused().should('have.text', '1-1-11-1-2').realPress('ArrowRight');
+    cy.focused().should('have.text', '1-2-11-2-2');
+  });
+
+  it('should navigate in composite mode', () => {
+    const CompositeExample = () => (
+      <>
+        <button>Before</button>
+        <DataGrid items={testItems} focusMode="composite" columns={testColumns}>
+          <DataGridHeader>
+            <DataGridRow<Item>>
+              {({ renderHeaderCell }) => <DataGridCell>{renderHeaderCell()}</DataGridCell>}
+            </DataGridRow>
+          </DataGridHeader>
+          <DataGridBody<Item>>
+            {({ item }) => (
+              <DataGridRow<Item>>{({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}</DataGridRow>
+            )}
+          </DataGridBody>
+        </DataGrid>
+        <button>After</button>
+      </>
+    );
+    mount(<CompositeExample />);
+
+    cy.contains('header-1').focus().realPress('ArrowRight');
+    cy.focused().should('have.text', 'header-2').realPress('ArrowDown');
+    cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
+    cy.focused().should('have.text', '1-1').should('have.attr', 'role', 'gridcell').realPress('ArrowRight');
+    cy.focused().should('have.text', '1-2').should('have.attr', 'role', 'gridcell').realPress('ArrowDown');
+    cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
+    cy.focused().should('have.text', '2-1').should('have.attr', 'role', 'gridcell').realPress('Tab');
+    cy.focused().should('have.text', 'After').realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
+    cy.focused().should('have.text', '7-1').should('have.attr', 'role', 'gridcell').realPress(['Shift', 'Tab']);
+    cy.focused().should('have.text', 'Before');
+  });
 });

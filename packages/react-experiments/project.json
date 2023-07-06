@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-experiments",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-experiments/src",
+  "tags": ["v8"]
+}

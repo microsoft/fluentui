@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItemLink renders a default state 1`] = `
+<div>
+  <a
+    class="fui-MenuItemLink fui-MenuItem"
+    href="#"
+    role="menuitem"
+  >
+    <span
+      class="fui-MenuItemLink__content fui-MenuItem__content"
+    >
+      Default MenuItemLink
+    </span>
+  </a>
+</div>
+`;

@@ -8,12 +8,13 @@ import type {
   OnUpdateItemVisibility,
   OnUpdateOverflow,
   OverflowItemEntry,
+  OverflowDividerEntry,
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
 /**
  * @internal
@@ -78,6 +79,20 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     [overflowManager],
   );
 
+  const registerDivider = React.useCallback(
+    (divider: OverflowDividerEntry) => {
+      const el = divider.element;
+      overflowManager?.addDivider(divider);
+      el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+
+      return () => {
+        divider.groupId && overflowManager?.removeDivider(divider.groupId);
+        el.removeAttribute(DATA_OVERFLOW_DIVIDER);
+      };
+    },
+    [overflowManager],
+  );
+
   const updateOverflow = React.useCallback(() => {
     overflowManager?.update();
   }, [overflowManager]);
@@ -100,6 +115,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     registerItem,
     updateOverflow,
     registerOverflowMenu,
+    registerDivider,
   };
 };
 

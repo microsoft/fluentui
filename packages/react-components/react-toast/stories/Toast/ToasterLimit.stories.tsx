@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, SpinButton } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  SpinButton,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 export const ToasterLimit = () => {
   const toasterId = useId('toaster');
@@ -9,13 +17,14 @@ export const ToasterLimit = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success">Limited to 3 toasts</ToastTitle>
+        <ToastTitle>Limited to 3 toasts</ToastTitle>
       </Toast>,
+      { intent: 'success' },
     );
 
   return (
     <>
-      <Field label="Vertical offset">
+      <Field label="Toaster Limit">
         <SpinButton
           value={limit}
           onChange={(e, data) => {

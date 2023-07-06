@@ -4,6 +4,7 @@ export {
   useTableSort,
   createTableColumn,
   useTableColumnSizing_unstable,
+  useTableCompositeNavigation,
 } from './hooks';
 
 export type {
@@ -18,7 +19,6 @@ export type {
   TableSortState,
   TableFeaturePlugin,
   TableColumnSizingOptions,
-  UseTableSelectionOptions,
 } from './hooks';
 
 export {

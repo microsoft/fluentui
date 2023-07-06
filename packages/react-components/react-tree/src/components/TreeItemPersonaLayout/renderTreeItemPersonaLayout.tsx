@@ -5,10 +5,11 @@ import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
-  TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutContextValues,
+  TreeItemPersonaLayoutSlots,
 } from './TreeItemPersonaLayout.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
+import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemPersonaLayout
@@ -25,10 +26,12 @@ export const renderTreeItemPersonaLayout_unstable = (
       <AvatarContextProvider value={contextValues.avatar}>
         <slots.media {...slotProps.media} />
       </AvatarContextProvider>
-      <slots.content {...slotProps.content}>
-        <slots.main {...slotProps.main} />
-        {slots.description && <slots.description {...slotProps.description} />}
-      </slots.content>
+      <slots.content {...slotProps.content} />
+      {slots.description && <slots.description {...slotProps.description} />}
+      <ButtonContextProvider value={state.buttonContextValue}>
+        {slots.actions && <slots.actions {...slotProps.actions} />}
+        {slots.aside && <slots.aside {...slotProps.aside} />}
+      </ButtonContextProvider>
     </slots.root>
   );
 };

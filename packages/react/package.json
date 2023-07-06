@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.110.2",
+  "version": "8.110.7",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,6 +17,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "bundle-size-auditor": "bundle-size-auditor --report-path='../../dist/bundle-size-auditor/react'",
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -33,7 +34,7 @@
     "mf": "just-scripts mf"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.30",
+    "@fluentui/common-styles": "^1.2.32",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/example-data": "^8.4.11",
     "@fluentui/jest-serializer-merge-styles": "^8.0.29",
@@ -47,18 +48,18 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.5.12",
-    "@fluentui/foundation-legacy": "^8.2.41",
-    "@fluentui/font-icons-mdl2": "^8.5.21",
+    "@fluentui/date-time-utilities": "^8.5.13",
+    "@fluentui/foundation-legacy": "^8.2.43",
+    "@fluentui/font-icons-mdl2": "^8.5.23",
     "@fluentui/merge-styles": "^8.5.12",
-    "@fluentui/react-focus": "^8.8.28",
-    "@fluentui/react-hooks": "^8.6.27",
+    "@fluentui/react-focus": "^8.8.30",
+    "@fluentui/react-hooks": "^8.6.29",
     "@fluentui/react-portal-compat-context": "^9.0.6",
     "@fluentui/react-window-provider": "^2.2.15",
     "@fluentui/set-version": "^8.2.11",
-    "@fluentui/style-utilities": "^8.9.14",
-    "@fluentui/theme": "^2.6.32",
-    "@fluentui/utilities": "^8.13.16",
+    "@fluentui/style-utilities": "^8.9.16",
+    "@fluentui/theme": "^2.6.34",
+    "@fluentui/utilities": "^8.13.18",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
@@ -69,6 +70,7 @@
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
+    "./dist/css/*": "./dist/css/*",
     "./dist/sass/*": "./dist/sass/*",
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",

@@ -11,7 +11,7 @@ export type TagContextValues = {
 };
 
 export type TagSlots = {
-  root: NonNullable<Slot<'button'>>;
+  root: NonNullable<Slot<'button', 'span'>>;
 
   /**
    * Slot for an icon or other visual element
