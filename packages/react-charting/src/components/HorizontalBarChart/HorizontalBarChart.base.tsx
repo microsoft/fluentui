@@ -40,7 +40,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _calloutId: string;
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean = getRTL(this.props.theme);
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
