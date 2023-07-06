@@ -8,7 +8,7 @@ import type { DrawerSettingsSection } from './drawer-settings-section.js';
 
 export function drawerSettingsSectionTemplate<T extends DrawerSettingsSection>(): ElementViewTemplate<T> {
   return html<T>`
-    <template>
+    <template target="${x => x.target}">
       <div class="root">
         <div class="icon">
           <slot name="icon"></slot>
@@ -22,7 +22,13 @@ export function drawerSettingsSectionTemplate<T extends DrawerSettingsSection>()
           </div>
         </div>
         <div class="toggle">
-          <fluent-switch @change="${(x, c) => x.handleSwitchChange()}" size="small" ${ref('switch')}></fluent-switch>
+          <fluent-switch
+            aria-checked="${x => x.switchState}"
+            aria-controls="${x => x.target ?? x.switchTarget}"
+            @change="${(x, c) => x.handleSwitchChange()}"
+            size="small"
+            ${ref('switch')}
+          ></fluent-switch>
         </div>
       </div>
     </template>

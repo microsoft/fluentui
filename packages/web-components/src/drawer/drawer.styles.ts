@@ -49,7 +49,6 @@ export const styles = css`
     font-family: ${fontFamilyBase};
     font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
-    /* border: ${strokeWidthThin} solid ${colorTransparentStroke}; */
   }
 
   .root {
@@ -58,7 +57,7 @@ export const styles = css`
   }
 
   :host([data-context='drawer-switcher']) {
-    right: 34px;
+    right: 32px;
   }
 
   :host([expanded]) {
