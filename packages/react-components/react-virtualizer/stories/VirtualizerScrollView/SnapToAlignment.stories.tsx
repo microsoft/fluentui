@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     scrollSnapType: 'x mandatory',
     scrollBehavior: 'auto',
-    overflowAnchor: 'none',
     ...shorthands.padding('10px', '2px'),
     ...shorthands.gap('10px'),
   },
