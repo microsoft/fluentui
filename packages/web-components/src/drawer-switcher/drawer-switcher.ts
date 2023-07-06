@@ -1,6 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { keyArrowDown, keyArrowUp, keyEnd, keyEscape, keyHome, limit, uniqueId } from '@microsoft/fast-web-utilities';
-import { Switch } from '@fluentui/web-components';
 import { Drawer } from '../drawer/drawer.js';
 import { DrawerToggle } from '../drawer-toggle/drawer-toggle.js';
 import { DrawerSettingsSection } from '../drawer-settings-section/drawer-settings-section.js';
@@ -386,11 +385,31 @@ export class DrawerSwitcher extends FASTElement {
     this.togglebuttons[this.activeToggleButtonIndex].focus();
   }
 
+  private togglePaneToggleVisibility(event: CustomEvent<{ switchTarget: string; switchState: boolean }>): void {
+    const { switchTarget, switchState } = event.detail;
+    const toggleButtonElement = this.getElementsByBindId(event, switchTarget);
+
+    if (toggleButtonElement) {
+      toggleButtonElement.hidden = switchState;
+    }
+  }
+
+  private getElementsByBindId(event: Event, switchTarget: string): HTMLElement | null {
+    const eventTarget = event.target as HTMLElement;
+    const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
+    if (paneSwitcher) {
+      return paneSwitcher.querySelector(`#${switchTarget}`);
+    }
+    return null;
+  }
+
   /**
    * @internal
    */
   public connectedCallback(): void {
     super.connectedCallback();
+    this.addEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
+
     // Now you can access the referenced switch element and its slotted content
     this.toggleButtonIds = this.getToggleButtonIds();
     this.drawersIds = this.getDrawerIds();
@@ -403,5 +422,10 @@ export class DrawerSwitcher extends FASTElement {
     settingsSection.forEach((section: HTMLElement) => {
       this.settingsSection.push(section as HTMLElement);
     });
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
   }
 }

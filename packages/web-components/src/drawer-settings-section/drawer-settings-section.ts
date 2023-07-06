@@ -30,7 +30,7 @@ export class DrawerSettingsSection extends FASTElement {
   public handleSwitchChange(): void {
     this.switchState = !this.switchState;
     console.log('handleSwitchChange', this.getSwitchTarget(), this.switchState);
-    this.$emit('toggle-panes', { bindID: this.getSwitchTarget(), switchState: this.switchState });
+    this.$emit('toggle-drawer-visibility', { switchTarget: this.getSwitchTarget(), switchState: this.switchState });
   }
 
   public targetChanged(): void {
