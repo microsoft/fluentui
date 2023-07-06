@@ -5,7 +5,6 @@ import {
   TableCell,
   TableCellLayout,
   TableColumnDefinition,
-  TableColumnSizingOptions,
   TableHeader,
   TableHeaderCell,
   TableRow,
@@ -118,21 +117,22 @@ const items: Item[] = [
   },
 ];
 
+const columnSizingOptions = {
+  file: {
+    idealWidth: 300,
+    minWidth: 150,
+  },
+  author: {
+    minWidth: 110,
+    defaultWidth: 250,
+  },
+  lastUpdate: {
+    minWidth: 150,
+  },
+};
+
 export const KeyboardColumnResizing = () => {
   const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
-  const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
-    file: {
-      idealWidth: 300,
-      minWidth: 150,
-    },
-    author: {
-      minWidth: 110,
-      defaultWidth: 250,
-    },
-    lastUpdate: {
-      minWidth: 150,
-    },
-  });
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(

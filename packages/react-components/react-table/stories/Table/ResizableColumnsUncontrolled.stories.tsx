@@ -15,6 +15,7 @@ import {
   PresenceBadgeStatus,
   Avatar,
   Input,
+  useId,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -147,11 +148,13 @@ export const ResizableColumnsUncontrolled = () => {
   };
   const rows = getRows();
 
+  const inputId = useId('column-width');
+
   return (
     <>
       <p>
-        First column width:{' '}
-        <Input type="number" onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
+        <label htmlFor={inputId}>First column width: </label>
+        <Input type="number" id={inputId} onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
       <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
@@ -215,9 +218,6 @@ ResizableColumnsUncontrolled.parameters = {
         '(in a controlled scenario) width of the column.',
         '',
         'To learn about how to control widths from the parent, please see the example below.',
-        '',
-        "> As this is is a preview, we don't currently provide an example how to change the column widths via keyboard.",
-        'We are [tracking an issue](https://github.com/microsoft/fluentui/issues/26739) on this matter.',
       ].join('\n'),
     },
   },

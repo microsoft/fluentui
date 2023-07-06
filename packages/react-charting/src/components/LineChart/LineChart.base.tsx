@@ -4,7 +4,7 @@ import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -138,9 +138,15 @@ export interface ILineChartState extends IBasestate {
   nearestCircleToHighlight: ILineChartDataPoint | null;
 
   activeLine: number | null;
+
+  emptyChart?: boolean;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
+  public static defaultProps: Partial<ILineChartProps> = {
+    enableReflow: true,
+  };
+
   private _points: LineChartDataWithIndex[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any[];
@@ -163,6 +169,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -179,6 +186,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
+      emptyChart: false,
     };
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
@@ -192,6 +200,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._tooltipId = getId('LineChartTooltipId_');
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle');
+    this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -212,6 +221,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   }
 
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+    );
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
@@ -223,7 +244,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._calloutPoints = calloutData(points);
     }
 
-    const legendBars = this._createLegends(this._points!);
+    const legendBars = this._createLegendsMemoized(this._points!);
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
@@ -249,7 +270,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickFormat: tickFormat,
     };
 
-    return (
+    return !this.state.emptyChart ? (
       <CartesianChart
         {...this.props}
         chartTitle={data.chartTitle}
@@ -298,6 +319,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 </g>
                 {eventAnnotationProps && (
                   <EventsAnnotation
+                    theme={this.props.theme}
                     {...eventAnnotationProps}
                     scale={props.xScale!}
                     chartYTop={this.margins.top! + this.eventLabelHeight}
@@ -308,6 +330,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             </>
           );
         }}
+      />
+    ) : (
+      <div
+        id={getId('_LineChart_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }

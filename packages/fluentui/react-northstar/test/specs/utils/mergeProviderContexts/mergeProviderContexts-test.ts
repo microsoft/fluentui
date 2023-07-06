@@ -1,8 +1,11 @@
 import { ProviderContextInput } from '@fluentui/react-bindings';
+import type { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { mergeProviderContexts, mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
 
 describe('getRenderer', () => {
-  const createRenderer = jest.fn().mockImplementation(target => ({ target }));
+  const createRenderer = (target => {
+    return { target };
+  }) as unknown as CreateRenderer;
 
   test(`without "target" defaults to a document`, () => {
     // will be "undefined" as we call createRenderer() with "undefined"

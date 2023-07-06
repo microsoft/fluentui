@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-textarea",
-  "version": "9.3.15",
+  "version": "9.3.20",
   "description": "Fluent UI TextArea component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,17 +28,17 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.21",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.23",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.5",
-    "@fluentui/react-shared-contexts": "^9.5.0",
-    "@fluentui/react-theme": "^9.1.8",
-    "@fluentui/react-utilities": "^9.9.1",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.5",
-    "@griffel/react": "^1.5.2",
+    "@fluentui/react-field": "^9.1.10",
+    "@fluentui/react-shared-contexts": "^9.6.0",
+    "@fluentui/react-theme": "^9.1.9",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.10",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

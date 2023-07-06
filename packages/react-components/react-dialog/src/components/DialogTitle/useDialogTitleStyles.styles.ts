@@ -21,7 +21,9 @@ const useStyles = makeStyles({
     ...typographyStyles.subtitle1,
     ...shorthands.margin(0),
   },
-  rootWithoutAction: {},
+  rootWithoutAction: {
+    gridColumnEnd: 4,
+  },
   action: {
     gridRowStart: 1,
     gridRowEnd: 1,

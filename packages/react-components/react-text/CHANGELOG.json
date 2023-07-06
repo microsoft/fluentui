@@ -2,6 +2,155 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 11:57:14 GMT",
+      "tag": "@fluentui/react-text_v9.3.16",
+      "version": "9.3.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.6.0",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:33 GMT",
+      "tag": "@fluentui/react-text_v9.3.15",
+      "version": "9.3.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.10.0",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.9",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jun 2023 09:53:55 GMT",
+      "tag": "@fluentui/react-text_v9.3.14",
+      "version": "9.3.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.9.4",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:07 GMT",
+      "tag": "@fluentui/react-text_v9.3.13",
+      "version": "9.3.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.1",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 06:46:21 GMT",
+      "tag": "@fluentui/react-text_v9.3.12",
+      "version": "9.3.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "chore: Update Griffel to v1.5.7."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 May 2023 10:00:48 GMT",
       "tag": "@fluentui/react-text_v9.3.11",
       "version": "9.3.11",

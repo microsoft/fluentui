@@ -55,13 +55,13 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       format: 'iife',
       target: `chrome${chromeVersion}`,
     });
-  } catch (e) {
+  } catch (err) {
     throw new Error(
       [
         'Failed to build assets with esbuild...',
         'Please check the errors output above (if present), it should contain useful information to fix the problem.',
         '\n',
-        e.message,
+        err instanceof Error ? err.message : '',
       ].join(' '),
     );
   }

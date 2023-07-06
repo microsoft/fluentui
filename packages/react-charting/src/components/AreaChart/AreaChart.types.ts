@@ -49,6 +49,12 @@ export interface IAreaChartProps extends ICartesianChartProps {
    */
   culture?: string;
 
+  /**
+   * @default false
+   * The prop used to enable the perf optimization
+   */
+  enablePerfOptimization?: boolean;
+
   /*
    * Optimize area chart rendering for large data set.
    */

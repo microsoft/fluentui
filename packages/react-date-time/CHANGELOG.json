@@ -2,6 +2,221 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Thu, 29 Jun 2023 07:35:33 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.100",
+      "version": "8.7.100",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.7",
+            "commit": "b0d5687040f698f12b87e954f80226ebd60c361b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:35 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.99",
+      "version": "8.7.99",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.6",
+            "commit": "f154811cb3580595c319de809ea51a798dfd4555"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jun 2023 07:35:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.98",
+      "version": "8.7.98",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.5",
+            "commit": "f1f4a835fe3fa20b7c80d2d049efdfcd62a61d8e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Jun 2023 07:36:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.97",
+      "version": "8.7.97",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.4",
+            "commit": "4ccaa77ad47a12fd61b65f703a2aaaa7e9c161f6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jun 2023 07:38:33 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.96",
+      "version": "8.7.96",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.3",
+            "commit": "122c0d6057ad16e9e005e68214b083a77686d1df"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jun 2023 07:35:14 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.95",
+      "version": "8.7.95",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.2",
+            "commit": "ab901891c51f8bd5d1a5099e66011c9c84372566"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jun 2023 07:33:58 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.94",
+      "version": "8.7.94",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.1",
+            "commit": "9ec9d9d328fb41195f2d73dfd67b5cf84ea34815"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Jun 2023 07:35:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.93",
+      "version": "8.7.93",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.110.0",
+            "commit": "1cea2d6ad8d707ca640e6a3d47448b1945eeb72f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Jun 2023 07:37:25 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.92",
+      "version": "8.7.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.109.11",
+            "commit": "b922d4bbfce680ac0a8ec46b73e30958c7fa3b09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.91",
+      "version": "8.7.91",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.109.10",
+            "commit": "170594a14c0b892bf418831d5be7f995b0e981f8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 07:38:40 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.90",
+      "version": "8.7.90",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.109.9",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/set-version to v8.2.11",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 May 2023 07:36:09 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.89",
+      "version": "8.7.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.109.8",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/set-version to v8.2.10",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 May 2023 07:37:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.7.88",
+      "version": "8.7.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.109.7",
+            "commit": "e1ca88c0a92d07dced9c668dd11585c0c4866919"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 May 2023 07:37:49 GMT",
       "tag": "@fluentui/react-date-time_v8.7.87",
       "version": "8.7.87",

@@ -100,11 +100,7 @@ const useStyles = makeStyles({
 
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorNeutralForeground1Hover,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
-    ':hover': {
-      backgroundColor: tokens.colorBrandBackground2,
-    },
+    ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     ':active': {
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
     },

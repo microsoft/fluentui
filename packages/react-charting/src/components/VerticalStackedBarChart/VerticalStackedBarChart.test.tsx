@@ -84,6 +84,8 @@ const chartPoints2: IVerticalStackedChartProps[] = [
   },
 ];
 
+const emptyChartPoints: IVerticalStackedChartProps[] = [{ chartData: [], xAxisPoint: 0 }];
+
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {
     const component = renderer.create(<VerticalStackedBarChart data={chartPoints} />);
@@ -317,5 +319,21 @@ describe('VerticalStackedBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalStackedBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalStackedBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

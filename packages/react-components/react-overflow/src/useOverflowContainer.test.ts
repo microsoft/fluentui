@@ -15,6 +15,8 @@ const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
     removeItem: jest.fn(),
     removeOverflowMenu: jest.fn(),
     update: jest.fn(),
+    addDivider: jest.fn(),
+    removeDivider: jest.fn(),
   };
   (createOverflowManager as jest.Mock).mockReturnValue({
     ...defaultMock,

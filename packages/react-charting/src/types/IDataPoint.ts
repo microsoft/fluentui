@@ -236,6 +236,11 @@ export interface ILineDataInVerticalBarChart {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 export interface ILineChartDataPoint {
@@ -536,6 +541,11 @@ export interface ILineDataInVerticalStackedBarChart {
    */
   data?: number;
   yAxisCalloutData?: string;
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 export interface IGVBarChartSeriesPoint {

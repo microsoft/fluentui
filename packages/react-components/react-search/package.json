@@ -28,15 +28,17 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.21",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.23",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.5",
-    "@fluentui/react-theme": "^9.1.8",
-    "@fluentui/react-utilities": "^9.9.1",
-    "@griffel/react": "^1.5.2",
+    "@fluentui/react-icons": "^2.0.203",
+    "@fluentui/react-input": "^9.4.20",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.10",
+    "@fluentui/react-theme": "^9.1.9",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

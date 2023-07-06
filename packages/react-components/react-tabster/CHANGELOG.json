@@ -2,6 +2,179 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 03 Jul 2023 13:34:27 GMT",
+      "tag": "@fluentui/react-tabster_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Implmenent useMergeTabsterAttributes_unstable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 11:57:13 GMT",
+      "tag": "@fluentui/react-tabster_v9.9.2",
+      "version": "9.9.2",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "chore: fix a typo in code"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.6.0",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:33 GMT",
+      "tag": "@fluentui/react-tabster_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.10.0",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jun 2023 11:21:22 GMT",
+      "tag": "@fluentui/react-tabster_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4",
+            "comment": "feat: Observed element hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jun 2023 09:53:55 GMT",
+      "tag": "@fluentui/react-tabster_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.9.4",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:05 GMT",
+      "tag": "@fluentui/react-tabster_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "cf6b94ba6559236150bc1f1814b023607edaeb20",
+            "comment": "chore: migrate to ts 4.7 which wont emit undefined anymore for optional arguments"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1a277b9c4d55bc1b7c65a73383425b1934ec1dad",
+            "comment": "useArrowNavigationGroup grid-linear axis"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.1",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 06:46:20 GMT",
+      "tag": "@fluentui/react-tabster_v9.7.5",
+      "version": "9.7.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "chore: Update Griffel to v1.5.7."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d6b67f35176ab121fa3c3b7dbef32871d2f785e6",
+            "comment": "fix: createFocusOutlineStyle cannot work with CSS variables"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 May 2023 10:00:48 GMT",
       "tag": "@fluentui/react-tabster_v9.7.4",
       "version": "9.7.4",

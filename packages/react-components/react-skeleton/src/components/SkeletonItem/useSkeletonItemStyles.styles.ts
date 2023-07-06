@@ -52,6 +52,10 @@ const useStyles = makeStyles({
     animationIterationCount: 'infinite',
     animationDuration: '3s',
     animationTimingFunction: 'linear',
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      animationDuration: '0.01ms',
+      animationIterationCount: '1',
+    },
   },
   wave: {
     animationName: skeletonWaveAnimation,

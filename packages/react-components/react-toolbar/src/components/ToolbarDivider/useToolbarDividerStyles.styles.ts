@@ -22,9 +22,9 @@ export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): To
   const { vertical } = state;
   const toolbarDividerStyles = useBaseStyles();
   state.root.className = mergeClasses(
-    state.root.className,
     toolbarDividerStyles.root,
     !vertical && toolbarDividerStyles.vertical,
+    state.root.className,
   );
   return state;
 };

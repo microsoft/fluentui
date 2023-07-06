@@ -4,8 +4,8 @@ import { execSync } from 'child_process';
 import * as os from 'os';
 import * as path from 'path';
 
-import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
-import { WorkspaceJsonConfiguration, names } from '@nrwl/devkit';
+import { findGitRoot, getAllPackageInfo, getProjectMetadata, isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { names } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import { Actions } from 'node-plop';
@@ -69,7 +69,7 @@ module.exports = (plop: NodePlopAPI) => {
 
     actions: (answers: Answers): Actions => {
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
-      const packageMetadata = getProjectMetadata({ root, name: answers.packageNpmName });
+      const packageMetadata = getProjectMetadata(answers.packageNpmName);
       if (!packageMetadata.sourceRoot) {
         throw new Error(`${answers.packageNpmName} has is missing sourceRoot path in workspace.json`);
       }
@@ -171,11 +171,3 @@ const appendToPackageIndex = (data: Data): string => {
 };
 
 //#endregion
-
-function getProjectMetadata(options: { root: string; name: string }) {
-  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
-    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
-  );
-
-  return nxWorkspace.projects[options.name];
-}

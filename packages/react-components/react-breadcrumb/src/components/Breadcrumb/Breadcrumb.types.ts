@@ -34,11 +34,18 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
   appearance?: 'transparent' | 'subtle';
 
   /**
-   * Makes Breadcrumb not focusable.
+   * Sets the focus behavior for the Breadcrumb.
    *
-   * @default false
+   * `tab`
+   * This behaviour will cycle through all elements inside of the Breadcrumb when pressing the Tab key and then release focus
+   * after the last inner element.
+   *
+   * `arrow`
+   * This behaviour will cycle through all elements inside of the Breadcrumb when pressing the Arrow key.
+   *
+   * @default 'tab'
    */
-  disableFocus?: boolean;
+  focusMode?: 'arrow' | 'tab';
 
   /**
    * Controls type of the divider.

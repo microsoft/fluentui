@@ -9,6 +9,41 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
+import { Drawer } from '@fluentui/react-drawer';
+import { DrawerBody } from '@fluentui/react-drawer';
+import { drawerBodyClassNames } from '@fluentui/react-drawer';
+import { DrawerBodySlots } from '@fluentui/react-drawer';
+import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerFooter } from '@fluentui/react-drawer';
+import { drawerFooterClassNames } from '@fluentui/react-drawer';
+import { DrawerFooterSlots } from '@fluentui/react-drawer';
+import { DrawerFooterState } from '@fluentui/react-drawer';
+import { DrawerHeader } from '@fluentui/react-drawer';
+import { drawerHeaderClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigation } from '@fluentui/react-drawer';
+import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import { DrawerHeaderSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderState } from '@fluentui/react-drawer';
+import { DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
+import { DrawerInline } from '@fluentui/react-drawer';
+import { drawerInlineClassNames } from '@fluentui/react-drawer';
+import { DrawerInlineProps } from '@fluentui/react-drawer';
+import { DrawerInlineSlots } from '@fluentui/react-drawer';
+import { DrawerInlineState } from '@fluentui/react-drawer';
+import { DrawerOverlay } from '@fluentui/react-drawer';
+import { drawerOverlayClassNames } from '@fluentui/react-drawer';
+import { DrawerOverlayProps } from '@fluentui/react-drawer';
+import { DrawerOverlaySlots } from '@fluentui/react-drawer';
+import { DrawerOverlayState } from '@fluentui/react-drawer';
+import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerSlots } from '@fluentui/react-drawer';
+import { DrawerState } from '@fluentui/react-drawer';
 import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { FlatTreeItem } from '@fluentui/react-tree';
@@ -26,26 +61,33 @@ import { InfoLabelSlots } from '@fluentui/react-infobutton';
 import { InfoLabelState } from '@fluentui/react-infobutton';
 import { NestedTreeItem } from '@fluentui/react-tree';
 import { renderAlert_unstable } from '@fluentui/react-alert';
+import { renderDrawer_unstable } from '@fluentui/react-drawer';
+import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
+import { renderDrawerFooter_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
+import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
+import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
-import { renderTreeItemAside_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
+import { ScrollToInterface } from '@fluentui/react-virtualizer';
+import { scrollToItemDynamic } from '@fluentui/react-virtualizer';
+import { ScrollToItemDynamicParams } from '@fluentui/react-virtualizer';
+import { scrollToItemStatic } from '@fluentui/react-virtualizer';
+import { ScrollToItemStaticParams } from '@fluentui/react-virtualizer';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeItem } from '@fluentui/react-tree';
-import { TreeItemAside } from '@fluentui/react-tree';
-import { treeItemAsideClassNames } from '@fluentui/react-tree';
-import { TreeItemAsideProps } from '@fluentui/react-tree';
-import { TreeItemAsideSlots } from '@fluentui/react-tree';
-import { TreeItemAsideState } from '@fluentui/react-tree';
 import { treeItemClassNames } from '@fluentui/react-tree';
 import { TreeItemLayout } from '@fluentui/react-tree';
 import { treeItemLayoutClassNames } from '@fluentui/react-tree';
@@ -72,6 +114,21 @@ import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useDrawer_unstable } from '@fluentui/react-drawer';
+import { useDrawerBody_unstable } from '@fluentui/react-drawer';
+import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
+import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerInline_unstable } from '@fluentui/react-drawer';
+import { useDrawerInlineStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerOverlay_unstable } from '@fluentui/react-drawer';
+import { useDrawerOverlayStyles_unstable } from '@fluentui/react-drawer';
 import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
@@ -83,10 +140,10 @@ import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
-import { useTreeItemAside_unstable } from '@fluentui/react-tree';
-import { useTreeItemAsideStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
@@ -131,6 +188,76 @@ export { AlertSlots }
 
 export { AlertState }
 
+export { Drawer }
+
+export { DrawerBody }
+
+export { drawerBodyClassNames }
+
+export { DrawerBodySlots }
+
+export { DrawerBodyState }
+
+export { DrawerFooter }
+
+export { drawerFooterClassNames }
+
+export { DrawerFooterSlots }
+
+export { DrawerFooterState }
+
+export { DrawerHeader }
+
+export { drawerHeaderClassNames }
+
+export { DrawerHeaderNavigation }
+
+export { drawerHeaderNavigationClassNames }
+
+export { DrawerHeaderNavigationProps }
+
+export { DrawerHeaderNavigationSlots }
+
+export { DrawerHeaderNavigationState }
+
+export { DrawerHeaderSlots }
+
+export { DrawerHeaderState }
+
+export { DrawerHeaderTitle }
+
+export { drawerHeaderTitleClassNames }
+
+export { DrawerHeaderTitleSlots }
+
+export { DrawerHeaderTitleState }
+
+export { DrawerInline }
+
+export { drawerInlineClassNames }
+
+export { DrawerInlineProps }
+
+export { DrawerInlineSlots }
+
+export { DrawerInlineState }
+
+export { DrawerOverlay }
+
+export { drawerOverlayClassNames }
+
+export { DrawerOverlayProps }
+
+export { DrawerOverlaySlots }
+
+export { DrawerOverlayState }
+
+export { DrawerProps }
+
+export { DrawerSlots }
+
+export { DrawerState }
+
 export { flattenTree_unstable }
 
 export { FlatTree }
@@ -165,6 +292,22 @@ export { NestedTreeItem }
 
 export { renderAlert_unstable }
 
+export { renderDrawer_unstable }
+
+export { renderDrawerBody_unstable }
+
+export { renderDrawerFooter_unstable }
+
+export { renderDrawerHeader_unstable }
+
+export { renderDrawerHeaderNavigation_unstable }
+
+export { renderDrawerHeaderTitle_unstable }
+
+export { renderDrawerInline_unstable }
+
+export { renderDrawerOverlay_unstable }
+
 export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
@@ -172,8 +315,6 @@ export { renderInfoLabel_unstable }
 export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
-
-export { renderTreeItemAside_unstable }
 
 export { renderTreeItemLayout_unstable }
 
@@ -187,6 +328,16 @@ export { renderVirtualizerScrollViewDynamic_unstable }
 
 export { ResizeCallbackWithRef }
 
+export { ScrollToInterface }
+
+export { scrollToItemDynamic }
+
+export { ScrollToItemDynamicParams }
+
+export { scrollToItemStatic }
+
+export { ScrollToItemStaticParams }
+
 export { Tree }
 
 export { treeClassNames }
@@ -194,16 +345,6 @@ export { treeClassNames }
 export { TreeContextValue }
 
 export { TreeItem }
-
-export { TreeItemAside }
-
-export { treeItemAsideClassNames }
-
-export { TreeItemAsideProps }
-
-export { TreeItemAsideSlots }
-
-export { TreeItemAsideState }
 
 export { treeItemClassNames }
 
@@ -257,6 +398,36 @@ export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
 
+export { useDrawer_unstable }
+
+export { useDrawerBody_unstable }
+
+export { useDrawerBodyStyles_unstable }
+
+export { useDrawerFooter_unstable }
+
+export { useDrawerFooterStyles_unstable }
+
+export { useDrawerHeader_unstable }
+
+export { useDrawerHeaderNavigation_unstable }
+
+export { useDrawerHeaderNavigationStyles_unstable }
+
+export { useDrawerHeaderStyles_unstable }
+
+export { useDrawerHeaderTitle_unstable }
+
+export { useDrawerHeaderTitleStyles_unstable }
+
+export { useDrawerInline_unstable }
+
+export { useDrawerInlineStyles_unstable }
+
+export { useDrawerOverlay_unstable }
+
+export { useDrawerOverlayStyles_unstable }
+
 export { useDynamicVirtualizerMeasure }
 
 export { useFlatTree_unstable }
@@ -279,13 +450,13 @@ export { useTree_unstable }
 
 export { useTreeContext_unstable }
 
+export { useTreeContextValues_unstable }
+
 export { useTreeItem_unstable }
 
-export { useTreeItemAside_unstable }
-
-export { useTreeItemAsideStyles_unstable }
-
 export { useTreeItemContext_unstable }
+
+export { useTreeItemContextValues_unstable }
 
 export { useTreeItemLayout_unstable }
 
