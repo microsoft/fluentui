@@ -5,7 +5,8 @@ import { LegendsBase } from './Legends.base';
 import { getStyles } from './Legends.styles';
 
 /**
- * {@docCategory TimePicker}
+ * Legends component.
+ * {@docCategory Legends}
  */
 export const Legends: React.FunctionComponent<ILegendsProps> = styled<ILegendsProps, ILegendStyleProps, ILegendsStyles>(
   LegendsBase,

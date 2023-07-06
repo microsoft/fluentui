@@ -89,7 +89,7 @@ module.exports = {
       'TimePicker',
       'Toggle',
       'Tooltip',
-      'Legends',
     ],
+    'react-charting': ['Legends'],
   },
 };

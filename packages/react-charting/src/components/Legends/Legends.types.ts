@@ -7,8 +7,9 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { CustomPoints, Points } from '../../utilities/utilities';
 
 /**
- * {@docCategory Legends}
+ * @public
  * ILegendOverflowData interface.
+ * {@docCategory Legends}
  */
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -17,13 +18,19 @@ export interface ILegendOverflowData {
 }
 
 /**
- * {@docCategory Legends}
+ * @public
  * ILegendSubComponentStyles interface.
+ * {@docCategory Legends}
  */
 export interface ILegendSubComponentStyles {
   hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
+/**
+ * @public
+ * ILegendsStyles interface.
+ * {@docCategory Legends}
+ */
 export interface ILegendsStyles {
   /**
    * Style set for the root of the legend component
@@ -76,6 +83,11 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
+/**
+ * @public
+ * ILegendsStyles interface.
+ * {@docCategory Legends}
+ */
 export interface ILegend {
   /**
    * Defines the title of the legend

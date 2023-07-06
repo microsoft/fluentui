@@ -748,7 +748,7 @@ export interface IHorizontalDataPoint {
     y: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ILegend {
     action?: VoidFunction;
     color: string;
@@ -794,7 +794,7 @@ export interface ILegendsProps {
     theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 export interface ILegendsStyles {
     hoverCardRoot: IStyle;
     hoverChange: IStyle;
@@ -1434,7 +1434,7 @@ export interface IYValueHover {
     };
 }
 
-// @public (undocumented)
+// @public
 export const Legends: React_2.FunctionComponent<ILegendsProps>;
 
 // Warning: (ae-forgotten-export) The symbol "Points" needs to be exported by the entry point index.d.ts
