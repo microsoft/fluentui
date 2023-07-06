@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StoryContext } from '@storybook/addons';
 import { ComponentStory } from '@storybook/react';
-import { FASTElement, customElement, html } from '@microsoft/fast-element';
+import { FASTElement, customElement, html, attr } from '@microsoft/fast-element';
 import { DesignToken } from '@microsoft/fast-foundation';
 import { teamsLightTheme, teamsDarkTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
 import { setThemeFor } from '@fluentui/web-components';
@@ -26,7 +26,6 @@ interface WCStoryContext extends StoryContext {
   };
 }
 
-// implement FAST Web Component
 @customElement({
   name: 'fast-theme-decorator',
   template: html`<slot></slot>`,
@@ -39,21 +38,23 @@ interface WCStoryContext extends StoryContext {
       }
   `,
 })
-export class FASTThemeDecorator extends FASTElement {}
+export class FASTThemeDecorator extends FASTElement {
+  @attr({
+    attribute: 'fluent-theme',
+  })
+  public fluentTheme: ThemeId = defaultTheme.id;
+
+  connectedCallback() {
+    super.connectedCallback();
+    const theme = themes.find(value => value.id === this.fluentTheme)?.theme ?? defaultTheme.theme;
+    setThemeFor(this, theme);
+  }
+}
 
 export const WCThemeDecorator = (StoryFn: () => JSX.Element, context: WCStoryContext) => {
   const { dir = 'ltr', fluentTheme = defaultTheme.id } = context.parameters;
-  const theme = themes.find(value => value.id === fluentTheme)?.theme ?? defaultTheme.theme;
 
-  const fastRef = React.useRef<FASTThemeDecorator>(null);
-  // useEffect to set theme on fastRef.current
-  React.useEffect(() => {
-    if (fastRef.current) {
-      setThemeFor(fastRef.current, theme);
-    }
-  }, [theme]);
-
-  return React.createElement('fast-theme-decorator', { dir, ref: fastRef }, StoryFn());
+  return React.createElement('fast-theme-decorator', { dir, 'fluent-theme': fluentTheme }, StoryFn());
 };
 
 export const DARK_MODE = 'Dark Mode';
