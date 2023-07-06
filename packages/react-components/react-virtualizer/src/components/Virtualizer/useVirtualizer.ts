@@ -28,6 +28,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
   const _virtualizerContext = useVirtualizerContextState_unstable(virtualizerContext);
 
+  // We use this ref as a constant source to access the virtualizer's state imperatively
+  const actualIndexRef = useRef<number>(_virtualizerContext.contextIndex);
+  if (actualIndexRef.current !== _virtualizerContext.contextIndex) {
+    actualIndexRef.current = _virtualizerContext.contextIndex;
+  }
   const flaggedIndex = useRef<number | null>(null);
 
   const actualIndex = _virtualizerContext.contextIndex;
@@ -412,6 +417,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         progressiveSizes: childProgressiveSizes,
         nodeSizes: childSizes,
         setFlaggedIndex: (index: number | null) => (flaggedIndex.current = index),
+        currentIndex: actualIndexRef,
       };
     },
     [childProgressiveSizes, childSizes],
