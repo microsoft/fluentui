@@ -108,6 +108,7 @@ export const categories: { [name: string]: ICategory } = {
   },
   Charting: {
     Legends: {},
+    LineChart: {},
   },
   Utilities: {
     Announced: {
