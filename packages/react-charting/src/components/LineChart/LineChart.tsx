@@ -7,7 +7,7 @@ import { getStyles } from './LineChart.styles';
 // Create a LineChart variant which uses these default styles and this styled subcomponent.
 /**
  * Linechart component.
- * {@docCategory Legends}
+ * {@docCategory LineChart}
  */
 export const LineChart: React.FunctionComponent<ILineChartProps> = styled<
   ILineChartProps,
