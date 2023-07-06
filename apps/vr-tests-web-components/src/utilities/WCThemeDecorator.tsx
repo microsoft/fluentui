@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { StoryContext } from '@storybook/addons';
-import { teamsLightTheme, teamsDarkTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
-import { DesignToken } from '@microsoft/fast-foundation';
-import { setTheme } from '@fluentui/web-components';
 import { ComponentStory } from '@storybook/react';
+import { FASTElement, customElement, html } from '@microsoft/fast-element';
+import { DesignToken } from '@microsoft/fast-foundation';
+import { teamsLightTheme, teamsDarkTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
+import { setThemeFor } from '@fluentui/web-components';
 
 DesignToken.registerDefaultStyleTarget();
 
@@ -25,27 +26,34 @@ interface WCStoryContext extends StoryContext {
   };
 }
 
+// implement FAST Web Component
+@customElement({
+  name: 'fast-theme-decorator',
+  template: html`<slot></slot>`,
+  styles: `
+  :host {
+      display: block;
+      color: var(--colorNeutralForeground2);
+      background-color: var(--colorNeutralBackground2);
+      font-family: var(--fontFamilyBase);
+      }
+  `,
+})
+export class FASTThemeDecorator extends FASTElement {}
+
 export const WCThemeDecorator = (StoryFn: () => JSX.Element, context: WCStoryContext) => {
   const { dir = 'ltr', fluentTheme = defaultTheme.id } = context.parameters;
   const theme = themes.find(value => value.id === fluentTheme)?.theme ?? defaultTheme.theme;
 
-  // FIXME: we currently do not support scoped theming in FUIWC3.
-  // Global setTheme() works for VR tests as those are rendered in a new window, but when running storybook you only see the last theme.
-  setTheme(theme);
+  const fastRef = React.useRef<FASTThemeDecorator>(null);
+  // useEffect to set theme on fastRef.current
+  React.useEffect(() => {
+    if (fastRef.current) {
+      setThemeFor(fastRef.current, theme);
+    }
+  }, [theme]);
 
-  return (
-    <div
-      className="WCTest"
-      style={{
-        color: 'var(--colorNeutralForeground2)',
-        backgroundColor: 'var(--colorNeutralBackground2)',
-        fontFamily: 'var(--fontFamilyBase)',
-      }}
-      dir={dir}
-    >
-      {StoryFn()}
-    </div>
-  );
+  return React.createElement('fast-theme-decorator', { dir, ref: fastRef }, StoryFn());
 };
 
 export const DARK_MODE = 'Dark Mode';
