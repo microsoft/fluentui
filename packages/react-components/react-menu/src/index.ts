@@ -116,3 +116,5 @@ export {
   useMenuItemLink_unstable,
 } from './MenuItemLink';
 export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink';
+
+export { useOnMenuMouseEnter } from './utils';
