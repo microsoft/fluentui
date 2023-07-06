@@ -9,6 +9,7 @@ import {
   mergeCallbacks,
   resolveShorthand,
   useControllableState,
+  useEventCallback,
   useId,
   useMergedRefs,
   useOnClickOutside,
@@ -365,25 +366,25 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     },
   });
 
-  const rootShorthand = resolveShorthand(props.root, {
+  const inputRoot = resolveShorthand(props.root, {
     required: true,
     defaultProps: {
       'aria-owns': open ? popupSurfaceId : undefined,
       ref: triggerWrapperRef,
     },
   });
-  rootShorthand.ref = useMergedRefs(rootShorthand.ref, triggerWrapperRef);
-  root.root = rootShorthand;
+  inputRoot.ref = useMergedRefs(inputRoot.ref, triggerWrapperRef);
+  root.root = inputRoot;
 
   const inputShorthand = resolveShorthand(props.input, { required: true });
   inputShorthand.ref = useMergedRefs(inputShorthand.ref, ref, rootRef);
   root.input = inputShorthand;
 
-  root.onChange = mergeCallbacks(root.onChange, onInputChange);
-  root.onBlur = mergeCallbacks(root.onBlur, onInputBlur);
-  root.onKeyDown = mergeCallbacks(root.onKeyDown, onInputKeyDown);
-  root.onFocus = mergeCallbacks(root.onFocus, onInputFocus);
-  root.onClick = mergeCallbacks(root.onClick, onInputClick);
+  root.onChange = useEventCallback(mergeCallbacks(root.onChange, onInputChange));
+  root.onBlur = useEventCallback(mergeCallbacks(root.onBlur, onInputBlur));
+  root.onKeyDown = useEventCallback(mergeCallbacks(root.onKeyDown, onInputKeyDown));
+  root.onFocus = useEventCallback(mergeCallbacks(root.onFocus, onInputFocus));
+  root.onClick = useEventCallback(mergeCallbacks(root.onClick, onInputClick));
 
   const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
   const popupSurface = open
@@ -447,8 +448,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     },
   });
 
-  calendarShorthand.onDismiss = mergeCallbacks(calendarShorthand.onDismiss, calendarDismissed);
-  calendarShorthand.onSelectDate = mergeCallbacks(calendarShorthand.onSelectDate, calendarDismissed);
+  calendarShorthand.onDismiss = useEventCallback(mergeCallbacks(calendarShorthand.onDismiss, calendarDismissed));
+  calendarShorthand.onSelectDate = useEventCallback(mergeCallbacks(calendarShorthand.onSelectDate, calendarDismissed));
 
   const state: DatePickerState = {
     disabled: !!props.disabled,
