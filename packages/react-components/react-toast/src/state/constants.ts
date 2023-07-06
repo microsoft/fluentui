@@ -3,6 +3,8 @@ export const EVENTS = {
   dismiss: 'fui-toast-dismiss',
   dismissAll: 'fui-toast-dismiss-all',
   update: 'fui-toast-update',
+  pause: 'fui-toast-pause',
+  play: 'fui-toast-play',
 } as const;
 
 export const TOAST_POSITIONS = {

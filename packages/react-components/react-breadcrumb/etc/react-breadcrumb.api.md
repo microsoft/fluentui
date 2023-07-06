@@ -121,6 +121,9 @@ export type BreadcrumbSlots = {
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
 
 // @public (undocumented)
+export const isTruncatableBreadcrumbContent: (content: string, maxLength: number) => boolean;
+
+// @public (undocumented)
 export type PartitionBreadcrumbItems<T> = {
     startDisplayedItems: readonly T[];
     overflowItems?: readonly T[];

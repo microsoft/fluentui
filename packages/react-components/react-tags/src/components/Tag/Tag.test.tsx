@@ -3,7 +3,6 @@ import { Tag } from './Tag';
 import { isConformant } from '../../testing/isConformant';
 import { TagProps } from './Tag.types';
 import { render } from '@testing-library/react';
-import { tagClassNames } from './useTagStyles.styles';
 
 const requiredProps: TagProps = {
   dismissible: true,
@@ -20,8 +19,13 @@ describe('Tag', () => {
     requiredProps,
   });
 
-  it('should render root as a button', () => {
-    const { getByRole } = render(<Tag>Tag</Tag>);
-    expect(getByRole('button').className.includes(tagClassNames.root)).toBe(true);
+  it('should render root as a span', () => {
+    const { getByTestId } = render(<Tag data-testid="testid">Tag</Tag>);
+    expect(getByTestId('testid').tagName).toBe('SPAN');
+  });
+
+  it('should render root as a button for dismissible tag', () => {
+    const { queryByRole } = render(<Tag dismissible>Tag</Tag>);
+    expect(queryByRole('button')).not.toBe(null);
   });
 });

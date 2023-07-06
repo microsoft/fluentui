@@ -22,4 +22,6 @@ export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
  */
 export type SearchBoxState = ComponentState<SearchBoxSlots> &
   Required<Pick<InputState, 'size'>> &
-  Required<Pick<SearchBoxProps, 'disabled'>>;
+  Required<Pick<SearchBoxProps, 'disabled'>> & {
+    focused: boolean;
+  };

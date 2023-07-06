@@ -197,11 +197,11 @@ export function createOverflowManager(): OverflowManager {
       .map(dvdr => (dvdr.groupId ? getOffsetSize(dvdr.element) : 0))
       .reduce((prev, current) => prev + current, 0);
 
-    const availableSize =
-      getOffsetSize(container) -
-      options.padding -
-      totalDividersWidth -
-      (overflowMenu ? getOffsetSize(overflowMenu) : 0);
+    function overflowMenuSize() {
+      return invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+    }
+
+    const availableSize = getOffsetSize(container) - totalDividersWidth - options.padding;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
@@ -214,12 +214,12 @@ export function createOverflowManager(): OverflowManager {
       .reduce((prev, current) => prev + current, 0);
 
     // Add items until available width is filled - can result in overflow
-    while (currentWidth < availableSize && invisibleItemQueue.size() > 0) {
+    while (currentWidth + overflowMenuSize() < availableSize && invisibleItemQueue.size() > 0) {
       currentWidth += showItem();
     }
 
     // Remove items until there's no more overflow
-    while (currentWidth > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+    while (currentWidth + overflowMenuSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
       currentWidth -= hideItem();
     }
 

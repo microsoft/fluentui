@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove fixed height so rows prop works and add missing max-height.",
-  "packageName": "@fluentui/react-textarea",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

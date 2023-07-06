@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate to ts 4.7 which wont emit undefined anymore for optional arguments",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

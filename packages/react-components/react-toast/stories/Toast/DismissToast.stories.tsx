@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button } from '@fluentui/react-components';
+import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
 export const DismissToast = () => {
   const toasterId = useId('toaster');
   const toastId = useId('example');
-  const [unmounted, setUnmounted] = React.useState(false);
+  const [unmounted, setUnmounted] = React.useState(true);
   const { dispatchToast, dismissToast } = useToastController(toasterId);
+
   const notify = () => {
     dispatchToast(
       <Toast>
@@ -21,7 +21,7 @@ export const DismissToast = () => {
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <Button onClick={unmounted ? dismiss : notify}>{unmounted ? 'Make' : 'Dismiss'} toast</Button>
+      <Button onClick={unmounted ? notify : dismiss}>{unmounted ? 'Make' : 'Dismiss'} toast</Button>
     </>
   );
 };

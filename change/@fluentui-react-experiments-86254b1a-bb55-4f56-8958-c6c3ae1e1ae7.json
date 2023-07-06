@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve FloatingSuggestion if conditions to mitigate ts 4.7 always true violation\"",
-  "packageName": "@fluentui/react-experiments",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

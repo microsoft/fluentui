@@ -24,7 +24,7 @@ export const IconBefore = () => {
         <TreeItemLayout iconBefore={<Image20Regular />}>level 1, item 2</TreeItemLayout>
         <Tree>
           <TreeItem itemType="branch">
-            level 2, item 1
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
               <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>

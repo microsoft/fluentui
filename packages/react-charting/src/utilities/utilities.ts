@@ -22,6 +22,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -166,18 +167,20 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  return xAxisScale;
+  const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
-  const formatMillisecond = locale.format('.%L');
-  const formatSecond = locale.format(':%S');
-  const formatMinute = locale.format('%I:%M');
-  const formatHour = locale.format('%I %p');
-  const formatDay = locale.format('%a %d');
-  const formatWeek = locale.format('%b %d');
-  const formatMonth = locale.format('%B');
-  const formatYear = locale.format('%Y');
+function multiFormat(date: Date, locale?: d3TimeFormat.TimeLocaleObject) {
+  const timeFormat = locale ? locale.format : d3TimeFormat.timeFormat;
+  const formatMillisecond = timeFormat('.%L');
+  const formatSecond = timeFormat(':%S');
+  const formatMinute = timeFormat('%I:%M');
+  const formatHour = timeFormat('%I %p');
+  const formatDay = timeFormat('%a %d');
+  const formatWeek = timeFormat('%b %d');
+  const formatMonth = timeFormat('%B');
+  const formatYear = timeFormat('%Y');
 
   return (
     d3TimeSecond(date) < date
@@ -240,7 +243,12 @@ export function createDateXAxis(
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  return xAxisScale;
+  const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
+    const tickFormat = xAxis.tickFormat();
+    // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
+    return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date);
+  });
+  return { xScale: xAxisScale, tickValues };
 }
 
 /**
@@ -283,7 +291,8 @@ export function createStringXAxis(
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  return xAxisScale;
+  const tickValues = dataset.map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues };
 }
 
 /**
@@ -471,64 +480,69 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
  * @param values
  */
 
-type DataPoint = {
-  legend: string;
-  y: number;
-  x: number | Date | string;
-  color: string;
-  yAxisCalloutData: string;
-  index?: number;
-  callOutAccessibilityData?: IAccessibilityProps;
-};
-
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: {
+  let combinedResult: (ILineChartDataPoint & {
     legend: string;
-    y: number;
-    x: number | Date | string;
-    color: string;
-    yAxisCalloutData?: string | { [id: string]: number };
-    callOutAccessibilityData?: IAccessibilityProps;
-  }[] = [];
+    color?: string;
+    index?: number;
+  })[] = [];
 
-  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data
-      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
-      .map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+  values.forEach((line: ILineChartPoints & { index?: number }) => {
+    const elements = line.data
+      .filter((point: ILineChartDataPoint) => !point.hideCallout)
+      .map((point: ILineChartDataPoint) => {
+        return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
   });
 
-  const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach((e1: DataPoint, index: number) => {
-    e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
-    const filteredValues = [
-      {
-        legend: e1.legend,
-        y: e1.y,
-        color: e1.color,
-        yAxisCalloutData: e1.yAxisCalloutData,
-        callOutAccessibilityData: e1.callOutAccessibilityData,
-        index: e1.index,
-      },
-    ];
-    combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
-      e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
-      if (e1.x === e2.x) {
-        filteredValues.push({
-          legend: e2.legend,
-          y: e2.y,
-          color: e2.color,
-          yAxisCalloutData: e2.yAxisCalloutData,
-          callOutAccessibilityData: e2.callOutAccessibilityData,
-          index: e2.index,
-        });
-      }
-    });
-    result.push({ x: e1.x, values: filteredValues });
+  const xValToDataPoints: {
+    [key: number]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+    [key: string]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+  } = {};
+  combinedResult.forEach(ele => {
+    const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
+    if (xValue in xValToDataPoints) {
+      xValToDataPoints[xValue].push({
+        legend: ele.legend,
+        y: ele.y,
+        color: ele.color!,
+        yAxisCalloutData: ele.yAxisCalloutData,
+        callOutAccessibilityData: ele.callOutAccessibilityData,
+        index: ele.index,
+      });
+    } else {
+      xValToDataPoints[xValue] = [
+        {
+          legend: ele.legend,
+          y: ele.y,
+          color: ele.color!,
+          yAxisCalloutData: ele.yAxisCalloutData,
+          callOutAccessibilityData: ele.callOutAccessibilityData,
+          index: ele.index,
+        },
+      ];
+    }
   });
-  return getUnique(result, 'x');
+
+  const result = Object.keys(xValToDataPoints).map(xValue => {
+    return { x: Number(xValue), values: xValToDataPoints[xValue] };
+  });
+  return result;
 }
 
 export function getUnique(
@@ -724,28 +738,34 @@ export function createYAxisLabels(
     }
   });
 }
-/**
- * This function is calculating the length of longest Y axis label in px ,so that we are able to
- * create the cartesian chart by shifting that many points to the right/left.
- * @param points
- * @returns
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calculateLongestYAxisLabel(
-  points: IHorizontalBarChartWithAxisDataPoint[],
-  yAxisElement: SVGElement,
-): number {
-  let maxLabelLength = 0;
-  points.forEach((point: IHorizontalBarChartWithAxisDataPoint) => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    ctx!.font = window.getComputedStyle(yAxisElement, null).getPropertyValue('font-size');
-    const wordLengthInPixel = ctx!.measureText(point.y as string).width;
-    maxLabelLength = Math.max(wordLengthInPixel, maxLabelLength);
-  });
 
-  return maxLabelLength;
-}
+/**
+ * Calculates the width of the longest axis label in pixels
+ */
+export const calculateLongestLabelWidth = (labels: (string | number)[], query: string = 'none'): number => {
+  let maxLabelWidth = 0;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  if (ctx) {
+    const axisText = document.querySelector(query);
+    if (axisText) {
+      const styles = window.getComputedStyle(axisText, null);
+      const fontWeight = styles.getPropertyValue('font-weight');
+      const fontSize = styles.getPropertyValue('font-size');
+      const fontFamily = styles.getPropertyValue('font-family');
+      ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
+    } else {
+      ctx.font = '600 10px "Segoe UI"';
+    }
+
+    labels.forEach(label => {
+      maxLabelWidth = Math.max(ctx.measureText(label.toString()).width, maxLabelWidth);
+    });
+  }
+
+  return maxLabelWidth;
+};
 
 /**
  * This method displays a tooltip to the x axis lables(tick values)
@@ -1368,4 +1388,15 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
     }
     idx += 1;
   });
+}
+
+export function formatValueWithSIPrefix(value: number) {
+  let specifier: string;
+  if (value < 1000) {
+    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
+  } else {
+    specifier = '.1'; // upto 1 decimal place
+  }
+
+  return d3FormatPrefix(specifier, value)(value);
 }
