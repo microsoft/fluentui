@@ -137,7 +137,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   sliderActivePressed: HighContrastDarkSemanticColors.slider.activeBackgroundPressed,
   sliderDisabledActiveBackground: HighContrastDarkSemanticColors.slider.activeDisabledBackground,
   sliderDisabledInActiveBackground: HighContrastDarkSemanticColors.slider.inactiveDisabledBackground,
-  statusDefaultBackground: HighContrastDarkSemanticColors.statusBar.background.default,
+  statusDefaultBackground: HighContrastDarkSemanticColors.statusBar.background.information,
   statusDefaultBorder: HighContrastDarkSemanticColors.statusBar.border.default,
   statusDisabledIcon: HighContrastDarkSemanticColors.statusBar.icon.disabled,
   statusErrorBackground: HighContrastDarkSemanticColors.statusBar.background.error,

@@ -182,7 +182,6 @@ export const DarkSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.BLUE_82C7FF,
     },
     background: {
-      default: BaseColors.BLUE_00245B,
       success: BaseColors.GREEN_393D1B,
       error: BaseColors.RED_442726,
       warning: BaseColors.ORANGE_4F2A0F,
@@ -465,7 +464,6 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.YELLOW_FEFF00,
     },
     background: {
-      default: BaseColors.TRANSPARENT,
       success: BaseColors.TRANSPARENT,
       error: BaseColors.TRANSPARENT,
       warning: BaseColors.TRANSPARENT,
@@ -748,7 +746,6 @@ export const LightSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.BLUE_004578,
     },
     background: {
-      default: BaseColors.BLUE_F0F6FF,
       success: BaseColors.GREEN_F8FFF0,
       error: BaseColors.RED_FEF0F1,
       warning: BaseColors.ORANGE_FFF8F0,
@@ -1031,7 +1028,6 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.BLUE_0000CD,
     },
     background: {
-      default: BaseColors.TRANSPARENT,
       success: BaseColors.TRANSPARENT,
       error: BaseColors.TRANSPARENT,
       warning: BaseColors.TRANSPARENT,

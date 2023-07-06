@@ -6,7 +6,6 @@ export interface IAzureSemanticColors {
       hover: string;
     };
     background: {
-      default: string;
       success: string;
       error: string;
       warning: string;

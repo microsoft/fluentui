@@ -137,7 +137,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   sliderActivePressed: LightSemanticColors.slider.activeBackgroundPressed,
   sliderDisabledActiveBackground: LightSemanticColors.slider.activeDisabledBackground,
   sliderDisabledInActiveBackground: LightSemanticColors.slider.inactiveDisabledBackground,
-  statusDefaultBackground: LightSemanticColors.statusBar.background.default,
+  statusDefaultBackground: LightSemanticColors.statusBar.background.information,
   statusDefaultBorder: LightSemanticColors.statusBar.border.default,
   statusDisabledIcon: LightSemanticColors.statusBar.icon.disabled,
   statusErrorBackground: LightSemanticColors.statusBar.background.error,
