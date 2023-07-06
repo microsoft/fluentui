@@ -1,20 +1,25 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
-import { IArcProps, IArcStyles } from './Arc.types';
+import { IArcProps, IArcState, IArcStyles } from './Arc.types';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { convertToLocaleString } from '../../../utilities/utilities';
 
-export class Arc extends React.Component<IArcProps, {}> {
+export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
     arc: shape.arc(),
   };
 
-  public state: {} = {};
-
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): null {
     _updateChart(nextProps);
     return null;
+  }
+
+  public constructor(props: IArcProps) {
+    super(props);
+    this.state = {
+      isArcFocussed: false,
+    };
   }
 
   public updateChart = (newProps: IArcProps) => {
@@ -22,23 +27,70 @@ export class Arc extends React.Component<IArcProps, {}> {
   };
 
   public render(): JSX.Element {
-    const { color, arc } = this.props;
+    const { arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
-    const classNames = getClassNames(getStyles, { color });
-    return <path d={arc(this.props.data)} className={classNames.root} onClick={this.props.data?.data.onClick} />;
+    const classNames = getClassNames(props => getStyles(props, this.props.theme), { ...this.props });
+
+    return (
+      <>
+        <path
+          d={arc(this.props.data)}
+          className={`${this.state.isArcFocussed ? classNames.pieRootFocussed : classNames.pieRoot}`}
+          onClick={this.props.data?.data.onClick}
+        >
+          <desc>
+            {this.props.data!.data!.x}-{convertToLocaleString(this.props.data!.data!.y, this.props.culture)}
+          </desc>
+        </path>
+        {this.state.isArcFocussed ? <path stroke={this.props.theme?.palette.black} /> : null}
+      </>
+    );
   }
+
+  protected _onFocus = () => {
+    this.setState({ isArcFocussed: true });
+    this.props.onPieFocussed(JSON.stringify(this.props.data));
+  };
+
+  protected _onBlur = () => {
+    this.setState({ isArcFocussed: false });
+    this.props.onPieFocussed(JSON.stringify(this.props.data));
+  };
 }
 
 export class LabeledArc extends Arc {
+  public constructor(props: IArcProps) {
+    super(props);
+  }
+
   public render(): JSX.Element {
-    const { data, arc, culture } = this.props;
-    const [labelX, labelY] = arc.centroid(data);
+    const { data, culture } = this.props;
+    const gap = 20;
+    const [labelX, labelY] = shape.arc().centroid({
+      endAngle: data?.endAngle || 0,
+      startAngle: data?.startAngle || 0,
+      padAngle: data?.padAngle,
+      innerRadius: this.props.outerRadius,
+      outerRadius: this.props.outerRadius + gap,
+    });
     const labelTranslate = `translate(${labelX}, ${labelY})`;
 
+    const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
+    const classNames = getClassNames(props => getStyles(props, this.props.theme));
+
+    const angleBisector = ((data?.startAngle || 0) + (data?.endAngle || 0)) / 2;
+
     return (
-      <g className="arc">
+      <g
+        onFocus={this._onFocus}
+        onBlur={this._onBlur}
+        className={classNames.pie}
+        data-is-focusable={true}
+        id={JSON.stringify(this.props.data)}
+        textAnchor={angleBisector === Math.PI ? 'middle' : angleBisector < Math.PI ? 'start' : 'end'}
+      >
         {super.render()}
-        <text transform={labelTranslate} textAnchor="middle">
+        <text className={classNames.pieText} transform={labelTranslate}>
           {data!.data!.x}-{convertToLocaleString(data!.data!.y, culture)}
         </text>
       </g>

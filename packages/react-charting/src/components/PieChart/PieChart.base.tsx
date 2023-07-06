@@ -3,6 +3,7 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { getColorFromToken, getNextColor } from '../../utilities/colors';
 
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 export interface IPieChartState {
@@ -38,7 +39,20 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
   public render(): JSX.Element {
     const { data, width, height, colors, chartTitle } = this.props;
 
+    const finalColors = [];
     const { theme, className, styles, culture } = this.props;
+
+    if (data) {
+      for (let i = 0, nextColor = 0; i < data.length; i++) {
+        if (colors && i < colors?.length && typeof colors[i] !== 'undefined') {
+          finalColors.push(getColorFromToken(colors[i]));
+        } else {
+          finalColors.push(getNextColor(nextColor, 0, theme?.isInverted));
+          nextColor++;
+        }
+      }
+    }
+
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
@@ -46,7 +60,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
       className,
     });
     const radius = Math.min(width!, height!) / 2;
-    const outerRadius = radius - 10;
+    const outerRadius = radius - 20;
 
     return !this.state.emptyChart ? (
       <div className={this._classNames.root}>
@@ -58,8 +72,9 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
           outerRadius={outerRadius}
           innerRadius={0}
           data={data!}
-          colors={colors!}
+          colors={finalColors}
           chartTitle={chartTitle!}
+          theme={theme}
         />
       </div>
     ) : (

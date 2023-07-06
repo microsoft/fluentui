@@ -13,81 +13,153 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
         width: 670px;
       }
 >
-  <svg
-    height={350}
-    width={600}
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone0"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <g
-      transform="translate(300, 175)"
+    <svg
+      height={350}
+      width={600}
     >
       <g
-        className="arc"
+        transform="translate(300, 175)"
       >
-        <path
+        <g
           className=
 
               {
-                fill: #e81123;
-                stroke-width: 2px;
-                stroke: #ffffff;
+                outline: none;
               }
-          d="M0,-165A165,165,0,1,1,0,165L0,0Z"
-        />
-        <text
-          textAnchor="middle"
-          transform="translate(82.5, 1.8318679906315083e-14)"
+          data-is-focusable={true}
+          id="{\\"data\\":{\\"y\\":50,\\"x\\":\\"A\\"},\\"index\\":0,\\"value\\":50,\\"startAngle\\":0,\\"endAngle\\":3.1415926535897936,\\"padAngle\\":0}"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          textAnchor="start"
         >
-          A
-          -
-          50
-        </text>
-      </g>
-      <g
-        className="arc"
-      >
-        <path
+          <path
+            className=
+
+                {
+                  fill: #e81123;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M0,-155A155,155,0,1,1,0,155L0,0Z"
+          >
+            <desc>
+              A
+              -
+              50
+            </desc>
+          </path>
+          <text
+            className=
+
+                {
+                  fill: #000000;
+                }
+            transform="translate(165, 3.6637359812630166e-14)"
+          >
+            A
+            -
+            50
+          </text>
+        </g>
+        <g
           className=
 
               {
-                fill: #0078d4;
-                stroke-width: 2px;
-                stroke: #ffffff;
+                outline: none;
               }
-          d="M0,165A165,165,0,0,1,-165,0L0,0Z"
-        />
-        <text
-          textAnchor="middle"
-          transform="translate(-58.33630944789022, 58.33630944789013)"
+          data-is-focusable={true}
+          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"B\\"},\\"index\\":1,\\"value\\":25,\\"startAngle\\":3.1415926535897936,\\"endAngle\\":4.712388980384691,\\"padAngle\\":0}"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          textAnchor="end"
         >
-          B
-          -
-          25
-        </text>
-      </g>
-      <g
-        className="arc"
-      >
-        <path
+          <path
+            className=
+
+                {
+                  fill: #0078d4;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M0,155A155,155,0,0,1,-155,0L0,0Z"
+          >
+            <desc>
+              B
+              -
+              25
+            </desc>
+          </path>
+          <text
+            className=
+
+                {
+                  fill: #000000;
+                }
+            transform="translate(-116.67261889578045, 116.67261889578026)"
+          >
+            B
+            -
+            25
+          </text>
+        </g>
+        <g
           className=
 
               {
-                fill: #107c10;
-                stroke-width: 2px;
-                stroke: #ffffff;
+                outline: none;
               }
-          d="M-165,0A165,165,0,0,1,0,-165L0,0Z"
-        />
-        <text
-          textAnchor="middle"
-          transform="translate(-58.33630944789013, -58.33630944789022)"
+          data-is-focusable={true}
+          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"C\\"},\\"index\\":2,\\"value\\":25,\\"startAngle\\":4.712388980384691,\\"endAngle\\":6.283185307179587,\\"padAngle\\":0}"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          textAnchor="end"
         >
-          C
-          -
-          25
-        </text>
+          <path
+            className=
+
+                {
+                  fill: #107c10;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M-155,0A155,155,0,0,1,0,-155L0,0Z"
+          >
+            <desc>
+              C
+              -
+              25
+            </desc>
+          </path>
+          <text
+            className=
+
+                {
+                  fill: #000000;
+                }
+            transform="translate(-116.67261889578026, -116.67261889578045)"
+          >
+            C
+            -
+            25
+          </text>
+        </g>
+        <use
+          xlinkHref="#"
+        />
       </g>
-    </g>
-  </svg>
+    </svg>
+  </div>
 </div>
 `;
 
@@ -104,80 +176,152 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         width: 670px;
       }
 >
-  <svg
-    height={300}
-    width={600}
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <g
-      transform="translate(300, 150)"
+    <svg
+      height={300}
+      width={600}
     >
       <g
-        className="arc"
+        transform="translate(300, 150)"
       >
-        <path
+        <g
           className=
 
               {
-                fill: #e81123;
-                stroke-width: 2px;
-                stroke: #ffffff;
+                outline: none;
               }
-          d="M0,-140A140,140,0,1,1,0,140L0,0Z"
-        />
-        <text
-          textAnchor="middle"
-          transform="translate(70, 1.554312234475219e-14)"
+          data-is-focusable={true}
+          id="{\\"data\\":{\\"y\\":50,\\"x\\":\\"A\\"},\\"index\\":0,\\"value\\":50,\\"startAngle\\":0,\\"endAngle\\":3.1415926535897936,\\"padAngle\\":0}"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          textAnchor="start"
         >
-          A
-          -
-          50
-        </text>
-      </g>
-      <g
-        className="arc"
-      >
-        <path
+          <path
+            className=
+
+                {
+                  fill: #e81123;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M0,-130A130,130,0,1,1,0,130L0,0Z"
+          >
+            <desc>
+              A
+              -
+              50
+            </desc>
+          </path>
+          <text
+            className=
+
+                {
+                  fill: #000000;
+                }
+            transform="translate(140, 3.108624468950438e-14)"
+          >
+            A
+            -
+            50
+          </text>
+        </g>
+        <g
           className=
 
               {
-                fill: #0078d4;
-                stroke-width: 2px;
-                stroke: #ffffff;
+                outline: none;
               }
-          d="M0,140A140,140,0,0,1,-140,0L0,0Z"
-        />
-        <text
-          textAnchor="middle"
-          transform="translate(-49.49747468305837, 49.49747468305829)"
+          data-is-focusable={true}
+          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"B\\"},\\"index\\":1,\\"value\\":25,\\"startAngle\\":3.1415926535897936,\\"endAngle\\":4.712388980384691,\\"padAngle\\":0}"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          textAnchor="end"
         >
-          B
-          -
-          25
-        </text>
-      </g>
-      <g
-        className="arc"
-      >
-        <path
+          <path
+            className=
+
+                {
+                  fill: #0078d4;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M0,130A130,130,0,0,1,-130,0L0,0Z"
+          >
+            <desc>
+              B
+              -
+              25
+            </desc>
+          </path>
+          <text
+            className=
+
+                {
+                  fill: #000000;
+                }
+            transform="translate(-98.99494936611674, 98.99494936611659)"
+          >
+            B
+            -
+            25
+          </text>
+        </g>
+        <g
           className=
 
               {
-                fill: #107c10;
-                stroke-width: 2px;
-                stroke: #ffffff;
+                outline: none;
               }
-          d="M-140,0A140,140,0,0,1,0,-140L0,0Z"
-        />
-        <text
-          textAnchor="middle"
-          transform="translate(-49.49747468305829, -49.49747468305837)"
+          data-is-focusable={true}
+          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"C\\"},\\"index\\":2,\\"value\\":25,\\"startAngle\\":4.712388980384691,\\"endAngle\\":6.283185307179587,\\"padAngle\\":0}"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          textAnchor="end"
         >
-          C
-          -
-          25
-        </text>
+          <path
+            className=
+
+                {
+                  fill: #107c10;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M-130,0A130,130,0,0,1,0,-130L0,0Z"
+          >
+            <desc>
+              C
+              -
+              25
+            </desc>
+          </path>
+          <text
+            className=
+
+                {
+                  fill: #000000;
+                }
+            transform="translate(-98.99494936611659, -98.99494936611674)"
+          >
+            C
+            -
+            25
+          </text>
+        </g>
+        <use
+          xlinkHref="#"
+        />
       </g>
-    </g>
-  </svg>
+    </svg>
+  </div>
 </div>
 `;

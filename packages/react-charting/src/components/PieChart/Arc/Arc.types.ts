@@ -1,4 +1,4 @@
-import { IStyle } from '@fluentui/react/lib/Styling';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IDataPoint } from '../PieChart.types';
 
 export interface IArcProps {
@@ -16,11 +16,11 @@ export interface IArcProps {
   /**
    * innerRadius of the Arc.
    */
-  innerRadius?: number;
+  innerRadius: number;
   /**
    * outerRadius of the Arc.
    */
-  outerRadius?: number;
+  outerRadius: number;
   /**
    * Color for the Arc.
    */
@@ -30,6 +30,21 @@ export interface IArcProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+  /**
+   * to pass the theme
+   */
+  theme?: ITheme;
+  /**
+   * Callback function to be triggered when the focus is on the element
+   */
+  onPieFocussed: (id: string) => void;
+}
+
+export interface IArcState {
+  /**
+   * The state controls, whether the arc needs to be focussed or not
+   */
+  isArcFocussed?: boolean;
 }
 
 export interface IArcData {
@@ -63,5 +78,11 @@ export interface IArcStyles {
   /**
    * Style set for the card header component root
    */
-  root: IStyle;
+  pieRoot: IStyle;
+
+  pie: IStyle;
+
+  pieRootFocussed: IStyle;
+
+  pieText: IStyle;
 }
