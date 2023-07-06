@@ -14,8 +14,6 @@ const useStyles = makeStyles({
     ...shorthands.gap('10px'),
   },
   child: {
-    // comment out `scrollSnapAlign` for keyboard
-    // and scrolling to work
     scrollSnapAlign: 'start',
     height: '100px',
     width: '100px',
