@@ -132,3 +132,5 @@ Most interaction and screen reader behavior will be handled automatically by the
 - The clear button is not in the tab order and should not recieve focus; otherwise, no features in the initial implementation require manipulation of focus, tab order, or key handling.
 - Visual states for focus and hover will be applied to `root` rather than the `<input>` itself (which is rendered without a border and only used to show the text), because the `contentBefore`, `contentAfter`, and `dismiss` slots need to visually appear to be within the input.
 - Authors using SearchBox for a top-level site search are encouraged to wrap the component in a landmark with `role="search"`
+- Keyboard users can use keyboard shortcuts to clear the value.
+- The clear button is exposed to voice control and screen reader users.
