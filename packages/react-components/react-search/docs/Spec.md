@@ -104,7 +104,7 @@ Notes on the HTML rendering:
 
 ## Migration
 
-See [MIGRATION.md](MIGRATION.md)
+See [MIGRATION.md](./MIGRATION.md)
 
 ## Behaviors
 
