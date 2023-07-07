@@ -111,7 +111,7 @@ export function apiExtractor(): TaskFunction {
     const compilerConfig = getTsPathAliasesApiExtractorConfig({
       tsConfig: tsConfigs.lib,
       packageJson,
-      pathAliasesTsConfigPath: isLocalBuild ? path.join(workspaceRoot, 'tsconfig.base.json') : undefined,
+      // pathAliasesTsConfigPath: isLocalBuild ? path.join(workspaceRoot, 'tsconfig.base.json') : undefined,
       definitionsRootPath: 'dist/out-tsc/types',
     });
 

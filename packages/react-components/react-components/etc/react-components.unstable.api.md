@@ -71,6 +71,7 @@ import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
 import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { renderSearchBox_unstable } from '@fluentui/react-search';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
@@ -78,13 +79,17 @@ import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
-import {renderSearchBox_untable} from '@fluentui/react-search';
 import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
 import { ScrollToInterface } from '@fluentui/react-virtualizer';
 import { scrollToItemDynamic } from '@fluentui/react-virtualizer';
 import { ScrollToItemDynamicParams } from '@fluentui/react-virtualizer';
 import { scrollToItemStatic } from '@fluentui/react-virtualizer';
 import { ScrollToItemStaticParams } from '@fluentui/react-virtualizer';
+import { SearchBox } from '@fluentui/react-search';
+import { searchBoxClassNames } from '@fluentui/react-search';
+import { SearchBoxProps } from '@fluentui/react-search';
+import { SearchBoxSlots } from '@fluentui/react-search';
+import { SearchBoxState } from '@fluentui/react-search';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
@@ -138,6 +143,8 @@ import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
+import { useSearchBox_unstable } from '@fluentui/react-search';
+import { useSearchBoxStyles_unstable } from '@fluentui/react-search';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
@@ -313,6 +320,8 @@ export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
 
+export { renderSearchBox_unstable }
+
 export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
@@ -338,6 +347,16 @@ export { ScrollToItemDynamicParams }
 export { scrollToItemStatic }
 
 export { ScrollToItemStaticParams }
+
+export { SearchBox }
+
+export { searchBoxClassNames }
+
+export { SearchBoxProps }
+
+export { SearchBoxSlots }
+
+export { SearchBoxState }
 
 export { Tree }
 
@@ -444,6 +463,10 @@ export { useInfoLabelStyles_unstable }
 export { useIntersectionObserver }
 
 export { useResizeObserverRef_unstable }
+
+export { useSearchBox_unstable }
+
+export { useSearchBoxStyles_unstable }
 
 export { useStaticVirtualizerMeasure }
 
