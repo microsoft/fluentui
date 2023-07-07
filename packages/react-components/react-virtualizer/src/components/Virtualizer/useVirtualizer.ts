@@ -118,6 +118,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // Local updates
     updateChildRows(index);
     updateCurrentItemSizes(index);
+
+    // Set before 'setActualIndex' call
+    // If it changes before render, or injected via context, re-render will update ref.
+    actualIndexRef.current = index;
+
     // State setters
     setActualIndex(index);
   };
