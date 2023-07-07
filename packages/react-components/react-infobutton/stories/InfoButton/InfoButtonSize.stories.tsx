@@ -19,28 +19,17 @@ const useStyles = makeStyles({
 
 const InfoButtonSize: React.FC<{ size: InfoButtonProps['size'] }> = ({ size }) => {
   const styles = useStyles();
-  const labelId = useId('label');
-  const infobuttonId = useId('infobutton');
-  const infobuttonInfoId = infobuttonId + '__info';
-
+  const infobuttonInfoId = useId('infobuton__info');
   const [open, setOpen] = React.useState(false);
-
-  const info = (
-    <>
-      This is example information for an InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>
-    </>
-  );
+  const info = 'This is example information for an InfoButton.';
 
   const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open);
 
   return (
     <div aria-owns={open ? infobuttonInfoId : undefined}>
-      <Label size={size} id={labelId}>
-        This is a {size} Infobutton
-      </Label>
+      <Label size={size}>This is a {size} Infobutton</Label>
       <InfoButton
         size={size}
-        id={infobuttonId}
         className={styles.infoButton}
         info={{
           id: infobuttonInfoId,
