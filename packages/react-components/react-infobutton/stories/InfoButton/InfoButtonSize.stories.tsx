@@ -23,7 +23,9 @@ const InfoButtonSize: React.FC<{ size: InfoButtonProps['size'] }> = ({ size }) =
   const [open, setOpen] = React.useState(false);
   const info = 'This is example information for an InfoButton.';
 
-  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open);
+  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
+    setOpen(data.open);
+  };
 
   return (
     <div aria-owns={open ? infobuttonInfoId : undefined}>
