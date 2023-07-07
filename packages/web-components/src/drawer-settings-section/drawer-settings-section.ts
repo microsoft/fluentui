@@ -1,5 +1,5 @@
 import { Switch } from '@fluentui/web-components';
-import { attr, FASTElement, html, observable, ref } from '@microsoft/fast-element';
+import { attr, FASTElement, html, observable, ref, Updates } from '@microsoft/fast-element';
 
 export class DrawerSettingsSection extends FASTElement {
   /**
@@ -7,7 +7,16 @@ export class DrawerSettingsSection extends FASTElement {
    */
   public connectedCallback(): void {
     super.connectedCallback();
-    this.setTarget();
+    this.setInitialSwitchState();
+  }
+
+  public setInitialSwitchState(): void {
+    Updates.enqueue(() =>
+      this.$emit('toggle-drawer-visibility', {
+        controls: this.controls,
+        currentChecked: this.switch.currentChecked,
+      }),
+    );
   }
 
   public disconnectedCallback(): void {
@@ -15,34 +24,15 @@ export class DrawerSettingsSection extends FASTElement {
   }
 
   @attr
-  public switchTarget: string | null = null;
+  public controls!: string;
 
-  @attr
-  public controls: string | null = null;
-
+  @observable
   public switch!: Switch;
 
-  private setTarget(): void {
-    const switchElement = this.switch;
-    if (switchElement) {
-      switchElement.setAttribute('aria-controls', this.getSwitchTarget() || '');
-    }
-  }
-
   public handleSwitchChange(): void {
-    const switchElement = this.switch;
-    console.log(switchElement.currentChecked);
     this.$emit('toggle-drawer-visibility', {
-      switchTarget: this.getSwitchTarget(),
-      currentChecked: switchElement.currentChecked,
+      controls: this.controls,
+      currentChecked: this.switch.currentChecked,
     });
-  }
-
-  public targetChanged(): void {
-    this.setTarget();
-  }
-
-  private getSwitchTarget(): string | null {
-    return this.controls ?? this.switchTarget;
   }
 }

@@ -87,7 +87,7 @@ export const styles = css`
     bottom: 0;
     left: 0;
     background-color: ${colorBackgroundOverlay};
-    z-index: -1;
+    pointer-events: none;
   }
 
   .drawer {

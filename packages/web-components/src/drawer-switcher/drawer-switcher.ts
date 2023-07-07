@@ -23,7 +23,6 @@ export class DrawerSwitcher extends FASTElement {
    */
   public connectedCallback(): void {
     super.connectedCallback();
-    this.addEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
 
     // Now you can access the referenced switch element and its slotted content
     this.toggleButtonIds = this.getToggleButtonIds();
@@ -34,6 +33,7 @@ export class DrawerSwitcher extends FASTElement {
     this.setSwitches();
     this.setToggleButtons();
     this.setDrawers();
+    this.addEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
   }
 
   public disconnectedCallback(): void {
@@ -248,7 +248,9 @@ export class DrawerSwitcher extends FASTElement {
         const toggleButtonId: string = this.toggleButtonIds[index];
         const switchId: string = this.switchIds[index];
         switchElement.setAttribute('id', switchId);
-        switchElement.switchTarget = toggleButtonId;
+        if (!switchElement.controls) {
+          switchElement.controls = toggleButtonId;
+        }
       }
     });
   };
@@ -421,20 +423,19 @@ export class DrawerSwitcher extends FASTElement {
     this.togglebuttons[this.activeToggleButtonIndex].focus();
   }
 
-  private togglePaneToggleVisibility(event: CustomEvent<{ switchTarget: string; currentChecked: boolean }>): void {
-    const { switchTarget, currentChecked } = event.detail;
-    const toggleButtonElement = this.getDrawerSwitcherToggleButton(event, switchTarget);
-    console.log('togglePaneToggleVisibility', switchTarget, currentChecked, toggleButtonElement);
+  private togglePaneToggleVisibility(event: CustomEvent<{ controls: string; currentChecked: boolean }>): void {
+    const { controls, currentChecked } = event.detail;
+    const toggleButtonElement = this.getDrawerSwitcherToggleButton(event, controls);
     if (toggleButtonElement) {
       toggleButtonElement.hidden = !currentChecked;
     }
   }
 
-  private getDrawerSwitcherToggleButton(event: Event, switchTarget: string): HTMLElement | null {
+  private getDrawerSwitcherToggleButton(event: Event, controls: string): HTMLElement | null {
     const eventTarget = event.target as HTMLElement;
     const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
     if (paneSwitcher) {
-      return paneSwitcher.querySelector(`#${switchTarget}`);
+      return paneSwitcher.querySelector(`#${controls}`);
     }
     return null;
   }

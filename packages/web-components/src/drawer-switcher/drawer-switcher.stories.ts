@@ -249,11 +249,13 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
 
         <fluent-drawer-switcher-toggle-button slot="toggle-buttons">${settings20Regular}</fluent-drawer-switcher-toggle-button>
         <fluent-drawer position="right"  control-size="small" compact>
+          
           <div slot="start">
             <fluent-text block="" size="400" weight="bold"><span>Settings</span></fluent-text>
             <fluent-text block="" size="300" weight="semibold" style="display: block; margin: 2px 0 0 4px;">Settings</fluent-text>
           </div>
-          <fluent-drawer-settings-section default-checked>
+
+          <fluent-drawer-settings-section>
             <span slot="icon">${animalTurtle20Regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 1</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
@@ -265,7 +267,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
             <span slot="icon">${animalCat20Regular}</span>
             <fluent-text slot="header" block weight="bold"><span>Drawer 2</span></fluent-text>
             <fluent-text slot="body" weight="regular" size="300" as="p">
-            A short description of Drawer 2.
+              A short description of Drawer 2.
             </fluent-text>
           </fluent-drawer-settings-section>
 
@@ -284,6 +286,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
               A short description of Drawer 4.
             </fluent-text>
           </fluent-drawer-settings-section>
+
         </fluent-drawer>
       </fluent-drawer-switcher>
     </div>
