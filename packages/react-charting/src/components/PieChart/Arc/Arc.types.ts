@@ -37,14 +37,18 @@ export interface IArcProps {
   /**
    * Callback function to be triggered when the focus is on the element
    */
-  onPieFocussed: (id: string) => void;
+  onPieFocused: (id: string) => void;
 }
 
 export interface IArcState {
   /**
-   * The state controls, whether the arc needs to be focussed or not
+   * The state controls, whether the arc needs to be focused or not
    */
-  isArcFocussed?: boolean;
+  isArcFocused?: boolean;
+  /**
+   * Unique Identifier for each arc
+   */
+  id: string;
 }
 
 export interface IArcData {
@@ -82,7 +86,7 @@ export interface IArcStyles {
 
   pie: IStyle;
 
-  pieRootFocussed: IStyle;
+  pieRootFocused: IStyle;
 
   pieText: IStyle;
 }

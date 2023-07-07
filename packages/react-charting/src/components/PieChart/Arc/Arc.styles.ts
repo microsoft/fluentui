@@ -4,8 +4,8 @@ export const getStyles = (props: IArcProps, theme: ITheme | undefined): IArcStyl
   const { color } = props;
   return {
     pieRoot: { fill: color, stroke: theme?.palette.white || DefaultPalette.white, strokeWidth: 2 },
-    pieRootFocussed: { fill: color, stroke: theme?.palette.black || DefaultPalette.black, strokeWidth: 3 },
+    pieRootFocused: { fill: color, stroke: theme?.palette.black || DefaultPalette.black, strokeWidth: 3 },
     pie: { outline: 'none' },
-    pieText: { fill: theme?.palette.black || DefaultPalette.black },
+    pieText: { fill: theme?.palette.black || DefaultPalette.black, outline: 'none' },
   };
 };

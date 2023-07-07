@@ -4,8 +4,9 @@ import { IPieProps } from './Pie.types';
 import { LabeledArc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { getId } from '@fluentui/react';
 
-export class Pie extends React.Component<IPieProps, { focussedPie: string }> {
+export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
   public static defaultProps: Partial<IPieProps> = {
     pie: shape
       .pie()
@@ -16,7 +17,7 @@ export class Pie extends React.Component<IPieProps, { focussedPie: string }> {
 
   constructor(props: IPieProps) {
     super(props);
-    this.state = { focussedPie: '' };
+    this.state = { focusedPie: '' };
   }
 
   public render(): JSX.Element {
@@ -29,7 +30,7 @@ export class Pie extends React.Component<IPieProps, { focussedPie: string }> {
     return (
       <FocusZone direction={FocusZoneDirection.domOrder}>
         <svg width={width} height={height} aria-label={chartTitle}>
-          <g transform={translate} data-is-focusable={true}>
+          <g transform={translate}>
             {piechart.map((d: IArcData, i: number) => (
               <LabeledArc
                 culture={this.props.culture}
@@ -39,17 +40,17 @@ export class Pie extends React.Component<IPieProps, { focussedPie: string }> {
                 outerRadius={this.props.outerRadius}
                 color={colors[i]}
                 theme={this.props.theme}
-                onPieFocussed={this._onPieFocussed}
+                onPieFocused={this._onPieFocused}
               />
             ))}
-            <use xlinkHref={`#${this.state.focussedPie}`} />
+            <use xlinkHref={`#${this.state.focusedPie}`} />
           </g>
         </svg>
       </FocusZone>
     );
   }
 
-  private _onPieFocussed = (id: string) => {
-    this.setState({ focussedPie: id });
+  private _onPieFocused = (id: string) => {
+    this.setState({ focusedPie: id });
   };
 }
