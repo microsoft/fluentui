@@ -60,6 +60,9 @@ export interface UseArrowNavigationGroupOptions {
     unstable_hasDefault?: boolean;
 }
 
+// @public (undocumented)
+export const useDeloser: () => Types.TabsterDOMAttribute;
+
 // @public
 export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 

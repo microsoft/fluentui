@@ -3,6 +3,7 @@
 exports[`FluentProvider renders a default state 1`] = `
 <div
   className="fui-FluentProvider fui-FluentProvider1"
+  data-tabster="{\\"deloser\\":{}}"
   dir="ltr"
 >
   Default FluentProvider

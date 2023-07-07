@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adds tabster deloser attributes to fluent provider",
+  "packageName": "@fluentui/react-provider",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

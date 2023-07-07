@@ -32,6 +32,7 @@ describe('FluentProvider (node)', () => {
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
       "<div
+        data-tabster='{"deloser":{}}'
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
@@ -59,6 +60,7 @@ describe('FluentProvider (node)', () => {
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
       "<div
+        data-tabster='{"deloser":{}}'
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >

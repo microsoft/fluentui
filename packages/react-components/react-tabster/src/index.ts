@@ -6,6 +6,7 @@ export {
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
+  useDeloser,
   useTabsterAttributes,
   useObservedElement,
   useFocusObserved,

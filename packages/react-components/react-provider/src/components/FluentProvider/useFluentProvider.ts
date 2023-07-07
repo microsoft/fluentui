@@ -1,4 +1,4 @@
-import { useFocusVisible } from '@fluentui/react-tabster';
+import { useDeloser, useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
@@ -30,6 +30,7 @@ export const useFluentProvider_unstable = (
   ref: React.Ref<HTMLElement>,
 ): FluentProviderState => {
   const parentContext = useFluent();
+  const deloserAttributes = useDeloser();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
   const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
@@ -92,6 +93,7 @@ export const useFluentProvider_unstable = (
 
     root: getNativeElementProps('div', {
       ...props,
+      ...deloserAttributes,
       dir,
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
     }),
