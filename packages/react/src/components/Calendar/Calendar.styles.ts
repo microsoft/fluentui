@@ -42,7 +42,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         lineHeight: 30,
         backgroundColor: 'transparent',
         border: 'none',
-        boxSizing: 'border-box',
+        boxSizing: 'content-box',
         padding: '0 4px',
         alignSelf: 'flex-end',
         marginRight: 16,
