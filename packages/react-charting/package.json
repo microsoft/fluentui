@@ -67,6 +67,7 @@
     "@fluentui/react": "^8.110.7",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
+    "@testing-library/react": "12.1.2",
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0"
   },
