@@ -4,7 +4,7 @@ exports[`Stacked Bar chart rendering Should re-render the Stacked Bar chart with
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_SBC_empty17"
+    id="_SBC_empty11"
     role="alert"
     style="opacity: 0;"
   />
@@ -34,7 +34,7 @@ exports[`Stacked Bar chart rendering Should re-render the Stacked Bar chart with
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone19"
+      data-focuszone-id="FocusZone12"
     >
       <div
         class=
@@ -71,7 +71,7 @@ exports[`Stacked Bar chart rendering Should re-render the Stacked Bar chart with
           </span>
           <div
             hidden=""
-            id="tooltip20"
+            id="tooltip13"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked bar chart 2nd example
@@ -112,7 +112,7 @@ exports[`Stacked Bar chart rendering Should re-render the Stacked Bar chart with
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone21"
+      data-focuszone-id="FocusZone14"
     >
       <div>
         <svg

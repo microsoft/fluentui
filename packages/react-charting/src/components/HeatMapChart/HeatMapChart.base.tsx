@@ -86,11 +86,6 @@ export interface IHeatMapChartState {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Check for empty chart accessibility
-   */
-  emptyChart?: boolean;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -151,22 +146,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: null,
       descriptionMessage: '',
       calloutId: '',
-      emptyChart: false,
     };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
-  }
-
-  public componentDidUpdte(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
   }
 
   public render(): React.ReactNode {
@@ -206,7 +186,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return !this.state.emptyChart ? (
+    return !this.isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -712,4 +692,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
     );
   };
+
+  private isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

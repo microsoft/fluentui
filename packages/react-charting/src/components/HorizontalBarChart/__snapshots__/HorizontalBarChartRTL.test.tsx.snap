@@ -37,7 +37,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone19"
+          data-focuszone-id="FocusZone18"
         >
           <div
             class=
@@ -74,7 +74,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
               </span>
               <div
                 hidden=""
-                id="tooltip20"
+                id="tooltip19"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
@@ -105,7 +105,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone21"
+          data-focuszone-id="FocusZone20"
         >
           <svg
             aria-label="one"
@@ -120,7 +120,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
             focusable="false"
           >
             <g
-              id="_HorizontalLine_kdkjdn_0"
+              id="_HorizontalLine_rjjqnd_0"
             >
               <rect
                 aria-label="2020/04/30, 94%."
@@ -175,7 +175,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone22"
+          data-focuszone-id="FocusZone21"
         >
           <div
             class=
@@ -212,7 +212,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
               </span>
               <div
                 hidden=""
-                id="tooltip23"
+                id="tooltip22"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
@@ -243,7 +243,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone24"
+          data-focuszone-id="FocusZone23"
         >
           <svg
             aria-label="two"
@@ -258,7 +258,7 @@ exports[`Horizontal Bar chart rendering Should re-render the Horizontal Bar char
             focusable="false"
           >
             <g
-              id="_HorizontalLine_kdkjdn_1"
+              id="_HorizontalLine_rjjqnd_1"
             >
               <rect
                 aria-label="2020/04/30, 19%."

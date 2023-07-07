@@ -40,20 +40,10 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       _width: this.props.width! || 80,
       _height: this.props.height! || 20,
       _valueTextWidth: this.props.valueTextWidth! || 80,
-      _emptyChart: false,
     };
   }
 
   public componentDidMount() {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-    );
-    if (this.state._emptyChart !== isChartEmpty) {
-      this.setState({ _emptyChart: isChartEmpty });
-    }
     if (this.state._emptyChart === false) {
       const area = d3Area()
         /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -91,18 +81,6 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     }
   }
 
-  public componentDidUpdate(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-    );
-    if (this.state._emptyChart !== isChartEmpty) {
-      this.setState({ _emptyChart: isChartEmpty });
-    }
-  }
-
   public drawSparkline() {
     return (
       <>
@@ -130,7 +108,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });
-    return !this.state._emptyChart ? (
+    return !this.isChartEmpty() ? (
       <FocusZone
         direction={FocusZoneDirection.horizontal}
         isCircularNavigation={true}
@@ -162,6 +140,15 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
       />
+    );
+  }
+
+  private isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
     );
   }
 }

@@ -138,8 +138,6 @@ export interface ILineChartState extends IBasestate {
   nearestCircleToHighlight: ILineChartDataPoint | null;
 
   activeLine: number | null;
-
-  emptyChart?: boolean;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
@@ -186,7 +184,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
-      emptyChart: false,
     };
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
@@ -208,15 +205,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
     /** note that height and width are not used to resize or set as dimesions of the chart,
      * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
      */
@@ -227,18 +215,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     ) {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
       this._calloutPoints = calloutData(this._points) || [];
-    }
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
     }
   }
 
@@ -279,7 +255,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickFormat: tickFormat,
     };
 
-    return !this.state.emptyChart ? (
+    return !this.isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         chartTitle={data.chartTitle}
@@ -1395,4 +1371,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
+
+  private isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+    );
+  }
 }

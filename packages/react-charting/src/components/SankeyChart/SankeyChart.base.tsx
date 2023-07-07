@@ -29,7 +29,6 @@ export interface ISankeyChartState extends IBasestate, IChartHoverCardProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedLink?: SLink;
   shouldOverflow: boolean;
-  emptyChart?: boolean;
 }
 
 const NON_SELECTED_NODE_AND_STREAM_COLOR: string = '#757575';
@@ -77,12 +76,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       selectedNodes: new Set<number>(),
       shouldOverflow: false,
       isCalloutVisible: false,
-      emptyChart: !(
-        this.props.data &&
-        this.props.data.SankeyChartData &&
-        this.props.data.SankeyChartData.nodes.length > 0 &&
-        this.props.data.SankeyChartData.links.length > 0
-      ),
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
@@ -95,15 +88,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public componentDidUpdate(prevProps: ISankeyChartProps): void {
-    const isChartEmpty = !(
-      this.props.data &&
-      this.props.data.SankeyChartData &&
-      this.props.data.SankeyChartData.nodes.length > 0 &&
-      this.props.data.SankeyChartData.links.length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
     if (prevProps.shouldResize !== this.props.shouldResize) {
       this._fitParentContainer();
     }
@@ -112,7 +96,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     cancelAnimationFrame(this._reqID);
   }
   public render(): React.ReactNode {
-    if (!this.state.emptyChart) {
+    if (!this.isChartEmpty()) {
       const { theme, className, styles, pathColor } = this.props;
       this._classNames = getClassNames(styles!, {
         theme: theme!,
@@ -866,5 +850,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _hideTooltip(div: any) {
     div.style('opacity', 0);
+  }
+
+  private isChartEmpty() {
+    return !(
+      this.props.data &&
+      this.props.data.SankeyChartData &&
+      this.props.data.SankeyChartData.nodes.length > 0 &&
+      this.props.data.SankeyChartData.links.length > 0
+    );
   }
 }

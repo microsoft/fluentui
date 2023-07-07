@@ -28,7 +28,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_13"
+    id="chart_12"
     role="presentation"
   >
     <div
@@ -40,7 +40,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone14"
+      data-focuszone-id="FocusZone13"
     >
       <svg
         aria-label="AreaChart"
@@ -75,7 +75,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_13"
+          id="xAxisGElementchart_12"
           transform="translate(0, -35)"
         />
         <g
@@ -103,7 +103,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_13"
+          id="yAxisGElementchart_12"
           transform="translate(40, 0)"
         />
         <g>
@@ -213,7 +213,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone15"
+                data-focuszone-id="FocusZone14"
                 role="listbox"
               >
                 <div

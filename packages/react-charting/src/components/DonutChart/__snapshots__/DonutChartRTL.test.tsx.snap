@@ -4,7 +4,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 1`] = 
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_DonutChart_empty60"
+    id="_DonutChart_empty56"
     role="alert"
     style="opacity: 0;"
   />
@@ -36,7 +36,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone62"
+      data-focuszone-id="FocusZone57"
     >
       <div>
         <svg
@@ -47,15 +47,15 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                 alignment-adjust: center;
                 box-sizing: content-box;
                 display: block;
-                height: -40px;
+                height: 200px;
                 overflow: visible;
-                width: 0px;
+                width: 200px;
               }
           focusable="false"
-          viewBox="0 0 0 0"
+          viewBox="0 0 0 200"
         >
           <g
-            transform="translate(0, -20)"
+            transform="translate(100, 100)"
           >
             <g>
               <path
@@ -71,9 +71,9 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0,0Z"
+                d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_57first20000"
+                id="_Pie_55first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -93,9 +93,9 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0,0Z"
+                d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_57second39000"
+                id="_Pie_55second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -115,9 +115,9 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0,0Z"
+                d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_57third45000"
+                id="_Pie_55third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -135,7 +135,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 200px;
           }
     >
       <div
@@ -167,7 +167,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone63"
+                data-focuszone-id="FocusZone58"
                 role="listbox"
               >
                 <div
@@ -4756,7 +4756,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone46"
+      data-focuszone-id="FocusZone44"
     >
       <div>
         <svg
@@ -4793,7 +4793,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     }
                 d="M1.412,-129.992A130,130,0,0,1,121.441,-46.39L51.083,-20.385A55,55,0,0,0,1.412,-54.982Z"
                 data-is-focusable="true"
-                id="_Pie_45first20000"
+                id="_Pie_43first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -4815,7 +4815,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     }
                 d="M122.42,-43.742A130,130,0,0,1,-52.773,118.807L-21.58,50.59A55,55,0,0,0,52.061,-17.737Z"
                 data-is-focusable="true"
-                id="_Pie_45second39000"
+                id="_Pie_43second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -4837,7 +4837,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     }
                 d="M-55.34,117.633A130,130,0,0,1,-1.412,-129.992L-1.412,-54.982A55,55,0,0,0,-24.147,49.416Z"
                 data-is-focusable="true"
-                id="_Pie_45third45000"
+                id="_Pie_43third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -4887,7 +4887,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone47"
+                data-focuszone-id="FocusZone45"
                 role="listbox"
               >
                 <div
@@ -5194,7 +5194,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone50"
+      data-focuszone-id="FocusZone48"
     >
       <div>
         <svg
@@ -5231,7 +5231,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     }
                 d="M1.412,-129.992A130,130,0,0,1,121.441,-46.39L51.083,-20.385A55,55,0,0,0,1.412,-54.982Z"
                 data-is-focusable="true"
-                id="_Pie_49first20000"
+                id="_Pie_47first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -5253,7 +5253,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     }
                 d="M122.42,-43.742A130,130,0,0,1,-52.773,118.807L-21.58,50.59A55,55,0,0,0,52.061,-17.737Z"
                 data-is-focusable="true"
-                id="_Pie_49second39000"
+                id="_Pie_47second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -5275,7 +5275,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     }
                 d="M-55.34,117.633A130,130,0,0,1,-1.412,-129.992L-1.412,-54.982A55,55,0,0,0,-24.147,49.416Z"
                 data-is-focusable="true"
-                id="_Pie_49third45000"
+                id="_Pie_47third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -5325,7 +5325,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone51"
+                data-focuszone-id="FocusZone49"
                 role="listbox"
               >
                 <div
@@ -5632,7 +5632,7 @@ exports[`Should hide callout on mouse leave 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone7"
+      data-focuszone-id="FocusZone5"
     >
       <div>
         <svg
@@ -5669,7 +5669,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     }
                 d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                 data-is-focusable="true"
-                id="_Pie_6first20000"
+                id="_Pie_4first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -5691,7 +5691,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     }
                 d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                 data-is-focusable="true"
-                id="_Pie_6second39000"
+                id="_Pie_4second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -5713,7 +5713,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     }
                 d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                 data-is-focusable="true"
-                id="_Pie_6third45000"
+                id="_Pie_4third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -5758,7 +5758,7 @@ exports[`Should hide callout on mouse leave 1`] = `
             }
         data-is-focusable="false"
         hidden=""
-        id="callout5"
+        id="callout3"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >
@@ -5908,7 +5908,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone8"
+                data-focuszone-id="FocusZone6"
                 role="listbox"
               >
                 <div
@@ -6228,7 +6228,7 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone42"
+        data-focuszone-id="FocusZone40"
       >
         <div>
           <svg
@@ -6265,7 +6265,7 @@ exports[`Should reflect theme change 1`] = `
                       }
                   d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
-                  id="_Pie_41first20000"
+                  id="_Pie_39first20000"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -6287,7 +6287,7 @@ exports[`Should reflect theme change 1`] = `
                       }
                   d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
-                  id="_Pie_41second39000"
+                  id="_Pie_39second39000"
                   opacity="1"
                   role="img"
                   tabindex="-1"
@@ -6309,7 +6309,7 @@ exports[`Should reflect theme change 1`] = `
                       }
                   d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
-                  id="_Pie_41third45000"
+                  id="_Pie_39third45000"
                   opacity="1"
                   role="img"
                   tabindex="-1"
@@ -6359,7 +6359,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone43"
+                  data-focuszone-id="FocusZone41"
                   role="listbox"
                 >
                   <div

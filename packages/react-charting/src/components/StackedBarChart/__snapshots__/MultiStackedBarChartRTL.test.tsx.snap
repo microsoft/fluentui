@@ -4,7 +4,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_MSBC_empty11"
+    id="_MSBC_empty3"
     role="alert"
     style="opacity: 0;"
   />
@@ -45,7 +45,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone13"
+          data-focuszone-id="FocusZone4"
         >
           <div
             class=
@@ -82,7 +82,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
               </span>
               <div
                 hidden=""
-                id="tooltip14"
+                id="tooltip5"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
@@ -123,7 +123,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone15"
+          data-focuszone-id="FocusZone6"
         >
           <div
             class=
@@ -218,7 +218,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone16"
+          data-focuszone-id="FocusZone7"
         >
           <div
             class=
@@ -255,7 +255,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
               </span>
               <div
                 hidden=""
-                id="tooltip17"
+                id="tooltip8"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
@@ -296,7 +296,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone18"
+          data-focuszone-id="FocusZone9"
         >
           <div
             class=
@@ -413,7 +413,7 @@ exports[`Multi Stacked Bar chart rendering Should re-render the Multi Stacked Ba
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone19"
+                data-focuszone-id="FocusZone10"
                 role="listbox"
               >
                 <div

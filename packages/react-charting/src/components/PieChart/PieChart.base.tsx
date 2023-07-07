@@ -5,11 +5,8 @@ import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
-export interface IPieChartState {
-  emptyChart?: boolean;
-}
 
-export class PieChartBase extends React.Component<IPieChartProps, IPieChartState> {
+export class PieChartBase extends React.Component<IPieChartProps, {}> {
   public static defaultProps: Partial<IPieChartProps> = {
     data: [],
     width: 600,
@@ -19,31 +16,6 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
 
   public constructor(props: IPieChartProps) {
     super(props);
-    this.state = {
-      emptyChart: false,
-    };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty = !(
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data.filter(item => item.y > 0).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
-  }
-
-  public componentDidUpdate(): void {
-    const isChartEmpty = !(
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data.filter(item => item.y > 0).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
   }
 
   public render(): JSX.Element {
@@ -59,7 +31,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;
 
-    return !this.state.emptyChart ? (
+    return !this.isChartEmpty() ? (
       <div className={this._classNames.root}>
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
@@ -81,5 +53,9 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  private isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0 && this.props.data.filter(item => item.y > 0).length > 0);
   }
 }

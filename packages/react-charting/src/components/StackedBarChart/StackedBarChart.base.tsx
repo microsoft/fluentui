@@ -23,7 +23,6 @@ export interface IStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -50,7 +49,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
-      emptyChart: false,
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
@@ -59,30 +57,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._calloutId = getId('callout');
   }
 
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.chartData &&
-      this.props.data.chartData.length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
-  }
-
-  public componentDidUpdate(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.chartData &&
-      this.props.data.chartData.length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
-  }
-
   public render(): JSX.Element {
-    if (!this.state.emptyChart) {
+    if (!this.isChartEmpty()) {
       this._adjustProps();
       const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
       const { palette } = this.props.theme!;
@@ -493,4 +469,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
+
+  private isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.chartData && this.props.data.chartData.length > 0);
+  }
 }

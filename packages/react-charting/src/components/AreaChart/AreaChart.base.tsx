@@ -70,7 +70,6 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
-  emptyChart?: boolean;
   /** focused point */
   activePoint: string;
 }
@@ -122,17 +121,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isCircleClicked: false,
       nearestCircleToHighlight: null,
       isShowCalloutPending: false,
-      emptyChart: !(
-        (
-          this.props.data &&
-          this.props.data.lineChartData &&
-          this.props.data.lineChartData.length > 0 &&
-          this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-        )
-        // if all the data sets have no data
-        // filtering all items which have no data and checking if the length of the filtered array is 0
-        // which means chart is not empty
-      ),
       activePoint: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
@@ -147,20 +135,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public componentDidUpdate() {
-    const isChartEmpty: boolean = !(
-      (
-        this.props.data &&
-        this.props.data.lineChartData &&
-        this.props.data.lineChartData.length > 0 &&
-        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-      )
-      // if all the data sets have no data
-      // filtering all items which have no data and checking if the length of the filtered array is 0
-      // which means chart is not empty
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
     if (this.state.isShowCalloutPending) {
       this.setState({
         refSelected: `#${this._highlightedCircleId}`,
@@ -171,7 +145,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    if (!this.state.emptyChart) {
+    if (!this.isChartEmpty()) {
       const { lineChartData, chartTitle } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
@@ -920,4 +894,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
+
+  private isChartEmpty(): boolean {
+    return !(
+      (
+        this.props.data &&
+        this.props.data.lineChartData &&
+        this.props.data.lineChartData.length > 0 &&
+        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+      )
+      // if all the data sets have no data
+      // filtering all items which have no data and checking if the length of the filtered array is 0
+      // which means chart is not empty
+    );
+  }
 }
