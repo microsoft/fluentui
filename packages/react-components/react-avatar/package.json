@@ -30,7 +30,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "^9.0.0",
+    "@fluentui/react-conformance-griffel": "*",
     "es6-weak-map": "^2.0.2",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",

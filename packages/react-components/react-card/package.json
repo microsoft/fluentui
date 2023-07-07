@@ -30,9 +30,9 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance-griffel": "^9.0.0",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-button": "^9.3.23",
+    "@fluentui/react-button": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
