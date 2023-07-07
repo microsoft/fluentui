@@ -3,35 +3,35 @@ import { isSlot } from './isSlot';
 import { slot } from './slot';
 
 describe('isSlot', () => {
-  it('resolves a string', () => {
+  it('handles a string', () => {
     expect(isSlot('hello')).toEqual(false);
   });
 
-  it('resolves a JSX element', () => {
+  it('handles a JSX element', () => {
     expect(isSlot(<div>hello</div>)).toEqual(false);
   });
 
-  it('resolves a number', () => {
+  it('handles a number', () => {
     expect(isSlot(42)).toEqual(false);
   });
 
-  it('resolves null', () => {
+  it('handles null', () => {
     expect(isSlot(null)).toEqual(false);
   });
 
-  it('resolves undefined', () => {
+  it('handles undefined', () => {
     expect(isSlot(undefined)).toEqual(false);
   });
 
-  it('resolves object', () => {
+  it('handles object', () => {
     expect(isSlot({})).toEqual(false);
   });
 
-  it('resolves array', () => {
+  it('handles array', () => {
     expect(isSlot(['1', 2])).toEqual(false);
   });
 
-  it('resolves actual slot', () => {
+  it('handles actual slot', () => {
     expect(isSlot(slot({}, { elementType: 'div' }))).toEqual(true);
   });
 });

@@ -78,8 +78,10 @@ export function slot<Props extends UnknownSlotProps>(
     }
   } else if (elementType !== undefined) {
     metadata = { elementType };
-  } else {
+  } else if (process.env.NODE_ENV !== 'production') {
     throw new Error("[react-utilities]: slot options.elementType is required when value isn't a slot itself");
+  } else {
+    metadata = { elementType: 'div' as React.ElementType<Props> as React.ComponentType<Props> };
   }
 
   /**

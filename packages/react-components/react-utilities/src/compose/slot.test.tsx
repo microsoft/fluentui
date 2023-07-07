@@ -74,4 +74,16 @@ describe('slot', () => {
 
     expect(resolvedProps).toEqual({ [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } });
   });
+
+  it('handles render functions', () => {
+    const props: TestProps = { slotA: { children: () => null } };
+    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+
+    expect(resolvedProps).toEqual({
+      [SLOT_COMPONENT_METADATA_SYMBOL]: {
+        elementType: 'div',
+        renderFunction: expect.any(Function),
+      },
+    });
+  });
 });
