@@ -4,7 +4,7 @@ exports[`Vertical bar chart rendering Should re-render the vertical bar chart wi
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty33"
+    id="_VBC_empty26"
     role="alert"
     style="opacity: 0;"
   />
@@ -28,7 +28,7 @@ exports[`Vertical bar chart rendering Should re-render the vertical bar chart wi
           overflow: hidden;
           width: 100%;
         }
-    id="chart_35"
+    id="chart_27"
     role="presentation"
   >
     <div
@@ -40,7 +40,7 @@ exports[`Vertical bar chart rendering Should re-render the vertical bar chart wi
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone36"
+      data-focuszone-id="FocusZone28"
     >
       <svg
         focusable="false"
@@ -74,7 +74,7 @@ exports[`Vertical bar chart rendering Should re-render the vertical bar chart wi
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_35"
+          id="xAxisGElementchart_27"
           transform="translate(0, -35)"
         />
         <g
@@ -102,7 +102,7 @@ exports[`Vertical bar chart rendering Should re-render the vertical bar chart wi
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_35"
+          id="yAxisGElementchart_27"
           transform="translate(40, 0)"
         />
         <g>
@@ -149,7 +149,7 @@ exports[`Vertical bar chart rendering Should re-render the vertical bar chart wi
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone37"
+                data-focuszone-id="FocusZone29"
                 role="listbox"
               >
                 <div

@@ -268,8 +268,8 @@ describe('Render empty chart calling with respective to props', () => {
       data: [],
     };
     const component = mount(<VerticalBarChart {...props} />);
-    component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(3);
+    component.setProps({ ...props, data: chartPoints });
+    expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
 });
