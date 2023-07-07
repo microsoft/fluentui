@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update devDependencies to use * for inner workspace dependencies",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

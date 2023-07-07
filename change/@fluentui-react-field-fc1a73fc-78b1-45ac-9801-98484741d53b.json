@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update devDependencies to use * for inner workspace dependencies",
+  "packageName": "@fluentui/react-field",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
