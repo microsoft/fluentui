@@ -65,7 +65,7 @@ export class LabeledArc extends Arc {
 
   public render(): JSX.Element {
     const { data, culture } = this.props;
-    const gap = 20;
+    const gap = 10;
     const [labelX, labelY] = shape.arc().centroid({
       endAngle: data?.endAngle || 0,
       startAngle: data?.startAngle || 0,
@@ -78,7 +78,7 @@ export class LabeledArc extends Arc {
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(props => getStyles(props, this.props.theme));
 
-    const angleBisector = ((data?.startAngle || 0) + (data?.endAngle || 0)) / 2;
+    const angle = ((data?.startAngle || 0) + (data?.endAngle || 0)) / 2;
 
     return (
       <g
@@ -87,7 +87,8 @@ export class LabeledArc extends Arc {
         className={classNames.pie}
         data-is-focusable={true}
         id={JSON.stringify(this.props.data)}
-        textAnchor={angleBisector === Math.PI ? 'middle' : angleBisector < Math.PI ? 'start' : 'end'}
+        textAnchor={angle > Math.PI ? 'end' : 'start'}
+        dominantBaseline={angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto'}
       >
         {super.render()}
         <text className={classNames.pieText} transform={labelTranslate}>

@@ -29,7 +29,7 @@ export class Pie extends React.Component<IPieProps, { focussedPie: string }> {
     return (
       <FocusZone direction={FocusZoneDirection.domOrder}>
         <svg width={width} height={height} aria-label={chartTitle}>
-          <g transform={translate}>
+          <g transform={translate} data-is-focusable={true}>
             {piechart.map((d: IArcData, i: number) => (
               <LabeledArc
                 culture={this.props.culture}

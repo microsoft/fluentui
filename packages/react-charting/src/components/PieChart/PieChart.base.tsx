@@ -60,7 +60,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
       className,
     });
     const radius = Math.min(width!, height!) / 2;
-    const outerRadius = radius - 20;
+    const outerRadius = radius - 25;
 
     return !this.state.emptyChart ? (
       <div className={this._classNames.root}>
