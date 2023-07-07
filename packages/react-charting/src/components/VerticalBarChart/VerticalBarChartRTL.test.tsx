@@ -7,7 +7,13 @@ import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import { getByClass, getById, testScreenResolution, testWithWait, testWithoutWait } from '../../utilities/TestUtility';
+import {
+  getByClass,
+  getById,
+  testScreenResolutionChanges,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 
 const pointsWithLine = [
@@ -228,6 +234,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
     VerticalBarChart,
     { data: pointsWithLine, hideLegend: true },
     container => {
+      // Legends have 'rect' as a part of their classname
       expect(getByClass(container, /rect/i)).toHaveLength(0);
     },
   );
@@ -424,7 +431,7 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
-  testScreenResolution(() => {
+  testScreenResolutionChanges(() => {
     const { container } = render(<VerticalBarChart data={chartPoints} width={300} height={300} />);
     // Assert
     expect(container).toMatchSnapshot();
