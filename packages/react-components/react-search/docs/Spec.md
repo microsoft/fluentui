@@ -12,6 +12,8 @@
 - [Material UI](https://mui.com/material-ui/react-text-field/)
 - [Spectrum](https://react-spectrum.adobe.com/react-spectrum/SearchField.html)
 
+In prior art, searchboxes are often integrated within an input or text component. These searchboxes often have a search icon that precedes the input and a clear button that follows the input. However, they lack support for additional content.
+
 ### Comparison of v8 and v0
 
 #### v8
