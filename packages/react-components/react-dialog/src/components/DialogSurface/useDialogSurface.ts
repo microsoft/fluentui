@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
-import { isEscapeKeyDismiss } from '../../utils';
+import { Escape } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render DialogSurface.
@@ -47,7 +47,7 @@ export const useDialogSurface_unstable = (
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     props.onKeyDown?.(event);
 
-    if (isEscapeKeyDismiss(event, modalType)) {
+    if (event.key === Escape && !event.isDefaultPrevented()) {
       requestOpenChange({
         event,
         open: false,

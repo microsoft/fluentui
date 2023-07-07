@@ -7,6 +7,8 @@ import {
   readJson,
   writeJson,
   logger,
+  updateProjectConfiguration,
+  readProjectConfiguration,
 } from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
@@ -21,17 +23,17 @@ export default async function (tree: Tree, schema: MovePackagesGeneratorSchema) 
   validateSchema(schema);
 
   if (hasSchemaFlag(schema, 'allConverged')) {
-    runBatchMove(tree, schema, isPackageConverged);
+    await runBatchMove(tree, schema, isPackageConverged);
   } else if (hasSchemaFlag(schema, 'allV8')) {
-    runBatchMove(tree, schema, isV8Package);
+    await runBatchMove(tree, schema, isV8Package);
   } else {
-    hasSchemaFlag(schema, 'name') && movePackage(tree, schema);
+    hasSchemaFlag(schema, 'name') && (await movePackage(tree, schema));
   }
 
   await formatFiles(tree);
 }
 
-function runBatchMove(
+async function runBatchMove(
   tree: Tree,
   schema: MovePackagesGeneratorSchema,
   libraryVersionChecker: (tree: Tree, project: ProjectConfiguration) => boolean,
@@ -42,36 +44,32 @@ function runBatchMove(
       const destination = `${schema.destination}/${projectName.split('/')[1]}`;
       logger.log(`Attempting to move ${projectName} to ${destination}`);
 
-      movePackage(tree, {
+      await movePackage(tree, {
         name: projectName,
-        destination: destination,
+        destination,
         updateImportPath: schema.updateImportPath,
       });
     }
   }
 }
 
-function movePackage(tree: Tree, schema: AssertedSchema) {
+async function movePackage(tree: Tree, schema: AssertedSchema) {
   const { name, destination, updateImportPath = false } = schema;
 
-  moveGenerator(tree, {
+  await moveGenerator(tree, {
     projectName: name,
-    destination: destination,
+    destination,
     importPath: name,
-    updateImportPath: updateImportPath,
+    updateImportPath,
   });
 
+  const newProjectName = getNewProjectName(schema.destination);
+  const project = readProjectConfiguration(tree, newProjectName);
   // moveGenerator automatically renames the package so this overwrites that change
   // and sets it back to the original package name.
-  updateJson(tree, 'workspace.json', json => {
-    const newProjectName = getNewProjectName(schema.destination);
-    for (const [projectName, value] of Object.entries(json.projects)) {
-      if (projectName === newProjectName) {
-        json.projects[schema.name as string] = value;
-        delete json.projects[newProjectName];
-      }
-    }
-    return json;
+  updateProjectConfiguration(tree, newProjectName, {
+    ...project,
+    name: schema.name,
   });
 
   // moveGenerator automatically updates the Readme file of the packages to replace

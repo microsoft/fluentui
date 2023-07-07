@@ -8,8 +8,10 @@ describe('TreeItemPersonaLayout', () => {
     Component: TreeItemPersonaLayout,
     displayName: 'TreeItemPersonaLayout',
     requiredProps: {
-      expandIcon: 'expandIcon',
       description: 'description',
+      expandIcon: 'expandIcon',
+      aside: 'aside',
+      actions: { visible: true, children: 'actions' },
     },
   });
 

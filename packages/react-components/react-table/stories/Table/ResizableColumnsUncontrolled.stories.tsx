@@ -15,6 +15,7 @@ import {
   PresenceBadgeStatus,
   Avatar,
   Input,
+  useId,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -147,11 +148,13 @@ export const ResizableColumnsUncontrolled = () => {
   };
   const rows = getRows();
 
+  const inputId = useId('column-width');
+
   return (
     <>
       <p>
-        First column width:{' '}
-        <Input type="number" onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
+        <label htmlFor={inputId}>First column width: </label>
+        <Input type="number" id={inputId} onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
       <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>

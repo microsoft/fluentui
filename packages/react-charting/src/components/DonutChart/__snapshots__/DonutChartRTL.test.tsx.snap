@@ -510,7 +510,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
+              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -536,7 +536,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
+              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -562,7 +562,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
+              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
               data-is-focusable={true}
               id="_Pie_1third45000"
               onBlur={[Function]}
@@ -1146,7 +1146,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
+              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -1172,7 +1172,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
+              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -1198,7 +1198,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
+              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
               data-is-focusable={true}
               id="_Pie_1third45000"
               onBlur={[Function]}
@@ -1700,7 +1700,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,56.06817542356052,-21.36257720109735L0,0Z"
+              d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
               id="_Pie_20first20000"
               onBlur={[Function]}
@@ -1742,7 +1742,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M56.484185223414,-20.237016075673292A60,60,0,0,1,-24.40360777596704,54.81299049966861L0,0Z"
+              d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
               id="_Pie_20second39000"
               onBlur={[Function]}
@@ -1784,7 +1784,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-25.494913944568086,54.31398864895735A60,60,0,0,1,-0.5999900000499981,-59.99700002499991L0,0Z"
+              d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
               id="_Pie_20third45000"
               onBlur={[Function]}
@@ -2222,7 +2222,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5999900000500041,-59.99700002499991A60,60,0,0,1,56.06817542356052,-21.36257720109735L0,0Z"
+              d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
               id="_Pie_24first20000"
               onBlur={[Function]}
@@ -2264,7 +2264,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M56.484185223414,-20.237016075673292A60,60,0,0,1,-24.40360777596704,54.81299049966861L0,0Z"
+              d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
               id="_Pie_24second39000"
               onBlur={[Function]}
@@ -2306,7 +2306,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-25.494913944568086,54.31398864895735A60,60,0,0,1,-0.5999900000499981,-59.99700002499991L0,0Z"
+              d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
               id="_Pie_24third45000"
               onBlur={[Function]}
@@ -2744,7 +2744,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M1.141252199959434,-99.99348750501748A100,100,0,0,1,93.39656512824911,-35.736278796829446L51.18232065229373,-20.133803730189335A55,55,0,0,0,1.1412521999594298,-54.98815821080106Z"
+              d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -2770,7 +2770,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M94.18786514866262,-33.595327930195076A100,100,0,0,1,-40.54357552149029,91.41235411000646L-21.828478096689523,50.482844055999315A55,55,0,0,0,51.97362067270725,-17.992852863554965Z"
+              d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -2796,7 +2796,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-42.61936939412394,90.46319335755958A100,100,0,0,1,-1.1412521999594463,-99.99348750501748L-1.1412521999594365,-54.98815821080106A55,55,0,0,0,-23.904271969323176,49.53368330355244Z"
+              d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
               data-is-focusable={true}
               id="_Pie_1third45000"
               onBlur={[Function]}
@@ -3218,7 +3218,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
               id="_Pie_12first20000"
               onBlur={[Function]}
@@ -3244,7 +3244,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
               id="_Pie_12second39000"
               onBlur={[Function]}
@@ -3270,7 +3270,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
               id="_Pie_12third45000"
               onBlur={[Function]}
@@ -3692,7 +3692,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
               id="_Pie_5first20000"
               onBlur={[Function]}
@@ -3718,7 +3718,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
               id="_Pie_5second39000"
               onBlur={[Function]}
@@ -3744,7 +3744,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
               id="_Pie_5third45000"
               onBlur={[Function]}
@@ -3826,7 +3826,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
               id="_Pie_8first20000"
               onBlur={[Function]}
@@ -3852,7 +3852,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
               id="_Pie_8second39000"
               onBlur={[Function]}
@@ -3878,7 +3878,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
               id="_Pie_8third45000"
               onBlur={[Function]}
@@ -4300,7 +4300,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.9999833334166736,-99.99500004166653A100,100,0,0,1,93.44695903926753,-35.60429533516224L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
               id="_Pie_16first20000"
               onBlur={[Function]}
@@ -4326,7 +4326,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M94.14030870569,-33.728360126122155A100,100,0,0,1,-40.67267962661173,91.35498416611435L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
               id="_Pie_16second39000"
               onBlur={[Function]}
@@ -4352,7 +4352,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-42.49152324094681,90.52331441492892A100,100,0,0,1,-0.9999833334166635,-99.99500004166653L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
               id="_Pie_16third45000"
               onBlur={[Function]}
@@ -4791,7 +4791,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M1.4115358954766064,-129.9923365680292A130,130,0,0,1,121.44128057676454,-46.38981970083038L51.082733415847244,-20.38515015312577A55,55,0,0,0,1.4115358954765822,-54.98188398387037Z"
+                d="M1.412,-129.992A130,130,0,0,1,121.441,-46.39L51.083,-20.385A55,55,0,0,0,1.412,-54.982Z"
                 data-is-focusable="true"
                 id="_Pie_45first20000"
                 opacity="1"
@@ -4813,7 +4813,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M122.41998483069258,-43.74182568266896A130,130,0,0,1,-52.772545117848296,118.80681159674586L-21.580063027258774,50.589533302250764A55,55,0,0,0,52.06143766977528,-17.737156134964344Z"
+                d="M122.42,-43.742A130,130,0,0,1,-52.773,118.807L-21.58,50.59A55,55,0,0,0,52.061,-17.737Z"
                 data-is-focusable="true"
                 id="_Pie_45second39000"
                 opacity="1"
@@ -4835,7 +4835,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M-55.33995095762406,117.6328603240088A130,130,0,0,1,-1.4115358954766222,-129.9923365680292L-1.4115358954765767,-54.98188398387037A55,55,0,0,0,-24.14746886703452,49.415582029513715Z"
+                d="M-55.34,117.633A130,130,0,0,1,-1.412,-129.992L-1.412,-54.982A55,55,0,0,0,-24.147,49.416Z"
                 data-is-focusable="true"
                 id="_Pie_45third45000"
                 opacity="1"
@@ -5229,7 +5229,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M1.4115358954766064,-129.9923365680292A130,130,0,0,1,121.44128057676454,-46.38981970083038L51.082733415847244,-20.38515015312577A55,55,0,0,0,1.4115358954765822,-54.98188398387037Z"
+                d="M1.412,-129.992A130,130,0,0,1,121.441,-46.39L51.083,-20.385A55,55,0,0,0,1.412,-54.982Z"
                 data-is-focusable="true"
                 id="_Pie_49first20000"
                 opacity="1"
@@ -5251,7 +5251,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M122.41998483069258,-43.74182568266896A130,130,0,0,1,-52.772545117848296,118.80681159674586L-21.580063027258774,50.589533302250764A55,55,0,0,0,52.06143766977528,-17.737156134964344Z"
+                d="M122.42,-43.742A130,130,0,0,1,-52.773,118.807L-21.58,50.59A55,55,0,0,0,52.061,-17.737Z"
                 data-is-focusable="true"
                 id="_Pie_49second39000"
                 opacity="1"
@@ -5273,7 +5273,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M-55.33995095762406,117.6328603240088A130,130,0,0,1,-1.4115358954766222,-129.9923365680292L-1.4115358954765767,-54.98188398387037A55,55,0,0,0,-24.14746886703452,49.415582029513715Z"
+                d="M-55.34,117.633A130,130,0,0,1,-1.412,-129.992L-1.412,-54.982A55,55,0,0,0,-24.147,49.416Z"
                 data-is-focusable="true"
                 id="_Pie_49third45000"
                 opacity="1"
@@ -5667,7 +5667,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
+                d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                 data-is-focusable="true"
                 id="_Pie_6first20000"
                 opacity="1"
@@ -5689,7 +5689,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
+                d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                 data-is-focusable="true"
                 id="_Pie_6second39000"
                 opacity="1"
@@ -5711,7 +5711,7 @@ exports[`Should hide callout on mouse leave 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
+                d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                 data-is-focusable="true"
                 id="_Pie_6third45000"
                 opacity="1"
@@ -6263,7 +6263,7 @@ exports[`Should reflect theme change 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0.5852252416681621,-54.99688637928982A55,55,0,0,1,51.38327129377018,-19.61528565050261L-18.954518060764226,6.381711767556007Z"
+                  d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
                   id="_Pie_41first20000"
                   opacity="1"
@@ -6285,7 +6285,7 @@ exports[`Should reflect theme change 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M51.78904378270381,-18.51742271681424A55,55,0,0,1,-22.33777910309799,50.259562520392066L8.845500303099026,-17.937589703967337Z"
+                  d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
                   id="_Pie_41second39000"
                   opacity="1"
@@ -6307,7 +6307,7 @@ exports[`Should reflect theme change 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M-23.402230037614032,49.772840277269644A55,55,0,0,1,-0.5852252416681566,-54.99688637928982L-0.5852252416681559,19.99143595183984Z"
+                  d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
                   id="_Pie_41third45000"
                   opacity="1"
