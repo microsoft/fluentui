@@ -44,7 +44,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M1.0103336092965664e-14,-165A165,165,0,1,1,-6.317138353229467e-14,165L0,0Z"
+            d="M0,-165A165,165,0,1,1,0,165L0,0Z"
           />
           <text
             text-anchor="middle"
@@ -66,7 +66,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M-6.317138353229467e-14,165A165,165,0,0,1,-165,-1.2634276706458934e-13L0,0Z"
+            d="M0,165A165,165,0,0,1,-165,0L0,0Z"
           />
           <text
             text-anchor="middle"
@@ -88,7 +88,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M-165,-1.2634276706458934e-13A165,165,0,0,1,1.1623943097162368e-13,-165L0,0Z"
+            d="M-165,0A165,165,0,0,1,0,-165L0,0Z"
           />
           <text
             text-anchor="middle"
@@ -136,7 +136,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 stroke-width: 2px;
                 stroke: #ffffff;
               }
-          d="M1.0103336092965664e-14,-165A165,165,0,1,1,-6.317138353229467e-14,165L0,0Z"
+          d="M0,-165A165,165,0,1,1,0,165L0,0Z"
         />
         <text
           textAnchor="middle"
@@ -158,7 +158,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 stroke-width: 2px;
                 stroke: #ffffff;
               }
-          d="M-6.317138353229467e-14,165A165,165,0,0,1,-165,-1.2634276706458934e-13L0,0Z"
+          d="M0,165A165,165,0,0,1,-165,0L0,0Z"
         />
         <text
           textAnchor="middle"
@@ -180,7 +180,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 stroke-width: 2px;
                 stroke: #ffffff;
               }
-          d="M-165,-1.2634276706458934e-13A165,165,0,0,1,1.1623943097162368e-13,-165L0,0Z"
+          d="M-165,0A165,165,0,0,1,0,-165L0,0Z"
         />
         <text
           textAnchor="middle"
@@ -227,7 +227,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 stroke-width: 2px;
                 stroke: #ffffff;
               }
-          d="M8.572527594031473e-15,-140A140,140,0,1,1,-5.3599961784977293e-14,140L0,0Z"
+          d="M0,-140A140,140,0,1,1,0,140L0,0Z"
         />
         <text
           textAnchor="middle"
@@ -249,7 +249,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 stroke-width: 2px;
                 stroke: #ffffff;
               }
-          d="M-5.3599961784977293e-14,140A140,140,0,0,1,-140,-1.0719992356995459e-13L0,0Z"
+          d="M0,140A140,140,0,0,1,-140,0L0,0Z"
         />
         <text
           textAnchor="middle"
@@ -271,7 +271,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 stroke-width: 2px;
                 stroke: #ffffff;
               }
-          d="M-140,-1.0719992356995459e-13A140,140,0,0,1,9.862739597592311e-14,-140L0,0Z"
+          d="M-140,0A140,140,0,0,1,0,-140L0,0Z"
         />
         <text
           textAnchor="middle"

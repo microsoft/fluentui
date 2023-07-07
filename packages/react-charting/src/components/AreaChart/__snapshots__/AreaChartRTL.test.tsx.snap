@@ -2886,7 +2886,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       </g>
       <g>
         <path
-          d="M10,17.884615384615383Z"
+          d="M10,17.885Z"
           fill="transparent"
           id="0-line-areaChart_55"
           onMouseMove={[Function]}
@@ -2912,7 +2912,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <g
           clipPath="url(#clip)"
-          d="M10,17.884615384615383L10,-35Z"
+          d="M10,17.885L10,-35Z"
         >
           <circle
             aria-label="20. metaData1, 50."
