@@ -421,12 +421,12 @@ export class DrawerSwitcher extends FASTElement {
     this.togglebuttons[this.activeToggleButtonIndex].focus();
   }
 
-  private togglePaneToggleVisibility(event: CustomEvent<{ switchTarget: string; switchState: boolean }>): void {
-    const { switchTarget, switchState } = event.detail;
+  private togglePaneToggleVisibility(event: CustomEvent<{ switchTarget: string; currentChecked: boolean }>): void {
+    const { switchTarget, currentChecked } = event.detail;
     const toggleButtonElement = this.getDrawerSwitcherToggleButton(event, switchTarget);
-
+    console.log('togglePaneToggleVisibility', switchTarget, currentChecked, toggleButtonElement);
     if (toggleButtonElement) {
-      toggleButtonElement.hidden = !switchState;
+      toggleButtonElement.hidden = !currentChecked;
     }
   }
 

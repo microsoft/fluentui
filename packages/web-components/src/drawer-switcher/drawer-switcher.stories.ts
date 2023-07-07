@@ -220,7 +220,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
         
         <fluent-drawer-switcher-toggle-button>${animalRabbit20Regular}</fluent-drawer-switcher-toggle-button>
 
-        <fluent-drawer position="right" trap-focus>
+        <fluent-drawer position="right">
            <span slot="close-icon">${dismissed16Regular}</span>
            <fluent-text slot="header">Drawer 4</fluent-text>
            <div style="display: flex; flex-direction: column; row-gap: 14px;">

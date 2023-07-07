@@ -1,55 +1,41 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { Switch } from '../switch/switch.js';
+import { Switch } from '@fluentui/web-components';
+import { attr, FASTElement, html, observable, ref } from '@microsoft/fast-element';
 
 export class DrawerSettingsSection extends FASTElement {
+  /**
+   * @internal
+   */
   public connectedCallback(): void {
     super.connectedCallback();
-    this.setInitialSwitchState();
     this.setTarget();
   }
 
-  /**
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: default-checked
-   */
-
-  @attr({ attribute: 'default-checked', mode: 'boolean' })
-  public defaultChecked: boolean = false;
-
-  // Define an observable property to track the switch state
-  @observable
-  public switchState: boolean = true;
-
-  @observable
-  public switch: boolean[] = [];
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+  }
 
   @attr
   public switchTarget: string | null = null;
 
   @attr
-  public target: string | null = null;
+  public controls: string | null = null;
 
-  private initialized: boolean = false;
+  public switch!: Switch;
 
   private setTarget(): void {
-    const switchElement = this.shadowRoot?.querySelector('[role="switch"]') as HTMLElement | null;
+    const switchElement = this.switch;
     if (switchElement) {
       switchElement.setAttribute('aria-controls', this.getSwitchTarget() || '');
     }
   }
 
-  private setInitialSwitchState(): void {
-    if (this.initialized) {
-      this.switchState = this.defaultChecked;
-      this.initialized = true;
-    }
-  }
-
   public handleSwitchChange(): void {
-    this.switchState = !this.switchState;
-    this.$emit('toggle-drawer-visibility', { switchTarget: this.getSwitchTarget(), switchState: this.switchState });
+    const switchElement = this.switch;
+    console.log(switchElement.currentChecked);
+    this.$emit('toggle-drawer-visibility', {
+      switchTarget: this.getSwitchTarget(),
+      currentChecked: switchElement.currentChecked,
+    });
   }
 
   public targetChanged(): void {
@@ -57,6 +43,6 @@ export class DrawerSettingsSection extends FASTElement {
   }
 
   private getSwitchTarget(): string | null {
-    return this.target ?? this.switchTarget;
+    return this.controls ?? this.switchTarget;
   }
 }

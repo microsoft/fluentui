@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
 
 /**
  * A DrawerSwitcherToggleButton Component to be used with DrawerSwitcher.
@@ -7,13 +7,4 @@ import { attr, FASTElement } from '@microsoft/fast-element';
  *
  * @public
  */
-export class DrawerSwitcherToggleButton extends FASTElement {
-  /**
-   * When true, the control will be immudrawer-togglele by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute} for more information.
-   * @public
-   * @remarks
-   * HTML Attribute: disabled
-   */
-  @attr({ mode: 'boolean' })
-  public disabled: boolean = false;
-}
+export class DrawerSwitcherToggleButton extends FASTElement {}
