@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "to unstable",
+  "packageName": "@fluentui/react-components",
+  "email": "eysjiang@gmail.com",
+  "dependentChangeType": "patch"
+}

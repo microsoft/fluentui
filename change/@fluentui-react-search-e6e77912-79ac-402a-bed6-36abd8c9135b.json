@@ -1,0 +1,6 @@
+{
+  "type": "prerelease",
+  "packageName": "@fluentui/react-search",
+  "email": "eysjiang@gmail.com",
+  "dependentChangeType": "patch"
+}

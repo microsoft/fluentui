@@ -78,6 +78,7 @@ import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
+import {renderSearchBox_untable} from '@fluentui/react-search';
 import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
 import { ScrollToInterface } from '@fluentui/react-virtualizer';
 import { scrollToItemDynamic } from '@fluentui/react-virtualizer';
