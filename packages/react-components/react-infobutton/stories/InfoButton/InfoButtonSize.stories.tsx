@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InfoButton } from '@fluentui/react-infobutton';
-import { Label, Link, makeStyles, shorthands, useId } from '@fluentui/react-components';
+import { Label, makeStyles, shorthands, useId } from '@fluentui/react-components';
 import type { InfoButtonProps } from '@fluentui/react-infobutton';
 import type { PopoverProps } from '@fluentui/react-components';
 
