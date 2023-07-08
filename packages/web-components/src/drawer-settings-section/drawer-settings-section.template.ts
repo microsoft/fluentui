@@ -1,4 +1,5 @@
 import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { startSlotTemplate } from '@microsoft/fast-foundation';
 import type { DrawerSettingsSection } from './drawer-settings-section.js';
 
 /**
@@ -10,17 +11,8 @@ export function drawerSettingsSectionTemplate<T extends DrawerSettingsSection>()
   return html<T>`
     <template controls="${x => x.controls}">
       <div class="root">
-        <div class="icon">
-          <slot name="icon"></slot>
-        </div>
-        <div class="content">
-          <div class="header">
-            <slot name="header"></slot>
-          </div>
-          <div class="body">
-            <slot name="body"></slot>
-          </div>
-        </div>
+        ${startSlotTemplate({})}
+        <slot></slot>
         <div class="toggle">
           <fluent-switch
             @change="${(x, c) => x.handleSwitchChange()}"
@@ -28,6 +20,7 @@ export function drawerSettingsSectionTemplate<T extends DrawerSettingsSection>()
             size="small"
             ${ref('switch')}
           ></fluent-switch>
+          ${startSlotTemplate({})}
         </div>
       </div>
     </template>

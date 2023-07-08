@@ -93,13 +93,20 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
+  public lastFocusedElement: HTMLElement | null = null;
+
   public open() {
+    // Store the currently focused element
+    this.lastFocusedElement = document.activeElement as HTMLElement;
     this.expanded = true;
   }
 
   public close() {
-    console.log('close');
     this.expanded = false;
+    // Return focus to the last focused element
+    if (this.lastFocusedElement) {
+      this.lastFocusedElement.focus();
+    }
   }
 
   /**

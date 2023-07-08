@@ -1,5 +1,16 @@
-import { attr, FASTElement, observable, volatile } from '@microsoft/fast-element';
-import { keyArrowDown, keyArrowUp, keyEnd, keyEscape, keyHome, limit, uniqueId } from '@microsoft/fast-web-utilities';
+import { attr, FASTElement, observable, Updates, volatile } from '@microsoft/fast-element';
+import {
+  keyArrowDown,
+  keyArrowUp,
+  keyEnd,
+  keyEnter,
+  keyEscape,
+  keyHome,
+  keySpace,
+  keyTab,
+  limit,
+  uniqueId,
+} from '@microsoft/fast-web-utilities';
 import { Drawer } from '../drawer/drawer.js';
 import { DrawerSwitcherToggleButton } from '../drawer-switcher-toggle-button/drawer-switcher-toggle-button.js';
 import { DrawerSettingsSection } from '../drawer-settings-section/drawer-settings-section.js';
@@ -30,10 +41,10 @@ export class DrawerSwitcher extends FASTElement {
     this.switchIds = this.getSwitchIds();
     this.activeToggleButtonIndex = this.getActiveIndex();
     this.settingsSections = this.settings;
-    this.setSwitches();
-    this.setToggleButtons();
-    this.setDrawers();
     this.addEventListener('toggle-drawer-visibility', this.togglePaneToggleVisibility as EventListener);
+    Updates.enqueue(() => this.setSwitches());
+    Updates.enqueue(() => this.setToggleButtons());
+    Updates.enqueue(() => this.setDrawers());
   }
 
   public disconnectedCallback(): void {
@@ -212,7 +223,6 @@ export class DrawerSwitcher extends FASTElement {
     this.togglebuttons.forEach((toggleButton: HTMLElement, index: number) => {
       if (toggleButton instanceof DrawerSwitcherToggleButton && toggleButton.slot === 'togglebuttons') {
         const isActiveToggleButton = this.activeToggleButtonIndex === index && this.isFocusableElement(toggleButton);
-
         const toggleButtonId: string = this.toggleButtonIds[index];
         const drawerId: string = this.drawersIds[index];
         toggleButton.setAttribute('id', toggleButtonId);
@@ -231,15 +241,17 @@ export class DrawerSwitcher extends FASTElement {
   }
 
   private setDrawers = (): void => {
-    this.drawers.forEach((drawer: HTMLElement, index: number) => {
-      if (drawer instanceof Drawer) {
-        const toggleButtonId: string = this.toggleButtonIds[index];
-        const drawerId: string = this.drawersIds[index];
-        drawer.setAttribute('id', drawerId);
-        drawer.setAttribute('aria-labelledby', toggleButtonId);
-        drawer.setAttribute('data-context', 'drawer-switcher');
-      }
-    });
+    Updates.enqueue(() =>
+      this.drawers.forEach((drawer: HTMLElement, index: number) => {
+        if (drawer instanceof Drawer) {
+          const toggleButtonId: string = this.toggleButtonIds[index];
+          const drawerId: string = this.drawersIds[index];
+          drawer.setAttribute('id', drawerId);
+          drawer.setAttribute('aria-labelledby', toggleButtonId);
+          drawer.setAttribute('data-context', 'drawer-switcher');
+        }
+      }),
+    );
   };
 
   private setSwitches = (): void => {
@@ -290,7 +302,6 @@ export class DrawerSwitcher extends FASTElement {
 
   private setComponent(): void {
     if (this.activeToggleButtonIndex !== this.prevActiveToggleButtonIndex) {
-      console.log('setComponent');
       this.switchTarget = this.drawersIds[this.activeToggleButtonIndex];
       this.activeid = this.toggleButtonIds[this.activeToggleButtonIndex] as string;
       this.focusToggleButton();
@@ -309,8 +320,6 @@ export class DrawerSwitcher extends FASTElement {
   };
 
   private handleToggleButtonKeyDown = (event: KeyboardEvent): void => {
-    const keyEnter = 'Enter';
-    const keySpace = ' ';
     switch (event.key) {
       case keyArrowUp:
         event.preventDefault();
@@ -359,7 +368,6 @@ export class DrawerSwitcher extends FASTElement {
         currentActiveToggleButtonIndex + adjustment,
       );
 
-      // the index of the next focusable toggleButton within the context of all available tabs
       const nextIndex = this.togglebuttons.indexOf(focusableToggleButtons[nextToggleButtonIndex]);
 
       if (nextIndex > -1) {
@@ -423,9 +431,11 @@ export class DrawerSwitcher extends FASTElement {
     this.togglebuttons[this.activeToggleButtonIndex].focus();
   }
 
-  private togglePaneToggleVisibility(event: CustomEvent<{ controls: string; currentChecked: boolean }>): void {
+  private togglePaneToggleVisibility(
+    event: CustomEvent<{ controls: string; currentChecked: boolean; switchId: string }>,
+  ): void {
     const { controls, currentChecked } = event.detail;
-    const toggleButtonElement = this.getDrawerSwitcherToggleButton(event, controls);
+    const toggleButtonElement = this.getDrawerSwitcherToggleButton(event, controls) as DrawerSwitcherToggleButton;
     if (toggleButtonElement) {
       toggleButtonElement.hidden = !currentChecked;
     }
@@ -433,9 +443,9 @@ export class DrawerSwitcher extends FASTElement {
 
   private getDrawerSwitcherToggleButton(event: Event, controls: string): HTMLElement | null {
     const eventTarget = event.target as HTMLElement;
-    const paneSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
-    if (paneSwitcher) {
-      return paneSwitcher.querySelector(`#${controls}`);
+    const drawerSwitcher = eventTarget.getRootNode() as ShadowRoot | null;
+    if (drawerSwitcher) {
+      return drawerSwitcher.querySelector(`#${controls}`);
     }
     return null;
   }

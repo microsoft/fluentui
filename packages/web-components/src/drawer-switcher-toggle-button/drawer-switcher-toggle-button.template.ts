@@ -7,7 +7,7 @@ import type { DrawerSwitcherToggleButton } from './drawer-switcher-toggle-button
  */
 export function drawerSwitcherToggleButtonTemplate<T extends DrawerSwitcherToggleButton>(): ElementViewTemplate<T> {
   return html<T>`
-    <template slot="togglebuttons" tabindex="0">
+    <template slot="togglebuttons">
       <fluent-button icon-only><slot></slot></fluent-button>
     </template>
   `;

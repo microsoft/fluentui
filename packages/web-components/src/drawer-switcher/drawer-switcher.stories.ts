@@ -136,6 +136,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
         <fluent-drawer position="right" control-size="small">
           <div slot="toolbar"><fluent-drawer-toolbar></fluent-drawer-toolbar></div>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
+            <h1>DRAWER 1</h1>
             <div>
               <fluent-label id="firstName" weight="bold">First Name</fluent-label>
               <fluent-text-input tabindex="0" ariaLabelledby="lastName" control-size="small" id="abc" type="text"></fluent-text-input>
@@ -163,8 +164,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
 
         <fluent-drawer position="right" trap-focus>
           <span slot="close-icon">${dismissed16Regular}</span>
-          <fluent-text slot="header">Drawer 2</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
+            <h1>DRAWER 2</h1>
+
             <div>
               <fluent-label weight="bold">First Name</fluent-label>
               <fluent-text-input control-size="small" id="abc" type="text"></fluent-text-input>
@@ -193,8 +195,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
 
         <fluent-drawer position="right" trap-focus control-size="small">
           <span slot="close-icon">${dismissed16Regular}</span>
-          <fluent-text slot="header">Drawer 3</fluent-text>
           <div style="display: flex; flex-direction: column; row-gap: 14px;">
+          <h1>DRAWER 3</h1>
+
             <div>
               <fluent-label weight="bold">First Name</fluent-label>
               <fluent-text-input control-size="small" id="abc" type="text"></fluent-text-input>
@@ -222,8 +225,9 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
 
         <fluent-drawer position="right">
            <span slot="close-icon">${dismissed16Regular}</span>
-           <fluent-text slot="header">Drawer 4</fluent-text>
            <div style="display: flex; flex-direction: column; row-gap: 14px;">
+           <fluent-text slot="header">Drawer 5</fluent-text>
+
             <div>
               <fluent-label weight="bold">First Name</fluent-label>
               <fluent-text-input control-size="small" id="abc" type="text"></fluent-text-input>
@@ -247,8 +251,8 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
           </div>
         </fluent-drawer>
 
-        <fluent-drawer-switcher-toggle-button slot="toggle-buttons">${settings20Regular}</fluent-drawer-switcher-toggle-button>
-        <fluent-drawer position="right"  control-size="small" compact>
+        <fluent-drawer-switcher-toggle-button settings slot="toggle-buttons">${settings20Regular}</fluent-drawer-switcher-toggle-button>
+        <fluent-drawer position="right" control-size="small" compact>
           
           <div slot="start">
             <fluent-text block="" size="400" weight="bold"><span>Settings</span></fluent-text>
