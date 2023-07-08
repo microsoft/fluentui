@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SearchBox } from '@fluentui/react-search';
+import { SearchBox } from '@fluentui/react-search-preview';
 import { Field } from '@fluentui/react-components';
-import type { SearchBoxProps } from '@fluentui/react-search';
+import type { SearchBoxProps } from '@fluentui/react-search-preview';
 
 export const Controlled = () => {
   const [value, setValue] = React.useState('initial value');

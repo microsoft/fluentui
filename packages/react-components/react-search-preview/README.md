@@ -1,4 +1,4 @@
-# @fluentui/react-search
+# @fluentui/react-search-preview
 
 **React Search components for [Fluent UI React](https://react.fluentui.dev/)**
 
@@ -26,7 +26,7 @@ See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage e
 Alternatively, run Storybook locally with:
 
 1. `yarn start`
-2. Select `react-search` from the list.
+2. Select `react-search-preview` from the list.
 
 ### Specification
 

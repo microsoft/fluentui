@@ -168,7 +168,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       '@fluentui/react-datepicker-compat',
       '@fluentui/react-migration-v8-v9',
       '@fluentui/react-migration-v0-v9',
-      '@fluentui/react-search',
+      '@fluentui/react-search-preview',
     ];
 
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {

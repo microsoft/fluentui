@@ -1,4 +1,4 @@
-# @fluentui/react-search Spec
+# @fluentui/react-search-preview Spec
 
 ## Background
 

@@ -1,4 +1,4 @@
-import { SearchBox } from '@fluentui/react-search';
+import { SearchBox } from '@fluentui/react-search-preview';
 
 import descriptionMd from './SearchBoxDescription.md';
 import bestPracticesMd from './SearchBoxBestPractices.md';

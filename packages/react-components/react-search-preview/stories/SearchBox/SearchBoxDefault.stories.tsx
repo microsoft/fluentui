@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ArgTypes } from '@storybook/api';
-import { SearchBox } from '@fluentui/react-search';
+import { SearchBox } from '@fluentui/react-search-preview';
 import { Field } from '@fluentui/react-components';
-import type { SearchBoxProps } from '@fluentui/react-search';
+import type { SearchBoxProps } from '@fluentui/react-search-preview';
 
 export const Default = (props: SearchBoxProps) => {
   return (
