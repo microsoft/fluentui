@@ -138,7 +138,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._points}
@@ -815,7 +815,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     };
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return (
       this._points.length === 0 ||
       (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
