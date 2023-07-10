@@ -36,6 +36,13 @@ export class DrawerSettingsSection extends FASTElement {
    * An attribute to set which toggle button the switch is associated with
    * @public
    */
+  @attr({ mode: 'boolean' })
+  public defaultChecked?: boolean;
+
+  /**
+   * An attribute to set which toggle button the switch is associated with
+   * @public
+   */
   @attr
   public controls!: string;
 

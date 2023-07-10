@@ -131,7 +131,7 @@ const storyTemplate = html<DrawerSwitcherStoryArgs>`
       }
     </style>
     <div style="height: 32em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-      <fluent-drawer-switcher settings>
+      <fluent-drawer-switcher>
         <fluent-drawer-switcher-toggle-button>${animalTurtle20Regular}</fluent-drawer-switcher-toggle-button>
         <fluent-drawer position="right" control-size="small">
           <div slot="toolbar"><fluent-drawer-toolbar></fluent-drawer-toolbar></div>

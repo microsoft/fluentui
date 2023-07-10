@@ -15,7 +15,9 @@ export function drawerSettingsSectionTemplate<T extends DrawerSettingsSection>()
         <slot></slot>
         <div class="toggle">
           <fluent-switch
+            tabindex="0"
             @change="${(x, c) => x.handleSwitchChange()}"
+            current-checked="${x => x.defaultChecked}"
             aria-controls="${x => x.controls}"
             size="small"
             ${ref('switch')}

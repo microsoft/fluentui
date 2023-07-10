@@ -1,6 +1,6 @@
-import { spacingHorizontalS } from '@fluentui/web-components';
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
+import { borderRadiusSmall, colorStrokeFocus1, colorStrokeFocus2 } from '../theme/design-tokens.js';
 
 /** Pane Settings Item styles
  * @public
@@ -32,5 +32,10 @@ export const styles = css`
   }
   .toggle {
     width: 34px;
+  }
+  [role='switch']:focus-visible {
+    border-radius: ${borderRadiusSmall};
+    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
   }
 `;

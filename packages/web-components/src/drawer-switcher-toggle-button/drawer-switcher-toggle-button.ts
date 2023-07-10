@@ -1,4 +1,5 @@
 import { FASTElement, Updates, attr, observable } from '@microsoft/fast-element';
+import { keyTab } from '@microsoft/fast-web-utilities';
 
 /**
  * A DrawerSwitcherToggleButton Component to be used with DrawerSwitcher.
@@ -10,28 +11,31 @@ import { FASTElement, Updates, attr, observable } from '@microsoft/fast-element'
 export class DrawerSwitcherToggleButton extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
-    // Updates.enqueue(() => this.setTabindex());
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
   }
 
-  // public setTabindex(): void {
-  //     if(this.settings) {
-  //         this.tabIndex = 0;
-  //     } else {
-  //         this.tabIndex = this.isTabbable;
-  //     }
-  // }
+  @attr({ mode: 'boolean' })
+  disabled: boolean = false;
 
-  // @attr({ mode: 'boolean' })
-  // public settings: boolean = false;
+  public hideToggle(): void {
+    this.hidden = true;
+    this.disabled = true;
+    this.tabIndex = -1;
+  }
 
-  // @observable
-  // public tabbable = false;
+  public showToggle(): void {
+    this.hidden = false;
+    this.disabled = false;
+    this.tabIndex = 0;
+  }
 
-  // get isTabbable(): number {
-  //     return this.tabbable ? 0 : -1;
-  // }
+  public keypressHandler = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case keyTab:
+        event.preventDefault();
+    }
+  };
 }
