@@ -73,7 +73,7 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
-// @public
+// @internal
 export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 28 Jun 2023 07:37:34 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2023 07:35:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.7)
+
+Thu, 29 Jun 2023 07:35:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.6..@fluentui/react_v8.110.7)
+
+### Patches
+
+- chore: Exporting CSS files in @fluentui/react package. ([PR #28362](https://github.com/microsoft/fluentui/pull/28362) by Humberto.Morimoto@microsoft.com)
 
 ## [8.110.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.6)
 

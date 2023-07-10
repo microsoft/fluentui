@@ -41,6 +41,7 @@
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.9",
     "@fluentui/react-portal": "^9.2.16",
     "@fluentui/react-shared-contexts": "^9.5.1",
+    "@fluentui/react-tabster": "^9.9.1",
     "@fluentui/react-theme": "^9.1.9",
     "@fluentui/react-utilities": "^9.10.0",
     "@griffel/react": "^1.5.7",

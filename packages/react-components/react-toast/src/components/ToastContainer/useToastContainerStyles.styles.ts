@@ -1,7 +1,8 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { ToastContainerSlots, ToastContainerState } from './ToastContainer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import type { ToastContainerSlots, ToastContainerState } from './ToastContainer.types';
 
 export const toastClassNames: SlotClassNames<ToastContainerSlots> = {
   root: 'fui-ToastContainer',
@@ -15,6 +16,9 @@ const useRootBaseClassName = makeResetStyles({
   pointerEvents: 'all',
   ...shorthands.borderRadius(tokens.borderRadiusMedium),
   '--fui-toast-height': '44px',
+  ...createCustomFocusIndicatorStyle({
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  }),
 });
 
 /**

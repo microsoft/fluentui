@@ -116,6 +116,59 @@ describe('Toast', () => {
       .should('not.exist');
   });
 
+  it('should play and pause toast', () => {
+    const Example = () => {
+      const toastId = 'foo';
+      const { dispatchToast, playToast, pauseToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { toastId, timeout: 200 },
+        );
+      };
+
+      const pause = () => {
+        pauseToast(toastId);
+      };
+
+      const play = () => {
+        playToast(toastId);
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <button id="pause" onClick={pause}>
+            Pause toast
+          </button>
+          <button id="play" onClick={play}>
+            Play toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('exist')
+      .get('#pause')
+      .click()
+      .wait(1000)
+      .get(`.${toastClassNames.root}`)
+      .should('exist')
+      .get('#play')
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('not.exist');
+  });
+
   it('should be update toast', () => {
     const Example = () => {
       const toastId = 'foo';
@@ -278,5 +331,200 @@ describe('Toast', () => {
       .get('li')
       .eq(3)
       .should('have.text', 'unmounted');
+  });
+
+  it('should focus most recent toast with shortcut', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 500 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 500, root: { id: 'most-recent' } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get('#most-recent')
+      .should('exist')
+      .get('body')
+      .type('{ctrl+m}')
+      .get('#most-recent')
+      .should('be.focused');
+  });
+
+  it('should pause all toasts when one is focused', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200, root: { id: 'most-recent' } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get('#most-recent')
+      .should('exist')
+      .get('body')
+      .type('{ctrl+m}')
+      .get('#most-recent')
+      .should('be.focused')
+      .wait(500)
+      .get(`.${toastClassNames.root}`)
+      .should('have.length', 2);
+  });
+
+  it('should dismiss toast with escape and revert focus', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('exist')
+      .get('body')
+      .type('{ctrl+m}')
+      .focused()
+      .type('{esc}')
+      .get(`.${toastClassNames.root}`)
+      .should('not.exist')
+      .get('#make')
+      .should('be.focused');
+  });
+
+  it('should dismiss toast and revert focus with escape', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get(`.${toastClassNames.root}`)
+      .should('exist')
+      .get('body')
+      .type('{ctrl+m}')
+      .focused()
+      .type('{esc}')
+      .get(`.${toastClassNames.root}`)
+      .should('not.exist')
+      .get('#make')
+      .should('be.focused');
+  });
+
+  it('should revert focus on tab out', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 200, root: { id: 'toast' } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <button>Foo</button>
+          <button>Foo</button>
+          <button>Foo</button>
+          <button>Foo</button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .get('#toast')
+      .should('exist')
+      .get('body')
+      .type('{ctrl+m}')
+      .get('#toast')
+      .should('be.focused')
+      .realPress(['Shift', 'Tab']);
+
+    cy.get('#make').should('be.focused');
   });
 });
