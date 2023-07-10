@@ -24,7 +24,7 @@ import { createPositionManager } from './createPositionManager';
 /**
  * @internal
  */
-export function usePositioning(options: PositioningProps): UsePositioningReturn {
+export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);

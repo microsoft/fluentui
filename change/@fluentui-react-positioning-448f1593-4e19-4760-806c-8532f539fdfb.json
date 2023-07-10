@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: export options `strategy`, `positionFixed`, `fallbackPositions` and `enabled` from `PositioningProps`. Deprecate `positionFixed`",
+  "comment": "feat: export options `strategy`, `positionFixed`, `fallbackPositions` from `PositioningProps`. Deprecate `positionFixed`",
   "packageName": "@fluentui/react-positioning",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
