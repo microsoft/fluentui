@@ -5,7 +5,7 @@ import type { DataGridRowProps } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DataGridRow component
+ * @deprecated - please use [\@fluentui-contrib/react-data-grid-react-window](https://www.npmjs.com/package/\@fluentui-contrib/react-data-grid-react-window) instead
  */
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {

@@ -9,10 +9,13 @@ import { ListChildComponentProps } from 'react-window';
 
 export type DataGridBodySlots = DataGridBodySlotsBase;
 
+/**
+ * @deprecated - please use [\@fluentui-contrib/react-data-grid-react-window](https://www.npmjs.com/package/\@fluentui-contrib/react-data-grid-react-window) instead
+ */
 export type RowRenderer<TItem = unknown> = (row: TableRowData<TItem>, style: React.CSSProperties) => React.ReactNode;
 
 /**
- * DataGridBody Props
+ * @deprecated - please use [\@fluentui-contrib/react-data-grid-react-window](https://www.npmjs.com/package/\@fluentui-contrib/react-data-grid-react-window) instead
  */
 export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyPropsBase, 'children'> & {
   /**

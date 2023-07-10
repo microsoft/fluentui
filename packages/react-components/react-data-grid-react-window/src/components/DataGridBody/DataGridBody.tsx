@@ -6,7 +6,7 @@ import { renderDataGridBody_unstable } from './renderDataGridBody';
 import type { DataGridBodyProps } from './DataGridBody.types';
 
 /**
- * DataGridBody component
+ * @deprecated - please use [\@fluentui-contrib/react-data-grid-react-window](https://www.npmjs.com/package/\@fluentui-contrib/react-data-grid-react-window) instead
  */
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> &
   (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {
