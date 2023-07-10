@@ -1,6 +1,11 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 
+/**
+ * Sizes for the Spinner
+ */
+export type SpinnerSize = 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+
 export type SpinnerSlots = {
   /**
    * The root of the Spinner.
@@ -46,7 +51,7 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
    * The size of the spinner.
    * @default 'medium'
    */
-  size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+  size?: SpinnerSize;
 };
 
 /**

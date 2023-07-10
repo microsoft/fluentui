@@ -55,6 +55,10 @@ storiesOf('Spinner converged', module)
       includeDarkMode: true,
     },
   )
+  .addStory('Primary with Size Extra Tiny', () => <Spinner className="test-class" size="extra-tiny" />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Primary with Size Tiny', () => <Spinner className="test-class" size="tiny" />, {
     includeHighContrast: true,
     includeDarkMode: true,
@@ -156,7 +160,19 @@ storiesOf('Spinner converged', module)
     },
   )
   .addStory(
-    'Primary with Size Tiny',
+    'Inverted with Size Extra Tiny',
+    () => (
+      <InvertedWrapper>
+        <Spinner className="test-class" appearance="inverted" size="extra-tiny" />
+      </InvertedWrapper>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Inverted with Size Tiny',
     () => (
       <InvertedWrapper>
         <Spinner className="test-class" appearance="inverted" size="tiny" />
