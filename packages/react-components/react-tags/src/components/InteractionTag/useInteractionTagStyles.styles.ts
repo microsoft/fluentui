@@ -89,7 +89,6 @@ const useContentButtonStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
-    // TODO ':focus' - design have it filled
   },
   outline: {
     backgroundColor: tokens.colorSubtleBackground,
