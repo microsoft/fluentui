@@ -150,7 +150,7 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallbackPositions' | 'pinned'> {
+interface UsePositioningOptions extends PositioningProps {
   /**
    * If false, does not position anything
    */

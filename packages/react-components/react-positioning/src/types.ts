@@ -179,15 +179,17 @@ export interface PositioningProps
   extends Pick<
     PositioningOptions,
     | 'align'
-    | 'flipBoundary'
-    | 'overflowBoundary'
-    | 'overflowBoundaryPadding'
-    | 'position'
-    | 'offset'
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'fallbackPositions'
+    | 'flipBoundary'
+    | 'offset'
+    | 'overflowBoundary'
+    | 'overflowBoundaryPadding'
     | 'pinned'
+    | 'position'
+    | 'positionFixed'
     | 'useTransform'
   > {
   /** An imperative handle to Popper methods. */
