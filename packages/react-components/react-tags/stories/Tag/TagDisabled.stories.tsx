@@ -27,12 +27,3 @@ export const Disabled = () => {
     </div>
   );
 };
-
-Disabled.storyName = 'Disabled';
-Disabled.parameters = {
-  docs: {
-    description: {
-      story: 'A tag can be `disabled`.',
-    },
-  },
-};
