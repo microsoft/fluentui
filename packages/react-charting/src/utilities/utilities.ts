@@ -758,10 +758,11 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
     } else {
       ctx.font = '600 10px "Segoe UI"';
     }
-
-    labels.forEach(label => {
-      maxLabelWidth = Math.max(ctx.measureText(label.toString()).width, maxLabelWidth);
-    });
+    if (labels !== undefined) {
+      labels.forEach(label => {
+        maxLabelWidth = Math.max(ctx.measureText(label.toString()).width, maxLabelWidth);
+      });
+    }
   }
 
   return maxLabelWidth;

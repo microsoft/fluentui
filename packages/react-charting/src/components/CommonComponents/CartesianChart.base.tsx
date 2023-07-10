@@ -744,7 +744,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       labelWidth += Math.ceil(longestLabelWidth);
     }
 
-    let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
+    let minChartWidth =
+      this._tickValues && this._tickValues.length > 1
+        ? this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1)
+        : this.margins.left! + this.margins.right!;
 
     if (
       [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
