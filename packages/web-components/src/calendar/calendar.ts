@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTCalendar } from '@microsoft/fast-foundation';
-import { CalendarFilter, CalendarType } from './calendar.options.js';
+import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
 
 /**
  * The base class used for constructing a fluent-radio custom element
@@ -56,6 +56,36 @@ export class Calendar extends FASTCalendar {
    */
   @attr
   public calendarFilter?: CalendarFilter | undefined;
+
+  /**
+   * The days that are selectable with the filter work-week.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: work-week
+   */
+  @attr
+  public workWeek?: DaysOfWeek[] | undefined;
+
+  /**
+   * The first day of the week for locale
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: first-day-of-week
+   */
+  @attr
+  public firstDayOfWeek?: DaysOfWeek | undefined;
+
+  /**
+   * Determines when the first week of the year should start
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: first-week-of-year
+   */
+  @attr
+  public firstWeekOfYear?: FirstWeekOfYear | undefined;
 
   /**
    * Show link at the link slot (e.g. Go to today)

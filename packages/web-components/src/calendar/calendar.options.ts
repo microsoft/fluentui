@@ -37,4 +37,40 @@ export const CalendarFilter = {
  */
 export type CalendarFilter = ValuesOf<typeof CalendarFilter>;
 
+/**
+ * Enum for days of the week
+ * @public
+ */
+export const DaysOfWeek = {
+  Sunday: 0,
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
+} as const;
+
+/**
+ * Enum type for days of the week where 0 is Sunday and 6 is Saturday
+ * @public
+ */
+export type DaysOfWeek = ValuesOf<typeof DaysOfWeek>;
+
+/**
+ * Enum that defines when the first week of the year should start
+ * @public
+ */
+export const FirstWeekOfYear = {
+  FirstDay: 0,
+  FirstFullWeek: 1,
+  FirstFourDayWeek: 2,
+} as const;
+
+/**
+ * First week of the year can start on the first day, first full week, or first four day week
+ * @public
+ */
+export type FirstWeekOfYear = ValuesOf<typeof FirstWeekOfYear>;
+
 export { CalendarOptions };

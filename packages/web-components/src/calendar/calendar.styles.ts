@@ -39,6 +39,14 @@ export const styles = css`
     color: ${colorNeutralForeground3};
     padding: 12px;
   }
+  :host .day:not(.today):hover {
+    background: #eff6fc;
+    color: ${colorNeutralForeground2};
+  }
+  :host .date:not(.today):active {
+    background: ${colorBrandStroke2};
+    color: ${colorNeutralForeground2};
+  }
   :host .title {
     font-size: var(--type-ramp-plus3-font-size);
     line-height: var(--type-ramp-plus3-line-height);
@@ -82,10 +90,7 @@ export const styles = css`
     cursor: pointer;
   }
   :host .day.inactive {
-    background: var(--inactive-day-background);
-    color: var(--inactive-day-color);
-    opacity: var(--inactive-day-opacity);
-    outline: var(--inactive-day-outline);
+    color: ${colorNeutralForegroundDisabled};
   }
   :host .day.disabled {
     background: var(--disabled-day-background);
@@ -95,8 +100,8 @@ export const styles = css`
     outline: var(--disabled-day-outline);
   }
   :host .day.selected {
-    color: var(--selected-day-color);
-    background: var(--selected-day-background);
+    color: ${colorNeutralForegroundInverted};
+    background: ${colorCompoundBrandBackground};
     outline: var(--selected-day-outline);
   }
   :host .date {
