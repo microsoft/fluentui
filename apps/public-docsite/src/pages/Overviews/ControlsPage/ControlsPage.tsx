@@ -13,6 +13,13 @@ import { getSubTitle } from '../../../utilities/index';
 import { ControlsPageProps } from './ControlsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
+const webPlatformBanner = {
+  banner: {
+    title: 'Fluent UI v9',
+    message: 'Check out the all new [Fluent UI version 9](https://react.fluentui.dev)!',
+  },
+};
+
 const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props => {
   const { platform } = props;
   return (
@@ -20,6 +27,7 @@ const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props =
       {...props}
       title="Controls"
       platform={platform}
+      {...(props.platform === Platforms.web && webPlatformBanner)}
       subTitle={getSubTitle(platform!)}
       otherSections={_otherSections(platform!) as IPageSectionProps[]}
       showSideRail={false}
