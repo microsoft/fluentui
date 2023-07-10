@@ -49,7 +49,6 @@ export class ScrollablePaneBase
 
     initializeComponentRef(this);
     this._async = new Async(this);
-    this._events = new EventGroup(this);
 
     this.state = {
       stickyTopHeight: 0,
@@ -79,6 +78,7 @@ export class ScrollablePaneBase
 
   public componentDidMount() {
     const { initialScrollPosition } = this.props;
+    this._events = new EventGroup(this);
     this._events.on(this.contentContainer, 'scroll', this._onScroll);
     this._events.on(window, 'resize', this._onWindowResize);
     if (this.contentContainer && initialScrollPosition) {
