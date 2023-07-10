@@ -68,13 +68,10 @@ const useContentButtonStyles = makeStyles({
     `,
 
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-        zIndex: 1,
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      zIndex: 1,
+    }),
   },
 
   filled: {
@@ -205,9 +202,7 @@ const useDismissButtonStyles = makeStyles({
     height: '100%',
     alignItems: 'center',
 
-    ...createCustomFocusIndicatorStyle(shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2), {
-      enableOutline: true,
-    }),
+    ...createCustomFocusIndicatorStyle(shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2)),
 
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
 

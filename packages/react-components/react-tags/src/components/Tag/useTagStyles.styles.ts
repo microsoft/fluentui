@@ -95,23 +95,17 @@ const useRootStyles = makeStyles({
 
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    }),
   },
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderRadius(tokens.borderRadiusCircular),
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    }),
   },
 
   medium: {
