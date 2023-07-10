@@ -33,6 +33,8 @@ export interface PackageJson {
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
   exports?: Record<string, string | Partial<{ types: string; node: string; import: string; require: string }>>;
+
+  [key: string]: unknown;
 }
 
 export interface PackageJsonWithBeachball extends PackageJson {

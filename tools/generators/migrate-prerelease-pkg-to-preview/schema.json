@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "migrate-prerelease-pkg-to-preview",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Library name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Which v9 pre-release(unstable) project do you wanna migrate?"
+    },
+    "force": {
+      "type": "boolean",
+      "description": "When `true`, forces migration operations even if the project is still in use.",
+      "default": false
+    }
+  },
+  "required": ["project"]
+}
