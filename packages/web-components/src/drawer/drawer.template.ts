@@ -11,7 +11,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <template
       slot="drawer"
       role="${x => (x.modal ? 'dialog' : 'complementary')}"
-      ?open="${x => x.open}"
+      ?expanded="${x => x.expanded}"
       ?compact="${x => x.compact}"
       ?modal="${x => x.modal}"
       control-size="${x => x.controlSize}"
