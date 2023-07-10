@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { BreadcrumbDividerProps, BreadcrumbDividerState } from './BreadcrumbDivider.types';
-import { ChevronRight20Regular, ChevronRight16Regular, ChevronRight12Regular } from '@fluentui/react-icons';
+import {
+  ChevronRight20Regular,
+  ChevronRight16Regular,
+  ChevronRight12Regular,
+  ChevronLeft20Regular,
+  ChevronLeft16Regular,
+  ChevronLeft12Regular,
+} from '@fluentui/react-icons';
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render BreadcrumbDivider.
@@ -19,7 +27,8 @@ export const useBreadcrumbDivider_unstable = (
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbDividerState => {
   const { size, dividerType } = useBreadcrumbContext_unstable();
-  const icon = getDividerIcon(size, dividerType);
+  const { dir } = useFluent();
+  const icon = getDividerIcon(size, dividerType, dir);
 
   return {
     components: {
@@ -34,18 +43,39 @@ export const useBreadcrumbDivider_unstable = (
   };
 };
 
+const dividerIcons = {
+  rtl: {
+    small: <ChevronLeft12Regular />,
+    medium: <ChevronLeft16Regular />,
+    large: <ChevronLeft20Regular />,
+  },
+  ltr: {
+    small: <ChevronRight12Regular />,
+    medium: <ChevronRight16Regular />,
+    large: <ChevronRight20Regular />,
+  },
+};
+
 /**
  * Get icon of the divider
  *
  * @param size - size of the Breadcrumb
  * @param dividerType - type of the divider, can be `slash` or `chevron`
  */
-function getDividerIcon(size: BreadcrumbProps['size'] = 'medium', dividerType: BreadcrumbProps['dividerType']) {
+function getDividerIcon(
+  size: BreadcrumbProps['size'] = 'medium',
+  dividerType: BreadcrumbProps['dividerType'],
+  dir: string,
+) {
+  const dividerIcon = dir === 'rtl' ? dividerIcons.rtl : dividerIcons.ltr;
   if (size === 'small') {
-    return dividerType === 'slash' ? '/' : <ChevronRight12Regular />;
+    if (dividerType === 'slash') {
+      return dir === 'rtl' ? '\\' : '/';
+    }
+    return dividerIcon.small;
   }
   if (size === 'large') {
-    return <ChevronRight20Regular />;
+    return dividerIcon.large;
   }
-  return <ChevronRight16Regular />;
+  return dividerIcon.medium;
 }

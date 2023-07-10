@@ -1,12 +1,13 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
 import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles.styles';
 import type { CardSlots, CardState } from './Card.types';
+import * as React from 'react';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -25,9 +26,10 @@ export const cardCSSVars = {
   cardBorderRadiusVar: '--fui-Card--border-radius',
 };
 
-const focusOutlineStyle = {
+const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
   outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
   outlineWidth: tokens.strokeWidthThick,
+  outlineOffset: '-2px', // FIXME: tokens.strokeWidthThick causes some weird bugs
 };
 
 const useStyles = makeStyles({
@@ -65,7 +67,9 @@ const useStyles = makeStyles({
     [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
       flexGrow: 1,
     },
+  },
 
+  focused: {
     ...createFocusOutlineStyle({
       style: focusOutlineStyle,
       selector: 'focus',
@@ -389,6 +393,18 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
 
   const isSelectableOrInteractive = state.interactive || state.selectable;
 
+  const focusedClassName = React.useMemo(() => {
+    if (state.selectable) {
+      if (state.selectFocused) {
+        return styles.selectableFocused;
+      }
+
+      return '';
+    }
+
+    return styles.focused;
+  }, [state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
+
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
@@ -397,10 +413,11 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     appearanceMap[state.appearance],
     isSelectableOrInteractive && interactiveMap[state.appearance],
     state.selected && selectedMap[state.appearance],
-    state.selectFocused && styles.selectableFocused,
+    // Focus overrides
+    focusedClassName,
     // High contrast overrides
-    state.selected && styles.highContrastSelected,
     isSelectableOrInteractive && styles.highContrastInteractive,
+    state.selected && styles.highContrastSelected,
     state.root.className,
   );
 

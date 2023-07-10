@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updated to provide single hook for noop tree-shaking",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

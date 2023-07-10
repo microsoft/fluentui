@@ -6,27 +6,27 @@ import story from './TreeItemLayoutIconBefore.md';
 export const IconBefore = () => {
   return (
     <Tree aria-label="Tree">
-      <TreeItem>
+      <TreeItem itemType="branch">
         <TreeItemLayout iconBefore={<Image20Regular />}>level 1, item 1</TreeItemLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 2</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 3</TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem>
+      <TreeItem itemType="branch">
         <TreeItemLayout iconBefore={<Image20Regular />}>level 1, item 2</TreeItemLayout>
         <Tree>
-          <TreeItem>
-            level 2, item 1
+          <TreeItem itemType="branch">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
             </Tree>

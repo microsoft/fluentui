@@ -14,27 +14,27 @@ export const ExpandCollapseIconOnly = () => {
 
   return (
     <Tree aria-label="Tree" onOpenChange={onOpenChange}>
-      <TreeItem value="default-subtree-1">
+      <TreeItem itemType="branch" value="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 2</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 3</TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem value="default-subtree-2">
+      <TreeItem itemType="branch" value="default-subtree-2">
         <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
-          <TreeItem value="default-subtree-2-1">
+          <TreeItem itemType="branch" value="default-subtree-2-1">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
             </Tree>

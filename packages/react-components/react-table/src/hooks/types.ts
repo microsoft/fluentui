@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
 import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
+import { SelectionMode } from '@fluentui/react-utilities';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;
-export type SelectionMode = 'single' | 'multiselect';
 
 export interface SortState {
   sortColumn: TableColumnId | undefined;
@@ -157,25 +157,6 @@ export interface UseTableSortOptions {
    * Called when sort changes
    */
   onSortChange?(e: React.SyntheticEvent, state: SortState): void;
-}
-
-export interface UseTableSelectionOptions {
-  /**
-   * Can be multi or single select
-   */
-  selectionMode: SelectionMode;
-  /**
-   * Used in uncontrolled mode to set initial selected rows on mount
-   */
-  defaultSelectedItems?: Iterable<TableRowId>;
-  /**
-   * Used to control row selection
-   */
-  selectedItems?: Iterable<TableRowId>;
-  /**
-   * Called when selection changes
-   */
-  onSelectionChange?(e: React.SyntheticEvent, data: OnSelectionChangeData): void;
 }
 
 export interface UseTableFeaturesOptions<TItem> {

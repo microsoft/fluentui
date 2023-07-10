@@ -140,11 +140,11 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
     state.checkIcon.className = mergeClasses(
       optionClassNames.checkIcon,
       styles.checkIcon,
-      state.checkIcon.className,
       multiselect && styles.multiselectCheck,
       selected && styles.selectedCheck,
       selected && multiselect && styles.selectedMultiselectCheck,
       disabled && styles.checkDisabled,
+      state.checkIcon.className,
     );
   }
 

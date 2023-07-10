@@ -16,27 +16,27 @@ export function useNestedTreeNavigation() {
     }
     const treeItemWalker = walkerRef.current;
     switch (data.type) {
-      case treeDataTypes.click:
+      case treeDataTypes.Click:
         return data.target;
-      case treeDataTypes.typeAhead:
+      case treeDataTypes.TypeAhead:
         treeItemWalker.currentElement = data.target;
         return nextTypeAheadElement(treeItemWalker, data.event.key);
-      case treeDataTypes.arrowLeft:
+      case treeDataTypes.ArrowLeft:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.parentElement();
-      case treeDataTypes.arrowRight:
+      case treeDataTypes.ArrowRight:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.firstChild();
-      case treeDataTypes.end:
+      case treeDataTypes.End:
         treeItemWalker.currentElement = treeItemWalker.root;
         return lastChildRecursive(treeItemWalker);
-      case treeDataTypes.home:
+      case treeDataTypes.Home:
         treeItemWalker.currentElement = treeItemWalker.root;
         return treeItemWalker.firstChild();
-      case treeDataTypes.arrowDown:
+      case treeDataTypes.ArrowDown:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.nextElement();
-      case treeDataTypes.arrowUp:
+      case treeDataTypes.ArrowUp:
         treeItemWalker.currentElement = data.target;
         return treeItemWalker.previousElement();
     }

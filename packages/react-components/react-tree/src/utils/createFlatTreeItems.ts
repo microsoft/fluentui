@@ -1,15 +1,15 @@
 import type { ImmutableSet } from './ImmutableSet';
 import type { FlatTreeItem, FlatTreeItemProps } from '../hooks/useFlatTree';
-import * as React from 'react';
+import { TreeItemValue } from '../TreeItem';
 
 /**
  * @internal
  */
-export type FlatTreeItems<Props extends FlatTreeItemProps<unknown>> = {
+export type FlatTreeItems<Props extends FlatTreeItemProps> = {
   size: number;
   root: FlatTreeItem;
-  get(key: Props['value']): FlatTreeItem<Props> | undefined;
-  set(key: Props['value'], value: FlatTreeItem<Props>): void;
+  get(key: TreeItemValue): FlatTreeItem<Props> | undefined;
+  set(key: TreeItemValue, value: FlatTreeItem<Props>): void;
   getByIndex(index: number): FlatTreeItem<Props>;
 };
 
@@ -17,12 +17,10 @@ export type FlatTreeItems<Props extends FlatTreeItemProps<unknown>> = {
  * creates a list of flat tree items
  * and provides a map to access each item by id
  */
-export function createFlatTreeItems<Props extends FlatTreeItemProps<unknown>>(
-  flatTreeItemProps: Props[],
-): FlatTreeItems<Props> {
+export function createFlatTreeItems<Props extends FlatTreeItemProps>(flatTreeItemProps: Props[]): FlatTreeItems<Props> {
   const root = createFlatTreeRootItem();
-  const itemsPerValue = new Map<unknown, FlatTreeItem<FlatTreeItemProps<unknown>>>([[root.value, root]]);
-  const items: FlatTreeItem<FlatTreeItemProps<unknown>>[] = [];
+  const itemsPerValue = new Map<TreeItemValue, FlatTreeItem<FlatTreeItemProps>>([[root.value, root]]);
+  const items: FlatTreeItem<FlatTreeItemProps>[] = [];
 
   for (let index = 0; index < flatTreeItemProps.length; index++) {
     const { parentValue = flatTreeRootId, ...treeItemProps } = flatTreeItemProps[index];
@@ -33,29 +31,26 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps<unknown>>(
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
         console.error(
-          `useFlatTree: item ${flatTreeItemProps[index].id} is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized`,
+          `useFlatTree: item ${flatTreeItemProps[index].value} is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized`,
         );
       }
       break;
     }
-    const isLeaf =
-      treeItemProps.leaf ?? (treeItemProps.value === undefined || nextItemProps?.parentValue !== treeItemProps.value);
+    const itemType =
+      treeItemProps.itemType ??
+      (treeItemProps.value === undefined || nextItemProps?.parentValue !== treeItemProps.value ? 'leaf' : 'branch');
     const currentLevel = (currentParent.level ?? 0) + 1;
     const currentChildrenSize = ++currentParent.childrenSize;
-    const ref = React.createRef<HTMLDivElement>();
 
-    const flatTreeItem: FlatTreeItem<FlatTreeItemProps<unknown>> = {
+    const flatTreeItem: FlatTreeItem<FlatTreeItemProps> = {
       value: treeItemProps.value,
       getTreeItemProps: () => ({
         ...treeItemProps,
         'aria-level': currentLevel,
         'aria-posinset': currentChildrenSize,
         'aria-setsize': currentParent.childrenSize,
-        leaf: isLeaf,
-        // a reference to every parent element is necessary to ensure navigation
-        ref: flatTreeItem.childrenSize > 0 ? ref : undefined,
+        itemType,
       }),
-      ref,
       level: currentLevel,
       parentValue,
       childrenSize: 0,
@@ -65,7 +60,7 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps<unknown>>(
     items.push(flatTreeItem);
   }
 
-  const flatTreeItems: FlatTreeItems<FlatTreeItemProps<unknown>> = {
+  const flatTreeItems: FlatTreeItems<FlatTreeItemProps> = {
     root,
     size: items.length,
     getByIndex: index => items[index],
@@ -80,15 +75,21 @@ export const flatTreeRootId = '__fuiFlatTreeRoot';
 
 function createFlatTreeRootItem(): FlatTreeItem {
   return {
-    ref: { current: null },
-    value: flatTreeRootId,
     parentValue: undefined,
+    value: flatTreeRootId,
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
         console.error('useFlatTree: internal error, trying to access treeitem props from invalid root element');
       }
-      return { value: flatTreeRootId, 'aria-setsize': -1, 'aria-level': -1, 'aria-posinset': -1, leaf: true };
+      return {
+        id: flatTreeRootId,
+        value: flatTreeRootId,
+        'aria-setsize': -1,
+        'aria-level': -1,
+        'aria-posinset': -1,
+        itemType: 'branch',
+      };
     },
     childrenSize: 0,
     get index() {
@@ -103,26 +104,26 @@ function createFlatTreeRootItem(): FlatTreeItem {
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps<unknown>>(
-  openItems: ImmutableSet<unknown>,
+export function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps>(
+  openItems: ImmutableSet<string>,
   flatTreeItems: FlatTreeItems<Props>,
 ) {
   for (let index = 0, visibleIndex = 0; index < flatTreeItems.size; index++) {
     const item = flatTreeItems.getByIndex(index) as FlatTreeItem<Props>;
-    const parent = item.parentValue ? flatTreeItems.get(item.parentValue) ?? flatTreeItems.root : flatTreeItems.root;
     if (isItemVisible(item, openItems, flatTreeItems)) {
       item.index = visibleIndex++;
       yield item;
     } else {
-      index += parent.childrenSize - 1 + item.childrenSize;
+      // Jump the amount of children the current item has, since those items will also be hidden
+      index += item.childrenSize;
     }
   }
 }
 
 function isItemVisible(
-  item: FlatTreeItem<FlatTreeItemProps<unknown>>,
-  openItems: ImmutableSet<unknown>,
-  flatTreeItems: FlatTreeItems<FlatTreeItemProps<unknown>>,
+  item: FlatTreeItem<FlatTreeItemProps>,
+  openItems: ImmutableSet<TreeItemValue>,
+  flatTreeItems: FlatTreeItems<FlatTreeItemProps>,
 ) {
   if (item.level === 1) {
     return true;

@@ -1,29 +1,31 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
 import { Tag } from './Tag';
 import { isConformant } from '../../testing/isConformant';
+import { TagProps } from './Tag.types';
+import { render } from '@testing-library/react';
 
-const requiredProps = {
-  avatar: {
-    name: 'Katri Athokas',
-  },
+const requiredProps: TagProps = {
+  dismissible: true,
   icon: 'i',
+  media: 'media',
   primaryText: 'Primary text',
   secondaryText: 'Secondary text',
-  dismissable: true,
 };
 
 describe('Tag', () => {
-  isConformant({
+  isConformant<TagProps>({
     Component: Tag,
     displayName: 'Tag',
     requiredProps,
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  it('should render root as a span', () => {
+    const { getByTestId } = render(<Tag data-testid="testid">Tag</Tag>);
+    expect(getByTestId('testid').tagName).toBe('SPAN');
+  });
 
-  it('renders a default state', () => {
-    const result = render(<Tag {...requiredProps}>Default Tag</Tag>);
-    expect(result.container).toMatchSnapshot();
+  it('should render root as a button for dismissible tag', () => {
+    const { queryByRole } = render(<Tag dismissible>Tag</Tag>);
+    expect(queryByRole('button')).not.toBe(null);
   });
 });

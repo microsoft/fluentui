@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  isResolvedShorthand,
+  resolveShorthand,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
@@ -37,16 +42,6 @@ export const useAccordionHeader_unstable = (
     expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   }
 
-  const buttonShorthand = useARIAButtonShorthand(button, {
-    required: true,
-    defaultProps: {
-      disabled,
-      disabledFocusable,
-      'aria-expanded': open,
-      type: 'button',
-    },
-  });
-
   return {
     disabled,
     open,
@@ -71,16 +66,27 @@ export const useAccordionHeader_unstable = (
         'aria-hidden': true,
       },
     }),
-    button: {
-      ...buttonShorthand,
-      onClick: useEventCallback(
-        (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
-          buttonShorthand.onClick?.(ev);
+    button: resolveShorthand<ARIAButtonSlotProps<'a'>>(
+      {
+        ...useARIAButtonShorthand(button, {
+          required: true,
+          defaultProps: {
+            disabled,
+            disabledFocusable,
+            'aria-expanded': open,
+            type: 'button',
+          },
+        }),
+        onClick: useEventCallback(ev => {
+          if (isResolvedShorthand(button)) {
+            button.onClick?.(ev);
+          }
           if (!ev.defaultPrevented) {
             onAccordionHeaderClick(ev);
           }
-        },
-      ),
-    },
+        }),
+      },
+      { required: true },
+    ),
   };
 };

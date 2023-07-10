@@ -44,6 +44,11 @@ const chartPoints = {
   lineChartData: points,
 };
 
+const emptyChartPoints = {
+  chartTitle: 'EmptyLineChart',
+  lineChartData: [],
+};
+
 describe('LineChart snapShot testing', () => {
   it('renders LineChart correctly', () => {
     const component = renderer.create(<LineChart data={chartPoints} />);
@@ -233,5 +238,19 @@ describe('LineChart - mouse events', () => {
     wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<LineChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<LineChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

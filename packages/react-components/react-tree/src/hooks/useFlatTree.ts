@@ -1,4 +1,4 @@
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { createFlatTreeItems, VisibleFlatTreeItemGenerator } from '../utils/createFlatTreeItems';
 import { treeDataTypes } from '../utils/tokens';
@@ -11,39 +11,33 @@ import type {
   TreeOpenChangeEvent,
   TreeProps,
 } from '../Tree';
-import type { TreeItemProps } from '../TreeItem';
+import type { TreeItemProps, TreeItemValue } from '../TreeItem';
 import { ImmutableSet } from '../utils/ImmutableSet';
+import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
 
-export type FlatTreeItemProps<Value = string> = TreeItemProps<Value> & {
-  value: Value;
-  parentValue?: Value;
-};
+export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType'> &
+  Partial<Pick<TreeItemProps, 'itemType'>> & {
+    value: TreeItemValue;
+    parentValue?: TreeItemValue;
+  };
 
 /**
  * The item that is returned by `useFlatTree`, it represents a wrapper around the properties provided to
  * `useFlatTree` but with extra information that might be useful on flat tree scenarios
  */
-export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
+export type FlatTreeItem<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
   index: number;
   level: number;
   childrenSize: number;
-  value: Props['value'];
-  parentValue: Props['parentValue'];
-  /**
-   * A reference to the element that will render the `TreeItem`,
-   * this is necessary for nodes with parents (to ensure child to parent navigation),
-   * if a node has no parent then this reference will be null.
-   */
-  ref: React.RefObject<HTMLDivElement>;
-  getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>> &
-    Omit<Props, 'parentValue'>;
+  value: TreeItemValue;
+  parentValue: TreeItemValue | undefined;
+  getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> &
+    Omit<Props, 'parentId'>;
 };
 
-export type FlatTreeProps<Value = string> = Required<
-  Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>
-> & {
+export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
   ref: React.Ref<HTMLDivElement>;
-  openItems: ImmutableSet<Value>;
+  openItems: ImmutableSet<string>;
 };
 
 /**
@@ -56,13 +50,13 @@ export type FlatTreeProps<Value = string> = Required<
  *
  * On simple scenarios it is advised to simply use a nested structure instead.
  */
-export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
+export type FlatTree<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
   /**
    * returns the properties required for the Tree component to work properly.
    * That includes:
    * `openItems`, `onOpenChange`, `onNavigation_unstable` and `ref`
    */
-  getTreeProps(): FlatTreeProps<Props['value']>;
+  getTreeProps(): FlatTreeProps;
   /**
    * internal method used to react to an `onNavigation` event.
    * This method ensures proper navigation on keyboard and mouse interaction.
@@ -76,7 +70,7 @@ export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
    *   event.preventDefault();
    *   const nextItem = tree.getNextNavigableItem(data);
    *   // scroll to item using virtualization scroll mechanism
-   *   if (nextItem && document.getElementById(nextItem.id)) {
+   *   if (nextItem && tree.getElementFromItem(nextItem)) {
    *     listRef.current.scrollToItem(nextItem.index);
    *   }
    *   // wait for scrolling to happen and then invoke navigate method
@@ -86,7 +80,7 @@ export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
    * };
    *```
    */
-  navigate(data: TreeNavigationData_unstable<Props['value']>): void;
+  navigate(data: TreeNavigationData_unstable): void;
   /**
    * returns next item to be focused on a navigation.
    * This method is provided to decouple the element that needs to be focused from
@@ -96,18 +90,19 @@ export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
    */
   getNextNavigableItem(
     visibleItems: FlatTreeItem<Props>[],
-    data: TreeNavigationData_unstable<Props['value']>,
+    data: TreeNavigationData_unstable,
   ): FlatTreeItem<Props> | undefined;
+  /**
+   * similar to getElementById but for FlatTreeItems
+   */
+  getElementFromItem(item: FlatTreeItem<Props>): HTMLElement | null;
   /**
    * an iterable containing all visually available flat tree items
    */
   items(): IterableIterator<FlatTreeItem<Props>>;
 };
 
-type FlatTreeOptions<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = Pick<
-  TreeProps<Props['value']>,
-  'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'
->;
+type FlatTreeOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'>;
 
 /**
  * this hook provides FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems
@@ -121,15 +116,16 @@ type FlatTreeOptions<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProp
  * @param flatTreeItemProps - a list of tree items
  * @param options - in case control over the internal openItems is required
  */
-export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(
+export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeItemProps>(
   flatTreeItemProps: Props[],
-  options: FlatTreeOptions<Props> = {},
+  options: FlatTreeOptions = {},
 ): FlatTree<Props> {
-  const [openItems, updateOpenItems] = useOpenItemsState<Props['value']>(options);
+  const [openItems, updateOpenItems] = useOpenItemsState(options);
   const flatTreeItems = React.useMemo(() => createFlatTreeItems(flatTreeItemProps), [flatTreeItemProps]);
   const [navigate, navigationRef] = useFlatTreeNavigation(flatTreeItems);
+  const treeRef = React.useRef<HTMLDivElement>(null);
 
-  const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData<Props['value']>) => {
+  const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     options.onOpenChange?.(event, data);
     if (!event.isDefaultPrevented()) {
       updateOpenItems(data);
@@ -138,7 +134,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = 
   });
 
   const handleNavigation = useEventCallback(
-    (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable<Props['value']>) => {
+    (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
       options.onNavigation_unstable?.(event, data);
       if (!event.isDefaultPrevented()) {
         navigate(data);
@@ -148,32 +144,38 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = 
   );
 
   const getNextNavigableItem = useEventCallback(
-    (visibleItems: FlatTreeItem<Props>[], data: TreeNavigationData_unstable<Props['value']>) => {
+    (visibleItems: FlatTreeItem<Props>[], data: TreeNavigationData_unstable) => {
       const item = flatTreeItems.get(data.value);
       if (item) {
         switch (data.type) {
-          case treeDataTypes.typeAhead:
+          case treeDataTypes.TypeAhead:
             return item;
-          case treeDataTypes.arrowLeft:
+          case treeDataTypes.ArrowLeft:
             return flatTreeItems.get(item.parentValue!);
-          case treeDataTypes.arrowRight:
+          case treeDataTypes.ArrowRight:
             return visibleItems[item.index + 1];
-          case treeDataTypes.end:
+          case treeDataTypes.End:
             return visibleItems[visibleItems.length - 1];
-          case treeDataTypes.home:
+          case treeDataTypes.Home:
             return visibleItems[0];
-          case treeDataTypes.arrowDown:
+          case treeDataTypes.ArrowDown:
             return visibleItems[item.index + 1];
-          case treeDataTypes.arrowUp:
+          case treeDataTypes.ArrowUp:
             return visibleItems[item.index - 1];
         }
       }
     },
   );
 
+  const getElementFromItem = React.useCallback((item: FlatTreeItem<Props>) => {
+    return treeRef.current?.querySelector(`[${dataTreeItemValueAttrName}="${item.value}"]`) as HTMLElement | null;
+  }, []);
+
+  const ref = useMergedRefs(treeRef, navigationRef as React.Ref<HTMLDivElement>);
+
   const getTreeProps = React.useCallback(
     () => ({
-      ref: navigationRef as React.Ref<HTMLDivElement>,
+      ref,
       openItems,
       onOpenChange: handleOpenChange,
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -189,7 +191,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = 
   );
 
   return React.useMemo(
-    () => ({ navigate, getTreeProps, getNextNavigableItem, items }),
-    [navigate, getTreeProps, getNextNavigableItem, items],
+    () => ({ navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items }),
+    [navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items],
   );
 }

@@ -39,7 +39,7 @@ export const AddRemoveTreeItem = () => {
   const addFlatTreeItem = (subtreeIndex: number) =>
     setTrees(currentTrees => {
       const lastItem = currentTrees[subtreeIndex][currentTrees[subtreeIndex].length - 1];
-      const newItemValue = `${subtreeIndex + 1}-${Number(lastItem.value.slice(2)) + 1}`;
+      const newItemValue = `${subtreeIndex + 1}-${Number(lastItem.value.toString().slice(2)) + 1}`;
       const nextSubTree: ItemProps[] = [
         ...currentTrees[subtreeIndex],
         {
@@ -82,24 +82,24 @@ export const AddRemoveTreeItem = () => {
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
       {Array.from(flatTree.items(), item => {
-        const isUndeletable = item.level === 1 || item.value.endsWith('-btn');
+        const isUndeletable = item.level === 1 || item.value.toString().endsWith('-btn');
         const { content, ...treeItemProps } = item.getTreeItemProps();
         return (
-          <TreeItem
-            key={item.value}
-            {...treeItemProps}
-            actions={
-              isUndeletable ? null : (
-                <Button
-                  aria-label="Remove item"
-                  appearance="subtle"
-                  onClick={() => removeFlatTreeItem(item.value)}
-                  icon={<Delete20Regular />}
-                />
-              )
-            }
-          >
-            <TreeItemLayout>{content}</TreeItemLayout>
+          <TreeItem key={item.value} {...treeItemProps}>
+            <TreeItemLayout
+              actions={
+                isUndeletable ? undefined : (
+                  <Button
+                    aria-label="Remove item"
+                    appearance="subtle"
+                    onClick={() => removeFlatTreeItem(item.value.toString())}
+                    icon={<Delete20Regular />}
+                  />
+                )
+              }
+            >
+              {content}
+            </TreeItemLayout>
           </TreeItem>
         );
       })}

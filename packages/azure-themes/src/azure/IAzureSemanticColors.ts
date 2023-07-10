@@ -1,7 +1,10 @@
 export interface IAzureSemanticColors {
   background: string;
   statusBar: {
-    link: string;
+    link: {
+      rest: string;
+      hover: string;
+    };
     background: {
       default: string;
       okay: string;

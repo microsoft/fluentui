@@ -9,7 +9,9 @@ describe('TreeItemPersonaLayout', () => {
     displayName: 'TreeItemPersonaLayout',
     requiredProps: {
       description: 'description',
+      expandIcon: 'expandIcon',
       aside: 'aside',
+      actions: { visible: true, children: 'actions' },
     },
   });
 

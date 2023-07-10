@@ -17,11 +17,17 @@ export const useBreadcrumbButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
   const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
+  const { current = false, icon, ...rest } = props;
 
-  const { current = false, ...rest } = props;
   return {
     ...useButton_unstable(
-      { ...rest, appearance: props.appearance || appearance, iconPosition: props.iconPosition || iconPosition },
+      {
+        ...rest,
+        appearance: props.appearance || appearance,
+        iconPosition: props.iconPosition || iconPosition,
+        icon,
+        'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
+      },
       ref,
     ),
     current,

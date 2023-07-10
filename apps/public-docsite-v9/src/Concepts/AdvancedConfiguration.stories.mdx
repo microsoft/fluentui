@@ -110,6 +110,25 @@ function MyComponent(props) {
 }
 ```
 
+### IdPrefixProvider
+
+Having multiple applications using `FluentProvider` on a single web page can cause interop problems when they come from different bundles, more details in [microsoft/fluentui#26496](https://github.com/microsoft/fluentui/pull/26496).
+
+Adding the `IdPrefixProvider` component around the `FluentProvider` will resolve the issue of losing styling on components and IDs collisions in an application.
+
+```jsx
+import { IdPrefixProvider, FluentProvider } from '@fluentui/react-components';
+import * as React from 'react';
+
+function MyApp() {
+  return (
+    <IdPrefixProvider value="APP1-">
+      <FluentProvider>{/* children */}</FluentProvider>
+    </IdPrefixProvider>
+  );
+}
+```
+
 ## References
 
 - https://griffel.js.org/react/api/create-dom-renderer

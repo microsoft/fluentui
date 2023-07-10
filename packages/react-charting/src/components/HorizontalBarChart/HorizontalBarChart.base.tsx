@@ -30,6 +30,7 @@ export interface IHorizontalBarChartState {
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  emptyChart?: boolean;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -53,6 +54,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      emptyChart: false,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
@@ -60,12 +62,19 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._calloutId = getId('callout');
   }
 
+  public componentDidMount(): void {
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
+    }
+  }
+
   public render(): JSX.Element {
     const { data, theme } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return (
+    return !this.state.emptyChart ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -161,6 +170,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           </>
         </Callout>
       </div>
+    ) : (
+      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   }
 

@@ -19,9 +19,9 @@ function _createPositionData(
   isAuto?: boolean,
 ): IPositionDirectionalHintData {
   return {
-    targetEdge: targetEdge,
-    alignmentEdge: alignmentEdge,
-    isAuto: isAuto,
+    targetEdge,
+    alignmentEdge,
+    isAuto,
   };
 }
 
@@ -303,14 +303,14 @@ function _flipAlignmentEdge(
   const newEstimate = _estimatePosition(
     elementRectangle,
     target,
-    { targetEdge: targetEdge, alignmentEdge: oppositeEdge },
+    { targetEdge, alignmentEdge: oppositeEdge },
     gap,
     coverTarget,
   );
 
   return {
     elementRectangle: newEstimate,
-    targetEdge: targetEdge,
+    targetEdge,
     alignmentEdge: oppositeEdge,
   };
 }
@@ -332,7 +332,7 @@ function _adjustFitWithinBounds(
   let elementEstimate: IElementPosition = {
     elementRectangle: element,
     targetEdge: positionData.targetEdge,
-    alignmentEdge: alignmentEdge,
+    alignmentEdge,
   };
 
   if (!directionalHintFixed && !coverTarget) {
@@ -693,7 +693,7 @@ function _finalizeBeakPosition(
   return {
     elementPosition: { ...returnValue },
     closestEdge: getClosestEdge(elementPosition.targetEdge, positionedBeak, actualElement),
-    targetEdge: targetEdge,
+    targetEdge,
     hideBeak: !showBeak,
   };
 }
@@ -735,6 +735,7 @@ function _positionBeak(beakWidth: number, elementPosition: IElementPositionInfo)
 }
 
 function _getRectangleFromElement(element: Element): Rectangle {
+  // eslint-disable-next-line deprecation/deprecation
   const clientRect: ClientRect = element.getBoundingClientRect();
 
   return new Rectangle(clientRect.left, clientRect.right, clientRect.top, clientRect.bottom);

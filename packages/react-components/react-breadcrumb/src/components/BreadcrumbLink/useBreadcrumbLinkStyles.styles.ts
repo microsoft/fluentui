@@ -9,6 +9,12 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
   icon: 'fui-BreadcrumbLink__icon',
 };
 
+const defaultLinkStyles = {
+  textDecorationLine: 'none',
+  color: tokens.colorNeutralForeground2,
+  cursor: 'auto',
+};
+
 /**
  * Styles for the root slot
  */
@@ -45,6 +51,12 @@ const useStyles = makeStyles({
   },
   current: {
     color: tokens.colorNeutralForeground2,
+    ':hover': {
+      ...defaultLinkStyles,
+    },
+    ':hover:active': {
+      ...defaultLinkStyles,
+    },
   },
   currentSmall: {
     ...typographyStyles.caption1Strong,

@@ -6,7 +6,6 @@ Object {
   "baseElement": <body>
     <div>
       <span
-        aria-owns="datePicker-popoverSurface1"
         class="fui-Input fui-DatePicker"
       >
         <input
@@ -41,7 +40,6 @@ Object {
   </body>,
   "container": <div>
     <span
-      aria-owns="datePicker-popoverSurface1"
       class="fui-Input fui-DatePicker"
     >
       <input

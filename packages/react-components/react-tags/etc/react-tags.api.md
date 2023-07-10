@@ -6,88 +6,112 @@
 
 /// <reference types="react" />
 
-import { Avatar } from '@fluentui/react-avatar';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { AvatarShape } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTag_unstable: (state: TagState) => JSX.Element;
+export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
+
+// @public (undocumented)
+export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
 
 // @public
-export const renderTagButton_unstable: (state: TagButtonState) => JSX.Element;
+export type InteractionTagProps = ComponentProps<Partial<InteractionTagSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
+
+// @public (undocumented)
+export type InteractionTagSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
+    root: NonNullable<Slot<'div'>>;
+    dismissButton?: Slot<'button'>;
+    content: NonNullable<Slot<'button'>>;
+};
+
+// @public
+export type InteractionTagState = ComponentState<InteractionTagSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
+
+// @public
+export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
+
+// @public
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
+
+// @public
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
-
-// @public
-export const TagButton: ForwardRefComponent<TagButtonProps>;
-
-// @public (undocumented)
-export const tagButtonClassNames: SlotClassNames<TagButtonSlots>;
-
-// @public
-export type TagButtonProps = ComponentProps<TagButtonSlots> & {
-    size?: 'extra-small' | 'small' | 'medium';
-    shape?: 'rounded' | 'circular';
-    appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
-    disabled?: boolean;
-    checked?: boolean;
-    dismissable?: boolean;
-};
-
-// @public (undocumented)
-export type TagButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
-    contentButton?: Slot<'button'>;
-    avatar?: Slot<typeof Avatar>;
-    icon?: Slot<'span'>;
-    primaryText?: Slot<'span'>;
-    secondaryText?: Slot<'span'>;
-    dismissButton?: NonNullable<Slot<'button'>>;
-};
-
-// @public
-export type TagButtonState = ComponentState<TagButtonSlots> & Required<Pick<TagButtonProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public
-export type TagProps = ComponentProps<TagSlots> & {
-    size?: 'extra-small' | 'small' | 'medium';
-    shape?: 'rounded' | 'circular';
-    appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+export const TagGroup: ForwardRefComponent<TagGroupProps>;
+
+// @public (undocumented)
+export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
+
+// @public
+export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+    onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: TagGroupDismissData) => void;
+    size?: TagSize;
+};
+
+// @public (undocumented)
+export type TagGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
+    dismissible: boolean;
+    handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
+};
+
+// @public
+export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
+    appearance?: 'filled' | 'outline' | 'brand';
     disabled?: boolean;
-    checked?: boolean;
-    dismissable?: boolean;
+    dismissible?: boolean;
+    shape?: 'rounded' | 'circular';
+    size?: TagSize;
+    value?: Value;
 };
 
 // @public (undocumented)
 export type TagSlots = {
-    root: NonNullable<Slot<'div'>>;
-    content?: Slot<'span'>;
-    avatar?: Slot<typeof Avatar>;
+    root: NonNullable<Slot<'button', 'span'>>;
+    media?: Slot<'span'>;
     icon?: Slot<'span'>;
-    primaryText?: Slot<'span'>;
+    primaryText: Slot<'span'>;
     secondaryText?: Slot<'span'>;
-    dismissButton?: NonNullable<Slot<'button'>>;
+    dismissIcon?: Slot<'span'>;
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
+    avatarSize: AvatarSize | undefined;
+    avatarShape: AvatarShape | undefined;
+}>;
+
+// @public
+export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;
+
+// @public
+export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
 
 // @public
-export const useTagButton_unstable: (props: TagButtonProps, ref: React_2.Ref<HTMLElement>) => TagButtonState;
+export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
 
 // @public
-export const useTagButtonStyles_unstable: (state: TagButtonState) => TagButtonState;
+export const useTagGroupStyles_unstable: (state: TagGroupState) => TagGroupState;
 
 // @public
 export const useTagStyles_unstable: (state: TagState) => TagState;

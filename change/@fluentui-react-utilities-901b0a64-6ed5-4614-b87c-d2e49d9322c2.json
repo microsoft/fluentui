@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: updates useControllableState comments",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

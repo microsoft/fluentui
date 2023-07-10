@@ -31,6 +31,12 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
   appearance?: 'primary' | 'inverted';
 
   /**
+   * Time in milliseconds after component mount before spinner is visible.
+   * @default 0
+   */
+  delay?: number;
+
+  /**
    * Where the label is positioned relative to the Spinner
    * @default 'after'
    */
@@ -47,4 +53,9 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
  * State used in rendering Spinner
  */
 export type SpinnerState = ComponentState<SpinnerSlots> &
-  Required<Pick<SpinnerProps, 'appearance' | 'labelPosition' | 'size'>>;
+  Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
+    /**
+     * Should the spinner be rendered in the DOM
+     */
+    shouldRenderSpinner: boolean;
+  };

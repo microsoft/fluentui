@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update version",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

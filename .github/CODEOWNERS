@@ -49,6 +49,9 @@
 /.prettierignore @microsoft/fluentui-react-build
 /.nxignore @microsoft/fluentui-react-build
 /jest.preset.js @microsoft/fluentui-react-build
+/jest.preset.ts @microsoft/fluentui-react-build
+/jest.config.js @microsoft/fluentui-react-build
+/jest.config.ts @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /sizeauditor.json @microsoft/fluentui-react-build
@@ -63,7 +66,6 @@
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build
-/workspace.json @microsoft/fluentui-react-build
 /migrations.json @microsoft/fluentui-react-build
 
 #### Meta and License stuff
@@ -99,6 +101,7 @@ scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
+scripts/bundle-size-auditor @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -121,7 +124,6 @@ apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
-apps/test-bundles @microsoft/fluentui-react
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
@@ -152,6 +154,7 @@ packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-examples @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-examples/src/react-charting @microsoft/charting-team
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
@@ -225,7 +228,7 @@ packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags @microsoft/cxe-coastal @YuanboXue-Amber
+packages/react-components/react-tags @microsoft/cxe-coastal @microsoft/teams-prg
 packages/react-components/react-data-grid-react-window @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
@@ -236,6 +239,8 @@ packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
+packages/react-components/react-search @microsoft/cxe-coastal
+packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
@@ -252,20 +257,20 @@ packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coas
 packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/DatePicker @microsoft/cxe-red
-packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
 packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
 packages/react/src/components/HoverCard @microsoft/cxe-red @microsoft/cxe-coastal @Jahnp
 packages/react/src/components/Icon @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Image @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Label @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Layer @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/Link @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan  @ThomasMichon
 packages/react/src/components/MarqueeSelection @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/MessageBar @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Nav @microsoft/cxe-red @microsoft/cxe-coastal
@@ -294,6 +299,7 @@ packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon
 
 ### generic rules for v-build. Might be tweaked based on needs.
+**/project.json @microsoft/fluentui-react-build
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
 **/webpack.*.js @microsoft/fluentui-react-build

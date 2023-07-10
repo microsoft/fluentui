@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-portal-compat",
-  "version": "9.0.54",
+  "version": "9.0.67",
   "description": "A package that contains compatibility layer for React Portals",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,23 +22,24 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-components": "^9.19.1",
-    "@fluentui/react-shared-contexts": "^9.3.3",
+    "@fluentui/react-components": "^9.25.1",
+    "@fluentui/react-shared-contexts": "^9.6.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-portal-compat-context": "^9.0.5",
-    "@fluentui/react-tabster": "^9.6.5",
+    "@fluentui/react-portal-compat-context": "^9.0.6",
+    "@fluentui/react-tabster": "^9.10.0",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.19.1",
+    "@fluentui/react-components": "^9.25.1",
     "@types/react": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0"
   },

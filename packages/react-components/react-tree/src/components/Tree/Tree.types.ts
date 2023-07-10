@@ -8,7 +8,7 @@ export type TreeSlots = {
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type TreeNavigationData_unstable<Value = string> = { value: Value; target: HTMLElement } & (
+export type TreeNavigationData_unstable = { target: HTMLElement; value: string } & (
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
@@ -22,7 +22,7 @@ export type TreeNavigationData_unstable<Value = string> = { value: Value; target
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
-export type TreeOpenChangeData<Value = string> = { open: boolean; value: Value } & (
+export type TreeOpenChangeData = { open: boolean; value: string } & (
   | {
       event: React.MouseEvent<HTMLElement>;
       target: HTMLElement;
@@ -56,7 +56,7 @@ export type TreeContextValues = {
   tree: TreeContextValue;
 };
 
-export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
+export type TreeProps = ComponentProps<TreeSlots> & {
   /**
    * A tree item can have various appearances:
    * - 'subtle' (default): The default tree item styles.
@@ -75,13 +75,13 @@ export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
    * Controls the state of the open tree items.
    * These property is ignored for subtrees.
    */
-  openItems?: Iterable<Value>;
+  openItems?: Iterable<string>;
   /**
    * This refers to a list of ids of opened tree items.
    * Default value for the uncontrolled state of open tree items.
    * These property is ignored for subtrees.
    */
-  defaultOpenItems?: Iterable<Value>;
+  defaultOpenItems?: Iterable<string>;
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
@@ -90,7 +90,7 @@ export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
    * @param data - A data object with relevant information,
    * such as open value and type of interaction that created the event.
    */
-  onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData<Value>): void;
+  onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
 
   /**
    * Callback fired when navigation happens inside the component.
@@ -102,10 +102,13 @@ export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
    * @param data - A data object with relevant information,
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable<Value>): void;
+  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 };
 
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
+export type TreeState = ComponentState<TreeSlots> &
+  TreeContextValue & {
+    open: boolean;
+  };

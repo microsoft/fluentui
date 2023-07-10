@@ -1,16 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import {
-  ACTIONS_END_GRID_AREA,
-  ACTIONS_START_GRID_AREA,
-  CONTENT_GRID_AREA,
-  DIALOG_GAP,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  SURFACE_PADDING,
-  TITLE_ACTION_GRID_AREA,
-  TITLE_GRID_AREA,
-} from '../../contexts';
+import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR, SURFACE_PADDING } from '../../contexts';
 
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
   root: 'fui-DialogBody',
@@ -27,24 +18,13 @@ const useStyles = makeStyles({
     },
     maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
     boxSizing: 'border-box',
-    gridTemplateRows: 'auto 1fr auto',
-    gridTemplateColumns: '1fr 1fr auto',
-    gridTemplateAreas: `
-    "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
-    "${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA}"
-    "${ACTIONS_START_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
-    `,
     ...shorthands.overflow('unset'),
     ...shorthands.gap(DIALOG_GAP),
+    gridTemplateRows: 'auto 1fr',
+    gridTemplateColumns: '1fr 1fr auto',
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
-      gridTemplateRows: 'auto 1fr auto auto',
-      gridTemplateAreas: `
-        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${TITLE_ACTION_GRID_AREA}"
-        "${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA} ${CONTENT_GRID_AREA}"
-        "${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA}"
-        "${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
-      `,
+      gridTemplateRows: 'auto 1fr auto',
     },
   },
 });

@@ -5,7 +5,9 @@ import {
   BreadcrumbLink,
   BreadcrumbDivider,
   BreadcrumbLinkProps,
+  BreadcrumbProps,
 } from '@fluentui/react-breadcrumb';
+import { RadioGroup, Radio, Label } from '@fluentui/react-components';
 
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -13,6 +15,7 @@ type Item = {
   key: number;
   item?: string;
   linkProps: {
+    'aria-label'?: string;
     href?: string;
     icon?: BreadcrumbLinkProps['icon'];
     disabled?: boolean;
@@ -46,6 +49,7 @@ const linkItems: Item[] = [
   {
     key: 3,
     linkProps: {
+      'aria-label': 'Item 3',
       href: 'https://developer.microsoft.com/',
       icon: <CalendarMonth />,
     },
@@ -80,7 +84,12 @@ function renderLink(el: Item, isLastItem: boolean = false) {
   return (
     <React.Fragment key={`${el.key}-button`}>
       <BreadcrumbItem>
-        <BreadcrumbLink {...el.linkProps} target="_blank" current={isLastItem}>
+        <BreadcrumbLink
+          {...el.linkProps}
+          target="_blank"
+          current={isLastItem}
+          href={isLastItem ? undefined : el.linkProps?.href}
+        >
           {el.item}
         </BreadcrumbLink>
       </BreadcrumbItem>
@@ -89,10 +98,28 @@ function renderLink(el: Item, isLastItem: boolean = false) {
   );
 }
 
-export const Default = () => (
-  <>
-    <Breadcrumb size="small">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
-    <Breadcrumb appearance="subtle">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
-    <Breadcrumb size="large">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
-  </>
-);
+export const Default = () => {
+  const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
+  return (
+    <>
+      <Label>Appearance (see the difference on `hover`)</Label>
+      <RadioGroup
+        aria-labelledby="breadcrumb-appearance"
+        value={appearance}
+        onChange={(_, data) => setAppearance(data.value as BreadcrumbProps['appearance'])}
+      >
+        <Radio value="transparent" label="Transparent" />
+        <Radio value="subtle" label="Subtle" />
+      </RadioGroup>
+      <Breadcrumb aria-label="Small breadcrumb example with BreadcrumbLink" size="small" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      </Breadcrumb>
+      <Breadcrumb aria-label="Subtle breadcrumb" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      </Breadcrumb>
+      <Breadcrumb aria-label="Large breadcrumb with BreadcrumbLink" size="large" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      </Breadcrumb>
+    </>
+  );
+};
