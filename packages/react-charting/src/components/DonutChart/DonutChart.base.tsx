@@ -108,7 +108,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
@@ -322,7 +322,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return this.state.selectedLegend || this.state.activeLegend;
   }
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.chartData &&

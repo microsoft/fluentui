@@ -31,7 +31,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;
 
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <div className={this._classNames.root}>
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
@@ -55,7 +55,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     );
   }
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0 && this.props.data.filter(item => item.y > 0).length > 0);
   }
 }

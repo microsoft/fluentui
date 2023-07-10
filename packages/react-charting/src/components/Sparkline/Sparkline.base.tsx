@@ -108,7 +108,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <FocusZone
         direction={FocusZoneDirection.horizontal}
         isCircularNavigation={true}
@@ -143,7 +143,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     );
   }
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.lineChartData &&

@@ -255,7 +255,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickFormat: tickFormat,
     };
 
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         chartTitle={data.chartTitle}
@@ -1372,7 +1372,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.lineChartData &&

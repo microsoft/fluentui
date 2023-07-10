@@ -65,7 +65,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -390,7 +390,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }
 }

@@ -153,7 +153,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       tickFormat: this.props.tickFormat!,
     };
 
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._datasetForBars}
@@ -588,7 +588,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     };
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.length > 0 &&

@@ -145,7 +145,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    if (!this.isChartEmpty()) {
+    if (!this._isChartEmpty()) {
       const { lineChartData, chartTitle } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
@@ -895,7 +895,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(
       (
         this.props.data &&

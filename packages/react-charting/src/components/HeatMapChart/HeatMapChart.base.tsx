@@ -186,7 +186,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return !this.isChartEmpty() ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -693,7 +693,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     );
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }
 }

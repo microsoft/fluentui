@@ -96,7 +96,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     cancelAnimationFrame(this._reqID);
   }
   public render(): React.ReactNode {
-    if (!this.isChartEmpty()) {
+    if (!this._isChartEmpty()) {
       const { theme, className, styles, pathColor } = this.props;
       this._classNames = getClassNames(styles!, {
         theme: theme!,
@@ -852,7 +852,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     div.style('opacity', 0);
   }
 
-  private isChartEmpty() {
+  private _isChartEmpty() {
     return !(
       this.props.data &&
       this.props.data.SankeyChartData &&

@@ -73,7 +73,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    if (!this.isChartEmpty()) {
+    if (!this._isChartEmpty()) {
       const { data, theme, culture } = this.props;
       this._adjustProps();
       const { palette } = theme!;
@@ -556,7 +556,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return longestBarTotalValue;
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.length > 0 &&

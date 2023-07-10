@@ -58,7 +58,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   public render(): JSX.Element {
-    if (!this.isChartEmpty()) {
+    if (!this._isChartEmpty()) {
       this._adjustProps();
       const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
       const { palette } = this.props.theme!;
@@ -470,7 +470,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private isChartEmpty(): boolean {
+  private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.chartData && this.props.data.chartData.length > 0);
   }
 }
