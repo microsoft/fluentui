@@ -162,6 +162,7 @@ function usePositioningOptions(options: PositioningOptions) {
     pinned,
     position,
     unstable_disableTether: disableTether,
+    // eslint-disable-next-line deprecation/deprecation
     positionFixed,
     strategy,
     overflowBoundaryPadding,
