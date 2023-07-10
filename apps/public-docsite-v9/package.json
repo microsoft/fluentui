@@ -23,13 +23,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-datepicker-compat": "^0.1.5",
-    "@fluentui/react-migration-v8-v9": "^9.2.16",
-    "@fluentui/react-migration-v0-v9": "^9.0.2",
-    "@fluentui/react": "^8.109.10",
+    "@fluentui/react-datepicker-compat": "^0.1.11",
+    "@fluentui/react-migration-v8-v9": "^9.3.6",
+    "@fluentui/react-migration-v0-v9": "^9.0.9",
+    "@fluentui/react": "^8.110.7",
     "@fluentui/react-northstar": "^0.66.4",
     "@fluentui/react-icons-northstar": "^0.66.4",
-    "@fluentui/react-components": "^9.21.0",
+    "@fluentui/react-components": "^9.25.1",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
     "@fluentui/theme-designer": "^9.0.0",

@@ -24,11 +24,17 @@ const useStyles = makeStyles({
     justifySelf: 'end',
     gridColumnStart: 2,
     gridColumnEnd: 4,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      gridColumnStart: 1,
+    },
   },
   gridPositionStart: {
     justifySelf: 'start',
     gridColumnStart: 1,
     gridColumnEnd: 2,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      gridColumnEnd: 4,
+    },
   },
   fluidStart: {
     gridColumnEnd: 4,

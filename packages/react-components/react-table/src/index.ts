@@ -4,6 +4,7 @@ export {
   useTableSort,
   createTableColumn,
   useTableColumnSizing_unstable,
+  useTableCompositeNavigation,
 } from './hooks';
 
 export type {
@@ -18,7 +19,6 @@ export type {
   TableSortState,
   TableFeaturePlugin,
   TableColumnSizingOptions,
-  UseTableSelectionOptions,
 } from './hooks';
 
 export {
@@ -98,6 +98,7 @@ export {
   useTableSelectionCell_unstable,
   renderTableSelectionCell_unstable,
   tableSelectionCellClassNames,
+  CELL_WIDTH as TABLE_SELECTION_CELL_WIDTH,
 } from './TableSelectionCell';
 
 export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';

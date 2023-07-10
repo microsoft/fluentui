@@ -4,7 +4,7 @@ import story from './TreeControllingOpenAndClose.md';
 
 export const OpenItemsControlled = () => {
   const [openItems, setOpenItems] = React.useState<string[]>([]);
-  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData<string>) => {
+  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
   };
   return (

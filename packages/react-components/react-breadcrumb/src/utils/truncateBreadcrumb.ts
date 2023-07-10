@@ -2,7 +2,13 @@ const MAX_NAME_LENGTH = 30;
 const MAX_TOOLTIP_LENGTH = 80;
 
 const truncateBreadcrumb = (content: string, maxLength: number): string => {
-  return content.length > maxLength ? content.trim().slice(0, maxLength).concat('...') : content;
+  return isTruncatableBreadcrumbContent(content, maxLength)
+    ? content.trim().slice(0, maxLength).concat('...')
+    : content;
+};
+
+export const isTruncatableBreadcrumbContent = (content: string, maxLength: number) => {
+  return content.length > maxLength;
 };
 
 export const truncateBreadcrumbLongName = (content: string, maxLength?: number): string => {

@@ -3,11 +3,13 @@ export const EVENTS = {
   dismiss: 'fui-toast-dismiss',
   dismissAll: 'fui-toast-dismiss-all',
   update: 'fui-toast-update',
+  pause: 'fui-toast-pause',
+  play: 'fui-toast-play',
 } as const;
 
 export const TOAST_POSITIONS = {
-  bottomRight: 'bottom-right',
-  bottomLeft: 'bottom-left',
-  topRight: 'top-right',
-  topLeft: 'top-left',
+  bottomEnd: 'bottom-end',
+  bottomStart: 'bottom-start',
+  topEnd: 'top-end',
+  topStart: 'top-start',
 } as const;
