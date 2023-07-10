@@ -114,7 +114,8 @@ export interface PositioningOptions {
   positionFixed?: boolean;
 
   /**
-   * Specifies the type of CSS position property to use (default value is strategy: 'absolute').
+   * Specifies the type of CSS position property to use.
+   * @default absolute
    */
   strategy?: 'absolute' | 'fixed';
 
