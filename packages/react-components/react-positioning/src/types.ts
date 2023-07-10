@@ -19,16 +19,6 @@ export type TargetElement = HTMLElement | PositioningVirtualElement;
 /**
  * @internal
  */
-export interface UsePositioningOptions extends PositioningProps {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
-}
-
-/**
- * @internal
- */
 export interface PositionManager {
   updatePosition: () => void;
   dispose: () => void;
@@ -119,8 +109,14 @@ export interface PositioningOptions {
   /**
    * Enables the position element to be positioned with 'fixed' (default value is position: 'absolute')
    * @default false
+   * @deprecated use `strategy` instead
    */
   positionFixed?: boolean;
+
+  /**
+   * Specifies the type of CSS position property to use (default value is strategy: 'absolute').
+   */
+  strategy?: 'absolute' | 'fixed';
 
   /**
    * Lets you displace a positioned element from its reference element.
@@ -173,6 +169,11 @@ export interface PositioningOptions {
    * @default true
    */
   useTransform?: boolean;
+
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
 }
 
 export interface PositioningProps
@@ -182,6 +183,7 @@ export interface PositioningProps
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'enabled'
     | 'fallbackPositions'
     | 'flipBoundary'
     | 'offset'
