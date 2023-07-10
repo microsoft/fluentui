@@ -42,6 +42,16 @@ interface ISVGTooltipTextProps {
   maxHeight?: number;
 
   /**
+   * Pass false to make the data not focusable, though keyboard. true by default
+   */
+  shouldReceiveFocus?: boolean;
+
+  /**
+   * Pass true to show tooltip directly, false by default
+   */
+  showTooltip?: boolean;
+
+  /**
    * Function to wrap text within specified width and height
    * and return a boolean value indicating whether the text overflowed
    */
@@ -88,7 +98,7 @@ export class SVGTooltipText
   }
 
   public render(): React.ReactNode {
-    const { content, tooltipProps, textProps } = this.props;
+    const { content, tooltipProps, textProps, shouldReceiveFocus = true } = this.props;
     const { isTooltipVisible } = this.state;
 
     const tooltipRenderProps: ITooltipProps = {
@@ -104,7 +114,8 @@ export class SVGTooltipText
       ...tooltipProps,
     };
 
-    const showTooltip = isTooltipVisible && !!content;
+    const showTooltip =
+      (!!this.props.showTooltip && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
 
     return (
       <>
@@ -117,7 +128,7 @@ export class SVGTooltipText
           onMouseEnter={this._onTooltipMouseEnter}
           onMouseLeave={this._onTooltipMouseLeave}
           onKeyDown={this._onTooltipKeyDown}
-          data-is-focusable={this.state.isOverflowing}
+          data-is-focusable={shouldReceiveFocus && this.state.isOverflowing}
         >
           {content}
         </text>

@@ -84,17 +84,19 @@ export class LabeledArc extends Arc {
 
     const angle = ((data?.startAngle || 0) + (data?.endAngle || 0)) / 2;
 
+    const content = `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`;
+
     return (
       <g
-        onFocus={this._onFocus}
-        onBlur={this._onBlur}
         className={classNames.pie}
         data-is-focusable={true}
         id={this.state.id}
+        onFocus={this._onFocus}
+        onBlur={this._onBlur}
       >
         {super.render()}
         <SVGTooltipText
-          content={`${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`}
+          content={content}
           textProps={{
             x: labelX,
             y: labelY,
@@ -104,6 +106,8 @@ export class LabeledArc extends Arc {
             'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
             className: classNames.pieText,
           }}
+          showTooltip={this.state.isArcFocused}
+          shouldReceiveFocus={false}
           maxWidth={40}
           wrapContent={this._wrapContent}
         />
