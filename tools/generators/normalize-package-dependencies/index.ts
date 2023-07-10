@@ -103,7 +103,7 @@ function getVersion(deps: Record<string, string>, packageName: string) {
   const updated = semver.prerelease(current) ? '>=9.0.0-alpha' : '*';
   const match = current === updated;
 
-  return { current, updated, match };
+  return { updated, match };
 }
 
 function getPackageJsonDependenciesIssues(
