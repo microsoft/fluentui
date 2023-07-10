@@ -82,6 +82,9 @@ export type PositioningVirtualElement = {
 
 export type SetVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => void;
 
+/**
+ * Internal options for positioning
+ */
 export interface PositioningOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
@@ -177,6 +180,9 @@ export interface PositioningOptions {
   enabled?: boolean;
 }
 
+/**
+ * Public api that allows components using react-positioning to specify positioning options
+ */
 export interface PositioningProps
   extends Pick<
     PositioningOptions,
