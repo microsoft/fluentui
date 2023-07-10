@@ -59,8 +59,6 @@ See [Migrate positioning props](?path=/docs/concepts-migrating-from-v0-positioni
 
 Here's a [codesandbox](https://codesandbox.io/s/popup-migration-ccodmt?file=/example.js) comparing v0 Popup and v9 Popover.
 
----
-
 ## Migrate content and contentRef
 
 `contentRef` can be replaced by React ref on `PopoverSurface`.
@@ -126,3 +124,23 @@ export const useStyles = makeStyles({
 ```
 
 ⚠️ **If this is your first time migrating style overrides**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Nested popups
+
+If you have nested popups, and migrate to v9 inner popup first, you might have a problem with handling of `Escape` key.
+
+To prevent this problem you can use `onKeyDown` prop on `PopoverSurface` to prevent `Escape` key from bubbling up to the outer popup.
+
+```tsx
+<PopoverSurface
+  onKeyDown={e => {
+    if (e.key === 'Escape') {
+      e.stopPropagation();
+    }
+  }}
+/>
+```
+
+You can check out [this codesandbox](https://codesandbox.io/s/goofy-snowflake-gjjq8f?file=/example.tsx:424-543) for an example.
+
+> Note: this workaround is not needed if you migrate outer popup first or if you migrate both popups at the same time.
