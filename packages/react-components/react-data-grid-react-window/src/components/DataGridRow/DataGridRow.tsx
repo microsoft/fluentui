@@ -15,4 +15,5 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   return renderDataGridRow_unstable(state);
 }) as ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
 
+// eslint-disable-next-line deprecation/deprecation
 DataGridRow.displayName = 'DataGridRow';

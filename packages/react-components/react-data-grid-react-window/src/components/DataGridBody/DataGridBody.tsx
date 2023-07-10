@@ -16,4 +16,5 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps> &
   return renderDataGridBody_unstable(state);
 }) as ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
+// eslint-disable-next-line deprecation/deprecation
 DataGridBody.displayName = 'DataGridBody';

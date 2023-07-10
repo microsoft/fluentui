@@ -18,4 +18,5 @@ export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((pr
   return renderDataGrid_unstable(state, useDataGridContextValues_unstable(state));
 });
 
+// eslint-disable-next-line deprecation/deprecation
 DataGrid.displayName = 'DataGrid';
