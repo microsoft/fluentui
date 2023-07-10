@@ -196,7 +196,7 @@ export interface PositioningProps
     | 'overflowBoundaryPadding'
     | 'pinned'
     | 'position'
-    | 'positionFixed'
+    | 'strategy'
     | 'useTransform'
   > {
   /** An imperative handle to Popper methods. */
