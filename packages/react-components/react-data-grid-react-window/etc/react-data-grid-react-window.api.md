@@ -27,7 +27,7 @@ export const DataGrid: ForwardRefComponent<DataGridProps>;
 // @public @deprecated (undocumented)
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
-// @public @deprecated (undocumented)
+// @public (undocumented)
 export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'children'> & {
     itemSize: number;
     height: number;
@@ -59,7 +59,7 @@ export { DataGridSelectionCell }
 
 export { DataGridSelectionCellProps }
 
-// @public @deprecated (undocumented)
+// @public (undocumented)
 export type RowRenderer<TItem = unknown> = (row: TableRowData<TItem>, style: React_2.CSSProperties) => React_2.ReactNode;
 
 // (No @packageDocumentation comment for this package)
