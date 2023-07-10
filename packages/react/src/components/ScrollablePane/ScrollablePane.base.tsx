@@ -48,7 +48,6 @@ export class ScrollablePaneBase
     this._stickies = new Set<Sticky>();
 
     initializeComponentRef(this);
-    this._async = new Async(this);
 
     this.state = {
       stickyTopHeight: 0,
@@ -56,8 +55,6 @@ export class ScrollablePaneBase
       scrollbarWidth: 0,
       scrollbarHeight: 0,
     };
-
-    this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
   public get root(): HTMLDivElement | null {
@@ -78,6 +75,8 @@ export class ScrollablePaneBase
 
   public componentDidMount() {
     const { initialScrollPosition } = this.props;
+    this._async = new Async(this);
+    this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
     this._events = new EventGroup(this);
     this._events.on(this.contentContainer, 'scroll', this._onScroll);
     this._events.on(window, 'resize', this._onWindowResize);
