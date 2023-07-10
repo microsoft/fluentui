@@ -3,7 +3,6 @@ import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
@@ -68,12 +67,6 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
       [`& .${tagClassNames.dismissIcon}`]: {
         color: tokens.colorCompoundBrandForeground1Hover,
       },
