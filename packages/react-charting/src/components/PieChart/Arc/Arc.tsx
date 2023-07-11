@@ -21,6 +21,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     super(props);
     this.state = {
       isArcFocused: false,
+      id: getId(),
     };
   }
 
@@ -39,13 +40,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           d={arc(this.props.data)}
           className={`${this.state.isArcFocused ? classNames.pieRootFocused : classNames.pieRoot}`}
           onClick={this.props.data?.data.onClick}
-          role="img"
-          aria-label={`${this.props.data!.data!.x}-${convertToLocaleString(
-            this.props.data!.data!.y,
-            this.props.culture,
-          )}`}
         />
-        {this.state.isArcFocused ? <path stroke={this.props.theme?.palette.black} /> : null}
       </>
     );
   }
@@ -94,6 +89,8 @@ export class LabeledArc extends Arc {
         id={this.state.id}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
+        aria-label={content}
+        role="img"
       >
         {super.render()}
         <SVGTooltipText
@@ -103,7 +100,6 @@ export class LabeledArc extends Arc {
             y: labelY,
             dominantBaseline: angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto',
             textAnchor: angle > Math.PI ? 'end' : 'start',
-            role: 'img',
             'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
             className: classNames.pieText,
           }}

@@ -63,7 +63,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
     const outerRadius = radius;
 
     return !this.state.emptyChart ? (
-      <div className={this._classNames.root} role="application">
+      <div className={this._classNames.root}>
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
           culture={culture}

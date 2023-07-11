@@ -26,22 +26,24 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
   >
     <svg
       height={350}
+      role="application"
       width={600}
     >
       <g
         transform="translate(300, 175)"
       >
         <g
+          aria-label="A-50"
           className=
 
               {
                 outline: none;
               }
           data-is-focusable={true}
-          id="{\\"data\\":{\\"y\\":50,\\"x\\":\\"A\\"},\\"index\\":0,\\"value\\":50,\\"startAngle\\":0,\\"endAngle\\":3.1415926535897936,\\"padAngle\\":0}"
+          id="id__2"
           onBlur={[Function]}
           onFocus={[Function]}
-          textAnchor="start"
+          role="img"
         >
           <path
             className=
@@ -51,38 +53,43 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M0,-155A155,155,0,1,1,0,155L0,0Z"
-          >
-            <desc>
-              A
-              -
-              50
-            </desc>
-          </path>
+            d="M0,-159A159,159,0,1,1,0,159L0,0Z"
+          />
           <text
+            aria-label="A-50"
             className=
 
                 {
                   fill: #000000;
+                  outline: none;
                 }
-            transform="translate(165, 3.6637359812630166e-14)"
+            data-is-focusable={false}
+            dominantBaseline="hanging"
+            id="tooltip-host3"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="start"
+            x={161}
+            y={3.574918139293004e-14}
           >
-            A
-            -
-            50
+            A-50
           </text>
         </g>
         <g
+          aria-label="B-25"
           className=
 
               {
                 outline: none;
               }
           data-is-focusable={true}
-          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"B\\"},\\"index\\":1,\\"value\\":25,\\"startAngle\\":3.1415926535897936,\\"endAngle\\":4.712388980384691,\\"padAngle\\":0}"
+          id="id__5"
           onBlur={[Function]}
           onFocus={[Function]}
-          textAnchor="end"
+          role="img"
         >
           <path
             className=
@@ -92,38 +99,43 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M0,155A155,155,0,0,1,-155,0L0,0Z"
-          >
-            <desc>
-              B
-              -
-              25
-            </desc>
-          </path>
+            d="M0,159A159,159,0,0,1,-159,0L0,0Z"
+          />
           <text
+            aria-label="B-25"
             className=
 
                 {
                   fill: #000000;
+                  outline: none;
                 }
-            transform="translate(-116.67261889578045, 116.67261889578026)"
+            data-is-focusable={false}
+            dominantBaseline="hanging"
+            id="tooltip-host6"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-113.84419177103425}
+            y={113.84419177103408}
           >
-            B
-            -
-            25
+            B-25
           </text>
         </g>
         <g
+          aria-label="C-25"
           className=
 
               {
                 outline: none;
               }
           data-is-focusable={true}
-          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"C\\"},\\"index\\":2,\\"value\\":25,\\"startAngle\\":4.712388980384691,\\"endAngle\\":6.283185307179587,\\"padAngle\\":0}"
+          id="id__8"
           onBlur={[Function]}
           onFocus={[Function]}
-          textAnchor="end"
+          role="img"
         >
           <path
             className=
@@ -133,25 +145,29 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M-155,0A155,155,0,0,1,0,-155L0,0Z"
-          >
-            <desc>
-              C
-              -
-              25
-            </desc>
-          </path>
+            d="M-159,0A159,159,0,0,1,0,-159L0,0Z"
+          />
           <text
+            aria-label="C-25"
             className=
 
                 {
                   fill: #000000;
+                  outline: none;
                 }
-            transform="translate(-116.67261889578026, -116.67261889578045)"
+            data-is-focusable={false}
+            dominantBaseline="auto"
+            id="tooltip-host9"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-113.84419177103408}
+            y={-113.84419177103425}
           >
-            C
-            -
-            25
+            C-25
           </text>
         </g>
         <use
@@ -182,29 +198,31 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={300}
+      role="application"
       width={600}
     >
       <g
         transform="translate(300, 150)"
       >
         <g
+          aria-label="A-50"
           className=
 
               {
                 outline: none;
               }
           data-is-focusable={true}
-          id="{\\"data\\":{\\"y\\":50,\\"x\\":\\"A\\"},\\"index\\":0,\\"value\\":50,\\"startAngle\\":0,\\"endAngle\\":3.1415926535897936,\\"padAngle\\":0}"
+          id="id__12"
           onBlur={[Function]}
           onFocus={[Function]}
-          textAnchor="start"
+          role="img"
         >
           <path
             className=
@@ -214,38 +232,43 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M0,-130A130,130,0,1,1,0,130L0,0Z"
-          >
-            <desc>
-              A
-              -
-              50
-            </desc>
-          </path>
+            d="M0,-134A134,134,0,1,1,0,134L0,0Z"
+          />
           <text
+            aria-label="A-50"
             className=
 
                 {
                   fill: #000000;
+                  outline: none;
                 }
-            transform="translate(140, 3.108624468950438e-14)"
+            data-is-focusable={false}
+            dominantBaseline="hanging"
+            id="tooltip-host13"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="start"
+            x={136}
+            y={3.019806626980426e-14}
           >
-            A
-            -
-            50
+            A-50
           </text>
         </g>
         <g
+          aria-label="B-25"
           className=
 
               {
                 outline: none;
               }
           data-is-focusable={true}
-          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"B\\"},\\"index\\":1,\\"value\\":25,\\"startAngle\\":3.1415926535897936,\\"endAngle\\":4.712388980384691,\\"padAngle\\":0}"
+          id="id__15"
           onBlur={[Function]}
           onFocus={[Function]}
-          textAnchor="end"
+          role="img"
         >
           <path
             className=
@@ -255,38 +278,43 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M0,130A130,130,0,0,1,-130,0L0,0Z"
-          >
-            <desc>
-              B
-              -
-              25
-            </desc>
-          </path>
+            d="M0,134A134,134,0,0,1,-134,0L0,0Z"
+          />
           <text
+            aria-label="B-25"
             className=
 
                 {
                   fill: #000000;
+                  outline: none;
                 }
-            transform="translate(-98.99494936611674, 98.99494936611659)"
+            data-is-focusable={false}
+            dominantBaseline="hanging"
+            id="tooltip-host16"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-96.16652224137054}
+            y={96.16652224137039}
           >
-            B
-            -
-            25
+            B-25
           </text>
         </g>
         <g
+          aria-label="C-25"
           className=
 
               {
                 outline: none;
               }
           data-is-focusable={true}
-          id="{\\"data\\":{\\"y\\":25,\\"x\\":\\"C\\"},\\"index\\":2,\\"value\\":25,\\"startAngle\\":4.712388980384691,\\"endAngle\\":6.283185307179587,\\"padAngle\\":0}"
+          id="id__18"
           onBlur={[Function]}
           onFocus={[Function]}
-          textAnchor="end"
+          role="img"
         >
           <path
             className=
@@ -296,25 +324,29 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            d="M-130,0A130,130,0,0,1,0,-130L0,0Z"
-          >
-            <desc>
-              C
-              -
-              25
-            </desc>
-          </path>
+            d="M-134,0A134,134,0,0,1,0,-134L0,0Z"
+          />
           <text
+            aria-label="C-25"
             className=
 
                 {
                   fill: #000000;
+                  outline: none;
                 }
-            transform="translate(-98.99494936611659, -98.99494936611674)"
+            data-is-focusable={false}
+            dominantBaseline="auto"
+            id="tooltip-host19"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-96.16652224137039}
+            y={-96.16652224137054}
           >
-            C
-            -
-            25
+            C-25
           </text>
         </g>
         <use

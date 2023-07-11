@@ -4,7 +4,6 @@ import { IPieProps } from './Pie.types';
 import { LabeledArc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { getId } from '@fluentui/react';
 
 export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
   public static defaultProps: Partial<IPieProps> = {
@@ -29,7 +28,7 @@ export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
 
     return (
       <FocusZone direction={FocusZoneDirection.domOrder}>
-        <svg width={width} height={height} aria-label={chartTitle}>
+        <svg width={width} height={height} aria-label={chartTitle} role="application">
           <g transform={translate}>
             {piechart.map((d: IArcData, i: number) => (
               <LabeledArc
