@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { chartPoints } from './HorizontalBarChart.test';
-import { HorizontalBarChart } from '../../index';
+import { HorizontalBarChart } from './index';
 
 describe('Horizontal Bar chart rendering', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
   test('Should re-render the Horizontal Bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<HorizontalBarChart data={[]} />);
