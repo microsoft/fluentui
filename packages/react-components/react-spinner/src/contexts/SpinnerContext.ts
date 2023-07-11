@@ -6,11 +6,9 @@ const SpinnerContext = React.createContext<SpinnerContextValue | undefined>(unde
 /**
  * @internal
  */
-export interface SpinnerContextValue {
-  size?: SpinnerSize;
-}
+export type SpinnerContextValue = Pick<SpinnerProps, 'size'>;
 
-const SpinnerContextDefaultValue: SpinnerContextValue = { size: 'medium' };
+const SpinnerContextDefaultValue: SpinnerContextValue = {};
 
 /**
  * @internal
