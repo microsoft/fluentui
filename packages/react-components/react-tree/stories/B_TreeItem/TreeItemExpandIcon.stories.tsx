@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeItemValue } from '@fluentui/react-tree';
 import { Add12Regular, Subtract12Regular } from '@fluentui/react-icons';
 import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/Tree';
 import story from './TreeItemExpandIcon.md';
 
 export const ExpandIcon = () => {
-  const [openItems, setOpenItems] = React.useState<string[]>([]);
+  const [openItems, setOpenItems] = React.useState<TreeItemValue[]>([]);
   const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
   };

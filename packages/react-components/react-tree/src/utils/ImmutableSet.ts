@@ -22,22 +22,21 @@ export interface ImmutableSet<Value> {
   has(value: Value): boolean;
   /** Iterates over values in the ImmutableSet. */
   [Symbol.iterator](): IterableIterator<Value>;
+  /**
+   * @internal
+   * Exposes the internal set used to store values.
+   * This is an internal API and should not be used directly.
+   */
+  dangerousGetInternalSet(): Set<Value>;
 }
 
-export const emptyImmutableSet = createImmutableSet<never>();
+const emptyImmutableSet = createImmutableSet<never>();
 
-/**
- * properly creates an ImmutableSet instance from an iterable
- */
-export function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Value> {
-  const internalSet = new Set(iterable);
-  return dangerouslyCreateImmutableSet(internalSet);
-}
 /**
  * Avoid using *dangerouslyCreateImmutableSet*, since this method will expose internally used set, use  createImmutableSet instead,
  * @param internalSet - a set that is used internally to store values.
  */
-export function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): ImmutableSet<Value> {
+function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): ImmutableSet<Value> {
   return {
     size: internalSet.size,
     add(value) {
@@ -59,5 +58,20 @@ export function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): I
     [Symbol.iterator]() {
       return internalSet[Symbol.iterator]();
     },
+    dangerousGetInternalSet: () => internalSet,
   };
 }
+
+/**
+ * properly creates an ImmutableSet instance from an iterable
+ */
+function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Value> {
+  const internalSet = new Set(iterable);
+  return dangerouslyCreateImmutableSet(internalSet);
+}
+
+export const ImmutableSet = {
+  empty: emptyImmutableSet,
+  create: createImmutableSet,
+  dangerouslyCreate: dangerouslyCreateImmutableSet,
+};
