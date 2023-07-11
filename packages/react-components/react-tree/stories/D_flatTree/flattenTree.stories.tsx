@@ -9,32 +9,42 @@ import {
 } from '@fluentui/react-tree';
 import story from './flattenTree.md';
 
-type Item = TreeItemProps & { layout: string };
+type Item = TreeItemProps & { layout: React.ReactNode };
 
 const defaultItems = flattenTree_unstable<Item>([
   {
-    layout: 'level 1, item 1',
+    value: '1',
+    layout: <>level 1, item 1</>,
     subtree: [
-      { layout: 'level 2, item 1' },
       {
-        layout: 'level 2, item 2',
+        value: '1-1',
+        layout: <>level 2, item 1</>,
       },
       {
-        layout: 'level 2, item 3',
+        value: '1-2',
+        layout: <>level 2, item 2</>,
+      },
+      {
+        value: '1-3',
+        layout: <>level 2, item 3</>,
       },
     ],
   },
   {
-    layout: 'level 1, item 2',
+    value: '2',
+    layout: <>level 1, item 2</>,
     subtree: [
       {
-        layout: 'level 2, item 1',
+        value: '2-1',
+        layout: <>level 2, item 1</>,
         subtree: [
           {
-            layout: 'level 3, item 1',
+            value: '2-1-1',
+            layout: <>level 3, item 1</>,
             subtree: [
               {
-                layout: 'level 4, item 1',
+                value: '2-1-1-1',
+                layout: <>level 4, item 1</>,
               },
             ],
           },
