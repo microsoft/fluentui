@@ -571,7 +571,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /**
    * @default false
-   * Used to test the Performance optimization code befor merging it to master.
+   * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
 }

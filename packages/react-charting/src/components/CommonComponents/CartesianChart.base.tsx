@@ -719,7 +719,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
     }
     // Case: truncated labels
-    else if (this.props.showXAxisLablesTooltip) {
+    else if (this.props.showXAxisLablesTooltip && this._tickValues) {
       const tickValues = this._tickValues.map(val => {
         const numChars = this.props.noOfCharsToTruncate || 4;
         return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
@@ -729,7 +729,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       labelWidth += Math.ceil(longestLabelWidth);
     }
     // Case: wrapped labels
-    else if (this.props.wrapXAxisLables) {
+    else if (this.props.wrapXAxisLables && this._tickValues) {
       const words: string[] = [];
       this._tickValues.forEach((val: string) => {
         words.push(...val.toString().split(/\s+/));
