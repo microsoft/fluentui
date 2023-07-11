@@ -58,9 +58,9 @@ const grey36 = '#5C5C5C';
 
 const semanticColorMappingOverridesForDark: Partial<IExtendedSemanticColors> = {
   // Primary button is unique, it's background color is shared across themes
-  primaryButtonBackground: Fluent2WebLightTheme.semanticColors.primaryButtonBackground,
-  primaryButtonBackgroundHovered: Fluent2WebLightTheme.semanticColors.primaryButtonBackgroundHovered,
-  primaryButtonBackgroundPressed: Fluent2WebLightTheme.semanticColors.primaryButtonBackgroundPressed,
+  primaryButtonBackgroundHovered: Fluent2WebLightTheme.palette.themePrimary,
+  primaryButtonBackgroundPressed: Fluent2WebLightTheme.palette.themeDarker,
+  primaryButtonBackground: Fluent2WebLightTheme.palette.themeDarkAlt,
 
   // This hex matches the v9 theme.
   link: p.themeDark,
