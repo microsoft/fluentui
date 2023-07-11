@@ -1,5 +1,5 @@
 import { ButtonOptions, ValuesOf } from '@microsoft/fast-foundation';
-import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
+import { ButtonAppearance, ButtonShape, ButtonSize } from '@fluentui/web-components';
 
 /**
  * Toggle Button Appearance constants
