@@ -4,27 +4,17 @@ import {
   colorBackgroundOverlay,
   colorNeutralBackground1,
   colorNeutralForeground1,
-  colorTransparentStroke,
-  curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
   fontFamilyBase,
   fontSizeBase300,
-  fontSizeBase400,
-  fontSizeBase500,
   fontWeightRegular,
-  fontWeightSemibold,
   lineHeightBase300,
-  lineHeightBase400,
-  lineHeightBase500,
-  spacingHorizontalL,
   spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalXXL,
-  spacingVerticalL,
   spacingVerticalS,
   spacingVerticalXXL,
-  strokeWidthThin,
 } from '../theme/design-tokens.js';
 
 /** Pane styles
@@ -42,13 +32,14 @@ export const styles = css`
     height: 100%;
     z-index: 1;
     overflow: hidden;
-    width: 0;
+    width: 595px;
     transition: width ${durationNormal} ${curveDecelerateMid};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-family: ${fontFamilyBase};
     font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
+    transform: translateX(calc(100% + 32px));
   }
 
   .root {
@@ -61,16 +52,15 @@ export const styles = css`
   }
 
   :host([expanded]) {
-    width: var(--drawer-width, 595px);
-    transition: width ${durationNormal} ${curveAccelerateMid};
+    transform: translateX(0);
     box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.12), 0px 32px 64px rgba(0, 0, 0, 0.14), 0px 0px 0px rgba(0, 0, 0, 0);
   }
 
-  :host([expanded][control-size='small']) {
+  :host([control-size='small']) {
     width: 320px;
   }
 
-  :host([expanded][control-size='large']) {
+  :host([control-size='large']) {
     width: 940px;
   }
 
