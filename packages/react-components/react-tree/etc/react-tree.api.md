@@ -177,6 +177,9 @@ export type TreeItemState = ComponentState<TreeItemInternalSlot> & TreeItemConte
 };
 
 // @public (undocumented)
+export type TreeItemValue = string | number;
+
+// @public (undocumented)
 export type TreeNavigationData_unstable = {
     target: HTMLElement;
     value: TreeItemValue;
