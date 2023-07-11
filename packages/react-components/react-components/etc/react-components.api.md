@@ -175,12 +175,14 @@ import { DataGridBodySlots } from '@fluentui/react-table';
 import { DataGridBodyState } from '@fluentui/react-table';
 import { DataGridCell } from '@fluentui/react-table';
 import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellFocusMode } from '@fluentui/react-table';
 import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridFocusMode } from '@fluentui/react-table';
 import { DataGridHeader } from '@fluentui/react-table';
 import { DataGridHeaderCell } from '@fluentui/react-table';
 import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
@@ -1433,6 +1435,8 @@ export { DataGridCell }
 
 export { dataGridCellClassNames }
 
+export { DataGridCellFocusMode }
+
 export { DataGridCellProps }
 
 export { DataGridCellSlots }
@@ -1444,6 +1448,8 @@ export { dataGridClassNames }
 export { DataGridContextValue }
 
 export { DataGridContextValues }
+
+export { DataGridFocusMode }
 
 export { DataGridHeader }
 
