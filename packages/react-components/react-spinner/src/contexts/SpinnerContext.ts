@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { SpinnerSize } from '../components/Spinner/Spinner.types';
+import { SpinnerProps } from '../components/Spinner/Spinner.types';
 
 const SpinnerContext = React.createContext<SpinnerContextValue | undefined>(undefined);
 

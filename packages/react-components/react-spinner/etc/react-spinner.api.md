@@ -25,21 +25,15 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
 export const SpinnerContextProvider: React_2.Provider<SpinnerContextValue | undefined>;
 
 // @internal (undocumented)
-export interface SpinnerContextValue {
-    // (undocumented)
-    size?: SpinnerSize;
-}
+export type SpinnerContextValue = Pick<SpinnerProps, 'size'>;
 
 // @public
 export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
     appearance?: 'primary' | 'inverted';
     delay?: number;
     labelPosition?: 'above' | 'below' | 'before' | 'after';
-    size?: SpinnerSize;
+    size?: 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 };
-
-// @public
-export type SpinnerSize = 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 
 // @public (undocumented)
 export type SpinnerSlots = {
