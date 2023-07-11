@@ -42,34 +42,70 @@ const useRootStyles = makeStyles({
     `,
     boxSizing: 'border-box',
     width: 'fit-content',
+
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+  },
+
+  filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-
     ':hover': {
       cursor: 'pointer',
+      [`& .${tagClassNames.dismissIcon}`]: {
+        color: tokens.colorCompoundBrandForeground1Hover,
+      },
+    },
+    ':hover:active': {
+      [`& .${tagClassNames.dismissIcon}`]: {
+        color: tokens.colorCompoundBrandForeground1Pressed,
+      },
+    },
+  },
+  outline: {
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForeground2,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    ':hover': {
+      cursor: 'pointer',
+      [`& .${tagClassNames.dismissIcon}`]: {
+        color: tokens.colorCompoundBrandForeground1Hover,
+      },
+    },
+    ':hover:active': {
+      [`& .${tagClassNames.dismissIcon}`]: {
+        color: tokens.colorCompoundBrandForeground1Pressed,
+      },
+    },
+  },
+  brand: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
+    ':hover': {
+      cursor: 'pointer',
+      [`& .${tagClassNames.dismissIcon}`]: {
+        color: tokens.colorCompoundBrandForeground1Hover,
+      },
+    },
+    ':hover:active': {
+      [`& .${tagClassNames.dismissIcon}`]: {
+        color: tokens.colorCompoundBrandForeground1Pressed,
+      },
     },
   },
 
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    }),
   },
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderRadius(tokens.borderRadiusCircular),
-        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      },
-      { enableOutline: true },
-    ),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    }),
   },
 
   medium: {
@@ -82,6 +118,28 @@ const useRootStyles = makeStyles({
     height: '20px',
   },
 });
+
+const useRootDisabledStyles = makeStyles({
+  filled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
+  },
+  outline: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+  },
+  brand: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
+  },
+});
+
 /**
  * Styles for root slot when Tag is without leading media/icon
  */
@@ -220,6 +278,7 @@ export const useSecondaryTextStyles = makeStyles({
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
   const rootStyles = useRootStyles();
+  const rootDisabledStyles = useRootDisabledStyles();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
   const rootWithoutDismissStyles = useRootWithoutDismissStyles();
 
@@ -229,12 +288,14 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextStyles = useSecondaryTextStyles();
 
-  const { shape, size } = state;
+  const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
 
     rootStyles.base,
+
+    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
 
