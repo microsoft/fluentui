@@ -11,9 +11,10 @@ import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
-import { treeDataTypes } from '../../utils/tokens';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { TreeItemChevron } from '../TreeItemChevron';
+import { Space } from '@fluentui/keyboard-keys';
+import { treeDataTypes } from '../../utils/tokens';
 
 /**
  * Create the state required to render TreeItem.
@@ -60,12 +61,15 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     setAsideVisible(actionsElement === null);
   };
 
-  const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
-
   const actionsRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLDivElement>(null);
   const layoutRef = React.useRef<HTMLDivElement>(null);
   const subtreeRef = React.useRef<HTMLDivElement>(null);
+  const selectionRef = React.useRef<HTMLInputElement>(null);
+
+  const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
+  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
 
   const actionsRefs = useMergedRefs(
     isResolvedShorthand(actions) ? actions.ref : undefined,
@@ -87,6 +91,10 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromSubtree) {
       return;
     }
+    const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
+    if (isEventFromSelection) {
+      return;
+    }
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
     requestTreeResponse({
       event,
@@ -104,6 +112,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       return;
     }
     switch (event.key) {
+      case Space:
+        if (selectionMode !== 'none') {
+          selectionRef.current?.click();
+          event.preventDefault();
+        }
+        return;
       case treeDataTypes.End:
       case treeDataTypes.Home:
       case treeDataTypes.Enter:
@@ -142,6 +156,17 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (!isTargetFromSubtree) {
       return setActionsVisible(false);
     }
+  });
+
+  const handleChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
+    if (isEventFromSubtree) {
+      return;
+    }
+    requestTreeResponse({ event, value, itemType, type: 'Change', target: event.currentTarget });
   });
 
   const isBranch = itemType === 'branch';
@@ -189,6 +214,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       role: 'treeitem',
       'aria-level': level,
       [dataTreeItemValueAttrName]: value,
+      'aria-selected': selectionMode === 'none' ? undefined : checked,
       'aria-expanded': isBranch ? open : undefined,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
@@ -196,9 +222,23 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       onFocus: handleActionsVisible,
       onMouseOut: handleActionsInvisible,
       onBlur: handleActionsInvisible,
+      onChange: handleChange,
     }),
     actions: actionsSlot,
     aside: asideSlot,
     expandIcon: expandIconSlot,
+    selector:
+      selectionMode === 'none'
+        ? undefined
+        : resolveShorthand(selectionMode === 'multiselect' ? props.checkboxIndicator : props.radioIndicator, {
+            required: true,
+            defaultProps: {
+              checked,
+              tabIndex: -1,
+              'aria-hidden': true,
+              ref: selectionRef,
+              // onChange: handleChange,
+            },
+          }),
   };
 }

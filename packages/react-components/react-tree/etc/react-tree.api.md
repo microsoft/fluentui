@@ -13,6 +13,8 @@ import type { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import { ButtonContextValue } from '@fluentui/react-button';
+import type { Checkbox } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -24,7 +26,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
+import type { Radio } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -57,7 +62,7 @@ export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> & Part
 };
 
 // @public (undocumented)
-export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
+export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable' | 'checkedItems' | 'onCheckedChange'>> & {
     ref: React_2.Ref<HTMLDivElement>;
     openItems: ImmutableSet<TreeItemValue>;
 };
@@ -89,9 +94,11 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 // @public (undocumented)
 export type TreeContextValue = {
     level: number;
+    selectionMode: 'none' | SelectionMode_2;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
     openItems: ImmutableSet<TreeItemValue>;
+    checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
     requestTreeResponse(request: TreeItemRequest): void;
 };
 
@@ -168,6 +175,8 @@ export type TreeItemSlots = {
     actions?: Slot<ExtractSlotProps<Slot<'div'> & {
         visible?: boolean;
     }>>;
+    checkboxIndicator?: Slot<typeof Checkbox>;
+    radioIndicator?: Slot<typeof Radio>;
 };
 
 // @public
@@ -246,6 +255,10 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     defaultOpenItems?: Iterable<TreeItemValue>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
     onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    selectionMode?: SelectionMode_2;
+    checkedItems?: Iterable<TreeItemValue | [TreeItemValue, MultiSelectValue]>;
+    defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, MultiSelectValue]>;
+    onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
 // @public (undocumented)

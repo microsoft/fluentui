@@ -1,10 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
-import { createNextOpenItems, useControllableOpenItems, useNestedTreeNavigation } from '../../hooks';
+import { SelectionMode, getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  TreeOpenChangeData,
+  TreeProps,
+  TreeState,
+  TreeNavigationData_unstable,
+  TreeCheckedChangeData,
+} from './Tree.types';
+import { useNestedControllableCheckedItems, useControllableOpenItems, useNestedTreeNavigation } from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
 import { TreeItemRequest } from '../../contexts';
+import { ImmutableSet } from '../../utils/ImmutableSet';
+import { TreeItemValue } from '../TreeItem/TreeItem.types';
+import { ImmutableMap } from '../../utils/ImmutableMap';
 
 /**
  * Create the state required to render the root level Tree.
@@ -15,10 +24,11 @@ import { TreeItemRequest } from '../../contexts';
 export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   warnIfNoProperPropsRootTree(props);
 
-  const { appearance = 'subtle', size = 'medium' } = props;
+  const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
   const [openItems, setOpenItems] = useControllableOpenItems(props);
 
+  const [checkedItems, setCheckedItems] = useNestedControllableCheckedItems(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
   const requestOpenChange = (data: Omit<TreeOpenChangeData, 'openItems'>) => {
@@ -28,6 +38,18 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
       return;
     }
     return setOpenItems(nextOpenItems);
+  };
+
+  const requestCheckedChange = (data: Omit<TreeCheckedChangeData, 'checkedItems'>) => {
+    const nextCheckedItems = createNextCheckedItems(data, checkedItems);
+    props.onCheckedChange?.(data.event, {
+      ...data,
+      checkedItems: nextCheckedItems,
+    } as TreeCheckedChangeData);
+    if (data.event.isDefaultPrevented()) {
+      return;
+    }
+    return setCheckedItems(nextCheckedItems);
   };
 
   const requestNavigation = (data: TreeNavigationData_unstable) => {
@@ -77,6 +99,14 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
       case treeDataTypes.ArrowDown:
       case treeDataTypes.TypeAhead:
         return requestNavigation({ ...request, target: request.event.currentTarget });
+      case treeDataTypes.Change: {
+        const previousCheckedValue = checkedItems.get(request.value);
+        return requestCheckedChange({
+          ...request,
+          selectionMode: selectionMode as SelectionMode,
+          checked: previousCheckedValue === 'mixed' ? true : !previousCheckedValue,
+        });
+      }
     }
   });
 
@@ -84,15 +114,18 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     components: {
       root: 'div',
     },
+    selectionMode,
     open: true,
     appearance,
     size,
     level: 1,
     openItems,
+    checkedItems,
     requestTreeResponse,
     root: getNativeElementProps('div', {
       ref: useMergedRefs(navigationRef, ref),
       role: 'tree',
+      'aria-multiselectable': selectionMode === 'multiselect',
       ...props,
     }),
   };
@@ -105,4 +138,28 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
       console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
     }
   }
+}
+
+function createNextOpenItems(
+  data: Pick<TreeOpenChangeData, 'value' | 'open'>,
+  previousOpenItems: ImmutableSet<TreeItemValue>,
+): ImmutableSet<TreeItemValue> {
+  if (data.value === null) {
+    return previousOpenItems;
+  }
+  const previousOpenItemsHasId = previousOpenItems.has(data.value);
+  if (data.open ? previousOpenItemsHasId : !previousOpenItemsHasId) {
+    return previousOpenItems;
+  }
+  const nextOpenItems = ImmutableSet.create(previousOpenItems);
+  return data.open ? nextOpenItems.add(data.value) : nextOpenItems.delete(data.value);
+}
+
+function createNextCheckedItems(
+  data: Pick<TreeCheckedChangeData, 'value' | 'checked'>,
+  previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
+): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
+  // eslint-disable-next-line no-console
+  console.warn('useTree: createNextCheckedItems not implemented yet');
+  return previousCheckedItems;
 }

@@ -5,6 +5,8 @@ import { treeDataTypes } from '../utils/tokens';
 import { useFlatTreeNavigation } from './useFlatTreeNavigation';
 import { useControllableOpenItems } from './useControllableOpenItems';
 import type {
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,
@@ -14,6 +16,7 @@ import type {
 import type { TreeItemProps, TreeItemValue } from '../TreeItem';
 import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
 import { ImmutableSet } from '../utils/ImmutableSet';
+import { useNestedControllableCheckedItems } from './useNestedCheckedItemsState';
 
 export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> &
   Partial<Pick<TreeItemProps, 'itemType'>> & {
@@ -35,7 +38,9 @@ export type FlatTreeItem<Props extends FlatTreeItemProps = FlatTreeItemProps> = 
     Omit<Props, 'parentId'>;
 };
 
-export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
+export type FlatTreeProps = Required<
+  Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable' | 'checkedItems' | 'onCheckedChange'>
+> & {
   ref: React.Ref<HTMLDivElement>;
   openItems: ImmutableSet<TreeItemValue>;
 };
@@ -102,7 +107,17 @@ export type FlatTree<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
   items(): IterableIterator<FlatTreeItem<Props>>;
 };
 
-type FlatTreeOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'>;
+type FlatTreeOptions = Pick<
+  TreeProps,
+  | 'openItems'
+  | 'defaultOpenItems'
+  | 'onOpenChange'
+  | 'onNavigation_unstable'
+  | 'selectionMode'
+  | 'checkedItems'
+  | 'defaultCheckedItems'
+  | 'onCheckedChange'
+>;
 
 /**
  * this hook provides FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems
@@ -122,6 +137,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
 ): FlatTree<Props> {
   const flatTreeItems = React.useMemo(() => createFlatTreeItems(flatTreeItemProps), [flatTreeItemProps]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
+  const [checkedItems, setCheckedItems] = useNestedControllableCheckedItems(options);
   const [navigate, navigationRef] = useFlatTreeNavigation(flatTreeItems);
   const treeRef = React.useRef<HTMLDivElement>(null);
 
@@ -129,6 +145,14 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
     options.onOpenChange?.(event, data);
     if (!event.isDefaultPrevented()) {
       setOpenItems(data.openItems);
+    }
+    event.preventDefault();
+  });
+
+  const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
+    options.onCheckedChange?.(event, data);
+    if (!event.isDefaultPrevented()) {
+      setCheckedItems(data.checkedItems);
     }
     event.preventDefault();
   });
@@ -177,12 +201,14 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
     () => ({
       ref,
       openItems,
+      checkedItems,
       onOpenChange: handleOpenChange,
+      onCheckedChange: handleCheckedChange,
       // eslint-disable-next-line @typescript-eslint/naming-convention
       onNavigation_unstable: handleNavigation,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [openItems],
+    [openItems, checkedItems],
   );
 
   const items = React.useCallback(
