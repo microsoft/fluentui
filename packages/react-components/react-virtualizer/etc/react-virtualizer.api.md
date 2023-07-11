@@ -72,7 +72,7 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
 };
 
 // @public
-export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined) => {
+export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit) => {
     setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
     setObserverInit: Dispatch<SetStateAction<IntersectionObserverInit | undefined>>;
     observer: MutableRefObject<IntersectionObserver | undefined>;

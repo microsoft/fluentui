@@ -50,7 +50,9 @@ describe('DatePicker', () => {
   isConformant({
     Component: DatePicker,
     displayName: 'DatePicker',
-    disabledTests: ['consistent-callback-args'],
+    // component-has-root-ref is disabled because the root is an Input component, the conformance test thinks the
+    // wrapper is the root, not the input itself. This is a bug in the conformance test.
+    disabledTests: ['consistent-callback-args', 'component-has-root-ref'],
     testOptions: {
       'has-static-classnames': [
         {

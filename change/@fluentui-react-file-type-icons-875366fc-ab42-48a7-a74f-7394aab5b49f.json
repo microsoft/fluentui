@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(react-file-type-icons): add getFileTypeIconAsUrl to allow icons usage in React without global initialization",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "alinazaieva@microsoft.com",
-  "dependentChangeType": "patch"
-}

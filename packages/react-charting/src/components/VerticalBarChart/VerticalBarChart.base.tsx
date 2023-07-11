@@ -53,7 +53,6 @@ export interface IVerticalBarChartState extends IBasestate {
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -91,7 +90,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       YValueHover: [],
       hoverXValue: '',
       calloutLegend: '',
-      emptyChart: false,
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
@@ -102,16 +100,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
     this._domainMargin = MIN_DOMAIN_MARGIN;
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty =
-      this.state.emptyChart ||
-      this._points.length === 0 ||
-      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
   }
 
   public render(): JSX.Element {
@@ -150,7 +138,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._points}
@@ -192,7 +180,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         }}
       />
     ) : (
-      <div id={getId('_VBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_VBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -821,4 +814,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return (
+      this._points.length === 0 ||
+      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
+    );
+  }
 }

@@ -1,45 +1,42 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button } from '@fluentui/react-components';
+import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
   const toastId = useId('toast');
   const toasterId = useId('toaster');
-  const [dispatched, setDispatched] = React.useState(false);
+  const [unmounted, setUnmounted] = React.useState(true);
 
   const { dispatchToast, updateToast } = useToastController(toasterId);
-  const notify = () =>
+  const notify = () => {
     dispatchToast(
       <Toast>
-        <ToastTitle intent="warning">This toast never closes</ToastTitle>
+        <ToastTitle>This toast never closes</ToastTitle>
       </Toast>,
-      { toastId, timeout: -1 },
+      {
+        toastId,
+        intent: 'warning',
+        timeout: -1,
+        onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted'),
+      },
     );
+    setUnmounted(false);
+  };
   const update = () =>
     updateToast({
       content: (
         <Toast>
-          <ToastTitle intent="success">This toast will close soon</ToastTitle>
+          <ToastTitle>This toast will close soon</ToastTitle>
         </Toast>
       ),
+      intent: 'success',
       toastId,
       timeout: 2000,
     });
 
-  const onClick = () => {
-    if (dispatched) {
-      update();
-      setDispatched(false);
-    } else {
-      notify();
-      setDispatched(true);
-    }
-  };
-
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <Button onClick={onClick}>{dispatched ? 'Update toast' : 'Make toast'}</Button>
+      <Button onClick={unmounted ? notify : update}>{unmounted ? 'Make toast' : 'Update toast'}</Button>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button } from '@fluentui/react-components';
+import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
 export const PauseOnWindowBlur = () => {
   const toasterId = useId('toaster');
@@ -8,9 +7,9 @@ export const PauseOnWindowBlur = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="info">Click on another window!</ToastTitle>
+        <ToastTitle>Click on another window!</ToastTitle>
       </Toast>,
-      { pauseOnWindowBlur: true },
+      { pauseOnWindowBlur: true, intent: 'info' },
     );
 
   return (

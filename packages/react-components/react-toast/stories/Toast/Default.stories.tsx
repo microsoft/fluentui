@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { Toaster, useToastController, Toast, ToastTitle, ToastBody, ToastFooter } from '@fluentui/react-toast';
-import { useId, Link, Button } from '@fluentui/react-components';
+import {
+  useId,
+  Link,
+  Button,
+  Toaster,
+  useToastController,
+  Toast,
+  ToastTitle,
+  ToastBody,
+  ToastFooter,
+} from '@fluentui/react-components';
 
 export const Default = () => {
   const toasterId = useId('toaster');
@@ -8,15 +17,14 @@ export const Default = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="success" action={<Link>Undo</Link>}>
-          Email sent
-        </ToastTitle>
+        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
           <Link>Action</Link>
           <Link>Action</Link>
         </ToastFooter>
       </Toast>,
+      { intent: 'success' },
     );
 
   return (

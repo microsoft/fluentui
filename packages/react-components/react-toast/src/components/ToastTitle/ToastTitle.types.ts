@@ -1,4 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
+import { ToastContainerContextValue } from '../../contexts/toastContainerContext';
 
 export type ToastTitleSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -9,15 +11,12 @@ export type ToastTitleSlots = {
 /**
  * ToastTitle Props
  */
-export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {
-  /**
-   * The intent prop, if present, determines the icon to be rendered in the icon slot. The icon prop
-   * overrides the intent prop
-   */
-  intent?: 'info' | 'success' | 'error' | 'warning';
-};
+export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};
 
 /**
  * State used in rendering ToastTitle
  */
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Required<Pick<ToastTitleProps, 'intent'>>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> &
+  Pick<ToastContainerContextValue, 'intent'> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+  };

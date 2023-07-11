@@ -4,9 +4,13 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
+import { InputState } from '@fluentui/react-input';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,18 +25,22 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
 // @public
-export type SearchBoxProps = ComponentProps<SearchBoxSlots> & {};
+export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
 
 // @public (undocumented)
 export type SearchBoxSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<typeof Input>>;
+    dismiss?: Slot<'span'>;
+    contentAfter?: Slot<'span'>;
 };
 
 // @public
-export type SearchBoxState = ComponentState<SearchBoxSlots>;
+export type SearchBoxState = ComponentState<SearchBoxSlots> & Required<Pick<InputState, 'size'>> & Required<Pick<SearchBoxProps, 'disabled'>> & {
+    focused: boolean;
+};
 
 // @public
-export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLElement>) => SearchBoxState;
+export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLInputElement>) => SearchBoxState;
 
 // @public
 export const useSearchBoxStyles_unstable: (state: SearchBoxState) => SearchBoxState;

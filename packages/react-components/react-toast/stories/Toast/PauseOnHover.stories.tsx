@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button } from '@fluentui/react-components';
+import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
 export const PauseOnHover = () => {
   const toasterId = useId('toaster');
@@ -8,9 +7,9 @@ export const PauseOnHover = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle intent="info">Hover me!</ToastTitle>
+        <ToastTitle>Hover me!</ToastTitle>
       </Toast>,
-      { pauseOnHover: true },
+      { pauseOnHover: true, intent: 'info' },
     );
 
   return (

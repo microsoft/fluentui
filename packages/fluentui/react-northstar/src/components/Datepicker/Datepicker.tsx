@@ -100,6 +100,14 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Controls the calendar's open state. */
   calendarOpenState?: boolean;
 
+  /**
+   * Called on change of the open state.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onCalendarOpenStateChange?: ComponentEventHandler<DatepickerProps>;
+
   /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
 
@@ -253,6 +261,21 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
       : '',
   );
 
+  const trySetOpenState = (
+    newValue: boolean,
+    event:
+      | React.SyntheticEvent
+      | React.KeyboardEvent
+      | React.MouseEvent
+      | KeyboardEvent
+      | MouseEvent
+      | TouchEvent
+      | WheelEvent,
+  ) => {
+    setOpenState(newValue);
+    _.invoke(props, 'onCalendarOpenStateChange', event, { ...props, ...{ calendarOpenState: newValue } });
+  };
+
   const calendarOptions: IDayGridOptions = {
     selectedDate,
     navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
@@ -274,10 +297,10 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
     actionHandlers: {
       open: e => {
         if (allowManualInput) {
-          setOpenState(!openState);
+          trySetOpenState(!openState, e);
         } else {
           // Keep popup open in case we can only enter the date through calendar.
-          setOpenState(true);
+          trySetOpenState(true, e);
         }
 
         e.preventDefault();
@@ -309,7 +332,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
     onDateChange: (e, itemProps) => {
       const targetDay = itemProps.value;
       setSelectedDate(targetDay.originalDate);
-      setOpenState(false);
+      trySetOpenState(false, e);
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
@@ -325,10 +348,10 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
   const overrideInputProps = (predefinedProps: InputProps): InputProps => ({
     onClick: (e): void => {
       if (allowManualInput) {
-        setOpenState(!openState);
+        trySetOpenState(!openState, e);
       } else {
         // Keep popup open in case we can only enter the date through calendar.
-        setOpenState(true);
+        trySetOpenState(true, e);
       }
 
       _.invoke(predefinedProps, 'onClick', e, predefinedProps);
@@ -415,7 +438,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
           onOpenChange: (e, { open }) => {
             // In case the event is a click on input, we ignore such events as it should be directly handled by input.
             if (!(e.type === 'click' && e.target === inputRef?.current)) {
-              setOpenState(open);
+              trySetOpenState(open, e);
               _.invoke(predefinedProps, 'onOpenChange', e, { open });
             }
           },
@@ -454,6 +477,7 @@ Datepicker.propTypes = {
   fallbackToLastCorrectDateOnBlur: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
   calendarOpenState: PropTypes.bool,
+  onCalendarOpenStateChange: PropTypes.func,
 
   selectedDate: PropTypes.instanceOf(Date),
   defaultSelectedDate: PropTypes.instanceOf(Date),

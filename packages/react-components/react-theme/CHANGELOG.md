@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Fri, 12 May 2023 20:27:56 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.9)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.8..@fluentui/react-theme_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.6 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
 
 ## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.8)
 

@@ -3,14 +3,14 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbDivider,
-  BreadcrumbProps,
   partitionBreadcrumbItems,
   BreadcrumbButton,
   truncateBreadcrumbLongName,
   truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
 } from '@fluentui/react-breadcrumb';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
-import { ArrowRight16Filled, MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
+import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-components';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -46,13 +46,18 @@ const items: Item[] = [
   },
 ];
 
-function renderItem(item: Item, size: BreadcrumbProps['size']) {
+function renderItem(item: Item) {
   const isLastItem = items.length - 1 === item.key;
   return (
-    <React.Fragment key={`${size}-item-${item.key}`}>
-      <Tooltip withArrow content={truncateBreadcrumLongTooltip(item.value)} relationship="label">
-        <BreadcrumbItem current={isLastItem}>{truncateBreadcrumbLongName(item.value)}</BreadcrumbItem>
-      </Tooltip>
+    <React.Fragment key={`item-${item.key}`}>
+      {isTruncatableBreadcrumbContent(item.value, 30) ? (
+        <Tooltip withArrow content={truncateBreadcrumLongTooltip(item.value)} relationship="label">
+          <BreadcrumbItem current={isLastItem}>{truncateBreadcrumbLongName(item.value)}</BreadcrumbItem>
+        </Tooltip>
+      ) : (
+        <BreadcrumbItem current={isLastItem}>{item.value}</BreadcrumbItem>
+      )}
+
       {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>
   );
@@ -66,8 +71,11 @@ export const Default = () => {
     });
   return (
     <>
+      <h2>BreadcrumbItem with truncated content</h2>
+      <Breadcrumb aria-label="breadcrumb-item-example">{items.map(item => renderItem(item))}</Breadcrumb>
+      <h2>BreadcrumbItem with overflow</h2>
       <Breadcrumb aria-label="breadcrumb-with-overflow">
-        {startDisplayedItems.map(item => renderItem(item, 'medium'))}
+        {startDisplayedItems.map(item => renderItem(item))}
         {overflowItems && (
           <BreadcrumbItem>
             <Tooltip withArrow content={getTooltipContent(overflowItems)} relationship="label">
@@ -75,16 +83,7 @@ export const Default = () => {
             </Tooltip>
           </BreadcrumbItem>
         )}
-        {endDisplayedItems && endDisplayedItems.map(item => renderItem(item, 'medium'))}
-      </Breadcrumb>
-      <Breadcrumb>
-        <BreadcrumbItem>Item with custom divider</BreadcrumbItem>
-        <BreadcrumbDivider>
-          <ArrowRight16Filled />
-        </BreadcrumbDivider>
-        <BreadcrumbItem>Item</BreadcrumbItem>
-        <BreadcrumbDivider />
-        <BreadcrumbItem current>Item</BreadcrumbItem>
+        {endDisplayedItems && endDisplayedItems.map(item => renderItem(item))}
       </Breadcrumb>
     </>
   );
