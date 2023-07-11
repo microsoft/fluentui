@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Spinner } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecoratorNoAnimation, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners
@@ -12,6 +12,7 @@ const InvertedWrapper: React.FC = ({ children }) => {
 };
 
 storiesOf('Spinner converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(TestWrapperDecoratorNoAnimation)
   .addStory('Primary', () => <Spinner className="test-class" />, {
     includeHighContrast: true,
