@@ -4,13 +4,8 @@ import { chartPoints } from './HorizontalBarChart.test';
 import { HorizontalBarChart } from './index';
 
 describe('Horizontal Bar chart rendering', () => {
-  beforeEach(() => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-  });
-  afterEach(() => {
-    jest.spyOn(global.Math, 'random').mockRestore();
-  });
   test('Should re-render the Horizontal Bar chart with data', async () => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
     // Arrange
     const { container, rerender } = render(<HorizontalBarChart data={[]} />);
     const getById = queryAllByAttribute.bind(null, 'id');
@@ -23,6 +18,7 @@ describe('Horizontal Bar chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
       expect(getById(container, /_HBC_empty/i)).toHaveLength(0);
+      jest.spyOn(global.Math, 'random').mockRestore();
     });
   });
 });
