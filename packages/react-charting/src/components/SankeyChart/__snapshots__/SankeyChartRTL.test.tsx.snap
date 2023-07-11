@@ -2321,7 +2321,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 1`] 
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_SankeyChart_empty88"
+    id="_SankeyChart_empty2"
     role="alert"
     style="opacity: 0;"
   />
@@ -2354,12 +2354,12 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone138"
+      data-focuszone-id="FocusZone52"
     >
       <svg
         focusable="false"
         height="436"
-        id="sankeyChart137"
+        id="sankeyChart51"
         width="864"
       >
         <g
@@ -2378,7 +2378,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-0"
+                id="gradient-link1-0"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2399,7 +2399,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link125"
+              id="link39"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2410,7 +2410,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-1"
+                id="gradient-link1-1"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2431,7 +2431,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link126"
+              id="link40"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2442,7 +2442,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-2"
+                id="gradient-link1-2"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2463,7 +2463,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link127"
+              id="link41"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2474,7 +2474,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-3"
+                id="gradient-link1-3"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2495,7 +2495,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link128"
+              id="link42"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2506,7 +2506,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-4"
+                id="gradient-link1-4"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2527,7 +2527,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link129"
+              id="link43"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2538,7 +2538,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-5"
+                id="gradient-link1-5"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2559,7 +2559,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link130"
+              id="link44"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2570,7 +2570,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-6"
+                id="gradient-link1-6"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2591,7 +2591,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link131"
+              id="link45"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2602,7 +2602,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-7"
+                id="gradient-link1-7"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2623,7 +2623,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link132"
+              id="link46"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2634,7 +2634,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-8"
+                id="gradient-link1-8"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2655,7 +2655,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link133"
+              id="link47"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2666,7 +2666,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-9"
+                id="gradient-link1-9"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2687,7 +2687,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link134"
+              id="link48"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2698,7 +2698,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-10"
+                id="gradient-link1-10"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2719,7 +2719,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link135"
+              id="link49"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2730,7 +2730,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           <g>
             <defs>
               <lineargradient
-                id="gradient-link87-11"
+                id="gradient-link1-11"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2751,7 +2751,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link136"
+              id="link50"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -2771,14 +2771,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               }
         >
           <g
-            id="nodeGElement91"
+            id="nodeGElement5"
           >
             <rect
               aria-label="node192.168.42.72with weight80"
               data-is-focusable="true"
               fill="#8764B8"
               height="129.31506849315068"
-              id="nodeBar90"
+              id="nodeBar4"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -2811,7 +2811,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar90-name"
+                  id="nodeBar4-name"
                   text-anchor="start"
                   x="48"
                   y="36"
@@ -2835,14 +2835,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement94"
+            id="nodeGElement8"
           >
             <rect
               aria-label="node172.152.48.13with weight78"
               data-is-focusable="true"
               fill="#8764B8"
               height="126.08219178082172"
-              id="nodeBar93"
+              id="nodeBar7"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -2875,7 +2875,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar93-name"
+                  id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
                   y="173.31506849315068"
@@ -2899,14 +2899,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement97"
+            id="nodeGElement11"
           >
             <rect
               aria-label="node124.360.55.1with weight14"
               data-is-focusable="true"
               fill="#8764B8"
               height="22.630136986301352"
-              id="nodeBar96"
+              id="nodeBar10"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -2918,14 +2918,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             />
           </g>
           <g
-            id="nodeGElement100"
+            id="nodeGElement14"
           >
             <rect
               aria-label="node192.564.10.2with weight27"
               data-is-focusable="true"
               fill="#8764B8"
               height="43.643835616438366"
-              id="nodeBar99"
+              id="nodeBar13"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -2958,7 +2958,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar99-name"
+                  id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
                   y="362.1917808219178"
@@ -2982,14 +2982,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement103"
+            id="nodeGElement17"
           >
             <rect
               aria-label="node124.124.50.1with weight10"
               data-is-focusable="true"
               fill="#8764B8"
               height="16.16438356164383"
-              id="nodeBar102"
+              id="nodeBar16"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -3001,14 +3001,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             />
           </g>
           <g
-            id="nodeGElement106"
+            id="nodeGElement20"
           >
             <rect
               aria-label="node172.630.89.4with weight10"
               data-is-focusable="true"
               fill="#8764B8"
               height="16.16438356164383"
-              id="nodeBar105"
+              id="nodeBar19"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -3020,14 +3020,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             />
           </g>
           <g
-            id="nodeGElement109"
+            id="nodeGElement23"
           >
             <rect
               aria-label="nodeinboxwith weight130"
               data-is-focusable="true"
               fill="#0E7878"
               height="210.13698630136994"
-              id="nodeBar108"
+              id="nodeBar22"
               opacity="1"
               role="img"
               stroke="#004E4E"
@@ -3060,7 +3060,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar108-name"
+                  id="nodeBar22-name"
                   text-anchor="start"
                   x="393.5"
                   y="37.68645072950067"
@@ -3084,14 +3084,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement112"
+            id="nodeGElement26"
           >
             <rect
               aria-label="nodeJunk Folderwith weight69"
               data-is-focusable="true"
               fill="#0E7878"
               height="111.53424657534248"
-              id="nodeBar111"
+              id="nodeBar25"
               opacity="1"
               role="img"
               stroke="#004E4E"
@@ -3124,7 +3124,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar111-name"
+                  id="nodeBar25-name"
                   text-anchor="start"
                   x="393.5"
                   y="270.8534770168133"
@@ -3148,14 +3148,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement115"
+            id="nodeGElement29"
           >
             <rect
               aria-label="nodeDeleted Folderwith weight20"
               data-is-focusable="true"
               fill="#0E7878"
               height="32.32876712328766"
-              id="nodeBar114"
+              id="nodeBar28"
               opacity="1"
               role="img"
               stroke="#004E4E"
@@ -3188,7 +3188,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar114-name"
+                  id="nodeBar28-name"
                   text-anchor="start"
                   x="393.5"
                   y="390.3877235921558"
@@ -3212,14 +3212,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement118"
+            id="nodeGElement32"
           >
             <rect
               aria-label="nodeClickedwith weight30"
               data-is-focusable="true"
               fill="#4F6BED"
               height="48.49315068493148"
-              id="nodeBar117"
+              id="nodeBar31"
               opacity="1"
               role="img"
               stroke="#3B52B4"
@@ -3252,7 +3252,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar117-name"
+                  id="nodeBar31-name"
                   text-anchor="start"
                   x="739"
                   y="36"
@@ -3276,14 +3276,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement121"
+            id="nodeGElement35"
           >
             <rect
               aria-label="nodeOpenedwith weight55"
               data-is-focusable="true"
               fill="#4F6BED"
               height="88.90410958904114"
-              id="nodeBar120"
+              id="nodeBar34"
               opacity="1"
               role="img"
               stroke="#3B52B4"
@@ -3316,7 +3316,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar120-name"
+                  id="nodeBar34-name"
                   text-anchor="start"
                   x="739"
                   y="92.49315068493148"
@@ -3340,14 +3340,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement124"
+            id="nodeGElement38"
           >
             <rect
               aria-label="node No further action  requiredwith weight62"
               data-is-focusable="true"
               fill="#4F6BED"
               height="100.21917808219177"
-              id="nodeBar123"
+              id="nodeBar37"
               opacity="1"
               role="img"
               stroke="#3B52B4"
@@ -3380,7 +3380,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar123-name"
+                  id="nodeBar37-name"
                   text-anchor="start"
                   x="739"
                   y="271.54289868025126"
