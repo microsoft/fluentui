@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Calendar): Add focus styles to CalendarPicker's go to today button.",
-  "packageName": "@fluentui/react",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

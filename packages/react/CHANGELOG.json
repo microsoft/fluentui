@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 10 Jul 2023 07:35:07 GMT",
+      "tag": "@fluentui/react_v8.110.8",
+      "version": "8.110.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "9dc6601a3f222e0a339541cc1523a356a78c59e6",
+            "comment": "fix(Calendar): Add focus styles to CalendarPicker's go to today button."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Jun 2023 07:35:33 GMT",
       "tag": "@fluentui/react_v8.110.7",
       "version": "8.110.7",

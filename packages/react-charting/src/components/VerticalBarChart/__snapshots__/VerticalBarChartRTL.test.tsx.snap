@@ -26,6 +26,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
+          {
+            overflow: auto;
+          }
       data-focuszone-id="FocusZone494"
     >
       <svg
@@ -446,6 +449,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           ms-FocusZone
           &:focus {
             outline: none;
+          }
+          {
+            overflow: auto;
           }
       data-focuszone-id="FocusZone499"
     >
@@ -881,6 +887,9 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
+            {
+              overflow: auto;
+            }
         data-focuszone-id="FocusZone507"
       >
         <svg
@@ -1303,6 +1312,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
+          {
+            overflow: auto;
+          }
       data-focuszone-id="FocusZone37"
     >
       <svg
@@ -1723,6 +1735,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           ms-FocusZone
           &:focus {
             outline: none;
+          }
+          {
+            overflow: auto;
           }
       data-focuszone-id="FocusZone42"
     >
@@ -2223,6 +2238,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
@@ -2931,6 +2949,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3557,6 +3578,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone37"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4006,6 +4030,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
@@ -4457,6 +4484,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4887,6 +4917,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4996,6 +5029,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone12"
     onFocus={[Function]}
@@ -5447,6 +5483,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone22"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -5897,6 +5936,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -6346,6 +6388,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone32"
     onFocus={[Function]}
