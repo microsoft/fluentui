@@ -28,7 +28,7 @@ export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
 
     return (
       <FocusZone direction={FocusZoneDirection.domOrder}>
-        <svg width={width} height={height} aria-label={chartTitle} role="application">
+        <svg width={width} height={height} aria-label={chartTitle}>
           <g transform={translate}>
             {piechart.map((d: IArcData, i: number) => (
               <LabeledArc
@@ -42,7 +42,7 @@ export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
                 onPieFocused={this._onPieFocused}
               />
             ))}
-            <use xlinkHref={`#${this.state.focusedPie}`} />
+            <use xlinkHref={`#${this.state.focusedPie}`} aria-hidden={true} tabIndex={-1} data-if-focusable={false} />
           </g>
         </svg>
       </FocusZone>
