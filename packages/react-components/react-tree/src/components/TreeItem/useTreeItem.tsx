@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  isResolvedShorthand,
+  resolveShorthand,
+  useControllableState,
+  useId,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
-import type { TreeItemProps, TreeItemState } from './TreeItem.types';
+import type { TreeItemProps, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
 import { treeDataTypes } from '../../utils/tokens';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
+import { TreeItemChevron } from '../TreeItemChevron';
 
 /**
  * Create the state required to render TreeItem.
@@ -21,15 +29,35 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const value = useId('fuiTreeItemValue-', props.value?.toString());
 
-  const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
+  const {
+    onClick,
+    onKeyDown,
+    as = 'div',
+    itemType = 'leaf',
+    'aria-level': level = contextLevel,
+    expandIcon,
+    aside,
+    ...rest
+  } = props;
 
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
-  const [isActionsVisible, setActionsVisible] = React.useState(false);
+  const [isActionsVisibleExternal, actions]: [boolean | undefined, TreeItemSlots['actions']] = isResolvedShorthand(
+    props.actions,
+  )
+    ? // .visible prop should not be propagated to the DOM
+      [props.actions.visible, { ...props.actions, visible: undefined }]
+    : [undefined, props.actions];
+
+  const [isActionsVisible, setActionsVisible] = useControllableState({
+    state: isActionsVisibleExternal,
+    defaultState: false,
+    initialState: false,
+  });
   const [isAsideVisible, setAsideVisible] = React.useState(true);
 
-  const handleActionsRef = (actions: HTMLDivElement | null) => {
-    setAsideVisible(actions === null);
+  const handleActionsRef = (actionsElement: HTMLDivElement | null) => {
+    setAsideVisible(actionsElement === null);
   };
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
@@ -38,6 +66,13 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const expandIconRef = React.useRef<HTMLDivElement>(null);
   const layoutRef = React.useRef<HTMLDivElement>(null);
   const subtreeRef = React.useRef<HTMLDivElement>(null);
+
+  const actionsRefs = useMergedRefs(
+    isResolvedShorthand(actions) ? actions.ref : undefined,
+    handleActionsRef,
+    actionsRef,
+  );
+  const expandIconRefs = useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -110,16 +145,40 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     }
   });
 
+  const isBranch = itemType === 'branch';
+
+  const actionsSlot = React.useMemo(
+    () => (isActionsVisible ? resolveShorthand(actions) : undefined),
+    [actions, isActionsVisible],
+  );
+  if (actionsSlot) {
+    actionsSlot.ref = actionsRefs;
+  }
+  const asideSlot = React.useMemo(
+    () => (isAsideVisible ? resolveShorthand(aside) : undefined),
+    [aside, isAsideVisible],
+  );
+  const expandIconSlot = React.useMemo(
+    () =>
+      resolveShorthand(expandIcon, {
+        required: isBranch,
+        defaultProps: {
+          children: <TreeItemChevron />,
+          'aria-hidden': true,
+        },
+      }),
+    [expandIcon, isBranch],
+  );
+  if (expandIconSlot) {
+    expandIconSlot.ref = expandIconRefs;
+  }
+
   return {
     value,
     open,
     subtreeRef,
-    actionsRef: useMergedRefs(actionsRef, handleActionsRef),
-    expandIconRef,
     layoutRef,
     itemType,
-    isActionsVisible,
-    isAsideVisible,
     level,
     components: {
       root: 'div',
@@ -131,7 +190,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       role: 'treeitem',
       'aria-level': level,
       [dataTreeItemValueAttrName]: value,
-      'aria-expanded': itemType === 'branch' ? open : undefined,
+      'aria-expanded': isBranch ? open : undefined,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
       onMouseOver: handleActionsVisible,
@@ -139,5 +198,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       onMouseOut: handleActionsInvisible,
       onBlur: handleActionsInvisible,
     }),
+    actions: actionsSlot,
+    aside: asideSlot,
+    expandIcon: expandIconSlot,
   };
 }
