@@ -74,7 +74,7 @@ export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> & Requ
 
 // @public
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-    appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+    appearance?: 'filled' | 'outline' | 'brand';
     disabled?: boolean;
     dismissible?: boolean;
     shape?: 'rounded' | 'circular';

@@ -13,8 +13,6 @@ Workspace Generator for package.json dependencies normalization.
   - [Examples](#examples)
 - [Options](#options)
   - [`verify`](#verify)
-  - [`projectType`](#projecttype)
-  - [`tag`](#tag)
 
 <!-- tocstop -->
 
@@ -40,16 +38,4 @@ yarn nx workspace-generator normalize-package-dependencies
 
 #### `verify`
 
-Run generator in check(verification mode). Verify package.json dependencies for all projects or filtered projects (if filters are applied)
-
-#### `projectType`
-
-Type: `application | library | any`
-
-Filter flag. Use to apply generator execution only on projects that contain provided `projectType` within their `project.json#projectType`.
-
-#### `tag`
-
-Type: `string`
-
-Filter flag. Use to apply generator execution only on projects that contain provided tag within their `project.json#tags`.
+Run generator in check(verification mode). Verify package.json dependencies for all projects.
