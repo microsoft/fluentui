@@ -39,7 +39,7 @@ export const styles = css`
     color: ${colorNeutralForeground3};
     padding: 12px;
   }
-  :host .day:not(.today):hover {
+  :host .day:not(.today, .selected):hover {
     background: #eff6fc;
     color: ${colorNeutralForeground2};
   }
@@ -48,10 +48,11 @@ export const styles = css`
     color: ${colorNeutralForeground2};
   }
   :host .title {
+    position: inline;
     font-size: var(--type-ramp-plus3-font-size);
     line-height: var(--type-ramp-plus3-line-height);
-    padding: var(--cell-padding);
-    text-align: center;
+    padding: ${spacingHorizontalM};
+    text-align: left;
   }
   :host .week-days,
   .week {
@@ -70,6 +71,7 @@ export const styles = css`
     border-bottom: var(--cell-border);
     border-right: var(--cell-border);
     padding: var(--cell-padding);
+    border-radius: 4px;
   }
   :host .week-day {
     text-align: center;
@@ -100,9 +102,8 @@ export const styles = css`
     outline: var(--disabled-day-outline);
   }
   :host .day.selected {
-    color: ${colorNeutralForegroundInverted};
-    background: ${colorCompoundBrandBackground};
-    outline: var(--selected-day-outline);
+    color: ${colorNeutralForeground2};
+    background: ${colorBrandStroke2};
   }
   :host .date {
     text-align: center;
@@ -114,10 +115,29 @@ export const styles = css`
   .today {
     color: ${colorNeutralForegroundInverted};
     background: ${colorCompoundBrandBackground};
+    border-radius: 50%;
   }
   :host .today.inactive .date {
     background: transparent;
     color: inherit;
     width: auto;
+  }
+  :host .navicon-container {
+    display: flex;
+  }
+  :host .navicon-left,
+  .navicon-right {
+    padding: ${spacingVerticalXS};
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: auto 0;
+  }
+  :host .header {
+    width: 248px;
+    height: 41px;
+    display: flex;
+    justify-content: space-between;
   }
 `;

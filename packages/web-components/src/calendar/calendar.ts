@@ -116,4 +116,39 @@ export class Calendar extends FASTCalendar {
    */
   @attr({ attribute: 'highlight-selected-month', mode: 'boolean' })
   public highlightSelectedMonth?: boolean = false;
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+    this.addEventListener('dateselected', this.dateSelectedHandler);
+  }
+
+  public disconnectedCallback() {
+    this.removeEventListener('dateselected', this.dateSelectedHandler);
+    super.disconnectedCallback();
+  }
+
+  public dateSelectedHandler(event: any) {
+    const { day, month, year } = event.detail;
+    const selected_date_string = `${month}-${day}-${year}`;
+
+    if (this.calendarType === 'range-picker') {
+      if (!this.dateInString(selected_date_string, this.selectedDates)) {
+        this.selectedDates += `${month}-${day}-${year},`;
+      }
+    } else {
+      this.selectedDates = `${month}-${day}-${year},`;
+    }
+
+    console.log(this.selectedDates);
+  }
+
+  public prevMonthHandler(event: MouseEvent) {
+    this.month = this.getMonthInfo().previous.month;
+    this.year = this.getMonthInfo().previous.year;
+  }
+
+  public nextMonthHandler(event: MouseEvent) {
+    this.month = this.getMonthInfo().next.month;
+    this.year = this.getMonthInfo().next.year;
+  }
 }
