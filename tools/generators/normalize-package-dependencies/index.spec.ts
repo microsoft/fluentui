@@ -150,8 +150,26 @@ describe('normalize-package-dependencies generator', () => {
       `);
       expect(infoLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "All these dependencies version should be specified as '*'",
+          "All these dependencies version should be specified as '*' or '>=9.0.0-alpha' ",
           "Fix this by running 'nx workspace-generator normalize-package-dependencies'",
+        ]
+      `);
+    });
+
+    it(`should report if prerelease package range changed to normal release version`, async () => {
+      await generator(tree, {});
+
+      updateProject(tree, { projectName: 'react-four', version: '0.1.0' });
+
+      await expect(generator(tree, { verify: true })).rejects.toThrowErrorMatchingInlineSnapshot(
+        `"package dependency violations found"`,
+      );
+
+      expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
+        Array [
+          "@proj/react-app has following dependency version issues:",
+          "  - @proj/react-four@>=9.0.0-alpha",
+          "",
         ]
       `);
     });
@@ -179,6 +197,30 @@ describe('normalize-package-dependencies generator', () => {
       expect(reactApp.devDependencies).toEqual({
         '@proj/build-tool': '*',
       });
+    });
+
+    it(`should check and update dependencies that already use pre-release range but might changed to versioning policy`, async () => {
+      await generator(tree, {});
+
+      let { reactApp } = getPackageJsonForAllProjects(tree);
+
+      expect(reactApp.dependencies).toEqual(
+        expect.objectContaining({
+          '@proj/react-four': '>=9.0.0-alpha',
+        }),
+      );
+
+      updateProject(tree, { projectName: 'react-four', version: '0.1.0' });
+
+      await generator(tree, {});
+
+      reactApp = getPackageJsonForAllProjects(tree).reactApp;
+
+      expect(reactApp.dependencies).toEqual(
+        expect.objectContaining({
+          '@proj/react-four': '*',
+        }),
+      );
     });
   });
 
@@ -232,6 +274,24 @@ function getPackageJsonForAllProjects(tree: Tree) {
     reactThree: readJson<PackageJson>(tree, joinPathFragments(reactThree!.root, 'package.json')),
     reactApp: readJson<PackageJson>(tree, joinPathFragments(reactApp!.root, 'package.json')),
   };
+}
+
+function updateProject(
+  tree: Tree,
+  options: {
+    projectName: string;
+    version: string;
+  },
+) {
+  const { projectName, version } = options;
+  const packageName = `@proj/${projectName}`;
+  const project = readProjectConfiguration(tree, packageName);
+  updateJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'), json => {
+    json.version = version;
+    return json;
+  });
+
+  return tree;
 }
 
 function createProject(

@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { getByClass, getById, testScreenResolution, testWithWait, testWithoutWait } from '../../utilities/TestUtility';
+import {
+  getByClass,
+  getById,
+  testScreenResolutionChanges,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility';
 import { MultiStackedBarChart } from './MultiStackedBarChart';
 import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps } from './index';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
@@ -301,7 +307,7 @@ describe('Multi Stacked bar chart - Subcomponent callout', () => {
 });
 
 describe('Screen resolution', () => {
-  testScreenResolution(() => {
+  testScreenResolutionChanges(() => {
     // Arrange
     const { container } = render(<MultiStackedBarChart data={data} />);
     // Assert

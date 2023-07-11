@@ -5,6 +5,7 @@ import * as React from 'react';
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
 
+// Test function that does not wait for any async calls to finish
 export const testWithoutWait = (
   description: string,
   component: any,
@@ -19,6 +20,7 @@ export const testWithoutWait = (
   });
 };
 
+// Test function that waits for async calls to finish
 export const testWithWait = (
   description: string,
   component: any,
@@ -33,7 +35,8 @@ export const testWithWait = (
   });
 };
 
-export const testScreenResolution = (testFunction: () => void) => {
+// Test Screen Resolution changes like zoom in and zoom out
+export const testScreenResolutionChanges = (testFunction: () => void) => {
   const originalInnerWidth = global.innerWidth;
   const originalInnerHeight = global.innerHeight;
   afterEach(() => {
