@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Changes how toggleButton imports Button component options.",
+  "packageName": "@fluentui/web-components",
+  "email": "harankin@microsoft.com",
+  "dependentChangeType": "none"
+}
