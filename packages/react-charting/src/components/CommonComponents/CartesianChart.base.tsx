@@ -75,6 +75,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
+  private _isFirstRender: boolean = true;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
@@ -220,6 +221,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       (this.props.enableFirstRenderOptimization && this.chartContainer) ||
       !this.props.enableFirstRenderOptimization
     ) {
+      this._isFirstRender = false;
       const XAxisParams = {
         domainNRangeValues: getDomainNRangeValues(
           points,
@@ -668,9 +670,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       }
       if (this.props.parentRef || this.chartContainer) {
         const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-        const currentContainerWidth = this.props.enableReflow
-          ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
-          : container.getBoundingClientRect().width;
+        const currentContainerWidth =
+          this.props.enableReflow && !this._isFirstRender
+            ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
         const currentContainerHeight =
           container.getBoundingClientRect().height > legendContainerHeight
             ? container.getBoundingClientRect().height
