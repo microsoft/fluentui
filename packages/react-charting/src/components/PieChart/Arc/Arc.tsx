@@ -39,11 +39,12 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           d={arc(this.props.data)}
           className={`${this.state.isArcFocused ? classNames.pieRootFocused : classNames.pieRoot}`}
           onClick={this.props.data?.data.onClick}
-        >
-          {/* <desc>
-            {this.props.data!.data!.x}-{convertToLocaleString(this.props.data!.data!.y, this.props.culture)}
-          </desc> */}
-        </path>
+          role="img"
+          aria-label={`${this.props.data!.data!.x}-${convertToLocaleString(
+            this.props.data!.data!.y,
+            this.props.culture,
+          )}`}
+        />
         {this.state.isArcFocused ? <path stroke={this.props.theme?.palette.black} /> : null}
       </>
     );
