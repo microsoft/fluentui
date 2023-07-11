@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { IChartDataPoint, IChartProps, IStackedBarChartProps } from '../../StackedBarChart';
-import { getByClass, getById, testScreenResolution, testWithWait, testWithoutWait } from '../../utilities/TestUtility';
+import {
+  getByClass,
+  getById,
+  testScreenResolutionChanges,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility';
 import { StackedBarChart } from './StackedBarChart';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
@@ -243,7 +249,7 @@ describe('Stacked bar chart - Subcomponent callout', () => {
 });
 
 describe('Screen resolution', () => {
-  testScreenResolution(() => {
+  testScreenResolutionChanges(() => {
     // Arrange
     const { container } = render(<StackedBarChart data={data} />);
     // Assert

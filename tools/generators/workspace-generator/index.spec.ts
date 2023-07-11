@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readJson } from '@nrwl/devkit';
 
 import generator from './index';
@@ -9,7 +9,7 @@ describe('workspace-generator generator', () => {
   const options: WorkspaceGeneratorGeneratorSchema = { name: 'custom' };
 
   beforeEach(() => {
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
   });
 
   it('should generate boilerplate', async () => {
@@ -56,17 +56,23 @@ describe('workspace-generator generator', () => {
 
     expect(content).toMatchInlineSnapshot(`
       "import * as path from 'path';
-      import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
+      import {
+        Tree,
+        formatFiles,
+        installPackagesTask,
+        names,
+        generateFiles,
+      } from '@nrwl/devkit';
       import { libraryGenerator } from '@nrwl/workspace/generators';
 
       import { getProjectConfig } from '../../utils';
 
-      import { CustomGeneratorSchema } from './schema'
+      import { CustomGeneratorSchema } from './schema';
 
       interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
-      export default async function(tree: Tree, schema: CustomGeneratorSchema) {
-        await libraryGenerator(tree, {name: schema.name});
+      export default async function (tree: Tree, schema: CustomGeneratorSchema) {
+        await libraryGenerator(tree, { name: schema.name });
 
         const normalizedOptions = normalizeOptions(tree, schema);
 
@@ -75,14 +81,11 @@ describe('workspace-generator generator', () => {
         await formatFiles(tree);
 
         return () => {
-          installPackagesTask(tree)
-        }
+          installPackagesTask(tree);
+        };
       }
 
-      function normalizeOptions(
-        tree: Tree,
-        options: CustomGeneratorSchema
-      ) {
+      function normalizeOptions(tree: Tree, options: CustomGeneratorSchema) {
         const project = getProjectConfig(tree, { packageName: options.name });
 
         return {
@@ -118,7 +121,7 @@ describe('workspace-generator generator', () => {
     const content = tree.read('/tools/generators/custom/index.spec.ts')?.toString();
 
     expect(content).toMatchInlineSnapshot(`
-      "import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+      "import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
       import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
       import generator from './index';
@@ -129,14 +132,14 @@ describe('workspace-generator generator', () => {
         const options: CustomGeneratorSchema = { name: 'test' };
 
         beforeEach(() => {
-          appTree = createTreeWithEmptyV1Workspace();
+          appTree = createTreeWithEmptyWorkspace();
         });
 
         it('should run successfully', async () => {
           await generator(appTree, options);
           const config = readProjectConfiguration(appTree, 'test');
           expect(config).toBeDefined();
-        })
+        });
       });
       "
     `);

@@ -5,6 +5,44 @@ import { useCardContext_unstable } from '../Card/CardContext';
 import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
 
 /**
+ * Finds the first child of CardHeader with an id prop.
+ *
+ * @param header - the header prop of CardHeader
+ */
+function getChildWithId(header: CardHeaderProps['header']) {
+  function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement {
+    return React.isValidElement(element) && Boolean(element.props.id);
+  }
+
+  return React.Children.toArray(header).find(isReactElementWithIdProp);
+}
+
+/**
+ * Returns the id to use for the CardHeader root element.
+ *
+ * @param headerId - the id prop of the CardHeader component
+ * @param childWithId - the first child of the CardHeader component with an id prop
+ * @param generatedId - a generated id
+ *
+ * @returns the id to use for the CardHeader root element
+ */
+function getReferenceId(
+  headerId: string | undefined,
+  childWithId: React.ReactElement | undefined,
+  generatedId: string,
+): string {
+  if (headerId) {
+    return headerId;
+  }
+
+  if (childWithId?.props.id) {
+    return childWithId.props.id;
+  }
+
+  return generatedId;
+}
+
+/**
  * Create the state required to render CardHeader.
  *
  * The returned state can be modified with hooks such as useCardHeaderStyles_unstable,
@@ -21,15 +59,17 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
   } = useCardContext_unstable();
   const headerRef = React.useRef<HTMLDivElement>(null);
 
+  const hasChildId = React.useRef(false);
   const generatedId = useId(cardHeaderClassNames.header, referenceId);
 
   React.useEffect(() => {
-    if (header && headerRef.current) {
-      const { id } = headerRef.current;
+    const headerId = !hasChildId.current ? headerRef.current?.id : undefined;
+    const childWithId = getChildWithId(header);
 
-      setReferenceId(id ? id : generatedId);
-    }
-  }, [header, setReferenceId, generatedId]);
+    hasChildId.current = Boolean(childWithId);
+
+    setReferenceId(getReferenceId(headerId, childWithId, generatedId));
+  }, [generatedId, header, setReferenceId]);
 
   return {
     components: {
@@ -49,7 +89,7 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       required: true,
       defaultProps: {
         ref: headerRef,
-        id: referenceId,
+        id: !hasChildId.current ? referenceId : undefined,
       },
     }),
     description: resolveShorthand(description),

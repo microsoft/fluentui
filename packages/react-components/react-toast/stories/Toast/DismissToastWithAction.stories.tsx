@@ -1,29 +1,49 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastAlert, ToastTrigger } from '@fluentui/react-toast';
-import { useId, Link } from '@fluentui/react-components';
+import {
+  useId,
+  Link,
+  Button,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  ToastTrigger,
+  Toast,
+} from '@fluentui/react-components';
 
 export const DismissToastWithAction = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const notify = () =>
     dispatchToast(
-      <ToastAlert
-        intent="success"
-        action={
-          <ToastTrigger>
-            <Link>Dismiss</Link>
-          </ToastTrigger>
-        }
-      >
-        Dismiss me
-      </ToastAlert>,
-      { timeout: -1 },
+      <Toast>
+        <ToastTitle
+          action={
+            <ToastTrigger>
+              <Link>Dismiss</Link>
+            </ToastTrigger>
+          }
+        >
+          Dismiss me
+        </ToastTitle>
+      </Toast>,
+      { intent: 'success' },
     );
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
+      <Button onClick={notify}>Make toast</Button>
     </>
   );
+};
+
+DismissToastWithAction.parameters = {
+  docs: {
+    description: {
+      story: [
+        "By wrapping a button or link with a  `ToastTrigger`, it's possible to make that actionable",
+        'element dismiss the toast with a click.',
+      ].join('\n'),
+    },
+  },
 };

@@ -8,38 +8,40 @@ interface PositionStyles {
   bottom?: number;
 }
 
-export const getPositionStyles = (position: ToastPosition, offset?: ToastOffset) => {
+export const getPositionStyles = (position: ToastPosition, dir: 'rtl' | 'ltr', offset?: ToastOffset) => {
   const positionStyles: PositionStyles = {
     position: 'fixed',
   };
 
   const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};
 
-  const { horizontal = 0, vertical = 0 } = offsetStyles;
+  const { horizontal = 20, vertical = 16 } = offsetStyles;
+  const start = dir === 'ltr' ? 'left' : 'right';
+  const end = dir === 'ltr' ? 'right' : 'left';
 
   switch (position) {
-    case 'top-left':
+    case 'top-start':
       Object.assign(positionStyles, {
         top: vertical,
-        left: horizontal,
+        [start]: horizontal,
       });
       break;
-    case 'top-right':
+    case 'top-end':
       Object.assign(positionStyles, {
         top: vertical,
-        right: horizontal,
+        [end]: horizontal,
       });
       break;
-    case 'bottom-left':
+    case 'bottom-start':
       Object.assign(positionStyles, {
         bottom: vertical,
-        left: horizontal,
+        [start]: horizontal,
       });
       break;
-    case 'bottom-right':
+    case 'bottom-end':
       Object.assign(positionStyles, {
         bottom: vertical,
-        right: horizontal,
+        [end]: horizontal,
       });
       break;
   }

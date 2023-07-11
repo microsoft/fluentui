@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "MessageBar: Add SmallScreenSelector styles to use grid layout to properly place buttons",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

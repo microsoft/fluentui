@@ -531,9 +531,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
       return (
         <rect
+          transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
           key={point.x}
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
-          y={yBarScale(point.y) + this._barHeight / 2}
+          y={yBarScale(point.y)}
           width={
             this._isRtl
               ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)

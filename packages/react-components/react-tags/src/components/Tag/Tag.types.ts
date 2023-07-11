@@ -11,7 +11,7 @@ export type TagContextValues = {
 };
 
 export type TagSlots = {
-  root: NonNullable<Slot<'button'>>;
+  root: NonNullable<Slot<'button', 'span'>>;
 
   /**
    * Slot for an icon or other visual element
@@ -37,7 +37,7 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-  appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+  appearance?: 'filled' | 'outline' | 'brand';
   disabled?: boolean;
   dismissible?: boolean;
   shape?: 'rounded' | 'circular';

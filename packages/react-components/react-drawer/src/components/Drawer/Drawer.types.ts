@@ -12,18 +12,16 @@ export type DrawerSlots = {
 /**
  * Drawer Props
  */
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> &
-  DrawerOverlayProps &
-  DrawerInlineProps & {
-    /**
-     * Type of the drawer.
-     * @default overlay
-     *
-     * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
-     * - 'inline' - Drawer is stacked with the content
-     */
-    type?: 'inline' | 'overlay';
-  };
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
+  /**
+   * Type of the drawer.
+   * @default overlay
+   *
+   * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
+   * - 'inline' - Drawer is stacked with the content
+   */
+  type?: 'inline' | 'overlay';
+};
 
 /**
  * State used in rendering Drawer

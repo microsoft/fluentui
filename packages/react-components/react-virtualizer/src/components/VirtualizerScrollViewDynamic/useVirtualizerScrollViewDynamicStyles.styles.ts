@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import {
+import type {
   VirtualizerScrollViewDynamicSlots,
   VirtualizerScrollViewDynamicState,
 } from './VirtualizerScrollViewDynamic.types';

@@ -11,6 +11,7 @@ export const Avatar = () => (
     <Alert
       action={{
         icon: <DismissCircleRegular />,
+        'aria-label': 'dismiss message',
       }}
       avatar={{ name: 'John Smith', size: 24, color: 'dark-green' }}
     >
