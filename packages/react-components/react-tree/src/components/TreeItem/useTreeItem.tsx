@@ -72,6 +72,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     handleActionsRef,
     actionsRef,
   );
+  const expandIconRefs = useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -146,6 +147,32 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const isBranch = itemType === 'branch';
 
+  const actionsSlot = React.useMemo(
+    () => (isActionsVisible ? resolveShorthand(actions) : undefined),
+    [actions, isActionsVisible],
+  );
+  if (actionsSlot) {
+    actionsSlot.ref = actionsRefs;
+  }
+  const asideSlot = React.useMemo(
+    () => (isAsideVisible ? resolveShorthand(aside) : undefined),
+    [aside, isAsideVisible],
+  );
+  const expandIconSlot = React.useMemo(
+    () =>
+      resolveShorthand(expandIcon, {
+        required: isBranch,
+        defaultProps: {
+          children: <TreeItemChevron />,
+          'aria-hidden': true,
+        },
+      }),
+    [expandIcon, isBranch],
+  );
+  if (expandIconSlot) {
+    expandIconSlot.ref = expandIconRefs;
+  }
+
   return {
     value,
     open,
@@ -171,15 +198,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       onMouseOut: handleActionsInvisible,
       onBlur: handleActionsInvisible,
     }),
-    actions: isActionsVisible ? resolveShorthand(actions, { defaultProps: { ref: actionsRefs } }) : undefined,
-    aside: isAsideVisible ? resolveShorthand(aside) : undefined,
-    expandIcon: resolveShorthand(expandIcon, {
-      required: isBranch,
-      defaultProps: {
-        children: <TreeItemChevron />,
-        'aria-hidden': true,
-        ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
-      },
-    }),
+    actions: actionsSlot,
+    aside: asideSlot,
+    expandIcon: expandIconSlot,
   };
 }

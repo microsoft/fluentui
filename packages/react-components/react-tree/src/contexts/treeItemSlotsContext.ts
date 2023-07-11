@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TreeItemSlots } from '../TreeItem';
+import type { TreeItemSlots } from '../TreeItem';
 
 export type TreeItemSlotsContextValue = Pick<TreeItemSlots, 'actions' | 'aside' | 'expandIcon'>;
 
