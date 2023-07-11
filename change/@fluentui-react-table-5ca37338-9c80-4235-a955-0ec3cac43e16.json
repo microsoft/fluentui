@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(DataGridCell): Implemets `cell` and `none` focusModes",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

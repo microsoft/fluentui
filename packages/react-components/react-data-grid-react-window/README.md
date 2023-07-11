@@ -1,5 +1,3 @@
 # @fluentui/react-data-grid-react-window
 
-**React Data Grid React Window components for [Fluent UI React](https://react.fluentui.dev/)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**This package is deprecated - please use [@fluentui-contrib/react-data-grid-react-window](https://www.npmjs.com/package/@fluentui-contrib/react-data-grid-react-window) instead**
