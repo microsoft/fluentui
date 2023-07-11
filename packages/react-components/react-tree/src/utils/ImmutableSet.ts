@@ -27,7 +27,8 @@ export interface ImmutableSet<Value> {
    * Exposes the internal set used to store values.
    * This is an internal API and should not be used directly.
    */
-  dangerousGetInternalSet(): Set<Value>;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  dangerousGetInternalSet_unstable(): Set<Value>;
 }
 
 const emptyImmutableSet = createImmutableSet<never>();
@@ -58,7 +59,8 @@ function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): Immutabl
     [Symbol.iterator]() {
       return internalSet[Symbol.iterator]();
     },
-    dangerousGetInternalSet: () => internalSet,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    dangerousGetInternalSet_unstable: () => internalSet,
   };
 }
 
