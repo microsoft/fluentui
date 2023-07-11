@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: openItems property added to TreeOpenChangeData + minor internal improvements",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

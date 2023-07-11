@@ -90,18 +90,17 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
     requestTreeResponse({
       event,
-      itemType,
       value,
+      itemType,
+      target: event.currentTarget,
       type: isFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
     });
   });
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
-    if (event.isDefaultPrevented()) {
-      return;
-    }
-    if (event.currentTarget !== event.target) {
+    // Ignore keyboard events that do not originate from the current tree item.
+    if (event.isDefaultPrevented() || event.currentTarget !== event.target) {
       return;
     }
     switch (event.key) {
@@ -112,12 +111,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       case treeDataTypes.ArrowDown:
       case treeDataTypes.ArrowLeft:
       case treeDataTypes.ArrowRight:
-        return requestTreeResponse({ event, value, itemType, type: event.key });
+        return requestTreeResponse({ event, target: event.currentTarget, value, itemType, type: event.key });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
-      requestTreeResponse({ event, value, itemType, type: treeDataTypes.TypeAhead });
+      requestTreeResponse({ event, target: event.currentTarget, value, itemType, type: treeDataTypes.TypeAhead });
     }
   });
 

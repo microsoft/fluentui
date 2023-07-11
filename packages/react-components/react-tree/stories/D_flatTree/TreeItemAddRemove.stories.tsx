@@ -30,8 +30,10 @@ export const AddRemoveTreeItem = () => {
   const [trees, setTrees] = React.useState(defaultSubTrees);
 
   const handleOpenChange = (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    if (data.value.endsWith('-btn')) {
-      const subtreeIndex = Number(data.value[0]) - 1;
+    // casting here to string as no number values are used in this example
+    const value = data.value as string;
+    if (value.endsWith('-btn')) {
+      const subtreeIndex = Number(value[0]) - 1;
       addFlatTreeItem(subtreeIndex);
     }
   };
