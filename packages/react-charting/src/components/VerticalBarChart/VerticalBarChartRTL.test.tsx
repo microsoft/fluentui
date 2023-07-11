@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, queryAllByAttribute } from '@testing-library/react';
 import { chartPoints } from './VerticalBarChart.test';
 import { DefaultPalette } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
@@ -447,4 +447,21 @@ test('Should reflect theme change', () => {
   );
   // Assert
   expect(container).toMatchSnapshot();
+});
+
+describe('Vertical bar chart re-rendering', () => {
+  test('Should re-render the vertical bar chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<VerticalBarChart data={[]} />);
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_VBC_empty/i)).toHaveLength(1);
+    // Act
+    rerender(<VerticalBarChart data={chartPoints} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_VBC_empty/i)).toHaveLength(0);
+    });
+  });
 });
