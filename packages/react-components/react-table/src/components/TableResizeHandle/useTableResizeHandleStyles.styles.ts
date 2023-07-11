@@ -26,6 +26,12 @@ const useStyles = makeStyles({
     transitionDuration: '.2s',
     zIndex: 1,
 
+    ':focus': {
+      opacity: 1,
+      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    },
+
     ':hover': {
       opacity: 1,
     },

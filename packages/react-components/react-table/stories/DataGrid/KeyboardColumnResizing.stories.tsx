@@ -25,8 +25,6 @@ import {
   MenuPopover,
   MenuTrigger,
   MenuItem,
-  useFocusFinders,
-  TableColumnId,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -178,18 +176,6 @@ const columnSizingOptions = {
 
 export const KeyboardColumnResizing = () => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
-  const { findFirstFocusable } = useFocusFinders();
-
-  // This will focus on the correct table header cell when the keyboard mode is turned off
-  const onKeyboardModeChange = React.useCallback(
-    (columnId: TableColumnId, isKeyboardMode: boolean) => {
-      const element = refMap.current[columnId];
-      if (!isKeyboardMode && element) {
-        findFirstFocusable(element)?.focus();
-      }
-    },
-    [findFirstFocusable],
-  );
 
   return (
     <DataGrid
@@ -213,9 +199,7 @@ export const KeyboardColumnResizing = () => {
                 </MenuTrigger>
                 <MenuPopover>
                   <MenuList>
-                    <MenuItem
-                      onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId, onKeyboardModeChange)}
-                    >
+                    <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
                       Keyboard Column Resizing
                     </MenuItem>
                   </MenuList>

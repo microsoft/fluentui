@@ -27,7 +27,6 @@ import {
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
-import { KeyboardResizingCurrentColumnDataAttribute } from '../../../../packages/react-components/react-table/src/hooks/useTableColumnSizing';
 
 const items = [
   {
@@ -641,9 +640,7 @@ const KeyboardColumnResizingStyle: React.FC<SharedVrTestArgs> = ({ noNativeEleme
       <TableHeader>
         <TableRow>
           {columns.map(column => (
-            <TableHeaderCell key={column.columnKey} {...{ [`${KeyboardResizingCurrentColumnDataAttribute}`]: '' }}>
-              {column.label}
-            </TableHeaderCell>
+            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
           ))}
         </TableRow>
       </TableHeader>
