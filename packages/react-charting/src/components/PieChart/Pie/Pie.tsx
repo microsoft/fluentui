@@ -9,6 +9,7 @@ export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
   public static defaultProps: Partial<IPieProps> = {
     pie: shape
       .pie()
+      .padAngle(0.01)
       .sort(null)
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .value((d: any) => d.y),
@@ -39,17 +40,11 @@ export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
                 outerRadius={this.props.outerRadius}
                 color={colors[i]}
                 theme={this.props.theme}
-                onPieFocused={this._onPieFocused}
               />
             ))}
-            <use xlinkHref={`#${this.state.focusedPie}`} aria-hidden={true} tabIndex={-1} data-if-focusable={false} />
           </g>
         </svg>
       </FocusZone>
     );
   }
-
-  private _onPieFocused = (id: string) => {
-    this.setState({ focusedPie: id });
-  };
 }

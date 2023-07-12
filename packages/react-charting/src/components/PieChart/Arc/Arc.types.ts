@@ -34,10 +34,6 @@ export interface IArcProps {
    * to pass the theme
    */
   theme?: ITheme;
-  /**
-   * Callback function to be triggered when the focus is on the element
-   */
-  onPieFocused: (id: string) => void;
 }
 
 export interface IArcState {

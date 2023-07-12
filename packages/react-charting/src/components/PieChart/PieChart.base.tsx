@@ -70,7 +70,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
           width={width!}
           height={height!}
           outerRadius={outerRadius}
-          innerRadius={0}
+          innerRadius={1}
           data={data!}
           colors={finalColors}
           chartTitle={chartTitle!}

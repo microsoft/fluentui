@@ -45,12 +45,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   protected _onFocus = () => {
     this.setState({ isArcFocused: true });
-    this.props.onPieFocused(this.state.id);
   };
 
   protected _onBlur = () => {
     this.setState({ isArcFocused: false });
-    this.props.onPieFocused('');
   };
 }
 
