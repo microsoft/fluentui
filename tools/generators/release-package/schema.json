@@ -4,14 +4,34 @@
   "id": "release-package",
   "type": "object",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
       "description": "Library name",
+      "x-prompt": "What project should be released",
       "$default": {
         "$source": "argv",
         "index": 0
       }
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["initial", "stable"],
+      "description": "Phase of npm release life cycle for monorepo package",
+      "x-prompt": {
+        "message": "Which phase of release life cycle you wanna trigger?",
+        "type": "list",
+        "items": [
+          {
+            "value": "initial",
+            "label": "initial - first release of preview package"
+          },
+          {
+            "value": "stable",
+            "label": "stable - propagating package from preview to stable (shipping from react-components suite)"
+          }
+        ]
+      }
     }
   },
-  "required": ["name"]
+  "required": ["project", "phase"]
 }

@@ -1,13 +1,14 @@
 # release-package
 
-Workspace Generator ...TODO...
+Workspace Generator which automates release process stages for @fluentui (v9) package.
 
 <!-- toc -->
 
 - [Usage](#usage)
   - [Examples](#examples)
 - [Options](#options)
-  - [`name`](#name)
+  - [`project`](#project)
+  - [`phase`](#phase)
 
 <!-- tocstop -->
 
@@ -31,8 +32,14 @@ yarn nx workspace-generator release-package
 
 ## Options
 
-#### `name`
+#### `project`
 
 Type: `string`
 
-TODO...
+Library name to to be released.
+
+#### `phase`
+
+Type: `initial` | 'stable'
+
+Phase of npm release life cycle for monorepo package
