@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Added component tests for Vertical bar chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "none"
-}

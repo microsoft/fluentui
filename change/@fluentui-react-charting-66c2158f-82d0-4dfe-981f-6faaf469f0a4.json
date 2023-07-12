@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing rerender issue for empty vertical bar charts",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}
