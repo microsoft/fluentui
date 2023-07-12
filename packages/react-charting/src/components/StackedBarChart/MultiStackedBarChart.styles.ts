@@ -51,6 +51,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       cursor: href ? 'pointer' : 'default',
       selectors: {
         '&:focus': {
+          outlineColor: theme.palette.black,
           stroke: theme.palette.black,
           strokeWidth: '2px',
         },
@@ -70,7 +71,8 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       cursor: 'default',
       selectors: {
         '&:focus': {
-          stroke: theme.palette.blue,
+          outlineColor: theme.palette.black,
+          stroke: theme.palette.black,
           strokeWidth: '2px',
         },
       },

@@ -30,6 +30,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     barWrapper: {
       selectors: {
         '&:focus': {
+          outlineColor: theme.palette.black,
           stroke: theme.palette.black,
           strokeWidth: 2,
         },

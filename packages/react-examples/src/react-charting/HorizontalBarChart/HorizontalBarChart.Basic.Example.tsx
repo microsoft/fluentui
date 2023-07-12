@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { HorizontalBarChart, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () => {
   const hideRatio: boolean[] = [true, false];
@@ -104,5 +106,9 @@ export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () =>
     },
   ];
 
-  return <HorizontalBarChart culture={window.navigator.language} data={data} hideRatio={hideRatio} width={600} />;
+  return (
+    <ThemeProvider theme={DarkTheme}>
+      <HorizontalBarChart culture={window.navigator.language} data={data} hideRatio={hideRatio} width={600} />;
+    </ThemeProvider>
+  );
 };

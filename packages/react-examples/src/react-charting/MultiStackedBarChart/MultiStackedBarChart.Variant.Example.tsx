@@ -6,6 +6,8 @@ import {
   MultiStackedBarChartVariant,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 interface IMSBCVariantExampleState {
   hideLabels: boolean;
@@ -107,17 +109,19 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
 
     return (
       <>
-        <Checkbox
-          label="Hide labels"
-          checked={this.state.hideLabels}
-          onChange={this._onCheckChange}
-          styles={{ root: { marginBottom: '20px' } }}
-        />
-        <MultiStackedBarChart
-          data={data}
-          variant={MultiStackedBarChartVariant.AbsoluteScale}
-          hideLabels={this.state.hideLabels}
-        />
+        <ThemeProvider theme={DarkTheme}>
+          <Checkbox
+            label="Hide labels"
+            checked={this.state.hideLabels}
+            onChange={this._onCheckChange}
+            styles={{ root: { marginBottom: '20px' } }}
+          />
+          <MultiStackedBarChart
+            data={data}
+            variant={MultiStackedBarChartVariant.AbsoluteScale}
+            hideLabels={this.state.hideLabels}
+          />
+        </ThemeProvider>
       </>
     );
   }

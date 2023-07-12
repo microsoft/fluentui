@@ -299,8 +299,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _adjustBarSpacing(): void {
     const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
     if (svgWidth) {
-      const BAR_SPACING_FACTOR = 200;
-      const currentBarSpacing = clamp(BAR_SPACING_FACTOR / svgWidth, 1, 0.2);
+      // [0,1] Controls the spacing between the bars
+      const BAR_SPACING_FACTOR = 1;
+      // The barspacing is provided in percentage terms, so changes inversely to the width of the svg
+      const currentBarSpacing = clamp((200 / svgWidth) * BAR_SPACING_FACTOR, 1, 0.2);
       this.setState({ barSpacing: currentBarSpacing });
     }
   }
