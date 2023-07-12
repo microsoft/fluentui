@@ -1,5 +1,5 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
+import { TreeNavigationData_unstable, TreeOpenChangeData, TreeSelectionChangeData } from '../Tree';
 import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
 import { TreeItemType } from '../TreeItem';
 
@@ -9,6 +9,8 @@ export type TreeContextValue = {
   selection: 'none' | 'checkbox' | 'radio';
   size: 'small' | 'medium';
   openItems: ImmutableSet<unknown>;
+  selectedItems?: Iterable<unknown>;
+
   /**
    * requests root Tree component to respond to some tree item event,
    */
@@ -18,6 +20,7 @@ export type TreeContextValue = {
 export type TreeItemRequest = { itemType: TreeItemType } & (
   | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'target'>
   | OmitWithoutExpanding<TreeNavigationData_unstable, 'target'>
+  | OmitWithoutExpanding<TreeSelectionChangeData, 'target'>
 );
 
 // helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
@@ -26,6 +29,7 @@ type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unk
 const defaultContextValue: TreeContextValue = {
   level: 0,
   openItems: emptyImmutableSet,
+  selectedItems: emptyImmutableSet,
   requestTreeResponse: noop,
   appearance: 'subtle',
   size: 'medium',

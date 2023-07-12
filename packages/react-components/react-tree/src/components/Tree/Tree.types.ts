@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TreeContextValue } from '../../contexts/treeContext';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home, Space } from '@fluentui/keyboard-keys';
 import { TreeItemValue } from '../../TreeItem';
 
 export type TreeSlots = {
@@ -51,9 +51,25 @@ export type TreeOpenChangeData = { open: boolean; value: string } & (
     }
 );
 
-export interface TreeSelectionChangeData {
-  selectedItems: Set<TreeItemValue>;
-}
+export type TreeSelectionChangeData = {
+  value: TreeItemValue;
+  target: HTMLElement;
+  event: React.ChangeEvent<HTMLElement>;
+  type: 'Change';
+} & (
+  | {
+      event: React.MouseEvent<HTMLElement>;
+      target: HTMLElement;
+      type: 'SelectionIconClick';
+    }
+  | {
+      event: React.KeyboardEvent<HTMLElement>;
+      target: HTMLElement;
+      type: typeof Space;
+    }
+);
+
+export type TreeCheckedChangeEvent = TreeSelectionChangeData['event'];
 
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
@@ -96,9 +112,15 @@ export type TreeProps = ComponentProps<TreeSlots> & {
   defaultOpenItems?: Iterable<string>;
   /**
    * This refers to a list of ids of selected tree items.
+   * Controls the state of the selected tree items.
    * These property is ignored for subtrees.
    */
-  defaultSelectedItems?: Iterable<string>;
+  selectedItems?: Iterable<string | [string, 'mixed' | boolean]>;
+  /**
+   * This refers to a list of ids of selected tree items.
+   * These property is ignored for subtrees.
+   */
+  defaultSelectedItems?: Iterable<string | [string, 'mixed' | boolean]>;
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
@@ -115,7 +137,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * @param data - A data object with relevant information,
    * such as open value and type of interaction that created the event.
    */
-  onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: TreeSelectionChangeData) => void;
+  onSelectionChange?: (event: TreeCheckedChangeEvent, data: TreeSelectionChangeData) => void;
   /**
    * Callback fired when navigation happens inside the component.
    * These property is ignored for subtrees.

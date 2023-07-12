@@ -23,7 +23,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const {
     onClick,
-    checked = false,
+    // checked = false,
     defaultChecked = false,
     onKeyDown,
     as = 'div',
@@ -42,6 +42,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   };
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
+  const checked = useTreeContext_unstable(ctx => ctx.selectedItems.has(value));
 
   const actionsRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLDivElement>(null);
@@ -62,11 +63,16 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       return;
     }
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
+    const isFromSelectionIcon = event.target?.type === 'checkbox' || event.target?.type === 'radio';
     requestTreeResponse({
       event,
       itemType,
       value,
-      type: isFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
+      type: isFromExpandIcon
+        ? treeDataTypes.ExpandIconClick
+        : isFromSelectionIcon
+        ? treeDataTypes.SelectionIconClick
+        : treeDataTypes.Click,
     });
   });
 

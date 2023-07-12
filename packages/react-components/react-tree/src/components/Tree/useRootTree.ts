@@ -1,10 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
+import {
+  TreeOpenChangeData,
+  TreeProps,
+  TreeState,
+  TreeNavigationData_unstable,
+  TreeSelectionChangeData,
+} from './Tree.types';
 import { useNestedTreeNavigation, useOpenItemsState } from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
 import { TreeItemRequest } from '../../contexts/index';
+import { useFlatTreeSelection } from '../../hooks/useFlatTreeSelection';
 
 /**
  * Create the state required to render the root level Tree.
@@ -18,6 +25,7 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
   const { appearance = 'subtle', size = 'medium', selection = 'none' } = props;
 
   const [openItems, updateOpenItems] = useOpenItemsState(props);
+  const [selectedItems, updateSelectedItems] = useFlatTreeSelection(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
   const requestOpenChange = (data: TreeOpenChangeData) => {
@@ -26,6 +34,14 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
       return;
     }
     return updateOpenItems(data);
+  };
+
+  const requestSelection = (data: TreeSelectionChangeData) => {
+    props.onSelectionChange?.(data.event, data);
+    if (data.event.isDefaultPrevented()) {
+      return;
+    }
+    return updateSelectedItems(data);
   };
 
   const requestNavigation = (data: TreeNavigationData_unstable) => {
@@ -44,8 +60,12 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     value,
     itemType,
     type,
-  }: Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>) => {
+  }: Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' | 'SelectionIconClick' }>) => {
     ReactDOM.unstable_batchedUpdates(() => {
+      if (type === 'SelectionIconClick') {
+        requestSelection({ event, value, target: event.currentTarget, type: treeDataTypes.SelectionIconClick });
+        return;
+      }
       requestOpenChange({
         event,
         value,
@@ -62,7 +82,7 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     type,
     value,
     itemType,
-  }: Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>) => {
+  }: Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' | 'SelectionIconClick' }>) => {
     const open = openItems.has(value);
     switch (type) {
       case treeDataTypes.ArrowRight:
@@ -87,6 +107,8 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
           type: treeDataTypes.Enter,
           target: event.currentTarget,
         });
+      case treeDataTypes.Space:
+        return requestSelection({ event, value, target: event.currentTarget, type: treeDataTypes.Space });
       case treeDataTypes.ArrowLeft:
         if (open && itemType === 'branch') {
           return requestOpenChange({
@@ -111,10 +133,14 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     switch (request.event.type) {
       case 'click':
         // casting is required here as we're narrowing down the event to only click events
-        return handleTreeItemClick(request as Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>);
+        return handleTreeItemClick(
+          request as Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' | 'SelectionIconClick' }>,
+        );
       case 'keydown':
         // casting is required here as we're narrowing down the event to only keyboard events
-        return handleTreeItemKeyDown(request as Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>);
+        return handleTreeItemKeyDown(
+          request as Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' | 'SelectionIconClick' }>,
+        );
     }
   });
 
@@ -128,6 +154,7 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     selection,
     level: 1,
     openItems,
+    selectedItems,
     requestTreeResponse,
     root: getNativeElementProps('div', {
       ref: useMergedRefs(navigationRef, ref),

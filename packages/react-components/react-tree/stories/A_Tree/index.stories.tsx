@@ -8,6 +8,7 @@ export { DefaultOpenTrees } from './TreeDefaultOpenTrees.stories';
 export { Appearance } from './TreeAppearance.stories';
 export { Size } from './TreeSize.stories';
 export { OpenItemsControlled } from './TreeControllingOpenAndClose.stories';
+export { TreeMultiSelection } from './TreeMultiSelection.stories';
 
 export default {
   title: 'Preview Components/Tree/Tree',

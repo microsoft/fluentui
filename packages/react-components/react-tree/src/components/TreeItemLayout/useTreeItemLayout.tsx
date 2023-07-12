@@ -36,6 +36,15 @@ export const useTreeItemLayout_unstable = (
   const isActionsVisible = (isResolvedShorthand(actions) ? actions.visible : undefined) ?? isActionsVisibleContext;
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
+  // TODO: Check if it is a branch or leaf and set accordingly as below:
+  // const checked = useDataGridContext_unstable(ctx => {
+  //   if (isHeader && ctx.selection.selectionMode === 'multiselect') {
+  //     return ctx.selection.allRowsSelected ? true : ctx.selection.someRowsSelected ? 'mixed' : false;
+  //   }
+
+  //   return ctx.selection.isRowSelected(rowId);
+  // });
+
   const defaultChecked = useTreeItemContext_unstable(ctx => ctx.defaultChecked);
   const selection = useTreeContext_unstable(ctx => ctx.selection);
   const actionsRef = useMergedRefs(
@@ -79,13 +88,19 @@ export const useTreeItemLayout_unstable = (
       },
     }),
     selection,
+    'aria-checked': selection === 'checkbox' ? checked : undefined,
+    'aria-selected': selection === 'radio' && checked !== 'mixed' ? checked : undefined,
     checkboxIndicator: resolveShorthand(props.checkboxIndicator, {
       required: selection === 'checkbox',
-      defaultProps: { checked, defaultChecked },
+      defaultProps: {
+        checked,
+        defaultChecked,
+        tabIndex: -1,
+      },
     }),
     radioIndicator: resolveShorthand(props.radioIndicator, {
       required: selection === 'radio',
-      defaultProps: { checked, defaultChecked, input: { name: useId('tree-selection-radio') } },
+      defaultProps: { checked, defaultChecked, input: { name: useId('tree-selection-radio') }, tabIndex: -1 },
     }),
   };
 };

@@ -14,6 +14,7 @@ export type {
   TreeOpenChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
+  TreeSelectionChangeData,
 } from './Tree';
 
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
