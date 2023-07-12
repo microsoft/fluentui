@@ -11,8 +11,13 @@ const resolveAsset = (asset: string) => {
 };
 
 const Story = ({ title, description, children }) => {
+  const style = {
+    padding: '0 24px 24px',
+    margin: '0 -24px 24px',
+    borderTop: title ? '24px solid #fff' : '',
+  };
   return (
-    <div>
+    <div style={style}>
       <h3 className="sbdocs-h3">{title}</h3>
       <p className="sbdocs-p">{description}</p>
       {children}
@@ -23,14 +28,20 @@ const Story = ({ title, description, children }) => {
 export const Definition = () => {
   return (
     <div>
-      <p>
+      <p
+        style={{
+          padding: '8px 16px',
+          margin: '-48px -24px 0',
+          background: 'lightgoldenrodyellow',
+          borderLeft: '4px solid goldenrod',
+          opacity: 0.8,
+        }}
+      >
         <strong>Heads up!</strong>
         <br />
         This "Definition" story would be split into multiple stories in a final implementation. A single story was used
         only for simplicity of demonstrating the idea of stepping through the API definition.
       </p>
-
-      <hr />
 
       <Story title="Default" description="A card is a container for displaying content.">
         <Card>Default card</Card>
