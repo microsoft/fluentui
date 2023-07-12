@@ -1,27 +1,26 @@
-import type { TreeItemContextValue } from '../../contexts';
+import * as React from 'react';
 import type { TreeItemContextValues, TreeItemState } from './TreeItem.types';
+import type { TreeItemContextValue, TreeItemSlotsContextValue } from '../../contexts';
 
-export function useTreeItemContextValues_unstable(
-  state: Pick<TreeItemState, keyof TreeItemContextValue>,
-): TreeItemContextValues {
-  const { value, isActionsVisible, isAsideVisible, actionsRef, itemType, layoutRef, subtreeRef, expandIconRef, open } =
-    state;
+export function useTreeItemContextValues_unstable(state: TreeItemState): TreeItemContextValues {
+  const { value, itemType, layoutRef, subtreeRef, open, actions, aside, expandIcon } = state;
 
   /**
    * This context is created with "@fluentui/react-context-selector",
    * there is no sense to memoize it
    */
   const treeItem: TreeItemContextValue = {
-    isActionsVisible,
-    isAsideVisible,
     value,
-    actionsRef,
     itemType,
     layoutRef,
     subtreeRef,
-    expandIconRef,
     open,
   };
 
-  return { treeItem };
+  const treeItemSlots: TreeItemSlotsContextValue = React.useMemo(
+    () => ({ actions, aside, expandIcon }),
+    [actions, aside, expandIcon],
+  );
+
+  return { treeItem, treeItemSlots };
 }

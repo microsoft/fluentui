@@ -3,7 +3,7 @@ import * as React from 'react';
 import { createFlatTreeItems, VisibleFlatTreeItemGenerator } from '../utils/createFlatTreeItems';
 import { treeDataTypes } from '../utils/tokens';
 import { useFlatTreeNavigation } from './useFlatTreeNavigation';
-import { useOpenItemsState } from './useOpenItemsState';
+import { useControllableOpenItems } from './useControllableOpenItems';
 import type {
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
@@ -12,10 +12,10 @@ import type {
   TreeProps,
 } from '../Tree';
 import type { TreeItemProps, TreeItemValue } from '../TreeItem';
-import { ImmutableSet } from '../utils/ImmutableSet';
 import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
+import { ImmutableSet } from '../utils/ImmutableSet';
 
-export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType'> &
+export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> &
   Partial<Pick<TreeItemProps, 'itemType'>> & {
     value: TreeItemValue;
     parentValue?: TreeItemValue;
@@ -37,7 +37,7 @@ export type FlatTreeItem<Props extends FlatTreeItemProps = FlatTreeItemProps> = 
 
 export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
   ref: React.Ref<HTMLDivElement>;
-  openItems: ImmutableSet<string>;
+  openItems: ImmutableSet<TreeItemValue>;
 };
 
 /**
@@ -120,15 +120,15 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
   flatTreeItemProps: Props[],
   options: FlatTreeOptions = {},
 ): FlatTree<Props> {
-  const [openItems, updateOpenItems] = useOpenItemsState(options);
   const flatTreeItems = React.useMemo(() => createFlatTreeItems(flatTreeItemProps), [flatTreeItemProps]);
+  const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [navigate, navigationRef] = useFlatTreeNavigation(flatTreeItems);
   const treeRef = React.useRef<HTMLDivElement>(null);
 
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     options.onOpenChange?.(event, data);
     if (!event.isDefaultPrevented()) {
-      updateOpenItems(data);
+      setOpenItems(data.openItems);
     }
     event.preventDefault();
   });
