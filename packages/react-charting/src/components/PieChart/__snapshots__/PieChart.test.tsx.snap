@@ -26,7 +26,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
   >
     <svg
       height={350}
-      role="application"
       width={600}
     >
       <g
@@ -171,6 +170,9 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
           </text>
         </g>
         <use
+          aria-hidden={true}
+          data-if-focusable={false}
+          tabIndex={-1}
           xlinkHref="#"
         />
       </g>
@@ -205,7 +207,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
   >
     <svg
       height={300}
-      role="application"
       width={600}
     >
       <g
@@ -350,6 +351,9 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
           </text>
         </g>
         <use
+          aria-hidden={true}
+          data-if-focusable={false}
+          tabIndex={-1}
           xlinkHref="#"
         />
       </g>
