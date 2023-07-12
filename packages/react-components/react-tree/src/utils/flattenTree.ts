@@ -1,26 +1,24 @@
 import { FlatTreeItemProps } from '../hooks/useFlatTree';
-import { TreeItemProps } from '../TreeItem';
+import { TreeItemProps, TreeItemValue } from '../TreeItem';
 
 export type NestedTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
+  value: TreeItemValue;
   subtree?: NestedTreeItem<Props>[];
 };
 
 export type FlattenedTreeItem<Props extends TreeItemProps> = FlatTreeItemProps & Props;
 
-let count = 1;
 function flattenTreeRecursive<Props extends TreeItemProps>(
   items: NestedTreeItem<Props>[],
   parent?: FlatTreeItemProps & Props,
   level = 1,
 ): FlattenedTreeItem<Props>[] {
   return items.reduce<FlattenedTreeItem<Props>[]>((acc, { subtree, ...item }, index) => {
-    const id = item.id ?? `fui-FlatTreeItem-${count++}`;
     const flatTreeItem = {
       'aria-level': level,
       'aria-posinset': index + 1,
       'aria-setsize': items.length,
       parentValue: parent?.value,
-      value: item.value ?? (id as unknown as Props['value']),
       ...item,
     } as FlattenedTreeItem<Props>;
     acc.push(flatTreeItem);

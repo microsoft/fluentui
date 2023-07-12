@@ -16,12 +16,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.24.0",
+    "@fluentui/react-components": "^9.26.0",
     "@fluentui/react-icons": "^2.0.203",
     "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-provider": "^9.7.7",
-    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
+    "@fluentui/react-provider": "^9.7.9",
+    "@fluentui/react-storybook-addon": "^0.1.0",
+    "@fluentui/react-storybook-addon-codesandbox": "^0.1.0",
     "@griffel/react": "^1.5.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",

@@ -6,7 +6,7 @@ import { getSlotsNext } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
   TreeItemPersonaLayoutContextValues,
-  TreeItemPersonaLayoutSlots,
+  TreeItemPersonaLayoutInternalSlots,
 } from './TreeItemPersonaLayout.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 import { ButtonContextProvider } from '@fluentui/react-button';
@@ -18,7 +18,7 @@ export const renderTreeItemPersonaLayout_unstable = (
   state: TreeItemPersonaLayoutState,
   contextValues: TreeItemPersonaLayoutContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<TreeItemPersonaLayoutSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TreeItemPersonaLayoutInternalSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
