@@ -35,13 +35,11 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const classNames = getClassNames(props => getStyles(props, this.props.theme), { ...this.props });
 
     return (
-      <>
-        <path
-          d={arc(this.props.data)}
-          className={`${this.state.isArcFocused ? classNames.pieRootFocused : classNames.pieRoot}`}
-          onClick={this.props.data?.data.onClick}
-        />
-      </>
+      <path
+        d={arc(this.props.data)}
+        className={`${this.state.isArcFocused ? classNames.pieRootFocused : classNames.pieRoot}`}
+        onClick={this.props.data?.data.onClick}
+      />
     );
   }
 
@@ -67,6 +65,7 @@ export class LabeledArc extends Arc {
   public render(): JSX.Element {
     const { data, culture } = this.props;
     const gap = 4;
+    // placing the labels on the outside arc
     const [labelX, labelY] = shape.arc().centroid({
       endAngle: data?.endAngle || 0,
       startAngle: data?.startAngle || 0,
