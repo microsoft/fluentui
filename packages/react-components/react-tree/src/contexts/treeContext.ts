@@ -6,6 +6,7 @@ import { TreeItemType } from '../TreeItem';
 export type TreeContextValue = {
   level: number;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+  selection: 'none' | 'checkbox' | 'radio';
   size: 'small' | 'medium';
   openItems: ImmutableSet<unknown>;
   /**
@@ -28,6 +29,7 @@ const defaultContextValue: TreeContextValue = {
   requestTreeResponse: noop,
   appearance: 'subtle',
   size: 'medium',
+  selection: 'none',
 };
 
 function noop() {

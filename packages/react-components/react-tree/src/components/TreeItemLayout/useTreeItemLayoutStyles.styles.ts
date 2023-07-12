@@ -8,6 +8,8 @@ import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
 export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
   root: 'fui-TreeItemLayout',
+  checkboxIndicator: 'fui-TreeItemLayout__checkboxIndicator',
+  radioIndicator: 'fui-TreeItemLayout__radioIndicator',
   iconBefore: 'fui-TreeItemLayout__iconBefore',
   content: 'fui-TreeItemLayout__content',
   iconAfter: 'fui-TreeItemLayout__iconAfter',
@@ -166,7 +168,7 @@ const useIconAfterStyles = makeStyles({
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { content, iconAfter, iconBefore, expandIcon, root } = state;
+  const { content, checkboxIndicator, radioIndicator, iconAfter, iconBefore, expandIcon, root } = state;
   const rootStyles = useRootStyles();
   const actionsStyles = useActionsStyles();
   const asideStyles = useAsideStyles();
@@ -199,6 +201,14 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
       expandIconStyles.base,
       expandIcon.className,
     );
+  }
+
+  if (checkboxIndicator) {
+    checkboxIndicator.className = mergeClasses(treeItemLayoutClassNames.checkboxIndicator, checkboxIndicator.className);
+  }
+
+  if (radioIndicator) {
+    radioIndicator.className = mergeClasses(treeItemLayoutClassNames.radioIndicator, radioIndicator.className);
   }
 
   if (iconBefore) {

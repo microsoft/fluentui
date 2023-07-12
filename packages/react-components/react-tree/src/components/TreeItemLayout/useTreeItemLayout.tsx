@@ -4,11 +4,15 @@ import {
   getNativeElementProps,
   isResolvedShorthand,
   resolveShorthand,
+  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { Radio } from '@fluentui/react-radio';
 import type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 import { TreeItemChevron } from '../TreeItemChevron';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -31,6 +35,9 @@ export const useTreeItemLayout_unstable = (
   const isAsideVisible = useTreeItemContext_unstable(ctx => ctx.isAsideVisible);
   const isActionsVisible = (isResolvedShorthand(actions) ? actions.visible : undefined) ?? isActionsVisibleContext;
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
+  const checked = useTreeItemContext_unstable(ctx => ctx.checked);
+  const defaultChecked = useTreeItemContext_unstable(ctx => ctx.defaultChecked);
+  const selection = useTreeContext_unstable(ctx => ctx.selection);
   const actionsRef = useMergedRefs(
     isResolvedShorthand(actions) ? actions.ref : undefined,
     useTreeItemContext_unstable(ctx => ctx.actionsRef),
@@ -40,6 +47,8 @@ export const useTreeItemLayout_unstable = (
     components: {
       root: 'div',
       expandIcon: 'div',
+      checkboxIndicator: Checkbox,
+      radioIndicator: Radio,
       iconBefore: 'div',
       content: 'div',
       iconAfter: 'div',
@@ -68,6 +77,15 @@ export const useTreeItemLayout_unstable = (
         'aria-hidden': true,
         ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
       },
+    }),
+    selection,
+    checkboxIndicator: resolveShorthand(props.checkboxIndicator, {
+      required: selection === 'checkbox',
+      defaultProps: { checked, defaultChecked },
+    }),
+    radioIndicator: resolveShorthand(props.radioIndicator, {
+      required: selection === 'radio',
+      defaultProps: { checked, defaultChecked, input: { name: useId('tree-selection-radio') } },
     }),
   };
 };

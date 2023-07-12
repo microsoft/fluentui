@@ -4,8 +4,19 @@ import type { TreeItemContextValues, TreeItemState } from './TreeItem.types';
 export function useTreeItemContextValues_unstable(
   state: Pick<TreeItemState, keyof TreeItemContextValue>,
 ): TreeItemContextValues {
-  const { value, isActionsVisible, isAsideVisible, actionsRef, itemType, layoutRef, subtreeRef, expandIconRef, open } =
-    state;
+  const {
+    value,
+    checked,
+    defaultChecked,
+    isActionsVisible,
+    isAsideVisible,
+    actionsRef,
+    itemType,
+    layoutRef,
+    subtreeRef,
+    expandIconRef,
+    open,
+  } = state;
 
   /**
    * This context is created with "@fluentui/react-context-selector",
@@ -16,6 +27,8 @@ export function useTreeItemContextValues_unstable(
     isAsideVisible,
     value,
     actionsRef,
+    checked,
+    defaultChecked,
     itemType,
     layoutRef,
     subtreeRef,

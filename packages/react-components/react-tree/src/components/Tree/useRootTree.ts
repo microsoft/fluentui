@@ -15,7 +15,7 @@ import { TreeItemRequest } from '../../contexts/index';
 export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   warnIfNoProperPropsRootTree(props);
 
-  const { appearance = 'subtle', size = 'medium' } = props;
+  const { appearance = 'subtle', size = 'medium', selection = 'none' } = props;
 
   const [openItems, updateOpenItems] = useOpenItemsState(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
@@ -125,6 +125,7 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     open: true,
     appearance,
     size,
+    selection,
     level: 1,
     openItems,
     requestTreeResponse,

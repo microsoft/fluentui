@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TreeContextValue } from '../../contexts/treeContext';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import { TreeItemValue } from '../../TreeItem';
 
 export type TreeSlots = {
   root: Slot<'div'>;
@@ -50,11 +51,17 @@ export type TreeOpenChangeData = { open: boolean; value: string } & (
     }
 );
 
+export interface TreeSelectionChangeData {
+  selectedItems: Set<TreeItemValue>;
+}
+
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 export type TreeContextValues = {
   tree: TreeContextValue;
 };
+
+export type TreeSelectionValues = 'none' | 'checkbox' | 'radio';
 
 export type TreeProps = ComponentProps<TreeSlots> & {
   /**
@@ -71,6 +78,11 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   size?: 'small' | 'medium';
   /**
+   * A tree can have three kinds of selection modes.
+   * @default 'none'
+   */
+  selection?: TreeSelectionValues;
+  /**
    * This refers to a list of ids of opened tree items.
    * Controls the state of the open tree items.
    * These property is ignored for subtrees.
@@ -83,6 +95,11 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   defaultOpenItems?: Iterable<string>;
   /**
+   * This refers to a list of ids of selected tree items.
+   * These property is ignored for subtrees.
+   */
+  defaultSelectedItems?: Iterable<string>;
+  /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
    *
@@ -91,7 +108,14 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * such as open value and type of interaction that created the event.
    */
   onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
-
+  /**
+   * Callback fired when the component's item changes value from un/selected state.
+   *
+   * @param event - a React's mouse/keyboard event
+   * @param data - A data object with relevant information,
+   * such as open value and type of interaction that created the event.
+   */
+  onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: TreeSelectionChangeData) => void;
   /**
    * Callback fired when navigation happens inside the component.
    * These property is ignored for subtrees.

@@ -6,6 +6,8 @@ export type TreeItemContextValue = {
   isActionsVisible: boolean;
   isAsideVisible: boolean;
   actionsRef: React.Ref<HTMLDivElement>;
+  checked: boolean | 'mixed';
+  defaultChecked: boolean | 'mixed';
   expandIconRef: React.Ref<HTMLDivElement>;
   layoutRef: React.Ref<HTMLDivElement>;
   subtreeRef: React.Ref<HTMLDivElement>;
@@ -19,6 +21,8 @@ const defaultContextValue: TreeItemContextValue = {
   isActionsVisible: false,
   isAsideVisible: true,
   actionsRef: React.createRef(),
+  checked: false,
+  defaultChecked: false,
   expandIconRef: React.createRef(),
   layoutRef: React.createRef(),
   subtreeRef: React.createRef(),

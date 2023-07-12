@@ -1,7 +1,8 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { TreeItemContextValue } from '../../contexts';
 import { treeItemLevelToken } from '../../utils/tokens';
-import * as React from 'react';
+import { CheckboxProps } from '@fluentui/react-checkbox';
 
 export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
 
@@ -21,6 +22,14 @@ export type TreeItemContextValues = { treeItem: TreeItemContextValue };
 export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
   itemType: TreeItemType;
   value?: TreeItemValue;
+  /**
+   * @default false
+   */
+  checked?: CheckboxProps['checked'];
+  /**
+   * @default false
+   */
+  defaultChecked?: CheckboxProps['defaultChecked'];
 };
 
 /**
@@ -30,4 +39,6 @@ export type TreeItemState = ComponentState<TreeItemSlots> &
   TreeItemContextValue & {
     level: number;
     itemType: TreeItemType;
+    checked?: CheckboxProps['checked'];
+    defaultChecked?: CheckboxProps['defaultChecked'];
   };

@@ -12,10 +12,15 @@ import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../cont
 export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const contextAppearance = useTreeContext_unstable(ctx => ctx.appearance);
   const contextSize = useTreeContext_unstable(ctx => ctx.size);
+  const contextSelection = useTreeContext_unstable(ctx => ctx.selection);
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
   const value = useTreeItemContext_unstable(ctx => ctx.value);
 
-  const { appearance = contextAppearance ?? 'subtle', size = contextSize ?? 'medium' } = props;
+  const {
+    appearance = contextAppearance ?? 'subtle',
+    size = contextSize ?? 'medium',
+    selection = contextSelection ?? 'none',
+  } = props;
 
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
   const openItems = useTreeContext_unstable(ctx => ctx.openItems);
@@ -29,6 +34,7 @@ export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       root: 'div',
     },
     appearance,
+    selection,
     size,
     level: parentLevel + 1,
     root: getNativeElementProps('div', {

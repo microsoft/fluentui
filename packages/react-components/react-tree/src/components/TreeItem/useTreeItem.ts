@@ -21,7 +21,16 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const value = useId('fuiTreeItemValue-', props.value?.toString());
 
-  const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
+  const {
+    onClick,
+    checked = false,
+    defaultChecked = false,
+    onKeyDown,
+    as = 'div',
+    itemType = 'leaf',
+    'aria-level': level = contextLevel,
+    ...rest
+  } = props;
 
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
@@ -115,6 +124,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     open,
     subtreeRef,
     actionsRef: useMergedRefs(actionsRef, handleActionsRef),
+    checked,
+    defaultChecked,
     expandIconRef,
     layoutRef,
     itemType,

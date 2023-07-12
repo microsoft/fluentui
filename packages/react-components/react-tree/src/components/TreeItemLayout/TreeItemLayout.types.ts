@@ -1,7 +1,19 @@
 import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { ButtonContextValue } from '@fluentui/react-button';
+import { RadioProps } from '@fluentui/react-radio';
+import { CheckboxProps } from '@fluentui/react-checkbox';
+import { TreeSelectionValues } from '../Tree/Tree.types';
 
 export type TreeItemLayoutSlots = {
+  /**
+   * Selection indicator if selection type is checkbox
+   */
+  checkboxIndicator: Slot<CheckboxProps>;
+  /**
+   * Selection indicator if selection type is radio
+   */
+  radioIndicator: Slot<RadioProps>;
+
   root: Slot<'div'>;
   /**
    * Content. Children of the root slot are automatically rendered here
@@ -47,4 +59,5 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
  */
 export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
   buttonContextValue: ButtonContextValue;
+  selection: TreeSelectionValues;
 };
