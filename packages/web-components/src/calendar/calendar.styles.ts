@@ -22,35 +22,23 @@ import {
 export const styles = css`
   ${display('inline')}
   :host {
-    --cell-border: none;
-    --cell-height: calc(var(--height-number) * 1px);
-    --selected-day-outline: 1px solid var(--accent-foreground-active);
-    --selected-day-color: var(--accent-foreground-active);
-    --selected-day-background: var(--neutral-fill-rest);
-    --cell-padding: calc(var(--design-unit) * 1px);
-    --disabled-day-opacity: var(--disabled-opacity);
-    --inactive-day-opacity: var(--disabled-opacity);
     display: block;
-    font-family: var(--body-font);
-    font-size: var(--type-ramp-base-font-size);
-    line-height: var(--type-ramp-base-line-height);
     width: 248px;
     height: 285px;
     color: ${colorNeutralForeground3};
     padding: 12px;
+    outline: solid black;
   }
   :host .day:not(.today, .selected):hover {
     background: #eff6fc;
     color: ${colorNeutralForeground2};
   }
-  :host .date:not(.today):active {
+  :host .day:not(.today):active {
     background: ${colorBrandStroke2};
     color: ${colorNeutralForeground2};
   }
   :host .title {
     position: inline;
-    font-size: var(--type-ramp-plus3-font-size);
-    line-height: var(--type-ramp-plus3-line-height);
     padding: ${spacingHorizontalM};
     text-align: left;
   }
@@ -139,5 +127,11 @@ export const styles = css`
     height: 41px;
     display: flex;
     justify-content: space-between;
+  }
+  :host .slotted-link {
+    width: 75px;
+    height: 20px;
+    cursor: pointer;
+    background: lightblue;
   }
 `;

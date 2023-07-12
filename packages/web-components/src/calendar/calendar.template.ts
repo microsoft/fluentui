@@ -48,4 +48,5 @@ export const template: ElementViewTemplate<Calendar> = html`
     dataGridRow: 'fast-data-grid-row',
     dataGridCell: 'fast-data-grid-cell',
   })}
+  <div class="slotted-link" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">test</div>
 `;

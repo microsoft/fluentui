@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTCalendar } from '@microsoft/fast-foundation';
+import { FASTCalendar, WeekdayFormat } from '@microsoft/fast-foundation';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
 
 /**
@@ -117,6 +117,11 @@ export class Calendar extends FASTCalendar {
   @attr({ attribute: 'highlight-selected-month', mode: 'boolean' })
   public highlightSelectedMonth?: boolean = false;
 
+  /**
+   * the format in which weekdays are displayed (M W T)
+   */
+  public weekdayFormat: WeekdayFormat = WeekdayFormat.narrow;
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
@@ -150,5 +155,11 @@ export class Calendar extends FASTCalendar {
   public nextMonthHandler(event: MouseEvent) {
     this.month = this.getMonthInfo().next.month;
     this.year = this.getMonthInfo().next.year;
+  }
+
+  public handleGoToToday(event: MouseEvent) {
+    const today: Date = new Date();
+    this.month = today.getMonth() + 1;
+    this.year = today.getFullYear();
   }
 }
