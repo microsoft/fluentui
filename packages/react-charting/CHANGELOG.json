@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 12 Jul 2023 07:38:24 GMT",
+      "tag": "@fluentui/react-charting_v5.16.51",
+      "version": "5.16.51",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9c0267d367d1fe5a8aa87e1f478322cad669abf9",
+            "comment": "Added component tests for Vertical bar chart"
+          }
+        ],
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d1440d45a86ccedae6aeb20825b0756342c1b49",
+            "comment": "Fixing rerender issue for empty vertical bar charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jul 2023 07:35:07 GMT",
       "tag": "@fluentui/react-charting_v5.16.50",
       "version": "5.16.50",

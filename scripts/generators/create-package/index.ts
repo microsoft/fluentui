@@ -89,13 +89,15 @@ module.exports = (plop: NodePlopAPI) => {
       }
       const { packageName, target, hasTests } = answers;
 
-      const destination = answers.isConverged ? `packages/react-components/${packageName}` : `packages/${packageName}`;
+      const destination = answers.isConverged
+        ? `packages/react-components/${packageName}-preview`
+        : `packages/${packageName}`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters
       const data = {
-        packageNpmName: '@fluentui/' + packageName,
-        packageVersion: answers.isConverged ? '9.0.0-alpha.0' : '0.1.0',
+        packageNpmName: '@fluentui/' + packageName + '-preview',
+        packageVersion: '0.0.0',
         friendlyPackageName: packageName.replace(
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
@@ -294,6 +296,7 @@ function updateNxProject(_answers: Answers, config: { projectName: string; proje
     root: config.projectRoot,
     projectType: 'library',
     implicitDependencies: [],
+    tags: ['vNext'],
   });
 
   flushTreeChanges();
