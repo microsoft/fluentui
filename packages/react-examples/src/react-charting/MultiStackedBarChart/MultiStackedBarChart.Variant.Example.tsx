@@ -109,19 +109,17 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
 
     return (
       <>
-        <ThemeProvider theme={DarkTheme}>
-          <Checkbox
-            label="Hide labels"
-            checked={this.state.hideLabels}
-            onChange={this._onCheckChange}
-            styles={{ root: { marginBottom: '20px' } }}
-          />
-          <MultiStackedBarChart
-            data={data}
-            variant={MultiStackedBarChartVariant.AbsoluteScale}
-            hideLabels={this.state.hideLabels}
-          />
-        </ThemeProvider>
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onCheckChange}
+          styles={{ root: { marginBottom: '20px' } }}
+        />
+        <MultiStackedBarChart
+          data={data}
+          variant={MultiStackedBarChartVariant.AbsoluteScale}
+          hideLabels={this.state.hideLabels}
+        />
       </>
     );
   }

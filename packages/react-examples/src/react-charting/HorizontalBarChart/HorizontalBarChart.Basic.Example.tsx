@@ -106,9 +106,5 @@ export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () =>
     },
   ];
 
-  return (
-    <ThemeProvider theme={DarkTheme}>
-      <HorizontalBarChart culture={window.navigator.language} data={data} hideRatio={hideRatio} width={600} />;
-    </ThemeProvider>
-  );
+  return <HorizontalBarChart culture={window.navigator.language} data={data} hideRatio={hideRatio} width={600} />;
 };
