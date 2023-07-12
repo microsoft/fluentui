@@ -16,7 +16,7 @@ function initializeMap(iterable?: Iterable<TreeItemValue | [TreeItemValue, 'mixe
       map.set(item, true);
     }
   }
-  return ImmutableMap.dangerouslyCreate(map);
+  return ImmutableMap.dangerouslyCreate_unstable(map);
 }
 
 export function useFlatCheckedItemsState(

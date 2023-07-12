@@ -25,7 +25,8 @@ export interface ImmutableMap<Key, Value> {
    * Exposes the internal map used to store values.
    * This is an internal API and should not be used directly.
    */
-  dangerousGetInternalMap(): Map<Key, Value>;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  dangerouslyGetInternalMap_unstable(): Map<Key, Value>;
 }
 
 const emptyImmutableMap = createImmutableMap<never, never>();
@@ -58,12 +59,14 @@ function dangerouslyCreateImmutableMap<Key, Value>(internalMap: Map<Key, Value>)
     },
     has: value => internalMap.has(value),
     [Symbol.iterator]: () => internalMap[Symbol.iterator](),
-    dangerousGetInternalMap: () => internalMap,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    dangerouslyGetInternalMap_unstable: () => internalMap,
   };
 }
 
 export const ImmutableMap = {
   empty: emptyImmutableMap,
   create: createImmutableMap,
-  dangerouslyCreate: dangerouslyCreateImmutableMap,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  dangerouslyCreate_unstable: dangerouslyCreateImmutableMap,
 };
