@@ -137,9 +137,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#004b50"
@@ -150,7 +150,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="10.286666666666665%"
+              width="10.235233333333333%"
               x="0%"
               y={0}
             />
@@ -158,9 +158,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="13457/15000."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               fill="#edebe9"
@@ -169,8 +169,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
-              width="89.71333333333334%"
-              x="10.286666666666665%"
+              width="89.26476666666667%"
+              x="10.735233333333333%"
               y={0}
             />
           </g>
@@ -304,9 +304,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#5c2d91"
@@ -317,7 +317,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="5.333333333333334%"
+              width="5.306666666666667%"
               x="0%"
               y={0}
             />
@@ -325,9 +325,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="14200/15000."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               fill="#edebe9"
@@ -336,8 +336,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
-              width="94.66666666666667%"
-              x="5.333333333333334%"
+              width="94.19333333333333%"
+              x="5.806666666666667%"
               y={0}
             />
           </g>
@@ -647,9 +647,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#004b50"
@@ -660,7 +660,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="10.286666666666665%"
+              width="10.235233333333333%"
               x="0%"
               y={0}
             />
@@ -668,9 +668,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="13457/15000."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               fill="#edebe9"
@@ -679,8 +679,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
-              width="89.71333333333334%"
-              x="10.286666666666665%"
+              width="89.26476666666667%"
+              x="10.735233333333333%"
               y={0}
             />
           </g>
@@ -814,9 +814,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#5c2d91"
@@ -827,7 +827,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="5.333333333333334%"
+              width="5.306666666666667%"
               x="0%"
               y={0}
             />
@@ -835,9 +835,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="14200/15000."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               fill="#edebe9"
@@ -846,8 +846,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
-              width="94.66666666666667%"
-              x="5.333333333333334%"
+              width="94.19333333333333%"
+              x="5.806666666666667%"
               y={0}
             />
           </g>
@@ -1063,9 +1063,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#004b50"
@@ -1075,7 +1075,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="10.286666666666665%"
+              width="10.235233333333333%"
               x="0%"
               y={0}
             />
@@ -1195,9 +1195,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#5c2d91"
@@ -1207,7 +1207,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="5.333333333333334%"
+              width="5.306666666666667%"
               x="0%"
               y={0}
             />
@@ -1344,9 +1344,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#004b50"
@@ -1356,7 +1356,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="10.286666666666665%"
+              width="10.235233333333333%"
               x="0%"
               y={0}
             />
@@ -1374,7 +1374,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                   }
               dominantBaseline="central"
               transform="translate(4)"
-              x="10.286666666666665%"
+              x="10.235233333333333%"
               y={6}
             >
               1.5k
@@ -1494,9 +1494,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
+                  &:focus {
                     stroke-width: 2px;
-                    stroke: #ffffff;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               fill="#5c2d91"
@@ -1506,7 +1506,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
-              width="5.333333333333334%"
+              width="5.306666666666667%"
               x="0%"
               y={0}
             />
@@ -1524,7 +1524,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                   }
               dominantBaseline="central"
               transform="translate(4)"
-              x="5.333333333333334%"
+              x="5.306666666666667%"
               y={6}
             >
               800

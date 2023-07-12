@@ -16,6 +16,7 @@ import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import { clamp } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -31,6 +32,7 @@ export interface IHorizontalBarChartState {
   barCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   emptyChart?: boolean;
+  barSpacing: number;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -41,6 +43,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -55,11 +58,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       xCalloutValue: '',
       yCalloutValue: '',
       emptyChart: false,
+      barSpacing: 0.5,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
   }
 
   public componentDidMount(): void {
@@ -67,6 +72,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
     }
+
+    this._adjustBarSpacing();
   }
 
   public render(): JSX.Element {
@@ -120,7 +127,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 </FocusZone>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
-                  <svg className={this._classNames.chart} aria-label={points!.chartTitle}>
+                  <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={points!.chartTitle}>
                     <g
                       id={keyVal}
                       key={keyVal}
@@ -288,19 +295,45 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
+  // Adjusts the margin percentage, based on the width of the svg (inversly propotional)
+  private _adjustBarSpacing(): void {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
+    if (svgWidth) {
+      const BAR_SPACING_FACTOR = 200;
+      const currentBarSpacing = clamp(BAR_SPACING_FACTOR / svgWidth, 1, 0.2);
+      this.setState({ barSpacing: currentBarSpacing });
+    }
+  }
+
+  /**
+   * This functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing in between the bars
+   */
+
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
+    const noOfBars =
+      data.chartData?.reduce(
+        (count: number, point: IChartDataPoint) => (count += (point.horizontalBarChartdata?.x || 0) > 0 ? 1 : 0),
+        0,
+      ) || 1;
+    const totalSpacing = this.state.barSpacing * (noOfBars - 1);
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    const total = data.chartData!.reduce(
+    let total = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) =>
         acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
       0,
     );
+
+    total += (totalSpacing * total) / (100 - totalSpacing);
+
     let prevPosition = 0;
     let value = 0;
 
-    let sumOfPercent = 0;
+    let sumOfPercent = totalSpacing;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       value = (pointData / total) * 100;
@@ -361,7 +394,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       return (
         <rect
           key={index}
-          x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
+          x={`${
+            this._isRTL
+              ? 100 - startingPoint[index] - value - index * this.state.barSpacing
+              : startingPoint[index] + index * this.state.barSpacing
+          }%`}
           y={0}
           data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}

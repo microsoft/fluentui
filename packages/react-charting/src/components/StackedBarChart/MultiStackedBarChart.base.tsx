@@ -16,6 +16,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import { clamp } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -39,6 +40,7 @@ export interface IMultiStackedBarChartState {
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
   emptyChart?: boolean;
+  barSpacing: number;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -53,6 +55,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -68,10 +71,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       yCalloutValue: '',
       calloutLegend: '',
       emptyChart: false,
+      barSpacing: 2,
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
   }
 
   public componentDidMount(): void {
@@ -83,6 +88,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
     }
+
+    this._adjustBarSpacing();
   }
 
   public render(): JSX.Element {
@@ -151,6 +158,24 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
+  private _adjustBarSpacing() {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
+    if (svgWidth) {
+      const BAR_SPACING_FACTOR = 200;
+
+      // The barspacing is provided in percentage terms, so changes inversely to the width of the svg
+      const currentBarSpacing = clamp(BAR_SPACING_FACTOR / svgWidth, 1, 0.1);
+      this.setState({ barSpacing: currentBarSpacing });
+    }
+  }
+
+  /**
+   * The Create bar functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing
+   */
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
@@ -159,6 +184,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
   ): JSX.Element {
+    const barSpacing = this.state.barSpacing;
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMargin = barSpacing * (noOfBars - 1);
     const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
@@ -167,10 +197,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
-    const total =
+    let total =
       this.props.variant === MultiStackedBarChartVariant.AbsoluteScale ? this._longestBarTotalValue : barTotalValue;
 
-    let sumOfPercent = 0;
+    total += (totalMargin * total) / (100 - totalMargin);
+
+    let sumOfPercent = totalMargin;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
       value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
@@ -253,7 +285,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - barSpacing * index
+                : startingPoint[index] + barSpacing * index
+            }%`}
             y={0}
             width={value + '%'}
             height={barHeight}
@@ -269,9 +305,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             key="text"
             x={`${
               this._isRTL
-                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value
-                : (startingPoint[startingPoint.length - 1] || 0) + value
+                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMargin
+                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMargin
             }%`}
+            textAnchor={this._isRTL ? 'end' : 'start'}
             y={barHeight / 2}
             dominantBaseline="central"
             transform={`translate(${this._isRTL ? -4 : 4})`}
@@ -342,7 +379,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartWrapper}>
-            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
+            <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={data?.chartTitle}>
               {bars}
             </svg>
           </div>
