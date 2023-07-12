@@ -162,6 +162,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -192,6 +193,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -364,6 +366,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -394,6 +397,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -818,6 +822,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -848,6 +853,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1020,6 +1026,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1050,6 +1057,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1365,6 +1373,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1393,6 +1402,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1535,6 +1545,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1563,6 +1574,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1798,6 +1810,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1826,6 +1839,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1986,6 +2000,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2014,6 +2029,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2293,6 +2309,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2321,6 +2338,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2489,6 +2507,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2517,6 +2536,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2768,6 +2788,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2796,6 +2817,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2954,6 +2976,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -2982,6 +3005,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3243,6 +3267,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3271,6 +3296,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3439,6 +3465,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3467,6 +3494,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3631,6 +3659,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3659,6 +3688,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3827,6 +3857,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3855,6 +3886,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4297,6 +4329,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4325,6 +4358,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4493,6 +4527,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4521,6 +4556,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }

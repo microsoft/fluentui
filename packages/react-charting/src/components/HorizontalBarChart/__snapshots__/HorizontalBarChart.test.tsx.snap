@@ -138,6 +138,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -159,6 +160,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -305,6 +307,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -326,6 +329,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -648,6 +652,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -669,6 +674,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -815,6 +821,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -836,6 +843,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1064,6 +1072,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1196,6 +1205,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1345,6 +1355,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1495,6 +1506,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               className=
 
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
