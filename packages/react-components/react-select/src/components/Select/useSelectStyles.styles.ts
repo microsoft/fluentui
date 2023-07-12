@@ -10,16 +10,16 @@ export const selectClassNames: SlotClassNames<SelectSlots> = {
 };
 
 const iconSizes = {
-  small: '16px',
-  medium: '20px',
-  large: '24px',
+  small: '36px',
+  medium: '40px',
+  large: '64px',
 };
 
 //TODO: Should fieldHeights be a set of global design tokens or constants?
 const fieldHeights = {
-  small: '24px',
-  medium: '32px',
-  large: '40px',
+  small: '34px',
+  medium: '42px',
+  large: '60px',
 };
 
 /* Since the <select> element must span the full width and cannot have children,
