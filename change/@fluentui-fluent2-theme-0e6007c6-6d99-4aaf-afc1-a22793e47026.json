@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Add all spinner sizes for fluent2 theme in v8",
+  "packageName": "@fluentui/fluent2-theme",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
