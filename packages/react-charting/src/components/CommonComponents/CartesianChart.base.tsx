@@ -722,7 +722,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
     }
     // Case: truncated labels
-    else if (this.props.showXAxisLablesTooltip && this._tickValues) {
+    else if (this.props.showXAxisLablesTooltip) {
       const tickValues = this._tickValues.map(val => {
         const numChars = this.props.noOfCharsToTruncate || 4;
         return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
@@ -732,7 +732,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       labelWidth += Math.ceil(longestLabelWidth);
     }
     // Case: wrapped labels
-    else if (this.props.wrapXAxisLables && this._tickValues) {
+    else if (this.props.wrapXAxisLables) {
       const words: string[] = [];
       this._tickValues.forEach((val: string) => {
         words.push(...val.toString().split(/\s+/));
@@ -747,10 +747,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       labelWidth += Math.ceil(longestLabelWidth);
     }
 
-    let minChartWidth =
-      this._tickValues && this._tickValues.length > 1
-        ? this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1)
-        : this.margins.left! + this.margins.right!;
+    let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
 
     if (
       [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
