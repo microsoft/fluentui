@@ -3,6 +3,7 @@ import { createTheme } from '@fluentui/react';
 import { IExtendedEffects, IExtendedSemanticColors } from './types';
 import { fluent2ComponentStyles } from './fluent2ComponentStyles';
 import { fluent2SharedColors } from './fluent2SharedColors';
+import { Fluent2WebLightTheme } from './fluent2WebLightTheme';
 
 const fluent2ForV8DarkEffects: IExtendedEffects = {
   elevation4: '0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
@@ -56,6 +57,11 @@ const p = fluent2ForV8DarkPalette;
 const grey36 = '#5C5C5C';
 
 const semanticColorMappingOverridesForDark: Partial<IExtendedSemanticColors> = {
+  // Primary button is unique, it's background color is shared across themes
+  primaryButtonBackgroundHovered: Fluent2WebLightTheme.palette.themePrimary,
+  primaryButtonBackgroundPressed: Fluent2WebLightTheme.palette.themeDarker,
+  primaryButtonBackground: Fluent2WebLightTheme.palette.themeDarkAlt,
+
   // This hex matches the v9 theme.
   link: p.themeDark,
 
@@ -104,4 +110,5 @@ export const Fluent2WebDarkTheme: ITheme = createTheme({
   semanticColors: semanticColorMappingOverridesForDark,
   components: fluent2ComponentStyles,
   effects: fluent2ForV8DarkEffects,
+  isInverted: true,
 });
