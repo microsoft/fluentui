@@ -17,6 +17,9 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.cy.json"
     }
   ]
 }

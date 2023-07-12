@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import {
+import type {
   VirtualizerScrollViewDynamicSlots,
   VirtualizerScrollViewDynamicState,
 } from './VirtualizerScrollViewDynamic.types';
@@ -18,7 +18,6 @@ const useStyles = makeStyles({
     display: 'flex',
     width: '100%',
     height: '100%',
-    overflowAnchor: 'none',
   },
   vertical: {
     flexDirection: 'column',

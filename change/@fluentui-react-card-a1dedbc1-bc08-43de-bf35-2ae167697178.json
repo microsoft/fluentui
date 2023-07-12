@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: make selected styles have higher priority",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release react-drawer to unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -241,7 +241,7 @@ export const ambientShadow = "0 0 2px rgba(0, 0, 0, 0.14)";
 // @internal
 export class Anchor extends Anchor_2 {
     // @public
-    appearance: AnchorAppearance;
+    appearance?: AnchorAppearance;
     // (undocumented)
     appearanceChanged(oldValue: AnchorAppearance, newValue: AnchorAppearance): void;
     // (undocumented)

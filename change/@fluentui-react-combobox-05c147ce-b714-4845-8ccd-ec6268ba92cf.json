@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "export selection types from combobox",
-  "packageName": "@fluentui/react-combobox",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

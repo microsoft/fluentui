@@ -100,7 +100,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   });
 
   // Render the core of a color cell
-  const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
+  const renderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     const svgClassName = classNames.svg;
 
     // Build an SVG for the cell with the given shape and color properties
@@ -117,6 +117,11 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
         {circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );
+  };
+
+  const onRenderItem = (option: IColorCellProps): JSX.Element => {
+    const { onRenderColorCellContent = renderColorOption } = props;
+    return onRenderColorCellContent(option, renderColorOption) as JSX.Element;
   };
 
   const cellSemantics = isRadio
@@ -138,7 +143,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
       disabled={disabled}
       {...cellSemantics}
       // eslint-disable-next-line react/jsx-no-bind
-      onRenderItem={onRenderColorOption}
+      onRenderItem={onRenderItem}
       onClick={onClick}
       onHover={onHover}
       onFocus={onFocus}

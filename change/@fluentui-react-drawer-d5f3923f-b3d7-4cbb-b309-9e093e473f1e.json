@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: move styles to .styles.ts files [react-drawer & react-toast]",
-  "packageName": "@fluentui/react-drawer",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/common-styles",
-  "version": "1.2.28",
+  "version": "1.2.32",
   "description": "Common style definitions for Fluent UI React components",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "office-ui-fabric-core": "^11.0.0"
   },
   "devDependencies": {
-    "@fluentui/style-utilities": "^8.9.12",
+    "@fluentui/style-utilities": "^8.9.16",
     "@fluentui/scripts-tasks": "*"
   }
 }

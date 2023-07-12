@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove focus function from the deps to avoid constant move of focus.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

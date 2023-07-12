@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add new optional useTransform parameter to allow disabling transform for positioning",
-  "packageName": "@fluentui/react-positioning",
-  "email": "yiliu9@microsoft.com",
-  "dependentChangeType": "patch"
-}

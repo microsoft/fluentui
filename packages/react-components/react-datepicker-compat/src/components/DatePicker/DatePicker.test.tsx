@@ -16,11 +16,30 @@ function queryByRoleDialog(result: RenderResult) {
   }
 }
 
-const getDatepickerPopoverElement = (result: RenderResult) => {
+const getDatepickerPopupElement = (result: RenderResult) => {
   result.getByRole('combobox').click();
   const dialog = queryByRoleDialog(result);
   expect(dialog).not.toBeNull();
   return dialog!;
+};
+
+const ControlledDatePicker = (props: Partial<React.ComponentProps<typeof DatePicker>>) => {
+  const [value, setValue] = React.useState<Date | null>(null);
+
+  return (
+    <DatePicker
+      value={value}
+      allowTextInput
+      formatDate={date => {
+        props.formatDate?.();
+        return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+      }}
+      onSelectDate={date => {
+        props.onSelectDate?.(date);
+        date !== undefined && setValue(date);
+      }}
+    />
+  );
 };
 
 describe('DatePicker', () => {
@@ -31,7 +50,9 @@ describe('DatePicker', () => {
   isConformant({
     Component: DatePicker,
     displayName: 'DatePicker',
-    disabledTests: ['consistent-callback-args'],
+    // component-has-root-ref is disabled because the root is an Input component, the conformance test thinks the
+    // wrapper is the root, not the input itself. This is a bug in the conformance test.
+    disabledTests: ['consistent-callback-args', 'component-has-root-ref'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -41,7 +62,7 @@ describe('DatePicker', () => {
             popupSurface: datePickerClassNames.popupSurface,
             calendar: datePickerClassNames.calendar,
           },
-          getPortalElement: getDatepickerPopoverElement,
+          getPortalElement: getDatepickerPopupElement,
         },
       ],
     },
@@ -135,5 +156,27 @@ describe('DatePicker', () => {
     result.getByText('15').click();
 
     expect(input.getAttribute('value')).toBe('15/1/20');
+  });
+
+  it('calls onSelectDate when controlled', () => {
+    const onSelectDate = jest.fn();
+    const result = render(<ControlledDatePicker onSelectDate={onSelectDate} />);
+
+    fireEvent.click(result.getByRole('combobox'));
+    result.getAllByRole('gridcell')[10].click();
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onSelectDate and formatDate when controlled', () => {
+    const onSelectDate = jest.fn();
+    const formatDate = jest.fn();
+    const result = render(<ControlledDatePicker formatDate={formatDate} onSelectDate={onSelectDate} />);
+
+    fireEvent.click(result.getByRole('combobox'));
+    result.getAllByRole('gridcell')[10].click();
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+    expect(formatDate).toHaveBeenCalledTimes(1);
   });
 });
