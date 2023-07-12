@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Spinner } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
@@ -13,6 +14,9 @@ const InvertedWrapper: React.FC = ({ children }) => {
 
 storiesOf('Spinner converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story}</StoryWright>
+  ))
   .addDecorator(TestWrapperDecoratorNoAnimation)
   .addStory('Primary', () => <Spinner className="test-class" />, {
     includeHighContrast: true,
