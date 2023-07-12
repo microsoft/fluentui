@@ -25,7 +25,7 @@
   "devDependencies": {
     "@fluentui/common-styles": "^1.2.32",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-monaco-editor": "^1.7.107",
+    "@fluentui/react-monaco-editor": "^1.7.108",
     "write-file-webpack-plugin": "^4.1.0",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"
@@ -35,7 +35,7 @@
     "@fluentui/public-docsite-resources": "^8.1.41",
     "@fluentui/public-docsite-setup": "^0.3.21",
     "@fluentui/react": "^8.110.8",
-    "@fluentui/react-docsite-components": "^8.12.30",
+    "@fluentui/react-docsite-components": "^8.12.31",
     "@fluentui/react-examples": "^8.34.4",
     "@fluentui/react-experiments": "^8.14.96",
     "@fluentui/fluent2-theme": "^8.107.27",

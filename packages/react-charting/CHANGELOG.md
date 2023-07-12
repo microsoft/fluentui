@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 10 Jul 2023 07:35:07 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2023 07:38:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.51)
+
+Wed, 12 Jul 2023 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.50..@fluentui/react-charting_v5.16.51)
+
+### Patches
+
+- Fixing rerender issue for empty vertical bar charts ([PR #28192](https://github.com/microsoft/fluentui/pull/28192) by srmukher@microsoft.com)
 
 ## [5.16.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.50)
 
