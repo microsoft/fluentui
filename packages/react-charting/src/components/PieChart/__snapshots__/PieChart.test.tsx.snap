@@ -26,7 +26,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
   >
     <svg
       height={350}
-      role="application"
       width={600}
     >
       <g
@@ -50,10 +49,10 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
 
                 {
                   fill: #e81123;
-                  stroke-width: 2px;
+                  stroke-width: 0px;
                   stroke: #ffffff;
                 }
-            d="M0,-159A159,159,0,1,1,0,159L0,0Z"
+            d="M0.795,-158.998A159,159,0,0,1,1.59,158.992L0.798,0.603A1,1,0,0,0,0.795,-0.607Z"
           />
           <text
             aria-label="A-50"
@@ -64,7 +63,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   outline: none;
                 }
             data-is-focusable={false}
-            dominantBaseline="hanging"
+            dominantBaseline="auto"
             id="tooltip-host3"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
@@ -72,8 +71,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={161}
-            y={3.574918139293004e-14}
+            x={160.99949687526205}
+            y={-0.40249958072932485}
           >
             A-50
           </text>
@@ -96,10 +95,10 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
 
                 {
                   fill: #0078d4;
-                  stroke-width: 2px;
+                  stroke-width: 0px;
                   stroke: #ffffff;
                 }
-            d="M0,159A159,159,0,0,1,-159,0L0,0Z"
+            d="M0,159A159,159,0,0,1,-158.996,1.193L-0.704,0.71Z"
           />
           <text
             aria-label="B-25"
@@ -118,8 +117,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-113.84419177103425}
-            y={113.84419177103408}
+            x={-113.41647658644041}
+            y={114.27030602355721}
           >
             B-25
           </text>
@@ -142,10 +141,10 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
 
                 {
                   fill: #107c10;
-                  stroke-width: 2px;
+                  stroke-width: 0px;
                   stroke: #ffffff;
                 }
-            d="M-159,0A159,159,0,0,1,0,-159L0,0Z"
+            d="M-159,-0.398A159,159,0,0,1,-0.795,-158.998L-0.708,-0.706Z"
           />
           <text
             aria-label="C-25"
@@ -164,15 +163,12 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-113.84419177103408}
-            y={-113.84419177103425}
+            x={-113.98640803292615}
+            y={-113.70179762761569}
           >
             C-25
           </text>
         </g>
-        <use
-          xlinkHref="#"
-        />
       </g>
     </svg>
   </div>
@@ -205,7 +201,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
   >
     <svg
       height={300}
-      role="application"
       width={600}
     >
       <g
@@ -229,10 +224,10 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
 
                 {
                   fill: #e81123;
-                  stroke-width: 2px;
+                  stroke-width: 0px;
                   stroke: #ffffff;
                 }
-            d="M0,-134A134,134,0,1,1,0,134L0,0Z"
+            d="M0.67,-133.998A134,134,0,0,1,1.34,133.993L0.674,0.739A1,1,0,0,0,0.67,-0.742Z"
           />
           <text
             aria-label="A-50"
@@ -243,7 +238,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   outline: none;
                 }
             data-is-focusable={false}
-            dominantBaseline="hanging"
+            dominantBaseline="auto"
             id="tooltip-host13"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
@@ -251,8 +246,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={136}
-            y={3.019806626980426e-14}
+            x={135.99957500022134}
+            y={-0.3399996458334669}
           >
             A-50
           </text>
@@ -275,10 +270,10 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
 
                 {
                   fill: #0078d4;
-                  stroke-width: 2px;
+                  stroke-width: 0px;
                   stroke: #ffffff;
                 }
-            d="M0,134A134,134,0,0,1,-134,0L0,0Z"
+            d="M0,134A134,134,0,0,1,-133.996,1.005L-0.741,0.672A1,1,0,0,0,-0.666,0.746Z"
           />
           <text
             aria-label="B-25"
@@ -297,8 +292,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-96.16652224137054}
-            y={96.16652224137039}
+            x={-95.80522245811116}
+            y={96.52646968449552}
           >
             B-25
           </text>
@@ -321,10 +316,10 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
 
                 {
                   fill: #107c10;
-                  stroke-width: 2px;
+                  stroke-width: 0px;
                   stroke: #ffffff;
                 }
-            d="M-134,0A134,134,0,0,1,0,-134L0,0Z"
+            d="M-134,-0.335A134,134,0,0,1,-0.67,-133.998L-0.67,-0.742A1,1,0,0,0,-0.744,-0.668Z"
           />
           <text
             aria-label="C-25"
@@ -343,15 +338,12 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-96.16652224137039}
-            y={-96.16652224137054}
+            x={-96.28665523278234}
+            y={-96.04623898978716}
           >
             C-25
           </text>
         </g>
-        <use
-          xlinkHref="#"
-        />
       </g>
     </svg>
   </div>
