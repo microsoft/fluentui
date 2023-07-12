@@ -1,6 +1,6 @@
 /*
  * Heads Up!
- * This file is used in both React v9 (via Storybook logic) and Web Components (via symlink).
+ * This file is used by both React v9 and Web Components Storybooks.
  * All CSS must apply to both implementations.
  *
  * DO NOT use design tokens in this file.

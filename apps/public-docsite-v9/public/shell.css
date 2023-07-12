@@ -1,9 +1,8 @@
 /*
- HEADS UP!
- This file lives in apps/public-docsite-v9/public/shell.css
- This file is shared via symlink in web-components/public.
- All CSS must apply to both React and Web Components implementations.
-*/
+ * HEADS UP!
+ * This file is used by both React v9 and Web Components Storybooks.
+ * All CSS must apply to both implementations.
+ */
 
 /* sidebar logo (React uses an SVG, Web Components uses text) */
 .sidebar-header > div:first-of-type {
