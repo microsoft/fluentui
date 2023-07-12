@@ -2,6 +2,33 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Tue, 11 Jul 2023 18:46:36 GMT",
+      "tag": "@fluentui/react-select_v9.1.21",
+      "version": "9.1.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-field to v9.1.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 11:57:14 GMT",
       "tag": "@fluentui/react-select_v9.1.20",
       "version": "9.1.20",

@@ -2,6 +2,85 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 11 Jul 2023 18:46:34 GMT",
+      "tag": "@fluentui/react-components_v9.26.0",
+      "version": "9.26.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5844766000909d73f83f23c99415b43d8b31a5b8",
+            "comment": "feat: Export focus mode types for DataGrid"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1b458501e0efb7cdcf9cff4099d9e6cd8a2ffb5c",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "01a5a8378f8f25dc04a3c255fd6c5ede40d8f0ee",
+            "comment": "breaking: Remove componentRef and IDatePicker since it's no longer necessary, fix ref forwarding to the input, change ref type for useDatePicker to use HTMLInputElement instead of HTMLElement, and fix focus movement when closing/opening popup."
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "860eda5cd9a49d91bd4ec3d8d01792dba79cabb5",
+            "comment": "fix: exported useOnMenuMouseEnter from react-menu"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c10400fdaf7ff1beef85051ce38b2c6c52b4e2e2",
+            "comment": "feat: export options `strategy` from `PositioningProps`. Deprecate internal option `positionFixed`"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "5844766000909d73f83f23c99415b43d8b31a5b8",
+            "comment": "feat(DataGridCell): Implemets `cell` and `none` focusModes"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "f9c4ec8d19658d9314d57f890de1a0d886edc116",
+            "comment": "feat: Deprecates package in favour of @fluentui-contrib/react-data-grid-react-window"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "64752d9a76638ccc4c91303347993b50e0e6d053",
+            "comment": "chore: move slots back to TreeItem and creates slot context"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74",
+            "comment": "chore: openItems property added to TreeOpenChangeData + minor internal improvements"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2fa67922261c28392dbe659fff44f3e86eff2efb",
+            "comment": "Fix: Ensure 'start buffer' is margin padded into the non-virtualized space on horizontal layouts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "9dc6601a3f222e0a339541cc1523a356a78c59e6",
+            "comment": "fix(react-datepicker-compat): Add focus styles to CalendarPicker's go to today button."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 20:43:09 GMT",
       "tag": "@fluentui/react-components_v9.25.1",
       "version": "9.25.1",

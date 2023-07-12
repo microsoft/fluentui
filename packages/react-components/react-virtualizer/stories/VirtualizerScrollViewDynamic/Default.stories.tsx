@@ -23,7 +23,7 @@ export const Default = () => {
   useEffect(() => {
     let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
-      arraySize.current[i] = Math.random() * 150 + minHeight;
+      arraySize.current[i] = Math.floor(Math.random() * 150 + minHeight);
       _totalSize += arraySize.current[i];
     }
     setTotalSize(_totalSize);

@@ -173,4 +173,51 @@ describe('DataGrid', () => {
     cy.focused().should('have.text', '7-1').should('have.attr', 'role', 'gridcell').realPress(['Shift', 'Tab']);
     cy.focused().should('have.text', 'Before');
   });
+
+  it("should set tabIndex -1 for cell focusMode 'none'", () => {
+    const columns = [
+      ...testColumns,
+      createTableColumn({
+        columnId: 'action',
+        renderHeaderCell: () => 'action',
+        renderCell: () => <button>action</button>,
+      }),
+    ];
+    const CompositeExample = () => (
+      <>
+        <button>Before</button>
+        <DataGrid items={testItems} columns={columns}>
+          <DataGridHeader>
+            <DataGridRow<Item>>
+              {({ renderHeaderCell }) => <DataGridCell>{renderHeaderCell()}</DataGridCell>}
+            </DataGridRow>
+          </DataGridHeader>
+          <DataGridBody<Item>>
+            {({ item }) => (
+              <DataGridRow<Item>>
+                {({ renderCell, columnId }) => (
+                  <DataGridCell focusMode={columnId === 'action' ? 'none' : 'cell'}>{renderCell(item)}</DataGridCell>
+                )}
+              </DataGridRow>
+            )}
+          </DataGridBody>
+        </DataGrid>
+        <button>After</button>
+      </>
+    );
+    mount(<CompositeExample />);
+
+    cy.contains('header-1').focus().realPress('ArrowRight');
+    cy.realPress('ArrowRight');
+    cy.realPress('ArrowRight');
+    cy.realPress('ArrowRight');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.text', 'action').should('have.prop', 'tagName', 'BUTTON');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.text', 'action').should('have.prop', 'tagName', 'BUTTON');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.text', '2-3');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.text', 'action').should('have.prop', 'tagName', 'BUTTON');
+  });
 });

@@ -113,7 +113,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // Local updates
     updateChildRows(index);
     updateCurrentItemSizes(index);
-
     // State setters
     setActualIndex(index);
   };
@@ -277,7 +276,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [getItemSize, itemSize, numItems]);
 
   const calculateBefore = useCallback(() => {
-    const currentIndex = Math.min(actualIndex, numItems);
+    const currentIndex = Math.min(actualIndex, numItems - 1);
 
     if (!getItemSize) {
       // The missing items from before virtualization starts height
@@ -293,19 +292,19 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [actualIndex, getItemSize, itemSize, numItems]);
 
   const calculateAfter = useCallback(() => {
-    if (numItems === 0) {
+    if (numItems === 0 || actualIndex + virtualizerLength >= numItems) {
       return 0;
     }
 
-    const lastItemIndex = Math.min(actualIndex + virtualizerLength, numItems - 1);
+    const lastItemIndex = Math.min(actualIndex + virtualizerLength, numItems);
     if (!getItemSize) {
       // The missing items from after virtualization ends height
-      const remainingItems = numItems - lastItemIndex - 1;
+      const remainingItems = numItems - lastItemIndex;
       return remainingItems * itemSize;
     }
 
     // Time for custom size calcs
-    return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex];
+    return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
   }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
 
   const updateChildRows = useCallback(
