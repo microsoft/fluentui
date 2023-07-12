@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: exclude .swcrc from being published",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

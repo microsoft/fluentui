@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make AvatarGroup's content direction column.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

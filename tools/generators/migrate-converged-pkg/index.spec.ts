@@ -118,7 +118,7 @@ describe('migrate-converged-pkg generator', () => {
 
       it(`should throw error if provided name doesn't match existing package`, async () => {
         await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
-          `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
+          `[Error: Cannot find configuration for '@proj/non-existent-lib']`,
         );
       });
 
@@ -435,24 +435,25 @@ describe('migrate-converged-pkg generator', () => {
         "// @ts-check
 
         /**
-        * @type {import('@jest/types').Config.InitialOptions}
-        */
+         * @type {import('@jest/types').Config.InitialOptions}
+         */
         module.exports = {
-        displayName: 'react-dummy',
-        preset: '../../../jest.preset.js',
-        globals: {
-        'ts-jest': {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-        isolatedModules: true,
-        },
-        },
-        transform: {
-        '^.+\\\\\\\\.tsx?$': 'ts-jest',
-        },
-        coverageDirectory: './coverage',
-        setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-        };"
+          displayName: 'react-dummy',
+          preset: '../../../jest.preset.js',
+          transform: {
+            '^.+\\\\\\\\.tsx?$': [
+              'ts-jest',
+              {
+                tsconfig: '<rootDir>/tsconfig.spec.json',
+                isolatedModules: true,
+              },
+            ],
+          },
+          coverageDirectory: './coverage',
+          setupFilesAfterEnv: ['./config/tests.js'],
+          snapshotSerializers: ['@griffel/jest-serializer'],
+        };
+        "
       `);
     });
 
@@ -492,7 +493,10 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       expect(tree.exists(jestSetupFilePath)).toBeTruthy();
-      expect(getJestSetupFile()).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
+      expect(getJestSetupFile()).toMatchInlineSnapshot(`
+        "/** Jest test setup file. */
+        "
+      `);
     });
   });
 
@@ -583,18 +587,24 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "const rootMain = require('../../../../.storybook/main');
 
-        module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
-        ...rootMain,
-        stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
-        addons: [...rootMain.addons],
-        webpackFinal: (config, options) => {
-        const localConfig = { ...rootMain.webpackFinal(config, options) };
+        module.exports =
+          /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+            ...rootMain,
+            stories: [
+              ...rootMain.stories,
+              '../stories/**/*.stories.mdx',
+              '../stories/**/index.stories.@(ts|tsx)',
+            ],
+            addons: [...rootMain.addons],
+            webpackFinal: (config, options) => {
+              const localConfig = { ...rootMain.webpackFinal(config, options) };
 
-        // add your own webpack tweaks if needed
+              // add your own webpack tweaks if needed
 
-        return localConfig;
-        },
-        });"
+              return localConfig;
+            },
+          });
+        "
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
@@ -604,7 +614,8 @@ describe('migrate-converged-pkg generator', () => {
         export const decorators = [...rootPreview.decorators];
 
         /** @type {typeof rootPreview.parameters} */
-        export const parameters = { ...rootPreview.parameters };"
+        export const parameters = { ...rootPreview.parameters };
+        "
       `);
     });
 
@@ -670,7 +681,7 @@ describe('migrate-converged-pkg generator', () => {
     it(`should remove @ts-ignore pragmas from all stories`, async () => {
       const { paths } = setup({ createDummyStories: true });
       // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-      const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'ts-ignore-story.ts__tmpl__'), 'utf-8');
+      const template = getFixture('ts-ignore-story.ts__tmpl__');
       append(tree, paths.storyOne, template);
 
       await generator(tree, options);
@@ -890,7 +901,7 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
-        'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
+        'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
         'type-check': 'tsc -b tsconfig.json',
       });
     });
@@ -1047,6 +1058,7 @@ describe('migrate-converged-pkg generator', () => {
         .git*
         .prettierignore
         .swcrc
+        project.json
 
         # exclude gitignore patterns explicitly
         !lib
@@ -1066,23 +1078,13 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       let justConfig = getJustConfig(projectConfig);
 
-      expect(justConfig).toMatchInlineSnapshot(`
-        "import { preset } from '@fluentui/scripts-tasks';
-
-        preset();"
-      `);
+      expect(justConfig).not.toContain(`task('build', 'build:react-components').cached?.();`);
 
       await generator(tree, options);
 
       justConfig = getJustConfig(projectConfig);
 
-      expect(justConfig).toMatchInlineSnapshot(`
-        "import { preset, task } from '@fluentui/scripts-tasks';
-
-        preset();
-
-        task('build', 'build:react-components').cached?.();"
-      `);
+      expect(justConfig).toContain(`task('build', 'build:react-components').cached?.();`);
     });
   });
 
@@ -1300,23 +1302,26 @@ describe('migrate-converged-pkg generator', () => {
         import griffelTests from '@proj/react-conformance-griffel';
 
         export function isConformant<TProps = {}>(
-        testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+          testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & {
+            componentPath?: string;
+          }
         ) {
-        const defaultOptions: Partial<IsConformantOptions<TProps>> = {
-        tsConfig: { configName: 'tsconfig.spec.json' },
-        componentPath: require.main?.filename.replace('.test', ''),
-        extraTests: griffelTests as TestObject<TProps>,
-        testOptions: {
-        'make-styles-overrides-win': {
-        callCount: 2,
-        },
-        // TODO: https://github.com/microsoft/fluentui/issues/19618
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } as any,
-        };
+          const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+            tsConfig: { configName: 'tsconfig.spec.json' },
+            componentPath: require.main?.filename.replace('.test', ''),
+            extraTests: griffelTests as TestObject<TProps>,
+            testOptions: {
+              'make-styles-overrides-win': {
+                callCount: 2,
+              },
+              // TODO: https://github.com/microsoft/fluentui/issues/19618
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any,
+          };
 
-        baseIsConformant(defaultOptions, testInfo);
-        }"
+          baseIsConformant(defaultOptions, testInfo);
+        }
+        "
       `);
     });
   });
@@ -1570,10 +1575,7 @@ function setupDummyPackage(
   };
 
   // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-  const jestConfigTemplate = fs.readFileSync(
-    path.join(__dirname, '__fixtures__', 'old-jest-config.js__tmpl__'),
-    'utf-8',
-  );
+  const jestConfigTemplate = getFixture('old-jest-config.js__tmpl__');
 
   const templates = {
     packageJson: {
@@ -1641,11 +1643,7 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
-    justConfig: stripIndents`
-      import { preset } from '@fluentui/scripts-tasks';
-
-      preset();
-    `,
+    justConfig: getFixture('just-config.ts__tmpl__'),
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
@@ -1680,7 +1678,7 @@ function setupDummyPackage(
 
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
   // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-  const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
+  const template = getFixture('conformance-setup.ts__tmpl__');
   tree.write(`${projectConfig.root}/src/testing/isConformant.ts`, stripIndents`${template}`);
 }
 
@@ -1724,4 +1722,13 @@ function append(tree: Tree, filePath: string, content: string) {
 
 function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+}
+
+/**
+ *
+ * @param src  - relative path/file name within `__fixtures__` folder
+ * @returns
+ */
+function getFixture(src: string) {
+  return fs.readFileSync(path.join(__dirname, '__fixtures__', src), 'utf-8');
 }

@@ -11,7 +11,16 @@ import story from './TreeItemLayout.md';
 
 export const Layout = () => (
   <Tree aria-label="Tree">
-    <TreeItem aria-description="Private, 1 message">
+    <TreeItem
+      aside={
+        <>
+          <Important16Regular primaryFill="red" />
+          <CounterBadge count={1} color="danger" size="small" />
+        </>
+      }
+      itemType="branch"
+      aria-description="Private, 1 message"
+    >
       <TreeItemLayout
         iconBefore={<Image20Regular />}
         iconAfter={
@@ -20,39 +29,33 @@ export const Layout = () => (
             <SquareMultiple20Regular />
           </>
         }
-        aside={
-          <>
-            <Important16Regular primaryFill="red" />
-            <CounterBadge count={1} color="danger" size="small" />
-          </>
-        }
       >
         Content
       </TreeItemLayout>
       <Tree>
-        <TreeItem>
+        <TreeItem itemType="branch">
           <TreeItemLayout>Tree Item</TreeItemLayout>
           <Tree>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 1</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 2</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem>
+        <TreeItem itemType="leaf">
           <TreeItemLayout>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem aria-description="Private">
+    <TreeItem aside={<Important16Regular primaryFill="red" />} itemType="branch" aria-description="Private">
       <TreeItemLayout
         iconBefore={<Image20Regular />}
         iconAfter={
@@ -61,15 +64,14 @@ export const Layout = () => (
             <SquareMultiple20Regular />
           </>
         }
-        aside={<Important16Regular primaryFill="red" />}
       >
         Content
       </TreeItemLayout>
       <Tree>
-        <TreeItem>
+        <TreeItem itemType="branch">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>

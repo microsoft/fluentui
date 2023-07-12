@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: exclude .swcrc from being published",
-  "packageName": "@fluentui/react-data-grid-react-window",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

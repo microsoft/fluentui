@@ -6,16 +6,16 @@ export const Size = () => {
   return (
     <>
       <Tree size="medium" aria-label="Tree">
-        <TreeItem>
+        <TreeItem itemType="branch">
           <TreeItemLayout>Medium size tree item</TreeItemLayout>
           <Tree>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 1</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 2</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>
@@ -23,16 +23,16 @@ export const Size = () => {
       </Tree>
 
       <Tree size="small" aria-label="Tree">
-        <TreeItem>
+        <TreeItem itemType="branch">
           <TreeItemLayout>Small size tree item</TreeItemLayout>
           <Tree>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 1</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 2</TreeItemLayout>
             </TreeItem>
-            <TreeItem>
+            <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>

@@ -13,21 +13,20 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.padding('4px', '8px', '4px', '8px'),
-    ...shorthands.gap('8px'),
+    ...shorthands.padding('4px', '8px'),
   },
   vertical: {
     flexDirection: 'column',
     width: 'fit-content',
   },
   small: {
-    height: '32px',
+    ...shorthands.padding('0px', '4px'),
   },
   medium: {
-    height: '40px',
+    ...shorthands.padding('4px', '8px'),
   },
   large: {
-    height: '48px',
+    ...shorthands.padding('4px', '20px'),
   },
 });
 

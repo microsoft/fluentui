@@ -24,7 +24,7 @@ import { createPositionManager } from './createPositionManager';
 /**
  * @internal
  */
-export function usePositioning(options: UsePositioningOptions): UsePositioningReturn {
+export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
@@ -150,13 +150,6 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallbackPositions' | 'pinned'> {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
-}
-
 function usePositioningOptions(options: PositioningOptions) {
   const {
     align,
@@ -169,14 +162,17 @@ function usePositioningOptions(options: PositioningOptions) {
     pinned,
     position,
     unstable_disableTether: disableTether,
+    // eslint-disable-next-line deprecation/deprecation
     positionFixed,
+    strategy,
     overflowBoundaryPadding,
     fallbackPositions,
+    useTransform,
   } = options;
 
   const { dir } = useFluent();
   const isRtl = dir === 'rtl';
-  const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
+  const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
 
   return React.useCallback(
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
@@ -206,7 +202,8 @@ function usePositioningOptions(options: PositioningOptions) {
       return {
         placement,
         middleware,
-        strategy,
+        strategy: positionStrategy,
+        useTransform,
       };
     },
     [
@@ -221,9 +218,10 @@ function usePositioningOptions(options: PositioningOptions) {
       overflowBoundary,
       pinned,
       position,
-      strategy,
+      positionStrategy,
       overflowBoundaryPadding,
       fallbackPositions,
+      useTransform,
     ],
   );
 }

@@ -1,7 +1,6 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { CONTENT_GRID_AREA } from '../../contexts/constants';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
@@ -16,9 +15,12 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     minHeight: '32px',
     boxSizing: 'border-box',
+    gridRowStart: 2,
+    gridRowEnd: 2,
+    gridColumnStart: 1,
+    gridColumnEnd: 4,
     ...shorthands.padding(tokens.strokeWidthThick),
     ...shorthands.margin(`calc(${tokens.strokeWidthThick} * -1)`),
-    ...shorthands.gridArea(CONTENT_GRID_AREA),
     ...typographyStyles.body1,
   },
 });

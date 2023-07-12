@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/theme-designer",
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0",
   "private": true,
-  "description": "A theme designer",
+  "description": "A theme designer for Fluent UI React v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -23,7 +23,8 @@
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -31,14 +32,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-alert": "9.0.0-beta.45",
-    "@fluentui/react-components": "^9.19.1",
-    "@fluentui/react-context-selector": "^9.1.18",
-    "@fluentui/react-icons": "^2.0.196",
-    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
-    "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.8.0",
-    "@griffel/react": "^1.5.2",
+    "@fluentui/react-alert": "9.0.0-beta.58",
+    "@fluentui/react-components": "^9.26.0",
+    "@fluentui/react-context-selector": "^9.1.26",
+    "@fluentui/react-icons": "^2.0.203",
+    "@fluentui/react-storybook-addon-codesandbox": "^0.1.0",
+    "@fluentui/react-theme": "^9.1.9",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14",
     "@types/dedent": "0.7.0",
     "codesandbox-import-utils": "2.2.3"
@@ -52,8 +53,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {

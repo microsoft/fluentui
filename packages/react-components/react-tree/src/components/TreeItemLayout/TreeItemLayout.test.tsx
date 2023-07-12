@@ -2,13 +2,20 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TreeItemLayout } from './TreeItemLayout';
 import { isConformant } from '../../testing/isConformant';
+import { TreeItemSlotsProvider } from '../../contexts/treeItemSlotsContext';
+
+const Wrap: React.FC = props => (
+  <TreeItemSlotsProvider value={{ actions: { visible: true, children: '' }, aside: '', expandIcon: '' }}>
+    {props.children}
+  </TreeItemSlotsProvider>
+);
 
 describe('TreeItemLayout', () => {
   isConformant({
     Component: TreeItemLayout,
+    renderOptions: { wrapper: Wrap },
     displayName: 'TreeItemLayout',
     requiredProps: {
-      aside: 'aside',
       iconAfter: 'iconAfter',
       iconBefore: 'iconBefore',
     },

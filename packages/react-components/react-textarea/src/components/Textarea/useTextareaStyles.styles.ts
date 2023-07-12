@@ -8,12 +8,6 @@ export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   textarea: 'fui-Textarea__textarea',
 };
 
-const textareaHeight = {
-  small: '24px',
-  medium: '32px',
-  large: '40px',
-};
-
 /**
  * Styles for the root(wrapper) slot
  */
@@ -31,12 +25,7 @@ const useRootStyles = makeStyles({
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeDisabled),
-    [`& > textarea`]: {
-      cursor: 'not-allowed',
-      '::placeholder': {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
+
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -167,7 +156,6 @@ const useTextareaStyles = makeStyles({
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
     height: '100%',
-    maxHeight: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
@@ -182,33 +170,41 @@ const useTextareaStyles = makeStyles({
     outlineStyle: 'none', // disable default browser outline
   },
 
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
+    '::placeholder': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+  },
+
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
-    height: textareaHeight.small,
     minHeight: '40px',
     ...shorthands.padding(
       tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
+    maxHeight: '200px',
     ...typographyStyles.caption1,
   },
   medium: {
-    height: textareaHeight.medium,
     minHeight: '52px',
     ...shorthands.padding(
       tokens.spacingVerticalSNudge,
       `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
+    maxHeight: '260px',
     ...typographyStyles.body1,
   },
   large: {
-    height: textareaHeight.large,
     minHeight: '64px',
     ...shorthands.padding(
       tokens.spacingVerticalS,
       `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
     ),
+    maxHeight: '320px',
     ...typographyStyles.body2,
   },
 });
@@ -244,9 +240,9 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   state.root.className = mergeClasses(
     textareaClassNames.root,
     rootStyles.base,
-    rootStyles[appearance],
-    filled && rootStyles.filled,
     disabled && rootStyles.disabled,
+    !disabled && filled && rootStyles.filled,
+    !disabled && rootStyles[appearance],
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && invalid && rootStyles.invalid,
@@ -260,6 +256,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     textareaStyles.base,
     textareaStyles[size],
     textareaResizeStyles[resize],
+    disabled && textareaStyles.disabled,
     state.textarea.className,
   );
 

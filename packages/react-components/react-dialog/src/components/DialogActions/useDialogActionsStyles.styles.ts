@@ -1,12 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogActionsSlots, DialogActionsState } from './DialogActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import {
-  DIALOG_GAP,
-  ACTIONS_END_GRID_AREA,
-  ACTIONS_START_GRID_AREA,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-} from '../../contexts/constants';
+import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
 
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots> = {
   root: 'fui-DialogActions',
@@ -17,6 +12,8 @@ const useStyles = makeStyles({
     height: 'fit-content',
     boxSizing: 'border-box',
     display: 'flex',
+    gridRowStart: 3,
+    gridRowEnd: 3,
     ...shorthands.gap(DIALOG_GAP),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       flexDirection: 'column',
@@ -25,17 +22,25 @@ const useStyles = makeStyles({
   },
   gridPositionEnd: {
     justifySelf: 'end',
-    ...shorthands.gridArea(ACTIONS_END_GRID_AREA),
+    gridColumnStart: 2,
+    gridColumnEnd: 4,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      gridColumnStart: 1,
+    },
   },
   gridPositionStart: {
     justifySelf: 'start',
-    ...shorthands.gridArea(ACTIONS_START_GRID_AREA),
+    gridColumnStart: 1,
+    gridColumnEnd: 2,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      gridColumnEnd: 4,
+    },
   },
   fluidStart: {
-    gridColumnEnd: ACTIONS_END_GRID_AREA,
+    gridColumnEnd: 4,
   },
   fluidEnd: {
-    gridColumnStart: ACTIONS_START_GRID_AREA,
+    gridColumnStart: 1,
   },
 });
 

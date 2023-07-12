@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: enable build-less DX for storybook",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

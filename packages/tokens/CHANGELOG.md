@@ -1,8 +1,27 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 21 Mar 2023 21:23:17 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.6)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.5..@fluentui/tokens_v1.0.0-alpha.6)
+
+### Changes
+
+- Add/update theme tokens ([PR #27791](https://github.com/microsoft/fluentui/pull/27791) by miroslav.stastny@microsoft.com)
+- fix:  cast to String keys interpolated within string literals ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
+
+## [1.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.5)
+
+Fri, 12 May 2023 20:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.4..@fluentui/tokens_v1.0.0-alpha.5)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
 
 ## [1.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.4)
 

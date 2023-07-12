@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-drawer",
-  "version": "9.0.0-alpha.0",
-  "private": true,
+  "version": "9.0.0-beta.8",
   "description": "Drawer components for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,22 +23,24 @@
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.20",
+    "@fluentui/react-conformance-griffel": "^9.0.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-dialog": "^9.5.3",
-    "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.8.0",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.2",
-    "@griffel/react": "^1.5.2",
+    "@fluentui/react-dialog": "^9.5.16",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.11",
+    "@fluentui/react-shared-contexts": "^9.6.0",
+    "@fluentui/react-theme": "^9.1.9",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

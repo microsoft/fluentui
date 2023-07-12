@@ -21,18 +21,18 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { TableRowData } from '@fluentui/react-table';
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const DataGrid: ForwardRefComponent<DataGridProps>;
 
-// @public
+// @public @deprecated (undocumented)
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
-// @public
+// @public (undocumented)
 export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'children'> & {
     itemSize: number;
     height: number;
     width?: string | number;
-    children: RowRenderFunction<TItem>;
+    children: RowRenderer<TItem>;
     ariaRowIndexStart?: number;
 };
 
@@ -50,7 +50,7 @@ export { DataGridHeaderProps }
 
 export { DataGridProps }
 
-// @public
+// @public @deprecated (undocumented)
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
 
 export { DataGridRowProps }
@@ -58,6 +58,9 @@ export { DataGridRowProps }
 export { DataGridSelectionCell }
 
 export { DataGridSelectionCellProps }
+
+// @public (undocumented)
+export type RowRenderer<TItem = unknown> = (row: TableRowData<TItem>, style: React_2.CSSProperties) => React_2.ReactNode;
 
 // (No @packageDocumentation comment for this package)
 

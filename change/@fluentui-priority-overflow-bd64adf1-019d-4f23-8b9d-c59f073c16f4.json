@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

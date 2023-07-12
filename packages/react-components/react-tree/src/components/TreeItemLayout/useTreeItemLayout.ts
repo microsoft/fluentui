@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeItemLayoutProps, TreeItemLayoutState } from './TreeItemLayout.types';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
+import { useTreeItemSlotsContext_unstable } from '../../contexts/treeItemSlotsContext';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -16,20 +17,29 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, aside, as = 'span' } = props;
-  const treeItemContext = useTreeItemContext_unstable();
+  const { content, iconAfter, iconBefore, as = 'span' } = props;
+
+  const { actions, aside, expandIcon } = useTreeItemSlotsContext_unstable();
+
+  const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
 
   return {
-    ...treeItemContext,
     components: {
-      root: 'span',
-      iconBefore: 'span',
-      iconAfter: 'span',
-      aside: 'span',
+      root: 'div',
+      expandIcon: 'div',
+      iconBefore: 'div',
+      content: 'div',
+      iconAfter: 'div',
+      actions: 'div',
+      aside: 'div',
     },
-    root: getNativeElementProps(as, { ...props, ref }),
+    buttonContextValue: { size: 'small' },
+    root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
     iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
+    content: resolveShorthand(content, { required: true }),
     iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
-    aside: resolveShorthand(aside, { defaultProps: { 'aria-hidden': true } }),
+    aside: resolveShorthand(aside),
+    actions: resolveShorthand(actions),
+    expandIcon: resolveShorthand(expandIcon),
   };
 };

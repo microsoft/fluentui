@@ -14,12 +14,12 @@ export const ReadUnread = () => {
 
   return (
     <Tree aria-label="Tree">
-      <TreeItem expandIcon="">
+      <TreeItem expandIcon="" itemType="leaf">
         <TreeItemPersonaLayout description="Secondary text content" media={<Avatar />}>
           Read content message
         </TreeItemPersonaLayout>
       </TreeItem>
-      <TreeItem expandIcon="•" aria-description="New message">
+      <TreeItem expandIcon="•" itemType="leaf" aria-description="New message">
         <TreeItemPersonaLayout
           description={{ className: styles.unread, children: 'Secondary text content' }}
           className={styles.unread}

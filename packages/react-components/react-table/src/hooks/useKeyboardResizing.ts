@@ -9,7 +9,7 @@ const PRECISION_MODIFIER = Shift;
 const PRECISION_FACTOR = 1 / 4;
 
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
-  const columnId = React.useRef<TableColumnId>();
+  const [columnId, setColumnId] = React.useState<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
   const addListenerTimeout = React.useRef<number>();
 
@@ -21,13 +21,11 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const { targetDocument } = useFluent();
 
   const keyboardHandler = useEventCallback((event: KeyboardEvent) => {
-    const colId = columnId.current;
-
-    if (!colId) {
+    if (!columnId) {
       return;
     }
 
-    const width = columnResizeStateRef.current.getColumnWidth(colId);
+    const width = columnResizeStateRef.current.getColumnWidth(columnId);
     const precisionModifier = event.getModifierState(PRECISION_MODIFIER);
 
     const stopEvent = () => {
@@ -39,7 +37,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       case ArrowLeft:
         stopEvent();
         columnResizeStateRef.current.setColumnWidth(event, {
-          columnId: colId,
+          columnId,
           width: width - (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
         return;
@@ -47,7 +45,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       case ArrowRight:
         stopEvent();
         columnResizeStateRef.current.setColumnWidth(event, {
-          columnId: colId,
+          columnId,
           width: width + (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
         return;
@@ -72,7 +70,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
   const enableInteractiveMode = React.useCallback(
     (colId: TableColumnId) => {
-      columnId.current = colId;
+      setColumnId(colId);
       onChangeRef.current?.(colId, true);
       // Create the listener in the next tick, because the event that triggered this is still propagating
       // when Enter was pressed and would be caught in the keyboardHandler, disabling the keyboard mode immediately.
@@ -86,20 +84,20 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   );
 
   const disableInteractiveMode = React.useCallback(() => {
-    if (columnId.current) {
-      onChangeRef.current?.(columnId.current, false);
+    if (columnId) {
+      onChangeRef.current?.(columnId, false);
     }
-    columnId.current = undefined;
+    setColumnId(undefined);
     targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
-  }, [keyboardHandler, targetDocument?.defaultView]);
+  }, [columnId, keyboardHandler, targetDocument?.defaultView]);
 
   const toggleInteractiveMode = (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => {
     onChangeRef.current = onChange;
-    if (!columnId.current) {
+    if (!columnId) {
       enableInteractiveMode(colId);
-    } else if (colId && columnId.current !== colId) {
-      columnId.current = colId;
-      onChange?.(columnId.current, true);
+    } else if (colId && columnId !== colId) {
+      setColumnId(colId);
+      onChange?.(columnId, true);
     } else {
       disableInteractiveMode();
     }
@@ -107,5 +105,6 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
   return {
     toggleInteractiveMode,
+    columnId,
   };
 }

@@ -4,7 +4,7 @@ import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import story from './TreeItemActions.md';
 
-const RenderActions = () => {
+const ActionsExample = () => {
   return (
     <>
       <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
@@ -28,42 +28,42 @@ const RenderActions = () => {
 
 export const Actions = () => (
   <Tree aria-label="Tree">
-    <TreeItem actions={<RenderActions />}>
+    <TreeItem actions={<ActionsExample />} itemType="branch">
       <TreeItemLayout>level 1, item 1</TreeItemLayout>
       <Tree>
-        <TreeItem actions={<RenderActions />}>
+        <TreeItem actions={<ActionsExample />} itemType="leaf">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>
         </TreeItem>
-        <TreeItem actions={<RenderActions />}>
+        <TreeItem actions={<ActionsExample />} itemType="leaf">
           <TreeItemLayout>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem actions={<RenderActions />}>
+        <TreeItem actions={<ActionsExample />} itemType="leaf">
           <TreeItemLayout>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem actions={<RenderActions />}>
+    <TreeItem actions={<ActionsExample />} itemType="branch">
       <TreeItemLayout>level 1, item 2</TreeItemLayout>
       <Tree>
-        <TreeItem actions={<RenderActions />}>
+        <TreeItem actions={<ActionsExample />} itemType="branch">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem actions={<RenderActions />}>
+            <TreeItem actions={<ActionsExample />} itemType="leaf">
               <TreeItemLayout>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
 
-        <TreeItem actions={<RenderActions />}>
+        <TreeItem actions={<ActionsExample />} itemType="branch">
           <TreeItemLayout>level 1, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem actions={<RenderActions />}>
+            <TreeItem actions={<ActionsExample />} itemType="leaf">
               <TreeItemLayout>level 2, item 1</TreeItemLayout>
             </TreeItem>
-            <TreeItem actions={<RenderActions />}>
+            <TreeItem actions={<ActionsExample />} itemType="leaf">
               <TreeItemLayout>level 2, item 2</TreeItemLayout>
             </TreeItem>
-            <TreeItem actions={<RenderActions />}>
+            <TreeItem actions={<ActionsExample />} itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>

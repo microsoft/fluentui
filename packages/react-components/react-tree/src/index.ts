@@ -26,9 +26,10 @@ export {
   treeItemClassNames,
   renderTreeItem_unstable,
   useTreeItemStyles_unstable,
+  useTreeItemContextValues_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+export type { TreeItemProps, TreeItemState, TreeItemSlots, TreeItemValue } from './TreeItem';
 
 export {
   TreeItemLayout,

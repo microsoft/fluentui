@@ -19,6 +19,10 @@ export type UseControllableStateOptions<State> = {
   initialState: State;
 };
 
+function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newState is (prevState: State) => State {
+  return typeof newState === 'function';
+}
+
 /**
  * @internal
  *
@@ -39,13 +43,33 @@ export type UseControllableStateOptions<State> = {
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
-  const initialState = typeof options.defaultState === 'undefined' ? options.initialState : options.defaultState;
-  const [internalState, setInternalState] = React.useState<State>(initialState);
-  return useIsControlled(options.state) ? [options.state, noop] : [internalState, setInternalState];
+  const [internalState, setInternalState] = React.useState<State>(() => {
+    if (options.defaultState === undefined) {
+      return options.initialState;
+    }
+    return isInitializer(options.defaultState) ? options.defaultState() : options.defaultState;
+  });
+
+  // Heads up!
+  // This part is specific for controlled mode and mocks behavior of React dispatcher function.
+
+  const stateValueRef = React.useRef<State | undefined>(options.state);
+
+  React.useEffect(() => {
+    stateValueRef.current = options.state;
+  }, [options.state]);
+
+  const setControlledState = React.useCallback((newState: React.SetStateAction<State>) => {
+    if (isFactoryDispatch(newState)) {
+      newState(stateValueRef.current as State);
+    }
+  }, []);
+
+  return useIsControlled(options.state) ? [options.state, setControlledState] : [internalState, setInternalState];
 };
 
-function noop() {
-  /* noop */
+function isInitializer<State>(value: State | (() => State)): value is () => State {
+  return typeof value === 'function';
 }
 
 /**
@@ -53,7 +77,7 @@ function noop() {
  * Prints an error when isControlled value switches between subsequent renders
  * @returns - whether the value is controlled
  */
-const useIsControlled = <V>(controlledValue?: V): controlledValue is V => {
+const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is V => {
   const [isControlled] = React.useState<boolean>(() => controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {

@@ -24,7 +24,37 @@ import {
 export const Default = () => {
   return (
     <Tree aria-label="Tree">
-      <TreeItem>
+      <TreeItem
+        aside={
+          <>
+            <Important16Regular primaryFill="red" />
+            <CounterBadge count={1} color="danger" size="small" />
+          </>
+        }
+        actions={{
+          visible: true,
+          children: (
+            <>
+              <Button aria-label="Edit" appearance="subtle" icon={<FlagRegular />} />
+              <Menu>
+                <MenuTrigger disableButtonEnhancement>
+                  <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+                </MenuTrigger>
+
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem>New </MenuItem>
+                    <MenuItem>New Window</MenuItem>
+                    <MenuItem disabled>Open File</MenuItem>
+                    <MenuItem>Open Folder</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </>
+          ),
+        }}
+        itemType="branch"
+      >
         <TreeItemLayout
           iconBefore={<CalendarMonthRegular />}
           iconAfter={
@@ -33,23 +63,17 @@ export const Default = () => {
               <LinkSquareRegular />
             </>
           }
-          aside={
-            <>
-              <Important16Regular primaryFill="red" />
-              <CounterBadge count={1} color="danger" size="small" />
-            </>
-          }
         >
           Content
         </TreeItemLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 2</TreeItemLayout>
           </TreeItem>
-          <TreeItem>
+          <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 3</TreeItemLayout>
           </TreeItem>
         </Tree>
@@ -74,6 +98,7 @@ export const Default = () => {
             </Menu>
           </>
         }
+        itemType="branch"
       >
         <TreeItemLayout
           iconBefore={<CalendarMonthRegular />}
@@ -87,19 +112,20 @@ export const Default = () => {
           Content
         </TreeItemLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="branch">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem>
-        <TreeItemPersonaLayout
-          aside={
+      <TreeItem
+        aside={{
+          style: { flexDirection: 'column' },
+          children: (
             <>
               <Text font="numeric" as="span" style={{ whiteSpace: 'nowrap' }}>
                 00:00 AM
@@ -109,40 +135,39 @@ export const Default = () => {
                 <CounterBadge count={1} color="danger" size="small" />
               </div>
             </>
-          }
-          description="description"
-          media={<Avatar />}
-        >
+          ),
+        }}
+        itemType="leaf"
+      >
+        <TreeItemPersonaLayout description="description" media={<Avatar />}>
           Content
         </TreeItemPersonaLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="branch">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem>
-        <TreeItemPersonaLayout
-          aside={
-            <div style={{ display: 'flex', marginLeft: 'auto', gap: tokens.spacingHorizontalXS }}>
-              <Important16Regular primaryFill="red" />
-              <CounterBadge count={1} color="danger" size="small" />
-            </div>
-          }
-          media={<Avatar shape="square" />}
-        >
-          Content
-        </TreeItemPersonaLayout>
+      <TreeItem
+        aside={
+          <>
+            <Important16Regular primaryFill="red" />
+            <CounterBadge count={1} color="danger" size="small" />
+          </>
+        }
+        itemType="branch"
+      >
+        <TreeItemPersonaLayout media={<Avatar shape="square" />}>Content</TreeItemPersonaLayout>
         <Tree>
-          <TreeItem>
+          <TreeItem itemType="branch">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>
+              <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
             </Tree>

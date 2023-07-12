@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: adds lazy loading story",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

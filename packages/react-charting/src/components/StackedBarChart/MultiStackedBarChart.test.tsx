@@ -80,6 +80,13 @@ const chartPoints: IChartProps[] = [
   },
 ];
 
+const emptyChartPoints: IChartProps[] = [
+  {
+    chartTitle: 'Monitored',
+    chartData: [],
+  },
+];
+
 describe('MultiStackedBarChart snapShot testing', () => {
   it('renders MultiStackedBarChart correctly', () => {
     const component = renderer.create(<MultiStackedBarChart data={chartPoints} />);
@@ -258,5 +265,22 @@ describe('MultiStackedBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<MultiStackedBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<MultiStackedBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

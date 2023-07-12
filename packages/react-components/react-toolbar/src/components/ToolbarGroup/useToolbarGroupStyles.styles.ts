@@ -1,5 +1,5 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToolbarGroupSlots, ToolbarGroupState } from './ToolbarGroup.types';
 
 export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots> = {
@@ -10,10 +10,7 @@ export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    ...shorthands.gap('8px'),
-  },
+  root: {},
 });
 
 /**

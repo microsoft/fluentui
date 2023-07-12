@@ -80,6 +80,13 @@ const chartPoints = [
   },
 ];
 
+const emptyChartPoints = [
+  {
+    name: 'Empty chart',
+    series: [],
+  },
+];
+
 describe('GroupedVerticalBarChart snapShot testing', () => {
   it('renders GroupedVerticalBarChart correctly', () => {
     const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} />);
@@ -241,5 +248,19 @@ describe('GroupedVerticalBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  describe('Render empty chart aria label div when chart is empty', () => {
+    it('No empty chart aria label div rendered', () => {
+      wrapper = mount(<GroupedVerticalBarChart data={chartPoints} />);
+      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+      expect(renderedDOM!.length).toBe(0);
+    });
+
+    it('Empty chart aria label div rendered', () => {
+      wrapper = mount(<GroupedVerticalBarChart data={emptyChartPoints} />);
+      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+      expect(renderedDOM!.length).toBe(1);
+    });
   });
 });

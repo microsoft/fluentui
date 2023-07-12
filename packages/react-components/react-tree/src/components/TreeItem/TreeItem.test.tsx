@@ -18,9 +18,6 @@ describe('TreeItem', () => {
         {
           props: {
             expandIcon: 'Test Expand Icon',
-            iconBefore: 'Test Icon Before',
-            iconAfter: 'Test Icon After',
-            actions: 'test Actions',
             aside: 'test Aside',
           },
         },
@@ -31,7 +28,7 @@ describe('TreeItem', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TreeItem>Default TreeItem</TreeItem>);
+    const result = render(<TreeItem itemType="leaf">Default TreeItem</TreeItem>);
     expect(result.container).toMatchSnapshot();
   });
 });

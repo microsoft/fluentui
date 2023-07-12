@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update internal types to reflect node 16 types",
-  "packageName": "@fluentui/global-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

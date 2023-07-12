@@ -1,8 +1,17 @@
 # Change Log - @fluentui/webpack-utilities
 
-This log was last generated on Tue, 02 May 2023 22:20:22 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.15)
+
+Fri, 05 May 2023 18:14:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.1.14..@fluentui/webpack-utilities_v8.1.15)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
 
 ## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.14)
 

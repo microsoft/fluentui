@@ -1,76 +1,52 @@
 {
   "migrations": [
     {
-      "version": "13.9.0-beta.0",
-      "description": "Replace @nrwl/tao with nx",
+      "version": "15.7.0-beta.0",
+      "description": "Split global configuration files into individual project.json files. This migration has been added automatically to the beginning of your migration set to retroactively make them work with the new version of Nx.",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-9-0/replace-tao-with-nx",
+      "implementation": "./src/migrations/update-15-7-0/split-configuration-into-project-json-files",
       "package": "@nrwl/workspace",
-      "name": "13-9-0-replace-tao-with-nx"
+      "name": "15-7-0-split-configuration-into-project-json-files"
     },
     {
-      "version": "13.10.0-beta.0",
-      "description": "Update the decorate-angular-cli script to require nx instead of @nrwl/cli",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-10-0/update-decorate-cli",
+      "version": "15.8.2-beta.0",
+      "description": "Updates the nx wrapper.",
+      "implementation": "./src/migrations/update-15-8-2/update-nxw",
+      "package": "nx",
+      "name": "15.8.2-update-nx-wrapper"
+    },
+    {
+      "cli": "nx",
+      "version": "15.8.0-beta.0",
+      "description": "Rename .lib.swcrc to .swcrc for better SWC support throughout the workspace",
+      "factory": "./src/migrations/update-15-8-0/rename-swcrc-config",
+      "package": "@nrwl/js",
+      "name": "rename-swcrc-config"
+    },
+    {
+      "version": "15.7.0-beta.0",
+      "description": "Split global configuration files (e.g., workspace.json) into individual project.json files.",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-15-7-0/split-configuration-into-project-json-files",
       "package": "@nrwl/workspace",
-      "name": "13-10-0-update-decorate-cli"
+      "name": "15-7-0-split-configuration-into-project-json-files"
     },
     {
-      "version": "13.10.0-beta.0",
-      "description": "Update the tasks runner property to import it from the nx package instead of @nrwl/worksapce",
+      "version": "15.8.0-beta.0",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-10-0/update-tasks-runner",
-      "package": "@nrwl/workspace",
-      "name": "13-10-0-update-tasks-runner"
+      "description": "Update jest configs to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-configs-jest-29",
+      "package": "@nrwl/jest",
+      "name": "update-configs-jest-29"
     },
     {
+      "version": "15.8.0-beta.0",
       "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/node:build to @nrwl/node:webpack",
-      "factory": "./src/migrations/update-13-8-5/rename-build-to-webpack",
-      "package": "@nrwl/node",
-      "name": "rename-build-to-webpack"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/node:execute to @nrwl/node:node",
-      "factory": "./src/migrations/update-13-8-5/rename-execute-to-node",
-      "package": "@nrwl/node",
-      "name": "rename-execute-to-node"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/node:package to @nrwl/js:tsc",
-      "factory": "./src/migrations/update-13-8-5/update-package-to-tsc",
-      "package": "@nrwl/node",
-      "name": "update-package-to-tsc"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/js:node to @nrwl/node:node",
-      "factory": "./src/migrations/update-13-8-5/update-node-executor",
-      "package": "@nrwl/js",
-      "name": "update-node-executor"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Adjust .swcrc to .lib.swcrc",
-      "factory": "./src/migrations/update-13-8-5/update-swcrc",
-      "package": "@nrwl/js",
-      "name": "update-swcrc"
-    },
-    {
-      "cli": "nx",
-      "version": "13.10.1-beta.1",
-      "description": "Update .lib.swcrc to exclude missing test files",
-      "factory": "./src/migrations/update-13-10-1/update-lib-swcrc-exclude",
-      "package": "@nrwl/js",
-      "name": "update-swcrc-exclude"
+      "description": "Update jest test files to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-tests-jest-29",
+      "package": "@nrwl/jest",
+      "name": "update-tests-jest-29"
     }
   ]
 }

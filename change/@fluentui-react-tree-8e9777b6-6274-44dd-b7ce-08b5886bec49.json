@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: updates useOpenItemsState internals",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
