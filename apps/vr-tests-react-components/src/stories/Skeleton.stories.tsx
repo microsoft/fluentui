@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
-import { TestWrapperDecoratorPauseAnimation } from '../utilities/TestWrapperDecorator';
+import { PauseAnimationDecorator } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Skeleton converged', module)
-  .addDecorator(TestWrapperDecoratorPauseAnimation)
+  .addDecorator(PauseAnimationDecorator)
   .addStory(
     'Opaque Skeleton with rectangle',
     () => (
-      <Skeleton className="test-class">
+      <Skeleton>
         <SkeletonItem style={{ width: '96px' }} />
       </Skeleton>
     ),
@@ -21,7 +21,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Opaque Skeleton with circle',
     () => (
-      <Skeleton className="test-class">
+      <Skeleton>
         <SkeletonItem shape="circle" />
       </Skeleton>
     ),
@@ -34,7 +34,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Opaque Skeleton with square',
     () => (
-      <Skeleton className="test-class">
+      <Skeleton>
         <SkeletonItem shape="square" />
       </Skeleton>
     ),
@@ -47,7 +47,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Translucent Skeleton with rectangle',
     () => (
-      <Skeleton className="test-class" appearance="translucent">
+      <Skeleton appearance="translucent">
         <SkeletonItem style={{ width: '96px' }} />
       </Skeleton>
     ),
@@ -60,7 +60,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Translucent Skeleton with  circle',
     () => (
-      <Skeleton className="test-class" appearance="translucent">
+      <Skeleton appearance="translucent">
         <SkeletonItem shape="circle" />
       </Skeleton>
     ),
@@ -73,7 +73,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Translucent Skeleton with square',
     () => (
-      <Skeleton className="test-class" appearance="translucent">
+      <Skeleton appearance="translucent">
         <SkeletonItem shape="square" />
       </Skeleton>
     ),

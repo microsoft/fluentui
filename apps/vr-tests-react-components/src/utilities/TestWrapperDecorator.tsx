@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { ExtendedStoryFnReturnType } from './types';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 
 export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
@@ -53,22 +53,6 @@ const usePausedAnimationStyles = makeStyles({
     },
   },
 });
-export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const pausedAnimationStyles = usePausedAnimationStyles();
-  const className = mergeClasses(pausedAnimationStyles.paused, 'testWrapper');
-  return (
-    <div style={{ display: 'flex' }}>
-      <div
-        className={className}
-        style={{
-          padding: '10px',
-        }}
-      >
-        {story()}
-      </div>
-    </div>
-  );
-};
 export const PauseAnimationDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
   const pausedAnimationStyles = usePausedAnimationStyles();
   return <div className={pausedAnimationStyles.paused}>{story()}</div>;
