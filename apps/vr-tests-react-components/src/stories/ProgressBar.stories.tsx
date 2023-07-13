@@ -24,4 +24,4 @@ storiesOf('ProgressBar converged', module)
   .addStory('Determinate with thickness large', () => <ProgressBar value={0.5} thickness="large" />)
   .addStory('Error', () => <ProgressBar value={0.5} color="error" />)
   .addStory('Warning', () => <ProgressBar value={0.5} color="warning" />)
-  .addStory('Success', () => <ProgressBar value={0.5} color="success" />);
+  .addStory('Success', () => <ProgressBar value={1} color="success" />);
