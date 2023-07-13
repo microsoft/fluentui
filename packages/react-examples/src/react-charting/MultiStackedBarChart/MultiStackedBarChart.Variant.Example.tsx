@@ -6,9 +6,6 @@ import {
   MultiStackedBarChartVariant,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { ThemeProvider } from '@fluentui/react';
-import { DarkTheme } from '@fluentui/theme-samples';
-
 interface IMSBCVariantExampleState {
   hideLabels: boolean;
 }

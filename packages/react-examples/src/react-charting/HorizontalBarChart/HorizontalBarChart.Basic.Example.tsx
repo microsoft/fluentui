@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { HorizontalBarChart, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ThemeProvider } from '@fluentui/react';
-import { DarkTheme } from '@fluentui/theme-samples';
 
 export const HorizontalBarChartBasicExample: React.FunctionComponent<{}> = () => {
   const hideRatio: boolean[] = [true, false];
