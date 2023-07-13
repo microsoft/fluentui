@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart, GaugeValueFormat } from '@fluentui/react-charting';
+import { DataVizPalette, GaugeChart, GaugeValueFormat, GaugeChartVariant } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
 
 interface IGCVariantExampleState {
@@ -75,6 +75,7 @@ export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExam
           chartTitle="Storage capacity"
           sublabel="used"
           chartValueFormat={GaugeValueFormat.Fraction}
+          variant={GaugeChartVariant.SingleSegment}
         />
       </>
     );

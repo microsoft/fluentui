@@ -72,7 +72,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             100
           </text>
           <path
-            aria-label="Low Risk, 33 out of 100 or 33%"
+            aria-label="Low Risk, 0 to 33"
             class=
 
                 {
@@ -88,7 +88,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             tabindex="0"
           />
           <path
-            aria-label="Medium Risk, 34 out of 100 or 34%"
+            aria-label="Medium Risk, 33 to 67"
             class=
 
                 {
@@ -104,7 +104,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             tabindex="-1"
           />
           <path
-            aria-label="High Risk, 33 out of 100 or 33%"
+            aria-label="High Risk, 67 to 100"
             class=
 
                 {
@@ -659,7 +659,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           forced-color-adjust: none;
                         }
-                    id="1_34 - 67"
+                    id="1_33 - 67"
                   >
                     <div>
                       <div
@@ -696,7 +696,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                               color: rgb(255, 255, 255);
                             }
                       >
-                        34 - 67
+                        33 - 67
                       </div>
                     </div>
                   </div>
@@ -724,7 +724,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           forced-color-adjust: none;
                         }
-                    id="2_68 - 100"
+                    id="2_67 - 100"
                   >
                     <div>
                       <div
@@ -761,7 +761,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                               color: rgb(255, 255, 255);
                             }
                       >
-                        68 - 100
+                        67 - 100
                       </div>
                     </div>
                   </div>
@@ -817,7 +817,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
         transform="translate(0, -40)"
       >
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -837,7 +837,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -857,7 +857,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
@@ -1351,7 +1351,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -1371,7 +1371,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -1391,7 +1391,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
@@ -1543,7 +1543,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -1563,7 +1563,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -1583,7 +1583,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
@@ -2090,7 +2090,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             100
           </text>
           <path
-            aria-label="Low Risk, 33 out of 100 or 33%"
+            aria-label="Low Risk, 0 to 33"
             className=
 
                 {
@@ -2099,7 +2099,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#107c10"
+            fill="#54b054"
             fillOpacity={1}
             key="0"
             onBlur={[Function]}
@@ -2110,7 +2110,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             strokeWidth={0}
           />
           <path
-            aria-label="Medium Risk, 34 out of 100 or 34%"
+            aria-label="Medium Risk, 33 to 67"
             className=
 
                 {
@@ -2119,7 +2119,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#f7630c"
+            fill="#f87528"
             fillOpacity={1}
             key="1"
             onBlur={[Function]}
@@ -2130,7 +2130,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             strokeWidth={0}
           />
           <path
-            aria-label="High Risk, 33 out of 100 or 33%"
+            aria-label="High Risk, 67 to 100"
             className=
 
                 {
@@ -2139,7 +2139,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#c50f1f"
+            fill="#dc626d"
             fillOpacity={1}
             key="2"
             onBlur={[Function]}
@@ -2328,8 +2328,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                         className=
 
                             {
-                              background-color: #107c10;
-                              border-color: #107c10;
+                              background-color: #54b054;
+                              border-color: #54b054;
                               border: 1px solid;
                               content: ;
                               height: 12px;
@@ -2337,7 +2337,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                               width: 12px;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #107c10, #107c10);
+                              content: linear-gradient(to right, #54b054, #54b054);
                               opacity: ;
                             }
                       />
@@ -2419,8 +2419,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                         className=
 
                             {
-                              background-color: #f7630c;
-                              border-color: #f7630c;
+                              background-color: #f87528;
+                              border-color: #f87528;
                               border: 1px solid;
                               content: ;
                               height: 12px;
@@ -2428,7 +2428,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                               width: 12px;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #f7630c, #f7630c);
+                              content: linear-gradient(to right, #f87528, #f87528);
                               opacity: ;
                             }
                       />
@@ -2510,8 +2510,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                         className=
 
                             {
-                              background-color: #c50f1f;
-                              border-color: #c50f1f;
+                              background-color: #dc626d;
+                              border-color: #dc626d;
                               border: 1px solid;
                               content: ;
                               height: 12px;
@@ -2519,7 +2519,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                               width: 12px;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #c50f1f, #c50f1f);
+                              content: linear-gradient(to right, #dc626d, #dc626d);
                               opacity: ;
                             }
                       />
@@ -2625,7 +2625,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           100
         </text>
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
@@ -2645,7 +2645,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -2665,7 +2665,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           strokeWidth={0}
         />
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -3159,7 +3159,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           100
         </text>
         <path
-          aria-label="Used, 60 out of 100 or 60%"
+          aria-label="Used, 0 to 60"
           className=
 
               {
@@ -3179,7 +3179,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           strokeWidth={0}
         />
         <path
-          aria-label="Available, 40 out of 100 or 40%"
+          aria-label="Available, 60 to 100"
           className=
 
               {
@@ -3583,7 +3583,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           100
         </text>
         <path
-          aria-label="Used, 60 out of 100 or 60%"
+          aria-label="Used, 0 to 60"
           className=
 
               {
@@ -3603,7 +3603,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           strokeWidth={0}
         />
         <path
-          aria-label="Unknown, 40 out of 100 or 40%"
+          aria-label="Unknown, 60 to 100"
           className=
 
               {
@@ -4019,7 +4019,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -4039,7 +4039,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -4059,7 +4059,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
@@ -4553,7 +4553,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -4573,7 +4573,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -4593,7 +4593,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
@@ -5087,7 +5087,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
@@ -5107,7 +5107,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
@@ -5127,7 +5127,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {

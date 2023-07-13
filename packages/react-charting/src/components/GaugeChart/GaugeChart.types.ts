@@ -31,6 +31,11 @@ export enum GaugeValueFormat {
   Fraction = 'fraction',
 }
 
+export enum GaugeChartVariant {
+  SingleSegment = 'single-segment',
+  MultipleSegments = 'multiple-segments',
+}
+
 export interface IGaugeChartProps {
   /**
    * Width of the chart
@@ -126,6 +131,12 @@ export interface IGaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Specifies the variant of GaugeChart to be rendered
+   * @defaultvalue GaugeChartVariant.MultipleSegments
+   */
+  variant?: GaugeChartVariant;
 }
 
 export interface IGaugeChartStyleProps {

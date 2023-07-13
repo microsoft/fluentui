@@ -75,8 +75,12 @@ export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}>
                 To hide the minimum and maximum values of the gauge, set the <code>hideMinMax</code> prop.
               </li>
               <li>
-                The chartValue prop is rendered as a percentage by default. Set the <code>chartVaueFormat</code> prop to
-                'fraction' or a formatter function.
+                The chartValue prop is rendered as a percentage by default. To display it as a fraction or use a custom
+                formatter function, set the <code>chartValueFormat</code> prop accordingly.
+              </li>
+              <li>
+                The segment sizes are displayed and announced as ranges by default. Set the <code>variant</code>
+                prop to <code>GaugeChartVariant.SingleSegment</code> to display and announce them as percentages.
               </li>
             </ul>
           </div>
