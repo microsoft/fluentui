@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-components": "^9.26.0",
-    "@fluentui/react-shared-contexts": "^9.6.0",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-shared-contexts": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"

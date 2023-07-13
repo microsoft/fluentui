@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:44 GMT",
+      "tag": "@fluentui/react-provider_v9.7.9",
+      "version": "9.7.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jul 2023 18:46:36 GMT",
       "tag": "@fluentui/react-provider_v9.7.9",
       "version": "9.7.9",

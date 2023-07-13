@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:44 GMT",
+      "tag": "@fluentui/react-portal_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "8d06e6d07e96f556e72b7a597664f14bef933eac",
+            "comment": "Update react-components/react-portal README.md"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 13:34:28 GMT",
       "tag": "@fluentui/react-portal_v9.3.1",
       "version": "9.3.1",
