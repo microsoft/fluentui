@@ -1,4 +1,4 @@
-import { BreadcrumbItem } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItem } from '@fluentui/react-breadcrumb-preview';
 
 import descriptionMd from './BreadcrumbItemDescription.md';
 import bestPracticesMd from './BreadcrumbItemBestPractices.md';

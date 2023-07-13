@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbProps } from '@fluentui/react-breadcrumb-preview';
 import { RadioGroup, Radio, Label } from '@fluentui/react-components';
 
 type Item = {

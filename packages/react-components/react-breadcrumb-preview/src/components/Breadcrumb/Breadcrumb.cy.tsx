@@ -3,8 +3,8 @@ import { mount } from '@cypress/react';
 import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbButton, BreadcrumbLink } from '@fluentui/react-breadcrumb';
-import type { BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbButton, BreadcrumbLink } from '@fluentui/react-breadcrumb-preview';
+import type { BreadcrumbProps } from '@fluentui/react-breadcrumb-preview';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);

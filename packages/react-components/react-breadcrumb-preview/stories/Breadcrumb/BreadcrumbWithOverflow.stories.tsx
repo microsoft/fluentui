@@ -34,8 +34,8 @@ import {
   truncateBreadcrumbLongName,
   truncateBreadcrumLongTooltip,
   isTruncatableBreadcrumbContent,
-} from '@fluentui/react-breadcrumb';
-import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+} from '@fluentui/react-breadcrumb-preview';
+import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb-preview';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);

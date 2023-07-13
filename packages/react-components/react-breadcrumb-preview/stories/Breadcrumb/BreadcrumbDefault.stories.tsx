@@ -6,7 +6,7 @@ import {
   BreadcrumbProps,
   BreadcrumbButton,
   BreadcrumbLink,
-} from '@fluentui/react-breadcrumb';
+} from '@fluentui/react-breadcrumb-preview';
 import { RadioGroup, Radio, Label, ButtonProps } from '@fluentui/react-components';
 type Item = {
   key: number;

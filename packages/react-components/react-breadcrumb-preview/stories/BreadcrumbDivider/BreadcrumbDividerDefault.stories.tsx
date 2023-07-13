@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb-preview';
 import { ArrowRight16Filled } from '@fluentui/react-icons';
 
 export const Default = () => (

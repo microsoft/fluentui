@@ -5,7 +5,7 @@ import {
   BreadcrumbButton,
   BreadcrumbDivider,
   BreadcrumbProps,
-} from '@fluentui/react-breadcrumb';
+} from '@fluentui/react-breadcrumb-preview';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular, GridDots20Regular } from '@fluentui/react-icons';
 import { ButtonProps, RadioGroup, Radio, Label } from '@fluentui/react-components';
 

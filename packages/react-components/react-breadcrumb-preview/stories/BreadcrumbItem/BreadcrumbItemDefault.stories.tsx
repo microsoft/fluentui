@@ -8,8 +8,8 @@ import {
   truncateBreadcrumbLongName,
   truncateBreadcrumLongTooltip,
   isTruncatableBreadcrumbContent,
-} from '@fluentui/react-breadcrumb';
-import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+} from '@fluentui/react-breadcrumb-preview';
+import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb-preview';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-components';
 
