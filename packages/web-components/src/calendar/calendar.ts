@@ -135,14 +135,8 @@ export class Calendar extends FASTCalendar {
   public dateSelectedHandler(event: any) {
     const { day, month, year } = event.detail;
 
-    const prevMonth = this.getMonthInfo().previous.month;
-    if (month === prevMonth) {
-      this.switchMonth(prevMonth, this.getMonthInfo().previous.year);
-    }
-
-    const nextMonth = this.getMonthInfo().next.month;
-    if (month === nextMonth) {
-      this.switchMonth(nextMonth, this.getMonthInfo().next.year);
+    if (month != this.month) {
+      this.switchMonth(month, year);
     }
 
     const selected_date_string = `${month}-${day}-${year}`;
@@ -159,6 +153,7 @@ export class Calendar extends FASTCalendar {
   }
 
   public switchMonth(month: number, year: number) {
+    this.selectedDates = '';
     this.year = year;
     this.month = month;
   }
