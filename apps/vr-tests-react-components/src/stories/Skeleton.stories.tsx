@@ -2,10 +2,14 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
 import { PauseAnimationDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { Steps, StoryWright } from 'storywright';
 
 storiesOf('Skeleton converged', module)
   .addDecorator(PauseAnimationDecorator)
   .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addStory(
     'Opaque Skeleton with rectangle',
     () => (
