@@ -89,6 +89,23 @@ export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayout
 export const Tree: ForwardRefComponent<TreeProps>;
 
 // @public (undocumented)
+export type TreeCheckedChangeData = {
+    value: TreeItemValue;
+    target: HTMLElement;
+    event: React_2.ChangeEvent<HTMLElement>;
+    type: 'Change';
+} & ({
+    selectionMode: 'multiselect';
+    checked: MultiSelectValue;
+} | {
+    selectionMode: 'single';
+    checked: SingleSelectValue;
+});
+
+// @public (undocumented)
+export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
+
+// @public (undocumented)
 export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)

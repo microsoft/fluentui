@@ -6,7 +6,6 @@ import type { TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { RadioProps } from '@fluentui/react-radio';
 import { ImmutableSet } from '../../utils/ImmutableSet';
-import { ImmutableMap } from '../../utils/ImmutableMap';
 
 export type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 export type SingleSelectValue = NonNullable<RadioProps['checked']>;
@@ -55,12 +54,10 @@ export type TreeCheckedChangeData = {
   | {
       selectionMode: 'multiselect';
       checked: MultiSelectValue;
-      checkedItems: ImmutableMap<TreeItemValue, MultiSelectValue>;
     }
   | {
       selectionMode: 'single';
       checked: SingleSelectValue;
-      checkedItems: ImmutableMap<TreeItemValue, SingleSelectValue>;
     }
 );
 

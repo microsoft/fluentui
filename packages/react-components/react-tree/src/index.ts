@@ -13,6 +13,8 @@ export type {
   TreeSelectionValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
 } from './Tree';

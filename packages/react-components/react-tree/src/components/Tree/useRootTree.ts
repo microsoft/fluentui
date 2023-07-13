@@ -40,12 +40,9 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     return setOpenItems(nextOpenItems);
   };
 
-  const requestCheckedChange = (data: Omit<TreeCheckedChangeData, 'checkedItems'>) => {
+  const requestCheckedChange = (data: TreeCheckedChangeData) => {
     const nextCheckedItems = createNextCheckedItems(data, checkedItems);
-    props.onCheckedChange?.(data.event, {
-      ...data,
-      checkedItems: nextCheckedItems,
-    } as TreeCheckedChangeData);
+    props.onCheckedChange?.(data.event, data);
     if (data.event.isDefaultPrevented()) {
       return;
     }
