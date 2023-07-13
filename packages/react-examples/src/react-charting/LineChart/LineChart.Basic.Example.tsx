@@ -186,6 +186,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             margins={margins}
             xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+            enablePerfOptimization={true}
           />
         </div>
       </>
