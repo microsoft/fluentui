@@ -106,6 +106,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   //enableComputationOptimization is used for optimized code to group data points by x value
   //from O(n^2) to O(n) using a map.
   private _enableComputationOptimization: boolean;
+  private _focusableCircleRef: React.RefObject<SVGCircleElement>[];
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -167,6 +168,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this._opacity = opacity;
       this._stackedData = stackedInfo.stackedData;
       const legends: JSX.Element = this._getLegendData(points);
+
+      const noOfStacks = this._stackedData.length;
+
+      this._focusableCircleRef = [];
+      for (let index = 0; index < noOfStacks; index++) {
+        this._focusableCircleRef.push(React.createRef<SVGCircleElement>());
+      }
 
       const tickParams = {
         tickValues: this.props.tickValues,
@@ -521,7 +529,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
   };
 
-  private _onLegendClick(legend: string): void {
+  private _onLegendClick(legend: string, index: number): void {
     if (this.state.selectedLegend === legend) {
       this.setState({
         selectedLegend: '',
@@ -530,6 +538,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this.setState({
         selectedLegend: legend,
       });
+      this._focusableCircleRef[index].current?.focus();
     }
   }
 
@@ -549,7 +558,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const data = points;
     const actions: ILegend[] = [];
 
-    data.forEach((singleChartData: ILineChartPoints) => {
+    data.forEach((singleChartData: ILineChartPoints, index: number) => {
       const color: string = singleChartData.color!;
       const checkSimilarLegends = actions.filter(
         (leg: ILegend) => leg.title === singleChartData.legend && leg.color === color,
@@ -562,7 +571,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         title: singleChartData.legend,
         color: color,
         action: () => {
-          this._onLegendClick(singleChartData.legend);
+          this._onLegendClick(singleChartData.legend, index);
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
@@ -697,6 +706,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
                   points[index].data.length
                 } data points.`,
+                ref: this._focusableCircleRef[index],
               })}
             />
           )}
@@ -738,6 +748,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
                   role="img"
                   aria-label={this._getAriaLabel(index, pointIndex)}
+                  ref={pointIndex === 0 ? this._focusableCircleRef[index] : null}
                 />
               );
             })}
