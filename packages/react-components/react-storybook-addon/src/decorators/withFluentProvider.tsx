@@ -17,8 +17,20 @@ import { FluentGlobals, FluentStoryContext } from '../hooks';
  */
 const parseClassName = (className: string) => {
   // const replace = className.replace(componentName, '');
-  const [fuiName, slotName] = className.split(`__`);
-  const componentName = fuiName.replace(`fui-`, '');
+  const componentName =
+    className
+      .match(/fui-\w+/g)
+      ?.filter(x => !x.includes('_'))
+      ?.pop()
+      ?.replace('fui-', '') || '';
+
+  const slotName =
+    className
+      .split(' ')
+      ?.filter(x => x.includes(componentName) && x.includes('_'))
+      ?.pop()
+      ?.split('_')
+      ?.pop() || '';
 
   return { componentName, slotName };
 };
@@ -389,7 +401,7 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
   const paramTheme = findTheme(parameters.fluentTheme);
   const { theme } = paramTheme ?? globalTheme;
 
-  const displayName = context?.title?.split('/').pop() ?? '';
+  const displayName = context?.title?.split('/').pop()?.replace(/ /g, '') ?? '';
 
   return (
     <FluentProvider theme={theme} dir={parameters.dir}>
