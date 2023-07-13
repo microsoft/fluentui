@@ -54,9 +54,14 @@ export function createNextFlatCheckedItems<Props extends FlatTreeItemProps = Fla
   nextCheckedItems.set(data.value, data.checked);
 
   let parent: FlatTreeItem<Props> | undefined = treeItem;
+  let isAncestorsMixed = false;
   while ((parent = flatTreeItems.get(parent?.parentValue!))) {
     if (parent.value === flatTreeRootId) {
       break;
+    }
+    if (isAncestorsMixed) {
+      nextCheckedItems.set(parent.value, 'mixed');
+      continue;
     }
     const subtree = flatTreeItems.getSubtree(parent.value);
     const checkedChildren = subtree.filter(item => {
@@ -65,6 +70,8 @@ export function createNextFlatCheckedItems<Props extends FlatTreeItemProps = Fla
     if (checkedChildren.length === subtree.length) {
       nextCheckedItems.set(parent.value, data.checked);
     } else {
+      // if one parent is mixed, all ancestors are mixed
+      isAncestorsMixed = true;
       nextCheckedItems.set(parent.value, 'mixed');
     }
   }
