@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update devDependencies to use * for inner workspace dependencies",
-  "packageName": "@fluentui/react-drawer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
