@@ -256,13 +256,16 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
     onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
     selectionMode?: SelectionMode_2;
-    checkedItems?: Iterable<TreeItemValue | [TreeItemValue, MultiSelectValue]>;
-    defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, MultiSelectValue]>;
+    checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
+    defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
 // @public (undocumented)
 export const TreeProvider: Provider<TreeContextValue | undefined> & FC<ProviderProps<TreeContextValue | undefined>>;
+
+// @public (undocumented)
+export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 // @public (undocumented)
 export type TreeSlots = {

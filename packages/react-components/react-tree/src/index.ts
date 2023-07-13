@@ -10,6 +10,7 @@ export type {
   TreeProps,
   TreeState,
   TreeSlots,
+  TreeSelectionValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   TreeNavigationEvent_unstable,

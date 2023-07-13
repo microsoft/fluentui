@@ -7,6 +7,7 @@ export { Virtualization } from './Virtualization.stories';
 export { AddRemoveTreeItem } from './TreeItemAddRemove.stories';
 export { LazyLoading } from './TreeLazyLoading.stories';
 export { InfiniteScrolling } from './TreeInfiniteScrolling.stories';
+export { TreeMultipleSelection } from './TreeMultipleSelection.stories';
 
 export default {
   title: 'Preview Components/Tree/flatTree',

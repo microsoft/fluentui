@@ -8,7 +8,7 @@ import {
   TreeNavigationData_unstable,
   TreeCheckedChangeData,
 } from './Tree.types';
-import { useNestedControllableCheckedItems, useControllableOpenItems, useNestedTreeNavigation } from '../../hooks';
+import { useControllableOpenItems, useNestedTreeNavigation, useNestedControllableCheckedItems } from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
 import { TreeItemRequest } from '../../contexts';
 import { ImmutableSet } from '../../utils/ImmutableSet';
@@ -156,10 +156,8 @@ function createNextOpenItems(
 }
 
 function createNextCheckedItems(
-  data: Pick<TreeCheckedChangeData, 'value' | 'checked'>,
+  data: Pick<TreeCheckedChangeData, 'value' | 'checked' | 'selectionMode'>,
   previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
-  // eslint-disable-next-line no-console
-  console.warn('useTree: createNextCheckedItems not implemented yet');
   return previousCheckedItems;
 }

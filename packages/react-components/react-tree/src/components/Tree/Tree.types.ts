@@ -10,6 +10,7 @@ import { ImmutableMap } from '../../utils/ImmutableMap';
 
 export type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 export type SingleSelectValue = NonNullable<RadioProps['checked']>;
+export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
@@ -131,13 +132,13 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * Controls the state of the checked tree items.
    * These property is ignored for subtrees.
    */
-  checkedItems?: Iterable<TreeItemValue | [TreeItemValue, MultiSelectValue]>;
+  checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
   /**
    * This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state.
    * Default value for the uncontrolled state of checked tree items.
    * These property is ignored for subtrees.
    */
-  defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, MultiSelectValue]>;
+  defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
   /**
    * Callback fired when the component changes value from checked state.
    * These property is ignored for subtrees.

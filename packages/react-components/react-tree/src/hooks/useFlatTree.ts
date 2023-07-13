@@ -16,7 +16,7 @@ import type {
 import type { TreeItemProps, TreeItemValue } from '../TreeItem';
 import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
 import { ImmutableSet } from '../utils/ImmutableSet';
-import { useNestedControllableCheckedItems } from './useNestedCheckedItemsState';
+import { createNextFlatCheckedItems, useFlatControllableCheckedItems } from './useFlatControllableCheckedItems';
 
 export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> &
   Partial<Pick<TreeItemProps, 'itemType'>> & {
@@ -107,7 +107,7 @@ export type FlatTree<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
   items(): IterableIterator<FlatTreeItem<Props>>;
 };
 
-type FlatTreeOptions = Pick<
+export type FlatTreeOptions = Pick<
   TreeProps,
   | 'openItems'
   | 'defaultOpenItems'
@@ -137,10 +137,9 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
 ): FlatTree<Props> {
   const flatTreeItems = React.useMemo(() => createFlatTreeItems(flatTreeItemProps), [flatTreeItemProps]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
-  const [checkedItems, setCheckedItems] = useNestedControllableCheckedItems(options);
+  const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options);
   const [navigate, navigationRef] = useFlatTreeNavigation(flatTreeItems);
   const treeRef = React.useRef<HTMLDivElement>(null);
-
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     options.onOpenChange?.(event, data);
     if (!event.isDefaultPrevented()) {
@@ -150,9 +149,10 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
   });
 
   const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
-    options.onCheckedChange?.(event, data);
+    const nextFlatCheckedItems = createNextFlatCheckedItems(data, checkedItems);
+    options.onCheckedChange?.(event, { ...data, checkedItems: nextFlatCheckedItems } as TreeCheckedChangeData);
     if (!event.isDefaultPrevented()) {
-      setCheckedItems(data.checkedItems);
+      setCheckedItems(nextFlatCheckedItems);
     }
     event.preventDefault();
   });
@@ -201,6 +201,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
     () => ({
       ref,
       openItems,
+      selectionMode: options.selectionMode,
       checkedItems,
       onOpenChange: handleOpenChange,
       onCheckedChange: handleCheckedChange,
