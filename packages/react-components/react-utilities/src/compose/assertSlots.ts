@@ -1,4 +1,4 @@
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
 import { slot } from './slot';
 import { ComponentState, ExtractSlotProps, SlotComponent, SlotPropsRecord } from './types';
@@ -44,10 +44,10 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
             `Be sure to create slots properly by using ${slot.name}`,
         );
       } else {
-        const metadata = slotElement[SLOT_COMPONENT_METADATA_SYMBOL];
-        if (metadata.elementType !== typedState.components[slotName]) {
+        const { [SLOT_ELEMENT_TYPE_SYMBOL]: elementType } = slotElement;
+        if (elementType !== typedState.components[slotName]) {
           throw new TypeError(
-            `${assertSlots.name} error: state.${slotName} element type differs from state.components.${slotName}, ${metadata.elementType} !== ${typedState.components[slotName]}. \n` +
+            `${assertSlots.name} error: state.${slotName} element type differs from state.components.${slotName}, ${elementType} !== ${typedState.components[slotName]}. \n` +
               `Be sure to create slots properly by using ${slot.name} with the correct elementType`,
           );
         }

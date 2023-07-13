@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from './resolveShorthand';
 import type { Slot } from './types';
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 
 type TestProps = {
   slotA?: Slot<'div'>;
@@ -18,7 +18,7 @@ describe('resolveShorthand', () => {
 
     expect(resolvedProps).toEqual({
       children: 'hello',
-      [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
     });
   });
 
@@ -28,7 +28,7 @@ describe('resolveShorthand', () => {
 
     expect(resolvedProps).toEqual({
       children: <div>hello</div>,
-      [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
     });
   });
 
@@ -38,7 +38,7 @@ describe('resolveShorthand', () => {
 
     expect(resolvedProps).toEqual({
       children: 42,
-      [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
     });
   });
 
@@ -47,7 +47,7 @@ describe('resolveShorthand', () => {
     const props: TestProps = { slotA };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } });
+    expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
     expect(resolvedProps).not.toBe(slotA);
   });
 
@@ -69,6 +69,6 @@ describe('resolveShorthand', () => {
     const props: TestProps = { slotA: undefined };
     const resolvedProps = resolveShorthand(props.slotA, { required: true });
 
-    expect(resolvedProps).toEqual({ [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } });
+    expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
   });
 });

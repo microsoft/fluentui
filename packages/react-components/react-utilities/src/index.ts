@@ -6,8 +6,7 @@ export {
   assertSlots,
   resolveShorthand,
   isResolvedShorthand,
-  SLOT_COMPONENT_METADATA_SYMBOL,
-  // eslint-disable-next-line deprecation/deprecation
+  SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
 export type {
@@ -25,7 +24,6 @@ export type {
   SlotShorthandValue,
   UnknownSlotProps,
   SlotComponent,
-  SlotComponentMetadata,
   SlotOptions,
 } from './compose/index';
 

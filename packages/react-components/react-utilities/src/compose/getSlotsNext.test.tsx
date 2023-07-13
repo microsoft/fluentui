@@ -2,11 +2,11 @@ import * as React from 'react';
 import { getSlotsNext } from './getSlotsNext';
 import type { ExtractSlotProps, Slot, SlotComponent, UnknownSlotProps } from './types';
 import { resolveShorthand } from './resolveShorthand';
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 const resolveShorthandMock = <Props extends UnknownSlotProps>(props: Props): SlotComponent<Props> => {
   // casting is required here as SlotComponent is a callable
-  return { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' }, ...props } as SlotComponent<Props>;
+  return { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div', ...props } as SlotComponent<Props>;
 };
 
 describe('getSlotsNext', () => {
@@ -22,7 +22,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'div' },
-      slotProps: { root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } } },
+      slotProps: { root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
     });
   });
 
@@ -35,7 +35,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'span' },
-      slotProps: { root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } } },
+      slotProps: { root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
     });
   });
 
@@ -49,7 +49,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'button' },
-      slotProps: { root: { id: 'id', href: 'href', [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } } },
+      slotProps: { root: { id: 'id', href: 'href', [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
     });
   });
 
@@ -62,7 +62,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'a' },
-      slotProps: { root: { id: 'id', href: 'href', [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } } },
+      slotProps: { root: { id: 'id', href: 'href', [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
     });
   });
 
@@ -80,8 +80,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
-        icon: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        icon: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
       },
     });
   });
@@ -100,8 +100,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'span', icon: 'button' },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
-        icon: { id: 'id', children: 'children', [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        icon: { id: 'id', children: 'children', [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
       },
     });
   });
@@ -120,12 +120,12 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: 'a' },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
         icon: {
           id: 'id',
           href: 'href',
           children: 'children',
-          [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+          [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
         },
       },
     });
@@ -145,12 +145,12 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
         icon: {
           id: 'id',
           href: 'href',
           children: 'children',
-          [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+          [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
         },
       },
     });
@@ -171,8 +171,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
-        icon: { id: 'bar', children: renderIcon, [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        icon: { id: 'bar', children: renderIcon, [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
       },
     });
   });
@@ -192,11 +192,12 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
         icon: {
           children: undefined,
           id: 'bar',
-          [SLOT_COMPONENT_METADATA_SYMBOL]: { renderFunction, elementType: 'div' },
+          [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+          [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
         },
       },
     });
@@ -218,8 +219,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', input: 'input', icon: null },
       slotProps: {
-        root: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
-        input: { [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } },
+        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        input: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
         icon: undefined,
       },
     });

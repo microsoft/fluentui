@@ -1,4 +1,4 @@
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { SlotComponent } from './types';
 
 /**
@@ -6,5 +6,5 @@ import { SlotComponent } from './types';
  * This is mainly used internally to ensure a slot is being used as a component.
  */
 export function isSlot<Props extends {}>(element: unknown): element is SlotComponent<Props> {
-  return Boolean((element as {} | undefined)?.hasOwnProperty(SLOT_COMPONENT_METADATA_SYMBOL));
+  return Boolean((element as {} | undefined)?.hasOwnProperty(SLOT_ELEMENT_TYPE_SYMBOL));
 }

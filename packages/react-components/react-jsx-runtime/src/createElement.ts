@@ -3,7 +3,8 @@ import {
   UnknownSlotProps,
   isSlot,
   SlotComponent,
-  SLOT_COMPONENT_METADATA_SYMBOL,
+  SLOT_ELEMENT_TYPE_SYMBOL,
+  SLOT_RENDER_FUNCTION_SYMBOL,
   slot,
 } from '@fluentui/react-utilities';
 
@@ -31,14 +32,15 @@ function createElementFromSlotComponent<Props extends UnknownSlotProps>(
   slotComponent: SlotComponent<Props>,
   overrideChildren: React.ReactNode[],
 ): React.ReactElement<Props> | null {
-  const { [SLOT_COMPONENT_METADATA_SYMBOL]: metadata, as, ...propsWithoutMetadata } = slotComponent;
+  const {
+    as,
+    [SLOT_ELEMENT_TYPE_SYMBOL]: baseElementType,
+    [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+    ...propsWithoutMetadata
+  } = slotComponent;
   const props = propsWithoutMetadata as UnknownSlotProps as Props;
-  const { elementType: baseElementType, renderFunction } = metadata;
 
-  const elementType =
-    baseElementType === undefined || typeof baseElementType === 'string'
-      ? as ?? baseElementType ?? 'div'
-      : baseElementType;
+  const elementType = typeof baseElementType === 'string' ? as ?? baseElementType : baseElementType;
 
   if (typeof elementType !== 'string' && as) {
     props.as = as;

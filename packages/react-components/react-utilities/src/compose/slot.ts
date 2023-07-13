@@ -1,14 +1,13 @@
 import type {
   AsIntrinsicElement,
   SlotComponent,
-  SlotComponentMetadata,
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
 } from './types';
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
 import * as React from 'react';
 import { isSlot } from './isSlot';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
@@ -64,24 +63,31 @@ export function slot<Props extends UnknownSlotProps>(
   value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null,
   options: { required?: boolean } & Partial<SlotOptions<Props>> = {},
 ): SlotComponent<Props> | undefined {
-  const { required = false, defaultProps, elementType } = options;
+  const { required = false, defaultProps } = options;
 
   if (value === null || (value === undefined && !required)) {
     return undefined;
   }
 
-  let metadata: SlotComponentMetadata<Props>;
+  let renderFunction: SlotRenderFunction<Props> | undefined;
+  let elementType:
+    | React.ComponentType<Props>
+    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+
   if (isSlot<Props>(value)) {
-    metadata = value[SLOT_COMPONENT_METADATA_SYMBOL];
-    if (elementType !== undefined) {
-      metadata.elementType = elementType;
+    renderFunction = value[SLOT_RENDER_FUNCTION_SYMBOL];
+    elementType = value[SLOT_ELEMENT_TYPE_SYMBOL];
+    if (options.elementType !== undefined) {
+      elementType = options.elementType;
     }
-  } else if (elementType !== undefined) {
-    metadata = { elementType };
+  } else if (options.elementType !== undefined) {
+    elementType = options.elementType;
   } else if (process.env.NODE_ENV !== 'production') {
     throw new Error("[react-utilities]: slot options.elementType is required when value isn't a slot itself");
-  } else {
-    metadata = { elementType: 'div' as React.ElementType<Props> as React.ComponentType<Props> };
+  }
+  // in case of production, don't throw an error, just fallback to a div
+  else {
+    elementType = 'div' as React.ElementType<Props> as React.ComponentType<Props>;
   }
 
   /**
@@ -90,10 +96,7 @@ export function slot<Props extends UnknownSlotProps>(
    * This is required to make a slot callable (JSX compatible), this is the exact same approach
    * that is used on `@types/react` components
    */
-  const propsWithMetadata = {
-    ...defaultProps,
-    [SLOT_COMPONENT_METADATA_SYMBOL]: metadata,
-  } as SlotComponent<Props>;
+  const propsWithMetadata = { ...defaultProps } as SlotComponent<Props>;
 
   if (
     typeof value === 'string' ||
@@ -106,10 +109,15 @@ export function slot<Props extends UnknownSlotProps>(
   } else if (typeof value === 'object') {
     Object.assign(propsWithMetadata, value);
     if (typeof value.children === 'function') {
-      metadata.renderFunction = value.children as SlotRenderFunction<Props>;
+      renderFunction = value.children as SlotRenderFunction<Props>;
       propsWithMetadata.children = defaultProps?.children;
     }
   }
+
+  Object.assign(propsWithMetadata, {
+    [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
+    [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+  });
 
   return propsWithMetadata;
 }

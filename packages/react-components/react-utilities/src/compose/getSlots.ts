@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { omit } from '../utils/omit';
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
 import type {
   AsIntrinsicElement,
   ComponentState,
@@ -11,6 +10,7 @@ import type {
   UnknownSlotProps,
 } from './types';
 import { isSlot } from './isSlot';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
@@ -80,7 +80,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   // TS Error: Property 'as' does not exist on type 'UnknownSlotProps | undefined'.ts(2339)
   const { as: asProp, children, ...rest } = props as NonUndefined<typeof props>;
 
-  const metadata = isSlot(props) ? props[SLOT_COMPONENT_METADATA_SYMBOL] : undefined;
+  const renderFunction = isSlot(props) ? props[SLOT_RENDER_FUNCTION_SYMBOL] : undefined;
 
   const slot = (
     state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
@@ -88,8 +88,8 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
       : state.components[slotName]
   ) as React.ElementType<R[K]>;
 
-  if (metadata?.renderFunction || typeof children === 'function') {
-    const render = (metadata?.renderFunction || children) as SlotRenderFunction<R[K]>;
+  if (renderFunction || typeof children === 'function') {
+    const render = (renderFunction || children) as SlotRenderFunction<R[K]>;
     return [
       React.Fragment,
       {

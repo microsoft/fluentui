@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { slot } from './slot';
 import type { ComponentProps, Slot } from './types';
-import { SLOT_COMPONENT_METADATA_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 type TestSlots = {
   slotA?: Slot<'div'>;
@@ -21,7 +21,7 @@ describe('slot', () => {
 
     expect(resolvedProps).toEqual({
       children: 'hello',
-      [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
     });
   });
 
@@ -31,7 +31,7 @@ describe('slot', () => {
 
     expect(resolvedProps).toEqual({
       children: <div>hello</div>,
-      [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
     });
   });
 
@@ -41,7 +41,7 @@ describe('slot', () => {
 
     expect(resolvedProps).toEqual({
       children: 42,
-      [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
     });
   });
 
@@ -50,7 +50,7 @@ describe('slot', () => {
     const props: TestProps = { slotA };
     const resolvedProps = slot(props.slotA, { elementType: 'div' });
 
-    expect(resolvedProps).toEqual({ [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } });
+    expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
     expect(resolvedProps).not.toBe(slotA);
   });
 
@@ -72,7 +72,7 @@ describe('slot', () => {
     const props: TestProps = { slotA: undefined };
     const resolvedProps = slot(props.slotA, { required: true, elementType: 'div' });
 
-    expect(resolvedProps).toEqual({ [SLOT_COMPONENT_METADATA_SYMBOL]: { elementType: 'div' } });
+    expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
   });
 
   it('handles render functions', () => {
@@ -80,10 +80,8 @@ describe('slot', () => {
     const resolvedProps = slot(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual({
-      [SLOT_COMPONENT_METADATA_SYMBOL]: {
-        elementType: 'div',
-        renderFunction: expect.any(Function),
-      },
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
+      [SLOT_RENDER_FUNCTION_SYMBOL]: expect.any(Function),
     });
   });
 });

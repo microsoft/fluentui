@@ -233,9 +233,9 @@ export function slot<Props extends UnknownSlotProps>(value: SlotComponent<Props>
 } & Partial<SlotOptions<Props>>): SlotComponent<Props>;
 
 // @internal
-export const SLOT_COMPONENT_METADATA_SYMBOL: unique symbol;
+export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
 
-// @internal @deprecated
+// @internal
 export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
 
 // @public
@@ -246,13 +246,8 @@ export type SlotClassNames<Slots> = {
 // @public
 export type SlotComponent<Props extends UnknownSlotProps> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
-    [SLOT_COMPONENT_METADATA_SYMBOL]: Readonly<SlotComponentMetadata<Props>>;
-};
-
-// @public
-export type SlotComponentMetadata<Props extends UnknownSlotProps> = {
-    renderFunction?: SlotRenderFunction<Props>;
-    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
+    [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
 
 // @public (undocumented)
