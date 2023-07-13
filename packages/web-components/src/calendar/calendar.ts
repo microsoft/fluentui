@@ -134,6 +134,17 @@ export class Calendar extends FASTCalendar {
 
   public dateSelectedHandler(event: any) {
     const { day, month, year } = event.detail;
+
+    const prevMonth = this.getMonthInfo().previous.month;
+    if (month === prevMonth) {
+      this.switchMonth(prevMonth, this.getMonthInfo().previous.year);
+    }
+
+    const nextMonth = this.getMonthInfo().next.month;
+    if (month === nextMonth) {
+      this.switchMonth(nextMonth, this.getMonthInfo().next.year);
+    }
+
     const selected_date_string = `${month}-${day}-${year}`;
 
     if (this.calendarType === 'range-picker') {
@@ -147,14 +158,9 @@ export class Calendar extends FASTCalendar {
     console.log(this.selectedDates);
   }
 
-  public prevMonthHandler(event: MouseEvent) {
-    this.month = this.getMonthInfo().previous.month;
-    this.year = this.getMonthInfo().previous.year;
-  }
-
-  public nextMonthHandler(event: MouseEvent) {
-    this.month = this.getMonthInfo().next.month;
-    this.year = this.getMonthInfo().next.year;
+  public switchMonth(month: number, year: number) {
+    this.year = year;
+    this.month = month;
   }
 
   public handleGoToToday(event: MouseEvent) {

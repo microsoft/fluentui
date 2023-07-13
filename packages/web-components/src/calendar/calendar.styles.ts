@@ -12,6 +12,10 @@ import {
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
   colorNeutralForegroundInverted,
+  fontFamilyBase,
+  fontSizeBase300,
+  fontWeightRegular,
+  lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalS,
   spacingVerticalM,
@@ -26,8 +30,9 @@ export const styles = css`
     width: 248px;
     height: 285px;
     color: ${colorNeutralForeground3};
-    padding: 12px;
+    padding: ${spacingHorizontalM};
     outline: solid black;
+    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
   :host .day:not(.today, .selected):hover {
     background: #eff6fc;
@@ -129,9 +134,13 @@ export const styles = css`
     justify-content: space-between;
   }
   :host .slotted-link {
-    width: 75px;
     height: 20px;
     cursor: pointer;
-    background: lightblue;
+    margin: ${spacingVerticalM} 0;
+    margin-right: 8px;
+  }
+  :host .footer {
+    display: flex;
+    justify-content: flex-end;
   }
 `;

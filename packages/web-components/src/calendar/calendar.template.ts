@@ -34,10 +34,18 @@ export const template: ElementViewTemplate<Calendar> = html`
   <div class="header">
     ${calendarTitleTemplate()}
     <div class="navicon-container">
-      <span class="navicon-left" part="navicon-left" @click="${(x, c) => x.prevMonthHandler(c.event as MouseEvent)}">
+      <span
+        class="navicon-left"
+        part="navicon-left"
+        @click="${(x, c) => x.switchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
+      >
         ${ChevronLeft16}
       </span>
-      <span class="navicon-right" part="navicon-right" @click="${(x, c) => x.nextMonthHandler(c.event as MouseEvent)}">
+      <span
+        class="navicon-right"
+        part="navicon-right"
+        @click="${(x, c) => x.switchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
+      >
         ${ChevronRight16}
       </span>
     </div>
@@ -48,5 +56,7 @@ export const template: ElementViewTemplate<Calendar> = html`
     dataGridRow: 'fast-data-grid-row',
     dataGridCell: 'fast-data-grid-cell',
   })}
-  <div class="slotted-link" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">test</div>
+  <div class="footer" part="footer">
+    <div class="slotted-link" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">Go to today</div>
+  </div>
 `;
