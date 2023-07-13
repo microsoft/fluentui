@@ -76,7 +76,7 @@
     "@fluentui/react-text": "^9.3.17",
     "@fluentui/react-virtualizer": "9.0.0-alpha.27",
     "@fluentui/react-tree": "9.0.0-beta.25",
-    "@griffel/react": "^1.5.7",
+    "@griffel/react": "^1.5.11",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
