@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  Tree,
-  TreeItem,
-  TreeItemLayout,
-  useFlatTree_unstable,
-  FlatTreeItemProps,
-  TreeItemValue,
-  TreeSelectionValue,
-} from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
 import story from './useFlatTree.md';
 
 type Item = FlatTreeItemProps & { content: string };
@@ -29,19 +21,17 @@ const defaultItems: Item[] = [
 
 export const TreeMultipleSelection = () => {
   const flatTree = useFlatTree_unstable(defaultItems, {
-    defaultOpenItems: ['1', '2'],
+    defaultOpenItems: ['1', '2', '2-1', '2-2'],
     selectionMode: 'multiselect',
     // defaultCheckedItems: new Map([
     //   ['1-1', true],
     //   ['2-1', true],
     // ]),
-    checkedItems: new Map<TreeItemValue, TreeSelectionValue>([
-      ['1-1', true],
-      ['2-1', 'mixed' as const],
-    ]),
+    // checkedItems: new Map<TreeItemValue, TreeSelectionValue>([
+    //   ['1-1', true],
+    //   ['2-1', 'mixed'],
+    // ]),
   });
-
-  console.log(flatTree.getTreeProps().checkedItems);
 
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">

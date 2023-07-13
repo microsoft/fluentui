@@ -159,5 +159,8 @@ function createNextCheckedItems(
   data: Pick<TreeCheckedChangeData, 'value' | 'checked' | 'selectionMode'>,
   previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
+  if (data.selectionMode === 'single') {
+    return ImmutableMap.create([[data.value, data.checked]]);
+  }
   return previousCheckedItems;
 }

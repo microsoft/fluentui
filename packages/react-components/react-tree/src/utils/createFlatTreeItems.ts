@@ -9,6 +9,7 @@ export type FlatTreeItems<Props extends FlatTreeItemProps> = {
   size: number;
   root: FlatTreeItem;
   get(key: TreeItemValue): FlatTreeItem<Props> | undefined;
+  getSubtree(key: TreeItemValue): FlatTreeItem<Props>[];
   set(key: TreeItemValue, value: FlatTreeItem<Props>): void;
   getByIndex(index: number): FlatTreeItem<Props>;
 };
@@ -64,6 +65,21 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps>(flatTreeIte
     root,
     size: items.length,
     getByIndex: index => items[index],
+    getSubtree: key => {
+      const item = itemsPerValue.get(key);
+      if (!item || item.childrenSize === 0) {
+        return [];
+      }
+      let counter = item.childrenSize;
+      let index = item.index;
+      const subtree: FlatTreeItem<FlatTreeItemProps>[] = [];
+      while (counter > 0) {
+        const children = items[++index];
+        subtree.push(children);
+        counter += children.childrenSize - 1;
+      }
+      return subtree;
+    },
     get: key => itemsPerValue.get(key),
     set: (key, value) => itemsPerValue.set(key, value),
   };

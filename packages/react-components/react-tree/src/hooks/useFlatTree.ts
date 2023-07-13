@@ -149,7 +149,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
   });
 
   const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
-    const nextFlatCheckedItems = createNextFlatCheckedItems(data, checkedItems);
+    const nextFlatCheckedItems = createNextFlatCheckedItems(data, checkedItems, flatTreeItems);
     options.onCheckedChange?.(event, { ...data, checkedItems: nextFlatCheckedItems } as TreeCheckedChangeData);
     if (!event.isDefaultPrevented()) {
       setCheckedItems(nextFlatCheckedItems);

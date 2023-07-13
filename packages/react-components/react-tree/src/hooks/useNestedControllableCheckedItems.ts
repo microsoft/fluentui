@@ -24,7 +24,7 @@ export function useNestedControllableCheckedItems(
 ) {
   return useControllableState({
     initialState: ImmutableMap.empty,
-    state: React.useMemo(() => initializeMap(props.checkedItems), [props.checkedItems]),
+    state: React.useMemo(() => props.checkedItems && initializeMap(props.checkedItems), [props.checkedItems]),
     defaultState: () => initializeMap(props.defaultCheckedItems),
   });
 }

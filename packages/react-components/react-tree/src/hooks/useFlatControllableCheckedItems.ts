@@ -3,6 +3,8 @@ import type { TreeCheckedChangeData, TreeProps } from '../Tree';
 import { TreeItemValue } from '../TreeItem';
 import { ImmutableMap } from '../utils/ImmutableMap';
 import * as React from 'react';
+import type { FlatTreeItem, FlatTreeItemProps } from './useFlatTree';
+import { flatTreeRootId, type FlatTreeItems } from '../utils/createFlatTreeItems';
 
 function initializeMap(iterable?: Iterable<TreeItemValue | [TreeItemValue, 'mixed' | boolean]>) {
   const map = new Map<TreeItemValue, 'mixed' | boolean>();
@@ -24,45 +26,48 @@ export function useFlatControllableCheckedItems(
 ) {
   const [checkedItems, setCheckedItems] = useControllableState({
     initialState: ImmutableMap.empty,
-    state: React.useMemo(
-      () => (props.checkedItems ? initializeMap(props.checkedItems) : undefined),
-      [props.checkedItems],
-    ),
+    state: React.useMemo(() => props.checkedItems && initializeMap(props.checkedItems), [props.checkedItems]),
     defaultState: () => initializeMap(props.defaultCheckedItems),
   });
 
   return [checkedItems, setCheckedItems] as const;
 }
 
-export function createNextFlatCheckedItems(
+export function createNextFlatCheckedItems<Props extends FlatTreeItemProps = FlatTreeItemProps>(
   data: Pick<TreeCheckedChangeData, 'value' | 'checked' | 'selectionMode'>,
   previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
+  flatTreeItems: FlatTreeItems<Props>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
-  // eslint-disable-next-line no-console
-  console.warn('useTree: createNextFlatCheckedItems not implemented yet');
+  if (data.selectionMode === 'single') {
+    return ImmutableMap.create([[data.value, data.checked]]);
+  }
+  const treeItem = flatTreeItems.get(data.value);
+  if (!treeItem) {
+    // eslint-disable-next-line no-console
+    console.error(`useFlatTree: tree item ${data.value} not found`);
+    return previousCheckedItems;
+  }
+  const nextCheckedItems = new Map(previousCheckedItems);
+  for (const children of flatTreeItems.getSubtree(data.value)) {
+    nextCheckedItems.set(children.value, data.checked);
+  }
+  nextCheckedItems.set(data.value, data.checked);
 
-  const nextCheckedItems = new Map(previousCheckedItems.dangerouslyGetInternalMap_unstable()); // create mutable copy of previous items
-
-  const itemId = data.value;
-
-  if (data.selectionMode === 'multiselect') {
-    const isChecked = data.checked;
-
-    if (isChecked === true || isChecked === 'mixed') {
-      nextCheckedItems.set(itemId, isChecked);
-    } else {
-      nextCheckedItems.delete(itemId);
+  let parent: FlatTreeItem<Props> | undefined = treeItem;
+  while ((parent = flatTreeItems.get(parent?.parentValue!))) {
+    if (parent.value === flatTreeRootId) {
+      break;
     }
-  } else if (data.selectionMode === 'single') {
-    const isChecked = data.checked;
-
-    if (isChecked === true) {
-      nextCheckedItems.clear();
-      nextCheckedItems.set(itemId, true);
+    const subtree = flatTreeItems.getSubtree(parent.value);
+    const checkedChildren = subtree.filter(item => {
+      return (nextCheckedItems.get(item.value) ?? false) === data.checked;
+    });
+    if (checkedChildren.length === subtree.length) {
+      nextCheckedItems.set(parent.value, data.checked);
     } else {
-      nextCheckedItems.delete(itemId);
+      nextCheckedItems.set(parent.value, 'mixed');
     }
   }
-  const immutable = ImmutableMap.create(nextCheckedItems);
-  return immutable;
+
+  return ImmutableMap.dangerouslyCreate_unstable(nextCheckedItems);
 }
