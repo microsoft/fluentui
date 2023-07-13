@@ -2,6 +2,21 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 07:34:53 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.28",
+      "version": "8.107.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "915acd693ae5c9ad8995d0cb952e804e9fd3e120",
+            "comment": "fix: Ensure fluent2 dark theme isInverted:true, set primary fluent2darktheme button color to match light theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jul 2023 07:35:07 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.27",
       "version": "8.107.27",
