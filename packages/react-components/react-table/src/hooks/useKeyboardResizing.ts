@@ -36,7 +36,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     switch (event.key) {
       case ArrowLeft:
         stopEvent();
-        columnResizeStateRef.current.setColumnWidth(event, {
+        columnResizeStateRef.current.setColumnWidth(event.nativeEvent, {
           columnId,
           width: width - (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
@@ -44,7 +44,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
       case ArrowRight:
         stopEvent();
-        columnResizeStateRef.current.setColumnWidth(event, {
+        columnResizeStateRef.current.setColumnWidth(event.nativeEvent, {
           columnId,
           width: width + (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
