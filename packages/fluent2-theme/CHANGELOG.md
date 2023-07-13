@@ -1,8 +1,17 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Mon, 10 Jul 2023 07:35:07 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jul 2023 07:34:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.28](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.28)
+
+Thu, 13 Jul 2023 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.27..@fluentui/fluent2-theme_v8.107.28)
+
+### Patches
+
+- fix: Ensure fluent2 dark theme isInverted:true, set primary fluent2darktheme button color to match light theme ([PR #28486](https://github.com/microsoft/fluentui/pull/28486) by mifraser@microsoft.com)
 
 ## [8.107.27](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.27)
 
