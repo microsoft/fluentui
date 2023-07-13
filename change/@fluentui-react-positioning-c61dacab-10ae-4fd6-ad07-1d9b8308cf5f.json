@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement shared styles for slide animations",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -44,6 +44,23 @@ export const InfoIcon: ForwardRefComponent<InfoIconProps>;
 export const infoIconClassNames: SlotClassNames<InfoIconSlots>;
 
 // @public
+export const InfoIconLabel: ForwardRefComponent<InfoIconLabelProps>;
+
+// @public (undocumented)
+export const infoIconLabelClassNames: SlotClassNames<InfoIconLabelSlots>;
+
+// @public
+export type InfoIconLabelProps = ComponentProps<InfoIconLabelSlots> & {};
+
+// @public (undocumented)
+export type InfoIconLabelSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type InfoIconLabelState = ComponentState<InfoIconLabelSlots>;
+
+// @public
 export type InfoIconProps = ComponentProps<InfoIconSlots> & {};
 
 // @public (undocumented)
@@ -82,6 +99,9 @@ export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 export const renderInfoIcon_unstable: (state: InfoIconState) => JSX.Element;
 
 // @public
+export const renderInfoIconLabel_unstable: (state: InfoIconLabelState) => JSX.Element;
+
+// @public
 export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
 
 // @public
@@ -92,6 +112,12 @@ export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButto
 
 // @public
 export const useInfoIcon_unstable: (props: InfoIconProps, ref: React_2.Ref<HTMLElement>) => InfoIconState;
+
+// @public
+export const useInfoIconLabel_unstable: (props: InfoIconLabelProps, ref: React_2.Ref<HTMLElement>) => InfoIconLabelState;
+
+// @public
+export const useInfoIconLabelStyles_unstable: (state: InfoIconLabelState) => InfoIconLabelState;
 
 // @public
 export const useInfoIconStyles_unstable: (state: InfoIconState) => InfoIconState;

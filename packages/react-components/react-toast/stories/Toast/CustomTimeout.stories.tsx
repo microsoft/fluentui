@@ -1,6 +1,16 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast, ToastTrigger } from '@fluentui/react-toast';
-import { useId, Button, Link, SpinButton, Field } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Link,
+  SpinButton,
+  Field,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+  ToastTrigger,
+} from '@fluentui/react-components';
 
 export const CustomTimeout = () => {
   const [timeout, setDismissTimeout] = React.useState(1000);
@@ -15,12 +25,11 @@ export const CustomTimeout = () => {
               <Link>Dismiss</Link>
             </ToastTrigger>
           }
-          intent="info"
         >
           {timeout >= 0 ? `Custom timeout ${timeout}ms` : `Dismiss manually`}
         </ToastTitle>
       </Toast>,
-      { timeout },
+      { timeout, intent: 'info' },
     );
 
   return (

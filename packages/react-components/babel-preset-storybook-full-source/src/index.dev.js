@@ -3,9 +3,9 @@
 const { registerTsProject } = require('nx/src/utils/register');
 
 // This is internal code and should be a dev dependency
-const { workspaceRoot } = require('@nrwl/devkit');
+const { joinPathFragments } = require('@nrwl/devkit');
 /* eslint-enable import/no-extraneous-dependencies */
 
-registerTsProject(workspaceRoot, 'tsconfig.base.json');
+registerTsProject(joinPathFragments(__dirname, '..'), 'tsconfig.lib.json');
 
 module.exports = require('./index.ts');

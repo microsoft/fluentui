@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemAside, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import {
   Image20Regular,
   Important16Regular,
@@ -11,7 +11,16 @@ import story from './TreeItemLayout.md';
 
 export const Layout = () => (
   <Tree aria-label="Tree">
-    <TreeItem itemType="branch" aria-description="Private, 1 message">
+    <TreeItem
+      aside={
+        <>
+          <Important16Regular primaryFill="red" />
+          <CounterBadge count={1} color="danger" size="small" />
+        </>
+      }
+      itemType="branch"
+      aria-description="Private, 1 message"
+    >
       <TreeItemLayout
         iconBefore={<Image20Regular />}
         iconAfter={
@@ -23,10 +32,6 @@ export const Layout = () => (
       >
         Content
       </TreeItemLayout>
-      <TreeItemAside>
-        <Important16Regular primaryFill="red" />
-        <CounterBadge count={1} color="danger" size="small" />
-      </TreeItemAside>
       <Tree>
         <TreeItem itemType="branch">
           <TreeItemLayout>Tree Item</TreeItemLayout>
@@ -50,7 +55,7 @@ export const Layout = () => (
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem itemType="branch" aria-description="Private">
+    <TreeItem aside={<Important16Regular primaryFill="red" />} itemType="branch" aria-description="Private">
       <TreeItemLayout
         iconBefore={<Image20Regular />}
         iconAfter={
@@ -62,9 +67,6 @@ export const Layout = () => (
       >
         Content
       </TreeItemLayout>
-      <TreeItemAside>
-        <Important16Regular primaryFill="red" />
-      </TreeItemAside>
       <Tree>
         <TreeItem itemType="branch">
           <TreeItemLayout>level 2, item 1</TreeItemLayout>

@@ -18,6 +18,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       },
       className,
     ],
+    chartWrapper: {
+      overflow: 'auto',
+    },
     xAxis: {
       selectors: {
         text: [

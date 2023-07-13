@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -23,50 +23,50 @@ describe('rc-caret generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
     npmScope = readWorkspaceConfiguration(tree).npmScope ?? '@proj';
   });
 
-  it('should work for dependencies', () => {
+  it('should work for dependencies', async () => {
     setupDummyPackage(tree, {
       dependencies: {
         [`@${npmScope}/react-button`]: '9.0.0-rc.1',
       },
     });
 
-    generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: `@${npmScope}/react-components` });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
   });
 
-  it('should work for dev dependencies', () => {
+  it('should work for dev dependencies', async () => {
     setupDummyPackage(tree, {
       devDependencies: {
         [`@${npmScope}/react-button`]: '9.0.0-rc.1',
       },
     });
 
-    generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: `@${npmScope}/react-components` });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.devDependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
   });
 
-  it('should ignore dependencies already carets', () => {
+  it('should ignore dependencies already carets', async () => {
     setupDummyPackage(tree, {
       dependencies: {
         [`@${npmScope}/react-button`]: '^9.0.0-rc.1',
       },
     });
 
-    generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: `@${npmScope}/react-components` });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
   });
 
-  it('should ignore alpha and beta prereleases', () => {
+  it('should ignore alpha and beta prereleases', async () => {
     setupDummyPackage(tree, {
       dependencies: {
         [`@${npmScope}/react-button`]: '9.0.0-beta.1',
@@ -74,7 +74,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: `@${npmScope}/react-components` });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -85,14 +85,14 @@ describe('rc-caret generator', () => {
     `);
   });
 
-  it('should ignore non-converged', () => {
+  it('should ignore non-converged', async () => {
     setupDummyPackage(tree, {
       dependencies: {
         [`@${npmScope}/react`]: '8.3.2',
       },
     });
 
-    generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: `@${npmScope}/react-components` });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -102,7 +102,7 @@ describe('rc-caret generator', () => {
     `);
   });
 
-  it('should work on non-converged package', () => {
+  it('should work on non-converged package', async () => {
     setupDummyPackage(tree, {
       version: '1.1.0',
       dependencies: {
@@ -110,7 +110,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: `@${npmScope}/react-components` });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
