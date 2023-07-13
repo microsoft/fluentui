@@ -6,7 +6,6 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '490px',
   },
   filledLighter: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,

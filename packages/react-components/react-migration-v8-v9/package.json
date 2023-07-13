@@ -26,13 +26,13 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "^9.0.0",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.27",
+    "@fluentui/fluent2-theme": "^8.107.28",
     "@fluentui/react": "^8.110.8",
     "@fluentui/react-components": "^9.26.0",
     "@fluentui/react-icons": "^2.0.203",

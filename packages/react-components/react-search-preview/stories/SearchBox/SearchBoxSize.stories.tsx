@@ -6,7 +6,6 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '400px',
   },
   fieldWrapper: {
     ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
