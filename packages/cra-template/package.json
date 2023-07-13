@@ -18,7 +18,7 @@
     "template.json"
   ],
   "devDependencies": {
-    "@fluentui/react": "^8.110.8",
+    "@fluentui/react": "*",
     "@fluentui/scripts-projects-test": "*",
     "@fluentui/scripts-monorepo": "*"
   }

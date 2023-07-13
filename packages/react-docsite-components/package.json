@@ -20,7 +20,7 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.32",
+    "@fluentui/common-styles": "*",
     "@fluentui/eslint-plugin": "*",
     "@types/color-check": "0.0.0",
     "@types/react-custom-scrollbars": "^4.0.5",
