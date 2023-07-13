@@ -13,9 +13,9 @@ export class PieChartBasicExample extends React.Component<IPieChartProps, { widt
 
   public render(): JSX.Element {
     const points = [
-      { y: 50, x: 'AAAA' },
-      { y: 25, x: 'BBVB' },
-      { y: 25, x: 'CDFDF' },
+      { y: 50, x: 'ABCD' },
+      { y: 25, x: 'EFGH' },
+      { y: 25, x: 'IJKL' },
     ];
     return (
       <React.Fragment>
