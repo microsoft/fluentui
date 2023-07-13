@@ -12,7 +12,6 @@ const useStyles = makeStyles({
      */
     display: 'flex',
     flexDirection: 'column',
-    overflowAnchor: 'none',
     maxHeight: '300VH',
     width: '100%',
     height: '100%',
