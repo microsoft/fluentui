@@ -3,6 +3,6 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],
-  "sourceRoot": "packages/react-components/react-breadcrumb/src",
+  "sourceRoot": "packages/react-components/react-breadcrumb-preview/src",
   "tags": ["vNext", "platform:web"]
 }

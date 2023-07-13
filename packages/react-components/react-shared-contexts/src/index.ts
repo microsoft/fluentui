@@ -31,3 +31,5 @@ export type { CustomStyleHooksContextValue as CustomStyleHooksContextValue_unsta
 
 export { BackgroundAppearanceProvider, useBackgroundAppearance } from './BackgroundAppearanceContext';
 export type { BackgroundAppearanceContextValue } from './BackgroundAppearanceContext';
+
+export { PortalMountNodeProvider, usePortalMountNode } from './PortalMountNodeContext';

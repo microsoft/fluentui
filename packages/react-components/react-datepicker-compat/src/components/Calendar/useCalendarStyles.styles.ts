@@ -78,6 +78,11 @@ const useGoTodayButtonStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackground,
       color: tokens.colorBrandForeground1,
       cursor: 'pointer',
+
+      '@media (forced-colors: active)': {
+        ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'ButtonText'),
+        ...shorthands.borderRadius(tokens.borderRadiusSmall),
+      },
     },
     '&:hover:active': {
       color: tokens.colorBrandForeground2,

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Wed, 28 Jun 2023 11:12:26 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.17)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.16..@fluentui/react-image_v9.1.17)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+
+## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.16)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.15..@fluentui/react-image_v9.1.16)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.6.0 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
 
 ## [9.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.15)
 

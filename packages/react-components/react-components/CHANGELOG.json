@@ -2,6 +2,240 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 11 Jul 2023 18:46:34 GMT",
+      "tag": "@fluentui/react-components_v9.26.0",
+      "version": "9.26.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5844766000909d73f83f23c99415b43d8b31a5b8",
+            "comment": "feat: Export focus mode types for DataGrid"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1b458501e0efb7cdcf9cff4099d9e6cd8a2ffb5c",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "01a5a8378f8f25dc04a3c255fd6c5ede40d8f0ee",
+            "comment": "breaking: Remove componentRef and IDatePicker since it's no longer necessary, fix ref forwarding to the input, change ref type for useDatePicker to use HTMLInputElement instead of HTMLElement, and fix focus movement when closing/opening popup."
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "860eda5cd9a49d91bd4ec3d8d01792dba79cabb5",
+            "comment": "fix: exported useOnMenuMouseEnter from react-menu"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c10400fdaf7ff1beef85051ce38b2c6c52b4e2e2",
+            "comment": "feat: export options `strategy` from `PositioningProps`. Deprecate internal option `positionFixed`"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "5844766000909d73f83f23c99415b43d8b31a5b8",
+            "comment": "feat(DataGridCell): Implemets `cell` and `none` focusModes"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "f9c4ec8d19658d9314d57f890de1a0d886edc116",
+            "comment": "feat: Deprecates package in favour of @fluentui-contrib/react-data-grid-react-window"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "64752d9a76638ccc4c91303347993b50e0e6d053",
+            "comment": "chore: move slots back to TreeItem and creates slot context"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74",
+            "comment": "chore: openItems property added to TreeOpenChangeData + minor internal improvements"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2fa67922261c28392dbe659fff44f3e86eff2efb",
+            "comment": "Fix: Ensure 'start buffer' is margin padded into the non-virtualized space on horizontal layouts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "9dc6601a3f222e0a339541cc1523a356a78c59e6",
+            "comment": "fix(react-datepicker-compat): Add focus styles to CalendarPicker's go to today button."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 20:43:09 GMT",
+      "tag": "@fluentui/react-components_v9.25.1",
+      "version": "9.25.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "7b6bd85a2edbc0b9257fe300062d657a4c256844",
+            "comment": "fix: Toaster should play toasts on action dismiss"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 13:34:27 GMT",
+      "tag": "@fluentui/react-components_v9.25.0",
+      "version": "9.25.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Export useTableCompositeNavigation hook"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Implement composite navigation for Table and DataGrid"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772",
+            "comment": "feat: Implmenent useMergeTabsterAttributes_unstable"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd",
+            "comment": "fix: menu item disabled style"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 11:57:11 GMT",
+      "tag": "@fluentui/react-components_v9.24.0",
+      "version": "9.24.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "10b70d6a6da6cda0ca201ddae56a4880b1ad57bc",
+            "comment": "re-export GriffelResetStyle type"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0cbd837b6d45c236d03f5e46898c6cacc6ef3afd",
+            "comment": "feat: Implement MenuItemLink components"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e7a838bfd1ce4b077d265295fcbef8dc2177e724",
+            "comment": "feat: Release Toast component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: re-export PortalMountNodeProvider & usePortalMountNode"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "7ad45a9f4e696e416c4420286cbac3f57a4b3a6f",
+            "comment": "feat: Add styles for inverted background"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0cbd837b6d45c236d03f5e46898c6cacc6ef3afd",
+            "comment": "feat: Implement MenuItemLink components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: support rendering to a mountNode from PortalMountNodeContext"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "7ad45a9f4e696e416c4420286cbac3f57a4b3a6f",
+            "comment": "feat: Background appearance context"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "feat: export PortalMountNodeProvider & usePortalMountNode"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "e7a838bfd1ce4b077d265295fcbef8dc2177e724",
+            "comment": "feat: Initial release"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "1745a0bfdb5ad5a0757fe57e2c698bc170a34cfe",
+            "comment": "fix: Memoize virtualized renderer"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "53e6485547ab6a454940c40fac2dbdaa1f00efb2",
+            "comment": "chore: updates dependencies version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "7d519bdcaef0a3249b6eae721fea0e5f096f6d35",
+            "comment": "bugfix: removes default prevention verification on selection"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "cbfa9a3717782183ebc86149abcde6468f97afa8",
+            "comment": "chore: adds internal tag on jsdoc for getSlotsNext"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3deadf5e6ab264e0be12a31092ca5e172d721241",
+            "comment": "chore: fix a typo in code"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:21 GMT",
       "tag": "@fluentui/react-components_v9.23.1",
       "version": "9.23.1",

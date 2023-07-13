@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 28 Jun 2023 11:12:22 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.23)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.1.22..@fluentui/react-accordion_v9.1.23)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+
+## [9.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.22)
+
+Mon, 03 Jul 2023 13:34:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.1.21..@fluentui/react-accordion_v9.1.22)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.10.0 ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by beachball)
+
+## [9.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.21)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.1.20..@fluentui/react-accordion_v9.1.21)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.26 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.26 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.6.0 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-tabster to v9.9.2 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
 
 ## [9.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.20)
 

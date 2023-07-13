@@ -3,8 +3,8 @@ import {
   ExtractSlotProps,
   Slot,
   getNativeElementProps,
+  isHTMLElement,
   resolveShorthand,
-  useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { ToasterProps, ToasterState } from './Toaster.types';
@@ -27,26 +27,38 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
 
   const rootProps = getNativeElementProps('div', rest);
 
-  const onFocusPositionSlot = useEventCallback((e: React.FocusEvent) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      pauseAllToasts();
-    }
+  // Adds native HTML focusin/focusout listeners
+  // https://github.com/facebook/react/issues/25194
+  const focusListenerRef = React.useCallback(
+    (el: HTMLDivElement | null) => {
+      if (el) {
+        el.addEventListener('focusin', e => {
+          if (
+            isHTMLElement(e.currentTarget) &&
+            !e.currentTarget.contains(isHTMLElement(e.relatedTarget) ? e.relatedTarget : null)
+          ) {
+            pauseAllToasts();
+          }
+        });
 
-    rootProps.onFocus?.(e);
-  });
-
-  const onBlurPositionSlot = useEventCallback((e: React.FocusEvent) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      playAllToasts();
-      tryRestoreFocus();
-    }
-
-    rootProps.onBlur?.(e);
-  });
+        el.addEventListener('focusout', e => {
+          if (
+            isHTMLElement(e.currentTarget) &&
+            !e.currentTarget.contains(isHTMLElement(e.relatedTarget) ? e.relatedTarget : null)
+          ) {
+            playAllToasts();
+            tryRestoreFocus();
+          }
+        });
+      }
+    },
+    [playAllToasts, pauseAllToasts, tryRestoreFocus],
+  );
 
   const createPositionSlot = (toastPosition: ToastPosition) =>
     resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
+        ref: focusListenerRef,
         children: toastsToRender.get(toastPosition)?.map(toast => (
           <ToastContainer
             {...toast}
@@ -60,8 +72,6 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
           </ToastContainer>
         )),
         'data-toaster-position': toastPosition,
-        onFocus: onFocusPositionSlot,
-        onBlur: onBlurPositionSlot,
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
     });

@@ -2,6 +2,81 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Tue, 11 Jul 2023 18:46:36 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.16",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 13:34:28 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.15",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 11:57:14 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.14",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.6.0",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:26 GMT",
       "tag": "@fluentui/react-drawer_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

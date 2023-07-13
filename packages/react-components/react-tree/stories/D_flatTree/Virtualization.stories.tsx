@@ -45,6 +45,9 @@ type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
   listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
 };
 
+/**
+ * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
+ */
 const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef((props, ref) => {
   const state = useTree_unstable(props, ref);
   useTreeStyles_unstable(state);
@@ -78,16 +81,22 @@ export const Virtualization = () => {
   const listRef = React.useRef<FixedSizeList>(null);
   const items = React.useMemo(() => Array.from(flatTree.items()), [flatTree]);
 
+  /**
+   * Since navigation is not possible due to the fact that not all items are rendered,
+   * we need to scroll to the next item and then invoke navigation.
+   */
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
     event.preventDefault();
     const nextItem = flatTree.getNextNavigableItem(items, data);
     if (!nextItem) {
       return;
     }
+    // if the next item is not rendered, scroll to it and try to navigate again
     if (!flatTree.getElementFromItem(nextItem)) {
       listRef.current?.scrollToItem(nextItem.index);
       return requestAnimationFrame(() => flatTree.navigate(data));
     }
+    // if the next item is rendered, navigate to it
     flatTree.navigate(data);
   };
 

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Wed, 28 Jun 2023 11:12:36 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.27)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.26..@fluentui/react-virtualizer_v9.0.0-alpha.27)
+
+### Changes
+
+- Fix: Ensure 'start buffer' is margin padded into the non-virtualized space on horizontal layouts ([PR #28437](https://github.com/microsoft/fluentui/pull/28437) by mifraser@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.26)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.25..@fluentui/react-virtualizer_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
 
 ## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.25)
 
