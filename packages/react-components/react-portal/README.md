@@ -81,7 +81,7 @@ Below shows what a virtual parent is
 ```tsx
 // Setting a virtual parent
 
-const parent = document.getElementById('parent')
+const parent = document.getElementById('parent');
 const child = document.getElementById('child');
 
 child._virtual.parent = parent;
