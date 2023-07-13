@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Keyboard Focus is landing on the graph when selecting a particular legend in area chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
