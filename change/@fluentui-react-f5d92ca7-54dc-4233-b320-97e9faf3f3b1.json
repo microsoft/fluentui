@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Keytip: Make keytip data align with which instance is visible (for duplicate registrations)",
+  "packageName": "@fluentui/react",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch"
+}
