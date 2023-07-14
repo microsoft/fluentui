@@ -275,6 +275,7 @@ describe('release-package generator', () => {
           Array [
             "yarn nx run @proj/react-components:lint --fix",
             "yarn change --message 'feat: release stable' --type minor --package @proj/react-one",
+            "yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components",
           ]
         `);
         expect(installPackagesTaskSpy).toHaveBeenCalled();

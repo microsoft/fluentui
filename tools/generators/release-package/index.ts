@@ -233,6 +233,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   return (_tree: Tree) => {
     lintFixTask(tree, suitePackageName);
     generateChangefileTask(tree, newPackage.name, { message: 'feat: release stable' });
+    generateChangefileTask(tree, suitePackageName, { message: `feat: add ${newPackage.name} to suite` });
     installPackagesTask(tree);
   };
 }
