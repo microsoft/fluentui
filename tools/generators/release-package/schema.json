@@ -15,7 +15,6 @@
     },
     "phase": {
       "type": "string",
-      "enum": ["initial", "stable"],
       "description": "Phase of npm release life cycle for monorepo package",
       "x-prompt": {
         "message": "Which phase of release life cycle you wanna trigger?",
