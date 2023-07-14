@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { mergeCallbacks, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
@@ -26,6 +26,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     ...labelProps
   } = props;
   const baseId = useId('infolabel-');
+  const [open, setOpen] = React.useState(false);
 
   const root = resolveShorthand(rootShorthand, {
     required: true,
@@ -54,7 +55,15 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     },
   });
 
+  const infoButtonPopover = resolveShorthand(infoButton?.popover, { required: true });
+  infoButtonPopover.onOpenChange = useEventCallback(
+    mergeCallbacks(infoButtonPopover.onOpenChange, (e, data) => {
+      setOpen(data.open);
+    }),
+  );
+
   if (infoButton) {
+    infoButton.popover = infoButtonPopover;
     infoButton.info = resolveShorthand(infoButton?.info, {
       defaultProps: {
         id: baseId + '__info',
@@ -62,7 +71,10 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
-    root['aria-owns'] ??= infoButton.info?.id;
+
+    if (open) {
+      root['aria-owns'] ??= infoButton.info?.id;
+    }
   }
 
   return {
