@@ -14,7 +14,7 @@ const getFocusStyle = (borderColor: string, borderRadius: string, outlineColor: 
   '.ms-Fabric--isFocusVisible &:focus::after': {
     border: `1px solid ${borderColor}`,
     borderRadius: '2px',
-    inset: '1px',
+    inset: '1px 0.5px 0.5px 0.5px',
     outline: `2px solid ${outlineColor}`,
   },
 });
