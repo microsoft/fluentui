@@ -43,12 +43,11 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
     const { theme, className, styles, culture } = this.props;
 
     if (data) {
-      for (let i = 0, nextColor = 0; i < data.length; i++) {
+      for (let i = 0; i < data.length; i++) {
         if (colors && i < colors?.length && typeof colors[i] !== 'undefined') {
           finalColors.push(getColorFromToken(colors[i]));
         } else {
-          finalColors.push(getNextColor(nextColor, 0, theme?.isInverted));
-          nextColor++;
+          finalColors.push(getNextColor(i, 0, theme?.isInverted));
         }
       }
     }
@@ -59,7 +58,16 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
       height: height!,
       className,
     });
-    const radius = Math.min(width! - 2 * 40, height! - 2 * 16) / 2;
+
+    const TEXT_MAX_WIDTH = 40;
+    const TEXT_LINE_HEIGHT = 16;
+
+    /**
+     * The radius for the pie chart is computed based on the space available inside the svg
+     * after subtracting the max amount of space that can be used by the text in pie chart
+     */
+
+    const radius = Math.min(width! - 2 * TEXT_MAX_WIDTH, height! - 2 * TEXT_LINE_HEIGHT) / 2;
     const outerRadius = radius;
 
     return !this.state.emptyChart ? (

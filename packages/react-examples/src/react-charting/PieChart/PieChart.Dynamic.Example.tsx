@@ -15,7 +15,7 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
     [DataVizPalette.color1, DataVizPalette.color2, DataVizPalette.color3, DataVizPalette.color4, DataVizPalette.color5],
     [DataVizPalette.color6, DataVizPalette.color7, DataVizPalette.color8, DataVizPalette.color9],
     [DataVizPalette.color10, DataVizPalette.color11, DataVizPalette.color12, DataVizPalette.color13],
-    [DataVizPalette.color30, DataVizPalette.color28, DataVizPalette.color25],
+    [DataVizPalette.color30],
   ];
 
   constructor(props: IPieChartProps) {
