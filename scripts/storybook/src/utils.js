@@ -218,9 +218,8 @@ function getPackageStoriesGlob(options) {
   );
 
   packageJson.dependencies = packageJson.dependencies ?? {};
-  const dependencies = Object.assign(packageJson.dependencies, {
-    [options.packageName]: '*',
-  });
+
+  const dependencies = { ...packageJson.dependencies };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
