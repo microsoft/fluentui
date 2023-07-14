@@ -217,23 +217,14 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                 onMouseMove={e => this._handleMouseOver(e, 'Chart value')}
               >
                 <SVGTooltipText
-                  content={
-                    typeof this.props.chartValueFormat === 'function'
-                      ? this.props.chartValueFormat(this._sweepFraction)
-                      : this.props.chartValueFormat === GaugeValueFormat.Fraction
-                      ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
-                      : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
-                  }
+                  content={this._getChartValue()}
                   textProps={{
                     x: 0,
                     y: 0,
                     textAnchor: 'middle',
                     className: this._classNames.chartValue,
                     role: 'img',
-                    'aria-label': `Current value: ${this._sweepFraction[0]} out of ${this._sweepFraction[1]}, or ${(
-                      (this._sweepFraction[0] / this._sweepFraction[1]) *
-                      100
-                    ).toFixed()}%`,
+                    'aria-label': 'Current value: ' + this._getChartValue(),
                   }}
                   maxWidth={this._innerRadius * 2 - 24}
                   wrapContent={this._wrapContent}
@@ -478,11 +469,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     }
 
     this._calloutAnchor = legend;
-    const hoverXValue: string =
-      'Current value is ' +
-      (this.props.chartValueFormat === GaugeValueFormat.Fraction
-        ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
-        : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`);
+    const hoverXValue: string = 'Current value is ' + this._getChartValue(true);
     const hoverYValues: IYValue[] = this._segments.map(segment => {
       const yValue: IYValue = {
         legend: segment.legend,
@@ -534,6 +521,26 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       textLength = textElement.node()!.getComputedTextLength();
     }
     return isOverflowing;
+  };
+
+  private _getChartValue = (forCallout: boolean = false): string => {
+    if (forCallout) {
+      // When displaying the chart value as a percentage, use fractions in the callout, and vice versa.
+      // This helps clarify the actual value and avoid repetition.
+      return this._minValue !== 0
+        ? this.props.chartValue.toString()
+        : this.props.chartValueFormat === GaugeValueFormat.Fraction
+        ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
+        : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`;
+    }
+
+    return typeof this.props.chartValueFormat === 'function'
+      ? this.props.chartValueFormat(this._sweepFraction)
+      : this._minValue !== 0
+      ? this.props.chartValue.toString()
+      : this.props.chartValueFormat === GaugeValueFormat.Fraction
+      ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
+      : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`;
   };
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method

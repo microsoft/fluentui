@@ -144,7 +144,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           </g>
           <g>
             <text
-              aria-label="Current value: 25 out of 100, or 25%"
+              aria-label="Current value: 25%"
               class=
 
                   {
@@ -907,7 +907,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -1441,7 +1441,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -1633,7 +1633,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -2180,7 +2180,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             onMouseMove={[Function]}
           >
             <text
-              aria-label="Current value: 25 out of 100, or 25%"
+              aria-label="Current value: 25%"
               className=
 
                   {
@@ -2715,7 +2715,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -3229,7 +3229,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 60 out of 100, or 60%"
+            aria-label="Current value: 60%"
             className=
 
                 {
@@ -3653,7 +3653,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 60 out of 100, or 60%"
+            aria-label="Current value: 60%"
             className=
 
                 {
@@ -4109,7 +4109,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -4643,7 +4643,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25/100"
             className=
 
                 {
@@ -5177,7 +5177,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="Current value: 25%"
             className=
 
                 {
