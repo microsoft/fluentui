@@ -122,6 +122,7 @@ const AnatomyAnnotation = ({
 type AnatomyTitleProps = {
   componentName?: string;
   slotName?: string;
+  isComponentInDOM?: boolean;
   isSelected: boolean;
   label: string | number;
   labelSize: number;
@@ -129,6 +130,7 @@ type AnatomyTitleProps = {
 };
 const AnatomyTitle = ({
   componentName,
+  isComponentInDOM = true,
   slotName,
   isSelected,
   label,
@@ -144,10 +146,17 @@ const AnatomyTitle = ({
         }`,
         marginTop: slotName ? 0 : tokens.spacingVerticalM,
         backgroundColor: isSelected ? tokens.colorNeutralBackground1Hover : 'transparent',
-        cursor: 'pointer',
+        ...((!isComponentInDOM && {
+          color: tokens.colorNeutralForegroundDisabled,
+          cursor: 'not-allowed',
+        }) || {
+          cursor: 'pointer',
+        }),
       }}
-      onMouseEnter={() => setSelectedComponentName(componentName || slotName)}
-      onMouseLeave={() => setSelectedComponentName('')}
+      {...(isComponentInDOM && {
+        onMouseEnter: () => setSelectedComponentName(componentName || slotName),
+        onMouseLeave: () => setSelectedComponentName(''),
+      })}
     >
       {/*
                   TODO: It would be helpful to hide the content of the selected anatomy annotation
@@ -165,9 +174,13 @@ const AnatomyTitle = ({
           fontWeight: 'bold',
           lineHeight: `${labelSize}px`,
           textAlign: 'center',
-          color: 'black',
-          background: slotName ? `rgb(192, 192, 255)` : `rgb(255, 192, 224)`,
           borderRadius: '999px',
+          ...((!isComponentInDOM && {
+            background: tokens.colorNeutralBackgroundDisabled,
+          }) || {
+            color: 'black',
+            background: slotName ? `rgb(192, 192, 255)` : `rgb(255, 192, 224)`,
+          }),
         }}
       >
         {label}
@@ -397,11 +410,14 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
   trackedComponentMap.forEach((component, componentName) => {
     const componentLabel = ++lastComponentIndex;
     const isComponentSelected = selectedComponentName === componentName;
+    const isComponentInDOM = component.components.length > 0;
     // console.log(componentLabel, componentName, isComponentSelected ? '(selected)' : '(not selected)');
+
     anatomyElements.push(
       <AnatomyTitle
+        isComponentInDOM={isComponentInDOM}
         componentName={componentName}
-        label={component.components.length > 0 ? componentLabel : '?'}
+        label={isComponentInDOM ? componentLabel : '?'}
         labelSize={16}
         setSelectedComponentName={setSelectedComponentName}
         isSelected={isComponentSelected}
@@ -461,7 +477,6 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
           flex: 1,
           padding: 0,
           margin: 0,
-          minWidth: 0,
           fontFamily: 'var(--fontFamilyMonospace)',
           borderRight: `1px solid rgba(0, 0, 0, 0.1)`,
         }}
