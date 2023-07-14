@@ -16,23 +16,20 @@ import { FluentGlobals, FluentStoryContext } from '../hooks';
  * @returns { componentName: string, slotName: string }
  */
 const parseClassName = (className: string) => {
-  // const replace = className.replace(componentName, '');
   const componentName =
     className
       .match(/fui-\w+/g)
-      ?.filter(x => !x.includes('_'))
+      ?.filter(x => !x.includes('__'))
       ?.pop()
       ?.replace('fui-', '') || '';
 
-  const slotName =
-    className
-      .split(' ')
-      ?.filter(x => x.includes(componentName) && x.includes('_'))
-      ?.pop()
-      ?.split('_')
-      ?.pop() || '';
+  const [slotComponentName, slotName] = className
+    .split(' ')
+    ?.filter(x => x.includes(componentName) && x.includes('__'))
+    ?.pop()
+    ?.split('__') || ['', ''];
 
-  return { componentName, slotName };
+  return { componentName, slotName, slotComponentName };
 };
 
 type AnatomyAnnotatorProps = {
@@ -67,7 +64,7 @@ const AnatomyAnnotation = ({
         transition: `box-shadow ${tokens.durationFast} ${tokens.curveEasyEase}, background-color ${tokens.durationFast} ${tokens.curveEasyEase}`,
         position: 'fixed',
         pointerEvents: 'none',
-        zIndex: '9999',
+        zIndex: '2147483647', // max int32
         top: position.y + offsetY,
         left: position.x + offsetX,
         width: position.width - 2,
@@ -136,6 +133,7 @@ type TrackedComponent = {
   order: number;
   position: Position;
   slotName: string;
+  slotComponentName: string;
 };
 type ShowAnatomyProps = { children: React.ReactNode; displayName: string };
 const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
@@ -153,7 +151,30 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
       const uniqueFluentClassNames: string[] = [];
 
       const classString = `fui-${displayName}`;
-      const fluentUIElements = childrenContainerRef.current.querySelectorAll(`[class*="${classString}"]`);
+      const fluentUIElements: Element[] = [];
+      childrenContainerRef.current.querySelectorAll(`[class*="${classString}"]`).forEach(element => {
+        fluentUIElements.push(element);
+      });
+
+      // traverse up looking for fui-FluentProvider### and get the class name
+      let fluentProviderClass = '';
+      childrenContainerRef.current.closest('.fui-FluentProvider')?.classList.forEach(className => {
+        // find the classname that starts with fui-FluentProvider and ends in numbers, indicating it is a portal
+        if (className.startsWith('fui-FluentProvider') && className.match(/\d+$/)) {
+          fluentProviderClass = className;
+        }
+      });
+
+      const portals: Element[] = [];
+
+      // HACK: targets in a portal, such as a menu or combobox
+      document.body.querySelectorAll(`:scope > .${fluentProviderClass}`).forEach(portal => {
+        portals.push(portal);
+
+        portal.querySelectorAll(`[class*="${classString}"]`).forEach(element => {
+          fluentUIElements.push(element);
+        });
+      });
 
       fluentUIElements.forEach(element => {
         // const classNames = element.className.split(' ').filter(cn => cn.includes(`fui-`));
@@ -170,14 +191,35 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
       });
 
       const updatedTrackedComponents: TrackedComponent[] = [];
+
       uniqueFluentClassNames.forEach((className: string, i) => {
-        const { componentName, slotName } = parseClassName(className);
         const cssSelector = `.${className}`;
 
-        // here: we could query for the element that matches the cssSelector
-        const targets = childrenContainerRef?.current?.querySelectorAll(cssSelector) ?? [];
+        const containers: Element[] = [];
+
+        // elements in the example's child container and all elements in the portals for the story's provider
+        // they are limited to elements which match the story's displayName
+        const targets: Element[] = [];
+
+        if (childrenContainerRef?.current) {
+          containers.push(childrenContainerRef.current);
+        }
+
+        if (portals.length > 0) {
+          portals.forEach(portal => {
+            containers.push(portal);
+          });
+        }
+
+        // add elements in the example's child container and any portals for the story's provider
+        containers.forEach(container => {
+          container.querySelectorAll(cssSelector).forEach(element => {
+            targets.push(element);
+          });
+        });
 
         targets.forEach((target: Element, j: number) => {
+          const { componentName, slotName, slotComponentName } = parseClassName(cssSelector);
           const trackedComponent: TrackedComponent = {
             componentName,
             cssSelector,
@@ -186,6 +228,7 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
             order: i * 100 + j,
             position: { x: 0, y: 0, width: 0, height: 0 },
             slotName,
+            slotComponentName,
           };
 
           if (target) {
@@ -204,6 +247,7 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
       });
 
       const sortedTrackedComponents = updatedTrackedComponents
+        // Prevent overlapping labels on the horizontal axis
         .sort((a, b) => a.labelTop - b.labelTop)
         .map((trackedComponent: TrackedComponent, i: number, arr) => {
           const tolerance = 16;
@@ -221,6 +265,8 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
           }
           return trackedComponent;
         })
+
+        // Prevent overlapping labels on the vertical axis
         .sort((a, b) => a.labelLeft - b.labelLeft)
         .map((trackedComponent: TrackedComponent, i: number, arr) => {
           const tolerance = 14;
@@ -238,11 +284,32 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
           }
           return trackedComponent;
         })
-        .sort((a, b) => {
-          // TODO: sort components by DOM order, then insert slots under their corresponding component
 
-          // // DOM query order
-          return a.order - b.order;
+        // sort components by DOM query order, then insert slots under their corresponding component
+        .sort((a, b) => {
+          return a.order < b.order;
+
+          const aComponentName = a.componentName || a.slotComponentName;
+          const bComponentName = b.componentName || b.slotComponentName;
+
+          if (aComponentName < bComponentName) {
+            return -1;
+          } else if (aComponentName > bComponentName) {
+            return 1;
+          } else {
+            return 0;
+            // if the component names are the same, sort by slot name
+            if (a.slotName < b.slotName) {
+              return -1;
+            } else if (a.slotName > b.slotName) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+
+          // DOM query order
+          // return a.order - b.order;
 
           // alphabetically by cssSelector
           // const aSortableSelector = a.cssSelector.replace('_', '-');
@@ -284,10 +351,20 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
           flex: 1,
           padding: 0,
           margin: 0,
+          minWidth: 0,
           fontFamily: 'var(--fontFamilyMonospace)',
           borderRight: `1px solid rgba(0, 0, 0, 0.1)`,
         }}
       >
+        {/*
+        trackedComponents here are:
+         - JS objects
+         - one for each DOM element found in the story
+         - one for each DOM element found in the story's portals
+         - where the DOM element has a className that matches a component name
+         
+         This reduce creates a list of component names and their slots, enumerating the component's anatomy
+        */}
         {trackedComponents.reduce<React.ReactNode[]>(
           (acc, { componentName, cssSelector, slotName, position, labelTop, labelLeft }) => {
             const name = slotName || componentName;
@@ -298,6 +375,9 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
             const isSelected = name === selectedComponentName;
             const isUnique = !seenTrackedComponents.has(cssSelector);
 
+            //
+            // One selector rectangle for each component target
+            //
             acc.push(
               <AnatomyAnnotation
                 label={isUnique ? label : ''}
@@ -313,6 +393,9 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
               />,
             );
 
+            //
+            // The unique list of components > slots
+            //
             if (isUnique) {
               seenTrackedComponents.add(cssSelector);
 
@@ -371,7 +454,7 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
         )}
       </pre>
 
-      <div style={{ flex: 3 }} ref={childrenContainerRef}>
+      <div style={{ flex: 3, minWidth: 0 }} ref={childrenContainerRef}>
         {children}
       </div>
     </div>
