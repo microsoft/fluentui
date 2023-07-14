@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-theme": "^9.1.9",
+    "@fluentui/react-theme": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },

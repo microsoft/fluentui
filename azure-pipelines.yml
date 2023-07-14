@@ -32,6 +32,8 @@ jobs:
           yarn nx workspace-lint
           yarn nx run @fluentui/nx-workspace-tools:check-graph
           yarn nx workspace-generator tsconfig-base-all --verify
+          yarn nx workspace-generator normalize-package-dependencies --verify
+
         displayName: Workspace lint
 
       - script: |

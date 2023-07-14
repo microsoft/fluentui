@@ -28,8 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "^9.0.0",
-    "@fluentui/react-label": "^9.1.20",
+    "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/react-label": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
