@@ -22,59 +22,41 @@ storiesOf('Spinner converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Primary with Label', () => <Spinner label="Loading" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary', () => {
-    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px'}}>
-      <Spinner labelPosition="before" label="Loading" />
-      <Spinner labelPosition="after" label="Loading" />
-      <Spinner labelPosition="above" label="Loading" />
-    </div>
-    }, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-    includeRtl: true,
-  })
-  .addStory('Primary + size', () => {
-    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px'}}>
-      {/* All the Spinners with unique size go here */}
-    </div>
-    }, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-    includeRtl: true,
-  })
-  })
-  .addStory('Primary with Size Tiny', () => <Spinner size="tiny" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Extra Small', () => <Spinner size="extra-small" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Small', () => <Spinner size="small" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Medium', () => <Spinner size="medium" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Large', () => <Spinner size="large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Extra Large', () => <Spinner size="extra-large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Huge', () => <Spinner size="huge" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
+  .addStory(
+    'Primary with Label',
+    () => (
+      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <Spinner labelPosition="before" label="Loading" />
+        <Spinner labelPosition="after" label="Loading" />
+        <Spinner labelPosition="above" label="Loading" />
+        <Spinner labelPosition="below" label="Loading" />
+      </div>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+      includeRtl: true,
+    },
+  )
+  .addStory(
+    'Primary + size',
+    () => (
+      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <Spinner size="tiny" />
+        <Spinner size="extra-small" />
+        <Spinner size="small" />
+        <Spinner size="medium" />
+        <Spinner size="large" />
+        <Spinner size="extra-large" />
+        <Spinner size="huge" />
+      </div>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+      includeRtl: true,
+    },
+  )
   .addStory(
     'Inverted',
     () => (
@@ -85,145 +67,40 @@ storiesOf('Spinner converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory(
     'Inverted with Label',
     () => (
       <InvertedWrapper>
-        <Spinner appearance="inverted" label="Loading" />
+        <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+          <Spinner appearance="inverted" labelPosition="before" label="Loading" />
+          <Spinner appearance="inverted" labelPosition="after" label="Loading" />
+          <Spinner appearance="inverted" labelPosition="above" label="Loading" />
+          <Spinner appearance="inverted" labelPosition="below" label="Loading" />
+        </div>
       </InvertedWrapper>
     ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory(
-    'Inverted with Label Before',
+    'Inverted + size',
     () => (
       <InvertedWrapper>
-        <Spinner appearance="inverted" labelPosition="before" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label After',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" labelPosition="after" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label Above',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" labelPosition="above" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label Below',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" labelPosition="below" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Primary with Size Tiny',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="tiny" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Extra Small',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="extra-small" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Small',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="small" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Medium',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="medium" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Large',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="large" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Extra Large',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="extra-large" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Huge',
-    () => (
-      <InvertedWrapper>
-        <Spinner appearance="inverted" size="huge" />
+        <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+          <Spinner appearance="inverted" size="tiny" />
+          <Spinner appearance="inverted" size="extra-small" />
+          <Spinner appearance="inverted" size="small" />
+          <Spinner appearance="inverted" size="medium" />
+          <Spinner appearance="inverted" size="large" />
+          <Spinner appearance="inverted" size="extra-large" />
+          <Spinner appearance="inverted" size="huge" />
+        </div>
       </InvertedWrapper>
     ),
     {
