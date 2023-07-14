@@ -10,7 +10,10 @@ import {
   reverse,
   installPackagesTask,
   readJson,
+  stripIndents,
 } from '@nrwl/devkit';
+
+import * as tsquery from '@phenomnomnominal/tsquery';
 
 import { getProjectConfig, workspacePaths } from '../../utils';
 
@@ -166,7 +169,9 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   updateFileContent(tree, {
     filePath: joinPathFragments(reactComponentsProject.projectConfig.sourceRoot as string, 'index.ts'),
     updater: content => {
-      return content + '\n' + `export * from '${newPackage.name}'`;
+      const currentBarrelFilePath = joinPathFragments(options.projectConfig.sourceRoot as string, 'index.ts');
+      const currentBarrelFile = tree.read(currentBarrelFilePath, 'utf-8') as string;
+      return content + '\n' + createExportsInSuite(currentBarrelFile, newPackage.name);
     },
   });
 
@@ -231,7 +236,6 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   tree.rename(options.projectConfig.root, newPackage.root);
 
   return (_tree: Tree) => {
-    lintFixTask(tree, suitePackageName);
     generateChangefileTask(tree, newPackage.name, { message: 'feat: release stable' });
     generateChangefileTask(tree, suitePackageName, { message: `feat: add ${newPackage.name} to suite` });
     installPackagesTask(tree);
@@ -274,11 +278,6 @@ async function getProjectThatNeedsToBeUpdated(tree: Tree, options: NormalizedSch
   }
 }
 
-function lintFixTask(tree: Tree, projectName: string) {
-  const cmd = `yarn nx run ${projectName}:lint --fix`;
-  return execSync(cmd);
-}
-
 function generateChangefileTask(tree: Tree, projectName: string, options: { message: string }) {
   const cmd = `yarn change --message '${options.message}' --type minor --package ${projectName}`;
   return execSync(cmd);
@@ -304,4 +303,26 @@ function assertProject(tree: Tree, options: NormalizedSchema) {
   }
 
   throw new Error(`${options.project} is already released as stable.`);
+}
+
+function createExportsInSuite(content: string, packageName: string) {
+  const ast = tsquery.ast(content);
+  const exports = tsquery.query(ast, 'ExportDeclaration[isTypeOnly=false] ExportSpecifier');
+  const exportsTypes = tsquery.query(ast, 'ExportDeclaration[isTypeOnly=true] ExportSpecifier');
+
+  const exportExpression = exports
+    .map(exp => {
+      return tsquery.print(exp);
+    })
+    .join(',');
+  const exportTypeExpression = exportsTypes
+    .map(exp => {
+      return tsquery.print(exp);
+    })
+    .join(',');
+
+  return stripIndents`
+     export { ${exportExpression} } from '${packageName}';
+     export type { ${exportTypeExpression} } from '${packageName}';
+    `;
 }

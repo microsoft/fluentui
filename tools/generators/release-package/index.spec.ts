@@ -138,6 +138,16 @@ describe('release-package generator', () => {
           },
           files: [
             {
+              filePath: 'packages/react-one-preview/src/index.ts',
+              content: stripIndents`
+                export {One} from './one';
+                export type {OneType} from './one';
+
+                export {Two} from './two';
+                export type {TwoType} from './two';
+          `,
+            },
+            {
               filePath: 'packages/react-one-preview/stories/One.stories.tsx',
               content: stripIndents`
             import { One } from '@proj/react-one-preview';
@@ -265,7 +275,8 @@ describe('release-package generator', () => {
         );
         expect(tree.read('packages/react-components/react-components/src/index.ts', 'utf-8')).toEqual(
           expect.stringContaining(stripIndents`
-            export * from '@proj/react-one';
+            export { One, Two } from '@proj/react-one';
+            export type { OneType, TwoType } from '@proj/react-one';
         `),
         );
 
@@ -273,7 +284,6 @@ describe('release-package generator', () => {
 
         expect(execSyncSpy.mock.calls.flat()).toMatchInlineSnapshot(`
           Array [
-            "yarn nx run @proj/react-components:lint --fix",
             "yarn change --message 'feat: release stable' --type minor --package @proj/react-one",
             "yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components",
           ]
