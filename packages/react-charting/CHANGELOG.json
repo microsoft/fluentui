@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 14 Jul 2023 07:36:53 GMT",
+      "tag": "@fluentui/react-charting_v5.16.52",
+      "version": "5.16.52",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5fa70443a1dcaa7f071ed908544e55ed46276a19",
+            "comment": "Improving first render cycle of cartesian chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Jul 2023 07:38:24 GMT",
       "tag": "@fluentui/react-charting_v5.16.51",
       "version": "5.16.51",

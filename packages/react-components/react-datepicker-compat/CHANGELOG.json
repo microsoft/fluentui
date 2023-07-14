@@ -2,6 +2,21 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:40 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jul 2023 18:46:34 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.2.0",
       "version": "0.2.0",

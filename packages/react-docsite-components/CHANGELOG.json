@@ -2,6 +2,29 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Fri, 14 Jul 2023 07:36:54 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.12.32",
+      "version": "8.12.32",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.109",
+            "commit": "2971c4f9e3273db1e46e14c424ec32db0f67f8d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Jul 2023 07:38:25 GMT",
       "tag": "@fluentui/react-docsite-components_v8.12.31",
       "version": "8.12.31",
