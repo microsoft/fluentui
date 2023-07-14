@@ -27,12 +27,12 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.32",
+    "@fluentui/common-styles": "*",
     "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
     "@types/prop-types": "15.7.1",
     "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.29",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "react-hooks-testing-library": "^0.5.0",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",

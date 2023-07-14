@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 14 Jul 2023 07:36:53 GMT",
+      "tag": "@fluentui/react-cards_v0.205.101",
+      "version": "0.205.101",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jul 2023 07:35:07 GMT",
       "tag": "@fluentui/react-cards_v0.205.101",
       "version": "0.205.101",

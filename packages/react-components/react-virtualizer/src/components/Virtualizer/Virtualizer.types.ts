@@ -69,6 +69,7 @@ export type VirtualizerDataRef = {
   progressiveSizes: RefObject<number[]>;
   nodeSizes: RefObject<number[]>;
   setFlaggedIndex: (index: number | null) => void;
+  currentIndex: RefObject<number>;
 };
 
 export type VirtualizerConfigProps = {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 12 Jul 2023 07:38:24 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jul 2023 07:36:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.52)
+
+Fri, 14 Jul 2023 07:36:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.51..@fluentui/react-charting_v5.16.52)
+
+### Patches
+
+- Improving first render cycle of cartesian chart ([PR #27721](https://github.com/microsoft/fluentui/pull/27721) by ankityadav@microsoft.com)
 
 ## [5.16.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.51)
 

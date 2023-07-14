@@ -5,9 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
-    "@fluentui/docs": "^0.66.4",
+    "@fluentui/docs": "*",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-northstar": "^0.66.4",
+    "@fluentui/react-northstar": "*",
     "lodash": "^4.17.15",
     "minimatch": "^3.0.4"
   },
