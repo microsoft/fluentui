@@ -201,6 +201,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             rotateXAxisLables={true}
             timeFormatLocale={this.state.customLocale}
+            enablePerfOptimization={true}
           />
         </div>
       </>

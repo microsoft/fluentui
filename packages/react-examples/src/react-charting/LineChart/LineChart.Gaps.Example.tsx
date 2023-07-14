@@ -270,6 +270,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
               calloutMaxWidth: 200,
             }}
             getCalloutDescriptionMessage={this._calculateCalloutDescription}
+            enablePerfOptimization={true}
           />
         </div>
       </>
