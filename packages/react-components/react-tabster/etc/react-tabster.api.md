@@ -103,6 +103,8 @@ export interface UseModalAttributesOptions {
     alwaysFocusable?: boolean;
     id?: string;
     legacyTrapFocus?: boolean;
+    // (undocumented)
+    noModalizer?: boolean;
     trapFocus?: boolean;
 }
 

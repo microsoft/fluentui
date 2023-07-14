@@ -1,6 +1,6 @@
 import { useId } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { getDeloser, getModalizer, Types as TabsterTypes } from 'tabster';
+import { getModalizer, getRestorer, Types as TabsterTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 export interface UseModalAttributesOptions {
@@ -29,6 +29,9 @@ export interface UseModalAttributesOptions {
    * Id to use for the modalizer. An id will be generated if not provided.
    */
   id?: string;
+
+  // TODO create a hook that uses restorer only
+  noModalizer?: boolean;
 }
 
 /**
@@ -41,27 +44,29 @@ export interface UseModalAttributesOptions {
 export const useModalAttributes = (
   options: UseModalAttributesOptions = {},
 ): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
-  const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
+  const { trapFocus, alwaysFocusable, legacyTrapFocus, noModalizer = false } = options;
   const tabster = useTabster();
   // Initializes the modalizer and deloser APIs
   if (tabster) {
-    getModalizer(tabster);
-    getDeloser(tabster);
+    !noModalizer && getModalizer(tabster);
+    getRestorer(tabster);
   }
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
-    deloser: {},
-    modalizer: {
-      id,
-      isOthersAccessible: !trapFocus,
-      isAlwaysAccessible: alwaysFocusable,
-      isTrapped: legacyTrapFocus && trapFocus,
-    },
+    restorer: { type: TabsterTypes.RestorerTypes.source },
+    ...(!noModalizer && {
+      modalizer: {
+        id,
+        isOthersAccessible: !trapFocus,
+        isAlwaysAccessible: alwaysFocusable,
+        isTrapped: legacyTrapFocus && trapFocus,
+      },
+    }),
   });
 
   const triggerAttributes = useTabsterAttributes({
-    deloser: {},
+    restorer: { type: TabsterTypes.RestorerTypes.target },
   });
 
   return { modalAttributes, triggerAttributes };

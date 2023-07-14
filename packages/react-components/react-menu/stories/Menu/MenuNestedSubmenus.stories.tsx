@@ -61,21 +61,25 @@ const PreferencesSubMenu = () => {
 
 export const NestedSubmenus = () => {
   return (
-    <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        <Button>Toggle menu</Button>
-      </MenuTrigger>
+    <>
+      <button>Foo</button>
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <Button>Toggle menu</Button>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-          <PreferencesSubMenu />
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem disabled>Open File</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+            <PreferencesSubMenu />
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+      <button>Foo</button>
+    </>
   );
 };
 

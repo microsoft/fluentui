@@ -38,7 +38,7 @@
     "lint:log:lerna": "FORCE_COLOR=0 lerna run lint --stream --no-bail > lint.log 2>&1",
     "perf": "yarn workspace @fluentui/perf perf:test",
     "perf:debug": "yarn workspace @fluentui/perf perf:test:debug",
-    "postinstall": "node ./scripts/package-manager/postinstall.js",
+    "postinstall": "node ./scripts/package-manager/postinstall.js && npx --yes patch-package",
     "preinstall": "node ./scripts/package-manager/use-yarn-please.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "rebuild": "node ./scripts/executors/invalidate-just-cache.js && yarn build --reset-cache",
