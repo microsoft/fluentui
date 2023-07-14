@@ -309,16 +309,17 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     let total = minValue;
     const segments: IExtendedSegment[] = this.props.segments.map((segment, index) => {
-      total += segment.size;
+      const size = Math.max(segment.size, 0);
+      total += size;
       return {
         legend: segment.legend,
-        size: segment.size,
+        size,
         color:
           typeof segment.color !== 'undefined'
             ? getColorFromToken(segment.color, theme!.isInverted)
             : getNextColor(index, 0, theme!.isInverted),
         accessibilityData: segment.accessibilityData,
-        start: total - segment.size,
+        start: total - size,
         end: total,
       };
     });
