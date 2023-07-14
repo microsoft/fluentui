@@ -16,7 +16,7 @@ jobs:
   - job: VisualRegressionTest_V7
     variables:
       pipelineId: '314'
-      pipelineName: 'fluent-ui VRT Pipeline v7'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v7'
     workspace:
       clean: all
     steps:
@@ -24,13 +24,14 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
+      - template: download-vr-cli.yml
 
       - bash: |
           postPolicy="true";
           response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
             parsedResponse=${response/*"access_token"/}
             token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrt-fluentapp.azurewebsites.net/api/policyState' \
+            curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
             --header 'Authorization: Bearer '"$token" \
             --header 'Content-Type: application/json' \
             --data-raw '	{
@@ -39,6 +40,7 @@ jobs:
             "prId": $(System.PullRequest.PullRequestNumber),
             "commitId": "$(Build.SourceVersion)",
               "generate":true,
+              "clientType":"FLUENTUI",
               "blockingPipeline":{
               },
               "nonBlockingPipeline":{
@@ -74,20 +76,12 @@ jobs:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-V7)
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v7" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-v7' --locationPostfix 'vrscreenshotv7' --pipelineId $(pipelineId) --clientName 'FluentUIV7' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
-          API_URL: $(System.CollectionUri)
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          API_REPOSITORY: $(Build.Repository.Name)
-          API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv7
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
-          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
-          BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APPROVAL_CLIENT_SECRET: $(VRClientSecret)
-          GITHUB_REPO_OWNER: 'microsoft'
-          GITHUB_REPO_NAME: 'fluentui'
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
-          VR_APP_NAME: $(VR_APP_NAME)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)
