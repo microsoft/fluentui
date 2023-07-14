@@ -89,6 +89,8 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
       color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackground1,
+      cursor: 'not-allowed',
       [`& .${iconFilledClassName}`]: {
         display: 'none',
       },

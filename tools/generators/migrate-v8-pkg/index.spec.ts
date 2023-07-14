@@ -1,14 +1,14 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
-  WorkspaceConfiguration,
   serializeJson,
   stripIndents,
   addProjectConfiguration,
   ProjectConfiguration,
   logger,
+  readNxJson,
+  NxJsonConfiguration,
 } from '@nrwl/devkit';
 import type { Linter } from 'eslint';
 
@@ -34,7 +34,7 @@ describe('migrate-v8-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
     tree = setupDummyPackage(tree, options);
     tree = setupDummyPackage(tree, {
       name: '@proj/react',
@@ -63,9 +63,89 @@ describe('migrate-v8-pkg generator', () => {
       expect(loggerInfoSpy).toHaveBeenCalled();
     });
   });
+
+  describe(`--name`, () => {
+    it(`should setup .npmignore`, async () => {
+      await generator(tree, options);
+
+      expect(tree.read(`packages/eight/.npmignore`, 'utf-8')).toMatchInlineSnapshot(`
+        "*.api.json
+        *.config.js
+        *.log
+        *.nuspec
+        *.test.*
+        *.yml
+        .editorconfig
+        .eslintrc*
+        .eslintcache
+        .gitattributes
+        .gitignore
+        .vscode
+        coverage
+        dist/storybook
+        dist/*.stats.html
+        dist/*.stats.json
+        dist/demo
+        fabric-test*
+        gulpfile.js
+        images
+        index.html
+        jsconfig.json
+        node_modules
+        results
+        src/**/*
+        !src/**/*.types.ts
+        temp
+        tsconfig.json
+        tsd.json
+        tslint.json
+        typings
+        visualtests
+        project.json
+
+        # exclude gitignore patterns explicitly
+        !lib
+        !lib-commonjs
+        !lib-amd
+        !dist"
+      `);
+    });
+  });
+
+  describe(`--all`, () => {
+    const projects = [
+      options.name,
+      '@proj/react-foo',
+      '@proj/react-bar',
+      '@proj/react-moo',
+      '@proj/react-zoo',
+    ] as const;
+
+    beforeEach(() => {
+      setupDummyPackage(tree, { name: projects[1], version: '9.0.22' });
+      setupDummyPackage(tree, { name: projects[2], version: '8.0.31' });
+      setupDummyPackage(tree, { name: projects[3], version: '8.0.12' });
+      setupDummyPackage(tree, { name: projects[4], version: '8.0.1' });
+    });
+    it(`should run migration on all vNext packages in batch`, async () => {
+      await generator(tree, { all: true });
+
+      const configs = projects.reduce((acc, projectName) => {
+        acc[projectName] = readProjectConfiguration(tree, projectName);
+
+        return acc;
+      }, {} as Record<(typeof projects)[number], ProjectConfiguration>);
+
+      expect(configs[projects[1]].sourceRoot).not.toBeDefined();
+      expect(configs[options.name].sourceRoot).toBeDefined();
+      expect(configs[projects[2]].sourceRoot).toBeDefined();
+      expect(configs[projects[3]].sourceRoot).toBeDefined();
+      expect(configs[projects[4]].sourceRoot).toBeDefined();
+    });
+  });
 });
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
+function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
 }
 function setupDummyPackage(
@@ -79,7 +159,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = readNxJson(tree) ?? {};
   const defaults = {
     version: '8.0.0',
     dependencies: {

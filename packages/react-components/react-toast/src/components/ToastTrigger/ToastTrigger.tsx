@@ -4,7 +4,7 @@ import { renderToastTrigger_unstable } from './renderToastTrigger';
 import type { ToastTriggerProps } from './ToastTrigger.types';
 
 /**
- * ToastTrigger component - TODO: add more docs
+ * ToastTrigger component
  */
 export const ToastTrigger: React.FC<ToastTriggerProps> = props => {
   const state = useToastTrigger_unstable(props);

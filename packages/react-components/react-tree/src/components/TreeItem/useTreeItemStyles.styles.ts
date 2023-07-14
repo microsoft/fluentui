@@ -1,11 +1,11 @@
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
+import type { TreeItemCSSProperties, TreeItemInternalSlot, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { treeItemLevelToken } from '../../utils/tokens';
 
-export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
+export const treeItemClassNames: SlotClassNames<TreeItemInternalSlot> = {
   root: 'fui-TreeItem',
 };
 
@@ -22,14 +22,9 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     cursor: 'pointer',
-    display: 'grid',
+    display: 'flex',
+    flexDirection: 'column',
     boxSizing: 'border-box',
-    gridTemplateRows: 'auto auto',
-    gridTemplateColumns: 'minmax(0, 100%) minmax(0px, min-content)',
-    gridTemplateAreas: `
-    "layout  aside"
-    "subtree subtree"
-    `,
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     paddingRight: tokens.spacingHorizontalNone,

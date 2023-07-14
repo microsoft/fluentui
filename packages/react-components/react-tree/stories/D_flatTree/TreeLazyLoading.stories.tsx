@@ -80,8 +80,8 @@ export const LazyLoading = () => {
         const { name, ...itemProps } = item.getTreeItemProps();
         const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};
         return (
-          <TreeItem key={item.value} {...itemProps}>
-            <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>{name}</TreeItemLayout>
+          <TreeItem key={item.value} expandIcon={isLoading ? <Spinner size="tiny" /> : undefined} {...itemProps}>
+            <TreeItemLayout>{name}</TreeItemLayout>
           </TreeItem>
         );
       })}

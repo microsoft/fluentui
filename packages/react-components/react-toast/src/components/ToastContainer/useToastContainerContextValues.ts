@@ -2,16 +2,19 @@ import * as React from 'react';
 import { ToastContainerContextValues, ToastContainerState } from './ToastContainer.types';
 
 export function useToastContainerContextValues_unstable(state: ToastContainerState): ToastContainerContextValues {
-  const { close } = state;
+  const { close, intent, titleId, bodyId } = state;
 
-  const toastContext = React.useMemo(
+  const toastContainerContext = React.useMemo(
     () => ({
       close,
+      intent,
+      titleId,
+      bodyId,
     }),
-    [close],
+    [close, intent, titleId, bodyId],
   );
 
   return {
-    toast: toastContext,
+    toast: toastContainerContext,
   };
 }

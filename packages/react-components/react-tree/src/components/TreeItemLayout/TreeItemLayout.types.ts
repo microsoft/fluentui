@@ -1,12 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ButtonContextValue } from '@fluentui/react-button';
+import { TreeItemSlots } from '../TreeItem/TreeItem.types';
 
 export type TreeItemLayoutSlots = {
   root: Slot<'div'>;
   /**
-   * Expand icon slot,
-   * by default renders a chevron icon to indicate opening and closing
+   * Content. Children of the root slot are automatically rendered here
    */
-  expandIcon?: Slot<'div'>;
+  content: NonNullable<Slot<'div'>>;
   /**
    * Icon slot that renders right before main content
    */
@@ -17,6 +18,8 @@ export type TreeItemLayoutSlots = {
   iconAfter?: Slot<'div'>;
 };
 
+export type TreeItemLayoutInternalSlots = TreeItemLayoutSlots & Pick<TreeItemSlots, 'actions' | 'aside' | 'expandIcon'>;
+
 /**
  * TreeItemLayout Props
  */
@@ -25,4 +28,6 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 /**
  * State used in rendering TreeItemLayout
  */
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots>;
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutInternalSlots> & {
+  buttonContextValue: ButtonContextValue;
+};

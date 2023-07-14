@@ -2,6 +2,36 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 28 Jun 2023 11:12:24 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:38:56 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "402599eb2172bf1cd13c003f5050e4d172ed9742",
+            "comment": "BREAKING CHANGE: migrate package to v9 setup in order to be able to run generate-api task without build"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Jun 2023 07:37:25 GMT",
       "tag": "@fluentui/react-conformance_v0.16.3",
       "version": "0.16.3",

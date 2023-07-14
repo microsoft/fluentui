@@ -93,8 +93,8 @@ export const PrimaryCell = () => {
                 {item.file.label}
               </TableCellLayout>
               <TableCellActions>
-                <Button icon={<EditIcon />} appearance="subtle" />
-                <Button icon={<MoreHorizontalIcon />} appearance="subtle" />
+                <Button icon={<EditIcon />} appearance="subtle" aria-label="Edit" />
+                <Button icon={<MoreHorizontalIcon />} appearance="subtle" aria-label="More actions" />
               </TableCellActions>
             </TableCell>
 

@@ -2,6 +2,57 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:47 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:34 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:05 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "7516a6bde1bd7b8c957ca479ffcb0e737e9ca693",
+            "comment": "Add theme tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 May 2023 20:45:36 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.12",
       "version": "9.0.0-alpha.12",
