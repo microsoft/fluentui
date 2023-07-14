@@ -364,7 +364,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   private _renderNeedle = () => {
-    const needleRotation = (this._sweepFraction[0] / this._sweepFraction[1]) * 180;
+    let needleRotation = (this._sweepFraction[0] / this._sweepFraction[1]) * 180;
+    if (needleRotation < 0) {
+      needleRotation = 0;
+    } else if (needleRotation > 180) {
+      needleRotation = 180;
+    }
+
     const rtlSafeNeedleRotation = this._isRTL ? 180 - needleRotation : needleRotation;
     const strokeWidth = 2;
     const halfStrokeWidth = strokeWidth / 2;
