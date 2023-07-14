@@ -10,7 +10,7 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.66.4"
+    "@fluentui/react-northstar": "*"
   },
   "publishConfig": {
     "access": "public"
