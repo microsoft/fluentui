@@ -26,23 +26,26 @@ storiesOf('Spinner converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Primary with Label Before', () => <Spinner labelPosition="before" label="Loading" />, {
+  .addStory('Primary', () => {
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px'}}>
+      <Spinner labelPosition="before" label="Loading" />
+      <Spinner labelPosition="after" label="Loading" />
+      <Spinner labelPosition="above" label="Loading" />
+    </div>
+    }, {
     includeHighContrast: true,
     includeDarkMode: true,
     includeRtl: true,
   })
-  .addStory('Primary with Label After', () => <Spinner labelPosition="after" label="Loading" />, {
+  .addStory('Primary + size', () => {
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px'}}>
+      {/* All the Spinners with unique size go here */}
+    </div>
+    }, {
     includeHighContrast: true,
     includeDarkMode: true,
     includeRtl: true,
   })
-  .addStory('Primary with Label Above', () => <Spinner labelPosition="above" label="Loading" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Label Below', () => <Spinner labelPosition="below" label="Loading" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
   })
   .addStory('Primary with Size Tiny', () => <Spinner size="tiny" />, {
     includeHighContrast: true,
