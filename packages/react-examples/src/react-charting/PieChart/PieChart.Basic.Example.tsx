@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PieChart, IPieChartProps, DataVizPalette } from '@fluentui/react-charting';
+import { PieChart, IPieChartProps } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
 
 export class PieChartBasicExample extends React.Component<IPieChartProps, { width: number; height: number }> {
