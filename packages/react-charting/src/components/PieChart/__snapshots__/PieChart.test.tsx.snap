@@ -49,8 +49,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
 
                 {
                   fill: #e81123;
-                  stroke-width: 0px;
-                  stroke: #ffffff;
                 }
             d="M0.795,-158.998A159,159,0,0,1,1.59,158.992L0.798,0.603A1,1,0,0,0,0.795,-0.607Z"
           />
@@ -95,8 +93,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
 
                 {
                   fill: #0078d4;
-                  stroke-width: 0px;
-                  stroke: #ffffff;
                 }
             d="M0,159A159,159,0,0,1,-158.996,1.193L-0.704,0.71Z"
           />
@@ -141,8 +137,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
 
                 {
                   fill: #107c10;
-                  stroke-width: 0px;
-                  stroke: #ffffff;
                 }
             d="M-159,-0.398A159,159,0,0,1,-0.795,-158.998L-0.708,-0.706Z"
           />
@@ -224,8 +218,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
 
                 {
                   fill: #e81123;
-                  stroke-width: 0px;
-                  stroke: #ffffff;
                 }
             d="M0.67,-133.998A134,134,0,0,1,1.34,133.993L0.674,0.739A1,1,0,0,0,0.67,-0.742Z"
           />
@@ -270,8 +262,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
 
                 {
                   fill: #0078d4;
-                  stroke-width: 0px;
-                  stroke: #ffffff;
                 }
             d="M0,134A134,134,0,0,1,-133.996,1.005L-0.741,0.672A1,1,0,0,0,-0.666,0.746Z"
           />
@@ -316,8 +306,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
 
                 {
                   fill: #107c10;
-                  stroke-width: 0px;
-                  stroke: #ffffff;
                 }
             d="M-134,-0.335A134,134,0,0,1,-0.67,-133.998L-0.67,-0.742A1,1,0,0,0,-0.744,-0.668Z"
           />
