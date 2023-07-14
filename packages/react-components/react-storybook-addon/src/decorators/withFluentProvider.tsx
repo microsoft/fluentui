@@ -27,6 +27,7 @@ const parseClassName = (className: string) => {
     .split(' ')
     ?.filter(x => x.includes(componentName) && x.includes('__'))
     ?.pop()
+    ?.replace('.fui-', '')
     ?.split('__') || ['', ''];
 
   return { componentName, slotName, slotComponentName };
@@ -34,8 +35,8 @@ const parseClassName = (className: string) => {
 
 type AnatomyAnnotatorProps = {
   position: Position;
-  componentName: string;
-  slotName: string;
+  componentName?: string;
+  slotName?: string;
   label: string | number;
   labelTop: number;
   labelLeft: number;
@@ -115,6 +116,64 @@ const AnatomyAnnotation = ({
           {label}
         </span>
       )}
+    </div>
+  );
+};
+type AnatomyTitleProps = {
+  componentName?: string;
+  slotName?: string;
+  isSelected: boolean;
+  label: string | number;
+  labelSize: number;
+  setSelectedComponentName: (name: string) => void;
+};
+const AnatomyTitle = ({
+  componentName,
+  slotName,
+  isSelected,
+  label,
+  labelSize,
+  setSelectedComponentName,
+}: AnatomyTitleProps) => {
+  return (
+    <div
+      key={`${componentName}__${slotName}`}
+      style={{
+        padding: `${tokens.spacingVerticalXXS} ${
+          slotName ? tokens.spacingVerticalXXL : tokens.spacingHorizontalSNudge
+        }`,
+        marginTop: slotName ? 0 : tokens.spacingVerticalM,
+        backgroundColor: isSelected ? tokens.colorNeutralBackground1Hover : 'transparent',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={() => setSelectedComponentName(componentName || slotName)}
+      onMouseLeave={() => setSelectedComponentName('')}
+    >
+      {/*
+                  TODO: It would be helpful to hide the content of the selected anatomy annotation
+                        so that it is clear that only the containing area is the anatomy and not the content inside.
+
+                        Something like this, but in the global scope:
+                          .${cssSelector} * { visibility: hidden !important; }
+                  */}
+      <span
+        style={{
+          display: 'inline-block',
+          width: `${labelSize}px`,
+          height: `${labelSize}px`,
+          fontSize: `${Math.round(labelSize * 0.75)}px`,
+          fontWeight: 'bold',
+          lineHeight: `${labelSize}px`,
+          textAlign: 'center',
+          color: 'black',
+          background: slotName ? `rgb(192, 192, 255)` : `rgb(255, 192, 224)`,
+          borderRadius: '999px',
+        }}
+      >
+        {label}
+      </span>
+      &nbsp;
+      {slotName || componentName}
     </div>
   );
 };
@@ -287,41 +346,8 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
 
         // sort components by DOM query order, then insert slots under their corresponding component
         .sort((a, b) => {
-          return a.order < b.order;
-
-          const aComponentName = a.componentName || a.slotComponentName;
-          const bComponentName = b.componentName || b.slotComponentName;
-
-          if (aComponentName < bComponentName) {
-            return -1;
-          } else if (aComponentName > bComponentName) {
-            return 1;
-          } else {
-            return 0;
-            // if the component names are the same, sort by slot name
-            if (a.slotName < b.slotName) {
-              return -1;
-            } else if (a.slotName > b.slotName) {
-              return 1;
-            } else {
-              return 0;
-            }
-          }
-
           // DOM query order
-          // return a.order - b.order;
-
-          // alphabetically by cssSelector
-          // const aSortableSelector = a.cssSelector.replace('_', '-');
-          // const bSortableSelector = b.cssSelector.replace('_', '-');
-          //
-          // if (aSortableSelector < bSortableSelector) {
-          //   return -1;
-          // }
-          // if (aSortableSelector > bSortableSelector) {
-          //   return 1;
-          // }
-          // return 0;
+          return a.order - b.order;
         });
 
       // Only update state if the tracked components have changed
@@ -339,10 +365,94 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
     };
   }, [displayName, trackedComponents]);
 
-  let componentCounter = 0;
-  let slotCounter = 0;
+  const trackedComponentMap = new Map<
+    string,
+    {
+      components: TrackedComponent[];
+      slots: Map<string, TrackedComponent[]>;
+    }
+  >();
 
-  const seenTrackedComponents = new Set<TrackedComponent['cssSelector']>();
+  trackedComponents.forEach((trackedComponent: TrackedComponent) => {
+    const { componentName, slotName, slotComponentName } = trackedComponent;
+    const computedComponentName = componentName || slotComponentName;
+    if (!trackedComponentMap.has(computedComponentName)) {
+      trackedComponentMap.set(computedComponentName, { components: [], slots: new Map<string, TrackedComponent[]>() });
+    }
+
+    if (!slotName) {
+      trackedComponentMap.get(computedComponentName)!.components.push(trackedComponent);
+    } else {
+      if (!trackedComponentMap.get(computedComponentName)!.slots.has(slotName)) {
+        trackedComponentMap.get(computedComponentName)!.slots.set(slotName, []);
+      }
+      trackedComponentMap.get(computedComponentName)!.slots.get(slotName)!.push(trackedComponent);
+    }
+  });
+
+  const anatomyElements: React.ReactElement[] = [];
+  let lastComponentIndex = 0;
+  let lastSlotIndex = 0;
+
+  trackedComponentMap.forEach((component, componentName) => {
+    const componentLabel = ++lastComponentIndex;
+    const isComponentSelected = selectedComponentName === componentName;
+    // console.log(componentLabel, componentName, isComponentSelected ? '(selected)' : '(not selected)');
+    anatomyElements.push(
+      <AnatomyTitle
+        componentName={componentName}
+        label={component.components.length > 0 ? componentLabel : '?'}
+        labelSize={16}
+        setSelectedComponentName={setSelectedComponentName}
+        isSelected={isComponentSelected}
+      />,
+    );
+    for (let i = 0; i < component.components.length; i++) {
+      anatomyElements.push(
+        <AnatomyAnnotation
+          label={i === 0 ? componentLabel : ''}
+          componentName={componentName}
+          isSelected={isComponentSelected}
+          isMuted={!!(selectedComponentName && !isComponentSelected)}
+          labelTop={component.components[i].labelTop}
+          labelLeft={component.components[i].labelLeft}
+          position={component.components[i].position}
+          data-anatomy-component={componentName}
+        />,
+      );
+    }
+
+    component.slots.forEach((slot, slotName) => {
+      const currentSlotLabel = String.fromCharCode(lastSlotIndex++ + 97);
+      const isSlotSelected = selectedComponentName === slotName;
+      // console.log('  ', currentSlotLabel, slotName, isSlotSelected ? '(selected)' : '(not selected)');
+      anatomyElements.push(
+        <AnatomyTitle
+          slotName={slotName}
+          label={currentSlotLabel}
+          labelSize={16}
+          setSelectedComponentName={setSelectedComponentName}
+          isSelected={isSlotSelected}
+        />,
+      );
+
+      for (let i = 0; i < slot.length; i++) {
+        anatomyElements.push(
+          <AnatomyAnnotation
+            label={i === 0 ? currentSlotLabel : ''}
+            isSelected={isSlotSelected}
+            isMuted={!!(selectedComponentName && !isSlotSelected)}
+            slotName={slotName}
+            labelTop={slot[i].labelTop}
+            labelLeft={slot[i].labelLeft}
+            position={slot[i].position}
+            data-anatomy-component={componentName}
+            data-anatomy-slot={slotName}
+          />,
+        );
+      }
+    });
+  });
 
   return (
     <div style={{ display: 'flex', gap: tokens.spacingHorizontalXXXL }}>
@@ -356,102 +466,7 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
           borderRight: `1px solid rgba(0, 0, 0, 0.1)`,
         }}
       >
-        {/*
-        trackedComponents here are:
-         - JS objects
-         - one for each DOM element found in the story
-         - one for each DOM element found in the story's portals
-         - where the DOM element has a className that matches a component name
-         
-         This reduce creates a list of component names and their slots, enumerating the component's anatomy
-        */}
-        {trackedComponents.reduce<React.ReactNode[]>(
-          (acc, { componentName, cssSelector, slotName, position, labelTop, labelLeft }) => {
-            const name = slotName || componentName;
-
-            const label = slotName ? String.fromCharCode(slotCounter + 97) : componentCounter + 1;
-            const labelSize = 16;
-
-            const isSelected = name === selectedComponentName;
-            const isUnique = !seenTrackedComponents.has(cssSelector);
-
-            //
-            // One selector rectangle for each component target
-            //
-            acc.push(
-              <AnatomyAnnotation
-                label={isUnique ? label : ''}
-                componentName={componentName}
-                isSelected={isSelected}
-                isMuted={!!(selectedComponentName && !isSelected)}
-                slotName={slotName}
-                labelTop={slotName ? position.y + position.height / 2 : labelTop}
-                labelLeft={slotName ? position.x + position.width / 2 : labelLeft}
-                position={position}
-                data-anatomy-component={componentName}
-                data-anatomy-slot={slotName}
-              />,
-            );
-
-            //
-            // The unique list of components > slots
-            //
-            if (isUnique) {
-              seenTrackedComponents.add(cssSelector);
-
-              if (slotName) {
-                slotCounter++;
-              } else {
-                componentCounter++;
-              }
-
-              acc.push(
-                <div
-                  key={`${componentName}__${slotName}`}
-                  style={{
-                    padding: `${tokens.spacingVerticalXXS} ${
-                      slotName ? tokens.spacingVerticalXXL : tokens.spacingHorizontalSNudge
-                    }`,
-                    marginTop: slotName ? 0 : tokens.spacingVerticalM,
-                    backgroundColor: isSelected ? tokens.colorNeutralBackground1Hover : 'transparent',
-                    cursor: 'pointer',
-                  }}
-                  onMouseEnter={() => setSelectedComponentName(name)}
-                  onMouseLeave={() => setSelectedComponentName('')}
-                >
-                  {/*
-                  TODO: It would be helpful to hide the content of the selected anatomy annotation
-                        so that it is clear that only the containing area is the anatomy and not the content inside.
-
-                        Something like this, but in the global scope:
-                          .${cssSelector} * { visibility: hidden !important; }
-                  */}
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: `${labelSize}px`,
-                      height: `${labelSize}px`,
-                      fontSize: `${Math.round(labelSize * 0.75)}px`,
-                      fontWeight: 'bold',
-                      lineHeight: `${labelSize}px`,
-                      textAlign: 'center',
-                      color: 'black',
-                      background: slotName ? `rgb(192, 192, 255)` : `rgb(255, 192, 224)`,
-                      borderRadius: '999px',
-                    }}
-                  >
-                    {label}
-                  </span>
-                  &nbsp;
-                  {slotName || componentName}
-                </div>,
-              );
-            }
-
-            return acc;
-          },
-          [],
-        )}
+        {anatomyElements}
       </pre>
 
       <div style={{ flex: 3, minWidth: 0 }} ref={childrenContainerRef}>
