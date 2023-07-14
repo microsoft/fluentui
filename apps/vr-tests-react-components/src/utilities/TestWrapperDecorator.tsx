@@ -45,6 +45,7 @@ export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnRet
 
 const usePausedAnimationStyles = makeStyles({
   paused: {
+    display: 'flex',
     animationPlayState: 'paused !important',
     animationDelay: '-1s !important',
     '& *': {
