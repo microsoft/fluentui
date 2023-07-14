@@ -39,25 +39,20 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
   public render(): JSX.Element {
     const { data, width, height, colors, chartTitle } = this.props;
 
-    const finalColors = [];
     const { theme, className, styles, culture } = this.props;
-
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        if (colors && i < colors?.length && typeof colors[i] !== 'undefined') {
-          finalColors.push(getColorFromToken(colors[i]));
-        } else {
-          finalColors.push(getNextColor(i, 0, theme?.isInverted));
-        }
-      }
-    }
-
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
       height: height!,
       className,
     });
+
+    const defaultColors: Array<string> = [];
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        defaultColors.push(getNextColor(i, 0, theme?.isInverted));
+      }
+    }
 
     const TEXT_MAX_WIDTH = 40;
     const TEXT_LINE_HEIGHT = 16;
@@ -80,7 +75,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
           outerRadius={outerRadius}
           innerRadius={1}
           data={data!}
-          colors={finalColors}
+          colors={colors ? colors.map(color => getColorFromToken(color)) : defaultColors}
           chartTitle={chartTitle!}
           theme={theme}
         />

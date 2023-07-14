@@ -25,7 +25,7 @@ export interface IPieProps {
   /**
    * colors to render in the Pie.
    */
-  colors: string[];
+  colors?: string[];
   /**
    * Title to apply to the whole chart.
    */
