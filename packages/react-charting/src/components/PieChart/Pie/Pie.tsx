@@ -5,7 +5,7 @@ import { LabeledArc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
-export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
+export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
     pie: shape
       .pie()
@@ -17,7 +17,6 @@ export class Pie extends React.Component<IPieProps, { focusedPie: string }> {
 
   constructor(props: IPieProps) {
     super(props);
-    this.state = { focusedPie: '' };
   }
 
   public render(): JSX.Element {
