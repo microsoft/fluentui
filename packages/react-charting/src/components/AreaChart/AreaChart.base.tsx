@@ -73,7 +73,6 @@ export interface IAreaChartState extends IBasestate {
   emptyChart?: boolean;
   /** focused point */
   activePoint: string;
-  selectedLegendIndex: number;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -113,7 +112,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
       selectedLegend: '',
-      selectedLegendIndex: -1,
       activeLegend: '',
       hoverXValue: '',
       isCalloutVisible: false,
@@ -523,16 +521,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
   };
 
-  private _onLegendClick(legend: string, index: number): void {
+  private _onLegendClick(legend: string): void {
     if (this.state.selectedLegend === legend) {
       this.setState({
         selectedLegend: '',
-        selectedLegendIndex: -1,
       });
     } else {
       this.setState({
         selectedLegend: legend,
-        selectedLegendIndex: index,
       });
     }
   }
@@ -553,7 +549,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const data = points;
     const actions: ILegend[] = [];
 
-    data.forEach((singleChartData: ILineChartPoints, index: number) => {
+    data.forEach((singleChartData: ILineChartPoints) => {
       const color: string = singleChartData.color!;
       const checkSimilarLegends = actions.filter(
         (leg: ILegend) => leg.title === singleChartData.legend && leg.color === color,
@@ -566,7 +562,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         title: singleChartData.legend,
         color: color,
         action: () => {
-          this._onLegendClick(singleChartData.legend, index);
+          this._onLegendClick(singleChartData.legend);
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
@@ -696,7 +692,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
-                'data-is-focusable': this.state.selectedLegendIndex === index || this.state.selectedLegendIndex === -1,
+                'data-is-focusable': points[index].legend === this.state.selectedLegend,
                 role: 'img',
                 'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
                   points[index].data.length
@@ -727,7 +723,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 <circle
                   key={circleId}
                   id={circleId}
-                  data-is-focusable={this.state.selectedLegendIndex === -1 || this.state.selectedLegendIndex === index}
+                  data-is-focusable={points[index].legend === this.state.selectedLegend}
                   cx={xScale(singlePoint.xVal)}
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
