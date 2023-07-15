@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:40 GMT",
+      "tag": "@fluentui/react-dialog_v9.5.16",
+      "version": "9.5.16",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jul 2023 18:46:36 GMT",
       "tag": "@fluentui/react-dialog_v9.5.16",
       "version": "9.5.16",

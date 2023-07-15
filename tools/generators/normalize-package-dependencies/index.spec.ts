@@ -222,6 +222,25 @@ describe('normalize-package-dependencies generator', () => {
         }),
       );
     });
+
+    it(`should revert incorrect beachball bump change version on pre-release package`, async () => {
+      updateProject(tree, {
+        projectName: 'react-app',
+        dependencies: {
+          '@proj/react-four': '1.0.0-beta.17 <9.0.0',
+        },
+      });
+
+      await generator(tree, {});
+
+      const reactApp = getPackageJsonForAllProjects(tree).reactApp;
+
+      expect(reactApp.dependencies).toEqual(
+        expect.objectContaining({
+          '@proj/react-four': '>=9.0.0-alpha',
+        }),
+      );
+    });
   });
 
   describe(`library`, () => {
@@ -280,14 +299,23 @@ function updateProject(
   tree: Tree,
   options: {
     projectName: string;
-    version: string;
+    version?: string;
+    dependencies?: Record<string, string>;
   },
 ) {
-  const { projectName, version } = options;
+  const { projectName, version, dependencies } = options;
   const packageName = `@proj/${projectName}`;
   const project = readProjectConfiguration(tree, packageName);
   updateJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'), json => {
-    json.version = version;
+    if (version) {
+      json.version = version;
+    }
+
+    if (dependencies) {
+      json.dependencies = json.dependencies ?? {};
+      Object.assign(json.dependencies, dependencies);
+    }
+
     return json;
   });
 
