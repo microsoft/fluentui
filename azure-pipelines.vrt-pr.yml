@@ -26,7 +26,8 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
-
+      - template: download-vr-cli.yml
+      
       - bash: |
           postPolicy="true";
           response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
