@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: checkable splitbutton and split menuitem have two separate touch targets",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
