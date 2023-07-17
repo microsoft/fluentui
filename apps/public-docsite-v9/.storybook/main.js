@@ -16,6 +16,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../../../packages/react-components/react-migration-v8-v9/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
     '../../../packages/react-components/react-datepicker-compat/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
     '../../../packages/react-components/react-breadcrumb-preview/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+    '../../../packages/react-components/react-search-preview/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],

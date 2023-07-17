@@ -169,6 +169,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       '@fluentui/react-migration-v8-v9',
       '@fluentui/react-migration-v0-v9',
       '@fluentui/react-breadcrumb-preview',
+      '@fluentui/react-search-preview',
     ];
 
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
