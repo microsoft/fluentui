@@ -1,6 +1,6 @@
 # react-library
 
-Workspace Generator ...TODO...
+Workspace Generator for bootstrapping a new react library (fluentui v9)
 
 <!-- toc -->
 
@@ -8,13 +8,15 @@ Workspace Generator ...TODO...
   - [Examples](#examples)
 - [Options](#options)
   - [`name`](#name)
+  - [`owner`](#owner)
+  - [`kind`](#kind)
 
 <!-- tocstop -->
 
 ## Usage
 
 ```sh
-yarn nx workspace-generator react-library ...
+yarn nx workspace-generator react-library --help
 ```
 
 Show what will be generated without writing to disk:
@@ -35,4 +37,16 @@ yarn nx workspace-generator react-library
 
 Type: `string`
 
-TODO...
+Library name (without @fluentui scope prefix)
+
+#### `owner`
+
+Type: `string`
+
+Team owning the library. Will be written in CODEOWNERS
+
+#### `kind`
+
+Type: `standard` | `compat`
+
+v9 library kind either embracing converged patterns(standard) or using griffel only with old framework patterns(compat)
