@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: updated right border token in split button",
+  "packageName": "@fluentui/react-button",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}
