@@ -4,8 +4,8 @@ import { IRawStyle } from '@uifabric/merge-styles';
 
 export const normalize: IRawStyle = {
   boxShadow: 'none',
-  margin: 0,
-  padding: 0,
+  margin: 10,
+  padding: 20,
   boxSizing: 'border-box',
 };
 
