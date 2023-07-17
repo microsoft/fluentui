@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.16.51",
+  "version": "5.16.53",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react": "^8.110.8",
+    "@fluentui/react": "*",
     "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.29",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*",
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.30",
-    "@fluentui/theme-samples": "^8.7.101",
+    "@fluentui/theme-samples": "^8.7.102",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
@@ -64,7 +64,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.110.8",
+    "@fluentui/react": "^8.110.9",
     "@testing-library/react": "12.1.2",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",

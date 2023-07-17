@@ -29,6 +29,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
   private _ariaDescriptionId: string;
+  private _dismissLabelId: string;
 
   private _async: Async;
   private _events: EventGroup;
@@ -45,6 +46,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     this._async = new Async(this);
     this._events = new EventGroup(this);
+    this._dismissLabelId = getId();
   }
 
   public componentDidMount() {
@@ -177,6 +179,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       isChecked: item.isChecked,
       checked: item.checked,
       iconProps: item.iconProps,
+      id: this._dismissLabelId,
       onRenderIcon: item.onRenderIcon,
       data: item.data,
       'data-is-focusable': false,
@@ -228,6 +231,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       submenuIconProps: item.submenuIconProps,
       split: true,
       key: item.key,
+      'aria-labelledby': this._dismissLabelId,
     };
 
     const buttonProps = {
@@ -240,7 +244,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
         onMouseMove: this._onItemMouseMoveIcon,
         'data-is-focusable': false,
         'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
-        'aria-hidden': true,
+        'aria-haspopup': true,
       },
     };
 
@@ -306,7 +310,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       return;
     }
 
-    if (this._processingTouch && onItemClick) {
+    if (this._processingTouch && !item.canCheck && onItemClick) {
       return onItemClick(item, ev);
     }
 

@@ -88,6 +88,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const paths = {
     configRoot: joinPathFragments(projectConfig.root, 'config'),
     packageJson: joinPathFragments(projectConfig.root, 'package.json'),
+    projectJson: joinPathFragments(projectConfig.root, 'project.json'),
     tsconfig: {
       main: joinPathFragments(projectConfig.root, 'tsconfig.json'),
       lib: joinPathFragments(projectConfig.root, 'tsconfig.lib.json'),
