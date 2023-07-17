@@ -1,10 +1,10 @@
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
 import { slot } from './slot';
-import { ComponentState, ExtractSlotProps, SlotComponent, SlotPropsRecord } from './types';
+import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
 
 type SlotComponents<Slots extends SlotPropsRecord> = {
-  [K in keyof Slots]: SlotComponent<ExtractSlotProps<Slots[K]>>;
+  [K in keyof Slots]: SlotComponentType<ExtractSlotProps<Slots[K]>>;
 };
 
 /**

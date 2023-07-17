@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { getSlotsNext } from './getSlotsNext';
-import type { ExtractSlotProps, Slot, SlotComponent, UnknownSlotProps } from './types';
+import type { ExtractSlotProps, Slot, SlotComponentType, UnknownSlotProps } from './types';
 import { resolveShorthand } from './resolveShorthand';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
-const resolveShorthandMock = <Props extends UnknownSlotProps>(props: Props): SlotComponent<Props> => {
+const resolveShorthandMock = <Props extends UnknownSlotProps>(props: Props): SlotComponentType<Props> => {
   // casting is required here as SlotComponent is a callable
-  return { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div', ...props } as SlotComponent<Props>;
+  return { ...props } as SlotComponentType<Props>;
 };
 
 describe('getSlotsNext', () => {
@@ -22,7 +22,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'div' },
-      slotProps: { root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
+      slotProps: { root: {} },
     });
   });
 
@@ -35,7 +35,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'span' },
-      slotProps: { root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
+      slotProps: { root: {} },
     });
   });
 
@@ -49,7 +49,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'button' },
-      slotProps: { root: { id: 'id', href: 'href', [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
+      slotProps: { root: { id: 'id', href: 'href' } },
     });
   });
 
@@ -62,7 +62,7 @@ describe('getSlotsNext', () => {
       }),
     ).toEqual({
       slots: { root: 'a' },
-      slotProps: { root: { id: 'id', href: 'href', [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' } },
+      slotProps: { root: { id: 'id', href: 'href' } },
     });
   });
 
@@ -80,8 +80,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
-        icon: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
+        icon: {},
       },
     });
   });
@@ -100,8 +100,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'span', icon: 'button' },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
-        icon: { id: 'id', children: 'children', [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
+        icon: { id: 'id', children: 'children' },
       },
     });
   });
@@ -120,12 +120,11 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: 'a' },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
         icon: {
           id: 'id',
           href: 'href',
           children: 'children',
-          [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
         },
       },
     });
@@ -145,12 +144,11 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
         icon: {
           id: 'id',
           href: 'href',
           children: 'children',
-          [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
         },
       },
     });
@@ -171,8 +169,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
-        icon: { id: 'bar', children: renderIcon, [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
+        icon: { id: 'bar', children: renderIcon },
       },
     });
   });
@@ -192,12 +190,11 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
         icon: {
           children: undefined,
           id: 'bar',
           [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
-          [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
         },
       },
     });
@@ -219,8 +216,8 @@ describe('getSlotsNext', () => {
     ).toEqual({
       slots: { root: 'div', input: 'input', icon: null },
       slotProps: {
-        root: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
-        input: { [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' },
+        root: {},
+        input: {},
         icon: undefined,
       },
     });

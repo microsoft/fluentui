@@ -1,12 +1,11 @@
 import type {
   AsIntrinsicElement,
-  SlotComponent,
+  SlotComponentType,
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
 } from './types';
 import * as React from 'react';
-import { isSlot } from './isSlot';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
@@ -48,55 +47,32 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
  * ```
  */
 export function slot<Props extends UnknownSlotProps>(
-  value: Props | SlotComponent<Props> | SlotShorthandValue | undefined,
+  value: Props | SlotShorthandValue | undefined,
   options: { required: true } & SlotOptions<Props>,
-): SlotComponent<Props>;
+): SlotComponentType<Props>;
 export function slot<Props extends UnknownSlotProps>(
-  value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null,
+  value: Props | SlotShorthandValue | undefined | null,
   options: { required?: boolean } & SlotOptions<Props>,
-): SlotComponent<Props> | undefined;
+): SlotComponentType<Props> | undefined;
 export function slot<Props extends UnknownSlotProps>(
-  value: SlotComponent<Props>,
-  options?: { required: true } & Partial<SlotOptions<Props>>,
-): SlotComponent<Props>;
-export function slot<Props extends UnknownSlotProps>(
-  value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null,
-  options: { required?: boolean } & Partial<SlotOptions<Props>> = {},
-): SlotComponent<Props> | undefined {
-  const { required = false, defaultProps } = options;
+  value: Props | SlotShorthandValue | undefined | null,
+  options: { required?: boolean } & SlotOptions<Props>,
+): SlotComponentType<Props> | undefined {
+  const { required = false, defaultProps, elementType } = options;
 
   if (value === null || (value === undefined && !required)) {
     return undefined;
   }
 
   let renderFunction: SlotRenderFunction<Props> | undefined;
-  let elementType:
-    | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-
-  if (isSlot<Props>(value)) {
-    renderFunction = value[SLOT_RENDER_FUNCTION_SYMBOL];
-    elementType = value[SLOT_ELEMENT_TYPE_SYMBOL];
-    if (options.elementType !== undefined) {
-      elementType = options.elementType;
-    }
-  } else if (options.elementType !== undefined) {
-    elementType = options.elementType;
-  } else if (process.env.NODE_ENV !== 'production') {
-    throw new Error("[react-utilities]: slot options.elementType is required when value isn't a slot itself");
-  }
-  // in case of production, don't throw an error, just fallback to a div
-  else {
-    elementType = 'div' as React.ElementType<Props> as React.ComponentType<Props>;
-  }
 
   /**
-   * Casting is required here as SlotComponent is a function, not an object.
-   * Although SlotComponent has a function signature, it is still just an object.
+   * Casting is required here as SlotComponentType is a function, not an object.
+   * Although SlotComponentType has a function signature, it is still just an object.
    * This is required to make a slot callable (JSX compatible), this is the exact same approach
    * that is used on `@types/react` components
    */
-  const propsWithMetadata = { ...defaultProps } as SlotComponent<Props>;
+  const propsWithMetadata = { ...defaultProps } as SlotComponentType<Props>;
 
   if (
     typeof value === 'string' ||

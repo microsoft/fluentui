@@ -21,6 +21,7 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
 export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps> = (value, options) =>
   slot<UnknownSlotProps>(value, {
     ...options,
-    // elementType is required here although it'll be ignored by getSlotsNext
-    elementType: 'div',
+    // elementType as undefined is the way to identify between a slot and a resolveShorthand call
+    // in the case elementType is undefined assertSlots will fail, ensuring it'll only work with slot method.
+    elementType: undefined!,
   });

@@ -108,7 +108,7 @@ export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | Re
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
 // @public
-export function isSlot<Props extends {}>(element: unknown): element is SlotComponent<Props>;
+export function isSlot<Props extends {}>(element: unknown): element is SlotComponentType<Props>;
 
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
@@ -218,19 +218,14 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
-export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponent<Props> | SlotShorthandValue | undefined, options: {
+export function slot<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined, options: {
     required: true;
-} & SlotOptions<Props>): SlotComponent<Props>;
+} & SlotOptions<Props>): SlotComponentType<Props>;
 
 // @public (undocumented)
-export function slot<Props extends UnknownSlotProps>(value: Props | SlotComponent<Props> | SlotShorthandValue | undefined | null, options: {
+export function slot<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
     required?: boolean;
-} & SlotOptions<Props>): SlotComponent<Props> | undefined;
-
-// @public (undocumented)
-export function slot<Props extends UnknownSlotProps>(value: SlotComponent<Props>, options?: {
-    required: true;
-} & Partial<SlotOptions<Props>>): SlotComponent<Props>;
+} & SlotOptions<Props>): SlotComponentType<Props> | undefined;
 
 // @internal
 export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
@@ -244,7 +239,7 @@ export type SlotClassNames<Slots> = {
 };
 
 // @public
-export type SlotComponent<Props extends UnknownSlotProps> = Props & {
+export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);

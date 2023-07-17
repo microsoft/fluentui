@@ -2,10 +2,9 @@ import * as React from 'react';
 import {
   UnknownSlotProps,
   isSlot,
-  SlotComponent,
+  SlotComponentType,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
-  slot,
 } from '@fluentui/react-utilities';
 
 export function createElement<P extends {}>(
@@ -18,7 +17,7 @@ export function createElement<P extends {}>(
   // it should be removed once getSlotsNext is obsolete
   if (isSlot<P>(props)) {
     return createElementFromSlotComponent(
-      slot(props, { required: true, elementType: type as React.ComponentType<P> }),
+      { ...props, [SLOT_ELEMENT_TYPE_SYMBOL]: type } as SlotComponentType<P>,
       children,
     );
   }
@@ -29,7 +28,7 @@ export function createElement<P extends {}>(
 }
 
 function createElementFromSlotComponent<Props extends UnknownSlotProps>(
-  slotComponent: SlotComponent<Props>,
+  type: SlotComponentType<Props>,
   overrideChildren: React.ReactNode[],
 ): React.ReactElement<Props> | null {
   const {
@@ -37,7 +36,7 @@ function createElementFromSlotComponent<Props extends UnknownSlotProps>(
     [SLOT_ELEMENT_TYPE_SYMBOL]: baseElementType,
     [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
     ...propsWithoutMetadata
-  } = slotComponent;
+  } = type;
   const props = propsWithoutMetadata as UnknownSlotProps as Props;
 
   const elementType = typeof baseElementType === 'string' ? as ?? baseElementType : baseElementType;

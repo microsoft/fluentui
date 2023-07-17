@@ -23,7 +23,7 @@ export type {
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
-  SlotComponent,
+  SlotComponentType,
   SlotOptions,
 } from './compose/index';
 
