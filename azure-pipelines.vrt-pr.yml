@@ -76,8 +76,8 @@ jobs:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-V7)
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 209 --groupName $(pipelineName) --locationPrefix 'FluentUI-v7' --locationPostfix 'vrscreenshotv7' --pipelineId $(pipelineId) --clientName 'FluentUIV7' --threshold '0.04' --cumThreshold '1'
-        displayName: 'Run fluentui-screenshotdiff'
+      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v7' --locationPostfix 'vrscreenshotv7' --pipelineId $(pipelineId)
+        displayName: 'Run Screenshotdiff update baseline'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
