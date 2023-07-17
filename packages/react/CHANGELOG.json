@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 17 Jul 2023 07:39:32 GMT",
+      "tag": "@fluentui/react_v8.110.9",
+      "version": "8.110.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b8b3ad77ad254d80e300e540e1fa77e6ef6a4f3c",
+            "comment": "fix: checkable splitbutton and split menuitem have two separate touch targets"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "dbce79b96bde67564526043b3426e015f0a5fa2b",
+            "comment": "fix: use tab role for Pivot overflow button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jul 2023 07:36:53 GMT",
       "tag": "@fluentui/react_v8.110.8",
       "version": "8.110.8",
