@@ -53,15 +53,15 @@ export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: st
   const cellTag = html.partial(tagFor(options.dataGridCell));
   return html`
       <${cellTag}
-          class="month"
-          part="month"
+          class="month-cell"
+          part="month-cell"
           tabindex="-1"
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
       >
       ${x => console.log(x)}
         <div
-        class="date"
+        class="month">
           ${x => x.text}
         </div>
         </slot></slot>
@@ -86,7 +86,8 @@ export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: str
           role-type="default"
           grid-template-columns="1fr 1fr 1fr 1fr"
       >
-      ${x => x.text}
+      ${x => console.log(x)}
+      ${repeat(x => x, monthPickerCellTemplate(options, todayMonth))}
       </${rowTag}>
   `;
 }

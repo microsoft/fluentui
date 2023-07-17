@@ -185,8 +185,7 @@ export class Calendar extends FASTCalendar {
   public getMonths(locale: string = this.locale): string[] {
     const months = Array(12)
       .fill(null)
-      .map((_, month) => this.dateFormatter.getMonth(month, MonthFormat.short, locale));
-    console.log(months);
+      .map((_, month) => this.dateFormatter.getMonth((month + 1) % 12, MonthFormat.short, locale));
 
     return months;
   }
@@ -196,7 +195,23 @@ export class Calendar extends FASTCalendar {
    * @returns An array of weekday text and full text if abbreviated
    * @public
    */
-  public getMonthText(): { text: string }[] {
-    return this.getMonths().map(text => ({ text }));
+  public getMonthText(): { text: string }[][] {
+    const months = this.getMonths();
+    const monthsText: { text: string }[][] = [];
+    let monthCount = 0;
+
+    while (monthCount < months.length || monthsText[monthsText.length - 1].length % 4 !== 0) {
+      const month = { text: months[monthCount] };
+      const target = monthsText[monthsText.length - 1];
+      if (monthsText.length === 0 || target.length % 4 === 0) {
+        monthsText.push([month]);
+      } else {
+        target.push(month);
+      }
+      monthCount++;
+    }
+
+    console.log(monthsText);
+    return monthsText;
   }
 }

@@ -53,10 +53,12 @@ export const styles = css`
     padding: ${spacingHorizontalM};
     width: 248px;
     height: 209px;
-    outline: solid pink;
+    outline: solid lightblue;
     border-radius: ${borderRadiusMedium};
+    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
-  :host .day:not(.today, .selected):hover {
+  :host .month:hover,
+  .day:not(.today, .selected):hover {
     background: ${colorBrandBackgroundInvertedHover};
     color: ${colorNeutralForeground1Static};
   }
@@ -70,6 +72,22 @@ export const styles = css`
     padding: ${spacingHorizontalM};
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
+  }
+  :host .month-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: none;
+    justify-items: center;
+  }
+  :host .month-cell,
+  .month {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    height: 44px;
+    width: 44px;
   }
   :host .week-days,
   .week {
@@ -105,7 +123,8 @@ export const styles = css`
     white-space: normal;
     width: 32px;
   }
-  :host .interact .day {
+  :host .interact .day,
+  .month {
     background: var(--neutral-fill-rest);
     cursor: pointer;
   }
