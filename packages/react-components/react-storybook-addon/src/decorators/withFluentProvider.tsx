@@ -18,7 +18,7 @@ import { FluentGlobals, FluentStoryContext } from '../hooks';
 const parseClassName = (className: string) => {
   const componentName =
     className
-      .match(/fui-\w+/g)
+      .match(/fui-[A-Za-z]+/g)
       ?.filter(x => !x.includes('__'))
       ?.pop()
       ?.replace('fui-', '') || '';
@@ -473,9 +473,9 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
   if (anatomyElements.length === 0) {
     anatomyElements.push(
       <div style={{ fontStyle: 'italic' }}>
-        No Fluent UI elements
+        No Fluent UI
         <br />
-        currently rendered.
+        elements rendered
       </div>,
     );
   }
