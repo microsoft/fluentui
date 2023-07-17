@@ -4,6 +4,8 @@
 
 ```ts
 
+import { AnchorOptions as AnchorButtonOptions } from '@microsoft/fast-foundation';
+import { ButtonOptions } from '@microsoft/fast-foundation';
 import { CSSDesignToken } from '@microsoft/fast-foundation';
 import { DividerOrientation } from '@microsoft/fast-foundation';
 import { DividerRole } from '@microsoft/fast-foundation';
@@ -11,19 +13,34 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTAccordion } from '@microsoft/fast-foundation';
 import { FASTAccordionItem } from '@microsoft/fast-foundation';
+import { FASTAnchor } from '@microsoft/fast-foundation';
+import { FASTButton } from '@microsoft/fast-foundation';
 import { FASTDivider } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { FASTMenu } from '@microsoft/fast-foundation';
+import { FASTMenuItem } from '@microsoft/fast-foundation';
 import { FASTProgress } from '@microsoft/fast-foundation';
 import { FASTProgressRing } from '@microsoft/fast-foundation';
+import { FASTRadio } from '@microsoft/fast-foundation';
+import { FASTRadioGroup } from '@microsoft/fast-foundation';
 import { FASTSlider } from '@microsoft/fast-foundation';
 import { FASTSwitch } from '@microsoft/fast-foundation';
+import { FASTTab } from '@microsoft/fast-foundation';
+import { FASTTabPanel } from '@microsoft/fast-foundation';
+import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTTextField } from '@microsoft/fast-foundation';
+import { MenuItemRole } from '@microsoft/fast-foundation';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
+import { TabsOrientation } from '@microsoft/fast-foundation';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
+import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTAccordion {
@@ -82,6 +99,67 @@ export const accordionStyles: ElementStyles;
 
 // @public (undocumented)
 export const accordionTemplate: ElementViewTemplate<Accordion>;
+
+// @public
+export class AnchorButton extends FASTAnchor {
+    appearance?: AnchorButtonAppearance | undefined;
+    // (undocumented)
+    connectedCallback(): void;
+    disabled?: boolean;
+    // (undocumented)
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    disabledFocusable?: boolean;
+    // (undocumented)
+    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    iconOnly: boolean;
+    shape?: AnchorButtonShape | undefined;
+    size?: AnchorButtonSize;
+}
+
+// @public
+export const AnchorButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly secondary: "secondary";
+    readonly transparent: "transparent"; /**
+    * An Anchor Button can be secondary, primary, outline, subtle, transparent
+    * @public
+    */
+};
+
+// @public
+export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
+
+// @public
+export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
+
+export { AnchorButtonOptions }
+
+// @public
+export const AnchorButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type AnchorButtonShape = ValuesOf<typeof AnchorButtonShape>;
+
+// @public
+export const AnchorButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type AnchorButtonSize = ValuesOf<typeof AnchorButtonSize>;
+
+// @public
+export const AnchorButtonTemplate: ElementViewTemplate<AnchorButton>;
 
 // @public
 export class Avatar extends FASTElement {
@@ -331,6 +409,64 @@ export const borderRadiusSmall: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const borderRadiusXLarge: CSSDesignToken<string>;
+
+// @public
+export class Button extends FASTButton {
+    appearance?: ButtonAppearance | undefined;
+    // (undocumented)
+    connectedCallback(): void;
+    disabledFocusable?: boolean;
+    // (undocumented)
+    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    iconOnly: boolean;
+    shape?: ButtonShape | undefined;
+    size?: ButtonSize;
+}
+
+// @public
+export const ButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly secondary: "secondary";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
+
+// @public
+export const ButtonDefinition: FASTElementDefinition<typeof Button>;
+
+export { ButtonOptions }
+export { ButtonOptions as CompoundButtonOptions }
+export { ButtonOptions as MenuButtonOptions }
+export { ButtonOptions as ToggleButtonOptions }
+
+// @public
+export const ButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type ButtonShape = ValuesOf<typeof ButtonShape>;
+
+// @public
+export const ButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ButtonSize = ValuesOf<typeof ButtonSize>;
+
+// @public
+export const ButtonTemplate: ElementViewTemplate<Button>;
 
 // @public (undocumented)
 export const colorBackgroundOverlay: CSSDesignToken<string>;
@@ -1223,6 +1359,51 @@ export const colorTransparentStrokeDisabled: CSSDesignToken<string>;
 // @public (undocumented)
 export const colorTransparentStrokeInteractive: CSSDesignToken<string>;
 
+// @public
+export class CompoundButton extends Button {
+}
+
+// @public
+export const CompoundButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly secondary: "secondary";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type CompoundButtonAppearance = ValuesOf<typeof CompoundButtonAppearance>;
+
+// @public
+export const CompoundButtonDefinition: FASTElementDefinition<typeof CompoundButton>;
+
+// @public
+export const CompoundButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type CompoundButtonShape = ValuesOf<typeof CompoundButtonShape>;
+
+// @public
+export const CompoundButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type CompoundButtonSize = ValuesOf<typeof CompoundButtonSize>;
+
+// @public (undocumented)
+export const CompoundButtonStyles: ElementStyles;
+
+// @public
+export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
+
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
 //
 // @public
@@ -1335,9 +1516,6 @@ export const curveEasyEaseMax: CSSDesignToken<string>;
 export const curveLinear: CSSDesignToken<string>;
 
 // @public
-export const definition: FASTElementDefinition<typeof Switch>;
-
-// @public
 export class Divider extends FASTDivider {
     alignContent?: DividerAlignContent;
     appearance?: DividerAppearance;
@@ -1377,6 +1555,59 @@ export const DividerStyles: ElementStyles;
 
 // @public
 export const DividerTemplate: ElementViewTemplate<Divider>;
+
+// @public (undocumented)
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    closeDrawer(): void;
+    // (undocumented)
+    connectedCallback(): void;
+    content?: ViewTemplate | string;
+    controlSize?: DrawerSize | number;
+    // (undocumented)
+    disconnectedCallback(): void;
+    drawer?: HTMLElement;
+    focusTarget?: string;
+    modal: boolean;
+    open: boolean;
+    // @internal
+    openChanged(prev: boolean, next: boolean): void;
+    openDrawer(): void;
+    position?: DrawerPosition;
+    toggleDrawer(): void;
+    toolbar: boolean;
+    trapFocus: boolean;
+    width: number | null;
+}
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// @public
+export const DrawerPosition: {
+    readonly left: "left";
+    readonly right: "right";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
 
 // @public (undocumented)
 export const durationFast: CSSDesignToken<string>;
@@ -1491,6 +1722,25 @@ export const ImageStyles: ElementStyles;
 // @public
 export const ImageTemplate: ElementViewTemplate<Image_2>;
 
+// @public
+export class Label extends FASTElement {
+    disabled: boolean;
+    required: boolean;
+    // Warning: (ae-forgotten-export) The symbol "LabelSize" needs to be exported by the entry point index.d.ts
+    size?: LabelSize;
+    // Warning: (ae-forgotten-export) The symbol "LabelWeight" needs to be exported by the entry point index.d.ts
+    weight?: LabelWeight;
+}
+
+// @public
+export const LabelDefinition: FASTElementDefinition<typeof Label>;
+
+// @public
+export const LabelStyles: ElementStyles;
+
+// @public (undocumented)
+export const LabelTemplate: ElementViewTemplate<Label>;
+
 // @public (undocumented)
 export const lineHeightBase100: CSSDesignToken<string>;
 
@@ -1520,6 +1770,91 @@ export const lineHeightHero800: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const lineHeightHero900: CSSDesignToken<string>;
+
+// @public
+export class MenuButton extends Button {
+}
+
+// @public
+export const MenuButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly secondary: "secondary";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type MenuButtonAppearance = ValuesOf<typeof MenuButtonAppearance>;
+
+// @public
+export const MenuButtonDefinition: FASTElementDefinition<typeof MenuButton>;
+
+// @public
+export const MenuButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type MenuButtonShape = ValuesOf<typeof MenuButtonShape>;
+
+// @public
+export const MenuButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
+
+// @public
+export const MenuButtonTemplate: ElementViewTemplate<MenuButton>;
+
+// @public
+export class MenuItem extends FASTMenuItem {
+}
+
+// @public (undocumented)
+export type MenuItemColumnCount = 0 | 1 | 2;
+
+// @public
+export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+
+export { MenuItemRole }
+
+// @public
+export const MenuItemStyles: ElementStyles;
+
+// @public (undocumented)
+export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
+
+// @public
+export class MenuList extends FASTMenu {
+    // (undocumented)
+    protected setItems(): void;
+}
+
+// @public
+export const MenuListDefinition: FASTElementDefinition<typeof MenuList>;
+
+// @public
+export const MenuListStyles: ElementStyles;
+
+// @public (undocumented)
+export const MenuListTemplate: ElementViewTemplate<MenuList>;
+
+// @public (undocumented)
+export interface OpenEvent {
+    // (undocumented)
+    controlSize?: DrawerSize | number;
+    // (undocumented)
+    open: boolean;
+    // (undocumented)
+    position?: string;
+}
 
 // @public
 class ProgressBar_2 extends FASTProgress {
@@ -1565,6 +1900,35 @@ export const ProgressBarValidationState: {
 
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
+
+// @public
+export class Radio extends FASTRadio {
+}
+
+// @public
+export const RadioDefinition: FASTElementDefinition<typeof Radio>;
+
+// @public
+export class RadioGroup extends FASTRadioGroup {
+    stacked: boolean;
+}
+
+// @public
+export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
+
+export { RadioGroupOrientation }
+
+// @public
+export const RadioGroupStyles: ElementStyles;
+
+// @public (undocumented)
+export const RadioGroupTemplate: ElementViewTemplate<RadioGroup>;
+
+// @public
+export const RadioStyles: ElementStyles;
+
+// @public (undocumented)
+export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
 export const setTheme: (theme: Theme) => void;
@@ -1753,9 +2117,17 @@ export const strokeWidthThickest: CSSDesignToken<string>;
 export const strokeWidthThin: CSSDesignToken<string>;
 
 // @public (undocumented)
+const styles: ElementStyles;
+export { styles as ButtonStyles }
+export { styles as MenuButtonStyles }
+
+// @public (undocumented)
 export class Switch extends FASTSwitch {
     labelPosition: SwitchLabelPosition | undefined;
 }
+
+// @public
+export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
 
 // @public
 export const SwitchLabelPosition: {
@@ -1768,10 +2140,79 @@ export const SwitchLabelPosition: {
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
 
 // @public (undocumented)
-export const switchStyles: ElementStyles;
+export const SwitchStyles: ElementStyles;
 
 // @public (undocumented)
-export const switchTemplate: ElementViewTemplate<Switch>;
+export const SwitchTemplate: ElementViewTemplate<Switch>;
+
+// @public
+export class Tab extends FASTTab {
+    // (undocumented)
+    connectedCallback(): void;
+}
+
+// @public (undocumented)
+export const TabDefinition: FASTElementDefinition<typeof Tab>;
+
+// @public (undocumented)
+export class TabPanel extends FASTTabPanel {
+}
+
+// @public (undocumented)
+export const TabPanelDefinition: FASTElementDefinition<typeof TabPanel>;
+
+// @public (undocumented)
+export const TabPanelStyles: ElementStyles;
+
+// @public (undocumented)
+export const TabPanelTemplate: ElementViewTemplate<FASTTabPanel, any>;
+
+// @public
+export class Tabs extends FASTTabs {
+    // (undocumented)
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TabsAppearance;
+    disabled?: boolean;
+    size?: TabsSize;
+    // (undocumented)
+    tabsChanged(): void;
+}
+
+// @public (undocumented)
+export const TabsAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public (undocumented)
+export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
+
+// @public (undocumented)
+export const TabsDefinition: FASTElementDefinition<typeof Tabs>;
+
+export { TabsOrientation }
+
+// @public (undocumented)
+export const TabsSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TabsSize = ValuesOf<typeof TabsSize>;
+
+// @public (undocumented)
+export const TabsStyles: ElementStyles;
+
+// @public (undocumented)
+export const TabsTemplate: ElementViewTemplate<FASTTabs, any>;
+
+// @public (undocumented)
+export const TabStyles: ElementStyles;
+
+// @public (undocumented)
+export const TabTemplate: ElementViewTemplate<FASTTab, any>;
 
 // @public
 class Text_2 extends FASTElement {
@@ -1813,6 +2254,46 @@ export const TextFont: {
 export type TextFont = ValuesOf<typeof TextFont>;
 
 // @public
+export class TextInput extends FASTTextField {
+    appearance?: TextInputAppearance;
+    controlSize?: TextInputControlSize;
+}
+
+// @public
+export const TextInputAppearance: {
+    readonly outline: "outline";
+    readonly underline: "underline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public
+export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
+
+// @public
+export const TextInputControlSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
+
+// @public
+export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
+
+// @public
+export const TextInputStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextInputTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextInputTemplate: ElementViewTemplate<TextInput>;
+
+export { TextInputType }
+
+// @public
 export const TextSize: {
     readonly _100: "100";
     readonly _200: "200";
@@ -1847,6 +2328,72 @@ export const TextWeight: {
 
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
+
+// @public
+export class ToggleButton extends Button {
+    constructor();
+    checked: boolean;
+    checkedAttribute: boolean;
+    // (undocumented)
+    protected checkedAttributeChanged(): void;
+    // (undocumented)
+    protected checkedChanged(prev: boolean | undefined, next: boolean): void;
+    // (undocumented)
+    connectedCallback(): void;
+    currentChecked: boolean;
+    // (undocumented)
+    currentCheckedChanged(prev: boolean | undefined, next: boolean): void;
+    // (undocumented)
+    defaultChecked: boolean;
+    // (undocumented)
+    protected defaultCheckedChanged(): void;
+    protected dirtyChecked: boolean;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal (undocumented)
+    protected handleToggleButtonClick: (e: MouseEvent) => void;
+}
+
+// @public
+export const ToggleButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly secondary: "secondary";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type ToggleButtonAppearance = ValuesOf<typeof ToggleButtonAppearance>;
+
+// @public
+export const ToggleButtonDefinition: FASTElementDefinition<typeof ToggleButton>;
+
+// @public
+export const ToggleButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type ToggleButtonShape = ValuesOf<typeof ToggleButtonShape>;
+
+// @public
+export const ToggleButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ToggleButtonSize = ValuesOf<typeof ToggleButtonSize>;
+
+// @public (undocumented)
+export const ToggleButtonStyles: ElementStyles;
+
+// @public
+export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
 
 // (No @packageDocumentation comment for this package)
 
