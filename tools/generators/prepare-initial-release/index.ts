@@ -33,7 +33,7 @@ export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema
 
   const tasks: Array<(tree: Tree) => void> = [];
 
-  if (options.phase === 'initial') {
+  if (options.phase === 'preview') {
     tasks.push(initialRelease(tree, options));
   }
   if (options.phase === 'stable') {

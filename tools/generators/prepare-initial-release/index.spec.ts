@@ -82,7 +82,7 @@ describe('prepare-initial-release generator', () => {
   });
 
   describe(`--phase`, () => {
-    describe(`initial`, () => {
+    describe(`preview`, () => {
       it(`should prepare preview package for initial release`, async () => {
         const utils = {
           project: createProject(tree, 'react-one-preview', {
@@ -100,7 +100,7 @@ describe('prepare-initial-release generator', () => {
           }),
         };
 
-        const sideEffects = await generator(tree, { project: '@proj/react-one-preview', phase: 'initial' });
+        const sideEffects = await generator(tree, { project: '@proj/react-one-preview', phase: 'preview' });
 
         expect(utils.project.pkgJson()).toMatchInlineSnapshot(`
           Object {
