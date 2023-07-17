@@ -11,7 +11,7 @@ export interface ReleasePackageGeneratorSchema {
    */
   project: string;
   /**
-   * Phase of release life cycle for our packages
+   * Phase of npm release life cycle for fluent v9 core package
    */
-  phase: 'initial' | 'stable';
+  phase: 'preview' | 'stable';
 }

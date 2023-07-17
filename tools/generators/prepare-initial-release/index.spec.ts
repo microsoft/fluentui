@@ -40,7 +40,7 @@ const noop = () => {};
 let execSyncSpy: jest.SpyInstance;
 let installPackagesTaskSpy: jest.SpyInstance;
 
-describe('release-package generator', () => {
+describe('prepare-initial-release generator', () => {
   let tree: Tree;
 
   beforeEach(() => {
