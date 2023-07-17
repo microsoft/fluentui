@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "made breadcrumb package public",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
