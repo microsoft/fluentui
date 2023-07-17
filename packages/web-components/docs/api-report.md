@@ -29,18 +29,14 @@ import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { FASTTabPanel } from '@microsoft/fast-foundation';
 import { FASTTabs } from '@microsoft/fast-foundation';
-import { FASTTextField } from '@microsoft/fast-foundation';
-import { MenuItemRole } from '@microsoft/fast-foundation';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import { TabsOrientation } from '@microsoft/fast-foundation';
-import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
-import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTAccordion {
@@ -124,10 +120,7 @@ export const AnchorButtonAppearance: {
     readonly outline: "outline";
     readonly subtle: "subtle";
     readonly secondary: "secondary";
-    readonly transparent: "transparent"; /**
-    * An Anchor Button can be secondary, primary, outline, subtle, transparent
-    * @public
-    */
+    readonly transparent: "transparent";
 };
 
 // @public
@@ -1557,59 +1550,6 @@ export const DividerStyles: ElementStyles;
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
 // @public (undocumented)
-export class Drawer extends FASTElement {
-    ariaDescribedby?: string;
-    ariaLabelledby?: string;
-    closeDrawer(): void;
-    // (undocumented)
-    connectedCallback(): void;
-    content?: ViewTemplate | string;
-    controlSize?: DrawerSize | number;
-    // (undocumented)
-    disconnectedCallback(): void;
-    drawer?: HTMLElement;
-    focusTarget?: string;
-    modal: boolean;
-    open: boolean;
-    // @internal
-    openChanged(prev: boolean, next: boolean): void;
-    openDrawer(): void;
-    position?: DrawerPosition;
-    toggleDrawer(): void;
-    toolbar: boolean;
-    trapFocus: boolean;
-    width: number | null;
-}
-
-// @public (undocumented)
-export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
-
-// @public
-export const DrawerPosition: {
-    readonly left: "left";
-    readonly right: "right";
-};
-
-// @public
-export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
-
-// @public
-export const DrawerSize: {
-    readonly small: "small";
-    readonly medium: "medium";
-    readonly large: "large";
-};
-
-// @public
-export type DrawerSize = ValuesOf<typeof DrawerSize>;
-
-// @public
-export const DrawerStyles: ElementStyles;
-
-// @public (undocumented)
-export const DrawerTemplate: ElementViewTemplate<Drawer>;
-
-// @public (undocumented)
 export const durationFast: CSSDesignToken<string>;
 
 // @public (undocumented)
@@ -1629,6 +1569,13 @@ export const durationUltraFast: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const durationUltraSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const FluentDesignSystem: Readonly<{
+    prefix: "fluent";
+    shadowRootMode: "open";
+    registry: CustomElementRegistry;
+}>;
 
 // @public (undocumented)
 export const fontFamilyBase: CSSDesignToken<string>;
@@ -1823,8 +1770,6 @@ export type MenuItemColumnCount = 0 | 1 | 2;
 // @public
 export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
-export { MenuItemRole }
-
 // @public
 export const MenuItemStyles: ElementStyles;
 
@@ -1845,16 +1790,6 @@ export const MenuListStyles: ElementStyles;
 
 // @public (undocumented)
 export const MenuListTemplate: ElementViewTemplate<MenuList>;
-
-// @public (undocumented)
-export interface OpenEvent {
-    // (undocumented)
-    controlSize?: DrawerSize | number;
-    // (undocumented)
-    open: boolean;
-    // (undocumented)
-    position?: string;
-}
 
 // @public
 class ProgressBar_2 extends FASTProgress {
@@ -2252,46 +2187,6 @@ export const TextFont: {
 
 // @public
 export type TextFont = ValuesOf<typeof TextFont>;
-
-// @public
-export class TextInput extends FASTTextField {
-    appearance?: TextInputAppearance;
-    controlSize?: TextInputControlSize;
-}
-
-// @public
-export const TextInputAppearance: {
-    readonly outline: "outline";
-    readonly underline: "underline";
-    readonly filledLighter: "filled-lighter";
-    readonly filledDarker: "filled-darker";
-};
-
-// @public
-export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
-
-// @public
-export const TextInputControlSize: {
-    readonly small: "small";
-    readonly medium: "medium";
-    readonly large: "large";
-};
-
-// @public
-export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
-
-// @public
-export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
-
-// @public
-export const TextInputStyles: ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "TextInputTemplate" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const TextInputTemplate: ElementViewTemplate<TextInput>;
-
-export { TextInputType }
 
 // @public
 export const TextSize: {
