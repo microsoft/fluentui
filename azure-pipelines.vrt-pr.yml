@@ -27,7 +27,7 @@ jobs:
 
       - template: .devops/templates/tools.yml
       - template: download-vr-cli.yml
-      
+
       - bash: |
           postPolicy="true";
           response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
@@ -81,7 +81,7 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
+      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
