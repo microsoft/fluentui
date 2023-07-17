@@ -56,8 +56,8 @@ const AnatomyAnnotation = ({
 }: AnatomyAnnotatorProps) => {
   const labelSize = 14;
 
-  const offsetY = -window.scrollY + window.pageYOffset;
-  const offsetX = -window.scrollX + window.pageXOffset;
+  const offsetY = -window.scrollY + window.scrollY;
+  const offsetX = -window.scrollX + window.scrollX;
 
   return (
     <div
@@ -469,6 +469,16 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
       }
     });
   });
+
+  if (anatomyElements.length === 0) {
+    anatomyElements.push(
+      <div style={{ fontStyle: 'italic' }}>
+        No Fluent UI elements
+        <br />
+        currently rendered.
+      </div>,
+    );
+  }
 
   return (
     <div style={{ display: 'flex', gap: tokens.spacingHorizontalXXXL }}>
