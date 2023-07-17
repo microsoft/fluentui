@@ -1,5 +1,11 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { calendarTemplate, calendarTitleTemplate } from '@microsoft/fast-foundation';
+import { ElementViewTemplate, html, repeat, ViewTemplate } from '@microsoft/fast-element';
+import {
+  CalendarOptions,
+  calendarTemplate,
+  calendarTitleTemplate,
+  FASTCalendar,
+  tagFor,
+} from '@microsoft/fast-foundation';
 import type { Calendar } from './calendar.js';
 
 const ChevronLeft16 = html.partial(`
@@ -26,37 +32,146 @@ const ChevronRight16 = html.partial(`
 `);
 
 /**
+ * A month picker title template that includes the year
+ * @returns - A month picker title template
+ * @public
+ */
+export function calendarMonthTitleTemplate<T extends FASTCalendar>(): ViewTemplate<T> {
+  return html`
+    <div class="month-picker-title" part="month-picker-title">
+      <span>${(x: T) => x.dateFormatter.getYear(x.year)}</span>
+    </div>
+  `;
+}
+
+/**
+ * Calendar weekday label template
+ * @returns - The weekday labels template
+ * @public
+ */
+export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: string): ViewTemplate {
+  const cellTag = html.partial(tagFor(options.dataGridCell));
+  return html`
+      <${cellTag}
+          class="month"
+          part="month"
+          tabindex="-1"
+          role="gridcell"
+          grid-column="${(x, c) => c.index + 1}"
+      >
+      ${x => console.log(x)}
+        <div
+        class="date"
+          ${x => x.text}
+        </div>
+        </slot></slot>
+      </${cellTag}>
+  `;
+}
+
+/**
+ *
+ * @param context - Element definition context for getting the cell tag for calendar-cell
+ * @param todayString - A string representation for todays date
+ * @returns - A template for a week of days
+ * @public
+ */
+export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: string): ViewTemplate {
+  const rowTag = html.partial(tagFor(options.dataGridRow));
+  return html`
+      <${rowTag}
+          class="month-row"
+          part="month-row"
+          role="row"
+          role-type="default"
+          grid-template-columns="1fr 1fr 1fr 1fr"
+      >
+      ${x => x.text}
+      </${rowTag}>
+  `;
+}
+
+/**
+ * Interactive template using DataGrid
+ * @param context - The templates context
+ * @param todayString - string representation of todays date
+ * @returns - interactive calendar template
+ *
+ * @internal
+ */
+export function interactiveMonthPickerGridTemplate<T extends FASTCalendar>(
+  options: CalendarOptions,
+  todayMonth: string,
+): ViewTemplate<T> {
+  const gridTag = html.partial(tagFor(options.dataGrid));
+
+  return html<T>`
+  <${gridTag} class="months interact" part="months" generate-header="none">
+      ${repeat(x => x.getMonthText(), monthPickerRowTemplate(options, todayMonth))}
+  </${gridTag}>
+  `;
+}
+
+/**
+ *
+ * @param context - Element definition context for getting the cell tag for calendar-cell
+ * @param definition - Foundation element definition
+ * @returns - a template for a calendar month
+ * @public
+ */
+export function MonthPickerTemplate<T extends FASTCalendar>(options: CalendarOptions): ElementViewTemplate<T> {
+  const today: Date = new Date();
+  const todayMonth: string = `${today.getMonth() + 1}`;
+  return html<T>`
+    <slot></slot>
+    ${interactiveMonthPickerGridTemplate(options, todayMonth)}
+  `;
+}
+
+/**
  * The template for the Calendar component.
  * @public
  */
-
 export const template: ElementViewTemplate<Calendar> = html`
-  <div class="header">
-    ${calendarTitleTemplate()}
-    <div class="navicon-container">
-      <span
-        class="navicon-left"
-        part="navicon-left"
-        @click="${(x, c) => x.switchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
-      >
-        ${ChevronLeft16}
-      </span>
-      <span
-        class="navicon-right"
-        part="navicon-right"
-        @click="${(x, c) => x.switchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
-      >
-        ${ChevronRight16}
-      </span>
+  <div class="control">
+    <div class="date-view">
+      <div class="header">
+        ${calendarTitleTemplate()}
+        <div class="navicon-container">
+          <span
+            class="navicon-left"
+            part="navicon-left"
+            @click="${(x, c) => x.switchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
+          >
+            ${ChevronLeft16}
+          </span>
+          <span
+            class="navicon-right"
+            part="navicon-right"
+            @click="${(x, c) => x.switchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
+          >
+            ${ChevronRight16}
+          </span>
+        </div>
+      </div>
+      ${calendarTemplate({
+        dataGrid: 'fast-data-grid',
+        dataGridRow: 'fast-data-grid-row',
+        dataGridCell: 'fast-data-grid-cell',
+      })}
+      <div class="footer" part="footer">
+        <div class=${x => x.getLinkClassNames()} @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
+          Go to today
+        </div>
+      </div>
     </div>
-  </div>
-  ${calendarTemplate({
-    title: '',
-    dataGrid: 'fast-data-grid',
-    dataGridRow: 'fast-data-grid-row',
-    dataGridCell: 'fast-data-grid-cell',
-  })}
-  <div class="footer" part="footer">
-    <div class="slotted-link" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">Go to today</div>
+    <div class="month-picker">
+      ${calendarMonthTitleTemplate()}
+      ${MonthPickerTemplate({
+        dataGrid: 'fast-data-grid',
+        dataGridRow: 'fast-data-grid-row',
+        dataGridCell: 'fast-data-grid-cell',
+      })}
+    </div>
   </div>
 `;

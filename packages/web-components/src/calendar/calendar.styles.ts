@@ -1,20 +1,32 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  borderRadiusMedium,
   colorBrandBackground,
   colorBrandBackground2,
+  colorBrandBackgroundInvertedHover,
+  colorBrandBackgroundInvertedPressed,
+  colorBrandBackgroundInvertedSelected,
   colorBrandStroke1,
   colorBrandStroke2,
   colorCompoundBrandBackground,
   colorNeutralBackground1,
   colorNeutralBackground4,
+  colorNeutralForeground1,
+  colorNeutralForeground1Static,
   colorNeutralForeground2,
   colorNeutralForeground3,
+  colorNeutralForeground4,
   colorNeutralForegroundDisabled,
   colorNeutralForegroundInverted,
+  colorNeutralForegroundStaticInverted,
+  colorTransparentBackground,
   fontFamilyBase,
+  fontSizeBase200,
   fontSizeBase300,
+  fontWeightBold,
   fontWeightRegular,
+  lineHeightBase200,
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalS,
@@ -25,30 +37,43 @@ import {
 
 export const styles = css`
   ${display('inline')}
-  :host {
-    display: block;
+  :host .control {
+    display: flex;
+  }
+  :host .date-view {
+    padding: ${spacingHorizontalM};
     width: 248px;
     height: 285px;
-    color: ${colorNeutralForeground3};
-    padding: ${spacingHorizontalM};
     outline: solid black;
+    color: ${colorNeutralForeground1};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
+    border-radius: ${borderRadiusMedium};
+  }
+  :host .month-picker {
+    padding: ${spacingHorizontalM};
+    width: 248px;
+    height: 209px;
+    outline: solid pink;
+    border-radius: ${borderRadiusMedium};
   }
   :host .day:not(.today, .selected):hover {
-    background: #eff6fc;
-    color: ${colorNeutralForeground2};
+    background: ${colorBrandBackgroundInvertedHover};
+    color: ${colorNeutralForeground1Static};
   }
   :host .day:not(.today):active {
-    background: ${colorBrandStroke2};
-    color: ${colorNeutralForeground2};
+    background: ${colorBrandBackgroundInvertedSelected};
+    color: ${colorNeutralForeground1Static};
   }
-  :host .title {
+  :host .title,
+  .month-picker-title {
     position: inline;
     padding: ${spacingHorizontalM};
-    text-align: left;
+    font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
+    color: ${colorNeutralForeground1};
   }
   :host .week-days,
   .week {
+    color: ${colorNeutralForeground3};
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     border-left: var(--cell-border, none);
@@ -86,6 +111,7 @@ export const styles = css`
   }
   :host .day.inactive {
     color: ${colorNeutralForegroundDisabled};
+    background: ${colorTransparentBackground};
   }
   :host .day.disabled {
     background: var(--disabled-day-background);
@@ -95,8 +121,8 @@ export const styles = css`
     outline: var(--disabled-day-outline);
   }
   :host .day.selected {
-    color: ${colorNeutralForeground2};
-    background: ${colorBrandStroke2};
+    color: ${colorNeutralForeground1Static};
+    background: ${colorBrandBackgroundInvertedSelected};
   }
   :host .date {
     text-align: center;
@@ -106,9 +132,9 @@ export const styles = css`
   }
   :host .interact .today,
   .today {
-    color: ${colorNeutralForegroundInverted};
-    background: ${colorCompoundBrandBackground};
-    border-radius: 50%;
+    color: ${colorNeutralForegroundStaticInverted};
+    background: ${colorBrandBackground};
+    border-radius: 16px;
   }
   :host .today.inactive .date {
     background: transparent;
@@ -134,10 +160,19 @@ export const styles = css`
     justify-content: space-between;
   }
   :host .slotted-link {
+    visibility: hidden;
+  }
+  :host([show-slotted-link]) .slotted-link {
     height: 20px;
     cursor: pointer;
     margin: ${spacingVerticalM} 0;
     margin-right: 8px;
+    visibility: visible;
+  }
+  :host([show-slotted-link]) .slotted-link.inactive {
+    color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
+    visibility: visible;
   }
   :host .footer {
     display: flex;

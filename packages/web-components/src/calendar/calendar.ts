@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTCalendar, WeekdayFormat } from '@microsoft/fast-foundation';
+import { FASTCalendar, MonthFormat, WeekdayFormat } from '@microsoft/fast-foundation';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
 
 /**
@@ -95,7 +95,7 @@ export class Calendar extends FASTCalendar {
    * HTML Attribute: show-slotted-link
    */
   @attr({ attribute: 'show-slotted-link', mode: 'boolean' })
-  public showSlottedLink?: boolean = true;
+  public showSlottedLink?: boolean;
 
   /**
    * the month picker should highlight the current month
@@ -162,5 +162,41 @@ export class Calendar extends FASTCalendar {
     const today: Date = new Date();
     this.month = today.getMonth() + 1;
     this.year = today.getFullYear();
+  }
+
+  public getLinkClassNames() {
+    const today: Date = new Date();
+
+    if (this.month === today.getMonth() + 1 && this.year === today.getFullYear()) {
+      console.log('here');
+      return 'slotted-link inactive';
+    } else {
+      return 'slotted-link';
+    }
+  }
+
+  /**
+   *
+   * @param format - The formatting for the weekdays
+   * @param locale - The locale data used for formatting
+   * @returns - An array of the weekday labels
+   * @public
+   */
+  public getMonths(locale: string = this.locale): string[] {
+    const months = Array(12)
+      .fill(null)
+      .map((_, month) => this.dateFormatter.getMonth(month, MonthFormat.short, locale));
+    console.log(months);
+
+    return months;
+  }
+
+  /**
+   * Returns a list of weekday labels
+   * @returns An array of weekday text and full text if abbreviated
+   * @public
+   */
+  public getMonthText(): { text: string }[] {
+    return this.getMonths().map(text => ({ text }));
   }
 }

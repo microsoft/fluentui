@@ -7,11 +7,15 @@ import './define.js';
 type CalendarStoryArgs = Args & FluentCalendar;
 type CalendarStoryMeta = Meta<CalendarStoryArgs>;
 
-const storyTemplate = html<CalendarStoryArgs>` <fluent-calendar> </fluent-calendar> `;
+const storyTemplate = html<CalendarStoryArgs>`
+  <fluent-calendar ?show-slotted-link=${x => x.showSlottedLink}> </fluent-calendar>
+`;
 
 export default {
   title: 'Components/Calendar',
-  args: {},
+  args: {
+    showSlottedLink: true,
+  },
 } as CalendarStoryMeta;
 
 export const Calendar = renderComponent(storyTemplate).bind({});
