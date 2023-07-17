@@ -2,6 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
+  borderRadiusMedium,
   borderRadiusSmall,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
@@ -21,6 +22,8 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   colorTransparentBackgroundHover,
   fontFamilyBase,
   fontSizeBase300,
@@ -47,7 +50,20 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     color: ${colorNeutralForeground3};
+    position: relative;
   }
+
+  :host(:focus-visible)::after {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    cursor: pointer;
+    border-radius: ${borderRadiusMedium};
+    outline: none;
+    border: 2px solid ${colorStrokeFocus1};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+  }
+
   .control {
     position: relative;
     box-sizing: border-box;
@@ -67,7 +83,7 @@ export const styles = css`
   .label {
     align-self: center;
     cursor: inherit;
-    padding-inline: ${spacingHorizontalS} ${spacingHorizontalXS};
+    padding-inline: ${spacingHorizontalS};
     padding-bottom: ${spacingVerticalS};
     padding-top: ${spacingVerticalS};
   }
@@ -80,7 +96,6 @@ export const styles = css`
     align-items: center;
     justify-content: center;
     color: ${colorNeutralForegroundInverted};
-    height: 16px;
     font-size: 12px;
     margin: auto;
     opacity: 0;
@@ -156,7 +171,6 @@ export const styles = css`
   }
   :host([aria-checked='mixed'][size='large']) .indeterminate-indicator {
     width: 10px;
-    height: 10px;
   }
   :host([shape='circular']) .control,
   :host([shape='circular']) .indeterminate-indicator {

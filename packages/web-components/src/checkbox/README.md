@@ -36,23 +36,9 @@ FAST `checkboxTemplate`
 
 | Name                    | Description          | Type                                         |
 | ----------------------- | -------------------- | -------------------------------------------- |
-| `checkboxLabelPosition` | label position types | `{ before: "before", after: "after" }`       |
-| `checkboxShape`         | checkbox shape types | `{ square: "square", circular: "circular" }` |
-| `checkboxSize`          | checkbox size types  | `{ medium: "medium", large: "large" }`       |
-
-<br />
-
-### **Fields**
-
-| Name            | Privacy | Type                    | Default                       | Description                                        |
-| --------------- | ------- | ----------------------- | ----------------------------- | -------------------------------------------------- |
-| `labelPosition` | public  | `CheckboxLabelPosition` | `CheckboxLabelPosition.after` | Indicates postion of label                         |
-| `checked`       | public  | `boolean`               | `false`                       | Indicates whether input is checked                 |
-| `indeterminate` | public  | `boolean`               | `false`                       | Indicates whether input is initially indeterminate |
-| `disabled`      | public  | `boolean`               | `false`                       | Indicates whether input is disabled                |
-| `required`      | public  | `boolean`               | `false`                       | Indicates whether input is required                |
-| `size`          | public  | `CheckboxSize`          | `CheckboxSize.medium`         | Indicates the size of the checkbox                 |
-| `shape`         | public  | `CheckboxShape`         | `CheckboxShape.square`        | Indicates shape of the checkbox                    |
+| `CheckboxLabelPosition` | label position types | `{ before: "before", after: "after" }`       |
+| `CheckboxShape`         | checkbox shape types | `{ square: "square", circular: "circular" }` |
+| `CheckboxSize`          | checkbox size types  | `{ medium: "medium", large: "large" }`       |
 
 <br />
 
@@ -73,14 +59,14 @@ FAST `checkboxTemplate`
 
 ### **Attributes**
 
-| Name             | Field         |
-| ---------------- | ------------- |
-| `label-position` | labelPosition |
-| `checked`        | checked       |
-| `disabled`       | disabled      |
-| `required `      | required      |
-| `size`           | size          |
-| `shape`          | shape         |
+| Name             | Privacy | Type                    | Default                       | Description                                        |
+| ---------------- | ------- | ----------------------- | ----------------------------- | -------------------------------------------------- | --- | ------ | --------- | ------- | ----------------------------------- |
+| `label-position` | public  | `CheckboxLabelPosition` | `CheckboxLabelPosition.after` | Indicates postion of label                         |
+| `checked`        | public  | `boolean`               | `false`                       | Indicates whether input is checked                 |
+| `indeterminate`  | public  | `boolean`               | `false`                       | Indicates whether input is initially indeterminate |     | public | `boolean` | `false` | Indicates whether input is disabled |
+| `required `      | public  | `boolean`               | `false`                       | Indicates whether input is required                |
+| `size`           | public  | `CheckboxSize`          | `CheckboxSize.medium`         | Indicates the size of the checkbox                 |
+| `shape`          | public  | `CheckboxShape`         | `CheckboxShape.square`        | Indicates shape of the checkbox                    |
 
 <br />
 
@@ -119,3 +105,22 @@ FAST `checkboxTemplate`
 - `aria-disabled`
 
 <br />
+
+### **Fluent Web Component v3 v.s Fluent React 9**
+
+<br />
+
+**Component and Slot Mapping**
+
+| Fluent UI React 9 | Fluent Web Components 3         | Description                      |
+| ----------------- | ------------------------------- | -------------------------------- |
+| `<Checkbox>`      | `<fluent-checkbox>`             |
+| n/a               | slot: `checked-indicator`       | slot for checked indicator       |
+| n/a               | slot: `indeterminate-indicator` | slot for indeterminate indicator |
+
+<br />
+
+**Property Mapping**
+| Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
+| ---------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `checked: boolean | 'mixed'` | `checked: boolean` `indeterminate: boolean` | Fluent UI React v9 uses a single property to set the checked and indeterminate states, while Fluent UI Web Components v3 requires separate boolean attributes for each state.
