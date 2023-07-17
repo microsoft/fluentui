@@ -105,7 +105,7 @@ export class Calendar extends FASTCalendar {
    * HTML Attribute: highlight-current-month
    */
   @attr({ attribute: 'highlight-current-month', mode: 'boolean' })
-  public highlightCurrentMonth?: boolean = false;
+  public highlightCurrentMonth?: boolean;
 
   /**
    * the month picker should highlight the selected month
@@ -175,6 +175,16 @@ export class Calendar extends FASTCalendar {
     }
   }
 
+  public getMonthClassNames(month: number, todayMonth: number) {
+    const thisMonth = month === todayMonth;
+
+    console.log(this.hasAttribute('highlightCurrentMonth'));
+
+    return ['month-cell', this.hasAttribute('highlightCurrentMonth') && thisMonth && 'this-month']
+      .filter(Boolean)
+      .join(' ');
+  }
+
   /**
    *
    * @param format - The formatting for the weekdays
@@ -195,13 +205,13 @@ export class Calendar extends FASTCalendar {
    * @returns An array of weekday text and full text if abbreviated
    * @public
    */
-  public getMonthText(): { text: string }[][] {
+  public getMonthText(): { text: string; month: number }[][] {
     const months = this.getMonths();
-    const monthsText: { text: string }[][] = [];
+    const monthsText: { text: string; month: number }[][] = [];
     let monthCount = 0;
 
     while (monthCount < months.length || monthsText[monthsText.length - 1].length % 4 !== 0) {
-      const month = { text: months[monthCount] };
+      const month = { text: months[monthCount], month: monthCount + 1 };
       const target = monthsText[monthsText.length - 1];
       if (monthsText.length === 0 || target.length % 4 === 0) {
         monthsText.push([month]);
@@ -213,5 +223,15 @@ export class Calendar extends FASTCalendar {
 
     console.log(monthsText);
     return monthsText;
+  }
+
+  /**
+   * Emits the "month-select" event with the seleced month.
+   * @param month - Month cell
+   * @public
+   */
+  public handleMonthSelect(event: Event, month: number): void {
+    event.preventDefault;
+    this.$emit('monthselected', month);
   }
 }

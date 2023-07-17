@@ -49,17 +49,17 @@ export function calendarMonthTitleTemplate<T extends FASTCalendar>(): ViewTempla
  * @returns - The weekday labels template
  * @public
  */
-export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: string): ViewTemplate {
+export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: number): ViewTemplate {
   const cellTag = html.partial(tagFor(options.dataGridCell));
   return html`
       <${cellTag}
-          class="month-cell"
+          class="${(x, c) => c.parentContext.parent.getMonthClassNames(x.month, todayMonth)}"
           part="month-cell"
           tabindex="-1"
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
+          @click="${(x, c) => c.parentContext.parent.handleMonthSelect(c.event, x.month)}"
       >
-      ${x => console.log(x)}
         <div
         class="month">
           ${x => x.text}
@@ -76,7 +76,7 @@ export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: st
  * @returns - A template for a week of days
  * @public
  */
-export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: string): ViewTemplate {
+export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: number): ViewTemplate {
   const rowTag = html.partial(tagFor(options.dataGridRow));
   return html`
       <${rowTag}
@@ -87,7 +87,9 @@ export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: str
           grid-template-columns="1fr 1fr 1fr 1fr"
       >
       ${x => console.log(x)}
-      ${repeat(x => x, monthPickerCellTemplate(options, todayMonth))}
+      ${repeat(x => x, monthPickerCellTemplate(options, todayMonth), {
+        positioning: true,
+      })}
       </${rowTag}>
   `;
 }
@@ -102,7 +104,7 @@ export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: str
  */
 export function interactiveMonthPickerGridTemplate<T extends FASTCalendar>(
   options: CalendarOptions,
-  todayMonth: string,
+  todayMonth: number,
 ): ViewTemplate<T> {
   const gridTag = html.partial(tagFor(options.dataGrid));
 
@@ -122,7 +124,7 @@ export function interactiveMonthPickerGridTemplate<T extends FASTCalendar>(
  */
 export function MonthPickerTemplate<T extends FASTCalendar>(options: CalendarOptions): ElementViewTemplate<T> {
   const today: Date = new Date();
-  const todayMonth: string = `${today.getMonth() + 1}`;
+  const todayMonth: number = today.getMonth() + 1;
   return html<T>`
     <slot></slot>
     ${interactiveMonthPickerGridTemplate(options, todayMonth)}

@@ -15,6 +15,7 @@ import {
   colorNeutralForeground1,
   colorNeutralForeground1Static,
   colorNeutralForeground2,
+  colorNeutralForeground2Selected,
   colorNeutralForeground3,
   colorNeutralForeground4,
   colorNeutralForegroundDisabled,
@@ -57,8 +58,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
-  :host .month:hover,
-  .day:not(.today, .selected):hover {
+  :host .month-cell:not(.this-month):hover {
     background: ${colorBrandBackgroundInvertedHover};
     color: ${colorNeutralForeground1Static};
   }
@@ -78,6 +78,7 @@ export const styles = css`
     grid-template-columns: repeat(4, 1fr);
     border-bottom: none;
     justify-items: center;
+    padding: 2px 0px;
   }
   :host .month-cell,
   .month {
@@ -88,6 +89,7 @@ export const styles = css`
     white-space: normal;
     height: 44px;
     width: 44px;
+    border-radius: ${borderRadiusMedium};
   }
   :host .week-days,
   .week {
@@ -196,5 +198,9 @@ export const styles = css`
   :host .footer {
     display: flex;
     justify-content: flex-end;
+  }
+  :host .this-month {
+    color: ${colorNeutralForeground2Selected};
+    background: ${colorBrandBackgroundInvertedSelected};
   }
 `;
