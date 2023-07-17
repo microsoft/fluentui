@@ -3,8 +3,8 @@ import type { TreeCheckedChangeData, TreeProps } from '../Tree';
 import { TreeItemValue } from '../TreeItem';
 import { ImmutableMap } from '../utils/ImmutableMap';
 import * as React from 'react';
-import type { FlatTreeItem, FlatTreeItemProps } from './useFlatTree';
-import { flatTreeRootId, type FlatTreeItems } from '../utils/createFlatTreeItems';
+import type { FlatTreeItemProps } from './useFlatTree';
+import type { FlatTreeItems } from '../utils/createFlatTreeItems';
 
 function initializeMap(iterable?: Iterable<TreeItemValue | [TreeItemValue, 'mixed' | boolean]>) {
   const map = new Map<TreeItemValue, 'mixed' | boolean>();
@@ -53,12 +53,9 @@ export function createNextFlatCheckedItems<Props extends FlatTreeItemProps = Fla
   }
   nextCheckedItems.set(data.value, data.checked);
 
-  let parent: FlatTreeItem<Props> | undefined = treeItem;
   let isAncestorsMixed = false;
-  while ((parent = flatTreeItems.get(parent?.parentValue!))) {
-    if (parent.value === flatTreeRootId) {
-      break;
-    }
+  let parent = flatTreeItems.getParent(treeItem.value);
+  while (parent !== flatTreeItems.root) {
     if (isAncestorsMixed) {
       nextCheckedItems.set(parent.value, 'mixed');
       continue;
@@ -74,6 +71,7 @@ export function createNextFlatCheckedItems<Props extends FlatTreeItemProps = Fla
       isAncestorsMixed = true;
       nextCheckedItems.set(parent.value, 'mixed');
     }
+    parent = flatTreeItems.getParent(parent.value);
   }
 
   return ImmutableMap.dangerouslyCreate_unstable(nextCheckedItems);

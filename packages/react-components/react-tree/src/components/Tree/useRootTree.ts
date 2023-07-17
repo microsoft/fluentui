@@ -122,7 +122,7 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     root: getNativeElementProps('div', {
       ref: useMergedRefs(navigationRef, ref),
       role: 'tree',
-      'aria-multiselectable': selectionMode === 'multiselect',
+      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
       ...props,
     }),
   };
