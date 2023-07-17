@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 10 Jul 2023 07:35:07 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2023 07:39:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.9)
+
+Mon, 17 Jul 2023 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.8..@fluentui/react_v8.110.9)
+
+### Patches
+
+- fix: checkable splitbutton and split menuitem have two separate touch targets ([PR #28523](https://github.com/microsoft/fluentui/pull/28523) by sarah.higley@microsoft.com)
+- fix: use tab role for Pivot overflow button ([PR #28409](https://github.com/microsoft/fluentui/pull/28409) by sarah.higley@microsoft.com)
 
 ## [8.110.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.8)
 
