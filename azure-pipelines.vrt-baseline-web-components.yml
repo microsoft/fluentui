@@ -24,7 +24,7 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
+      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
