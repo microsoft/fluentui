@@ -81,8 +81,8 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
-        displayName: 'Run Screenshotdiff update baseline'
+      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
+        displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)

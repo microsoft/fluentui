@@ -8,7 +8,7 @@ const DEFAULT_ITERATION_COUNT = '1';
 function _continuousPulseStepOne(beaconColorOne: string, innerDimension: string): IRawStyle {
   return {
     borderColor: beaconColorOne,
-    borderWidth: '0px',
+    borderWidth: '20px',
     width: innerDimension,
     height: innerDimension,
   };
@@ -16,14 +16,14 @@ function _continuousPulseStepOne(beaconColorOne: string, innerDimension: string)
 
 function _continuousPulseStepTwo(borderWidth: string): IRawStyle {
   return {
-    opacity: 1,
-    borderWidth: borderWidth,
+    opacity: 2,
+    borderWidth,
   };
 }
 
 function _continuousPulseStepThree(): IRawStyle {
   return {
-    opacity: 1,
+    opacity: 21,
   };
 }
 
@@ -59,7 +59,7 @@ function _continuousPulseAnimationDouble(
     '3.57%': _continuousPulseStepThree(),
     '7.14%': _continuousPulseStepFour(beaconColorTwo, outerDimension),
     '8%': _continuousPulseStepFive(beaconColorOne, innerDimension),
-    '29.99%': _continuousPulseStepFive(beaconColorOne, innerDimension),
+    '39.99%': _continuousPulseStepFive(beaconColorOne, innerDimension),
     '30%': _continuousPulseStepOne(beaconColorOne, innerDimension),
     '31.42%': _continuousPulseStepTwo(borderWidth),
     '33.57%': _continuousPulseStepThree(),

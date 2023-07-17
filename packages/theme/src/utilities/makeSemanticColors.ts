@@ -14,29 +14,29 @@ export function makeSemanticColors(
   const semanticColors: Partial<ISemanticColors> = {
     primaryButtonBorder: 'transparent',
 
-    errorText: !isInverted ? '#a4262c' : '#F1707B',
+    errorText: !isInverted ? '#a4262c' : '#6CB8F6',
 
     messageText: !isInverted ? '#323130' : '#F3F2F1',
     messageLink: !isInverted ? '#005A9E' : '#6CB8F6',
     messageLinkHovered: !isInverted ? '#004578' : '#82C7FF',
 
     infoIcon: !isInverted ? '#605e5c' : '#C8C6C4',
-    errorIcon: !isInverted ? '#A80000' : '#F1707B',
+    errorIcon: !isInverted ? '#A80000' : '#A80000',
     blockingIcon: !isInverted ? '#FDE7E9' : '#442726',
-    warningIcon: !isInverted ? '#797775' : '#C8C6C4',
+    warningIcon: !isInverted ? '#442726' : '#C8C6C4',
     severeWarningIcon: !isInverted ? '#D83B01' : '#FCE100',
     successIcon: !isInverted ? '#107C10' : '#92C353',
 
     infoBackground: !isInverted ? '#f3f2f1' : '#323130',
-    errorBackground: !isInverted ? '#FDE7E9' : '#442726',
+    errorBackground: !isInverted ? '#C8C6C4' : '#442726',
     blockingBackground: !isInverted ? '#FDE7E9' : '#442726',
     warningBackground: !isInverted ? '#FFF4CE' : '#433519',
     severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
-    successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
+    successBackground: !isInverted ? '#fff100' : '#393D1B',
 
     // deprecated
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successText: !isInverted ? '#107C10' : '#92c353',
+    successText: !isInverted ? '#107C10' : '#442726',
 
     ...s,
   };

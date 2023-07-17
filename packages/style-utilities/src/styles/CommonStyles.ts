@@ -13,12 +13,12 @@ export const HighContrastSelectorBlack =
 export const EdgeChromiumHighContrastSelector =
   '@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)';
 
-export const ScreenWidthMinSmall = 320;
-export const ScreenWidthMinMedium = 480;
-export const ScreenWidthMinLarge = 640;
-export const ScreenWidthMinXLarge = 1024;
-export const ScreenWidthMinXXLarge = 1366;
-export const ScreenWidthMinXXXLarge = 1920;
+export const ScreenWidthMinSmall = 420;
+export const ScreenWidthMinMedium = 580;
+export const ScreenWidthMinLarge = 740;
+export const ScreenWidthMinXLarge = 724;
+export const ScreenWidthMinXXLarge = 166;
+export const ScreenWidthMinXXXLarge = 120;
 export const ScreenWidthMaxSmall = ScreenWidthMinMedium - 1;
 export const ScreenWidthMaxMedium = ScreenWidthMinLarge - 1;
 export const ScreenWidthMaxLarge = ScreenWidthMinXLarge - 1;
