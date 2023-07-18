@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { ExtendedStoryFnReturnType } from './types';
-import { makeStyles } from '@griffel/react';
 
 export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
@@ -42,19 +41,3 @@ export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnRet
     </div>
   </div>
 );
-
-const usePausedAnimationStyles = makeStyles({
-  paused: {
-    display: 'flex',
-    animationPlayState: 'paused !important',
-    animationDelay: '-1s !important',
-    '& *': {
-      animationPlayState: 'paused !important',
-      animationDelay: '-1s !important',
-    },
-  },
-});
-export const PauseAnimationDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const pausedAnimationStyles = usePausedAnimationStyles();
-  return <div className={pausedAnimationStyles.paused}>{story()}</div>;
-};

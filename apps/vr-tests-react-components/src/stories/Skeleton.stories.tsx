@@ -68,7 +68,6 @@ storiesOf('Skeleton converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   )
   .addStory(
@@ -81,7 +80,6 @@ storiesOf('Skeleton converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   )
   .addStory(
@@ -94,6 +92,5 @@ storiesOf('Skeleton converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   );
