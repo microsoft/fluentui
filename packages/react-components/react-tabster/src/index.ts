@@ -10,6 +10,7 @@ export {
   useObservedElement,
   useFocusObserved,
   useMergedTabsterAttributes_unstable,
+  useRestorer,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,
