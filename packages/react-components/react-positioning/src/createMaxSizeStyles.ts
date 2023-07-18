@@ -7,7 +7,7 @@ export function createMaxSizeStyles(): GriffelStyle {
     width: 'var(--available-width)',
     maxHeight: 'var(--available-max-height)',
     maxWidth: 'var(--available-max-width)',
-    overflowX: 'var(--overflow-x)' as GriffelStyle['overflowX'],
-    overflowY: 'var(--overflow-y)' as GriffelStyle['overflowY'],
+    overflowX: 'var(--maxsize-overflow-x)' as GriffelStyle['overflowX'],
+    overflowY: 'var(--maxsize-overflow-y)' as GriffelStyle['overflowY'],
   };
 }

@@ -19,20 +19,20 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
 
       if (applyMaxWidth) {
         elements.floating.style.setProperty('--available-max-width', `${availableWidth}px`);
-        elements.floating.style.setProperty('--overflow-x', 'auto');
+        elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
       }
       if (applyWidth) {
         elements.floating.style.setProperty('--available-width', `${availableWidth}px`);
-        elements.floating.style.setProperty('--overflow-x', 'auto');
+        elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
       }
 
       if (applyMaxHeight) {
         elements.floating.style.setProperty('--available-max-height', `${availableHeight}px`);
-        elements.floating.style.setProperty('--overflow-y', 'auto');
+        elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
       }
       if (applyHeight) {
         elements.floating.style.setProperty('--available-height', `${availableHeight}px`);
-        elements.floating.style.setProperty('--overflow-y', 'auto');
+        elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
       }
     },
   });
