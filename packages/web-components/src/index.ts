@@ -4,6 +4,7 @@ export * from './anchor-button/index.js';
 export * from './avatar/index.js';
 export * from './badge/index.js';
 export * from './button/index.js';
+export * from './checkbox/index.js';
 export * from './compound-button/index.js';
 export * from './counter-badge/index.js';
 export * from './divider/index.js';
