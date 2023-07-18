@@ -14,7 +14,6 @@ import {
   spacingHorizontalXL,
   spacingHorizontalXS,
   spacingHorizontalXXL,
-  spacingVerticalM,
   spacingVerticalS,
   spacingVerticalXS,
   spacingVerticalXXL,
@@ -28,6 +27,7 @@ import { display } from '@microsoft/fast-foundation';
  */
 export const styles = css`
   ${display('flex')}
+
   :host([hidden]) {
     display: none;
   }
@@ -77,7 +77,6 @@ export const styles = css`
   .root {
     box-sizing: border-box;
     display: grid;
-    /* flex-direction: column; */
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr 1fr auto;
     overflow: unset;
@@ -126,11 +125,8 @@ export const styles = css`
     display: flex;
     flex-direction: row;
     padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingHorizontalXXL} ${spacingHorizontalXXL};
-    /* justify-content: flex-end; */
-    /* align-items: center; */
     height: fit-content;
     column-gap: ${spacingHorizontalS};
-
     box-sizing: border-box;
     grid-column-start: 2;
     grid-row-start: 3;
