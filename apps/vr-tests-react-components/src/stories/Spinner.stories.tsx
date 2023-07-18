@@ -35,10 +35,10 @@ storiesOf('Spinner converged', module)
     'Primary with Label',
     () => (
       <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-        <Spinner labelPosition="before" label="Loading" />
-        <Spinner labelPosition="after" label="Loading" />
-        <Spinner labelPosition="above" label="Loading" />
-        <Spinner labelPosition="below" label="Loading" />
+        <Spinner labelPosition="before" label="Before" />
+        <Spinner labelPosition="after" label="After" />
+        <Spinner labelPosition="above" label="Above" />
+        <Spinner labelPosition="below" label="Below" />
       </div>
     ),
     {
@@ -51,14 +51,14 @@ storiesOf('Spinner converged', module)
     'Primary + size',
     () => (
       <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-        <Spinner size="extra-tiny" />
-        <Spinner size="tiny" />
-        <Spinner size="extra-small" />
-        <Spinner size="small" />
-        <Spinner size="medium" />
-        <Spinner size="large" />
-        <Spinner size="extra-large" />
-        <Spinner size="huge" />
+        <Spinner size="extra-tiny" label="Extra Tiny" />
+        <Spinner size="tiny" label="Tiny" />
+        <Spinner size="extra-small" label="Extra Small" />
+        <Spinner size="small" label="Small" />
+        <Spinner size="medium" label="Medium" />
+        <Spinner size="large" label="Large" />
+        <Spinner size="extra-large" label="Extra Large" />
+        <Spinner size="huge" label="Huge" />
       </div>
     ),
     {
@@ -85,10 +85,10 @@ storiesOf('Spinner converged', module)
     () => (
       <InvertedWrapper>
         <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-          <Spinner appearance="inverted" labelPosition="before" label="Loading" />
-          <Spinner appearance="inverted" labelPosition="after" label="Loading" />
-          <Spinner appearance="inverted" labelPosition="above" label="Loading" />
-          <Spinner appearance="inverted" labelPosition="below" label="Loading" />
+          <Spinner appearance="inverted" labelPosition="before" label="Before" />
+          <Spinner appearance="inverted" labelPosition="after" label="After" />
+          <Spinner appearance="inverted" labelPosition="above" label="Above" />
+          <Spinner appearance="inverted" labelPosition="below" label="Below" />
         </div>
       </InvertedWrapper>
     ),
@@ -103,14 +103,14 @@ storiesOf('Spinner converged', module)
     () => (
       <InvertedWrapper>
         <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-          <Spinner appearance="inverted" size="extra-tiny" />
-          <Spinner appearance="inverted" size="tiny" />
-          <Spinner appearance="inverted" size="extra-small" />
-          <Spinner appearance="inverted" size="small" />
-          <Spinner appearance="inverted" size="medium" />
-          <Spinner appearance="inverted" size="large" />
-          <Spinner appearance="inverted" size="extra-large" />
-          <Spinner appearance="inverted" size="huge" />
+          <Spinner appearance="inverted" size="extra-tiny" label="Extra Tiny" />
+          <Spinner appearance="inverted" size="tiny" label="Tiny" />
+          <Spinner appearance="inverted" size="extra-small" label="Extra Small" />
+          <Spinner appearance="inverted" size="small" label="Small" />
+          <Spinner appearance="inverted" size="medium" label="Medium" />
+          <Spinner appearance="inverted" size="large" label="Large" />
+          <Spinner appearance="inverted" size="extra-large" label="Extra Large" />
+          <Spinner appearance="inverted" size="huge" label="Huge" />
         </div>
       </InvertedWrapper>
     ),
