@@ -1,11 +1,11 @@
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
+import type { TreeItemCSSProperties, TreeItemInternalSlot, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { treeItemLevelToken } from '../../utils/tokens';
 
-export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
+export const treeItemClassNames: SlotClassNames<TreeItemInternalSlot> = {
   root: 'fui-TreeItem',
 };
 

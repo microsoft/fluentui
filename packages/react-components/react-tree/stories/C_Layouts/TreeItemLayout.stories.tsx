@@ -11,14 +11,17 @@ import story from './TreeItemLayout.md';
 
 export const Layout = () => (
   <Tree aria-label="Tree">
-    <TreeItem itemType="branch" aria-description="Private, 1 message">
+    <TreeItem
+      aside={
+        <>
+          <Important16Regular primaryFill="red" />
+          <CounterBadge count={1} color="danger" size="small" />
+        </>
+      }
+      itemType="branch"
+      aria-description="Private, 1 message"
+    >
       <TreeItemLayout
-        aside={
-          <>
-            <Important16Regular primaryFill="red" />
-            <CounterBadge count={1} color="danger" size="small" />
-          </>
-        }
         iconBefore={<Image20Regular />}
         iconAfter={
           <>
@@ -52,9 +55,8 @@ export const Layout = () => (
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem itemType="branch" aria-description="Private">
+    <TreeItem aside={<Important16Regular primaryFill="red" />} itemType="branch" aria-description="Private">
       <TreeItemLayout
-        aside={<Important16Regular primaryFill="red" />}
         iconBefore={<Image20Regular />}
         iconAfter={
           <>

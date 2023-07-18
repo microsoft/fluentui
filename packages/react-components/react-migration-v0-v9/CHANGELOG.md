@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Mon, 03 Jul 2023 20:43:09 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2023 21:27:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.11)
+
+Mon, 17 Jul 2023 21:27:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.0.10..@fluentui/react-migration-v0-v9_v9.0.11)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.26.1 ([PR #28512](https://github.com/microsoft/fluentui/pull/28512) by beachball)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.10)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.0.9..@fluentui/react-migration-v0-v9_v9.0.10)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-components to v9.26.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
 
 ## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.9)
 

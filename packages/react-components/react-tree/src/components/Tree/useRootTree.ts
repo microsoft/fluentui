@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
-import { useNestedTreeNavigation, useOpenItemsState } from '../../hooks';
+import type { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
+import { createNextOpenItems, useControllableOpenItems, useNestedTreeNavigation } from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
-import { TreeItemRequest } from '../../contexts/index';
+import { TreeItemRequest } from '../../contexts';
 
 /**
  * Create the state required to render the root level Tree.
@@ -17,15 +17,17 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
 
   const { appearance = 'subtle', size = 'medium' } = props;
 
-  const [openItems, updateOpenItems] = useOpenItemsState(props);
+  const [openItems, setOpenItems] = useControllableOpenItems(props);
+
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
-  const requestOpenChange = (data: TreeOpenChangeData) => {
-    props.onOpenChange?.(data.event, data);
+  const requestOpenChange = (data: Omit<TreeOpenChangeData, 'openItems'>) => {
+    const nextOpenItems = createNextOpenItems(data, openItems);
+    props.onOpenChange?.(data.event, { ...data, openItems: nextOpenItems } as TreeOpenChangeData);
     if (data.event.isDefaultPrevented()) {
       return;
     }
-    return updateOpenItems(data);
+    return setOpenItems(nextOpenItems);
   };
 
   const requestNavigation = (data: TreeNavigationData_unstable) => {
@@ -39,82 +41,42 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     }
   };
 
-  const handleTreeItemClick = ({
-    event,
-    value,
-    itemType,
-    type,
-  }: Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>) => {
-    ReactDOM.unstable_batchedUpdates(() => {
-      requestOpenChange({
-        event,
-        value,
-        open: itemType === 'branch' && !openItems.has(value),
-        type,
-        target: event.currentTarget,
-      });
-      requestNavigation({ event, value, target: event.currentTarget, type: treeDataTypes.Click });
-    });
-  };
-
-  const handleTreeItemKeyDown = ({
-    event,
-    type,
-    value,
-    itemType,
-  }: Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>) => {
-    const open = openItems.has(value);
-    switch (type) {
-      case treeDataTypes.ArrowRight:
-        if (itemType === 'leaf') {
+  const requestTreeResponse = useEventCallback((request: TreeItemRequest) => {
+    switch (request.type) {
+      case treeDataTypes.Click:
+      case treeDataTypes.ExpandIconClick: {
+        return ReactDOM.unstable_batchedUpdates(() => {
+          requestOpenChange({ ...request, open: request.itemType === 'branch' && !openItems.has(request.value) });
+          requestNavigation({ ...request, type: treeDataTypes.Click });
+        });
+      }
+      case treeDataTypes.ArrowRight: {
+        if (request.itemType === 'leaf') {
           return;
         }
+        const open = openItems.has(request.value);
         if (!open) {
-          return requestOpenChange({
-            event,
-            value,
-            open: true,
-            type: treeDataTypes.ArrowRight,
-            target: event.currentTarget,
-          });
+          return requestOpenChange({ ...request, open: true });
         }
-        return requestNavigation({ event, value, type, target: event.currentTarget });
-      case treeDataTypes.Enter:
-        return requestOpenChange({
-          event,
-          value,
-          open: itemType === 'branch' && !open,
-          type: treeDataTypes.Enter,
-          target: event.currentTarget,
-        });
-      case treeDataTypes.ArrowLeft:
-        if (open && itemType === 'branch') {
-          return requestOpenChange({
-            event,
-            value,
-            open: false,
-            type: treeDataTypes.ArrowLeft,
-            target: event.currentTarget,
-          });
+        return requestNavigation(request);
+      }
+      case treeDataTypes.Enter: {
+        const open = openItems.has(request.value);
+        return requestOpenChange({ ...request, open: request.itemType === 'branch' && !open });
+      }
+      case treeDataTypes.ArrowLeft: {
+        const open = openItems.has(request.value);
+        if (open && request.itemType === 'branch') {
+          return requestOpenChange({ ...request, open: false, type: treeDataTypes.ArrowLeft });
         }
-        return requestNavigation({ event, value, target: event.currentTarget, type: treeDataTypes.ArrowLeft });
+        return requestNavigation({ ...request, type: treeDataTypes.ArrowLeft });
+      }
       case treeDataTypes.End:
       case treeDataTypes.Home:
       case treeDataTypes.ArrowUp:
       case treeDataTypes.ArrowDown:
       case treeDataTypes.TypeAhead:
-        return requestNavigation({ event, value, type, target: event.currentTarget });
-    }
-  };
-
-  const requestTreeResponse = useEventCallback((request: TreeItemRequest) => {
-    switch (request.event.type) {
-      case 'click':
-        // casting is required here as we're narrowing down the event to only click events
-        return handleTreeItemClick(request as Extract<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>);
-      case 'keydown':
-        // casting is required here as we're narrowing down the event to only keyboard events
-        return handleTreeItemKeyDown(request as Exclude<TreeItemRequest, { type: 'Click' | 'ExpandIconClick' }>);
+        return requestNavigation({ ...request, target: request.event.currentTarget });
     }
   });
 

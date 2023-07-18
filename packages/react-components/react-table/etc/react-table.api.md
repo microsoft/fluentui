@@ -69,8 +69,11 @@ export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
 export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
 
 // @public
+export type DataGridCellFocusMode = 'group' | 'none' | 'cell';
+
+// @public
 export type DataGridCellProps = TableCellProps & {
-    focusMode?: 'group';
+    focusMode?: DataGridCellFocusMode;
 };
 
 // @public (undocumented)
