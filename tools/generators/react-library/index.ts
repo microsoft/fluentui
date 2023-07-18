@@ -36,7 +36,11 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
   await formatFiles(tree);
 
   return () => {
-    installPackagesTask(tree);
+    installPackagesTask(
+      tree,
+      // we need to always run it to properly link yarn workspaces with newly created package
+      true,
+    );
   };
 }
 
