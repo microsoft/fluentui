@@ -1,4 +1,5 @@
 import {
+  borderRadiusXLarge,
   colorNeutralBackground1,
   colorTransparentStroke,
   fontFamilyBase,
@@ -9,10 +10,14 @@ import {
   lineHeightBase300,
   lineHeightBase400,
   shadow64,
-  spacingHorizontalL,
+  spacingHorizontalS,
+  spacingHorizontalXL,
+  spacingHorizontalXS,
   spacingHorizontalXXL,
-  spacingVerticalL,
+  spacingVerticalM,
+  spacingVerticalS,
   spacingVerticalXS,
+  spacingVerticalXXL,
   strokeWidthThin,
 } from '@fluentui/web-components';
 import { css } from '@microsoft/fast-element';
@@ -48,7 +53,6 @@ export const styles = css`
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: auto;
   }
 
   .control {
@@ -58,40 +62,82 @@ export const styles = css`
     margin: auto auto;
     width: 100%;
     max-width: 600px;
-    max-height: 100vh;
+    border-radius: ${borderRadiusXLarge};
     box-shadow: ${shadow64};
+    max-height: 100vh;
+    height: fit-content;
+    overflow: unset;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .root {
+    box-sizing: border-box;
+    display: grid;
+    /* flex-direction: column; */
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr auto;
+    overflow: unset;
+    max-height: calc(100vh - 48px);
   }
 
   .header {
-    display: flex;
-    justify-content: space-between;
+    grid-column-start: 1;
+    grid-row-end: 1;
+    grid-row-start: 1;
     padding-bottom: ${spacingVerticalXS};
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
     font-weight: ${fontWeightSemibold};
     font-family: ${fontFamilyBase};
-    padding: ${spacingHorizontalXXL};
+    padding: ${spacingVerticalXXL} ${spacingHorizontalXS} ${spacingVerticalXS} ${spacingHorizontalXXL};
+    height: fit-content;
+  }
+
+  .close {
+    align-self: start;
+    justify-self: end;
+    grid-column-start: 3;
+    grid-row-end: 1;
+    grid-row-start: 1;
+    padding: ${spacingVerticalXXL} ${spacingHorizontalXL} ${spacingVerticalS} ${spacingHorizontalXXL};
   }
 
   .content {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
+    grid-row-end: 2;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
     padding: 0 ${spacingHorizontalXXL};
     vertical-align: top;
-    height: fit-content;
     min-height: 32px;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
     font-family: ${fontFamilyBase};
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   .actions {
     display: flex;
     flex-direction: row;
-    padding: ${spacingVerticalXS} ${spacingHorizontalXXL} ${spacingHorizontalXXL} ${spacingHorizontalXXL};
-    align-items: flex-end;
+    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingHorizontalXXL} ${spacingHorizontalXXL};
+    /* justify-content: flex-end; */
+    /* align-items: center; */
+    height: fit-content;
+    column-gap: ${spacingHorizontalS};
+
+    box-sizing: border-box;
+    grid-column-start: 2;
+    grid-row-start: 3;
+    justify-self: end;
+    grid-column-end: 4;
+    row-gap: 8px;
+    column-gap: 8px;
   }
 
   @media screen and (max-width: 480px) {
@@ -100,7 +146,16 @@ export const styles = css`
       width: 100vh;
     }
     .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      grid-template-rows: auto 1fr auto;
       flex-direction: column;
+      max-width: 100vw;
+      justify-self: stretch;
+      padding-top: ${spacingVerticalXXL};
+    }
+    .actions fluent-button::part(control) {
+      width: 100%;
     }
   }
 `;

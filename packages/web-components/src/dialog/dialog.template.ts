@@ -37,22 +37,24 @@ export const template: ElementViewTemplate<Dialog> = html` <div class="positioni
     aria-label="${x => x.ariaLabel}"
     ${ref('dialog')}
   >
-    <div class="header" part="header">
-      <slot name="header"></slot>
+    <div class="root" part="root">
+      <div class="header" part="header">
+        <slot name="title"></slot>
+      </div>
       ${when(
         x => !x.modal && !x.alert,
         html`
-          <fluent-button appearance="transparent" icon-only @click=${x => x.dismiss()}>
-            <slot name="close">${dismissed16Regular}</slot>
+          <fluent-button class="close" part="close" appearance="transparent" icon-only @click=${x => x.dismiss()}>
+            <slot name="close-icon">${dismissed16Regular}</slot>
           </fluent-button>
         `,
       )}
-    </div>
-    <div class="content" part="content">
-      <slot></slot>
-    </div>
-    <div class="actions" part="actions">
-      <slot name="actions"></slot>
+      <div class="content" part="content">
+        <slot></slot>
+      </div>
+      <div class="actions" part="actions">
+        <slot name="actions"></slot>
+      </div>
     </div>
   </div>
 </div>`;
