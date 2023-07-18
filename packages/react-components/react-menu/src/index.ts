@@ -117,4 +117,4 @@ export {
 } from './MenuItemLink';
 export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink';
 
-export { useOnMenuMouseEnter } from './utils';
+export { MENU_ENTER_EVENT, dispatchMenuEnterEvent, useOnMenuMouseEnter } from './utils';
