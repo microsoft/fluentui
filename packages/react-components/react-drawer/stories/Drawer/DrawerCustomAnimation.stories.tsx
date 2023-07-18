@@ -42,14 +42,18 @@ export const CustomAnimation = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const { ref, entering, exiting } = useMotionPresence(isOpen);
+  const { ref, state } = useMotionPresence(isOpen);
 
   return (
     <div>
       <DrawerOverlay
         ref={ref}
         open={isOpen}
-        className={mergeClasses(styles.drawer, entering && styles.drawerEntering, exiting && styles.drawerExiting)}
+        className={mergeClasses(
+          styles.drawer,
+          state === 'entering' && styles.drawerEntering,
+          state === 'exiting' && styles.drawerExiting,
+        )}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
         <DrawerHeader>

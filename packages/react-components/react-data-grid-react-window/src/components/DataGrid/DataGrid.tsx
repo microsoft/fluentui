@@ -8,6 +8,9 @@ import {
 import type { DataGridProps } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated - please use [\@fluentui-contrib/react-data-grid-react-window](https://www.npmjs.com/package/\@fluentui-contrib/react-data-grid-react-window) instead
+ */
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
   const state = useDataGrid_unstable(props, ref);
 
@@ -15,4 +18,5 @@ export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((pr
   return renderDataGrid_unstable(state, useDataGridContextValues_unstable(state));
 });
 
+// eslint-disable-next-line deprecation/deprecation
 DataGrid.displayName = 'DataGrid';

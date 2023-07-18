@@ -1,3 +1,5 @@
+import { UseMotionPresenceState } from '@fluentui/react-utilities';
+
 export type DrawerBaseProps = {
   /**
    * Position of the drawer.
@@ -33,24 +35,6 @@ export type DrawerBaseProps = {
   defaultOpen?: boolean;
 };
 
-export type DrawerBaseState = {
-  /**
-   * Whether the drawer should be rendered.
-   * */
-  shouldRender: boolean;
-
-  /**
-   * Whether the drawer is rendered and already visible.
-   * */
-  visible: boolean;
-
-  /**
-   * Whether the drawer is entering the screen.
-   * */
-  entering: boolean;
-
-  /**
-   * Whether the drawer is exiting the screen.
-   * */
-  exiting: boolean;
+export type DrawerBaseState = Pick<UseMotionPresenceState<HTMLDivElement>, 'shouldRender' | 'visible'> & {
+  motionState: UseMotionPresenceState<HTMLDivElement>['state'];
 };

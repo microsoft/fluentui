@@ -5,7 +5,6 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import {
   Tree,
   TreeItem,
-  TreeItemAside,
   TreeItemLayout,
   TreeProps,
   treeItemLayoutClassNames,
@@ -125,11 +124,13 @@ for (const TreeTest of [NestedTree, FlatTree]) {
       it('should not expand/collapse item on actions click', () => {
         mount(
           <TreeTest id="tree" aria-label="Tree">
-            <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItem
+              actions={<Button id="action">action!</Button>}
+              itemType="branch"
+              value="item1"
+              data-testid="item1"
+            >
               <TreeItemLayout>level 1, item 1</TreeItemLayout>
-              <TreeItemAside actions>
-                <Button id="action">action!</Button>1
-              </TreeItemAside>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -171,11 +172,8 @@ for (const TreeTest of [NestedTree, FlatTree]) {
       it('should focus on actions when pressing tab key', () => {
         mount(
           <TreeTest id="tree" aria-label="Tree">
-            <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItem actions={<Button id="action">action</Button>} itemType="branch" value="item1" data-testid="item1">
               <TreeItemLayout>level 1, item 1</TreeItemLayout>
-              <TreeItemAside actions>
-                <Button id="action">action</Button>
-              </TreeItemAside>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -193,11 +191,8 @@ for (const TreeTest of [NestedTree, FlatTree]) {
       it('should not expand/collapse item on actions Enter/Space key', () => {
         mount(
           <TreeTest id="tree" aria-label="Tree">
-            <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItem actions={<Button id="action">action</Button>} itemType="branch" value="item1" data-testid="item1">
               <TreeItemLayout>level 1, item 1</TreeItemLayout>
-              <TreeItemAside actions>
-                <Button id="action">action</Button>
-              </TreeItemAside>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>

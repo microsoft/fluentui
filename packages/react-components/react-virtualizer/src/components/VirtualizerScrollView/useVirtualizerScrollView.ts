@@ -14,6 +14,11 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
     direction: props.axis ?? 'vertical',
   });
 
+  // Store the virtualizer length as a ref for imperative ref access
+  const virtualizerLengthRef = React.useRef<number>(virtualizerLength);
+  if (virtualizerLengthRef.current !== virtualizerLength) {
+    virtualizerLengthRef.current = virtualizerLength;
+  }
   const scrollViewRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
   const imperativeVirtualizerRef = React.useRef<VirtualizerDataRef | null>(null);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
@@ -35,6 +40,8 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
             behavior,
           });
         },
+        currentIndex: imperativeVirtualizerRef.current?.currentIndex,
+        virtualizerLength: virtualizerLengthRef,
       };
     },
     [axis, scrollViewRef, itemSize, numItems, reversed],

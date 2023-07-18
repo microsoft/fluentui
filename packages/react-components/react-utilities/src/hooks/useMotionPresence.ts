@@ -19,28 +19,18 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
   shouldRender: boolean;
 
   /**
-   * Whether the element is visible in the DOM.
-   * This is true when the element is already rendered and transitioning from being hidden to visible.
+   * Whether the element is currently visible in the DOM.
    */
   visible: boolean;
 
   /**
-   * Whether the element is entering the DOM.
-   * This is true when the element is transitioning from not being rendered to being rendered.
+   * Current state of the element.
+   *
+   * - `entering` - The element is entering the DOM.
+   * - `exiting` - The element is exiting the DOM.
+   * - `stale` - The element is currently not animating. This is the final state of the element.
    */
-  entering: boolean;
-
-  /**
-   * Whether the element is exiting the DOM.
-   * This is true when the element is transitioning from being rendered to not being rendered.
-   */
-  exiting: boolean;
-
-  /**
-   * Whether the element is animating.
-   * This is true when the element is entering or exiting the DOM.
-   */
-  animating: boolean;
+  state: 'entering' | 'exiting' | 'stale';
 };
 
 /**
@@ -127,8 +117,7 @@ const getMotionInfo = (computedStyle: CSSStyleDeclaration) => {
 
   return {
     duration: Math.max(totalTransitionDuration, totalAnimationDuration),
-    hasAnimation,
-    hasTransition,
+    hasMotion: hasAnimation || hasTransition,
   };
 };
 
@@ -146,9 +135,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
   const [shouldRender, setShouldRender] = React.useState(present);
   const [visible, setVisible] = React.useState(false);
-  const [entering, setEntering] = React.useState(false);
-  const [exiting, setExiting] = React.useState(false);
-  const animating = entering || exiting;
+  const [state, setState] = React.useState<UseMotionPresenceState<TElement>['state']>('stale');
 
   const [currentElement, setCurrentElement] = React.useState<TElement | null>(null);
 
@@ -166,31 +153,24 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
   const notCurrentElement = React.useCallback((target: TElement) => target !== currentElement, [currentElement]);
 
-  const onFinishedMotion = React.useCallback(() => {
-    setEntering(false);
-    setExiting(false);
-  }, []);
-
   const onStartEntering = React.useCallback(() => {
-    setEntering(true);
-    setVisible(true);
+    setState('entering');
   }, []);
 
   const onFinishedEntering = React.useCallback(() => {
-    onFinishedMotion();
+    setState('stale');
     onEntered();
-  }, [onEntered, onFinishedMotion]);
+  }, [onEntered]);
 
   const onStartExiting = React.useCallback(() => {
-    setExiting(true);
+    setState('exiting');
   }, []);
 
   const onFinishedExiting = React.useCallback(() => {
-    onFinishedMotion();
-    setVisible(false);
+    setState('stale');
     setShouldRender(false);
     onExited();
-  }, [onExited, onFinishedMotion]);
+  }, [onExited]);
 
   const onMotionCanceled = React.useCallback(
     ({ target }) => {
@@ -198,11 +178,11 @@ export const useMotionPresence = <TElement extends HTMLElement>(
         return;
       }
 
-      onFinishedMotion();
+      setState('stale');
       setVisible(present);
       setShouldRender(present);
     },
-    [notCurrentElement, onFinishedMotion, present],
+    [notCurrentElement, present],
   );
 
   React.useEffect(() => {
@@ -226,12 +206,12 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    const { duration, hasTransition, hasAnimation } = getMotionInfo(computedStylesRef.current);
+    const { duration, hasMotion } = getMotionInfo(computedStylesRef.current);
 
     const animationFrame = requestAnimationFrame(() => {
       setVisible(present);
 
-      if (!hasTransition && !hasAnimation) {
+      if (!hasMotion) {
         setShouldRender(present);
       } else {
         if (present) {
@@ -273,9 +253,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   return {
     ref,
     shouldRender,
+    state,
     visible,
-    entering,
-    exiting,
-    animating,
   };
 };

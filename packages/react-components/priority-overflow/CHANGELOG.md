@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 20 Jun 2023 12:38:54 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jun 2023 09:53:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.1)
+
+Mon, 26 Jun 2023 09:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.0..@fluentui/priority-overflow_v9.1.1)
+
+### Patches
+
+- fix: remove overflow menu if the last overflowed item can take its place ([PR #28285](https://github.com/microsoft/fluentui/pull/28285) by vkozlova@microsoft.com)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.0)
 

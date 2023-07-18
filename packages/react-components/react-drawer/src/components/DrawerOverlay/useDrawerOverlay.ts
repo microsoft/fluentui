@@ -20,7 +20,7 @@ export const useDrawerOverlay_unstable = (
   const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
-  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useMotionPresence<HTMLDivElement>(open);
+  const { ref: drawerRef, shouldRender, visible, state: motionState } = useMotionPresence<HTMLDivElement>(open);
   const backdropPresence = useMotionPresence<HTMLDivElement>(open);
   const backdropRef = useMergedRefs(backdropPresence.ref, drawerRef);
 
@@ -54,9 +54,8 @@ export const useDrawerOverlay_unstable = (
     size,
     position,
     shouldRender,
+    motionState,
     visible,
-    entering,
-    exiting,
     backdropVisible: backdropPresence.visible,
   };
 };
