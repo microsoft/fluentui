@@ -8,7 +8,11 @@ type CalendarStoryArgs = Args & FluentCalendar;
 type CalendarStoryMeta = Meta<CalendarStoryArgs>;
 
 const storyTemplate = html<CalendarStoryArgs>`
-  <fluent-calendar ?show-slotted-link=${x => x.showSlottedLink} ?highlightCurrentMonth=${x => x.highlightCurrentMonth}>
+  <fluent-calendar
+    ?show-slotted-link=${x => x.showSlottedLink}
+    ?highlightCurrentMonth=${x => x.highlightCurrentMonth}
+    ?monthPickerVisible=${x => x.monthPickerVisible}
+  >
   </fluent-calendar>
 `;
 
@@ -17,6 +21,7 @@ export default {
   args: {
     showSlottedLink: true,
     highlightCurrentMonth: false,
+    monthPickerVisible: true,
   },
 } as CalendarStoryMeta;
 

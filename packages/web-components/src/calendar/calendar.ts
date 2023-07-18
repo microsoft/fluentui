@@ -25,7 +25,7 @@ export class Calendar extends FASTCalendar {
    * HTML Attribute: month-picker-visible
    */
   @attr({ attribute: 'month-picker-visible', mode: 'boolean' })
-  public monthPickerVisible?: boolean = true;
+  public monthPickerVisible?: boolean;
 
   /**
    * Show month picker on top of date picker when visible

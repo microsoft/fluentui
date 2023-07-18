@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, repeat, ViewTemplate } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, repeat, ViewTemplate, when } from '@microsoft/fast-element';
 import {
   CalendarOptions,
   calendarTemplate,
@@ -156,23 +156,26 @@ export const template: ElementViewTemplate<Calendar> = html`
         </div>
       </div>
     </div>
-    <div class="month-picker">
-      <div class="header">
-        ${calendarMonthTitleTemplate()}
-        <div class="navicon-container">
-          <span class="navicon-up" part="navicon-up" @click="${(x, c) => (x.monthPickerYear -= 1)}">
-            ${ArrowUp16}
-          </span>
-          <span class="navicon-down" part="navicon-down" @click="${(x, c) => (x.monthPickerYear += 1)}">
-            ${ArrowDown16}
-          </span>
+    ${when(
+      x => x.hasAttribute('monthPickerVisible'),
+      html`<div class="month-picker">
+        <div class="header">
+          ${calendarMonthTitleTemplate()}
+          <div class="navicon-container">
+            <span class="navicon-up" part="navicon-up" @click="${(x, c) => (x.monthPickerYear -= 1)}">
+              ${ArrowUp16}
+            </span>
+            <span class="navicon-down" part="navicon-down" @click="${(x, c) => (x.monthPickerYear += 1)}">
+              ${ArrowDown16}
+            </span>
+          </div>
         </div>
-      </div>
-      ${MonthPickerTemplate({
-        dataGrid: 'fast-data-grid',
-        dataGridRow: 'fast-data-grid-row',
-        dataGridCell: 'fast-data-grid-cell',
-      })}
-    </div>
+        ${MonthPickerTemplate({
+          dataGrid: 'fast-data-grid',
+          dataGridRow: 'fast-data-grid-row',
+          dataGridCell: 'fast-data-grid-cell',
+        })}
+      </div>`,
+    )}
   </div>
 `;
