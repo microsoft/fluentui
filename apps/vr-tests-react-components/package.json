@@ -58,7 +58,7 @@
     "@fluentui/react-switch": "*",
     "@fluentui/react-table": "*",
     "@fluentui/react-tabs": "*",
-    "@fluentui/react-tags": "*",
+    "@fluentui/react-tags-preview": "*",
     "@fluentui/react-text": "*",
     "@fluentui/react-textarea": "*",
     "@fluentui/react-theme": "*",
