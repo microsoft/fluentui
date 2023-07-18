@@ -138,6 +138,8 @@ export const styles = css`
     grid-column-end: 4;
     row-gap: 8px;
     column-gap: 8px;
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-rows: auto 1fr auto;
   }
 
   @media screen and (max-width: 480px) {
@@ -145,16 +147,17 @@ export const styles = css`
       max-width: 100%;
       width: 100vh;
     }
-    .actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
+    .root {
+      max-width: 100vw;
       grid-template-rows: auto 1fr auto;
+    }
+    .actions {
+      display: flex;
+      grid-column-start: 1;
       flex-direction: column;
       max-width: 100vw;
-      justify-self: stretch;
       padding-top: ${spacingVerticalXXL};
-    }
-    .actions fluent-button::part(control) {
+      justify-self: stretch;
       width: 100%;
     }
   }

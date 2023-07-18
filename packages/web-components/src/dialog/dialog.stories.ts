@@ -56,7 +56,7 @@ const dialogTemplate = html<DialogStoryArgs>`
           slot="actions" 
           appearance="primary" 
           @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}">Close Drawer</fluent-button>
-        <fluent-button 
+        <fluent-button
           slot="actions">Do Something</fluent-button>
       </fluent-dialog>
     </div>
@@ -122,12 +122,10 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
         When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab
         sequence is kept within the dialog and moving the focus outside the dialog will imply closing it.
       </div>
-      <div slot="actions">
-        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
-          >Close Drawer</fluent-button
-        >
-        <fluent-button>Do Something</fluent-button>
-      </div>
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
+        >Close Drawer</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -142,12 +140,10 @@ export const Alert = renderComponent(html<DialogStoryArgs>`
         message and acquire a response. By default clicking on backdrop and pressing Escape will not dismiss an alert
         Dialog.
       </div>
-      <div slot="actions">
-        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
-          >Close Drawer</fluent-button
-        >
-        <fluent-button>Do Something</fluent-button>
-      </div>
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
+        >Close Drawer</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -199,12 +195,13 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
         odio mauris, a gravida nisi volutpat in. Aliquam at maximus felis. Vestibulum convallis dignissim urna id
         gravida.
       </div>
-      <div slot="actions">
-        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
-          >Close Drawer</fluent-button
-        >
-        <fluent-button>Do Something</fluent-button>
-      </div>
+      <fluent-button
+        slot="actions"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
+        >Close Drawer</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -216,12 +213,10 @@ export const CustomCloseIcon = renderComponent(html<DialogStoryArgs>`
       <div slot="title">Custom Close Icon Dialog Title</div>
       <span slot="close-icon">${DismissCircle24Regular}</span>
       <div>Dialog content</div>
-      <div slot="actions">
-        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-closeicon')}"
-          >Close Drawer</fluent-button
-        >
-        <fluent-button>Do Something</fluent-button>
-      </div>
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-closeicon')}"
+        >Close Drawer</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -232,12 +227,13 @@ export const NoFocusTrap = renderComponent(html<DialogStoryArgs>`
     <fluent-dialog id="dialog-nofocustrap" no-focus-trap hidden>
       <div slot="title">NoTrapFocus Dialog Title</div>
       <div>Dialog content</div>
-      <div slot="actions">
-        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-nofocustrap')}"
-          >Close Drawer</fluent-button
-        >
-        <fluent-button>Do Something</fluent-button>
-      </div>
+      <fluent-button
+        slot="actions"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-nofocustrap')}"
+        >Close Drawer</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
