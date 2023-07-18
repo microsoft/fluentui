@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
   "id": "react-component",
+  "description": "Create React Component within v9 package",
   "type": "object",
   "properties": {
     "name": {

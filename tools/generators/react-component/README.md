@@ -1,6 +1,6 @@
 # react-component
 
-Workspace Generator ...TODO...
+Workspace Generator for creating React Component within v9 package.
 
 <!-- toc -->
 
@@ -8,13 +8,14 @@ Workspace Generator ...TODO...
   - [Examples](#examples)
 - [Options](#options)
   - [`name`](#name)
+  - [`project`](#project)
 
 <!-- tocstop -->
 
 ## Usage
 
 ```sh
-yarn nx workspace-generator react-component ...
+yarn nx workspace-generator react-component --help
 ```
 
 Show what will be generated without writing to disk:
@@ -35,4 +36,10 @@ yarn nx workspace-generator react-component
 
 Type: `string`
 
-TODO...
+The name of the component.
+
+#### `project`
+
+Type: `string`
+
+The name of the project where the component will be generated.
