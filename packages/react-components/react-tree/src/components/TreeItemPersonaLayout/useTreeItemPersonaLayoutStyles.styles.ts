@@ -1,11 +1,11 @@
-import type { TreeItemPersonaLayoutSlots, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
+import type { TreeItemPersonaLayoutInternalSlots, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
-export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
+export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutInternalSlots> = {
   root: 'fui-TreeItemPersonaLayout',
   media: 'fui-TreeItemPersonaLayout__media',
   description: 'fui-TreeItemPersonaLayout__description',
