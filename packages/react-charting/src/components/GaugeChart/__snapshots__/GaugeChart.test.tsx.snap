@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GaugeChart - event listeners testing should show a callout when the mouse moves over a segment and
+exports[`GaugeChart interaction and accessibility tests should show a callout when the mouse moves over a segment and
   hide it when the mouse leaves the chart 1`] = `
 <div>
   <div
@@ -776,7 +776,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should not render min and max values of the gauge when the hideMinMax prop is true 1`] = `
+exports[`GaugeChart snapshot tests should not render min and max values of the gauge when the hideMinMax prop is true 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -1278,7 +1278,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should not render the legends when the hideLegend prop is true 1`] = `
+exports[`GaugeChart snapshot tests should not render the legends when the hideLegend prop is true 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -1470,7 +1470,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = `
+exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -2004,7 +2004,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dark theme 1`] = `
+exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark theme 1`] = `
 <div
   className=
 
@@ -2552,7 +2552,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render GaugeChart correctly when the layout direction is RTL 1`] = `
+exports[`GaugeChart snapshot tests should render GaugeChart correctly when the layout direction is RTL 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -3086,7 +3086,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render a color from DataVizPalette for the segment with no color 1`] = `
+exports[`GaugeChart snapshot tests should render a color from DataVizPalette for the segment with no color 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -3509,7 +3509,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render a placeholder segment when the total size of the segments is less than
+exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than
   the difference between maxValue and minValue props 1`] = `
 <div
   className=
@@ -3933,7 +3933,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render the chart title correctly 1`] = `
+exports[`GaugeChart snapshot tests should render the chart title correctly 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -4480,7 +4480,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render the chart value in fraction format 1`] = `
+exports[`GaugeChart snapshot tests should render the chart value in fraction format 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -5014,7 +5014,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] = `
+exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
 <div
   className=
       ms-GaugeChart

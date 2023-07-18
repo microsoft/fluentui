@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { GaugeChart, GaugeValueFormat, IGaugeChartProps } from './index';
+import { GaugeChart, GaugeChartVariant, GaugeValueFormat, IGaugeChartProps } from './index';
 import { ARC_PADDING, GaugeChartBase, IGaugeChartState, BREAKPOINTS } from './GaugeChart.base';
 import { resetIds, setRTL } from '../../Utilities';
 import { DataVizPalette } from '../../utilities/colors';
@@ -40,7 +40,7 @@ const segments = [
   { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
 ];
 
-describe('GaugeChart - snapshot testing', () => {
+describe('GaugeChart snapshot tests', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
@@ -129,7 +129,107 @@ describe('GaugeChart - snapshot testing', () => {
   });
 });
 
-describe('GaugeChart - event listeners testing', () => {
+describe('GaugeChart rendering and behavior tests', () => {
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 0;
+    };
+  });
+
+  afterEach(() => {
+    sharedAfterEach();
+
+    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+  });
+
+  it('should truncate the chart value with ellipsis when its length exceeds the max width', () => {
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 1000;
+    };
+
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+
+    expect(container.querySelector('[class^="chartValue"]')).toHaveTextContent('...');
+  });
+
+  it('should update the font size of the chart value when the chart resizes', () => {
+    const { rerender } = render(<GaugeChart segments={segments} chartValue={25} />);
+
+    const bounds = [80, ...BREAKPOINTS.map(bp => bp.minRadius * 2 + 32), 1000];
+    for (let i = 1; i < bounds.length; i++) {
+      const width = Math.floor(Math.random() * (bounds[i] - bounds[i - 1]) + bounds[i - 1]);
+      rerender(<GaugeChart segments={segments} chartValue={25} hideMinMax width={width} height={1000} />);
+      expect(screen.getByText('25%')).toHaveStyle(
+        `font-size: ${i < 2 ? BREAKPOINTS[0].fontSize : BREAKPOINTS[i - 2].fontSize}px`,
+      );
+    }
+  });
+
+  it('should not show a callout when the hideTooltip prop is true', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} hideTooltip />);
+
+    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
+    expect(container.querySelector('.ms-Callout')).toBeNull();
+  });
+
+  it('should ensure the needle rotation remains within the range of 0 to 180 degrees at all times', () => {
+    const { container, rerender } = render(<GaugeChart segments={segments} chartValue={-100} />);
+
+    const needle = container.querySelector('[class^="needle"]');
+    expect(needle!.parentElement).toHaveAttribute('transform', 'rotate(0, 0, 0)');
+
+    rerender(<GaugeChart segments={segments} chartValue={200} />);
+
+    expect(needle!.parentElement).toHaveAttribute('transform', 'rotate(180, 0, 0)');
+  });
+
+  it(`should render segment sizes as percentages when
+  the variant prop is set to GaugeChartVariant.SingleSegment`, () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={25}
+        variant={GaugeChartVariant.SingleSegment}
+        calloutProps={{ doNotLayer: true }}
+      />,
+    );
+
+    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
+    expect(container.querySelector('.ms-Callout')).toHaveTextContent('%');
+  });
+
+  it('should render the chart value returned by the provided formatter function', () => {
+    const { container } = render(
+      <GaugeChart segments={segments} chartValue={25} chartValueFormat={() => '000'} width={252} height={128} />,
+    );
+
+    expect(container.querySelector('[class^="chartValue"]')).toHaveTextContent('000');
+  });
+
+  it(`should render the chart value as a number when the minValue prop is non-zero and
+  no formatter function is provided`, () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={25}
+        minValue={100}
+        width={252}
+        height={128}
+        calloutProps={{ doNotLayer: true }}
+      />,
+    );
+
+    expect(container.querySelector('[class^="chartValue"]')).not.toHaveTextContent('%');
+
+    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
+    expect(container.querySelector('.ms-Callout')).not.toHaveTextContent('%');
+  });
+});
+
+describe('GaugeChart interaction and accessibility tests', () => {
   beforeEach(() => {
     sharedBeforeEach();
 
@@ -278,33 +378,21 @@ describe('GaugeChart - event listeners testing', () => {
     }
   });
 
-  it('should truncate the chart value with ellipsis when its length exceeds the max width', () => {
-    SVGElement.prototype.getComputedTextLength = () => {
-      return 1000;
-    };
+  it(`should show a callout when the mouse enters a highlighted segment and
+  hide it when the mouse enters any unhighlighted segments`, () => {
+    const { container } = render(
+      <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
+    );
 
-    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
-
-    expect(container.querySelector('[class^="chartValue"]')).toHaveTextContent('...');
-  });
-
-  it('should update the font size of the chart value when the chart resizes', () => {
-    const { rerender } = render(<GaugeChart segments={segments} chartValue={25} />);
-
-    const bounds = [80, ...BREAKPOINTS.map(bp => bp.minRadius * 2 + 32), 1000];
-    for (let i = 1; i < bounds.length; i++) {
-      const width = Math.floor(Math.random() * (bounds[i] - bounds[i - 1]) + bounds[i - 1]);
-      rerender(<GaugeChart segments={segments} chartValue={25} hideMinMax width={width} height={1000} />);
-      expect(screen.getByText('25%')).toHaveStyle(
-        `font-size: ${i < 2 ? BREAKPOINTS[0].fontSize : BREAKPOINTS[i - 2].fontSize}px`,
-      );
+    fireEvent.click(screen.getByText(segments[0].legend));
+    const segs = container.querySelectorAll('[class^="segment"]');
+    fireEvent.mouseEnter(segs[0]);
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
+    for (let i = 0; i < segs.length; i++) {
+      if (i !== 0) {
+        fireEvent.mouseEnter(segs[i]);
+        expect(container.querySelector('.ms-Callout')).toBeNull();
+      }
     }
-  });
-
-  it('should not show a callout when the hideTooltip prop is true', () => {
-    const { container } = render(<GaugeChart segments={segments} chartValue={25} hideTooltip />);
-
-    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
-    expect(container.querySelector('.ms-Callout')).toBeNull();
   });
 });
