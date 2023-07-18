@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 18 Jul 2023 07:35:18 GMT",
+      "tag": "@fluentui/react_v8.110.10",
+      "version": "8.110.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bbba7284a99cf7a63cbd7676a5a85e8770163357",
+            "comment": "Keytip: Make keytip data align with which instance is visible (for duplicate registrations)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jul 2023 07:39:32 GMT",
       "tag": "@fluentui/react_v8.110.9",
       "version": "8.110.9",
