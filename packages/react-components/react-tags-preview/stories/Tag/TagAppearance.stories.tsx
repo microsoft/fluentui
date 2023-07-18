@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { Tag } from '@fluentui/react-tags-preview';
-import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
   container: {
@@ -15,13 +13,13 @@ export const Appearance = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.container}>
-      <Tag icon={<CalendarMonth />} dismissible>
+      <Tag icon={<CalendarMonthRegular />} dismissible>
         filled
       </Tag>
-      <Tag appearance="outline" icon={<CalendarMonth />} dismissible>
+      <Tag appearance="outline" icon={<CalendarMonthRegular />} dismissible>
         outline
       </Tag>
-      <Tag appearance="brand" icon={<CalendarMonth />} dismissible>
+      <Tag appearance="brand" icon={<CalendarMonthRegular />} dismissible>
         brand
       </Tag>
     </div>

@@ -15,13 +15,13 @@ export const Appearance = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.container}>
-      <InteractionTag icon={<CalendarMonth />} dismissible>
+      <InteractionTag icon={<CalendarMonthRegular />} dismissible>
         filled
       </InteractionTag>
       <InteractionTag appearance="outline" icon={<CalendarMonth />} dismissible>
         outline
       </InteractionTag>
-      <InteractionTag appearance="brand" icon={<CalendarMonth />} dismissible>
+      <InteractionTag appearance="brand" icon={<CalendarMonthRegular />} dismissible>
         brand
       </InteractionTag>
     </div>
