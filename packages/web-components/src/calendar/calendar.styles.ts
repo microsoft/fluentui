@@ -165,8 +165,8 @@ export const styles = css`
   :host .navicon-container {
     display: flex;
   }
-  :host .navicon-left,
-  .navicon-right {
+  :host .navicon-up,
+  .navicon-down {
     padding: ${spacingVerticalXS};
     width: 16px;
     height: 16px;

@@ -122,13 +122,20 @@ export class Calendar extends FASTCalendar {
    */
   public weekdayFormat: WeekdayFormat = WeekdayFormat.narrow;
 
+  /**
+   * the year on the month picker
+   */
+  @attr public monthPickerYear: number = this.year;
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
+    this.addEventListener('monthselected', this.monthSelectedHandler);
   }
 
   public disconnectedCallback() {
     this.removeEventListener('dateselected', this.dateSelectedHandler);
+    this.removeEventListener('monthselected', this.monthSelectedHandler);
     super.disconnectedCallback();
   }
 
@@ -156,12 +163,12 @@ export class Calendar extends FASTCalendar {
     this.selectedDates = '';
     this.year = year;
     this.month = month;
+    this.monthPickerYear = year;
   }
 
   public handleGoToToday(event: MouseEvent) {
     const today: Date = new Date();
-    this.month = today.getMonth() + 1;
-    this.year = today.getFullYear();
+    this.switchMonth(today.getMonth() + 1, today.getFullYear());
   }
 
   public getLinkClassNames() {
@@ -233,5 +240,10 @@ export class Calendar extends FASTCalendar {
   public handleMonthSelect(event: Event, month: number): void {
     event.preventDefault;
     this.$emit('monthselected', month);
+  }
+
+  public monthSelectedHandler(event: any) {
+    const month = event.detail;
+    this.switchMonth(month, this.monthPickerYear);
   }
 }

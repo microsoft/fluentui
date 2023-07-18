@@ -8,26 +8,14 @@ import {
 } from '@microsoft/fast-foundation';
 import type { Calendar } from './calendar.js';
 
-const ChevronLeft16 = html.partial(`
-<svg
-  width="16"
-  height="16"
-  viewBox="0 0 16 16"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path d="M10.3536 3.14645C10.5488 3.34171 10.5488 3.65829 10.3536 3.85355L6.20711 8L10.3536 12.1464C10.5488 12.3417 10.5488 12.6583 10.3536 12.8536C10.1583 13.0488 9.84171 13.0488 9.64645 12.8536L5.14645 8.35355C4.95118 8.15829 4.95118 7.84171 5.14645 7.64645L9.64645 3.14645C9.84171 2.95118 10.1583 2.95118 10.3536 3.14645Z" fill="currentColor" />
+const ArrowUp16 = html.partial(`
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7.5 13.5C7.5 13.7761 7.72386 14 8 14C8.27614 14 8.5 13.7761 8.5 13.5V3.80298L12.1283 7.83448C12.3131 8.03974 12.6292 8.05638 12.8345 7.87165C13.0397 7.68692 13.0564 7.37077 12.8716 7.16552L8.37165 2.16552C8.27683 2.06016 8.14174 2 8 2C7.85826 2 7.72317 2.06016 7.62835 2.16552L3.12836 7.16552C2.94363 7.37077 2.96027 7.68692 3.16552 7.87165C3.37078 8.05638 3.68692 8.03974 3.87165 7.83448L7.5 3.80298V13.5Z" fill="currentColor" />
 </svg>`);
 
-const ChevronRight16 = html.partial(`
-<svg
-  width="16"
-  height="16"
-  viewBox="0 0 16 16"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path d="M5.64645 3.14645C5.45118 3.34171 5.45118 3.65829 5.64645 3.85355L9.79289 8L5.64645 12.1464C5.45118 12.3417 5.45118 12.6583 5.64645 12.8536C5.84171 13.0488 6.15829 13.0488 6.35355 12.8536L10.8536 8.35355C11.0488 8.15829 11.0488 7.84171 10.8536 7.64645L6.35355 3.14645C6.15829 2.95118 5.84171 2.95118 5.64645 3.14645Z" fill="currentColor" />
+const ArrowDown16 = html.partial(`
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8.5 2.5C8.5 2.22386 8.27615 2 8 2C7.72386 2 7.5 2.22386 7.5 2.5V12.197L3.87165 8.16552C3.68692 7.96026 3.37078 7.94362 3.16552 8.12835C2.96027 8.31308 2.94363 8.62923 3.12836 8.83448L7.62836 13.8345C7.72318 13.9398 7.85826 14 8 14C8.14175 14 8.27683 13.9398 8.37165 13.8345L12.8717 8.83448C13.0564 8.62923 13.0397 8.31308 12.8345 8.12835C12.6292 7.94362 12.3131 7.96026 12.1284 8.16552L8.5 12.197V2.5Z" fill="currentColor" />
 </svg>
 `);
 
@@ -36,10 +24,10 @@ const ChevronRight16 = html.partial(`
  * @returns - A month picker title template
  * @public
  */
-export function calendarMonthTitleTemplate<T extends FASTCalendar>(): ViewTemplate<T> {
+export function calendarMonthTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
   return html`
     <div class="month-picker-title" part="month-picker-title">
-      <span>${(x: T) => x.dateFormatter.getYear(x.year)}</span>
+      <span>${x => console.log('here')}${(x: T) => x.dateFormatter.getYear(x.monthPickerYear)}</span>
     </div>
   `;
 }
@@ -142,18 +130,18 @@ export const template: ElementViewTemplate<Calendar> = html`
         ${calendarTitleTemplate()}
         <div class="navicon-container">
           <span
-            class="navicon-left"
-            part="navicon-left"
+            class="navicon-up"
+            part="navicon-up"
             @click="${(x, c) => x.switchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
           >
-            ${ChevronLeft16}
+            ${ArrowUp16}
           </span>
           <span
-            class="navicon-right"
-            part="navicon-right"
+            class="navicon-down"
+            part="navicon-down"
             @click="${(x, c) => x.switchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
           >
-            ${ChevronRight16}
+            ${ArrowDown16}
           </span>
         </div>
       </div>
@@ -169,7 +157,17 @@ export const template: ElementViewTemplate<Calendar> = html`
       </div>
     </div>
     <div class="month-picker">
-      ${calendarMonthTitleTemplate()}
+      <div class="header">
+        ${calendarMonthTitleTemplate()}
+        <div class="navicon-container">
+          <span class="navicon-up" part="navicon-up" @click="${(x, c) => (x.monthPickerYear -= 1)}">
+            ${ArrowUp16}
+          </span>
+          <span class="navicon-down" part="navicon-down" @click="${(x, c) => (x.monthPickerYear += 1)}">
+            ${ArrowDown16}
+          </span>
+        </div>
+      </div>
       ${MonthPickerTemplate({
         dataGrid: 'fast-data-grid',
         dataGridRow: 'fast-data-grid-row',
