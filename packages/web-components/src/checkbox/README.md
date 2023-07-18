@@ -60,10 +60,11 @@ FAST `checkboxTemplate`
 ### **Attributes**
 
 | Name             | Privacy | Type                    | Default                       | Description                                        |
-| ---------------- | ------- | ----------------------- | ----------------------------- | -------------------------------------------------- | --- | ------ | --------- | ------- | ----------------------------------- |
+| ---------------- | ------- | ----------------------- | ----------------------------- | -------------------------------------------------- |
 | `label-position` | public  | `CheckboxLabelPosition` | `CheckboxLabelPosition.after` | Indicates postion of label                         |
 | `checked`        | public  | `boolean`               | `false`                       | Indicates whether input is checked                 |
-| `indeterminate`  | public  | `boolean`               | `false`                       | Indicates whether input is initially indeterminate |     | public | `boolean` | `false` | Indicates whether input is disabled |
+| `indeterminate`  | public  | `boolean`               | `false`                       | Indicates whether input is initially indeterminate |
+| `disabled`       | public  | `boolean`               | `false`                       | Indicates whether input is disabled                |
 | `required `      | public  | `boolean`               | `false`                       | Indicates whether input is required                |
 | `size`           | public  | `CheckboxSize`          | `CheckboxSize.medium`         | Indicates the size of the checkbox                 |
 | `shape`          | public  | `CheckboxShape`         | `CheckboxShape.square`        | Indicates shape of the checkbox                    |

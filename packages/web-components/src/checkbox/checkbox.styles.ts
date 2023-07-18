@@ -170,6 +170,7 @@ export const styles = css`
     height: 20px;
   }
   :host([aria-checked='mixed'][size='large']) .indeterminate-indicator {
+    height: 10px;
     width: 10px;
   }
   :host([shape='circular']) .control,
