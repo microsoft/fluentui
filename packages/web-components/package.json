@@ -48,6 +48,10 @@
       "types": "./dist/esm/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
     },
+    "./checkbox": {
+      "types": "./dist/esm/checkbox/define.d.ts",
+      "default": "./dist/esm/checkbox/define.js"
+    },
     "./compound-button": {
       "types": "./dist/esm/compound-button/define.d.ts",
       "default": "./dist/esm/compound-button/define.js"
