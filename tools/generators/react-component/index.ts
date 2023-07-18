@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { Tree, formatFiles, names, generateFiles, joinPathFragments } from '@nrwl/devkit';
+import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nrwl/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';
 
@@ -20,10 +20,10 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
   await formatFiles(tree);
 
   return () => {
-    const root = options.projectConfig.root;
+    const root = workspaceRoot;
     const { npmPackageName, componentName } = options;
 
-    execSync(`yarn workspace ${npmPackageName} generate-api`, {
+    execSync(`yarn lage generate-api --to ${npmPackageName}`, {
       cwd: root,
       stdio: 'inherit',
     });
