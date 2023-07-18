@@ -47,40 +47,68 @@ export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}>
               left to right.
             </p>
             <h3>Implementation details</h3>
+            <div>Here are the props available for customizing the gauge chart:</div>
             <ul>
               <li>
-                The diameter of the gauge depends upon the <code>width</code> and <code>height</code> props passed to
-                the chart. If the props are omitted, a default diameter of 140px will be used.
+                <code>width</code> and <code>height</code>: These props determine the diameter of the gauge. If not
+                provided, a default diameter of 140px is used.
               </li>
               <li>
-                To render a title above the gauge, set the <code>chartTitle</code> prop.
+                <code>chartTitle</code>: Use this prop to render a title above the gauge.
               </li>
               <li>
-                The needle position depends upon the required <code>chartValue</code> prop.
+                <code>chartValue</code>: This required prop controls the rotation of the needle. If the chart value is
+                less than the minimum, the needle points to the min value. Similarly, if it exceeds the maximum, the
+                needle points to the max value.
               </li>
               <li>
-                Use the required <code>segments</code> prop to divide the gauge into colored sections. These sections
-                can have fixed sizes, or the users can choose to create a sweeping effect by varying the segment size
-                with the chartValue.
+                <code>segments</code>: Use this required prop to divide the gauge into colored sections. The segments
+                can have fixed sizes or vary with the chart value to create a sweeping effect. Negative segment sizes
+                are treated as 0.
               </li>
               <li>
-                Set the <code>minValue</code> prop if the minimum value of the gauge is different than 0. A placeholder
-                segment will be rendered if the <code>maxValue</code> prop is greater than the total size of the
-                segments.
+                <code>minValue</code>: Use this prop if the minimum value of the gauge is different from 0.
               </li>
               <li>
-                To render an additional text below the chartValue, set the <code>sublabel</code> prop.
+                <code>maxValue</code>: Use this prop to render a placeholder segment when the difference between the max
+                and min values is larger than the total size of the segments. If the difference is smaller, the max
+                value will be adjusted so that the total size of the segments matches the difference.
               </li>
               <li>
-                To hide the minimum and maximum values of the gauge, set the <code>hideMinMax</code> prop.
+                <code>sublabel</code>: Use this prop to render additional text below the chart value.
               </li>
               <li>
-                The chartValue prop is rendered as a percentage by default. To display it as a fraction or use a custom
-                formatter function, set the <code>chartValueFormat</code> prop accordingly.
+                <code>hideMinMax</code>: Set this prop to true to hide the min and max values of the gauge.
               </li>
               <li>
-                The segment sizes are displayed and announced as ranges by default. Set the <code>variant</code>
-                prop to <code>GaugeChartVariant.SingleSegment</code> to display and announce them as percentages.
+                <code>chartValueFormat</code>: This prop controls how the chart value is displayed. Set it to one of the
+                following options:
+                <ul>
+                  <li>A custom formatter function that returns a string representing the chart value.</li>
+                  <li>
+                    <code>GaugeValueFormat.Fraction</code>: Renders the chart value as a fraction.
+                  </li>
+                  <li>
+                    <code>GaugeValueFormat.Percentage</code>: Renders the chart value as a percentage. This is the
+                    default format.
+                  </li>
+                </ul>
+                Note: If the min value is non-zero and no formatter function is provided, the chart value will be
+                rendered as a number.
+              </li>
+              <li>
+                <code>variant</code>: This prop determines the presentation style of the gauge chart. Set it to one of
+                the following options:
+                <ul>
+                  <li>
+                    <code>GaugeChartVariant.SingleSegment</code>: Displays and announces the segment sizes as
+                    percentages.
+                  </li>
+                  <li>
+                    <code>GaugeChartVariant.MultipleSegments</code>: Displays and announces the segment sizes as ranges.
+                    This is the default variant.
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>
