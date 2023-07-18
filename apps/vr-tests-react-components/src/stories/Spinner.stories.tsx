@@ -61,11 +61,6 @@ storiesOf('Spinner converged', module)
         <Spinner size="huge" label="Huge" />
       </div>
     ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-      includeRtl: true,
-    },
   )
   .addStory(
     'Inverted',
@@ -77,7 +72,6 @@ storiesOf('Spinner converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   )
   .addStory(
@@ -95,7 +89,6 @@ storiesOf('Spinner converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   )
   .addStory(

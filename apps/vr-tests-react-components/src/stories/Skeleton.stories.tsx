@@ -7,7 +7,6 @@ import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({
   paused: {
-    display: 'flex',
     '& *': {
       animationPlayState: 'paused !important',
       animationDelay: '-1s !important',
@@ -73,7 +72,7 @@ storiesOf('Skeleton converged', module)
     },
   )
   .addStory(
-    'Translucent Skeleton with  circle',
+    'Translucent Skeleton with circle',
     () => (
       <Skeleton className={useStyles().paused} appearance="translucent">
         <SkeletonItem shape="circle" />

@@ -7,7 +7,6 @@ import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({
   paused: {
-    display: 'flex',
     '& *': {
       animationPlayState: 'paused !important',
       animationDelay: '-1s !important',
