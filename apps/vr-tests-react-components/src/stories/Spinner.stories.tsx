@@ -2,8 +2,18 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Spinner } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { PauseAnimationDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { StoryWright, Steps } from 'storywright';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  paused: {
+    '& *': {
+      animationPlayState: 'paused !important',
+      animationDelay: '-1s !important',
+    },
+  },
+});
 
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners
@@ -14,18 +24,17 @@ const InvertedWrapper: React.FC = ({ children }) => {
 
 storiesOf('Spinner converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(PauseAnimationDecorator)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory('Primary', () => <Spinner />, {
+  .addStory('Primary', () => <Spinner className={useStyles().paused} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory(
     'Primary with Label',
     () => (
-      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
         <Spinner labelPosition="before" label="Loading" />
         <Spinner labelPosition="after" label="Loading" />
         <Spinner labelPosition="above" label="Loading" />
@@ -41,7 +50,8 @@ storiesOf('Spinner converged', module)
   .addStory(
     'Primary + size',
     () => (
-      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <Spinner size="extra-tiny" />
         <Spinner size="tiny" />
         <Spinner size="extra-small" />
         <Spinner size="small" />
@@ -61,7 +71,7 @@ storiesOf('Spinner converged', module)
     'Inverted',
     () => (
       <InvertedWrapper>
-        <Spinner appearance="inverted" />
+        <Spinner className={useStyles().paused} appearance="inverted" />
       </InvertedWrapper>
     ),
     {
@@ -74,7 +84,7 @@ storiesOf('Spinner converged', module)
     'Inverted with Label',
     () => (
       <InvertedWrapper>
-        <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
           <Spinner appearance="inverted" labelPosition="before" label="Loading" />
           <Spinner appearance="inverted" labelPosition="after" label="Loading" />
           <Spinner appearance="inverted" labelPosition="above" label="Loading" />
@@ -92,7 +102,8 @@ storiesOf('Spinner converged', module)
     'Inverted + size',
     () => (
       <InvertedWrapper>
-        <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+          <Spinner appearance="inverted" size="extra-tiny" />
           <Spinner appearance="inverted" size="tiny" />
           <Spinner appearance="inverted" size="extra-small" />
           <Spinner appearance="inverted" size="small" />

@@ -1,11 +1,21 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { ProgressBar } from '@fluentui/react-progress';
-import { PauseAnimationDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { StoryWright, Steps } from 'storywright';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  paused: {
+    display: 'flex',
+    '& *': {
+      animationPlayState: 'paused !important',
+      animationDelay: '-1s !important',
+    },
+  },
+});
 
 storiesOf('ProgressBar converged', module)
-  .addDecorator(PauseAnimationDecorator)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
@@ -13,7 +23,7 @@ storiesOf('ProgressBar converged', module)
   .addStory(
     'Indeterminate + thickness',
     () => (
-      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
         <ProgressBar />
         <ProgressBar thickness="large" />
       </div>
