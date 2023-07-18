@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release preview package",
-  "packageName": "@fluentui/react-search-preview",
-  "email": "eysjiang@gmail.com",
-  "dependentChangeType": "patch"
-}

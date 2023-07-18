@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use resolved slot instead of raw prop object",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

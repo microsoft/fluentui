@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinner",
   "entries": [
     {
+      "date": "Mon, 17 Jul 2023 21:27:36 GMT",
+      "tag": "@fluentui/react-spinner_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "3f65c7cfb7dad7a2c55b649778ced4c43cfc5bb1",
+            "comment": "feat: add extra-tiny value to size prop of Spinner"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jul 2023 21:25:45 GMT",
       "tag": "@fluentui/react-spinner_v9.2.7",
       "version": "9.2.7",

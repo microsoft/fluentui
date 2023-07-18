@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 17 Jul 2023 07:39:32 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jul 2023 07:35:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.54)
+
+Tue, 18 Jul 2023 07:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.53..@fluentui/react-charting_v5.16.54)
+
+### Patches
+
+- X bars showing incorrect data when the values are large- bug 8380 ([PR #28510](https://github.com/microsoft/fluentui/pull/28510) by ankityadav@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.103 ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by beachball)
+- Bump @fluentui/react to v8.110.10 ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by beachball)
 
 ## [5.16.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.53)
 
