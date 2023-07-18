@@ -157,7 +157,6 @@ export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-
 
 // @public (undocumented)
 export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
-    componentRef?: React_2.RefObject<IDatePicker>;
     onSelectDate?: (date: Date | null | undefined) => void;
     required?: boolean;
     disabled?: boolean;
@@ -295,13 +294,6 @@ export interface ICalendarMonth {
     focus(): void;
 }
 
-// @public (undocumented)
-export interface IDatePicker {
-    focus(): void;
-    reset(): void;
-    showDatePickerPopup(): void;
-}
-
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
 
@@ -357,7 +349,7 @@ export const TimeConstants: {
 };
 
 // @public
-export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;
+export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLInputElement>) => DatePickerState;
 
 // @public
 export const useDatePickerStyles_unstable: (state: DatePickerState) => DatePickerState;

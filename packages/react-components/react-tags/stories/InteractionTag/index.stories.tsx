@@ -10,6 +10,8 @@ export { SecondaryText } from './InteractionTagSecondaryText.stories';
 export { Dismiss } from './InteractionTagDismiss.stories';
 export { Shape } from './InteractionTagShape.stories';
 export { Size } from './InteractionTagSize.stories';
+export { Appearance } from './InteractionTagAppearance.stories';
+export { Disabled } from './InteractionTagDisabled.stories';
 
 export default {
   title: 'Preview Components/Tag/InteractionTag',
