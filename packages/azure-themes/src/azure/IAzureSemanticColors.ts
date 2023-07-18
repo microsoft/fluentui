@@ -211,6 +211,20 @@ export interface IAzureSemanticColors {
       };
     };
   };
+  dataColor: {
+    dataColor1: string;
+    dataColor2: string;
+    dataColor3: string;
+    dataColor4: string;
+    dataColor5: string;
+    dataColor6: string;
+    dataColor7: string;
+    dataColor8: string;
+    dataColor9: string;
+    dataColor10: string;
+    noData1: string;
+    noData2: string;
+  };
   datePicker: {
     rest: {
       selected: string;
