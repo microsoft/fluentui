@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Cleaning up message bar semantic names for messagebar background and icon values per ICM team",
+  "packageName": "@fluentui/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
