@@ -28,9 +28,10 @@ const popoverSizeMap = {
  * @param ref - reference to root HTMLElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
-  const { size = 'medium' } = props;
+  const { size = 'medium', inline = true } = props;
 
   const state: InfoButtonState = {
+    inline,
     size,
 
     components: {
@@ -52,6 +53,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         positioning: 'above-start',
         size: popoverSizeMap[size],
         withArrow: true,
+        inline,
       },
     }),
     info: resolveShorthand(props.info, {
