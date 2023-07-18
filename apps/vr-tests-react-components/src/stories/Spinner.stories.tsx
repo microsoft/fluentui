@@ -47,21 +47,18 @@ storiesOf('Spinner converged', module)
       includeRtl: true,
     },
   )
-  .addStory(
-    'Primary + size',
-    () => (
-      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-        <Spinner size="extra-tiny" label="Extra Tiny" />
-        <Spinner size="tiny" label="Tiny" />
-        <Spinner size="extra-small" label="Extra Small" />
-        <Spinner size="small" label="Small" />
-        <Spinner size="medium" label="Medium" />
-        <Spinner size="large" label="Large" />
-        <Spinner size="extra-large" label="Extra Large" />
-        <Spinner size="huge" label="Huge" />
-      </div>
-    ),
-  )
+  .addStory('Primary + size', () => (
+    <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <Spinner size="extra-tiny" label="Extra Tiny" />
+      <Spinner size="tiny" label="Tiny" />
+      <Spinner size="extra-small" label="Extra Small" />
+      <Spinner size="small" label="Small" />
+      <Spinner size="medium" label="Medium" />
+      <Spinner size="large" label="Large" />
+      <Spinner size="extra-large" label="Extra Large" />
+      <Spinner size="huge" label="Huge" />
+    </div>
+  ))
   .addStory(
     'Inverted',
     () => (
