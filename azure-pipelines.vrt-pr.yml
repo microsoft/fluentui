@@ -18,7 +18,7 @@ jobs:
   - job: VisualRegressionTest_WebComponents
     variables:
       pipelineId: '315'
-      pipelineName: 'fluent-ui VRT Pipeline web-components'
+      pipelineName: 'fluent-ui_VRT_Pipeline_web-components'
     workspace:
       clean: all
     steps:
@@ -26,6 +26,7 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
+      - template: download-vr-cli.yml
 
       - template: download-vr-cli.yml
 
@@ -84,13 +85,10 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-web-components" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
+      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          API_REPOSITORY: $(Build.Repository.Name)
-          API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotwebcomponents
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
