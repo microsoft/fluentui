@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2023 21:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.22)
+
+Mon, 17 Jul 2023 21:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.21..@fluentui/react-card_v9.0.22)
+
+### Patches
+
+- fix: use resolved slot instead of raw prop object ([PR #28517](https://github.com/microsoft/fluentui/pull/28517) by marcosvmmoura@gmail.com)
 
 ## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.21)
 

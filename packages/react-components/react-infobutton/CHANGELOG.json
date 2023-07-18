@@ -2,6 +2,27 @@
   "name": "@fluentui/react-infobutton",
   "entries": [
     {
+      "date": "Mon, 17 Jul 2023 21:27:35 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.42",
+      "version": "9.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "d2c19695a05ff0adcab100c05d75cfa32e0994a9",
+            "comment": "fix(react-infobutton): Make InfoLabel only add aria-owns when the popover is open."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "bffeca38807f5cd9230e6dbbc4ef1be1766e29d5",
+            "comment": "feat(react-infobutton): Remove InfoIcon files from react-infobutton."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jul 2023 21:25:41 GMT",
       "tag": "@fluentui/react-infobutton_v9.0.0-beta.41",
       "version": "9.0.0-beta.41",

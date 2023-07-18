@@ -65,8 +65,8 @@ jobs:
         inputs:
           filePath: yarn-ci.sh
         displayName: yarn
-
-      - script: yarn lage bundle-size-auditor --verbose $(sinceArg)
+        # we cannot use `--since` because the ligtrail service would calculate packages not build as a removal 🚨 - thus giving lot of noise and incorrect metrics on every PR
+      - script: yarn lage bundle-size-auditor
         displayName: build packages & create reports
 
       - script: yarn bundle-size-auditor --create-report --report-path dist/bundle-size-auditor

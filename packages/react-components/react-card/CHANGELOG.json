@@ -2,6 +2,21 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Mon, 17 Jul 2023 21:27:35 GMT",
+      "tag": "@fluentui/react-card_v9.0.22",
+      "version": "9.0.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "820b2c5b432f0f72df241c197b8cc0f5112657b3",
+            "comment": "fix: use resolved slot instead of raw prop object"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jul 2023 21:25:39 GMT",
       "tag": "@fluentui/react-card_v9.0.21",
       "version": "9.0.21",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Feat: Add imperative ref access to both virtualizer length and current index",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

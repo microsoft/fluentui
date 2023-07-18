@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-search-preview",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Search input for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

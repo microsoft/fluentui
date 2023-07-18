@@ -109,6 +109,7 @@
     "@nrwl/node": "15.9.4",
     "@nrwl/workspace": "15.9.4",
     "@octokit/rest": "18.12.0",
+    "@phenomnomnominal/tsquery": "6.1.2",
     "@storybook/addon-a11y": "6.5.15",
     "@storybook/addon-actions": "6.5.15",
     "@storybook/addon-docs": "6.5.15",
