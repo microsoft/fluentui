@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "X bars showing incorrect data when the values are large- bug 8380",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}
