@@ -16,16 +16,24 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
         autoSize === 'width-always' ||
         (rects.floating.width > availableWidth && (autoSize === true || autoSize === 'width'));
 
-      const applyMaxHeight =
-        autoSize === 'always' ||
-        autoSize === 'height-always' ||
-        (rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height'));
+      const applyMaxHeight = autoSize === 'always' || autoSize === 'height-always';
+
+      const applyHeight = rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height');
 
       if (applyMaxHeight) {
         Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxHeight: `${availableHeight}px`,
           boxSizing: 'border-box',
           overflowY: 'auto',
+          overflowX: applyMaxWidth ? undefined : 'hidden',
+        });
+      }
+      if (applyHeight) {
+        Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
+          height: `${availableHeight}px`,
+          boxSizing: 'border-box',
+          overflowY: 'auto',
+          overflowX: applyMaxWidth ? undefined : 'hidden',
         });
       }
 
@@ -34,6 +42,7 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
           maxWidth: `${availableWidth}px`,
           boxSizing: 'border-box',
           overflowX: 'auto',
+          overflowY: applyMaxHeight || applyHeight ? undefined : 'hidden',
         });
       }
     },

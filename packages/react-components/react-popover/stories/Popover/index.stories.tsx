@@ -12,6 +12,7 @@ export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
 export { CustomTrigger } from './PopoverCustomTrigger.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 export { Appearance } from './PopoverAppearance.stories';
+export { AutoSizeExperiment } from './AutoSizeExperiment.stories';
 
 export default {
   title: 'Components/Popover',
