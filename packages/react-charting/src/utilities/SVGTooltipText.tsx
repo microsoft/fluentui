@@ -90,7 +90,7 @@ export class SVGTooltipText
   public render(): React.ReactNode {
     const { content, tooltipProps, textProps } = this.props;
     const { isTooltipVisible } = this.state;
-
+    console.log('render ****');
     const tooltipRenderProps: ITooltipProps = {
       content,
       targetElement: this._getTargetElement(),
@@ -105,6 +105,7 @@ export class SVGTooltipText
     };
 
     const showTooltip = isTooltipVisible && !!content;
+    console.log('showTooltip', showTooltip);
 
     return (
       <>
@@ -185,6 +186,7 @@ export class SVGTooltipText
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onTooltipMouseEnter = (ev: any): void => {
+    console.log('entered _onTooltipMouseEnter');
     const { delay } = this.props;
 
     if (SVGTooltipText._currentVisibleTooltip && SVGTooltipText._currentVisibleTooltip !== this) {

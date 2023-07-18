@@ -22,7 +22,7 @@ import {
   IChildProps,
   IYValueHover,
 } from '../../index';
-import { FocusZoneDirection } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
   IAxisData,
@@ -32,8 +32,10 @@ import {
   StringAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  tooltipOfAxisTitle,
 } from '../../utilities/index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -145,6 +147,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
         calloutProps={calloutProps}
+        xAxisTitle={this.props.xAxisTitle}
+        yAxisTitle={this.props.yAxisTitle}
         tickParams={tickParams}
         {...(this._isHavingLine && { isCalloutForStack: true })}
         legendBars={legendBars}
@@ -362,11 +366,21 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
+    yElement?: SVGElement | null,
+    xAxisTitleElement?: SVGElement | null,
+    yAxisTitleElement?: SVGElement | null,
   ) => {
     return (this._bars =
       this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!));
+        ? this._createNumericBars(
+            containerHeight,
+            containerWidth,
+            xElement!,
+            yElement!,
+            xAxisTitleElement!,
+            yAxisTitleElement!,
+          )
+        : this._createStringBars(containerHeight, containerWidth, xElement!, yElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -522,7 +536,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
   };
 
-  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createNumericBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yElement: SVGElement,
+    xTitleElement: SVGElement,
+    yTitleElement: SVGElement,
+  ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
@@ -584,12 +605,30 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         id: this._tooltipId,
         xAxis: xAxisElement,
       };
+      console.log('calling **********');
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
+
+    const xAxisTitleElement = d3Select(xTitleElement);
+    const yAxisTitleElement = d3Select(yTitleElement);
+    const axistitleTooltipProps = {
+      tooltipCls: this._classNames.tooltip!,
+      xId: getId('xAxisTitleTooltipId_'),
+      yId: getId('yAxisTitleTooltipId_'),
+      xAxis: xAxisTitleElement,
+      yAxis: yAxisTitleElement,
+    };
+    console.log('calling from numeric bars');
+    // xAxisTitleElement && yAxisTitleElement && tooltipOfAxisTitle(axistitleTooltipProps);
     return bars;
   }
 
-  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createStringBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yElement: SVGElement,
+  ): JSX.Element[] {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
@@ -647,6 +686,18 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
+
+    const xAxisElement = d3Select(xElement).call(xBarScale);
+    const yAxisElement = d3Select(yElement).call(yBarScale);
+    const axistitleTooltipProps = {
+      tooltipCls: this._classNames.tooltip!,
+      xId: getId('xAxisTitleTooltipId_'),
+      yId: getId('yAxisTitleTooltipId_'),
+      xAxis: xAxisElement,
+      yAxis: yAxisElement,
+    };
+    console.log('calling from numeric bars');
+    // xAxisElement && yAxisElement && tooltipOfAxisTitle(axistitleTooltipProps);
     return bars;
   }
 

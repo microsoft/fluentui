@@ -220,8 +220,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                       : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
                   }
                   textProps={{
-                    x: 0,
-                    y: 0,
                     textAnchor: 'middle',
                     className: this._classNames.chartValue,
                     role: 'img',
