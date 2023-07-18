@@ -8,16 +8,16 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    // backgroundColor: tokens.colorNeutralBackgroundInverted,
   },
   filledLighterLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
+    // color: tokens.colorNeutralForegroundInverted2,
   },
   filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    // backgroundColor: tokens.colorNeutralBackgroundInverted,
   },
   filledDarkerLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
+    // color: tokens.colorNeutralForegroundInverted2,
   },
   fieldWrapper: {
     ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),

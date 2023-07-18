@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search-preview';
 import { Button, ButtonProps, Field, makeStyles, shorthands, Text, tokens } from '@fluentui/react-components';
-import { PersonRegular, MicRegular } from '@fluentui/react-icons';
+import { MicRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -23,18 +23,6 @@ export const ContentBeforeAfter = () => {
     <div className={styles.root}>
       <Field
         className={styles.fieldWrapper}
-        label="Search by name"
-        hint={
-          <>
-            A SearchBox with a custom icon in the <code>contentBefore</code> slot.
-          </>
-        }
-      >
-        <SearchBox contentBefore={<PersonRegular />} />
-      </Field>
-
-      <Field
-        className={styles.fieldWrapper}
         label="Search by voice"
         hint={
           <>
@@ -50,12 +38,11 @@ export const ContentBeforeAfter = () => {
         label="Search with filter"
         hint={
           <>
-            A SearchBox with a presentational value in the <code>contentBefore</code> slot and another presentational
-            value in the <code>contentAfter</code> slot.
+            A SearchBox with a presentational value in the <code>contentAfter</code> slot.
           </>
         }
       >
-        <SearchBox contentBefore={<Text size={400}>Search:</Text>} contentAfter={<Text size={400}>Filter</Text>} />
+        <SearchBox contentAfter={<Text size={400}>Filter</Text>} />
       </Field>
     </div>
   );
