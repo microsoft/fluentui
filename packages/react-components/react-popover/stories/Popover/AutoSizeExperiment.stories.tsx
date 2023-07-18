@@ -17,9 +17,6 @@ import {
   PopoverProps,
   PositioningShorthand,
   Image,
-  makeStyles,
-  useMergedRefs,
-  mergeClasses,
 } from '@fluentui/react-components';
 import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 
@@ -40,78 +37,6 @@ const PopoverAutoSized: React.FC<PopoverProps> = props => {
 const MenuAutoSized: React.FC<PopoverProps> = props => {
   const positioning = useAutoSizedPositioning(props.positioning);
   return <Menu {...props} positioning={positioning} />;
-};
-
-const UNSCROLLABLE_ATTRIBUTE = 'data-amber-unscrollable';
-const useStyles = makeStyles({
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxHeight: '100%',
-    height: '100%',
-    [`> [${UNSCROLLABLE_ATTRIBUTE}]`]: {
-      flexShrink: 0,
-    },
-  },
-});
-const applyUnscrollableAttribute = (host: Window, elements: Element[]) => {
-  elements.forEach(element => {
-    const overflowY = host.getComputedStyle(element).overflowY;
-
-    if (overflowY === 'visible' || overflowY !== 'hidden') {
-      element.removeAttribute(UNSCROLLABLE_ATTRIBUTE);
-    } else {
-      element.setAttribute(UNSCROLLABLE_ATTRIBUTE, '');
-    }
-  });
-};
-/**
- * A hook that applies styles to the parent and siblings of scrollable content to prevent double vertical scrollbars.
- * @returns {outerRef, outerClassName} outerRef is a ref to the outer wrapper of the scrollable content, and outerClassName is the className for it.
- */
-const useSingleScrollbar = () => {
-  const outerRef = React.useRef<HTMLDivElement>(null);
-  // const { host } = useUserContext();
-  React.useEffect(() => {
-    if (outerRef.current) {
-      const callback: MutationCallback = mutationList => {
-        for (const mutation of mutationList) {
-          if (mutation.type === 'childList' && mutation.target === outerRef.current && mutation.addedNodes.length) {
-            applyUnscrollableAttribute(
-              window,
-              Array.from(mutation.addedNodes).filter(node => node instanceof Element) as Element[],
-            );
-          } else if (
-            mutation.type === 'attributes' &&
-            mutation.target.parentElement === outerRef.current &&
-            mutation.target instanceof Element
-          ) {
-            applyUnscrollableAttribute(window, [mutation.target]);
-          }
-        }
-      };
-
-      const observer = new MutationObserver(callback);
-
-      observer.observe(outerRef.current, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['class', 'style'],
-      });
-
-      applyUnscrollableAttribute(window, Array.from(outerRef.current.children));
-
-      return () => {
-        observer.disconnect();
-      };
-    }
-    return undefined;
-  }, []);
-
-  const { wrapper: outerClassName } = useStyles();
-
-  return { outerRef, outerClassName };
 };
 
 const getMenuItems = ({ numberOfItems, isWideItem = false }: { numberOfItems: number; isWideItem?: boolean }) => {
@@ -258,16 +183,6 @@ const PopoverNestedWide = () => {
   );
 };
 
-const Wrapper = ({ children }) => {
-  const { outerRef, outerClassName } = useSingleScrollbar();
-
-  return (
-    <div ref={outerRef} className={outerClassName}>
-      {children}
-    </div>
-  );
-};
-
 const PopoverVerticalScrollable = () => {
   return (
     <PopoverAutoSized>
@@ -276,11 +191,9 @@ const PopoverVerticalScrollable = () => {
       </PopoverTrigger>
 
       <PopoverSurface>
-        <Wrapper>
-          <Button>Before</Button>
-          {getLongText({ width: 200, scrollable: true })}
-          <Button>After</Button>
-        </Wrapper>
+        <Button>Before</Button>
+        {getLongText({ width: 200, scrollable: true })}
+        <Button>After</Button>
       </PopoverSurface>
     </PopoverAutoSized>
   );
@@ -390,13 +303,6 @@ const MenuNestedWide = () => {
   );
 };
 
-const MenuListAutoSized: typeof MenuList = React.forwardRef((props, ref) => {
-  const { outerRef, outerClassName } = useSingleScrollbar();
-
-  return (
-    <MenuList {...props} ref={useMergedRefs(ref, outerRef)} className={mergeClasses(outerClassName, props.className)} />
-  );
-});
 const MenuVerticalScrollable = () => {
   return (
     <MenuAutoSized>
@@ -405,7 +311,7 @@ const MenuVerticalScrollable = () => {
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuListAutoSized>
+        <MenuList>
           <MenuItem key={'Before'}>Before</MenuItem>
 
           <MenuDivider />
@@ -423,7 +329,7 @@ const MenuVerticalScrollable = () => {
           <MenuDivider />
 
           <MenuItem key={'After'}>After</MenuItem>
-        </MenuListAutoSized>
+        </MenuList>
       </MenuPopover>
     </MenuAutoSized>
   );
@@ -437,7 +343,7 @@ const options = [
   { name: 'Popover - nested wide', story: <PopoverNestedWide /> },
   { name: 'Popover - vertical scrollable', story: <PopoverVerticalScrollable /> },
   { name: 'Popover - horizontal scrollable', story: <PopoverHorizontalScrollable /> },
-  // TODO: menu has max width 300 - does it mean it will never have horizontal scrollbar since we have 360px as smallest?
+  // TODO: menu has max width 300 - does it mean it will never have horizontal scrollbar since we have 320px as smallest?
   { name: 'Menu - long', story: <MenuLong /> },
   { name: 'Menu - wide', story: <MenuWide /> },
   { name: 'Menu - long&wide', story: <MenuLongWide /> },

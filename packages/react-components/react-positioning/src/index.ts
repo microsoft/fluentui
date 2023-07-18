@@ -2,6 +2,7 @@ export { createVirtualElementFromClick } from './createVirtualElementFromClick';
 export { createArrowHeightStyles, createArrowStyles } from './createArrowStyles';
 export { createSlideStyles } from './createSlideStyles';
 export type { CreateArrowStylesOptions } from './createArrowStyles';
+export { createMaxSizeStyles } from './createMaxSizeStyles';
 export { usePositioning } from './usePositioning';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
 export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';

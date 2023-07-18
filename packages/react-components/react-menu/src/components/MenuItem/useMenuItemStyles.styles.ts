@@ -32,6 +32,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
     ...shorthands.gap('4px'),
+    flexShrink: 0,
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
