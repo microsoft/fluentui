@@ -303,6 +303,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
           colorFillBars={colorFillBarData}
           allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+          enablePerfOptimization={true}
         />
       </div>
     );

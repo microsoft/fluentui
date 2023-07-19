@@ -9,7 +9,9 @@ import {
   logger,
   createProjectGraphAsync,
   ProjectGraph,
+  readProjectConfiguration,
 } from '@nrwl/devkit';
+import * as semver from 'semver';
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';
 import { PackageJson } from '../../types';
@@ -17,22 +19,19 @@ import * as chalk from 'chalk';
 
 type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
-type NormalizedSchema = ReturnType<typeof normalizeOptions>;
+const NORMALIZED_INNER_WORKSPACE_VERSION = '*';
+const NORMALIZED_PRERELEASE_RANGE_VERSION = '>=9.0.0-alpha';
+const BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP = /<9.0.0$/;
 
 export default async function (tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, schema);
 
   const graph = await createProjectGraphAsync();
 
-  const filters = getActiveFilters(normalizedOptions);
   const projects = getProjects(tree);
   const issues: ProjectIssues = {};
 
   projects.forEach(projectConfig => {
-    if (!shouldBeProjectProcessed(projectConfig, filters)) {
-      return;
-    }
-
     if (normalizedOptions.verify) {
       const foundIssues = getPackageJsonDependenciesIssues(tree, projectConfig, graph);
 
@@ -50,48 +49,17 @@ export default async function (tree: Tree, schema: NormalizePackageDependenciesG
   await formatFiles(tree);
 }
 
-function getActiveFilters(options: NormalizedSchema) {
-  const active: Partial<
-    Record<keyof Omit<NormalizedSchema, 'verify'>, (projectConfig: ProjectConfiguration) => boolean>
-  > = {};
-
-  if (options.projectType !== 'any') {
-    active.projectType = (projectConfig: ProjectConfiguration) => {
-      return projectConfig.projectType === options.projectType;
-    };
-  }
-  if (options.tag) {
-    active.tag = (projectConfig: ProjectConfiguration) => {
-      return Array.isArray(projectConfig.tags) && projectConfig.tags.includes(options.tag!);
-    };
-  }
-
-  const activeCount = Object.keys(active).length;
-
-  return {
-    hasActive: activeCount > 0,
-    filters: active,
-  };
-}
-
-function shouldBeProjectProcessed(projectConfig: ProjectConfiguration, filters: ReturnType<typeof getActiveFilters>) {
-  const filterPredicates = Object.values(filters.filters);
-
-  if (filters.hasActive) {
-    return filterPredicates.every(predicate => predicate(projectConfig));
-  }
-
-  return true;
-}
-
 function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConfiguration, graph: ProjectGraph) {
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
 
   updateJson(tree, packageJsonPath, json => {
-    updateDepType(json, 'dependencies');
     updateDepType(json, 'devDependencies');
-    updateDepType(json, 'peerDependencies');
+
+    if (projectConfig.projectType === 'application') {
+      updateDepType(json, 'dependencies');
+      updateDepType(json, 'peerDependencies');
+    }
 
     return json;
   });
@@ -106,7 +74,8 @@ function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConf
 
     for (const packageName in deps) {
       if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies)) {
-        deps[packageName] = '*';
+        const { updated } = getVersion(tree, deps, packageName);
+        deps[packageName] = updated;
       }
     }
   }
@@ -123,14 +92,46 @@ function reportPackageJsonDependenciesIssues(issues: ProjectIssues) {
     logger.log(chalk.bold(chalk.red(`${projectName} has following dependency version issues:`)));
     // eslint-disable-next-line guard-for-in
     for (const dep in dependencyIssues) {
-      logger.log(chalk.red(`  - ${dep}`));
+      logger.log(chalk.red(`  - ${dep}@${dependencyIssues[dep]}`));
     }
+    logger.log('');
   });
 
-  logger.info(`All these dependencies version should be specified as '*'`);
+  logger.info(
+    `All these dependencies version should be specified as '${NORMALIZED_INNER_WORKSPACE_VERSION}' or '${NORMALIZED_PRERELEASE_RANGE_VERSION}' `,
+  );
   logger.info(`Fix this by running 'nx workspace-generator normalize-package-dependencies'`);
 
   throw new Error('package dependency violations found');
+}
+
+function getVersion(tree: Tree, deps: Record<string, string>, packageName: string) {
+  const current = deps[packageName];
+  const updated = getUpdatedVersion(current);
+
+  const match = current === updated;
+
+  return { updated, match };
+
+  function getUpdatedVersion(currentVersion: string) {
+    if (BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP.test(current)) {
+      return NORMALIZED_PRERELEASE_RANGE_VERSION;
+    }
+
+    if (currentVersion === NORMALIZED_PRERELEASE_RANGE_VERSION) {
+      const prereleasePkg = readProjectConfiguration(tree, packageName);
+      const prereleasePkgJson = readJson<PackageJson>(tree, joinPathFragments(prereleasePkg.root, 'package.json'));
+      const isPrerelease = semver.prerelease(prereleasePkgJson.version) !== null;
+
+      return isPrerelease ? NORMALIZED_PRERELEASE_RANGE_VERSION : NORMALIZED_INNER_WORKSPACE_VERSION;
+    }
+
+    if (semver.prerelease(current)) {
+      return NORMALIZED_PRERELEASE_RANGE_VERSION;
+    }
+
+    return NORMALIZED_INNER_WORKSPACE_VERSION;
+  }
 }
 
 function getPackageJsonDependenciesIssues(
@@ -143,9 +144,12 @@ function getPackageJsonDependenciesIssues(
   const packageJson = readJson<PackageJson>(tree, packageJsonPath);
 
   let issues: Record<string, string> | null = null;
-  checkDepType(packageJson, 'dependencies');
   checkDepType(packageJson, 'devDependencies');
-  checkDepType(packageJson, 'peerDependencies');
+
+  if (projectConfig.projectType === 'application') {
+    checkDepType(packageJson, 'dependencies');
+    checkDepType(packageJson, 'peerDependencies');
+  }
 
   return issues;
 
@@ -155,8 +159,11 @@ function getPackageJsonDependenciesIssues(
       return null;
     }
 
+    // eslint-disable-next-line guard-for-in
     for (const packageName in deps) {
-      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies) && deps[packageName] !== '*') {
+      const { match } = getVersion(tree, deps, packageName);
+
+      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies) && !match) {
         issues = issues ?? {};
         issues[packageName] = deps[packageName];
       }
@@ -186,7 +193,7 @@ function isProjectDependencyAnWorkspaceProject(
 }
 
 function normalizeOptions(tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
-  const options = { projectType: 'any', verify: false, ...schema } as const;
+  const options = { verify: false, ...schema } as const;
 
   return {
     ...options,

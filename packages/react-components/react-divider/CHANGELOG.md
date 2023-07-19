@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Mon, 03 Jul 2023 11:57:14 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.20)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.19..@fluentui/react-divider_v9.2.20)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
 
 ## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.19)
 

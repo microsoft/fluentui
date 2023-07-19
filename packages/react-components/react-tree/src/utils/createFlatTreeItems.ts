@@ -1,6 +1,6 @@
-import type { ImmutableSet } from './ImmutableSet';
 import type { FlatTreeItem, FlatTreeItemProps } from '../hooks/useFlatTree';
 import { TreeItemValue } from '../TreeItem';
+import { ImmutableSet } from './ImmutableSet';
 
 /**
  * @internal
@@ -105,7 +105,7 @@ function createFlatTreeRootItem(): FlatTreeItem {
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps>(
-  openItems: ImmutableSet<string>,
+  openItems: ImmutableSet<TreeItemValue>,
   flatTreeItems: FlatTreeItems<Props>,
 ) {
   for (let index = 0, visibleIndex = 0; index < flatTreeItems.size; index++) {

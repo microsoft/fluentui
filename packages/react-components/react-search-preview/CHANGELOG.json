@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-search-preview",
+  "entries": [
+    {
+      "date": "Mon, 17 Jul 2023 21:27:35 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "eysjiang@gmail.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "38db10e0b7bd2f3175d5adf4bb75d83ee7b53f0a",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    }
+  ]
+}

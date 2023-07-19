@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 29 Jun 2023 07:35:33 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jul 2023 07:35:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.10)
+
+Tue, 18 Jul 2023 07:35:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.9..@fluentui/react_v8.110.10)
+
+### Patches
+
+- Keytip: Make keytip data align with which instance is visible (for duplicate registrations) ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by jspurlin@microsoft.com)
+
+## [8.110.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.9)
+
+Mon, 17 Jul 2023 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.8..@fluentui/react_v8.110.9)
+
+### Patches
+
+- fix: checkable splitbutton and split menuitem have two separate touch targets ([PR #28523](https://github.com/microsoft/fluentui/pull/28523) by sarah.higley@microsoft.com)
+- fix: use tab role for Pivot overflow button ([PR #28409](https://github.com/microsoft/fluentui/pull/28409) by sarah.higley@microsoft.com)
+
+## [8.110.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.8)
+
+Mon, 10 Jul 2023 07:35:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.7..@fluentui/react_v8.110.8)
+
+### Patches
+
+- fix(Calendar): Add focus styles to CalendarPicker's go to today button. ([PR #28458](https://github.com/microsoft/fluentui/pull/28458) by esteban.230@hotmail.com)
 
 ## [8.110.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.7)
 

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Mon, 03 Jul 2023 13:34:28 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2023 21:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.42)
+
+Mon, 17 Jul 2023 21:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.41..@fluentui/react-infobutton_v9.0.0-beta.42)
+
+### Changes
+
+- fix(react-infobutton): Make InfoLabel only add aria-owns when the popover is open. ([PR #28463](https://github.com/microsoft/fluentui/pull/28463) by esteban.230@hotmail.com)
+- feat(react-infobutton): Remove InfoIcon files from react-infobutton. ([PR #28534](https://github.com/microsoft/fluentui/pull/28534) by esteban.230@hotmail.com)
+
+## [9.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.41)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.40..@fluentui/react-infobutton_v9.0.0-beta.41)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.20 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-popover to v9.7.6 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
 
 ## [9.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.40)
 

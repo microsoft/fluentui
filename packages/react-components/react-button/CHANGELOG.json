@@ -2,6 +2,42 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:39 GMT",
+      "tag": "@fluentui/react-button_v9.3.23",
+      "version": "9.3.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jul 2023 18:46:36 GMT",
+      "tag": "@fluentui/react-button_v9.3.23",
+      "version": "9.3.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 13:34:28 GMT",
       "tag": "@fluentui/react-button_v9.3.22",
       "version": "9.3.22",
