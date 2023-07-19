@@ -77,6 +77,9 @@ export const styles = css`
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
   }
+  :host .month-picker-title {
+    cursor: pointer;
+  }
   :host .month-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

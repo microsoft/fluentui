@@ -26,8 +26,8 @@ const ArrowDown16 = html.partial(`
  */
 export function calendarMonthTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
   return html`
-    <div class="month-picker-title" part="month-picker-title">
-      <span>${x => console.log('here')}${(x: T) => x.dateFormatter.getYear(x.monthPickerYear)}</span>
+    <div class="month-picker-title" part="month-picker-title" @click=${x => console.log(x.toggleYearPicker())}>
+      <span>${(x: T) => x.dateFormatter.getYear(x.monthPickerYear)}</span>
     </div>
   `;
 }
@@ -90,7 +90,7 @@ export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: num
  *
  * @internal
  */
-export function interactiveMonthPickerGridTemplate<T extends FASTCalendar>(
+export function interactiveMonthPickerGridTemplate<T extends Calendar>(
   options: CalendarOptions,
   todayMonth: number,
 ): ViewTemplate<T> {
@@ -98,6 +98,7 @@ export function interactiveMonthPickerGridTemplate<T extends FASTCalendar>(
 
   return html<T>`
   <${gridTag} class="months interact" part="months" generate-header="none">
+      ${when(x => x.yearPickerOpen, html`hello`)}
       ${repeat(x => x.getMonthText(), monthPickerRowTemplate(options, todayMonth))}
   </${gridTag}>
   `;
@@ -110,13 +111,10 @@ export function interactiveMonthPickerGridTemplate<T extends FASTCalendar>(
  * @returns - a template for a calendar month
  * @public
  */
-export function MonthPickerTemplate<T extends FASTCalendar>(options: CalendarOptions): ElementViewTemplate<T> {
+export function MonthPickerTemplate<T extends Calendar>(options: CalendarOptions): ElementViewTemplate<T> {
   const today: Date = new Date();
   const todayMonth: number = today.getMonth() + 1;
-  return html<T>`
-    <slot></slot>
-    ${interactiveMonthPickerGridTemplate(options, todayMonth)}
-  `;
+  return html<T>` ${interactiveMonthPickerGridTemplate(options, todayMonth)} `;
 }
 
 /**

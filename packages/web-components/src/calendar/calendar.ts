@@ -127,6 +127,11 @@ export class Calendar extends FASTCalendar {
    */
   @attr public monthPickerYear: number = this.year;
 
+  /**
+   * whether the year picker is open
+   */
+  @attr public yearPickerOpen: boolean = false;
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
@@ -197,9 +202,8 @@ export class Calendar extends FASTCalendar {
 
   /**
    *
-   * @param format - The formatting for the weekdays
    * @param locale - The locale data used for formatting
-   * @returns - An array of the weekday labels
+   * @returns - An array of the month labels
    * @public
    */
   public getMonths(locale: string = this.locale): string[] {
@@ -211,8 +215,8 @@ export class Calendar extends FASTCalendar {
   }
 
   /**
-   * Returns a list of weekday labels
-   * @returns An array of weekday text and full text if abbreviated
+   * Returns a list of month labels
+   * @returns A 2D array of month text
    * @public
    */
   public getMonthText(): { text: string; month: number }[][] {
@@ -230,8 +234,6 @@ export class Calendar extends FASTCalendar {
       }
       monthCount++;
     }
-
-    console.log(monthsText);
     return monthsText;
   }
 
@@ -248,5 +250,9 @@ export class Calendar extends FASTCalendar {
   public monthSelectedHandler(event: any) {
     const month = event.detail;
     this.switchMonth(month, this.monthPickerYear);
+  }
+
+  public toggleYearPicker() {
+    this.yearPickerOpen = !this.yearPickerOpen;
   }
 }
