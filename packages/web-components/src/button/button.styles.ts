@@ -90,7 +90,7 @@ export const styles = css`
     transition-property: background, border, color;
     transition-timing-function: ${curveEasyEase};
     cursor: pointer;
-    width: 100%;
+    width: inherit;
   }
 
   .content {
