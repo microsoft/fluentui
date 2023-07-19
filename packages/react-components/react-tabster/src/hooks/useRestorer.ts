@@ -9,7 +9,7 @@ export function useRestorer(type: 'source' | 'target'): TabsterTypes.TabsterDOMA
   }
 
   const restorerType: TabsterTypes.RestorerType =
-    type === 'source' ? TabsterTypes.RestorerTypes.source : TabsterTypes.RestorerTypes.target;
+    type === 'source' ? TabsterTypes.RestorerTypes.Source : TabsterTypes.RestorerTypes.Target;
 
   const restorerAttributes = getTabsterAttribute({ restorer: { type: restorerType } });
 

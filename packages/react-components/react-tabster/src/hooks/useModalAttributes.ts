@@ -54,7 +54,7 @@ export const useModalAttributes = (
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
-    restorer: { type: TabsterTypes.RestorerTypes.source },
+    restorer: { type: TabsterTypes.RestorerTypes.Source },
     ...(!noModalizer && {
       modalizer: {
         id,
@@ -66,7 +66,7 @@ export const useModalAttributes = (
   });
 
   const triggerAttributes = useTabsterAttributes({
-    restorer: { type: TabsterTypes.RestorerTypes.target },
+    restorer: { type: TabsterTypes.RestorerTypes.Target },
   });
 
   return { modalAttributes, triggerAttributes };
