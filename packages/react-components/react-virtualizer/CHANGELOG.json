@@ -2,6 +2,36 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Mon, 17 Jul 2023 21:27:36 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2971c4f9e3273db1e46e14c424ec32db0f67f8d5",
+            "comment": "Feat: Add imperative ref access to both virtualizer length and current index"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jul 2023 21:25:48 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jul 2023 18:46:36 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.27",
       "version": "9.0.0-alpha.27",

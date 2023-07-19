@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
-import { Calendar3Day20Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 import { InteractionTag } from '@fluentui/react-tags-preview';
 
@@ -17,7 +17,7 @@ export const Dismiss = () => {
   return (
     <div className={containerStyles.root}>
       <InteractionTag dismissible>Primary text</InteractionTag>
-      <InteractionTag dismissible icon={<Calendar3Day20Regular />}>
+      <InteractionTag dismissible icon={<CalendarMonthRegular />}>
         Primary text
       </InteractionTag>
       <InteractionTag
