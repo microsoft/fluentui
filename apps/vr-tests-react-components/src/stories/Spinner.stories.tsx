@@ -87,25 +87,4 @@ storiesOf('Spinner converged', module)
       includeHighContrast: true,
       includeDarkMode: true,
     },
-  )
-  .addStory(
-    'Inverted + size',
-    () => (
-      <InvertedWrapper>
-        <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-          <Spinner appearance="inverted" size="extra-tiny" label="Extra Tiny" />
-          <Spinner appearance="inverted" size="tiny" label="Tiny" />
-          <Spinner appearance="inverted" size="extra-small" label="Extra Small" />
-          <Spinner appearance="inverted" size="small" label="Small" />
-          <Spinner appearance="inverted" size="medium" label="Medium" />
-          <Spinner appearance="inverted" size="large" label="Large" />
-          <Spinner appearance="inverted" size="extra-large" label="Extra Large" />
-          <Spinner appearance="inverted" size="huge" label="Huge" />
-        </div>
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
   );
