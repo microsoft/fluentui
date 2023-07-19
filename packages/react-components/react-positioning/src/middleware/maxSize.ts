@@ -40,7 +40,7 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
       }
 
       if (autoSize) {
-        elements.floating.style.setProperty('--maxsize-boxSizing', 'border-box');
+        elements.floating.style.setProperty('--maxsize-box-sizing', 'border-box');
       }
     },
   });
