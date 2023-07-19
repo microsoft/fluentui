@@ -170,7 +170,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
-  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element | null;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
 
