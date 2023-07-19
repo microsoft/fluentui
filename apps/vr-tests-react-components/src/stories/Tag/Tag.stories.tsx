@@ -3,10 +3,19 @@ import { Tag } from '@fluentui/react-tags-preview';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
-import { tagId, steps } from './utils';
 import { Avatar } from '@fluentui/react-avatar';
+import { Steps } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+const tagId = 'tag-id';
+const steps = new Steps()
+  .snapshot('default', { cropTo: '.testWrapper' })
+  .hover(`#${tagId}}`)
+  .snapshot('hover', { cropTo: '.testWrapper' })
+  .mouseDown(`#${tagId}}`)
+  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .end();
 
 export default {
   title: 'Tag Converged',
