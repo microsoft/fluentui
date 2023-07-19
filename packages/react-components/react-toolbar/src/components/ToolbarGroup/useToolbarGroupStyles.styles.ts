@@ -1,5 +1,5 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import type { ToolbarGroupSlots, ToolbarGroupState } from './ToolbarGroup.types';
 
 export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots> = {
