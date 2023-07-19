@@ -1,14 +1,16 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TreeContextValue } from '../../contexts/treeContext';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import type { TreeContextValue } from '../../contexts/treeContext';
+import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import type { TreeItemValue } from '../TreeItem/TreeItem.types';
+import { ImmutableSet } from '../../utils/ImmutableSet';
 
 export type TreeSlots = {
   root: Slot<'div'>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type TreeNavigationData_unstable = { target: HTMLElement; value: string } & (
+export type TreeNavigationData_unstable = { target: HTMLElement; value: TreeItemValue } & (
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
@@ -22,32 +24,17 @@ export type TreeNavigationData_unstable = { target: HTMLElement; value: string }
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
-export type TreeOpenChangeData = { open: boolean; value: string } & (
-  | {
-      event: React.MouseEvent<HTMLElement>;
-      target: HTMLElement;
-      type: 'ExpandIconClick';
-    }
-  | {
-      event: React.MouseEvent<HTMLElement>;
-      target: HTMLElement;
-      type: 'Click';
-    }
-  | {
-      event: React.KeyboardEvent<HTMLElement>;
-      target: HTMLElement;
-      type: typeof Enter;
-    }
-  | {
-      event: React.KeyboardEvent<HTMLElement>;
-      target: HTMLElement;
-      type: typeof ArrowRight;
-    }
-  | {
-      event: React.KeyboardEvent<HTMLElement>;
-      target: HTMLElement;
-      type: typeof ArrowLeft;
-    }
+export type TreeOpenChangeData = {
+  open: boolean;
+  value: TreeItemValue;
+  target: HTMLElement;
+  openItems: ImmutableSet<TreeItemValue>;
+} & (
+  | { event: React.MouseEvent<HTMLElement>; type: 'ExpandIconClick' }
+  | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof Enter }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }
 );
 
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
@@ -75,13 +62,13 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * Controls the state of the open tree items.
    * These property is ignored for subtrees.
    */
-  openItems?: Iterable<string>;
+  openItems?: Iterable<TreeItemValue>;
   /**
    * This refers to a list of ids of opened tree items.
    * Default value for the uncontrolled state of open tree items.
    * These property is ignored for subtrees.
    */
-  defaultOpenItems?: Iterable<string>;
+  defaultOpenItems?: Iterable<TreeItemValue>;
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.

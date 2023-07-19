@@ -114,6 +114,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
+            id="_VBC_bar_14"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -152,6 +153,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#002050"
             height={255}
+            id="_VBC_bar_15"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -190,6 +192,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#00188f"
             height={153}
+            id="_VBC_bar_16"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -821,6 +824,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
+            id="_VBC_bar_8"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -859,6 +863,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#002050"
             height={255}
+            id="_VBC_bar_9"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -897,6 +902,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#00188f"
             height={153}
+            id="_VBC_bar_10"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}

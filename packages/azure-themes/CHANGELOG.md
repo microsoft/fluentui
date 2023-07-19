@@ -1,8 +1,44 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 29 Jun 2023 07:35:33 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2023 07:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.25](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.25)
+
+Wed, 19 Jul 2023 07:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.24..@fluentui/azure-themes_v8.6.25)
+
+### Patches
+
+- Cleaning up message bar semantic names for messagebar background and icon values per ICM team ([PR #28440](https://github.com/microsoft/fluentui/pull/28440) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [8.6.24](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.24)
+
+Tue, 18 Jul 2023 07:35:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.23..@fluentui/azure-themes_v8.6.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.10 ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by beachball)
+
+## [8.6.23](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.23)
+
+Mon, 17 Jul 2023 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.22..@fluentui/azure-themes_v8.6.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.9 ([PR #28523](https://github.com/microsoft/fluentui/pull/28523) by beachball)
+
+## [8.6.22](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.22)
+
+Mon, 10 Jul 2023 07:35:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.21..@fluentui/azure-themes_v8.6.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.8 ([PR #28008](https://github.com/microsoft/fluentui/pull/28008) by beachball)
 
 ## [8.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.21)
 

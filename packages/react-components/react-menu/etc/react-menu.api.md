@@ -21,9 +21,16 @@ import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
+import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
+
+// @public
+export const dispatchMenuEnterEvent: (el: HTMLElement, nativeEvent: MouseEvent) => void;
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
+
+// @public
+export const MENU_ENTER_EVENT = "fuimenuenter";
 
 // @public (undocumented)
 export type MenuCheckedValueChangeData = {
@@ -517,6 +524,9 @@ export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerSt
 
 // @public (undocumented)
 export const useMenuTriggerContext_unstable: () => boolean;
+
+// @public
+export const useOnMenuMouseEnter: (options: UseOnClickOrScrollOutsideOptions) => void;
 
 // (No @packageDocumentation comment for this package)
 

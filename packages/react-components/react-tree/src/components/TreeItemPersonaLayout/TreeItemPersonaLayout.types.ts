@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AvatarContextValue, AvatarSize } from '@fluentui/react-avatar';
 import { ButtonContextValue } from '@fluentui/react-button';
-import { TreeItemLayoutSlots } from '../TreeItemLayout/TreeItemLayout.types';
+import { TreeItemSlots } from '../TreeItem/TreeItem.types';
 
 export type TreeItemPersonaLayoutContextValues = {
   avatar: AvatarContextValue;
 };
 
-export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon'> & {
+export type TreeItemPersonaLayoutSlots = {
   root: NonNullable<Slot<'div'>>;
   /**
    * Avatar to display.
@@ -23,6 +23,9 @@ export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | '
   description?: Slot<'div'>;
 };
 
+export type TreeItemPersonaLayoutInternalSlots = TreeItemPersonaLayoutSlots &
+  Pick<TreeItemSlots, 'actions' | 'aside' | 'expandIcon'>;
+
 /**
  * TreeItemPersonaLayout Props
  */
@@ -31,7 +34,7 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
 /**
  * State used in rendering TreeItemPersonaLayout
  */
-export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutInternalSlots> & {
   avatarSize: AvatarSize;
   buttonContextValue: ButtonContextValue;
 };

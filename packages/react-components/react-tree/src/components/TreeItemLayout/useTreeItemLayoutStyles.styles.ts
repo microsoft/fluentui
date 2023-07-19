@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
+import type { TreeItemLayoutInternalSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutInternalSlots> = {
   root: 'fui-TreeItemLayout',
   iconBefore: 'fui-TreeItemLayout__iconBefore',
   content: 'fui-TreeItemLayout__content',

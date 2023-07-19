@@ -28,8 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "^8.3.6",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.29",
+    "@fluentui/test-utilities": "*",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",

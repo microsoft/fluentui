@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon-codesandbox",
-  "version": "9.0.0-alpha.0",
+  "version": "0.1.0",
   "description": "Storybook addon that enables codesandbox exports for stories",
   "private": true,
   "main": "lib-commonjs/index.js",
@@ -34,6 +34,12 @@
   },
   "peerDependencies": {
     "@storybook/addons": "^6.5.15"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
   },
   "exports": {
     ".": {
