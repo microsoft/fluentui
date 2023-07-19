@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
-import { Calendar3Day20Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 import { Tag } from '@fluentui/react-tags-preview';
 
@@ -22,10 +22,10 @@ export const Shape = () => {
         Circular
       </Tag>
 
-      <Tag dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+      <Tag dismissible icon={<CalendarMonthRegular />} secondaryText="Secondary text">
         Rounded
       </Tag>
-      <Tag shape="circular" dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+      <Tag shape="circular" dismissible icon={<CalendarMonthRegular />} secondaryText="Secondary text">
         Circular
       </Tag>
     </div>
