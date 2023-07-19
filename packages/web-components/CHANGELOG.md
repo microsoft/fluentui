@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 12 Jun 2023 04:17:30 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2023 04:18:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.25)
+
+Wed, 19 Jul 2023 04:18:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.24..@fluentui/web-components_v3.0.0-alpha.25)
+
+### Changes
+
+- fix(web-components): check if component is connected before calling setAttribute in attribute changed callback ([PR #28500](https://github.com/microsoft/fluentui/pull/28500) by chhol@microsoft.com)
+- feat(checkbox): Add checkbox web component ([PR #27450](https://github.com/microsoft/fluentui/pull/27450) by brianbrady@microsoft.com)
 
 ## [3.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.24)
 
