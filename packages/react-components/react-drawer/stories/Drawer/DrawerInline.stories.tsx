@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands } from '@fluentui/react-components';
+import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    columnGap: tokens.spacingHorizontalXS,
   },
 });
 
@@ -82,4 +83,16 @@ export const Inline = () => {
       </DrawerInline>
     </div>
   );
+};
+
+Inline.parameters = {
+  docs: {
+    description: {
+      story: [
+        'DrawerInline is often used for navigation that is not dismissible.',
+        'As it is on the same level as the main surface, users can still interact with other UI elements.',
+        'This could be useful for swapping between different items in the main surface.',
+      ].join('\n'),
+    },
+  },
 };

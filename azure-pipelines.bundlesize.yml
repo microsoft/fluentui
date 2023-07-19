@@ -65,32 +65,23 @@ jobs:
         inputs:
           filePath: yarn-ci.sh
         displayName: yarn
+        # we cannot use `--since` because the ligtrail service would calculate packages not build as a removal 🚨 - thus giving lot of noise and incorrect metrics on every PR
+      - script: yarn lage bundle-size-auditor
+        displayName: build packages & create reports
 
-      - script: yarn build --to @fluentui/react @fluentui/keyboard-key @fluentui/react-northstar
-        displayName: build @fluentui/react, @fluentui/react-northstar
-
-      - script: yarn workspace @fluentui/test-bundles bundle-size-auditor
-        displayName: create @fluentui/react bundle-size entries
-        env:
-          PACKAGE: '@fluentui/react'
-
-      - script: yarn workspace @fluentui/test-bundles bundle-size-auditor
-        displayName: create @fluentui/react-northstar bundle-size entries
-        env:
-          PACKAGE: '@fluentui/react-northstar'
-
-      - script: yarn workspace @fluentui/test-bundles just-scripts bundle-size-merge
-        displayName: 'Merge @fluentui/react, @fluentui/react-northstar to bundlesizes.json'
+      - script: yarn bundle-size-auditor --create-report --report-path dist/bundle-size-auditor
+        displayName: 'Merge generated bundlesize.json into bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Merged Bundle Size information'
+        displayName: 'Publish Merged Bundle Size information for lightrail processing'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
+          PathtoPublish: 'dist/bundle-size-auditor/bundlesizes.json'
+          ArtifactName: drop
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
+        displayName: 'Publish bundled artifacts for debug'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist'
+          PathtoPublish: 'dist/bundle-size-auditor'
           ArtifactName: distdrop
 
       - template: .devops/templates/cleanup.yml

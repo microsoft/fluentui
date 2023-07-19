@@ -127,7 +127,7 @@ Component props:
 
 ### Checkbox Props
 
-See [Checkbox.types.ts](./src/components/Checkbox/Checkbox.types.ts)
+See [Checkbox.types.ts](../src/components/Checkbox/Checkbox.types.ts)
 
 ## Structure
 

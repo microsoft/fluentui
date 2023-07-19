@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 20 Jun 2023 07:36:29 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2023 07:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.0)
+
+Wed, 19 Jul 2023 07:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.9.3..@fluentui/react-file-type-icons_v8.10.0)
+
+### Minor changes
+
+- Add loopworkspace to FileIconType enum" ([PR #28553](https://github.com/microsoft/fluentui/pull/28553) by ololubek@microsoft.com)
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.3)
+
+Wed, 28 Jun 2023 07:37:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.9.2..@fluentui/react-file-type-icons_v8.9.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.16 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
 
 ## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.2)
 

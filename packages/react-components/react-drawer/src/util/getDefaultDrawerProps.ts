@@ -1,6 +1,6 @@
-import { DrawerBaseTypes } from './DrawerBase.types';
+import { DrawerBaseProps } from './DrawerBase.types';
 
-export function getDefaultDrawerProps(props: DrawerBaseTypes) {
+export function getDefaultDrawerProps(props: DrawerBaseProps) {
   const { open = false, defaultOpen = false, size = 'small', position = 'left' } = props;
 
   return {

@@ -1,8 +1,107 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 20 Jun 2023 07:36:29 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jul 2023 07:35:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.54)
+
+Tue, 18 Jul 2023 07:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.53..@fluentui/react-charting_v5.16.54)
+
+### Patches
+
+- X bars showing incorrect data when the values are large- bug 8380 ([PR #28510](https://github.com/microsoft/fluentui/pull/28510) by ankityadav@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.103 ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by beachball)
+- Bump @fluentui/react to v8.110.10 ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by beachball)
+
+## [5.16.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.53)
+
+Mon, 17 Jul 2023 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.52..@fluentui/react-charting_v5.16.53)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.102 ([PR #28523](https://github.com/microsoft/fluentui/pull/28523) by beachball)
+- Bump @fluentui/react to v8.110.9 ([PR #28523](https://github.com/microsoft/fluentui/pull/28523) by beachball)
+
+## [5.16.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.52)
+
+Fri, 14 Jul 2023 07:36:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.51..@fluentui/react-charting_v5.16.52)
+
+### Patches
+
+- Improving first render cycle of cartesian chart ([PR #27721](https://github.com/microsoft/fluentui/pull/27721) by ankityadav@microsoft.com)
+
+## [5.16.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.51)
+
+Wed, 12 Jul 2023 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.50..@fluentui/react-charting_v5.16.51)
+
+### Patches
+
+- Fixing rerender issue for empty vertical bar charts ([PR #28192](https://github.com/microsoft/fluentui/pull/28192) by srmukher@microsoft.com)
+
+## [5.16.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.50)
+
+Mon, 10 Jul 2023 07:35:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.49..@fluentui/react-charting_v5.16.50)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.101 ([PR #28008](https://github.com/microsoft/fluentui/pull/28008) by beachball)
+- Bump @fluentui/react to v8.110.8 ([PR #28008](https://github.com/microsoft/fluentui/pull/28008) by beachball)
+
+## [5.16.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.49)
+
+Mon, 03 Jul 2023 07:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.48..@fluentui/react-charting_v5.16.49)
+
+### Patches
+
+- Optimizing code for perfromance improvement ([PR #27263](https://github.com/microsoft/fluentui/pull/27263) by ankityadav@microsoft.com)
+
+## [5.16.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.48)
+
+Thu, 29 Jun 2023 07:35:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.47..@fluentui/react-charting_v5.16.48)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.100 ([PR #28362](https://github.com/microsoft/fluentui/pull/28362) by beachball)
+- Bump @fluentui/react to v8.110.7 ([PR #28362](https://github.com/microsoft/fluentui/pull/28362) by beachball)
+
+## [5.16.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.47)
+
+Wed, 28 Jun 2023 07:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.46..@fluentui/react-charting_v5.16.47)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.30 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/theme-samples to v8.7.99 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+- Bump @fluentui/react to v8.110.6 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+
+## [5.16.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.46)
+
+Tue, 27 Jun 2023 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.45..@fluentui/react-charting_v5.16.46)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.98 ([PR #28303](https://github.com/microsoft/fluentui/pull/28303) by beachball)
+- Bump @fluentui/react to v8.110.5 ([PR #28303](https://github.com/microsoft/fluentui/pull/28303) by beachball)
+
+## [5.16.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.45)
+
+Mon, 26 Jun 2023 07:35:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.44..@fluentui/react-charting_v5.16.45)
+
+### Patches
+
+- Add gauge chart ([PR #27170](https://github.com/microsoft/fluentui/pull/27170) by kumarkshitij@microsoft.com)
+- event annotation text and stroke color fixed in line chart, such that by default it is black in light theme, and white in dark theme. ([PR #28262](https://github.com/microsoft/fluentui/pull/28262) by email not defined)
 
 ## [5.16.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.44)
 

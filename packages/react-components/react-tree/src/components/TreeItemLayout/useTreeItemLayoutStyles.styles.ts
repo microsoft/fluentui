@@ -1,16 +1,19 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
+import type { TreeItemLayoutInternalSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutInternalSlots> = {
   root: 'fui-TreeItemLayout',
-  expandIcon: 'fui-TreeItemLayout__expandIcon',
   iconBefore: 'fui-TreeItemLayout__iconBefore',
+  content: 'fui-TreeItemLayout__content',
   iconAfter: 'fui-TreeItemLayout__iconAfter',
+  expandIcon: 'fui-TreeItemLayout__expandIcon',
+  aside: 'fui-TreeItemLayout__aside',
+  actions: 'fui-TreeItemLayout__actions',
 };
 
 /**
@@ -27,7 +30,7 @@ const useRootStyles = makeStyles({
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-      // TODO: stop using treeItemClassNames.expandIcon for styling
+      // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
       [`& .${treeItemLayoutClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Pressed,
       },
@@ -35,7 +38,7 @@ const useRootStyles = makeStyles({
     ':hover': {
       color: tokens.colorNeutralForeground2Hover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
-      // TODO: stop using treeItemClassNames.expandIcon  for styling
+      // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
       [`& .${treeItemLayoutClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Hover,
       },
@@ -48,11 +51,9 @@ const useRootStyles = makeStyles({
     paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
   },
   medium: {
-    columnGap: tokens.spacingHorizontalSNudge,
     ...typographyStyles.body1,
   },
   small: {
-    columnGap: tokens.spacingHorizontalXS,
     minHeight: '24px',
     ...typographyStyles.caption1,
   },
@@ -78,6 +79,34 @@ const useRootStyles = makeStyles({
 });
 
 /**
+ * Styles for the action icon slot
+ */
+const useActionsStyles = makeStyles({
+  base: {
+    display: 'flex',
+    marginLeft: 'auto',
+    position: 'relative',
+    zIndex: 1,
+    ...shorthands.gridArea('aside'),
+    ...shorthands.padding(0, tokens.spacingHorizontalS),
+  },
+});
+/**
+ * Styles for the action icon slot
+ */
+const useAsideStyles = makeStyles({
+  base: {
+    display: 'flex',
+    marginLeft: 'auto',
+    alignItems: 'center',
+    zIndex: 0,
+    ...shorthands.gridArea('aside'),
+    ...shorthands.padding(0, tokens.spacingHorizontalM),
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+  },
+});
+
+/**
  * Styles for the expand icon slot
  */
 const useExpandIconStyles = makeStyles({
@@ -94,6 +123,15 @@ const useExpandIconStyles = makeStyles({
 });
 
 /**
+ * Styles for the content slot
+ */
+const useContentStyles = makeStyles({
+  base: {
+    ...shorthands.padding(0, tokens.spacingHorizontalXXS),
+  },
+});
+
+/**
  * Styles for the before/after icon slot
  */
 const useIconStyles = makeStyles({
@@ -104,18 +142,41 @@ const useIconStyles = makeStyles({
     lineHeight: tokens.lineHeightBase500,
     fontSize: tokens.fontSizeBase500,
   },
-  iconBefore: {},
-  iconAfter: {},
+});
+
+const useIconBeforeStyles = makeStyles({
+  medium: {
+    paddingRight: tokens.spacingHorizontalXS,
+  },
+  small: {
+    paddingRight: tokens.spacingHorizontalXXS,
+  },
+});
+
+const useIconAfterStyles = makeStyles({
+  medium: {
+    paddingLeft: tokens.spacingHorizontalXS,
+  },
+  small: {
+    paddingLeft: tokens.spacingHorizontalXXS,
+  },
 });
 
 /**
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, expandIcon, root } = state;
+  const { content, iconAfter, iconBefore, expandIcon, root } = state;
   const rootStyles = useRootStyles();
-  const iconStyles = useIconStyles();
+  const actionsStyles = useActionsStyles();
+  const asideStyles = useAsideStyles();
+
+  const contentStyles = useContentStyles();
+
   const expandIconStyles = useExpandIconStyles();
+  const iconStyles = useIconStyles();
+  const iconBeforeStyles = useIconBeforeStyles();
+  const iconAfterStyles = useIconAfterStyles();
 
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
@@ -130,6 +191,8 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     root.className,
   );
 
+  content.className = mergeClasses(treeItemLayoutClassNames.content, contentStyles.base, content.className);
+
   if (expandIcon) {
     expandIcon.className = mergeClasses(
       treeItemLayoutClassNames.expandIcon,
@@ -142,7 +205,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     iconBefore.className = mergeClasses(
       treeItemLayoutClassNames.iconBefore,
       iconStyles.base,
-      iconStyles.iconBefore,
+      iconBeforeStyles[size],
       iconBefore.className,
     );
   }
@@ -151,8 +214,26 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     iconAfter.className = mergeClasses(
       treeItemLayoutClassNames.iconAfter,
       iconStyles.base,
-      iconStyles.iconAfter,
+      iconAfterStyles[size],
       iconAfter.className,
+    );
+  }
+
+  if (state.actions) {
+    state.actions.className = mergeClasses(
+      treeItemLayoutClassNames.actions,
+      actionsStyles.base,
+      state.actions.className,
+    );
+  }
+  if (state.aside) {
+    state.aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, state.aside.className);
+  }
+  if (state.expandIcon) {
+    state.expandIcon.className = mergeClasses(
+      treeItemLayoutClassNames.expandIcon,
+      expandIconStyles.base,
+      state.expandIcon.className,
     );
   }
 
