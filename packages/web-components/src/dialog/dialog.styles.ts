@@ -32,9 +32,6 @@ export const styles = css`
     display: none;
   }
 
-  :host {
-  }
-
   .overlay {
     position: fixed;
     top: 0;
@@ -154,6 +151,9 @@ export const styles = css`
       max-width: 100vw;
       padding-top: ${spacingVerticalXXL};
       justify-self: stretch;
+      width: 100%;
+    }
+    ::slotted([slot='actions']) {
       width: 100%;
     }
   }
