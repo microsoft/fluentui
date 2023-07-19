@@ -262,6 +262,7 @@ const MenuNestedLong = () => {
 
       <MenuPopover>
         <MenuList>
+          {getMenuItems({ numberOfItems: 20 })}
           <MenuAutoSized>
             <MenuTrigger disableButtonEnhancement>
               <MenuItem>nested Menu - long</MenuItem>
@@ -271,8 +272,6 @@ const MenuNestedLong = () => {
               <MenuList>{getMenuItems({ numberOfItems: 20 })}</MenuList>
             </MenuPopover>
           </MenuAutoSized>
-
-          {getMenuItems({ numberOfItems: 20 })}
         </MenuList>
       </MenuPopover>
     </MenuAutoSized>
