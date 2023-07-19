@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update react-icons version to pick up fowardref change",
+  "packageName": "@fluentui/react-migration-v0-v9",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
