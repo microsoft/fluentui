@@ -54,7 +54,7 @@
 |              Test 8: [Sub-Component]: Screen resolution               |                                                                                                                 |               |
 |              - Increase the screen resolution (zoom in)               |                                       Should remain unchanged on zoom in                                        |      RTL      |
 |              - Decrease the screen resolution (zoom out)              |                                       Should remain unchanged on zoom out                                       |      RTL      |
-|                 Test 10: Theme changed to Dark Theme                  |                                           Should reflect theme change                                           |      RTL      |
+|                  Test 9: Theme changed to Dark Theme                  |                                           Should reflect theme change                                           |      RTL      |
 
 
 
