@@ -8,7 +8,7 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "engines": {
-    "node": "^14.18.1 || ^16.0.0"
+    "node": "^16.18.1 || ^18.0.0"
   },
   "scripts": {
     "build": "lage build --verbose",
@@ -164,7 +164,7 @@
     "@types/lodash": "4.14.182",
     "@types/markdown-table": "2.0.0",
     "@types/micromatch": "4.0.2",
-    "@types/node": "14.18.32",
+    "@types/node": "16.18.1",
     "@types/node-fetch": "2.5.7",
     "@types/prettier": "2.2.3",
     "@types/progress": "2.0.5",
@@ -516,6 +516,7 @@
       },
       {
         "packages": [
+          "@fluentui/vr-tests-web-components",
           "@fluentui/web-components"
         ],
         "dependencies": [

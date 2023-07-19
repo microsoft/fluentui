@@ -1,8 +1,54 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 08 May 2023 04:19:58 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2023 04:18:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.25)
+
+Wed, 19 Jul 2023 04:18:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.24..@fluentui/web-components_v3.0.0-alpha.25)
+
+### Changes
+
+- fix(web-components): check if component is connected before calling setAttribute in attribute changed callback ([PR #28500](https://github.com/microsoft/fluentui/pull/28500) by chhol@microsoft.com)
+- feat(checkbox): Add checkbox web component ([PR #27450](https://github.com/microsoft/fluentui/pull/27450) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.24)
+
+Mon, 12 Jun 2023 04:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.23..@fluentui/web-components_v3.0.0-alpha.24)
+
+### Changes
+
+- export fluent design system from web-components package ([PR #27905](https://github.com/microsoft/fluentui/pull/27905) by chhol@microsoft.com)
+
+## [3.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.23)
+
+Thu, 08 Jun 2023 04:18:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.22..@fluentui/web-components_v3.0.0-alpha.23)
+
+### Changes
+
+- feat(text-input): add TextInput as a new web component ([PR #27348](https://github.com/microsoft/fluentui/pull/27348) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.22)
+
+Wed, 24 May 2023 04:19:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.21..@fluentui/web-components_v3.0.0-alpha.22)
+
+### Changes
+
+- feat(menu-item): export MenuItemRole constants ([PR #27941](https://github.com/microsoft/fluentui/pull/27941) by harankin@microsoft.com)
+
+## [3.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.21)
+
+Mon, 15 May 2023 04:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.20..@fluentui/web-components_v3.0.0-alpha.21)
+
+### Changes
+
+- Fixes exports in Switch ([PR #27821](https://github.com/microsoft/fluentui/pull/27821) by ryan@ryanmerrill.net)
 
 ## [3.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.20)
 

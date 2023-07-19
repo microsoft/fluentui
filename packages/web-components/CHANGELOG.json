@@ -2,6 +2,87 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 19 Jul 2023 04:18:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ee984a5df76329a1da80fbe2cb6b20394d26eb7c",
+            "comment": "fix(web-components): check if component is connected before calling setAttribute in attribute changed callback"
+          },
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44328d34af5ce81c8b66b87a02a6082c2e967fc5",
+            "comment": "feat(checkbox): Add checkbox web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jun 2023 04:17:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.24",
+      "version": "3.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7d890d73560b1fec4e8d1d280ce5417529a0530f",
+            "comment": "export fluent design system from web-components package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jun 2023 04:18:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.23",
+      "version": "3.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ac7f17ec809a50b1b709e5fd66e8566b4181f08e",
+            "comment": "feat(text-input): add TextInput as a new web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 04:19:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.22",
+      "version": "3.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "60b51196b1939782da61b7ff578c17fa510ef864",
+            "comment": "feat(menu-item): export MenuItemRole constants"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 May 2023 04:19:56 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.21",
+      "version": "3.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "cad93648a2ce28e99935d4ab36089d770fa06a53",
+            "comment": "Fixes exports in Switch"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 May 2023 04:19:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.20",
       "version": "3.0.0-alpha.20",
