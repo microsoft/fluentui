@@ -13,6 +13,7 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
 const buttonSpacingSmall = '3px';
+const buttonBorderRadiusSmall = '4px';
 const buttonSpacingSmallWithIcon = '1px';
 const buttonSpacingMedium = '5px';
 const buttonSpacingLarge = '8px';
@@ -243,7 +244,7 @@ const useRootStyles = makeStyles({
     minWidth: '64px',
     ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    ...shorthands.borderRadius(buttonSpacingSmall),
+    ...shorthands.borderRadius(buttonBorderRadiusSmall),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
