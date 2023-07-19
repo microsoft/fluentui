@@ -58,13 +58,14 @@ export function useTableSelectionState<TItem>(
       return false;
     }
 
-    for (const selectableRowId of selectableRowIds) {
+    let res = true;
+    selectableRowIds.forEach(selectableRowId => {
       if (!selected.has(selectableRowId)) {
-        return false;
+        res = false;
       }
-    }
+    });
 
-    return true;
+    return res;
   }, [selectableRowIds, selected, selectionMode]);
 
   const someRowsSelected = React.useMemo(() => {
@@ -72,13 +73,14 @@ export function useTableSelectionState<TItem>(
       return false;
     }
 
-    for (const selectableRowId of selectableRowIds) {
+    let res = false;
+    selectableRowIds.forEach(selectableRowId => {
       if (selected.has(selectableRowId)) {
-        return true;
+        res = true;
       }
-    }
+    });
 
-    return false;
+    return res;
   }, [selectableRowIds, selected]);
 
   const toggleAllRows: TableSelectionState['toggleAllRows'] = useEventCallback(e => {
