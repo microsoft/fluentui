@@ -2,6 +2,21 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Fri, 14 Jul 2023 07:36:53 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.2.43",
+      "version": "8.2.43",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:33 GMT",
       "tag": "@fluentui/foundation-legacy_v8.2.43",
       "version": "8.2.43",

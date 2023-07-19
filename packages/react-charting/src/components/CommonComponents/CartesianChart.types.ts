@@ -577,4 +577,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * @default false
+   * Used to control the first render cycle Performance optimization code.
+   */
+  enableFirstRenderOptimization?: boolean;
 }

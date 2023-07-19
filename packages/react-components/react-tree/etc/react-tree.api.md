@@ -6,22 +6,22 @@
 
 /// <reference types="react" />
 
-import { ArrowDown } from '@fluentui/keyboard-keys';
-import { ArrowLeft } from '@fluentui/keyboard-keys';
-import { ArrowRight } from '@fluentui/keyboard-keys';
-import { ArrowUp } from '@fluentui/keyboard-keys';
+import type { ArrowDown } from '@fluentui/keyboard-keys';
+import type { ArrowLeft } from '@fluentui/keyboard-keys';
+import type { ArrowRight } from '@fluentui/keyboard-keys';
+import type { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { End } from '@fluentui/keyboard-keys';
-import { Enter } from '@fluentui/keyboard-keys';
+import type { End } from '@fluentui/keyboard-keys';
+import type { Enter } from '@fluentui/keyboard-keys';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Home } from '@fluentui/keyboard-keys';
+import type { Home } from '@fluentui/keyboard-keys';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -51,7 +51,7 @@ export type FlatTreeItem<Props extends FlatTreeItemProps = FlatTreeItemProps> = 
 };
 
 // @public (undocumented)
-export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType'> & Partial<Pick<TreeItemProps, 'itemType'>> & {
+export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> & Partial<Pick<TreeItemProps, 'itemType'>> & {
     value: TreeItemValue;
     parentValue?: TreeItemValue;
 };
@@ -59,11 +59,12 @@ export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType'> & Partial<Pick<T
 // @public (undocumented)
 export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
     ref: React_2.Ref<HTMLDivElement>;
-    openItems: ImmutableSet<string>;
+    openItems: ImmutableSet<TreeItemValue>;
 };
 
 // @public (undocumented)
 export type NestedTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
+    value: TreeItemValue;
     subtree?: NestedTreeItem<Props>[];
 };
 
@@ -90,7 +91,7 @@ export type TreeContextValue = {
     level: number;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
-    openItems: ImmutableSet<unknown>;
+    openItems: ImmutableSet<TreeItemValue>;
     requestTreeResponse(request: TreeItemRequest): void;
 };
 
@@ -176,9 +177,12 @@ export type TreeItemState = ComponentState<TreeItemInternalSlot> & TreeItemConte
 };
 
 // @public (undocumented)
+export type TreeItemValue = string | number;
+
+// @public (undocumented)
 export type TreeNavigationData_unstable = {
     target: HTMLElement;
-    value: string;
+    value: TreeItemValue;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
     type: 'Click';
@@ -211,26 +215,23 @@ export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 // @public (undocumented)
 export type TreeOpenChangeData = {
     open: boolean;
-    value: string;
+    value: TreeItemValue;
+    target: HTMLElement;
+    openItems: ImmutableSet<TreeItemValue>;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
-    target: HTMLElement;
     type: 'ExpandIconClick';
 } | {
     event: React_2.MouseEvent<HTMLElement>;
-    target: HTMLElement;
     type: 'Click';
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    target: HTMLElement;
     type: typeof Enter;
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    target: HTMLElement;
     type: typeof ArrowRight;
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    target: HTMLElement;
     type: typeof ArrowLeft;
 });
 
@@ -241,8 +242,8 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 export type TreeProps = ComponentProps<TreeSlots> & {
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
-    openItems?: Iterable<string>;
-    defaultOpenItems?: Iterable<string>;
+    openItems?: Iterable<TreeItemValue>;
+    defaultOpenItems?: Iterable<TreeItemValue>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
     onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 };

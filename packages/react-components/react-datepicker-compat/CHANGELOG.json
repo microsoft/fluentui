@@ -2,6 +2,80 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Thu, 13 Jul 2023 21:25:40 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jul 2023 18:46:34 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "01a5a8378f8f25dc04a3c255fd6c5ede40d8f0ee",
+            "comment": "breaking: Remove componentRef and IDatePicker since it's no longer necessary, fix ref forwarding to the input, change ref type for useDatePicker to use HTMLInputElement instead of HTMLElement, and fix focus movement when closing/opening popup."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.1.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.4.21",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.7.6",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-positioning to v9.8.0",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "9dc6601a3f222e0a339541cc1523a356a78c59e6",
+            "comment": "fix(react-datepicker-compat): Add focus styles to CalendarPicker's go to today button."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 13:34:28 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.1.11",
       "version": "0.1.11",

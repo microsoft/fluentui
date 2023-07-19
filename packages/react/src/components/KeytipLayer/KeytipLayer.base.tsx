@@ -12,6 +12,7 @@ import {
   Async,
   initializeComponentRef,
   KeyCodes,
+  isElementVisibleAndNotHidden,
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
@@ -375,7 +376,15 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
         // Account for overflow set sequences when checking for duplicates
         keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
       }
+      const targetSelector = ktpTargetFromSequences(keytip.keySequences);
+      const matchingElements = document.querySelectorAll(targetSelector);
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
+
+      // If there are multiple elements for the keytip sequence, return true if the element instance
+      // that corresponds to the keytip instance is visible
+      if (matchingElements.length > 1 && seenIds[keytipId] <= matchingElements.length) {
+        return keytip.visible && isElementVisibleAndNotHidden(matchingElements[seenIds[keytipId] - 1] as HTMLElement);
+      }
       return keytip.visible && seenIds[keytipId] === 1;
     });
   }

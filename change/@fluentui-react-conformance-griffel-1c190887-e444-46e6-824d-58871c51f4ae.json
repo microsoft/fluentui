@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release stable",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

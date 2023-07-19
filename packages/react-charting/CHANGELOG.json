@@ -2,6 +2,100 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 18 Jul 2023 07:35:17 GMT",
+      "tag": "@fluentui/react-charting_v5.16.54",
+      "version": "5.16.54",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "93312d14348f1a6c3f62c0be08f73490cd49bc0c",
+            "comment": "X bars showing incorrect data when the values are large- bug 8380"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.103",
+            "commit": "bbba7284a99cf7a63cbd7676a5a85e8770163357"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.110.10",
+            "commit": "bbba7284a99cf7a63cbd7676a5a85e8770163357"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jul 2023 07:39:32 GMT",
+      "tag": "@fluentui/react-charting_v5.16.53",
+      "version": "5.16.53",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.102",
+            "commit": "b8b3ad77ad254d80e300e540e1fa77e6ef6a4f3c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.110.9",
+            "commit": "b8b3ad77ad254d80e300e540e1fa77e6ef6a4f3c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jul 2023 07:36:53 GMT",
+      "tag": "@fluentui/react-charting_v5.16.52",
+      "version": "5.16.52",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5fa70443a1dcaa7f071ed908544e55ed46276a19",
+            "comment": "Improving first render cycle of cartesian chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jul 2023 07:38:24 GMT",
+      "tag": "@fluentui/react-charting_v5.16.51",
+      "version": "5.16.51",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9c0267d367d1fe5a8aa87e1f478322cad669abf9",
+            "comment": "Added component tests for Vertical bar chart"
+          }
+        ],
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d1440d45a86ccedae6aeb20825b0756342c1b49",
+            "comment": "Fixing rerender issue for empty vertical bar charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jul 2023 07:35:07 GMT",
       "tag": "@fluentui/react-charting_v5.16.50",
       "version": "5.16.50",

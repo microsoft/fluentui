@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 03 Jul 2023 13:34:27 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jul 2023 18:46:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.10.0)
+
+Tue, 11 Jul 2023 18:46:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.9.1..@fluentui/react-menu_v9.10.0)
+
+### Minor changes
+
+- fix: exported useOnMenuMouseEnter from react-menu ([PR #28413](https://github.com/microsoft/fluentui/pull/28413) by kakrookaran@gmail.com)
+- Bump @fluentui/react-positioning to v9.8.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
 
 ## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.9.1)
 

@@ -225,6 +225,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
           colorFillBars={colorFillBarData}
           allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+          enablePerfOptimization={true}
         />
       </div>
     );

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: move slots back to TreeItem and creates slot context",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

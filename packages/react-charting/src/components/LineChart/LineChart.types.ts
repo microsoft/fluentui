@@ -78,6 +78,12 @@ export interface ILineChartProps extends ICartesianChartProps {
   culture?: string;
 
   /**
+   * * @default false
+   * The prop used to enable the perf optimization
+   */
+  enablePerfOptimization?: boolean;
+
+  /**
    * Prop to set the x axis title
    * @default undefined
    */
