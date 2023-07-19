@@ -14,15 +14,14 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
     minWidth: '128px',
-    maxWidth: '300px',
     width: 'max-content',
+    ...createMaxSizeStyles(),
+    maxWidth: '300px',
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.padding('4px'),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
     ...createSlideStyles(10),
-    ...createMaxSizeStyles(),
-    overflowX: 'hidden',
   },
 });
 
