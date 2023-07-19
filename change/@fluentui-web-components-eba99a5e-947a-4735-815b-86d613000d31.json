@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(checkbox): Add checkbox web component",
-  "packageName": "@fluentui/web-components",
-  "email": "brianbrady@microsoft.com",
-  "dependentChangeType": "patch"
-}
