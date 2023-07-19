@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTCalendar, MonthFormat, WeekdayFormat } from '@microsoft/fast-foundation';
+import { FASTCalendar, MonthFormat, WeekdayFormat, YearFormat } from '@microsoft/fast-foundation';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
 
 /**
@@ -132,15 +132,20 @@ export class Calendar extends FASTCalendar {
    */
   @attr public yearPickerOpen: boolean = false;
 
+  /**
+   * the decade on the year picker
+   */
+  @attr public yearPickerDecade: number = this.year - (this.year % 10);
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
-    this.addEventListener('monthselected', this.monthSelectedHandler);
+    this.addEventListener('monthselected', this.rightCellSelectedHandler);
   }
 
   public disconnectedCallback() {
     this.removeEventListener('dateselected', this.dateSelectedHandler);
-    this.removeEventListener('monthselected', this.monthSelectedHandler);
+    this.removeEventListener('monthselected', this.rightCellSelectedHandler);
     super.disconnectedCallback();
   }
 
@@ -169,11 +174,13 @@ export class Calendar extends FASTCalendar {
     this.year = year;
     this.month = month;
     this.monthPickerYear = year;
+    this.yearPickerDecade = year - (year % 10);
   }
 
   public handleGoToToday(event: MouseEvent) {
     const today: Date = new Date();
     this.switchMonth(today.getMonth() + 1, today.getFullYear());
+    this.yearPickerOpen = false;
   }
 
   public getLinkClassNames(isMonthPickerLink: boolean) {
@@ -190,12 +197,10 @@ export class Calendar extends FASTCalendar {
     }
   }
 
-  public getMonthClassNames(month: number, todayMonth: number) {
-    const thisMonth = month === todayMonth;
+  public getRightCellClassNames(detail: number, todayMonth: number, todayYear: number) {
+    const isToday = this.yearPickerOpen ? detail === todayYear : detail === todayMonth;
 
-    console.log(this.hasAttribute('highlightCurrentMonth'));
-
-    return ['month-cell', this.hasAttribute('highlightCurrentMonth') && thisMonth && 'this-month']
+    return ['right-cell-outer', this.hasAttribute('highlightCurrentMonth') && isToday && 'right-panel-today']
       .filter(Boolean)
       .join(' ');
   }
@@ -219,13 +224,13 @@ export class Calendar extends FASTCalendar {
    * @returns A 2D array of month text
    * @public
    */
-  public getMonthText(): { text: string; month: number }[][] {
+  public getMonthText(): { text: string; detail: number }[][] {
     const months = this.getMonths();
-    const monthsText: { text: string; month: number }[][] = [];
+    const monthsText: { text: string; detail: number }[][] = [];
     let monthCount = 0;
 
     while (monthCount < months.length || monthsText[monthsText.length - 1].length % 4 !== 0) {
-      const month = { text: months[monthCount], month: monthCount + 1 };
+      const month = { text: months[monthCount], detail: monthCount + 1 };
       const target = monthsText[monthsText.length - 1];
       if (monthsText.length === 0 || target.length % 4 === 0) {
         monthsText.push([month]);
@@ -242,17 +247,62 @@ export class Calendar extends FASTCalendar {
    * @param month - Month cell
    * @public
    */
-  public handleMonthSelect(event: Event, month: number): void {
+  public handleRightCellSelect(event: Event, month: number): void {
     event.preventDefault;
     this.$emit('monthselected', month);
   }
 
-  public monthSelectedHandler(event: any) {
-    const month = event.detail;
-    this.switchMonth(month, this.monthPickerYear);
+  public rightCellSelectedHandler(event: any) {
+    const month = this.yearPickerOpen ? this.month : event.detail;
+    const year = this.yearPickerOpen ? event.detail : this.monthPickerYear;
+    if (this.yearPickerOpen) {
+      this.yearPickerOpen = false;
+    }
+    this.switchMonth(month, year);
   }
 
   public toggleYearPicker() {
     this.yearPickerOpen = !this.yearPickerOpen;
+  }
+
+  /**
+   *
+   * @param locale - The locale data used for formatting
+   * @returns - An array of the decade labels
+   * @public
+   */
+  public getDecade(decadeStartYear: number, locale: string = this.locale): string[] {
+    const decade = Array(12)
+      .fill(null)
+      .map((_, count) => this.dateFormatter.getYear(decadeStartYear + count, YearFormat.numeric, locale));
+
+    console.log(decade);
+
+    return decade;
+  }
+
+  /**
+   * Returns a list of month labels
+   * @returns A 2D array of month text
+   * @public
+   */
+  public getDecadeText(decadeStartYear: number): { text: string; detail: number }[][] {
+    const decade = this.getDecade(decadeStartYear);
+    const decadeText: { text: string; detail: number }[][] = [];
+    let yearCount = 0;
+
+    while (yearCount < decade.length || decadeText[decadeText.length - 1].length % 4 !== 0) {
+      const yearText = { text: decade[yearCount], detail: decadeStartYear + yearCount };
+      const target = decadeText[decadeText.length - 1];
+      if (decadeText.length === 0 || target.length % 4 === 0) {
+        decadeText.push([yearText]);
+      } else {
+        target.push(yearText);
+      }
+      yearCount++;
+    }
+
+    console.log(decadeText);
+    return decadeText;
   }
 }

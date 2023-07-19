@@ -53,7 +53,7 @@ export const styles = css`
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
   }
-  :host .month-picker {
+  :host .right-panel {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,7 +62,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
-  :host .month-cell:not(.this-month):hover {
+  :host .right-cell-outer:not(.right-panel-today):hover {
     background: ${colorBrandBackgroundInvertedHover};
     color: ${colorNeutralForeground1Static};
   }
@@ -71,24 +71,24 @@ export const styles = css`
     color: ${colorNeutralForeground1Static};
   }
   :host .title,
-  .month-picker-title {
+  .right-panel-title {
     position: inline;
     padding: ${spacingHorizontalM};
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
   }
-  :host .month-picker-title {
+  :host .right-panel-title {
     cursor: pointer;
   }
-  :host .month-row {
+  :host .right-panel-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-bottom: none;
     justify-items: center;
     padding: 2px 0px;
   }
-  :host .month-cell,
-  .month {
+  :host .right-cell-outer,
+  .right-cell {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,7 +133,7 @@ export const styles = css`
     width: 32px;
   }
   :host .interact .day,
-  .month {
+  .right-cell {
     background: var(--neutral-fill-rest);
     cursor: pointer;
   }
@@ -206,7 +206,7 @@ export const styles = css`
     display: flex;
     justify-content: flex-end;
   }
-  :host .this-month {
+  :host .right-panel-today {
     color: ${colorNeutralForeground2Selected};
     background: ${colorBrandBackgroundInvertedSelected};
   }

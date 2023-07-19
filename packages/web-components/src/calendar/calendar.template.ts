@@ -4,6 +4,8 @@ import {
   calendarTemplate,
   calendarTitleTemplate,
   FASTCalendar,
+  interactiveCalendarGridTemplate,
+  noninteractiveCalendarTemplate,
   tagFor,
 } from '@microsoft/fast-foundation';
 import type { Calendar } from './calendar.js';
@@ -24,10 +26,19 @@ const ArrowDown16 = html.partial(`
  * @returns - A month picker title template
  * @public
  */
-export function calendarMonthTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
+export function calendarRightPanelTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
+  const yearPickerTitle = html`
+    <span
+      >${(x: T) => x.dateFormatter.getYear(x.yearPickerDecade)}-${(x: T) =>
+        x.dateFormatter.getYear(x.yearPickerDecade + 11)}</span
+    >
+  `;
+
+  const monthPickerTitle = html` <span>${(x: T) => x.dateFormatter.getYear(x.monthPickerYear)}</span> `;
+
   return html`
-    <div class="month-picker-title" part="month-picker-title" @click=${x => console.log(x.toggleYearPicker())}>
-      <span>${(x: T) => x.dateFormatter.getYear(x.monthPickerYear)}</span>
+    <div class="right-panel-title" part="right-panel-title" @click=${x => x.toggleYearPicker()}>
+      ${x => (x.yearPickerOpen ? yearPickerTitle : monthPickerTitle)}
     </div>
   `;
 }
@@ -37,19 +48,19 @@ export function calendarMonthTitleTemplate<T extends Calendar>(): ViewTemplate<T
  * @returns - The weekday labels template
  * @public
  */
-export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: number): ViewTemplate {
+export function rightPanelCellTemplate(options: CalendarOptions, todayMonth: number, todayYear: number): ViewTemplate {
   const cellTag = html.partial(tagFor(options.dataGridCell));
   return html`
       <${cellTag}
-          class="${(x, c) => c.parentContext.parent.getMonthClassNames(x.month, todayMonth)}"
+          class="${(x, c) => c.parentContext.parent.getRightCellClassNames(x.detail, todayMonth, todayYear)}"
           part="month-cell"
           tabindex="-1"
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
-          @click="${(x, c) => c.parentContext.parent.handleMonthSelect(c.event, x.month)}"
+          @click="${(x, c) => c.parentContext.parent.handleRightCellSelect(c.event, x.detail)}"
       >
         <div
-        class="month">
+        class="right-cell">
           ${x => x.text}
         </div>
         </slot></slot>
@@ -64,18 +75,17 @@ export function monthPickerCellTemplate(options: CalendarOptions, todayMonth: nu
  * @returns - A template for a week of days
  * @public
  */
-export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: number): ViewTemplate {
+export function rightPanelRowTemplate(options: CalendarOptions, todayMonth: number, todayYear: number): ViewTemplate {
   const rowTag = html.partial(tagFor(options.dataGridRow));
   return html`
       <${rowTag}
-          class="month-row"
-          part="month-row"
+          class="right-panel-row"
+          part="right-panel-row"
           role="row"
           role-type="default"
           grid-template-columns="1fr 1fr 1fr 1fr"
       >
-      ${x => console.log(x)}
-      ${repeat(x => x, monthPickerCellTemplate(options, todayMonth), {
+      ${repeat(x => x, rightPanelCellTemplate(options, todayMonth, todayYear), {
         positioning: true,
       })}
       </${rowTag}>
@@ -90,16 +100,22 @@ export function monthPickerRowTemplate(options: CalendarOptions, todayMonth: num
  *
  * @internal
  */
-export function interactiveMonthPickerGridTemplate<T extends Calendar>(
+export function interactiveRightPanelGridTemplate<T extends Calendar>(
   options: CalendarOptions,
   todayMonth: number,
+  todayYear: number,
 ): ViewTemplate<T> {
   const gridTag = html.partial(tagFor(options.dataGrid));
 
   return html<T>`
   <${gridTag} class="months interact" part="months" generate-header="none">
-      ${when(x => x.yearPickerOpen, html`hello`)}
-      ${repeat(x => x.getMonthText(), monthPickerRowTemplate(options, todayMonth))}
+      ${x =>
+        x.yearPickerOpen
+          ? html`${repeat(
+              x => x.getDecadeText(x.yearPickerDecade),
+              rightPanelRowTemplate(options, todayMonth, todayYear),
+            )}`
+          : html`${repeat(x => x.getMonthText(), rightPanelRowTemplate(options, todayMonth, todayYear))}`}
   </${gridTag}>
   `;
 }
@@ -111,10 +127,11 @@ export function interactiveMonthPickerGridTemplate<T extends Calendar>(
  * @returns - a template for a calendar month
  * @public
  */
-export function MonthPickerTemplate<T extends Calendar>(options: CalendarOptions): ElementViewTemplate<T> {
+export function rightPanelTemplate<T extends Calendar>(options: CalendarOptions): ElementViewTemplate<T> {
   const today: Date = new Date();
   const todayMonth: number = today.getMonth() + 1;
-  return html<T>` ${interactiveMonthPickerGridTemplate(options, todayMonth)} `;
+  const todayYear: number = today.getFullYear();
+  return html<T>` ${interactiveRightPanelGridTemplate(options, todayMonth, todayYear)} `;
 }
 
 /**
@@ -162,19 +179,27 @@ export const template: ElementViewTemplate<Calendar> = html`
     </div>
     ${when(
       x => x.hasAttribute('monthPickerVisible'),
-      html`<div class="month-picker">
+      html`<div class="right-panel">
         <div class="header">
-          ${calendarMonthTitleTemplate()}
+          ${x => calendarRightPanelTitleTemplate()}
           <div class="navicon-container">
-            <span class="navicon-up" part="navicon-up" @click="${(x, c) => (x.monthPickerYear -= 1)}">
+            <span
+              class="navicon-up"
+              part="navicon-up"
+              @click="${(x, c) => (x.yearPickerOpen ? (x.yearPickerDecade -= 10) : (x.monthPickerYear -= 1))}"
+            >
               ${ArrowUp16}
             </span>
-            <span class="navicon-down" part="navicon-down" @click="${(x, c) => (x.monthPickerYear += 1)}">
+            <span
+              class="navicon-down"
+              part="navicon-down"
+              @click="${(x, c) => (x.yearPickerOpen ? (x.yearPickerDecade += 10) : (x.monthPickerYear += 1))}"
+            >
               ${ArrowDown16}
             </span>
           </div>
         </div>
-        ${MonthPickerTemplate({
+        ${rightPanelTemplate({
           dataGrid: 'fast-data-grid',
           dataGridRow: 'fast-data-grid-row',
           dataGridCell: 'fast-data-grid-cell',
