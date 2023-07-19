@@ -5,7 +5,6 @@ import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { RadioProps } from '@fluentui/react-radio';
-import { ImmutableSet } from '../../utils/ImmutableSet';
 
 export type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 export type SingleSelectValue = NonNullable<RadioProps['checked']>;
@@ -34,7 +33,6 @@ export type TreeOpenChangeData = {
   open: boolean;
   value: TreeItemValue;
   target: HTMLElement;
-  openItems: ImmutableSet<TreeItemValue>;
 } & (
   | { event: React.MouseEvent<HTMLElement>; type: 'ExpandIconClick' }
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }

@@ -1,9 +1,9 @@
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { createFlatTreeItems, VisibleFlatTreeItemGenerator } from '../utils/createFlatTreeItems';
+import { createFlatTreeItems } from '../utils/createFlatTreeItems';
 import { treeDataTypes } from '../utils/tokens';
 import { useFlatTreeNavigation } from './useFlatTreeNavigation';
-import { useControllableOpenItems } from './useControllableOpenItems';
+import { createNextOpenItems, useControllableOpenItems } from './useControllableOpenItems';
 import type {
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
@@ -31,7 +31,7 @@ export type FlatTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> &
 export type FlatTreeItem<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
   index: number;
   level: number;
-  childrenSize: number;
+  childrenValues: TreeItemValue[];
   value: TreeItemValue;
   parentValue: TreeItemValue | undefined;
   getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> &
@@ -143,7 +143,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     options.onOpenChange?.(event, data);
     if (!event.isDefaultPrevented()) {
-      setOpenItems(data.openItems);
+      setOpenItems(createNextOpenItems(data, openItems));
     }
     event.preventDefault();
   });
@@ -212,10 +212,7 @@ export function useFlatTree_unstable<Props extends FlatTreeItemProps = FlatTreeI
     [openItems, checkedItems],
   );
 
-  const items = React.useCallback(
-    () => VisibleFlatTreeItemGenerator(openItems, flatTreeItems),
-    [openItems, flatTreeItems],
-  );
+  const items = React.useCallback(() => flatTreeItems.visibleItems(openItems), [openItems, flatTreeItems]);
 
   return React.useMemo(
     () => ({ navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items }),

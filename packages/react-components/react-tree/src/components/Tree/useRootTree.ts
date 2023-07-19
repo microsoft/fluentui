@@ -31,22 +31,20 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
   const [checkedItems, setCheckedItems] = useNestedControllableCheckedItems(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
-  const requestOpenChange = (data: Omit<TreeOpenChangeData, 'openItems'>) => {
-    const nextOpenItems = createNextOpenItems(data, openItems);
-    props.onOpenChange?.(data.event, { ...data, openItems: nextOpenItems } as TreeOpenChangeData);
+  const requestOpenChange = (data: TreeOpenChangeData) => {
+    props.onOpenChange?.(data.event, data);
     if (data.event.isDefaultPrevented()) {
       return;
     }
-    return setOpenItems(nextOpenItems);
+    return setOpenItems(createNextOpenItems(data, openItems));
   };
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => {
-    const nextCheckedItems = createNextCheckedItems(data, checkedItems);
     props.onCheckedChange?.(data.event, data);
     if (data.event.isDefaultPrevented()) {
       return;
     }
-    return setCheckedItems(nextCheckedItems);
+    return setCheckedItems(createNextCheckedItems(data, checkedItems));
   };
 
   const requestNavigation = (data: TreeNavigationData_unstable) => {

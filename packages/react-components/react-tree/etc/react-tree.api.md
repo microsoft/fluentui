@@ -49,7 +49,7 @@ export type FlatTree<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
 export type FlatTreeItem<Props extends FlatTreeItemProps = FlatTreeItemProps> = {
     index: number;
     level: number;
-    childrenSize: number;
+    childrenValues: TreeItemValue[];
     value: TreeItemValue;
     parentValue: TreeItemValue | undefined;
     getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> & Omit<Props, 'parentId'>;
@@ -243,7 +243,6 @@ export type TreeOpenChangeData = {
     open: boolean;
     value: TreeItemValue;
     target: HTMLElement;
-    openItems: ImmutableSet<TreeItemValue>;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
     type: 'ExpandIconClick';

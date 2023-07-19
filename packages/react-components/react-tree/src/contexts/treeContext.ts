@@ -19,9 +19,9 @@ export type TreeContextValue = {
 };
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
-  | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'>
+  | OmitWithoutExpanding<TreeOpenChangeData, 'open'>
   | TreeNavigationData_unstable
-  | OmitWithoutExpanding<TreeCheckedChangeData, 'checked' | 'checkedItems' | 'selectionMode'>
+  | OmitWithoutExpanding<TreeCheckedChangeData, 'checked' | 'selectionMode'>
 );
 
 // helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
