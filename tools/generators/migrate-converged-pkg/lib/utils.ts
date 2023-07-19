@@ -1,8 +1,8 @@
-import { logger } from '@nrwl/devkit';
+import { logger } from '@nx/devkit';
 import * as ejs from 'ejs';
 import * as fs from 'fs';
 /**
- * Similar to @nrwl/devkit#generateFiles function but for getting content only
+ * Similar to @nx/devkit#generateFiles function but for getting content only
  *
  * @param src - the source folder of files (absolute path)
  * @param substitutions - an object of key-value pairs

@@ -1,4 +1,4 @@
-import { Tree, formatFiles, names } from '@nrwl/devkit';
+import { Tree, formatFiles, names } from '@nx/devkit';
 
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 

@@ -15,7 +15,7 @@ import {
   applyChangesToString,
   ChangeType,
   readNxJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import * as path from 'path';
 import * as os from 'os';
 import * as ts from 'typescript';

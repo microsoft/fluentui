@@ -1,5 +1,5 @@
 import * as chalk from 'chalk';
-import { Tree, ProjectConfiguration, logger } from '@nrwl/devkit';
+import { Tree, ProjectConfiguration, logger } from '@nx/devkit';
 
 interface Options<T extends ProjectConfiguration> {
   title: string;

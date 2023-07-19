@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { addProjectConfiguration, Tree, writeJson } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { addProjectConfiguration, Tree, writeJson } from '@nx/devkit';
 import * as path from 'path';
 
 import generator from './index';

@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -14,7 +14,7 @@ import {
   readJson,
   updateJson,
   NxJsonConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import generator from './index';
 import { TsConfig } from '../../types';

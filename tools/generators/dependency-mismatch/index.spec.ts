@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, addProjectConfiguration, readNxJson, readJson, writeJson } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { Tree, addProjectConfiguration, readNxJson, readJson, writeJson } from '@nx/devkit';
 
 import generator from './index';
 import { PackageJson } from '../../types';

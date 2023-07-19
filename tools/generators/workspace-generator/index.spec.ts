@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, readJson } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { Tree, readJson } from '@nx/devkit';
 
 import generator from './index';
 import { WorkspaceGeneratorGeneratorSchema } from './schema';
@@ -62,8 +62,8 @@ describe('workspace-generator generator', () => {
         installPackagesTask,
         names,
         generateFiles,
-      } from '@nrwl/devkit';
-      import { libraryGenerator } from '@nrwl/workspace/generators';
+      } from '@nx/devkit';
+      import { libraryGenerator } from '@nx/workspace/generators';
 
       import { getProjectConfig } from '../../utils';
 
@@ -121,8 +121,8 @@ describe('workspace-generator generator', () => {
     const content = tree.read('/tools/generators/custom/index.spec.ts')?.toString();
 
     expect(content).toMatchInlineSnapshot(`
-      "import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-      import { Tree, readProjectConfiguration } from '@nrwl/devkit';
+      "import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+      import { Tree, readProjectConfiguration } from '@nx/devkit';
 
       import generator from './index';
       import { CustomGeneratorSchema } from './schema';

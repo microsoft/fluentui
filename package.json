@@ -101,12 +101,6 @@
     "@microsoft/load-themed-styles": "1.10.26",
     "@microsoft/loader-load-themed-styles": "2.0.17",
     "@microsoft/tsdoc": "0.14.1",
-    "@nrwl/cli": "15.9.4",
-    "@nrwl/devkit": "16.0.3",
-    "@nrwl/jest": "16.0.3",
-    "@nrwl/js": "16.0.3",
-    "@nrwl/node": "16.0.3",
-    "@nrwl/workspace": "16.0.3",
     "@octokit/rest": "18.12.0",
     "@phenomnomnominal/tsquery": "6.1.2",
     "@storybook/addon-a11y": "6.5.15",
@@ -358,7 +352,12 @@
     "workspace-tools": "0.29.1",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
-    "yargs-unparser": "2.0.0"
+    "yargs-unparser": "2.0.0",
+    "@nx/devkit": "16.0.3",
+    "@nx/workspace": "16.0.3",
+    "@nx/js": "16.0.3",
+    "@nx/jest": "16.0.3",
+    "@nx/node": "16.0.3"
   },
   "dependencies": {
     "copy-to-clipboard": "3.3.1"

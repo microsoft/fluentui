@@ -1,4 +1,4 @@
-import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration, joinPathFragments } from '@nrwl/devkit';
+import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration, joinPathFragments } from '@nx/devkit';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 import { getProjectConfig } from '../../utils';
 

@@ -1,4 +1,4 @@
-import { Tree, formatFiles, writeJson } from '@nrwl/devkit';
+import { Tree, formatFiles, writeJson } from '@nx/devkit';
 import { isEqual } from 'lodash';
 
 import { TsconfigBaseAllGeneratorSchema } from './schema';

@@ -10,7 +10,7 @@ import {
   createProjectGraphAsync,
   ProjectGraph,
   readProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import * as semver from 'semver';
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';

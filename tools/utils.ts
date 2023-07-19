@@ -9,7 +9,7 @@ import {
   ProjectConfiguration,
   readJson,
   readNxJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { PackageJson, PackageJsonWithBeachball } from './types';
 import * as semver from 'semver';
 
@@ -80,7 +80,7 @@ export function parseArgs<T extends Record<string, any>>(args: string[]) {
   return parsedArguments;
 }
 
-export { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
+export { updateJestConfig } from '@nx/jest/src/generators/jest-project/lib/update-jestconfig';
 
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
@@ -165,7 +165,7 @@ export function printUserLogs(logs: UserLog) {
 }
 
 /**
- * Overridden `@nrwl/devkit#getProjects` function
+ * Overridden `@nx/devkit#getProjects` function
  * Get all workspace projects or only subset, if projectNames array is specified
  *
  * @param tree

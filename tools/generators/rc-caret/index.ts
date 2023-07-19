@@ -1,4 +1,4 @@
-import { Tree, updateJson, getProjects, formatFiles } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, formatFiles } from '@nx/devkit';
 import * as semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
 import { getProjectConfig, isPackageVersionConverged, printUserLogs, UserLog } from '../../utils';

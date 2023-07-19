@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   addProjectConfiguration,
@@ -24,13 +24,13 @@ const blankGraphMock = {
 let graphMock: ProjectGraph;
 const codeownersPath = joinPathFragments('.github', 'CODEOWNERS');
 
-jest.mock('@nrwl/devkit', () => {
+jest.mock('@nx/devkit', () => {
   async function createProjectGraphAsyncMock(): Promise<ProjectGraph> {
     return graphMock;
   }
 
   return {
-    ...jest.requireActual('@nrwl/devkit'),
+    ...jest.requireActual('@nx/devkit'),
     createProjectGraphAsync: createProjectGraphAsyncMock,
   };
 });

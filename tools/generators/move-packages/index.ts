@@ -9,8 +9,8 @@ import {
   logger,
   updateProjectConfiguration,
   readProjectConfiguration,
-} from '@nrwl/devkit';
-import { moveGenerator } from '@nrwl/workspace/generators';
+} from '@nx/devkit';
+import { moveGenerator } from '@nx/workspace/generators';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
 
 import { MovePackagesGeneratorSchema } from './schema';

@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -8,7 +8,7 @@ import {
   joinPathFragments,
   readJson,
   stripIndents,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import generator from './index';
 import { PackageJson } from '../../types';

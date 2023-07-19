@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -9,7 +9,7 @@ import {
   logger,
   readNxJson,
   NxJsonConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import type { Linter } from 'eslint';
 
 import type { TsConfig } from '../../types';

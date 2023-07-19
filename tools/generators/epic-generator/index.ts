@@ -1,4 +1,4 @@
-import { getProjects, stripIndents, Tree } from '@nrwl/devkit';
+import { getProjects, stripIndents, Tree } from '@nx/devkit';
 import { execSync, spawnSync } from 'child_process';
 import { EpicGenerator } from './schema';
 import { isPackageConverged, workspacePaths } from '../../utils';

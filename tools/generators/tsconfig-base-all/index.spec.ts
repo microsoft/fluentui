@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, writeJson, readJson, updateJson } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { Tree, writeJson, readJson, updateJson } from '@nx/devkit';
 
 import generator from './index';
 import { TsconfigBaseAllGeneratorSchema } from './schema';

@@ -10,7 +10,7 @@ import {
   ProjectConfiguration,
   stripIndents,
   updateProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import { printStats } from '../print-stats';
 

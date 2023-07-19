@@ -2,7 +2,7 @@ import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as chalk from 'chalk';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -20,7 +20,7 @@ import {
   WorkspaceConfiguration,
   ProjectConfiguration,
   joinPathFragments,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
 import { disableChalk, formatMockedCalls, setupCodeowners } from '../../utils-testing';

@@ -1,4 +1,4 @@
-import { stripIndents, Tree } from '@nrwl/devkit';
+import { stripIndents, Tree } from '@nx/devkit';
 import type { Chalk } from 'chalk';
 
 import { workspacePaths } from './utils';

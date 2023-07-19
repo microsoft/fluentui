@@ -1,4 +1,4 @@
-import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nx/devkit';
 import { MigrateFixedVersionsGeneratorSchema } from './schema';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';

@@ -1,5 +1,5 @@
-import { applyChangesToString, Tree } from '@nrwl/devkit';
-import { joinPathFragments, StringChange, ChangeType } from '@nrwl/devkit';
+import { applyChangesToString, Tree } from '@nx/devkit';
+import { joinPathFragments, StringChange, ChangeType } from '@nx/devkit';
 
 import { getProjectConfig } from '../utils';
 

@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   addProjectConfiguration,
@@ -9,7 +9,7 @@ import {
   ProjectGraph,
   readProjectConfiguration,
   updateJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import * as chalk from 'chalk';
 
 import generator from './index';
@@ -22,13 +22,13 @@ const graphMock: ProjectGraph = {
   externalNodes: {},
 };
 
-jest.mock('@nrwl/devkit', () => {
+jest.mock('@nx/devkit', () => {
   async function createProjectGraphAsyncMock(): Promise<ProjectGraph> {
     return graphMock;
   }
 
   return {
-    ...jest.requireActual('@nrwl/devkit'),
+    ...jest.requireActual('@nx/devkit'),
     createProjectGraphAsync: createProjectGraphAsyncMock,
   };
 });

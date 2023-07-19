@@ -1,5 +1,5 @@
-import { Tree, addProjectConfiguration, stripIndents } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { Tree, addProjectConfiguration, stripIndents } from '@nx/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { addCodeowner } from './add-codeowners';
 import { setupCodeowners } from '../utils-testing';
 import { workspacePaths } from '../utils';

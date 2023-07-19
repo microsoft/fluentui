@@ -1,4 +1,4 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -6,7 +6,7 @@ import {
   serializeJson,
   addProjectConfiguration,
   readJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import generator from './index';
 import { MigrateFixedVersionsGeneratorSchema } from './schema';

@@ -1,7 +1,7 @@
 // @ts-check
 
-const { stripIndents, logger } = require('@nrwl/devkit');
-const { createProjectGraphAsync } = require('@nrwl/workspace/src/core/project-graph');
+const { stripIndents, logger } = require('@nx/devkit');
+const { createProjectGraphAsync } = require('@nx/workspace/src/core/project-graph');
 
 main().catch(err => {
   logger.error(err);

@@ -11,7 +11,7 @@ import {
   joinPathFragments,
   updateJson,
   readJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import { getProjectConfig } from '../../utils';
 

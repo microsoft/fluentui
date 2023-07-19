@@ -1,4 +1,4 @@
-import { stripIndents } from '@nrwl/devkit';
+import { stripIndents } from '@nx/devkit';
 import path = require('path/posix');
 import { getTemplate } from './utils';
 describe(`utils`, () => {

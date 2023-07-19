@@ -1,5 +1,5 @@
-import { addProjectConfiguration, getProjects, logger, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { addProjectConfiguration, getProjects, logger, Tree } from '@nx/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import * as chalk from 'chalk';
 import { disableChalk, formatMockedCalls } from '../utils-testing';
 

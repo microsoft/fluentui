@@ -1,6 +1,6 @@
 import * as path from 'path';
-import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/workspace/generators';
+import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nx/devkit';
+import { libraryGenerator } from '@nx/workspace/generators';
 
 import { getProjectConfig } from '../../utils';
 
