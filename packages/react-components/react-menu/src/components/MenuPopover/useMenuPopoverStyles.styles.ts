@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     minWidth: '128px',
     width: 'max-content',
-    ...createMaxSizeStyles(),
+    ...createMaxSizeStyles({ width: 'max-content' }),
     maxWidth: '300px',
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.padding('4px'),

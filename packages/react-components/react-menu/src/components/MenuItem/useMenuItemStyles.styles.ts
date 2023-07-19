@@ -27,12 +27,12 @@ const useStyles = makeStyles({
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
+    minHeight: '32px',
     display: 'flex',
     alignItems: 'center',
     fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
     ...shorthands.gap('4px'),
-    flexShrink: 0,
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
