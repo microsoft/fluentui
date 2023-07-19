@@ -6,7 +6,7 @@ import type { GriffelStyle } from '@griffel/react';
  */
 export function createMaxSizeStyles(): GriffelStyle {
   return {
-    boxSizing: 'border-box',
+    boxSizing: 'var(--maxsize-boxSizing)' as GriffelStyle['boxSizing'],
     height: 'var(--available-height)',
     width: 'var(--available-width)',
     maxHeight: 'var(--available-max-height)',

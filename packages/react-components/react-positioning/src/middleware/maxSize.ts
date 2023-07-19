@@ -38,6 +38,10 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
         elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
         elements.floating.style.setProperty('--maxsize-overflow-x', applyMaxWidth || applyWidth ? null : 'hidden');
       }
+
+      if (autoSize) {
+        elements.floating.style.setProperty('--maxsize-boxSizing', 'border-box');
+      }
     },
   });
 }
