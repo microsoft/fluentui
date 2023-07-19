@@ -34,7 +34,7 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public
-export function createMaxSizeStyles(): GriffelStyle;
+export function createMaxSizeStyles(fallbackStyles?: MaxSizeStyles): MaxSizeStyles;
 
 // @public
 export function createSlideStyles(mainAxis: number): GriffelStyle;
