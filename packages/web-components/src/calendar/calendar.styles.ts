@@ -42,6 +42,9 @@ export const styles = css`
     display: flex;
   }
   :host .date-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: ${spacingHorizontalM};
     width: 248px;
     height: 285px;
@@ -51,9 +54,10 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
   :host .month-picker {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: ${spacingHorizontalM};
-    width: 248px;
-    height: 209px;
     outline: solid lightblue;
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};

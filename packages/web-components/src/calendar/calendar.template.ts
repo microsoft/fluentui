@@ -151,9 +151,15 @@ export const template: ElementViewTemplate<Calendar> = html`
         dataGridCell: 'fast-data-grid-cell',
       })}
       <div class="footer" part="footer">
-        <div class=${x => x.getLinkClassNames()} @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
-          Go to today
-        </div>
+        ${when(
+          x => !x.hasAttribute('monthPickerVisible'),
+          html` <div
+            class=${x => x.getLinkClassNames(false)}
+            @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}"
+          >
+            Go to today
+          </div>`,
+        )}
       </div>
     </div>
     ${when(
@@ -175,6 +181,11 @@ export const template: ElementViewTemplate<Calendar> = html`
           dataGridRow: 'fast-data-grid-row',
           dataGridCell: 'fast-data-grid-cell',
         })}
+        <div class="footer" part="footer">
+          <div class="${x => x.getLinkClassNames(true)}" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
+            Go to today
+          </div>
+        </div>
       </div>`,
     )}
   </div>

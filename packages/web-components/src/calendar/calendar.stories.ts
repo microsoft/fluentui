@@ -8,6 +8,12 @@ type CalendarStoryArgs = Args & FluentCalendar;
 type CalendarStoryMeta = Meta<CalendarStoryArgs>;
 
 const storyTemplate = html<CalendarStoryArgs>`
+  <style>
+    div.docs-story > div:first-child {
+      height: 285px;
+      width: 472;
+    }
+  </style>
   <fluent-calendar
     ?show-slotted-link=${x => x.showSlottedLink}
     ?highlightCurrentMonth=${x => x.highlightCurrentMonth}

@@ -171,11 +171,14 @@ export class Calendar extends FASTCalendar {
     this.switchMonth(today.getMonth() + 1, today.getFullYear());
   }
 
-  public getLinkClassNames() {
+  public getLinkClassNames(isMonthPickerLink: boolean) {
     const today: Date = new Date();
 
-    if (this.month === today.getMonth() + 1 && this.year === today.getFullYear()) {
-      console.log('here');
+    if (isMonthPickerLink) {
+      return this.month === today.getMonth() + 1 && this.monthPickerYear === today.getFullYear()
+        ? 'slotted-link inactive'
+        : 'slotted-link';
+    } else if (this.month === today.getMonth() + 1 && this.year === today.getFullYear()) {
       return 'slotted-link inactive';
     } else {
       return 'slotted-link';
