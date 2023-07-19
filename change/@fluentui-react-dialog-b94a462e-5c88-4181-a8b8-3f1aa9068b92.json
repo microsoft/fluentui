@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: moves handleBackdropClick from defaultProps to an override ",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
