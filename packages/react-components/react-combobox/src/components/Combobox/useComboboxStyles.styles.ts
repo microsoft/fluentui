@@ -3,6 +3,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
+import { createMaxSizeStyles } from '@fluentui/react-positioning';
 
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
@@ -84,6 +85,7 @@ const useStyles = makeStyles({
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     maxHeight: '80vh',
+    ...createMaxSizeStyles(),
   },
 
   listboxCollapsed: {
