@@ -263,6 +263,7 @@ export class Calendar extends FASTCalendar {
 
   public toggleYearPicker() {
     this.yearPickerOpen = !this.yearPickerOpen;
+    this.yearPickerDecade = this.monthPickerYear - (this.monthPickerYear % 10);
   }
 
   /**
@@ -275,8 +276,6 @@ export class Calendar extends FASTCalendar {
     const decade = Array(12)
       .fill(null)
       .map((_, count) => this.dateFormatter.getYear(decadeStartYear + count, YearFormat.numeric, locale));
-
-    console.log(decade);
 
     return decade;
   }
@@ -301,8 +300,6 @@ export class Calendar extends FASTCalendar {
       }
       yearCount++;
     }
-
-    console.log(decadeText);
     return decadeText;
   }
 }

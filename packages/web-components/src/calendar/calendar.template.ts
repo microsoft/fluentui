@@ -1,13 +1,5 @@
 import { ElementViewTemplate, html, repeat, ViewTemplate, when } from '@microsoft/fast-element';
-import {
-  CalendarOptions,
-  calendarTemplate,
-  calendarTitleTemplate,
-  FASTCalendar,
-  interactiveCalendarGridTemplate,
-  noninteractiveCalendarTemplate,
-  tagFor,
-} from '@microsoft/fast-foundation';
+import { CalendarOptions, calendarTemplate, calendarTitleTemplate, tagFor } from '@microsoft/fast-foundation';
 import type { Calendar } from './calendar.js';
 
 const ArrowUp16 = html.partial(`
