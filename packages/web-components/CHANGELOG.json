@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 19 Jul 2023 04:18:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ee984a5df76329a1da80fbe2cb6b20394d26eb7c",
+            "comment": "fix(web-components): check if component is connected before calling setAttribute in attribute changed callback"
+          },
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44328d34af5ce81c8b66b87a02a6082c2e967fc5",
+            "comment": "feat(checkbox): Add checkbox web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Jun 2023 04:17:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.24",
       "version": "3.0.0-alpha.24",
