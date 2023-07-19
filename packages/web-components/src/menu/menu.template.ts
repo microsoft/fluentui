@@ -4,7 +4,7 @@ import type { Menu } from './menu.js';
 export function menuTemplate<T extends Menu>(): ElementViewTemplate<T> {
   return html<T>`
     <template @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}">
-      <slot name="trigger" ${slotted({ property: 'trigger', filter: elements() })} tabindex="0"></slot>
+      <slot name="trigger" ${slotted({ property: 'trigger', filter: elements() })}></slot>
       <span class="menu-list-container" ${ref('menuListContainer')} ?hidden="${x => !x.expanded}">
         <slot ${slotted({ property: 'menu', filter: elements() })}></slot>
       </span>
