@@ -133,6 +133,11 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
+   * styles for tooltip
+   */
+  tooltipTitle?: IStyle;
+
+  /**
    * Style for the chart Title.
    */
   chartTitle?: IStyle;

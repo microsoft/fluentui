@@ -9,6 +9,8 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 interface IVerticalChartState {
   width: number;
@@ -193,10 +195,14 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           styles={{ root: { marginTop: '10px' } }}
         />
         <div style={rootStyle}>
+          {/* <ThemeProvider theme={DarkTheme}> */}
           <VerticalBarChart
             culture={window.navigator.language}
             chartTitle="Vertical bar chart basic example "
             data={points}
+            xAxisTitle="Huge x axis title which is very long and will be truncated with ellipsis at the end
+            of the text and will be shown on hover of the text"
+            yAxisTitle="Huge y axis title which is very long and will be truncated with ellipsis"
             width={this.state.width}
             useSingleColor={this.state.useSingleColor}
             height={this.state.height}
@@ -210,7 +216,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               ) => (props ? defaultRender(props) : null),
             })}
             hideLabels={this.state.hideLabels}
+            showXAxisLablesTooltip={true}
           />
+          {/* </ThemeProvider> */}
         </div>
       </>
     );

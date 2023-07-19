@@ -13,7 +13,6 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
   id="chart_2"
@@ -70,7 +69,30 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, 275)"
+        transform="translate(0, 240)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host4"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={302}
       />
       <g
         className=
@@ -98,7 +120,33 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host5"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   212)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g>
         <rect
@@ -118,8 +166,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={40}
+          width={-60}
+          x={80}
           y={4}
         />
         <rect
@@ -139,9 +187,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-37.5}
-          x={40}
-          y={106}
+          width={-75}
+          x={80}
+          y={92}
         />
         <rect
           aria-label="2020/04/30. 88%."
@@ -160,9 +208,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-40}
-          x={40}
-          y={192.7}
+          width={-80}
+          x={80}
+          y={166.79999999999998}
         />
         <rect
           aria-label="2020/04/30. 10%."
@@ -181,9 +229,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-15}
-          x={40}
-          y={233.5}
+          width={-30}
+          x={80}
+          y={202}
         />
       </g>
     </svg>
@@ -233,7 +281,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -628,7 +676,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1195,7 +1243,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
   id="chart_2"
@@ -1252,7 +1299,30 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host4"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -1280,7 +1350,33 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host5"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g>
         <rect
@@ -1299,8 +1395,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={40}
+          width={-60}
+          x={80}
           y={4}
         />
          
@@ -1355,7 +1451,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1758,10 +1854,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_7"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1774,7 +1869,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1814,8 +1909,31 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
             & path {
               display: none;
             }
-        id="xAxisGElementchart_7"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host11"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -1842,13 +1960,39 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_7"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_9"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host12"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g>
         <rect
           aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout5"
+          aria-labelledby="toolTipcallout7"
           className=
 
               {
@@ -1862,8 +2006,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={40}
+          width={-60}
+          x={80}
           y={4}
         />
          
@@ -1891,10 +2035,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_15"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1907,7 +2050,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone16"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1947,8 +2090,31 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_15"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host17"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -1975,13 +2141,39 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_15"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host18"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g>
         <rect
           aria-label="1000. String One."
-          aria-labelledby="toolTipcallout9"
+          aria-labelledby="toolTipcallout13"
           data-is-focusable={true}
           fill="#0078d4"
           height={32}
@@ -1990,10 +2182,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
-          y={14.25}
+          transform="translate(0,-0.75)"
+          width={-24}
+          x={80}
+          y={5.5}
         />
          
          
@@ -2047,7 +2239,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone19"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2442,10 +2634,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_22"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2458,7 +2649,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone23"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2498,8 +2689,31 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_22"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host24"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -2526,13 +2740,39 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_22"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host25"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g>
         <rect
           aria-label="1000. String One."
-          aria-labelledby="toolTipcallout14"
+          aria-labelledby="toolTipcallout20"
           data-is-focusable={true}
           fill="#0078d4"
           height={32}
@@ -2541,10 +2781,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
-          y={14.25}
+          transform="translate(0,-0.75)"
+          width={-24}
+          x={80}
+          y={5.5}
         />
          
          
@@ -2598,7 +2838,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone26"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

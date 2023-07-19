@@ -13,7 +13,6 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
   id="chart_0"
@@ -70,7 +69,30 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               display: none;
             }
         id="xAxisGElementchart_0"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host2"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -98,7 +120,33 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_0"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host3"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -111,12 +159,12 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-38.81188118811881, -24.554455445544555)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -132,7 +180,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           25
         </text>
@@ -147,12 +195,12 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(20.594059405940598, -69.10891089108911)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -168,7 +216,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           50
         </text>
@@ -221,7 +269,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -570,7 +618,6 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
   id="chart_0"
@@ -627,7 +674,30 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_0"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host2"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -655,7 +725,33 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_0"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host3"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -667,12 +763,12 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-38.81188118811881, -24.554455445544555)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -688,7 +784,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           25
         </text>
@@ -702,12 +798,12 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(20.594059405940598, -69.10891089108911)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -723,7 +819,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           50
         </text>
@@ -776,7 +872,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -909,10 +1005,9 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -925,7 +1020,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -965,8 +1060,31 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host7"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -993,8 +1111,34 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_5"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host8"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g
         aria-label="Mar/04, p2. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1006,12 +1150,12 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-38.81188118811881, -24.554455445544555)"
       >
         <rect
           fill="rgb(255, 195, 195)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1027,7 +1171,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           25
         </text>
@@ -1041,12 +1185,12 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(20.594059405940598, -69.10891089108911)"
       >
         <rect
           fill="rgb(255, 197, 186)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1062,7 +1206,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           50
         </text>
@@ -1115,7 +1259,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1338,10 +1482,9 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_6"
+  id="chart_10"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1354,7 +1497,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1394,8 +1537,31 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_6"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_10"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host12"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -1422,8 +1588,34 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_10"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host13"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1435,12 +1627,12 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-38.81188118811881, -24.554455445544555)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1456,7 +1648,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           25
         </text>
@@ -1470,12 +1662,12 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(20.594059405940598, -69.10891089108911)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1491,7 +1683,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           50
         </text>
@@ -1517,10 +1709,9 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_14"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1533,7 +1724,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1573,8 +1764,31 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_14"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host16"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -1601,8 +1815,34 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_14"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host17"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1614,12 +1854,12 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-38.81188118811881, -24.554455445544555)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1635,7 +1875,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           25
         </text>
@@ -1649,12 +1889,12 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(20.594059405940598, -69.10891089108911)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1670,7 +1910,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           50
         </text>
@@ -1723,7 +1963,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone18"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1856,10 +2096,9 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_19"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1872,7 +2111,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1912,8 +2151,31 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_19"
+        transform="translate(0, -70)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host21"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        x={80}
+        y={-8}
       />
       <g
         className=
@@ -1940,8 +2202,34 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
-        transform="translate(40, 0)"
+        id="yAxisGElementchart_19"
+        transform="translate(80, 0)"
+      />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-family: Segoe UI;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host22"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1953,12 +2241,12 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-38.81188118811881, -24.554455445544555)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -1974,7 +2262,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           25
         </text>
@@ -1988,12 +2276,12 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(20.594059405940598, -69.10891089108911)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
-          width={29.10891089108911}
+          height={43.663366336633665}
+          width={58.21782178217822}
         />
         <text
           className=
@@ -2009,7 +2297,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(29.10891089108911, 21.831683168316832)"
         >
           50
         </text>
@@ -2062,7 +2350,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone23"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

@@ -21,6 +21,16 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     chartWrapper: {
       overflow: 'auto',
     },
+    tooltipTitle: {
+      textAlign: 'center',
+      fontFamily: 'Segoe UI',
+      fontSize: '10px',
+      fontWeight: '600',
+      fontStyle: 'normal',
+      lineHeight: '14px',
+      color: 'var(--neutrals-web-gray-160323130, #323130)',
+      fill: theme.semanticColors.bodyText,
+    },
     xAxis: {
       selectors: {
         text: [
@@ -178,17 +188,5 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
       },
     ],
-    tooltip: {
-      ...theme.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: theme.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
-    },
   };
 };

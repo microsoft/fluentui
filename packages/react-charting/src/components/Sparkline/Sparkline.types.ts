@@ -53,6 +53,18 @@ export interface ISparklineProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ISparklineStyleProps, ISparklineStyles>;
+
+  /**
+   * Prop to set the x axis title
+   * @default undefined
+   */
+  xAxisTitle?: string;
+
+  /**
+   * Prop to set the y axis title
+   * @default undefined
+   */
+  yAxisTitle?: string;
 }
 
 export interface ISparklineStyles {

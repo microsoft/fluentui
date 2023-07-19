@@ -32,15 +32,11 @@ import {
   calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
-  createTitle,
-  tooltipOfXAxislabels,
-  createYAxisTitle,
-  createXAxisTitle,
   wrapContent,
-  showTooltipOfAxisTitle,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { ThemeProvider } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
@@ -61,7 +57,6 @@ export interface ICartesianChartState {
    */
   _removalValueForTextTuncate?: number;
   startFromX: number;
-  xaxisTitleHeight: number;
 }
 
 /**
@@ -77,14 +72,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  private xAxisTitleElement: SVGElement | null;
-  private yAxisTitleElement: SVGElement | null;
   private yAxisElementSecondary: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
+  private titleMargin: number;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
@@ -99,9 +93,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       _removalValueForTextTuncate: 0,
       isRemoveValCalculated: true,
       startFromX: 0,
-      xaxisTitleHeight: 0,
     };
     this.idForGraph = getId('chart_');
+    this.titleMargin = 8;
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -110,17 +104,17 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     this.margins = {
       top: this.props.margins?.top ?? 20,
-      bottom: this.props.margins?.bottom ?? 35 + 50,
+      bottom: this.props.margins?.bottom ?? 70,
       right: this._isRtl
-        ? this.props.margins?.left ?? 40
+        ? this.props.margins?.left ?? 80
         : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
-        ? 40
-        : 20,
+        ? 80
+        : 40,
       left: this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
-          ? 40 + 50
-          : 20 + 50
-        : this.props.margins?.left ?? 40 + 50,
+          ? 80
+          : 40
+        : this.props.margins?.left ?? 80,
     };
   }
 
@@ -173,7 +167,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this.setState({
           _removalValueForTextTuncate: rotatedHeight! + this.margins.bottom!,
           isRemoveValCalculated: false,
-          xaxisTitleHeight: rotatedHeight!,
         });
       }
     }
@@ -249,7 +242,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xAxisPadding: this.props.xAxisPadding,
       xAxisInnerPadding: this.props.xAxisInnerPadding,
       xAxisOuterPadding: this.props.xAxisOuterPadding,
-      xAxisTitle: this.props.xAxisTitle,
     };
 
     const YAxisParams = {
@@ -268,7 +260,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: this.props.yAxisPadding || 0,
-      yAxisTitle: this.props.yAxisTitle,
     };
     /**
      * These scales used for 2 purposes.
@@ -424,13 +415,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     } else {
       focusDirection = FocusZoneDirection.horizontal;
     }
-    console.log('svgDimensions.width = ', svgDimensions.width);
-    console.log('svgDimensions.height = ', svgDimensions.height);
-    console.log('this.idForGraph = ', this.idForGraph);
-    console.log('container height = ', this.state.containerHeight);
-    console.log('container width = ', this.state.containerWidth);
-    console.log('this.margins = ', this.margins);
-    console.log('this.state.startFromX = ', this.state.startFromX);
 
     const xAxisTitleMaximumAllowedWidth =
       svgDimensions.width - this.margins.left! - this.margins.right! - this.state.startFromX!;
@@ -439,21 +423,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this.margins.bottom! -
       this.margins.top! -
       this.state._removalValueForTextTuncate! -
-      XAxisParams.tickPadding!;
-    // if (xAxisTitleMaximumAllowedWidth > 0 && yAxisTitleMaximumAllowedHeight > 0) {
-    //   createXAxisTitle(
-    //     this.xAxisTitleElement,
-    //     xScale,
-    //     xAxisTitleMaximumAllowedWidth
-    //   );
-
-    //   createYAxisTitle(
-    //     this.yAxisTitleElement,
-    //     yScale,
-    //     yAxisTitleMaximumAllowedHeight
-    //   );
-    // }
-
+      this.titleMargin;
     return (
       <div
         id={this.idForGraph}
@@ -467,7 +437,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             width={svgDimensions.width}
             height={svgDimensions.height}
             aria-label={this.props.chartTitle}
-            style={{ display: 'block', overflow: 'visible' }}
+            style={{ display: 'block' }}
             {...svgProps}
           >
             <g
@@ -481,33 +451,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               })`}
               className={this._classNames.xAxis}
             />
-            <g
-              ref={(e: SVGElement | null) => {
-                this.xAxisTitleElement = e;
+            <SVGTooltipText
+              content={this.props.xAxisTitle}
+              textProps={{
+                x: this.margins.left! + this.state.startFromX,
+                y: svgDimensions.height - this.titleMargin,
+                className: this._classNames.tooltipTitle!,
               }}
-              id="titleXAxis"
-              fill="#000"
-              transform={`translate(${this.margins.left! + this.state.startFromX}, ${svgDimensions.height - 8})`}
-            >
-              {/* <text style={{ fontSize: '10px' }}>
-                {
-                  this.props.xAxisTitle
-                }
-              </text> */}
-              <SVGTooltipText
-                content={
-                  'Huge x axis title which is very long and will be truncated with ellipsis at the end of the text and will be shown on hover of the text'
-                }
-                textProps={{
-                  x: 250,
-                  y: 0,
-                  textAnchor: 'middle',
-                  className: this._classNames.tooltip!,
-                }}
-                maxWidth={xAxisTitleMaximumAllowedWidth}
-                wrapContent={wrapContent}
-              />
-            </g>
+              maxWidth={xAxisTitleMaximumAllowedWidth}
+              wrapContent={wrapContent}
+            />
             <g
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
@@ -520,36 +473,21 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }, 0)`}
               className={this._classNames.yAxis}
             />
-            {/* <g
-              ref={(e: SVGElement | null) => {
-                this.yAxisTitleElement = e;
-              }}
-              id='titleYAxis'
-              fill="#000"
-              transform={`translate(${8
-                }, ${svgDimensions.height - this.margins.bottom! -
-                this.state._removalValueForTextTuncate!})rotate(-90)`}
-              onMouseEnter={e => this._onYAxisTitleMouseOver(e)}
-              onMouseMove={e => this._onYAxisTitleMouseOver(e)}
-              onMouseOver={e => this._onYAxisTitleMouseOver(e)}
-            // transform={`translate(${-(this.state.startFromX + this.margins.left! - 8)}, ${this.margins.top} )rotate(-90)`}
-            >
-              {/* <text style={{ height: '1000px', paddingLeft: '300px', alignContent: 'center', fontSize: '10px' }}>
-                {this.props.yAxisTitle}
-              </text> */}
-            {/* <SVGTooltipText
-              content={
-                this.props.yAxisTitle
-              }
+            <SVGTooltipText
+              content={this.props.yAxisTitle}
               textProps={{
-
+                x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
+                y: this._isRtl
+                  ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
+                  : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
                 textAnchor: 'middle',
-                className: this._classNames.tooltip!,
+                transform: `translate(0,
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                className: this._classNames.tooltipTitle!,
               }}
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
             />
-          </g> */}
             {this.props.secondaryYScaleOptions && (
               <g
                 ref={(e: SVGElement | null) => {
@@ -560,19 +498,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
                 }, 0)`}
                 className={this._classNames.yAxis}
-                onMouseEnter={e => this._onYAxisTitleMouseOver(e)}
-                onMouseMove={e => this._onYAxisTitleMouseOver(e)}
-                onMouseOver={e => this._onYAxisTitleMouseOver(e)}
-              >
-                <g
-                  fill="#000"
-                  transform={`translate(-45, ${svgDimensions.height / 2 - this.margins.bottom! - 0} )rotate(-90)`}
-                >
-                  <text style={{ height: '1000px', paddingLeft: '300px', alignContent: 'center' }}>
-                    {'Y axis title cartesian'}
-                  </text>
-                </g>
-              </g>
+              />
             )}
             {children}
           </svg>
@@ -582,8 +508,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {this.props.legendBars}
           </div>
         )}
-        {/* <text style={{ height: '100px', paddingLeft: '300px' }}>{'X axis title vertical bar'}</text> */}
-
         {/** The callout is used for narration, so keep it mounted on the DOM */}
         <Callout
           hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
@@ -610,22 +534,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       </div>
     );
   }
-
-  private _onYAxisTitleMouseOver = (e: any) => {
-    console.log('here inside mouse over handler');
-    // // console.log('this.props.yAxisTitle = ', this.props.yAxisTitle)
-    // const axistitleTooltipProps = {
-    //   tooltipCls: this._classNames.tooltip!,
-    //   xId: getId('xAxisTitleTooltipId_'),
-    //   yId: getId('yAxisTitleTooltipId_'),
-    //   wholeTitleId: 'TotalTitleYAxis',
-    //   titleId: 'TitleYaxisWrap',
-    //   xaxis: e,
-    //   wholeTitle: this.props.yAxisTitle
-    // };
-    // console.log('%%$$');
-    // showTooltipOfAxisTitle(axistitleTooltipProps);
-  };
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -823,8 +731,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         this.state.containerWidth,
         this.xAxisElement,
         this.yAxisElement,
-        this.xAxisTitleElement,
-        this.yAxisTitleElement,
       );
   };
 

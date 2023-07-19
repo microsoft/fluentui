@@ -84,10 +84,10 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Prop to set the x axis title
    * @default undefined
    */
-  xAxisTitle?: string;
 
+  xAxisTitle?: string;
   /**
-   * Prop to set the x axis title
+   * Prop to set the y axis title
    * @default undefined
    */
   yAxisTitle?: string;

@@ -69,22 +69,22 @@ export interface IAxisData {
 export interface IMargins {
   /**
    * left margin for the chart.
-   * @default 40
+   * @default 80
    */
   left?: number;
   /**
    * Right margin for the chart.
-   * @default 20
+   * @default 40
    */
   right?: number;
   /**
    * Top margin for the chart.
-   * @default 20
+   * @default 40
    */
   top?: number;
   /**
    * Bottom margin for the chart.
-   * @default 35
+   * @default 70
    */
   bottom?: number;
 }
@@ -740,86 +740,6 @@ export function createYAxisLabels(
   });
 }
 
-export function createXAxisTitle(
-  node: SVGElement | null,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  axis: any,
-  maxAllowedWidth: number,
-): boolean {
-  if (node === null && maxAllowedWidth < 0) {
-    return;
-  }
-  const axisNode = d3Select(node)
-    .call(axis)
-    .call(g => g.select('.text').attr('id', 'titleXAxis'));
-  truncateTitle(axisNode, 'TotalTitleXAxis', maxAllowedWidth);
-  return true;
-}
-
-export function createYAxisTitle(
-  node: SVGElement | null,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  axis: any,
-  maxAllowedHeight: number,
-) {
-  if (node === null && maxAllowedHeight < 0) {
-    return;
-  }
-  const axisNode = d3Select(node)
-    .call(axis)
-    .call(g => g.select('.text').attr('id', 'titleYAxis'));
-  truncateTitle(axisNode, 'TotalTitleYAxis', maxAllowedHeight);
-}
-
-export function truncateTitle(axisNode: any, id: string, maxAllowedSpace: number) {
-  axisNode.selectAll('text').each(function () {
-    const text = d3Select(this);
-    console.log('random = ', text.text());
-    const totalWord = text.text();
-    console.log('totalWord', totalWord);
-    const tspanText = text.text();
-    const y = text.attr('y');
-    const x = text.attr('x');
-
-    const tspan = text
-      .text(null)
-      .append('tspan')
-      .attr('x', x)
-      .attr('y', y)
-      .attr('id', 'TitleBaseSpanAxis_' + id)
-      .attr('data-', totalWord);
-
-    tspan.text(tspanText);
-    console.log('tspan text = ', tspan.text());
-
-    console.log('maxAllowedSpace = ', maxAllowedSpace);
-    console.log('tspan.node()!.getComputedTextLength() = ', tspan.node()!.getComputedTextLength());
-    if (tspan.text().length > 0 && tspan.node()!.getComputedTextLength() > maxAllowedSpace) {
-      console.log('entered = ', tspan.node()!.getComputedTextLength());
-      console.log('noOfCharsToTruncate entered = ', maxAllowedSpace);
-      do {
-        console.log('tspan.node()!.getComputedTextLength() = ', tspan.node()!.getComputedTextLength());
-        tspan.text(`${text.text().slice(0, -1)}`);
-        console.log('tspan', tspan.text());
-        console.log('tspan length within = ', tspan.node()!.getComputedTextLength());
-      } while (tspan.node()!.getComputedTextLength() > maxAllowedSpace - 3 && tspan.text().length > 0);
-      text.text(null);
-      text
-        .append('tspan')
-        .attr('id', 'showDots')
-        .attr('x', x)
-        .attr('y', y)
-        .text(tspan.text().trim() + '...');
-      console.log('totalWord after truncation', totalWord);
-      if (document.getElementById(id) === null) {
-        console.log('entered doc');
-        axisNode.append('div').attr('id', id).attr('data-', totalWord).style('opacity', 0);
-      }
-      console.log('text = ', text.text());
-    }
-  });
-}
-
 export const wrapContent = (content: string, id: string, maxWidth: number) => {
   const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
   textElement.text(content);
@@ -891,71 +811,9 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
     const d1 = tickObject[i];
     d3Select(d1)
       .on('mouseover', d => {
-        console.log('mouse over labels');
         div.style('opacity', 0.9);
         div
           .html(originalDataArray[i])
-          .style('left', d3Event.pageX + 'px')
-          .style('top', d3Event.pageY - 28 + 'px');
-      })
-      .on('mouseout', d => {
-        div.style('opacity', 0);
-      });
-  }
-}
-
-export function tooltipOfAxisTitle(axistooltipProps: any) {
-  console.log('entered tooltipOfAxisTitle');
-  const xAxistooltipProps = {
-    tooltipCls: axistooltipProps.tooltipCls,
-    xAxis: axistooltipProps.xAxis,
-    id: axistooltipProps.xId,
-    wholeTitleId: 'TotalTitleXAxis',
-    titleId: 'TitleBaseSpanAxis_TotalTitleXAxis',
-  };
-  const yAxistooltipProps = {
-    tooltipCls: axistooltipProps.tooltipCls,
-    xAxis: axistooltipProps.yAxis,
-    id: axistooltipProps.yId,
-    wholeTitleId: 'TotalTitleYAxis',
-    titleId: 'TitleYaxisWrap',
-  };
-  console.log('%%$$');
-  showTooltipOfAxisTitle(xAxistooltipProps);
-  showTooltipOfAxisTitle(yAxistooltipProps);
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function showTooltipOfAxisTitle(xAxistooltipProps: any) {
-  console.log('**************************');
-  const { tooltipCls, xAxis, id, wholeTitleId, titleId, wholeTitle } = xAxistooltipProps;
-  if (xAxis === null) {
-    return null;
-  }
-  console.log('xid = ', id);
-  console.log('wholeTitle = ', wholeTitle);
-  const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  // const aa = xAxis!.selectAll(`#${wholeTitleId}`)._groups[0];
-  // console.log('`#${wholeTitleId}` = ', `#${wholeTitleId}`);
-  // console.log('aa = ', aa);
-  // const baseSpanLength = aa && Object.keys(aa)!.length;
-  // const originalDataArray: string[] = [];
-  // for (let i = 0; i < baseSpanLength; i++) {
-  //   const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
-  //   originalDataArray.push(originalData);
-  // }
-  // console.log('originalDataArray = ', originalDataArray);
-  const tickObject = xAxis!._groups[0];
-  console.log('tickObject = ', tickObject);
-  const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
-  for (let i = 0; i < tickObjectLength; i++) {
-    const d1 = tickObject[i];
-    d3Select(d1)
-      .on('mouseover', d => {
-        console.log('mouse over event');
-        div.style('opacity', 0.9);
-        div
-          .html(wholeTitle)
           .style('left', d3Event.pageX + 'px')
           .style('top', d3Event.pageY - 28 + 'px');
       })

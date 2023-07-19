@@ -90,7 +90,6 @@ export class SVGTooltipText
   public render(): React.ReactNode {
     const { content, tooltipProps, textProps } = this.props;
     const { isTooltipVisible } = this.state;
-    console.log('render ****');
     const tooltipRenderProps: ITooltipProps = {
       content,
       targetElement: this._getTargetElement(),
@@ -105,7 +104,6 @@ export class SVGTooltipText
     };
 
     const showTooltip = isTooltipVisible && !!content;
-    console.log('showTooltip', showTooltip);
 
     return (
       <>
