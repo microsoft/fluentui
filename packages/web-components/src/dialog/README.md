@@ -10,6 +10,8 @@
 
 Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implementation but not direct parity.
 
+## Superclass: `FASTDialog`
+
 ## Class: `Dialog`
 
 <br />
