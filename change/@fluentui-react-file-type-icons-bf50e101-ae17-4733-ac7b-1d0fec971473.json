@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add loopworkspace to FileIconType enum\"",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 18 Jul 2023 07:35:18 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2023 07:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.25](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.25)
+
+Wed, 19 Jul 2023 07:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.24..@fluentui/azure-themes_v8.6.25)
+
+### Patches
+
+- Cleaning up message bar semantic names for messagebar background and icon values per ICM team ([PR #28440](https://github.com/microsoft/fluentui/pull/28440) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.6.24](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.24)
 
