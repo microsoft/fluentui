@@ -11,6 +11,10 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
+      if (autoSize) {
+        elements.floating.style.setProperty('--maxsize-box-sizing', 'border-box');
+      }
+
       const applyMaxWidth = autoSize === 'always' || autoSize === 'width-always';
       const applyWidth = rects.floating.width > availableWidth && (autoSize === true || autoSize === 'width');
 
@@ -19,28 +23,20 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
 
       if (applyMaxWidth) {
         elements.floating.style.setProperty('--available-max-width', `${availableWidth}px`);
+        elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
       }
       if (applyWidth) {
         elements.floating.style.setProperty('--available-width', `${availableWidth}px`);
-      }
-      if (applyMaxWidth || applyWidth) {
         elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
-        elements.floating.style.setProperty('--maxsize-overflow-y', applyMaxHeight || applyHeight ? null : 'hidden');
       }
 
       if (applyMaxHeight) {
         elements.floating.style.setProperty('--available-max-height', `${availableHeight}px`);
+        elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
       }
       if (applyHeight) {
         elements.floating.style.setProperty('--available-height', `${availableHeight}px`);
-      }
-      if (applyMaxHeight || applyHeight) {
         elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
-        elements.floating.style.setProperty('--maxsize-overflow-x', applyMaxWidth || applyWidth ? null : 'hidden');
-      }
-
-      if (autoSize) {
-        elements.floating.style.setProperty('--maxsize-box-sizing', 'border-box');
       }
     },
   });

@@ -5,6 +5,7 @@ import {
   PositioningProps,
   PositioningVirtualElement,
   PositioningImperativeRef,
+  createMaxSizeStyles,
 } from '@fluentui/react-positioning';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
@@ -76,6 +77,11 @@ const useStyles = makeStyles({
       outlineStyle: 'solid',
       outlineColor: 'green',
     },
+  },
+
+  autoSizedContainer: {
+    ...shorthands.border('3px', 'solid', 'green'),
+    ...createMaxSizeStyles(),
   },
 });
 
@@ -457,7 +463,7 @@ const AutoSize = () => {
       }}
     >
       <button ref={targetRef}>Target</button>
-      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+      <Box ref={containerRef} className={styles.autoSizedContainer}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
         pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
