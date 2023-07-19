@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "#28576: [Bug]: Small <Button> is using 3px border radius",
+  "packageName": "@fluentui/react-button",
+  "email": "mehars.6925@gmail.com",
+  "dependentChangeType": "patch"
+}
