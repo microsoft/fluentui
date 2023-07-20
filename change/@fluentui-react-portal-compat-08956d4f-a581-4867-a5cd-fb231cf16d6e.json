@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(PortalCompatProvider): support custom ID prefixes in themeClassName",
-  "packageName": "@fluentui/react-portal-compat",
-  "email": "alinazaieva@microsoft.com",
-  "dependentChangeType": "patch"
-}

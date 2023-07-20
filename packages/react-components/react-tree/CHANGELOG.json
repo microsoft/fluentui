@@ -2,6 +2,63 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Thu, 20 Jul 2023 18:27:36 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.26",
+      "version": "9.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f5b6134905e28c124b2dc34cc6bd286ca621de6a",
+            "comment": "feat: implements selection"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-aria to v9.3.27",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.5.13",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.24",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-checkbox to v9.1.25",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-portal to v9.3.2",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-radio to v9.1.25",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jul 2023 21:25:48 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.25",
       "version": "9.0.0-beta.25",

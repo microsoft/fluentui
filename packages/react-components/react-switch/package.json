@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-switch",
-  "version": "9.1.24",
+  "version": "9.1.25",
   "description": "Fluent UI React Switch component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,10 +33,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.11",
+    "@fluentui/react-field": "^9.1.12",
     "@fluentui/react-icons": "^2.0.203",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.11",
-    "@fluentui/react-label": "^9.1.20",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.12",
+    "@fluentui/react-label": "^9.1.21",
     "@fluentui/react-shared-contexts": "^9.6.0",
     "@fluentui/react-tabster": "^9.10.0",
     "@fluentui/react-theme": "^9.1.9",
