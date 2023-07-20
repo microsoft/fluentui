@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Remove empty makeStyles call",
+  "comment": "fix: Remove empty makeStyles call.",
   "packageName": "@fluentui/react-toolbar",
   "email": "138819425+benlemmon-ms@users.noreply.github.com",
   "dependentChangeType": "patch"
