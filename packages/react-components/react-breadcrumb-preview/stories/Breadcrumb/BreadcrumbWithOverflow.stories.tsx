@@ -167,6 +167,21 @@ const OverflowGroupDivider: React.FC<{
   );
 };
 
+const renderButton = (el: ButtonItem, isLastItem: boolean = false) => {
+  return (
+    <React.Fragment key={`button-items-${el.key}`}>
+      <OverflowItem id={el.key.toString()} priority={isLastItem ? el.key : undefined} groupId={el.key.toString()}>
+        <BreadcrumbItem>
+          <BreadcrumbButton {...el.buttonProps} current={isLastItem}>
+            {el.item}
+          </BreadcrumbButton>
+        </BreadcrumbItem>
+      </OverflowItem>
+      {!isLastItem && <OverflowGroupDivider groupId={el.key} />}
+    </React.Fragment>
+  );
+};
+
 const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<ButtonItem>) => {
   const { overflowItems, startDisplayedItems, endDisplayedItems } = props;
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
@@ -222,18 +237,7 @@ const BreadcrumbControlledOverflowExample = () => {
     <div className={mergeClasses(styles.example, styles.horizontal)}>
       <Overflow>
         <Breadcrumb>
-          {startDisplayedItems.map((item: ButtonItem) => {
-            return (
-              <React.Fragment key={`start-items-${item.key}`}>
-                <OverflowItem id={`${item.key}`} groupId={item.key.toString()}>
-                  <BreadcrumbItem>
-                    <BreadcrumbButton {...item.buttonProps}>{item.item}</BreadcrumbButton>
-                  </BreadcrumbItem>
-                </OverflowItem>
-                <OverflowGroupDivider groupId={item.key} />
-              </React.Fragment>
-            );
-          })}
+          {startDisplayedItems.map((item: ButtonItem) => renderButton(item, false))}
           <ControlledOverflowMenu
             overflowItems={overflowItems}
             startDisplayedItems={startDisplayedItems}
@@ -243,23 +247,7 @@ const BreadcrumbControlledOverflowExample = () => {
           {endDisplayedItems &&
             endDisplayedItems.map((item: ButtonItem) => {
               const isLastItem = item.key === buttonItems.length - 1;
-
-              return (
-                <React.Fragment key={`end-items-${item.key}`}>
-                  <OverflowItem
-                    id={item.key.toString()}
-                    priority={isLastItem ? item.key : undefined}
-                    groupId={item.key.toString()}
-                  >
-                    <BreadcrumbItem>
-                      <BreadcrumbButton {...item.buttonProps} current={isLastItem}>
-                        {item.item}
-                      </BreadcrumbButton>
-                    </BreadcrumbItem>
-                  </OverflowItem>
-                  {!isLastItem && <OverflowGroupDivider groupId={item.key} />}
-                </React.Fragment>
-              );
+              return renderButton(item, isLastItem);
             })}
         </Breadcrumb>
       </Overflow>

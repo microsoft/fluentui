@@ -107,7 +107,7 @@ const linkItems: LinkItem[] = [
 
 function renderLink(el: LinkItem, isLastItem: boolean = false) {
   return (
-    <React.Fragment key={`start-items-${el.key}`}>
+    <React.Fragment key={`link-items-${el.key}`}>
       <OverflowItem id={el.key.toString()} priority={isLastItem ? el.key : undefined} groupId={el.key.toString()}>
         <BreadcrumbItem>
           <BreadcrumbLink
@@ -237,7 +237,7 @@ const BreadcrumbControlledOverflowExample = () => {
     <div className={mergeClasses(styles.example, styles.horizontal)}>
       <Overflow padding={40}>
         <Breadcrumb>
-          {startDisplayedItems.map((item: LinkItem) => renderLink(item, item.key === linkItems.length - 1))}
+          {startDisplayedItems.map((item: LinkItem) => renderLink(item, false))}
           <ControlledOverflowMenu
             overflowItems={overflowItems}
             startDisplayedItems={startDisplayedItems}
