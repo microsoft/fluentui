@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { ButtonContextValue } from '@fluentui/react-button';
-import { TreeItemSlots } from '../TreeItem/TreeItem.types';
+import { TreeItemSlotsContextValue } from '../../contexts/treeItemSlotsContext';
 
 export type TreeItemLayoutSlots = {
   root: Slot<'div'>;
@@ -18,7 +18,7 @@ export type TreeItemLayoutSlots = {
   iconAfter?: Slot<'div'>;
 };
 
-export type TreeItemLayoutInternalSlots = TreeItemLayoutSlots & Pick<TreeItemSlots, 'actions' | 'aside' | 'expandIcon'>;
+export type TreeItemLayoutInternalSlots = TreeItemLayoutSlots & TreeItemSlotsContextValue;
 
 /**
  * TreeItemLayout Props
