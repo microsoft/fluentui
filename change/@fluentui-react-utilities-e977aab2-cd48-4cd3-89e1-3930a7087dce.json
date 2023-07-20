@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate to monosize",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

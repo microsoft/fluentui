@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build --module esm,cjs,amd",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "e2e": "cypress run --component",
