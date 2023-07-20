@@ -1,92 +1,130 @@
 import * as semver from 'semver';
-import { Tree, formatFiles, updateJson, readJson, readProjectConfiguration, ProjectConfiguration } from '@nrwl/devkit';
+import { Tree, formatFiles, updateJson, readJson, ProjectConfiguration, getProjects } from '@nrwl/devkit';
 
-import { getProjectPaths, getProjects, isPackageVersionPrerelease } from '../../utils';
+import { getProjectPaths, isPackageVersionPrerelease } from '../../utils';
 import type { PackageJson } from '../../types';
 
 export default async function (tree: Tree) {
-  console.time('generator');
   const projects = getProjects(tree);
 
   projects.forEach(project => {
     const projectPaths = getProjectPaths(project);
     const scope = getProjectScope(project);
 
-    updateJson(tree, projectPaths.packageJson, (packageJson: PackageJson) => {
-      if (packageJson.dependencies) {
-        packageJson.dependencies = getUpdatedDependencies(tree, { dependencies: packageJson.dependencies, scope });
-      }
-
-      if (packageJson.devDependencies) {
-        packageJson.devDependencies = getUpdatedDependencies(tree, {
-          dependencies: packageJson.devDependencies,
-          scope,
-        });
-      }
-
-      if (packageJson.peerDependencies) {
-        packageJson.peerDependencies = getUpdatedDependencies(tree, {
-          dependencies: packageJson.peerDependencies,
-          scope,
-        });
-      }
+    updateJson<PackageJson>(tree, projectPaths.packageJson, packageJson => {
+      updatedDependencies(tree, { allProjects: projects, packageJson, scope });
 
       return packageJson;
     });
   });
 
   await formatFiles(tree);
-
-  console.timeEnd('generator');
 }
 
-function ensureIsInWorkspace(tree: Tree, projectName: string) {
+function ensureIsInWorkspace(tree: Tree, projectName: string, allProjects: ReturnType<typeof getProjects>) {
   try {
-    return readProjectConfiguration(tree, projectName);
+    return allProjects.get(projectName);
   } catch {
     return null;
   }
 }
 
-function getUpdatedDependencies(
+function updatedDependencies(
   tree: Tree,
-  options: { dependencies: Record<string, string>; scope: ReturnType<typeof getProjectScope> },
+  options: {
+    allProjects: ReturnType<typeof getProjects>;
+    packageJson: PackageJson;
+    scope: ReturnType<typeof getProjectScope>;
+  },
 ) {
-  const { dependencies, scope } = options;
-  const ignoredVersionRanges = ['*', '>=9.0.0-alpha'];
-  return Object.entries(dependencies).reduce((acc, [dependencyName, versionRange]) => {
-    if (ignoredVersionRanges.indexOf(versionRange) !== -1) {
-      return acc;
+  const { packageJson, scope, allProjects } = options;
+
+  updateVersions(packageJson, 'dependencies');
+  updateVersions(packageJson, 'devDependencies');
+  updateVersions(packageJson, 'peerDependencies');
+
+  return packageJson;
+
+  function updateVersions(json: PackageJson, depType: 'dependencies' | 'devDependencies' | 'peerDependencies') {
+    const ignoredVersionRanges = ['*', '>=9.0.0-alpha'];
+
+    const deps = json[depType];
+    if (!deps) {
+      return;
     }
 
-    const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName);
+    for (const dependencyName in deps) {
+      if (!Object.prototype.hasOwnProperty.call(deps, dependencyName)) {
+        continue;
+      }
 
-    if (!dependencyProjectConfig) {
-      return acc;
+      const versionRange = deps[dependencyName];
+      if (ignoredVersionRanges.indexOf(versionRange) !== -1) {
+        continue;
+      }
+
+      const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName, allProjects);
+
+      if (!dependencyProjectConfig) {
+        continue;
+      }
+
+      const minVersion = semver.minVersion(versionRange);
+
+      if (!minVersion) {
+        continue;
+      }
+
+      const depPackagePaths = getProjectPaths(dependencyProjectConfig);
+      const depScope = getProjectScope(dependencyProjectConfig);
+
+      const isNorthstarUnsupportedDepBump = scope.isReactNorthstarPackage && !depScope.isReactComponentsPackage;
+      if (isNorthstarUnsupportedDepBump) {
+        continue;
+      }
+
+      const shouldHaveCaret = !isPackageVersionPrerelease(minVersion.raw) || versionRange[0] === '^';
+      const depPackageJson = readJson<PackageJson>(tree, depPackagePaths.packageJson);
+
+      deps[dependencyName] = `${shouldHaveCaret ? '^' : ''}${depPackageJson.version}`;
     }
 
-    const minVersion = semver.minVersion(versionRange);
+    return deps;
+  }
 
-    if (!minVersion) {
-      return acc;
-    }
+  // return Object.entries(dependencies).reduce((acc, [dependencyName, versionRange]) => {
+  //   if (ignoredVersionRanges.indexOf(versionRange) !== -1) {
+  //     return acc;
+  //   }
 
-    const depPackagePaths = getProjectPaths(dependencyProjectConfig);
-    const depScope = getProjectScope(dependencyProjectConfig);
+  //   const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName);
 
-    const isNorthstarUnsupportedDepBump = scope.isReactNorthstarPackage && !depScope.isReactComponentsPackage;
-    if (isNorthstarUnsupportedDepBump) {
-      return acc;
-    }
+  //   if (!dependencyProjectConfig) {
+  //     return acc;
+  //   }
 
-    const shouldHaveCaret = !isPackageVersionPrerelease(minVersion.raw) || versionRange[0] === '^';
+  //   const minVersion = semver.minVersion(versionRange);
 
-    acc[dependencyName] = `${shouldHaveCaret ? '^' : ''}${
-      readJson<PackageJson>(tree, depPackagePaths.packageJson).version
-    }`;
+  //   if (!minVersion) {
+  //     return acc;
+  //   }
 
-    return acc;
-  }, dependencies);
+  //   const depPackagePaths = getProjectPaths(dependencyProjectConfig);
+  //   const depScope = getProjectScope(dependencyProjectConfig);
+
+  //   const isNorthstarUnsupportedDepBump = scope.isReactNorthstarPackage && !depScope.isReactComponentsPackage;
+  //   if (isNorthstarUnsupportedDepBump) {
+  //     return acc;
+  //   }
+
+  //   const shouldHaveCaret = !isPackageVersionPrerelease(minVersion.raw) || versionRange[0] === '^';
+
+  //   acc[dependencyName] = `${shouldHaveCaret ? '^' : ''}${
+  //     readJson<PackageJson>(tree, depPackagePaths.packageJson).version
+  //   }`;
+
+  //   return acc;
+  // }, dependencies);
 }
 
 function getProjectScope(project: ProjectConfiguration) {
