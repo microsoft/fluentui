@@ -1,12 +1,42 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTCalendar, MonthFormat, WeekdayFormat, YearFormat } from '@microsoft/fast-foundation';
+import { FASTCalendar, WeekdayFormat } from '@microsoft/fast-foundation';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
+import { FluentDateFormatter } from './date-formatter.js';
 
 /**
- * The base class used for constructing a fluent-radio custom element
+ * Month picker information needed for rendering
+ * including the next and previous years
+ * @public
+ */
+export type MonthPickerInfo = {
+  year: number;
+  previous: number;
+  next: number;
+};
+
+/**
+ * Year picker information needed for rendering
+ * including the next and previous decade's start years
+ * @public
+ */
+export type YearPickerInfo = {
+  decadeStart: number;
+  decadeEnd: number;
+  previousStart: number;
+  nextStart: number;
+};
+
+/**
+ * The base class used for constructing a fluent-calendar custom element
  * @public
  */
 export class Calendar extends FASTCalendar {
+  /**
+   * date formatter utitlity for getting localized strings
+   * @public
+   */
+  public dateFormatter: FluentDateFormatter = new FluentDateFormatter();
+
   /**
    * The type of the calendar.
    *
@@ -48,7 +78,7 @@ export class Calendar extends FASTCalendar {
   public showWeekNumbers?: boolean = false;
 
   /**
-   * The filter on the calendar
+   * The type of filter on the calendar
    *
    * @public
    * @remarks
@@ -88,7 +118,7 @@ export class Calendar extends FASTCalendar {
   public firstWeekOfYear?: FirstWeekOfYear | undefined;
 
   /**
-   * Show link at the link slot (e.g. Go to today)
+   * Show "Go to today" link at the link slot
    *
    * @public
    * @remarks
@@ -98,7 +128,7 @@ export class Calendar extends FASTCalendar {
   public showSlottedLink?: boolean;
 
   /**
-   * the month picker should highlight the current month
+   * the month picker highlights the current month
    *
    * @public
    * @remarks
@@ -108,7 +138,7 @@ export class Calendar extends FASTCalendar {
   public highlightCurrentMonth?: boolean;
 
   /**
-   * the month picker should highlight the selected month
+   * the month picker highlights the selected month
    *
    * @public
    * @remarks
@@ -120,83 +150,109 @@ export class Calendar extends FASTCalendar {
   /**
    * the format in which weekdays are displayed (M W T)
    */
-  public weekdayFormat: WeekdayFormat = WeekdayFormat.narrow;
+  @attr public weekdayFormat: WeekdayFormat = WeekdayFormat.narrow;
 
   /**
    * the year on the month picker
    */
-  @attr public monthPickerYear: number = this.year;
+  @attr public monthPickerYear: number = new Date().getFullYear();
+
+  /**
+   * the decade on the year picker
+   */
+  @attr public yearPickerDecade: number = this.monthPickerYear - (this.monthPickerYear % 10);
 
   /**
    * whether the year picker is open
    */
   @attr public yearPickerOpen: boolean = false;
 
-  /**
-   * the decade on the year picker
-   */
-  @attr public yearPickerDecade: number = this.year - (this.year % 10);
-
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
-    this.addEventListener('monthselected', this.rightCellSelectedHandler);
+    this.addEventListener('rightcellselected', this.rightCellSelectedHandler);
   }
 
   public disconnectedCallback() {
     this.removeEventListener('dateselected', this.dateSelectedHandler);
-    this.removeEventListener('monthselected', this.rightCellSelectedHandler);
+    this.removeEventListener('rightcellselected', this.rightCellSelectedHandler);
     super.disconnectedCallback();
   }
 
-  public dateSelectedHandler(event: any) {
-    const { day, month, year } = event.detail;
-
-    if (month != this.month) {
-      this.switchMonth(month, year);
-    }
-
-    const selected_date_string = `${month}-${day}-${year}`;
-
-    if (this.calendarType === 'range-picker') {
-      if (!this.dateInString(selected_date_string, this.selectedDates)) {
-        this.selectedDates += `${month}-${day}-${year},`;
-      }
-    } else {
-      this.selectedDates = `${month}-${day}-${year},`;
-    }
-
-    console.log(this.selectedDates);
+  /**
+   * Gets data needed to render about a month picker year as well as the previous and next years
+   * @param year - year of the month picker
+   * @returns - an object with data about the current and 2 surrounding years
+   * @public
+   */
+  public getMonthPickerInfo(year: number = this.monthPickerYear): MonthPickerInfo {
+    return {
+      year,
+      previous: year - 1,
+      next: year + 1,
+    };
   }
 
+  /**
+   * Gets data needed to render about a month picker year as well as the previous and next years
+   * @param decadeStart - the start of the decade on the year picker
+   * @returns - an object with data about the current and 2 surrounding decades
+   * @public
+   */
+  public getYearPickerInfo(decadeStart: number = this.yearPickerDecade): YearPickerInfo {
+    return {
+      decadeStart,
+      decadeEnd: decadeStart + 11,
+      previousStart: decadeStart - 12,
+      nextStart: decadeStart + 12,
+    };
+  }
+
+  /**
+   * Changes the month and year on the calendar
+   * @param month - the month to be switched to
+   * @param year - the year to be switched to
+   */
   public switchMonth(month: number, year: number) {
     this.selectedDates = '';
+
     this.year = year;
     this.month = month;
+
     this.monthPickerYear = year;
     this.yearPickerDecade = year - (year % 10);
   }
 
-  public handleGoToToday(event: MouseEvent) {
-    const today: Date = new Date();
-    this.switchMonth(today.getMonth() + 1, today.getFullYear());
-    this.yearPickerOpen = false;
+  /**
+   * Open/close the year picker
+   * @public
+   */
+  public toggleYearPicker() {
+    this.yearPickerOpen = !this.yearPickerOpen;
+    this.yearPickerDecade = this.monthPickerYear - (this.monthPickerYear % 10);
   }
 
-  public getLinkClassNames(isMonthPickerLink: boolean) {
+  /**
+   * Creates a class string for the "Go to today" link
+   * @returns - string of class names
+   * @public
+   */
+  public getLinkClassNames() {
     const today: Date = new Date();
 
-    if (isMonthPickerLink) {
-      return this.month === today.getMonth() + 1 && this.monthPickerYear === today.getFullYear()
-        ? 'slotted-link inactive'
-        : 'slotted-link';
-    } else if (this.month === today.getMonth() + 1 && this.year === today.getFullYear()) {
-      return 'slotted-link inactive';
-    } else {
-      return 'slotted-link';
-    }
+    //when the month picker is not visible, this.monthPickerYear is always going to be the current year.
+    return this.month === today.getMonth() + 1 &&
+      this.year === today.getFullYear() &&
+      this.monthPickerYear === today.getFullYear()
+      ? 'slotted-link inactive'
+      : 'slotted-link';
   }
 
+  /**
+   * Creates a class string for cells on the right panel
+   * @returns - string of class names
+   * @public
+   */
   public getRightCellClassNames(detail: number, todayMonth: number, todayYear: number) {
     const isToday = this.yearPickerOpen ? detail === todayYear : detail === todayMonth;
 
@@ -206,26 +262,12 @@ export class Calendar extends FASTCalendar {
   }
 
   /**
-   *
-   * @param locale - The locale data used for formatting
-   * @returns - An array of the month labels
-   * @public
-   */
-  public getMonths(locale: string = this.locale): string[] {
-    const months = Array(12)
-      .fill(null)
-      .map((_, month) => this.dateFormatter.getMonth((month + 1) % 12, MonthFormat.short, locale));
-
-    return months;
-  }
-
-  /**
    * Returns a list of month labels
-   * @returns A 2D array of month text
+   * @returns A 2D array of month texts
    * @public
    */
   public getMonthText(): { text: string; detail: number }[][] {
-    const months = this.getMonths();
+    const months = this.dateFormatter.getMonths();
     const monthsText: { text: string; detail: number }[][] = [];
     let monthCount = 0;
 
@@ -243,50 +285,12 @@ export class Calendar extends FASTCalendar {
   }
 
   /**
-   * Emits the "month-select" event with the seleced month.
-   * @param month - Month cell
-   * @public
-   */
-  public handleRightCellSelect(event: Event, month: number): void {
-    event.preventDefault;
-    this.$emit('monthselected', month);
-  }
-
-  public rightCellSelectedHandler(event: any) {
-    const month = this.yearPickerOpen ? this.month : event.detail;
-    const year = this.yearPickerOpen ? event.detail : this.monthPickerYear;
-    if (this.yearPickerOpen) {
-      this.yearPickerOpen = false;
-    }
-    this.switchMonth(month, year);
-  }
-
-  public toggleYearPicker() {
-    this.yearPickerOpen = !this.yearPickerOpen;
-    this.yearPickerDecade = this.monthPickerYear - (this.monthPickerYear % 10);
-  }
-
-  /**
-   *
-   * @param locale - The locale data used for formatting
-   * @returns - An array of the decade labels
-   * @public
-   */
-  public getDecade(decadeStartYear: number, locale: string = this.locale): string[] {
-    const decade = Array(12)
-      .fill(null)
-      .map((_, count) => this.dateFormatter.getYear(decadeStartYear + count, YearFormat.numeric, locale));
-
-    return decade;
-  }
-
-  /**
-   * Returns a list of month labels
-   * @returns A 2D array of month text
+   * Returns a list of year labels for a decade
+   * @returns A 2D array of year texts
    * @public
    */
   public getDecadeText(decadeStartYear: number): { text: string; detail: number }[][] {
-    const decade = this.getDecade(decadeStartYear);
+    const decade = this.dateFormatter.getDecade(decadeStartYear);
     const decadeText: { text: string; detail: number }[][] = [];
     let yearCount = 0;
 
@@ -301,5 +305,62 @@ export class Calendar extends FASTCalendar {
       yearCount++;
     }
     return decadeText;
+  }
+
+  /**
+   * Updates calendar to show today when user clicks on "Go to today"
+   * @param event - mouse event for clicking on the link
+   */
+  public handleGoToToday(event: MouseEvent) {
+    const today: Date = new Date();
+    this.switchMonth(today.getMonth() + 1, today.getFullYear());
+    this.yearPickerOpen = false;
+  }
+
+  /**
+   * Emits the "rightcellselected" event with the seleced month.
+   * @param cellDetail - The month of year that's been selected
+   * @public
+   */
+  public handleRightCellSelect(event: Event, cellDetail: number): void {
+    event.preventDefault;
+    this.$emit('rightcellselected', cellDetail);
+  }
+
+  /**
+   * Handles selecting dates on the calendar's date view
+   * Stores the selected dates in the selected-dates attribute
+   * @param event - 'dateselected' event
+   */
+  public dateSelectedHandler(event: any) {
+    const { day, month, year } = event.detail;
+
+    if (month != this.month) {
+      this.switchMonth(month, year);
+    }
+
+    const selected_date_string = `${month}-${day}-${year}`;
+
+    if (this.calendarType === 'range-picker') {
+      if (!this.dateInString(selected_date_string, this.selectedDates)) {
+        this.selectedDates += `${month}-${day}-${year},`;
+      }
+    } else {
+      this.selectedDates = `${month}-${day}-${year},`;
+    }
+  }
+
+  /**
+   * Handles selecting month or year on the calendar's month/year picker
+   * Updates the calendar view according to selected month/year
+   * @param event - 'dateselected' event
+   */
+  public rightCellSelectedHandler(event: any) {
+    const month = this.yearPickerOpen ? this.month : event.detail;
+    const year = this.yearPickerOpen ? event.detail : this.monthPickerYear;
+    if (this.yearPickerOpen) {
+      this.yearPickerOpen = false;
+    }
+    this.switchMonth(month, year);
   }
 }

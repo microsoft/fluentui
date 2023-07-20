@@ -14,19 +14,19 @@ const ArrowDown16 = html.partial(`
 `);
 
 /**
- * A month picker title template that includes the year
- * @returns - A month picker title template
+ * A right panel title template that includes the year (if month picker) or decade (if year picker)
+ * @returns - A right panel title template
  * @public
  */
 export function calendarRightPanelTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
   const yearPickerTitle = html`
     <span
-      >${(x: T) => x.dateFormatter.getYear(x.yearPickerDecade)}-${(x: T) =>
-        x.dateFormatter.getYear(x.yearPickerDecade + 11)}</span
+      >${(x: T) => x.dateFormatter.getYear(x.getYearPickerInfo().decadeStart)}-${(x: T) =>
+        x.dateFormatter.getYear(x.getYearPickerInfo().decadeEnd)}</span
     >
   `;
 
-  const monthPickerTitle = html` <span>${(x: T) => x.dateFormatter.getYear(x.monthPickerYear)}</span> `;
+  const monthPickerTitle = html` <span>${(x: T) => x.dateFormatter.getYear(x.getMonthPickerInfo().year)}</span> `;
 
   return html`
     <div class="right-panel-title" part="right-panel-title" @click=${x => x.toggleYearPicker()}>
@@ -36,8 +36,11 @@ export function calendarRightPanelTitleTemplate<T extends Calendar>(): ViewTempl
 }
 
 /**
- * Calendar weekday label template
- * @returns - The weekday labels template
+ * Calendar right panel cell template
+ * @param context - Element definition context for getting the cell tag for right-panel-cell
+ * @param todayMonth - a numeric representation for today's month
+ * @param todayYear - a numeric representation for today's year
+ * @returns - The right panel cell template for month picker or year picker
  * @public
  */
 export function rightPanelCellTemplate(options: CalendarOptions, todayMonth: number, todayYear: number): ViewTemplate {
@@ -61,10 +64,11 @@ export function rightPanelCellTemplate(options: CalendarOptions, todayMonth: num
 }
 
 /**
- *
- * @param context - Element definition context for getting the cell tag for calendar-cell
- * @param todayString - A string representation for todays date
- * @returns - A template for a week of days
+ * Calendar right panel row template
+ * @param context - Element definition context for getting the cell tag for right-panel-row
+ * @param todayMonth - a numeric representation for today's month
+ * @param todayYear - a numeric representation for today's year
+ * @returns - The right panel row template for month picker or year picker
  * @public
  */
 export function rightPanelRowTemplate(options: CalendarOptions, todayMonth: number, todayYear: number): ViewTemplate {
@@ -85,10 +89,11 @@ export function rightPanelRowTemplate(options: CalendarOptions, todayMonth: numb
 }
 
 /**
- * Interactive template using DataGrid
+ * Interactive calendar right panel template using DataGrid
  * @param context - The templates context
- * @param todayString - string representation of todays date
- * @returns - interactive calendar template
+ * @param todayMonth - a numeric representation for today's month
+ * @param todayYear - a numeric representation for today's year
+ * @returns - interactive calendar right panel template for month or year picker
  *
  * @internal
  */
@@ -100,11 +105,11 @@ export function interactiveRightPanelGridTemplate<T extends Calendar>(
   const gridTag = html.partial(tagFor(options.dataGrid));
 
   return html<T>`
-  <${gridTag} class="months interact" part="months" generate-header="none">
+  <${gridTag} class="right-panel-grid interact" part="right-panel-grid" generate-header="none">
       ${x =>
         x.yearPickerOpen
           ? html`${repeat(
-              x => x.getDecadeText(x.yearPickerDecade),
+              x => x.getDecadeText(x.getYearPickerInfo().decadeStart),
               rightPanelRowTemplate(options, todayMonth, todayYear),
             )}`
           : html`${repeat(x => x.getMonthText(), rightPanelRowTemplate(options, todayMonth, todayYear))}`}
@@ -113,10 +118,10 @@ export function interactiveRightPanelGridTemplate<T extends Calendar>(
 }
 
 /**
+ * The template for the right panel.
  *
  * @param context - Element definition context for getting the cell tag for calendar-cell
- * @param definition - Foundation element definition
- * @returns - a template for a calendar month
+ * @returns - a template for the right panel
  * @public
  */
 export function rightPanelTemplate<T extends Calendar>(options: CalendarOptions): ElementViewTemplate<T> {
@@ -160,10 +165,7 @@ export const template: ElementViewTemplate<Calendar> = html`
       <div class="footer" part="footer">
         ${when(
           x => !x.hasAttribute('monthPickerVisible'),
-          html` <div
-            class=${x => x.getLinkClassNames(false)}
-            @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}"
-          >
+          html` <div class=${x => x.getLinkClassNames()} @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
             Go to today
           </div>`,
         )}
@@ -178,14 +180,20 @@ export const template: ElementViewTemplate<Calendar> = html`
             <span
               class="navicon-up"
               part="navicon-up"
-              @click="${(x, c) => (x.yearPickerOpen ? (x.yearPickerDecade -= 10) : (x.monthPickerYear -= 1))}"
+              @click="${(x, c) =>
+                x.yearPickerOpen
+                  ? (x.yearPickerDecade = x.getYearPickerInfo().previousStart)
+                  : (x.monthPickerYear = x.getMonthPickerInfo().previous)}"
             >
               ${ArrowUp16}
             </span>
             <span
               class="navicon-down"
               part="navicon-down"
-              @click="${(x, c) => (x.yearPickerOpen ? (x.yearPickerDecade += 10) : (x.monthPickerYear += 1))}"
+              @click="${(x, c) =>
+                x.yearPickerOpen
+                  ? (x.yearPickerDecade = x.getYearPickerInfo().nextStart)
+                  : (x.monthPickerYear = x.getMonthPickerInfo().next)}"
             >
               ${ArrowDown16}
             </span>
@@ -197,7 +205,7 @@ export const template: ElementViewTemplate<Calendar> = html`
           dataGridCell: 'fast-data-grid-cell',
         })}
         <div class="footer" part="footer">
-          <div class="${x => x.getLinkClassNames(true)}" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
+          <div class="${x => x.getLinkClassNames()}" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
             Go to today
           </div>
         </div>
