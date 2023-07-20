@@ -91,40 +91,6 @@ function updatedDependencies(
 
     return deps;
   }
-
-  // return Object.entries(dependencies).reduce((acc, [dependencyName, versionRange]) => {
-  //   if (ignoredVersionRanges.indexOf(versionRange) !== -1) {
-  //     return acc;
-  //   }
-
-  //   const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName);
-
-  //   if (!dependencyProjectConfig) {
-  //     return acc;
-  //   }
-
-  //   const minVersion = semver.minVersion(versionRange);
-
-  //   if (!minVersion) {
-  //     return acc;
-  //   }
-
-  //   const depPackagePaths = getProjectPaths(dependencyProjectConfig);
-  //   const depScope = getProjectScope(dependencyProjectConfig);
-
-  //   const isNorthstarUnsupportedDepBump = scope.isReactNorthstarPackage && !depScope.isReactComponentsPackage;
-  //   if (isNorthstarUnsupportedDepBump) {
-  //     return acc;
-  //   }
-
-  //   const shouldHaveCaret = !isPackageVersionPrerelease(minVersion.raw) || versionRange[0] === '^';
-
-  //   acc[dependencyName] = `${shouldHaveCaret ? '^' : ''}${
-  //     readJson<PackageJson>(tree, depPackagePaths.packageJson).version
-  //   }`;
-
-  //   return acc;
-  // }, dependencies);
 }
 
 function getProjectScope(project: ProjectConfiguration) {
