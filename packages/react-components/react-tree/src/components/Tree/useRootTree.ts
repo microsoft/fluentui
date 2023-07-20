@@ -8,12 +8,14 @@ import {
   TreeNavigationData_unstable,
   TreeCheckedChangeData,
 } from './Tree.types';
-import { useControllableOpenItems, useNestedTreeNavigation, useNestedControllableCheckedItems } from '../../hooks';
+import {
+  useControllableOpenItems,
+  useNestedTreeNavigation,
+  useNestedControllableCheckedItems,
+  createNextOpenItems,
+} from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
 import { TreeItemRequest } from '../../contexts';
-import { ImmutableSet } from '../../utils/ImmutableSet';
-import { TreeItemValue } from '../TreeItem/TreeItem.types';
-import { ImmutableMap } from '../../utils/ImmutableMap';
 
 /**
  * Create the state required to render the root level Tree.
@@ -28,7 +30,7 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
 
   const [openItems, setOpenItems] = useControllableOpenItems(props);
 
-  const [checkedItems, setCheckedItems] = useNestedControllableCheckedItems(props);
+  const [checkedItems] = useNestedControllableCheckedItems(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
   const requestOpenChange = (data: TreeOpenChangeData) => {
@@ -41,10 +43,9 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => {
     props.onCheckedChange?.(data.event, data);
-    if (data.event.isDefaultPrevented()) {
-      return;
-    }
-    return setCheckedItems(createNextCheckedItems(data, checkedItems));
+    // TODO:
+    // we should implement the logic for nested tree selection
+    // return setCheckedItems(checkedItems);
   };
 
   const requestNavigation = (data: TreeNavigationData_unstable) => {
@@ -133,29 +134,4 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
       console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
     }
   }
-}
-
-function createNextOpenItems(
-  data: Pick<TreeOpenChangeData, 'value' | 'open'>,
-  previousOpenItems: ImmutableSet<TreeItemValue>,
-): ImmutableSet<TreeItemValue> {
-  if (data.value === null) {
-    return previousOpenItems;
-  }
-  const previousOpenItemsHasId = previousOpenItems.has(data.value);
-  if (data.open ? previousOpenItemsHasId : !previousOpenItemsHasId) {
-    return previousOpenItems;
-  }
-  const nextOpenItems = ImmutableSet.create(previousOpenItems);
-  return data.open ? nextOpenItems.add(data.value) : nextOpenItems.delete(data.value);
-}
-
-function createNextCheckedItems(
-  data: Pick<TreeCheckedChangeData, 'value' | 'checked' | 'selectionMode'>,
-  previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
-): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
-  if (data.selectionMode === 'single') {
-    return ImmutableMap.create([[data.value, data.checked]]);
-  }
-  return previousCheckedItems;
 }
