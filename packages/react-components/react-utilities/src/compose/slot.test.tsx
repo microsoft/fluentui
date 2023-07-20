@@ -58,7 +58,7 @@ describe('slot', () => {
     const props: TestProps = { slotA: null, slotB: null };
 
     expect(slot(props.slotA, { elementType: 'div' })).toEqual(undefined);
-    expect(slot(null, { required: true, elementType: 'div' })).toEqual(undefined);
+    expect(slot(null, { renderByDefault: true, elementType: 'div' })).toEqual(undefined);
   });
 
   it('resolves undefined without creating a child element', () => {
@@ -70,7 +70,7 @@ describe('slot', () => {
 
   it('resolves to empty object creating a child element', () => {
     const props: TestProps = { slotA: undefined };
-    const resolvedProps = slot(props.slotA, { required: true, elementType: 'div' });
+    const resolvedProps = slot(props.slotA, { renderByDefault: true, elementType: 'div' });
 
     expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
   });

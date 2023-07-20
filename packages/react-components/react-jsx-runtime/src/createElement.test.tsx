@@ -242,7 +242,7 @@ describe('createElement with assertSlots', () => {
         const state: TestComponentState = {
           components: { someSlot: 'div' },
           someSlot: slot(props.someSlot, {
-            required: true,
+            renderByDefault: true,
             elementType: 'div',
             defaultProps: { children: 'Default Children', id: 'slot' },
           }),
@@ -282,8 +282,8 @@ describe('createElement with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { outer: 'div', inner: 'div' },
-          inner: slot(props.inner, { required: true, defaultProps: { id: 'inner' }, elementType: 'div' }),
-          outer: slot(props.outer, { required: true, defaultProps: { id: 'outer' }, elementType: 'div' }),
+          inner: slot(props.inner, { renderByDefault: true, defaultProps: { id: 'inner' }, elementType: 'div' }),
+          outer: slot(props.outer, { renderByDefault: true, defaultProps: { id: 'outer' }, elementType: 'div' }),
         };
         assertSlots<TestComponentSlots>(state);
         return (
@@ -339,7 +339,7 @@ describe('createElement with assertSlots', () => {
         const state: TestComponentState = {
           components: { slot: 'div' },
           slot: slot(props.slot, {
-            required: true,
+            renderByDefault: true,
             elementType: 'div',
           }),
         };

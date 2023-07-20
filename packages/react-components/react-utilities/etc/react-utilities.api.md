@@ -219,12 +219,12 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
 
 // @public
 export function slot<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined, options: {
-    required: true;
+    renderByDefault: true;
 } & SlotOptions<Props>): SlotComponentType<Props>;
 
 // @public (undocumented)
 export function slot<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
-    required?: boolean;
+    renderByDefault?: boolean;
 } & SlotOptions<Props>): SlotComponentType<Props> | undefined;
 
 // @internal

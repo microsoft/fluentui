@@ -22,9 +22,9 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
  *
  * * `elementType` - the base element type of a slot, defaults to `'div'`
  * * `defaultProps` - similar to a React component declaration, you can provide a slot default properties to be merged with the shorthand/properties provided
- * * `required` - a boolean that indicates if a slot will be rendered even if it's base value is `undefined`.
+ * * `renderByDefault` - a boolean that indicates if a slot will be rendered even if it's base value is `undefined`.
  * By default if `props.SLOT_NAME` is `undefined` then `state.SLOT_NAME` becomes `undefined`
- * and nothing will be rendered, but if `required = true` then `state.SLOT_NAME` becomes an object
+ * and nothing will be rendered, but if `renderByDefault = true` then `state.SLOT_NAME` becomes an object
  * with the values provided by `options.defaultProps` (or `{}`). This is useful for cases such as providing a default content
  * in case no shorthand is provided, like the case of the `expandIcon` slot for the `AccordionHeader`
  *
@@ -37,7 +37,7 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
  * // useAccordionHeader.ts
  * const state = {
  *  expandIcon: slot(expandIconShorthand, {
- *    required: true,
+ *    renderByDefault: true,
  *    elementType: 'span',
  *    defaultProps: { children: <ChevronRight/>, 'aria-hidden': true}
  *  })
@@ -48,23 +48,23 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
  */
 export function slot<Props extends UnknownSlotProps>(
   value: Props | SlotShorthandValue | undefined,
-  options: { required: true } & SlotOptions<Props>,
+  options: { renderByDefault: true } & SlotOptions<Props>,
 ): SlotComponentType<Props>;
 export function slot<Props extends UnknownSlotProps>(
   value: Props | SlotShorthandValue | undefined | null,
-  options: { required?: boolean } & SlotOptions<Props>,
+  options: { renderByDefault?: boolean } & SlotOptions<Props>,
 ): SlotComponentType<Props> | undefined;
 export function slot<Props extends UnknownSlotProps>(
   value: Props | SlotShorthandValue | undefined | null,
-  options: { required?: boolean } & SlotOptions<Props>,
+  options: { renderByDefault?: boolean } & SlotOptions<Props>,
 ): SlotComponentType<Props> | undefined {
-  const { required = false, defaultProps, elementType } = options;
+  const { renderByDefault = false, defaultProps, elementType } = options;
 
-  if (value === null || (value === undefined && !required)) {
+  if (value === null || (value === undefined && !renderByDefault)) {
     return undefined;
   }
 
-  let renderFunction: SlotRenderFunction<Props> | undefined;
+  const props = slotShorthandToProps(value);
 
   /**
    * Casting is required here as SlotComponentType is a function, not an object.
@@ -72,8 +72,28 @@ export function slot<Props extends UnknownSlotProps>(
    * This is required to make a slot callable (JSX compatible), this is the exact same approach
    * that is used on `@types/react` components
    */
-  const propsWithMetadata = { ...defaultProps } as SlotComponentType<Props>;
+  const propsWithMetadata = {
+    ...defaultProps,
+    ...props,
+    [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
+  } as SlotComponentType<Props>;
 
+  if (props && typeof props.children === 'function') {
+    propsWithMetadata[SLOT_RENDER_FUNCTION_SYMBOL] = props.children as SlotRenderFunction<Props>;
+    propsWithMetadata.children = defaultProps?.children;
+  }
+
+  return propsWithMetadata;
+}
+
+/**
+ * Helper function that converts a slot shorthand or properties to a slot properties object or undefined
+ * The main difference between this function and `slot` is that this function does not return the metadata required for a slot to be considered a properly renderable slot, it only converts the value to a slot properties object
+ * @param value - the value of the slot, it can be a slot shorthand or a slot properties object
+ */
+function slotShorthandToProps<Props extends UnknownSlotProps | null | undefined>(
+  value: Props | SlotShorthandValue,
+): Props {
   if (
     typeof value === 'string' ||
     typeof value === 'number' ||
@@ -81,19 +101,8 @@ export function slot<Props extends UnknownSlotProps>(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     React.isValidElement<any>(value)
   ) {
-    propsWithMetadata.children = value;
-  } else if (typeof value === 'object') {
-    Object.assign(propsWithMetadata, value);
-    if (typeof value.children === 'function') {
-      renderFunction = value.children as SlotRenderFunction<Props>;
-      propsWithMetadata.children = defaultProps?.children;
-    }
+    return { children: value } as Props;
   }
 
-  Object.assign(propsWithMetadata, {
-    [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
-    [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
-  });
-
-  return propsWithMetadata;
+  return value;
 }
