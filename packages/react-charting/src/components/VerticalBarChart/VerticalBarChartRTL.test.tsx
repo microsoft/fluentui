@@ -150,6 +150,16 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithWait(
+    'Should render the vertical bar chart with string x-axis data with given container width',
+    VerticalBarChart,
+    { data: simplePoints, width: 1000 },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
@@ -462,6 +472,54 @@ describe('Vertical bar chart re-rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
       expect(getById(container, /_VBC_empty/i)).toHaveLength(0);
+    });
+  });
+});
+
+describe('VerticalBarChart unit tests', () => {
+  describe('getAriaLabels', () => {
+    test('returns an array of aria labels for each data point', () => {
+      render(<VerticalBarChart data={chartPoints} />);
+      const result = new VerticalBarChartBase({ data: chartPoints }).getAriaLabels();
+      expect(result).toEqual([['2020/04/30. First, 10%.', '2020/04/30. Second, 20%.', '2020/04/30. Third, 37%.']]);
+    });
+    test('returns empty string for empty data', () => {
+      render(<VerticalBarChart data={chartPoints} />);
+      const result = new VerticalBarChartBase({ data: [] }).getAriaLabels();
+      expect(result).toEqual([[]]);
+    });
+  });
+  describe('create colors', () => {
+    test('should return the color scale - using single color', () => {
+      render(<VerticalBarChart data={chartPoints} colors={['red', 'blue', 'green']} />);
+      const result = new VerticalBarChartBase({
+        data: chartPoints,
+        colors: ['red', 'blue', 'green'],
+        theme: DarkTheme,
+        useSingleColor: true,
+      }).createColors();
+      expect(result).toBeDefined();
+      expect(result(chartPoints[0].y)).toBe('red');
+      expect(result(chartPoints[1].y)).toBe('red');
+      expect(result(chartPoints[2].y)).toBe('red');
+    });
+    test('should return the color scale - using single color', () => {
+      render(
+        <VerticalBarChart
+          data={chartPoints}
+          colors={[DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green]}
+        />,
+      );
+      const result = new VerticalBarChartBase({
+        data: chartPoints,
+        colors: [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green],
+        theme: DarkTheme,
+        useSingleColor: false,
+      }).createColors();
+      expect(result).toBeDefined();
+      expect(result(chartPoints[0].y)).toBe('rgb(77, 86, 153)');
+      expect(result(chartPoints[1].y)).toBe('rgb(37, 129, 0)');
+      expect(result(chartPoints[2].y)).toBe('rgb(16, 124, 16)');
     });
   });
 });

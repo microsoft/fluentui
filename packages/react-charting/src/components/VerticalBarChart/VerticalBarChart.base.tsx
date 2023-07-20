@@ -189,6 +189,21 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   }
 
+  public getAriaLabels() {
+    if (this.props.data && this.props.data.length >= 0) {
+      return [this.props.data.map(item => this._getAriaLabel(item))];
+    }
+    return '';
+  }
+
+  public createColors() {
+    if (this.props.data && this.props.data.length > 0) {
+      this._getAxisData({ yAxisDomainValues: this.props.data.map(item => item.y) });
+    }
+    this._adjustProps();
+    return this._createColors();
+  }
+
   private _createLine = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
@@ -379,6 +394,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       };
     }
     const domainValues = [];
+    console.log('this._ymax = ', this._yMax);
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * this._yMax);
     }
