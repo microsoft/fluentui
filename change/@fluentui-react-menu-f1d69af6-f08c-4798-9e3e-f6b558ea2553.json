@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Exporting MENU_ENTER_EVENT and dispatchMenuEnterEvent utilities.",
-  "packageName": "@fluentui/react-menu",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

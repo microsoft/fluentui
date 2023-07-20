@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(web-components): ensures that text area size responds to rows and cols attributes",
-  "packageName": "@fluentui/web-components",
-  "email": "vnbaaij@outlook.com",
-  "dependentChangeType": "patch"
-}
