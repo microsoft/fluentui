@@ -17,7 +17,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_104"
+    id="chart_123"
     role="presentation"
   >
     <div
@@ -29,7 +29,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone105"
+      data-focuszone-id="FocusZone124"
     >
       <svg
         focusable="false"
@@ -63,7 +63,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_104"
+          id="xAxisGElementchart_123"
           transform="translate(0, -35)"
         />
         <g
@@ -91,7 +91,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_104"
+          id="yAxisGElementchart_123"
           transform="translate(40, 0)"
         />
         <g />
@@ -188,7 +188,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone106"
+                data-focuszone-id="FocusZone125"
                 role="listbox"
               >
                 <div
@@ -577,7 +577,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_109"
+    id="chart_128"
     role="presentation"
   >
     <div
@@ -589,7 +589,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone110"
+      data-focuszone-id="FocusZone129"
     >
       <svg
         focusable="false"
@@ -623,7 +623,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_109"
+          id="xAxisGElementchart_128"
           transform="translate(0, -35)"
         />
         <g
@@ -651,7 +651,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_109"
+          id="yAxisGElementchart_128"
           transform="translate(40, 0)"
         />
         <g />
@@ -748,7 +748,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone111"
+                data-focuszone-id="FocusZone130"
                 role="listbox"
               >
                 <div
@@ -1137,7 +1137,7 @@ exports[`Should reflect theme change 1`] = `
   >
     <div
       aria-label="Graph has no data to display"
-      id="_VSBC_101"
+      id="_VSBC_120"
       role="alert"
       style="opacity: 0;"
     />

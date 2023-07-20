@@ -1,11 +1,11 @@
-import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { chartPoints } from './VerticalStackedBarChart.test';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import {
-  IVSChartDataPoint, IVerticalStackedBarChartProps,
+  IVSChartDataPoint,
 } from '../../index';
 
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
@@ -72,6 +72,16 @@ describe('Vertical stacked bar chart rendering', () => {
   );
 });
 
+describe('Vertical stacked bar chart - Subcomponent Line', () => {
+  test('Should render line with the data provided', async () => {
+    // Arrange
+    render(<VerticalStackedBarChart data={simplePoints}/>);
+    await new Promise(resolve => setTimeout(resolve));
+    const lines = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+    expect(lines).toBeDefined();
+  });
+});
+
 describe('Vertical stacked bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the specified color',
@@ -79,9 +89,20 @@ describe('Vertical stacked bar chart - Subcomponent bar', () => {
     { data: simplePoints },
     container => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      expect(bars).toHaveLength(8);
+      // Assert
       expect(bars[0].getAttribute('fill')).toEqual(DefaultPalette.blue);
       expect(bars[1].getAttribute('fill')).toEqual(DefaultPalette.blueMid);
+    },
+  );
+
+  testWithWait(
+    'Should render the stacked bar with the specified data',
+    VerticalStackedBarChart,
+    { data: simplePoints },
+    container => {
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(bars).toHaveLength(8);
     },
   );
 });
@@ -92,10 +113,20 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     VerticalStackedBarChart,
     { data: simplePoints, hideLegend: true },
     container => {
+      // Assert
       // Legends have 'rect' as a part of their classname
       expect(getByClass(container, /rect/i)).toHaveLength(0);
     },
   );
+
+  test('Should set minimum bar height', async () => {
+    // Arrange
+    render(<VerticalStackedBarChart data={simplePoints} barMinimumHeight={100}/>);
+    await new Promise(resolve => setTimeout(resolve));
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    // Assert
+    expect(bars[0].getAttribute('height')).toEqual('100');
+  });
 
   test('Should reduce the opacity of the other bars/lines on mouse over a line legend', async () => {
     // Arrange
@@ -104,10 +135,8 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      expect(line).toBeDefined();
-      expect(bars).toHaveLength(8);
-      expect(legends).toHaveLength(4);
       fireEvent.mouseOver(legends[0]);
+      // Assert
       expect(line[8].getAttribute('opacity')).toEqual('1');
       expect(bars[0]).toHaveStyle('opacity: 0.1');
       expect(bars[1]).toHaveStyle('opacity: 0.1');
@@ -128,6 +157,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       await new Promise(resolve => setTimeout(resolve));
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+      // Assert
       expect(line[8].getAttribute('opacity')).toEqual('0.1');
       expect(bars[1]).toHaveStyle('opacity: 0.1');
       expect(bars[3]).toHaveStyle('opacity: 0.1');
@@ -136,7 +166,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       expect(bars[7]).toHaveStyle('opacity: 0.1');
   });
 
-  test('Should reset the opacity of the other lines on mouse leave a bar legend', async () => {
+  test('Should reset the opacity of the lines on mouse leave a bar legend', async () => {
     // Arrange
     render(<VerticalStackedBarChart data={simplePoints}/>);
     await new Promise(resolve => setTimeout(resolve));
@@ -145,6 +175,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       await new Promise(resolve => setTimeout(resolve));
       fireEvent.mouseLeave(legends![1]);
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+      // Assert
       expect(line[8].getAttribute('opacity')).toEqual('1');
   });
 
@@ -155,11 +186,10 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.click(legends![1]);
       await new Promise(resolve => setTimeout(resolve));
-
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
       const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-
+      // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false')
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'true')
       expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
@@ -181,7 +211,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       fireEvent.click(legends![1]);
       await new Promise(resolve => setTimeout(resolve));
       const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-
+      // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false')
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false')
       expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
@@ -196,7 +226,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       fireEvent.click(legends![0]);
       await new Promise(resolve => setTimeout(resolve));
       const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-
+      // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true')
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false')
       expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
@@ -212,10 +242,10 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
     render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
     await new Promise(resolve => setTimeout(resolve));
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+   // Assert
     expect(bars).toHaveLength(8);
     fireEvent.mouseOver(bars[0]);
     await new Promise(resolve => setTimeout(resolve));
-    // Assert
     expect(handleMouseOver).toHaveBeenCalled();
   });
 
@@ -276,6 +306,19 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
     // Assert
     expect(getById(container, /toolTipcallout/i)).toBeDefined();
   });
+
+  test('Should call the handler on mouse click on the bar', async () => {
+    // Arrange
+    const handleMouseclick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onClick');
+    render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
+    await new Promise(resolve => setTimeout(resolve));
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    // Assert
+    expect(bars).toHaveLength(8);
+    fireEvent.click(bars[0]);
+    await new Promise(resolve => setTimeout(resolve));
+    expect(handleMouseclick).toHaveBeenCalled();
+  });
 });
 
 describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
@@ -298,42 +341,13 @@ describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
     VerticalStackedBarChart,
     { data: simplePoints, rotateXAxisLables: true },
     container => {
-      // Arrange
+      // Assert
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
     },
   );
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <VerticalStackedBarChart culture={window.navigator.language} data={chartPoints} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
-});
-
-// describe('Vertical stacked bar chart re-rendering', () => {
-//   test('Should re-render the vertical stacked bar chart with data', async () => {
-//     // Arrange
-//     const { container, rerender } = render(<VerticalStackedBarChart data={[]} />);
-//     // Assert
-//     expect(container).toMatchSnapshot();
-//     expect(getById(container, /_VSBC_/i)).toHaveLength(1);
-//     // Act
-//     rerender(<VerticalStackedBarChart data={simplePoints} />);
-//     await waitFor(() => {
-//       // Assert
-//       expect(container).toMatchSnapshot();
-//       expect(getById(container, /_VSBC_/i)).toHaveLength(0);
-//     });
-//   });
-// });
-
-
-describe('Screen resolution', () => {
+describe('Vertical stacked bar chart - Screen resolution', () => {
   const originalInnerWidth = global.innerWidth;
   const originalInnerHeight = global.innerHeight;
   afterEach(() => {
@@ -364,6 +378,19 @@ describe('Screen resolution', () => {
     act(() => {
       global.dispatchEvent(new Event('resize'));
     });
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Vertical stacked bar chart - Theme', () => {
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <VerticalStackedBarChart culture={window.navigator.language} data={chartPoints} />
+      </ThemeProvider>,
+    );
     // Assert
     expect(container).toMatchSnapshot();
   });
