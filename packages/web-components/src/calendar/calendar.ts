@@ -348,6 +348,8 @@ export class Calendar extends FASTCalendar {
     } else {
       this.selectedDates = `${month}-${day}-${year},`;
     }
+
+    console.log(this.selectedDates);
   }
 
   /**
