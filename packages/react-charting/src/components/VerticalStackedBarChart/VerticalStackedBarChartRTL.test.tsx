@@ -37,17 +37,23 @@ const thirdChartPoints: IVSChartDataPoint[] = [
 ];
 
 const simplePoints = [
-  { chartData: firstChartPoints,
-     xAxisPoint: 'January',
-       lineData: [
-    { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }
-  ]},
-  { chartData: secondChartPoints, xAxisPoint: 'February', lineData: [
-    { y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-  ]},
-  { chartData: thirdChartPoints, xAxisPoint: 'March',  lineData: [
-    { y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-  ], }
+  {
+    chartData: firstChartPoints,
+    xAxisPoint: 'January',
+    lineData: [
+      { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }
+    ]
+  },
+  {
+    chartData: secondChartPoints, xAxisPoint: 'February', lineData: [
+      { y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
+    ]
+  },
+  {
+    chartData: thirdChartPoints, xAxisPoint: 'March', lineData: [
+      { y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
+    ],
+  }
 ];
 
 describe('Vertical stacked bar chart rendering', () => {
@@ -75,7 +81,7 @@ describe('Vertical stacked bar chart rendering', () => {
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
   test('Should render line with the data provided', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
     const lines = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
     expect(lines).toBeDefined();
@@ -121,7 +127,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
 
   test('Should set minimum bar height', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints} barMinimumHeight={100}/>);
+    render(<VerticalStackedBarChart data={simplePoints} barMinimumHeight={100} />);
     await new Promise(resolve => setTimeout(resolve));
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
     // Assert
@@ -130,107 +136,107 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
 
   test('Should reduce the opacity of the other bars/lines on mouse over a line legend', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends[0]);
-      // Assert
-      expect(line[8].getAttribute('opacity')).toEqual('1');
-      expect(bars[0]).toHaveStyle('opacity: 0.1');
-      expect(bars[1]).toHaveStyle('opacity: 0.1');
-      expect(bars[2]).toHaveStyle('opacity: 0.1');
-      expect(bars[3]).toHaveStyle('opacity: 0.1');
-      expect(bars[4]).toHaveStyle('opacity: 0.1');
-      expect(bars[5]).toHaveStyle('opacity: 0.1');
-      expect(bars[6]).toHaveStyle('opacity: 0.1');
-      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.mouseOver(legends[0]);
+    // Assert
+    expect(line[8].getAttribute('opacity')).toEqual('1');
+    expect(bars[0]).toHaveStyle('opacity: 0.1');
+    expect(bars[1]).toHaveStyle('opacity: 0.1');
+    expect(bars[2]).toHaveStyle('opacity: 0.1');
+    expect(bars[3]).toHaveStyle('opacity: 0.1');
+    expect(bars[4]).toHaveStyle('opacity: 0.1');
+    expect(bars[5]).toHaveStyle('opacity: 0.1');
+    expect(bars[6]).toHaveStyle('opacity: 0.1');
+    expect(bars[7]).toHaveStyle('opacity: 0.1');
   });
 
   test('Should reduce the opacity of the other bars/lines on mouse over a bar legend', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends![1]);
-      await new Promise(resolve => setTimeout(resolve));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
-      // Assert
-      expect(line[8].getAttribute('opacity')).toEqual('0.1');
-      expect(bars[1]).toHaveStyle('opacity: 0.1');
-      expect(bars[3]).toHaveStyle('opacity: 0.1');
-      expect(bars[4]).toHaveStyle('opacity: 0.1');
-      expect(bars[6]).toHaveStyle('opacity: 0.1');
-      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.mouseOver(legends![1]);
+    await new Promise(resolve => setTimeout(resolve));
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+    // Assert
+    expect(line[8].getAttribute('opacity')).toEqual('0.1');
+    expect(bars[1]).toHaveStyle('opacity: 0.1');
+    expect(bars[3]).toHaveStyle('opacity: 0.1');
+    expect(bars[4]).toHaveStyle('opacity: 0.1');
+    expect(bars[6]).toHaveStyle('opacity: 0.1');
+    expect(bars[7]).toHaveStyle('opacity: 0.1');
   });
 
   test('Should reset the opacity of the lines on mouse leave a bar legend', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends![1]);
-      await new Promise(resolve => setTimeout(resolve));
-      fireEvent.mouseLeave(legends![1]);
-      const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
-      // Assert
-      expect(line[8].getAttribute('opacity')).toEqual('1');
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.mouseOver(legends![1]);
+    await new Promise(resolve => setTimeout(resolve));
+    fireEvent.mouseLeave(legends![1]);
+    const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+    // Assert
+    expect(line[8].getAttribute('opacity')).toEqual('1');
   });
 
   test('Should select legend on single mouse click on legends', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.click(legends![1]);
-      await new Promise(resolve => setTimeout(resolve));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
-      const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      // Assert
-      expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'true')
-      expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false')
-      expect(line[8].getAttribute('opacity')).toEqual('0.1');
-      expect(bars[3]).toHaveStyle('opacity: 0.1');
-      expect(bars[4]).toHaveStyle('opacity: 0.1');
-      expect(bars[6]).toHaveStyle('opacity: 0.1');
-      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.click(legends![1]);
+    await new Promise(resolve => setTimeout(resolve));
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
+    const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'true')
+    expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false')
+    expect(line[8].getAttribute('opacity')).toEqual('0.1');
+    expect(bars[3]).toHaveStyle('opacity: 0.1');
+    expect(bars[4]).toHaveStyle('opacity: 0.1');
+    expect(bars[6]).toHaveStyle('opacity: 0.1');
+    expect(bars[7]).toHaveStyle('opacity: 0.1');
   });
 
   test('Should deselect legend on double mouse click on legends', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.click(legends![1]);
-      await new Promise(resolve => setTimeout(resolve));
-      fireEvent.click(legends![1]);
-      await new Promise(resolve => setTimeout(resolve));
-      const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      // Assert
-      expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false')
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.click(legends![1]);
+    await new Promise(resolve => setTimeout(resolve));
+    fireEvent.click(legends![1]);
+    await new Promise(resolve => setTimeout(resolve));
+    const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false')
   });
 
   test('Should select line legend on single mouse click on line legends', async () => {
     // Arrange
-    render(<VerticalStackedBarChart data={simplePoints}/>);
+    render(<VerticalStackedBarChart data={simplePoints} />);
     await new Promise(resolve => setTimeout(resolve));
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.click(legends![0]);
-      await new Promise(resolve => setTimeout(resolve));
-      const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      // Assert
-      expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true')
-      expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
-      expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false')
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.click(legends![0]);
+    await new Promise(resolve => setTimeout(resolve));
+    const legendsAfterClickEvent = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true')
+    expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false')
+    expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false')
   });
 
 });
@@ -242,7 +248,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
     render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
     await new Promise(resolve => setTimeout(resolve));
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-   // Assert
+    // Assert
     expect(bars).toHaveLength(8);
     fireEvent.mouseOver(bars[0]);
     await new Promise(resolve => setTimeout(resolve));
@@ -251,7 +257,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
 
   test('Should show the callout over the bar on mouse over', async () => {
     // Arrange
-    const { container }  = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
+    const { container } = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
     await new Promise(resolve => setTimeout(resolve));
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
     fireEvent.mouseOver(bars[0]);
@@ -262,7 +268,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
 
   test('Should show the callout over the line on mouse over', async () => {
     // Arrange
-    const { container }  = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
+    const { container } = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }} />);
     await new Promise(resolve => setTimeout(resolve));
     const lines = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
     fireEvent.mouseOver(lines[0]);
@@ -273,8 +279,8 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
 
   test('Should show the custom callout over the bar on mouse over', async () => {
     // Arrange
-    const { container }  = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }}
-      onRenderCalloutPerDataPoint= {(props: IVSChartDataPoint) =>
+    const { container } = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }}
+      onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>
@@ -291,8 +297,8 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
 
   test('Should show the custom callout over the line on mouse over', async () => {
     // Arrange
-    const { container }  = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }}
-      onRenderCalloutPerDataPoint= {(props: IVSChartDataPoint) =>
+    const { container } = render(<VerticalStackedBarChart data={simplePoints} calloutProps={{ doNotLayer: true }}
+      onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>
