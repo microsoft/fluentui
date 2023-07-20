@@ -47,7 +47,7 @@
     "react-virtualized": "^9.21.1",
     "react-vis": "^1.11.6",
     "react-window": "^1.8.6",
-    "semver": "^6.2.0"
+    "semver": "^7.5.2"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

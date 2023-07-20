@@ -330,7 +330,7 @@
     "satisfied": "^1.1.1",
     "scheduler": "0.20.2",
     "schema-utils": "3.1.1",
-    "semver": "^6.2.0",
+    "semver": "^7.5.2",
     "source-map-loader": "4.0.0",
     "storybook-addon-performance": "0.16.1",
     "storybook-addon-swc": "1.1.9",
