@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Focus shou\u0017ld restore to a DialogTrigger outside of a Dialog",
+  "packageName": "@fluentui/react-dialog",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
