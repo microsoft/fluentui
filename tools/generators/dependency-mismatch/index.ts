@@ -53,8 +53,9 @@ function getUpdatedDependencies(
   options: { dependencies: Record<string, string>; scope: ReturnType<typeof getProjectScope> },
 ) {
   const { dependencies, scope } = options;
+  const ignoredVersionRanges = ['*', '>=9.0.0-alpha'];
   return Object.entries(dependencies).reduce((acc, [dependencyName, versionRange]) => {
-    if (versionRange === '*') {
+    if (ignoredVersionRanges.indexOf(versionRange) !== -1) {
       return acc;
     }
 
