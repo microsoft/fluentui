@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import { useFocusFinders, useRestoreFocusTarget, useRestorer } from '@fluentui/react-tabster';
+import { useFocusFinders, useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import {
