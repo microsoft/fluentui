@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add @swc/helpers to deps instead of tslib as we use swc for transpilation",
+  "packageName": "@fluentui/react-conformance",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
