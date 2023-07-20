@@ -29,9 +29,6 @@ export interface UseModalAttributesOptions {
    * Id to use for the modalizer. An id will be generated if not provided.
    */
   id?: string;
-
-  // TODO create a hook that uses restorer only
-  noModalizer?: boolean;
 }
 
 /**
@@ -44,25 +41,23 @@ export interface UseModalAttributesOptions {
 export const useModalAttributes = (
   options: UseModalAttributesOptions = {},
 ): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
-  const { trapFocus, alwaysFocusable, legacyTrapFocus, noModalizer = false } = options;
+  const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
   const tabster = useTabster();
-  // Initializes the modalizer and deloser APIs
+  // Initializes the modalizer and restorer APIs
   if (tabster) {
-    !noModalizer && getModalizer(tabster);
+    getModalizer(tabster);
     getRestorer(tabster);
   }
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
     restorer: { type: TabsterTypes.RestorerTypes.Source },
-    ...(!noModalizer && {
-      modalizer: {
-        id,
-        isOthersAccessible: !trapFocus,
-        isAlwaysAccessible: alwaysFocusable,
-        isTrapped: legacyTrapFocus && trapFocus,
-      },
-    }),
+    modalizer: {
+      id,
+      isOthersAccessible: !trapFocus,
+      isAlwaysAccessible: alwaysFocusable,
+      isTrapped: legacyTrapFocus && trapFocus,
+    },
   });
 
   const triggerAttributes = useTabsterAttributes({

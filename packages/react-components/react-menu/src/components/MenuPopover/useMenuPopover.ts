@@ -6,7 +6,7 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import { useRestorer } from '@fluentui/react-tabster';
+import { useRestoreFocusSource } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render MenuPopover.
@@ -26,7 +26,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
-  const modalAttributes = useRestorer('source');
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
 
   const { dir } = useFluent();
   const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
@@ -62,7 +62,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
   const rootProps = getNativeElementProps('div', {
     role: 'presentation',
-    ...modalAttributes,
+    ...restoreFocusSourceAttributes,
     ...props,
     ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
   });

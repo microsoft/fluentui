@@ -111,8 +111,11 @@ export interface UseModalAttributesOptions {
 // @public (undocumented)
 export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
 
-// @public (undocumented)
-export function useRestorer(type: 'source' | 'target'): Types.TabsterDOMAttribute;
+// @public
+export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
+
+// @public
+export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
