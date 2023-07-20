@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DetailsColumn tooltip shows on focus, and is associated via aria-describedby",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
