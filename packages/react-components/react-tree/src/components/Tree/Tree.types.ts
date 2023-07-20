@@ -1,9 +1,14 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
 import type { TreeContextValue } from '../../contexts/treeContext';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
-import { ImmutableSet } from '../../utils/ImmutableSet';
+import { CheckboxProps } from '@fluentui/react-checkbox';
+import { RadioProps } from '@fluentui/react-radio';
+
+export type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
+export type SingleSelectValue = NonNullable<RadioProps['checked']>;
+export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
@@ -28,7 +33,6 @@ export type TreeOpenChangeData = {
   open: boolean;
   value: TreeItemValue;
   target: HTMLElement;
-  openItems: ImmutableSet<TreeItemValue>;
 } & (
   | { event: React.MouseEvent<HTMLElement>; type: 'ExpandIconClick' }
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
@@ -38,6 +42,24 @@ export type TreeOpenChangeData = {
 );
 
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
+
+export type TreeCheckedChangeData = {
+  value: TreeItemValue;
+  target: HTMLElement;
+  event: React.ChangeEvent<HTMLElement>;
+  type: 'Change';
+} & (
+  | {
+      selectionMode: 'multiselect';
+      checked: MultiSelectValue;
+    }
+  | {
+      selectionMode: 'single';
+      checked: SingleSelectValue;
+    }
+);
+
+export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 export type TreeContextValues = {
   tree: TreeContextValue;
@@ -90,6 +112,37 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+
+  /**
+   * This refers to the selection mode of the tree.
+   * - undefined: No selection can be done.
+   * - 'single': Only one tree item can be selected, radio buttons are rendered.
+   * - 'multiselect': Multiple tree items can be selected, checkboxes are rendered.
+   *
+   * @default undefined
+   */
+  selectionMode?: SelectionMode;
+  /**
+   * This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state.
+   * Controls the state of the checked tree items.
+   * These property is ignored for subtrees.
+   */
+  checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
+  /**
+   * This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state.
+   * Default value for the uncontrolled state of checked tree items.
+   * These property is ignored for subtrees.
+   */
+  defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
+  /**
+   * Callback fired when the component changes value from checked state.
+   * These property is ignored for subtrees.
+   *
+   * @param event - a React's Synthetic event
+   * @param data - A data object with relevant information,
+   * such as checked value and type of interaction that created the event.
+   */
+  onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
 /**

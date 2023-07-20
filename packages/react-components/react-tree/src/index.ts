@@ -10,8 +10,11 @@ export type {
   TreeProps,
   TreeState,
   TreeSlots,
+  TreeSelectionValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
 } from './Tree';
