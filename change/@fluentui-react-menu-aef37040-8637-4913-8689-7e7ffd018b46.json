@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MenuItem content should be spaced 12px from the boundary",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
