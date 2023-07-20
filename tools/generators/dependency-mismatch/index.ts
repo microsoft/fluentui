@@ -1,17 +1,18 @@
 import * as semver from 'semver';
-import { Tree, formatFiles, updateJson, readJson, readProjectConfiguration } from '@nrwl/devkit';
+import { Tree, formatFiles, updateJson, readJson, readProjectConfiguration, ProjectConfiguration } from '@nrwl/devkit';
 
-import { getProjectConfig, getProjects, isPackageVersionPrerelease } from '../../utils';
+import { getProjectPaths, getProjects, isPackageVersionPrerelease } from '../../utils';
 import type { PackageJson } from '../../types';
 
 export default async function (tree: Tree) {
+  console.time('generator');
   const projects = getProjects(tree);
 
-  projects.forEach((_project, projectName) => {
-    const config = getProjectConfig(tree, { packageName: projectName });
-    const scope = getProjectScope(config);
+  projects.forEach(project => {
+    const projectPaths = getProjectPaths(project);
+    const scope = getProjectScope(project);
 
-    updateJson(tree, config.paths.packageJson, (packageJson: PackageJson) => {
+    updateJson(tree, projectPaths.packageJson, (packageJson: PackageJson) => {
       if (packageJson.dependencies) {
         packageJson.dependencies = getUpdatedDependencies(tree, { dependencies: packageJson.dependencies, scope });
       }
@@ -35,15 +36,15 @@ export default async function (tree: Tree) {
   });
 
   await formatFiles(tree);
+
+  console.timeEnd('generator');
 }
 
-function isProjectInWorkspace(tree: Tree, projectName: string) {
+function ensureIsInWorkspace(tree: Tree, projectName: string) {
   try {
-    readProjectConfiguration(tree, projectName);
-
-    return true;
-  } catch (err: unknown) {
-    return false;
+    return readProjectConfiguration(tree, projectName);
+  } catch {
+    return null;
   }
 }
 
@@ -57,7 +58,9 @@ function getUpdatedDependencies(
       return acc;
     }
 
-    if (!isProjectInWorkspace(tree, dependencyName)) {
+    const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName);
+
+    if (!dependencyProjectConfig) {
       return acc;
     }
 
@@ -67,8 +70,8 @@ function getUpdatedDependencies(
       return acc;
     }
 
-    const depPackageConfig = getProjectConfig(tree, { packageName: dependencyName });
-    const depScope = getProjectScope(depPackageConfig);
+    const depPackagePaths = getProjectPaths(dependencyProjectConfig);
+    const depScope = getProjectScope(dependencyProjectConfig);
 
     const isNorthstarUnsupportedDepBump = scope.isReactNorthstarPackage && !depScope.isReactComponentsPackage;
     if (isNorthstarUnsupportedDepBump) {
@@ -78,15 +81,15 @@ function getUpdatedDependencies(
     const shouldHaveCaret = !isPackageVersionPrerelease(minVersion.raw) || versionRange[0] === '^';
 
     acc[dependencyName] = `${shouldHaveCaret ? '^' : ''}${
-      readJson<PackageJson>(tree, depPackageConfig.paths.packageJson).version
+      readJson<PackageJson>(tree, depPackagePaths.packageJson).version
     }`;
 
     return acc;
   }, dependencies);
 }
 
-function getProjectScope(project: ReturnType<typeof getProjectConfig>) {
-  const tags = project.projectConfig.tags ?? [];
+function getProjectScope(project: ProjectConfiguration) {
+  const tags = project.tags ?? [];
   const isReactPackage = tags.includes('v8');
   const isReactNorthstarPackage = tags.includes('react-northstar');
   const isReactComponentsPackage = tags.includes('vNext');
