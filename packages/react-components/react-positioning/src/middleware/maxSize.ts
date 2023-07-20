@@ -28,6 +28,7 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
       if (applyWidth) {
         elements.floating.style.setProperty('--available-width', `${availableWidth}px`);
         elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
+        elements.floating.setAttribute('data-popper-scroll-x', '');
       }
 
       if (applyMaxHeight) {
@@ -37,6 +38,7 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
       if (applyHeight) {
         elements.floating.style.setProperty('--available-height', `${availableHeight}px`);
         elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
+        elements.floating.setAttribute('data-popper-scroll-y', '');
       }
     },
   });

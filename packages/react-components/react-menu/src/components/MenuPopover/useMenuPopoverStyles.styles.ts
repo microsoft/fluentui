@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     minWidth: '128px',
     ...createMaxSizeStyles({ width: 'max-content' }),
+    '&[data-popper-scroll-y]': {
+      overflowX: 'hidden', // prevent horizontal scrollbar appearing if there's vertical overflow
+    },
     maxWidth: '300px',
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.padding('4px'),
