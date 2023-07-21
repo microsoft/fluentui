@@ -11,14 +11,14 @@ const PRECISION_FACTOR = 1 / 4;
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const [columnId, setColumnId] = React.useState<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
-  const { findPrevFocusable } = useFocusFinders();
+  const { findPrevFocusable, findFirstFocusable } = useFocusFinders();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
     columnResizeStateRef.current = columnResizeState;
   }, [columnResizeState]);
 
-  const resizeHandleRefs = React.useMemo(() => new Map(), []);
+  const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement>>());
 
   const keyboardHandler = useEventCallback((event: React.KeyboardEvent) => {
     if (!columnId) {
@@ -64,25 +64,27 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     (colId: TableColumnId) => {
       setColumnId(colId);
       onChangeRef.current?.(colId, true);
-      // This needs to happen asynchronously, because we cannot focus an element with without tabIndex.
-      // Only after we have called "setColumnId" the tabIndex will be set to 0 for this handle.
-      // Meaning we have to wait until the DOM updates with the new tabIndex and then we can focus.
-      setTimeout(() => {
-        resizeHandleRefs.get(colId)?.current?.focus();
-      }, 50);
+
+      const handle = resizeHandleRefs.get(colId)?.current;
+      if (handle) {
+        handle.tabIndex = 0;
+        handle.focus();
+      }
     },
     [resizeHandleRefs],
   );
 
   const disableInteractiveMode = React.useCallback(() => {
-    // Notify the onChange listener that we are disabling interactive mode.
-    if (columnId) {
-      onChangeRef.current?.(columnId, false);
+    if (!columnId) {
+      return;
     }
+    // Notify the onChange listener that we are disabling interactive mode.
+    onChangeRef.current?.(columnId, false);
     // Find the previous focusable element (table header button) and focus it.
     const el = resizeHandleRefs.get(columnId)?.current;
     if (el) {
-      findPrevFocusable(el)?.focus();
+      el.tabIndex = -1; // Make sure the resize handle is not focusable anymore.
+      findPrevFocusable(el)?.focus(); // Focus the previous focusable element (header button).
     }
 
     setColumnId(undefined);
