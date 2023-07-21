@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { SkeletonContextProvider } from '../../contexts/SkeletonContext';
 import type { SkeletonContextValues, SkeletonSlots, SkeletonState } from './Skeleton.types';
 
@@ -7,7 +11,7 @@ import type { SkeletonContextValues, SkeletonSlots, SkeletonState } from './Skel
  * Render the final JSX of Skeleton
  */
 export const renderSkeleton_unstable = (state: SkeletonState, contextValues: SkeletonContextValues) => {
-  const { slots, slotProps } = getSlots<SkeletonSlots>(state);
+  const { slots, slotProps } = getSlotsNext<SkeletonSlots>(state);
 
   return (
     <SkeletonContextProvider value={contextValues.skeletonGroup}>

@@ -213,10 +213,12 @@ export function mergeCssSets(
 
         if (registration) {
           registrations.push(registration);
-          classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
+          // FIXME: classNameSet invalid types - exposed in TS 4.5 - cast needed
+          (classNameSet as Record<string, any>)[styleSetArea] = classes.concat([registration.className]).join(' ');
         }
       } else {
-        classNameSet[styleSetArea] = classes.join(' ');
+        // FIXME: classNameSet invalid types - exposed in TS 4.5 - cast needed
+        (classNameSet as Record<string, any>)[styleSetArea] = classes.join(' ');
       }
     }
   }

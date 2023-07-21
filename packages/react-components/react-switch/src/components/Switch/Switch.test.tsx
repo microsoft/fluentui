@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { isConformant } from '../../testing/isConformant';
 import { Switch } from './Switch';
 import type { SwitchOnChangeData } from './Switch.types';
@@ -152,5 +153,22 @@ describe('Switch', () => {
       expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
       expect(onChange.mock.calls[2][1]).toEqual({ checked: true });
     });
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Switch />
+      </Field>,
+    );
+
+    const input = result.getByRole('switch') as HTMLInputElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(input.id).toEqual(label.htmlFor);
+    expect(input.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(input.getAttribute('aria-invalid')).toEqual('true');
+    expect(input.required).toBe(true);
   });
 });

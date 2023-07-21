@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
-import { defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
-import type { IDatePicker } from '@fluentui/react-datepicker-compat';
+import { Button, Field, makeStyles } from '@fluentui/react-components';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
-    '> *': {
-      marginBottom: '15px',
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
   },
   control: {
     maxWidth: '300px',
+  },
+  clearButton: {
+    marginBottom: '5px',
   },
 });
 
@@ -21,11 +23,11 @@ const onFormatDate = (date?: Date): string => {
 export const CustomDateFormatting = () => {
   const styles = useStyles();
 
-  const [value, setValue] = React.useState<Date | undefined>();
-  const datePickerRef = React.useRef<IDatePicker>(null);
+  const [value, setValue] = React.useState<Date | null | undefined>(null);
+  const datePickerRef = React.useRef<HTMLInputElement>(null);
 
   const onClick = React.useCallback((): void => {
-    setValue(undefined);
+    setValue(null);
     datePickerRef.current?.focus();
   }, []);
 
@@ -50,26 +52,35 @@ export const CustomDateFormatting = () => {
 
   return (
     <div className={styles.root}>
+      <Field label="Select a date. Input format is day slash month slash year.">
+        <DatePicker
+          ref={datePickerRef}
+          allowTextInput
+          value={value}
+          onSelectDate={setValue as (date?: Date | null) => void}
+          formatDate={onFormatDate}
+          parseDateFromString={onParseDateFromString}
+          placeholder="Select a date..."
+          className={styles.control}
+        />
+      </Field>
       <div>
-        Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control
-        will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In this
-        example, we are formatting and parsing dates as dd/MM/yy.
+        <Button onClick={onClick} className={styles.clearButton}>
+          Clear
+        </Button>
+        <div>Selected date: {(value || '').toString()}</div>
       </div>
-      <DatePicker
-        className={styles.control}
-        componentRef={datePickerRef}
-        label="Start date"
-        allowTextInput
-        ariaLabel="Select a date. Input format is day slash month slash year."
-        value={value}
-        onSelectDate={setValue as (date?: Date | null) => void}
-        formatDate={onFormatDate}
-        parseDateFromString={onParseDateFromString}
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={defaultDatePickerStrings}
-      />
-      <Button onClick={onClick}>Clear</Button>
-      <div>Selected date: {(value || '').toString()}</div>
     </div>
   );
+};
+
+CustomDateFormatting.parameters = {
+  docs: {
+    description: {
+      story:
+        'Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the' +
+        ' control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed.' +
+        ' In this example, we are formatting and parsing dates as dd/MM/yy.',
+    },
+  },
 };

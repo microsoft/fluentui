@@ -1,14 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TreeState, TreeSlots, TreeContextValues } from './Tree.types';
 import { TreeProvider } from '../../contexts';
 
 export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues) => {
-  const { slots, slotProps } = getSlots<TreeSlots>(state);
-
+  const { slots, slotProps } = getSlotsNext<TreeSlots>(state);
   return (
     <TreeProvider value={contextValues.tree}>
-      <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>
+      {state.open && <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>}
     </TreeProvider>
   );
 };

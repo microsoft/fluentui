@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { PersonaState, PersonaSlots } from './Persona.types';
 
 /**
@@ -7,7 +11,7 @@ import type { PersonaState, PersonaSlots } from './Persona.types';
  */
 export const renderPersona_unstable = (state: PersonaState) => {
   const { presenceOnly, textPosition } = state;
-  const { slots, slotProps } = getSlots<PersonaSlots>(state);
+  const { slots, slotProps } = getSlotsNext<PersonaSlots>(state);
 
   const coin = presenceOnly
     ? slots.presence && <slots.presence {...slotProps.presence} />

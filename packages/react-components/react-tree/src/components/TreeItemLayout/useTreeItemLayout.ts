@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { useTreeItemContext_unstable, useTreeContext_unstable, useTreeItemSlotsContext_unstable } from '../../contexts';
 import type { TreeItemLayoutProps, TreeItemLayoutState } from './TreeItemLayout.types';
-import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
+import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
+import { Radio, RadioProps } from '@fluentui/react-radio';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -16,20 +18,33 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { iconAfter, iconBefore, aside, as = 'div' } = props;
-  const treeItemContext = useTreeItemContext_unstable();
+  const { content, iconAfter, iconBefore, as = 'span' } = props;
+
+  const { actions, aside, expandIcon, selector } = useTreeItemSlotsContext_unstable();
+
+  const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
 
   return {
-    ...treeItemContext,
     components: {
       root: 'div',
-      iconBefore: 'span',
-      iconAfter: 'span',
-      aside: 'span',
+      expandIcon: 'div',
+      iconBefore: 'div',
+      content: 'div',
+      iconAfter: 'div',
+      actions: 'div',
+      aside: 'div',
+      // Casting here to a union between checkbox and radio
+      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
-    root: getNativeElementProps(as, { ...props, ref }),
+    buttonContextValue: { size: 'small' },
+    root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
     iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
+    content: resolveShorthand(content, { required: true }),
     iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
-    aside: resolveShorthand(aside, { defaultProps: { 'aria-hidden': true } }),
+    aside: resolveShorthand(aside),
+    actions: resolveShorthand(actions),
+    expandIcon: resolveShorthand(expandIcon),
+    selector: resolveShorthand(selector),
   };
 };

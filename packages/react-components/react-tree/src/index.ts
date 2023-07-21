@@ -10,11 +10,13 @@ export type {
   TreeProps,
   TreeState,
   TreeSlots,
+  TreeSelectionValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
-  TreeItemId,
 } from './Tree';
 
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
@@ -27,9 +29,10 @@ export {
   treeItemClassNames,
   renderTreeItem_unstable,
   useTreeItemStyles_unstable,
+  useTreeItemContextValues_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+export type { TreeItemProps, TreeItemState, TreeItemSlots, TreeItemValue } from './TreeItem';
 
 export {
   TreeItemLayout,

@@ -4,11 +4,11 @@ import {
   joinPathFragments,
   logger,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   Tree,
   getProjects as getAllProjects,
   ProjectConfiguration,
   readJson,
+  readNxJson,
 } from '@nrwl/devkit';
 import { PackageJson, PackageJsonWithBeachball } from './types';
 import * as semver from 'semver';
@@ -84,10 +84,11 @@ export { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/upd
 
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = readNxJson(tree) ?? {};
   const paths = {
     configRoot: joinPathFragments(projectConfig.root, 'config'),
     packageJson: joinPathFragments(projectConfig.root, 'package.json'),
+    projectJson: joinPathFragments(projectConfig.root, 'project.json'),
     tsconfig: {
       main: joinPathFragments(projectConfig.root, 'tsconfig.json'),
       lib: joinPathFragments(projectConfig.root, 'tsconfig.lib.json'),
@@ -100,9 +101,11 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
       rootPackageJson: joinPathFragments(projectConfig.root, 'src', 'unstable', 'package.json__tmpl__'),
     },
     conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'testing', 'isConformant.ts'),
+    cypressConfig: joinPathFragments(projectConfig.root, 'cypress.config.ts'),
     babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
     jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
+    justConfig: joinPathFragments(projectConfig.root, 'just.config.ts'),
     rootTsconfig: '/tsconfig.base.json',
     rootPackageJson: '/package.json',
     rootJestPreset: '/jest.preset.js',
@@ -129,11 +132,10 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
 }
 
 export const workspacePaths = {
-  workspace: '/workspace.json',
   nx: '/nx.json',
   tsconfig: '/tsconfig.base.json',
   packageJson: '/package.json',
-  jest: { preset: '/jest.preset.js', config: '/jest.config.js' },
+  jest: { preset: '/jest.preset.js', config: '/jest.config.ts' },
   github: {
     root: '/.github',
     codeowners: joinPathFragments('/.github', 'CODEOWNERS'),

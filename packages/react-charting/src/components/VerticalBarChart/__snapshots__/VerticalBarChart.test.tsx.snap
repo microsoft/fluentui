@@ -26,6 +26,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -111,6 +114,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
+            id="_VBC_bar_14"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -149,6 +153,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#002050"
             height={255}
+            id="_VBC_bar_15"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -187,6 +192,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#00188f"
             height={153}
+            id="_VBC_bar_16"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -238,6 +244,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -271,7 +278,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             role="none"
           >
             <button
-              aria-label="First selected"
+              aria-label="First"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={3}
@@ -362,7 +369,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             role="none"
           >
             <button
-              aria-label="Second selected"
+              aria-label="Second"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={3}
@@ -453,7 +460,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             role="none"
           >
             <button
-              aria-label="Third selected"
+              aria-label="Third"
               aria-posinset={3}
               aria-selected={false}
               aria-setsize={3}
@@ -729,6 +736,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -814,6 +824,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
+            id="_VBC_bar_8"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -852,6 +863,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#002050"
             height={255}
+            id="_VBC_bar_9"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -890,6 +902,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#00188f"
             height={153}
+            id="_VBC_bar_10"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -941,6 +954,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -974,7 +988,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             role="none"
           >
             <button
-              aria-label="First selected"
+              aria-label="First"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={3}
@@ -1065,7 +1079,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             role="none"
           >
             <button
-              aria-label="Second selected"
+              aria-label="Second"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={3}
@@ -1156,7 +1170,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             role="none"
           >
             <button
-              aria-label="Third selected"
+              aria-label="Third"
               aria-posinset={3}
               aria-selected={false}
               aria-setsize={3}
@@ -1351,6 +1365,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone37"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1469,6 +1486,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1501,7 +1519,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="First selected"
+                    aria-label="First"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1591,7 +1609,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Second selected"
+                    aria-label="Second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1681,7 +1699,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Third selected"
+                    aria-label="Third"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1799,6 +1817,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
@@ -1918,6 +1939,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1950,7 +1972,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   role="none"
                 >
                   <button
-                    aria-label="First selected"
+                    aria-label="First"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -2040,7 +2062,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   role="none"
                 >
                   <button
-                    aria-label="Second selected"
+                    aria-label="Second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -2130,7 +2152,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   role="none"
                 >
                   <button
-                    aria-label="Third selected"
+                    aria-label="Third"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -2249,6 +2271,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2350,6 +2375,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -2382,7 +2408,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             role="none"
           >
             <button
-              aria-label="First selected"
+              aria-label="First"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={3}
@@ -2472,7 +2498,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             role="none"
           >
             <button
-              aria-label="Second selected"
+              aria-label="Second"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={3}
@@ -2562,7 +2588,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             role="none"
           >
             <button
-              aria-label="Third selected"
+              aria-label="Third"
               aria-posinset={3}
               aria-selected={false}
               aria-setsize={3}
@@ -2678,6 +2704,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2787,6 +2816,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone12"
     onFocus={[Function]}
@@ -2906,6 +2938,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2938,7 +2971,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="First selected"
+                    aria-label="First"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3028,7 +3061,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Second selected"
+                    aria-label="Second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3118,7 +3151,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="Third selected"
+                    aria-label="Third"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3236,6 +3269,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone22"
     onFocus={[Function]}
@@ -3355,6 +3391,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3387,7 +3424,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   role="none"
                 >
                   <button
-                    aria-label="First selected"
+                    aria-label="First"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3477,7 +3514,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   role="none"
                 >
                   <button
-                    aria-label="Second selected"
+                    aria-label="Second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3567,7 +3604,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   role="none"
                 >
                   <button
-                    aria-label="Third selected"
+                    aria-label="Third"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3685,6 +3722,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone27"
     onFocus={[Function]}
@@ -3804,6 +3844,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3836,7 +3877,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="First selected"
+                    aria-label="First"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3926,7 +3967,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="Second selected"
+                    aria-label="Second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4016,7 +4057,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="Third selected"
+                    aria-label="Third"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4134,6 +4175,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone32"
     onFocus={[Function]}
@@ -4253,6 +4297,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4285,7 +4330,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="First selected"
+                    aria-label="First"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4375,7 +4420,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="Second selected"
+                    aria-label="Second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4465,7 +4510,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="Third selected"
+                    aria-label="Third"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}

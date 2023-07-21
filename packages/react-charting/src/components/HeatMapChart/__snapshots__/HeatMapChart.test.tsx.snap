@@ -26,13 +26,16 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -67,7 +70,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               display: none;
             }
         id="xAxisGElementchart_0"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -108,11 +111,11 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -129,7 +132,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -144,11 +147,11 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -165,7 +168,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -203,15 +206,10 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -245,7 +243,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -365,14 +363,20 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={false}
       hidden={false}
       id="10"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 752,
+          "top": 8,
         }
       }
       tabIndex={-1}
@@ -579,13 +583,16 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -620,7 +627,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_0"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -655,16 +662,17 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
+        key="00"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -681,7 +689,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -690,16 +698,17 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
+        key="10"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -716,7 +725,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -763,6 +772,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -792,10 +802,11 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -904,7 +915,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         overflow: hidden;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -914,13 +925,16 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -954,8 +968,8 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_0"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -982,7 +996,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
       <g
@@ -990,16 +1004,17 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
       off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
+        key="00"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(255, 195, 195)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -1016,7 +1031,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -1025,16 +1040,17 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         aria-label="Mar/03, p1. Nasty, 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
+        key="10"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(255, 197, 186)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -1051,7 +1067,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -1098,12 +1114,13 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1127,10 +1144,11 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1217,10 +1235,11 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="1"
                   role="none"
                 >
                   <button
-                    aria-label="Nasty selected"
+                    aria-label="Nasty"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1329,7 +1348,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_6"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1339,13 +1358,16 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone7"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={350}
       style={
         Object {
           "display": "block",
@@ -1379,8 +1401,8 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_6"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_0"
+        transform="translate(0, 315)"
       />
       <g
         className=
@@ -1407,7 +1429,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_6"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
       <g
@@ -1415,16 +1437,17 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
+        key="00"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-19.405940594059405, 22.9207920792079)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
+          height={143.11881188118812}
           width={29.10891089108911}
         />
         <text
@@ -1441,7 +1464,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 71.55940594059406)"
         >
           25
         </text>
@@ -1450,16 +1473,17 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
+        key="10"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(10.297029702970299, 168.96039603960395)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
+          height={143.11881188118812}
           width={29.10891089108911}
         />
         <text
@@ -1476,7 +1500,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 71.55940594059406)"
         >
           50
         </text>
@@ -1505,7 +1529,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1515,13 +1539,16 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -1555,8 +1582,8 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_0"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1583,7 +1610,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
       <g
@@ -1591,16 +1618,17 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
+        key="00"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -1617,7 +1645,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -1626,16 +1654,17 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
+        key="10"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -1652,7 +1681,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -1699,12 +1728,13 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1728,10 +1758,11 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -1840,7 +1871,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_0"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1850,13 +1881,16 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -1890,8 +1924,8 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_0"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1918,7 +1952,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
+        id="yAxisGElementchart_0"
         transform="translate(40, 0)"
       />
       <g
@@ -1926,16 +1960,17 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
+        key="00"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, -7.227722772277229)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -1952,7 +1987,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -1961,16 +1996,17 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
+        key="10"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, -34.45544554455446)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={26.683168316831683}
+          height={123.7128712871287}
           width={29.10891089108911}
         />
         <text
@@ -1987,7 +2023,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(14.554455445544555, 13.341584158415841)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -2034,12 +2070,13 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone2"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2063,10 +2100,11 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
-                    aria-label="Execllent (0-200) selected"
+                    aria-label="Execllent (0-200)"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}

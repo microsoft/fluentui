@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { getNativeElementProps, isResolvedShorthand, resolveShorthand, useId } from '@fluentui/react-utilities';
-import { ChevronRight12Regular } from '@fluentui/react-icons';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import {
+  getNativeElementProps,
+  isResolvedShorthand,
+  resolveShorthand,
+  useControllableState,
+  useId,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { expandIconInlineStyles } from './useTreeItemStyles';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
-import type { TreeItemProps, TreeItemState } from './TreeItem.types';
+import type { TreeItemProps, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
+import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
+import { TreeItemChevron } from '../TreeItemChevron';
+import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
 
 /**
@@ -20,61 +25,64 @@ import { treeDataTypes } from '../../utils/tokens';
  * @param props - props from this instance of TreeItem
  * @param ref - reference to root HTMLElement of TreeItem
  */
-export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
-  const [children, subtreeChildren] = React.Children.toArray(props.children);
-
+export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
   const contextLevel = useTreeContext_unstable(ctx => ctx.level);
+
+  const value = useId('fuiTreeItemValue-', props.value?.toString());
+
   const {
-    content,
-    subtree,
-    expandIcon,
-    leaf: isLeaf = subtreeChildren === undefined,
-    actions,
-    as = 'div',
     onClick,
     onKeyDown,
-    ['aria-level']: level = contextLevel,
+    as = 'div',
+    itemType = 'leaf',
+    'aria-level': level = contextLevel,
+    expandIcon,
+    aside,
     ...rest
   } = props;
 
-  const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
-  const requestNavigation = useTreeContext_unstable(ctx => ctx.requestNavigation);
+  const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
-  const id = useId('fui-TreeItem-', props.id);
+  const [isActionsVisibleExternal, actions]: [boolean | undefined, TreeItemSlots['actions']] = isResolvedShorthand(
+    props.actions,
+  )
+    ? // .visible prop should not be propagated to the DOM
+      [props.actions.visible, { ...props.actions, visible: undefined }]
+    : [undefined, props.actions];
 
-  const isBranch = !isLeaf;
+  const [isActionsVisible, setActionsVisible] = useControllableState({
+    state: isActionsVisibleExternal,
+    defaultState: false,
+    initialState: false,
+  });
+  const [isAsideVisible, setAsideVisible] = React.useState(true);
 
-  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.has(id));
-  const { dir, targetDocument } = useFluent_unstable();
-  const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
-
-  const actionsRef = React.useRef<HTMLElement>(null);
-  const expandIconRef = React.useRef<HTMLElement>(null);
-  const subtreeRef = React.useRef<HTMLElement>(null);
-
-  const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!open && isBranch) {
-      return requestOpenChange({ event, open: true, type: treeDataTypes.arrowRight, target: event.currentTarget });
-    }
-    if (open && isBranch) {
-      return requestNavigation({ event, type: treeDataTypes.arrowRight, target: event.currentTarget });
-    }
+  const handleActionsRef = (actionsElement: HTMLDivElement | null) => {
+    setAsideVisible(actionsElement === null);
   };
-  const handleArrowLeft = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (open && isBranch) {
-      return requestOpenChange({ event, open: false, type: treeDataTypes.arrowLeft, target: event.currentTarget });
-    }
-    if (!open && level > 1) {
-      return requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.arrowLeft });
-    }
-  };
-  const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    requestOpenChange({ event, open: isLeaf ? open : !open, type: treeDataTypes.enter, target: event.currentTarget });
-  };
+
+  const actionsRef = React.useRef<HTMLDivElement>(null);
+  const expandIconRef = React.useRef<HTMLDivElement>(null);
+  const layoutRef = React.useRef<HTMLDivElement>(null);
+  const subtreeRef = React.useRef<HTMLDivElement>(null);
+  const selectionRef = React.useRef<HTMLInputElement>(null);
+
+  const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
+  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+
+  const actionsRefs = useMergedRefs(
+    isResolvedShorthand(actions) ? actions.ref : undefined,
+    handleActionsRef,
+    actionsRef,
+  );
+  const expandIconRefs = useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
-
+    if (event.isDefaultPrevented()) {
+      return;
+    }
     const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
     if (isEventFromActions) {
       return;
@@ -83,129 +91,155 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromSubtree) {
       return;
     }
+    const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
+    if (isEventFromSelection) {
+      return;
+    }
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
-    requestOpenChange({
+    requestTreeResponse({
       event,
-      open: isLeaf ? open : !open,
-      type: isFromExpandIcon ? treeDataTypes.expandIconClick : treeDataTypes.click,
+      value,
+      itemType,
       target: event.currentTarget,
+      type: isFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
     });
-    requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.click });
   });
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
-    if (event.currentTarget !== event.target) {
-      return;
-    }
-    if (event.isDefaultPrevented()) {
+    // Ignore keyboard events that do not originate from the current tree item.
+    if (event.isDefaultPrevented() || event.currentTarget !== event.target) {
       return;
     }
     switch (event.key) {
-      case Enter:
-        return handleEnter(event);
-      case ArrowRight:
-        return handleArrowRight(event);
-      case ArrowLeft:
-        return handleArrowLeft(event);
-      case End:
-        return requestNavigation({ event, type: treeDataTypes.end, target: event.currentTarget });
-      case Home:
-        return requestNavigation({ event, type: treeDataTypes.home, target: event.currentTarget });
-      case ArrowUp:
-        return requestNavigation({ event, type: treeDataTypes.arrowUp, target: event.currentTarget });
-      case ArrowDown:
-        return requestNavigation({ event, type: treeDataTypes.arrowDown, target: event.currentTarget });
+      case Space:
+        if (selectionMode !== 'none') {
+          selectionRef.current?.click();
+          event.preventDefault();
+        }
+        return;
+      case treeDataTypes.End:
+      case treeDataTypes.Home:
+      case treeDataTypes.Enter:
+      case treeDataTypes.ArrowUp:
+      case treeDataTypes.ArrowDown:
+      case treeDataTypes.ArrowLeft:
+      case treeDataTypes.ArrowRight:
+        return requestTreeResponse({ event, target: event.currentTarget, value, itemType, type: event.key });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
-      return requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.typeAhead });
+      requestTreeResponse({ event, target: event.currentTarget, value, itemType, type: treeDataTypes.TypeAhead });
     }
   });
 
-  const [isActionsVisible, setActionsVisible] = React.useState(false);
-  const showActions = useEventCallback((event: React.SyntheticEvent) => {
-    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
-    if (!isEventFromSubtree) {
+  const handleActionsVisible = useEventCallback((event: React.FocusEvent | React.MouseEvent) => {
+    const isTargetFromSubtree = Boolean(
+      subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
+    );
+    if (!isTargetFromSubtree) {
       setActionsVisible(true);
     }
   });
-  const hideActions = useEventCallback((event: React.SyntheticEvent) => {
-    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
-    if (!isEventFromSubtree) {
-      setActionsVisible(false);
+
+  const handleActionsInvisible = useEventCallback((event: React.FocusEvent | React.MouseEvent) => {
+    const isTargetFromSubtree = Boolean(
+      subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
+    );
+    const isRelatedTargetFromActions = Boolean(
+      actionsRef.current && elementContains(actionsRef.current, event.relatedTarget as Node),
+    );
+    if (isRelatedTargetFromActions) {
+      return setActionsVisible(true);
+    }
+    if (!isTargetFromSubtree) {
+      return setActionsVisible(false);
     }
   });
 
-  // Listens to focusout event on the document to ensure treeitem actions visibility on portal scenarios
-  // TODO: find a better way to ensure this behavior
-  React.useEffect(() => {
-    if (actionsRef.current) {
-      const handleFocusOut = (event: FocusEvent) => {
-        setActionsVisible(elementContains(actionsRef.current, event.relatedTarget as Node));
-      };
-      targetDocument?.addEventListener('focusout', handleFocusOut, { passive: true });
-      return () => {
-        targetDocument?.removeEventListener('focusout', handleFocusOut);
-      };
+  const handleChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.isDefaultPrevented()) {
+      return;
     }
-  }, [targetDocument]);
+    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
+    if (isEventFromSubtree) {
+      return;
+    }
+    requestTreeResponse({ event, value, itemType, type: 'Change', target: event.currentTarget });
+  });
+
+  const isBranch = itemType === 'branch';
+
+  const actionsSlot = React.useMemo(
+    () => (isActionsVisible ? resolveShorthand(actions) : undefined),
+    [actions, isActionsVisible],
+  );
+  if (actionsSlot) {
+    actionsSlot.ref = actionsRefs;
+  }
+  const asideSlot = React.useMemo(
+    () => (isAsideVisible ? resolveShorthand(aside) : undefined),
+    [aside, isAsideVisible],
+  );
+  const expandIconSlot = React.useMemo(
+    () =>
+      resolveShorthand(expandIcon, {
+        required: isBranch,
+        defaultProps: {
+          children: <TreeItemChevron />,
+          'aria-hidden': true,
+        },
+      }),
+    [expandIcon, isBranch],
+  );
+  if (expandIconSlot) {
+    expandIconSlot.ref = expandIconRefs;
+  }
 
   return {
-    isLeaf,
+    value,
     open,
+    subtreeRef,
+    layoutRef,
+    itemType,
     level,
-    buttonSize: 'small',
-    isActionsVisible: actions ? isActionsVisible : false,
     components: {
-      content: 'div',
       root: 'div',
-      expandIcon: 'span',
-      actions: 'span',
-      subtree: 'span',
     },
-    subtree: resolveShorthand(subtree, {
-      required: Boolean(subtreeChildren),
-      defaultProps: {
-        children: subtreeChildren,
-        ref: useMergedRefs(subtreeRef, isResolvedShorthand(subtree) ? subtree.ref : undefined),
-      },
-    }),
-    content: resolveShorthand(content, {
-      required: true,
-      defaultProps: {
-        children,
-      },
-    }),
     root: getNativeElementProps(as, {
       tabIndex: -1,
       ...rest,
-      id,
       ref,
-      children: null,
-      'aria-level': level,
-      'aria-expanded': isBranch ? open : undefined,
       role: 'treeitem',
+      'aria-level': level,
+      [dataTreeItemValueAttrName]: value,
+      'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
+      'aria-selected': selectionMode === 'single' ? checked : undefined,
+      'aria-expanded': isBranch ? open : undefined,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
-      onMouseOver: actions ? showActions : undefined,
-      onFocus: actions ? showActions : undefined,
-      onMouseOut: actions ? hideActions : undefined,
-      onBlur: actions ? hideActions : undefined,
+      onMouseOver: handleActionsVisible,
+      onFocus: handleActionsVisible,
+      onMouseOut: handleActionsInvisible,
+      onBlur: handleActionsInvisible,
+      onChange: handleChange,
     }),
-    expandIcon: resolveShorthand(expandIcon, {
-      required: isBranch,
-      defaultProps: {
-        children: <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />,
-        'aria-hidden': true,
-        ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
-      },
-    }),
-    actions: resolveShorthand(actions, {
-      defaultProps: {
-        ref: useMergedRefs(isResolvedShorthand(actions) ? actions.ref : undefined, actionsRef),
-      },
-    }),
+    actions: actionsSlot,
+    aside: asideSlot,
+    expandIcon: expandIconSlot,
+    selector:
+      selectionMode === 'none'
+        ? undefined
+        : resolveShorthand(selectionMode === 'multiselect' ? props.checkboxIndicator : props.radioIndicator, {
+            required: true,
+            defaultProps: {
+              checked,
+              tabIndex: -1,
+              'aria-hidden': true,
+              ref: selectionRef,
+              // onChange: handleChange,
+            },
+          }),
   };
-};
+}

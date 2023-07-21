@@ -6,7 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -21,7 +21,96 @@ import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-sha
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
     applyStylesToPortals?: boolean | undefined;
-    customStyleHooks_unstable?: Partial<CustomStyleHooksContextValue_unstable> | undefined;
+    customStyleHooks_unstable?: Partial<{
+        useAccordionHeaderStyles_unstable: (state: unknown) => void;
+        useAccordionItemStyles_unstable: (state: unknown) => void;
+        useAccordionPanelStyles_unstable: (state: unknown) => void;
+        useAccordionStyles_unstable: (state: unknown) => void;
+        useAvatarStyles_unstable: (state: unknown) => void;
+        useAvatarGroupStyles_unstable: (state: unknown) => void;
+        useAvatarGroupItemStyles_unstable: (state: unknown) => void;
+        useAvatarGroupPopoverStyles_unstable: (state: unknown) => void;
+        useBadgeStyles_unstable: (state: unknown) => void;
+        useCounterBadgeStyles_unstable: (state: unknown) => void;
+        useCardHeaderStyles_unstable: (state: unknown) => void;
+        useCardStyles_unstable: (state: unknown) => void;
+        useCardFooterStyles_unstable: (state: unknown) => void;
+        useCardPreviewStyles_unstable: (state: unknown) => void;
+        usePresenceBadgeStyles_unstable: (state: unknown) => void;
+        useButtonStyles_unstable: (state: unknown) => void;
+        useCompoundButtonStyles_unstable: (state: unknown) => void;
+        useMenuButtonStyles_unstable: (state: unknown) => void;
+        useSplitButtonStyles_unstable: (state: unknown) => void;
+        useToggleButtonStyles_unstable: (state: unknown) => void;
+        useCheckboxStyles_unstable: (state: unknown) => void;
+        useComboboxStyles_unstable: (state: unknown) => void;
+        useDropdownStyles_unstable: (state: unknown) => void;
+        useListboxStyles_unstable: (state: unknown) => void;
+        useOptionStyles_unstable: (state: unknown) => void;
+        useOptionGroupStyles_unstable: (state: unknown) => void;
+        useDividerStyles_unstable: (state: unknown) => void;
+        useInputStyles_unstable: (state: unknown) => void;
+        useImageStyles_unstable: (state: unknown) => void;
+        useLabelStyles_unstable: (state: unknown) => void;
+        useLinkStyles_unstable: (state: unknown) => void;
+        useMenuDividerStyles_unstable: (state: unknown) => void;
+        useMenuGroupHeaderStyles_unstable: (state: unknown) => void;
+        useMenuGroupStyles_unstable: (state: unknown) => void;
+        useMenuItemCheckboxStyles_unstable: (state: unknown) => void;
+        useMenuItemRadioStyles_unstable: (state: unknown) => void;
+        useMenuItemStyles_unstable: (state: unknown) => void;
+        useMenuListStyles_unstable: (state: unknown) => void;
+        useMenuPopoverStyles_unstable: (state: unknown) => void;
+        useMenuSplitGroupStyles_unstable: (state: unknown) => void;
+        usePersonaStyles_unstable: (state: unknown) => void;
+        usePopoverSurfaceStyles_unstable: (state: unknown) => void;
+        useRadioGroupStyles_unstable: (state: unknown) => void;
+        useRadioStyles_unstable: (state: unknown) => void;
+        useSelectStyles_unstable: (state: unknown) => void;
+        useSliderStyles_unstable: (state: unknown) => void;
+        useSpinButtonStyles_unstable: (state: unknown) => void;
+        useSpinnerStyles_unstable: (state: unknown) => void;
+        useSwitchStyles_unstable: (state: unknown) => void;
+        useTabStyles_unstable: (state: unknown) => void;
+        useTabListStyles_unstable: (state: unknown) => void;
+        useTextStyles_unstable: (state: unknown) => void;
+        useTextareaStyles_unstable: (state: unknown) => void;
+        useTooltipStyles_unstable: (state: unknown) => void;
+        useDialogTitleStyles_unstable: (state: unknown) => void;
+        useDialogBodyStyles_unstable: (state: unknown) => void;
+        useDialogActionsStyles_unstable: (state: unknown) => void;
+        useDialogSurfaceStyles_unstable: (state: unknown) => void;
+        useDialogContentStyles_unstable: (state: unknown) => void;
+        useProgressBarStyles_unstable: (state: unknown) => void;
+        useToolbarButtonStyles_unstable: (state: unknown) => void;
+        useToolbarRadioButtonStyles_unstable: (state: unknown) => void;
+        useToolbarGroupStyles_unstable: (state: unknown) => void;
+        useToolbarToggleButtonStyles_unstable: (state: unknown) => void;
+        useToolbarDividerStyles_unstable: (state: unknown) => void;
+        useToolbarStyles_unstable: (state: unknown) => void;
+        useTableCellStyles_unstable: (state: unknown) => void;
+        useTableRowStyles_unstable: (state: unknown) => void;
+        useTableBodyStyles_unstable: (state: unknown) => void;
+        useTableStyles_unstable: (state: unknown) => void;
+        useTableHeaderStyles_unstable: (state: unknown) => void;
+        useTableHeaderCellStyles_unstable: (state: unknown) => void;
+        useTableResizeHandleStyles_unstable: (state: unknown) => void;
+        useTableSelectionCellStyles_unstable: (state: unknown) => void;
+        useTableCellActionsStyles_unstable: (state: unknown) => void;
+        useTableCellLayoutStyles_unstable: (state: unknown) => void;
+        useDataGridCellStyles_unstable: (state: unknown) => void;
+        useDataGridRowStyles_unstable: (state: unknown) => void;
+        useDataGridBodyStyles_unstable: (state: unknown) => void;
+        useDataGridStyles_unstable: (state: unknown) => void;
+        useDataGridHeaderStyles_unstable: (state: unknown) => void;
+        useDataGridHeaderCellStyles_unstable: (state: unknown) => void;
+        useDataGridSelectionCellStyles_unstable: (state: unknown) => void;
+        useDrawerStyles_unstable: (state: unknown) => void;
+        useDrawerBodyStyles_unstable: (state: unknown) => void;
+        useDrawerHeaderStyles_unstable: (state: unknown) => void;
+        useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
+        useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
+    }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
@@ -40,7 +129,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyle
 };
 
 // @public (undocumented)
-export type FluentProviderCustomStyleHooks = Partial<CustomStyleHooksContextValue_unstable>;
+export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue_unstable;
 
 // @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
@@ -61,6 +150,10 @@ export type FluentProviderSlots = {
 export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
+    serverStyleProps: {
+        cssRule: string;
+        attributes: Record<string, string>;
+    };
 };
 
 // @public
@@ -75,8 +168,13 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 // @public
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
-// @public
-export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => string;
+// @internal
+export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & {
+    rendererAttributes: Record<string, string>;
+}) => {
+    styleTagId: string;
+    rule: string;
+};
 
 // (No @packageDocumentation comment for this package)
 

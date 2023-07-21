@@ -5,7 +5,6 @@
     "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
-    "declaration": true,
     "experimentalDecorators": true,
     "preserveConstEnums": true,
     "lib": ["ES2015", "DOM"],

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Async,
   EventGroup,
+  canUseDOM,
   css,
   divProperties,
   findIndex,
@@ -338,7 +339,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   public componentDidMount(): void {
     this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
     this._scrollTop = 0;
-    this.setState(this._updatePages(this.props, this.state));
+    this.setState({ ...this._updatePages(this.props, this.state), hasMounted: true });
     this._measureVersion++;
 
     this._events.on(window, 'resize', this._onAsyncResize);
@@ -491,7 +492,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       nextProps.items !== this.props.items ||
       nextProps.renderCount !== this.props.renderCount ||
       nextProps.startIndex !== this.props.startIndex ||
-      nextProps.version !== this.props.version
+      nextProps.version !== this.props.version ||
+      (!previousState.hasMounted && this.props.renderEarly && canUseDOM())
     ) {
       // We have received new items so we want to make sure that initially we only render a single window to
       // fill the currently visible rect, and then later render additional windows.

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId, useTimeout } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultSvg } from './DefaultSvg';
+import { useSpinnerContext } from '../../contexts/SpinnerContext';
 
 /**
  * Create the state required to render Spinner.
@@ -15,11 +16,30 @@ import { DefaultSvg } from './DefaultSvg';
  */
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
   // Props
-  const { appearance = 'primary', labelPosition = 'after', size = 'medium' } = props;
+  const { size: contextSize } = useSpinnerContext();
+  const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
   const { role = 'progressbar', tabIndex, ...rest } = props;
   const nativeRoot = getNativeElementProps('div', { ref, role, ...rest }, ['size']);
+
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  const [setDelayTimeout, clearDelayTimeout] = useTimeout();
+
+  React.useEffect(() => {
+    if (delay <= 0) {
+      return;
+    }
+    setIsVisible(false);
+    setDelayTimeout(() => {
+      setIsVisible(true);
+    }, delay);
+
+    return () => {
+      clearDelayTimeout();
+    };
+  }, [setDelayTimeout, clearDelayTimeout, delay]);
 
   const labelShorthand = resolveShorthand(props.label, {
     defaultProps: {
@@ -42,8 +62,10 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
 
   const state: SpinnerState = {
     appearance,
+    delay,
     labelPosition,
     size,
+    shouldRenderSpinner: isVisible,
     components: {
       root: 'div',
       spinner: 'span',

@@ -31,11 +31,16 @@ jobs:
       - script: |
           yarn nx workspace-lint
           yarn nx run @fluentui/nx-workspace-tools:check-graph
-        displayName: NX workspace lint
+          yarn nx workspace-generator tsconfig-base-all --verify
+          yarn nx workspace-generator normalize-package-dependencies --verify
+
+        displayName: Workspace lint
 
       - script: |
-          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts thus it needs to be build in advance
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts, thus it needs to be build in advance
           yarn workspace @fluentui/api-docs build
+          # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
+          yarn workspace @fluentui/digest build
           yarn tsc -p ./tsconfig.json
         displayName: Type-check just.config.ts files
 
@@ -60,8 +65,8 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn buildci  $(sinceArg)
-        displayName: build, test, lint
+          yarn buildci $(sinceArg)
+        displayName: build, test, lint, test-ssr
 
       - template: .devops/templates/cleanup.yml
 
@@ -90,6 +95,23 @@ jobs:
       - script: |
           yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
+
+      - bash: |
+          mkdir -p apps/pr-deploy-site/sbom
+        displayName: 📒 Create dir for manifest Deploy-Site
+
+      - task: ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest Deploy-Site
+        inputs:
+          BuildDropPath: apps/pr-deploy-site/dist
+          ManifestDirPath: 'apps/pr-deploy-site/sbom'
+          Verbosity: Verbose
+
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest Deploy-Site
+        inputs:
+          artifactName: SBom-Deploy-Site-$(System.JobAttempt)
+          targetPath: apps/pr-deploy-site/sbom
 
       - task: AzureUpload@2
         displayName: Upload PR deploy site

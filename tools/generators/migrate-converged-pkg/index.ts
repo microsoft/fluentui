@@ -3,7 +3,6 @@ import {
   formatFiles,
   updateJson,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   joinPathFragments,
   readJson,
   stripIndents,
@@ -13,10 +12,16 @@ import {
   updateProjectConfiguration,
   serializeJson,
   offsetFromRoot,
+  applyChangesToString,
+  ChangeType,
+  readNxJson,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
+import * as ts from 'typescript';
 
+import { getTemplate, uniqueArray } from './lib/utils';
+import setupCypressComponentTesting from '../cypress-component-configuration';
 import { PackageJson, TsConfig } from '../../types';
 import {
   arePromptsEnabled,
@@ -138,9 +143,13 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
-  updateNxWorkspace(tree, options);
+  updateNxProject(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
+
+  setupSwcConfig(tree, options);
+  setupJustConfig(tree, options);
+  updateConformanceSetup(tree, options);
 }
 
 // ==== helpers ====
@@ -156,7 +165,6 @@ const templates = {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
         mainEntryPointFilePath:
-          // eslint-disable-next-line @fluentui/max-len
           '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
         apiReport: {
           enabled: true,
@@ -266,14 +274,16 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets?: Array<unknown>; rootBabelConfigPath?: string }) => {
+    const { extraPresets, platform, rootBabelConfigPath } = options;
     const plugins = ['annotate-pure-calls'];
-    if (options.platform === 'web') {
+    if (platform === 'web') {
       plugins.push('@babel/transform-react-pure-annotations');
     }
 
     return {
-      presets: [...options.extraPresets],
+      extends: rootBabelConfigPath,
+      presets: extraPresets ? [...extraPresets] : undefined,
       plugins,
     };
   },
@@ -294,14 +304,14 @@ const templates = {
       module.exports = {
         displayName: '${options.pkgName}',
         preset: '../../../jest.preset.js',
-        globals: {
-          'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-            diagnostics: false,
-          },
-        },
         transform: {
-          '^.+\\.tsx?$': 'ts-jest',
+          '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+              tsconfig: '<rootDir>/tsconfig.spec.json',
+              isolatedModules: true,
+            }
+          ],
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],
@@ -387,7 +397,49 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
+    .swcrc
+    project.json
+
+    # exclude gitignore patterns explicitly
+    !lib
+    !lib-commonjs
+    !lib-amd
+    !dist/*.d.ts
   ` + os.EOL,
+  swcConfig: () => {
+    return {
+      $schema: 'https://json.schemastore.org/swcrc',
+      exclude: [
+        '/testing',
+        '/**/*.cy.ts',
+        '/**/*.cy.tsx',
+        '/**/*.spec.ts',
+        '/**/*.spec.tsx',
+        '/**/*.test.ts',
+        '/**/*.test.tsx',
+      ],
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          tsx: true,
+          decorators: false,
+          dynamicImport: false,
+        },
+        externalHelpers: true,
+        transform: {
+          react: {
+            runtime: 'classic',
+            useSpread: true,
+          },
+        },
+        target: 'es2019',
+      },
+      minify: false,
+      sourceMaps: true,
+    };
+  },
+  // why not inline template ? this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  justConfig: getTemplate(joinPathFragments(__dirname, 'files/just-config.ts__tmpl__'), {}),
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -526,11 +578,7 @@ function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
   return tree.exists(options.paths.conformanceSetup);
 }
 
-function uniqueArray<T extends unknown>(value: T[]) {
-  return Array.from(new Set(value));
-}
-
-function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+function updateNxProject(tree: Tree, options: NormalizedSchema) {
   const packageType = getPackageType(tree, options);
   const tags = {
     web: 'platform:web',
@@ -548,6 +596,19 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
 
 function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
+
+  return tree;
+}
+
+function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
+  const swcConfig = templates.swcConfig();
+  writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
+
+  return tree;
+}
+
+function setupJustConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.justConfig, templates.justConfig);
 
   return tree;
 }
@@ -608,9 +669,12 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
         },
       };
 
+      stableJson.exports = stableJson.exports ?? {};
+
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
+          ...(packageJson.main ? { node: './lib-commonjs/unstable/index.js' } : null),
           ...(packageJson.module ? { import: './lib/unstable/index.js' } : null),
           require: './lib-commonjs/unstable/index.js',
         },
@@ -628,6 +692,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   packageJson = setupScripts(packageJson);
   packageJson = setupExportMaps(packageJson);
+  packageJson = addSwcHelpers(packageJson);
 
   writeJson(tree, options.paths.packageJson, packageJson);
 
@@ -636,6 +701,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   function setupScripts(json: PackageJson) {
     const scripts = {
       test: 'jest --passWithNoTests',
+      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'tsc -b tsconfig.json',
     };
 
@@ -660,6 +726,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     json.exports = {
       '.': {
         types: json.typings,
+        ...(json.main ? { node: normalizePackageEntryPointPaths(json.main) } : null),
         ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
         ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
       },
@@ -674,16 +741,24 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 }
 
+//TODO: remove after migration to swc transpilation is complete
+function addSwcHelpers(json: PackageJson) {
+  delete json.dependencies?.tslib;
+  json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.14' };
+  return json;
+}
+
 function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const apiExtractor = templates.apiExtractor();
   const scripts = {
-    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+    'generate-api': 'just-scripts generate-api',
   };
 
   tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts ?? {};
     Object.assign(json.scripts, scripts);
 
     return json;
@@ -747,6 +822,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
         storybook: `start-storybook`,
         start: 'yarn storybook',
       };
+      json.scripts = json.scripts ?? {};
       Object.assign(json.scripts, scripts);
 
       return json;
@@ -843,47 +919,16 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function setupCypress(tree: Tree, options: NormalizedSchema) {
-  const template = {
-    exclude: ['**/*.cy.ts', '**/*.cy.tsx'],
-  };
+async function setupCypress(tree: Tree, options: NormalizedSchema) {
+  const shouldSetupCypress = tree.exists(options.paths.tsconfig.cypress);
 
-  if (!shouldSetupCypress(tree, options)) {
+  if (!shouldSetupCypress) {
     return tree;
   }
 
-  writeJson<TsConfig>(tree, options.paths.tsconfig.cypress, templates.cypress.tsconfig);
-
-  updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
-    json.references?.push({
-      path: `./${path.basename(options.paths.tsconfig.cypress)}`,
-    });
-
-    return json;
-  });
-
-  // update lib ts with new exclude globs
-  updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
-    json.exclude = json.exclude || [];
-    json.exclude.push(...template.exclude);
-    json.exclude = uniqueArray(json.exclude);
-
-    return json;
-  });
-
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'cypress run --component';
-    json.scripts['e2e:local'] = 'cypress open --component';
-
-    return json;
-  });
+  await setupCypressComponentTesting(tree, { project: options.name });
 
   return tree;
-}
-
-function shouldSetupCypress(tree: Tree, options: NormalizedSchema) {
-  return tree.exists(options.paths.tsconfig.cypress);
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
@@ -907,6 +952,52 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
+  }
+
+  return tree;
+}
+
+function updateConformanceSetup(tree: Tree, options: NormalizedSchema) {
+  if (!tree.exists(options.paths.conformanceSetup)) {
+    logger.warn('no conformance setup present. skipping...');
+    return;
+  }
+
+  const conformanceSetupContent = tree.read(options.paths.conformanceSetup, 'utf-8') as string;
+  const sourceFile = ts.createSourceFile('is-conformant.ts', conformanceSetupContent, ts.ScriptTarget.Latest, true);
+  const addition = `\ntsConfig: { configName: 'tsconfig.spec.json' },`;
+
+  let start: number | undefined;
+  getConfigObjectFirstPropertyIndex(sourceFile);
+
+  if (!start) {
+    return;
+  }
+
+  const updatedContent = applyChangesToString(conformanceSetupContent, [
+    {
+      type: ChangeType.Insert,
+      index: start,
+      text: addition,
+    },
+  ]);
+
+  tree.write(options.paths.conformanceSetup, updatedContent);
+
+  function getConfigObjectFirstPropertyIndex(node: ts.Node) {
+    if (ts.isVariableStatement(node)) {
+      const defaultOptionsVar = node.declarationList.declarations[0].name.getText();
+      if (defaultOptionsVar === 'defaultOptions') {
+        const initializer = node.declarationList.declarations[0].initializer;
+        if (initializer && ts.isObjectLiteralExpression(initializer)) {
+          const firstProp = initializer.properties[0];
+          start = firstProp.pos;
+          return;
+        }
+      }
+    }
+
+    ts.forEachChild(node, getConfigObjectFirstPropertyIndex);
   }
 
   return tree;
@@ -970,8 +1061,8 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const publishedNpmScope = `@${workspaceConfig.npmScope}`;
+  const workspaceConfig = readNxJson(tree);
+  const publishedNpmScope = `@${workspaceConfig?.npmScope}`;
   const allProjects = getProjects(tree);
 
   const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
@@ -1005,8 +1096,10 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
-  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
-  const config = templates.babelConfig({ extraPresets, platform: packageType });
+  const rootBabelConfigPath = shouldAddGriffelPreset
+    ? path.relative(options.projectConfig.root, '.babelrc-v9.json')
+    : undefined;
+  const config = templates.babelConfig({ platform: packageType, rootBabelConfigPath });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

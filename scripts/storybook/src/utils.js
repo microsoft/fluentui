@@ -2,8 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
-const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
+const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nrwl/devkit');
+const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
@@ -33,10 +34,9 @@ function loadWorkspaceAddon(addonName, options) {
   const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
   function getPaths() {
-    const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
-    const addonMetadata = workspaceJson.projects[addonName];
+    const addonMetadata = getProjectMetadata(addonName, workspaceRoot);
     const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
-    const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
+    const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot ?? '');
     const packageJsonPath = path.join(packageRootPath, 'package.json');
 
     if (!fs.existsSync(packageJsonPath)) {
@@ -106,7 +106,7 @@ function loadWorkspaceAddon(addonName, options) {
     const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
     function managerWebpack(config, options) {
-      registerTsPaths({config, tsConfigPath: '${posixTsConfigPath}'});
+      registerTsPaths({config, configFile: '${posixTsConfigPath}'});
       return config;
     }
 
@@ -129,6 +129,8 @@ function loadWorkspaceAddon(addonName, options) {
  * @returns {import("webpack").RuleSetRule}
  */
 function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
+  const config = getCodesandboxBabelOptions();
+
   return {
     /**
      * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
@@ -141,7 +143,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
     use: {
       loader: 'babel-loader',
       options: _processBabelLoaderOptions({
-        plugins: [[babelPlugin, getCodesandboxBabelOptions()]],
+        plugins: [[babelPlugin, config]],
       }),
     },
   };
@@ -150,33 +152,52 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
    * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
    */
   function getCodesandboxBabelOptions() {
+    /**
+     * packages that are part of v9 but are not meant for platform:web
+     */
+    const excludePackages = [
+      '@fluentui/babel-preset-storybook-full-source',
+      '@fluentui/react-storybook-addon',
+      '@fluentui/react-storybook-addon-codesandbox',
+      '@fluentui/react-conformance-griffel',
+    ];
+
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
-      if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
+      if (excludePackages.includes(cur.packageJson.name)) {
+        return acc;
+      }
+
+      if (isPackagePartOfReactComponentsSuite(cur.packageJson.name)) {
+        // TODO: once all pre-release packages (deprecated approach) will be released as stable this logic will be removed
         const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
         acc[cur.packageJson.name] = isPrerelease
           ? { replace: '@fluentui/react-components/unstable' }
           : { replace: '@fluentui/react-components' };
+
+        return acc;
       }
 
       return acc;
     }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
 
-    return {
-      ...importMappings,
+    return importMappings;
+  }
 
-      // TODO: https://github.com/microsoft/fluentui/issues/26691
+  /**
+   *
+   * @param {string} projectName
+   */
+  function isPackagePartOfReactComponentsSuite(projectName) {
+    const suiteProject = allPackageInfo['@fluentui/react-components'];
 
-      '@fluentui/react-data-grid-react-window': {
-        replace: '@fluentui/react-data-grid-react-window',
-      },
-      '@fluentui/react-migration-v8-v9': {
-        replace: '@fluentui/react-migration-v8-v9',
-      },
-      '@fluentui/react-migration-v0-v9': {
-        replace: '@fluentui/react-migration-v0-v9',
-      },
-    };
+    // this is needed because react-northstar is a lerna sub-project thus `getAllPackageInfo` returns only projects within `packages/fluentui/` folder
+    if (suiteProject) {
+      const suiteDependencies = suiteProject.packageJson.dependencies ?? {};
+      return Boolean(suiteDependencies[projectName]);
+    }
+
+    return false;
   }
 }
 
@@ -189,25 +210,23 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
  * @returns
  */
 function getPackageStoriesGlob(options) {
-  const projectMetadata = getProjectMetadata({ name: options.packageName });
+  const projectMetadata = getProjectMetadata(options.packageName);
 
-  /** @type {Record<string,unknown>} */
+  /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
   const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  const dependencies = /** @type {Record<string,string>} */ (
-    Object.assign(packageJson.dependencies, {
-      [options.packageName]: '*',
-    })
-  );
+  packageJson.dependencies = packageJson.dependencies ?? {};
+
+  const dependencies = { ...packageJson.dependencies };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
     .map(pkgName => {
       const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
-      const pkgMetadata = getProjectMetadata({ name: pkgName });
+      const pkgMetadata = getProjectMetadata(pkgName);
 
       if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
         return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
@@ -338,47 +357,17 @@ function overrideDefaultBabelLoader(options) {
 }
 
 /**
- * Create tsconfig.json with merged "compilerOptions.paths" from v0,v8,v9 tsconfigs.
- *
- * Main purpose of this is to be used for build-less DX in webpack in tandem with {@link registerTsPaths}
- * @returns
+ * @param {string} projectName
+ * @param {string} root
  */
-function createPathAliasesConfig() {
-  const { tsConfigAllPath } = createMergedTsConfig();
-  return { tsConfigAllPath };
-}
-
-function createMergedTsConfig() {
-  const rootPath = workspaceRoot;
-  const tsConfigAllPath = path.join(rootPath, 'dist/tsconfig.base.all.json');
-  const baseConfigs = {
-    v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
-    v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
-    v9: readJsonFile(path.join(rootPath, 'tsconfig.base.json')),
-  };
-  const mergedTsConfig = {
-    compilerOptions: {
-      moduleResolution: 'node',
-      forceConsistentCasingInFileNames: true,
-      skipLibCheck: true,
-      baseUrl: workspaceRoot,
-      paths: {
-        ...baseConfigs.v0.compilerOptions.paths,
-        ...baseConfigs.v8.compilerOptions.paths,
-        ...baseConfigs.v9.compilerOptions.paths,
-      },
-    },
-  };
-
-  writeJsonFile(tsConfigAllPath, mergedTsConfig);
-
-  return { tsConfigAllPath, mergedTsConfig };
+function getProjectMetadata(projectName, root = workspaceRoot) {
+  const tree = new FsTree(root, false);
+  return readProjectConfiguration(tree, projectName);
 }
 
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.registerTsPaths = registerTsPaths;
 exports.registerRules = registerRules;
-exports.createPathAliasesConfig = createPathAliasesConfig;
 exports.overrideDefaultBabelLoader = overrideDefaultBabelLoader;
 exports._createCodesandboxRule = _createCodesandboxRule;

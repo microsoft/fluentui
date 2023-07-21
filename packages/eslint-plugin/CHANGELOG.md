@@ -1,8 +1,53 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 03 Feb 2023 07:50:05 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 07:38:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.1)
+
+Wed, 31 May 2023 07:38:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.0..@fluentui/eslint-plugin_v1.17.1)
+
+### Patches
+
+- fix: tweak type errors exposed in ts 4.5 ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
+
+## [1.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.0)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.16.0..@fluentui/eslint-plugin_v1.17.0)
+
+### Minor changes
+
+- feat: enable @griffel/styles-file rule ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by olfedias@microsoft.com)
+
+## [1.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.16.0)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.15.0..@fluentui/eslint-plugin_v1.16.0)
+
+### Minor changes
+
+- feat: enable @griffel/hook-naming rule ([PR #27687](https://github.com/microsoft/fluentui/pull/27687) by olfedias@microsoft.com)
+
+## [1.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.15.0)
+
+Mon, 17 Apr 2023 07:40:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.14.0..@fluentui/eslint-plugin_v1.15.0)
+
+### Minor changes
+
+- feat: enables jsxTags on comment for react config ([PR #27571](https://github.com/microsoft/fluentui/pull/27571) by bernardo.sunderhus@gmail.com)
+
+## [1.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.14.0)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.13.0..@fluentui/eslint-plugin_v1.14.0)
+
+### Minor changes
+
+- feat: rule to ban usage of instanceof HTMLElement ([PR #27178](https://github.com/microsoft/fluentui/pull/27178) by bernardo.sunderhus@gmail.com)
 
 ## [1.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.13.0)
 

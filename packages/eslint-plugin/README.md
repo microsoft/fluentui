@@ -170,3 +170,27 @@ const context = React.createContext({ someValue: undefined });
 import * as React from 'react';
 const context = React.createContext(undefined);
 ```
+
+### `ban-instanceof-html-element`
+
+Bans usage of `instanceof HTMLElement` binary expressions as they might cause problems on [multiple realms](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_realms) environments.
+
+The alternative is to use `isHTMLElement` helper method provided by `@fluentui/react-utilities` packages, since that method does the proper verifications to ensure proper instance comparison.
+
+**❌ Don't**
+
+```ts
+event.target instanceof HTMLElement;
+
+event.target instanceof HTMLInputElement;
+```
+
+**✅ Do**
+
+```ts
+import { isHTMLElement } from '@fluentui/react-components';
+
+isHTMLElement(event.target);
+
+isHTMLElement(event.target, { constructorName: 'HTMLInputElement' });
+```

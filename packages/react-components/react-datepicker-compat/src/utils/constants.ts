@@ -1,6 +1,5 @@
 /**
  * The days of the week
- * {@docCategory DateTimeUtilities}
  */
 export enum DayOfWeek {
   Sunday = 0,
@@ -14,7 +13,6 @@ export enum DayOfWeek {
 
 /**
  * The months
- * {@docCategory DateTimeUtilities}
  */
 export enum MonthOfYear {
   January = 0,
@@ -33,7 +31,6 @@ export enum MonthOfYear {
 
 /**
  * First week of the year settings types
- * {@docCategory DateTimeUtilities}
  */
 export enum FirstWeekOfYear {
   FirstDay = 0,
@@ -43,7 +40,6 @@ export enum FirstWeekOfYear {
 
 /**
  * The supported date range types
- * {@docCategory DateTimeUtilities}
  */
 export enum DateRangeType {
   Day = 0,

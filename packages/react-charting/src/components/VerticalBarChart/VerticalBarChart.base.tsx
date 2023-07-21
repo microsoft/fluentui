@@ -138,7 +138,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    return (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._points}
@@ -165,11 +165,26 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             <>
               <g>{this._bars}</g>
               {this._isHavingLine && (
-                <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
+                <g>
+                  {this._createLine(
+                    props.xScale!,
+                    props.yScale!,
+                    props.containerHeight,
+                    props.containerWidth,
+                    props.yScaleSecondary,
+                  )}
+                </g>
               )}
             </>
           );
         }}
+      />
+    ) : (
+      <div
+        id={getId('_VBC_empty')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }
@@ -181,6 +196,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     yScale: any,
     containerHeight: number = 0,
     containerWidth: number = 0,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yScaleSecondary?: any,
   ): React.ReactNode => {
     const isNumericAxis = this._xAxisType === XAxisTypes.NumericAxis;
     const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumericAxis);
@@ -193,14 +210,20 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
-          lineData.push({ x: item.x, y: item.lineData!.y, point: item, index });
+          lineData.push({
+            x: item.x,
+            y: item.lineData!.y,
+            useSecondaryYScale: item.lineData!.useSecondaryYScale ?? false,
+            point: item,
+            index,
+          });
         }
       });
     const linePath = d3Line()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => yScale(d.y));
+      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
     const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
     const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
@@ -209,6 +232,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (lineBorderWidth > 0) {
       line.push(
         <path
+          key={getId('_VBC_line_')}
+          id={getId('_VBC_line_')}
           opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
@@ -220,6 +245,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
     line.push(
       <path
+        key={getId('_VBC_line_')}
+        id={getId('_VBC_line_')}
         opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
         fill="transparent"
@@ -230,12 +257,22 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
 
     const dots: React.ReactNode[] = lineData.map(
-      (item: { x: number | string; y: number; point: IVerticalBarChartDataPoint; index: number }, index: number) => {
+      (
+        item: {
+          x: number | string;
+          y: number;
+          useSecondaryYScale: boolean;
+          point: IVerticalBarChartDataPoint;
+          index: number;
+        },
+        index: number,
+      ) => {
         return (
           <circle
             key={index}
+            id={getId('_VBC_point_')}
             cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
-            cy={yScale(item.y)}
+            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
             onMouseOut={this._onBarLeave}
             r={8}
@@ -505,6 +542,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       return (
         <g key={point.x}>
           <rect
+            id={getId('_VBC_bar_')}
             x={xPoint}
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
@@ -564,6 +602,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       return (
         <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
           <rect
+            id={getId('_VBC_bar_')}
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
@@ -782,4 +821,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return (
+      this._points.length === 0 ||
+      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
+    );
+  }
 }

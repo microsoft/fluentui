@@ -1,13 +1,15 @@
 {
-  "extends": "../../../tsconfig.base.json",
+  "extends": "../../../tsconfig.base.all.json",
   "compilerOptions": {
+    "strict": true,
     "target": "ES2019",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
     "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "paths": {}
   },
   "include": [],
   "files": [],

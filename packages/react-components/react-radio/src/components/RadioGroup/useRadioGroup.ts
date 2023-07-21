@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getNativeElementProps, isHTMLElement, useEventCallback, useId } from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
@@ -12,6 +13,9 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
  * @param ref - reference to root HTMLElement of RadioGroup
  */
 export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLDivElement>): RadioGroupState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props);
+
   const generatedName = useId('radiogroup-');
 
   const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange, required } = props;

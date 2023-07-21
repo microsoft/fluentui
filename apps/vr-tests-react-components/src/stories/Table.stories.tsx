@@ -27,6 +27,7 @@ import {
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
+import { KeyboardResizingCurrentColumnDataAttribute } from '../../../../packages/react-components/react-table/src/hooks/useTableColumnSizing';
 
 const items = [
   {
@@ -634,6 +635,52 @@ const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativ
   </Table>
 );
 
+const KeyboardColumnResizingStyle: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => {
+  return (
+    <Table noNativeElements={noNativeElements}>
+      <TableHeader>
+        <TableRow>
+          {columns.map(column => (
+            <TableHeaderCell key={column.columnKey} {...{ [`${KeyboardResizingCurrentColumnDataAttribute}`]: '' }}>
+              {column.label}
+            </TableHeaderCell>
+          ))}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {items.map((item, i) => (
+          <TableRow key={item.file.label} className={`row-${i}`}>
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>
+                {item.file.label}
+                <TableCellActions>
+                  <Button icon={<EditRegular />} appearance="subtle" />
+                  <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                </TableCellActions>
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout
+                media={
+                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                }
+              >
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout>{item.lastUpdated.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
 ([true, false] as const).forEach(noNativeElements => {
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
@@ -729,7 +776,10 @@ const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativ
       includeDarkMode: true,
       includeHighContrast: true,
       includeRtl: true,
-    });
+    })
+    .addStory('keyboard column resizing style', () => (
+      <KeyboardColumnResizingStyle noNativeElements={noNativeElements} />
+    ));
 
   storiesOf(`Table ${layoutName} - subtle selection`, module)
     .addDecorator(story => (

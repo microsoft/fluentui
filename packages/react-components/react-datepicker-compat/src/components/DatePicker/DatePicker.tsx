@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderDatePicker_unstable } from './renderDatePicker';
 import { useDatePicker_unstable } from './useDatePicker';
-import { useDatePickerStyles_unstable } from './useDatePickerStyles';
+import { useDatePickerStyles_unstable } from './useDatePickerStyles.styles';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { DatePickerProps } from './DatePicker.types';
 

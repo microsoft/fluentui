@@ -9,17 +9,41 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
-import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
-import { checkboxFieldClassNames } from '@fluentui/react-checkbox';
-import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
-import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
-import { comboboxFieldClassNames } from '@fluentui/react-combobox';
-import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
-import { Field } from '@fluentui/react-field';
-import { fieldClassNames } from '@fluentui/react-field';
-import { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
-import { FieldState } from '@fluentui/react-field';
+import { Drawer } from '@fluentui/react-drawer';
+import { DrawerBody } from '@fluentui/react-drawer';
+import { drawerBodyClassNames } from '@fluentui/react-drawer';
+import { DrawerBodySlots } from '@fluentui/react-drawer';
+import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerFooter } from '@fluentui/react-drawer';
+import { drawerFooterClassNames } from '@fluentui/react-drawer';
+import { DrawerFooterSlots } from '@fluentui/react-drawer';
+import { DrawerFooterState } from '@fluentui/react-drawer';
+import { DrawerHeader } from '@fluentui/react-drawer';
+import { drawerHeaderClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigation } from '@fluentui/react-drawer';
+import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import { DrawerHeaderSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderState } from '@fluentui/react-drawer';
+import { DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
+import { DrawerInline } from '@fluentui/react-drawer';
+import { drawerInlineClassNames } from '@fluentui/react-drawer';
+import { DrawerInlineProps } from '@fluentui/react-drawer';
+import { DrawerInlineSlots } from '@fluentui/react-drawer';
+import { DrawerInlineState } from '@fluentui/react-drawer';
+import { DrawerOverlay } from '@fluentui/react-drawer';
+import { drawerOverlayClassNames } from '@fluentui/react-drawer';
+import { DrawerOverlayProps } from '@fluentui/react-drawer';
+import { DrawerOverlaySlots } from '@fluentui/react-drawer';
+import { DrawerOverlayState } from '@fluentui/react-drawer';
+import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerSlots } from '@fluentui/react-drawer';
+import { DrawerState } from '@fluentui/react-drawer';
 import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { FlatTreeItem } from '@fluentui/react-tree';
@@ -30,59 +54,41 @@ import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
 import { InfoButtonSlots } from '@fluentui/react-infobutton';
 import { InfoButtonState } from '@fluentui/react-infobutton';
-import { InputField_unstable as InputField } from '@fluentui/react-input';
-import { inputFieldClassNames } from '@fluentui/react-input';
-import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+import { InfoLabel } from '@fluentui/react-infobutton';
+import { infoLabelClassNames } from '@fluentui/react-infobutton';
+import { InfoLabelProps } from '@fluentui/react-infobutton';
+import { InfoLabelSlots } from '@fluentui/react-infobutton';
+import { InfoLabelState } from '@fluentui/react-infobutton';
 import { NestedTreeItem } from '@fluentui/react-tree';
-import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
-import { progressFieldClassNames } from '@fluentui/react-progress';
-import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
-import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
-import { radioGroupFieldClassNames } from '@fluentui/react-radio';
-import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
-import { renderField_unstable } from '@fluentui/react-field';
+import { renderDrawer_unstable } from '@fluentui/react-drawer';
+import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
+import { renderDrawerFooter_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
+import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
+import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
-import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
-import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
+import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
-import { SelectField_unstable as SelectField } from '@fluentui/react-select';
-import { selectFieldClassNames } from '@fluentui/react-select';
-import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
-import { Skeleton } from '@fluentui/react-skeleton';
-import { skeletonClassNames } from '@fluentui/react-skeleton';
-import { SkeletonContextProvider } from '@fluentui/react-skeleton';
-import { SkeletonContextValue } from '@fluentui/react-skeleton';
-import { SkeletonItem } from '@fluentui/react-skeleton';
-import { skeletonItemClassNames } from '@fluentui/react-skeleton';
-import { SkeletonItemProps } from '@fluentui/react-skeleton';
-import { SkeletonItemSlots } from '@fluentui/react-skeleton';
-import { SkeletonItemState } from '@fluentui/react-skeleton';
-import { SkeletonProps } from '@fluentui/react-skeleton';
-import { SkeletonSlots } from '@fluentui/react-skeleton';
-import { SkeletonState } from '@fluentui/react-skeleton';
-import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
-import { sliderFieldClassNames } from '@fluentui/react-slider';
-import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
-import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
-import { spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
-import { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
-import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
-import { switchFieldClassNames } from '@fluentui/react-switch';
-import { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
-import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
-import { textareaFieldClassNames } from '@fluentui/react-textarea';
-import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
+import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
+import { ResizeCallbackWithRef } from '@fluentui/react-virtualizer';
+import { ScrollToInterface } from '@fluentui/react-virtualizer';
+import { scrollToItemDynamic } from '@fluentui/react-virtualizer';
+import { ScrollToItemDynamicParams } from '@fluentui/react-virtualizer';
+import { scrollToItemStatic } from '@fluentui/react-virtualizer';
+import { ScrollToItemStaticParams } from '@fluentui/react-virtualizer';
 import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeItem } from '@fluentui/react-tree';
 import { treeItemClassNames } from '@fluentui/react-tree';
-import { TreeItemId } from '@fluentui/react-tree';
 import { TreeItemLayout } from '@fluentui/react-tree';
 import { treeItemLayoutClassNames } from '@fluentui/react-tree';
 import { TreeItemLayoutProps } from '@fluentui/react-tree';
@@ -108,21 +114,36 @@ import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
-import { useField_unstable } from '@fluentui/react-field';
-import { useFieldStyles_unstable } from '@fluentui/react-field';
+import { useDrawer_unstable } from '@fluentui/react-drawer';
+import { useDrawerBody_unstable } from '@fluentui/react-drawer';
+import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
+import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerInline_unstable } from '@fluentui/react-drawer';
+import { useDrawerInlineStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerOverlay_unstable } from '@fluentui/react-drawer';
+import { useDrawerOverlayStyles_unstable } from '@fluentui/react-drawer';
+import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
-import { useSkeleton_unstable } from '@fluentui/react-skeleton';
-import { useSkeletonContext } from '@fluentui/react-skeleton';
-import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
-import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
-import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
+import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
+import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
 import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
@@ -130,11 +151,30 @@ import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerContext_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewDynamicStyles_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
 import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
 import { virtualizerClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerContextProps } from '@fluentui/react-virtualizer';
+import { VirtualizerContextProvider } from '@fluentui/react-virtualizer';
+import { VirtualizerMeasureDynamicProps } from '@fluentui/react-virtualizer';
+import { VirtualizerMeasureProps } from '@fluentui/react-virtualizer';
 import { VirtualizerProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
+import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
+import { virtualizerScrollViewDynamicClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicState } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewState } from '@fluentui/react-virtualizer';
 import { VirtualizerSlots } from '@fluentui/react-virtualizer';
 import { VirtualizerState } from '@fluentui/react-virtualizer';
 
@@ -148,27 +188,75 @@ export { AlertSlots }
 
 export { AlertState }
 
-export { CheckboxField }
+export { Drawer }
 
-export { checkboxFieldClassNames }
+export { DrawerBody }
 
-export { CheckboxFieldProps }
+export { drawerBodyClassNames }
 
-export { ComboboxField }
+export { DrawerBodySlots }
 
-export { comboboxFieldClassNames }
+export { DrawerBodyState }
 
-export { ComboboxFieldProps }
+export { DrawerFooter }
 
-export { Field }
+export { drawerFooterClassNames }
 
-export { fieldClassNames }
+export { DrawerFooterSlots }
 
-export { FieldProps }
+export { DrawerFooterState }
 
-export { FieldSlots }
+export { DrawerHeader }
 
-export { FieldState }
+export { drawerHeaderClassNames }
+
+export { DrawerHeaderNavigation }
+
+export { drawerHeaderNavigationClassNames }
+
+export { DrawerHeaderNavigationProps }
+
+export { DrawerHeaderNavigationSlots }
+
+export { DrawerHeaderNavigationState }
+
+export { DrawerHeaderSlots }
+
+export { DrawerHeaderState }
+
+export { DrawerHeaderTitle }
+
+export { drawerHeaderTitleClassNames }
+
+export { DrawerHeaderTitleSlots }
+
+export { DrawerHeaderTitleState }
+
+export { DrawerInline }
+
+export { drawerInlineClassNames }
+
+export { DrawerInlineProps }
+
+export { DrawerInlineSlots }
+
+export { DrawerInlineState }
+
+export { DrawerOverlay }
+
+export { drawerOverlayClassNames }
+
+export { DrawerOverlayProps }
+
+export { DrawerOverlaySlots }
+
+export { DrawerOverlayState }
+
+export { DrawerProps }
+
+export { DrawerSlots }
+
+export { DrawerState }
 
 export { flattenTree_unstable }
 
@@ -190,35 +278,39 @@ export { InfoButtonSlots }
 
 export { InfoButtonState }
 
-export { InputField }
+export { InfoLabel }
 
-export { inputFieldClassNames }
+export { infoLabelClassNames }
 
-export { InputFieldProps }
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
 
 export { NestedTreeItem }
 
-export { ProgressField }
-
-export { progressFieldClassNames }
-
-export { ProgressFieldProps }
-
-export { RadioGroupField }
-
-export { radioGroupFieldClassNames }
-
-export { RadioGroupFieldProps }
-
 export { renderAlert_unstable }
 
-export { renderField_unstable }
+export { renderDrawer_unstable }
+
+export { renderDrawerBody_unstable }
+
+export { renderDrawerFooter_unstable }
+
+export { renderDrawerHeader_unstable }
+
+export { renderDrawerHeaderNavigation_unstable }
+
+export { renderDrawerHeaderTitle_unstable }
+
+export { renderDrawerInline_unstable }
+
+export { renderDrawerOverlay_unstable }
 
 export { renderInfoButton_unstable }
 
-export { renderSkeleton_unstable }
-
-export { renderSkeletonItem_unstable }
+export { renderInfoLabel_unstable }
 
 export { renderTree_unstable }
 
@@ -230,59 +322,21 @@ export { renderTreeItemPersonaLayout_unstable }
 
 export { renderVirtualizer_unstable }
 
-export { SelectField }
+export { renderVirtualizerScrollView_unstable }
 
-export { selectFieldClassNames }
+export { renderVirtualizerScrollViewDynamic_unstable }
 
-export { SelectFieldProps }
+export { ResizeCallbackWithRef }
 
-export { Skeleton }
+export { ScrollToInterface }
 
-export { skeletonClassNames }
+export { scrollToItemDynamic }
 
-export { SkeletonContextProvider }
+export { ScrollToItemDynamicParams }
 
-export { SkeletonContextValue }
+export { scrollToItemStatic }
 
-export { SkeletonItem }
-
-export { skeletonItemClassNames }
-
-export { SkeletonItemProps }
-
-export { SkeletonItemSlots }
-
-export { SkeletonItemState }
-
-export { SkeletonProps }
-
-export { SkeletonSlots }
-
-export { SkeletonState }
-
-export { SliderField }
-
-export { sliderFieldClassNames }
-
-export { SliderFieldProps }
-
-export { SpinButtonField }
-
-export { spinButtonFieldClassNames }
-
-export { SpinButtonFieldProps }
-
-export { SwitchField }
-
-export { switchFieldClassNames }
-
-export { SwitchFieldProps }
-
-export { TextareaField }
-
-export { textareaFieldClassNames }
-
-export { TextareaFieldProps }
+export { ScrollToItemStaticParams }
 
 export { Tree }
 
@@ -293,8 +347,6 @@ export { TreeContextValue }
 export { TreeItem }
 
 export { treeItemClassNames }
-
-export { TreeItemId }
 
 export { TreeItemLayout }
 
@@ -346,9 +398,37 @@ export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
 
-export { useField_unstable }
+export { useDrawer_unstable }
 
-export { useFieldStyles_unstable }
+export { useDrawerBody_unstable }
+
+export { useDrawerBodyStyles_unstable }
+
+export { useDrawerFooter_unstable }
+
+export { useDrawerFooterStyles_unstable }
+
+export { useDrawerHeader_unstable }
+
+export { useDrawerHeaderNavigation_unstable }
+
+export { useDrawerHeaderNavigationStyles_unstable }
+
+export { useDrawerHeaderStyles_unstable }
+
+export { useDrawerHeaderTitle_unstable }
+
+export { useDrawerHeaderTitleStyles_unstable }
+
+export { useDrawerInline_unstable }
+
+export { useDrawerInlineStyles_unstable }
+
+export { useDrawerOverlay_unstable }
+
+export { useDrawerOverlayStyles_unstable }
+
+export { useDynamicVirtualizerMeasure }
 
 export { useFlatTree_unstable }
 
@@ -356,25 +436,27 @@ export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
 
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
+
 export { useIntersectionObserver }
 
-export { useSkeleton_unstable }
+export { useResizeObserverRef_unstable }
 
-export { useSkeletonContext }
-
-export { useSkeletonItem_unstable }
-
-export { useSkeletonItemStyles_unstable }
-
-export { useSkeletonStyles_unstable }
+export { useStaticVirtualizerMeasure }
 
 export { useTree_unstable }
 
 export { useTreeContext_unstable }
 
+export { useTreeContextValues_unstable }
+
 export { useTreeItem_unstable }
 
 export { useTreeItemContext_unstable }
+
+export { useTreeItemContextValues_unstable }
 
 export { useTreeItemLayout_unstable }
 
@@ -390,6 +472,16 @@ export { useTreeStyles_unstable }
 
 export { useVirtualizer_unstable }
 
+export { useVirtualizerContext_unstable }
+
+export { useVirtualizerScrollView_unstable }
+
+export { useVirtualizerScrollViewDynamic_unstable }
+
+export { useVirtualizerScrollViewDynamicStyles_unstable }
+
+export { useVirtualizerScrollViewStyles_unstable }
+
 export { useVirtualizerStyles_unstable }
 
 export { Virtualizer }
@@ -398,7 +490,35 @@ export { VirtualizerChildRenderFunction }
 
 export { virtualizerClassNames }
 
+export { VirtualizerContextProps }
+
+export { VirtualizerContextProvider }
+
+export { VirtualizerMeasureDynamicProps }
+
+export { VirtualizerMeasureProps }
+
 export { VirtualizerProps }
+
+export { VirtualizerScrollView }
+
+export { virtualizerScrollViewClassNames }
+
+export { VirtualizerScrollViewDynamic }
+
+export { virtualizerScrollViewDynamicClassNames }
+
+export { VirtualizerScrollViewDynamicProps }
+
+export { VirtualizerScrollViewDynamicSlots }
+
+export { VirtualizerScrollViewDynamicState }
+
+export { VirtualizerScrollViewProps }
+
+export { VirtualizerScrollViewSlots }
+
+export { VirtualizerScrollViewState }
 
 export { VirtualizerSlots }
 

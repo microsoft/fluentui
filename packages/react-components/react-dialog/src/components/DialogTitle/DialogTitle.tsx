@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useDialogTitle_unstable } from './useDialogTitle';
 import { renderDialogTitle_unstable } from './renderDialogTitle';
-import { useDialogTitleStyles_unstable } from './useDialogTitleStyles';
+import { useDialogTitleStyles_unstable } from './useDialogTitleStyles.styles';
 import type { DialogTitleProps } from './DialogTitle.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `DialogTitle` component expects to have a title/header
@@ -15,8 +15,7 @@ export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardR
 
   useDialogTitleStyles_unstable(state);
 
-  const { useDialogTitleStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useDialogTitleStyles_unstable')(state);
 
   return renderDialogTitle_unstable(state);
 });

@@ -1,19 +1,12 @@
 import * as React from 'react';
 import type { CalendarStrings, DateFormatting } from '../../utils';
-import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
 
-/**
- * {@docCategory Calendar}
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarDay {
   focus(): void;
 }
 
-/**
- * {@docCategory Calendar}
- */
 export interface CalendarDayProps extends CalendarDayGridProps {
   /**
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
@@ -49,18 +42,13 @@ export interface CalendarDayProps extends CalendarDayGridProps {
   onDismiss?: () => void;
 
   /**
-   * Custom navigation icons.
-   */
-  navigationIcons: CalendarNavigationIcons;
-
-  /**
    * Callback function when the header is selected
    */
   onHeaderSelect?: () => void;
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   * @defaultvalue false
+   * @default false
    */
   showWeekNumbers?: boolean;
 
@@ -71,7 +59,7 @@ export interface CalendarDayProps extends CalendarDayGridProps {
 
   /**
    * Whether the calendar should show 6 weeks by default.
-   * @defaultvalue false
+   * @default false
    */
   showSixWeeksByDefault?: boolean;
 
@@ -92,27 +80,25 @@ export interface CalendarDayProps extends CalendarDayGridProps {
 
   /**
    * Whether the close button should be shown or not
-   * @defaultvalue false
+   * @default false
    */
   showCloseButton?: boolean;
 
   /**
    * Allows all dates and buttons to be focused, including disabled ones
-   * @defaultvalue false
+   * @default false
    */
   allFocusable?: boolean;
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
   /**
    * Accept custom classNames
    */
   className?: string;
-
-  // Insert CalendarDay style props below
 
   /**
    * Whether the header is clickable
@@ -126,7 +112,7 @@ export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayStyles {
   /**

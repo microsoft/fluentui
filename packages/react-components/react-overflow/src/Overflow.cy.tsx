@@ -3,11 +3,13 @@ import { mount } from '@cypress/react';
 import {
   Overflow,
   OverflowItem,
+  OverflowDivider,
   OverflowItemProps,
   OverflowProps,
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
+  useIsOverflowItemVisible,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 
@@ -90,7 +92,17 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
         +{overflowCount}
       </button>
       <Portal>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: 200 }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            width: 200,
+            position: 'fixed',
+            bottom: 0,
+            right: 0,
+            border: '2px dotted magenta',
+          }}
+        >
           {Object.entries(itemVisibility).map(([id, visible]) => (
             <>
               <div>{id}</div>
@@ -136,6 +148,36 @@ export const Divider: React.FC<{
       <div style={styles.inner} />
       {children}
     </div>
+  );
+};
+
+export const CustomDivider: React.FC<{
+  groupId: string;
+  children?: React.ReactNode;
+}> = ({ groupId, children }) => {
+  const isGroupVisible = useIsOverflowGroupVisible(groupId);
+
+  if (isGroupVisible === 'hidden') {
+    return null;
+  }
+
+  const selector = {
+    [selectors.divider]: groupId,
+  };
+
+  const style = {
+    display: 'inline-block',
+    width: '30px',
+    backgroundColor: 'red',
+    height: '20px',
+  };
+
+  return (
+    <OverflowDivider groupId={groupId}>
+      <div {...selector} style={style}>
+        {children}
+      </div>
+    </OverflowDivider>
   );
 };
 
@@ -188,6 +230,31 @@ describe('Overflow', () => {
     overflowCases.forEach(({ overflowCount, containerSize }) => {
       setContainerSize(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items when there's more than one child element`, () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const overflowElementIndex = 6;
+    mount(
+      <Container width={350}>
+        <div>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </div>
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}]`).each((value, index) => {
+      if (index >= overflowElementIndex) {
+        expect(Cypress.$(value).css('display')).to.equal('none');
+      } else {
+        expect(Cypress.$(value).css('display')).to.equal('inline-block');
+      }
     });
   });
 
@@ -430,6 +497,65 @@ describe('Overflow', () => {
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
   });
 
+  it('should collapse correctly with custom divider', () => {
+    mount(
+      <Container padding={8}>
+        <Item id={'1'} groupId={'1'}>
+          1
+        </Item>
+        <CustomDivider groupId={'1'} data-divider="2">
+          <span data-divider="2" />
+        </CustomDivider>
+        <Item id={'2'} groupId={'2'}>
+          2
+        </Item>
+        <CustomDivider groupId={'2'} data-divider="2">
+          <span data-divider="2" />
+        </CustomDivider>
+        <Item id={'3'} groupId={'3'}>
+          3
+        </Item>
+        <Item id={'4'} groupId={'3'}>
+          4
+        </Item>
+        <CustomDivider groupId={'3'} data-divider="3">
+          <span data-divider="3" />
+        </CustomDivider>
+        <Item id={'5'} groupId={'4'}>
+          5
+        </Item>
+        <Item id={'6'} groupId={'4'}>
+          6
+        </Item>
+        <Item id={'7'} groupId={'4'}>
+          7
+        </Item>
+        <CustomDivider groupId={'4'} data-divider="4">
+          <span data-divider="4" />
+        </CustomDivider>
+        <Item id={'8'} groupId={'5'}>
+          8
+        </Item>
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
+    setContainerSize(350);
+    cy.get(`[${selectors.divider}="4"]`).should('not.exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 3);
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    setContainerSize(250);
+    cy.get(`[${selectors.divider}="3"]`).should('not.exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 2);
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerSize(200);
+    cy.get(`[${selectors.divider}="1"]`).should('exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 1);
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+  });
+
   it('should remove overflow menu if the last overflowed item can take its place', () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     mount(
@@ -513,5 +639,36 @@ describe('Overflow', () => {
 
     setContainerSize(500);
     cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
+  });
+
+  it('Should have correct initial visibility state', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const Assert = () => {
+      const isVisible = mapHelper.map(i => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        return useIsOverflowItemVisible(i.toString());
+      });
+
+      if (isVisible.every(x => x)) {
+        return <span data-passed="true" />;
+      }
+
+      return null;
+    };
+
+    mount(
+      <Container minimumVisible={5}>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+        <Assert />
+      </Container>,
+    );
+
+    setContainerSize(500);
+    cy.get('[data-passed="true"]').should('exist');
   });
 });

@@ -1,0 +1,1 @@
+The `Tree` component supports different appearances for TreeItems. The default apperance value is `subtle`. The `subtle-alpha` appearance minimizes emphasis on hovered or focused states, while the `transparent` appearance removes the background color.

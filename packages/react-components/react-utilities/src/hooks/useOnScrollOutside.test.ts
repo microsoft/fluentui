@@ -29,14 +29,18 @@ describe('useOnScrollOutside', () => {
     expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything());
   });
 
-  it('should not add event listeners when disabled', () => {
+  it('should not add or remove event listeners when disabled', () => {
     // Arrange
     const element = { addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown as Document;
 
     // Act
-    renderHook(() => useOnScrollOutside({ disabled: true, element, callback: jest.fn(), refs: [] }));
+    const { unmount } = renderHook(() =>
+      useOnScrollOutside({ disabled: true, element, callback: jest.fn(), refs: [] }),
+    );
+    unmount();
 
     // Assert
     expect(element.addEventListener).toHaveBeenCalledTimes(0);
+    expect(element.removeEventListener).toHaveBeenCalledTimes(0);
   });
 });

@@ -1,0 +1,1 @@
+Layout components can be customized with different styles to make it more visually appealing. In the example below, the component is used to display chat messages. We differentiate between read and unread messages by applying customized styles using the `makeStyles` hook.

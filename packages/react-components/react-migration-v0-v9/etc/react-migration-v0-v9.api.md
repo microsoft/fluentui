@@ -7,11 +7,11 @@
 import { ComponentProps } from '@fluentui/react-components';
 import { GriffelStyle } from '@fluentui/react-components';
 import { ObjectOf } from '@fluentui/react-northstar';
-import { ObjectShorthandValue } from '@fluentui/react-northstar';
+import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-components';
 import { Slot as Slot_2 } from '@fluentui/react-utilities';
-import { SlotRenderFunction } from '@fluentui/react-components';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Flex: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & FlexProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -133,7 +133,7 @@ export type StyledTextSlots = {
 };
 
 // @public (undocumented)
-export const useFlexStyles: () => Record<"fill" | "wrap" | "inline" | "flex" | "column" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
+export const useFlexStyles: () => Record<"flex" | "fill" | "column" | "wrap" | "inline" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
 
 // @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;

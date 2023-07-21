@@ -2,7 +2,6 @@
 
 exports[`DialogTrigger renders a default state 1`] = `
 <button
-  aria-expanded={false}
   data-tabster="{\\"deloser\\":{}}"
   onClick={[Function]}
 >

@@ -27,6 +27,7 @@ import {
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
 import { focusTreatmentBase } from '../styles/focus';
+import { DirectionalStyleSheetBehavior } from '../styles/direction';
 
 export const optionStyles: (
   context: ElementDefinitionContext,
@@ -131,6 +132,11 @@ export const optionStyles: (
       margin-inline-end: 1ch;
     }
   `.withBehaviors(
+    new DirectionalStyleSheetBehavior(null, css`
+      :host::before {
+        right: calc((${focusStrokeWidth} - ${strokeWidth}) * 1px);
+      }
+    `),
     forcedColorsStylesheetBehavior(
       css`
         :host {

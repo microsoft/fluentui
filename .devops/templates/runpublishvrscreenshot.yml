@@ -19,7 +19,7 @@ steps:
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
       if [[ $isPR == true ]]; then
-        packageAffected=$(yarn --silent check:affected-package --packages ${{ parameters.vrTestPackageName }} --pr=true)
+        packageAffected=$(yarn --silent check:affected --package ${{ parameters.vrTestPackageName }})
         if [[ $packageAffected == false ]]; then
           echo "In PR pipeline but NOT affecting test package. Skipping test run"
           echo "##vso[task.setvariable variable=vrTestSkip;]yes"

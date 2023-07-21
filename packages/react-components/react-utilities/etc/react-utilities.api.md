@@ -28,6 +28,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
     [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
 };
 
+// @internal (undocumented)
+export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
+
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
@@ -71,6 +74,12 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
 };
 
 // @internal
+export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
+    slots: Slots<R>;
+    slotProps: ObjectSlotProps<R>;
+};
+
+// @internal
 export function getTriggerChild<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children']): (React_2.ReactElement<Partial<TriggerChildProps>> & {
     ref?: React_2.Ref<any>;
 }) | null;
@@ -81,7 +90,7 @@ export const IdPrefixProvider: React_2.Provider<string | undefined>;
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
-// @internal
+// @public
 export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
     constructorName?: ConstructorName;
 }): element is InstanceType<(typeof globalThis)[ConstructorName]>;
@@ -106,6 +115,34 @@ export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
+// @public (undocumented)
+export type OnSelectionChangeCallback = (event: React_2.SyntheticEvent, selectedItems: Set<SelectionItemId>) => void;
+
+// @public (undocumented)
+export type OnSelectionChangeData = {
+    selectedItems: Set<SelectionItemId>;
+};
+
+// @internal (undocumented)
+export interface PriorityQueue<T> {
+    // (undocumented)
+    all: () => T[];
+    // (undocumented)
+    clear: () => void;
+    // (undocumented)
+    contains: (item: T) => boolean;
+    // (undocumented)
+    dequeue: () => T;
+    // (undocumented)
+    enqueue: (item: T) => void;
+    // (undocumented)
+    peek: () => T | null;
+    // (undocumented)
+    remove: (item: T) => void;
+    // (undocumented)
+    size: () => number;
+}
 
 // @public (undocumented)
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
@@ -134,6 +171,37 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = R
     defaultProps?: Props;
 };
 
+// @public (undocumented)
+export type SelectionHookParams = {
+    selectionMode: SelectionMode_2;
+    defaultSelectedItems?: Iterable<SelectionItemId>;
+    selectedItems?: Iterable<SelectionItemId>;
+    onSelectionChange?(event: React_2.SyntheticEvent, data: OnSelectionChangeData): void;
+};
+
+// @public (undocumented)
+export type SelectionItemId = string | number;
+
+// @public (undocumented)
+export interface SelectionMethods {
+    // (undocumented)
+    clearItems(event: React_2.SyntheticEvent): void;
+    // (undocumented)
+    deselectItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    // (undocumented)
+    isSelected(id: SelectionItemId): boolean;
+    // (undocumented)
+    selectItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    // (undocumented)
+    toggleAllItems(event: React_2.SyntheticEvent, itemIds: SelectionItemId[]): void;
+    // (undocumented)
+    toggleItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+}
+
+// @public (undocumented)
+type SelectionMode_2 = 'single' | 'multiselect';
+export { SelectionMode_2 as SelectionMode }
+
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
@@ -142,6 +210,9 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
         as: As;
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+
+// @internal
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
 
 // @public
 export type SlotClassNames<Slots> = {
@@ -152,7 +223,7 @@ export type SlotClassNames<Slots> = {
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
 
 // @public (undocumented)
-export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
+export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => React_2.ReactNode;
 
 // @public (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
@@ -173,6 +244,11 @@ export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
+};
+
+// @public
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
 };
 
 // @internal
@@ -226,6 +302,9 @@ export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType |
 
 // @public (undocumented)
 export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
+
+// @public (undocumented)
+export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];

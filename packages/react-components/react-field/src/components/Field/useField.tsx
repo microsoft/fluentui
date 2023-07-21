@@ -3,7 +3,7 @@ import * as React from 'react';
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import type { FieldChildProps, FieldProps, FieldState } from './Field.types';
+import type { FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
@@ -25,21 +25,22 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const {
     children,
     orientation = 'vertical',
-    required,
+    required = false,
     validationState = props.validationMessage ? 'error' : 'none',
-    size,
+    size = 'medium',
   } = props;
 
   const baseId = useId('field-');
+  const generatedControlId = baseId + '__control';
 
   const root = getNativeElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']);
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
+      htmlFor: generatedControlId,
       id: baseId + '__label',
       required,
       size,
-      // htmlFor is handled below
     },
   });
 
@@ -64,43 +65,12 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     },
   });
 
-  const controlProps: FieldChildProps = React.isValidElement(children) ? { ...children.props } : {};
-
-  if (label) {
-    controlProps['aria-labelledby'] ??= label.id;
-
-    if (!label.htmlFor) {
-      // Assign the child a generated ID if doesn't already have an ID
-      controlProps.id ??= baseId + '__control';
-      label.htmlFor = controlProps.id;
-    }
-  }
-
-  if (validationMessage || hint) {
-    // The control is described by the validation message, or hint, or both
-    // We also preserve and append any aria-describedby supplied by the user
-    // For reference: https://github.com/microsoft/fluentui/pull/25580#discussion_r1017259933
-    controlProps['aria-describedby'] = [validationMessage?.id, hint?.id, controlProps['aria-describedby']]
-      .filter(Boolean)
-      .join(' ');
-  }
-
-  if (validationState === 'error') {
-    controlProps['aria-invalid'] ??= true;
-  }
-
-  if (required) {
-    controlProps['aria-required'] ??= true;
-  }
-
-  if (React.isValidElement(children)) {
-    root.children = React.cloneElement(children, controlProps);
-  } else if (typeof children === 'function') {
-    root.children = children(controlProps);
-  }
-
   return {
+    children,
+    generatedControlId,
     orientation,
+    required,
+    size,
     validationState,
     components: {
       root: 'div',

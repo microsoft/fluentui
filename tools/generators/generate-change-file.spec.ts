@@ -1,4 +1,3 @@
-/* eslint-disable @fluentui/max-len */
 import { logger } from '@nrwl/devkit';
 import * as chalk from 'chalk';
 

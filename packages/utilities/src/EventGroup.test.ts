@@ -13,6 +13,7 @@ describe('EventGroup', () => {
     let ev = document.createEvent('HTMLEvents');
 
     eg.on(sourceButton, 'click', parent.cb);
+    // eslint-disable-next-line deprecation/deprecation
     ev.initEvent('click', true, true);
 
     sourceButton.dispatchEvent(ev);
@@ -149,6 +150,7 @@ describe('EventGroup', () => {
     try {
       let ev = document.createEvent('HTMLEvents');
 
+      // eslint-disable-next-line deprecation/deprecation
       ev.initEvent('click', true, true);
 
       grandChildButton.dispatchEvent(ev);

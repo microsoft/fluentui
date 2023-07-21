@@ -59,7 +59,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -84,7 +84,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -429,7 +429,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -454,7 +454,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -716,7 +716,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -741,7 +741,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -923,7 +923,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -948,7 +948,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1130,7 +1130,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -1155,7 +1155,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1327,7 +1327,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -1352,7 +1352,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1534,7 +1534,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -1715,7 +1715,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -1740,7 +1740,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1922,7 +1922,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
@@ -2083,6 +2083,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2115,7 +2116,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   role="none"
                 >
                   <button
-                    aria-label="first Lorem ipsum dolor sit amet selected"
+                    aria-label="first Lorem ipsum dolor sit amet"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2205,7 +2206,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   role="none"
                 >
                   <button
-                    aria-label="Winter is coming selected"
+                    aria-label="Winter is coming"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}

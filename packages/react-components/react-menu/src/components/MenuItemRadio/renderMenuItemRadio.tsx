@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { MenuItemRadioState } from './MenuItemRadio.types';
 import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
 
@@ -8,7 +11,7 @@ import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
  * slots to children.
  */
 export const renderMenuItemRadio_unstable = (state: MenuItemRadioState) => {
-  const { slots, slotProps } = getSlots<MenuItemSlots>(state);
+  const { slots, slotProps } = getSlotsNext<MenuItemSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

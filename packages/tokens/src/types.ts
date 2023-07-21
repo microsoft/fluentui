@@ -38,6 +38,8 @@ export type ColorTokens = {
   colorCompoundBrandForeground1Pressed: string;
   colorBrandForeground1: string;
   colorBrandForeground2: string;
+  colorBrandForeground2Hover: string;
+  colorBrandForeground2Pressed: string;
   colorNeutralForeground1Static: string;
   colorNeutralForegroundInverted: string;
   colorNeutralForegroundInvertedHover: string;
@@ -78,8 +80,10 @@ export type ColorTokens = {
   colorNeutralBackground5Pressed: string;
   colorNeutralBackground5Selected: string;
   colorNeutralBackground6: string;
-  colorNeutralBackgroundStatic: string;
   colorNeutralBackgroundInverted: string;
+  colorNeutralBackgroundStatic: string;
+  colorNeutralBackgroundAlpha: string;
+  colorNeutralBackgroundAlpha2: string;
   colorSubtleBackground: string;
   colorSubtleBackgroundHover: string;
   colorSubtleBackgroundPressed: string;
@@ -112,6 +116,8 @@ export type ColorTokens = {
   colorCompoundBrandBackgroundPressed: string;
   colorBrandBackgroundStatic: string;
   colorBrandBackground2: string;
+  colorBrandBackground2Hover: string;
+  colorBrandBackground2Pressed: string;
   colorBrandBackgroundInverted: string;
   colorBrandBackgroundInvertedHover: string;
   colorBrandBackgroundInvertedPressed: string;
@@ -126,6 +132,7 @@ export type ColorTokens = {
   colorNeutralStroke1Selected: string;
   colorNeutralStroke2: string;
   colorNeutralStroke3: string;
+  colorNeutralStrokeSubtle: string;
   colorNeutralStrokeOnBrand: string;
   colorNeutralStrokeOnBrand2: string;
   colorNeutralStrokeOnBrand2Hover: string;
@@ -133,6 +140,8 @@ export type ColorTokens = {
   colorNeutralStrokeOnBrand2Selected: string;
   colorBrandStroke1: string;
   colorBrandStroke2: string;
+  colorBrandStroke2Hover: string;
+  colorBrandStroke2Pressed: string;
   colorCompoundBrandStroke: string;
   colorCompoundBrandStrokeHover: string;
   colorCompoundBrandStrokePressed: string;
@@ -141,6 +150,7 @@ export type ColorTokens = {
   colorTransparentStroke: string;
   colorTransparentStrokeInteractive: string;
   colorTransparentStrokeDisabled: string;
+  colorNeutralStrokeAlpha: string;
   colorStrokeFocus1: string;
   colorStrokeFocus2: string;
   colorNeutralShadowAmbient: string;
@@ -638,7 +648,6 @@ export type ShadowBrandTokens = {
 };
 
 export type Greys =
-  | 0
   | 2
   | 4
   | 6
@@ -687,8 +696,7 @@ export type Greys =
   | 92
   | 94
   | 96
-  | 98
-  | 100;
+  | 98;
 
 export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 

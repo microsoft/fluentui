@@ -247,6 +247,7 @@ function useProximityHandlers(
   props: ICoachmarkProps,
   translateAnimationContainer: React.RefObject<HTMLDivElement>,
   openCoachmark: () => void,
+  setBounds: (bounds: IRectangle | undefined) => void,
 ) {
   const { setTimeout, clearTimeout } = useSetTimeout();
 
@@ -285,6 +286,7 @@ function useProximityHandlers(
           timeoutIds.push(
             setTimeout((): void => {
               setTargetElementRect();
+              setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
             }, 100),
           );
         });
@@ -402,15 +404,6 @@ function useDeprecationWarning(props: ICoachmarkProps) {
   }
 }
 
-function useGetBounds(props: ICoachmarkProps): IRectangle | undefined {
-  const async = useAsync();
-  const [bounds, setBounds] = React.useState<IRectangle | undefined>();
-  React.useEffect(() => {
-    async.requestAnimationFrame(() => setBounds(getBounds(props.isPositionForced, props.positioningContainerProps)));
-  }, [async, props.isPositionForced, props.positioningContainerProps]);
-  return bounds;
-}
-
 const COMPONENT_NAME = 'CoachmarkBase';
 
 export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.forwardRef<
@@ -426,13 +419,20 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
   const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
   const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
   const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
+  const [bounds, setBounds] = React.useState<IRectangle | undefined>(
+    getBounds(props.isPositionForced, props.positioningContainerProps),
+  );
   const alertText = useAriaAlert(props);
   const entityHost = useAutoFocus(props);
 
   useListeners(props, translateAnimationContainer, openCoachmark);
   useComponentRef(props);
-  useProximityHandlers(props, translateAnimationContainer, openCoachmark);
+  useProximityHandlers(props, translateAnimationContainer, openCoachmark, setBounds);
   useDeprecationWarning(props);
+
+  React.useEffect(() => {
+    setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
+  }, [props.isPositionForced, props.positioningContainerProps]);
 
   const {
     beaconColorOne,
@@ -484,7 +484,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
       finalHeight={finalHeight}
       ref={forwardedRef}
       onPositioned={onPositioned}
-      bounds={useGetBounds(props)}
+      bounds={bounds}
       {...positioningContainerProps}
     >
       <div className={classNames.root}>
@@ -572,6 +572,7 @@ function getBounds(
 }
 
 function isInsideElement(
+  // eslint-disable-next-line deprecation/deprecation
   targetElementRect: ClientRect,
   mouseX: number,
   mouseY: number,

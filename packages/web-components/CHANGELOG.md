@@ -1,8 +1,44 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 26 Jan 2023 07:35:32 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2023 07:35:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.16)
+
+Thu, 20 Jul 2023 07:35:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.15..@fluentui/web-components_v2.5.16)
+
+### Patches
+
+- fix(web-components): ensures that text area size responds to rows and cols attributes ([PR #28135](https://github.com/microsoft/fluentui/pull/28135) by vnbaaij@outlook.com)
+
+## [2.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.15)
+
+Thu, 01 Jun 2023 07:38:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.14..@fluentui/web-components_v2.5.15)
+
+### Patches
+
+- fix listbox-option selected indicator position in RTL instances ([PR #27894](https://github.com/microsoft/fluentui/pull/27894) by chhol@microsoft.com)
+
+## [2.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.14)
+
+Mon, 17 Apr 2023 07:40:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.13..@fluentui/web-components_v2.5.14)
+
+### Patches
+
+- update FAST dependencies to mitigate Safari 16.4 AdoptedStyleSheets bug ([PR #27578](https://github.com/microsoft/fluentui/pull/27578) by chhol@microsoft.com)
+
+## [2.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.13)
+
+Tue, 11 Apr 2023 07:43:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.12..@fluentui/web-components_v2.5.13)
+
+### Patches
+
+- update fast foundation packages to import bug fixes ([PR #27506](https://github.com/microsoft/fluentui/pull/27506) by chhol@microsoft.com)
 
 ## [2.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.12)
 

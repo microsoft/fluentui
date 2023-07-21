@@ -19,6 +19,15 @@ export interface OverflowItemEntry {
   groupId?: string;
 }
 
+export interface OverflowDividerEntry {
+  /**
+   * HTML element that will be disappear when overflowed
+   */
+  element: HTMLElement;
+
+  groupId: string;
+}
+
 /**
  * signature similar to standard event listeners, but typed to handle the custom event
  */
@@ -110,6 +119,16 @@ export interface OverflowManager {
    * available space and check if additional items need to overflow
    */
   addOverflowMenu: (element: HTMLElement) => void;
+
+  /**
+   * Add overflow divider
+   */
+  addDivider: (divider: OverflowDividerEntry) => void;
+
+  /**
+   * Remove overflow divider
+   */
+  removeDivider: (groupId: string) => void;
 
   /**
    * Unsets the overflow menu element

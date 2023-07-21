@@ -1,11 +1,13 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
 
-import { getSlots } from '@fluentui/react-utilities';
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 
 import type { AlertState, AlertSlots } from './Alert.types';
 
 export const renderAlert_unstable = (state: AlertState) => {
-  const { slots, slotProps } = getSlots<AlertSlots>(state);
+  const { slots, slotProps } = getSlotsNext<AlertSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

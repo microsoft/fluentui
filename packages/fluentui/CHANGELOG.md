@@ -17,11 +17,22 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Documentation
+- `Input`: Remove wrong recommendation - usage of role="search" #28168 @kolaps33 ([#28168](https://github.com/microsoft/fluentui/pull/28168))
+
+### Fixes
+- `Datepicker`: add onCalendarOpenStateChange prop. @jurokapsiar ([#28136](https://github.com/microsoft/fluentui/pull/28136))
+- Outline color now respects OS force colors settings. @george-cz ([#28182](https://github.com/microsoft/fluentui/pull/28182))
+
+<!--------------------------------[ v0.66.4 ]------------------------------- -->
+## [v0.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.4) (2023-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.3..@fluentui/react-northstar_v0.66.4)
 
 ### Fixes
 - `Datepicker`: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))
 - `Datepicker`: Disabled buttons should be green in HC theme. @jurokapsiar ([#27114](https://github.com/microsoft/fluentui/pull/27114))
 - `SplitButton`: should display correctly in high contrast mode @ling1726 ([#27137](https://github.com/microsoft/fluentui/pull/27137))
+- `Embed`: play/pause indicator should render correctly in high contrast mode @ling1726 ([#27213](https://github.com/microsoft/fluentui/pull/27213))
 
 <!--------------------------------[ v0.66.3 ]------------------------------- -->
 ## [v0.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.3) (2023-02-27)

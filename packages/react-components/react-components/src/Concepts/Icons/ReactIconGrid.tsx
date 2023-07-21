@@ -6,6 +6,7 @@ import * as ReactIcons from '@fluentui/react-icons';
 import { Input } from '@fluentui/react-input';
 import { makeStyles, shorthands } from '@griffel/react';
 
+// eslint-disable-next-line @griffel/styles-file
 const useStyles = makeStyles({
   grid: {
     display: 'grid',

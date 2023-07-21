@@ -56,6 +56,10 @@ const Example = () => (
       <Label>Danger buttons (both primary and default)</Label>
       <DefaultButton className="danger" text="danger defaultbutton" />
       <PrimaryButton className="danger" text="danger primarybutton" />
+
+      <Label>Tag buttons (both primary and default)</Label>
+      <DefaultButton className="tag" text="tag defaultbutton" />
+      <PrimaryButton className="tag" text="tag primarybutton" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />

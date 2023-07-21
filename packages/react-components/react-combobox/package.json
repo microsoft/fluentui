@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-combobox",
-  "version": "9.2.2",
+  "version": "9.4.8",
   "description": "Fluent UI React Combobox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -22,27 +22,29 @@
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.1",
-    "@fluentui/react-context-selector": "^9.1.13",
-    "@fluentui/react-field": "9.0.0-alpha.24",
-    "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-portal": "^9.1.12",
-    "@fluentui/react-positioning": "^9.5.3",
-    "@fluentui/react-shared-contexts": "^9.3.0",
-    "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.7.0",
-    "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0"
+    "@fluentui/keyboard-keys": "^9.0.3",
+    "@fluentui/react-context-selector": "^9.1.26",
+    "@fluentui/react-field": "^9.1.12",
+    "@fluentui/react-icons": "^2.0.207",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.12",
+    "@fluentui/react-portal": "^9.3.2",
+    "@fluentui/react-positioning": "^9.8.0",
+    "@fluentui/react-shared-contexts": "^9.6.0",
+    "@fluentui/react-theme": "^9.1.9",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@griffel/react": "^1.5.7",
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
@@ -52,7 +54,6 @@
     "scheduler": "^0.19.0 || ^0.20.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "prerelease"
@@ -61,6 +62,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
