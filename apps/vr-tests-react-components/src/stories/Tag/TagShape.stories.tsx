@@ -8,7 +8,7 @@ import { Steps } from 'storywright';
 const tagId = 'tag-id';
 const steps = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
-  .focus(`#${tagId}}`)
+  .focus(`#${tagId}`)
   .snapshot('focused', { cropTo: '.testWrapper' })
   .end();
 
