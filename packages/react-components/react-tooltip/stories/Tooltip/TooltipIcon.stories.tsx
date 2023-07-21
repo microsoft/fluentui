@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { Label, makeStyles, mergeClasses, tokens, Tooltip, useId } from '@fluentui/react-components';
 import { Info16Regular } from '@fluentui/react-icons';
 import type { TooltipProps } from '@fluentui/react-components';
