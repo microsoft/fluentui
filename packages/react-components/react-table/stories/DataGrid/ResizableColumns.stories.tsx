@@ -20,6 +20,11 @@ import {
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -157,7 +162,21 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const columnSizingOptions = {
+  file: {
+    minWidth: 80,
+    defaultWidth: 120,
+  },
+  author: {
+    defaultWidth: 180,
+    minWidth: 120,
+    idealWidth: 180,
+  },
+};
+
 export const ResizableColumns = () => {
+  const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
   return (
     <DataGrid
       items={items}
@@ -165,28 +184,31 @@ export const ResizableColumns = () => {
       sortable
       getRowId={item => item.file.label}
       selectionMode="multiselect"
-      onSelectionChange={(_, data) => console.log(data)}
       resizableColumns
-      columnSizingOptions={{
-        file: {
-          minWidth: 80,
-          defaultWidth: 120,
-        },
-        author: {
-          defaultWidth: 180,
-          minWidth: 120,
-          idealWidth: 180,
-        },
-      }}
-      onColumnResize={(event, { columnId, width }) => {
-        if (event instanceof MouseEvent) {
-          console.log(event.offsetX, event.offsetY, columnId, width);
-        }
-      }}
+      columnSizingOptions={columnSizingOptions}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+          {({ renderHeaderCell, columnId }, dataGrid) =>
+            dataGrid.resizableColumns ? (
+              <Menu openOnContext>
+                <MenuTrigger>
+                  <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                    {renderHeaderCell()}
+                  </DataGridHeaderCell>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
+                      Keyboard Column Resizing
+                    </MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            ) : (
+              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+            )
+          }
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
@@ -211,6 +233,13 @@ ResizableColumns.parameters = {
         '',
         'The control over the state of resizing can be achieved with the combination of `onColumnResize` callback ',
         'and setting the `idealWidth` for a column in `columnSizingOptions`.',
+        '',
+        'For accessibility, the `DataGrid` component supports keyboard navigation and screen reader navigation',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access other DataGrid features.',
+        '',
+        'Once an option is selected, the arrows keys can be used to interact with the `DataGrid` (e.g. resize columns).',
+        '`ESC`, `ENTER`, or `SPACE` can be used to return to the original navigation mode.',
       ].join('\n'),
     },
   },

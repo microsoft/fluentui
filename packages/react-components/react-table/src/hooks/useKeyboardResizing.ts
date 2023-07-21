@@ -18,7 +18,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     columnResizeStateRef.current = columnResizeState;
   }, [columnResizeState]);
 
-  const refMap = React.useMemo(() => new Map(), []);
+  const resizeHandleRefs = React.useMemo(() => new Map(), []);
 
   const keyboardHandler = useEventCallback((event: React.KeyboardEvent) => {
     if (!columnId) {
@@ -55,7 +55,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       case Escape:
         stopEvent();
         // Just blur here, the onBlur handler will take care of the rest (disableInteractiveMode).
-        refMap.get(columnId)?.current?.blur();
+        resizeHandleRefs.get(columnId)?.current?.blur();
         break;
     }
   });
@@ -68,10 +68,10 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       // Only after we have called "setColumnId" the tabIndex will be set to 0 for this handle.
       // Meaning we have to wait until the DOM updates with the new tabIndex and then we can focus.
       setTimeout(() => {
-        refMap.get(colId)?.current?.focus();
+        resizeHandleRefs.get(colId)?.current?.focus();
       }, 50);
     },
-    [refMap],
+    [resizeHandleRefs],
   );
 
   const disableInteractiveMode = React.useCallback(() => {
@@ -80,13 +80,13 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       onChangeRef.current?.(columnId, false);
     }
     // Find the previous focusable element (table header button) and focus it.
-    const el = refMap.get(columnId)?.current;
+    const el = resizeHandleRefs.get(columnId)?.current;
     if (el) {
       findPrevFocusable(el)?.focus();
     }
 
     setColumnId(undefined);
-  }, [columnId, findPrevFocusable, refMap]);
+  }, [columnId, findPrevFocusable, resizeHandleRefs]);
 
   const toggleInteractiveMode = (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => {
     onChangeRef.current = onChange;
@@ -102,11 +102,11 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
   const getKeyboardResizingRef = React.useCallback(
     (colId: TableColumnId) => {
-      const ref = refMap.get(colId) || React.createRef<HTMLDivElement>();
-      refMap.set(colId, ref);
+      const ref = resizeHandleRefs.get(colId) || React.createRef<HTMLDivElement>();
+      resizeHandleRefs.set(colId, ref);
       return ref;
     },
-    [refMap],
+    [resizeHandleRefs],
   );
 
   // This makes sure the left and right arrow keys are ignored in tabster,
