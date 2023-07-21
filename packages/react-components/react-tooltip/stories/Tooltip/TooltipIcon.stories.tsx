@@ -17,10 +17,10 @@ export const Icon = (props: Partial<TooltipProps>) => {
   const styles = useStyles();
   const iconId = useId('icon');
   const contentId = useId('content');
-  const [open, setOpen] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
-    <div aria-owns={open ? contentId : undefined} className={styles.root}>
+    <div aria-owns={visible ? contentId : undefined} className={styles.root}>
       <Label>This is an icon with a Tooltip to show extra information</Label>
       <Tooltip
         content={{
@@ -30,14 +30,14 @@ export const Icon = (props: Partial<TooltipProps>) => {
         positioning="above-start"
         withArrow
         relationship="label"
-        onVisibleChange={(e, { visible }) => setOpen(visible)}
+        onVisibleChange={(e, data) => setVisible(data.visible)}
         {...props}
       >
         <Info16Regular
           tabIndex={0}
           id={iconId}
           aria-labelledby={`${iconId} ${contentId}`}
-          className={mergeClasses(open && styles.visible)}
+          className={mergeClasses(visible && styles.visible)}
         />
       </Tooltip>
     </div>
