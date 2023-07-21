@@ -60,8 +60,8 @@ body:
       label: Priority
       description: What is this feature's priority from your product's perspective
       options:
-        - Low
         - High
-        - Critical
+        - Normal
+        - Low
     validations:
       required: false
