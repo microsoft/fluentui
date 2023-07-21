@@ -1397,7 +1397,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         hidden={persistMenu ? !isOpen : undefined}
         shouldRestoreFocus={shouldRestoreFocus}
         // eslint-disable-next-line react/jsx-no-bind
-        preventDismissOnEvent={this._preventDismissOnScrollOrResize.bind(this)}
+        preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
       >
         {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>

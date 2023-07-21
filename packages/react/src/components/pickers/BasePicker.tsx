@@ -368,7 +368,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         directionalHint={DirectionalHint.bottomLeftEdge}
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
         // eslint-disable-next-line react/jsx-no-bind
-        preventDismissOnEvent={this._preventDismissOnScrollOrResize.bind(this)}
+        preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
