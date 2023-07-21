@@ -84,7 +84,7 @@ const useStyles = makeStyles({
   listbox: {
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...createMaxSizeStyles({ boxSizing: 'border-box', overflowY: 'auto' }),
+    ...createMaxSizeStyles(),
     maxHeight: '80vh',
   },
 

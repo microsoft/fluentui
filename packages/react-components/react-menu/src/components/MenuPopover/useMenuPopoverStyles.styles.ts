@@ -14,16 +14,13 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
     minWidth: '128px',
-    ...createMaxSizeStyles({ width: 'max-content' }),
-    '&[data-popper-scroll-y]': {
-      overflowX: 'hidden', // prevent horizontal scrollbar appearing if there's vertical overflow
-    },
     maxWidth: '300px',
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.padding('4px'),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
     ...createSlideStyles(10),
+    ...createMaxSizeStyles(true),
   },
 });
 

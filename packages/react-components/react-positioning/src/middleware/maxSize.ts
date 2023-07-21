@@ -11,33 +11,38 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
-      if (autoSize) {
+      // TODO comments
+      const internalAutoSize: boolean | undefined | 'height' | 'width' =
+        autoSize === 'always'
+          ? true
+          : autoSize === 'height-always'
+          ? 'height'
+          : autoSize === 'width-always'
+          ? 'width'
+          : autoSize;
+
+      if (internalAutoSize) {
+        elements.floating.setAttribute('data-popper-maxsize', '');
         elements.floating.style.setProperty('--maxsize-box-sizing', 'border-box');
       }
 
-      const applyMaxWidth = autoSize === 'always' || autoSize === 'width-always';
-      const applyWidth = rects.floating.width > availableWidth && (autoSize === true || autoSize === 'width');
+      const applyMaxWidth = internalAutoSize === true || internalAutoSize === 'width';
+      const widthOverflow = rects.floating.width > availableWidth;
 
-      const applyMaxHeight = autoSize === 'always' || autoSize === 'height-always';
-      const applyHeight = rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height');
+      const applyMaxHeight = internalAutoSize === true || internalAutoSize === 'height';
+      const heightOverflow = rects.floating.height > availableHeight;
 
       if (applyMaxWidth) {
         elements.floating.style.setProperty('--available-max-width', `${availableWidth}px`);
-        elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
       }
-      if (applyWidth) {
-        elements.floating.style.setProperty('--available-width', `${availableWidth}px`);
-        elements.floating.style.setProperty('--maxsize-overflow-x', 'auto');
+      if (applyMaxWidth && widthOverflow) {
         elements.floating.setAttribute('data-popper-scroll-x', '');
       }
 
       if (applyMaxHeight) {
         elements.floating.style.setProperty('--available-max-height', `${availableHeight}px`);
-        elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
       }
-      if (applyHeight) {
-        elements.floating.style.setProperty('--available-height', `${availableHeight}px`);
-        elements.floating.style.setProperty('--maxsize-overflow-y', 'auto');
+      if (applyMaxHeight && heightOverflow) {
         elements.floating.setAttribute('data-popper-scroll-y', '');
       }
     },
