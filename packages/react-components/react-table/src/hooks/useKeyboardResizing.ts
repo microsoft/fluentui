@@ -67,7 +67,8 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
       const handle = resizeHandleRefs.get(colId)?.current;
       if (handle) {
-        handle.tabIndex = 0;
+        handle.setAttribute('tabindex', '-1');
+        handle.tabIndex = -1;
         handle.focus();
       }
     },
@@ -83,8 +84,8 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     // Find the previous focusable element (table header button) and focus it.
     const el = resizeHandleRefs.get(columnId)?.current;
     if (el) {
-      el.tabIndex = -1; // Make sure the resize handle is not focusable anymore.
       findPrevFocusable(el)?.focus(); // Focus the previous focusable element (header button).
+      el.removeAttribute('tabindex');
     }
 
     setColumnId(undefined);

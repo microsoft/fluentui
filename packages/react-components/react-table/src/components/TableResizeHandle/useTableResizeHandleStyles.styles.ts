@@ -26,15 +26,11 @@ const useStyles = makeStyles({
     transitionDuration: '.2s',
     zIndex: 1,
 
-    // If the keyboard resize mode was entered with a keyboard, the parent header cell will have
-    // data-fui-focus-within with a border. Displaying a :focus border on the handle then collides with it.
-    // If the keyboard resize mode was entered with a mouse, however, the parent header cell will not have
-    // that data-attribute and we can use the :focus to draw border around the handle, also drawing the attention
-    // of the mouse user to the fact that the handle is interactive and they can drag it with the mouse.
-    ':focus:not([data-fui-focus-visible])': {
+    // If mouse users focus on the resize handle through a context menu, we want the handle
+    // to be visible because the mouse might not be hovering over the handle
+    ':focus': {
       opacity: 1,
-      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outlineStyle: 'none',
     },
 
     ':hover': {
