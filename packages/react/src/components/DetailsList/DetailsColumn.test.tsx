@@ -186,7 +186,7 @@ describe('DetailsColumn', () => {
     expect(component.exists(`#${referenceId}`)).toBe(true);
   });
 
-  it('does render invalid aria-describedby pointing to a custom tooltip not using ariaLabel', () => {
+  it('renders valid aria-describedby pointing to a custom tooltip not set using ariaLabel', () => {
     const column: IColumn = { ...baseColumn, isFiltered: true, filterAriaLabel: 'Foo' };
     let component: any;
     const columns = [column];

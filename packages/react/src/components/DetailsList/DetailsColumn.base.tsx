@@ -97,9 +97,9 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       column.columnActionsMode !== ColumnActionsMode.disabled &&
       (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined);
     // use aria-describedby to point to the tooltip if the tooltip is not using the ariaLabel string
-    const shouldAssociateTooltip =
-      (!this.props.onRenderColumnHeaderTooltip && this._hasAccessibleDescription()) ||
-      (this.props.onRenderColumnHeaderTooltip && !column.ariaLabel);
+    const shouldAssociateTooltip = this.props.onRenderColumnHeaderTooltip
+      ? !column.ariaLabel
+      : this._hasAccessibleDescription();
     const accNameDescription = {
       'aria-label': column.ariaLabel ? column.ariaLabel : column.isIconOnly ? column.name : undefined,
       'aria-labelledby': column.ariaLabel || column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
