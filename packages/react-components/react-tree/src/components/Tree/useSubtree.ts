@@ -18,7 +18,9 @@ export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   const { appearance = contextAppearance ?? 'subtle', size = contextSize ?? 'medium' } = props;
 
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const openItems = useTreeContext_unstable(ctx => ctx.openItems);
+  const checkedItems = useTreeContext_unstable(ctx => ctx.checkedItems);
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
   const open = openItems.has(value);
@@ -30,6 +32,7 @@ export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
     },
     appearance,
     size,
+    selectionMode,
     level: parentLevel + 1,
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, subtreeRef),
@@ -37,6 +40,7 @@ export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       ...props,
     }),
     openItems,
+    checkedItems,
     requestTreeResponse,
   };
 }

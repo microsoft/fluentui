@@ -5,7 +5,7 @@ import { isConformant } from '../../testing/isConformant';
 import { TreeItemSlotsProvider } from '../../contexts/treeItemSlotsContext';
 
 const Wrap: React.FC = props => (
-  <TreeItemSlotsProvider value={{ actions: { visible: true, children: '' }, aside: '', expandIcon: '' }}>
+  <TreeItemSlotsProvider value={{ actions: { visible: true, children: '' }, aside: '', expandIcon: '', selector: {} }}>
     {props.children}
   </TreeItemSlotsProvider>
 );

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Mon, 17 Jul 2023 21:27:35 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2023 18:27:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.23)
+
+Thu, 20 Jul 2023 18:27:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.22..@fluentui/react-card_v9.0.23)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
 
 ## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.22)
 

@@ -54,6 +54,14 @@ export const textAreaStyles: (context: ElementDefinitionContext, definition: Fou
     :host(.resize-vertical) .control {
       resize: vertical;
     }
+
+    :host([cols]) {
+      width: initial;
+    }
+
+    :host([rows]) .control {
+      height: initial;
+    }
   `.withBehaviors(
     appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
     appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),

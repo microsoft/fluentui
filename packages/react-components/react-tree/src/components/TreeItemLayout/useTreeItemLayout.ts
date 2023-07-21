@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { useTreeItemContext_unstable, useTreeContext_unstable, useTreeItemSlotsContext_unstable } from '../../contexts';
 import type { TreeItemLayoutProps, TreeItemLayoutState } from './TreeItemLayout.types';
-import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
-import { useTreeItemSlotsContext_unstable } from '../../contexts/treeItemSlotsContext';
+import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
+import { Radio, RadioProps } from '@fluentui/react-radio';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -19,9 +20,10 @@ export const useTreeItemLayout_unstable = (
 ): TreeItemLayoutState => {
   const { content, iconAfter, iconBefore, as = 'span' } = props;
 
-  const { actions, aside, expandIcon } = useTreeItemSlotsContext_unstable();
+  const { actions, aside, expandIcon, selector } = useTreeItemSlotsContext_unstable();
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
 
   return {
     components: {
@@ -32,6 +34,8 @@ export const useTreeItemLayout_unstable = (
       iconAfter: 'div',
       actions: 'div',
       aside: 'div',
+      // Casting here to a union between checkbox and radio
+      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     buttonContextValue: { size: 'small' },
     root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
@@ -41,5 +45,6 @@ export const useTreeItemLayout_unstable = (
     aside: resolveShorthand(aside),
     actions: resolveShorthand(actions),
     expandIcon: resolveShorthand(expandIcon),
+    selector: resolveShorthand(selector),
   };
 };

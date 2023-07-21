@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2023 18:27:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.26)
+
+Thu, 20 Jul 2023 18:27:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.25..@fluentui/react-tree_v9.0.0-beta.26)
+
+### Changes
+
+- feat: implements selection ([PR #28497](https://github.com/microsoft/fluentui/pull/28497) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.3.27 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-avatar to v9.5.13 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-button to v9.3.24 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.25 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-portal to v9.3.2 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-radio to v9.1.25 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
 
 ## [9.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.25)
 
