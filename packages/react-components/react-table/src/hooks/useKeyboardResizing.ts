@@ -11,7 +11,7 @@ const PRECISION_FACTOR = 1 / 4;
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const [columnId, setColumnId] = React.useState<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
-  const { findPrevFocusable, findFirstFocusable } = useFocusFinders();
+  const { findPrevFocusable } = useFocusFinders();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
