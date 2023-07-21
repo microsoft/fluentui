@@ -53,7 +53,6 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         inline,
         positioning: 'above-start',
         size: popoverSizeMap[size],
-        trapFocus: false,
         withArrow: true,
       },
     }),
