@@ -50,10 +50,11 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     popover: resolveShorthand(props.popover, {
       required: true,
       defaultProps: {
+        inline,
         positioning: 'above-start',
         size: popoverSizeMap[size],
+        trapFocus: false,
         withArrow: true,
-        inline,
       },
     }),
     info: resolveShorthand(props.info, {
