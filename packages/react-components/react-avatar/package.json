@@ -39,7 +39,7 @@
   "dependencies": {
     "@fluentui/react-badge": "^9.1.21",
     "@fluentui/react-context-selector": "^9.1.26",
-    "@fluentui/react-icons": "^2.0.203",
+    "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-popover": "^9.7.7",
     "@fluentui/react-shared-contexts": "^9.6.0",
     "@fluentui/react-tabster": "^9.10.0",
