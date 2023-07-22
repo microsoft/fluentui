@@ -42,13 +42,6 @@ const useRootBaseClassName = makeResetStyles({
     color: tokens.colorNeutralForeground1Hover,
 
     cursor: 'pointer',
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
   },
 
   ':hover:active': {
@@ -57,13 +50,6 @@ const useRootBaseClassName = makeResetStyles({
     color: tokens.colorNeutralForeground1Pressed,
 
     outlineStyle: 'none',
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
   },
 
   padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
@@ -193,7 +179,12 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
-
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
       [`& .${buttonClassNames.icon}`]: {
         color: tokens.colorNeutralForeground2BrandHover,
       },
@@ -203,7 +194,12 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
-
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
       [`& .${buttonClassNames.icon}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -235,12 +231,24 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandHover,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
 
     '@media (forced-colors: active)': {
