@@ -11,17 +11,16 @@ export function createMaxSizeStyles(disableDualScroll?: boolean): GriffelStyle {
       boxSizing: 'var(--maxsize-box-sizing)' as GriffelStyle['boxSizing'],
       maxHeight: 'var(--available-max-height)',
       maxWidth: 'var(--available-max-width)',
-    },
-
-    '&[data-popper-scroll-x]': {
-      width: `var(--available-max-width)`,
-      overflowX: 'auto',
-      ...(disableDualScroll && { overflowY: 'hidden' }),
-    },
-    '&[data-popper-scroll-y]': {
-      height: `var(--available-max-height)`,
-      overflowY: 'auto',
-      ...(disableDualScroll && { overflowX: 'hidden' }),
+      '&[data-popper-scroll-x]': {
+        width: `var(--available-max-width)`,
+        overflowX: 'auto',
+        ...(disableDualScroll && { overflowY: 'hidden' }),
+      },
+      '&[data-popper-scroll-y]': {
+        height: `var(--available-max-height)`,
+        overflowY: 'auto',
+        ...(disableDualScroll && { overflowX: 'hidden' }),
+      },
     },
   };
 }

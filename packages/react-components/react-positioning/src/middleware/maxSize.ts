@@ -6,44 +6,62 @@ export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'over
   container: HTMLElement | null;
 }
 
+type SimplifiedAutoSize = boolean | 'height' | 'width';
+/**
+ * AutoSizes contains many options from historic implementation.
+ * Now options 'always'/'height-always'/'width-always' are obsolete.
+ * This function maps them to true/'height'/'width'
+ */
+const getSimplifiedAutoSize = (autoSize?: PositioningOptions['autoSize']): SimplifiedAutoSize | undefined =>
+  autoSize === 'always'
+    ? true
+    : autoSize === 'height-always'
+    ? 'height'
+    : autoSize === 'width-always'
+    ? 'width'
+    : autoSize;
+
 export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSizeMiddlewareOptions): Middleware {
   const { container, overflowBoundary } = options;
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
-    apply({ availableHeight, availableWidth, elements, rects }) {
-      // TODO comments
-      const internalAutoSize: boolean | undefined | 'height' | 'width' =
-        autoSize === 'always'
-          ? true
-          : autoSize === 'height-always'
-          ? 'height'
-          : autoSize === 'width-always'
-          ? 'width'
-          : autoSize;
+    apply: async ({ availableHeight, availableWidth, elements, rects, platform }) => {
+      // reset maxsize from previous life cycle
+      if (elements.floating.hasAttribute('data-popper-maxsize')) {
+        const { width, height } = rects.floating;
+        elements.floating.removeAttribute('data-popper-maxsize');
+        const nextDimensions = await platform.getDimensions(elements.floating);
+        if (width !== nextDimensions.width || height !== nextDimensions.height) {
+          elements.floating.removeAttribute('data-popper-scroll-x');
+          elements.floating.removeAttribute('data-popper-scroll-y');
+          return;
+        }
+      }
 
-      if (internalAutoSize) {
+      const simplifiedAutoSize = getSimplifiedAutoSize(autoSize);
+      if (simplifiedAutoSize) {
         elements.floating.setAttribute('data-popper-maxsize', '');
         elements.floating.style.setProperty('--maxsize-box-sizing', 'border-box');
       }
 
-      const applyMaxWidth = internalAutoSize === true || internalAutoSize === 'width';
+      const applyMaxWidth = simplifiedAutoSize === true || simplifiedAutoSize === 'width';
       const widthOverflow = rects.floating.width > availableWidth;
 
-      const applyMaxHeight = internalAutoSize === true || internalAutoSize === 'height';
+      const applyMaxHeight = simplifiedAutoSize === true || simplifiedAutoSize === 'height';
       const heightOverflow = rects.floating.height > availableHeight;
 
       if (applyMaxWidth) {
         elements.floating.style.setProperty('--available-max-width', `${availableWidth}px`);
-      }
-      if (applyMaxWidth && widthOverflow) {
-        elements.floating.setAttribute('data-popper-scroll-x', '');
+        if (widthOverflow) {
+          elements.floating.setAttribute('data-popper-scroll-x', '');
+        }
       }
 
       if (applyMaxHeight) {
         elements.floating.style.setProperty('--available-max-height', `${availableHeight}px`);
-      }
-      if (applyMaxHeight && heightOverflow) {
-        elements.floating.setAttribute('data-popper-scroll-y', '');
+        if (heightOverflow) {
+          elements.floating.setAttribute('data-popper-scroll-y', '');
+        }
       }
     },
   });

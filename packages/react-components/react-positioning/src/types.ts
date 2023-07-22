@@ -136,11 +136,11 @@ export interface PositioningOptions {
   arrowPadding?: number;
 
   /**
-   * Applies max-height and max-width on the positioned element to fit it within the available space in viewport.
-   * true enables this for both width and height when overflow happens.
-   * 'always' applies `max-height`/`max-width` regardless of overflow.
-   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
-   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
+   * Set css variables with values of the available height/width that can be used in styles to fit element into viewport.
+   * - true: set css variables for available height/width.
+   * - 'height': set css variable for available height.
+   * - 'width'': set css variable for available width.
+   * Note that options 'always'/'height-always'/'width-always' are now obsolete, and equivalent to true/'height'/'width'.
    */
   autoSize?: AutoSize;
 
