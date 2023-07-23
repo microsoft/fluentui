@@ -1,83 +1,73 @@
-import { IChartHoverCardStyles, IChartHoverCardStyleProps } from './ChartHoverCard.types';
-import { FontWeights } from '@fluentui/react/lib/Styling';
+import { IChartHoverCardStyles, IChartHoverCardStyleProps, ChartHoverCardVariant } from './ChartHoverCard.types';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChartHoverCardStyles => {
-  const { color, XValue, theme, isRatioPresent = false } = props;
+  const { theme, variant, hasBothMetrics } = props;
   return {
-    calloutContentRoot: [
-      {
-        display: 'grid',
-        overflow: 'hidden',
-        padding: '11px 16px 10px 16px',
-        backgroundColor: theme.semanticColors.bodyBackground,
-        backgroundBlendMode: 'normal, luminosity',
-      },
-    ],
-    calloutDateTimeContainer: {
+    calloutContentRoot: {
+      ...theme.fonts.medium,
+      color: theme.semanticColors.bodyText,
+      padding: '16px',
+      backgroundColor: theme.semanticColors.bodyBackground,
+      backgroundBlendMode: 'normal, luminosity',
+    },
+
+    calloutDateTimeContainer: {},
+
+    calloutContentX: {
+      fontWeight: FontWeights.semibold,
+      marginBottom: '8px',
+    },
+
+    calloutBlockContainer: {
       display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      alignItems: 'center',
     },
-    calloutContentX: [
-      theme.fonts.small,
-      {
-        lineHeight: '16px',
-        opacity: '0.8',
-        color: theme.semanticColors.bodySubtext,
-      },
-    ],
-    calloutBlockContainer: [
-      theme.fonts.xxLarge,
-      {
-        marginTop: XValue ? '13px' : 'unset',
-        paddingLeft: '8px',
-        lineHeight: '22px',
-        color: theme.semanticColors.bodyText,
-        borderLeft: `4px solid ${color}`,
-      },
-    ],
-    calloutlegendText: [
-      theme.fonts.small,
-      {
-        lineHeight: '16px',
-        color: theme.semanticColors.bodyText,
-      },
-    ],
-    calloutContentY: [
-      theme.fonts.xxLarge,
-      {
-        color: color ? color : theme.semanticColors.bodyText,
-        fontWeight: 'bold',
-        lineHeight: '36px',
-      },
-    ],
-    calloutInfoContainer: [
-      isRatioPresent && {
-        display: 'flex',
-        alignItems: 'flex-end',
-      },
-    ],
-    ratio: [
-      theme.fonts.small,
-      {
-        marginLeft: '6px',
-        color: theme.semanticColors.bodyText,
-      },
-    ],
+
+    calloutlegendText: {
+      marginRight: variant === ChartHoverCardVariant.LongLegend ? '0px' : '24px',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      marginBottom: variant === ChartHoverCardVariant.LongLegend ? '4px' : '0px',
+    },
+
+    calloutContentY: {
+      fontWeight: FontWeights.semibold,
+      flexShrink: 0,
+    },
+
+    calloutInfoContainer: {},
+
+    ratio: {
+      marginLeft: hasBothMetrics ? '24px' : '0px',
+      flexShrink: 0,
+    },
+
     numerator: {
-      fontWeight: FontWeights.bold,
-    },
-    denominator: {
       fontWeight: FontWeights.semibold,
     },
-    descriptionMessage: [
-      theme.fonts.small,
-      {
-        color: theme.semanticColors.bodyText,
-        marginTop: '10px',
-        paddingTop: '10px',
-        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
-      },
-    ],
+
+    denominator: {},
+
+    descriptionMessage: {
+      fontSize: FontSizes.small,
+    },
+
+    calloutLegendIcon: {
+      marginRight: '8px',
+    },
+
+    divider: {
+      height: '1px',
+      backgroundColor: '#c8c8c8',
+      marginTop: '8px',
+      marginBottom: '8px',
+    },
+
+    updatedTime: {
+      marginTop: '8px',
+      fontSize: FontSizes.small,
+    },
   };
 };

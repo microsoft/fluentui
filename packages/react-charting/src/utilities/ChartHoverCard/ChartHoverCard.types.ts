@@ -1,4 +1,10 @@
 import { ITheme, IStyle, IStyleFunctionOrObject } from '@fluentui/react';
+
+export enum ChartHoverCardVariant {
+  ShortLegend = 'short-legend',
+  LongLegend = 'long-legend',
+}
+
 export interface IChartHoverCardProps {
   /**
    * X  value for hover card
@@ -42,6 +48,17 @@ export interface IChartHoverCardProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Specifies the variant of ChartHoverCard to be rendered
+   * @defaultvalue ChartHoverCardVariant.ShortLegend
+   */
+  variant?: ChartHoverCardVariant;
+
+  /**
+   * Time at which the chart data was last updated
+   */
+  updatedTime?: Date;
 }
 
 export interface IChartHoverCardStyles {
@@ -94,6 +111,15 @@ export interface IChartHoverCardStyles {
    * styles for the description
    */
   descriptionMessage?: IStyle;
+
+  /** styles for the legend icon */
+  calloutLegendIcon?: IStyle;
+
+  /** styles for the group divider */
+  divider?: IStyle;
+
+  /** styles for the updated time text */
+  updatedTime?: IStyle;
 }
 
 export interface IChartHoverCardStyleProps {
@@ -103,17 +129,12 @@ export interface IChartHoverCardStyleProps {
   theme: ITheme;
 
   /**
-   * color for hover card
+   * Specifies the variant of ChartHoverCard to be rendered
    */
-  color?: string;
+  variant?: ChartHoverCardVariant;
 
   /**
-   * X  value for hover card
+   * Indicates whether both YValue and ratio are present
    */
-  XValue?: string;
-
-  /**
-   * indicate if denomination is present
-   */
-  isRatioPresent?: boolean;
+  hasBothMetrics?: boolean;
 }
