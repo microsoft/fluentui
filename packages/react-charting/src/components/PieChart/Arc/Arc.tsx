@@ -68,8 +68,8 @@ export class LabeledArc extends Arc {
       endAngle: data?.endAngle || 0,
       startAngle: data?.startAngle || 0,
       padAngle: data?.padAngle,
-      innerRadius: this.props.outerRadius,
-      outerRadius: this.props.outerRadius + gap,
+      innerRadius: this.props?.outerRadius || 0,
+      outerRadius: this.props?.outerRadius || 0 + gap,
     });
 
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
@@ -100,7 +100,7 @@ export class LabeledArc extends Arc {
             'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
             className: classNames.pieText,
           }}
-          showTooltip={this.state.isArcFocused}
+          isTooltipVisibleProp={this.state.isArcFocused}
           shouldReceiveFocus={false}
           maxWidth={40}
           wrapContent={this._wrapContent}

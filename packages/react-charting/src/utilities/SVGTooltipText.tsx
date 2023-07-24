@@ -49,7 +49,7 @@ interface ISVGTooltipTextProps {
   /**
    * Pass true to show tooltip directly, false by default
    */
-  showTooltip?: boolean;
+  isTooltipVisibleProp?: boolean;
 
   /**
    * Function to wrap text within specified width and height
@@ -115,7 +115,7 @@ export class SVGTooltipText
     };
 
     const showTooltip =
-      (!!this.props.showTooltip && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
+      (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
 
     return (
       <>
