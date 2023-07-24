@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: do not dismiss editable comboboxes on scroll or resize immediately after opening",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
