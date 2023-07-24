@@ -10,8 +10,11 @@ export type {
   TreeProps,
   TreeState,
   TreeSlots,
+  TreeSelectionValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
 } from './Tree';
@@ -29,7 +32,7 @@ export {
   useTreeItemContextValues_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+export type { TreeItemProps, TreeItemState, TreeItemSlots, TreeItemValue } from './TreeItem';
 
 export {
   TreeItemLayout,

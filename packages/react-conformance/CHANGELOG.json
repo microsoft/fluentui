@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 20 Jul 2023 18:27:27 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.1",
+      "version": "0.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "d803aee2490d42f147906333f70f9867eafd452d",
+            "comment": "fix: add @swc/helpers to deps instead of tslib as we use swc for transpilation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:24 GMT",
       "tag": "@fluentui/react-conformance_v0.17.0",
       "version": "0.17.0",

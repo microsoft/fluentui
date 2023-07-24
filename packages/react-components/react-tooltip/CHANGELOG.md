@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Mon, 03 Jul 2023 13:34:28 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2023 18:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.24)
+
+Thu, 20 Jul 2023 18:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.23..@fluentui/react-tooltip_v9.2.24)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-portal to v9.3.2 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+
+## [9.2.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.23)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.22..@fluentui/react-tooltip_v9.2.23)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-positioning to v9.8.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
 
 ## [9.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.22)
 

@@ -50,18 +50,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralForegroundOnBrand,
+      borderRightColor: tokens.colorNeutralStrokeOnBrand,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralForegroundOnBrand,
+        borderRightColor: tokens.colorNeutralStrokeOnBrand,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralForegroundOnBrand,
+        borderRightColor: tokens.colorNeutralStrokeOnBrand,
       },
     },
 

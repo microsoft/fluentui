@@ -1,5 +1,6 @@
-import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { ButtonContextValue } from '@fluentui/react-button';
+import { TreeItemSlotsContextValue } from '../../contexts/treeItemSlotsContext';
 
 export type TreeItemLayoutSlots = {
   root: Slot<'div'>;
@@ -15,27 +16,9 @@ export type TreeItemLayoutSlots = {
    * Icon slot that renders right after main content
    */
   iconAfter?: Slot<'div'>;
-  /**
-   * Expand icon slot,
-   * by default renders a chevron icon to indicate opening and closing
-   */
-  expandIcon?: Slot<'div'>;
-  aside?: Slot<'div'>;
-  /**
-   * actionable elements are normally buttons, menus, or other focusable elements.
-   * Those elements are only visibly available if the given tree item is currently active.
-   */
-  actions?: Slot<
-    ExtractSlotProps<
-      Slot<'div'> & {
-        /**
-         * Forces visibility of the aside/action content
-         */
-        visible?: boolean;
-      }
-    >
-  >;
 };
+
+export type TreeItemLayoutInternalSlots = TreeItemLayoutSlots & TreeItemSlotsContextValue;
 
 /**
  * TreeItemLayout Props
@@ -45,6 +28,6 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 /**
  * State used in rendering TreeItemLayout
  */
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutInternalSlots> & {
   buttonContextValue: ButtonContextValue;
 };

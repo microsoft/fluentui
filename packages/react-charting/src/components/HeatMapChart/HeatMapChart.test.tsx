@@ -1,6 +1,5 @@
 jest.mock('react-dom');
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
@@ -10,9 +9,15 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
+const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
 }
 
 function sharedAfterEach() {
@@ -27,6 +32,8 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
 }
 const yPoint: string[] = ['p1', 'p2'];
 
@@ -89,32 +96,52 @@ const HeatMapData2: IHeatMapChartProps['data'] = [
 ];
 
 describe('HeatMapChart snapShot testing', () => {
-  it('renders HeatMapChart correctly', () => {
-    const component = renderer.create(
+  beforeEach(() => {
+    resetIds();
+  });
+  afterEach(() => {
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
+
+    // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
+    // cleaned up in fake timers world
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((global.setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
+  });
+  it('renders HeatMapChart correctly', async () => {
+    wrapper = mount(
       <HeatMapChart
         data={HeatMapData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const tree = component.toJSON();
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders corretly even when data is not present for some group', () => {
-    const component = renderer.create(
+  it('renders corretly even when data is not present for some group', async () => {
+    wrapper = mount(
       <HeatMapChart
         data={HeatMapData2} // first group has no data in it
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['pink', 'yellow']}
       />,
     );
-    const tree = component.toJSON();
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideLegend correctly', () => {
-    const component = renderer.create(
+  it('renders hideLegend correctly', async () => {
+    wrapper = mount(
       <HeatMapChart
         data={HeatMapData}
         hideLegend={true}
@@ -122,12 +149,14 @@ describe('HeatMapChart snapShot testing', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const tree = component.toJSON();
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideTooltip correctly', () => {
-    const component = renderer.create(
+  it('renders hideTooltip correctly', async () => {
+    wrapper = mount(
       <HeatMapChart
         data={HeatMapData}
         hideTooltip={true}
@@ -135,12 +164,14 @@ describe('HeatMapChart snapShot testing', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const tree = component.toJSON();
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders yAxisTickFormat correctly', () => {
-    const component = renderer.create(
+  it('renders yAxisTickFormat correctly', async () => {
+    wrapper = mount(
       <HeatMapChart
         data={HeatMapData}
         yAxisTickFormat={'/%d'}
@@ -148,7 +179,9 @@ describe('HeatMapChart snapShot testing', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const tree = component.toJSON();
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 });

@@ -76,6 +76,12 @@ export interface ILineChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * @default false
+   * The prop used to enable the perf optimization
+   */
+  enablePerfOptimization?: boolean;
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];
