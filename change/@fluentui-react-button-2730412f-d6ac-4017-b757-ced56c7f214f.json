@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: high contrast mode hover style icon fixes",
-  "packageName": "@fluentui/react-button",
-  "email": "eysjiang@gmail.com",
-  "dependentChangeType": "patch"
-}

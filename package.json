@@ -85,7 +85,7 @@
     "@ctrl/tinycolor": "3.3.4",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.3",
-    "@fluentui/react-icons": "^2.0.203",
+    "@fluentui/react-icons": "^2.0.207",
     "@griffel/babel-preset": "1.4.13",
     "@griffel/eslint-plugin": "^1.2.0",
     "@griffel/jest-serializer": "1.1.9",

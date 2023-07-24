@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to monosize",
-  "packageName": "@fluentui/react-accordion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to monosize",
-  "packageName": "@fluentui/react-card",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

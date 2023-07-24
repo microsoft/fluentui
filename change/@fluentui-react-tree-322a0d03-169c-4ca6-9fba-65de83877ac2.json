@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: implements selection",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

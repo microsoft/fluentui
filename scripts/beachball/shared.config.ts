@@ -24,7 +24,7 @@ export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changel
         const generators = [
           // Fixes any dependency mismatches caused by beachball scoping
           'dependency-mismatch',
-          // Fixes unwanted pre-release dependency bumps caused by beachball - This needs to run last otherwise deps within apps will contain exact versions ( which dependency-mismatch generator update - TODO we need to fix it)
+          // Fixes unwanted pre-release dependency bumps caused by beachball
           'normalize-package-dependencies',
         ];
 
