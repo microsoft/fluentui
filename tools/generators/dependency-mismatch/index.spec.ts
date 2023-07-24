@@ -13,6 +13,42 @@ describe('dependency-mismatch generator', () => {
     workspaceNpmScope = readNxJson(tree)?.npmScope as string;
   });
 
+  it(`should ignore dependencies that use  * and >=9.0.0-alpha version range`, async () => {
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
+      name: 'public-docsite-v9',
+      version: '9.0.0',
+      dependencies: {
+        [`@${workspaceNpmScope}/react-one`]: '*',
+        [`@${workspaceNpmScope}/react-two`]: '>=9.0.0-alpha',
+      },
+      devDependencies: {},
+      peerDependencies: {},
+    });
+
+    setupDummyPackage(tree, {
+      name: 'react-one',
+      version: '0.2.33',
+      dependencies: {},
+      devDependencies: {},
+      peerDependencies: {},
+    });
+    setupDummyPackage(tree, {
+      name: 'react-two',
+      version: '0.1.12',
+      dependencies: {},
+      devDependencies: {},
+      peerDependencies: {},
+    });
+
+    await generator(tree);
+
+    const packageJson = readTargetPackageJson();
+    expect(packageJson.dependencies).toEqual({
+      '@proj/react-one': '*',
+      '@proj/react-two': '>=9.0.0-alpha',
+    });
+  });
+
   it('should fix dependency mismatch', async () => {
     const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
       name: 'public-docsite-v9',

@@ -208,6 +208,23 @@ const useRootStyles = makeStyles({
         color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
+
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Canvas',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Canvas',
+        },
+      },
+      ':hover:active': {
+        color: 'Canvas',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Canvas',
+        },
+      },
+    },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -224,6 +241,19 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
+    },
+
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: 'Highlight',
+      },
+      ':hover:active': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: 'Highlight',
+      },
     },
   },
 

@@ -1,8 +1,36 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Mon, 10 Jul 2023 07:35:07 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jul 2023 07:35:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.30](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.30)
+
+Tue, 18 Jul 2023 07:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.29..@fluentui/fluent2-theme_v8.107.30)
+
+### Patches
+
+- fix: Add all spinner sizes for fluent2 theme in v8 ([PR #28512](https://github.com/microsoft/fluentui/pull/28512) by mifraser@microsoft.com)
+- Bump @fluentui/react to v8.110.10 ([PR #28522](https://github.com/microsoft/fluentui/pull/28522) by beachball)
+
+## [8.107.29](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.29)
+
+Mon, 17 Jul 2023 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.28..@fluentui/fluent2-theme_v8.107.29)
+
+### Patches
+
+- Bump @fluentui/react to v8.110.9 ([PR #28523](https://github.com/microsoft/fluentui/pull/28523) by beachball)
+
+## [8.107.28](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.28)
+
+Thu, 13 Jul 2023 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.27..@fluentui/fluent2-theme_v8.107.28)
+
+### Patches
+
+- fix: Ensure fluent2 dark theme isInverted:true, set primary fluent2darktheme button color to match light theme ([PR #28486](https://github.com/microsoft/fluentui/pull/28486) by mifraser@microsoft.com)
 
 ## [8.107.27](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.27)
 
