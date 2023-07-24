@@ -174,20 +174,20 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -335,8 +335,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
   <Suspense
     fallback={
       <div>
@@ -714,20 +714,20 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -875,8 +875,8 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
   <Suspense
     fallback={
       <div>
@@ -1152,20 +1152,20 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -1313,8 +1313,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
   <Suspense
     fallback={
       <div>
@@ -1590,20 +1590,20 @@ exports[`LineChart snapShot testing Should render with default colors when line 
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -1757,8 +1757,8 @@ exports[`LineChart snapShot testing Should render with default colors when line 
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;
 
@@ -1936,20 +1936,20 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -2103,8 +2103,8 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;
 
@@ -2282,20 +2282,20 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -2429,8 +2429,8 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;
 
@@ -2785,20 +2785,20 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -2952,8 +2952,8 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;
 
@@ -3131,20 +3131,20 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -3298,8 +3298,8 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;
 
@@ -3477,20 +3477,20 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -3644,8 +3644,8 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;
 
@@ -3823,20 +3823,20 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </g>
     </svg>
   </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
-    <Suspense
-      fallback={
-        <div>
-          Loading...
-        </div>
-      }
+    <div
+      className=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
     >
       <div
         className=
@@ -3990,7 +3990,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           </div>
         </div>
       </div>
-    </Suspense>
-  </div>
+    </div>
+  </Suspense>
 </div>
 `;

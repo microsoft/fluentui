@@ -170,7 +170,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
-  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element | null;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
 
@@ -237,6 +237,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
 
     let legendBars = null;
+    // reduce computation cost by only creating legendBars
+    // if when hideLegend is false.
+    // NOTE: they are rendered only when hideLegend is false in CartesianChart.
     if (!this.props.hideLegend) {
       legendBars = this._createLegendsMemoized(this._points!);
     }
@@ -401,7 +404,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
-  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element | null {
+  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: LineChartDataWithIndex) => {
@@ -463,22 +466,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         })
       : [];
 
-    if (!this.props.hideLegend) {
-      return (
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <Legends
-            legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
-            enabledWrapLines={this.props.enabledLegendsWrapLines}
-            overflowProps={this.props.legendsOverflowProps}
-            focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
-            overflowText={this.props.legendsOverflowText}
-            {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: this._onHoverCardHide })}
-            {...this.props.legendProps}
-          />
-        </React.Suspense>
-      );
-    }
-    return null;
+    return (
+      <Legends
+        legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
+        enabledWrapLines={this.props.enabledLegendsWrapLines}
+        overflowProps={this.props.legendsOverflowProps}
+        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
+        {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: this._onHoverCardHide })}
+        {...this.props.legendProps}
+      />
+    );
   }
 
   private _closeCallout = () => {
