@@ -13,7 +13,7 @@ import {
   useOverflowMenu,
   Overflow,
   OverflowItem,
-  MenuItem,
+  MenuItemLink,
   OverflowDivider,
 } from '@fluentui/react-components';
 import {
@@ -41,7 +41,7 @@ type LinkItem = {
   item?: string;
   linkProps: {
     'aria-label'?: string;
-    href?: string;
+    href: string;
     icon?: BreadcrumbLinkProps['icon'];
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
@@ -161,7 +161,7 @@ const useStyles = makeStyles({
   },
 });
 
-const OverflowBreadcrumbButton: React.FC<{ id: string; item: LinkItem }> = props => {
+const OverflowBreadcrumbLink: React.FC<{ id: string; item: LinkItem }> = props => {
   const { item, id } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -169,7 +169,7 @@ const OverflowBreadcrumbButton: React.FC<{ id: string; item: LinkItem }> = props
     return null;
   }
 
-  return <MenuItem {...item.linkProps}>{item.item}</MenuItem>;
+  return <MenuItemLink {...item.linkProps}>{item.item}</MenuItemLink>;
 };
 
 const OverflowGroupDivider: React.FC<{
@@ -208,16 +208,16 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<LinkItem>) => {
         <MenuList className={styles.menu}>
           {isOverflowing &&
             startDisplayedItems.map((item: LinkItem) => (
-              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+              <OverflowBreadcrumbLink id={item.key.toString()} item={item} key={item.key} />
             ))}
           {overflowItems &&
             overflowItems.map((item: LinkItem) => (
-              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+              <OverflowBreadcrumbLink id={item.key.toString()} item={item} key={item.key} />
             ))}
           {isOverflowing &&
             endDisplayedItems &&
             endDisplayedItems.map((item: LinkItem) => (
-              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+              <OverflowBreadcrumbLink id={item.key.toString()} item={item} key={item.key} />
             ))}
         </MenuList>
       </MenuPopover>
