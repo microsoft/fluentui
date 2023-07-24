@@ -85,11 +85,13 @@ const OverflowSelectionItem: React.FC<{
   return (
     <OverflowItem id={props.id} priority={props.selected ? 1000 : undefined}>
       <Button
+        style={{ flexWrap: 'nowrap', whiteSpace: 'nowrap', flexShrink: 0 }}
         aria-pressed={props.selected ? 'true' : 'false'}
         appearance={props.selected ? 'primary' : 'secondary'}
         onClick={onClick}
       >
         Item {props.id}
+        {props.id === '6' ? 'xxxxxxxxxxx' : ''}
       </Button>
     </OverflowItem>
   );

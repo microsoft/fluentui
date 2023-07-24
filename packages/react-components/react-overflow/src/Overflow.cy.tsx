@@ -641,34 +641,50 @@ describe('Overflow', () => {
     cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
   });
 
-  it('Should have correct initial visibility state', () => {
-    const mapHelper = new Array(10).fill(0).map((_, i) => i);
-    const Assert = () => {
-      const isVisible = mapHelper.map(i => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        return useIsOverflowItemVisible(i.toString());
-      });
-
-      if (isVisible.every(x => x)) {
-        return <span data-passed="true" />;
-      }
-
-      return null;
+  it('Should switch priorities and use all available space', () => {
+    const Example = () => {
+      const [selected, setSelelected] = React.useState(0);
+      return (
+        <>
+          <Container>
+            {mapHelper.map(i => (
+              <Item key={i} id={i.toString()} priority={selected === i ? 1000 : 0} width={i === 9 ? 100 : undefined}>
+                <span onClick={() => setSelelected(i)} style={{ color: selected === i ? 'red' : 'black' }}>
+                  {i}
+                </span>
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <div>
+            <button id="select-9" onClick={() => setSelelected(9)}>
+              Select 9
+            </button>
+            <button id="select-0" onClick={() => setSelelected(0)}>
+              Select 0
+            </button>
+          </div>
+        </>
+      );
     };
 
-    mount(
-      <Container minimumVisible={5}>
-        {mapHelper.map(i => (
-          <Item key={i} id={i.toString()}>
-            {i}
-          </Item>
-        ))}
-        <Menu />
-        <Assert />
-      </Container>,
-    );
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(<Example />);
 
-    setContainerSize(500);
-    cy.get('[data-passed="true"]').should('exist');
+    cy.get(`[${selectors.item}="3"]`).click();
+    setContainerSize(250);
+    cy.get('#select-9').click();
+    cy.get(`[${selectors.item}="9"]`).should('be.visible');
+    cy.get(`[${selectors.item}="0"]`).should('be.visible');
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+
+    cy.get('#select-0').click();
+    cy.get(`[${selectors.item}="9"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="0"]`).should('be.visible');
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
   });
 });
