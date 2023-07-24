@@ -235,6 +235,7 @@ export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuLi
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
+    hasMenuContext?: boolean;
 };
 
 // @public
