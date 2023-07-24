@@ -21,22 +21,22 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
         Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxHeight: `${availableHeight}px`,
           boxSizing: 'border-box',
-          overflowY: 'auto',
         });
       }
       if (heightOverflow) {
         elements.floating.style.setProperty('height', `${availableHeight}px`);
+        elements.floating.style.setProperty('overflow-y', 'auto');
       }
 
       if (applyMaxWidth || widthOverflow) {
         Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxWidth: `${availableWidth}px`,
           boxSizing: 'border-box',
-          overflowX: 'auto',
         });
       }
       if (widthOverflow) {
         elements.floating.style.setProperty('width', `${availableWidth}px`);
+        elements.floating.style.setProperty('overflow-x', 'auto');
       }
     },
   });
