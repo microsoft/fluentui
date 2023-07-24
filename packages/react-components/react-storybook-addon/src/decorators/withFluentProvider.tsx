@@ -407,6 +407,7 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
   let lastComponentIndex = 0;
   let lastSlotIndex = 0;
 
+  // TODO: This loop and the inner loop need to set React keys on AnatomyTitle and AnatomyAnnotation.
   trackedComponentMap.forEach((component, componentName) => {
     const componentLabel = ++lastComponentIndex;
     const isComponentSelected = selectedComponentName === componentName;
