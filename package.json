@@ -28,8 +28,8 @@
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/executors/local-codepen.js",
     "copy-notices": "node scripts/generators/copy-notices.js",
-    "create-component": "plop --plopfile ./scripts/generators/create-component/index.ts --dest . --require @fluentui/scripts-ts-node/register",
-    "create-package": "plop --plopfile ./scripts/generators/create-package/index.ts --dest . --require @fluentui/scripts-ts-node/register",
+    "create-component": "yarn nx workspace-generator react-component",
+    "create-package": "yarn nx workspace-generator react-library",
     "e2e": "lage e2e --verbose --concurrency=1",
     "format": "node scripts/executors/format.js",
     "generate-version-files": "node -r ./scripts/ts-node/register ./scripts/generators/generate-version-files",
@@ -109,6 +109,7 @@
     "@nrwl/node": "15.9.4",
     "@nrwl/workspace": "15.9.4",
     "@octokit/rest": "18.12.0",
+    "@phenomnomnominal/tsquery": "6.1.2",
     "@storybook/addon-a11y": "6.5.15",
     "@storybook/addon-actions": "6.5.15",
     "@storybook/addon-docs": "6.5.15",
@@ -206,11 +207,11 @@
     "beachball": "2.31.0",
     "chalk": "4.1.0",
     "chrome-remote-interface": "0.28.2",
-    "ci-info": "3.2.0",
+    "ci-info": "3.8.0",
     "circular-dependency-plugin": "5.2.2",
     "clean-css": "4.2.3",
     "clean-webpack-plugin": "4.0.0",
-    "cli-table3": "0.6.1",
+    "cli-table3": "0.6.3",
     "connect-history-api-fallback": "1.6.0",
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
@@ -283,6 +284,8 @@
     "markdown-table": "2.0.0",
     "memfs": "3.2.2",
     "mini-css-extract-plugin": "2.6.1",
+    "monosize": "0.1.0",
+    "monosize-storage-azure": "0.0.3",
     "node-fetch": "2.6.7",
     "node-plop": "0.25.0",
     "node-polyfill-webpack-plugin": "1.0.2",
@@ -335,7 +338,7 @@
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
     "swc-loader": "0.2.3",
-    "syncpack": "5.6.10",
+    "syncpack": "10.6.1",
     "tachometer": "0.7.0",
     "terser": "5.17.4",
     "terser-webpack-plugin": "5.3.9",
@@ -357,7 +360,7 @@
     "webpack-dev-server": "4.7.4",
     "webpack-hot-middleware": "2.25.1",
     "webpack-merge": "5.7.3",
-    "workspace-tools": "0.27.0",
+    "workspace-tools": "0.29.1",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
     "yargs-unparser": "2.0.0"
@@ -391,139 +394,5 @@
     "swc-loader": "^0.2.3",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0"
-  },
-  "syncpack": {
-    "prod": true,
-    "dev": true,
-    "peer": false,
-    "source": [
-      "package.json",
-      "apps/!(react-18-tests-v8|react-18-tests-v9)/package.json",
-      "packages/web-components/package.json",
-      "packages/react-components/*/package.json",
-      "packages/fluentui/*/package.json",
-      "scripts/package.json"
-    ],
-    "versionGroups": [
-      {
-        "packages": [
-          "@fluentui/fluentui-repo"
-        ],
-        "dependencies": [
-          "@babel/core",
-          "@babel/preset-typescript",
-          "@babel/generator",
-          "@babel/traverse",
-          "@rnx-kit/eslint-plugin",
-          "@swc/helpers",
-          "@types/react-test-renderer",
-          "@typescript-eslint/eslint-plugin",
-          "@typescript-eslint/experimental-utils",
-          "@typescript-eslint/parser",
-          "@microsoft/load-themed-styles",
-          "ajv",
-          "chalk",
-          "cli-table3",
-          "copy-to-clipboard",
-          "del",
-          "eslint-config-airbnb",
-          "eslint-config-prettier",
-          "eslint-import-resolver-typescript",
-          "eslint-plugin-deprecation",
-          "eslint-plugin-import",
-          "eslint-plugin-jest",
-          "eslint-plugin-jsx-a11y",
-          "eslint-plugin-react",
-          "eslint-plugin-react-hooks",
-          "fs-extra",
-          "glob",
-          "gzip-size",
-          "jju",
-          "lerna-alias",
-          "loader-utils",
-          "lodash",
-          "pretty-bytes",
-          "schema-utils",
-          "react-is",
-          "react-hot-loader",
-          "react-test-renderer",
-          "react-vis",
-          "tslib",
-          "terser",
-          "terser-webpack-plugin",
-          "webpack",
-          "webpack-bundle-analyzer",
-          "yargs"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/accessibility",
-          "@fluentui/code-sandbox",
-          "@fluentui/docs-components",
-          "@fluentui/docs",
-          "@fluentui/e2e",
-          "@fluentui/perf",
-          "@fluentui/perf-test-northstar",
-          "@fluentui/react-component-event-listener",
-          "@fluentui/react-component-nesting-registry",
-          "@fluentui/react-component-ref",
-          "@fluentui/react-icons-northstar",
-          "@fluentui/react-northstar-fela-renderer",
-          "@fluentui/react-northstar-styles-renderer",
-          "@fluentui/react-proptypes",
-          "@fluentui/react-telemetry",
-          "@fluentui/react-bindings",
-          "@fluentui/react-builder",
-          "@fluentui/react-northstar",
-          "@fluentui/react-northstar-prototypes",
-          "@fluentui/state",
-          "@fluentui/styles"
-        ],
-        "dependencies": [
-          "@fluentui/a11y-testing",
-          "@fluentui/dom-utilities",
-          "@fluentui/react",
-          "@fluentui/react-conformance",
-          "stylis"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/react-northstar-emotion-renderer"
-        ],
-        "dependencies": [
-          "stylis"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/react-conformance"
-        ],
-        "dependencies": [
-          "chalk"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/bundle-size"
-        ],
-        "dependencies": [
-          "@azure/data-tables",
-          "prettier",
-          "workspace-tools",
-          "ci-info",
-          "node-fetch"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/react-conformance-griffel"
-        ],
-        "dependencies": [
-          "@fluentui/react-conformance"
-        ]
-      }
-    ]
   }
 }

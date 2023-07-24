@@ -21,6 +21,7 @@ type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
 const NORMALIZED_INNER_WORKSPACE_VERSION = '*';
 const NORMALIZED_PRERELEASE_RANGE_VERSION = '>=9.0.0-alpha';
+const BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP = /<9.0.0$/;
 
 export default async function (tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, schema);
@@ -113,6 +114,10 @@ function getVersion(tree: Tree, deps: Record<string, string>, packageName: strin
   return { updated, match };
 
   function getUpdatedVersion(currentVersion: string) {
+    if (BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP.test(current)) {
+      return NORMALIZED_PRERELEASE_RANGE_VERSION;
+    }
+
     if (currentVersion === NORMALIZED_PRERELEASE_RANGE_VERSION) {
       const prereleasePkg = readProjectConfiguration(tree, packageName);
       const prereleasePkgJson = readJson<PackageJson>(tree, joinPathFragments(prereleasePkg.root, 'package.json'));
