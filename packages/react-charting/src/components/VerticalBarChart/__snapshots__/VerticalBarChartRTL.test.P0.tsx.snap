@@ -17,8 +17,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-<<<<<<< Updated upstream
-    id="chart_492"
+    id="chart_761"
     role="presentation"
   >
     <div
@@ -30,7 +29,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone493"
+      data-focuszone-id="FocusZone762"
     >
       <svg
         focusable="false"
@@ -64,7 +63,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_492"
+          id="xAxisGElementchart_761"
           transform="translate(0, -35)"
         />
         <g
@@ -92,7 +91,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_492"
+          id="yAxisGElementchart_761"
           transform="translate(40, 0)"
         />
         <g>
@@ -139,7 +138,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone494"
+                data-focuszone-id="FocusZone763"
                 role="listbox"
               >
                 <div
@@ -442,10 +441,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_497"
-=======
-    id="chart_543"
->>>>>>> Stashed changes
+    id="chart_766"
     role="presentation"
   >
     <div
@@ -457,7 +453,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone498"
+      data-focuszone-id="FocusZone767"
     >
       <svg
         focusable="false"
@@ -491,7 +487,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_497"
+          id="xAxisGElementchart_766"
           transform="translate(0, -35)"
         />
         <g
@@ -519,7 +515,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_497"
+          id="yAxisGElementchart_766"
           transform="translate(40, 0)"
         />
         <g>
@@ -566,471 +562,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone499"
-                role="listbox"
-              >
-                <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
-                  role="group"
-                >
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="First"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="0"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #0078d4;
-                              border-color: #0078d4;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #0078d4, #0078d4);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        First
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Second"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #002050;
-                              border-color: #002050;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #002050, #002050);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Second
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Third"
-                      aria-posinset="3"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #00188f;
-                              border-color: #00188f;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #00188f, #00188f);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Third
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span
-      class="ms-layer"
-    />
-  </div>
-</div>
-`;
-
-exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          width: 100%;
-        }
-    id="chart_550"
-    role="presentation"
-  >
-    <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone551"
-    >
-      <svg
-        focusable="false"
-        height="0"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_550"
-          transform="translate(0, -70)"
-        />
-        <text
-          class=
-
-              {
-                color: var(--neutrals-web-gray-160323130, #323130);
-                fill: #323130;
-                font-family: Segoe UI;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host552"
-          tabindex="-1"
-          x="80"
-          y="-8"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          id="yAxisGElementchart_550"
-          transform="translate(80, 0)"
-        />
-        <text
-          class=
-
-              {
-                color: var(--neutrals-web-gray-160323130, #323130);
-                fill: #323130;
-                font-family: Segoe UI;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host553"
-          tabindex="-1"
-          text-anchor="middle"
-          transform="translate(0,
-                   -98)rotate(-90)"
-          x="78"
-          y="32"
-        />
-        <g>
-           
-           
-           
-        </g>
-      </svg>
-    </div>
-    <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
-      >
-        <div>
-          <div
-            style="position: relative;"
-          >
-            <div
-              data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
-            >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone554"
+                data-focuszone-id="FocusZone768"
                 role="listbox"
               >
                 <div
@@ -1346,11 +878,7 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-<<<<<<< Updated upstream
-      id="chart_505"
-=======
-      id="chart_560"
->>>>>>> Stashed changes
+      id="chart_774"
       role="presentation"
     >
       <div
@@ -1362,11 +890,7 @@ exports[`Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-<<<<<<< Updated upstream
-        data-focuszone-id="FocusZone506"
-=======
-        data-focuszone-id="FocusZone561"
->>>>>>> Stashed changes
+        data-focuszone-id="FocusZone775"
       >
         <svg
           focusable="false"
@@ -1400,32 +924,8 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-<<<<<<< Updated upstream
-            id="xAxisGElementchart_505"
+            id="xAxisGElementchart_774"
             transform="translate(0, -35)"
-=======
-            id="xAxisGElementchart_560"
-            transform="translate(0, -70)"
-          />
-          <text
-            class=
-
-                {
-                  color: var(--neutrals-web-gray-160323130, #323130);
-                  fill: #f3f2f1;
-                  font-family: Segoe UI;
-                  font-size: 10px;
-                  font-style: normal;
-                  font-weight: 600;
-                  line-height: 14px;
-                  text-align: center;
-                }
-            data-is-focusable="false"
-            id="tooltip-host562"
-            tabindex="-1"
-            x="80"
-            y="-8"
->>>>>>> Stashed changes
           />
           <g
             class=
@@ -1452,35 +952,8 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-<<<<<<< Updated upstream
-            id="yAxisGElementchart_505"
+            id="yAxisGElementchart_774"
             transform="translate(40, 0)"
-=======
-            id="yAxisGElementchart_560"
-            transform="translate(80, 0)"
-          />
-          <text
-            class=
-
-                {
-                  color: var(--neutrals-web-gray-160323130, #323130);
-                  fill: #f3f2f1;
-                  font-family: Segoe UI;
-                  font-size: 10px;
-                  font-style: normal;
-                  font-weight: 600;
-                  line-height: 14px;
-                  text-align: center;
-                }
-            data-is-focusable="false"
-            id="tooltip-host563"
-            tabindex="-1"
-            text-anchor="middle"
-            transform="translate(0,
-                   -98)rotate(-90)"
-            x="78"
-            y="32"
->>>>>>> Stashed changes
           />
           <g>
              
@@ -1526,11 +999,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-<<<<<<< Updated upstream
-                  data-focuszone-id="FocusZone507"
-=======
-                  data-focuszone-id="FocusZone564"
->>>>>>> Stashed changes
+                  data-focuszone-id="FocusZone776"
                   role="listbox"
                 >
                   <div
@@ -1821,11 +1290,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-<<<<<<< Updated upstream
-    id="_VBC_empty510"
-=======
-    id="_VBC_empty567"
->>>>>>> Stashed changes
+    id="_VBC_empty779"
     role="alert"
     style="opacity: 0;"
   />
@@ -1849,11 +1314,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           overflow: hidden;
           width: 100%;
         }
-<<<<<<< Updated upstream
-    id="chart_511"
-=======
-    id="chart_568"
->>>>>>> Stashed changes
+    id="chart_780"
     role="presentation"
   >
     <div
@@ -1865,11 +1326,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           {
             overflow: auto;
           }
-<<<<<<< Updated upstream
-      data-focuszone-id="FocusZone512"
-=======
-      data-focuszone-id="FocusZone569"
->>>>>>> Stashed changes
+      data-focuszone-id="FocusZone781"
     >
       <svg
         focusable="false"
@@ -1903,32 +1360,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               & path {
                 display: none;
               }
-<<<<<<< Updated upstream
-          id="xAxisGElementchart_511"
+          id="xAxisGElementchart_780"
           transform="translate(0, -35)"
-=======
-          id="xAxisGElementchart_568"
-          transform="translate(0, -70)"
-        />
-        <text
-          class=
-
-              {
-                color: var(--neutrals-web-gray-160323130, #323130);
-                fill: #323130;
-                font-family: Segoe UI;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host570"
-          tabindex="-1"
-          x="80"
-          y="-8"
->>>>>>> Stashed changes
         />
         <g
           class=
@@ -1955,35 +1388,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-<<<<<<< Updated upstream
-          id="yAxisGElementchart_511"
+          id="yAxisGElementchart_780"
           transform="translate(40, 0)"
-=======
-          id="yAxisGElementchart_568"
-          transform="translate(80, 0)"
-        />
-        <text
-          class=
-
-              {
-                color: var(--neutrals-web-gray-160323130, #323130);
-                fill: #323130;
-                font-family: Segoe UI;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host571"
-          tabindex="-1"
-          text-anchor="middle"
-          transform="translate(0,
-                   -98)rotate(-90)"
-          x="78"
-          y="32"
->>>>>>> Stashed changes
         />
         <g>
            
@@ -2029,11 +1435,434 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     &:focus {
                       outline: none;
                     }
-<<<<<<< Updated upstream
-                data-focuszone-id="FocusZone513"
-=======
-                data-focuszone-id="FocusZone572"
->>>>>>> Stashed changes
+                data-focuszone-id="FocusZone782"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="First"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        First
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #002050;
+                              border-color: #002050;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #002050, #002050);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00188f;
+                              border-color: #00188f;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00188f, #00188f);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Third
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with numeric x-axis data - RTL 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_37"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone38"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_37"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & g {
+                text-anchor: end;
+              }
+          id="yAxisGElementchart_37"
+          transform="translate(-40, 0)"
+        />
+        <g>
+           
+           
+           
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone39"
                 role="listbox"
               >
                 <div
@@ -2743,7 +2572,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 </div>
 `;
 
-exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data 1`] = `
+exports[`Vertical bar chart rendering Should render the vertical bar chart with secondary y scale options set to true 1`] = `
 <div>
   <div
     class=
@@ -2760,7 +2589,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_37"
+    id="chart_42"
     role="presentation"
   >
     <div
@@ -2772,7 +2601,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone38"
+      data-focuszone-id="FocusZone43"
     >
       <svg
         focusable="false"
@@ -2806,7 +2635,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_37"
+          id="xAxisGElementchart_42"
           transform="translate(0, -35)"
         />
         <g
@@ -2834,7 +2663,459 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_37"
+          id="yAxisGElementchart_42"
+          transform="translate(40, 0)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementSecondarychart_42"
+          transform="translate(-40, 0)"
+        />
+        <g>
+           
+           
+           
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone44"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="First"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        First
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #002050;
+                              border-color: #002050;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #002050, #002050);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00188f;
+                              border-color: #00188f;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00188f, #00188f);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Third
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with showXAxisLablesTooltip set to true 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_70"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone71"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_70"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_70"
           transform="translate(40, 0)"
         />
         <g>
@@ -2882,7 +3163,510 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone39"
+                data-focuszone-id="FocusZone72"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #627CEF;
+                              border-color: #627CEF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #627CEF, #627CEF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #C19C00;
+                              border-color: #C19C00;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #C19C00, #C19C00);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #E650AF;
+                              border-color: #E650AF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #E650AF, #E650AF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0E7878;
+                              border-color: #0E7878;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0E7878, #0E7878);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_47"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone48"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_47"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_47"
+          transform="translate(40, 0)"
+        />
+        <g>
+           
+           
+           
+           
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone49"
                 role="listbox"
               >
                 <div
@@ -3260,9 +4044,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          overflow: hidden;
           width: 100%;
         }
-    id="chart_54"
+    id="chart_52"
     role="presentation"
   >
     <div
@@ -3274,7 +4059,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone55"
+      data-focuszone-id="FocusZone53"
     >
       <svg
         focusable="false"
@@ -3308,27 +4093,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_54"
-          transform="translate(0, -70)"
-        />
-        <text
-          class=
-
-              {
-                color: var(--neutrals-web-gray-160323130, #323130);
-                fill: #323130;
-                font-family: Segoe UI;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host56"
-          tabindex="-1"
-          x="80"
-          y="-8"
+          id="xAxisGElementchart_52"
+          transform="translate(0, -35)"
         />
         <g
           class=
@@ -3355,30 +4121,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_54"
-          transform="translate(80, 0)"
-        />
-        <text
-          class=
-
-              {
-                color: var(--neutrals-web-gray-160323130, #323130);
-                fill: #323130;
-                font-family: Segoe UI;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host57"
-          tabindex="-1"
-          text-anchor="middle"
-          transform="translate(0,
-                   -98)rotate(-90)"
-          x="78"
-          y="32"
+          id="yAxisGElementchart_52"
+          transform="translate(40, 0)"
         />
         <g>
            
@@ -3425,7 +4169,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone58"
+                data-focuszone-id="FocusZone54"
                 role="listbox"
               >
                 <div
@@ -3756,6 +4500,339 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0E7878, #0E7878);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data with given container width and bar width 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_79"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone80"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_79"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_79"
+          transform="translate(40, 0)"
+        />
+        <g>
+           
+           
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone81"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #627CEF;
+                              border-color: #627CEF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #627CEF, #627CEF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #C19C00;
+                              border-color: #C19C00;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #C19C00, #C19C00);
                               opacity: ;
                             }
                       />

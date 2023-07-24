@@ -14,8 +14,8 @@ export const testWithoutWait = (
   testFunctionBeforeWait?: () => void,
 ) => {
   test(description, () => {
-    const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionBeforeWait !== undefined && testFunctionBeforeWait();
+    const { container } = render(React.createElement(component, (props = { ...props })));
     testFunction(container);
   });
 };

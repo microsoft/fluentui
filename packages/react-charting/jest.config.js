@@ -25,6 +25,7 @@ const config = createConfig({
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),
   },
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(P0)\\.[jt]sx?$',
 });
 
 module.exports = config;

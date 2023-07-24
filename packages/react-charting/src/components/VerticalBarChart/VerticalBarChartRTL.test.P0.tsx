@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { chartPoints } from './VerticalBarChart.test';
+import { chartPoints } from './VerticalBarChart.test.P0';
 import { DefaultPalette } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
+import * as utils from '@fluentui/react/lib/Utilities';
 import {
   getByClass,
   getById,
@@ -33,8 +34,6 @@ const pointsWithLine = [
     x: 10000,
     y: 50000,
     legend: 'Dogs',
-    color: DefaultPalette.blueDark,
-    xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '20%',
     lineData: {
       y: 30000,
@@ -130,11 +129,74 @@ const simplePoints = [
   },
 ];
 
+const stringPoints = [
+  {
+    x: 'medium',
+    y: 3500,
+    color: '#627CEF',
+  },
+  {
+    x: 'long',
+    y: 2500,
+    color: '#C19C00',
+  },
+];
+
+const stringPointsWithLine = [
+  {
+    x: '0',
+    y: 100,
+    legend: 'Oranges',
+    color: DefaultPalette.accent,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '10%',
+    lineData: {
+      y: 70,
+      yAxisCalloutData: '34%',
+      useSecondaryYScale: true,
+    },
+  },
+  {
+    x: '100',
+    y: 500,
+    legend: 'Dogs',
+    color: DefaultPalette.blueDark,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '20%',
+    lineData: {
+      y: 300,
+    },
+  },
+];
+
 describe('Vertical bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical bar chart with numeric x-axis data',
     VerticalBarChart,
     { data: chartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with numeric x-axis data - RTL',
+    VerticalBarChart,
+    { data: chartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    () => {
+      jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
+    },
+  );
+
+  testWithWait(
+    'Should render the vertical bar chart with secondary y scale options set to true',
+    VerticalBarChart,
+    { data: chartPoints, secondaryYScaleOptions: true },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -155,6 +217,26 @@ describe('Vertical bar chart rendering', () => {
     'Should render the vertical bar chart with string x-axis data with given container width',
     VerticalBarChart,
     { data: simplePoints, width: 1000 },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithWait(
+    'Should render the vertical bar chart with showXAxisLablesTooltip set to true',
+    VerticalBarChart,
+    { data: simplePoints, showXAxisLablesTooltip: true, wrapXAxisLables: false },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithWait(
+    'Should render the vertical bar chart with string x-axis data with given container width and bar width',
+    VerticalBarChart,
+    { data: stringPoints, width: 1000, barWidth: 1 },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -223,6 +305,30 @@ describe('Vertical bar chart - Subcomponent line', () => {
     expect(line).toHaveLength(1);
     expect(points).toHaveLength(7);
   });
+  testWithoutWait(
+    'Should render line along with bars with line border',
+    VerticalBarChart,
+    { data: pointsWithLine, lineOptions: { lineBorderWidth: '2' } },
+    container => {
+      const line = getById(container, /_VBC_line/i);
+      const points = getById(container, /_VBC_point/i);
+      // Assert
+      expect(line).toHaveLength(2);
+      expect(points).toHaveLength(7);
+    },
+  );
+  testWithoutWait(
+    'Should render line along with bars with string data',
+    VerticalBarChart,
+    { data: stringPointsWithLine, secondaryYScaleOptions: true },
+    container => {
+      const line = getById(container, /_VBC_line/i);
+      const points = getById(container, /_VBC_point/i);
+      // Assert
+      expect(line).toHaveLength(1);
+      expect(points).toHaveLength(2);
+    },
+  );
   testWithoutWait(
     'Should highlight the data points and not render the corresponding callout',
     VerticalBarChart,
@@ -325,6 +431,54 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       expect(bars[7]).toHaveStyle('opacity: 0.1');
     },
   );
+
+  testWithWait(
+    'Should reduce the opacity of the other bars/lines and their legends on mouse over a bar legend',
+    VerticalBarChart,
+    { data: pointsWithLine, lineLegendText: 'just line', lineLegendColor: 'red' },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      const line = getById(container, /_VBC_line/i);
+      const points = getById(container, /_VBC_point/i);
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(line).toBeDefined();
+      expect(bars).toHaveLength(8);
+      expect(legends).toHaveLength(9);
+      expect(points).toHaveLength(7);
+      // single click
+      fireEvent.click(legends[0]);
+      // double click
+      fireEvent.click(legends[0]);
+      fireEvent.mouseOut(legends[0]);
+      fireEvent.click(legends[1]);
+      fireEvent.mouseOut(legends[1]);
+      fireEvent.focus(bars[0]);
+      // fireEvent.click(legends[0]);
+      // expect(screen.getByText('just line')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
+      // expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
+      // expect(line).toBeDefined();
+      // expect(bars[1]).toBeDefined();
+      // expect(bars[1]).toHaveStyle('opacity: 0.1');
+      // expect(bars[2]).toBeDefined();
+      // expect(bars[2]).toHaveStyle('opacity: 0.1');
+      // expect(bars[3]).toBeDefined();
+      // expect(bars[3]).toHaveStyle('opacity: 0.1');
+      // expect(bars[4]).toBeDefined();
+      // expect(bars[4]).toHaveStyle('opacity: 0.1');
+      // expect(bars[5]).toBeDefined();
+      // expect(bars[5]).toHaveStyle('opacity: 0.1');
+      // expect(bars[6]).toBeDefined();
+      // expect(bars[6]).toHaveStyle('opacity: 0.1');
+      // expect(bars[7]).toBeDefined();
+      // expect(bars[7]).toHaveStyle('opacity: 0.1');
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
@@ -342,7 +496,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
   });
 
   testWithWait(
-    'Should show the callout over the bar on mouse over',
+    'Should show the callout over the bar on mouse over and no legend is selected',
     VerticalBarChart,
     { data: pointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
@@ -353,6 +507,37 @@ describe('Vertical bar chart - Subcomponent callout', () => {
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
     },
   );
+
+  testWithWait(
+    'Should show the callout over the bar on mouse over and its legend is selected',
+    VerticalBarChart,
+    { data: pointsWithLine, calloutProps: { doNotLayer: true } },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(8);
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      fireEvent.click(legends[1]);
+      fireEvent.mouseOver(bars[1]);
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
+
+  // testWithWait(
+  //   'Should close the callout on dismiss',
+  //   VerticalBarChart,
+  //   { data: pointsWithLine, calloutProps: { doNotLayer: true } },
+  //   container => {
+  //     const bars = getById(container, /_VBC_bar/i);
+  //     expect(bars).toHaveLength(8);
+  //     fireEvent.mouseOver(bars[0]);
+  //     // Assert
+  //     expect(getById(container, /toolTipcallout/i)).toBeDefined();
+  //     fireEvent.mouseOut(bars[0]);
+  //     const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+  //     fireEvent.mouseOver(legends[0]);
+  //     expect(getById(container, /toolTipcallout/i)).not.toBeDefined();
+  //   },
+  // );
 
   testWithWait(
     'Should show the callout over the line on mouse over',
@@ -383,6 +568,29 @@ describe('Vertical bar chart - Subcomponent callout', () => {
     container => {
       const bars = getById(container, /_VBC_bar/i);
       expect(bars).toHaveLength(8);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      expect(screen.queryByText('Custom Callout Content')).toBeDefined();
+    },
+  );
+
+  testWithWait(
+    'Should show the custom callout over the bar on mouse over - without line',
+    VerticalBarChart,
+    {
+      data: chartPoints,
+      calloutProps: { doNotLayer: true },
+      onRenderCalloutPerDataPoint: (props: IVerticalBarChartProps) =>
+        props ? (
+          <div className="onRenderCalloutPerDataPoint">
+            <p>Custom Callout Content</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(3);
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
@@ -486,7 +694,7 @@ describe('VerticalBarChart unit tests', () => {
     test('returns empty string for empty data', () => {
       render(<VerticalBarChart data={chartPoints} />);
       const result = new VerticalBarChartBase({ data: [] }).getAriaLabels();
-      expect(result).toEqual([[]]);
+      expect(result).toEqual('');
     });
   });
   describe('create colors', () => {
@@ -520,6 +728,23 @@ describe('VerticalBarChart unit tests', () => {
       expect(result(chartPoints[0].y)).toBe('rgb(77, 86, 153)');
       expect(result(chartPoints[1].y)).toBe('rgb(37, 129, 0)');
       expect(result(chartPoints[2].y)).toBe('rgb(16, 124, 16)');
+    });
+  });
+  describe('getDomainMargins', () => {
+    test('returns the margins', () => {
+      // jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
+      render(<VerticalBarChart data={stringPoints} />);
+      const instance = new VerticalBarChartBase({
+        data: stringPoints,
+        width: 1000,
+        margins: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10,
+        },
+      });
+      instance.getDomainMargins();
     });
   });
 });

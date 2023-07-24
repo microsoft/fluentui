@@ -190,7 +190,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   public getAriaLabels() {
-    if (this.props.data && this.props.data.length >= 0) {
+    if (this.props.data && this.props.data.length > 0) {
       return [this.props.data.map(item => this._getAriaLabel(item))];
     }
     return '';
@@ -203,6 +203,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._adjustProps();
     return this._createColors();
   }
+
+  public getDomainMargins() {
+    this._xAxisLabels = this.props.data!.map((point: IVerticalBarChartDataPoint) => point.x as string);
+    this._getMargins(this.props.margins!);
+    return this._getDomainMargins(this.props.width!);
+  }
+
+  // get scales
 
   private _createLine = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -366,9 +374,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _getCustomizedCallout = () => {
-    return this.props.onRenderCalloutPerDataPoint
-      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
-      : null;
+    if (this.props.onRenderCalloutPerDataPoint) {
+      return this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout);
+    }
+    return null;
   };
 
   private _getGraphData = (
@@ -394,7 +403,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       };
     }
     const domainValues = [];
-    console.log('this._ymax = ', this._yMax);
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * this._yMax);
     }
