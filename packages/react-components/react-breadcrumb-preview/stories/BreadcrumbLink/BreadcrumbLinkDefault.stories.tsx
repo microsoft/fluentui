@@ -82,7 +82,7 @@ const linkItems: Item[] = [
 
 function renderLink(el: Item, isLastItem: boolean = false) {
   return (
-    <React.Fragment key={`${el.key}-button`}>
+    <React.Fragment key={`${el.key}-link`}>
       <BreadcrumbItem>
         <BreadcrumbLink
           {...el.linkProps}

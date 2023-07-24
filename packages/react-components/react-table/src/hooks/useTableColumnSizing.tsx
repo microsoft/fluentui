@@ -8,12 +8,11 @@ import {
   TableFeaturesState,
   UseTableColumnSizingParams,
 } from './types';
+
 import { useMeasureElement } from './useMeasureElement';
 import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useTableColumnResizeState } from './useTableColumnResizeState';
 import { useKeyboardResizing } from './useKeyboardResizing';
-
-export const KeyboardResizingCurrentColumnDataAttribute = 'data-keyboard-resizing';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
@@ -55,7 +54,7 @@ function useTableColumnSizingState<TItem>(
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
   // Creates the keyboard handler for resizing columns
-  const { toggleInteractiveMode, columnId: keyboardResizingColumnId } = useKeyboardResizing(columnResizeState);
+  const { toggleInteractiveMode, getKeyboardResizingProps } = useKeyboardResizing(columnResizeState);
 
   const enableKeyboardMode = React.useCallback(
     (columnId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) =>
@@ -83,13 +82,13 @@ function useTableColumnSizingState<TItem>(
           <TableResizeHandle
             onMouseDown={mouseHandler.getOnMouseDown(columnId)}
             onTouchStart={mouseHandler.getOnMouseDown(columnId)}
+            {...getKeyboardResizingProps(columnId, col?.width || 0)}
           />
         );
         return col
           ? {
               style: getColumnStyles(col),
               aside,
-              ...(keyboardResizingColumnId === columnId ? { [KeyboardResizingCurrentColumnDataAttribute]: '' } : {}),
             }
           : {};
       },
