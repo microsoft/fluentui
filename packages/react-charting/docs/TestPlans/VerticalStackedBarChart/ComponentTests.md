@@ -12,7 +12,6 @@
 | :---------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: | :-----------: |
 |                             Test 1: [Snapshot testing]                              |                                                                                                           |               |
 |                  - With only data prop, numerical data on x-axis.                   |                                Renders VerticalStackedBar chart correctly                                 |      RTL      |
-|                    - With only data prop, string data on x-axis.                    |                                Renders VerticalStackedBar chart correctly                                 |      RTL      |
 |                        - With HideLegend prop set to “true”                         |                                            Should hide legends                                            |    Enzyme     |
 |                        - With HideTooltip prop set to “true”                        |                                     Should hide the tooltip in chart                                      |    Enzyme     |
 |                    - With EnabledLegendsWrapLines set to “true”                     | Should enable the legends to wrap lines if there is not enough space to show all legends on a single line |    Enzyme     |
@@ -57,6 +56,7 @@
 |                          Test 8: [Sub-Component]: Callout                           |                                                                                                           |               |
 |                              - Hover mouse over a bar                               |                                 Should call the handler on mouse over bar                                 |      RTL      |
 |                              - Hover mouse over a bar                               |                               Should show the default callout over that bar                               |      RTL      |
+|                          - Hover mouse over a stacked bar                           |                                 Should show the default stacked call out                                  |      RTL      |
 |                             - Hover mouse over the line                             |                              Should show the default callout over that line                               |      RTL      |
 |                 - Specify custom callout and hover mouse over a bar                 |                               Should show the custom callout over that bar                                |      RTL      |
 |               - Specify custom callout and hover mouse over the line                |                               Should show the custom callout over that line                               |      RTL      |
