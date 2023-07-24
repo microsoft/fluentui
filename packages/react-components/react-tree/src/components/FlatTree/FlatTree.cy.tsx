@@ -3,23 +3,29 @@ import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import {
-  TreeProps,
   Tree,
   TreeItem,
   TreeItemLayout,
   treeItemLayoutClassNames,
   TreeItemValue,
+  FlatTreeProps,
+  HeadlessFlatTreeOptions,
+  useHeadlessFlatTree_unstable,
+  FlatTree,
 } from '@fluentui/react-tree';
 import { Button } from '@fluentui/react-button';
+import { flattenTreeFromElement } from '../../testing/flattenTreeFromElement';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const TreeTest: React.FC<TreeProps> = props => {
-  return (
-    <Tree id="baseTree" aria-label="Tree" {...props}>
-      {props.children ?? (
+const TreeTest: React.FC<FlatTreeProps & HeadlessFlatTreeOptions> = props => {
+  const flatTree = useHeadlessFlatTree_unstable(
+    flattenTreeFromElement(
+      props.children ? (
+        <>{props.children}</>
+      ) : (
         <>
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout>level 1, item 1</TreeItemLayout>
@@ -49,11 +55,19 @@ const TreeTest: React.FC<TreeProps> = props => {
             </Tree>
           </TreeItem>
         </>
-      )}
-    </Tree>
+      ),
+    ),
+    props,
+  );
+  return (
+    <FlatTree {...props} {...flatTree.getTreeProps()} id="baseTree" aria-label="Tree">
+      {Array.from(flatTree.items(), item => (
+        <TreeItem key={item.value} {...item.getTreeItemProps()} />
+      ))}
+    </FlatTree>
   );
 };
-TreeTest.displayName = 'Tree';
+TreeTest.displayName = 'FlatTree';
 
 describe(TreeTest.displayName!, () => {
   it('should have all but first level items hidden', () => {

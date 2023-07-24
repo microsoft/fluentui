@@ -6,8 +6,8 @@ import type { TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { RadioProps } from '@fluentui/react-radio';
 
-export type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
-export type SingleSelectValue = NonNullable<RadioProps['checked']>;
+type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
+type SingleSelectValue = NonNullable<RadioProps['checked']>;
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
@@ -86,9 +86,8 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   openItems?: Iterable<TreeItemValue>;
   /**
-   * This refers to a list of ids of opened tree items.
-   * Default value for the uncontrolled state of open tree items.
-   * These property is ignored for subtrees.
+   * This refers to a list of ids of default opened items.
+   * This property is ignored for subtrees.
    */
   defaultOpenItems?: Iterable<TreeItemValue>;
   /**
@@ -129,8 +128,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
   /**
-   * This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state.
-   * Default value for the uncontrolled state of checked tree items.
+   * This refers to a list of ids of default checked items, or a list of tuples of ids and checked state.
    * These property is ignored for subtrees.
    */
   defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;

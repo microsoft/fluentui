@@ -79,6 +79,7 @@ export type {
 export {
   Tree,
   TreeItem,
+  FlatTree,
   TreeProvider,
   TreeItemLayout,
   TreeItemProvider,
@@ -87,6 +88,7 @@ export {
   useTreeContextValues_unstable,
   useTreeItemContext_unstable,
   useTreeItemContextValues_unstable,
+  useFlatTreeContextValues_unstable,
   useTree_unstable,
   useTreeItem_unstable,
   useTreeItemLayout_unstable,
@@ -104,7 +106,11 @@ export {
   treeItemLayoutClassNames,
   treeItemClassNames,
   treeClassNames,
+  flatTreeClassNames,
   useFlatTree_unstable,
+  useHeadlessFlatTree_unstable,
+  useFlatTreeStyles_unstable,
+  renderFlatTree_unstable,
   flattenTree_unstable,
 } from '@fluentui/react-tree';
 
@@ -126,11 +132,13 @@ export type {
   TreeItemLayoutSlots,
   TreeItemLayoutProps,
   TreeContextValue,
-  NestedTreeItem,
-  FlatTree,
   FlatTreeProps,
-  FlatTreeItemProps,
-  FlatTreeItem,
+  FlatTreeSlots,
+  FlatTreeState,
+  HeadlessFlatTree,
+  HeadlessFlatTreeItem,
+  HeadlessFlatTreeItemProps,
+  HeadlessFlatTreeOptions,
 } from '@fluentui/react-tree';
 
 export {

@@ -1,12 +1,12 @@
 import { useMergedRefs } from '@fluentui/react-utilities';
-import { TreeNavigationData_unstable } from '../Tree';
-import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
-import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
-import { treeDataTypes } from '../utils/tokens';
-import { treeItemFilter } from '../utils/treeItemFilter';
-import { useRovingTabIndex } from './useRovingTabIndexes';
+import { TreeNavigationData_unstable } from './Tree.types';
+import { nextTypeAheadElement } from '../../utils/nextTypeAheadElement';
+import { treeDataTypes } from '../../utils/tokens';
+import { treeItemFilter } from '../../utils/treeItemFilter';
+import { useRovingTabIndex } from '../../hooks/useRovingTabIndexes';
+import { HTMLElementWalker, useHTMLElementWalkerRef } from '../../hooks/useHTMLElementWalker';
 
-export function useNestedTreeNavigation() {
+export function useTreeNavigation() {
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
   const [walkerRef, rootRef] = useHTMLElementWalkerRef(treeItemFilter);
 

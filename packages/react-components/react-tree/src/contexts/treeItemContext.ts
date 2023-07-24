@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeItemType } from '../TreeItem';
+import type { TreeItemType, TreeItemValue } from '../TreeItem';
 
 export type TreeItemContextValue = {
   layoutRef: React.Ref<HTMLDivElement>;
   subtreeRef: React.Ref<HTMLDivElement>;
   itemType: TreeItemType;
-  value: string;
+  value: TreeItemValue;
   open: boolean;
 };
 

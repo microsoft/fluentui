@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { Tree } from './Tree';
+import { FlatTree } from './FlatTree';
 
-describe('Tree', () => {
+describe('FlatTree', () => {
   isConformant({
-    Component: Tree,
-    displayName: 'Tree',
+    Component: FlatTree,
+    displayName: 'FlatTree',
     disabledTests: ['consistent-callback-args'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<Tree>Default Tree</Tree>);
+    const result = render(<FlatTree>Default FlatTree</FlatTree>);
     expect(result.container).toMatchSnapshot();
   });
 });

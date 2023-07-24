@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
+import {
+  FlatTree as Tree,
+  TreeItem,
+  TreeItemLayout,
+  HeadlessFlatTreeItemProps,
+  useHeadlessFlatTree_unstable,
+} from '@fluentui/react-tree';
 import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 import story from './TreeInfiniteScrolling.md';
 
@@ -7,7 +13,7 @@ interface Result {
   results: { name: string }[];
 }
 
-type Item = FlatTreeItemProps & { name: string | React.ReactNode };
+type Item = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
 
 const MAX_PAGES = 5;
 
@@ -57,7 +63,7 @@ export const InfiniteScrolling = () => {
 
   const styles = useStyles();
 
-  const flatTree = useFlatTree_unstable(items, { defaultOpenItems: ['pinned', 'people'] });
+  const flatTree = useHeadlessFlatTree_unstable(items, { defaultOpenItems: ['pinned', 'people'] });
 
   const fetchMoreItems = () => {
     setIsLoading(true);
