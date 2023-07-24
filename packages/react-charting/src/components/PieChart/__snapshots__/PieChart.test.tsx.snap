@@ -69,8 +69,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={160.99949687526205}
-            y={-0.40249958072932485}
+            x={158.9995031252588}
+            y={-0.3974995859376562}
           >
             A-50
           </text>
@@ -113,8 +113,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-113.41647658644041}
-            y={114.27030602355721}
+            x={-112.00757625617408}
+            y={112.85079911643227}
           >
             B-25
           </text>
@@ -157,8 +157,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-113.98640803292615}
-            y={-113.70179762761569}
+            x={-112.57042780891464}
+            y={-112.2893529365894}
           >
             C-25
           </text>
@@ -238,8 +238,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={135.99957500022134}
-            y={-0.3399996458334669}
+            x={133.99958125021809}
+            y={-0.3349996510417983}
           >
             A-50
           </text>
@@ -282,8 +282,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-95.80522245811116}
-            y={96.52646968449552}
+            x={-94.39632212784481}
+            y={95.1069627773706}
           >
             B-25
           </text>
@@ -326,8 +326,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-96.28665523278234}
-            y={-96.04623898978716}
+            x={-94.87067500877083}
+            y={-94.63379429876088}
           >
             C-25
           </text>
