@@ -363,7 +363,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -398,7 +398,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -431,7 +431,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
       <g>
         <rect
           fill="transparent"
-          height={-20}
+          height={290}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -441,7 +441,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -452,7 +452,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -463,13 +463,13 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
@@ -514,7 +514,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           x1={-20}
           x2={-20}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -550,12 +550,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -712,14 +706,20 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={true}
       hidden={false}
       id="toolTipundefined"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -905,7 +905,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -940,7 +940,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -973,7 +973,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
       <g>
         <rect
           fill="transparent"
-          height={-20}
+          height={290}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -983,7 +983,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -994,7 +994,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -1005,13 +1005,13 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
@@ -1056,7 +1056,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           x1={-20}
           x2={-20}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -1092,12 +1092,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1254,14 +1248,20 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={true}
       hidden={false}
       id="toolTipundefined"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -1344,7 +1344,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -1379,7 +1379,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1412,7 +1412,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
       <g>
         <rect
           fill="transparent"
-          height={-20}
+          height={290}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -1422,7 +1422,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -1433,7 +1433,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -1444,13 +1444,13 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
@@ -1495,7 +1495,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           x1={-20}
           x2={-20}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -1531,12 +1531,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1693,14 +1687,20 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={true}
       hidden={false}
       id="toolTipundefined"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -1763,7 +1763,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         overflow: hidden;
         width: 100%;
       }
-  id="chart_76"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1776,14 +1776,14 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone77"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -1817,8 +1817,8 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
             & path {
               display: none;
             }
-        id="xAxisGElementchart_76"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1845,14 +1845,14 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_76"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle74"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1861,9 +1861,9 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_71"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1873,11 +1873,11 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         />
         <path
           aria-label="metaData1, series 1 of 1 with 2 data points."
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           data-is-focusable={true}
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_71"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -1885,7 +1885,8 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           role="img"
         />
         <line
-          id="verticalLine_72"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           strokeDasharray={5.5}
           strokeWidth={1}
@@ -1893,7 +1894,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -1944,7 +1945,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone78"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1968,6 +1969,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -2080,7 +2082,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_68"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2093,14 +2095,14 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone69"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -2134,8 +2136,8 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_68"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2162,14 +2164,14 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_68"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle66"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -2178,9 +2180,9 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_63"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -2189,10 +2191,10 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="#637cef"
           fillOpacity={0.7}
-          id="0-graph-areaChart_63"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -2200,15 +2202,17 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="#637cef"
-            id="circle65_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2225,7 +2229,8 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
             cy={20}
             data-is-focusable={true}
             fill="#637cef"
-            id="circle65_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2238,7 +2243,8 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           />
         </g>
         <line
-          id="verticalLine_64"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="#637cef"
           strokeDasharray={5.5}
@@ -2247,7 +2253,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -2298,7 +2304,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone70"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2322,6 +2328,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -2454,7 +2461,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -2489,7 +2496,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2522,7 +2529,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       <g>
         <rect
           fill="transparent"
-          height={-20}
+          height={290}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -2532,7 +2539,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -2543,7 +2550,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -2554,15 +2561,17 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2580,6 +2589,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
             data-is-focusable={true}
             fill="red"
             id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2593,6 +2603,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         </g>
         <line
           id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -2601,7 +2612,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -2676,6 +2687,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -2788,7 +2800,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         overflow: hidden;
         width: 100%;
       }
-  id="chart_60"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2801,14 +2813,14 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone61"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -2842,8 +2854,8 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
             & path {
               display: none;
             }
-        id="xAxisGElementchart_60"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2870,14 +2882,14 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_60"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle58"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -2886,9 +2898,9 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       </g>
       <g>
         <path
-          d="M10,17.885Z"
+          d="M10,29.808Z"
           fill="transparent"
-          id="0-line-areaChart_55"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -2898,10 +2910,10 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <circle
           cx={10}
-          cy={17.884615384615383}
+          cy={29.8076923076923}
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_55"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -2912,15 +2924,17 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <g
           clipPath="url(#clip)"
-          d="M10,17.885L10,-35Z"
+          d="M10,29.808L10,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={10}
-            cy={17.884615384615383}
+            cy={29.8076923076923}
             data-is-focusable={true}
             fill="red"
-            id="circle57_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2933,7 +2947,8 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           />
         </g>
         <line
-          id="verticalLine_56"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -2942,7 +2957,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -2993,7 +3008,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone62"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3017,6 +3032,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -3129,7 +3145,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_28"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3142,14 +3158,14 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone29"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -3183,8 +3199,8 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_28"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -3211,14 +3227,14 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_28"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle26"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3227,9 +3243,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_23"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3238,10 +3254,10 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_23"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3249,15 +3265,17 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
-            id="circle25_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3274,7 +3292,8 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle25_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3287,7 +3306,8 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           />
         </g>
         <line
-          id="verticalLine_24"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -3296,7 +3316,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -3330,7 +3350,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone30"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3354,6 +3374,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                   display: inherit;
                   flex-shrink: 0;
                 }
+            key="0"
             role="none"
           >
             <button
@@ -3463,7 +3484,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_13"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3476,14 +3497,14 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone14"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={350}
       style={
         Object {
           "display": "block",
@@ -3517,8 +3538,8 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_13"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 315)"
       />
       <g
         className=
@@ -3545,14 +3566,14 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_13"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle11"
+          height={330}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3561,9 +3582,9 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,130.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_8"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3572,10 +3593,10 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,130.625L-20,20L-20,315L40,315Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_8"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3583,15 +3604,17 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,130.625L-20,20L-20,315L40,315Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={130.625}
             data-is-focusable={true}
             fill="red"
-            id="circle10_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3608,7 +3631,8 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle10_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3621,7 +3645,8 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_9"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -3630,7 +3655,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={350}
         />
       </g>
     </svg>
@@ -3657,7 +3682,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_20"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3670,14 +3695,14 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -3711,8 +3736,8 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_20"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -3739,14 +3764,14 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_20"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle18"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3755,9 +3780,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_15"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3766,10 +3791,10 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_15"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -3777,15 +3802,17 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
-            id="circle17_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3802,7 +3829,8 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle17_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3815,7 +3843,8 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_16"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -3824,7 +3853,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -3875,7 +3904,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3899,6 +3928,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -4011,7 +4041,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_36"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -4024,14 +4054,14 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone37"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -4065,8 +4095,8 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_36"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -4093,14 +4123,14 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_36"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle34"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4109,9 +4139,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_31"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4120,10 +4150,10 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_31"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4131,15 +4161,17 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
-            id="circle33_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4156,7 +4188,8 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle33_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4169,7 +4202,8 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           />
         </g>
         <line
-          id="verticalLine_32"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -4178,7 +4212,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -4229,7 +4263,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone38"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4253,6 +4287,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -4365,7 +4400,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_44"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -4378,14 +4413,14 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone45"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -4419,8 +4454,8 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_44"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -4447,14 +4482,14 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_44"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle42"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4463,9 +4498,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_39"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4474,10 +4509,10 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_39"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4485,15 +4520,17 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
-            id="circle41_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4510,7 +4547,8 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle41_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4523,7 +4561,8 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_40"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -4532,7 +4571,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -4583,7 +4622,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone46"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4607,6 +4646,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -4719,7 +4759,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_52"
+  id="chart_5"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -4732,14 +4772,14 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone53"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="AreaChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -4773,8 +4813,8 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_52"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_5"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -4801,14 +4841,14 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_52"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           fill="transparent"
-          height={-20}
-          id="rectangle50"
+          height={290}
+          id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4817,9 +4857,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </g>
       <g>
         <path
-          d="M40,-0.625L-20,20"
+          d="M40,115.625L-20,20"
           fill="transparent"
-          id="0-line-areaChart_47"
+          id="0-line-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4828,10 +4868,10 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
           fill="red"
           fillOpacity={0.7}
-          id="0-graph-areaChart_47"
+          id="0-graph-areaChart_0"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
@@ -4839,15 +4879,17 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+          d="M40,115.625L-20,20L-20,275L40,275Z"
+          key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
             cx={40}
-            cy={-0.625}
+            cy={115.625}
             data-is-focusable={true}
             fill="red"
-            id="circle49_0"
+            id="circle2_0"
+            key="circle2_0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4864,7 +4906,8 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             cy={20}
             data-is-focusable={true}
             fill="red"
-            id="circle49_1"
+            id="circle2_1"
+            key="circle2_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4877,7 +4920,8 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           />
         </g>
         <line
-          id="verticalLine_48"
+          id="verticalLine_1"
+          key="verticalLine_1"
           opacity={0.5}
           stroke="red"
           strokeDasharray={5.5}
@@ -4886,7 +4930,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
       </g>
     </svg>
@@ -4937,7 +4981,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4961,6 +5005,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
