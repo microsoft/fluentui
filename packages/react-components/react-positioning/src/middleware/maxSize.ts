@@ -11,30 +11,32 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
-      const applyMaxWidth =
-        autoSize === 'always' ||
-        autoSize === 'width-always' ||
-        (rects.floating.width > availableWidth && (autoSize === true || autoSize === 'width'));
+      const applyMaxWidth = autoSize === 'always' || autoSize === 'width-always';
+      const widthOverflow = rects.floating.width > availableWidth && (autoSize === true || autoSize === 'width');
 
-      const applyMaxHeight =
-        autoSize === 'always' ||
-        autoSize === 'height-always' ||
-        (rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height'));
+      const applyMaxHeight = autoSize === 'always' || autoSize === 'height-always';
+      const heightOverflow = rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height');
 
-      if (applyMaxHeight) {
+      if (applyMaxHeight || heightOverflow) {
         Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxHeight: `${availableHeight}px`,
           boxSizing: 'border-box',
           overflowY: 'auto',
         });
       }
+      if (heightOverflow) {
+        elements.floating.style.setProperty('height', `${availableHeight}px`);
+      }
 
-      if (applyMaxWidth) {
+      if (applyMaxWidth || widthOverflow) {
         Object.assign<CSSStyleDeclaration, Partial<CSSStyleDeclaration>>(elements.floating.style, {
           maxWidth: `${availableWidth}px`,
           boxSizing: 'border-box',
           overflowX: 'auto',
         });
+      }
+      if (widthOverflow) {
+        elements.floating.style.setProperty('width', `${availableWidth}px`);
       }
     },
   });

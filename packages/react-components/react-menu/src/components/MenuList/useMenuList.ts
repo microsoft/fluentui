@@ -118,6 +118,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     hasIcons: menuContext.hasIcons || false,
     hasCheckmarks: menuContext.hasCheckmarks || false,
     checkedValues,
+    hasMenuContext,
     setFocusByFirstCharacter,
     selectRadio,
     toggleCheckbox,

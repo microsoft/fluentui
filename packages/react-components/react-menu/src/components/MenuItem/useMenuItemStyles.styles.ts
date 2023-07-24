@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
+    minHeight: '32px',
     display: 'flex',
     alignItems: 'center',
     fontSize: tokens.fontSizeBase300,
