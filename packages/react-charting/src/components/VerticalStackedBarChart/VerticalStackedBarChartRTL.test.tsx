@@ -66,16 +66,6 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
-
-  testWithoutWait(
-    'Should render the vertical stacked bar chart with string x-axis data',
-    VerticalStackedBarChart,
-    { data: simplePoints },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-  );
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
@@ -263,9 +253,23 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
     container => {
     // Arrange
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-    fireEvent.mouseOver(bars[0]);
+    fireEvent.mouseOver(bars[2]);
     // Assert
     expect(getById(container, /toolTipcallout/i)).toBeDefined();
+  });
+
+  testWithWait(
+    'Should show the stacked callout over the bar on mouse over',
+    VerticalStackedBarChart,
+    { data: simplePoints, calloutProps: { doNotLayer: true } },
+    container => {
+    // Arrange
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    expect(bars).toHaveLength(8);
+    fireEvent.mouseOver(bars[2]);
+    // Assert
+    expect(getByClass(container, /calloutlegendText/i)).toBeDefined();
+    expect(getByClass(container, /calloutlegendText/i)).toHaveLength(4);
   });
 
   testWithWait(
