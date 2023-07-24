@@ -64,7 +64,7 @@ export const colorStatusTokens: ColorStatusTokens = Object.entries(statusColorMa
       [`colorStatus${color}Foreground2`]: mappedStatusColors[sharedColor].tint40,
       [`colorStatus${color}Foreground3`]: mappedStatusColors[sharedColor].tint20,
       [`colorStatus${color}BorderActive`]: mappedStatusColors[sharedColor].tint30,
-      [`colorStatus${color}ForegroundInverted`]: mappedStatusColors[sharedColor].primary,
+      [`colorStatus${color}ForegroundInverted`]: mappedStatusColors[sharedColor].shade10,
       [`colorStatus${color}Border1`]: mappedStatusColors[sharedColor].primary,
       [`colorStatus${color}Border2`]: mappedStatusColors[sharedColor].tint20,
     };
@@ -73,3 +73,10 @@ export const colorStatusTokens: ColorStatusTokens = Object.entries(statusColorMa
   },
   {} as ColorStatusTokens,
 );
+
+// one-off overrides for colorStatus tokens
+colorStatusTokens.colorStatusDangerForeground3 = mappedStatusColors[statusColorMapping.danger].tint30;
+colorStatusTokens.colorStatusDangerBorder2 = mappedStatusColors[statusColorMapping.danger].tint30;
+colorStatusTokens.colorStatusSuccessForeground3 = mappedStatusColors[statusColorMapping.success].tint40;
+colorStatusTokens.colorStatusSuccessBorder2 = mappedStatusColors[statusColorMapping.success].tint40;
+colorStatusTokens.colorStatusWarningForegroundInverted = mappedStatusColors[statusColorMapping.warning].shade20;
