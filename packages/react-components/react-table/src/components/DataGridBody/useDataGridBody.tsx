@@ -17,6 +17,7 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
   const { sortable } = useTableContext();
   const getRows = useDataGridContext_unstable(ctx => ctx.getRows);
   const sort = useDataGridContext_unstable(ctx => ctx.sort.sort);
+  // ColumnId context not valid here.
   const rows = sortable ? sort(getRows()) : getRows();
 
   const baseState = useTableBody_unstable({ ...props, children: null, as: 'div' }, ref);

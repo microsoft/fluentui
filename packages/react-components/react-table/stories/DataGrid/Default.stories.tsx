@@ -136,9 +136,9 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
+    // compare: (a, b) => {
+    //   return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    // },
     renderHeaderCell: () => {
       return 'Last update';
     },
@@ -153,7 +153,7 @@ export const Default = () => {
     <DataGrid
       items={items}
       columns={columns}
-      sortable
+      // sortable
       selectionMode="multiselect"
       getRowId={item => item.file.label}
       onSelectionChange={(e, data) => console.log(data)}

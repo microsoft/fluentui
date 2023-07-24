@@ -19,13 +19,15 @@ export const useDataGridHeaderCell_unstable = (
   props: DataGridHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridHeaderCellState => {
+  let { sortable = false } = props;
   const columnId = useColumnIdContext();
-  const { sortable } = useTableContext();
+  const { sortable: gridSortable } = useTableContext();
   const toggleColumnSort = useDataGridContext_unstable(ctx => ctx.sort.toggleColumnSort);
+  const columns = useDataGridContext_unstable(ctx => ctx.columns);
+  sortable = gridSortable || columns.find(c => c.columnId === columnId)?.compare.length !== 0;
   const sortDirection = useDataGridContext_unstable(ctx =>
     sortable ? ctx.sort.getSortDirection(columnId) : undefined,
   );
-
   const resizableColumns = useDataGridContext_unstable(ctx => ctx.resizableColumns);
   const columnSizing = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable);
 
@@ -39,6 +41,7 @@ export const useDataGridHeaderCell_unstable = (
 
   return useTableHeaderCell_unstable(
     {
+      sortable,
       sortDirection,
       as: 'div',
       tabIndex: sortable ? undefined : 0,
