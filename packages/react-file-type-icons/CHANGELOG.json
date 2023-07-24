@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 19 Jul 2023 07:34:08 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.10.0",
+      "version": "8.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "3cbeb7ed15c56a8eee665e5d404c005f01d7c94a",
+            "comment": "Add loopworkspace to FileIconType enum\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:36 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.9.3",
       "version": "8.9.3",

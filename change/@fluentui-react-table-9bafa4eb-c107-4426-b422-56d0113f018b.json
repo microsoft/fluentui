@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "28456",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -16,6 +16,11 @@ import {
   Avatar,
   Input,
   useId,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -160,12 +165,23 @@ export const ResizableColumnsUncontrolled = () => {
         <TableHeader>
           <TableRow>
             {columns.map(column => (
-              <TableHeaderCell
-                key={column.columnId}
-                {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
-              >
-                {column.renderHeaderCell()}
-              </TableHeaderCell>
+              <Menu openOnContext key={column.columnId}>
+                <MenuTrigger>
+                  <TableHeaderCell
+                    key={column.columnId}
+                    {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
+                  >
+                    {column.renderHeaderCell()}
+                  </TableHeaderCell>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
+                      Keyboard Column Resizing
+                    </MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
             ))}
           </TableRow>
         </TableHeader>
@@ -216,6 +232,9 @@ ResizableColumnsUncontrolled.parameters = {
         '',
         'Options can be passed to the plugin to define minimum, default and optimal ',
         '(in a controlled scenario) width of the column.',
+        '',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access advanced Table features.',
         '',
         'To learn about how to control widths from the parent, please see the example below.',
       ].join('\n'),

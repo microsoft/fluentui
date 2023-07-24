@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
-const { isConvergedPackage, getAllPackageInfo } = require('@fluentui/scripts-monorepo');
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
 const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nrwl/devkit');
 const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
@@ -162,25 +162,13 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       '@fluentui/react-conformance-griffel',
     ];
 
-    // TODO: https://github.com/microsoft/fluentui/issues/26691
-    const packagesOutsideReactComponentsSuite = [
-      '@fluentui/react-data-grid-react-window',
-      '@fluentui/react-datepicker-compat',
-      '@fluentui/react-migration-v8-v9',
-      '@fluentui/react-migration-v0-v9',
-    ];
-
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
       if (excludePackages.includes(cur.packageJson.name)) {
         return acc;
       }
 
-      if (packagesOutsideReactComponentsSuite.includes(cur.packageJson.name)) {
-        acc[cur.packageJson.name] = { replace: cur.packageJson.name };
-        return acc;
-      }
-
-      if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
+      if (isPackagePartOfReactComponentsSuite(cur.packageJson.name)) {
+        // TODO: once all pre-release packages (deprecated approach) will be released as stable this logic will be removed
         const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
         acc[cur.packageJson.name] = isPrerelease
@@ -194,6 +182,22 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
     }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
 
     return importMappings;
+  }
+
+  /**
+   *
+   * @param {string} projectName
+   */
+  function isPackagePartOfReactComponentsSuite(projectName) {
+    const suiteProject = allPackageInfo['@fluentui/react-components'];
+
+    // this is needed because react-northstar is a lerna sub-project thus `getAllPackageInfo` returns only projects within `packages/fluentui/` folder
+    if (suiteProject) {
+      const suiteDependencies = suiteProject.packageJson.dependencies ?? {};
+      return Boolean(suiteDependencies[projectName]);
+    }
+
+    return false;
   }
 }
 
@@ -214,9 +218,8 @@ function getPackageStoriesGlob(options) {
   );
 
   packageJson.dependencies = packageJson.dependencies ?? {};
-  const dependencies = Object.assign(packageJson.dependencies, {
-    [options.packageName]: '*',
-  });
+
+  const dependencies = { ...packageJson.dependencies };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)

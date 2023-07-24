@@ -19,6 +19,11 @@ import {
   Button,
   Input,
   Label,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
 } from '@fluentui/react-components';
 import {
   DocumentRegular,
@@ -271,16 +276,27 @@ export const ResizableColumnsControlled = () => {
         <TableHeader>
           <TableRow>
             {columns.map((column, index) => (
-              <TableHeaderCell
-                key={column.columnId}
-                {...columnSizing.getTableHeaderCellProps(column.columnId)}
-                {...headerSortProps(column.columnId)}
-              >
-                {column.renderHeaderCell()}
-                <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
-                  x
-                </span>
-              </TableHeaderCell>
+              <Menu openOnContext key={column.columnId}>
+                <MenuTrigger>
+                  <TableHeaderCell
+                    key={column.columnId}
+                    {...columnSizing.getTableHeaderCellProps(column.columnId)}
+                    {...headerSortProps(column.columnId)}
+                  >
+                    {column.renderHeaderCell()}
+                    <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
+                      x
+                    </span>
+                  </TableHeaderCell>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem onClick={columnSizing.enableKeyboardMode(column.columnId)}>
+                      Keyboard Column Resizing
+                    </MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
             ))}
           </TableRow>
         </TableHeader>
@@ -308,6 +324,9 @@ ResizableColumnsControlled.parameters = {
         '`onColumnResize` callback to control the width of each column from the parent component.',
         '',
         'The table itself still makes sure the columns are laid out in such a way that they fit in the container.',
+        '',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access advanced Table features.',
         '',
         'This example also demonstrates how columns can be removed or added.',
       ].join('\n'),
