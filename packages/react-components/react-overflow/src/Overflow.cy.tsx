@@ -9,7 +9,6 @@ import {
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
-  useIsOverflowItemVisible,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 
