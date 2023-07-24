@@ -1,8 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
-import { createNextOpenItems, useControllableOpenItems, useNestedTreeNavigation } from '../../hooks';
+import { SelectionMode, getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  TreeOpenChangeData,
+  TreeProps,
+  TreeState,
+  TreeNavigationData_unstable,
+  TreeCheckedChangeData,
+} from './Tree.types';
+import {
+  useControllableOpenItems,
+  useNestedTreeNavigation,
+  useNestedControllableCheckedItems,
+  createNextOpenItems,
+} from '../../hooks';
 import { treeDataTypes } from '../../utils/tokens';
 import { TreeItemRequest } from '../../contexts';
 
@@ -15,19 +26,26 @@ import { TreeItemRequest } from '../../contexts';
 export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   warnIfNoProperPropsRootTree(props);
 
-  const { appearance = 'subtle', size = 'medium' } = props;
+  const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
   const [openItems, setOpenItems] = useControllableOpenItems(props);
 
+  const [checkedItems] = useNestedControllableCheckedItems(props);
   const [navigate, navigationRef] = useNestedTreeNavigation();
 
-  const requestOpenChange = (data: Omit<TreeOpenChangeData, 'openItems'>) => {
-    const nextOpenItems = createNextOpenItems(data, openItems);
-    props.onOpenChange?.(data.event, { ...data, openItems: nextOpenItems } as TreeOpenChangeData);
+  const requestOpenChange = (data: TreeOpenChangeData) => {
+    props.onOpenChange?.(data.event, data);
     if (data.event.isDefaultPrevented()) {
       return;
     }
-    return setOpenItems(nextOpenItems);
+    return setOpenItems(createNextOpenItems(data, openItems));
+  };
+
+  const requestCheckedChange = (data: TreeCheckedChangeData) => {
+    props.onCheckedChange?.(data.event, data);
+    // TODO:
+    // we should implement the logic for nested tree selection
+    // return setCheckedItems(checkedItems);
   };
 
   const requestNavigation = (data: TreeNavigationData_unstable) => {
@@ -77,6 +95,14 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
       case treeDataTypes.ArrowDown:
       case treeDataTypes.TypeAhead:
         return requestNavigation({ ...request, target: request.event.currentTarget });
+      case treeDataTypes.Change: {
+        const previousCheckedValue = checkedItems.get(request.value);
+        return requestCheckedChange({
+          ...request,
+          selectionMode: selectionMode as SelectionMode,
+          checked: previousCheckedValue === 'mixed' ? true : !previousCheckedValue,
+        });
+      }
     }
   });
 
@@ -84,15 +110,18 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     components: {
       root: 'div',
     },
+    selectionMode,
     open: true,
     appearance,
     size,
     level: 1,
     openItems,
+    checkedItems,
     requestTreeResponse,
     root: getNativeElementProps('div', {
       ref: useMergedRefs(navigationRef, ref),
       role: 'tree',
+      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
       ...props,
     }),
   };

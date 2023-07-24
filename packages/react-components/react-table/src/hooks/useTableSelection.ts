@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import type { TableRowId, TableSelectionState, TableFeaturesState } from './types';
 
@@ -36,6 +37,52 @@ export function useTableSelectionState<TItem>(
     onSelectionChange,
   });
 
+  // Selection state can contain obselete items (i.e. rows that are removed)
+  const selectableRowIds = React.useMemo(() => {
+    const rowIds = new Set<TableRowId>();
+    for (let i = 0; i < items.length; i++) {
+      rowIds.add(getRowId?.(items[i]) ?? i);
+    }
+
+    return rowIds;
+  }, [items, getRowId]);
+
+  const allRowsSelected = React.useMemo(() => {
+    if (selectionMode === 'single') {
+      const selectedRow = Array.from(selected)[0];
+      return selectableRowIds.has(selectedRow);
+    }
+
+    // multiselect case
+    if (selected.size < selectableRowIds.size) {
+      return false;
+    }
+
+    let res = true;
+    selectableRowIds.forEach(selectableRowId => {
+      if (!selected.has(selectableRowId)) {
+        res = false;
+      }
+    });
+
+    return res;
+  }, [selectableRowIds, selected, selectionMode]);
+
+  const someRowsSelected = React.useMemo(() => {
+    if (selected.size <= 0) {
+      return false;
+    }
+
+    let res = false;
+    selectableRowIds.forEach(selectableRowId => {
+      if (selected.has(selectableRowId)) {
+        res = true;
+      }
+    });
+
+    return res;
+  }, [selectableRowIds, selected]);
+
   const toggleAllRows: TableSelectionState['toggleAllRows'] = useEventCallback(e => {
     selectionMethods.toggleAllItems(
       e,
@@ -63,8 +110,8 @@ export function useTableSelectionState<TItem>(
     ...tableState,
     selection: {
       selectionMode,
-      someRowsSelected: selected.size > 0,
-      allRowsSelected: selectionMode === 'single' ? selected.size > 0 : selected.size === items.length,
+      someRowsSelected,
+      allRowsSelected,
       selectedRows: selected,
       toggleRow,
       toggleAllRows,

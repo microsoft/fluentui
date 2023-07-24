@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Improving first render cycle of cartesian chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -3,7 +3,7 @@ import type { TreeItemContextValues, TreeItemState } from './TreeItem.types';
 import type { TreeItemContextValue, TreeItemSlotsContextValue } from '../../contexts';
 
 export function useTreeItemContextValues_unstable(state: TreeItemState): TreeItemContextValues {
-  const { value, itemType, layoutRef, subtreeRef, open, actions, aside, expandIcon } = state;
+  const { value, itemType, layoutRef, subtreeRef, open, actions, aside, expandIcon, selector } = state;
 
   /**
    * This context is created with "@fluentui/react-context-selector",
@@ -18,8 +18,8 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
   };
 
   const treeItemSlots: TreeItemSlotsContextValue = React.useMemo(
-    () => ({ actions, aside, expandIcon }),
-    [actions, aside, expandIcon],
+    () => ({ actions, aside, expandIcon, selector }),
+    [actions, aside, expandIcon, selector],
   );
 
   return { treeItem, treeItemSlots };
