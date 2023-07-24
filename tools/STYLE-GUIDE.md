@@ -52,7 +52,7 @@ Integration tests for the generator as a whole.
 
 TypeScript interface that matches `schema.json`. You can generate this from the json file by running:
 
-- `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts`
+- `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts --additionalProperties false`
 
 **`schema.json`**
 
@@ -61,6 +61,12 @@ Provides a description of the generator, available options, validation informati
 **`README.md`**
 
 Generator documentation - about + API
+
+Run following to update TOC:
+
+```sh
+npx markdown-toc --bullets "-"  -i tools/generators/<generator-name>/README.md
+```
 
 ℹ️ _NOTE: In future, this will be automatically generated._
 
