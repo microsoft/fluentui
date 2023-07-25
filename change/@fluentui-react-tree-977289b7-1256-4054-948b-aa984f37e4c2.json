@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: moves slots from TreeItem to TreeItemLayout",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

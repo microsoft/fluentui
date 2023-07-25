@@ -3,6 +3,11 @@ import { Context, ContextSelector, createContext, useContextSelector } from '@fl
 import type { TreeItemType, TreeItemValue } from '../TreeItem';
 
 export type TreeItemContextValue = {
+  isActionsVisible: boolean;
+  isAsideVisible: boolean;
+  selectionRef: React.Ref<HTMLInputElement>;
+  actionsRef: React.Ref<HTMLDivElement>;
+  expandIconRef: React.Ref<HTMLDivElement>;
   layoutRef: React.Ref<HTMLDivElement>;
   subtreeRef: React.Ref<HTMLDivElement>;
   itemType: TreeItemType;
@@ -12,8 +17,13 @@ export type TreeItemContextValue = {
 
 const defaultContextValue: TreeItemContextValue = {
   value: '',
+  selectionRef: React.createRef(),
   layoutRef: React.createRef(),
   subtreeRef: React.createRef(),
+  actionsRef: React.createRef(),
+  expandIconRef: React.createRef(),
+  isActionsVisible: false,
+  isAsideVisible: false,
   itemType: 'leaf',
   open: false,
 };

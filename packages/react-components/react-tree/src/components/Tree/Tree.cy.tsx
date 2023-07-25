@@ -112,8 +112,8 @@ describe(TreeTest.displayName!, () => {
     it('should not expand/collapse item on actions click', () => {
       mount(
         <TreeTest id="baseTree" aria-label="Tree">
-          <TreeItem actions={<Button id="action">action!</Button>} itemType="branch" value="item1" data-testid="item1">
-            <TreeItemLayout>level 1, item 1</TreeItemLayout>
+          <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItemLayout actions={<Button id="action">action!</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
               <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                 <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -155,8 +155,8 @@ describe(TreeTest.displayName!, () => {
     it('should focus on actions when pressing tab key', () => {
       mount(
         <TreeTest id="baseTree" aria-label="Tree">
-          <TreeItem actions={<Button id="action">action</Button>} itemType="branch" value="item1" data-testid="item1">
-            <TreeItemLayout>level 1, item 1</TreeItemLayout>
+          <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
               <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                 <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -174,8 +174,8 @@ describe(TreeTest.displayName!, () => {
     it('should not expand/collapse item on actions Enter/Space key', () => {
       mount(
         <TreeTest id="baseTree" aria-label="Tree">
-          <TreeItem actions={<Button id="action">action</Button>} itemType="branch" value="item1" data-testid="item1">
-            <TreeItemLayout>level 1, item 1</TreeItemLayout>
+          <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
               <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
                 <TreeItemLayout>level 2, item 1</TreeItemLayout>
