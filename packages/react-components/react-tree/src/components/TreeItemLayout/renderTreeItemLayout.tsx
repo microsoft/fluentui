@@ -15,6 +15,7 @@ export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
   return (
     <slots.root {...slotProps.root}>
       {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+      {slots.selector && <slots.selector {...slotProps.selector} />}
       {slots.iconBefore && <slots.iconBefore {...slotProps.iconBefore} />}
       <slots.content {...slotProps.content}>{slotProps.root.children}</slots.content>
       {slots.iconAfter && <slots.iconAfter {...slotProps.iconAfter} />}

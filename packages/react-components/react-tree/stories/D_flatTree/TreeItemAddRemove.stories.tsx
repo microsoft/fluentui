@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {
-  FlatTreeItemProps,
-  Tree,
+  FlatTree as Tree,
   TreeItem,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
-  useFlatTree_unstable,
+  HeadlessFlatTreeItemProps,
+  useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { Delete20Regular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 import story from './TreeItemAddRemove.md';
 
-type ItemProps = FlatTreeItemProps & { content: string };
+type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
 const defaultSubTrees: ItemProps[][] = [
   [
@@ -60,7 +60,7 @@ export const AddRemoveTreeItem = () => {
       return [...currentTrees.slice(0, subtreeIndex), nextSubTree, ...currentTrees.slice(subtreeIndex + 1)];
     });
 
-  const flatTree = useFlatTree_unstable(
+  const flatTree = useHeadlessFlatTree_unstable(
     React.useMemo(
       () => [
         ...trees[0],

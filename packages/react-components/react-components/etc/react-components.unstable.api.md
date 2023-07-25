@@ -46,9 +46,14 @@ import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
-import { FlatTreeItem } from '@fluentui/react-tree';
-import { FlatTreeItemProps } from '@fluentui/react-tree';
+import { flatTreeClassNames } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
+import { FlatTreeSlots } from '@fluentui/react-tree';
+import { FlatTreeState } from '@fluentui/react-tree';
+import { HeadlessFlatTree } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItem } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItemProps } from '@fluentui/react-tree';
+import { HeadlessFlatTreeOptions } from '@fluentui/react-tree';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
@@ -59,7 +64,6 @@ import { infoLabelClassNames } from '@fluentui/react-infobutton';
 import { InfoLabelProps } from '@fluentui/react-infobutton';
 import { InfoLabelSlots } from '@fluentui/react-infobutton';
 import { InfoLabelState } from '@fluentui/react-infobutton';
-import { NestedTreeItem } from '@fluentui/react-tree';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderDrawer_unstable } from '@fluentui/react-drawer';
 import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
@@ -69,6 +73,7 @@ import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
 import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
+import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderTree_unstable } from '@fluentui/react-tree';
@@ -131,6 +136,9 @@ import { useDrawerOverlay_unstable } from '@fluentui/react-drawer';
 import { useDrawerOverlayStyles_unstable } from '@fluentui/react-drawer';
 import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
+import { useFlatTreeContextValues_unstable } from '@fluentui/react-tree';
+import { useFlatTreeStyles_unstable } from '@fluentui/react-tree';
+import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
@@ -262,11 +270,21 @@ export { flattenTree_unstable }
 
 export { FlatTree }
 
-export { FlatTreeItem }
-
-export { FlatTreeItemProps }
+export { flatTreeClassNames }
 
 export { FlatTreeProps }
+
+export { FlatTreeSlots }
+
+export { FlatTreeState }
+
+export { HeadlessFlatTree }
+
+export { HeadlessFlatTreeItem }
+
+export { HeadlessFlatTreeItemProps }
+
+export { HeadlessFlatTreeOptions }
 
 export { InfoButton }
 
@@ -288,8 +306,6 @@ export { InfoLabelSlots }
 
 export { InfoLabelState }
 
-export { NestedTreeItem }
-
 export { renderAlert_unstable }
 
 export { renderDrawer_unstable }
@@ -307,6 +323,8 @@ export { renderDrawerHeaderTitle_unstable }
 export { renderDrawerInline_unstable }
 
 export { renderDrawerOverlay_unstable }
+
+export { renderFlatTree_unstable }
 
 export { renderInfoButton_unstable }
 
@@ -431,6 +449,12 @@ export { useDrawerOverlayStyles_unstable }
 export { useDynamicVirtualizerMeasure }
 
 export { useFlatTree_unstable }
+
+export { useFlatTreeContextValues_unstable }
+
+export { useFlatTreeStyles_unstable }
+
+export { useHeadlessFlatTree_unstable }
 
 export { useInfoButton_unstable }
 

@@ -85,6 +85,20 @@ export { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/upd
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
   const workspaceConfig = readNxJson(tree) ?? {};
+  const paths = getProjectPaths(projectConfig);
+
+  return {
+    projectConfig,
+    workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
+    paths,
+  };
+}
+
+export function getProjectPaths(projectConfig: ProjectConfiguration) {
   const paths = {
     configRoot: joinPathFragments(projectConfig.root, 'config'),
     packageJson: joinPathFragments(projectConfig.root, 'package.json'),
@@ -120,15 +134,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     },
   };
 
-  return {
-    projectConfig,
-    workspaceConfig,
-    /**
-     * package name without npmScope (@scopeName)
-     */
-    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
-    paths,
-  };
+  return paths;
 }
 
 export const workspacePaths = {

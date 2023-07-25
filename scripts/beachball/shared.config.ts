@@ -22,10 +22,10 @@ export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changel
     precommit: () => {
       try {
         const generators = [
-          // Fixes unwanted pre-release dependency bumps caused by beachball
-          'normalize-package-dependencies',
           // Fixes any dependency mismatches caused by beachball scoping
           'dependency-mismatch',
+          // Fixes unwanted pre-release dependency bumps caused by beachball
+          'normalize-package-dependencies',
         ];
 
         generators.forEach(generator => {

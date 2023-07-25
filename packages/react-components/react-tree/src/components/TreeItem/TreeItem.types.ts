@@ -3,6 +3,8 @@ import type { TreeItemContextValue } from '../../contexts';
 import { treeItemLevelToken } from '../../utils/tokens';
 import * as React from 'react';
 import { TreeItemSlotsContextValue } from '../../contexts/treeItemSlotsContext';
+import type { Checkbox } from '@fluentui/react-checkbox';
+import type { Radio } from '@fluentui/react-radio';
 
 export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
 
@@ -30,6 +32,14 @@ export type TreeItemSlots = {
       }
     >
   >;
+  /**
+   * Selection indicator if selection type is checkbox
+   */
+  checkboxIndicator?: Slot<typeof Checkbox>;
+  /**
+   * Selection indicator if selection type is radio
+   */
+  radioIndicator?: Slot<typeof Radio>;
 };
 
 export type TreeItemInternalSlot = Pick<TreeItemSlots, 'root'>;

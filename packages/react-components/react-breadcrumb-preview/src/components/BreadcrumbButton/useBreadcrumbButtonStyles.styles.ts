@@ -26,20 +26,19 @@ const defaultButtonStyles = {
   cursor: 'auto',
 };
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    ...shorthands.padding(tokens.spacingHorizontalNone),
+  },
   small: {
     height: '24px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.caption1,
   },
   medium: {
     height: '32px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.body1,
   },
   large: {
     height: '40px',
-    ...shorthands.padding(tokens.spacingHorizontalS),
     ...typographyStyles.body2,
   },
   current: {
