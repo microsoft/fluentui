@@ -44,7 +44,12 @@ export function useRootTree(
   const requestOpenChange = (data: TreeOpenChangeData) => props.onOpenChange?.(data.event, data);
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
-  const requestNavigation = (data: TreeNavigationData_unstable) => props.onNavigation_unstable?.(data.event, data);
+  const requestNavigation = (data: TreeNavigationData_unstable) => {
+    props.onNavigation_unstable?.(data.event, data);
+    if (data.type === treeDataTypes.ArrowDown || data.type === treeDataTypes.ArrowUp) {
+      data.event.preventDefault();
+    }
+  };
 
   const requestTreeResponse = useEventCallback((request: TreeItemRequest) => {
     switch (request.type) {
