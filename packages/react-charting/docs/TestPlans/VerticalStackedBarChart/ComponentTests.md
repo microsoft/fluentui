@@ -43,9 +43,10 @@
 |                            Test 6: [Sub-Component]: Bar                             |                                                                                                           |               |
 |                                 - Specify bar color                                 |                                Should render bar with the specified color                                 |      RTL      |
 |                       - Specify separate bars in a single bar                       |                               Should render stacked bar with specified data                               |      RTL      |
+|                            - setMinimumBarHeight to “x”                             |           Should render bars properly, bars below this height will be displayed at this height            |      RTL      |
+|                                - set barWidth to “x”                                |                                Should render bars with specified bar width                                |      RTL      |
 |                          Test 7: [Sub-Component]: Legends                           |                                                                                                           |               |
 |                                   - Hide legends                                    |                                   Should not show any rendered legends                                    |      RTL      |
-|                            - setMinimumBarHeight to “x”                             |           Should render bars properly, bars below this height will be displayed at this height            |      RTL      |
 |                           - Hover mouse over line legends                           |                             Should reduce the opacity of the other lines/bars                             |      RTL      |
 |                           - Hover mouse over bar legends                            |                             Should reduce the opacity of the other lines/bars                             |      RTL      |
 |                      - Mouse move from one bar to another bar                       |                     Should reset the opacity of the lines on mouse leave a bar legend                     |      RTL      |
@@ -55,7 +56,7 @@
 |                        - Double mouse click on line legends                         |                     Should deselect legend on double mouse click on respective legend                     |      RTL      |
 |                          Test 8: [Sub-Component]: Callout                           |                                                                                                           |               |
 |                              - Hover mouse over a bar                               |                                 Should call the handler on mouse over bar                                 |      RTL      |
-|                              - Hover mouse over a bar                               |                               Should show the default callout over that bar                               |      RTL      |
+|                     - Hover mouse over a bar to display callout                     |                               Should show the default callout over that bar                               |      RTL      |
 |                          - Hover mouse over a stacked bar                           |                                 Should show the default stacked call out                                  |      RTL      |
 |                             - Hover mouse over the line                             |                              Should show the default callout over that line                               |      RTL      |
 |                 - Specify custom callout and hover mouse over a bar                 |                               Should show the custom callout over that bar                                |      RTL      |
