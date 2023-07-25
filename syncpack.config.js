@@ -40,9 +40,7 @@ const config = {
         '@typescript-eslint/experimental-utils',
         '@typescript-eslint/parser',
         '@microsoft/load-themed-styles',
-        'ajv',
         'chalk',
-        'cli-table3',
         'copy-to-clipboard',
         'del',
         'eslint-config-airbnb',
@@ -56,12 +54,10 @@ const config = {
         'eslint-plugin-react-hooks',
         'fs-extra',
         'glob',
-        'gzip-size',
         'jju',
         'lerna-alias',
         'loader-utils',
         'lodash',
-        'pretty-bytes',
         'schema-utils',
         'react-is',
         'react-hot-loader',
@@ -86,10 +82,6 @@ const config = {
     {
       packages: ['@fluentui/react-conformance'],
       dependencies: ['chalk'],
-    },
-    {
-      packages: ['@fluentui/bundle-size'],
-      dependencies: ['@azure/data-tables', 'prettier', 'workspace-tools', 'ci-info', 'node-fetch'],
     },
   ],
 };

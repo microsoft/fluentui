@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: update style to prevent double scrollbar",
+  "packageName": "@fluentui/react-menu",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

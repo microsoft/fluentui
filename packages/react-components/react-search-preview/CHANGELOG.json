@@ -2,6 +2,27 @@
   "name": "@fluentui/react-search-preview",
   "entries": [
     {
+      "date": "Tue, 25 Jul 2023 13:29:21 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.23",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:36 GMT",
       "tag": "@fluentui/react-search-preview_v0.1.1",
       "version": "0.1.1",

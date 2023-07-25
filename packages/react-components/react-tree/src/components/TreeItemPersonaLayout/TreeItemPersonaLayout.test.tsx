@@ -2,21 +2,38 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TreeItemPersonaLayout } from './TreeItemPersonaLayout';
 import { isConformant } from '../../testing/isConformant';
-import { TreeItemSlotsProvider } from '../../contexts/treeItemSlotsContext';
+import { TreeItemProvider } from '../../contexts';
 
-const Wrap: React.FC = props => (
-  <TreeItemSlotsProvider value={{ actions: { visible: true, children: '' }, aside: '', expandIcon: '' }}>
-    {props.children}
-  </TreeItemSlotsProvider>
+const Wrapper: React.FC = ({ children }) => (
+  <TreeItemProvider
+    value={{
+      value: '',
+      selectionRef: React.createRef(),
+      layoutRef: React.createRef(),
+      subtreeRef: React.createRef(),
+      actionsRef: React.createRef(),
+      expandIconRef: React.createRef(),
+      isActionsVisible: true,
+      isAsideVisible: true,
+      itemType: 'leaf',
+      open: false,
+    }}
+  >
+    {children}
+  </TreeItemProvider>
 );
 
 describe('TreeItemPersonaLayout', () => {
   isConformant({
     Component: TreeItemPersonaLayout,
-    renderOptions: { wrapper: Wrap },
+    renderOptions: { wrapper: Wrapper },
     displayName: 'TreeItemPersonaLayout',
     requiredProps: {
       description: 'description',
+      expandIcon: 'expandIcon',
+      actions: 'actions',
+      aside: 'aside',
+      selector: {},
     },
   });
 

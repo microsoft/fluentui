@@ -683,7 +683,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
-                'data-is-focusable': true,
+                'data-is-focusable': points[index]!.legend === this.state.selectedLegend,
                 role: 'img',
                 'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
                   points[index].data.length
@@ -714,7 +714,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 <circle
                   key={circleId}
                   id={circleId}
-                  data-is-focusable={true}
+                  data-is-focusable={points[index]!.legend === this.state.selectedLegend}
                   cx={xScale(singlePoint.xVal)}
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}

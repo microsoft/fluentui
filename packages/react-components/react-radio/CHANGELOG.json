@@ -2,6 +2,33 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Tue, 25 Jul 2023 13:29:20 GMT",
+      "tag": "@fluentui/react-radio_v9.1.26",
+      "version": "9.1.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-field to v9.1.13",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-tabster to v9.11.0",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:33 GMT",
       "tag": "@fluentui/react-radio_v9.1.25",
       "version": "9.1.25",
