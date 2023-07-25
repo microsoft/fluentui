@@ -56,6 +56,16 @@ const simplePoints = [
   }
 ];
 
+const simplePointsWithoutLine = [
+  {
+    chartData: firstChartPoints,
+    xAxisPoint: 20,
+    lineData: [
+      { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }
+    ]
+  }
+];
+
 describe('Vertical stacked bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical stacked bar chart with numeric x-axis data',
@@ -79,10 +89,34 @@ describe('Vertical stacked bar chart - Subcomponent Line', () => {
       expect(lines).toBeDefined();
       },
   );
-
 });
 
 describe('Vertical stacked bar chart - Subcomponent bar', () => {
+  testWithWait(
+    'Should set minimum bar height',
+    VerticalStackedBarChart,
+    { data: simplePoints, barMinimumHeight: 100 },
+    container => {
+      // Legends have 'rect' as a part of their classname
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(bars[0].getAttribute('height')).toEqual('100');
+      },
+  );
+
+  testWithWait(
+    'Should render the bar with the given width',
+    VerticalStackedBarChart,
+    { data: simplePointsWithoutLine, barWidth: 100 },
+    container => {
+      // Assert
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(2);
+      expect(bars[0].getAttribute('width')).toEqual('100');
+      expect(bars[1].getAttribute('width')).toEqual('100');
+    },
+  );
+
   testWithWait(
     'Should render the bar with the specified color',
     VerticalStackedBarChart,
@@ -117,18 +151,6 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       // Legends have 'rect' as a part of their classname
       expect(getByClass(container, /rect/i)).toHaveLength(0);
     },
-  );
-
-  testWithWait(
-    'Should set minimum bar height',
-    VerticalStackedBarChart,
-    { data: simplePoints, barMinimumHeight: 100 },
-    container => {
-      // Legends have 'rect' as a part of their classname
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      // Assert
-      expect(bars[0].getAttribute('height')).toEqual('100');
-      },
   );
 
   testWithWait(
