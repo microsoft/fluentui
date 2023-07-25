@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement useRestoreFocusSource and useRestoreFocusTarget based on the tabster restorer API",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

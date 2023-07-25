@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 20 Jul 2023 18:27:34 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.7.0)
+
+Tue, 25 Jul 2023 13:29:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.6.1..@fluentui/react-table_v9.7.0)
+
+### Minor changes
+
+- Table/DataGrid: Improve keyboard column resizing experience ([PR #28493](https://github.com/microsoft/fluentui/pull/28493) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.14 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.26 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-radio to v9.1.26 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-tabster to v9.11.0 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+
+### Patches
+
+- 28456 ([PR #28577](https://github.com/microsoft/fluentui/pull/28577) by lingfan.gao@microsoft.com)
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.6.1)
 
