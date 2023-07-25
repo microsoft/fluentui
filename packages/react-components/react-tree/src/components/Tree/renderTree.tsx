@@ -3,8 +3,8 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import type { TreeState, TreeSlots, TreeContextValues } from './Tree.types';
 import { TreeProvider } from '../../contexts';
+import type { TreeContextValues, TreeSlots, TreeState } from '../Tree/Tree.types';
 
 export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues) => {
   const { slots, slotProps } = getSlotsNext<TreeSlots>(state);

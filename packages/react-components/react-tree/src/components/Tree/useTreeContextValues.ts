@@ -1,5 +1,5 @@
 import { TreeContextValue } from '../../contexts';
-import type { TreeContextValues, TreeState } from './Tree.types';
+import { TreeContextValues, TreeState } from './Tree.types';
 
 export function useTreeContextValues_unstable(state: TreeState): TreeContextValues {
   const { openItems, checkedItems, selectionMode, level, appearance, size, requestTreeResponse } = state;

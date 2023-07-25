@@ -1,20 +1,24 @@
 import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ImmutableSet } from '../utils/ImmutableSet';
-import type { TreeOpenChangeData, TreeProps } from '../components/Tree/Tree.types';
 import type { TreeItemValue } from '../components/TreeItem/TreeItem.types';
+import { createOpenItems } from '../utils/createOpenItems';
+import { TreeOpenChangeData, TreeProps } from '../Tree';
 
 /**
  * @internal
  */
 export function useControllableOpenItems(props: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>) {
   return useControllableState({
-    state: React.useMemo(() => props.openItems && ImmutableSet.create(props.openItems), [props.openItems]),
-    defaultState: props.defaultOpenItems && (() => ImmutableSet.create(props.defaultOpenItems)),
+    state: React.useMemo(() => props.openItems && createOpenItems(props.openItems), [props.openItems]),
+    defaultState: () => createOpenItems(props.defaultOpenItems),
     initialState: ImmutableSet.empty,
   });
 }
 
+/**
+ * @internal
+ */
 export function createNextOpenItems(
   data: Pick<TreeOpenChangeData, 'value' | 'open'>,
   previousOpenItems: ImmutableSet<TreeItemValue>,
