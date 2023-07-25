@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "change colorPaletteRedForeground1 to hcCanvas in TeamsHC theme",
+  "packageName": "@fluentui/tokens",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
