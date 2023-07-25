@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Thu, 20 Jul 2023 18:27:33 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.23)
+
+Tue, 25 Jul 2023 13:29:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.22..@fluentui/react-select_v9.1.23)
+
+### Patches
+
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.1.13 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
 
 ## [9.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.22)
 
