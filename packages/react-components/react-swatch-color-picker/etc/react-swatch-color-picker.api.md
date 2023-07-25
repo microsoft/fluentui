@@ -15,13 +15,28 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSwatchColorPikerCell_unstable: (state: SwatchColorPikerCellState) => JSX.Element;
 
 // @public
+export const renderSwatchImagePickerCell_unstable: (state: SwatchImagePickerCellState) => JSX.Element;
+
+// @public
+export const renderSwatchPicker_unstable: (state: SwatchPickerState) => JSX.Element;
+
+// @public
+export const renderSwatchRow_unstable: (state: SwatchRowState) => JSX.Element;
+
+// @public
 export const SwatchColorPikerCell: ForwardRefComponent<SwatchColorPikerCellProps>;
 
 // @public (undocumented)
 export const swatchColorPikerCellClassNames: SlotClassNames<SwatchColorPikerCellSlots>;
 
 // @public
-export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots> & {};
+export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots> & {
+    shape?: 'circular' | 'square';
+    size?: number;
+    selected?: boolean;
+    disabled?: boolean;
+    color: string;
+};
 
 // @public (undocumented)
 export type SwatchColorPikerCellSlots = {
@@ -32,10 +47,79 @@ export type SwatchColorPikerCellSlots = {
 export type SwatchColorPikerCellState = ComponentState<SwatchColorPikerCellSlots>;
 
 // @public
+export const SwatchImagePickerCell: ForwardRefComponent<SwatchImagePickerCellProps>;
+
+// @public (undocumented)
+export const swatchImagePickerCellClassNames: SlotClassNames<SwatchImagePickerCellSlots>;
+
+// @public
+export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlots> & {};
+
+// @public (undocumented)
+export type SwatchImagePickerCellSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SwatchImagePickerCellState = ComponentState<SwatchImagePickerCellSlots>;
+
+// @public
+export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
+
+// @public (undocumented)
+export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
+
+// @public
+export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {};
+
+// @public (undocumented)
+export type SwatchPickerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SwatchPickerState = ComponentState<SwatchPickerSlots>;
+
+// @public
+export const SwatchRow: ForwardRefComponent<SwatchRowProps>;
+
+// @public (undocumented)
+export const swatchRowClassNames: SlotClassNames<SwatchRowSlots>;
+
+// @public
+export type SwatchRowProps = ComponentProps<SwatchRowSlots> & {};
+
+// @public (undocumented)
+export type SwatchRowSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SwatchRowState = ComponentState<SwatchRowSlots>;
+
+// @public
 export const useSwatchColorPikerCell_unstable: (props: SwatchColorPikerCellProps, ref: React_2.Ref<HTMLElement>) => SwatchColorPikerCellState;
 
 // @public
 export const useSwatchColorPikerCellStyles_unstable: (state: SwatchColorPikerCellState) => SwatchColorPikerCellState;
+
+// @public
+export const useSwatchImagePickerCell_unstable: (props: SwatchImagePickerCellProps, ref: React_2.Ref<HTMLElement>) => SwatchImagePickerCellState;
+
+// @public
+export const useSwatchImagePickerCellStyles_unstable: (state: SwatchImagePickerCellState) => SwatchImagePickerCellState;
+
+// @public
+export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLElement>) => SwatchPickerState;
+
+// @public
+export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;
+
+// @public
+export const useSwatchRow_unstable: (props: SwatchRowProps, ref: React_2.Ref<HTMLElement>) => SwatchRowState;
+
+// @public
+export const useSwatchRowStyles_unstable: (state: SwatchRowState) => SwatchRowState;
 
 // (No @packageDocumentation comment for this package)
 
