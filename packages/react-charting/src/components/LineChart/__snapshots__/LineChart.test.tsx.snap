@@ -104,7 +104,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -628,7 +628,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -1050,7 +1050,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -1472,7 +1472,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -1813,7 +1813,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -2154,7 +2154,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -2475,7 +2475,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -2655,7 +2655,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -2996,7 +2996,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -3337,7 +3337,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -3678,7 +3678,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
