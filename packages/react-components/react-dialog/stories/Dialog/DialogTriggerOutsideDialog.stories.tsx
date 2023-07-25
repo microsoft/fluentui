@@ -8,23 +8,24 @@ import {
   DialogTrigger,
   DialogBody,
   Button,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import story from './DialogTriggerOutsideDialog.md';
 
 export const TriggerOutsideDialog = () => {
   const [open, setOpen] = React.useState(false);
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
   return (
     <>
-      <DialogTrigger>
-        <Button
-          onClick={() => {
-            setOpen(true);
-          }}
-        >
-          Open Dialog
-        </Button>
-      </DialogTrigger>
+      <Button
+        {...restoreFocusTargetAttribute}
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        Open Dialog
+      </Button>
 
       <Dialog
         open={open}
