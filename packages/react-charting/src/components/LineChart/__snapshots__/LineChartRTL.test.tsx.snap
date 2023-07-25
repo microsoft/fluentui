@@ -4,7 +4,7 @@ exports[`Line chart rendering Should re-render the Line chart with data 1`] = `
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_LineChart_empty40"
+    id="_LineChart_empty8"
     role="alert"
     style="opacity: 0;"
   />
@@ -28,7 +28,7 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_41"
+    id="chart_9"
     role="presentation"
   >
     <div
@@ -40,14 +40,14 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone42"
+      data-focuszone-id="FocusZone10"
     >
       <svg
         aria-label="LineChart"
         focusable="false"
-        height="0"
+        height="310"
         style="display: block;"
-        width="0"
+        width="100"
       >
         <g
           class=
@@ -75,9 +75,109 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_41"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_9"
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H80.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(50.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(60.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(70.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              35
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(80.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -103,42 +203,142 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_41"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_9"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="40"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="#000"
+              x2="40"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="#000"
+              x2="40"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="#000"
+              x2="40"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              60
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="40"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              80
+            </text>
+          </g>
+        </g>
         <g>
           <line
-            id="verticalLine35"
+            id="verticalLine3"
             stroke="#C8C8C8"
             stroke-dasharray="5,5"
             visibility="hidden"
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="310"
           />
           <g>
             <line
-              id="lineID33_0_1"
+              id="lineID1_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
               stroke-width="4"
               x1="40"
-              x2="-20"
-              y1="-0.625"
+              x2="80"
+              y1="115.625"
               y2="20"
             />
             <path
               aria-label="20. metaData1, 50."
-              d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+              d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
               data-is-focusable="true"
               fill="red"
-              id="circle32_0_1"
+              id="circle0_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -147,14 +347,14 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
             />
             <path
               aria-label="40. metaData1, 80."
-              d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+              d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
               data-is-focusable="true"
               fill="red"
-              id="circle32_0_11L"
+              id="circle0_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -192,7 +392,7 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -202,7 +402,7 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone43"
+                data-focuszone-id="FocusZone11"
                 role="listbox"
               >
                 <div
