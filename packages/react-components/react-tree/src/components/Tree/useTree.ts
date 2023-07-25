@@ -50,7 +50,7 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
   const baseRef = useMergedRefs(ref, navigationRef);
 
   const isSubtree = useTreeContext_unstable(ctx => ctx.level > 0);
-  // as isSubbaseTree is static, this doesn't break rule of hooks
+  // as isSubTree is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return isSubtree ? useSubtree(baseProps, baseRef) : useRootTree(baseProps, baseRef);
