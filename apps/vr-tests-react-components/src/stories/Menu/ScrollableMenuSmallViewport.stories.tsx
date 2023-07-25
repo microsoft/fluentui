@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   scrollableMenuGroup: {
     maxHeight: '150px',
-    overflowY: 'auto',
+    overflowY: 'scroll',
   },
 });
 
