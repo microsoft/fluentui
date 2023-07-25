@@ -410,7 +410,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   const renderTextfieldDescription = (inputProps: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>) => {
     return (
       <>
-        {inputProps.description ? defaultRender(inputProps) : null}
+        {inputProps.description || inputProps.onRenderDescription ? defaultRender(inputProps) : null}
         <div aria-live="assertive" className={classNames.statusMessage}>
           {statusMessage}
         </div>
