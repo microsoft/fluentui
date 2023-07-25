@@ -14,6 +14,7 @@ export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutInternalSlot
   expandIcon: 'fui-TreeItemLayout__expandIcon',
   aside: 'fui-TreeItemLayout__aside',
   actions: 'fui-TreeItemLayout__actions',
+  selector: 'fui-TreeItemLayout__selector',
 };
 
 /**
@@ -166,7 +167,7 @@ const useIconAfterStyles = makeStyles({
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { content, iconAfter, iconBefore, expandIcon, root } = state;
+  const { content, iconAfter, iconBefore, expandIcon, root, aside, actions, selector } = state;
   const rootStyles = useRootStyles();
   const actionsStyles = useActionsStyles();
   const asideStyles = useAsideStyles();
@@ -219,22 +220,21 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     );
   }
 
-  if (state.actions) {
-    state.actions.className = mergeClasses(
-      treeItemLayoutClassNames.actions,
-      actionsStyles.base,
-      state.actions.className,
-    );
+  if (actions) {
+    actions.className = mergeClasses(treeItemLayoutClassNames.actions, actionsStyles.base, actions.className);
   }
-  if (state.aside) {
-    state.aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, state.aside.className);
+  if (aside) {
+    aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, aside.className);
   }
-  if (state.expandIcon) {
-    state.expandIcon.className = mergeClasses(
+  if (expandIcon) {
+    expandIcon.className = mergeClasses(
       treeItemLayoutClassNames.expandIcon,
       expandIconStyles.base,
-      state.expandIcon.className,
+      expandIcon.className,
     );
+  }
+  if (selector) {
+    selector.className = mergeClasses(treeItemLayoutClassNames.selector, selector.className);
   }
 
   return state;

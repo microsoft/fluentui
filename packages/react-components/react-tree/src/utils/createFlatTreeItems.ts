@@ -9,8 +9,12 @@ export type FlatTreeItems<Props extends FlatTreeItemProps> = {
   size: number;
   root: FlatTreeItem;
   get(key: TreeItemValue): FlatTreeItem<Props> | undefined;
-  set(key: TreeItemValue, value: FlatTreeItem<Props>): void;
+  getParent(key: TreeItemValue): FlatTreeItem<Props>;
   getByIndex(index: number): FlatTreeItem<Props>;
+  subtree(key: TreeItemValue): IterableIterator<FlatTreeItem<Props>>;
+  children(key: TreeItemValue): IterableIterator<FlatTreeItem<Props>>;
+  visibleItems(openItems: ImmutableSet<TreeItemValue>): IterableIterator<FlatTreeItem<Props>>;
+  ancestors(key: TreeItemValue): IterableIterator<FlatTreeItem<Props>>;
 };
 
 /**
@@ -40,7 +44,6 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps>(flatTreeIte
       treeItemProps.itemType ??
       (treeItemProps.value === undefined || nextItemProps?.parentValue !== treeItemProps.value ? 'leaf' : 'branch');
     const currentLevel = (currentParent.level ?? 0) + 1;
-    const currentChildrenSize = ++currentParent.childrenSize;
 
     const flatTreeItem: FlatTreeItem<FlatTreeItemProps> = {
       value: treeItemProps.value,
@@ -48,14 +51,15 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps>(flatTreeIte
         ...treeItemProps,
         'aria-level': currentLevel,
         'aria-posinset': currentChildrenSize,
-        'aria-setsize': currentParent.childrenSize,
+        'aria-setsize': currentParent.childrenValues.length,
         itemType,
       }),
       level: currentLevel,
       parentValue,
-      childrenSize: 0,
+      childrenValues: [],
       index: -1,
     };
+    const currentChildrenSize = currentParent.childrenValues.push(flatTreeItem.value);
     itemsPerValue.set(flatTreeItem.value, flatTreeItem);
     items.push(flatTreeItem);
   }
@@ -64,8 +68,12 @@ export function createFlatTreeItems<Props extends FlatTreeItemProps>(flatTreeIte
     root,
     size: items.length,
     getByIndex: index => items[index],
+    getParent: key => itemsPerValue.get(itemsPerValue.get(key)?.parentValue ?? root.value) ?? root,
     get: key => itemsPerValue.get(key),
-    set: (key, value) => itemsPerValue.set(key, value),
+    subtree: key => FlatTreeSubtreeGenerator(key, flatTreeItems),
+    children: key => FlatTreeChildrenGenerator(key, flatTreeItems),
+    ancestors: key => FlatTreeAncestorsGenerator(key, flatTreeItems),
+    visibleItems: openItems => VisibleFlatTreeItemGenerator(openItems, flatTreeItems),
   };
 
   return flatTreeItems as FlatTreeItems<Props>;
@@ -91,7 +99,7 @@ function createFlatTreeRootItem(): FlatTreeItem {
         itemType: 'branch',
       };
     },
-    childrenSize: 0,
+    childrenValues: [],
     get index() {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
@@ -103,8 +111,68 @@ function createFlatTreeRootItem(): FlatTreeItem {
   };
 }
 
+/**
+ * Generator that returns all subtree of a given flat tree item
+ * @param key the key of the item to get the subtree from
+ */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps>(
+function* FlatTreeSubtreeGenerator<Props extends FlatTreeItemProps>(
+  key: TreeItemValue,
+  flatTreeItems: FlatTreeItems<Props>,
+) {
+  const item = flatTreeItems.get(key);
+  if (!item || item.childrenValues.length === 0) {
+    return [];
+  }
+  let counter = item.childrenValues.length;
+  let index = item.index;
+  while (counter > 0) {
+    const children = flatTreeItems.getByIndex(++index);
+    yield children;
+    counter += children.childrenValues.length - 1;
+  }
+}
+
+/**
+ * Generator that returns all children of a given flat tree item
+ * @param key the key of the item to get the children from
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+function* FlatTreeChildrenGenerator<Props extends FlatTreeItemProps>(
+  key: TreeItemValue,
+  flatTreeItems: FlatTreeItems<Props>,
+) {
+  const item = flatTreeItems.get(key);
+  if (!item || item.childrenValues.length === 0) {
+    return;
+  }
+  for (const childValue of item.childrenValues) {
+    yield flatTreeItems.get(childValue)!;
+  }
+}
+
+/**
+ * Generator that returns all ancestors of a given flat tree item
+ * @param key the key of the item to get the children from
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+function* FlatTreeAncestorsGenerator<Props extends FlatTreeItemProps>(
+  key: TreeItemValue,
+  flatTreeItems: FlatTreeItems<Props>,
+) {
+  let parent = flatTreeItems.getParent(key);
+  while (parent !== flatTreeItems.root) {
+    yield parent;
+    parent = flatTreeItems.getParent(parent.value);
+  }
+}
+
+/**
+ * Generator that returns all visible items of a given flat tree
+ * @param openItems the open items of the tree
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps>(
   openItems: ImmutableSet<TreeItemValue>,
   flatTreeItems: FlatTreeItems<Props>,
 ) {
@@ -115,7 +183,7 @@ export function* VisibleFlatTreeItemGenerator<Props extends FlatTreeItemProps>(
       yield item;
     } else {
       // Jump the amount of children the current item has, since those items will also be hidden
-      index += item.childrenSize;
+      index += item.childrenValues.length;
     }
   }
 }

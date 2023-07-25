@@ -3,6 +3,7 @@ import type { InteractionTagSlots, InteractionTagState } from './InteractionTag.
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import {
   useIconStyles,
   useMediaStyles,
@@ -95,10 +96,24 @@ const useContentButtonStyles = makeStyles({
       cursor: 'pointer',
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground2Hover,
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground2Pressed,
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
   },
   brand: {

@@ -11,6 +11,7 @@ import {
   installPackagesTask,
   readJson,
   stripIndents,
+  workspaceRoot,
 } from '@nrwl/devkit';
 
 import * as tsquery from '@phenomnomnominal/tsquery';
@@ -236,9 +237,10 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   tree.rename(options.projectConfig.root, newPackage.root);
 
   return (_tree: Tree) => {
+    installPackagesTask(tree, true);
     generateChangefileTask(tree, newPackage.name, { message: 'feat: release stable' });
     generateChangefileTask(tree, suitePackageName, { message: `feat: add ${newPackage.name} to suite` });
-    installPackagesTask(tree);
+    generateApiMarkdownTask(tree, suitePackageName);
   };
 }
 
@@ -280,7 +282,12 @@ async function getProjectThatNeedsToBeUpdated(tree: Tree, options: NormalizedSch
 
 function generateChangefileTask(tree: Tree, projectName: string, options: { message: string }) {
   const cmd = `yarn change --message '${options.message}' --type minor --package ${projectName}`;
-  return execSync(cmd);
+  return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
+}
+
+function generateApiMarkdownTask(tree: Tree, projectName: string) {
+  const cmd = `yarn lage generate-api --to ${projectName}`;
+  return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 
 function assertProject(tree: Tree, options: NormalizedSchema) {

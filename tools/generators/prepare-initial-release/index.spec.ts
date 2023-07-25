@@ -8,6 +8,7 @@ import {
   readJson,
   updateJson,
   ProjectGraph,
+  workspaceRoot,
 } from '@nrwl/devkit';
 import * as devkit from '@nrwl/devkit';
 import * as childProcess from 'child_process';
@@ -120,6 +121,10 @@ describe('prepare-initial-release generator', () => {
         expect(execSyncSpy.mock.calls.flat()).toMatchInlineSnapshot(`
           Array [
             "yarn change --message 'feat: release preview package' --type minor --package @proj/react-one-preview",
+            Object {
+              "cwd": "${workspaceRoot}",
+              "stdio": "inherit",
+            },
           ]
         `);
       });
@@ -285,7 +290,20 @@ describe('prepare-initial-release generator', () => {
         expect(execSyncSpy.mock.calls.flat()).toMatchInlineSnapshot(`
           Array [
             "yarn change --message 'feat: release stable' --type minor --package @proj/react-one",
+            Object {
+              "cwd": "${workspaceRoot}",
+              "stdio": "inherit",
+            },
             "yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components",
+            Object {
+              "cwd": "${workspaceRoot}",
+              "stdio": "inherit",
+            },
+            "yarn lage generate-api --to @proj/react-components",
+            Object {
+              "cwd": "${workspaceRoot}",
+              "stdio": "inherit",
+            },
           ]
         `);
         expect(installPackagesTaskSpy).toHaveBeenCalled();
