@@ -14,6 +14,9 @@ import type {
  * @returns overflow manager instance
  */
 export function createOverflowManager(): OverflowManager {
+  // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
+  // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
+  const sizeCache = new Map<HTMLElement, number>();
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
   // Set as true when resize observer is observing
@@ -136,7 +139,13 @@ export function createOverflowManager(): OverflowManager {
   });
 
   const getOffsetSize = (el: HTMLElement) => {
-    return options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
+    if (sizeCache.has(el)) {
+      return sizeCache.get(el)!;
+    }
+
+    const offsetSize = options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
+    sizeCache.set(el, offsetSize);
+    return offsetSize;
   };
 
   function computeSizeChange(entry: OverflowItemEntry) {
@@ -193,6 +202,8 @@ export function createOverflowManager(): OverflowManager {
     if (!container) {
       return false;
     }
+    sizeCache.clear();
+
     const totalDividersWidth = Object.values(overflowDividers)
       .map(dvdr => (dvdr.groupId ? getOffsetSize(dvdr.element) : 0))
       .reduce((prev, current) => prev + current, 0);
@@ -207,20 +218,24 @@ export function createOverflowManager(): OverflowManager {
     const visibleTop = visibleItemQueue.peek();
     const invisibleTop = invisibleItemQueue.peek();
 
-    let currentWidth = visibleItemQueue
+    let currentSize = visibleItemQueue
       .all()
       .map(id => overflowItems[id].element)
       .map(getOffsetSize)
       .reduce((prev, current) => prev + current, 0);
 
-    // Add items until available width is filled - can result in overflow
-    while (currentWidth + overflowMenuSize() < availableSize && invisibleItemQueue.size() > 0) {
-      currentWidth += showItem();
-    }
+    // Run the show/hide step twice - the first step might not be correct if
+    // it was triggered by a new item being added - new items are always visible by default.
+    for (let i = 0; i < 2; i++) {
+      // Add items until available width is filled - can result in overflow
+      while (currentSize + overflowMenuSize() < availableSize && invisibleItemQueue.size() > 0) {
+        currentSize += showItem();
+      }
 
-    // Remove items until there's no more overflow
-    while (currentWidth + overflowMenuSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
-      currentWidth -= hideItem();
+      // Remove items until there's no more overflow
+      while (currentSize + overflowMenuSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+        currentSize -= hideItem();
+      }
     }
 
     // only update when the state of visible/invisible items has changed
@@ -247,6 +262,7 @@ export function createOverflowManager(): OverflowManager {
 
   const disconnect: OverflowManager['disconnect'] = () => {
     observing = false;
+    sizeCache.clear();
     resizeObserver.disconnect();
   };
 
@@ -316,6 +332,7 @@ export function createOverflowManager(): OverflowManager {
       item.element.removeAttribute(DATA_OVERFLOW_GROUP);
     }
 
+    sizeCache.delete(item.element);
     delete overflowItems[itemId];
     update();
   };
