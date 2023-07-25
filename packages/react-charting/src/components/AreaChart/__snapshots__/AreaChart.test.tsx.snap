@@ -26,6 +26,9 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -565,6 +568,9 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1000,6 +1006,9 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone6"
     onFocus={[Function]}
@@ -1437,6 +1446,9 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone77"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1750,6 +1762,9 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone69"
     onFocus={[Function]}
@@ -2102,6 +2117,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2453,6 +2471,9 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone61"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2538,7 +2559,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       </g>
       <g>
         <path
-          d="M10,17.884615384615383Z"
+          d="M10,17.885Z"
           fill="transparent"
           id="0-line-areaChart_55"
           onMouseMove={[Function]}
@@ -2564,7 +2585,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <g
           clipPath="url(#clip)"
-          d="M10,17.884615384615383L10,-35Z"
+          d="M10,17.885L10,-35Z"
         >
           <circle
             aria-label="20. metaData1, 50."
@@ -2790,6 +2811,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone29"
     onFocus={[Function]}
@@ -3122,6 +3146,9 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone14"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3312,6 +3339,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone21"
     onFocus={[Function]}
@@ -3664,6 +3694,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone37"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4015,6 +4048,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone45"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4365,6 +4401,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone53"
     onFocus={[Function]}

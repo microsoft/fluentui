@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import { createSelectionManager } from './selectionManager';
-import type { TableRowId, TableSelectionState, TableFeaturesState, UseTableSelectionOptions } from './types';
+import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
+import type { TableRowId, TableSelectionState, TableFeaturesState } from './types';
 
 const noop = () => undefined;
 
@@ -18,7 +16,7 @@ export const defaultTableSelectionState: TableSelectionState = {
   selectionMode: 'multiselect',
 };
 
-export function useTableSelection<TItem>(options: UseTableSelectionOptions) {
+export function useTableSelection<TItem>(options: SelectionHookParams) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableFeaturesState<TItem>) => useTableSelectionState(tableState, options);
@@ -26,51 +24,40 @@ export function useTableSelection<TItem>(options: UseTableSelectionOptions) {
 
 export function useTableSelectionState<TItem>(
   tableState: TableFeaturesState<TItem>,
-  options: UseTableSelectionOptions,
+  options: SelectionHookParams,
 ): TableFeaturesState<TItem> {
   const { items, getRowId } = tableState;
-  const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
+  const { selectionMode: selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
-  const [selected, setSelected] = useControllableState<Set<TableRowId>>({
-    initialState: new Set(),
-    defaultState: React.useMemo(
-      () => defaultSelectedItems && createSetFromIterable(defaultSelectedItems),
-      [defaultSelectedItems],
-    ),
-    state: React.useMemo(() => selectedItems && createSetFromIterable(selectedItems), [selectedItems]),
+  const [selected, selectionMethods] = useSelection({
+    selectionMode,
+    defaultSelectedItems,
+    selectedItems,
+    onSelectionChange,
   });
 
-  const selectionManager = React.useMemo(() => {
-    return createSelectionManager(selectionMode, (e, newSelectedItems) => {
-      setSelected(() => {
-        onSelectionChange?.(e as React.SyntheticEvent, { selectedItems: newSelectedItems });
-        return newSelectedItems;
-      });
-    });
-  }, [onSelectionChange, selectionMode, setSelected]);
-
   const toggleAllRows: TableSelectionState['toggleAllRows'] = useEventCallback(e => {
-    selectionManager.toggleAllItems(
+    selectionMethods.toggleAllItems(
       e,
       items.map((item, i) => getRowId?.(item) ?? i),
-      selected,
     );
   });
 
   const toggleRow: TableSelectionState['toggleRow'] = useEventCallback((e, rowId: TableRowId) =>
-    selectionManager.toggleItem(e, rowId, selected),
+    selectionMethods.toggleItem(e, rowId),
   );
 
   const deselectRow: TableSelectionState['deselectRow'] = useEventCallback((e, rowId: TableRowId) =>
-    selectionManager.deselectItem(e, rowId, selected),
+    selectionMethods.deselectItem(e, rowId),
   );
 
   const selectRow: TableSelectionState['selectRow'] = useEventCallback((e, rowId: TableRowId) =>
-    selectionManager.selectItem(e, rowId, selected),
+    selectionMethods.selectItem(e, rowId),
   );
 
-  const isRowSelected: TableSelectionState['isRowSelected'] = (rowId: TableRowId) =>
-    selectionManager.isSelected(rowId, selected);
+  const isRowSelected: TableSelectionState['isRowSelected'] = (rowId: TableRowId) => selectionMethods.isSelected(rowId);
+
+  const clearRows: TableSelectionState['clearRows'] = useEventCallback(e => selectionMethods.clearItems(e));
 
   return {
     ...tableState,
@@ -81,17 +68,10 @@ export function useTableSelectionState<TItem>(
       selectedRows: selected,
       toggleRow,
       toggleAllRows,
-      clearRows: selectionManager.clearItems,
+      clearRows,
       deselectRow,
       selectRow,
       isRowSelected,
     },
   };
-}
-
-/**
- * Creates a set from a given iterable, in case the iterable is a set itself, returns the given set instead.
- */
-function createSetFromIterable<V>(iterable: Iterable<V>): Set<V> {
-  return iterable instanceof Set ? iterable : new Set(iterable);
 }

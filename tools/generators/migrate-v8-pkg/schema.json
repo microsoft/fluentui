@@ -12,6 +12,10 @@
         "index": 0
       }
     },
+    "all": {
+      "type": "boolean",
+      "description": "Run generator on all v8 packages"
+    },
     "stats": {
       "type": "boolean",
       "description": "Get statistics for how many projects have been migrated"

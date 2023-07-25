@@ -63,6 +63,7 @@ export const Resizable = () => {
   React.useEffect(() => {
     window.addEventListener('mousemove', resize);
     window.addEventListener('mouseup', stopResizing);
+
     return () => {
       window.removeEventListener('mousemove', resize);
       window.removeEventListener('mouseup', stopResizing);
@@ -89,4 +90,12 @@ export const Resizable = () => {
       <p className={styles.content}>Resize the drawer to see the change</p>
     </div>
   );
+};
+
+Resizable.parameters = {
+  docs: {
+    description: {
+      story: 'This example shows how to implement a resizable drawer.',
+    },
+  },
 };

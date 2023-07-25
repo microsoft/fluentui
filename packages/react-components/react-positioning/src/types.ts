@@ -19,16 +19,6 @@ export type TargetElement = HTMLElement | PositioningVirtualElement;
 /**
  * @internal
  */
-export interface UsePositioningOptions extends PositioningProps {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
-}
-
-/**
- * @internal
- */
 export interface PositionManager {
   updatePosition: () => void;
   dispose: () => void;
@@ -92,6 +82,9 @@ export type PositioningVirtualElement = {
 
 export type SetVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => void;
 
+/**
+ * Internal options for positioning
+ */
 export interface PositioningOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
@@ -119,8 +112,15 @@ export interface PositioningOptions {
   /**
    * Enables the position element to be positioned with 'fixed' (default value is position: 'absolute')
    * @default false
+   * @deprecated use `strategy` instead
    */
   positionFixed?: boolean;
+
+  /**
+   * Specifies the type of CSS position property to use.
+   * @default absolute
+   */
+  strategy?: 'absolute' | 'fixed';
 
   /**
    * Lets you displace a positioned element from its reference element.
@@ -173,21 +173,30 @@ export interface PositioningOptions {
    * @default true
    */
   useTransform?: boolean;
+
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
 }
 
+/**
+ * Public api that allows components using react-positioning to specify positioning options
+ */
 export interface PositioningProps
   extends Pick<
     PositioningOptions,
     | 'align'
-    | 'flipBoundary'
-    | 'overflowBoundary'
-    | 'overflowBoundaryPadding'
-    | 'position'
-    | 'offset'
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'flipBoundary'
+    | 'offset'
+    | 'overflowBoundary'
+    | 'overflowBoundaryPadding'
     | 'pinned'
+    | 'position'
+    | 'strategy'
     | 'useTransform'
   > {
   /** An imperative handle to Popper methods. */

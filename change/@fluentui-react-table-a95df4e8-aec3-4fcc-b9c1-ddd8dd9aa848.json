@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement `focusMode` for DataGridCell",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

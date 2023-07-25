@@ -57,7 +57,7 @@ export const Size = () => {
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>
-          Toggle Drawer
+          Open Drawer
         </Button>
 
         <div className={styles.field}>
@@ -75,4 +75,12 @@ export const Size = () => {
       </div>
     </div>
   );
+};
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: 'The `size` prop controls the width of the drawer. The default is `small`.',
+    },
+  },
 };
