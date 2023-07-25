@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: Remove custom focus code in favour of useRestoreFocus hooks",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

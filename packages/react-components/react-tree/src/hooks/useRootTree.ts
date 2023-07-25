@@ -1,59 +1,51 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { SelectionMode, getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import {
+import { SelectionMode, getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import type {
+  TreeCheckedChangeData,
+  TreeNavigationData_unstable,
   TreeOpenChangeData,
   TreeProps,
   TreeState,
-  TreeNavigationData_unstable,
-  TreeCheckedChangeData,
-} from './Tree.types';
-import {
-  useControllableOpenItems,
-  useNestedTreeNavigation,
-  useNestedControllableCheckedItems,
-  createNextOpenItems,
-} from '../../hooks';
-import { treeDataTypes } from '../../utils/tokens';
-import { TreeItemRequest } from '../../contexts';
+} from '../Tree';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { TreeItemRequest } from '../contexts/treeContext';
+import { createOpenItems } from '../utils/createOpenItems';
+import { createCheckedItems } from '../utils/createCheckedItems';
+import { treeDataTypes } from '../utils/tokens';
 
 /**
- * Create the state required to render the root level Tree.
+ * Create the state required to render the root level BaseTree.
  *
- * @param props - props from this instance of Tree
- * @param ref - reference to root HTMLElement of Tree
+ * @param props - props from this instance of BaseTree
+ * @param ref - reference to root HTMLElement of BaseTree
  */
-export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
+export function useRootTree(
+  props: Pick<
+    TreeProps,
+    | 'selectionMode'
+    | 'appearance'
+    | 'size'
+    | 'openItems'
+    | 'checkedItems'
+    | 'onOpenChange'
+    | 'onCheckedChange'
+    | 'onNavigation_unstable'
+    | 'aria-label'
+    | 'aria-labelledby'
+  >,
+  ref: React.Ref<HTMLElement>,
+): TreeState {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
-  const [openItems, setOpenItems] = useControllableOpenItems(props);
+  const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
+  const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
+  const requestOpenChange = (data: TreeOpenChangeData) => props.onOpenChange?.(data.event, data);
 
-  const [checkedItems] = useNestedControllableCheckedItems(props);
-  const [navigate, navigationRef] = useNestedTreeNavigation();
-
-  const requestOpenChange = (data: TreeOpenChangeData) => {
-    props.onOpenChange?.(data.event, data);
-    if (data.event.isDefaultPrevented()) {
-      return;
-    }
-    return setOpenItems(createNextOpenItems(data, openItems));
-  };
-
-  const requestCheckedChange = (data: TreeCheckedChangeData) => {
-    props.onCheckedChange?.(data.event, data);
-    // TODO:
-    // we should implement the logic for nested tree selection
-    // return setCheckedItems(checkedItems);
-  };
-
+  const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
   const requestNavigation = (data: TreeNavigationData_unstable) => {
     props.onNavigation_unstable?.(data.event, data);
-    if (data.event.isDefaultPrevented()) {
-      return;
-    }
-    navigate(data);
     if (data.type === treeDataTypes.ArrowDown || data.type === treeDataTypes.ArrowUp) {
       data.event.preventDefault();
     }
@@ -119,8 +111,8 @@ export function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): Tree
     checkedItems,
     requestTreeResponse,
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(navigationRef, ref),
-      role: 'tree',
+      ref,
+      role: 'baseTree',
       'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
       ...props,
     }),
@@ -131,7 +123,7 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console
-      console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
+      console.warn('BaseTree must have either a `aria-label` or `aria-labelledby` property defined');
     }
   }
 }

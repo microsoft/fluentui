@@ -64,6 +64,10 @@ function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): Immutabl
   };
 }
 
+function isImmutableSet<Value>(value: unknown): value is ImmutableSet<Value> {
+  return typeof value === 'object' && value !== null && 'dangerouslyGetInternalSet_unstable' in value;
+}
+
 /**
  * properly creates an ImmutableSet instance from an iterable
  */
@@ -75,6 +79,7 @@ function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Val
 export const ImmutableSet = {
   empty: emptyImmutableSet,
   create: createImmutableSet,
+  isImmutableSet,
   // eslint-disable-next-line @typescript-eslint/naming-convention
   dangerouslyCreate_unstable: dangerouslyCreateImmutableSet,
 };

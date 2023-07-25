@@ -3,7 +3,7 @@
 exports[`PopoverTrigger renders a default state 1`] = `
 <button
   aria-expanded="false"
-  data-tabster="{\\"deloser\\":{}}"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
   onClick={[Function]}
   onContextMenu={[Function]}
   onKeyDown={[Function]}
