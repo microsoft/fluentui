@@ -28,43 +28,43 @@ const ActionsExample = () => {
 
 export const Actions = () => (
   <Tree aria-label="Tree">
-    <TreeItem actions={<ActionsExample />} itemType="branch">
-      <TreeItemLayout>level 1, item 1</TreeItemLayout>
+    <TreeItem itemType="branch">
+      <TreeItemLayout actions={<ActionsExample />}>level 1, item 1</TreeItemLayout>
       <Tree>
-        <TreeItem actions={<ActionsExample />} itemType="leaf">
-          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+        <TreeItem itemType="leaf">
+          <TreeItemLayout actions={<ActionsExample />}>level 2, item 1</TreeItemLayout>
         </TreeItem>
-        <TreeItem actions={<ActionsExample />} itemType="leaf">
-          <TreeItemLayout>level 2, item 2</TreeItemLayout>
+        <TreeItem itemType="leaf">
+          <TreeItemLayout actions={<ActionsExample />}>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem actions={<ActionsExample />} itemType="leaf">
-          <TreeItemLayout>level 2, item 3</TreeItemLayout>
+        <TreeItem itemType="leaf">
+          <TreeItemLayout actions={<ActionsExample />}>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem actions={<ActionsExample />} itemType="branch">
-      <TreeItemLayout>level 1, item 2</TreeItemLayout>
+    <TreeItem itemType="branch">
+      <TreeItemLayout actions={<ActionsExample />}>level 1, item 2</TreeItemLayout>
       <Tree>
-        <TreeItem actions={<ActionsExample />} itemType="branch">
-          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+        <TreeItem itemType="branch">
+          <TreeItemLayout actions={<ActionsExample />}>level 2, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem actions={<ActionsExample />} itemType="leaf">
-              <TreeItemLayout>level 3, item 1</TreeItemLayout>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout actions={<ActionsExample />}>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
 
-        <TreeItem actions={<ActionsExample />} itemType="branch">
-          <TreeItemLayout>level 1, item 1</TreeItemLayout>
+        <TreeItem itemType="branch">
+          <TreeItemLayout actions={<ActionsExample />}>level 1, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem actions={<ActionsExample />} itemType="leaf">
-              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout actions={<ActionsExample />}>level 2, item 1</TreeItemLayout>
             </TreeItem>
-            <TreeItem actions={<ActionsExample />} itemType="leaf">
-              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout actions={<ActionsExample />}>level 2, item 2</TreeItemLayout>
             </TreeItem>
-            <TreeItem actions={<ActionsExample />} itemType="leaf">
-              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout actions={<ActionsExample />}>level 2, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>

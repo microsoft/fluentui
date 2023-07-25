@@ -13,7 +13,7 @@ import type { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import { ButtonContextValue } from '@fluentui/react-button';
-import type { Checkbox } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -26,7 +26,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
-import type { Radio } from '@fluentui/react-radio';
+import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
@@ -138,10 +138,15 @@ export type TreeContextValues = {
 export const TreeItem: ForwardRefComponent<TreeItemProps>;
 
 // @public (undocumented)
-export const treeItemClassNames: SlotClassNames<TreeItemInternalSlot>;
+export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 
 // @public (undocumented)
 export type TreeItemContextValue = {
+    isActionsVisible: boolean;
+    isAsideVisible: boolean;
+    selectionRef: React_2.Ref<HTMLInputElement>;
+    actionsRef: React_2.Ref<HTMLDivElement>;
+    expandIconRef: React_2.Ref<HTMLDivElement>;
     layoutRef: React_2.Ref<HTMLDivElement>;
     subtreeRef: React_2.Ref<HTMLDivElement>;
     itemType: TreeItemType;
@@ -153,7 +158,7 @@ export type TreeItemContextValue = {
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
 
 // @public (undocumented)
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutInternalSlots>;
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots>;
 
 // @public
 export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
@@ -164,10 +169,16 @@ export type TreeItemLayoutSlots = {
     content: NonNullable<Slot<'div'>>;
     iconBefore?: Slot<'div'>;
     iconAfter?: Slot<'div'>;
+    expandIcon?: Slot<'div'>;
+    aside?: Slot<'div'>;
+    actions?: Slot<ExtractSlotProps<Slot<'div'> & {
+        visible?: boolean;
+    }>>;
+    selector?: Slot<typeof Checkbox> | Slot<typeof Radio>;
 };
 
 // @public
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutInternalSlots> & {
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
     buttonContextValue: ButtonContextValue;
 };
 
@@ -178,13 +189,13 @@ export const treeItemLevelToken: "--fluent-TreeItem--level";
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
 
 // @public (undocumented)
-export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutInternalSlots>;
+export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots>;
 
 // @public
 export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;
 
 // @public (undocumented)
-export type TreeItemPersonaLayoutSlots = {
+export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
     root: NonNullable<Slot<'div'>>;
     media: NonNullable<Slot<'div'>>;
     content: NonNullable<Slot<'div'>>;
@@ -192,7 +203,7 @@ export type TreeItemPersonaLayoutSlots = {
 };
 
 // @public
-export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutInternalSlots> & {
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
     avatarSize: AvatarSize;
     buttonContextValue: ButtonContextValue;
 };
@@ -211,17 +222,10 @@ export type TreeItemSlots = {
     root: Slot<ExtractSlotProps<Slot<'div'> & {
         style?: TreeItemCSSProperties;
     }>>;
-    expandIcon?: Slot<'div'>;
-    aside?: Slot<'div'>;
-    actions?: Slot<ExtractSlotProps<Slot<'div'> & {
-        visible?: boolean;
-    }>>;
-    checkboxIndicator?: Slot<typeof Checkbox>;
-    radioIndicator?: Slot<typeof Radio>;
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemInternalSlot> & TreeItemContextValue & TreeItemSlotsContextValue & {
+export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue & {
     level: number;
     itemType: TreeItemType;
 };
