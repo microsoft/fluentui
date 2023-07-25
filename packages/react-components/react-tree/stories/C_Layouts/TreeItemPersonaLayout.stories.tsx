@@ -27,17 +27,17 @@ const Badges = () => {
 export const Layout = () => {
   return (
     <Tree aria-label="Tree">
-      <TreeItem
-        aside={
-          <>
-            <span>00:00 AM</span>
-            <Badges />
-          </>
-        }
-        itemType="branch"
-        aria-description="1 new message, important"
-      >
-        <TreeItemPersonaLayout description="Secondary text slot" media={<Avatar />}>
+      <TreeItem itemType="branch" aria-description="1 new message, important">
+        <TreeItemPersonaLayout
+          aside={
+            <>
+              <span>00:00 AM</span>
+              <Badges />
+            </>
+          }
+          description="Secondary text slot"
+          media={<Avatar />}
+        >
           Primary text slot
         </TreeItemPersonaLayout>
         <Tree>
@@ -55,17 +55,17 @@ export const Layout = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem
-        aside={
-          <>
-            <span>00:00 AM</span>
-            <Badges />
-          </>
-        }
-        itemType="branch"
-        aria-description="1 message, important"
-      >
-        <TreeItemPersonaLayout description="Secondary text slot" media={<Avatar />}>
+      <TreeItem itemType="branch" aria-description="1 message, important">
+        <TreeItemPersonaLayout
+          aside={
+            <>
+              <span>00:00 AM</span>
+              <Badges />
+            </>
+          }
+          description="Secondary text slot"
+          media={<Avatar />}
+        >
           Primary text slot
         </TreeItemPersonaLayout>
         <Tree>

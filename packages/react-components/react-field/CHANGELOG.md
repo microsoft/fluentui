@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 20 Jul 2023 18:27:29 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.13)
+
+Tue, 25 Jul 2023 13:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.12..@fluentui/react-field_v9.1.13)
+
+### Patches
+
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
 
 ## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.12)
 

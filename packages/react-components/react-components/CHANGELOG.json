@@ -2,6 +2,235 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 25 Jul 2023 13:29:15 GMT",
+      "tag": "@fluentui/react-components_v9.27.0",
+      "version": "9.27.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d8493a92520cacac29e9fe341a17d3595bc48343",
+            "comment": "fix: Overflow update should run show/hide steps twice"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "e7e522f452c4090c7f4426082efac571e8141a8e",
+            "comment": "fix: updated readme, replaced MenuItem with MenuItemLink"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "312d1b36e432de1850ad94e454959a342a12b19c",
+            "comment": "fix: spacing in BreadcrumbButton and Link, added more examples to the stories"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "c017e880f238c1f113ff7ff6e28560d77e7ea46b",
+            "comment": "feat: exports FlatTree"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "fix: Focus should restore to a DialogTrigger outside of a Dialog"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "refactor: Remove custom focus code in favour of useRestoreFocus hooks"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d8493a92520cacac29e9fe341a17d3595bc48343",
+            "comment": "fix: Overflow update should run show/hide steps twice"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "038d8f703f43ea290412001c94179ee5d1dac4d2",
+            "comment": "28456"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0d4d0ef8daebaf5b6ebbcce17e64e35488864e0e",
+            "comment": "chore: moves slots from TreeItem to TreeItemLayout"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "c017e880f238c1f113ff7ff6e28560d77e7ea46b",
+            "comment": "feat: creates FlatTree component"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "feat: Export useRestoreFocusTarget and useRestoreFocusSource"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "39cf021c60171b8e56a64637ef046478c686d625",
+            "comment": "Table/DataGrid: Improve keyboard column resizing experience"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "feat: Implement useRestoreFocusSource and useRestoreFocusTarget based on the tabster restorer API"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:24 GMT",
       "tag": "@fluentui/react-components_v9.26.2",
       "version": "9.26.2",
