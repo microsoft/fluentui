@@ -22,6 +22,9 @@ const useStyles = makeStyles({
     maxHeight: '150px',
     overflowY: 'scroll',
   },
+  menuPopover: {
+    overflowX: 'hidden',
+  },
 });
 
 const ScrollableMenu = ({ overflowBoundary }: Pick<PositioningProps, 'overflowBoundary'>) => {
@@ -32,7 +35,7 @@ const ScrollableMenu = ({ overflowBoundary }: Pick<PositioningProps, 'overflowBo
         <button>Menu</button>
       </MenuTrigger>
 
-      <MenuPopover>
+      <MenuPopover className={styles.menuPopover}>
         <MenuList>
           <MenuGroup className={styles.scrollableMenuGroup}>
             <MenuItem>Cut</MenuItem>
