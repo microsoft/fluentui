@@ -779,8 +779,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight = container.getBoundingClientRect().height;
+      const currentContainerWidth = container && container.getBoundingClientRect().width;
+      const currentContainerHeight = container && container.getBoundingClientRect().height;
       const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
       if (shouldResize) {
         this.setState({
