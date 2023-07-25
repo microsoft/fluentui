@@ -2,10 +2,15 @@ import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-li
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import { AreaChart, IEventsAnnotationProps, ILineChartPoints, LineChart } from './index';
-import { LineChartBase } from './AreaChart.base';
-import { DefaultPalette, mergeStyles } from '@fluentui/react/lib/Styling';
+import { AreaChart, IAreaChartProps } from './index';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
+import {
+  getByClass,
+  getById,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility';
 
 const chart1Points = [
   {
@@ -236,125 +241,194 @@ const chartDataWithDates = {
 };
 
 describe('Area chart rendering', () => {
-  test('Should render the area chart with numeric x-axis data', () => {
-    const { container } = render(<AreaChart data={chartData} />);
-    expect(container).toMatchSnapshot();
-  });
+  testWithoutWait(
+    'Should render the area chart with numeric x-axis data',
+    AreaChart,
+    { data: chartData },
+    container => {
+      expect(container).toMatchSnapshot();
+    });
 
-  test('Should render the area chart with date x-axis data', () => {
-    const { container } = render(<AreaChart data={chartDataWithDates} />);
-    expect(container).toMatchSnapshot();
-  });
+  testWithoutWait(
+    'Should render the area chart with date x-axis data',
+    AreaChart,
+    { data: chartDataWithDates },
+    container => {
+      expect(container).toMatchSnapshot();
+    });
 });
 
 describe('Area chart - Subcomponent Area', () => {
-  test('Should render the Areas with the specified colors', async () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const areas = getById(container, /graph-areaChart/i);
-    // Assert
-    expect(areas[0].getAttribute('fill')).toEqual('green');
-    expect(areas[1].getAttribute('fill')).toEqual('yellow');
-    expect(areas[2].getAttribute('fill')).toEqual('blue');
-  });
+  testWithoutWait(
+    'Should render the Areas with the specified colors',
+    AreaChart,
+    { data: chartData },
+    container => {
+      const getById = queryAllByAttribute.bind(null, 'id');
+      const areas = getById(container, /graph-areaChart/i);
+      // Assert
+      expect(areas[0].getAttribute('fill')).toEqual('green');
+      expect(areas[1].getAttribute('fill')).toEqual('yellow');
+      expect(areas[2].getAttribute('fill')).toEqual('blue');
+    });
 });
 
 describe('Area chart - Subcomponent legend', () => {
-  test('Should highlight the corresponding Area on mouse over on legends', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} />);
-    const legend = screen.queryByText('legend1');
-    expect(legend).toBeDefined();
-    fireEvent.mouseOver(legend!);
-    // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const areas = getById(container, /graph-areaChart/i);
-    expect(areas[0].getAttribute('fill-opacity')).toEqual('0.7');
-    expect(areas[1].getAttribute('fill-opacity')).toEqual('0.1');
-    expect(areas[2].getAttribute('fill-opacity')).toEqual('0.1');
-  });
+  testWithoutWait(
+    'Should highlight the corresponding Area on mouse over on legends',
+    AreaChart,
+    { data: chartData },
+    container => {
+      const legend = screen.queryByText('legend1');
+      expect(legend).toBeDefined();
+      fireEvent.mouseOver(legend!);
+      // Assert
+      const getById = queryAllByAttribute.bind(null, 'id');
+      const areas = getById(container, /graph-areaChart/i);
+      expect(areas[0].getAttribute('fill-opacity')).toEqual('0.7');
+      expect(areas[1].getAttribute('fill-opacity')).toEqual('0.1');
+      expect(areas[2].getAttribute('fill-opacity')).toEqual('0.1');
+    });
 
-  test('Should reduce opacity of the other lines in Area chat and opacity should be zero for selected Area', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} />);
-    const legend = screen.queryByText('legend1');
-    expect(legend).toBeDefined();
-    fireEvent.mouseOver(legend!);
-    // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const areaLines = getById(container, /line-areaChart/i);
-    expect(areaLines[0].getAttribute('opacity')).toEqual('0');
-    expect(areaLines[1].getAttribute('opacity')).toEqual('0.1');
-    expect(areaLines[2].getAttribute('opacity')).toEqual('0.1');
-  });
+  testWithoutWait(
+    'Should reduce opacity of the other lines in Area chat and opacity should be zero for selected Area',
+    AreaChart,
+    { data: chartData },
+    container => {
+      const legend = screen.queryByText('legend1');
+      expect(legend).toBeDefined();
+      fireEvent.mouseOver(legend!);
+      // Assert
+      const getById = queryAllByAttribute.bind(null, 'id');
+      const areaLines = getById(container, /line-areaChart/i);
+      expect(areaLines[0].getAttribute('opacity')).toEqual('0');
+      expect(areaLines[1].getAttribute('opacity')).toEqual('0.1');
+      expect(areaLines[2].getAttribute('opacity')).toEqual('0.1');
+    });
 
-  test('Should highlight the corresponding Legend on mouse over on legends', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} />);
-    const legend1 = screen.queryByText('legend1');
-    expect(legend1).toBeDefined();
-    fireEvent.mouseOver(legend1!);
-    // Assert
-    expect(screen.queryByText('legend2')).toHaveStyle('opacity: 0.67');
-  });
+  testWithoutWait(
+    'Should highlight the corresponding Legend on mouse over on legends',
+    AreaChart,
+    { data: chartData },
+    container => {
+      const legend1 = screen.queryByText('legend1');
+      expect(legend1).toBeDefined();
+      fireEvent.mouseOver(legend1!);
+      // Assert
+      expect(screen.queryByText('legend2')).toHaveStyle('opacity: 0.67');
+    });
 
-  test('Should select legend on single mouse click on legends', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} hideLegend={false} />);
-    const legend = screen.queryByText('legend1');
-    expect(legend).toBeDefined();
-    fireEvent.click(legend!);
-    // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
-    const firstLegend = screen.queryByText('legend1')?.closest('button');
-    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('tabIndex', '0');
-  });
+  testWithoutWait(
+    'Should select legend on single mouse click on legends',
+    AreaChart,
+    { data: chartData, hideLegend: false },
+    container => {
+      const legend = screen.queryByText('legend1');
+      expect(legend).toBeDefined();
+      fireEvent.click(legend!);
+      // Assert
+      const getById = queryAllByAttribute.bind(null, 'id');
+      expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
+      const firstLegend = screen.queryByText('legend1')?.closest('button');
+      expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+      expect(firstLegend).toHaveAttribute('tabIndex', '0');
+    });
 
 
-  test('Should deselect legend on double mouse click on legends', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} hideLegend={false} />);
-    const legend = screen.queryByText('legend1');
-    expect(legend).toBeDefined();
+  testWithoutWait(
+    'Should deselect legend on double mouse click on legends',
+    AreaChart,
+    { data: chartData, hideLegend: false },
+    container => {
+      const legend = screen.queryByText('legend1');
+      expect(legend).toBeDefined();
 
-    //single click on first legend
-    fireEvent.click(legend!);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
-    const firstLegend = screen.queryByText('legend1')?.closest('button');
-    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('tabIndex', '0');
-    // double click on same first legend
-    fireEvent.click(legend!);
-    // Assert
-    expect(firstLegend).toHaveAttribute('aria-selected', 'false');
-  });
+      //single click on first legend
+      fireEvent.click(legend!);
+      const getById = queryAllByAttribute.bind(null, 'id');
+      expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
+      const firstLegend = screen.queryByText('legend1')?.closest('button');
+      expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+      expect(firstLegend).toHaveAttribute('tabIndex', '0');
+      // double click on same first legend
+      fireEvent.click(legend!);
+      // Assert
+      expect(firstLegend).toHaveAttribute('aria-selected', 'false');
+    });
 });
 
 
-describe('Area chart - Subcomponent xAxis Labels', () => {
-  test('Should show the x-axis labels tooltip when hovered', async () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartDataWithDates} showXAxisLablesTooltip={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const xAxisLabels = getById(container, /showDots/i);
-    fireEvent.mouseOver(xAxisLabels[0]);
-    await new Promise(resolve => setTimeout(resolve));
-    // Assert
-    expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
-  });
+describe('Area chart - Subcomponent callout', () => {
+  testWithWait(
+    'Should show the callout over the area on mouse over',
+    AreaChart,
+    { data: chartData, calloutProps: { doNotLayer: true } },
+    container => {
+      // Arrange
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseOver(areas[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    });
 
-  test('Should show rotated x-axis labels', async () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartDataWithDates} rotateXAxisLables={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
-  });
+  testWithWait(
+    'Should show the stacked callout over the are on mouse over',
+    AreaChart,
+    { data: chartData, calloutProps: { doNotLayer: true } },
+    container => {
+      // Arrange
+      const areas = getById(container, /graph-areaChart/i);
+      expect(areas).toHaveLength(3);
+      fireEvent.mouseOver(areas[0]);
+      // Assert
+      expect(getByClass(container, /calloutlegendText/i)).toBeDefined();
+      expect(getByClass(container, /calloutlegendText/i)).toHaveLength(3);
+    });
+
+  testWithWait(
+    'Should show the custom callout over the Area on mouse over',
+    AreaChart,
+    {
+      data: chartData, calloutProps: { doNotLayer: true },
+      onRenderCalloutPerDataPoint: (props: IAreaChartProps) =>
+        props ? (
+          <div className="onRenderCalloutPerDataPoint">
+            <p>Custom Callout Content</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseOver(areas[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    });
+});
+
+describe('Area chart - Subcomponent xAxis Labels', () => {
+  testWithWait(
+    'Should show the x-axis labels tooltip when hovered',
+    AreaChart,
+    { data: chartDataWithDates, showXAxisLablesTooltip: true },
+    container => {
+      const getById = queryAllByAttribute.bind(null, 'id');
+      const xAxisLabels = getById(container, /showDots/i);
+      fireEvent.mouseOver(xAxisLabels[0]);
+      // Assert
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
+    });
+
+  testWithWait(
+    'Should show rotated x-axis labels',
+    AreaChart,
+    { data: chartDataWithDates, rotateXAxisLables: true },
+    container => {
+      // Arrange
+      const getByClass = queryAllByAttribute.bind(null, 'class');
+      // Assert
+      screen.debug(undefined, Infinity);
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
+    });
 });
 
 
@@ -369,29 +443,35 @@ describe('Screen resolution', () => {
     });
   });
 
-  test('Should remain unchanged on zoom in', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} width={300} height={300} />);
-    global.innerWidth = window.innerWidth / 2;
-    global.innerHeight = window.innerHeight / 2;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
+  testWithWait(
+    'Should remain unchanged on zoom in',
+    AreaChart,
+    { data: chartData, rotateXAxisLables: true, width: 300, height: 300 },
+    container => {
+      // Arrange
+      global.innerWidth = window.innerWidth / 2;
+      global.innerHeight = window.innerHeight / 2;
+      act(() => {
+        global.dispatchEvent(new Event('resize'));
+      });
+      // Assert
+      expect(container).toMatchSnapshot();
     });
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
 
-  test('Should remain unchanged on zoom out', () => {
-    // Arrange
-    const { container } = render(<AreaChart data={chartData} width={300} height={300} />);
-    global.innerWidth = window.innerWidth * 2;
-    global.innerHeight = window.innerHeight * 2;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
+  testWithWait(
+    'Should remain unchanged on zoom out',
+    AreaChart,
+    { data: chartData, rotateXAxisLables: true, width: 300, height: 300 },
+    container => {
+      // Arrange
+      global.innerWidth = window.innerWidth * 2;
+      global.innerHeight = window.innerHeight * 2;
+      act(() => {
+        global.dispatchEvent(new Event('resize'));
+      });
+      // Assert
+      expect(container).toMatchSnapshot();
     });
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
 });
 
 test('Should reflect theme change', () => {
