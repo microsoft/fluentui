@@ -454,6 +454,10 @@ const ShowAnatomy = ({ children, displayName }: ShowAnatomyProps) => {
       );
 
       for (let i = 0; i < slot.length; i++) {
+        // TODO: Sometimes multiple components have the same slot name.
+        //       Currently, when hovering one slot from component A, it is highlighted in component B.
+        //       Include the component name in the slot selector so that this doesn't happen.
+        //       See Tree/Layouts for reference, expandIcon slot.
         anatomyElements.push(
           <AnatomyAnnotation
             label={i === 0 ? currentSlotLabel : ''}
