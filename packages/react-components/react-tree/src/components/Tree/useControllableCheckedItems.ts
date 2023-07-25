@@ -1,31 +1,19 @@
 import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
-import type { TreeProps } from '../Tree';
-import { TreeItemValue } from '../TreeItem';
-import { ImmutableMap } from '../utils/ImmutableMap';
+import type { TreeProps } from './Tree.types';
+import { ImmutableMap } from '../../utils/ImmutableMap';
+import { createCheckedItems } from '../../utils/createCheckedItems';
 
-function initializeMap(iterable?: Iterable<TreeItemValue | [TreeItemValue, 'mixed' | boolean]>) {
-  const map = new Map<TreeItemValue, 'mixed' | boolean>();
-  if (iterable === undefined) {
-    return ImmutableMap.empty;
-  }
-  for (const item of iterable) {
-    if (Array.isArray(item)) {
-      map.set(item[0], item[1]);
-    } else {
-      map.set(item, true);
-    }
-  }
-  return ImmutableMap.dangerouslyCreate_unstable(map);
-}
+export type ControllableCheckedItemsOptions = {
+  checkedItems?: TreeProps['checkedItems'];
+  defaultCheckedItems?: TreeProps['checkedItems'];
+};
 
-export function useNestedControllableCheckedItems(
-  props: Pick<TreeProps, 'checkedItems' | 'defaultCheckedItems' | 'selectionMode'>,
-) {
+export function useControllableCheckedItems(props: ControllableCheckedItemsOptions) {
   return useControllableState({
     initialState: ImmutableMap.empty,
-    state: React.useMemo(() => props.checkedItems && initializeMap(props.checkedItems), [props.checkedItems]),
-    defaultState: () => initializeMap(props.defaultCheckedItems),
+    state: React.useMemo(() => props.checkedItems && createCheckedItems(props.checkedItems), [props.checkedItems]),
+    defaultState: () => createCheckedItems(props.defaultCheckedItems),
   });
 }
 

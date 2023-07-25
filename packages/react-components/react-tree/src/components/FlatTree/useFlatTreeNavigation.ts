@@ -1,18 +1,15 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeNavigationData_unstable } from '../Tree';
-import { FlatTreeItems } from '../utils/createFlatTreeItems';
-import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
-import { treeDataTypes } from '../utils/tokens';
-import { treeItemFilter } from '../utils/treeItemFilter';
-import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
-import { useRovingTabIndex } from './useRovingTabIndexes';
-import { FlatTreeItemProps } from './useFlatTree';
-import { dataTreeItemValueAttrName, getTreeItemValueFromElement } from '../utils/getTreeItemValueFromElement';
+import { TreeNavigationData_unstable } from '../../Tree';
+import { HeadlessTree, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
+import { nextTypeAheadElement } from '../../utils/nextTypeAheadElement';
+import { treeDataTypes } from '../../utils/tokens';
+import { treeItemFilter } from '../../utils/treeItemFilter';
+import { HTMLElementWalker, useHTMLElementWalkerRef } from '../../hooks/useHTMLElementWalker';
+import { useRovingTabIndex } from '../../hooks/useRovingTabIndexes';
+import { dataTreeItemValueAttrName, getTreeItemValueFromElement } from '../../utils/getTreeItemValueFromElement';
 
-export function useFlatTreeNavigation<Props extends FlatTreeItemProps = FlatTreeItemProps>(
-  flatTreeItems: FlatTreeItems<Props>,
-) {
+export function useFlatTreeNavigation<Props extends HeadlessTreeItemProps>(virtualTree: HeadlessTree<Props>) {
   const { targetDocument } = useFluent_unstable();
   const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
@@ -29,7 +26,7 @@ export function useFlatTreeNavigation<Props extends FlatTreeItemProps = FlatTree
         treeItemWalker.currentElement = data.target;
         return nextTypeAheadElement(treeItemWalker, data.event.key);
       case treeDataTypes.ArrowLeft:
-        return parentElement(flatTreeItems, data.target, treeItemWalker);
+        return parentElement(virtualTree, data.target, treeItemWalker);
       case treeDataTypes.ArrowRight:
         treeItemWalker.currentElement = data.target;
         return firstChild(data.target, treeItemWalker);
@@ -71,7 +68,7 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
 }
 
 function parentElement(
-  flatTreeItems: FlatTreeItems<FlatTreeItemProps>,
+  virtualTreeItems: HeadlessTree<HeadlessTreeItemProps>,
   target: HTMLElement,
   treeWalker: HTMLElementWalker,
 ) {
@@ -79,9 +76,11 @@ function parentElement(
   if (value === null) {
     return null;
   }
-  const flatTreeItem = flatTreeItems.get(value);
-  if (flatTreeItem?.parentValue) {
-    return treeWalker.root.querySelector<HTMLElement>(`[${dataTreeItemValueAttrName}="${flatTreeItem.parentValue}"]`);
+  const virtualTreeItem = virtualTreeItems.get(value);
+  if (virtualTreeItem?.parentValue) {
+    return treeWalker.root.querySelector<HTMLElement>(
+      `[${dataTreeItemValueAttrName}="${virtualTreeItem.parentValue}"]`,
+    );
   }
   return null;
 }

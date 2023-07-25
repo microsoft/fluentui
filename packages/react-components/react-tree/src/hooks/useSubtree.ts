@@ -1,15 +1,15 @@
 import * as React from 'react';
+import { TreeProps, TreeState } from '../Tree';
+import { useTreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeProps, TreeState } from './Tree.types';
-import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
 
 /**
- * Create the state required to render a sub-level Tree.
+ * Create the state required to render a sub-level BaseTree.
  *
- * @param props - props from this instance of Tree
- * @param ref - reference to root HTMLElement of Tree
+ * @param props - props from this instance of BaseTree
+ * @param ref - reference to root HTMLElement of BaseTree
  */
-export function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
+export function useSubtree(props: Pick<TreeProps, 'appearance' | 'size'>, ref: React.Ref<HTMLElement>): TreeState {
   const contextAppearance = useTreeContext_unstable(ctx => ctx.appearance);
   const contextSize = useTreeContext_unstable(ctx => ctx.size);
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);

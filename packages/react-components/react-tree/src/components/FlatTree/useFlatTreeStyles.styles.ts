@@ -1,10 +1,10 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TreeSlots, TreeState } from './Tree.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { FlatTreeSlots, FlatTreeState } from './FlatTree.types';
 
-export const treeClassNames: SlotClassNames<TreeSlots> = {
-  root: 'fui-Tree',
+export const flatTreeClassNames: SlotClassNames<FlatTreeSlots> = {
+  root: 'fui-FlatTree',
 };
 
 const useStyles = makeStyles({
@@ -19,11 +19,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const useTreeStyles_unstable = (state: TreeState): TreeState => {
+export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
   const styles = useStyles();
   const isSubTree = state.level > 0;
   state.root.className = mergeClasses(
-    treeClassNames.root,
+    flatTreeClassNames.root,
     styles.root,
     isSubTree && styles.subtree,
     state.root.className,
