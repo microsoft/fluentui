@@ -6,91 +6,98 @@ export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'over
   container: HTMLElement | null;
 }
 
-type SimplifiedAutoSize = boolean | 'height' | 'width';
 /**
  * AutoSizes contains many options from historic implementation.
  * Now options 'always'/'height-always'/'width-always' are obsolete.
  * This function maps them to true/'height'/'width'
  */
-const getSimplifiedAutoSize = (autoSize?: PositioningOptions['autoSize']): SimplifiedAutoSize | undefined =>
-  autoSize === 'always'
-    ? true
-    : autoSize === 'height-always'
-    ? 'height'
-    : autoSize === 'width-always'
-    ? 'width'
-    : autoSize;
+const normalizeAutoSize = (
+  autoSize?: PositioningOptions['autoSize'],
+): { applyMaxWidth: boolean; applyMaxHeight: boolean } => {
+  switch (autoSize) {
+    case 'always':
+    case true:
+      return {
+        applyMaxWidth: true,
+        applyMaxHeight: true,
+      };
 
-const CSS_VAR_BOX_SIZING = '--maxsize-box-sizing';
-const CSS_VAR_AVAILABLE_WIDTH = '--maxsize-available-width';
-const CSS_VAR_AVAILABLE_HEIGHT = '--maxsize-available-height';
-const CSS_VAR_OVERFLOW_X = '--maxsize-overflow-x';
-const CSS_VAR_OVERFLOW_Y = '--maxsize-overflow-y';
+    case 'width-always':
+    case 'width':
+      return {
+        applyMaxWidth: true,
+        applyMaxHeight: false,
+      };
 
-export const resetMaxSizeStyles = (floatingElementStyle: CSSStyleDeclaration) => {
-  if (floatingElementStyle.boxSizing === `var(${CSS_VAR_BOX_SIZING})`) {
-    floatingElementStyle.removeProperty('box-sizing');
+    case 'height-always':
+    case 'height':
+      return {
+        applyMaxWidth: false,
+        applyMaxHeight: true,
+      };
 
-    if (floatingElementStyle.maxWidth === `var(${CSS_VAR_AVAILABLE_WIDTH})`) {
-      floatingElementStyle.removeProperty('max-width');
-    }
-    if (floatingElementStyle.width === `var(${CSS_VAR_AVAILABLE_WIDTH})`) {
-      floatingElementStyle.removeProperty('width');
-    }
-
-    if (floatingElementStyle.maxHeight === `var(${CSS_VAR_AVAILABLE_HEIGHT})`) {
-      floatingElementStyle.removeProperty('max-height');
-    }
-    if (floatingElementStyle.height === `var(${CSS_VAR_AVAILABLE_HEIGHT})`) {
-      floatingElementStyle.removeProperty('height');
-    }
-
-    if (floatingElementStyle.overflowX === `var(${CSS_VAR_OVERFLOW_X})`) {
-      floatingElementStyle.removeProperty('overflow-x');
-    }
-    if (floatingElementStyle.overflowY === `var(${CSS_VAR_OVERFLOW_Y})`) {
-      floatingElementStyle.removeProperty('overflow-y');
-    }
+    default:
+      return {
+        applyMaxWidth: false,
+        applyMaxHeight: false,
+      };
   }
 };
+
+export const resetMaxSize = (autoSize: PositioningOptions['autoSize']): Middleware => ({
+  name: 'resetMaxSize',
+  fn({ middlewareData, elements }) {
+    if (middlewareData.maxSizeReset) {
+      return {};
+    }
+
+    const { applyMaxWidth, applyMaxHeight } = normalizeAutoSize(autoSize);
+    if (applyMaxWidth) {
+      elements.floating.style.removeProperty('box-sizing');
+      elements.floating.style.removeProperty('max-width');
+      elements.floating.style.removeProperty('width');
+    }
+    if (applyMaxHeight) {
+      elements.floating.style.removeProperty('box-sizing');
+      elements.floating.style.removeProperty('max-height');
+      elements.floating.style.removeProperty('height');
+    }
+
+    return {
+      data: { maxSizeReset: true },
+      reset: { rects: true },
+    };
+  },
+});
 
 export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSizeMiddlewareOptions): Middleware {
   const { container, overflowBoundary } = options;
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
-      const simplifiedAutoSize = getSimplifiedAutoSize(autoSize);
-      if (simplifiedAutoSize) {
-        elements.floating.style.setProperty(CSS_VAR_BOX_SIZING, 'border-box');
-        elements.floating.style.setProperty('box-sizing', `var(${CSS_VAR_BOX_SIZING})`);
-      }
+      const { applyMaxWidth, applyMaxHeight } = normalizeAutoSize(autoSize);
 
-      const applyMaxWidth = simplifiedAutoSize === true || simplifiedAutoSize === 'width';
       const widthOverflow = rects.floating.width > availableWidth;
-
-      const applyMaxHeight = simplifiedAutoSize === true || simplifiedAutoSize === 'height';
       const heightOverflow = rects.floating.height > availableHeight;
 
       if (applyMaxWidth) {
-        elements.floating.style.setProperty(CSS_VAR_AVAILABLE_WIDTH, `${availableWidth}px`);
-        elements.floating.style.setProperty('max-width', `var(${CSS_VAR_AVAILABLE_WIDTH})`);
+        elements.floating.style.setProperty('box-sizing', 'border-box');
+        elements.floating.style.setProperty('max-width', `${availableWidth}px`);
         if (widthOverflow) {
-          elements.floating.style.setProperty('width', `var(${CSS_VAR_AVAILABLE_WIDTH})`);
+          elements.floating.style.setProperty('width', `${availableWidth}px`);
           if (!elements.floating.style.overflowX) {
-            elements.floating.style.setProperty(CSS_VAR_OVERFLOW_X, 'auto');
-            elements.floating.style.setProperty('overflow-x', `var(${CSS_VAR_OVERFLOW_X})`);
+            elements.floating.style.setProperty('overflow-x', 'auto');
           }
         }
       }
 
       if (applyMaxHeight) {
-        elements.floating.style.setProperty(CSS_VAR_AVAILABLE_HEIGHT, `${availableHeight}px`);
-        elements.floating.style.setProperty('max-height', `var(${CSS_VAR_AVAILABLE_HEIGHT})`);
+        elements.floating.style.setProperty('box-sizing', 'border-box');
+        elements.floating.style.setProperty('max-height', `${availableHeight}px`);
         if (heightOverflow) {
-          elements.floating.style.setProperty('height', `var(${CSS_VAR_AVAILABLE_HEIGHT})`);
+          elements.floating.style.setProperty('height', `${availableHeight}px`);
           if (!elements.floating.style.overflowY) {
-            elements.floating.style.setProperty(CSS_VAR_OVERFLOW_Y, 'auto');
-            elements.floating.style.setProperty('overflow-y', `var(${CSS_VAR_OVERFLOW_Y})`);
+            elements.floating.style.setProperty('overflow-y', 'auto');
           }
         }
       }

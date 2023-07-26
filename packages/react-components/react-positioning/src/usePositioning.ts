@@ -16,6 +16,7 @@ import {
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
+  resetMaxSize as resetMaxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware';
@@ -179,6 +180,7 @@ function usePositioningOptions(options: PositioningOptions) {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
+        autoSize && resetMaxSizeMiddleware(autoSize),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
