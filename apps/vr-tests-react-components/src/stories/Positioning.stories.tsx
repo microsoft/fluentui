@@ -477,6 +477,110 @@ const AutoSize = () => {
   );
 };
 
+const AutoSizeAsyncContent = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    autoSize: true,
+    overflowBoundary,
+  });
+
+  const [isLoaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 500);
+  });
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        padding: '10px 50px',
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+        {isLoaded ? (
+          <span id="full-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu
+            feugiat pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit
+            lectus. Porta nibh venenatis cras sed felis eget. Enim sed faucibus turpis in. Non blandit massa enim nec
+            dui nunc mattis. Ut eu sem integer vitae justo. Lacus vestibulum sed arcu non. Vivamus arcu felis bibendum
+            ut. Sagittis vitae et leo duis ut diam quam nulla porttitor. Amet est placerat in egestas erat imperdiet.
+            Dapibus ultrices in iaculis nunc sed augue. Risus sed vulputate odio ut enim blandit volutpat maecenas. Orci
+            dapibus ultrices in iaculis nunc sed augue lacus. Quam elementum pulvinar etiam non quam. Tempor commodo
+            ullamcorper a lacus vestibulum sed arcu. Nunc non blandit massa enim nec. Venenatis a condimentum vitae
+            sapien. Sodales ut eu sem integer vitae justo eget magna. In aliquam sem fringilla ut morbi tincidunt augue.
+            Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Semper eget duis at
+            tellus. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. Amet volutpat consequat
+            mauris nunc congue nisi vitae. Hendrerit gravida rutrum quisque non tellus. Aliquet eget sit amet tellus.
+            Libero id faucibus nisl tincidunt. Amet nulla facilisi morbi tempus iaculis urna id.
+          </span>
+        ) : (
+          <span>Loading...</span>
+        )}
+      </Box>
+    </div>
+  );
+};
+
+const AutoSizeUpdatePosition = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    align: 'start',
+    autoSize: true,
+    overflowBoundary,
+    positioningRef,
+  });
+
+  const [isLoaded, setLoaded] = React.useState(false);
+  const onLoaded = () => setLoaded(true);
+
+  React.useEffect(() => {
+    if (isLoaded) {
+      positioningRef.current?.updatePosition();
+    }
+  }, [isLoaded]);
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        width: 250,
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef} style={{ width: 'fit-content', marginLeft: 100, marginTop: 10 }}>
+        Target
+      </button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+        {isLoaded ? (
+          <div id="full-content" style={{ backgroundColor: 'cornflowerblue', width: 200, height: 100 }} />
+        ) : (
+          <button id="load-content" onClick={onLoaded}>
+            load content
+          </button>
+        )}
+      </Box>
+    </div>
+  );
+};
+
 const DisableTether = () => {
   const styles = useStyles();
   const { containerRef, targetRef } = usePositioning({
@@ -1019,6 +1123,23 @@ storiesOf('Positioning', module)
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
+  .addStory('auto size with async content', () => (
+    <StoryWright steps={new Steps().wait('#full-content').snapshot('floating element is within the boundary').end()}>
+      <AutoSizeAsyncContent />
+    </StoryWright>
+  ))
+  .addStory('auto size with async content reset styles on updatePosition', () => (
+    <StoryWright
+      steps={new Steps()
+        .click('#load-content')
+        .wait('#full-content')
+        .wait(250) // let updatePosition finish
+        .snapshot('floating element is fully visible')
+        .end()}
+    >
+      <AutoSizeUpdatePosition />
+    </StoryWright>
+  ))
   .addStory('disable tether', () => <DisableTether />)
   .addStory('position fixed', () => <PositionAndAlignProps positionFixed />, { includeRtl: true })
   .addStory('virtual element', () => <VirtualElement />)

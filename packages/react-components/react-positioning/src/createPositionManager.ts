@@ -3,6 +3,7 @@ import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates, getScrollParent } from './utils';
 import { isHTMLElement } from '@fluentui/react-utilities';
+import { resetMaxSizeStyles } from './middleware/maxSize';
 
 interface PositionManagerOptions {
   /**
@@ -79,6 +80,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
       isFirstUpdate = false;
     }
 
+    resetMaxSizeStyles(container.style);
     Object.assign(container.style, { position: strategy });
     computePosition(target, container, { placement, middleware, strategy })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
