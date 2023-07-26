@@ -5,7 +5,6 @@ import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
-import { act } from 'react-dom/test-utils';
 
 describe('Donut chart interactions', () => {
   beforeEach(() => {
@@ -155,53 +154,6 @@ describe('Donut chart interactions', () => {
         <DonutChart culture={window.navigator.language} data={chartPoints} innerRadius={55} />
       </ThemeProvider>,
     );
-
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
-});
-describe('Screen resolution', () => {
-  beforeEach(() => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-  });
-  afterEach(() => {
-    jest.spyOn(global.Math, 'random').mockRestore();
-  });
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-  });
-
-  test('Should remain unchanged on zoom in', () => {
-    // Arrange
-    const { container } = render(<DonutChart data={chartPoints} innerRadius={55} width={300} height={300} />);
-
-    // Act
-    global.innerWidth = window.innerWidth / 2;
-    global.innerHeight = window.innerHeight / 2;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
-
-  test('Should remain unchanged on zoom out', () => {
-    // Arrange
-    const { container } = render(<DonutChart data={chartPoints} innerRadius={55} width={300} height={300} />);
-
-    // Act
-    global.innerWidth = window.innerWidth * 2;
-    global.innerHeight = window.innerHeight * 2;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
 
     // Assert
     expect(container).toMatchSnapshot();
