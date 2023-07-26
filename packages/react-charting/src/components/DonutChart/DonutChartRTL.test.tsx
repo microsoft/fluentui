@@ -1,10 +1,11 @@
-import { render, screen, queryAllByAttribute, fireEvent, act, waitFor } from '@testing-library/react';
+import { render, screen, queryAllByAttribute, fireEvent, waitFor } from '@testing-library/react';
 import { chartPoints, emptyChartPoints } from './DonutChart.test';
 import { DonutChart } from './index';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
+import { act } from 'react-dom/test-utils';
 
 describe('Donut chart interactions', () => {
   beforeEach(() => {
