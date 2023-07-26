@@ -486,9 +486,6 @@ const AutoSizeAsyncContent = () => {
     overflowBoundary,
   });
 
-  const [isLoaded, setLoaded] = React.useState(false);
-  const onLoaded = () => setLoaded(true);
-
   return (
     <div
       ref={setOverflowBoundary}
@@ -503,19 +500,24 @@ const AutoSizeAsyncContent = () => {
     >
       <button ref={targetRef}>Target</button>
       <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
-        {isLoaded ? (
-          <span id="full-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu
-            feugiat pretium nibh ipsum consequat.
-          </span>
-        ) : (
-          <button id="load-content" onClick={onLoaded}>
-            load
-          </button>
-        )}
+        <AsyncFloatingContent />
       </Box>
     </div>
+  );
+};
+const AsyncFloatingContent = () => {
+  const [isLoaded, setLoaded] = React.useState(false);
+  const onLoaded = () => setLoaded(true);
+  return isLoaded ? (
+    <span id="full-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
+      pretium nibh ipsum consequat.
+    </span>
+  ) : (
+    <button id="load-content" onClick={onLoaded}>
+      load
+    </button>
   );
 };
 
