@@ -272,7 +272,7 @@
     "jsonc-eslint-parser": "2.3.0",
     "just-scripts": "1.8.2",
     "lage": "1.8.8",
-    "lerna": "6.6.2",
+    "lerna": "7.1.3",
     "@lerna/project": "6.4.1",
     "@lerna/package-graph": "6.4.1",
     "lerna-alias": "3.0.3-0",
