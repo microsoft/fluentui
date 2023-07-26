@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 20 Jul 2023 18:27:30 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.11.1)
+
+Tue, 25 Jul 2023 13:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.11.0..@fluentui/react-menu_v9.11.1)
+
+### Patches
+
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- refactor: Remove custom focus code in favour of useRestoreFocus hooks ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-portal to v9.3.3 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-tabster to v9.11.0 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
 
 ## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.11.0)
 

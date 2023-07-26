@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: update maxSize middleware to apply height/width when overflow",
+  "packageName": "@fluentui/react-positioning",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

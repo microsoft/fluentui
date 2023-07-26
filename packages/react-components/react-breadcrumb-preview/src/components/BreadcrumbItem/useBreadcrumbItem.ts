@@ -22,7 +22,7 @@ export const useBreadcrumbItem_unstable = (
     components: {
       root: 'li',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('li', {
       ref,
       ...props,
     }),
