@@ -155,7 +155,7 @@ function usePositioningOptions(options: PositioningOptions) {
   const {
     align,
     arrowPadding,
-    autoSize,
+    autoSize: rawAutoSize,
     coverTarget,
     flipBoundary,
     offset,
@@ -174,14 +174,14 @@ function usePositioningOptions(options: PositioningOptions) {
   const { dir } = useFluent();
   const isRtl = dir === 'rtl';
   const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
-  const normalizedAutoSize = normalizeAutoSize(autoSize);
+  const autoSize = normalizeAutoSize(rawAutoSize);
 
   return React.useCallback(
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
-        normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
+        autoSize && resetMaxSizeMiddleware(autoSize),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
@@ -193,7 +193,7 @@ function usePositioningOptions(options: PositioningOptions) {
           overflowBoundaryPadding,
           isRtl,
         }),
-        normalizedAutoSize && maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary }),
+        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
@@ -212,7 +212,7 @@ function usePositioningOptions(options: PositioningOptions) {
     [
       align,
       arrowPadding,
-      normalizedAutoSize,
+      autoSize,
       coverTarget,
       disableTether,
       flipBoundary,

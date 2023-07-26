@@ -11,14 +11,14 @@ export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'over
  * This middleware only runs once per lifecycle, resetting styles applied by maxSize from previous lifecycle.
  * Then floating element's original size is restored and `size` middleware can calculate available height/width correctly.
  */
-export const resetMaxSize = (normalizedAutoSize: NormalizedAutoSize): Middleware => ({
+export const resetMaxSize = (autoSize: NormalizedAutoSize): Middleware => ({
   name: 'resetMaxSize',
   fn({ middlewareData: { maxSizeAlreadyReset }, elements }) {
     if (maxSizeAlreadyReset) {
       return {};
     }
 
-    const { applyMaxWidth, applyMaxHeight } = normalizedAutoSize;
+    const { applyMaxWidth, applyMaxHeight } = autoSize;
     if (applyMaxWidth) {
       elements.floating.style.removeProperty('box-sizing');
       elements.floating.style.removeProperty('max-width');
@@ -37,12 +37,12 @@ export const resetMaxSize = (normalizedAutoSize: NormalizedAutoSize): Middleware
   },
 });
 
-export function maxSize(normalizedAutoSize: NormalizedAutoSize, options: MaxSizeMiddlewareOptions): Middleware {
+export function maxSize(autoSize: NormalizedAutoSize, options: MaxSizeMiddlewareOptions): Middleware {
   const { container, overflowBoundary } = options;
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
-      const { applyMaxWidth, applyMaxHeight } = normalizedAutoSize;
+      const { applyMaxWidth, applyMaxHeight } = autoSize;
 
       if (applyMaxWidth) {
         elements.floating.style.setProperty('box-sizing', 'border-box');
