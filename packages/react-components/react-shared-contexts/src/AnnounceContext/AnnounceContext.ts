@@ -2,14 +2,17 @@ import * as React from 'react';
 
 export type AnnounceOptions = {
   alert?: boolean;
-  priority?: number;
   batchId?: string;
+  polite?: boolean;
+  priority?: number;
 };
 
 /**
  * @internal
  */
-export type AnnounceContextValue<T = AnnounceOptions> = (message: string, options?: T) => void;
+export type AnnounceContextValue<T = AnnounceOptions> = {
+  announce?: (message: string, options?: T) => void;
+};
 
 /**
  * @internal
@@ -22,5 +25,5 @@ export const AnnounceContext = React.createContext<AnnounceContextValue | undefi
 export const AnnounceProvider = AnnounceContext.Provider;
 
 export function useAnnounce(): AnnounceContextValue {
-  return React.useContext(AnnounceContext) ?? (() => null);
+  return React.useContext(AnnounceContext) ?? {};
 }
