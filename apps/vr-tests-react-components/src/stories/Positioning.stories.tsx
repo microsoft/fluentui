@@ -568,9 +568,12 @@ const AutoSizeUpdatePosition = () => {
       <button ref={targetRef} style={{ width: 'fit-content', marginLeft: 100, marginTop: 10 }}>
         Target
       </button>
-      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+      <Box
+        ref={containerRef}
+        style={{ border: '3px solid green', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
+      >
         {isLoaded ? (
-          <div id="full-content" style={{ backgroundColor: 'cornflowerblue', width: 200, height: 100 }} />
+          <>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</>
         ) : (
           <button id="load-content" onClick={onLoaded}>
             load content
@@ -1132,9 +1135,9 @@ storiesOf('Positioning', module)
     <StoryWright
       steps={new Steps()
         .click('#load-content')
-        .wait('#full-content')
+        .waitForNotFound('#load-content')
         .wait(250) // let updatePosition finish
-        .snapshot('floating element is fully visible')
+        .snapshot('floating element width fills boundary and has text ellipsis')
         .end()}
     >
       <AutoSizeUpdatePosition />
