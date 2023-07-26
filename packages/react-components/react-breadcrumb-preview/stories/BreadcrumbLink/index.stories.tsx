@@ -6,7 +6,7 @@ import bestPracticesMd from './BreadcrumbLinkBestPractices.md';
 export { Default } from './BreadcrumbLinkDefault.stories';
 
 export default {
-  title: 'Preview Components/BreadcrumbLink',
+  title: 'Preview Components/Breadcrumb/BreadcrumbLink',
   component: BreadcrumbLink,
   parameters: {
     docs: {
