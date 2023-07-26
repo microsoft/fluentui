@@ -42,29 +42,27 @@ export function maxSize(autoSize: NormalizedAutoSize, options: MaxSizeMiddleware
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
+      const applyMaxSizeStyles = (apply: boolean, dimension: 'width' | 'height', availableSize: number) => {
+        if (!apply) {
+          return;
+        }
+
+        elements.floating.style.setProperty('box-sizing', 'border-box');
+        elements.floating.style.setProperty(`max-${dimension}`, `${availableSize}px`);
+
+        if (rects.floating[dimension] > availableSize) {
+          elements.floating.style.setProperty(dimension, `${availableSize}px`);
+
+          const axis = dimension === 'width' ? 'x' : 'y';
+          if (!elements.floating.style.getPropertyValue(`overflow-${axis}`)) {
+            elements.floating.style.setProperty(`overflow-${axis}`, 'auto');
+          }
+        }
+      };
+
       const { applyMaxWidth, applyMaxHeight } = autoSize;
-
-      if (applyMaxWidth) {
-        elements.floating.style.setProperty('box-sizing', 'border-box');
-        elements.floating.style.setProperty('max-width', `${availableWidth}px`);
-        if (rects.floating.width > availableWidth) {
-          elements.floating.style.setProperty('width', `${availableWidth}px`);
-          if (!elements.floating.style.overflowX) {
-            elements.floating.style.setProperty('overflow-x', 'auto');
-          }
-        }
-      }
-
-      if (applyMaxHeight) {
-        elements.floating.style.setProperty('box-sizing', 'border-box');
-        elements.floating.style.setProperty('max-height', `${availableHeight}px`);
-        if (rects.floating.height > availableHeight) {
-          elements.floating.style.setProperty('height', `${availableHeight}px`);
-          if (!elements.floating.style.overflowY) {
-            elements.floating.style.setProperty('overflow-y', 'auto');
-          }
-        }
-      }
+      applyMaxSizeStyles(applyMaxWidth, 'width', availableWidth);
+      applyMaxSizeStyles(applyMaxHeight, 'height', availableHeight);
     },
   });
 }
