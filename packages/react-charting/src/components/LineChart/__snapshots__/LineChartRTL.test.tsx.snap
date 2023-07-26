@@ -26,6 +26,9 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
           &:focus {
             outline: none;
           }
+          {
+            overflow: auto;
+          }
       data-focuszone-id="FocusZone20"
     >
       <svg
@@ -490,6 +493,9 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           ms-FocusZone
           &:focus {
             outline: none;
+          }
+          {
+            overflow: auto;
           }
       data-focuszone-id="FocusZone9"
     >
@@ -1042,7 +1048,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_170"
+    id="chart_174"
     role="presentation"
   >
     <div
@@ -1051,7 +1057,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone171"
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone175"
     >
       <svg
         aria-label="LineChart"
@@ -1086,7 +1095,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_170"
+          id="xAxisGElementchart_174"
           transform="translate(0, -35)"
         />
         <g
@@ -1114,12 +1123,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_170"
+          id="yAxisGElementchart_174"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine165"
+            id="verticalLine169"
             stroke="#C8C8C8"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1130,7 +1139,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <g>
             <line
-              id="lineID163_2_1"
+              id="lineID167_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1149,7 +1158,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle162_2_1"
+              id="circle166_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1165,7 +1174,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle162_2_11L"
+              id="circle166_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1173,7 +1182,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID163_1_1"
+              id="lineID167_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1192,7 +1201,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle162_1_1"
+              id="circle166_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1208,7 +1217,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle162_1_11L"
+              id="circle166_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1216,7 +1225,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID163_0_1"
+              id="lineID167_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1235,7 +1244,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle162_0_1"
+              id="circle166_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1251,7 +1260,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle162_0_11L"
+              id="circle166_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1299,7 +1308,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone172"
+                data-focuszone-id="FocusZone176"
                 role="listbox"
               >
                 <div
@@ -1602,7 +1611,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_181"
+    id="chart_185"
     role="presentation"
   >
     <div
@@ -1611,7 +1620,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone182"
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone186"
     >
       <svg
         aria-label="LineChart"
@@ -1646,7 +1658,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_181"
+          id="xAxisGElementchart_185"
           transform="translate(0, -35)"
         />
         <g
@@ -1674,12 +1686,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_181"
+          id="yAxisGElementchart_185"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine176"
+            id="verticalLine180"
             stroke="#C8C8C8"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1690,7 +1702,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <g>
             <line
-              id="lineID174_2_1"
+              id="lineID178_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1709,7 +1721,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle173_2_1"
+              id="circle177_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1725,7 +1737,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle173_2_11L"
+              id="circle177_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1733,7 +1745,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID174_1_1"
+              id="lineID178_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1752,7 +1764,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle173_1_1"
+              id="circle177_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1768,7 +1780,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle173_1_11L"
+              id="circle177_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1776,7 +1788,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID174_0_1"
+              id="lineID178_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1795,7 +1807,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle173_0_1"
+              id="circle177_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1811,7 +1823,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle173_0_11L"
+              id="circle177_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1859,7 +1871,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone183"
+                data-focuszone-id="FocusZone187"
                 role="listbox"
               >
                 <div
@@ -2175,7 +2187,7 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_195"
+      id="chart_199"
       role="presentation"
     >
       <div
@@ -2184,7 +2196,10 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone196"
+            {
+              overflow: auto;
+            }
+        data-focuszone-id="FocusZone200"
       >
         <svg
           aria-label="LineChart"
@@ -2219,7 +2234,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_195"
+            id="xAxisGElementchart_199"
             transform="translate(0, -35)"
           />
           <g
@@ -2247,12 +2262,12 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_195"
+            id="yAxisGElementchart_199"
             transform="translate(40, 0)"
           />
           <g>
             <line
-              id="verticalLine190"
+              id="verticalLine194"
               stroke="#C8C8C8"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -2263,7 +2278,7 @@ exports[`Should reflect theme change 1`] = `
             />
             <g>
               <line
-                id="lineID188_2_1"
+                id="lineID192_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -2282,7 +2297,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle187_2_1"
+                id="circle191_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2298,7 +2313,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle187_2_11L"
+                id="circle191_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2306,7 +2321,7 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <line
-                id="lineID188_1_1"
+                id="lineID192_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -2325,7 +2340,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle187_1_1"
+                id="circle191_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2341,7 +2356,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle187_1_11L"
+                id="circle191_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2349,7 +2364,7 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <line
-                id="lineID188_0_1"
+                id="lineID192_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -2368,7 +2383,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle187_0_1"
+                id="circle191_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2384,7 +2399,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle187_0_11L"
+                id="circle191_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2432,7 +2447,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone197"
+                  data-focuszone-id="FocusZone201"
                   role="listbox"
                 >
                   <div

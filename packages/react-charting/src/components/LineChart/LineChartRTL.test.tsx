@@ -4,6 +4,13 @@ import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 
+import {
+  getByClass,
+  getById,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility';
+
 const basicPoints: ILineChartPoints[] = [
   {
     legend: 'metaData1',
@@ -156,31 +163,40 @@ const chartPointsWithGaps = {
 
 
 describe('Line chart rendering', () => {
-  test('Should render the Line chart with numeric x-axis data', () => {
-    const { container } = render(<LineChart data={basicChartPoints} />);
+  testWithoutWait(
+    'Should render the Line chart with numeric x-axis data',
+    LineChart,
+    { data: basicChartPoints },
+    container => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render the Line chart with date x-axis data', () => {
-    const { container } = render(<LineChart data={dateChartPoints} />);
+  testWithoutWait(
+    'Should render the Line chart with date x-axis data',
+    LineChart,
+    { data: dateChartPoints },
+    container => {
     expect(container).toMatchSnapshot();
   });
 });
 
 
 describe('Line chart - Subcomponent Time Range', () => {
-  test('Should render time range with defined data', async () => {
-    // Arrange
-    const { container } = render(<LineChart data={dateChartPoints} colorFillBars={colorFillBarData} />);
-    await new Promise(resolve => setTimeout(resolve));
+  testWithWait(
+    'Should render the Line chart with date x-axis data',
+    LineChart,
+    { data: dateChartPoints, colorFillBars: colorFillBarData },
+    container => {
     const getByClass = queryAllByAttribute.bind(null, 'class');
     // Assert
     expect(getByClass(container, /rect/i).length > 0);
   });
 
-  test('Should highlight corresponding time range on legend click', async () => {
-    // Arrange
-    const { container } = render(<LineChart data={dateChartPoints} colorFillBars={colorFillBarData} />);
+  testWithWait(
+    'Should highlight corresponding time range on legend click',
+    LineChart,
+    { data: dateChartPoints, colorFillBars: colorFillBarData },
+    container => {
     const legend = screen.queryByText('Time range 1');
     expect(legend).toBeDefined();
     fireEvent.click(legend!);
@@ -197,9 +213,11 @@ describe('Line chart - Subcomponent Time Range', () => {
 });
 
 describe('Line chart - Subcomponent line', () => {
-  test('Should render the lines with the specified colors', async () => {
-    // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} />);
+  testWithoutWait(
+    'Should render the lines with the specified colors',
+    LineChart,
+    { data: basicChartPoints },
+    container => {
     const getById = queryAllByAttribute.bind(null, 'id');
     const lines = getById(container, /lineID/i);
     // Assert
@@ -208,9 +226,12 @@ describe('Line chart - Subcomponent line', () => {
     expect(lines[2].getAttribute('stroke')).toEqual('red');
   });
 
-  test('Should render line with gaps', async () => {
+  testWithoutWait(
+    'Should render line with gaps',
+    LineChart,
+    { data: chartPointsWithGaps },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={chartPointsWithGaps} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     const lines = getById(container, /lineID/i);
     // Assert
@@ -220,9 +241,11 @@ describe('Line chart - Subcomponent line', () => {
 
 
 describe('Line chart - Subcomponent legend', () => {
-  test('Should highlight the corresponding Line on mouse over on legends', () => {
-    // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} />);
+  testWithoutWait(
+    'Should highlight the corresponding Line on mouse over on legends',
+    LineChart,
+    { data: basicChartPoints },
+    container => {
     const legend = screen.queryByText('metaData1');
     expect(legend).toBeDefined();
     fireEvent.mouseOver(legend!);
@@ -234,9 +257,11 @@ describe('Line chart - Subcomponent legend', () => {
     expect(lines[2].getAttribute('opacity')).toEqual('1');
   });
 
-  test('Should highlight the corresponding Legend on mouse over on legends', () => {
-    // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} />);
+  testWithoutWait(
+    'Should highlight the corresponding Legend on mouse over on legends',
+    LineChart,
+    { data: basicChartPoints },
+    container => {
     const legend = screen.queryByText('metaData1');
     expect(legend).toBeDefined();
     fireEvent.mouseOver(legend!);
@@ -244,9 +269,12 @@ describe('Line chart - Subcomponent legend', () => {
     expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
   });
 
-  test('Should select legend on single mouse click on legends', () => {
+  testWithoutWait(
+    'Should select legend on single mouse click on legends',
+    LineChart,
+    { data: basicChartPoints, hideLegend: false },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} hideLegend={false} />);
     const legend = screen.queryByText('metaData1');
     expect(legend).toBeDefined();
     fireEvent.click(legend!);
@@ -258,9 +286,11 @@ describe('Line chart - Subcomponent legend', () => {
     expect(firstLegend).toHaveAttribute('tabIndex', '0');
   });
 
-  test('Should deselect legend on double mouse click on legends', () => {
-    // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} hideLegend={false} />);
+  testWithoutWait(
+    'Should deselect legend on double mouse click on legends',
+    LineChart,
+    { data: basicChartPoints, hideLegend: false },
+    container => {
     const legend = screen.queryByText('metaData1');
     expect(legend).toBeDefined();
 
@@ -277,9 +307,12 @@ describe('Line chart - Subcomponent legend', () => {
     expect(firstLegend).toHaveAttribute('aria-selected', 'false');
   });
 
-  test('Should highlight the data points and render the corresponding callout', () => {
+  testWithWait(
+    'Should highlight the data points and render the corresponding callout',
+    LineChart,
+    { data: basicChartPoints },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     const firstPointonLine = getById(container, /lineID/)[0];
     expect(firstPointonLine).toBeDefined();
@@ -288,9 +321,12 @@ describe('Line chart - Subcomponent legend', () => {
     expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
   });
 
-  test('Should not show any tooltip when hideTooltip is true', () => {
+  testWithWait(
+    'Should not show any tooltip when hideTooltip is true',
+    LineChart,
+    { data: basicChartPoints, hideTooltip: true },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
     const getByClass = queryAllByAttribute.bind(null, 'class');
     // Assert
     expect(getByClass(container, /toolTipcallout/i)).toHaveLength(0);
@@ -298,22 +334,24 @@ describe('Line chart - Subcomponent legend', () => {
 });
 
 describe('Line chart - Subcomponent xAxis Labels', () => {
-  test('Should show the x-axis labels tooltip when hovered', async () => {
+  testWithWait(
+    'Should show the x-axis labels tooltip when hovered',
+    LineChart,
+    { data: dateChartPoints, showXAxisLablesTooltip: true },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={dateChartPoints} showXAxisLablesTooltip={true} />);
-    await new Promise(resolve => setTimeout(resolve));
     const getById = queryAllByAttribute.bind(null, 'id');
     const xAxisLabels = getById(container, /showDots/i);
     fireEvent.mouseOver(xAxisLabels[0]);
-    await new Promise(resolve => setTimeout(resolve));
     // Assert
     expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
   });
 
-  test('Should show rotated x-axis labels', async () => {
-    // Arrange
-    const { container } = render(<LineChart data={dateChartPoints} rotateXAxisLables={true} />);
-    await new Promise(resolve => setTimeout(resolve));
+  testWithWait(
+    'Should show rotated x-axis labels',
+    LineChart,
+    { data: dateChartPoints, rotateXAxisLables: true },
+    container => {
     const getByClass = queryAllByAttribute.bind(null, 'class');
     expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
   });
@@ -330,9 +368,12 @@ describe('Screen resolution', () => {
     });
   });
 
-  test('Should remain unchanged on zoom in', () => {
+  testWithWait(
+    'Should remain unchanged on zoom in',
+    LineChart,
+    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300 },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} width={300} height={300} />);
     global.innerWidth = window.innerWidth / 2;
     global.innerHeight = window.innerHeight / 2;
     act(() => {
@@ -342,9 +383,12 @@ describe('Screen resolution', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Should remain unchanged on zoom out', () => {
+  testWithWait(
+    'Should remain unchanged on zoom out',
+    LineChart,
+    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300 },
+    container => {
     // Arrange
-    const { container } = render(<LineChart data={basicChartPoints} width={300} height={300} />);
     global.innerWidth = window.innerWidth * 2;
     global.innerHeight = window.innerHeight * 2;
     act(() => {
