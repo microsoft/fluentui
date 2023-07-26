@@ -9,7 +9,7 @@ export type AnnounceOptions = {
 /**
  * @internal
  */
-export type AnnounceContextValue = (message: string, options: AnnounceOptions) => void;
+export type AnnounceContextValue<T = AnnounceOptions> = (message: string, options?: T) => void;
 
 /**
  * @internal
