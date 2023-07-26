@@ -1,16 +1,16 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
-  Tree,
+  type Tree,
+  type ProjectGraph,
   addProjectConfiguration,
   writeJson,
   joinPathFragments,
   stripIndents,
   readJson,
   updateJson,
-  ProjectGraph,
   workspaceRoot,
+  installPackagesTask,
 } from '@nrwl/devkit';
-import * as devkit from '@nrwl/devkit';
 import * as childProcess from 'child_process';
 
 import generator from './index';
@@ -24,6 +24,9 @@ const blankGraphMock = {
 let graphMock: ProjectGraph;
 const codeownersPath = joinPathFragments('.github', 'CODEOWNERS');
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 jest.mock('@nx/devkit', () => {
   async function createProjectGraphAsyncMock(): Promise<ProjectGraph> {
     return graphMock;
@@ -31,17 +34,14 @@ jest.mock('@nx/devkit', () => {
 
   return {
     ...jest.requireActual('@nx/devkit'),
+    installPackagesTask: jest.fn(),
     createProjectGraphAsync: createProjectGraphAsyncMock,
   };
 });
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = () => {};
-
-let execSyncSpy: jest.SpyInstance;
-let installPackagesTaskSpy: jest.SpyInstance;
-
 describe('prepare-initial-release generator', () => {
+  const installPackagesTaskSpy = installPackagesTask as unknown as jest.SpyInstance;
+  let execSyncSpy: jest.SpyInstance;
   let tree: Tree;
 
   beforeEach(() => {
@@ -49,7 +49,7 @@ describe('prepare-initial-release generator', () => {
       // @ts-expect-error - no need to mock whole execSync API
       noop,
     );
-    installPackagesTaskSpy = jest.spyOn(devkit, 'installPackagesTask').mockImplementation(noop);
+    // installPackagesTaskSpy = jest.spyOn(devkit, 'installPackagesTask').mockImplementation(noop);
     graphMock = {
       ...blankGraphMock,
     };
@@ -58,6 +58,9 @@ describe('prepare-initial-release generator', () => {
     writeJson<TsConfig>(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
+  });
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it(`should throw error if executed on invalid project`, async () => {
