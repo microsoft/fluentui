@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Mon, 26 Jun 2023 09:53:53 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.2)
+
+Tue, 25 Jul 2023 13:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.1..@fluentui/priority-overflow_v9.1.2)
+
+### Patches
+
+- fix: Overflow update should run show/hide steps twice ([PR #28628](https://github.com/microsoft/fluentui/pull/28628) by lingfan.gao@microsoft.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.1)
 

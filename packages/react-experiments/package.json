@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.14.98",
+  "version": "8.14.99",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.110.10",
+    "@fluentui/react": "^8.110.11",
     "@fluentui/theme": "^2.6.34",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.11",

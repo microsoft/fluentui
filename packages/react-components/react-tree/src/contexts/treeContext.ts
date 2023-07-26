@@ -1,9 +1,9 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 import { TreeItemType, TreeItemValue } from '../TreeItem';
 import { SelectionMode } from '@fluentui/react-utilities';
 import { ImmutableSet } from '../utils/ImmutableSet';
 import { ImmutableMap } from '../utils/ImmutableMap';
+import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
   level: number;

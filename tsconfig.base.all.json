@@ -104,7 +104,6 @@
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
-      "@fluentui/react-data-grid-react-window": ["packages/react-components/react-data-grid-react-window/src/index.ts"],
       "@fluentui/react-datepicker-compat": ["packages/react-components/react-datepicker-compat/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/src/index.ts"],

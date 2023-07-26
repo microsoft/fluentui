@@ -21,11 +21,11 @@ const useStyles = makeStyles({
 
 export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   const styles = useStyles();
-  const isSubtree = state.level > 0;
+  const isSubTree = state.level > 0;
   state.root.className = mergeClasses(
     treeClassNames.root,
     styles.root,
-    isSubtree && styles.subtree,
+    isSubTree && styles.subtree,
     state.root.className,
   );
   return state;
