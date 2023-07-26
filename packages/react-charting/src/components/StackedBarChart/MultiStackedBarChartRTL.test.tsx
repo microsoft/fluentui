@@ -4,6 +4,12 @@ import { chartPoints, emptyChartPoints } from './MultiStackedBarChart.test';
 import { MultiStackedBarChart } from './index';
 
 describe('Multi Stacked Bar chart rendering', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
   test('Should re-render the Multi Stacked Bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<MultiStackedBarChart data={emptyChartPoints} />);
