@@ -49,6 +49,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boolean };
 
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 

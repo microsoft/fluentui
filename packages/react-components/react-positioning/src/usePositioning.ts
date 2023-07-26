@@ -10,7 +10,7 @@ import type {
   TargetElement,
   UsePositioningReturn,
 } from './types';
-import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent } from './utils';
+import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent, normalizeAutoSize } from './utils';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
@@ -174,13 +174,14 @@ function usePositioningOptions(options: PositioningOptions) {
   const { dir } = useFluent();
   const isRtl = dir === 'rtl';
   const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
+  const normalizedAutoSize = normalizeAutoSize(autoSize);
 
   return React.useCallback(
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
-        autoSize && resetMaxSizeMiddleware(autoSize),
+        normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
@@ -192,7 +193,7 @@ function usePositioningOptions(options: PositioningOptions) {
           overflowBoundaryPadding,
           isRtl,
         }),
-        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
+        normalizedAutoSize && maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
@@ -211,7 +212,7 @@ function usePositioningOptions(options: PositioningOptions) {
     [
       align,
       arrowPadding,
-      autoSize,
+      normalizedAutoSize,
       coverTarget,
       disableTether,
       flipBoundary,
