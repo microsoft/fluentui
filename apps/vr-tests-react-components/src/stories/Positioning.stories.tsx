@@ -487,11 +487,7 @@ const AutoSizeAsyncContent = () => {
   });
 
   const [isLoaded, setLoaded] = React.useState(false);
-  React.useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 500);
-  });
+  const onLoaded = () => setLoaded(true);
 
   return (
     <div
@@ -511,21 +507,12 @@ const AutoSizeAsyncContent = () => {
           <span id="full-content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu
-            feugiat pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit
-            lectus. Porta nibh venenatis cras sed felis eget. Enim sed faucibus turpis in. Non blandit massa enim nec
-            dui nunc mattis. Ut eu sem integer vitae justo. Lacus vestibulum sed arcu non. Vivamus arcu felis bibendum
-            ut. Sagittis vitae et leo duis ut diam quam nulla porttitor. Amet est placerat in egestas erat imperdiet.
-            Dapibus ultrices in iaculis nunc sed augue. Risus sed vulputate odio ut enim blandit volutpat maecenas. Orci
-            dapibus ultrices in iaculis nunc sed augue lacus. Quam elementum pulvinar etiam non quam. Tempor commodo
-            ullamcorper a lacus vestibulum sed arcu. Nunc non blandit massa enim nec. Venenatis a condimentum vitae
-            sapien. Sodales ut eu sem integer vitae justo eget magna. In aliquam sem fringilla ut morbi tincidunt augue.
-            Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Semper eget duis at
-            tellus. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere. Amet volutpat consequat
-            mauris nunc congue nisi vitae. Hendrerit gravida rutrum quisque non tellus. Aliquet eget sit amet tellus.
-            Libero id faucibus nisl tincidunt. Amet nulla facilisi morbi tempus iaculis urna id.
+            feugiat pretium nibh ipsum consequat.
           </span>
         ) : (
-          <span>Loading...</span>
+          <button id="load-content" onClick={onLoaded}>
+            load
+          </button>
         )}
       </Box>
     </div>
@@ -568,15 +555,12 @@ const AutoSizeUpdatePosition = () => {
       <button ref={targetRef} style={{ width: 'fit-content', marginLeft: 100, marginTop: 10 }}>
         Target
       </button>
-      <Box
-        ref={containerRef}
-        style={{ border: '3px solid green', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
-      >
+      <Box ref={containerRef} style={{ overflow: 'clip', overflowClipMargin: 10, border: '3px solid green' }}>
         {isLoaded ? (
-          <>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</>
+          <div id="full-content" style={{ backgroundColor: 'cornflowerblue', width: 300, height: 100 }} />
         ) : (
           <button id="load-content" onClick={onLoaded}>
-            load content
+            load + update position
           </button>
         )}
       </Box>
@@ -1127,7 +1111,13 @@ storiesOf('Positioning', module)
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
   .addStory('auto size with async content', () => (
-    <StoryWright steps={new Steps().wait('#full-content').snapshot('floating element is within the boundary').end()}>
+    <StoryWright
+      steps={new Steps()
+        .click('#load-content')
+        .wait('#full-content')
+        .snapshot('floating element is within the boundary')
+        .end()}
+    >
       <AutoSizeAsyncContent />
     </StoryWright>
   ))
@@ -1137,7 +1127,7 @@ storiesOf('Positioning', module)
         .click('#load-content')
         .waitForNotFound('#load-content')
         .wait(250) // let updatePosition finish
-        .snapshot('floating element width fills boundary and has text ellipsis')
+        .snapshot('floating element width fills boundary and overflows 10px because of overflow:clip')
         .end()}
     >
       <AutoSizeUpdatePosition />
