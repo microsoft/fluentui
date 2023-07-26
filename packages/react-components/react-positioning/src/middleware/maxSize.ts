@@ -46,8 +46,8 @@ const normalizeAutoSize = (
 
 export const resetMaxSize = (autoSize: PositioningOptions['autoSize']): Middleware => ({
   name: 'resetMaxSize',
-  fn({ middlewareData, elements }) {
-    if (middlewareData.maxSizeReset) {
+  fn({ middlewareData: { maxSizeAlreadyReset }, elements }) {
+    if (maxSizeAlreadyReset) {
       return {};
     }
 
@@ -64,7 +64,7 @@ export const resetMaxSize = (autoSize: PositioningOptions['autoSize']): Middlewa
     }
 
     return {
-      data: { maxSizeReset: true },
+      data: { maxSizeAlreadyReset: true },
       reset: { rects: true },
     };
   },
