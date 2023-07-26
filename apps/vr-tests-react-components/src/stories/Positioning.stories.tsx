@@ -1125,7 +1125,7 @@ storiesOf('Positioning', module)
     <StoryWright
       steps={new Steps()
         .click('#load-content')
-        .waitForNotFound('#load-content')
+        .wait('#full-content')
         .wait(250) // let updatePosition finish
         .snapshot('floating element width fills boundary and overflows 10px because of overflow:clip')
         .end()}
