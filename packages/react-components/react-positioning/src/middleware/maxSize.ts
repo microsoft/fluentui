@@ -44,6 +44,11 @@ const normalizeAutoSize = (
   }
 };
 
+/**
+ * floating-ui `size` middleware uses floating element's height/width to calculate available height/width.
+ * This middleware only runs once per lifecycle, resetting styles applied by maxSize from previous lifecycle.
+ * Then floating element's original size is restored and `size` middleware can calculate available height/width correctly.
+ */
 export const resetMaxSize = (autoSize: PositioningOptions['autoSize']): Middleware => ({
   name: 'resetMaxSize',
   fn({ middlewareData: { maxSizeAlreadyReset }, elements }) {
