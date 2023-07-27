@@ -26,7 +26,9 @@ export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}
 
     return (
       <div className={this._classNames.calloutContentRoot}>
-        <div className={this._classNames.calloutContentX}>{XValue || convertToLocaleString(Legend, culture)} </div>
+        <div className={this._classNames.calloutDateTimeContainer}>
+          <div className={this._classNames.calloutContentX}>{XValue || convertToLocaleString(Legend, culture)} </div>
+        </div>
         <div className={this._classNames.calloutInfoContainer}>
           {variant === ChartHoverCardVariant.LongLegend && !!XValue && !!Legend && (
             <div className={this._classNames.calloutlegendText}>{convertToLocaleString(Legend, culture)}</div>

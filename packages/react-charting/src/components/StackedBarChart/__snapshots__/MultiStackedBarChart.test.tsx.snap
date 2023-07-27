@@ -588,12 +588,19 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             className=
 
                 {
-                  font-weight: 600;
                   margin-bottom: 8px;
                 }
           >
-            2020/04/30
-             
+            <div
+              className=
+
+                  {
+                    font-weight: 600;
+                  }
+            >
+              2020/04/30
+               
+            </div>
           </div>
           <div
             className=
@@ -612,6 +619,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 className=
 
                     {
+                      flex-shrink: 0;
                       margin-right: 8px;
                     }
                 height={14}

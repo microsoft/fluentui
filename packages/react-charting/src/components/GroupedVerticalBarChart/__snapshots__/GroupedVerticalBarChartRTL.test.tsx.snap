@@ -1220,11 +1220,18 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             className=
 
                 {
-                  font-weight: 600;
                   margin-bottom: 8px;
                 }
           >
-             
+            <div
+              className=
+
+                  {
+                    font-weight: 600;
+                  }
+            >
+               
+            </div>
           </div>
           <div
             className=
@@ -1243,6 +1250,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 className=
 
                     {
+                      flex-shrink: 0;
                       margin-right: 8px;
                     }
                 height={14}

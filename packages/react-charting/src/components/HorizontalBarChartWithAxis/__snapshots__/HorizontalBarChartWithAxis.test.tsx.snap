@@ -1105,12 +1105,19 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             className=
 
                 {
-                  font-weight: 600;
                   margin-bottom: 8px;
                 }
           >
-            37%
-             
+            <div
+              className=
+
+                  {
+                    font-weight: 600;
+                  }
+            >
+              37%
+               
+            </div>
           </div>
           <div
             className=
@@ -1129,6 +1136,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 className=
 
                     {
+                      flex-shrink: 0;
                       margin-right: 8px;
                     }
                 height={14}
@@ -1145,6 +1153,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 className=
 
                     {
+                      flex-grow: 1;
                       margin-bottom: 0px;
                       margin-right: 24px;
                       overflow: hidden;

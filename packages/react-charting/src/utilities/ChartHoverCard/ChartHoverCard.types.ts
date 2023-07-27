@@ -50,7 +50,7 @@ export interface IChartHoverCardProps {
   culture?: string;
 
   /**
-   * Specifies the variant of ChartHoverCard to be rendered
+   * Specifies the variant of hover card to be rendered
    * @defaultvalue ChartHoverCardVariant.ShortLegend
    */
   variant?: ChartHoverCardVariant;
@@ -112,13 +112,19 @@ export interface IChartHoverCardStyles {
    */
   descriptionMessage?: IStyle;
 
-  /** styles for the legend icon */
+  /**
+   * styles for the legend icon
+   */
   calloutLegendIcon?: IStyle;
 
-  /** styles for the group divider */
+  /**
+   * styles for the group divider
+   */
   divider?: IStyle;
 
-  /** styles for the updated time text */
+  /**
+   * styles for the updated time text
+   */
   updatedTime?: IStyle;
 }
 

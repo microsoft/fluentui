@@ -190,12 +190,19 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               class=
 
                   {
-                    font-weight: 600;
                     margin-bottom: 8px;
                   }
             >
-              2020/04/30
-               
+              <div
+                class=
+
+                    {
+                      font-weight: 600;
+                    }
+              >
+                2020/04/30
+                 
+              </div>
             </div>
             <div
               class=
@@ -214,6 +221,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                   class=
 
                       {
+                        flex-shrink: 0;
                         margin-right: 8px;
                       }
                   height="14"
@@ -1231,12 +1239,19 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
             className=
 
                 {
-                  font-weight: 600;
                   margin-bottom: 8px;
                 }
           >
-            2020/04/30
-             
+            <div
+              className=
+
+                  {
+                    font-weight: 600;
+                  }
+            >
+              2020/04/30
+               
+            </div>
           </div>
           <div
             className=
@@ -1255,6 +1270,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                 className=
 
                     {
+                      flex-shrink: 0;
                       margin-right: 8px;
                     }
                 height={14}

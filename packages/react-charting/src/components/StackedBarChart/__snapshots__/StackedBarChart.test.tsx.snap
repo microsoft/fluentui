@@ -293,12 +293,19 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                   className=
 
                       {
-                        font-weight: 600;
                         margin-bottom: 8px;
                       }
                 >
-                  first Lorem ipsum dolor sit amet
-                   
+                  <div
+                    className=
+
+                        {
+                          font-weight: 600;
+                        }
+                  >
+                    first Lorem ipsum dolor sit amet
+                     
+                  </div>
                 </div>
                 <div
                   className=
@@ -317,6 +324,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                       className=
 
                           {
+                            flex-shrink: 0;
                             margin-right: 8px;
                           }
                       height={14}

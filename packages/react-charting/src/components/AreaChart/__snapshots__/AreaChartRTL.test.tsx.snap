@@ -750,38 +750,32 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           className=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-blend-mode: normal, luminosity;
                 background-color: #ffffff;
-                display: grid;
-                overflow: hidden;
-                padding-bottom: 10px;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                padding-bottom: 16px;
                 padding-left: 16px;
                 padding-right: 16px;
-                padding-top: 11px;
+                padding-top: 16px;
               }
         >
           <div
             className=
 
                 {
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
+                  margin-bottom: 8px;
                 }
-            style={Object {}}
           >
             <div
               className=
 
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #605e5c;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: 0.8;
+                    font-weight: 600;
                   }
               data-is-focusable={false}
               role="text"
@@ -794,69 +788,68 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           >
             <div
               data-is-focusable={false}
-              key="callout-content-0"
               role="text"
-              style={Object {}}
+              style={
+                Object {
+                  "marginBottom": "0px",
+                  "paddingLeft": "0px",
+                  "paddingRight": "0px",
+                }
+              }
             >
-              <div
-                style={Object {}}
-              >
+              <div>
                 <div
                   className=
 
                       {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        border-left: 4px solid red;
-                        color: #323130;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 16px;
-                        font-weight: 400;
-                        margin-top: 13px;
-                        padding-left: 8px;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                        forced-color-adjust: none;
+                        align-items: center;
+                        display: flex;
                       }
                   id="0_80"
                 >
-                  <div>
-                    <div
-                      className=
+                  <svg
+                    className=
 
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                          }
-                          @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                            color: rgb(255, 255, 255);
-                          }
-                    >
-                       
-                      metaData1
-                    </div>
-                    <div
-                      className=
+                        {
+                          flex-shrink: 0;
+                          margin-right: 8px;
+                        }
+                    height={14}
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width={14}
+                  >
+                    <path
+                      d="M1 1 L12 1 L12 12  L1 12 L1 1 Z"
+                      fill="red"
+                    />
+                  </svg>
+                  <div
+                    className=
 
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 16px;
-                            font-weight: bold;
-                            line-height: 22px;
-                          }
-                          @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                            color: rgb(255, 255, 255);
-                          }
-                    >
-                      80
-                    </div>
+                        {
+                          flex-grow: 1;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          white-space: nowrap;
+                        }
+                    style={
+                      Object {
+                        "marginRight": "24px",
+                      }
+                    }
+                  >
+                    metaData1
+                  </div>
+                  <div
+                    className=
+
+                        {
+                          flex-shrink: 0;
+                          font-weight: 600;
+                        }
+                  >
+                    80
                   </div>
                 </div>
               </div>

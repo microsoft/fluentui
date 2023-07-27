@@ -426,12 +426,19 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
             className=
 
                 {
-                  font-weight: 600;
                   margin-bottom: 8px;
                 }
           >
-            Execllent (0-200)
-             
+            <div
+              className=
+
+                  {
+                    font-weight: 600;
+                  }
+            >
+              Execllent (0-200)
+               
+            </div>
           </div>
           <div
             className=
@@ -450,6 +457,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                 className=
 
                     {
+                      flex-shrink: 0;
                       margin-right: 8px;
                     }
                 height={14}

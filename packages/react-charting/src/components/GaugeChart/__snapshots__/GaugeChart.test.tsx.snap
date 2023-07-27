@@ -533,37 +533,32 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             class=
 
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-blend-mode: normal, luminosity;
                   background-color: #ffffff;
-                  display: grid;
-                  overflow: hidden;
-                  padding-bottom: 10px;
+                  color: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  padding-bottom: 16px;
                   padding-left: 16px;
                   padding-right: 16px;
-                  padding-top: 11px;
+                  padding-top: 16px;
                 }
           >
             <div
               class=
 
                   {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
+                    margin-bottom: 8px;
                   }
             >
               <div
                 class=
 
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #605e5c;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 12px;
-                      font-weight: 400;
-                      line-height: 16px;
-                      opacity: 0.8;
+                      font-weight: 600;
                     }
                 data-is-focusable="false"
                 role="text"
@@ -575,64 +570,57 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               <div
                 data-is-focusable="false"
                 role="text"
+                style="padding-left: 0px; padding-right: 0px; margin-bottom: 8px;"
               >
                 <div>
                   <div
                     class=
 
                         {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          border-left: 4px solid #107c10;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 16px;
-                          font-weight: 400;
-                          margin-top: 13px;
-                          padding-left: 8px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          forced-color-adjust: none;
+                          align-items: center;
+                          display: flex;
                         }
                     id="0_0 - 33"
                   >
-                    <div>
-                      <div
-                        class=
+                    <svg
+                      class=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                            }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
-                            }
-                      >
-                         
-                        Low Risk
-                      </div>
-                      <div
-                        class=
+                          {
+                            flex-shrink: 0;
+                            margin-right: 8px;
+                          }
+                      height="14"
+                      transform="rotate(0, 0, 0)"
+                      viewBox="-1 -1 14 14"
+                      width="14"
+                    >
+                      <path
+                        d="M1 1 L12 1 L12 12  L1 12 L1 1 Z"
+                        fill="#107c10"
+                      />
+                    </svg>
+                    <div
+                      class=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 16px;
-                              font-weight: bold;
-                              line-height: 22px;
-                            }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
-                            }
-                      >
-                        0 - 33
-                      </div>
+                          {
+                            flex-grow: 1;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                          }
+                      style="margin-right: 24px;"
+                    >
+                      Low Risk
+                    </div>
+                    <div
+                      class=
+
+                          {
+                            flex-shrink: 0;
+                            font-weight: 600;
+                          }
+                    >
+                      0 - 33
                     </div>
                   </div>
                 </div>
@@ -640,64 +628,57 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               <div
                 data-is-focusable="false"
                 role="text"
+                style="padding-left: 0px; padding-right: 0px; margin-bottom: 8px;"
               >
                 <div>
                   <div
                     class=
 
                         {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          border-left: 4px solid #f7630c;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 16px;
-                          font-weight: 400;
-                          margin-top: 13px;
-                          padding-left: 8px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          forced-color-adjust: none;
+                          align-items: center;
+                          display: flex;
                         }
                     id="1_34 - 67"
                   >
-                    <div>
-                      <div
-                        class=
+                    <svg
+                      class=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                            }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
-                            }
-                      >
-                         
-                        Medium Risk
-                      </div>
-                      <div
-                        class=
+                          {
+                            flex-shrink: 0;
+                            margin-right: 8px;
+                          }
+                      height="14"
+                      transform="rotate(0, 0, 0)"
+                      viewBox="-1 -1 14 14"
+                      width="14"
+                    >
+                      <path
+                        d="M1 1 L12 1 L12 12  L1 12 L1 1 Z"
+                        fill="#f7630c"
+                      />
+                    </svg>
+                    <div
+                      class=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 16px;
-                              font-weight: bold;
-                              line-height: 22px;
-                            }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
-                            }
-                      >
-                        34 - 67
-                      </div>
+                          {
+                            flex-grow: 1;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                          }
+                      style="margin-right: 24px;"
+                    >
+                      Medium Risk
+                    </div>
+                    <div
+                      class=
+
+                          {
+                            flex-shrink: 0;
+                            font-weight: 600;
+                          }
+                    >
+                      34 - 67
                     </div>
                   </div>
                 </div>
@@ -705,64 +686,57 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               <div
                 data-is-focusable="false"
                 role="text"
+                style="padding-left: 0px; padding-right: 0px; margin-bottom: 0px;"
               >
                 <div>
                   <div
                     class=
 
                         {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          border-left: 4px solid #c50f1f;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 16px;
-                          font-weight: 400;
-                          margin-top: 13px;
-                          padding-left: 8px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          forced-color-adjust: none;
+                          align-items: center;
+                          display: flex;
                         }
                     id="2_68 - 100"
                   >
-                    <div>
-                      <div
-                        class=
+                    <svg
+                      class=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                            }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
-                            }
-                      >
-                         
-                        High Risk
-                      </div>
-                      <div
-                        class=
+                          {
+                            flex-shrink: 0;
+                            margin-right: 8px;
+                          }
+                      height="14"
+                      transform="rotate(0, 0, 0)"
+                      viewBox="-1 -1 14 14"
+                      width="14"
+                    >
+                      <path
+                        d="M1 1 L12 1 L12 12  L1 12 L1 1 Z"
+                        fill="#c50f1f"
+                      />
+                    </svg>
+                    <div
+                      class=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 16px;
-                              font-weight: bold;
-                              line-height: 22px;
-                            }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
-                            }
-                      >
-                        68 - 100
-                      </div>
+                          {
+                            flex-grow: 1;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                          }
+                      style="margin-right: 24px;"
+                    >
+                      High Risk
+                    </div>
+                    <div
+                      class=
+
+                          {
+                            flex-shrink: 0;
+                            font-weight: 600;
+                          }
+                    >
+                      68 - 100
                     </div>
                   </div>
                 </div>

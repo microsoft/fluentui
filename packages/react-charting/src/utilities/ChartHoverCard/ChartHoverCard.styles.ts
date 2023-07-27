@@ -12,11 +12,12 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       backgroundBlendMode: 'normal, luminosity',
     },
 
-    calloutDateTimeContainer: {},
+    calloutDateTimeContainer: {
+      marginBottom: '8px',
+    },
 
     calloutContentX: {
       fontWeight: FontWeights.semibold,
-      marginBottom: '8px',
     },
 
     calloutBlockContainer: {
@@ -30,6 +31,7 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       marginBottom: variant === ChartHoverCardVariant.LongLegend ? '4px' : '0px',
+      flexGrow: 1,
     },
 
     calloutContentY: {
@@ -56,6 +58,7 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
 
     calloutLegendIcon: {
       marginRight: '8px',
+      flexShrink: 0,
     },
 
     divider: {
