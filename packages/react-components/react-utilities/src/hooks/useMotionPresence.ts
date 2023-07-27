@@ -180,8 +180,20 @@ const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string):
  * @returns Maximum duration
  */
 const getMaxCSSDuration = (durations: string[], delays: string[]): number => {
-  const totalDurations = [...durations].map((duration, index) => {
-    return toMs(duration.trim()) + toMs((delays[index] || '0').trim());
+  const totalDurations: number[] = [];
+
+  durations.forEach(duration => {
+    totalDurations.push(toMs(duration.trim()));
+  });
+
+  delays.forEach((delay, index) => {
+    const parsedDelay = toMs(delay.trim());
+
+    if (totalDurations[index]) {
+      totalDurations[index] = totalDurations[index] + parsedDelay;
+    } else {
+      totalDurations[index] = parsedDelay;
+    }
   });
 
   return Math.max(...totalDurations);
