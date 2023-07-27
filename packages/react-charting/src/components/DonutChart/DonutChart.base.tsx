@@ -41,6 +41,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _currentHoverElement: any;
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _emptyChartId: string | null;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -79,6 +80,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._hoverLeave = this._hoverLeave.bind(this);
     this._calloutId = getId('callout');
     this._uniqText = getId('_Pie_');
+    this._emptyChartId = getId('_DonutChart_empty');
   }
   public componentDidMount(): void {
     if (this._rootElem) {
@@ -174,7 +176,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       </div>
     ) : (
       <div
-        id={getId('_DonutChart_empty')}
+        id={this._emptyChartId!}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

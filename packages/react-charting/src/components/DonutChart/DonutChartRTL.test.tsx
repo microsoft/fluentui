@@ -5,9 +5,11 @@ import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
+import { resetIds } from '../../Utilities';
 
 describe('Donut chart interactions', () => {
   beforeEach(() => {
+    resetIds();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -147,6 +149,23 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /callout/i)[0]).toHaveTextContent('39,000');
   });
 
+  test('Should change value inside donut with the legend value on mouseOver legend ', () => {
+    // Mock the implementation of wrapTextInsideDonut as it internally calls a Browser Function like
+    // getComputedTextLength() which will otherwise lead to a crash if mounted
+    jest.spyOn(utils, 'wrapTextInsideDonut').mockImplementation(() => '1000');
+    // Arrange
+    const { container } = render(
+      <DonutChart data={chartPoints} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />,
+    );
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+
+    // Act
+    fireEvent.mouseOver(screen.getByText('first'));
+
+    // Assert
+    expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
+  });
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -160,25 +179,9 @@ describe('Donut chart interactions', () => {
   });
 });
 
-test('Should change value inside donut with the legend value on mouseOver legend ', () => {
-  // Mock the implementation of wrapTextInsideDonut as it internally calls a Browser Function like
-  // getComputedTextLength() which will otherwise lead to a crash if mounted
-  jest.spyOn(utils, 'wrapTextInsideDonut').mockImplementation(() => '1000');
-  // Arrange
-  const { container } = render(
-    <DonutChart data={chartPoints} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />,
-  );
-  const getByClass = queryAllByAttribute.bind(null, 'class');
-
-  // Act
-  fireEvent.mouseOver(screen.getByText('first'));
-
-  // Assert
-  expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
-});
-
 describe('Donut chart rendering', () => {
   beforeEach(() => {
+    resetIds();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
