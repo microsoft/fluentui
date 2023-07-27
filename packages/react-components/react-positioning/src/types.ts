@@ -49,6 +49,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boolean };
 
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
@@ -136,11 +137,11 @@ export interface PositioningOptions {
   arrowPadding?: number;
 
   /**
-   * Applies max-height and max-width on the positioned element to fit it within the available space in viewport.
-   * true enables this for both width and height when overflow happens.
-   * 'always' applies `max-height`/`max-width` regardless of overflow.
-   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
-   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
+   * Applies styles on the positioned element to fit it within the available space in viewport.
+   * - true: set styles for max height/width.
+   * - 'height': set styles for max height.
+   * - 'width'': set styles for max width.
+   * Note that options 'always'/'height-always'/'width-always' are now obsolete, and equivalent to true/'height'/'width'.
    */
   autoSize?: AutoSize;
 
