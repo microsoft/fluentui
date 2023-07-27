@@ -184,10 +184,12 @@ export class Calendar extends FASTCalendar {
 
   public attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     if (name === 'month') {
-      if (this.shadowRoot) {
-        this.days = Array.from(this.shadowRoot.querySelectorAll('.day'));
-        console.log(this.days.length);
-      }
+      setTimeout(() => {
+        if (this.shadowRoot) {
+          this.days = Array.from(this.shadowRoot.querySelectorAll('.day'));
+        }
+        this.days && console.log(this.days);
+      }, 0);
     }
   }
 
@@ -285,11 +287,11 @@ export class Calendar extends FASTCalendar {
 
     while (monthCount < months.length || monthsText[monthsText.length - 1].length % 4 !== 0) {
       const month = { text: months[monthCount], detail: monthCount + 1 };
-      const target = monthsText[monthsText.length - 1];
-      if (monthsText.length === 0 || target.length % 4 === 0) {
+      const currentRow = monthsText[monthsText.length - 1];
+      if (monthsText.length === 0 || currentRow.length % 4 === 0) {
         monthsText.push([month]);
       } else {
-        target.push(month);
+        currentRow.push(month);
       }
       monthCount++;
     }
@@ -308,11 +310,11 @@ export class Calendar extends FASTCalendar {
 
     while (yearCount < decade.length || decadeText[decadeText.length - 1].length % 4 !== 0) {
       const yearText = { text: decade[yearCount], detail: decadeStartYear + yearCount };
-      const target = decadeText[decadeText.length - 1];
-      if (decadeText.length === 0 || target.length % 4 === 0) {
+      const currentRow = decadeText[decadeText.length - 1];
+      if (decadeText.length === 0 || currentRow.length % 4 === 0) {
         decadeText.push([yearText]);
       } else {
-        target.push(yearText);
+        currentRow.push(yearText);
       }
       yearCount++;
     }
