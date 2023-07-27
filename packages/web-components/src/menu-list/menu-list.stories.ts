@@ -67,7 +67,7 @@ const Code20Filled = html`<svg
 </svg>`;
 
 const storyTemplate = html<MenuListStoryArgs>`
-  <div style="width: 200px; height: 13em;">
+  <div style="width: 200px;">
     <fluent-menu-list>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         Item 1
@@ -166,7 +166,7 @@ export default {
 export const MenuList = renderComponent(storyTemplate).bind({});
 
 export const MenuListWithCheckboxSelection = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px; position: relative;">
+  <div style="width: 128px;">
     <fluent-menu-list>
       <fluent-menu-item role="menuitemcheckbox"> Item 1 </fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox"> Item 2 </fluent-menu-item>
@@ -203,7 +203,7 @@ export const MenuListWithIcons = renderComponent(html<MenuListStoryArgs>`
 `);
 
 export const MenuListWithIconsAndSelection = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px; position: relative;">
+  <div style="width: 128px;">
     <fluent-menu-list>
       <fluent-menu-item role="menuitemcheckbox">
         Item 1
@@ -219,7 +219,7 @@ export const MenuListWithIconsAndSelection = renderComponent(html<MenuListStoryA
 `);
 
 export const MenuListWithSubmenu = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 260px; position: relative;">
+  <div style="width: 260px;">
     <fluent-menu-list>
       <fluent-menu-item>
         Item 1
@@ -241,7 +241,7 @@ export const MenuListWithSubmenu = renderComponent(html<MenuListStoryArgs>`
 `);
 
 export const MenuListWithSubmenuAndIcons = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 260px; position: relative;">
+  <div style="width: 260px;">
     <fluent-menu-list>
       <fluent-menu-item>
         Item 1

@@ -1,5 +1,13 @@
-/* remove margin from sidebar logo  */
+/*
+ * HEADS UP!
+ * This file is used by both React v9 and Web Components Storybooks.
+ * All CSS must apply to both implementations.
+ */
+
+/* sidebar logo (React uses an SVG, Web Components uses text) */
 .sidebar-header > div:first-of-type {
+  font-size: 20px; /* for Web Components */
+  white-space: break-spaces; /* allow line breaks "\n" in Storybook theme */
   margin-right: 0;
 }
 
@@ -53,6 +61,7 @@
  */
 [role='main'] {
   position: fixed;
+  top: 0 !important;
 }
 
 /* remove box shadow style from storybooks wrapper div */
