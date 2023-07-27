@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 27 Jul 2023 10:34:13 GMT",
+      "tag": "@fluentui/react-components_v9.27.1",
+      "version": "9.27.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43",
+            "comment": "feat: update style to prevent double scrollbar"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9",
+            "comment": "feat: simplify autoSize options to make 'always'/'height-always'/'width-always' equivalent to true/'height'/'width'."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43",
+            "comment": "feat: update maxSize middleware to apply height/width when overflow"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0e9c438b78e58f346f61b15224c7b0020e4fe73e",
+            "comment": "bugfix: makes selector slot required when selection mode is defined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 13:29:15 GMT",
       "tag": "@fluentui/react-components_v9.27.0",
       "version": "9.27.0",

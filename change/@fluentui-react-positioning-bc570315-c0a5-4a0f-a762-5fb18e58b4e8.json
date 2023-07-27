@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: simplify autoSize options to make 'always'/'height-always'/'width-always' equivalent to true/'height'/'width'.",
-  "packageName": "@fluentui/react-positioning",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
