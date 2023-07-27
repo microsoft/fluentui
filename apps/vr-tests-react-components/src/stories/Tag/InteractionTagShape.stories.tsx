@@ -9,10 +9,19 @@ const contentId = 'content-id';
 const dismissButtonId = 'dismiss-button-id';
 const steps = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
+
+  // This needs to be added so that the focus outline is shown correctly
+  .executeScript(`document.querySelector('#${contentId}').setAttribute('data-fui-focus-visible', '')`)
   .focus(`#${contentId}`)
   .snapshot('focus content', { cropTo: '.testWrapper' })
+  .executeScript(`document.querySelector('#${contentId}').removeAttribute('data-fui-focus-visible')`)
+
+  // This needs to be added so that the focus outline is shown correctly
+  .executeScript(`document.querySelector('#${dismissButtonId}').setAttribute('data-fui-focus-visible', '')`)
   .focus(`#${dismissButtonId}`)
   .snapshot('focus dismiss', { cropTo: '.testWrapper' })
+  .executeScript(`document.querySelector('#${dismissButtonId}').removeAttribute('data-fui-focus-visible')`)
+
   .end();
 
 export default {
