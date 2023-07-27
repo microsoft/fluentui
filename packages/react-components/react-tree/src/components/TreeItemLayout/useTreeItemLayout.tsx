@@ -80,6 +80,7 @@ export const useTreeItemLayout_unstable = (
     actions,
     expandIcon,
     selector: resolveShorthand(props.selector, {
+      required: selectionMode !== 'none',
       defaultProps: {
         checked,
         tabIndex: -1,
