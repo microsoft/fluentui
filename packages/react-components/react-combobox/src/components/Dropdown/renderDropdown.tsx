@@ -26,7 +26,7 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
           (state.inlinePopup ? (
             <slots.listbox {...slotProps.listbox} />
           ) : (
-            <Portal>
+            <Portal {...slotProps.portal}>
               <slots.listbox {...slotProps.listbox} />
             </Portal>
           ))}

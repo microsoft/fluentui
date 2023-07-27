@@ -8,6 +8,7 @@ import type {
   ComboboxBaseState,
 } from '../../utils/ComboboxBase.types';
 import { Listbox } from '../Listbox/Listbox';
+import { Portal } from '@fluentui/react-portal';
 
 export type ComboboxSlots = {
   /* The root combobox slot */
@@ -21,6 +22,11 @@ export type ComboboxSlots = {
 
   /* The dropdown listbox slot */
   listbox?: Slot<typeof Listbox>;
+
+  /* The dropdown portal slot.
+     Limited to setting props only as the listbox is the rendered child.
+  */
+  portal?: Slot<typeof Portal>;
 };
 
 /**
@@ -42,7 +48,8 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 /**
  * State used in rendering Combobox
  */
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<Omit<ComboboxSlots, 'portal'> & Required<Pick<ComboboxSlots, 'portal'>>> &
+  ComboboxBaseState;
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;

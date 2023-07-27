@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Portal } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -50,10 +51,11 @@ export type ComboboxSlots = {
     expandIcon: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;
+    portal?: Slot<typeof Portal>;
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<Omit<ComboboxSlots, 'portal'> & Required<Pick<ComboboxSlots, 'portal'>>> & ComboboxBaseState;
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -79,10 +81,11 @@ export type DropdownSlots = {
     expandIcon: Slot<'span'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
+    portal?: Slot<typeof Portal>;
 };
 
 // @public
-export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
+export type DropdownState = ComponentState<Omit<DropdownSlots, 'portal'> & Required<Pick<DropdownSlots, 'portal'>>> & ComboboxBaseState & {
     placeholderVisible: boolean;
 };
 

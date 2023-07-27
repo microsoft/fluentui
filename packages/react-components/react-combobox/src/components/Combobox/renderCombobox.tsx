@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
-
 import { Portal } from '@fluentui/react-portal';
 
 import { createElement } from '@fluentui/react-jsx-runtime';
@@ -24,7 +23,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
           (state.inlinePopup ? (
             <slots.listbox {...slotProps.listbox} />
           ) : (
-            <Portal>
+            <Portal {...slotProps.portal}>
               <slots.listbox {...slotProps.listbox} />
             </Portal>
           ))}

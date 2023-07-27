@@ -9,6 +9,7 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   input: 'fui-Combobox__input',
   expandIcon: 'fui-Combobox__expandIcon',
   listbox: 'fui-Combobox__listbox',
+  portal: 'fui-Combobox__portal',
 };
 
 // Matches internal heights for Select and Input, but there are no theme variables for these
