@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bugfix: makes selector slot required when selection mode is defined",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
