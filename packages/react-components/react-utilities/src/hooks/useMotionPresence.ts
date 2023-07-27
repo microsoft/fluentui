@@ -142,16 +142,6 @@ const getCSSStyle = (node: HTMLElementWithStyledMap): CSSStyleDeclaration | Styl
 };
 
 /**
- * Gets the maximum duration from a list of CSS durations.
- *
- * @param durations - List of CSS durations
- * @returns Maximum duration
- */
-const getMaxCSSDuration = (durations: string[]) => {
-  return Math.max(...durations.map(d => toMs(d.trim())));
-};
-
-/**
  * Gets the computed map property for a given element using the CSSOM API.
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap
  *
@@ -183,6 +173,21 @@ const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string):
 };
 
 /**
+ * Gets the maximum duration from a list of CSS durations.
+ *
+ * @param durations - List of CSS durations
+ * @param delays - List of CSS delays
+ * @returns Maximum duration
+ */
+const getMaxCSSDuration = (durations: string[], delays: string[]): number => {
+  const totalDurations = [...durations].map((duration, index) => {
+    return toMs(duration.trim()) + toMs((delays[index] || '0').trim());
+  });
+
+  return Math.max(...totalDurations);
+};
+
+/**
  * Gets the motion information for a given element.
  *
  * @param computedStyle - Computed style of the element
@@ -192,22 +197,16 @@ const getMotionDuration = (node: HTMLElementWithStyledMap) => {
   const hasModernCSSSupport = hasCSSOMSupport(node);
   const computedStyle = getCSSStyle(node);
 
-  const getProp = (prop: string): number => {
-    const propValues = hasModernCSSSupport
+  const getProp = (prop: string): string[] => {
+    return hasModernCSSSupport
       ? getComputedMapProp(computedStyle as StylePropertyMapReadOnly, prop)
       : getComputedStyleProp(computedStyle as CSSStyleDeclaration, prop);
-
-    return getMaxCSSDuration(propValues);
   };
 
-  const transitionDuration = getProp('transition-duration');
-  const transitionDelay = getProp('transition-delay');
-  const animationDuration = getProp('animation-duration');
-  const animationDelay = getProp('animation-delay');
-  const totalTransitionDuration = transitionDuration + transitionDelay;
-  const totalAnimationDuration = animationDuration + animationDelay;
+  const transitionDuration = getMaxCSSDuration(getProp('transition-duration'), getProp('transition-delay'));
+  const animationDuration = getMaxCSSDuration(getProp('animation-duration'), getProp('animation-delay'));
 
-  return Math.max(totalTransitionDuration, totalAnimationDuration);
+  return Math.max(transitionDuration, animationDuration);
 };
 
 /**
