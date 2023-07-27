@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 25 Jul 2023 13:29:19 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2023 10:34:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.0)
+
+Thu, 27 Jul 2023 10:34:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.11.1..@fluentui/react-menu_v9.12.0)
+
+### Minor changes
+
+- feat: update style to prevent double scrollbar ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-positioning to v9.9.0 ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by beachball)
 
 ## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.11.1)
 

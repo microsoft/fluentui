@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 25 Jul 2023 13:29:15 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2023 10:34:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.1)
+
+Thu, 27 Jul 2023 10:34:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.27.0..@fluentui/react-components_v9.27.1)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: update style to prevent double scrollbar ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by yuanboxue@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: simplify autoSize options to make 'always'/'height-always'/'width-always' equivalent to true/'height'/'width'. ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by yuanboxue@microsoft.com)
+  - feat: update maxSize middleware to apply height/width when overflow ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - bugfix: makes selector slot required when selection mode is defined ([PR #28648](https://github.com/microsoft/fluentui/pull/28648) by bernardo.sunderhus@gmail.com)
 
 ## [9.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.0)
 
