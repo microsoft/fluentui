@@ -10,8 +10,8 @@ export type AnnounceOptions = {
 /**
  * @internal
  */
-export type AnnounceContextValue<T = AnnounceOptions> = {
-  announce?: (message: string, options?: T) => void;
+export type AnnounceContextValue = {
+  announce: (message: string, options?: AnnounceOptions) => void;
 };
 
 /**
@@ -25,5 +25,5 @@ const AnnounceContext = React.createContext<AnnounceContextValue | undefined>(un
 export const AnnounceProvider = AnnounceContext.Provider;
 
 export function useAnnounce(): AnnounceContextValue {
-  return React.useContext(AnnounceContext) ?? {};
+  return React.useContext(AnnounceContext) ?? { announce: () => undefined };
 }
