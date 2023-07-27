@@ -149,148 +149,152 @@ storiesOf('react-charting/LineChart', module)
       </div>
     );
   })
-  .addStory('Events', () => {
-    const data: IChartProps = {
-      chartTitle: 'Line Chart',
-      lineChartData: [
-        {
-          legend: 'From_Legacy_to_O365',
-          data: [
-            {
-              x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297,
-            },
-            {
-              x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284,
-            },
-            {
-              x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282,
-            },
-            {
-              x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294,
-            },
-            {
-              x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 294,
-            },
-            {
-              x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300,
-            },
-            {
-              x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298,
-            },
-          ],
-          color: DefaultPalette.blue,
-          lineOptions: {
-            lineBorderWidth: '4',
-          },
-        },
-        {
-          legend: 'All',
-          data: [
-            {
-              x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 292,
-            },
-            {
-              x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 287,
-            },
-            {
-              x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 287,
-            },
-            {
-              x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 292,
-            },
-            {
-              x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 287,
-            },
-            {
-              x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 297,
-            },
-            {
-              x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 292,
-            },
-          ],
-          color: DefaultPalette.green,
-          lineOptions: {
-            lineBorderWidth: '4',
-          },
-        },
-      ],
-    };
-
-    const calloutItemStyle = mergeStyles({
-      borderBottom: '1px solid #D9D9D9',
-      padding: '3px',
-    });
-
-    const rootStyle = { width: `700px`, height: `300px` };
-
-    return (
-      <div style={rootStyle}>
-        <LineChart
-          data={data}
-          legendsOverflowText={'Overflow Items'}
-          yMinValue={282}
-          yMaxValue={301}
-          tickFormat={'%m/%d'}
-          allowMultipleShapesForPoints={false}
-          tickValues={[
-            new Date('2020-03-03'),
-            new Date('2020-03-04'),
-            new Date('2020-03-05'),
-            new Date('2020-03-06'),
-            new Date('2020-03-07'),
-            new Date('2020-03-08'),
-            new Date('2020-03-09'),
-          ]}
-          eventAnnotationProps={{
-            events: [
+  .addStory(
+    'Events',
+    () => {
+      const data: IChartProps = {
+        chartTitle: 'Line Chart',
+        lineChartData: [
+          {
+            legend: 'From_Legacy_to_O365',
+            data: [
               {
-                event: 'event 1',
-                date: new Date('2020-03-04T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
+                x: new Date('2020-03-03T00:00:00.000Z'),
+                y: 297,
               },
               {
-                event: 'event 2',
-                date: new Date('2020-03-04T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
+                x: new Date('2020-03-04T00:00:00.000Z'),
+                y: 284,
               },
               {
-                event: 'event 3',
-                date: new Date('2020-03-04T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
+                x: new Date('2020-03-05T00:00:00.000Z'),
+                y: 282,
               },
               {
-                event: 'event 4',
-                date: new Date('2020-03-06T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
+                x: new Date('2020-03-06T00:00:00.000Z'),
+                y: 294,
               },
               {
-                event: 'event 5',
-                date: new Date('2020-03-08T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
+                x: new Date('2020-03-07T00:00:00.000Z'),
+                y: 294,
+              },
+              {
+                x: new Date('2020-03-08T00:00:00.000Z'),
+                y: 300,
+              },
+              {
+                x: new Date('2020-03-09T00:00:00.000Z'),
+                y: 298,
               },
             ],
-            labelHeight: 18,
-            labelWidth: 50,
-            mergedLabel: (count: number) => `${count} events`,
-          }}
-          height={300}
-          width={700}
-          enablePerfOptimization={true}
-        />
-      </div>
-    );
-  });
+            color: DefaultPalette.blue,
+            lineOptions: {
+              lineBorderWidth: '4',
+            },
+          },
+          {
+            legend: 'All',
+            data: [
+              {
+                x: new Date('2020-03-03T00:00:00.000Z'),
+                y: 292,
+              },
+              {
+                x: new Date('2020-03-04T00:00:00.000Z'),
+                y: 287,
+              },
+              {
+                x: new Date('2020-03-05T00:00:00.000Z'),
+                y: 287,
+              },
+              {
+                x: new Date('2020-03-06T00:00:00.000Z'),
+                y: 292,
+              },
+              {
+                x: new Date('2020-03-07T00:00:00.000Z'),
+                y: 287,
+              },
+              {
+                x: new Date('2020-03-08T00:00:00.000Z'),
+                y: 297,
+              },
+              {
+                x: new Date('2020-03-09T00:00:00.000Z'),
+                y: 292,
+              },
+            ],
+            color: DefaultPalette.green,
+            lineOptions: {
+              lineBorderWidth: '4',
+            },
+          },
+        ],
+      };
+
+      const calloutItemStyle = mergeStyles({
+        borderBottom: '1px solid #D9D9D9',
+        padding: '3px',
+      });
+
+      const rootStyle = { width: `700px`, height: `300px` };
+
+      return (
+        <div style={rootStyle}>
+          <LineChart
+            data={data}
+            legendsOverflowText={'Overflow Items'}
+            yMinValue={282}
+            yMaxValue={301}
+            tickFormat={'%m/%d'}
+            allowMultipleShapesForPoints={false}
+            tickValues={[
+              new Date('2020-03-03'),
+              new Date('2020-03-04'),
+              new Date('2020-03-05'),
+              new Date('2020-03-06'),
+              new Date('2020-03-07'),
+              new Date('2020-03-08'),
+              new Date('2020-03-09'),
+            ]}
+            eventAnnotationProps={{
+              events: [
+                {
+                  event: 'event 1',
+                  date: new Date('2020-03-04T00:00:00.000Z'),
+                  onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
+                },
+                {
+                  event: 'event 2',
+                  date: new Date('2020-03-04T00:00:00.000Z'),
+                  onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
+                },
+                {
+                  event: 'event 3',
+                  date: new Date('2020-03-04T00:00:00.000Z'),
+                  onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
+                },
+                {
+                  event: 'event 4',
+                  date: new Date('2020-03-06T00:00:00.000Z'),
+                  onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
+                },
+                {
+                  event: 'event 5',
+                  date: new Date('2020-03-08T00:00:00.000Z'),
+                  onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
+                },
+              ],
+              labelHeight: 18,
+              labelWidth: 50,
+              mergedLabel: (count: number) => `${count} events`,
+            }}
+            height={300}
+            width={700}
+            enablePerfOptimization={true}
+          />
+        </div>
+      );
+    },
+    { includeDarkMode: true, includeRtl: true },
+  );
