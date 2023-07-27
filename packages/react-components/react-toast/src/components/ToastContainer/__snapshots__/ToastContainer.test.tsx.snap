@@ -8,7 +8,7 @@ exports[`ToastContainer renders a default state 1`] = `
     class="fui-ToastContainer"
     role="group"
     style="--fui-toast-height: 0px;"
-    tabindex="-1"
+    tabindex="0"
   >
     Default ToastContainer
   </div>

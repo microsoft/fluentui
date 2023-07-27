@@ -12,7 +12,6 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
 const intentPolitenessMap = {
   success: 'assertive',
@@ -84,20 +83,13 @@ export const useToastContainer_unstable = (
     }
   });
 
-  const { findFirstFocusable } = useFocusFinders();
-
   React.useImperativeHandle(imperativeRef, () => ({
     focus: () => {
       if (!toastRef.current) {
         return;
       }
 
-      const firstFocusable = findFirstFocusable(toastRef.current);
-      if (firstFocusable) {
-        firstFocusable.focus();
-      } else {
-        toastRef.current.focus();
-      }
+      toastRef.current.focus();
     },
 
     play: () => {
@@ -211,7 +203,7 @@ export const useToastContainer_unstable = (
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, toastRef, toastAnimationRef),
       children,
-      tabIndex: -1,
+      tabIndex: 0,
       role: 'group',
       'aria-labelledby': titleId,
       'aria-describedby': bodyId,

@@ -5,12 +5,15 @@ import {
   getNativeElementProps,
   isHTMLElement,
   resolveShorthand,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
 import { ToastContainer } from '../ToastContainer';
+import { useFocusManagement_unstable } from './useFocusManagement';
 
 /**
  * Create the state required to render Toaster.
@@ -26,6 +29,8 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const { dir } = useFluent();
 
   const rootProps = getNativeElementProps('div', rest);
+  const { modalAttributes } = useModalAttributes({ trapFocus: true, legacyTrapFocus: true });
+  const focusManagementRef = useFocusManagement_unstable();
 
   // Adds native HTML focusin/focusout listeners
   // https://github.com/facebook/react/issues/25194
@@ -58,7 +63,9 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const createPositionSlot = (toastPosition: ToastPosition) =>
     resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
-        ref: focusListenerRef,
+        // false positive - this function is called a deterministic amount of times
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        ref: useMergedRefs(focusListenerRef, focusManagementRef),
         children: toastsToRender.get(toastPosition)?.map(toast => (
           <ToastContainer
             {...toast}
@@ -71,6 +78,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
+        ...modalAttributes,
         'data-toaster-position': toastPosition,
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
