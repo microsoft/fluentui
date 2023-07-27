@@ -30,7 +30,7 @@ export const useDrawerInline_unstable = (
     initialState: false,
   });
 
-  const { ref: drawerRef, shouldRender, visible, state: motionState } = useMotionPresence<HTMLDivElement>(open);
+  const { ref: drawerRef, shouldRender, visible, motionState } = useMotionPresence<HTMLDivElement>(open);
 
   return {
     components: {

@@ -16,6 +16,14 @@ const useStyles = makeStyles({
     ...shorthands.flex(1),
     ...shorthands.padding('16px'),
     display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingHorizontalXS,
+  },
+
+  buttons: {
+    ...shorthands.flex(1),
+    ...shorthands.padding('16px'),
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
     columnGap: tokens.spacingHorizontalXS,
@@ -52,13 +60,21 @@ export const Inline = () => {
       </DrawerInline>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-          Toggle left
-        </Button>
+        <div className={styles.buttons}>
+          <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
+            Toggle left
+          </Button>
 
-        <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-          Toggle right
-        </Button>
+          <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
+            Toggle right
+          </Button>
+        </div>
+
+        <div style={{ width: '100%' }}>
+          {Array.from({ length: 2000 }, (_, i) => (
+            <p key={i}>Page content</p>
+          ))}
+        </div>
       </div>
 
       <DrawerInline position="right" open={rightOpen}>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
+import { drawerCSSVars, getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 import { tokens } from '@fluentui/react-theme';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
@@ -15,6 +15,9 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
+    transform: 'translateZ(0)',
+    transitionProperty: 'margin',
+    willChange: 'margin',
   },
 
   /* Separator */
@@ -25,24 +28,12 @@ const useStyles = makeStyles({
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
   },
 
-  /* Positioning */
-  left: {
-    marginLeft: 'calc(var(--fui-Drawer--size) * -1)',
-    transitionProperty: 'margin-left',
-    willChange: 'margin-left',
+  /* Hidden */
+  hiddenLeft: {
+    marginLeft: `calc(var(${drawerCSSVars.drawerSizeVar}) * -1)`,
   },
-  right: {
-    marginRight: 'calc(var(--fui-Drawer--size) * -1)',
-    transitionProperty: 'margin-right',
-    willChange: 'margin-right',
-  },
-
-  /* Visible */
-  visibleLeft: {
-    marginLeft: 0,
-  },
-  visibleRight: {
-    marginRight: 0,
+  hiddenRight: {
+    marginRight: `calc(var(${drawerCSSVars.drawerSizeVar}) * -1)`,
   },
 });
 
@@ -53,7 +44,7 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
   const baseStyles = useDrawerBaseStyles();
   const styles = useStyles();
 
-  const separatorClass = React.useMemo(() => {
+  const separatorClass = React.useCallback(() => {
     if (!state.separator) {
       return undefined;
     }
@@ -66,9 +57,8 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     baseStyles.root,
     styles.root,
     getDrawerBaseClassNames(state, baseStyles),
-    state.position && styles[state.position],
-    state.visible && (state.position === 'left' ? styles.visibleLeft : styles.visibleRight),
-    separatorClass,
+    !state.visible && (state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight),
+    separatorClass(),
     state.root.className,
   );
 

@@ -1,7 +1,39 @@
 import * as React from 'react';
-import { useTimeout } from '@fluentui/react-utilities';
+import { useTimeout } from './useTimeout';
 
-const noop = () => null;
+/**
+ * CSS Typed Object Model
+ * @see https://drafts.css-houdini.org/css-typed-om-1/
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue
+ */
+interface CSSUnitValue {
+  value: number;
+  readonly unit: string;
+}
+
+interface StylePropertyMapReadOnly {
+  [Symbol.iterator](): IterableIterator<[string, CSSUnitValue[]]>;
+
+  get(property: string): CSSUnitValue | undefined;
+  getAll(property: string): CSSUnitValue[];
+  has(property: string): boolean;
+  readonly size: number;
+}
+
+/**
+ * HTMLElement with styled map.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap
+ */
+interface HTMLElementWithStyledMap extends HTMLElement {
+  computedStyleMap(): StylePropertyMapReadOnly;
+}
+
+interface CSSWithNumber {
+  number(value: number): {
+    value: number;
+    readonly unit: string;
+  };
+}
 
 /**
  * State for useMotionPresence hook.
@@ -28,9 +60,9 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
    *
    * - `entering` - The element is entering the DOM.
    * - `exiting` - The element is exiting the DOM.
-   * - `stale` - The element is currently not animating. This is the final state of the element.
+   * - `resting` - The element is currently not animating. This is the final and initial state of the element.
    */
-  state: 'entering' | 'exiting' | 'stale';
+  motionState: 'entering' | 'exiting' | 'resting';
 };
 
 /**
@@ -53,39 +85,63 @@ export type UseMotionPresenceEvents = {
  * @param node - DOM node.
  * @returns - CSS styles.
  */
-const getElementComputedStyle = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
-  if (node.nodeType !== 1) {
-    return {
-      getPropertyValue: () => '',
-    };
-  }
-
+const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
   const window = node.ownerDocument?.defaultView;
 
   return window!.getComputedStyle(node, null);
 };
 
 /**
- * @internal
  * Converts a CSS duration string to milliseconds.
  *
  * @param s - CSS duration string
  * @returns Duration in milliseconds
  */
 function toMs(s: string): number {
-  if (s.includes('auto')) {
+  const trimmed = s.trim();
+
+  if (trimmed.includes('auto')) {
     return 0;
   }
 
-  if (s.includes('ms')) {
-    return parseFloat(s);
+  if (trimmed.includes('ms')) {
+    return parseFloat(trimmed);
   }
 
-  return Number(s.slice(0, -1).replace(',', '.')) * 1000;
+  return Number(trimmed.slice(0, -1).replace(',', '.')) * 1000;
 }
 
 /**
- * @internal
+ * Checks if the browser supports CSSOM.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap
+ *
+ * @param node - DOM node
+ * @returns Whether the browser supports CSSOM
+ */
+const hasCSSOMSupport = (node: HTMLElementWithStyledMap) => {
+  /**
+   * As we are using the experimental CSSOM API, we need to check if the browser supports it.
+   * The typecast here is to allow the use of the `number` function that is not yet part of the CSSOM typings.
+   * @see https://www.npmjs.com/package/@types/w3c-css-typed-object-model-level-1
+   */
+  return Boolean(typeof CSS !== 'undefined' && (CSS as unknown as CSSWithNumber).number && node.computedStyleMap);
+};
+
+/**
+ *
+ * Gets the computed style of a given element.
+ * If the browser supports CSSOM, it will return a ComputedStyleMap object.
+ * Otherwise, it will return a CSSStyleDeclaration object.
+ */
+const getCSSStyle = (node: HTMLElementWithStyledMap): CSSStyleDeclaration | StylePropertyMapReadOnly => {
+  if (hasCSSOMSupport(node)) {
+    return node.computedStyleMap();
+  }
+
+  return getElementComputedStyle(node);
+};
+
+/**
  * Gets the maximum duration from a list of CSS durations.
  *
  * @param durations - List of CSS durations
@@ -96,29 +152,62 @@ const getMaxCSSDuration = (durations: string[]) => {
 };
 
 /**
- * @internal
+ * Gets the computed map property for a given element using the CSSOM API.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap
+ *
+ * @param computedStyle - Computed style of the element
+ * @param prop - CSS property
+ * @returns Computed map property
+ */
+const getComputedMapProp = (computedStyle: StylePropertyMapReadOnly, prop: string): string[] => {
+  const props = computedStyle.getAll(prop);
+
+  if (props.length > 0) {
+    return props.map(({ value, unit }) => `${value}${unit}`);
+  }
+
+  return ['0'];
+};
+
+/**
+ * Gets the computed style property for a given element using the getComputedStyle API.
+ *
+ * @param computedStyle - Computed style of the element
+ * @param prop - CSS property
+ * @returns Computed style property
+ */
+const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string): string[] => {
+  const propValue = computedStyle.getPropertyValue(prop);
+
+  return Array.isArray(propValue) ? propValue.split(',') : ['0'];
+};
+
+/**
  * Gets the motion information for a given element.
  *
  * @param computedStyle - Computed style of the element
  * @returns motion information
  */
-const getMotionInfo = (computedStyle: CSSStyleDeclaration) => {
-  const getProp = (prop: string) => (computedStyle?.getPropertyValue(prop) || '').split(',');
+const getMotionDuration = (node: HTMLElementWithStyledMap) => {
+  const hasModernCSSSupport = hasCSSOMSupport(node);
+  const computedStyle = getCSSStyle(node);
+
+  const getProp = (prop: string): number => {
+    const propValues = hasModernCSSSupport
+      ? getComputedMapProp(computedStyle as StylePropertyMapReadOnly, prop)
+      : getComputedStyleProp(computedStyle as CSSStyleDeclaration, prop);
+
+    return getMaxCSSDuration(propValues);
+  };
 
   const transitionDuration = getProp('transition-duration');
   const transitionDelay = getProp('transition-delay');
   const animationDuration = getProp('animation-duration');
   const animationDelay = getProp('animation-delay');
-  const totalTransitionDuration = getMaxCSSDuration(transitionDuration) + getMaxCSSDuration(transitionDelay);
-  const totalAnimationDuration = getMaxCSSDuration(animationDuration) + getMaxCSSDuration(animationDelay);
+  const totalTransitionDuration = transitionDuration + transitionDelay;
+  const totalAnimationDuration = animationDuration + animationDelay;
 
-  const hasAnimation = totalAnimationDuration > 0;
-  const hasTransition = totalTransitionDuration > 0;
-
-  return {
-    duration: Math.max(totalTransitionDuration, totalAnimationDuration),
-    hasMotion: hasAnimation || hasTransition,
-  };
+  return Math.max(totalTransitionDuration, totalAnimationDuration);
 };
 
 /**
@@ -127,133 +216,99 @@ const getMotionInfo = (computedStyle: CSSStyleDeclaration) => {
  * @param present - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export const useMotionPresence = <TElement extends HTMLElement>(
+export const useMotionPresence = <TElement extends HTMLElementWithStyledMap>(
   present: boolean,
-  events?: UseMotionPresenceEvents,
 ): UseMotionPresenceState<TElement> => {
-  const { onEntered = noop, onExited = noop } = events || {};
-
-  const [shouldRender, setShouldRender] = React.useState(present);
-  const [visible, setVisible] = React.useState(false);
-  const [state, setState] = React.useState<UseMotionPresenceState<TElement>['state']>('stale');
+  const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
+    shouldRender: present,
+    motionState: 'resting',
+    visible: false,
+  });
 
   const [currentElement, setCurrentElement] = React.useState<TElement | null>(null);
-
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
 
-  const computedStylesRef = React.useRef<CSSStyleDeclaration>({} as CSSStyleDeclaration);
-  const ref: React.RefCallback<TElement> = React.useCallback(node => {
-    if (!node) {
-      return;
-    }
-
-    computedStylesRef.current = getElementComputedStyle(node) as CSSStyleDeclaration;
-    setCurrentElement(node);
-  }, []);
-
-  const notCurrentElement = React.useCallback((target: TElement) => target !== currentElement, [currentElement]);
-
-  const onStartEntering = React.useCallback(() => {
-    setState('entering');
-  }, []);
-
-  const onFinishedEntering = React.useCallback(() => {
-    setState('stale');
-    onEntered();
-  }, [onEntered]);
-
-  const onStartExiting = React.useCallback(() => {
-    setState('exiting');
-  }, []);
-
-  const onFinishedExiting = React.useCallback(() => {
-    setState('stale');
-    setShouldRender(false);
-    onExited();
-  }, [onExited]);
-
-  const onMotionCanceled = React.useCallback(
-    ({ target }) => {
-      if (notCurrentElement(target)) {
+  const processAnimation = React.useCallback(
+    (callback: () => void) => {
+      if (!currentElement) {
         return;
       }
 
-      setState('stale');
-      setVisible(present);
-      setShouldRender(present);
-    },
-    [notCurrentElement, present],
-  );
-
-  React.useEffect(() => {
-    if (present) {
-      setShouldRender(true);
-    }
-  }, [present]);
-
-  React.useEffect(() => {
-    currentElement?.addEventListener('transitioncancel', onMotionCanceled);
-    currentElement?.addEventListener('animationcancel', onMotionCanceled);
-
-    return () => {
-      currentElement?.removeEventListener('transitioncancel', onMotionCanceled);
-      currentElement?.removeEventListener('animationcancel', onMotionCanceled);
-    };
-  }, [currentElement, onMotionCanceled]);
-
-  React.useEffect(() => {
-    if (!currentElement) {
-      return;
-    }
-
-    const { duration, hasMotion } = getMotionInfo(computedStylesRef.current);
-
-    const animationFrame = requestAnimationFrame(() => {
-      setVisible(present);
-
-      if (!hasMotion) {
-        setShouldRender(present);
-      } else {
-        if (present) {
-          onStartEntering();
-        } else {
-          onStartExiting();
-        }
+      clearAnimationTimeout();
+      const animationFrame = requestAnimationFrame(() => {
+        const duration = getMotionDuration(currentElement);
 
         /**
          * Use CSS transition duration + 1ms to ensure the animation has finished on both enter and exit states.
          * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
          * if the transition has multiple properties.
          */
-        setAnimationTimeout(() => {
-          if (present) {
-            onFinishedEntering();
-          } else {
-            onFinishedExiting();
-          }
-        }, duration + 1);
-      }
+        setAnimationTimeout(() => callback(), duration + 1);
+      });
+
+      return () => {
+        clearAnimationTimeout();
+        cancelAnimationFrame(animationFrame);
+      };
+    },
+    [clearAnimationTimeout, currentElement, setAnimationTimeout],
+  );
+
+  const ref: React.RefCallback<TElement> = React.useCallback(node => {
+    if (!node) {
+      return;
+    }
+
+    setCurrentElement(node);
+  }, []);
+
+  React.useEffect(() => {
+    if (present) {
+      setState({
+        shouldRender: true,
+        visible: false,
+        motionState: 'resting',
+      });
+    }
+  }, [present]);
+
+  React.useEffect(() => {
+    if (!currentElement) {
+      return;
+    }
+
+    const animationFrame = requestAnimationFrame(() => {
+      setState(prevState => ({
+        ...prevState,
+        visible: present,
+        motionState: present ? 'entering' : 'exiting',
+      }));
     });
 
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      clearAnimationTimeout();
-    };
-  }, [
-    currentElement,
-    onFinishedExiting,
-    onFinishedEntering,
-    present,
-    onStartEntering,
-    onStartExiting,
-    setAnimationTimeout,
-    clearAnimationTimeout,
-  ]);
+    processAnimation(() => {
+      setState(prevState => ({
+        ...prevState,
+        motionState: 'resting',
+      }));
+    });
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [currentElement, present, processAnimation]);
+
+  React.useEffect(() => {
+    if (state.motionState === 'exiting') {
+      processAnimation(() => {
+        setState({
+          shouldRender: false,
+          visible: false,
+          motionState: 'resting',
+        });
+      });
+    }
+  }, [processAnimation, state.motionState]);
 
   return {
     ref,
-    shouldRender,
-    state,
-    visible,
+    ...state,
   };
 };

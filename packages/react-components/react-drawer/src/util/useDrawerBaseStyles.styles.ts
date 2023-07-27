@@ -75,14 +75,14 @@ export const useDrawerBaseStyles = makeStyles({
 });
 
 export const getDrawerBaseClassNames = (
-  { position, size, entering, exiting }: Partial<DrawerBaseState & DrawerBaseProps>,
+  { position, size, motionState }: Partial<DrawerBaseState & DrawerBaseProps>,
   baseStyles: ReturnType<typeof useDrawerBaseStyles>,
 ) => {
   return mergeClasses(
     baseStyles.reducedMotion,
     position && baseStyles[position],
     size && baseStyles[size],
-    entering && baseStyles.entering,
-    exiting && baseStyles.exiting,
+    motionState === 'entering' && baseStyles.entering,
+    motionState === 'exiting' && baseStyles.exiting,
   );
 };

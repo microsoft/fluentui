@@ -17,11 +17,11 @@ const hiddenKeyframe = {
 
 const useStyles = makeStyles({
   drawer: {
-    animationDuration: tokens.durationUltraSlow,
     willChange: 'opacity, transform, border-radius',
   },
 
   drawerEntering: {
+    animationDuration: '2s',
     animationTimingFunction: tokens.curveDecelerateMid,
     animationName: {
       '0%': hiddenKeyframe,
@@ -30,6 +30,7 @@ const useStyles = makeStyles({
   },
 
   drawerExiting: {
+    animationDuration: '1s',
     animationTimingFunction: tokens.curveAccelerateMin,
     animationName: {
       '0%': visibleKeyframe,
@@ -42,7 +43,7 @@ export const CustomAnimation = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const { ref, state } = useMotionPresence(isOpen);
+  const { ref, motionState } = useMotionPresence(isOpen);
 
   return (
     <div>
@@ -51,8 +52,8 @@ export const CustomAnimation = () => {
         open={isOpen}
         className={mergeClasses(
           styles.drawer,
-          state === 'entering' && styles.drawerEntering,
-          state === 'exiting' && styles.drawerExiting,
+          motionState === 'entering' && styles.drawerEntering,
+          motionState === 'exiting' && styles.drawerExiting,
         )}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
