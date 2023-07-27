@@ -61,8 +61,9 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
    * - `entering` - The element is entering the DOM.
    * - `exiting` - The element is exiting the DOM.
    * - `resting` - The element is currently not animating. This is the final and initial state of the element.
+   * - `unmounted` - The element is not rendered in the DOM.
    */
-  motionState: 'entering' | 'exiting' | 'resting';
+  motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
 };
 
 /**
@@ -227,16 +228,14 @@ const getMotionDuration = (node: HTMLElementWithStyledMap) => {
  * @param present - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export const useMotionPresence = <TElement extends HTMLElementWithStyledMap>(
-  present: boolean,
-): UseMotionPresenceState<TElement> => {
+export const useMotionPresence = <TElement extends HTMLElement>(present: boolean): UseMotionPresenceState<TElement> => {
   const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
     shouldRender: present,
-    motionState: 'resting',
+    motionState: present ? 'resting' : 'unmounted',
     visible: false,
   });
 
-  const [currentElement, setCurrentElement] = React.useState<TElement | null>(null);
+  const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
 
   const processAnimation = React.useCallback(
@@ -270,7 +269,8 @@ export const useMotionPresence = <TElement extends HTMLElementWithStyledMap>(
       return;
     }
 
-    setCurrentElement(node);
+    // Cast to HTMLElementWithStyledMap to allow the use of the experimental CSSOM API.
+    setCurrentElement(node as unknown as HTMLElementWithStyledMap);
   }, []);
 
   React.useEffect(() => {
@@ -312,7 +312,7 @@ export const useMotionPresence = <TElement extends HTMLElementWithStyledMap>(
         setState({
           shouldRender: false,
           visible: false,
-          motionState: 'resting',
+          motionState: 'unmounted',
         });
       });
     }
