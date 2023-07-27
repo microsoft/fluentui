@@ -2,7 +2,7 @@ import { create } from '@storybook/theming';
 
 export default create({
   base: 'light',
-  brandTitle: 'Fluent Web Components',
+  brandTitle: 'Fluent UI\nWeb Components',
   brandUrl: 'https://github.com/microsoft/fluentui',
 
   // Toolbar default and active colors
@@ -13,20 +13,23 @@ export default create({
   colorSecondary: 'deepskyblue',
 
   // UI
-  // appBg: '#0ff',
-  // appContentBg: '--fill',
+  appBg: '#ffffff',
+  appContentBg: '#ffffff',
+  appBorderColor: '#e0e0e0', // use msft gray
   appBorderRadius: 4,
 
   // Typography
-  // fontBase: '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
+  fontBase:
+      '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
   fontCode: 'monospace',
 
   // Text colors
-  textColor: '#222',
-  textInverseColor: 'rgba(255,255,255,0.9)',
+  textColor: '#11100f',
+  textInverseColor: '#0078d4', // use msft primary blue default
 
   // Form colors
   inputBg: 'white',
   inputTextColor: 'black',
   inputBorderRadius: 4,
 });
+

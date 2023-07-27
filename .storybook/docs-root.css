@@ -1,3 +1,12 @@
+/*
+ * Heads Up!
+ * This file is used by both React v9 and Web Components Storybooks.
+ * All CSS must apply to both implementations.
+ *
+ * DO NOT use design tokens in this file.
+ * This file styles the content outside of story previews where a Fluent theme is not expected to be set or change.
+ */
+
 #docs-root .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
@@ -10,7 +19,6 @@
   /* identical to box height, or 143% */
   letter-spacing: -0.04em;
   color: #000000;
-  margin-top: 49px;
 }
 
 #docs-root details {
@@ -26,11 +34,6 @@
   letter-spacing: -0.01em;
   color: #000000;
   margin-top: 24px;
-}
-
-#docs-root .sbdocs-wrapper {
-  background: white;
-  min-height: auto;
 }
 
 #docs-root .sbdocs-img.featured-image {
@@ -125,18 +128,25 @@
 
 #docs-root .sbdocs-preview {
   border-radius: 16px;
-  background: var(--colorBrandBackgroundInverted, #fff);
+  background: #fff; /* --colorBrandBackgroundInverted */
   padding: 0;
   box-shadow: none;
-  border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
+  border: 1px solid #d1d1d1; /* --colorNeutralStroke1 */
 }
 
-#docs-root .innerZoomElementWrapper {
+/* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
+#docs-root .innerZoomElementWrapper > div {
   padding: 30px;
+  box-sizing: border-box;
 }
 
+/* fix mouse interactions for toolbar on first story */
 #docs-root .sbdocs-preview > .os-host {
-  display: none;
+  /* The toolbar sits within the story content area and is position: absolute by default. */
+  /* The story content overlays the toolbar making it non-interactive */
+  /* We don't use z-index because the toolbar can still sometimes overlay story content (flyout menu) */
+  /* The best solution is to use a static toolbar that is always outside the story content and interactive */
+  position: static;
 }
 
 #docs-root span + .sbdocs .docblock-argstable tbody tr td button {
@@ -206,14 +216,6 @@
 
 #docs-root thead.docblock-argstable-head {
   border-bottom: 1px solid #edebe9;
-}
-
-#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
-  display: none;
-}
-
-#docs-root .docblock-argstable-head > tr > th:nth-child(4) {
-  display: none;
 }
 
 #docs-root .docblock-argstable tbody tr {
@@ -288,6 +290,7 @@
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
   border-radius: 2px;
+  width: fit-content; /* prevent wrapping kebab-case words when they'll fit on one line */
 }
 
 .os-content-glue {
@@ -396,9 +399,9 @@ h1.fluent {
 
 h1 .fluent-version {
   display: block;
-  font-size: 24px; /* --font-size-base-600 */
+  font-size: 24px; /* --fontSizeBase600 */
   line-height: 32px;
-  color: #707070; /* --color-neutral-foreground-3 */
+  color: #707070; /* --colorNeutralForeground3 */
 }
 
 h2.fluent {
