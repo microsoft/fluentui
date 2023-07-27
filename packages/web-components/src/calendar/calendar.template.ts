@@ -144,14 +144,14 @@ export const template: ElementViewTemplate<Calendar> = html`
           <span
             class="navicon-up"
             part="navicon-up"
-            @click="${(x, c) => x.switchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
+            @click="${(x, c) => x.handleSwitchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
           >
             ${ArrowUp16}
           </span>
           <span
             class="navicon-down"
             part="navicon-down"
-            @click="${(x, c) => x.switchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
+            @click="${(x, c) => x.handleSwitchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
           >
             ${ArrowDown16}
           </span>

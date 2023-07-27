@@ -1,5 +1,6 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTCalendar, WeekdayFormat } from '@microsoft/fast-foundation';
+import { CalendarDateInfo, FASTCalendar, WeekdayFormat } from '@microsoft/fast-foundation';
+import { keyArrowDown, keyArrowLeft, keyArrowRight, keyArrowUp } from '@microsoft/fast-web-utilities';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
 import { FluentDateFormatter } from './date-formatter.js';
 
@@ -167,6 +168,8 @@ export class Calendar extends FASTCalendar {
    */
   @attr public yearPickerOpen: boolean = false;
 
+  protected days: Element[] | null = this.shadowRoot && Array.from(this.shadowRoot.querySelectorAll('.day'));
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
@@ -177,6 +180,15 @@ export class Calendar extends FASTCalendar {
     this.removeEventListener('dateselected', this.dateSelectedHandler);
     this.removeEventListener('rightcellselected', this.rightCellSelectedHandler);
     super.disconnectedCallback();
+  }
+
+  public attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+    if (name === 'month') {
+      if (this.shadowRoot) {
+        this.days = Array.from(this.shadowRoot.querySelectorAll('.day'));
+        console.log(this.days.length);
+      }
+    }
   }
 
   /**
@@ -213,7 +225,7 @@ export class Calendar extends FASTCalendar {
    * @param month - the month to be switched to
    * @param year - the year to be switched to
    */
-  public switchMonth(month: number, year: number) {
+  public handleSwitchMonth(month: number, year: number) {
     this.selectedDates = '';
 
     this.year = year;
@@ -313,7 +325,7 @@ export class Calendar extends FASTCalendar {
    */
   public handleGoToToday(event: MouseEvent) {
     const today: Date = new Date();
-    this.switchMonth(today.getMonth() + 1, today.getFullYear());
+    this.handleSwitchMonth(today.getMonth() + 1, today.getFullYear());
     this.yearPickerOpen = false;
   }
 
@@ -336,7 +348,7 @@ export class Calendar extends FASTCalendar {
     const { day, month, year } = event.detail;
 
     if (month != this.month) {
-      this.switchMonth(month, year);
+      this.handleSwitchMonth(month, year);
     }
 
     const selected_date_string = `${month}-${day}-${year}`;
@@ -363,6 +375,67 @@ export class Calendar extends FASTCalendar {
     if (this.yearPickerOpen) {
       this.yearPickerOpen = false;
     }
-    this.switchMonth(month, year);
+    this.handleSwitchMonth(month, year);
+  }
+
+  /**
+   * Handles keyboard events on a cell
+   * @param event - Keyboard event
+   * @param date - Date of the cell selected
+   */
+  public handleKeydown(event: KeyboardEvent, date: CalendarDateInfo): boolean {
+    event.preventDefault();
+    super.handleKeydown(event, date);
+
+    const currentCell = event.target as HTMLElement;
+
+    if (!this.days) {
+      return false;
+    }
+
+    // Set the starting focus on the first day
+    let focus = this.days[0] as HTMLElement;
+    focus.tabIndex = 0;
+    focus.focus();
+
+    let index = this.days.indexOf(currentCell);
+
+    switch (event.key) {
+      case keyArrowRight:
+        if (index === this.days.length - 1) {
+          this.handleSwitchMonth(this.getMonthInfo().next.month, this.getMonthInfo().next.year);
+        }
+        index = (index + 1) % this.days.length;
+        break;
+      case keyArrowLeft:
+        if (index === 0) {
+          this.handleSwitchMonth(this.getMonthInfo().previous.month, this.getMonthInfo().previous.year);
+        }
+        index = (index - 1 + this.days.length) % this.days.length;
+        break;
+      case keyArrowDown:
+        console.log(index);
+        console.log(this.days.length);
+        if (index >= this.days.length - 7) {
+          this.handleSwitchMonth(this.getMonthInfo().next.month, this.getMonthInfo().next.year);
+        }
+        index = (index + 7) % this.days.length;
+        break;
+      case keyArrowUp:
+        if (index < 7) {
+          this.handleSwitchMonth(this.getMonthInfo().previous.month, this.getMonthInfo().previous.year);
+        }
+        index = (index - 7 + this.days.length) % this.days.length;
+      default:
+        break;
+    }
+
+    // Move the focus to the new day
+    this.days.forEach(day => day.setAttribute('tab-index', '-1')); // Remove all other tab indices
+    focus = this.days[index] as HTMLElement;
+    focus.tabIndex = 0;
+    focus.focus();
+
+    return true;
   }
 }
