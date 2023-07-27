@@ -94,11 +94,11 @@ const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
 /**
  * Converts a CSS duration string to milliseconds.
  *
- * @param s - CSS duration string
+ * @param duration - CSS duration string
  * @returns Duration in milliseconds
  */
-function toMs(s: string): number {
-  const trimmed = s.trim();
+function toMs(duration: string): number {
+  const trimmed = duration.trim();
 
   if (trimmed.includes('auto')) {
     return 0;
