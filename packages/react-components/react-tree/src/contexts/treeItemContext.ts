@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TreeItemType, TreeItemValue } from '../TreeItem';
+import { virtualTreeRootId } from '../utils/createHeadlessTree';
 
 export type TreeItemContextValue = {
   isActionsVisible: boolean;
@@ -16,7 +17,7 @@ export type TreeItemContextValue = {
 };
 
 const defaultContextValue: TreeItemContextValue = {
-  value: '',
+  value: virtualTreeRootId,
   selectionRef: React.createRef(),
   layoutRef: React.createRef(),
   subtreeRef: React.createRef(),

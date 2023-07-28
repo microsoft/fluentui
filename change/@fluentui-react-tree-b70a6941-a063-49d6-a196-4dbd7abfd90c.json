@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: improves internal headless signature",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -28,10 +28,6 @@ export function useRovingTabIndex(filter?: HTMLElementFilter) {
     walker.currentElement = walker.root;
     tabbableChild ??= walker.firstChild();
     if (!tabbableChild) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.warn('useRovingTabIndexes: internal error, no tabbable element was found');
-      }
       return;
     }
     tabbableChild.tabIndex = 0;

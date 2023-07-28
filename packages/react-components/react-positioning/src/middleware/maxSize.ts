@@ -1,41 +1,68 @@
 import { size } from '@floating-ui/dom';
 import type { Middleware } from '@floating-ui/dom';
-import type { PositioningOptions } from '../types';
+import type { NormalizedAutoSize, PositioningOptions } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'overflowBoundary'> {
   container: HTMLElement | null;
 }
 
-export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSizeMiddlewareOptions): Middleware {
+/**
+ * floating-ui `size` middleware uses floating element's height/width to calculate available height/width.
+ * This middleware only runs once per lifecycle, resetting styles applied by maxSize from previous lifecycle.
+ * Then floating element's original size is restored and `size` middleware can calculate available height/width correctly.
+ */
+export const resetMaxSize = (autoSize: NormalizedAutoSize): Middleware => ({
+  name: 'resetMaxSize',
+  fn({ middlewareData: { maxSizeAlreadyReset }, elements }) {
+    if (maxSizeAlreadyReset) {
+      return {};
+    }
+
+    const { applyMaxWidth, applyMaxHeight } = autoSize;
+    if (applyMaxWidth) {
+      elements.floating.style.removeProperty('box-sizing');
+      elements.floating.style.removeProperty('max-width');
+      elements.floating.style.removeProperty('width');
+    }
+    if (applyMaxHeight) {
+      elements.floating.style.removeProperty('box-sizing');
+      elements.floating.style.removeProperty('max-height');
+      elements.floating.style.removeProperty('height');
+    }
+
+    return {
+      data: { maxSizeAlreadyReset: true },
+      reset: { rects: true },
+    };
+  },
+});
+
+export function maxSize(autoSize: NormalizedAutoSize, options: MaxSizeMiddlewareOptions): Middleware {
   const { container, overflowBoundary } = options;
   return size({
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
-      if (autoSize) {
+      const applyMaxSizeStyles = (apply: boolean, dimension: 'width' | 'height', availableSize: number) => {
+        if (!apply) {
+          return;
+        }
+
         elements.floating.style.setProperty('box-sizing', 'border-box');
-      }
+        elements.floating.style.setProperty(`max-${dimension}`, `${availableSize}px`);
 
-      const applyMaxWidth = autoSize === 'always' || autoSize === 'width-always';
-      const widthOverflow = rects.floating.width > availableWidth && (autoSize === true || autoSize === 'width');
+        if (rects.floating[dimension] > availableSize) {
+          elements.floating.style.setProperty(dimension, `${availableSize}px`);
 
-      const applyMaxHeight = autoSize === 'always' || autoSize === 'height-always';
-      const heightOverflow = rects.floating.height > availableHeight && (autoSize === true || autoSize === 'height');
+          const axis = dimension === 'width' ? 'x' : 'y';
+          if (!elements.floating.style.getPropertyValue(`overflow-${axis}`)) {
+            elements.floating.style.setProperty(`overflow-${axis}`, 'auto');
+          }
+        }
+      };
 
-      if (applyMaxHeight || heightOverflow) {
-        elements.floating.style.setProperty('max-height', `${availableHeight}px`);
-      }
-      if (heightOverflow) {
-        elements.floating.style.setProperty('height', `${availableHeight}px`);
-        elements.floating.style.setProperty('overflow-y', 'auto');
-      }
-
-      if (applyMaxWidth || widthOverflow) {
-        elements.floating.style.setProperty('max-width', `${availableWidth}px`);
-      }
-      if (widthOverflow) {
-        elements.floating.style.setProperty('width', `${availableWidth}px`);
-        elements.floating.style.setProperty('overflow-x', 'auto');
-      }
+      const { applyMaxWidth, applyMaxHeight } = autoSize;
+      applyMaxSizeStyles(applyMaxWidth, 'width', availableWidth);
+      applyMaxSizeStyles(applyMaxHeight, 'height', availableHeight);
     },
   });
 }
