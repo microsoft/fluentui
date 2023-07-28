@@ -12,7 +12,7 @@
 |                      Test 1: [Snapshot testing]                       |                                                                                                                 |               |
 |           - With only data prop, numerical data on x-axis.            |                                          Renders Area chart correctly                                           |      RTL      |
 |              - With only data prop, date data on x-axis.              |                                          Renders Area chart correctly                                           |      RTL      |
-|             - With only data prop, string data on x-axis.             |                                            Should render area chart                                             |    Pending    |
+|             - With only data prop, string data on x-axis.             |                                          Should not render area chart                                           |    Pending    |
 |                 - With HideLegend prop set to “true”                  |                                               Should hide legends                                               |    Enzyme     |
 |                 - With HideTooltip prop set to “true”                 |                                        Should hide the tooltip in chart                                         |    Enzyme     |
 |             - With EnabledLegendsWrapLines set to “true”              |    Should enable the legends to wrap lines if there is not enough space to show all legends on a single line    |    Enzyme     |
@@ -59,6 +59,3 @@
 |              - Increase the screen resolution (zoom in)               |                                       Should remain unchanged on zoom in                                        |      RTL      |
 |              - Decrease the screen resolution (zoom out)              |                                       Should remain unchanged on zoom out                                       |      RTL      |
 |                 Test 10: Theme changed to Dark Theme                  |                                           Should reflect theme change                                           |      RTL      |
-
-
-

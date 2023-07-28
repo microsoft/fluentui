@@ -1031,7 +1031,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
 </div>
 `;
 
-exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
+exports[`Line chart rendering Should render the Line chart with points in multiple shapes 1`] = `
 <div>
   <div
     class=
@@ -1048,7 +1048,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_174"
+    id="chart_30"
     role="presentation"
   >
     <div
@@ -1060,7 +1060,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone175"
+      data-focuszone-id="FocusZone31"
     >
       <svg
         aria-label="LineChart"
@@ -1095,7 +1095,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_174"
+          id="xAxisGElementchart_30"
           transform="translate(0, -35)"
         />
         <g
@@ -1123,12 +1123,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_174"
+          id="yAxisGElementchart_30"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine169"
+            id="verticalLine25"
             stroke="#C8C8C8"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1139,7 +1139,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <g>
             <line
-              id="lineID167_2_1"
+              id="lineID23_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1151,14 +1151,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <path
               aria-label="70. metaData3, 30."
-              d="M-20.5 -17.065217391304344
-     A0.5 0.5 0 1 0 -19.5 -17.065217391304344
-     M-20.5 -17.065217391304344
-     A 0.5 0.5 0 1 1 -19.5 -17.065217391304344
-     "
+              d="M-25 -19.951217391304343
+     H -15
+     L-20 -11.291217391304343 Z"
               data-is-focusable="true"
               fill="yellow"
-              id="circle166_2_1"
+              id="circle22_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1167,14 +1165,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <path
               aria-label="40. metaData3, 80."
-              d="M15.5 12.826086956521738
-     A0.5 0.5 0 1 0 16.5 12.826086956521738
-     M15.5 12.826086956521738
-     A 0.5 0.5 0 1 1 16.5 12.826086956521738
-     "
+              d="M11 9.94008695652174
+     H 21
+     L16 18.60008695652174 Z"
               data-is-focusable="true"
               fill="yellow"
-              id="circle166_2_11L"
+              id="circle22_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1182,7 +1178,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID167_1_1"
+              id="lineID23_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1194,14 +1190,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <path
               aria-label="30. metaData2, 60."
-              d="M27.5 0.8695652173913064
-     A0.5 0.5 0 1 0 28.5 0.8695652173913064
-     M27.5 0.8695652173913064
-     A 0.5 0.5 0 1 1 28.5 0.8695652173913064
-     "
+              d="M23 -4.130434782608694
+     L33 -4.130434782608694
+     L33 5.869565217391306
+     L23 5.869565217391306
+     Z"
               data-is-focusable="true"
               fill="green"
-              id="circle166_1_1"
+              id="circle22_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1210,14 +1206,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <path
               aria-label="50. metaData2, 90."
-              d="M3.5 18.804347826086957
-     A0.5 0.5 0 1 0 4.5 18.804347826086957
-     M3.5 18.804347826086957
-     A 0.5 0.5 0 1 1 4.5 18.804347826086957
-     "
+              d="M-1 13.804347826086957
+     L9 13.804347826086957
+     L9 23.804347826086957
+     L-1 23.804347826086957
+     Z"
               data-is-focusable="true"
               fill="green"
-              id="circle166_1_11L"
+              id="circle22_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1225,7 +1221,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID167_0_1"
+              id="lineID23_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1237,14 +1233,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <path
               aria-label="20. metaData1, 50."
-              d="M39.5 -5.108695652173914
-     A0.5 0.5 0 1 0 40.5 -5.108695652173914
-     M39.5 -5.108695652173914
-     A 0.5 0.5 0 1 1 40.5 -5.108695652173914
+              d="M35 -5.108695652173914
+     A5 5 0 1 0 45 -5.108695652173914
+     M35 -5.108695652173914
+     A 5 5 0 1 1 45 -5.108695652173914
      "
               data-is-focusable="true"
               fill="red"
-              id="circle166_0_1"
+              id="circle22_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1253,14 +1249,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <path
               aria-label="40. metaData1, 80."
-              d="M15.5 12.826086956521738
-     A0.5 0.5 0 1 0 16.5 12.826086956521738
-     M15.5 12.826086956521738
-     A 0.5 0.5 0 1 1 16.5 12.826086956521738
+              d="M11 12.826086956521738
+     A5 5 0 1 0 21 12.826086956521738
+     M11 12.826086956521738
+     A 5 5 0 1 1 21 12.826086956521738
      "
               data-is-focusable="true"
               fill="red"
-              id="circle166_0_11L"
+              id="circle22_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1308,7 +1304,576 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone176"
+                data-focuszone-id="FocusZone32"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="metaData1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <svg
+                        class=
+
+                            {
+                              margin-right: 8px;
+                            }
+                        focusable="false"
+                        height="14"
+                        transform="rotate(0, 0, 0)"
+                        viewBox="-1 -1 14 14"
+                        width="14"
+                      >
+                        <path
+                          d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                          fill="red"
+                          stroke="red"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        metaData1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="metaData2"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <svg
+                        class=
+
+                            {
+                              margin-right: 8px;
+                            }
+                        focusable="false"
+                        height="14"
+                        transform="rotate(0, 0, 0)"
+                        viewBox="-1 -1 14 14"
+                        width="14"
+                      >
+                        <path
+                          d="M1 1 L12 1 L12 12  L1 12 L1 1 Z"
+                          fill="green"
+                          stroke="green"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        metaData2
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="metaData3"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <svg
+                        class=
+
+                            {
+                              margin-right: 8px;
+                            }
+                        focusable="false"
+                        height="14"
+                        transform="rotate(0, 0, 0)"
+                        viewBox="-1 -1 14 14"
+                        width="14"
+                      >
+                        <path
+                          d="M6 10L8.74228e-07 -1.04907e-06L12 0L6 10Z"
+                          fill="yellow"
+                          stroke="yellow"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        metaData3
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_215"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone216"
+    >
+      <svg
+        aria-label="LineChart"
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_215"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_215"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <line
+            id="verticalLine210"
+            stroke="#C8C8C8"
+            stroke-dasharray="5,5"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="0"
+          />
+          <g>
+            <line
+              id="lineID208_2_1"
+              opacity="1"
+              stroke="yellow"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="-20"
+              x2="16"
+              y1="-17.065217391304344"
+              y2="12.826086956521738"
+            />
+            <path
+              aria-label="70. metaData3, 30."
+              d="M-20.5 -17.065217391304344
+     A0.5 0.5 0 1 0 -19.5 -17.065217391304344
+     M-20.5 -17.065217391304344
+     A 0.5 0.5 0 1 1 -19.5 -17.065217391304344
+     "
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle207_2_1"
+              opacity="1"
+              role="img"
+              stroke="yellow"
+              stroke-width="4"
+              tabindex="0"
+            />
+            <path
+              aria-label="40. metaData3, 80."
+              d="M15.5 12.826086956521738
+     A0.5 0.5 0 1 0 16.5 12.826086956521738
+     M15.5 12.826086956521738
+     A 0.5 0.5 0 1 1 16.5 12.826086956521738
+     "
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle207_2_11L"
+              opacity="1"
+              role="img"
+              stroke="yellow"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <line
+              id="lineID208_1_1"
+              opacity="1"
+              stroke="green"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="28"
+              x2="4"
+              y1="0.8695652173913064"
+              y2="18.804347826086957"
+            />
+            <path
+              aria-label="30. metaData2, 60."
+              d="M27.5 0.8695652173913064
+     A0.5 0.5 0 1 0 28.5 0.8695652173913064
+     M27.5 0.8695652173913064
+     A 0.5 0.5 0 1 1 28.5 0.8695652173913064
+     "
+              data-is-focusable="true"
+              fill="green"
+              id="circle207_1_1"
+              opacity="1"
+              role="img"
+              stroke="green"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="50. metaData2, 90."
+              d="M3.5 18.804347826086957
+     A0.5 0.5 0 1 0 4.5 18.804347826086957
+     M3.5 18.804347826086957
+     A 0.5 0.5 0 1 1 4.5 18.804347826086957
+     "
+              data-is-focusable="true"
+              fill="green"
+              id="circle207_1_11L"
+              opacity="1"
+              role="img"
+              stroke="green"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <line
+              id="lineID208_0_1"
+              opacity="1"
+              stroke="red"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="40"
+              x2="16"
+              y1="-5.108695652173914"
+              y2="12.826086956521738"
+            />
+            <path
+              aria-label="20. metaData1, 50."
+              d="M39.5 -5.108695652173914
+     A0.5 0.5 0 1 0 40.5 -5.108695652173914
+     M39.5 -5.108695652173914
+     A 0.5 0.5 0 1 1 40.5 -5.108695652173914
+     "
+              data-is-focusable="true"
+              fill="red"
+              id="circle207_0_1"
+              opacity="1"
+              role="img"
+              stroke="red"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="40. metaData1, 80."
+              d="M15.5 12.826086956521738
+     A0.5 0.5 0 1 0 16.5 12.826086956521738
+     M15.5 12.826086956521738
+     A 0.5 0.5 0 1 1 16.5 12.826086956521738
+     "
+              data-is-focusable="true"
+              fill="red"
+              id="circle207_0_11L"
+              opacity="1"
+              role="img"
+              stroke="red"
+              stroke-width="4"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone217"
                 role="listbox"
               >
                 <div
@@ -1611,7 +2176,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_185"
+    id="chart_226"
     role="presentation"
   >
     <div
@@ -1623,7 +2188,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone186"
+      data-focuszone-id="FocusZone227"
     >
       <svg
         aria-label="LineChart"
@@ -1658,7 +2223,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_185"
+          id="xAxisGElementchart_226"
           transform="translate(0, -35)"
         />
         <g
@@ -1686,12 +2251,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_185"
+          id="yAxisGElementchart_226"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine180"
+            id="verticalLine221"
             stroke="#C8C8C8"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1702,7 +2267,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <g>
             <line
-              id="lineID178_2_1"
+              id="lineID219_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1721,7 +2286,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle177_2_1"
+              id="circle218_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1737,7 +2302,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle177_2_11L"
+              id="circle218_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1745,7 +2310,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID178_1_1"
+              id="lineID219_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1764,7 +2329,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle177_1_1"
+              id="circle218_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1780,7 +2345,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle177_1_11L"
+              id="circle218_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1788,7 +2353,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID178_0_1"
+              id="lineID219_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1807,7 +2372,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle177_0_1"
+              id="circle218_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1823,7 +2388,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle177_0_11L"
+              id="circle218_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1871,7 +2436,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone187"
+                data-focuszone-id="FocusZone228"
                 role="listbox"
               >
                 <div
@@ -2187,7 +2752,7 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_199"
+      id="chart_240"
       role="presentation"
     >
       <div
@@ -2199,7 +2764,7 @@ exports[`Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone200"
+        data-focuszone-id="FocusZone241"
       >
         <svg
           aria-label="LineChart"
@@ -2234,7 +2799,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_199"
+            id="xAxisGElementchart_240"
             transform="translate(0, -35)"
           />
           <g
@@ -2262,12 +2827,12 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_199"
+            id="yAxisGElementchart_240"
             transform="translate(40, 0)"
           />
           <g>
             <line
-              id="verticalLine194"
+              id="verticalLine235"
               stroke="#C8C8C8"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -2278,7 +2843,7 @@ exports[`Should reflect theme change 1`] = `
             />
             <g>
               <line
-                id="lineID192_2_1"
+                id="lineID233_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -2297,7 +2862,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle191_2_1"
+                id="circle232_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2313,7 +2878,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle191_2_11L"
+                id="circle232_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2321,7 +2886,7 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <line
-                id="lineID192_1_1"
+                id="lineID233_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -2340,7 +2905,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle191_1_1"
+                id="circle232_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2356,7 +2921,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle191_1_11L"
+                id="circle232_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2364,7 +2929,7 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <line
-                id="lineID192_0_1"
+                id="lineID233_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -2383,7 +2948,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle191_0_1"
+                id="circle232_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2399,7 +2964,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle191_0_11L"
+                id="circle232_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2447,7 +3012,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone201"
+                  data-focuszone-id="FocusZone242"
                   role="listbox"
                 >
                   <div

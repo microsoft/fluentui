@@ -1,15 +1,16 @@
-import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
+import { mergeStyles } from '@fluentui/merge-styles';
 
-import {
-  getByClass,
-  getById,
-  testWithWait,
-  testWithoutWait,
-} from '../../utilities/TestUtility';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility';
+
+const calloutItemStyle = mergeStyles({
+  borderBottom: '1px solid #D9D9D9',
+  padding: '3px',
+});
 
 const basicPoints: ILineChartPoints[] = [
   {
@@ -35,7 +36,7 @@ const basicPoints: ILineChartPoints[] = [
       { x: 40, y: 80 },
     ],
     color: 'yellow',
-  }
+  },
 ];
 
 const basicChartPoints = {
@@ -57,7 +58,7 @@ const datePoints: ILineChartPoints[] = [
     lineOptions: {
       lineBorderWidth: '4',
     },
-  }
+  },
 ];
 
 const dateChartPoints = {
@@ -83,7 +84,7 @@ const colorFillBarData = [
       {
         startX: new Date('2018/04/01'),
         endX: new Date('2018/05/01'),
-      }
+      },
     ],
     applyPattern: true,
   },
@@ -92,7 +93,6 @@ const colorFillBarData = [
 const pointsWithGaps: ILineChartPoints[] = [
   {
     legend: 'Normal Data',
-
     hideNonActiveDots: true,
     lineOptions: {
       lineBorderWidth: '4',
@@ -153,7 +153,7 @@ const pointsWithGaps: ILineChartPoints[] = [
       },
     ],
     color: 'green',
-  }
+  },
 ];
 
 const chartPointsWithGaps = {
@@ -161,56 +161,162 @@ const chartPointsWithGaps = {
   lineChartData: pointsWithGaps,
 };
 
-
 describe('Line chart rendering', () => {
   testWithoutWait(
     'Should render the Line chart with numeric x-axis data',
     LineChart,
     { data: basicChartPoints },
     container => {
-    expect(container).toMatchSnapshot();
-  });
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 
   testWithoutWait(
     'Should render the Line chart with date x-axis data',
     LineChart,
     { data: dateChartPoints },
     container => {
-    expect(container).toMatchSnapshot();
-  });
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Line chart with points in multiple shapes',
+    LineChart,
+    { data: basicChartPoints, allowMultipleShapesForPoints: true },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
+const simplePoints = {
+  chartTitle: 'Line Chart',
+  lineChartData: [
+    {
+      legend: 'From_Legacy_to_O365',
+      data: [
+        {
+          x: new Date('2020-03-03T00:00:00.000Z'),
+          y: 297,
+        },
+        {
+          x: new Date('2020-03-04T00:00:00.000Z'),
+          y: 284,
+        },
+        {
+          x: new Date('2020-03-05T00:00:00.000Z'),
+          y: 282,
+        },
+        {
+          x: new Date('2020-03-06T00:00:00.000Z'),
+          y: 294,
+        },
+        {
+          x: new Date('2020-03-07T00:00:00.000Z'),
+          y: 294,
+        },
+        {
+          x: new Date('2020-03-08T00:00:00.000Z'),
+          y: 300,
+        },
+        {
+          x: new Date('2020-03-09T00:00:00.000Z'),
+          y: 298,
+        },
+      ],
+      color: 'blue',
+      lineOptions: {
+        lineBorderWidth: '4',
+      },
+    },
+    {
+      legend: 'All',
+      data: [
+        {
+          x: new Date('2020-03-03T00:00:00.000Z'),
+          y: 292,
+        },
+        {
+          x: new Date('2020-03-04T00:00:00.000Z'),
+          y: 287,
+        },
+        {
+          x: new Date('2020-03-05T00:00:00.000Z'),
+          y: 287,
+        },
+        {
+          x: new Date('2020-03-06T00:00:00.000Z'),
+          y: 292,
+        },
+        {
+          x: new Date('2020-03-07T00:00:00.000Z'),
+          y: 287,
+        },
+        {
+          x: new Date('2020-03-08T00:00:00.000Z'),
+          y: 297,
+        },
+        {
+          x: new Date('2020-03-09T00:00:00.000Z'),
+          y: 292,
+        },
+      ],
+      color: 'green',
+      lineOptions: {
+        lineBorderWidth: '4',
+      },
+    },
+  ],
+};
 
-describe('Line chart - Subcomponent Time Range', () => {
-  testWithWait(
-    'Should render the Line chart with date x-axis data',
-    LineChart,
-    { data: dateChartPoints, colorFillBars: colorFillBarData },
-    container => {
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    // Assert
-    expect(getByClass(container, /rect/i).length > 0);
-  });
+const tickValues = [
+  new Date('2020-03-03'),
+  new Date('2020-03-04'),
+  new Date('2020-03-05'),
+  new Date('2020-03-06'),
+  new Date('2020-03-07'),
+  new Date('2020-03-08'),
+  new Date('2020-03-09'),
+];
 
-  testWithWait(
-    'Should highlight corresponding time range on legend click',
-    LineChart,
-    { data: dateChartPoints, colorFillBars: colorFillBarData },
-    container => {
-    const legend = screen.queryByText('Time range 1');
-    expect(legend).toBeDefined();
-    fireEvent.click(legend!);
-    const timeRangeLegend = screen.queryByText('Time range 1')?.closest('button');
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const lines = getById(container, /lineID/i);
-    const filledBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-    // Assert
-    expect(timeRangeLegend).toHaveAttribute('aria-selected', 'true');
-    expect(lines[0].getAttribute('opacity')).toEqual('0.1');
-    expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
-    expect(filledBars[1].getAttribute('fill-opacity')).toEqual('0.1');
-  });
-});
+const eventAnnotationProps = {
+  events: [
+    {
+      event: 'event 1',
+      date: new Date('2020-03-04T00:00:00.000Z'),
+      onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
+    },
+    {
+      event: 'event 2',
+      date: new Date('2020-03-04T00:00:00.000Z'),
+      onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
+    },
+    {
+      event: 'event 3',
+      date: new Date('2020-03-04T00:00:00.000Z'),
+      onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
+    },
+    {
+      event: 'event 4',
+      date: new Date('2020-03-06T00:00:00.000Z'),
+      onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
+    },
+    {
+      event: 'event 5',
+      date: new Date('2020-03-08T00:00:00.000Z'),
+      onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
+    },
+  ],
+  strokeColor: 'red',
+  labelColor: 'Yellow',
+  labelHeight: 18,
+  labelWidth: 2,
+  mergedLabel: (count: number) => `${count} events`,
+};
 
 describe('Line chart - Subcomponent line', () => {
   testWithoutWait(
@@ -218,27 +324,25 @@ describe('Line chart - Subcomponent line', () => {
     LineChart,
     { data: basicChartPoints },
     container => {
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const lines = getById(container, /lineID/i);
-    // Assert
-    expect(lines[0].getAttribute('stroke')).toEqual('yellow');
-    expect(lines[1].getAttribute('stroke')).toEqual('green');
-    expect(lines[2].getAttribute('stroke')).toEqual('red');
-  });
+      const lines = getById(container, /lineID/i);
+      // Assert
+      expect(lines[0].getAttribute('stroke')).toEqual('yellow');
+      expect(lines[1].getAttribute('stroke')).toEqual('green');
+      expect(lines[2].getAttribute('stroke')).toEqual('red');
+    },
+  );
 
   testWithoutWait(
-    'Should render line with gaps',
+    'Should render the line with the sepcified gaps',
     LineChart,
     { data: chartPointsWithGaps },
     container => {
-    // Arrange
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const lines = getById(container, /lineID/i);
-    // Assert
-    expect(lines.length == 9);
-  });
+      const lines = getById(container, /lineID/i);
+      // Assert
+      expect(lines.length == 9);
+    },
+  );
 });
-
 
 describe('Line chart - Subcomponent legend', () => {
   testWithoutWait(
@@ -246,91 +350,174 @@ describe('Line chart - Subcomponent legend', () => {
     LineChart,
     { data: basicChartPoints },
     container => {
-    const legend = screen.queryByText('metaData1');
-    expect(legend).toBeDefined();
-    fireEvent.mouseOver(legend!);
-    // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const lines = getById(container, /lineID/i);
-    expect(lines[0].getAttribute('opacity')).toEqual('0.1');
-    expect(lines[1].getAttribute('opacity')).toEqual('0.1');
-    expect(lines[2].getAttribute('opacity')).toEqual('1');
-  });
+      const legend = screen.queryByText('metaData1');
+      expect(legend).toBeDefined();
+      fireEvent.mouseOver(legend!);
+      // Assert
+      const lines = getById(container, /lineID/i);
+      expect(lines[0].getAttribute('opacity')).toEqual('0.1');
+      expect(lines[1].getAttribute('opacity')).toEqual('0.1');
+      expect(lines[2].getAttribute('opacity')).toEqual('1');
+      expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
+    },
+  );
 
   testWithoutWait(
-    'Should highlight the corresponding Legend on mouse over on legends',
+    'Should reset the highlighted line on mouse leave on legends',
     LineChart,
     { data: basicChartPoints },
     container => {
-    const legend = screen.queryByText('metaData1');
-    expect(legend).toBeDefined();
-    fireEvent.mouseOver(legend!);
-    // Assert
-    expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
-  });
+      const legend = screen.queryByText('metaData1');
+      expect(legend).toBeDefined();
+      fireEvent.mouseOver(legend!);
+      // Assert
+      const lines = getById(container, /lineID/i);
+      expect(lines[0].getAttribute('opacity')).toEqual('0.1');
+      expect(lines[1].getAttribute('opacity')).toEqual('0.1');
+      expect(lines[2].getAttribute('opacity')).toEqual('1');
+
+      fireEvent.mouseLeave(legend!);
+      expect(lines[0].getAttribute('opacity')).toEqual('1');
+      expect(lines[1].getAttribute('opacity')).toEqual('1');
+      expect(lines[2].getAttribute('opacity')).toEqual('1');
+    },
+  );
 
   testWithoutWait(
     'Should select legend on single mouse click on legends',
     LineChart,
     { data: basicChartPoints, hideLegend: false },
     container => {
-    // Arrange
-    const legend = screen.queryByText('metaData1');
-    expect(legend).toBeDefined();
-    fireEvent.click(legend!);
-    // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
-    const firstLegend = screen.queryByText('metaData1')?.closest('button');
-    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('tabIndex', '0');
-  });
+      // Arrange
+      const legend = screen.queryByText('metaData1');
+      expect(legend).toBeDefined();
+      fireEvent.click(legend!);
+      // Assert
+      expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
+      const firstLegend = screen.queryByText('metaData1')?.closest('button');
+      expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+      expect(firstLegend).toHaveAttribute('tabIndex', '0');
+    },
+  );
 
   testWithoutWait(
     'Should deselect legend on double mouse click on legends',
     LineChart,
     { data: basicChartPoints, hideLegend: false },
     container => {
-    const legend = screen.queryByText('metaData1');
-    expect(legend).toBeDefined();
+      const legend = screen.queryByText('metaData1');
+      expect(legend).toBeDefined();
+      //single click on first legend
+      fireEvent.click(legend!);
+      expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
+      const firstLegend = screen.queryByText('metaData1')?.closest('button');
+      expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+      expect(firstLegend).toHaveAttribute('tabIndex', '0');
+      // double click on same first legend
+      fireEvent.click(legend!);
+      // Assert
+      expect(firstLegend).toHaveAttribute('aria-selected', 'false');
+    },
+  );
 
-    //single click on first legend
-    fireEvent.click(legend!);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
-    const firstLegend = screen.queryByText('metaData1')?.closest('button');
-    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('tabIndex', '0');
-    // double click on same first legend
-    fireEvent.click(legend!);
-    // Assert
-    expect(firstLegend).toHaveAttribute('aria-selected', 'false');
-  });
+  testWithoutWait(
+    'Should select muultiple legends on single mouse click on different legends',
+    LineChart,
+    {
+      data: basicChartPoints,
+      hideLegend: false,
+      legendProps: {
+        allowFocusOnLegends: true,
+        canSelectMultipleLegends: true,
+      },
+    },
+    container => {
+      // Arrange
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(legends[0]).toBeDefined();
+      fireEvent.click(legends[0]!);
+      expect(legends[1]).toBeDefined();
+      fireEvent.click(legends[1]!);
+      const legendsAfterClick = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      // Assert
+      expect(legendsAfterClick[0]).toHaveAttribute('aria-selected', 'true');
+      expect(legendsAfterClick[1]).toHaveAttribute('aria-selected', 'true');
+      expect(legendsAfterClick[2]).toHaveAttribute('aria-selected', 'false');
+    },
+  );
+
+  testWithoutWait(
+    'Should select muultiple color fill bar legends',
+    LineChart,
+    {
+      data: basicChartPoints,
+      colorFillBars: colorFillBarData,
+      legendProps: {
+        allowFocusOnLegends: true,
+        canSelectMultipleLegends: true,
+      },
+    },
+    container => {
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(legends).toHaveLength(5);
+      expect(legends[3]).toBeDefined();
+      fireEvent.click(legends[3]!);
+      expect(legends[4]).toBeDefined();
+      fireEvent.click(legends[4]!);
+      const legendsAfterClick = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      // Assert
+      expect(legendsAfterClick[0]).toHaveAttribute('aria-selected', 'false');
+      expect(legendsAfterClick[1]).toHaveAttribute('aria-selected', 'false');
+      expect(legendsAfterClick[2]).toHaveAttribute('aria-selected', 'false');
+      expect(legendsAfterClick[3]).toHaveAttribute('aria-selected', 'true');
+      expect(legendsAfterClick[4]).toHaveAttribute('aria-selected', 'true');
+    },
+  );
 
   testWithWait(
     'Should highlight the data points and render the corresponding callout',
     LineChart,
     { data: basicChartPoints },
     container => {
-    // Arrange
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const firstPointonLine = getById(container, /lineID/)[0];
-    expect(firstPointonLine).toBeDefined();
-    fireEvent.mouseOver(firstPointonLine);
-    // Assert
-    expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
-  });
+      // Arrange
+      const firstPointonLine = getById(container, /lineID/)[0];
+      expect(firstPointonLine).toBeDefined();
+      fireEvent.mouseOver(firstPointonLine);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
+    },
+  );
+});
+
+describe('Line chart - Subcomponent Time Range', () => {
+  testWithWait(
+    'Should render time range with sepcified data',
+    LineChart,
+    { data: dateChartPoints, colorFillBars: colorFillBarData },
+    container => {
+      // Assert
+      expect(getByClass(container, /rect/i).length > 0);
+    },
+  );
 
   testWithWait(
-    'Should not show any tooltip when hideTooltip is true',
+    'Should highlight corresponding time range on legend click',
     LineChart,
-    { data: basicChartPoints, hideTooltip: true },
+    { data: dateChartPoints, colorFillBars: colorFillBarData },
     container => {
-    // Arrange
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    // Assert
-    expect(getByClass(container, /toolTipcallout/i)).toHaveLength(0);
-  });
+      const legend = screen.queryByText('Time range 1');
+      expect(legend).toBeDefined();
+      fireEvent.click(legend!);
+      const timeRangeLegend = screen.queryByText('Time range 1')?.closest('button');
+      const lines = getById(container, /lineID/i);
+      const filledBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(timeRangeLegend).toHaveAttribute('aria-selected', 'true');
+      expect(lines[0].getAttribute('opacity')).toEqual('0.1');
+      expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
+      expect(filledBars[1].getAttribute('fill-opacity')).toEqual('0.1');
+    },
+  );
 });
 
 describe('Line chart - Subcomponent xAxis Labels', () => {
@@ -339,22 +526,48 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
     LineChart,
     { data: dateChartPoints, showXAxisLablesTooltip: true },
     container => {
-    // Arrange
-    const getById = queryAllByAttribute.bind(null, 'id');
-    const xAxisLabels = getById(container, /showDots/i);
-    fireEvent.mouseOver(xAxisLabels[0]);
-    // Assert
-    expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
-  });
+      // Arrange
+      const xAxisLabels = getById(container, /showDots/i);
+      fireEvent.mouseOver(xAxisLabels[0]);
+      // Assert
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
+    },
+  );
 
   testWithWait(
     'Should show rotated x-axis labels',
     LineChart,
     { data: dateChartPoints, rotateXAxisLables: true },
     container => {
-    const getByClass = queryAllByAttribute.bind(null, 'class');
-    expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
-  });
+      // Assert
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
+    },
+  );
+});
+
+describe('Line chart - Subcomponent Event', () => {
+  const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
+  // Replace the original method with the mock implementation
+  Object.defineProperty(
+    Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+    'getComputedTextLength',
+    {
+      value: mockGetComputedTextLength,
+    },
+  );
+
+  testWithWait(
+    'Should render events with defined data',
+    LineChart,
+    { data: simplePoints, eventAnnotationProps: eventAnnotationProps, tickValues: tickValues, tickFormat: '%m/%d' },
+    container => {
+      // Arrange
+      const event = screen.queryByText('3 events');
+      // Assert
+      expect(event).toBeDefined();
+      fireEvent.click(event!);
+    },
+  );
 });
 
 describe('Screen resolution', () => {
@@ -373,30 +586,32 @@ describe('Screen resolution', () => {
     LineChart,
     { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300 },
     container => {
-    // Arrange
-    global.innerWidth = window.innerWidth / 2;
-    global.innerHeight = window.innerHeight / 2;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
+      // Arrange
+      global.innerWidth = window.innerWidth / 2;
+      global.innerHeight = window.innerHeight / 2;
+      act(() => {
+        global.dispatchEvent(new Event('resize'));
+      });
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 
   testWithWait(
     'Should remain unchanged on zoom out',
     LineChart,
     { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300 },
     container => {
-    // Arrange
-    global.innerWidth = window.innerWidth * 2;
-    global.innerHeight = window.innerHeight * 2;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
+      // Arrange
+      global.innerWidth = window.innerWidth * 2;
+      global.innerHeight = window.innerHeight * 2;
+      act(() => {
+        global.dispatchEvent(new Event('resize'));
+      });
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 test('Should reflect theme change', () => {
@@ -409,5 +624,3 @@ test('Should reflect theme change', () => {
   // Assert
   expect(container).toMatchSnapshot();
 });
-
-
