@@ -3,7 +3,6 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { getColorFromToken, getNextColor } from '../../utilities/colors';
 
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 export interface IPieChartState {
@@ -47,13 +46,6 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
       className,
     });
 
-    const defaultColors: Array<string> = [];
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        defaultColors.push(getNextColor(i, 0, theme?.isInverted));
-      }
-    }
-
     const TEXT_MAX_WIDTH = 40;
     const TEXT_LINE_HEIGHT = 16;
 
@@ -75,7 +67,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
           outerRadius={outerRadius}
           innerRadius={1}
           data={data!}
-          colors={colors ? colors.map(color => getColorFromToken(color)) : defaultColors}
+          colors={colors!}
           chartTitle={chartTitle!}
           theme={theme}
         />

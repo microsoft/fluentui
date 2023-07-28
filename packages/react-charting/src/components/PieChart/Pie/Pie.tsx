@@ -5,6 +5,7 @@ import { IPieProps } from './Pie.types';
 import { LabeledArc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { getColorFromToken, getNextColor } from '../../../utilities/colors';
 
 export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
@@ -36,9 +37,17 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public render(): JSX.Element {
     // const getClassNames = classNamesFunction<IPieProps, IPieStyles>();
-    const { pie, colors, data, width, height, chartTitle } = this.props;
+    const { pie, data, width, height, chartTitle, theme } = this.props;
 
-    this.colors = scale.scaleOrdinal().range(colors!);
+    const defaultColors: Array<string> = [];
+    if (data && !this.props.colors) {
+      for (let i = 0; i < data.length; i++) {
+        defaultColors.push(getNextColor(i, 0, theme?.isInverted));
+      }
+    }
+    const { colors = defaultColors } = this.props;
+
+    this.colors = scale.scaleOrdinal().range(colors.map(color => getColorFromToken(color)));
 
     const piechart = pie(data);
     const translate = `translate(${width / 2}, ${height / 2})`;

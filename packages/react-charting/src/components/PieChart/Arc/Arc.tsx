@@ -21,7 +21,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     super(props);
     this.state = {
       isArcFocused: false,
-      id: getId(),
+      id: getId('pie_chart_arc'),
     };
   }
 
