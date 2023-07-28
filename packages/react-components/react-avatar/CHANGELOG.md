@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 20 Jul 2023 18:27:25 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2023 10:34:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.15)
+
+Thu, 27 Jul 2023 10:34:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.5.14..@fluentui/react-avatar_v9.5.15)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.7.9 ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by beachball)
+- Bump @fluentui/react-tooltip to v9.2.26 ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by beachball)
+
+## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.14)
+
+Tue, 25 Jul 2023 13:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.5.13..@fluentui/react-avatar_v9.5.14)
+
+### Patches
+
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- Bump @fluentui/react-badge to v9.1.22 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-popover to v9.7.8 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-tabster to v9.11.0 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-tooltip to v9.2.25 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
 
 ## [9.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.13)
 

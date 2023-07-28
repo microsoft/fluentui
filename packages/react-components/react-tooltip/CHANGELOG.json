@@ -2,6 +2,36 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Thu, 27 Jul 2023 10:34:14 GMT",
+      "tag": "@fluentui/react-tooltip_v9.2.26",
+      "version": "9.2.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.9.0",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:23 GMT",
+      "tag": "@fluentui/react-tooltip_v9.2.25",
+      "version": "9.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.3.3",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:35 GMT",
       "tag": "@fluentui/react-tooltip_v9.2.24",
       "version": "9.2.24",

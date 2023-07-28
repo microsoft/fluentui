@@ -45,10 +45,12 @@ const styles = {
 };
 
 const useCustomStyles = makeStyles({
+  stackWrapper: {
+    width: '100%',
+  },
   stack: {
     backgroundColor: 'pink',
-    height: '200px',
-    width: '450px',
+    minHeight: '200px',
   },
   stackItem: {
     backgroundColor: 'lightblue',
@@ -95,7 +97,7 @@ export const Playground = () => {
   const shimStyles = useCustomStyles();
   const stackShimStyles = shimStyles.stack;
   const stackStyles = {
-    root: { backgroundColor: 'pink', height: '200px', width: '450px' },
+    root: { backgroundColor: 'pink', minHeight: '200px' },
   };
   const stackItemStyles = { root: { backgroundColor: 'lightblue' } };
   const stackItemShimStyles = shimStyles.stackItem;
@@ -145,7 +147,7 @@ export const Playground = () => {
         </Stack>
       </Stack>
       <Stack horizontal horizontalAlign={'space-evenly'}>
-        <div>
+        <div className={shimStyles.stackWrapper}>
           <h2>v8</h2>
           <Stack
             as={'span'}
@@ -175,7 +177,7 @@ export const Playground = () => {
             <Checkbox label="checkbox 2" styles={stackItemStyles} />
           </Stack>
         </div>
-        <div>
+        <div className={shimStyles.stackWrapper}>
           <h2>StackShim</h2>
           <StackShim
             as={'span'}

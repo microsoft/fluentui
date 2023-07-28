@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: creates FlatTree component",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

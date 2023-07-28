@@ -2,6 +2,42 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Thu, 27 Jul 2023 10:34:14 GMT",
+      "tag": "@fluentui/react-popover_v9.7.9",
+      "version": "9.7.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.9.0",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:23 GMT",
+      "tag": "@fluentui/react-popover_v9.7.8",
+      "version": "9.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.3.3",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.11.0",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:31 GMT",
       "tag": "@fluentui/react-popover_v9.7.7",
       "version": "9.7.7",

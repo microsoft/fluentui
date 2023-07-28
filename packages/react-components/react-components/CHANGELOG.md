@@ -1,8 +1,105 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 20 Jul 2023 18:27:24 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2023 10:34:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.1)
+
+Thu, 27 Jul 2023 10:34:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.27.0..@fluentui/react-components_v9.27.1)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: update style to prevent double scrollbar ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by yuanboxue@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: simplify autoSize options to make 'always'/'height-always'/'width-always' equivalent to true/'height'/'width'. ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by yuanboxue@microsoft.com)
+  - feat: update maxSize middleware to apply height/width when overflow ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - bugfix: makes selector slot required when selection mode is defined ([PR #28648](https://github.com/microsoft/fluentui/pull/28648) by bernardo.sunderhus@gmail.com)
+
+## [9.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.0)
+
+Tue, 25 Jul 2023 13:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.26.2..@fluentui/react-components_v9.27.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Export useRestoreFocusTarget and useRestoreFocusSource ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
+- `@fluentui/react-table`
+  - Table/DataGrid: Improve keyboard column resizing experience ([PR #28493](https://github.com/microsoft/fluentui/pull/28493) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: Implement useRestoreFocusSource and useRestoreFocusTarget based on the tabster restorer API ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Overflow update should run show/hide steps twice ([PR #28628](https://github.com/microsoft/fluentui/pull/28628) by lingfan.gao@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-breadcrumb-preview`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+  - fix: updated readme, replaced MenuItem with MenuItemLink ([PR #28626](https://github.com/microsoft/fluentui/pull/28626) by vkozlova@microsoft.com)
+  - fix: spacing in BreadcrumbButton and Link, added more examples to the stories ([PR #28578](https://github.com/microsoft/fluentui/pull/28578) by vkozlova@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-components`
+  - feat: exports FlatTree ([PR #28620](https://github.com/microsoft/fluentui/pull/28620) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+  - fix: Focus should restore to a DialogTrigger outside of a Dialog ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
+- `@fluentui/react-field`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+  - refactor: Remove custom focus code in favour of useRestoreFocus hooks ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: Overflow update should run show/hide steps twice ([PR #28628](https://github.com/microsoft/fluentui/pull/28628) by lingfan.gao@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-select`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-table`
+  - 28456 ([PR #28577](https://github.com/microsoft/fluentui/pull/28577) by lingfan.gao@microsoft.com)
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-infobutton`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+  - chore: moves slots from TreeItem to TreeItemLayout ([PR #28621](https://github.com/microsoft/fluentui/pull/28621) by bernardo.sunderhus@gmail.com)
+  - feat: creates FlatTree component ([PR #28620](https://github.com/microsoft/fluentui/pull/28620) by bernardo.sunderhus@gmail.com)
 
 ## [9.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.26.2)
 
