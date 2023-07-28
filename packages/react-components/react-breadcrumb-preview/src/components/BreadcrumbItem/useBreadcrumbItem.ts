@@ -19,7 +19,6 @@ export const useBreadcrumbItem_unstable = (
   const { size, iconPosition } = useBreadcrumbContext_unstable();
   const { current = false, icon } = props;
 
-  // const isInteractive = typeof props.children !== 'string';
   const iconShorthand = resolveShorthand(icon);
 
   return {

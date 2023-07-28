@@ -120,8 +120,8 @@ Breadcrumb can be:
 
 ### Icon
 
-Non-clickable items can't have icon.
-Only BreadcrumButton and BreadcrumbLink can have an icon with text or just icon.
+Breadcrumb items can have icons. If you need an icon for an interactive item, use it inside BreadcrumButton or BreadcrumbLink.
+For non-interactive items use the icon inside BreadcrumbItem.
 
 ### Size
 
@@ -190,7 +190,7 @@ BreadcrumbItem can be:
 
 - Button - BreadcrumbButton component is used inside BreadcrumbItem.
 - Link - BreadcrumbLink is used inside BreadcrumbItem.
-- Non-clickable content
+- Non-clickable content (text and/or icon).
 - Dropdown Menu
 
 It can contain a tooltip.
@@ -257,6 +257,9 @@ Usage
 </BreadcrumbItem>
 <BreadcrumbItem>
   <BreadcrumbLink icon={<IconComponent />}>Item</BreadcrumbLink>
+</BreadcrumbItem>
+<BreadcrumbItem icon={<IconComponent />}>
+  Item
 </BreadcrumbItem>
 ```
 
