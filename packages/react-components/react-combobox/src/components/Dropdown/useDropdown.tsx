@@ -131,12 +131,9 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         })
       : undefined;
 
-  const portalSlot: Slot<typeof Portal> | undefined =
-    baseState.open || baseState.hasFocus
-      ? resolveShorthand(props.portal, {
-          required: true,
-        })
-      : undefined;
+  const portalSlot: Slot<typeof Portal> | undefined = resolveShorthand(props.portal, {
+    required: true,
+  });
 
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);

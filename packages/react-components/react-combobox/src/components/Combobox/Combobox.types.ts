@@ -26,7 +26,7 @@ export type ComboboxSlots = {
   /* The dropdown portal slot.
      Limited to setting props only as the listbox is the rendered child.
   */
-  portal?: Slot<typeof Portal>;
+  portal: NonNullable<Slot<typeof Portal>>;
 };
 
 /**
@@ -48,8 +48,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 /**
  * State used in rendering Combobox
  */
-export type ComboboxState = ComponentState<Omit<ComboboxSlots, 'portal'> & Required<Pick<ComboboxSlots, 'portal'>>> &
-  ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;

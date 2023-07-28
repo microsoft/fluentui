@@ -51,11 +51,11 @@ export type ComboboxSlots = {
     expandIcon: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;
-    portal?: Slot<typeof Portal>;
+    portal: NonNullable<Slot<typeof Portal>>;
 };
 
 // @public
-export type ComboboxState = ComponentState<Omit<ComboboxSlots, 'portal'> & Required<Pick<ComboboxSlots, 'portal'>>> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -81,11 +81,11 @@ export type DropdownSlots = {
     expandIcon: Slot<'span'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
-    portal?: Slot<typeof Portal>;
+    portal: NonNullable<Slot<typeof Portal>>;
 };
 
 // @public
-export type DropdownState = ComponentState<Omit<DropdownSlots, 'portal'> & Required<Pick<DropdownSlots, 'portal'>>> & ComboboxBaseState & {
+export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
     placeholderVisible: boolean;
 };
 

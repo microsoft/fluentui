@@ -26,7 +26,7 @@ export type DropdownSlots = {
      The dropdown portal slot.
      Limited to setting props only as the listbox is the rendered child.
   */
-  portal?: Slot<typeof Portal>;
+  portal: NonNullable<Slot<typeof Portal>>;
 };
 
 /**
@@ -37,7 +37,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 /**
  * State used in rendering Dropdown
  */
-export type DropdownState = ComponentState<Omit<DropdownSlots, 'portal'> & Required<Pick<DropdownSlots, 'portal'>>> &
+export type DropdownState = ComponentState<DropdownSlots> &
   ComboboxBaseState & {
     /* Whether the placeholder is currently displayed */
     placeholderVisible: boolean;
