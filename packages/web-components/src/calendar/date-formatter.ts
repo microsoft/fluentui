@@ -1,6 +1,18 @@
 import { DateFormatter, MonthFormat, YearFormat } from '@microsoft/fast-foundation';
 
 /**
+ * Constant for number of months in a year
+ * @public
+ */
+export const NUM_MONTHS_IN_YEAR = 12;
+
+/**
+ * Constant for number of years in a decade in the year picker
+ * @public
+ */
+export const NUM_YEARS_IN_DECADE = 12;
+
+/**
  * Date formatting utility
  * @public
  */
@@ -12,9 +24,9 @@ export class FluentDateFormatter extends DateFormatter {
    * @public
    */
   public getMonths(locale: string = this.locale): string[] {
-    const months = Array(12)
+    const months = Array(NUM_MONTHS_IN_YEAR)
       .fill(null)
-      .map((_, month) => this.getMonth((month + 1) % 12, MonthFormat.short, locale));
+      .map((_, month) => this.getMonth((month + 1) % NUM_MONTHS_IN_YEAR, MonthFormat.short, locale));
 
     return months;
   }
@@ -26,7 +38,7 @@ export class FluentDateFormatter extends DateFormatter {
    * @public
    */
   public getDecade(decadeStartYear: number, locale: string = this.locale): string[] {
-    const decade = Array(12)
+    const decade = Array(NUM_YEARS_IN_DECADE)
       .fill(null)
       .map((_, count) => this.getYear(decadeStartYear + count, YearFormat.numeric, locale));
 

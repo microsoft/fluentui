@@ -53,7 +53,7 @@ export const styles = css`
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
   }
-  :host .right-panel {
+  :host .secondary-panel {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,7 +62,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
-  :host .right-cell-outer:not(.right-panel-today):hover {
+  :host .secondary-panel-cell-outer:not(.secondary-panel-today):hover {
     background: ${colorBrandBackgroundInvertedHover};
     color: ${colorNeutralForeground1Static};
   }
@@ -71,24 +71,24 @@ export const styles = css`
     color: ${colorNeutralForeground1Static};
   }
   :host .title,
-  .right-panel-title {
+  .secondary-panel-title {
     position: inline;
     padding: ${spacingHorizontalM};
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
   }
-  :host .right-panel-title {
+  :host .secondary-panel-title {
     cursor: pointer;
   }
-  :host .right-panel-row {
+  :host .secondary-panel-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-bottom: none;
     justify-items: center;
     padding: 2px 0px;
   }
-  :host .right-cell-outer,
-  .right-cell {
+  :host .secondary-panel-cell-outer,
+  .secondary-panel-cell {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,7 +133,7 @@ export const styles = css`
     width: 32px;
   }
   :host .interact .day,
-  .right-cell {
+  .secondary-panel-cell {
     background: var(--neutral-fill-rest);
     cursor: pointer;
   }
@@ -206,7 +206,11 @@ export const styles = css`
     display: flex;
     justify-content: flex-end;
   }
-  :host .right-panel-today {
+  :host .secondary-panel-today {
+    color: ${colorNeutralForeground2Selected};
+    background: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .secondary-panel-selected {
     color: ${colorNeutralForeground2Selected};
     background: ${colorBrandBackgroundInvertedSelected};
   }

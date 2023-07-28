@@ -18,6 +18,7 @@ const storyTemplate = html<CalendarStoryArgs>`
     ?show-slotted-link=${x => x.showSlottedLink}
     ?highlightCurrentMonth=${x => x.highlightCurrentMonth}
     ?monthPickerVisible=${x => x.monthPickerVisible}
+    ?highlightSelectedMonth=${x => x.highlightSelectedMonth}
   >
   </fluent-calendar>
 `;
@@ -28,6 +29,7 @@ export default {
     showSlottedLink: true,
     highlightCurrentMonth: false,
     monthPickerVisible: true,
+    highlightSelectedMonth: false,
   },
 } as CalendarStoryMeta;
 
