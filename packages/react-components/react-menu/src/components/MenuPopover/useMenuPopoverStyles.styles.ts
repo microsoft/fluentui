@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     minWidth: '128px',
     maxWidth: '300px',
+    overflowX: 'hidden',
     width: 'max-content',
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.padding('4px'),
