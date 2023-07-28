@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 28 Jul 2023 04:14:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "none": [
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/web-components",
+            "commit": "b1dae68db2d16f214923fd188872d5cbe485e01a",
+            "comment": "Documentation style updates"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Jul 2023 04:18:54 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.25",
       "version": "3.0.0-alpha.25",
