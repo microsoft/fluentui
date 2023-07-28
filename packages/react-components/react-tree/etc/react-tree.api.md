@@ -332,7 +332,7 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React_2.Ref<HTMLE
 export const useFlatTreeStyles_unstable: (state: TreeState) => TreeState;
 
 // @public
-export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(flatTreeItemProps: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
+export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
 
 // @public (undocumented)
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
