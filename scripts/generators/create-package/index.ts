@@ -2,7 +2,7 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 
 import { PackageJson, findGitRoot, flushTreeChanges, getProjectMetadata, tree } from '@fluentui/scripts-monorepo';
-import { addProjectConfiguration } from '@nrwl/devkit';
+import { addProjectConfiguration } from '@nx/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import _ from 'lodash';
