@@ -6,6 +6,7 @@ import {
   isHTMLElement,
   resolveShorthand,
   useMergedRefs,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -63,6 +64,15 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     [playAllToasts, pauseAllToasts],
   );
 
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === Escape) {
+      e.preventDefault();
+      closeAllToasts();
+    }
+
+    props.onKeyDown?.(e);
+  });
+
   const createPositionSlot = (toastPosition: ToastPosition) =>
     resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
@@ -81,12 +91,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
-        onKeyDown: e => {
-          if (e.key === Escape) {
-            e.preventDefault();
-            closeAllToasts();
-          }
-        },
+        onKeyDown,
         ...focusableGroupAttr,
         'data-toaster-position': toastPosition,
         // Explicitly casting because our slot types can't handle data attributes
