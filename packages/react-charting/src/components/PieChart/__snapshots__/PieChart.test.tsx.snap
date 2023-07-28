@@ -29,6 +29,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
       width={600}
     >
       <g
+        className="arc"
         transform="translate(300, 175)"
       >
         <g
@@ -198,6 +199,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
       width={600}
     >
       <g
+        className="arc"
         transform="translate(300, 150)"
       >
         <g
