@@ -399,10 +399,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         yScale,
         yScaleSecondary,
       });
-    }
 
-    if (!this.props.hideTooltip && calloutProps!.isCalloutVisible) {
-      callout = this._generateCallout(calloutProps, chartHoverProps);
+      if (!this.props.hideTooltip && calloutProps!.isCalloutVisible) {
+        callout = this._generateCallout(calloutProps, chartHoverProps);
+      }
     }
 
     this._classNames = getClassNames(this.props.styles!, {
@@ -488,9 +488,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             </div>
           </React.Suspense>
         )}
-        {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>
-        )}
+        {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
       </div>
     );
   }
