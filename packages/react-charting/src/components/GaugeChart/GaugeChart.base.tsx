@@ -519,7 +519,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
-    const { updatedTime } = this.props;
 
     return (
       <div className={this._classNames.calloutContentRoot}>
@@ -556,11 +555,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
               );
             })}
         </div>
-        {(!!calloutProps.descriptionMessage || !!updatedTime) && <div className={this._classNames.divider} />}
         {!!calloutProps.descriptionMessage && (
-          <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          <>
+            <div className={this._classNames.divider} />
+            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          </>
         )}
-        {!!updatedTime && <div className={this._classNames.updatedTime}>Updated {updatedTime.toLocaleString()}</div>}
       </div>
     );
   };

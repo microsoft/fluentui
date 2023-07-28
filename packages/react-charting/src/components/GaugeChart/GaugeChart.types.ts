@@ -133,11 +133,6 @@ export interface IGaugeChartProps {
    * @defaultvalue ChartHoverCardVariant.ShortLegend
    */
   calloutVariant?: ChartHoverCardVariant;
-
-  /**
-   * Time at which the chart data was last updated
-   */
-  updatedTime?: Date;
 }
 
 export interface IGaugeChartStyleProps {
@@ -262,9 +257,4 @@ export interface IGaugeChartStyles {
    * Styles for the group divider in callout
    */
   divider?: IStyle;
-
-  /**
-   * Styles for the updated time text in callout
-   */
-  updatedTime?: IStyle;
 }

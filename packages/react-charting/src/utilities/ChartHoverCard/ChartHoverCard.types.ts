@@ -54,11 +54,6 @@ export interface IChartHoverCardProps {
    * @defaultvalue ChartHoverCardVariant.ShortLegend
    */
   variant?: ChartHoverCardVariant;
-
-  /**
-   * Time at which the chart data was last updated
-   */
-  updatedTime?: Date;
 }
 
 export interface IChartHoverCardStyles {
@@ -121,11 +116,6 @@ export interface IChartHoverCardStyles {
    * styles for the group divider
    */
   divider?: IStyle;
-
-  /**
-   * styles for the updated time text
-   */
-  updatedTime?: IStyle;
 }
 
 export interface IChartHoverCardStyleProps {

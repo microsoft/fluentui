@@ -67,10 +67,5 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       marginTop: '8px',
       marginBottom: '8px',
     },
-
-    updatedTime: {
-      marginTop: '8px',
-      fontSize: FontSizes.small,
-    },
   };
 };

@@ -106,10 +106,5 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     descriptionMessage: {
       fontSize: FontSizes.small,
     },
-
-    updatedTime: {
-      marginTop: '8px',
-      fontSize: FontSizes.small,
-    },
   };
 };

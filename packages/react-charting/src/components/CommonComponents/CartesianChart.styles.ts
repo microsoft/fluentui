@@ -148,10 +148,5 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     descriptionMessage: {
       fontSize: FontSizes.small,
     },
-
-    updatedTime: {
-      marginTop: '8px',
-      fontSize: FontSizes.small,
-    },
   };
 };

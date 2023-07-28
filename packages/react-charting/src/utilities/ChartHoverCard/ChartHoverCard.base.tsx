@@ -15,8 +15,7 @@ export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}
   private _classNames: IProcessedStyleSet<IChartHoverCardStyles>;
 
   public render(): React.ReactNode {
-    const { color, Legend, XValue, YValue, styles, theme, ratio, descriptionMessage, culture, variant, updatedTime } =
-      this.props;
+    const { color, Legend, XValue, YValue, styles, theme, ratio, descriptionMessage, culture, variant } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -53,9 +52,12 @@ export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}
             )}
           </div>
         </div>
-        {(!!descriptionMessage || !!updatedTime) && <div className={this._classNames.divider} />}
-        {!!descriptionMessage && <div className={this._classNames.descriptionMessage}>{descriptionMessage}</div>}
-        {!!updatedTime && <div className={this._classNames.updatedTime}>Updated {updatedTime.toLocaleString()}</div>}
+        {!!descriptionMessage && (
+          <>
+            <div className={this._classNames.divider} />
+            <div className={this._classNames.descriptionMessage}>{descriptionMessage}</div>
+          </>
+        )}
       </div>
     );
   }
