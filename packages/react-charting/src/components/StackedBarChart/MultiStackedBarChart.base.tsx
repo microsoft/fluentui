@@ -52,6 +52,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
+  private _emptyChartId: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -70,6 +71,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_MSBC_empty');
   }
 
   public render(): JSX.Element {
@@ -135,7 +137,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
     return (
       <div
-        id={getId('_MSBC_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

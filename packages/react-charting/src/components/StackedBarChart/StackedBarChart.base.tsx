@@ -36,6 +36,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _calloutId: string;
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _emptyChartId: string;
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -55,6 +56,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._refCallback = this._refCallback.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_SBC_empty');
   }
 
   public render(): JSX.Element {
@@ -182,7 +184,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
     return (
       <div
-        id={getId('_SBC_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

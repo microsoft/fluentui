@@ -40,6 +40,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
+  private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -58,6 +59,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_HBC_empty');
   }
 
   public render(): JSX.Element {
@@ -163,7 +165,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       </div>
     ) : (
       <div
-        id={getId('_HBC_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

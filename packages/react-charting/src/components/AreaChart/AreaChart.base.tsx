@@ -106,6 +106,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   //from O(n^2) to O(n) using a map.
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -134,6 +135,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._tooltipId = getId('AreaChartTooltipID');
     this._enableComputationOptimization = true;
     this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_AreaChart_empty');
   }
 
   public componentDidUpdate() {
@@ -223,7 +225,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
     return (
       <div
-        id={getId('_AreaChart_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

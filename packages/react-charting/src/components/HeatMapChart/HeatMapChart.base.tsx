@@ -114,6 +114,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
+  private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();
@@ -147,6 +148,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       descriptionMessage: '',
       calloutId: '',
     };
+    this._emptyChartId = getId('_HeatMap_empty');
   }
 
   public render(): React.ReactNode {
@@ -217,7 +219,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     ) : (
       <div
-        id={getId('_HeatMap_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

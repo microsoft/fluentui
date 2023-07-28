@@ -32,6 +32,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   private y: any;
   private area: any;
   private line: any;
+  private _emptyChartId: string;
 
   constructor(props: ISparklineProps) {
     super(props);
@@ -41,6 +42,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       _height: this.props.height! || 20,
       _valueTextWidth: this.props.valueTextWidth! || 80,
     };
+    this._emptyChartId = getId('_SparklineChart_empty');
   }
 
   public componentDidMount() {
@@ -135,7 +137,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       </FocusZone>
     ) : (
       <div
-        id={getId('_SparklineChart_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

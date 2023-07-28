@@ -4,7 +4,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 1`] = `
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_PieChart_empty1"
+    id="_PieChart_empty5"
     role="alert"
     style="opacity: 0;"
   />

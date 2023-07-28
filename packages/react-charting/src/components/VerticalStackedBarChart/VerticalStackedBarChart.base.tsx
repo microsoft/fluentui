@@ -91,6 +91,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _calloutAnchorPoint: IVSChartDataPoint | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
+  private _emptyChartId: string;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -132,6 +133,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_VSBC_');
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -231,7 +233,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
     }
     return (
-      <div id={getId('_VSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 

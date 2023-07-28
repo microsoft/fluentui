@@ -169,6 +169,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _staticHighlightCircle: string;
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -200,6 +201,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._staticHighlightCircle = getId('staticHighlightCircle');
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
     this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_LineChart_empty');
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -321,7 +323,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     ) : (
       <div
-        id={getId('_LineChart_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

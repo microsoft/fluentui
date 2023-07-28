@@ -13,9 +13,11 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     height: 350,
   };
   private _classNames: IProcessedStyleSet<IPieChartStyles>;
+  private _emptyChartId: string;
 
   public constructor(props: IPieChartProps) {
     super(props);
+    this._emptyChartId = getId('_PieChart_empty');
   }
 
   public render(): JSX.Element {
@@ -47,7 +49,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
       </div>
     ) : (
       <div
-        id={getId('_PieChart_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

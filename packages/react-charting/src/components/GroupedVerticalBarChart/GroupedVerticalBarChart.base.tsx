@@ -83,6 +83,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
   private _barWidth: number;
   private _domainMargin: number;
+  private _emptyChartId: string;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -111,6 +112,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._calloutId = getId('callout');
     this._tooltipId = getId('GVBCTooltipId_');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_GVBC_empty');
   }
 
   public render(): React.ReactNode {
@@ -184,7 +186,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       />
     ) : (
       <div
-        id={getId('_GVBC_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}

@@ -65,6 +65,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _margins: IMargins;
   private _isRtl: boolean = getRTL();
   private _normalizeData: (data: ISankeyChartData) => void;
+  private _emptyChartId: string;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -82,6 +83,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
     this._preRenderLayout();
     this._normalizeData = memoizeFunction((data: ISankeyChartData) => this._normalizeSankeyData(data));
+    this._emptyChartId = getId('_SankeyChart_empty');
   }
   public componentDidMount(): void {
     this._fitParentContainer();
@@ -166,7 +168,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
     return (
       <div
-        id={getId('_SankeyChart_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
