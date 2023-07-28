@@ -55,7 +55,9 @@ export class Pie extends React.Component<IPieProps, {}> {
     return (
       <FocusZone direction={FocusZoneDirection.domOrder}>
         <svg width={width} height={height} aria-label={chartTitle}>
-          <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>
+          <g className="arc" transform={translate}>
+            {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}
+          </g>
         </svg>
       </FocusZone>
     );
