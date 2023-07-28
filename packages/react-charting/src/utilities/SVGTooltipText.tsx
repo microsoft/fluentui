@@ -43,14 +43,16 @@ interface ISVGTooltipTextProps {
 
   /**
    * Pass false to make prevent the tooptip from receiving focus through keyboard
-   * Eg: In Pie Chart, the focus should only land on the arcs and not on the text to avoid repitition of the same datapoint
+   * Eg: In Pie Chart, the focus should only land on the arcs and not on the text to
+   * avoid repitition of the same datapoint
    * @defaultvalue true
    */
   shouldReceiveFocus?: boolean;
 
   /**
    * Pass true to show tooltip directly
-   * Eg: In Pie Chart, the tooltip is shown when the arc is focussed, so the prop is set to true, to directly show the tooltip from this component
+   * Eg: In Pie Chart, the tooltip is shown when the arc is focussed, so the prop is set to true,
+   * to directly show the tooltip from this component
    * @defaultvalue false
    */
   isTooltipVisibleProp?: boolean;
