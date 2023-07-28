@@ -9,7 +9,7 @@ export interface UseFocusableGroupOptions {
   tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 
   /**
-   * Tabster should ignore default handling of keydown events
+   * Tabster can ignore default handling of keydown events
    */
   ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
 }
