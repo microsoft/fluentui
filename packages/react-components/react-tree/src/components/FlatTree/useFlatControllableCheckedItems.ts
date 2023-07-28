@@ -5,26 +5,31 @@ import * as React from 'react';
 import type { HeadlessTree, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
 import { createCheckedItems } from '../../utils/createCheckedItems';
 import type { TreeCheckedChangeData, TreeProps } from '../Tree/Tree.types';
+import { HeadlessFlatTreeOptions } from './useHeadlessFlatTree';
 
-export function useFlatControllableCheckedItems(props: Pick<TreeProps, 'checkedItems' | 'defaultCheckedItems'>) {
-  const [checkedItems, setCheckedItems] = useControllableState({
+export function useFlatControllableCheckedItems<Props extends HeadlessTreeItemProps>(
+  props: Pick<HeadlessFlatTreeOptions, 'checkedItems' | 'defaultCheckedItems' | 'selectionMode'>,
+  headlessTree: HeadlessTree<Props>,
+) {
+  return useControllableState({
     initialState: ImmutableMap.empty,
-    state: React.useMemo(() => props.checkedItems && createCheckedItems(props.checkedItems), [props.checkedItems]),
-    defaultState: () => createCheckedItems(props.defaultCheckedItems),
+    state: React.useMemo(
+      () => (props.selectionMode ? props.checkedItems && createCheckedItems(props.checkedItems) : undefined),
+      [props.checkedItems, props.selectionMode],
+    ),
+    defaultState: () => initializeCheckedItems(props, headlessTree),
   });
-
-  return [checkedItems, setCheckedItems] as const;
 }
 
-export function createNextFlatCheckedItems<Props extends HeadlessTreeItemProps>(
+export function createNextFlatCheckedItems(
   data: Pick<TreeCheckedChangeData, 'value' | 'checked' | 'selectionMode'>,
   previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
-  virtualTree: HeadlessTree<Props>,
+  headlessTree: HeadlessTree<HeadlessTreeItemProps>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
   if (data.selectionMode === 'single') {
     return ImmutableMap.create([[data.value, data.checked]]);
   }
-  const treeItem = virtualTree.get(data.value);
+  const treeItem = headlessTree.get(data.value);
   if (!treeItem) {
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line no-console
@@ -33,20 +38,20 @@ export function createNextFlatCheckedItems<Props extends HeadlessTreeItemProps>(
     return previousCheckedItems;
   }
   const nextCheckedItems = new Map(previousCheckedItems);
-  for (const children of virtualTree.subtree(data.value)) {
+  for (const children of headlessTree.subtree(data.value)) {
     nextCheckedItems.set(children.value, data.checked);
   }
   nextCheckedItems.set(data.value, data.checked);
 
   let isAncestorsMixed = false;
-  for (const parent of virtualTree.ancestors(treeItem.value)) {
+  for (const parent of headlessTree.ancestors(treeItem.value)) {
     // if one parent is mixed, all ancestors are mixed
     if (isAncestorsMixed) {
       nextCheckedItems.set(parent.value, 'mixed');
       continue;
     }
     const checkedChildren = [];
-    for (const child of virtualTree.children(parent.value)) {
+    for (const child of headlessTree.children(parent.value)) {
       if ((nextCheckedItems.get(child.value) ?? false) === data.checked) {
         checkedChildren.push(child);
       }
@@ -60,4 +65,20 @@ export function createNextFlatCheckedItems<Props extends HeadlessTreeItemProps>(
     }
   }
   return ImmutableMap.dangerouslyCreate_unstable(nextCheckedItems);
+}
+
+function initializeCheckedItems(
+  props: Pick<TreeProps, 'selectionMode' | 'defaultCheckedItems'>,
+  headlessTree: HeadlessTree<HeadlessTreeItemProps>,
+) {
+  if (!props.selectionMode) {
+    return ImmutableMap.empty;
+  }
+  let state = createCheckedItems(props.defaultCheckedItems);
+  if (props.selectionMode === 'multiselect') {
+    for (const [value, checked] of state) {
+      state = createNextFlatCheckedItems({ value, checked, selectionMode: props.selectionMode }, state, headlessTree);
+    }
+  }
+  return state;
 }

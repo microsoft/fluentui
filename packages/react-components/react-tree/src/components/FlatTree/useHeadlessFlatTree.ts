@@ -95,7 +95,7 @@ export type HeadlessFlatTreeOptions = Pick<
   FlatTreeProps,
   'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'
 > &
-  Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems' | 'defaultChecked'>;
+  Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems' | 'defaultCheckedItems'>;
 
 /**
  * this hook provides FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems
@@ -115,7 +115,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 ): HeadlessFlatTree<Props> {
   const headlessTree = React.useMemo(() => createHeadlessTree(props), [props]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
-  const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options);
+  const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options, headlessTree);
   const { initialize, navigate } = useFlatTreeNavigation(headlessTree);
   const walkerRef = React.useRef<HTMLElementWalker>();
   const initializeWalker = React.useCallback(
@@ -130,13 +130,21 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 
   const treeRef = React.useRef<HTMLDivElement>(null);
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    options.onOpenChange?.(event, data);
-    setOpenItems(createNextOpenItems(data, openItems));
+    const nextOpenItems = createNextOpenItems(data, openItems);
+    options.onOpenChange?.(event, {
+      ...data,
+      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+    });
+    setOpenItems(nextOpenItems);
   });
 
   const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
-    options.onCheckedChange?.(event, data);
-    setCheckedItems(createNextFlatCheckedItems(data, checkedItems, headlessTree));
+    const nextCheckedItems = createNextFlatCheckedItems(data, checkedItems, headlessTree);
+    options.onCheckedChange?.(event, {
+      ...data,
+      checkedItems: nextCheckedItems.dangerouslyGetInternalMap_unstable(),
+    });
+    setCheckedItems(nextCheckedItems);
   });
 
   const handleNavigation = useEventCallback(
