@@ -8,12 +8,13 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useModalAttributes } from '@fluentui/react-tabster';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
 import { ToastContainer } from '../ToastContainer';
 import { useFocusManagement_unstable } from './useFocusManagement';
+import { Escape } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render Toaster.
@@ -23,14 +24,17 @@ import { useFocusManagement_unstable } from './useFocusManagement';
 export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const { offset, announce: announceProp, ...rest } = props;
   const announceRef = React.useRef<Announce>(() => null);
-  const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus } =
+  const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =
     useToaster<HTMLDivElement>(rest);
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
   const rootProps = getNativeElementProps('div', rest);
-  const { modalAttributes } = useModalAttributes({ trapFocus: true, legacyTrapFocus: true });
   const focusManagementRef = useFocusManagement_unstable();
+  const focusableGroupAttr = useFocusableGroup({
+    tabBehavior: 'limited-trap-focus',
+    ignoreDefaultKeydown: { Escape: true },
+  });
 
   // Adds native HTML focusin/focusout listeners
   // https://github.com/facebook/react/issues/25194
@@ -52,12 +56,11 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
             !e.currentTarget.contains(isHTMLElement(e.relatedTarget) ? e.relatedTarget : null)
           ) {
             playAllToasts();
-            tryRestoreFocus();
           }
         });
       }
     },
-    [playAllToasts, pauseAllToasts, tryRestoreFocus],
+    [playAllToasts, pauseAllToasts],
   );
 
   const createPositionSlot = (toastPosition: ToastPosition) =>
@@ -78,7 +81,13 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
-        ...modalAttributes,
+        onKeyDown: e => {
+          if (e.key === Escape) {
+            e.preventDefault();
+            closeAllToasts();
+          }
+        },
+        ...focusableGroupAttr,
         'data-toaster-position': toastPosition,
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,

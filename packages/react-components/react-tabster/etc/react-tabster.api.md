@@ -65,6 +65,7 @@ export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.Ta
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 

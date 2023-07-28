@@ -9,6 +9,7 @@ import {
   useId,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { Delete } from '@fluentui/keyboard-keys';
 import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
@@ -165,7 +166,7 @@ export const useToastContainer_unstable = (
   });
 
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape') {
+    if (e.key === Delete) {
       e.preventDefault();
       close();
     }
