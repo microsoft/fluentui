@@ -1,3 +1,4 @@
+import { useRenderer_unstable } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
@@ -9,12 +10,12 @@ import type {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
-
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
+
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
+import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
-import { useRenderer_unstable } from '@griffel/react';
 
 /**
  * Create the state required to render FluentProvider.
@@ -48,8 +49,8 @@ export const useFluentProvider_unstable = (
     theme,
     overrides_unstable: overrides = {},
   } = props;
-  const mergedTheme = shallowMerge(parentTheme, theme);
 
+  const mergedTheme = shallowMerge(parentTheme, theme);
   const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
   const mergedCustomStyleHooks = shallowMerge(
@@ -57,24 +58,55 @@ export const useFluentProvider_unstable = (
     customStyleHooks_unstable,
   ) as CustomStyleHooksContextValue;
 
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
-      // eslint-disable-next-line no-console
-      console.warn(`
-      FluentProvider: your "theme" is not defined !
-      =============================================
-      Make sure your root FluentProvider has set a theme or you're setting the theme in your child FluentProvider.
-      `);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const renderer = useRenderer_unstable();
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
     theme: mergedTheme,
     targetDocument,
     rendererAttributes: renderer.styleElementAttributes ?? {},
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (mergedTheme === undefined) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          [
+            '@fluentui/react-provider: FluentProvider does not have your "theme" defined.',
+            "Make sure that your top-level FluentProvider has set a `theme` prop or you're setting the theme in your child FluentProvider.",
+          ].join(' '),
+        );
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useMemo(() => {
+      // Heads up!
+      // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,
+      // this allows to do checks with strict mode enabled as .useEffect() will be called with incremented IDs because
+      // of double render.
+
+      if (targetDocument) {
+        const providerElements = targetDocument.querySelectorAll(`.${fluentProviderClassNames.root}.${styleTagId}`);
+
+        if (providerElements.length > 0) {
+          // eslint-disable-next-line no-console
+          console.error(
+            [
+              '@fluentui/react-provider: There are conflicting ids in your DOM.',
+              'Please make sure that you configured your application properly.',
+              '\n',
+              '\n',
+              'Configuration guide: https://aka.ms/fluentui-conflicting-ids',
+            ].join(' '),
+          );
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
+
   return {
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention
