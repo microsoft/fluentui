@@ -21,7 +21,7 @@ storiesOf('ActivityItem', module)
     () => (
       <ActivityItem
         activityIcon={<Icon iconName="Message" />}
-        activityDescription={<span>description. text</span>}
+        activityDescription={<span>description text</span>}
         comments={<span>comment text</span>}
         timeStamp="timeStamp text"
       />
