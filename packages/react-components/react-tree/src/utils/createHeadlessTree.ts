@@ -12,11 +12,13 @@ export type HeadlessTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> & 
  * `createHeadlessTree` but with extra information that might be useful on virtual tree scenarios
  */
 export type HeadlessTreeItem<Props extends HeadlessTreeItemProps> = {
-  index: number;
   level: number;
+  index: number;
+  position: number;
   childrenValues: TreeItemValue[];
   value: TreeItemValue;
   parentValue: TreeItemValue | undefined;
+  itemType: TreeItemType;
   getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> &
     Omit<Props, 'parentValue'>;
 };
@@ -25,15 +27,62 @@ export type HeadlessTreeItem<Props extends HeadlessTreeItemProps> = {
  * @internal
  */
 export type HeadlessTree<Props extends HeadlessTreeItemProps> = {
-  size: number;
+  /**
+   * the number of items in the virtual tree
+   */
+  readonly size: number;
+  /**
+   * the root item of the virtual tree
+   */
   root: HeadlessTreeItem<HeadlessTreeItemProps>;
-  get(key: TreeItemValue): HeadlessTreeItem<Props> | undefined;
-  getParent(key: TreeItemValue): HeadlessTreeItem<Props>;
-  getByIndex(index: number): HeadlessTreeItem<Props>;
-  subtree(key: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
-  children(key: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
+  /**
+   * method to get a virtual tree item by its value
+   * @param key the key of the item to get
+   */
+  get(value: TreeItemValue): HeadlessTreeItem<Props> | undefined;
+  /**
+   * method to check if a virtual tree item exists by its value
+   * @param value the value of the item to check if exists
+   */
+  has(value: TreeItemValue): boolean;
+  /**
+   * method to add a new virtual tree item to the virtual tree
+   * @param props the props of the item to add
+   */
+  add(props: Props): void;
+  /**
+   * method to remove a virtual tree item from the virtual tree.
+   * When an item is removed:
+   * 1. all its children are also removed
+   * 2. all its siblings are repositioned
+   * @param value the value of the item to remove
+   */
+  // remove(value: TreeItemValue): void;
+  /**
+   * method to get the parent of a virtual tree item by its value
+   * @param value the value of the item to get the parent from
+   */
+  getParent(value: TreeItemValue): HeadlessTreeItem<Props>;
+  /**
+   * method to get the subtree of a virtual tree item by its value
+   * @param value the value of the item to get the subtree from
+   */
+  subtree(value: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
+  /**
+   * method to get the children of a virtual tree item by its value
+   * @param value the value of the item to get the children from
+   */
+  children(value: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
+  /**
+   * method to get the visible items of a virtual tree
+   * @param openItems the open items of the tree
+   */
   visibleItems(openItems: ImmutableSet<TreeItemValue>): IterableIterator<HeadlessTreeItem<Props>>;
-  ancestors(key: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
+  /**
+   * method to get the ancestors of a virtual tree item by its value
+   * @param value the value of the item to get the ancestors from
+   */
+  ancestors(value: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
 };
 
 /**
@@ -41,63 +90,83 @@ export type HeadlessTree<Props extends HeadlessTreeItemProps> = {
  * and provides a map to access each item by id
  */
 export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
-  virtualTreeItemProps: Props[],
+  initialProps: Props[] = [],
 ): HeadlessTree<Props> {
   const root = createHeadlessTreeRootItem();
   const itemsPerValue = new Map<TreeItemValue, HeadlessTreeItem<HeadlessTreeItemProps>>([[root.value, root]]);
-  const items: HeadlessTreeItem<HeadlessTreeItemProps>[] = [];
 
-  for (let index = 0; index < virtualTreeItemProps.length; index++) {
-    const { parentValue = virtualTreeRootId, ...treeItemProps } = virtualTreeItemProps[index];
-
-    const nextItemProps: Props | undefined = virtualTreeItemProps[index + 1];
-    const currentParent = itemsPerValue.get(parentValue);
-    if (!currentParent) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.error(
-          `useHeadlessTree: item ${virtualTreeItemProps[index].value} is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized`,
-        );
-      }
-      break;
-    }
-    const itemType =
-      treeItemProps.itemType ??
-      (treeItemProps.value === undefined || nextItemProps?.parentValue !== treeItemProps.value ? 'leaf' : 'branch');
-    const currentLevel = (currentParent.level ?? 0) + 1;
-
-    const virtualTreeItem: HeadlessTreeItem<HeadlessTreeItemProps> = {
-      value: treeItemProps.value,
-      getTreeItemProps: () => ({
-        ...treeItemProps,
-        'aria-level': currentLevel,
-        'aria-posinset': currentChildrenSize,
-        'aria-setsize': currentParent.childrenValues.length,
-        itemType,
-      }),
-      level: currentLevel,
-      parentValue,
-      childrenValues: [],
-      index: -1,
-    };
-    const currentChildrenSize = currentParent.childrenValues.push(virtualTreeItem.value);
-    itemsPerValue.set(virtualTreeItem.value, virtualTreeItem);
-    items.push(virtualTreeItem);
-  }
-
-  const virtualTreeItems: HeadlessTree<HeadlessTreeItemProps> = {
+  const headlessTree: HeadlessTree<HeadlessTreeItemProps> = {
     root,
-    size: items.length,
-    getByIndex: index => items[index],
+    get size() {
+      return itemsPerValue.size;
+    },
     getParent: key => itemsPerValue.get(itemsPerValue.get(key)?.parentValue ?? root.value) ?? root,
     get: key => itemsPerValue.get(key),
-    subtree: key => HeadlessTreeSubtreeGenerator(key, virtualTreeItems),
-    children: key => HeadlessTreeChildrenGenerator(key, virtualTreeItems),
-    ancestors: key => HeadlessTreeAncestorsGenerator(key, virtualTreeItems),
-    visibleItems: openItems => HeadlessTreeVisibleItemsGenerator(openItems, virtualTreeItems),
+    has: key => itemsPerValue.has(key),
+    add(props) {
+      const { parentValue = virtualTreeRootId, ...propsWithoutParentValue } = props;
+      const parentItem = itemsPerValue.get(parentValue);
+      if (!parentItem) {
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error(
+            `HeadlessTree: item ${props.value} is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized, parents should come before children`,
+          );
+        }
+        return;
+      }
+      parentItem.itemType = 'branch';
+
+      const item: HeadlessTreeItem<HeadlessTreeItemProps> = {
+        value: props.value,
+        getTreeItemProps: () => ({
+          ...propsWithoutParentValue,
+          'aria-level': item.level,
+          'aria-posinset': item.position,
+          'aria-setsize': parentItem.childrenValues.length,
+          itemType: item.itemType,
+        }),
+        itemType: 'leaf',
+        level: parentItem.level + 1,
+        parentValue,
+        childrenValues: [],
+        index: -1,
+        position: parentItem.childrenValues.push(props.value),
+      };
+      itemsPerValue.set(item.value, item);
+    },
+    // TODO: eventually it would be nice to have this method exported for the user to modify
+    // the internal state of the virtual tree
+    // remove(value) {
+    //   const itemToBeRemoved = itemsPerValue.get(value);
+    //   if (!itemToBeRemoved) {
+    //     return;
+    //   }
+    //   const parentItem = headlessTree.getParent(value);
+    //   parentItem.childrenValues.splice(itemToBeRemoved.position, 1);
+    //   itemsPerValue.delete(value);
+    //   if (parentItem.childrenValues.length === 0) {
+    //     parentItem.itemType = 'leaf';
+    //   }
+    //   for (let index = itemToBeRemoved.position; index < parentItem.childrenValues.length; index++) {
+    //     const child = itemsPerValue.get(parentItem.childrenValues[index]);
+    //     if (child) {
+    //       child.position = index + 1;
+    //     }
+    //   }
+    //   for (const descendant of HeadlessTreeSubtreeGenerator(value, headlessTree)) {
+    //     itemsPerValue.delete(descendant.value);
+    //   }
+    // },
+    subtree: key => HeadlessTreeSubtreeGenerator(key, headlessTree),
+    children: key => HeadlessTreeChildrenGenerator(key, headlessTree),
+    ancestors: key => HeadlessTreeAncestorsGenerator(key, headlessTree),
+    visibleItems: openItems => HeadlessTreeVisibleItemsGenerator(openItems, headlessTree),
   };
 
-  return virtualTreeItems as HeadlessTree<Props>;
+  initialProps.forEach(headlessTree.add);
+
+  return headlessTree as HeadlessTree<Props>;
 }
 
 export const virtualTreeRootId = '__fuiHeadlessTreeRoot';
@@ -106,10 +175,11 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
   return {
     parentValue: undefined,
     value: virtualTreeRootId,
+    itemType: 'branch',
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error('useHeadlessTree: internal error, trying to access treeitem props from invalid root element');
+        console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
       }
       return {
         id: virtualTreeRootId,
@@ -124,7 +194,14 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
     get index() {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error('useHeadlessTree: internal error, trying to access treeitem props from invalid root element');
+        console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
+      }
+      return -1;
+    },
+    get position() {
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
       }
       return -1;
     },
@@ -140,17 +217,17 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
 function* HeadlessTreeSubtreeGenerator<Props extends HeadlessTreeItemProps>(
   key: TreeItemValue,
   virtualTreeItems: HeadlessTree<Props>,
-) {
+): Generator<HeadlessTreeItem<Props>, void, void> {
   const item = virtualTreeItems.get(key);
   if (!item || item.childrenValues.length === 0) {
-    return [];
+    return;
   }
-  let counter = item.childrenValues.length;
-  let index = item.index;
-  while (counter > 0) {
-    const children = virtualTreeItems.getByIndex(++index);
-    yield children;
-    counter += children.childrenValues.length - 1;
+  for (const childValue of item.childrenValues) {
+    const child = virtualTreeItems.get(childValue)!;
+    yield child;
+    if (child.childrenValues.length > 0) {
+      yield* HeadlessTreeSubtreeGenerator(childValue, virtualTreeItems);
+    }
   }
 }
 
@@ -162,7 +239,7 @@ function* HeadlessTreeSubtreeGenerator<Props extends HeadlessTreeItemProps>(
 function* HeadlessTreeChildrenGenerator<Props extends HeadlessTreeItemProps>(
   key: TreeItemValue,
   virtualTreeItems: HeadlessTree<Props>,
-) {
+): Generator<HeadlessTreeItem<Props>, void, void> {
   const item = virtualTreeItems.get(key);
   if (!item || item.childrenValues.length === 0) {
     return;
@@ -180,7 +257,7 @@ function* HeadlessTreeChildrenGenerator<Props extends HeadlessTreeItemProps>(
 function* HeadlessTreeAncestorsGenerator<Props extends HeadlessTreeItemProps>(
   key: TreeItemValue,
   virtualTreeItems: HeadlessTree<Props>,
-) {
+): Generator<HeadlessTreeItem<Props>, void, void> {
   let parent = virtualTreeItems.getParent(key);
   while (parent !== virtualTreeItems.root) {
     yield parent;
@@ -196,15 +273,12 @@ function* HeadlessTreeAncestorsGenerator<Props extends HeadlessTreeItemProps>(
 function* HeadlessTreeVisibleItemsGenerator<Props extends HeadlessTreeItemProps>(
   openItems: ImmutableSet<TreeItemValue>,
   virtualTreeItems: HeadlessTree<Props>,
-) {
-  for (let index = 0, visibleIndex = 0; index < virtualTreeItems.size; index++) {
-    const item = virtualTreeItems.getByIndex(index) as HeadlessTreeItem<Props>;
+): Generator<HeadlessTreeItem<Props>, void, void> {
+  let index = 0;
+  for (const item of HeadlessTreeSubtreeGenerator(virtualTreeItems.root.value, virtualTreeItems)) {
     if (isItemVisible(item, openItems, virtualTreeItems)) {
-      item.index = visibleIndex++;
+      item.index = index++;
       yield item;
-    } else {
-      // Jump the amount of children the current item has, since those items will also be hidden
-      index += item.childrenValues.length;
     }
   }
 }
