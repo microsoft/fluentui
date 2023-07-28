@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add ES2015.Iterable to tsconfig lib as jest types need it",
+  "packageName": "@fluentui/merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
