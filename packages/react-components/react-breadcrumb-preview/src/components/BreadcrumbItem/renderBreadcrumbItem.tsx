@@ -11,6 +11,13 @@ import type { BreadcrumbItemState, BreadcrumbItemSlots } from './BreadcrumbItem.
  */
 export const renderBreadcrumbItem_unstable = (state: BreadcrumbItemState) => {
   const { slots, slotProps } = getSlotsNext<BreadcrumbItemSlots>(state);
+  const { iconOnly, iconPosition } = state;
 
-  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
+  return (
+    <slots.root {...slotProps.root}>
+      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+      {!iconOnly && state.root.children}
+      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+    </slots.root>
+  );
 };

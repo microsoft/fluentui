@@ -3,6 +3,11 @@ import type { BreadcrumbProps } from '../Breadcrumb';
 
 export type BreadcrumbItemSlots = {
   root: Slot<'li'>;
+
+  /**
+   * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
+   */
+  icon?: Slot<'span'>;
 };
 
 /**
@@ -16,10 +21,24 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
      * @default false
      */
     current?: boolean;
+
+    /**
+     * Icon position for BreadcrumbLink or BreadcrumbLink.
+     *
+     * @default 'before'
+     */
+    iconPosition?: 'before' | 'after';
   };
 
 /**
  * State used in rendering BreadcrumbItem
  */
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
+  Required<Pick<BreadcrumbItemProps, 'size' | 'current' | 'iconPosition'>> & {
+    /**
+     * A BreadcrumbItem can contain only an icon.
+     *
+     * @default false
+     */
+    iconOnly: boolean;
+  };
