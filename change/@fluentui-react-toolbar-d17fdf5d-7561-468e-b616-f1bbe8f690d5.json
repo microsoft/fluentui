@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove margin from Icon in ToolbarButton when vertical prop is passed",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "chassunc@microsoft.com",
+  "dependentChangeType": "patch"
+}

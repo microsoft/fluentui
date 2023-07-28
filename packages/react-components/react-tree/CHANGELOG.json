@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Thu, 27 Jul 2023 10:34:14 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.28",
+      "version": "9.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0e9c438b78e58f346f61b15224c7b0020e4fe73e",
+            "comment": "bugfix: makes selector slot required when selection mode is defined"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.5.15",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 13:29:23 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.27",
       "version": "9.0.0-beta.27",

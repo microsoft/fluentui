@@ -1,4 +1,4 @@
-import { render, screen, queryAllByAttribute, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
 import { chartPoints } from './DonutChart.test';
 import { DonutChart } from './index';
 import * as React from 'react';
