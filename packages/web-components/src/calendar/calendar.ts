@@ -263,15 +263,6 @@ export class Calendar extends FASTCalendar {
   }
 
   /**
-   * Creates a class string for the "Go to today" link
-   * @returns - string of class names
-   * @public
-   */
-  public getLinkClassNames() {
-    return this.isToday() ? 'slotted-link inactive' : 'slotted-link';
-  }
-
-  /**
    * Creates a class string for cells on the secondary panel
    * @returns - string of class names
    * @public
