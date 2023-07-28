@@ -170,6 +170,8 @@ export class Calendar extends FASTCalendar {
 
   protected days: Element[] | null = this.shadowRoot && Array.from(this.shadowRoot.querySelectorAll('.day'));
 
+  protected navigatedDate: Date = new Date(`${this.month}-01-${this.year}`);
+
   public connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('dateselected', this.dateSelectedHandler);
@@ -184,11 +186,11 @@ export class Calendar extends FASTCalendar {
 
   public attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     if (name === 'month') {
+      if (this.navigatedDate.getMonth() + 1 != this.month || this.navigatedDate.getFullYear() != this.year) {
+        this.navigatedDate = new Date(`${this.month}-01-${this.year}`);
+      }
       setTimeout(() => {
-        if (this.shadowRoot) {
-          this.days = Array.from(this.shadowRoot.querySelectorAll('.day'));
-        }
-        this.days && console.log(this.days);
+        this.setFocus();
       }, 0);
     }
   }
@@ -390,54 +392,52 @@ export class Calendar extends FASTCalendar {
     super.handleKeydown(event, date);
 
     const currentCell = event.target as HTMLElement;
+    currentCell.tabIndex = -1;
 
-    if (!this.days) {
-      return false;
-    }
-
-    // Set the starting focus on the first day
-    let focus = this.days[0] as HTMLElement;
-    focus.tabIndex = 0;
-    focus.focus();
-
-    let index = this.days.indexOf(currentCell);
+    this.navigatedDate = new Date(`${date.month}-${date.day}-${date.year}`);
 
     switch (event.key) {
       case keyArrowRight:
-        if (index === this.days.length - 1) {
-          this.handleSwitchMonth(this.getMonthInfo().next.month, this.getMonthInfo().next.year);
+        this.navigatedDate.setDate(date.day + 1);
+        if (currentCell.getAttribute('grid-column') == '7' && this.navigatedDate.getMonth() + 1 != this.month) {
+          this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
+          return true;
         }
-        index = (index + 1) % this.days.length;
         break;
       case keyArrowLeft:
-        if (index === 0) {
-          this.handleSwitchMonth(this.getMonthInfo().previous.month, this.getMonthInfo().previous.year);
+        this.navigatedDate.setDate(date.day - 1);
+        if (currentCell.getAttribute('grid-column') == '1' && this.navigatedDate.getMonth() + 1 != this.month) {
+          this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
+          return true;
         }
-        index = (index - 1 + this.days.length) % this.days.length;
         break;
       case keyArrowDown:
-        console.log(index);
-        console.log(this.days.length);
-        if (index >= this.days.length - 7) {
-          this.handleSwitchMonth(this.getMonthInfo().next.month, this.getMonthInfo().next.year);
+        this.navigatedDate.setDate(date.day + 7);
+        if (this.navigatedDate.getMonth() + 1 != this.month) {
+          this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
+          return true;
         }
-        index = (index + 7) % this.days.length;
         break;
       case keyArrowUp:
-        if (index < 7) {
-          this.handleSwitchMonth(this.getMonthInfo().previous.month, this.getMonthInfo().previous.year);
-        }
-        index = (index - 7 + this.days.length) % this.days.length;
+        this.navigatedDate.setDate(date.day - 7);
+        break;
       default:
         break;
     }
 
-    // Move the focus to the new day
-    this.days.forEach(day => day.setAttribute('tab-index', '-1')); // Remove all other tab indices
-    focus = this.days[index] as HTMLElement;
-    focus.tabIndex = 0;
-    focus.focus();
+    this.setFocus();
 
     return true;
+  }
+
+  private setFocus() {
+    const navigatedDateString = `${
+      this.navigatedDate.getMonth() + 1
+    }-${this.navigatedDate.getDate()}-${this.navigatedDate.getFullYear()}`;
+    const focus = this.shadowRoot?.querySelector(`slot[name=${CSS.escape(navigatedDateString)}]`)
+      ?.parentElement as HTMLElement;
+
+    focus.tabIndex = 0;
+    focus.focus();
   }
 }
