@@ -42,11 +42,6 @@ export const chartPoints: IChartProps = {
   chartData: points,
 };
 
-const emptyChartPoints: IChartProps = {
-  chartTitle: chartTitle,
-  chartData: [],
-};
-
 describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
     const component = renderer.create(<DonutChart data={chartPoints} innerRadius={55} />);
@@ -176,19 +171,5 @@ describe('DonutChart - mouse events', () => {
     wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
-  });
-
-  describe('Render empty chart aria label div when chart is empty', () => {
-    it('No empty chart aria label div rendered', () => {
-      wrapper = mount(<DonutChart data={chartPoints} />);
-      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
-      expect(renderedDOM!.length).toBe(0);
-    });
-
-    it('Empty chart aria label div rendered', () => {
-      wrapper = mount(<DonutChart data={emptyChartPoints} />);
-      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
-      expect(renderedDOM!.length).toBe(1);
-    });
   });
 });
