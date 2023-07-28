@@ -9,7 +9,7 @@ const noop = () => undefined;
 /**
  * @internal
  */
-export function useToastFocusManagement_unstable(pauseAllToasts: () => void, playAllToasts: () => void) {
+export function useToasterFocusManagement_unstable(pauseAllToasts: () => void, playAllToasts: () => void) {
   const { targetDocument } = useFluent();
   const cleanupListenersRef = React.useRef<() => void>(noop);
 

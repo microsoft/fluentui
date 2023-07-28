@@ -12,7 +12,7 @@ import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
 import { ToastContainer } from '../ToastContainer';
-import { useToastFocusManagement_unstable } from './useToastFocusManagement';
+import { useToasterFocusManagement_unstable } from './useToasterFocusManagement';
 import { Escape } from '@fluentui/keyboard-keys';
 
 /**
@@ -44,7 +44,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   });
 
   const usePositionSlot = (toastPosition: ToastPosition) => {
-    const focusManagementRef = useToastFocusManagement_unstable(pauseAllToasts, playAllToasts);
+    const focusManagementRef = useToasterFocusManagement_unstable(pauseAllToasts, playAllToasts);
     return resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
         ref: focusManagementRef,
