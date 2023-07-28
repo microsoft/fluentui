@@ -11,7 +11,6 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useMergedRefs } from '@fluentui/react-utilities';
-import { Portal } from '@fluentui/react-portal';
 
 /**
  * Create the state required to render Dropdown.
@@ -131,10 +130,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         })
       : undefined;
 
-  const portalSlot: Slot<typeof Portal> | undefined = resolveShorthand(props.portal, {
-    required: true,
-  });
-
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
 
@@ -144,7 +139,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       button: 'button',
       expandIcon: 'span',
       listbox: Listbox,
-      portal: Portal,
     },
     root: resolveShorthand(props.root, {
       required: true,
@@ -156,7 +150,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     }),
     button: triggerSlot,
     listbox: listboxSlot,
-    portal: portalSlot,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {

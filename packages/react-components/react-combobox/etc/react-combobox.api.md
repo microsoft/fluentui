@@ -10,7 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Portal } from '@fluentui/react-portal';
+import { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -51,7 +51,6 @@ export type ComboboxSlots = {
     expandIcon: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;
-    portal: NonNullable<Slot<typeof Portal>>;
 };
 
 // @public
@@ -81,7 +80,6 @@ export type DropdownSlots = {
     expandIcon: Slot<'span'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
-    portal: NonNullable<Slot<typeof Portal>>;
 };
 
 // @public

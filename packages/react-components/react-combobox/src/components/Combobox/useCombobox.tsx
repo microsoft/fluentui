@@ -19,7 +19,6 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SelectionEvents } from '../../utils/Selection.types';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
-import { Portal } from '@fluentui/react-portal';
 
 /**
  * Create the state required to render Combobox.
@@ -185,10 +184,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
         })
       : undefined;
 
-  const portalSlot: Slot<typeof Portal> | undefined = resolveShorthand(props.portal, {
-    required: true,
-  });
-
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
 
@@ -202,7 +197,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       input: 'input',
       expandIcon: 'span',
       listbox: Listbox,
-      portal: Portal,
     },
     root: resolveShorthand(props.root, {
       required: true,
@@ -213,7 +207,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }),
     input: triggerSlot,
     listbox: listboxSlot,
-    portal: portalSlot,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {

@@ -23,7 +23,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
           (state.inlinePopup ? (
             <slots.listbox {...slotProps.listbox} />
           ) : (
-            <Portal {...slotProps.portal}>
+            <Portal mountNode={state.mountNode}>
               <slots.listbox {...slotProps.listbox} />
             </Portal>
           ))}

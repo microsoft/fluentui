@@ -9,7 +9,6 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
   button: 'fui-Dropdown__button',
   expandIcon: 'fui-Dropdown__expandIcon',
   listbox: 'fui-Dropdown__listbox',
-  portal: 'fui-Dropdown__portal',
 };
 
 /**
