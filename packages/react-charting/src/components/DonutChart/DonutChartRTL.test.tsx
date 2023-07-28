@@ -212,16 +212,13 @@ describe('Donut chart rendering empty/non-empty scenario', () => {
   test('Should re-render the Donut chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<DonutChart data={emptyChartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
-    expect(getById(container, /_DonutChart_empty/i)).toHaveLength(1);
     // Act
     rerender(<DonutChart data={chartPoints} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
-      expect(getById(container, /_DonutChart_empty/i)).toHaveLength(0);
     });
   });
 });

@@ -41,7 +41,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _currentHoverElement: any;
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
-  private _emptyChartId: string;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -80,7 +79,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._hoverLeave = this._hoverLeave.bind(this);
     this._calloutId = getId('callout');
     this._uniqText = getId('_Pie_');
-    this._emptyChartId = getId('_DonutChart_empty');
   }
   public componentDidMount(): void {
     if (this._rootElem) {
@@ -110,7 +108,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
-    return !this._isChartEmpty() ? (
+    return (
       <div
         className={this._classNames.root}
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
@@ -174,13 +172,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         </Callout>
         {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
       </div>
-    ) : (
-      <div
-        id={this._emptyChartId}
-        role={'alert'}
-        style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
-      />
     );
   }
 
@@ -322,13 +313,5 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
    */
   private _getHighlightedLegend() {
     return this.state.selectedLegend || this.state.activeLegend;
-  }
-
-  private _isChartEmpty(): boolean {
-    return !(
-      this.props.data &&
-      this.props.data.chartData &&
-      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
-    );
   }
 }
