@@ -3,9 +3,7 @@ import {
   ExtractSlotProps,
   Slot,
   getNativeElementProps,
-  isHTMLElement,
   resolveShorthand,
-  useMergedRefs,
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -14,7 +12,7 @@ import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
 import { ToastContainer } from '../ToastContainer';
-import { useFocusManagement_unstable } from './useFocusManagement';
+import { useToastFocusManagement_unstable } from './useToastFocusManagement';
 import { Escape } from '@fluentui/keyboard-keys';
 
 /**
@@ -31,38 +29,10 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const { dir } = useFluent();
 
   const rootProps = getNativeElementProps('div', rest);
-  const focusManagementRef = useFocusManagement_unstable();
   const focusableGroupAttr = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
     ignoreDefaultKeydown: { Escape: true },
   });
-
-  // Adds native HTML focusin/focusout listeners
-  // https://github.com/facebook/react/issues/25194
-  const focusListenerRef = React.useCallback(
-    (el: HTMLDivElement | null) => {
-      if (el) {
-        el.addEventListener('focusin', e => {
-          if (
-            isHTMLElement(e.currentTarget) &&
-            !e.currentTarget.contains(isHTMLElement(e.relatedTarget) ? e.relatedTarget : null)
-          ) {
-            pauseAllToasts();
-          }
-        });
-
-        el.addEventListener('focusout', e => {
-          if (
-            isHTMLElement(e.currentTarget) &&
-            !e.currentTarget.contains(isHTMLElement(e.relatedTarget) ? e.relatedTarget : null)
-          ) {
-            playAllToasts();
-          }
-        });
-      }
-    },
-    [playAllToasts, pauseAllToasts],
-  );
 
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === Escape) {
@@ -73,12 +43,11 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     props.onKeyDown?.(e);
   });
 
-  const createPositionSlot = (toastPosition: ToastPosition) =>
-    resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
+  const usePositionSlot = (toastPosition: ToastPosition) => {
+    const focusManagementRef = useToastFocusManagement_unstable(pauseAllToasts, playAllToasts);
+    return resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
-        // false positive - this function is called a deterministic amount of times
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        ref: useMergedRefs(focusListenerRef, focusManagementRef),
+        ref: focusManagementRef,
         children: toastsToRender.get(toastPosition)?.map(toast => (
           <ToastContainer
             {...toast}
@@ -97,6 +66,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
     });
+  };
 
   return {
     dir,
@@ -108,10 +78,10 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
       topEnd: 'div',
     },
     root: resolveShorthand(rootProps, { required: true }),
-    bottomStart: createPositionSlot(TOAST_POSITIONS.bottomStart),
-    bottomEnd: createPositionSlot(TOAST_POSITIONS.bottomEnd),
-    topStart: createPositionSlot(TOAST_POSITIONS.topStart),
-    topEnd: createPositionSlot(TOAST_POSITIONS.topEnd),
+    bottomStart: usePositionSlot(TOAST_POSITIONS.bottomStart),
+    bottomEnd: usePositionSlot(TOAST_POSITIONS.bottomEnd),
+    topStart: usePositionSlot(TOAST_POSITIONS.topStart),
+    topEnd: usePositionSlot(TOAST_POSITIONS.topEnd),
     announceRef,
     offset,
     announce: announceProp ?? announce,
