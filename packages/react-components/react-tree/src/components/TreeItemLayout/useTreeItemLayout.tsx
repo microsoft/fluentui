@@ -35,8 +35,7 @@ export const useTreeItemLayout_unstable = (
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
   const actionsRef = useTreeItemContext_unstable(ctx => ctx.actionsRef);
-  const value = useTreeItemContext_unstable(ctx => ctx.value);
-  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
+  const checked = useTreeItemContext_unstable(ctx => ctx.checked ?? false);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
   const expandIcon = resolveShorthand(props.expandIcon, {

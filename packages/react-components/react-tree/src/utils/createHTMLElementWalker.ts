@@ -1,5 +1,4 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 export interface HTMLElementWalker {
   readonly root: HTMLElement;
@@ -83,16 +82,3 @@ export function createHTMLElementWalker(
     },
   };
 }
-
-export const useHTMLElementWalkerRef = (filter?: HTMLElementFilter) => {
-  const walkerRef = React.useRef<HTMLElementWalker>();
-
-  const rootRefCallback = (element?: HTMLElement) => {
-    if (!element) {
-      walkerRef.current = undefined;
-      return;
-    }
-    walkerRef.current = createHTMLElementWalker(element, filter);
-  };
-  return [walkerRef as React.RefObject<HTMLElementWalker>, rootRefCallback as React.Ref<HTMLElement>] as const;
-};

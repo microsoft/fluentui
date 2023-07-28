@@ -16,11 +16,23 @@ import { useControllableCheckedItems } from './useControllableCheckedItems';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useRootTree } from '../../hooks/useRootTree';
 import { useSubtree } from '../../hooks/useSubtree';
+import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
+import { treeItemFilter } from '../../utils/treeItemFilter';
 
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
   const [openItems, setOpenItems] = useControllableOpenItems(props);
   const [checkedItems] = useControllableCheckedItems(props);
-  const [navigate, navigationRef] = useTreeNavigation();
+  const { navigate, initialize } = useTreeNavigation();
+  const walkerRef = React.useRef<HTMLElementWalker>();
+  const initializeWalker = React.useCallback(
+    (root: HTMLElement | null) => {
+      if (root) {
+        walkerRef.current = createHTMLElementWalker(root, treeItemFilter);
+        initialize(walkerRef.current);
+      }
+    },
+    [initialize],
+  );
 
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     props.onOpenChange?.(event, data);
@@ -33,7 +45,9 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
       props.onNavigation_unstable?.(event, data);
-      navigate(data);
+      if (walkerRef.current) {
+        navigate(data, walkerRef.current);
+      }
     },
   );
 
@@ -47,7 +61,7 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
     onCheckedChange: handleCheckedChange,
   };
 
-  const baseRef = useMergedRefs(ref, navigationRef);
+  const baseRef = useMergedRefs(ref, initializeWalker);
 
   const isSubtree = useTreeContext_unstable(ctx => ctx.level > 0);
   // as isSubTree is static, this doesn't break rule of hooks

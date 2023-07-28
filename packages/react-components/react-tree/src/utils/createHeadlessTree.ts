@@ -104,7 +104,7 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
     get: key => itemsPerValue.get(key),
     has: key => itemsPerValue.has(key),
     add(props) {
-      const { parentValue = virtualTreeRootId, ...propsWithoutParentValue } = props;
+      const { parentValue = headlessTreeRootId, ...propsWithoutParentValue } = props;
       const parentItem = itemsPerValue.get(parentValue);
       if (!parentItem) {
         if (process.env.NODE_ENV === 'development') {
@@ -169,12 +169,12 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
   return headlessTree as HeadlessTree<Props>;
 }
 
-export const virtualTreeRootId = '__fuiHeadlessTreeRoot';
+export const headlessTreeRootId = '__fuiHeadlessTreeRoot';
 
 function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
   return {
     parentValue: undefined,
-    value: virtualTreeRootId,
+    value: headlessTreeRootId,
     itemType: 'branch',
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {
@@ -182,8 +182,8 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
         console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
       }
       return {
-        id: virtualTreeRootId,
-        value: virtualTreeRootId,
+        id: headlessTreeRootId,
+        value: headlessTreeRootId,
         'aria-setsize': -1,
         'aria-level': -1,
         'aria-posinset': -1,
@@ -223,11 +223,8 @@ function* HeadlessTreeSubtreeGenerator<Props extends HeadlessTreeItemProps>(
     return;
   }
   for (const childValue of item.childrenValues) {
-    const child = virtualTreeItems.get(childValue)!;
-    yield child;
-    if (child.childrenValues.length > 0) {
-      yield* HeadlessTreeSubtreeGenerator(childValue, virtualTreeItems);
-    }
+    yield virtualTreeItems.get(childValue)!;
+    yield* HeadlessTreeSubtreeGenerator(childValue, virtualTreeItems);
   }
 }
 
