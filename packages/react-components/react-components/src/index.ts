@@ -40,6 +40,8 @@ export {
   useModalAttributes,
   useObservedElement,
   useFocusObserved,
+  useRestoreFocusTarget,
+  useRestoreFocusSource,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,

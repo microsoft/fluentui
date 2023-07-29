@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 18 Jul 2023 07:35:18 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 07:44:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.11)
+
+Tue, 25 Jul 2023 07:44:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.10..@fluentui/react_v8.110.11)
+
+### Patches
+
+- fix: Datepicker renders input description if onRenderDescription is passed in ([PR #27784](https://github.com/microsoft/fluentui/pull/27784) by sarah.higley@microsoft.com)
+- fix: DetailsColumn tooltip shows on focus, and is associated via aria-describedby ([PR #28604](https://github.com/microsoft/fluentui/pull/28604) by sarah.higley@microsoft.com)
+- fix: do not dismiss editable comboboxes on scroll or resize immediately after opening ([PR #28591](https://github.com/microsoft/fluentui/pull/28591) by sarah.higley@microsoft.com)
 
 ## [8.110.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.10)
 

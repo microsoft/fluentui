@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Table/DataGrid: Improve keyboard column resizing experience",
-  "packageName": "@fluentui/react-table",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

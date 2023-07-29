@@ -8,33 +8,21 @@ import {
   DialogTrigger,
   DialogBody,
   Button,
-  DialogOpenChangeData,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import story from './DialogTriggerOutsideDialog.md';
 
 export const TriggerOutsideDialog = () => {
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
-
   const [open, setOpen] = React.useState(false);
-  const [closeAction, setCloseAction] = React.useState<DialogOpenChangeData['type'] | null>(null);
-
-  React.useEffect(() => {
-    // Prevents focusing on an initial render
-    if (open || closeAction === null) {
-      return;
-    }
-
-    triggerRef.current?.focus();
-  }, [closeAction, open]);
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
   return (
     <>
       <Button
+        {...restoreFocusTargetAttribute}
         onClick={() => {
           setOpen(true);
-          setCloseAction(null);
         }}
-        ref={triggerRef}
       >
         Open Dialog
       </Button>
@@ -43,7 +31,6 @@ export const TriggerOutsideDialog = () => {
         open={open}
         onOpenChange={(event, data) => {
           setOpen(data.open);
-          setCloseAction(data.type);
         }}
       >
         <DialogSurface>

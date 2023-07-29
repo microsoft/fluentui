@@ -64,9 +64,14 @@ function dangerouslyCreateImmutableMap<Key, Value>(internalMap: Map<Key, Value>)
   };
 }
 
+function isImmutableMap<Key, Value>(value: unknown): value is ImmutableMap<Key, Value> {
+  return typeof value === 'object' && value !== null && 'dangerouslyGetInternalMap_unstable' in value;
+}
+
 export const ImmutableMap = {
   empty: emptyImmutableMap,
   create: createImmutableMap,
+  isImmutableMap,
   // eslint-disable-next-line @typescript-eslint/naming-convention
   dangerouslyCreate_unstable: dangerouslyCreateImmutableMap,
 };

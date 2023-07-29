@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixed the keyboard accessibility issue in area chart when legend is clicked",
-  "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

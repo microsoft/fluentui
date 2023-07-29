@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
+import {
+  FlatTree as Tree,
+  TreeItem,
+  TreeItemLayout,
+  HeadlessFlatTreeItemProps,
+  useHeadlessFlatTree_unstable,
+} from '@fluentui/react-tree';
 import story from './useFlatTree.md';
 
-type Item = FlatTreeItemProps & { content: string };
+type Item = HeadlessFlatTreeItemProps & { content: string };
 
 const defaultItems: Item[] = [
   { value: '1', content: 'Level 1, item 1' },
@@ -20,7 +26,7 @@ const defaultItems: Item[] = [
 ];
 
 export const UseFlatTree = () => {
-  const flatTree = useFlatTree_unstable(defaultItems);
+  const flatTree = useHeadlessFlatTree_unstable(defaultItems);
 
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: exec migrations from @nrwl to @nx packages",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

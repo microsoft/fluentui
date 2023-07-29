@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Thu, 20 Jul 2023 18:27:25 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2023 10:34:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.61)
+
+Thu, 27 Jul 2023 10:34:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.60..@fluentui/react-alert_v9.0.0-beta.61)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.5.15 ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by beachball)
+
+## [9.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.60)
+
+Tue, 25 Jul 2023 13:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.59..@fluentui/react-alert_v9.0.0-beta.60)
+
+### Changes
+
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.14 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-button to v9.3.25 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-tabster to v9.11.0 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
 
 ## [9.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.59)
 
