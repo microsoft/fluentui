@@ -5,7 +5,7 @@
     "packages/react-components/*",
     "scripts/*",
     "packages/fluentui/*",
-    "tools",
+    "tools/*",
     "typings"
   ],
   "npmClient": "yarn",

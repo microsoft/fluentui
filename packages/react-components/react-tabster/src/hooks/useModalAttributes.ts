@@ -1,6 +1,6 @@
 import { useId } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { getDeloser, getModalizer, Types as TabsterTypes } from 'tabster';
+import { getModalizer, getRestorer, Types as TabsterTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 export interface UseModalAttributesOptions {
@@ -43,15 +43,15 @@ export const useModalAttributes = (
 ): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
   const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
   const tabster = useTabster();
-  // Initializes the modalizer and deloser APIs
+  // Initializes the modalizer and restorer APIs
   if (tabster) {
     getModalizer(tabster);
-    getDeloser(tabster);
+    getRestorer(tabster);
   }
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
-    deloser: {},
+    restorer: { type: TabsterTypes.RestorerTypes.Source },
     modalizer: {
       id,
       isOthersAccessible: !trapFocus,
@@ -61,7 +61,7 @@ export const useModalAttributes = (
   });
 
   const triggerAttributes = useTabsterAttributes({
-    deloser: {},
+    restorer: { type: TabsterTypes.RestorerTypes.Target },
   });
 
   return { modalAttributes, triggerAttributes };

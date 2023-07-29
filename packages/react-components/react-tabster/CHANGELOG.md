@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 03 Jul 2023 13:34:27 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.11.0)
+
+Tue, 25 Jul 2023 13:29:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.10.0..@fluentui/react-tabster_v9.11.0)
+
+### Minor changes
+
+- feat: Implement useRestoreFocusSource and useRestoreFocusTarget based on the tabster restorer API ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
 
 ## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.10.0)
 

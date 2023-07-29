@@ -88,6 +88,9 @@ export function getPrimaryButtonStyles(theme: ITheme): Partial<IButtonStyles> {
     description: {
       color: semanticColors.primaryButtonText,
     },
+    descriptionHovered: {
+      color: semanticColors.primaryButtonText,
+    },
   };
 
   return styles;
