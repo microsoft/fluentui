@@ -102,7 +102,7 @@ export const Default = () => {
   const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
   return (
     <>
-      <Label>Appearance (see the difference on `hover`)</Label>
+      <Label>Appearance</Label>
       <RadioGroup
         aria-labelledby="breadcrumb-appearance"
         value={appearance}
