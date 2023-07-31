@@ -67,18 +67,15 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
 };
 
 /**
- * Events for useMotionPresence hook.
+ * Options for useMotionPresence hook.
  */
-export type UseMotionPresenceEvents = {
+export type UseMotionPresenceOptions = {
   /**
-   * Callback for after the element enters the DOM.
+   * Whether to animate the element on first mount.
+   *
+   * @default false
    */
-  onEntered?: () => void;
-
-  /**
-   * Callback for after the element exits the DOM.
-   */
-  onExited?: () => void;
+  animateOnFirstMount?: boolean;
 };
 
 /**
@@ -228,7 +225,10 @@ const getMotionDuration = (node: HTMLElementWithStyledMap) => {
  * @param present - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export const useMotionPresence = <TElement extends HTMLElement>(present: boolean): UseMotionPresenceState<TElement> => {
+export const useMotionPresence = <TElement extends HTMLElement>(
+  present: boolean,
+  { animateOnFirstMount = false }: UseMotionPresenceOptions = {},
+): UseMotionPresenceState<TElement> => {
   const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
     shouldRender: present,
     motionState: present ? 'resting' : 'unmounted',
@@ -282,6 +282,19 @@ export const useMotionPresence = <TElement extends HTMLElement>(present: boolean
       });
     }
   }, [present]);
+
+  React.useEffect(() => {
+    if (!animateOnFirstMount && present) {
+      setState(prevState => ({
+        ...prevState,
+        visible: true,
+      }));
+    }
+    /*
+     * We only want to run this effect on first mount to make sure the element doesn't animate.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect(() => {
     if (!currentElement) {
