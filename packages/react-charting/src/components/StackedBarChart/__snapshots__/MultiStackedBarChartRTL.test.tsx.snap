@@ -1,5 +1,445 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Multi-stacked bar chart re-rendering Should re-render the Multi-stacked bar chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_MSBC_empty3"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Multi-stacked bar chart re-rendering Should re-render the Multi-stacked bar chart with data 2`] = `
+<div>
+  <div
+    class=
+        ms-StackedBarChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 100%;
+        }
+    style=""
+  >
+    <div>
+      <div
+        class=
+
+            {
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 10px;
+              width: 100%;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone4"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                Monitored
+              </span>
+              <div
+                hidden=""
+                id="tooltip5"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                Monitored
+              </div>
+            </div>
+            <div
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              <span
+                class=
+
+                    {
+                      color: #323130;
+                      font-size: 14px;
+                      font-weight: 600;
+                    }
+              >
+                40
+              </span>
+              <span
+                class=
+
+                    {
+                      color: #323130;
+                      font-size: 14px;
+                    }
+              >
+                 / 63
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone6"
+        >
+          <div
+            class=
+
+                {
+                  padding-right: 0px;
+                }
+          >
+            <svg
+              aria-label="Monitored"
+              class=
+
+                  {
+                    display: block;
+                    height: 12px;
+                    overflow: visible;
+                    width: 100%;
+                  }
+              focusable="false"
+            >
+              <g
+                aria-label="2020/04/30, 40%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #000000;
+                    }
+                data-is-focusable="true"
+                role="img"
+                tabindex="0"
+              >
+                <rect
+                  fill="#e81123"
+                  height="12"
+                  width="63.49206349206349%"
+                  x="0%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="2020/04/30, 23%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #000000;
+                    }
+                data-is-focusable="true"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#107c10"
+                  height="12"
+                  width="36.507936507936506%"
+                  x="63.49206349206349%"
+                  y="0"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 10px;
+              width: 100%;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone7"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                Unmonitored
+              </span>
+              <div
+                hidden=""
+                id="tooltip8"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                Unmonitored
+              </div>
+            </div>
+            <div
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              <span
+                class=
+
+                    {
+                      color: #323130;
+                      font-size: 14px;
+                      font-weight: 600;
+                    }
+              >
+                40
+              </span>
+              <span
+                class=
+
+                    {
+                      color: #323130;
+                      font-size: 14px;
+                    }
+              >
+                 / 63
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone9"
+        >
+          <div
+            class=
+
+                {
+                  padding-right: 0px;
+                }
+          >
+            <svg
+              aria-label="Unmonitored"
+              class=
+
+                  {
+                    display: block;
+                    height: 12px;
+                    overflow: visible;
+                    width: 100%;
+                  }
+              focusable="false"
+            >
+              <g
+                aria-label="2020/04/30, 87%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #000000;
+                    }
+                data-is-focusable="true"
+                role="img"
+                tabindex="0"
+              >
+                <rect
+                  fill="#0078d4"
+                  height="12"
+                  width="63.49206349206349%"
+                  x="0%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="2020/04/30, 87%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #000000;
+                    }
+                data-is-focusable="true"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#107c10"
+                  height="12"
+                  width="36.507936507936506%"
+                  x="63.49206349206349%"
+                  y="0"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+
+          {
+            margin-bottom: 0px;
+            margin-left: 4px;
+            margin-right: 0px;
+            margin-top: 5px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone10"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
 exports[`MultiStackedBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div
   className=
