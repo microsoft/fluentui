@@ -1,7 +1,35 @@
 import * as React from 'react';
 import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
-import { HeatMapChart } from './index';
-import { HeatMapData } from './HeatMapChart.test';
+import { HeatMapChart, IHeatMapChartProps } from './index';
+
+const yPoint: string[] = ['p1', 'p2'];
+
+const xPoint: string[] = [new Date('2020-03-03').toISOString(), new Date('2020-03-04').toISOString()];
+export const HeatMapData: IHeatMapChartProps['data'] = [
+  {
+    value: 100,
+    legend: 'Execllent (0-200)',
+    data: [
+      {
+        x: xPoint[0],
+        y: yPoint[0],
+        value: 50,
+        rectText: 50,
+        ratio: [50, 2391],
+        descriptionMessage: 'a good day to start with in Texas with best air quality',
+      },
+      {
+        x: xPoint[1],
+        y: yPoint[1],
+        value: 25,
+        rectText: 25,
+        ratio: [25, 2479],
+        descriptionMessage: `Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days`,
+      },
+    ],
+  },
+];
 
 describe('HeatMap chart rendering', () => {
   test('Should re-render the HeatMap chart with data', async () => {
