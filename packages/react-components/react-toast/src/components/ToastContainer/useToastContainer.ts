@@ -205,7 +205,7 @@ export const useToastContainer_unstable = (
       ref: useMergedRefs(ref, toastRef, toastAnimationRef),
       children,
       tabIndex: 0,
-      role: 'group',
+      role: 'listitem',
       'aria-labelledby': titleId,
       'aria-describedby': bodyId,
       ...rest,

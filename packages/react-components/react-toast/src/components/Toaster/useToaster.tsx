@@ -63,6 +63,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         onKeyDown,
         ...focusableGroupAttr,
         'data-toaster-position': toastPosition,
+        role: 'list',
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
     });
