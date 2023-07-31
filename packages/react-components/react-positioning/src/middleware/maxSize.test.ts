@@ -11,7 +11,6 @@ const mockGetElementRects = jest.fn(() =>
 );
 const platform = {
   getElementRects: mockGetElementRects,
-  getDimensions: () => Promise.resolve({ width: 10, height: 10 }),
 } as unknown as Platform;
 
 describe('maxSize', () => {
