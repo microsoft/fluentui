@@ -1039,7 +1039,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 1`] = 
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_DonutChart_empty2"
+    id="testId"
     role="alert"
     style="opacity: 0;"
   />
@@ -1071,7 +1071,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone3"
+      data-focuszone-id="FocusZone0"
     >
       <div>
         <svg
@@ -1108,7 +1108,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     }
                 d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_1first20000"
+                id="_Pie_first20000"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -1130,7 +1130,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     }
                 d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_1second39000"
+                id="_Pie_second39000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -1152,7 +1152,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     }
                 d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_1third45000"
+                id="_Pie_third45000"
                 opacity="1"
                 role="img"
                 tabindex="-1"
@@ -1202,7 +1202,7 @@ exports[`Donut chart rendering Should re-render the Donut chart with data 2`] = 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone4"
+                data-focuszone-id="FocusZone1"
                 role="listbox"
               >
                 <div

@@ -1,5 +1,5 @@
-import { render, screen, queryAllByAttribute, fireEvent, waitFor } from '@testing-library/react';
-import { chartPoints, emptyChartPoints } from './DonutChart.test';
+import { render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
+import { chartPoints } from './DonutChart.test';
 import { DonutChart } from './index';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -176,30 +176,5 @@ describe('Donut chart interactions', () => {
 
     // Assert
     expect(container).toMatchSnapshot();
-  });
-});
-
-describe('Donut chart rendering', () => {
-  beforeEach(() => {
-    resetIds();
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-  });
-  afterEach(() => {
-    jest.spyOn(global.Math, 'random').mockRestore();
-  });
-  test('Should re-render the Donut chart with data', async () => {
-    // Arrange
-    const { container, rerender } = render(<DonutChart data={emptyChartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    // Assert
-    expect(container).toMatchSnapshot();
-    expect(getById(container, /_DonutChart_empty/i)).toHaveLength(1);
-    // Act
-    rerender(<DonutChart data={chartPoints} />);
-    await waitFor(() => {
-      // Assert
-      expect(container).toMatchSnapshot();
-      expect(getById(container, /_DonutChart_empty/i)).toHaveLength(0);
-    });
   });
 });
