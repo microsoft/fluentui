@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createOverflowManager, OverflowManager } from '@fluentui/priority-overflow';
+import { createOverflowManager, OverflowManager } from './';
 import { useOverflowContainer } from './useOverflowContainer';
 import { renderHook } from '@testing-library/react-hooks';
 

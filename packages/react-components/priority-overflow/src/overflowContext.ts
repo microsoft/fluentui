@@ -1,4 +1,4 @@
-import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from '@fluentui/priority-overflow';
+import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from './';
 import { ContextSelector, createContext, useContextSelector, Context } from '@fluentui/react-context-selector';
 
 /**

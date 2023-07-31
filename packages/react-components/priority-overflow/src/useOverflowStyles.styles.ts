@@ -1,5 +1,5 @@
 import { makeStyles } from '@griffel/react';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU } from '../constants';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU } from './consts';
 
 export const useOverflowStyles = makeStyles({
   overflowMenu: {

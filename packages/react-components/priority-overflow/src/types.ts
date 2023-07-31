@@ -1,6 +1,19 @@
+import * as React from 'react';
+import { OverflowContextValue } from './overflowContext';
 export type OverflowDirection = 'start' | 'end';
 export type OverflowAxis = 'horizontal' | 'vertical';
 export type OverflowGroupState = 'visible' | 'hidden' | 'overflow';
+/**
+ * @internal
+ */
+export interface UseOverflowContainerReturn<TElement extends HTMLElement>
+  extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
+  /**
+   * Ref to apply to the container that will overflow
+   */
+  containerRef: React.RefObject<TElement>;
+}
+
 export interface OverflowItemEntry {
   /**
    * HTML element that will be disappear when overflowed

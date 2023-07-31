@@ -1,4 +1,4 @@
-import { useOverflowContext } from './overflowContext';
+import { useOverflowContext } from '@fluentui/priority-overflow';
 
 /**
  * @returns Number of items that are overflowing

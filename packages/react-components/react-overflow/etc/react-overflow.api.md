@@ -4,25 +4,9 @@
 
 ```ts
 
-import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
-import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
-import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { OverflowGroupState } from '@fluentui/priority-overflow';
-import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
-
-// @public (undocumented)
-export const DATA_OVERFLOW_DIVIDER = "data-overflow-divider";
-
-// @public (undocumented)
-export const DATA_OVERFLOW_ITEM = "data-overflow-item";
-
-// @public (undocumented)
-export const DATA_OVERFLOW_MENU = "data-overflow-menu";
-
-// @public (undocumented)
-export const DATA_OVERFLOWING = "data-overflowing";
 
 // @public
 export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
@@ -53,17 +37,6 @@ export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 
 // @public (undocumented)
 export function useIsOverflowItemVisible(id: string): boolean;
-
-// @internal (undocumented)
-export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
-
-// @internal (undocumented)
-export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
-    containerRef: React_2.RefObject<TElement>;
-}
-
-// @internal (undocumented)
-export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
 
 // @public (undocumented)
 export const useOverflowCount: () => number;

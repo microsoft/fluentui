@@ -1,4 +1,4 @@
-import { useOverflowContext } from './overflowContext';
+import { useOverflowContext } from '@fluentui/priority-overflow';
 
 /**
  * @param id - unique identifier for the item used by the overflow manager

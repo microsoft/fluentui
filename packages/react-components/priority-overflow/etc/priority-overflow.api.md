@@ -4,6 +4,9 @@
 
 ```ts
 
+import { ContextSelector } from '@fluentui/react-context-selector';
+import * as React_2 from 'react';
+
 // @internal (undocumented)
 export function createOverflowManager(): OverflowManager;
 
@@ -79,6 +82,20 @@ export interface OverflowManager {
     removeOverflowMenu: () => void;
     update: () => void;
 }
+
+// @public (undocumented)
+export const updateVisibilityAttribute: OnUpdateItemVisibility;
+
+// @internal (undocumented)
+export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
+
+// @internal (undocumented)
+export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
+    containerRef: React_2.RefObject<TElement>;
+}
+
+// @internal (undocumented)
+export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
 
 // (No @packageDocumentation comment for this package)
 

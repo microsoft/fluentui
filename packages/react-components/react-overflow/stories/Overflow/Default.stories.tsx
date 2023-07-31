@@ -60,7 +60,7 @@ export const Default = () => {
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         {itemIds.map(i => (
           <OverflowItem key={i} id={i}>
-            <Button>Item {i}</Button>
+            <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item ddk djgh jfdkfgdb jdrkdf {i}</Button>
           </OverflowItem>
         ))}
         <OverflowMenu itemIds={itemIds} />

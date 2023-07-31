@@ -148,6 +148,16 @@ export function createOverflowManager(): OverflowManager {
     return offsetSize;
   };
 
+  const getClientSize = (el: HTMLElement) => {
+    if (sizeCache.has(el)) {
+      return sizeCache.get(el)!;
+    }
+
+    const clientSize = options.overflowAxis === 'horizontal' ? el.clientWidth : el.clientHeight;
+    sizeCache.set(el, clientSize);
+    return clientSize;
+  };
+
   function computeSizeChange(entry: OverflowItemEntry) {
     const dividerWidth =
       entry.groupId && groupManager.isSingleItemVisible(entry.id, entry.groupId) && overflowDividers[entry.groupId]
@@ -212,7 +222,7 @@ export function createOverflowManager(): OverflowManager {
       return invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
     }
 
-    const availableSize = getOffsetSize(container) - totalDividersWidth - options.padding;
+    const availableSize = getClientSize(container) - totalDividersWidth - options.padding;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();

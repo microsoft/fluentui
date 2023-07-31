@@ -29,6 +29,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-context-selector": "^9.1.26",
+    "@fluentui/react-utilities": "^9.10.1",
     "@swc/helpers": "^0.4.14"
   },
   "beachball": {

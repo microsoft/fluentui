@@ -59,22 +59,22 @@ export const Dividers = () => {
     <Overflow padding={40}>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         <OverflowItem id={'1'} groupId={'1'}>
-          <Button>Item 1</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item ssffdgdfb dgdgdgfdgfdg 1</Button>
         </OverflowItem>
         <OverflowGroupDivider groupId={'1'} />
         <OverflowItem id={'2'} groupId={'2'}>
-          <Button>Item 2</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item vdfg dgdfg gdf 2</Button>
         </OverflowItem>
         <OverflowGroupDivider groupId={'2'} />
         <OverflowItem id={'3'} groupId={'3'}>
-          <Button>Item 3</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item cbcfbb hfh f 3</Button>
         </OverflowItem>
         <OverflowItem id={'4'} groupId={'3'}>
-          <Button>Item 4</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item 4 fhhfgh hhgh fghfgj</Button>
         </OverflowItem>
         <OverflowGroupDivider groupId={'3'} />
         <OverflowItem id={'5'} groupId={'4'}>
-          <Button>Item 5</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item 5 nfgh fh fghfgh fgh</Button>
         </OverflowItem>
         <OverflowItem id={'6'} groupId={'4'}>
           <Button>Item 6</Button>

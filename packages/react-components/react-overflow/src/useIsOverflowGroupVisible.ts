@@ -1,5 +1,4 @@
-import { OverflowGroupState } from '@fluentui/priority-overflow';
-import { useOverflowContext } from './overflowContext';
+import { OverflowGroupState, useOverflowContext } from '@fluentui/priority-overflow';
 
 /**
  * @param id - unique identifier for a group of overflow items

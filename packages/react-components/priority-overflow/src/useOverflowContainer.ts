@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createOverflowManager } from '@fluentui/priority-overflow';
+import { createOverflowManager } from './overflowManager';
 
 /**
  * @internal
@@ -11,10 +11,10 @@ import type {
   OverflowDividerEntry,
   OverflowManager,
   ObserveOptions,
-} from '@fluentui/priority-overflow';
+} from './';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './consts';
 
 /**
  * @internal

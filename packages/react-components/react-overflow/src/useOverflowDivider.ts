@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useOverflowContext } from './overflowContext';
+import { useOverflowContext } from '@fluentui/priority-overflow';
 
 /**
  * @internal

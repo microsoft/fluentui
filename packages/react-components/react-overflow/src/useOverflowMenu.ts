@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useOverflowContext } from './overflowContext';
+import { useOverflowContext } from '@fluentui/priority-overflow';
 import { useOverflowCount } from './useOverflowCount';
 
 export function useOverflowMenu<TElement extends HTMLElement>(id?: string) {

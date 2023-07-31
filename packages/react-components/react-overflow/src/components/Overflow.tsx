@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';
+import {
+  useOverflowContainer,
+  updateVisibilityAttribute,
+  useOverflowStyles,
+  OverflowContext,
+} from '@fluentui/priority-overflow';
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
-
-import { OverflowContext } from '../overflowContext';
-import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
-import { useOverflowStyles } from './useOverflowStyles.styles';
 
 interface OverflowState {
   hasOverflow: boolean;

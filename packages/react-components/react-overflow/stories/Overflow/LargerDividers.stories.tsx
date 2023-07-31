@@ -60,18 +60,18 @@ export const LargerDividers = () => {
     <Overflow padding={20}>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         <OverflowItem id={'1'} groupId={'1'}>
-          <Button>Item 1</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item xcbfg fdgh fhfh 1</Button>
         </OverflowItem>
         <OverflowGroupDivider groupId={'1'} />
         <OverflowItem id={'2'} groupId={'2'}>
-          <Button>Item 2</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item dhgfhfgh fhfh 2</Button>
         </OverflowItem>
         <OverflowGroupDivider groupId={'2'} />
         <OverflowItem id={'3'} groupId={'3'}>
-          <Button>Item 3</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item 3 fhfg hfg hghfg</Button>
         </OverflowItem>
         <OverflowItem id={'4'} groupId={'3'}>
-          <Button>Item 4</Button>
+          <Button style={{ textWrap: 'nowrap', minWidth: 'max-content' }}>Item 4 hffgh fhfgh hfg</Button>
         </OverflowItem>
         <OverflowGroupDivider groupId={'3'} />
         <OverflowItem id={'5'} groupId={'4'}>
