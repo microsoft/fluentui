@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TreeItemType, TreeItemValue } from '../TreeItem';
 import { headlessTreeRootId } from '../utils/createHeadlessTree';
-import { TreeSelectionValue } from '../Tree';
+import type { TreeSelectionValue } from '../Tree';
+import type { MenuOpenChangeData } from '@fluentui/react-menu';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 export type TreeItemContextValue = {
   isActionsVisible: boolean;
@@ -16,6 +18,10 @@ export type TreeItemContextValue = {
   value: TreeItemValue;
   open: boolean;
   checked?: TreeSelectionValue;
+  isContextMenuOpen: boolean;
+  requestContextMenuOpenChange: (data: MenuOpenChangeData) => void;
+  positioningRef: React.Ref<PositioningImperativeRef>;
+  menuPopoverRef: React.Ref<HTMLElement>;
 };
 
 const defaultContextValue: TreeItemContextValue = {
@@ -25,11 +31,17 @@ const defaultContextValue: TreeItemContextValue = {
   subtreeRef: React.createRef(),
   actionsRef: React.createRef(),
   expandIconRef: React.createRef(),
+  positioningRef: React.createRef(),
+  menuPopoverRef: React.createRef(),
   isActionsVisible: false,
   isAsideVisible: false,
   itemType: 'leaf',
   open: false,
   checked: undefined,
+  isContextMenuOpen: false,
+  requestContextMenuOpenChange: () => {
+    /* noop */
+  },
 };
 
 export const TreeItemContext: Context<TreeItemContextValue | undefined> = createContext<

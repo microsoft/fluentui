@@ -47,6 +47,8 @@
     "@fluentui/react-radio": "^9.1.27",
     "@fluentui/react-shared-contexts": "^9.7.0",
     "@fluentui/react-tabster": "^9.11.1",
+    "@fluentui/react-positioning": "^9.9.0",
+    "@fluentui/react-menu": "^9.12.0",
     "@fluentui/react-theme": "^9.1.9",
     "@fluentui/react-utilities": "^9.10.1",
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.12",

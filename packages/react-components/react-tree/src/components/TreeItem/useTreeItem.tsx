@@ -7,6 +7,9 @@ import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../cont
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
+import type { MenuOpenChangeData } from '@fluentui/react-menu';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TreeItem.
@@ -66,6 +69,10 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     }
     const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
     if (isEventFromSelection) {
+      return;
+    }
+    const isFromContextMenu = menuPopoverRef.current && elementContains(menuPopoverRef.current, event.target as Node);
+    if (isFromContextMenu) {
       return;
     }
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
@@ -149,10 +156,42 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     });
   });
 
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const menuPopoverRef = React.useRef<HTMLElement>(null);
+  const treeItemRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (layoutRef.current) {
+      positioningRef.current?.setTarget(layoutRef.current);
+    }
+  }, [layoutRef, positioningRef]);
+
+  const [isContextMenuOpen, setContextMenuOpen] = React.useState(false);
+  const requestContextMenuOpenChange = React.useCallback(
+    (data: MenuOpenChangeData) => setContextMenuOpen(data.open),
+    [],
+  );
+  const handleContextMenu = React.useCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    // if there is no positioningRef, then there's no context menu to open
+    if (positioningRef.current === null) {
+      return;
+    }
+    if (layoutRef.current?.contains(event.target as Node) || event.target === treeItemRef.current) {
+      event.preventDefault();
+      setContextMenuOpen(true);
+    }
+  }, []);
+
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
   const isBranch = itemType === 'branch';
   return {
     value,
     open,
+    positioningRef,
+    menuPopoverRef,
+    isContextMenuOpen,
+    requestContextMenuOpenChange,
     checked,
     subtreeRef,
     layoutRef,
@@ -168,8 +207,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     isActionsVisible,
     root: getNativeElementProps(as, {
       tabIndex: -1,
+      ...restoreFocusTargetAttribute,
       ...rest,
-      ref,
+      ref: useMergedRefs(ref, treeItemRef),
       role: 'treeitem',
       'aria-level': level,
       [dataTreeItemValueAttrName]: value,
@@ -184,6 +224,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       onMouseOut: handleActionsInvisible,
       onBlur: handleActionsInvisible,
       onChange: handleChange,
+      onContextMenu: handleContextMenu,
     }),
   };
 }

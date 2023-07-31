@@ -14,6 +14,10 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     isAsideVisible,
     selectionRef,
     checked,
+    isContextMenuOpen,
+    requestContextMenuOpenChange,
+    positioningRef,
+    menuPopoverRef,
   } = state;
 
   /**
@@ -32,6 +36,10 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     isAsideVisible,
     actionsRef,
     expandIconRef,
+    isContextMenuOpen,
+    positioningRef,
+    menuPopoverRef,
+    requestContextMenuOpenChange,
   };
 
   return { treeItem };

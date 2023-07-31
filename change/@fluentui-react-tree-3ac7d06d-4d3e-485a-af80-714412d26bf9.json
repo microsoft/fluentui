@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: creates TreeItemContextMenu component",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

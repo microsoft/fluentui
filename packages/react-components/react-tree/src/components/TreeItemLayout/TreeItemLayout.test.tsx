@@ -13,10 +13,17 @@ const Wrapper: React.FC = ({ children }) => (
       subtreeRef: React.createRef(),
       actionsRef: React.createRef(),
       expandIconRef: React.createRef(),
+      positioningRef: React.createRef(),
+      menuPopoverRef: React.createRef(),
+      isContextMenuOpen: false,
       isActionsVisible: true,
       isAsideVisible: true,
       itemType: 'leaf',
       open: false,
+      checked: undefined,
+      requestContextMenuOpenChange: () => {
+        /* noop */
+      },
     }}
   >
     {children}

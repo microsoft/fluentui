@@ -78,5 +78,18 @@ export type {
   TreeItemPersonaLayoutState,
 } from './TreeItemPersonaLayout';
 
+export {
+  TreeItemContextMenu,
+  useTreeItemContextMenu_unstable,
+  renderTreeItemContextMenu_unstable,
+  useTreeItemContextMenuContextValue_unstable,
+} from './TreeItemContextMenu';
+export type {
+  TreeItemContextMenuState,
+  TreeItemContextMenuProps,
+  TreeItemContextMenuSlots,
+  TreeItemContextMenuContextValues,
+} from './TreeItemContextMenu';
+
 export { flattenTree_unstable } from './utils/flattenTree';
 export type { FlattenTreeItem } from './utils/flattenTree';

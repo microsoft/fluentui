@@ -24,6 +24,11 @@ import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
+import type { MenuContextValues } from '@fluentui/react-menu';
+import type { MenuOpenChangeData } from '@fluentui/react-menu';
+import type { MenuProps } from '@fluentui/react-menu';
+import type { MenuState } from '@fluentui/react-menu';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import { Radio } from '@fluentui/react-radio';
@@ -90,6 +95,9 @@ export { renderTree_unstable }
 export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
 
 // @public
+export const renderTreeItemContextMenu_unstable: (state: TreeItemContextMenuState, contextValues: TreeItemContextMenuContextValues) => JSX.Element;
+
+// @public
 export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
 
 // @public
@@ -142,6 +150,21 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 
 // @public (undocumented)
+export const TreeItemContextMenu: React_2.FC<TreeItemContextMenuProps>;
+
+// @public (undocumented)
+export type TreeItemContextMenuContextValues = MenuContextValues;
+
+// @public
+export type TreeItemContextMenuProps = MenuProps;
+
+// @public (undocumented)
+export type TreeItemContextMenuSlots = {};
+
+// @public
+export type TreeItemContextMenuState = MenuState;
+
+// @public (undocumented)
 export type TreeItemContextValue = {
     isActionsVisible: boolean;
     isAsideVisible: boolean;
@@ -154,6 +177,10 @@ export type TreeItemContextValue = {
     value: TreeItemValue;
     open: boolean;
     checked?: TreeSelectionValue;
+    isContextMenuOpen: boolean;
+    requestContextMenuOpenChange: (data: MenuOpenChangeData) => void;
+    positioningRef: React_2.Ref<PositioningImperativeRef>;
+    menuPopoverRef: React_2.Ref<HTMLElement>;
 };
 
 // @public
@@ -353,6 +380,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React_2.Ref<HTML
 
 // @public (undocumented)
 export const useTreeItemContext_unstable: <T>(selector: ContextSelector<TreeItemContextValue, T>) => T;
+
+// @public
+export const useTreeItemContextMenu_unstable: (props: TreeItemContextMenuProps) => TreeItemContextMenuState;
+
+// @public (undocumented)
+export const useTreeItemContextMenuContextValue_unstable: (state: TreeItemContextMenuState) => TreeItemContextMenuContextValues;
 
 // @public (undocumented)
 export function useTreeItemContextValues_unstable(state: TreeItemState): TreeItemContextValues;
