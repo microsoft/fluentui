@@ -76,7 +76,7 @@ export const renderSample_unstable = (state: SampleState) => {
 };
 ```
 
-Styles:
+Styles, in case of CSS transitions:
 
 ```ts
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -127,6 +127,71 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 };
 ```
 
+Styles, in case of CSS animations:
+
+```ts
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { SampleSlots, SampleState } from './Sample.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+
+export const SampleClassNames: SlotClassNames<SampleSlots> = {
+  root: 'fui-Sample',
+};
+
+/**
+ * Styles for the root slot
+ */
+const visibleKeyframe = {
+  ...shorthands.borderRadius(0),
+  opacity: 1,
+  transform: 'translate3D(0, 0, 0) scale(1)',
+};
+
+const hiddenKeyframe = {
+  ...shorthands.borderRadius('36px'),
+  opacity: 0,
+  transform: 'translate3D(-100%, 0, 0) scale(0.9)',
+};
+
+const useStyles = makeStyles({
+  root: {
+    willChange: 'opacity, transform, border-radius',
+  },
+
+  entering: {
+    animationDuration: '500ms',
+    animationTimingFunction: tokens.curveDecelerateMid,
+    animationName: {
+      '0%': hiddenKeyframe,
+      '100%': visibleKeyframe,
+    },
+  },
+
+  exiting: {
+    animationDuration: '750ms',
+    animationTimingFunction: tokens.curveAccelerateMin,
+    animationName: {
+      '0%': visibleKeyframe,
+      '100%': hiddenKeyframe,
+    },
+  },
+});
+
+export const useSampleStyles_unstable = (state: SampleState): SampleState => {
+  const styles = useStyles();
+
+  state.root.className = mergeClasses(
+    SampleClassNames.root,
+    state.motionState === 'entering' && styles.entering,
+    state.motionState === 'exiting' && styles.exiting,
+    styles.root,
+  );
+
+  return state;
+};
+```
+
 Overriding the transition/animation on the Application side:
 
 ```tsx
@@ -137,6 +202,7 @@ import { makeStyles } from '@fluentui/react-components';
 const useStyles = makeStyles({
   customDuration: {
     transitionDuration: '500ms',
+    animationDuration: '750ms',
   },
 });
 
@@ -195,7 +261,7 @@ Options can be provided as a second argument of the hook.:
   const presence = useMotionPresence(open, {
     /**
      * Whether to animate the element on first mount. Useful when the element
-     * is visible on first render, but still have the options to be toggled off
+     * is visible on first render, but still can be to be toggled off
      *
      * @default false
      */
