@@ -130,7 +130,7 @@ const useExampleStyles = makeStyles({
     height: 'fit-content',
     minWidth: '150px',
     resize: 'horizontal',
-    width: '500px',
+    width: '600px',
   },
 });
 

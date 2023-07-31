@@ -6,7 +6,7 @@ import bestPracticesMd from './BreadcrumbItemBestPractices.md';
 export { Default } from './BreadcrumbItemDefault.stories';
 
 export default {
-  title: 'Preview Components/BreadcrumbItem',
+  title: 'Preview Components/Breadcrumb/BreadcrumbItem',
   component: BreadcrumbItem,
   parameters: {
     docs: {
