@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     ...shorthands.gridArea('subtree'),
   },
   nestedtree: {
-    paddingTop: '2px',
+    paddingTop: tokens.spacingVerticalXXS,
   },
 });
 
