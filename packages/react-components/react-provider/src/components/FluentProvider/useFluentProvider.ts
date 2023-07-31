@@ -14,7 +14,6 @@ import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities'
 import * as React from 'react';
 
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
-import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
 /**
@@ -76,32 +75,6 @@ export const useFluentProvider_unstable = (
             "Make sure that your top-level FluentProvider has set a `theme` prop or you're setting the theme in your child FluentProvider.",
           ].join(' '),
         );
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useMemo(() => {
-      // Heads up!
-      // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,
-      // this allows to do checks with strict mode enabled as .useEffect() will be called with incremented IDs because
-      // of double render.
-
-      if (targetDocument) {
-        const providerElements = targetDocument.querySelectorAll(`.${fluentProviderClassNames.root}.${styleTagId}`);
-
-        if (providerElements.length > 0) {
-          // eslint-disable-next-line no-console
-          console.error(
-            [
-              '@fluentui/react-provider: There are conflicting ids in your DOM.',
-              'Please make sure that you configured your application properly.',
-              '\n',
-              '\n',
-              'Configuration guide: https://aka.ms/fluentui-conflicting-ids',
-            ].join(' '),
-          );
-        }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
