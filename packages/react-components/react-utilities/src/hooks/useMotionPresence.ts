@@ -167,7 +167,7 @@ const getComputedMapProp = (computedStyle: StylePropertyMapReadOnly, prop: strin
 const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string): string[] => {
   const propValue = computedStyle.getPropertyValue(prop);
 
-  return Array.isArray(propValue) ? propValue.split(',') : ['0'];
+  return propValue ? propValue.split(',') : ['0'];
 };
 
 /**
@@ -227,14 +227,16 @@ const getMotionDuration = (node: HTMLElementWithStyledMap) => {
  */
 export const useMotionPresence = <TElement extends HTMLElement>(
   present: boolean,
-  { animateOnFirstMount = false }: UseMotionPresenceOptions = {},
+  options: UseMotionPresenceOptions = {},
 ): UseMotionPresenceState<TElement> => {
+  const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
   const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
     shouldRender: present,
     motionState: present ? 'resting' : 'unmounted',
     visible: false,
   });
 
+  const canHaveMotion = React.useRef(false);
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
 
@@ -247,6 +249,11 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       clearAnimationTimeout();
       const animationFrame = requestAnimationFrame(() => {
         const duration = getMotionDuration(currentElement);
+
+        if (duration === 0) {
+          callback();
+          return;
+        }
 
         /**
          * Use CSS transition duration + 1ms to ensure the animation has finished on both enter and exit states.
@@ -301,13 +308,35 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       return;
     }
 
-    const animationFrame = requestAnimationFrame(() => {
-      setState(prevState => ({
-        ...prevState,
-        visible: present,
-        motionState: present ? 'entering' : 'exiting',
-      }));
+    let animationFrame: number;
+    const skipFirstMount = !animateOnFirstMount && !canHaveMotion.current;
+    const onDestroy = () => cancelAnimationFrame(animationFrame);
+
+    animationFrame = requestAnimationFrame(() => {
+      setState(prevState => {
+        let motionState = prevState.motionState;
+
+        if (skipFirstMount) {
+          motionState = present ? 'resting' : 'unmounted';
+        } else {
+          motionState = present ? 'entering' : 'exiting';
+        }
+
+        return {
+          ...prevState,
+          visible: present,
+          motionState,
+        };
+      });
     });
+
+    if (!canHaveMotion.current) {
+      canHaveMotion.current = true;
+    }
+
+    if (skipFirstMount) {
+      return onDestroy;
+    }
 
     processAnimation(() => {
       setState(prevState => ({
@@ -316,8 +345,8 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       }));
     });
 
-    return () => cancelAnimationFrame(animationFrame);
-  }, [currentElement, present, processAnimation]);
+    return onDestroy;
+  }, [animateOnFirstMount, currentElement, present, processAnimation]);
 
   React.useEffect(() => {
     if (state.motionState === 'exiting') {
