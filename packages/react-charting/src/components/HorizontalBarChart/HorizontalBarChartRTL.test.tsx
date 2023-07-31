@@ -5,6 +5,12 @@ import { HorizontalBarChart } from './index';
 
 const getById = queryAllByAttribute.bind(null, 'id');
 describe('Horizontal bar chart re-rendering', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
   test('Should re-render the Horizontal bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<HorizontalBarChart data={[]} />);
