@@ -4,10 +4,10 @@ import { useTreeContext_unstable, useTreeItemContext_unstable } from '../context
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 
 /**
- * Create the state required to render a sub-level BaseTree.
+ * Create the state required to render a sub-level tree.
  *
- * @param props - props from this instance of BaseTree
- * @param ref - reference to root HTMLElement of BaseTree
+ * @param props - props from this instance of tree
+ * @param ref - reference to root HTMLElement of tree
  */
 export function useSubtree(props: Pick<TreeProps, 'appearance' | 'size'>, ref: React.Ref<HTMLElement>): TreeState {
   const contextAppearance = useTreeContext_unstable(ctx => ctx.appearance);
