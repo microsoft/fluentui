@@ -2,7 +2,7 @@ import childProcess from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { stripIndents } from '@nrwl/devkit';
+import { stripIndents } from '@nx/devkit';
 import * as tmp from 'tmp';
 
 import { generateVersionFiles } from './generate-version-files';
