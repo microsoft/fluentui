@@ -397,30 +397,51 @@ export class Calendar extends FASTCalendar {
     this.navigatedDate = new Date(`${date.month}-${date.day}-${date.year}`);
 
     switch (event.key) {
-      case keyArrowRight:
+      case keyArrowRight: {
         this.navigatedDate.setDate(date.day + 1);
         if (currentCell.getAttribute('grid-column') == '7' && this.navigatedDate.getMonth() + 1 != this.month) {
           this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
           return true;
         }
         break;
-      case keyArrowLeft:
+      }
+      case keyArrowLeft: {
         this.navigatedDate.setDate(date.day - 1);
         if (currentCell.getAttribute('grid-column') == '1' && this.navigatedDate.getMonth() + 1 != this.month) {
           this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
           return true;
         }
         break;
-      case keyArrowDown:
+      }
+      case keyArrowDown: {
         this.navigatedDate.setDate(date.day + 7);
-        if (this.navigatedDate.getMonth() + 1 != this.month) {
+        const navigatedDateString = `${
+          this.navigatedDate.getMonth() + 1
+        }-${this.navigatedDate.getDate()}-${this.navigatedDate.getFullYear()}`;
+        if (
+          this.navigatedDate.getMonth() + 1 != this.month &&
+          !this.shadowRoot?.querySelector(`slot[name=${CSS.escape(navigatedDateString)}]`)
+        ) {
           this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
           return true;
         }
         break;
-      case keyArrowUp:
+      }
+      case keyArrowUp: {
         this.navigatedDate.setDate(date.day - 7);
+        const navigatedDateString = `${
+          this.navigatedDate.getMonth() + 1
+        }-${this.navigatedDate.getDate()}-${this.navigatedDate.getFullYear()}`;
+
+        if (
+          this.navigatedDate.getMonth() + 1 != this.month &&
+          !this.shadowRoot?.querySelector(`slot[name=${CSS.escape(navigatedDateString)}]`)
+        ) {
+          this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
+          return true;
+        }
         break;
+      }
       default:
         break;
     }

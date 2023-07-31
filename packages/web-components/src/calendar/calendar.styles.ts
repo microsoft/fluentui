@@ -158,8 +158,7 @@ export const styles = css`
     height: 32px;
     border-radius: 4px;
   }
-  :host .interact .today,
-  .today {
+  :host .interact .today:not(.inactive) {
     color: ${colorNeutralForegroundStaticInverted};
     background: ${colorBrandBackground};
     border-radius: 16px;
