@@ -179,9 +179,11 @@ describe('useMotionPresence', () => {
 
       expect(result.current.shouldRender).toBe(true);
       expect(result.current.motionState).toBe('resting');
+      // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.visible).toBe(true);
       expect(result.current.motionState).toBe('entering');
+      // timeout
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.motionState).toBe('resting');
 
@@ -191,7 +193,9 @@ describe('useMotionPresence', () => {
       expect(result.current.visible).toBe(false);
       expect(result.current.motionState).toBe('exiting');
 
+      // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
+      // timeout
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.motionState).toBe('unmounted');
       expect(result.current.shouldRender).toBe(false);
