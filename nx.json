@@ -19,7 +19,7 @@
     "defaultBase": "master"
   },
   "pluginsConfig": {
-    "@nrwl/js": {
+    "@nx/js": {
       "analyzeSourceFiles": true
     }
   },

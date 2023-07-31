@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { stripIndents } = require('@nrwl/devkit');
+const { stripIndents } = require('@nx/devkit');
 const tmp = require('tmp');
 
 const { loadWorkspaceAddon, getPackageStoriesGlob } = require('./utils');

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added portal slot to Combobox and Dropdown",
+  "packageName": "@fluentui/react-combobox",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
