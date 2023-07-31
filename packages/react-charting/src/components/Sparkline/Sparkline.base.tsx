@@ -14,7 +14,6 @@ export interface ISparklineState {
   _width: number;
   _height: number;
   _valueTextWidth: number;
-  _emptyChart?: boolean;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -46,7 +45,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   }
 
   public componentDidMount() {
-    if (this.state._emptyChart === false) {
+    if (!this._isChartEmpty()) {
       const area = d3Area()
         /* eslint-disable @typescript-eslint/no-explicit-any */
         .x((d: any) => this.x(d.x))
