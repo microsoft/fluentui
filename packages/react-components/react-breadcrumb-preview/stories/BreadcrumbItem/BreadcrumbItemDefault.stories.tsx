@@ -100,7 +100,6 @@ export const Default = () => {
         <BreadcrumbItem icon={<CalendarMonth />} iconPosition="after">
           Item with an icon
         </BreadcrumbItem>
-        <BreadcrumbItem icon={<CalendarMonth />}>Item with an icon</BreadcrumbItem>
       </Breadcrumb>
     </>
   );
