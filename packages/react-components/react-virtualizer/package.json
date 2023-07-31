@@ -34,7 +34,7 @@
   "dependencies": {
     "@fluentui/react-jsx-runtime": "9.0.0-alpha.13",
     "@fluentui/react-utilities": "^9.11.0",
-    "@griffel/react": "^1.5.7",
+    "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
