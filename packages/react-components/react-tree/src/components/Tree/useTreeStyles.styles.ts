@@ -17,15 +17,21 @@ const useStyles = makeStyles({
     ...shorthands.flex(1, 1, '100%'),
     ...shorthands.gridArea('subtree'),
   },
+  nestedtree: {
+    paddingTop: '2px',
+  },
 });
 
 export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   const styles = useStyles();
   const isSubTree = state.level > 0;
+  const isNestedTree = state.level > 1;
+
   state.root.className = mergeClasses(
     treeClassNames.root,
     styles.root,
     isSubTree && styles.subtree,
+    isNestedTree && styles.nestedtree,
     state.root.className,
   );
   return state;
