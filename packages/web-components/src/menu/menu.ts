@@ -76,7 +76,7 @@ export class Menu extends FASTElement {
    * @param {MouseEvent} e - The event that triggered the expansion of the menu.
    * @public
    */
-  public toggleExpanded = (e: MouseEvent) => {
+  public toggleMenu = () => {
     this.expanded = !this.expanded;
   };
 
@@ -93,7 +93,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public openMenu() {
-    this.expanded = false;
+    this.expanded = true;
   }
 
   /**
@@ -174,10 +174,10 @@ export class Menu extends FASTElement {
         this._trigger.setAttribute('aria-haspopup', 'true');
         this._trigger.setAttribute('aria-expanded', `${this.expanded}`);
         this._trigger.addEventListener('keydown', this.handleTriggerKeydown);
-        this._trigger.addEventListener('click', this.toggleExpanded);
+        this._trigger.addEventListener('click', this.toggleMenu);
 
         if (this.openOnHover) {
-          this._trigger.addEventListener('mouseover', this.toggleExpanded);
+          this._trigger.addEventListener('mouseover', this.toggleMenu);
         }
       }
     }
@@ -187,7 +187,7 @@ export class Menu extends FASTElement {
    * Method that gets called whenever the expanded state changes.
    * @protected
    */
-  protected expandedChanged(): void {
+  protected expandedChanged(oldValue: boolean, newValue: boolean): void {
     if (this.$fastController.isConnected && this._trigger) {
       this._trigger.setAttribute('aria-expanded', `${this.expanded}`);
     }
@@ -195,6 +195,7 @@ export class Menu extends FASTElement {
       this.setPositioning();
       this.focus();
     });
+    this.$emit('expandedChanged', { expanded: newValue });
   }
 
   /**
@@ -220,14 +221,14 @@ export class Menu extends FASTElement {
     switch (key) {
       case keyTab: {
         if (this.expanded) {
-          this.expanded = false;
+          this.closeMenu();
         }
         break;
       }
       case keyEscape: {
         if (this.expanded) {
           e.preventDefault();
-          this.expanded = false;
+          this.closeMenu();
           this._trigger?.focus();
         }
         break;
@@ -246,7 +247,7 @@ export class Menu extends FASTElement {
       case keySpace:
       case keyEnter: {
         e.preventDefault();
-        this.expanded = !this.expanded;
+        this.toggleMenu;
         break;
       }
     }
@@ -260,11 +261,8 @@ export class Menu extends FASTElement {
   private cleanupTriggerEventListeners(trigger: HTMLElement): void {
     if (this._trigger) {
       this._trigger.removeEventListener('keydown', this.handleTriggerKeydown);
-      if (this.openOnHover) {
-        this._trigger.removeEventListener('mouseover', this.toggleExpanded);
-      } else {
-        this._trigger.removeEventListener('click', this.toggleExpanded);
-      }
+      this._trigger.removeEventListener('click', this.toggleMenu);
+      this._trigger.removeEventListener('mouseover', this.toggleMenu);
     }
   }
 }
