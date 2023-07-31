@@ -38,7 +38,7 @@ Creating a menu component that can be used to display a list of options or actio
 | --------------- | ------- | --------------- | ------- | ---------------------------------------------------- |
 | `menu`          | public  | `HTMLElement[]` |         | The menu element(s) to be displayed                  |
 | `trigger`       | public  | `HTMLElement[]` |         | The trigger element(s) for opening/closing menu      |
-| `expanded`      | public  | `boolean`       | `false` | Specifies if the menu is expanded or collapsed       |
+| `open`          | public  | `boolean`       | `false` | Specifies if the menu is open or closed              |
 | `menuContainer` | public  | `HTMLElement`   |         | The container element for the menu items             |
 | `openOnHover`   | public  | `boolean`       | `false` | Sets whether the menu opens on hover of menu trigger |
 
@@ -55,7 +55,7 @@ Creating a menu component that can be used to display a list of options or actio
 
 | Name            | Field       |
 | --------------- | ----------- |
-| `expanded`      | expanded    |
+| `open`          | open        |
 | `open-on-hover` | openOnHover |
 
 <br />
@@ -73,7 +73,7 @@ Creating a menu component that can be used to display a list of options or actio
 
 ```html
 <slot name="trigger" ${slotted({ property: 'trigger', filter: elements() })}></slot>
-<span class="menu-list-container" ${ref('menuListContainer')} ?hidden="${(x) => !x.expanded}">
+<span class="menu-list-container" ${ref('menuListContainer')} ?hidden="${(x) => !x.open}">
   <slot ${slotted({ property: 'menu', filter: elements() })}></slot>
 </span>
 ```

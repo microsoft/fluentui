@@ -19,12 +19,12 @@ export class Menu extends FASTElement {
   }
 
   /**
-   * Defines whether the menu is expanded or not.
+   * Defines whether the menu is open or not.
    * @public
    */
   @observable
   @attr({ mode: 'boolean' })
-  public expanded: boolean = false;
+  public open: boolean = false;
 
   /**
    * The array of HTMLElements for the menu.
@@ -72,12 +72,12 @@ export class Menu extends FASTElement {
   private cleanup?: () => void;
 
   /**
-   * Method to toggle the expanded state of the menu on an event.
+   * Method to toggle the open state of the menu on an event.
    * @param {MouseEvent} e - The event that triggered the expansion of the menu.
    * @public
    */
   public toggleMenu = () => {
-    this.expanded = !this.expanded;
+    this.open = !this.open;
   };
 
   /**
@@ -85,7 +85,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public closeMenu() {
-    this.expanded = false;
+    this.open = false;
   }
 
   /**
@@ -93,7 +93,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public openMenu() {
-    this.expanded = true;
+    this.open = true;
   }
 
   /**
@@ -101,7 +101,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public focus(): void {
-    if (this.expanded && this._menu) {
+    if (this.open && this._menu) {
       const menu = this._menu as MenuList;
       Updates.enqueue(() => menu.focus());
     }
@@ -132,7 +132,7 @@ export class Menu extends FASTElement {
           ],
         });
         if (middlewareData.hide?.referenceHidden) {
-          this.expanded = false;
+          this.open = false;
           return;
         }
 
@@ -172,7 +172,7 @@ export class Menu extends FASTElement {
       if (next && next.length) {
         this._trigger = next[0];
         this._trigger.setAttribute('aria-haspopup', 'true');
-        this._trigger.setAttribute('aria-expanded', `${this.expanded}`);
+        this._trigger.setAttribute('aria-expanded', `${this.open}`);
         this._trigger.addEventListener('keydown', this.handleTriggerKeydown);
         this._trigger.addEventListener('click', this.toggleMenu);
 
@@ -184,18 +184,18 @@ export class Menu extends FASTElement {
   }
 
   /**
-   * Method that gets called whenever the expanded state changes.
+   * Method that gets called whenever the open state changes.
    * @protected
    */
-  protected expandedChanged(oldValue: boolean, newValue: boolean): void {
+  protected openChanged(oldValue: boolean, newValue: boolean): void {
     if (this.$fastController.isConnected && this._trigger) {
-      this._trigger.setAttribute('aria-expanded', `${this.expanded}`);
+      this._trigger.setAttribute('aria-expanded', `${this.open}`);
     }
     Updates.enqueue(() => {
       this.setPositioning();
       this.focus();
     });
-    this.$emit('expandedChanged', { expanded: newValue });
+    this.$emit('openChanged', { open: newValue });
   }
 
   /**
@@ -220,13 +220,13 @@ export class Menu extends FASTElement {
 
     switch (key) {
       case keyTab: {
-        if (this.expanded) {
+        if (this.open) {
           this.closeMenu();
         }
         break;
       }
       case keyEscape: {
-        if (this.expanded) {
+        if (this.open) {
           e.preventDefault();
           this.closeMenu();
           this._trigger?.focus();
