@@ -17,7 +17,7 @@ export type AnnounceContextValue<T = AnnounceOptions> = {
 /**
  * @internal
  */
-export const AnnounceContext = React.createContext<AnnounceContextValue | undefined>(undefined);
+const AnnounceContext = React.createContext<AnnounceContextValue | undefined>(undefined);
 
 /**
  * @internal
