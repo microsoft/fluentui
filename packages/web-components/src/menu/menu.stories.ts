@@ -9,7 +9,7 @@ type MenuStoryMeta = Meta<MenuStoryArgs>;
 
 const storyTemplate = html<MenuStoryArgs>`
   <fluent-menu ?open-on-hover="${x => x.openOnHover}">
-    <fluent-menu-button appearance="primary" slot="trigger">Button!</fluent-menu-button>
+    <fluent-menu-button aria-label="Toggle Menu" appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
     <fluent-menu-list>
       <fluent-menu-item>Menu item 1</fluent-menu-item>
       <fluent-menu-item>Menu item 2</fluent-menu-item>
@@ -40,7 +40,7 @@ export const Menu = renderComponent(storyTemplate).bind({});
 
 export const MenuOpenOnHover = renderComponent(html<MenuStoryArgs>`
   <fluent-menu open-on-hover>
-    <fluent-menu-button appearance="primary" slot="trigger">Button!</fluent-menu-button>
+    <fluent-menu-button aria-label="Toggle Menu"" appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
     <fluent-menu-list>
       <fluent-menu-item>Menu item 1</fluent-menu-item>
       <fluent-menu-item>Menu item 2</fluent-menu-item>
