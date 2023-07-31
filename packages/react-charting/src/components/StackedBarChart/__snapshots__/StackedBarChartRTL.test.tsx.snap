@@ -2295,3 +2295,196 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
   </div>
 </div>
 `;
+
+exports[`stacked bar chart re-rendering Should re-render the stacked bar chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_SBC_empty13"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`stacked bar chart re-rendering Should re-render the stacked bar chart with data 2`] = `
+<div>
+  <div
+    class=
+        ms-StackedBarChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 100%;
+        }
+    style=""
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone14"
+    >
+      <div
+        class=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+            }
+      >
+        <div
+          class=
+              ms-TooltipHost
+              {
+                color: #323130;
+                display: block;
+                margin-bottom: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          role="none"
+        >
+          <span
+            data-is-focusable="false"
+            role="text"
+            tabindex="-1"
+          >
+            Stacked bar chart 2nd example
+          </span>
+          <div
+            hidden=""
+            id="tooltip15"
+            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+          >
+            Stacked bar chart 2nd example
+          </div>
+        </div>
+        <div
+          data-is-focusable="false"
+          role="text"
+          tabindex="-1"
+        >
+          <span
+            class=
+
+                {
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+          >
+            40
+          </span>
+          <span
+            class=
+
+                {
+                  color: #323130;
+                  font-size: 14px;
+                }
+          >
+             / 63
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone16"
+    >
+      <div>
+        <svg
+          aria-label="Stacked bar chart 2nd example"
+          class=
+
+              {
+                display: block;
+                height: 12px;
+                margin-bottom: 10px;
+                width: 100%;
+              }
+          focusable="false"
+        >
+          <g>
+            <g
+              aria-label="first Lorem ipsum dolor sit amet, 40."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#5c005c"
+                height="12"
+                width="63.49206349206349%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="Winter is coming, 23."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y="0"
+              />
+            </g>
+          </g>
+          <span
+            class="ms-layer"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

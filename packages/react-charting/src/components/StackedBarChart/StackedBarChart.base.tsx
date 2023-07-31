@@ -23,7 +23,6 @@ export interface IStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -37,6 +36,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _calloutId: string;
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _emptyChartId: string;
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -50,28 +50,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
-      emptyChart: false,
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
     this._refCallback = this._refCallback.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.chartData &&
-      this.props.data.chartData.length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_SBC_empty');
   }
 
   public render(): JSX.Element {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       this._adjustProps();
       const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
       const { palette } = this.props.theme!;
@@ -194,7 +183,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       );
     }
     return (
-      <div id={getId('_SBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -477,4 +471,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.chartData && this.props.data.chartData.length > 0);
+  }
 }
