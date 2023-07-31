@@ -37,7 +37,7 @@ import { getNativeElementProps, useMotionPresence, useMergedRefs } from '@fluent
 import type { SampleProps, SampleState } from './Sample.types';
 
 export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref<HTMLElement>): SampleState => {
-  const { ref: componentRef, shouldRender, visible, entering, exiting, animating } = useMotionPresence(open);
+  const { ref: componentRef, shouldRender, visible, motionState } = useMotionPresence(open);
 
   return {
     components: {
@@ -50,9 +50,7 @@ export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref
 
     shouldRender,
     visible,
-    entering,
-    exiting,
-    animating,
+    motionState,
   };
 };
 ```
@@ -120,8 +118,8 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
   state.root.className = mergeClasses(
     SampleClassNames.root,
     state.visible && styles.visible,
-    state.entering && styles.entering,
-    state.exiting && styles.exiting,
+    state.motionState === 'entering' && styles.entering,
+    state.motionState === 'exiting' && styles.exiting,
     styles.root,
   );
 
@@ -155,13 +153,13 @@ The hook accepts a boolean value that represents the "presence" state. It intern
 
 ```ts
 const {
-  /*
+  /**
    * Ref used to track the target element that requires animation. It should
    * be passed to the element responsible for performing the animation.
    */
   ref,
 
-  /*
+  /**
    * Determines whether the component should be displayed on the screen.
    *
    * This property will evaluate to `true` when the provided presence value is true.
@@ -170,7 +168,7 @@ const {
    */
   shouldRender,
 
-  /*
+  /**
    * Indicates whether the component is currently rendered and visible.
    *
    * This flag will be set to `true` one frame after the shouldRender value becomes true.
@@ -178,47 +176,32 @@ const {
    */
   visible,
 
-  /*
-   * Indicates whether the component is currently entering the screen.
+  /**
+   * Current state of the tracked element
    *
-   * This will be `true` when the element is entering the screen. This happens
-   * one frame after `visible` value becomes true.
-   * It becomes `false` when the transition/animation ends.
+   * Can return the following values:
+   * - `entering` - The element is entering the DOM.
+   * - `exiting` - The element is exiting the DOM.
+   * - `resting` - The element is currently not animating. This is the final and initial state of the element.
+   * - `unmounted` - The element is not rendered in the DOM.
    */
-  entering,
-
-  /*
-   * Whether the component is leaving the screen
-   *
-   * This property is set to `true` one frame after the `visible` prop becomes true,
-   * indicating that the element is in the process of entering the screen.
-   * It becomes `false` when the transition/animation ends.
-   * It is set to false once the transition or animation for the component has completed.
-   */
-  exiting,
-
-  /*
-   * Indicates whether the component is currently undergoing animation.
-   * This property will be set to `true` when the component is either entering or exiting.
-   */
-  animating,
+  motionState,
 } = useMotionPresence(open);
 ```
 
-Events can be provided as a second argument of the hook.:
+Options can be provided as a second argument of the hook.:
 
 ```js
   const presence = useMotionPresence(open, {
-    onEntered: () => {
-      // Called when the element finished the "enter" animation/transition
-    };
-    onExited: () => {
-      // Called when the element finished the "leave" animation/transition
-    };
+    /**
+     * Whether to animate the element on first mount. Useful when the element
+     * is visible on first render, but still have the options to be toggled off
+     *
+     * @default false
+     */
+    animateOnFirstMount: false;
   })
 ```
-
-Other events can be implemented, like `onBeforeEnter` or `onBeforeLeave`.
 
 #### Background research
 
