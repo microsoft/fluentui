@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     paddingRight: '6px',
     paddingLeft: '6px',
     boxSizing: 'border-box',
-    maxWidth: '300px',
+    maxWidth: '290px',
     minHeight: '32px',
     flexShrink: 0,
     flexBasis: 'content',
