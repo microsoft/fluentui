@@ -14,10 +14,10 @@ import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
 
 /**
- * Create the state required to render the root level BaseTree.
+ * Create the state required to render the root level tree.
  *
- * @param props - props from this instance of BaseTree
- * @param ref - reference to root HTMLElement of BaseTree
+ * @param props - props from this instance of tree
+ * @param ref - reference to root HTMLElement of tree
  */
 export function useRootTree(
   props: Pick<
@@ -56,7 +56,11 @@ export function useRootTree(
       case treeDataTypes.Click:
       case treeDataTypes.ExpandIconClick: {
         return ReactDOM.unstable_batchedUpdates(() => {
-          requestOpenChange({ ...request, open: request.itemType === 'branch' && !openItems.has(request.value) });
+          requestOpenChange({
+            ...request,
+            open: request.itemType === 'branch' && !openItems.has(request.value),
+            openItems: openItems.dangerouslyGetInternalSet_unstable(),
+          });
           requestNavigation({ ...request, type: treeDataTypes.Click });
         });
       }
@@ -66,18 +70,31 @@ export function useRootTree(
         }
         const open = openItems.has(request.value);
         if (!open) {
-          return requestOpenChange({ ...request, open: true });
+          return requestOpenChange({
+            ...request,
+            open: true,
+            openItems: openItems.dangerouslyGetInternalSet_unstable(),
+          });
         }
         return requestNavigation(request);
       }
       case treeDataTypes.Enter: {
         const open = openItems.has(request.value);
-        return requestOpenChange({ ...request, open: request.itemType === 'branch' && !open });
+        return requestOpenChange({
+          ...request,
+          open: request.itemType === 'branch' && !open,
+          openItems: openItems.dangerouslyGetInternalSet_unstable(),
+        });
       }
       case treeDataTypes.ArrowLeft: {
         const open = openItems.has(request.value);
         if (open && request.itemType === 'branch') {
-          return requestOpenChange({ ...request, open: false, type: treeDataTypes.ArrowLeft });
+          return requestOpenChange({
+            ...request,
+            open: false,
+            type: treeDataTypes.ArrowLeft,
+            openItems: openItems.dangerouslyGetInternalSet_unstable(),
+          });
         }
         return requestNavigation({ ...request, type: treeDataTypes.ArrowLeft });
       }
@@ -88,12 +105,11 @@ export function useRootTree(
       case treeDataTypes.TypeAhead:
         return requestNavigation({ ...request, target: request.event.currentTarget });
       case treeDataTypes.Change: {
-        const previousCheckedValue = checkedItems.get(request.value);
         return requestCheckedChange({
           ...request,
           selectionMode: selectionMode as SelectionMode,
-          checked: previousCheckedValue === 'mixed' ? true : !previousCheckedValue,
-        });
+          checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
+        } as TreeCheckedChangeData);
       }
     }
   });
@@ -112,7 +128,7 @@ export function useRootTree(
     requestTreeResponse,
     root: getNativeElementProps('div', {
       ref,
-      role: 'baseTree',
+      role: 'tree',
       'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
       ...props,
     }),
@@ -123,7 +139,7 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console
-      console.warn('BaseTree must have either a `aria-label` or `aria-labelledby` property defined');
+      console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
     }
   }
 }

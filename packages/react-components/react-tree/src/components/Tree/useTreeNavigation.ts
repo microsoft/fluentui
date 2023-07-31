@@ -1,20 +1,14 @@
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from './Tree.types';
 import { nextTypeAheadElement } from '../../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../../utils/tokens';
 import { treeItemFilter } from '../../utils/treeItemFilter';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndexes';
-import { HTMLElementWalker, useHTMLElementWalkerRef } from '../../hooks/useHTMLElementWalker';
+import { HTMLElementWalker } from '../../utils/createHTMLElementWalker';
 
 export function useTreeNavigation() {
-  const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
-  const [walkerRef, rootRef] = useHTMLElementWalkerRef(treeItemFilter);
+  const { rove, initialize } = useRovingTabIndex(treeItemFilter);
 
-  const getNextElement = (data: TreeNavigationData_unstable) => {
-    if (!walkerRef.current) {
-      return;
-    }
-    const treeItemWalker = walkerRef.current;
+  const getNextElement = (data: TreeNavigationData_unstable, treeItemWalker: HTMLElementWalker) => {
     switch (data.type) {
       case treeDataTypes.Click:
         return data.target;
@@ -41,13 +35,13 @@ export function useTreeNavigation() {
         return treeItemWalker.previousElement();
     }
   };
-  function navigate(data: TreeNavigationData_unstable) {
-    const nextElement = getNextElement(data);
+  function navigate(data: TreeNavigationData_unstable, walker: HTMLElementWalker) {
+    const nextElement = getNextElement(data, walker);
     if (nextElement) {
       rove(nextElement);
     }
   }
-  return [navigate, useMergedRefs(rootRef, rovingRootRef)] as const;
+  return { navigate, initialize } as const;
 }
 
 function lastChildRecursive(walker: HTMLElementWalker) {
