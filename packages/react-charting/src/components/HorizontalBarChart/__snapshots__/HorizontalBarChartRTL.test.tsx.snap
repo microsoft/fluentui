@@ -1,5 +1,311 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_HBC_empty19"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 2`] = `
+<div>
+  <div
+    class=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+    style=""
+  >
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone20"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                one
+              </span>
+              <div
+                hidden=""
+                id="tooltip21"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                one
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              1,543
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone22"
+        >
+          <svg
+            aria-label="one"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_km0r8_0"
+            >
+              <rect
+                aria-label="2020/04/30, 94%."
+                class=
+
+                    {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                fill="#004b50"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="10.286666666666665%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="13457/15000."
+                class=
+
+                    {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="89.71333333333334%"
+                x="10.286666666666665%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone23"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                two
+              </span>
+              <div
+                hidden=""
+                id="tooltip24"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                two
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              800
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone25"
+        >
+          <svg
+            aria-label="two"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_km0r8_1"
+            >
+              <rect
+                aria-label="2020/04/30, 19%."
+                class=
+
+                    {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                fill="#5c2d91"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="5.333333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="14200/15000."
+                class=
+
+                    {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="94.66666666666667%"
+                x="5.333333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
 exports[`HorizontalBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div
   className=
