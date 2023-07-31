@@ -14,8 +14,6 @@ const useStyles = makeStyles({
     rowGap: tokens.spacingVerticalXXS,
   },
   subtree: {
-    ...shorthands.flex(1, 1, '100%'),
-    ...shorthands.gridArea('subtree'),
     paddingTop: tokens.spacingVerticalXXS,
   },
 });
