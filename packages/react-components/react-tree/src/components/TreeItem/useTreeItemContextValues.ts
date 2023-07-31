@@ -13,6 +13,7 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     isActionsVisible,
     isAsideVisible,
     selectionRef,
+    checked,
   } = state;
 
   /**
@@ -21,6 +22,7 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
    */
   const treeItem: TreeItemContextValue = {
     value,
+    checked,
     itemType,
     layoutRef,
     subtreeRef,
