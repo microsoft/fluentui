@@ -29,7 +29,7 @@ export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changel
         ];
 
         generators.forEach(generator => {
-          const cmd = `yarn nx workspace-generator ${generator}`;
+          const cmd = `yarn nx g @fluentui/workspace-plugin:${generator}`;
           const out = execSync(cmd);
           console.log(out.toString());
         });
