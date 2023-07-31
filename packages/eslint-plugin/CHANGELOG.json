@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 31 Jul 2023 07:33:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.1",
+      "version": "1.17.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d39f715d564b0b9ad2f0e18fecf006ce2103cc8c",
+            "comment": "chore: exec migrations from @nrwl to @nx packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:32 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.1",
       "version": "1.17.1",
