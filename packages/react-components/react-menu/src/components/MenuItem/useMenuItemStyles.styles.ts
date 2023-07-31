@@ -1,6 +1,6 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
@@ -17,10 +17,11 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
 };
 
 const useStyles = makeStyles({
-  focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-  }),
+  // focusIndicator: createCustomFocusIndicatorStyle({
+  //   ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  //   ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  // }),
+  focusIndicator: createFocusOutlineStyle(),
   // TODO: this should be extracted to another package
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
