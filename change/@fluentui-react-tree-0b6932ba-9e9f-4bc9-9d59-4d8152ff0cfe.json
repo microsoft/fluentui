@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "bugfix: Tree, vertical spacing of branches and children is inconsistent",
   "packageName": "@fluentui/react-tree",
   "email": "petrduda@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
