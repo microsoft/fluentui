@@ -88,6 +88,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     topEnd: usePositionSlot(TOAST_POSITIONS.topEnd),
     announceRef,
     offset,
+    announce: announceProp ?? announce,
     renderAriaLive: !announceProp,
   };
 };
