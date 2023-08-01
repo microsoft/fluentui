@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: adds openItems and checkedItems to tree callback data",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

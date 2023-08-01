@@ -13,8 +13,8 @@ export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'over
  */
 export const resetMaxSize = (autoSize: NormalizedAutoSize): Middleware => ({
   name: 'resetMaxSize',
-  fn({ middlewareData: { maxSizeAlreadyReset }, elements }) {
-    if (maxSizeAlreadyReset) {
+  fn({ middlewareData, elements }) {
+    if (middlewareData.resetMaxSize?.maxSizeAlreadyReset) {
       return {};
     }
 

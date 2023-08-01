@@ -42,6 +42,9 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
+export const AccordionHeaderContextProvider: React_2.Provider<AccordionHeaderContextValue | undefined>;
+
+// @public (undocumented)
 export type AccordionHeaderContextValue = Required<Pick<AccordionHeaderProps, 'expandIconPosition' | 'size'>> & {
     disabled: boolean;
     open: boolean;
@@ -190,6 +193,14 @@ export function useAccordionContextValues_unstable(state: AccordionState): Accor
 
 // @public
 export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+
+// @public (undocumented)
+export const useAccordionHeaderContext_unstable: () => {
+    open: boolean;
+    disabled: boolean;
+    size: string;
+    expandIconPosition: string;
+};
 
 // @public (undocumented)
 export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues;

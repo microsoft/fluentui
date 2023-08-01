@@ -3,7 +3,7 @@ const path = require('path');
 
 const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
 const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nrwl/devkit');
+const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nx/devkit');
 const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');

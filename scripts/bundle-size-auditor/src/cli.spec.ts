@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { stripIndents } from '@nrwl/devkit';
+import { stripIndents } from '@nx/devkit';
 
 import { bundleSizeAuditor } from './cli';
 

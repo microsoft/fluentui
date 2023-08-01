@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "adds Announce context",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "eysjiang@gmail.com",
+  "dependentChangeType": "patch"
+}
