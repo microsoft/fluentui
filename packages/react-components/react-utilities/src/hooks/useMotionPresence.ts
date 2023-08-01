@@ -11,6 +11,10 @@ interface CSSUnitValue {
   readonly unit: string;
 }
 
+/**
+ * Style property map read only.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly
+ */
 interface StylePropertyMapReadOnly {
   [Symbol.iterator](): IterableIterator<[string, CSSUnitValue[]]>;
 
@@ -24,9 +28,9 @@ interface StylePropertyMapReadOnly {
  * HTMLElement with styled map.
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap
  */
-interface HTMLElementWithStyledMap extends HTMLElement {
+type HTMLElementWithStyledMap<TElement extends HTMLElement = HTMLElement> = TElement & {
   computedStyleMap(): StylePropertyMapReadOnly;
-}
+};
 
 interface CSSWithNumber {
   number(value: number): {
@@ -180,9 +184,7 @@ const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string):
 const getMaxCSSDuration = (durations: string[], delays: string[]): number => {
   const totalDurations: number[] = [];
 
-  durations.forEach(duration => {
-    totalDurations.push(toMs(duration.trim()));
-  });
+  durations.forEach(duration => totalDurations.push(toMs(duration.trim())));
 
   delays.forEach((delay, index) => {
     const parsedDelay = toMs(delay.trim());
@@ -230,15 +232,16 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   options: UseMotionPresenceOptions = {},
 ): UseMotionPresenceState<TElement> => {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
+
   const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
     shouldRender: present,
     motionState: present ? 'resting' : 'unmounted',
     visible: false,
   });
 
-  const canHaveMotion = React.useRef(false);
-  const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap | null>(null);
+  const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<TElement> | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const skipAnimationOnFirstRender = React.useRef(!animateOnFirstMount);
 
   const processAnimation = React.useCallback(
     (callback: () => void) => {
@@ -271,37 +274,23 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     [clearAnimationTimeout, currentElement, setAnimationTimeout],
   );
 
-  const ref: React.RefCallback<TElement> = React.useCallback(node => {
+  const ref: React.RefCallback<HTMLElementWithStyledMap<TElement>> = React.useCallback(node => {
     if (!node) {
       return;
     }
 
-    // Cast to HTMLElementWithStyledMap to allow the use of the experimental CSSOM API.
-    setCurrentElement(node as unknown as HTMLElementWithStyledMap);
+    setCurrentElement(node);
   }, []);
 
   React.useEffect(() => {
     if (present) {
       setState({
         shouldRender: true,
-        visible: false,
+        visible: skipAnimationOnFirstRender.current ? true : false,
         motionState: 'resting',
       });
     }
   }, [present]);
-
-  React.useEffect(() => {
-    if (!animateOnFirstMount && present) {
-      setState(prevState => ({
-        ...prevState,
-        visible: true,
-      }));
-    }
-    /*
-     * We only want to run this effect on first mount to make sure the element doesn't animate.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   React.useEffect(() => {
     if (!currentElement) {
@@ -309,14 +298,14 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     }
 
     let animationFrame: number;
-    const skipFirstMount = !animateOnFirstMount && !canHaveMotion.current;
+    const skipAnimation = skipAnimationOnFirstRender.current;
     const onDestroy = () => cancelAnimationFrame(animationFrame);
 
     animationFrame = requestAnimationFrame(() => {
       setState(prevState => {
         let motionState = prevState.motionState;
 
-        if (skipFirstMount) {
+        if (skipAnimation) {
           motionState = present ? 'resting' : 'unmounted';
         } else {
           motionState = present ? 'entering' : 'exiting';
@@ -324,41 +313,26 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
         return {
           ...prevState,
-          visible: present,
           motionState,
+          visible: present,
         };
       });
     });
 
-    if (!canHaveMotion.current) {
-      canHaveMotion.current = true;
-    }
-
-    if (skipFirstMount) {
+    if (skipAnimation) {
       return onDestroy;
     }
 
     processAnimation(() => {
       setState(prevState => ({
         ...prevState,
-        motionState: 'resting',
+        motionState: present ? 'resting' : 'unmounted',
+        shouldRender: present,
       }));
     });
 
     return onDestroy;
-  }, [animateOnFirstMount, currentElement, present, processAnimation]);
-
-  React.useEffect(() => {
-    if (state.motionState === 'exiting') {
-      processAnimation(() => {
-        setState({
-          shouldRender: false,
-          visible: false,
-          motionState: 'unmounted',
-        });
-      });
-    }
-  }, [processAnimation, state.motionState]);
+  }, [currentElement, present, processAnimation]);
 
   return {
     ref,

@@ -42,7 +42,7 @@ export type {
   RefObjectFunction,
   UseControllableStateOptions,
   UseOnClickOrScrollOutsideOptions,
-  UseMotionPresenceEvents,
+  UseMotionPresenceOptions,
   UseMotionPresenceState,
 } from './hooks/index';
 

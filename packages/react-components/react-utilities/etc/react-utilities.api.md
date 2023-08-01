@@ -283,12 +283,11 @@ export function useIsSSR(): boolean;
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
-export const useMotionPresence: <TElement extends HTMLElementWithStyledMap>(present: boolean) => UseMotionPresenceState<TElement>;
+export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, options?: UseMotionPresenceOptions) => UseMotionPresenceState<TElement>;
 
 // @public
-export type UseMotionPresenceEvents = {
-    onEntered?: () => void;
-    onExited?: () => void;
+export type UseMotionPresenceOptions = {
+    animateOnFirstMount?: boolean;
 };
 
 // @public
@@ -296,7 +295,7 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
     ref: React_2.RefCallback<TElement>;
     shouldRender: boolean;
     visible: boolean;
-    motionState: 'entering' | 'exiting' | 'resting';
+    motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
 };
 
 // @internal (undocumented)

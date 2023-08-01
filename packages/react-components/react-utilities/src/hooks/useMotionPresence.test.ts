@@ -1,24 +1,35 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+import * as React from 'react';
 
 import { useMotionPresence, UseMotionPresenceOptions } from './useMotionPresence';
 
-const transitionDuration = 100;
-const defaultStyles = { 'transition-duration': `${transitionDuration}ms` };
+const defaultDuration = 100;
 const renderHookWithRef = (
   initialPresence: boolean,
   initialOptions?: UseMotionPresenceOptions,
-  style: Record<string, string | undefined> = defaultStyles,
+  style: Record<string, string | undefined> = { 'transition-duration': `${defaultDuration}ms` },
 ) => {
   const refEl = document.createElement('div');
-  const hook = renderHook(({ presence, options }) => useMotionPresence(presence, options), {
-    initialProps: {
-      presence: initialPresence,
-      options: initialOptions,
-    } as {
-      presence: boolean;
-      options?: UseMotionPresenceOptions;
+  const hook = renderHook(
+    ({ presence, options }) => {
+      const state = useMotionPresence(presence, options);
+
+      React.useEffect(() => {
+        console.log(state);
+      }, [state]);
+
+      return state;
     },
-  });
+    {
+      initialProps: {
+        presence: initialPresence,
+        options: initialOptions,
+      } as {
+        presence: boolean;
+        options?: UseMotionPresenceOptions;
+      },
+    },
+  );
 
   Object.entries(style).forEach(([key, value]) => value && refEl.style.setProperty(key, value));
 
@@ -39,24 +50,22 @@ describe('useMotionPresence', () => {
   describe('when presence is false by default', () => {
     it('should return default values when presence is false', () => {
       const { result } = renderHookWithRef(false);
-      const { ref, motionState, shouldRender, visible } = result.current;
 
-      expect(typeof ref).toBe('function');
-      expect(motionState).toBe('unmounted');
-      expect(shouldRender).toBe(false);
-      expect(visible).toBe(false);
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.motionState).toBe('unmounted');
+      expect(result.current.shouldRender).toBe(false);
+      expect(result.current.visible).toBe(false);
     });
   });
 
   describe('when presence is true by default', () => {
     it('should return default values', () => {
       const { result } = renderHookWithRef(true);
-      const { ref, motionState, shouldRender, visible } = result.current;
 
-      expect(typeof ref).toBe('function');
-      expect(motionState).toBe('resting');
-      expect(shouldRender).toBe(true);
-      expect(visible).toBe(true);
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.motionState).toBe('resting');
+      expect(result.current.shouldRender).toBe(true);
+      expect(result.current.visible).toBe(true);
     });
 
     it('should not change values after timeout ', () => {
@@ -70,6 +79,7 @@ describe('useMotionPresence', () => {
       };
 
       assertSameValues();
+      act(() => jest.advanceTimersToNextTimer());
       act(() => jest.advanceTimersToNextTimer());
       assertSameValues();
     });
@@ -117,7 +127,7 @@ describe('useMotionPresence', () => {
         act(() => jest.advanceTimersToNextTimer());
 
         // timeout
-        jest.advanceTimersByTime(transitionDuration + 1);
+        jest.advanceTimersByTime(defaultDuration + 1);
       });
 
       expect(result.current.motionState).toBe('unmounted');
@@ -146,7 +156,7 @@ describe('useMotionPresence', () => {
         jest.advanceTimersToNextTimer();
 
         // timeout
-        jest.advanceTimersByTime(transitionDuration + 1);
+        jest.advanceTimersByTime(defaultDuration + 1);
       });
 
       expect(result.current.motionState).toBe('unmounted');
@@ -192,6 +202,51 @@ describe('useMotionPresence', () => {
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.visible).toBe(false);
       expect(result.current.motionState).toBe('exiting');
+
+      // requestAnimationFrame
+      act(() => jest.advanceTimersToNextTimer());
+      // timeout
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.motionState).toBe('unmounted');
+      expect(result.current.shouldRender).toBe(false);
+    });
+  });
+
+  describe.each([
+    { message: 'with no transition', styles: { 'transition-duration': '0' } },
+    { message: 'with no animation', styles: { 'animation-duration': '0' } },
+  ])('when presence changes - $message', ({ styles }) => {
+    it('should toggle values when transition-duration is 0', () => {
+      const { result, rerender } = renderHookWithRef(
+        false,
+        {
+          animateOnFirstMount: true,
+        },
+        styles,
+      );
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.motionState).toBe('unmounted');
+      expect(result.current.shouldRender).toBe(false);
+      expect(result.current.visible).toBe(false);
+
+      rerender({ presence: true });
+
+      expect(result.current.shouldRender).toBe(true);
+      expect(result.current.motionState).toBe('resting');
+      // requestAnimationFrame
+      act(() => jest.advanceTimersToNextTimer());
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.visible).toBe(true);
+      // timeout
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.motionState).toBe('resting');
+
+      rerender({ presence: false });
+
+      act(() => jest.advanceTimersToNextTimer());
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.visible).toBe(false);
 
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
