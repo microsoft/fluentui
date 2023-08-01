@@ -13,11 +13,13 @@ export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    [`& > .${menuItemClassNames.root}:nth-child(1)`]: {
+      flexGrow: 1,
+    },
     [`& > .${menuItemClassNames.root}:nth-child(2)`]: {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
       paddingLeft: 0,
-      marginLeft: 'auto',
       '::before': {
         content: '""',
         width: tokens.strokeWidthThin,
