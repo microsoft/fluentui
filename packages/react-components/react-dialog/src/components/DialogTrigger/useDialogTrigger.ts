@@ -3,6 +3,7 @@ import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '
 import type { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 import { useARIAButtonProps } from '@fluentui/react-aria';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render DialogTrigger.
@@ -18,7 +19,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   const child = getTriggerChild(children);
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
-  const triggerAttributes = useDialogContext_unstable(ctx => ctx.triggerAttributes);
+  const { triggerAttributes } = useModalAttributes();
 
   const handleClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {

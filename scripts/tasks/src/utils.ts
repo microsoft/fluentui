@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { parseJson, stripJsonComments } from '@nrwl/devkit';
+import { parseJson, stripJsonComments } from '@nx/devkit';
 import type { TscTaskOptions } from 'just-scripts';
 
 /**

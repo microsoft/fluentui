@@ -62,8 +62,8 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
 
 /**
  * Dispatches the custom MouseEvent enter event. Similar to calling `el.click()`
- * @param el element for the event target
- * @param nativeEvent the native mouse event this is mapped to
+ * @param el - element for the event target
+ * @param nativeEvent - the native mouse event this is mapped to
  */
 export const dispatchMenuEnterEvent = (el: HTMLElement, nativeEvent: MouseEvent) => {
   el.dispatchEvent(new CustomEvent(MENU_ENTER_EVENT, { bubbles: true, detail: { nativeEvent } }));

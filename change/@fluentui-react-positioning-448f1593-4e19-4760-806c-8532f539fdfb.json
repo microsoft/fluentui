@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export options `strategy` from `PositioningProps`. Deprecate internal option `positionFixed`",
-  "packageName": "@fluentui/react-positioning",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
