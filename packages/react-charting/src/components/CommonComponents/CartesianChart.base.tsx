@@ -482,11 +482,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         </FocusZone>
 
         {!this.props.hideLegend && (
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-              {this.props.legendBars}
-            </div>
-          </React.Suspense>
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+            {this.props.legendBars}
+          </div>
         )}
         {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
       </div>

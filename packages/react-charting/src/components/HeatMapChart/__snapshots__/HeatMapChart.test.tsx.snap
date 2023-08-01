@@ -175,23 +175,16 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
       </g>
     </svg>
   </div>
-  <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+  <div
+    className=
+
+        {
+          margin-left: 20px;
+          margin-top: 8px;
+        }
   >
     <div
       className=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        className=
 
           {
             align-items: center;
@@ -256,80 +249,79 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                     aria-setsize={1}
                     className=
 
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
                           {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
+                            background-color: rgb(144, 180, 215);
+                            border-color: rgb(144, 180, 215);
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
                           }
-                          &::-moz-focus-inner {
-                            border: 0;
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                            opacity: ;
                           }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseOut={[Function]}
-                      onMouseOver={[Function]}
-                      role="option"
                     >
-                      <div
-                        className=
-
-                            {
-                              background-color: rgb(144, 180, 215);
-                              border-color: rgb(144, 180, 215);
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        className=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Execllent (0-200)
-                      </div>
-                    </button>
-                  </div>
+                      Execllent (0-200)
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -337,7 +329,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         </div>
       </div>
     </div>
-  </Suspense>
+  </div>
   <Suspense
     fallback={
       <div>
@@ -603,23 +595,16 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
       </g>
     </svg>
   </div>
-  <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+  <div
+    className=
+
+        {
+          margin-left: 20px;
+          margin-top: 8px;
+        }
   >
     <div
       className=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        className=
 
           {
             align-items: center;
@@ -690,80 +675,79 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                     aria-setsize={1}
                     className=
 
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
                           {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
+                            background-color: rgb(144, 180, 215);
+                            border-color: rgb(144, 180, 215);
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
                           }
-                          &::-moz-focus-inner {
-                            border: 0;
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                            opacity: ;
                           }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseOut={[Function]}
-                      onMouseOver={[Function]}
-                      role="option"
                     >
-                      <div
-                        className=
-
-                            {
-                              background-color: rgb(144, 180, 215);
-                              border-color: rgb(144, 180, 215);
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        className=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Execllent (0-200)
-                      </div>
-                    </button>
-                  </div>
+                      Execllent (0-200)
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -771,7 +755,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         </div>
       </div>
     </div>
-  </Suspense>
+  </div>
 </div>
 `;
 
@@ -950,23 +934,16 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
       </g>
     </svg>
   </div>
-  <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+  <div
+    className=
+
+        {
+          margin-left: 20px;
+          margin-top: 8px;
+        }
   >
     <div
       className=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        className=
 
           {
             align-items: center;
@@ -1037,171 +1014,170 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                     aria-setsize={2}
                     className=
 
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseOut={[Function]}
-                      onMouseOver={[Function]}
-                      role="option"
-                    >
-                      <div
-                        className=
-
-                            {
-                              background-color: rgb(255, 203, 169);
-                              border-color: rgb(255, 203, 169);
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        className=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Execllent (0-200)
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    className=
-                        ms-OverflowSet-item
                         {
-                          display: inherit;
-                          flex-shrink: 0;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                    key="1"
-                    role="none"
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    <button
-                      aria-label="Nasty"
-                      aria-posinset={2}
-                      aria-selected={false}
-                      aria-setsize={2}
+                    <div
                       className=
 
                           {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
+                            background-color: rgb(255, 203, 169);
+                            border-color: rgb(255, 203, 169);
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
                           }
-                          &::-moz-focus-inner {
-                            border: 0;
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));
+                            opacity: ;
                           }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseOut={[Function]}
-                      onMouseOver={[Function]}
-                      role="option"
                     >
-                      <div
-                        className=
+                      Execllent (0-200)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="1"
+                  role="none"
+                >
+                  <button
+                    aria-label="Nasty"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
 
-                            {
-                              background-color: rgb(255, 213, 135);
-                              border-color: rgb(255, 213, 135);
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        className=
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
 
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Nasty
-                      </div>
-                    </button>
-                  </div>
+                          {
+                            background-color: rgb(255, 213, 135);
+                            border-color: rgb(255, 213, 135);
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Nasty
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -1209,7 +1185,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         </div>
       </div>
     </div>
-  </Suspense>
+  </div>
 </div>
 `;
 
@@ -1566,23 +1542,16 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
       </g>
     </svg>
   </div>
-  <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+  <div
+    className=
+
+        {
+          margin-left: 20px;
+          margin-top: 8px;
+        }
   >
     <div
       className=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        className=
 
           {
             align-items: center;
@@ -1653,80 +1622,79 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                     aria-setsize={1}
                     className=
 
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
                           {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
+                            background-color: rgb(144, 180, 215);
+                            border-color: rgb(144, 180, 215);
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
                           }
-                          &::-moz-focus-inner {
-                            border: 0;
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                            opacity: ;
                           }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseOut={[Function]}
-                      onMouseOver={[Function]}
-                      role="option"
                     >
-                      <div
-                        className=
-
-                            {
-                              background-color: rgb(144, 180, 215);
-                              border-color: rgb(144, 180, 215);
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        className=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Execllent (0-200)
-                      </div>
-                    </button>
-                  </div>
+                      Execllent (0-200)
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -1734,7 +1702,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         </div>
       </div>
     </div>
-  </Suspense>
+  </div>
 </div>
 `;
 
@@ -1913,23 +1881,16 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </g>
     </svg>
   </div>
-  <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+  <div
+    className=
+
+        {
+          margin-left: 20px;
+          margin-top: 8px;
+        }
   >
     <div
       className=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        className=
 
           {
             align-items: center;
@@ -2000,80 +1961,79 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     aria-setsize={1}
                     className=
 
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
                           {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
+                            background-color: rgb(144, 180, 215);
+                            border-color: rgb(144, 180, 215);
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
                           }
-                          &::-moz-focus-inner {
-                            border: 0;
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
+                            opacity: ;
                           }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseOut={[Function]}
-                      onMouseOver={[Function]}
-                      role="option"
                     >
-                      <div
-                        className=
-
-                            {
-                              background-color: rgb(144, 180, 215);
-                              border-color: rgb(144, 180, 215);
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        className=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Execllent (0-200)
-                      </div>
-                    </button>
-                  </div>
+                      Execllent (0-200)
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -2081,6 +2041,6 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         </div>
       </div>
     </div>
-  </Suspense>
+  </div>
 </div>
 `;

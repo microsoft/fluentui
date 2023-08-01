@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { ILegend } from '../Legends/index';
+import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import { classNamesFunction, getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
@@ -36,9 +36,6 @@ import {
   getNextColor,
   getColorFromToken,
 } from '../../utilities/index';
-import { lazy } from 'react';
-
-const Legends = lazy(() => import('../Legends/Legends'));
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();

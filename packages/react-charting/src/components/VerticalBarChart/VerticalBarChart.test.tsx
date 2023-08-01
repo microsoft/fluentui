@@ -207,6 +207,7 @@ describe('VerticalBarChart - mouse events', () => {
     wrapper.update();
 
     wrapper.find('rect').at(1).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
