@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: revert menuItem focus ring back to border",
-  "packageName": "@fluentui/react-menu",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

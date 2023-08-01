@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 01 Aug 2023 10:17:21 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 13:04:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.13)
+
+Tue, 01 Aug 2023 13:04:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.12..@fluentui/react-provider_v9.7.13)
+
+### Patches
+
+- feat(FluentProvider): emit errors on duplicate IDs ([PR #28670](https://github.com/microsoft/fluentui/pull/28670) by olfedias@microsoft.com)
 
 ## [9.7.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.12)
 

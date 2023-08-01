@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(FluentProvider): emit errors on duplicate IDs",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
