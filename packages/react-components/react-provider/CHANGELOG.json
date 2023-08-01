@@ -2,6 +2,42 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 13:04:25 GMT",
+      "tag": "@fluentui/react-provider_v9.7.13",
+      "version": "9.7.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2ddd2ef27e8f1421d095a2ba600d417af98a7b22",
+            "comment": "feat(FluentProvider): emit errors on duplicate IDs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Aug 2023 10:17:21 GMT",
+      "tag": "@fluentui/react-provider_v9.7.12",
+      "version": "9.7.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.0",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.11.1",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 13:29:23 GMT",
       "tag": "@fluentui/react-provider_v9.7.11",
       "version": "9.7.11",

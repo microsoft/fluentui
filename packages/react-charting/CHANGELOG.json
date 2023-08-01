@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 28 Jul 2023 07:34:57 GMT",
+      "tag": "@fluentui/react-charting_v5.16.56",
+      "version": "5.16.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "yushsingla@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "086cd4c549d2cfabefdb3dcb7965082dc3baf846",
+            "comment": "fixed the keyboard accessibility issue in area chart when legend is clicked"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 07:44:54 GMT",
       "tag": "@fluentui/react-charting_v5.16.55",
       "version": "5.16.55",

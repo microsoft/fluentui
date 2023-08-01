@@ -101,6 +101,7 @@ export const Tree: ForwardRefComponent<TreeProps>;
 // @public (undocumented)
 export type TreeCheckedChangeData = {
     value: TreeItemValue;
+    checkedItems: Map<TreeItemValue, TreeSelectionValue>;
     target: HTMLElement;
     event: React_2.ChangeEvent<HTMLElement>;
     type: 'Change';
@@ -152,6 +153,7 @@ export type TreeItemContextValue = {
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;
+    checked?: TreeSelectionValue;
 };
 
 // @public
@@ -269,6 +271,7 @@ export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 // @public (undocumented)
 export type TreeOpenChangeData = {
     open: boolean;
+    openItems: Set<TreeItemValue>;
     value: TreeItemValue;
     target: HTMLElement;
 } & ({
@@ -332,7 +335,7 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React_2.Ref<HTMLE
 export const useFlatTreeStyles_unstable: (state: TreeState) => TreeState;
 
 // @public
-export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(flatTreeItemProps: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
+export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
 
 // @public (undocumented)
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Tue, 25 Jul 2023 13:29:23 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 10:17:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.27)
+
+Tue, 01 Aug 2023 10:17:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.26..@fluentui/react-toolbar_v9.1.27)
+
+### Patches
+
+- Remove margin from Icon in ToolbarButton when vertical prop is passed ([PR #28658](https://github.com/microsoft/fluentui/pull/28658) by chassunc@microsoft.com)
+- Bump @fluentui/react-button to v9.3.26 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-divider to v9.2.22 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-radio to v9.1.27 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-tabster to v9.11.1 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
 
 ## [9.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.26)
 
