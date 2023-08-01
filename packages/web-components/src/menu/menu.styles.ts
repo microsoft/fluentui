@@ -10,7 +10,7 @@ export const styles = css`
   :host {
     position: relative;
   }
-  .menu-list-container {
+  .positioning-container {
     position: fixed;
     top: 0;
     left: 0;

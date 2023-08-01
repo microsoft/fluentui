@@ -3,10 +3,13 @@ import type { Menu } from './menu.js';
 
 export function menuTemplate<T extends Menu>(): ElementViewTemplate<T> {
   return html<T>`
-    <template @keydown="${(x, c) => x.handleMenuKeydown(c.event as KeyboardEvent)}">
-      <slot name="trigger" ${slotted({ property: 'trigger', filter: elements() })}></slot>
-      <span class="menu-list-container" ${ref('menuListContainer')} ?hidden="${x => !x.open}">
-        <slot ${slotted({ property: 'menu', filter: elements() })}></slot>
+    <template
+      ?open-on-hover="${x => x.openOnHover}"
+      @keydown="${(x, c) => x.handleMenuKeydown(c.event as KeyboardEvent)}"
+    >
+      <slot name="trigger" ${slotted({ property: 'slottedTriggers', filter: elements() })}></slot>
+      <span ${ref('positioningContainer')} class="positioning-container" ?hidden="${x => !x.open}">
+        <slot ${slotted({ property: 'slottedMenuList', filter: elements() })}></slot>
       </span>
     </template>
   `;

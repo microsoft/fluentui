@@ -4,19 +4,17 @@ import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utili
 import { MenuList } from '../menu-list/menu-list.js';
 
 /**
- * The base class used for constructing a fluent-menu custom element
+ * The Menu class represents a menu component.
  * @public
  */
 export class Menu extends FASTElement {
-  public connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener('click', this.handleDocumentClick);
-  }
-
-  public disconnectedCallback() {
-    super.disconnectedCallback();
-    document.removeEventListener('click', this.handleDocumentClick);
-  }
+  /**
+   * Determines if the menu should open on hover.
+   * @public
+   */
+  @observable
+  @attr({ attribute: 'open-on-hover', mode: 'boolean' })
+  public openOnHover?: boolean = false;
 
   /**
    * Defines whether the menu is open or not.
@@ -27,102 +25,189 @@ export class Menu extends FASTElement {
   public open: boolean = false;
 
   /**
-   * The array of HTMLElements for the menu.
+   * Holds the slotted menu list.
    * @public
    */
   @observable
-  public menu?: HTMLElement[];
+  public slottedMenuList: MenuList[] = [];
 
   /**
-   * The array of HTMLElements for the trigger.
+   * Holds the slotted triggers.
    * @public
    */
   @observable
-  public trigger?: HTMLElement[];
+  public slottedTriggers: HTMLElement[] = [];
 
   /**
-   * Attribute that determines if the menu should open on hover.
-   * @public
+   * The positioning container of the menu.
+   * @internal
    */
-  @attr({ attribute: 'open-on-hover', mode: 'boolean' })
-  public openOnHover: boolean = false;
+  public positioningContainer?: HTMLElement;
 
   /**
-   * Holds the reference to the MenuList object.
-   * @private
-   */
-  private _menu?: MenuList;
-
-  /**
-   * Holds the reference to the HTMLElement that triggers the menu.
+   * The trigger element of the menu.
    * @private
    */
   private _trigger?: HTMLElement;
 
   /**
-   * Container that holds the menu list items.
-   * @public
+   * The menu list element of the menu.
+   * @private
    */
-  public menuListContainer?: HTMLElement;
+  private _menuList?: HTMLElement;
 
   /**
    * Holds a reference to a function that is used to cleanup resources.
-   * @private
-   */
-  private cleanup?: () => void;
-
-  /**
-   * Method to toggle the open state of the menu on an event.
-   * @param {MouseEvent} e - The event that triggered the expansion of the menu.
    * @public
    */
-  public toggleMenu = () => {
-    this.open = !this.open;
-  };
+  public cleanup?: () => void;
 
   /**
-   * Method to close the menu.
+   * Called when the element is connected to the DOM.
+   * Sets up the component.
    * @public
    */
-  public closeMenu() {
-    this.open = false;
+  public connectedCallback() {
+    super.connectedCallback();
+    Updates.enqueue(() => this.setComponent());
   }
 
   /**
-   * Method to open the menu.
+   * Called when the element is disconnected from the DOM.
+   * Removes event listeners.
    * @public
    */
-  public openMenu() {
-    this.open = true;
+  public disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeListeners();
   }
 
   /**
-   * Method to focus on the menu.
+   * Sets the component.
+   * Sets the trigger and menu list elements and adds event listeners.
    * @public
    */
-  public focus(): void {
-    if (this.open && this._menu) {
-      const menu = this._menu as MenuList;
-      Updates.enqueue(() => menu.focus());
+  public setComponent(): void {
+    if (this.$fastController.isConnected && this.slottedMenuList.length && this.slottedTriggers.length) {
+      this._trigger = this.slottedTriggers![0];
+      this._menuList = this.slottedMenuList![0];
+      this._trigger.setAttribute('aria-haspopup', 'true');
+      this._trigger.setAttribute('aria-expanded', `${this.open}`);
+      this.addListeners();
     }
   }
 
   /**
-   * Method to set the positioning of the menu.
+   * Toggles the open state of the menu.
    * @public
    */
-  public setPositioning(): void {
-    if (this.$fastController.isConnected && this._trigger && this.menuListContainer) {
-      this.cleanup = autoUpdate(this, this.menuListContainer, async () => {
-        const { middlewareData, x, y } = await computePosition(this._trigger!, this.menuListContainer!, {
+  public toggleMenu = () => {
+    if (this.open) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  };
+
+  /**
+   * Closes the menu.
+   * @public
+   */
+  public closeMenu = () => {
+    this.open = false;
+  };
+
+  /**
+   * Opens the menu.
+   * @public
+   */
+  public openMenu = () => {
+    this.open = true;
+  };
+
+  /**
+   * Focuses on the menu list.
+   * @public
+   */
+  public focusMenuList(): void {
+    if (this.open && this._menuList) {
+      Updates.enqueue(() => {
+        this._menuList!.focus();
+      });
+    }
+  }
+
+  /**
+   * Focuses on the menu trigger.
+   * @public
+   */
+  public focusTrigger(): void {
+    if (!this.open && this._trigger) {
+      Updates.enqueue(() => {
+        this._trigger!.focus();
+      });
+    }
+  }
+
+  /**
+   * Called whenever the open state changes.
+   * Updates the 'aria-expanded' attribute and sets the positioning of the menu.
+   * Sets menu list position
+   * emits openChanged event
+   * @public
+   * @param {boolean} oldValue - The previous value of 'open'.
+   * @param {boolean} newValue - The new value of 'open'.
+   */
+  public openChanged(oldValue: boolean, newValue: boolean): void {
+    if (this.$fastController.isConnected && this._trigger instanceof HTMLElement) {
+      this._trigger.setAttribute('aria-expanded', `${this.open}`);
+      if (this._menuList && this.open) {
+        Updates.enqueue(this.setPositioningTask);
+      }
+    }
+    this.$emit('changed', { open: newValue });
+  }
+
+  /**
+   * Called whenever the 'openOnHover' property changes.
+   * Adds or removes a 'mouseover' event listener to the trigger based on the new value.
+   * @public
+   * @param {boolean} oldValue - The previous value of 'openOnHover'.
+   * @param {boolean} newValue - The new value of 'openOnHover'.
+   */
+  public openOnHoverChanged(oldValue: boolean, newValue: boolean): void {
+    if (newValue) {
+      this._trigger?.addEventListener('mouseover', this.openMenu);
+    } else {
+      this._trigger?.removeEventListener('mouseover', this.openMenu);
+    }
+  }
+
+  /**
+   * The task to set the positioning of the menu.
+   * @protected
+   */
+  protected setPositioningTask = () => {
+    this.setPositioning();
+  };
+
+  /**
+   * Sets the positioning of the menu.
+   * @protected
+   */
+  protected setPositioning(): void {
+    if (this.$fastController.isConnected && this._menuList && this.open && this._trigger) {
+      this.cleanup?.();
+      this.cleanup = autoUpdate(this, this.positioningContainer!, async () => {
+        const { middlewareData, x, y } = await computePosition(this._trigger!, this.positioningContainer!, {
           placement: 'bottom',
           strategy: 'fixed',
           middleware: [
             flip(),
             size({
               apply: ({ availableHeight, rects }) => {
-                this.menuListContainer?.style &&
-                  Object.assign(this.menuListContainer.style, {
+                this.positioningContainer?.style &&
+                  Object.assign(this.positioningContainer!.style, {
                     maxHeight: `${availableHeight}px`,
                     width: `${rects.reference.width}px`,
                   });
@@ -136,8 +221,8 @@ export class Menu extends FASTElement {
           return;
         }
 
-        this.menuListContainer?.style &&
-          Object.assign(this.menuListContainer.style, {
+        this.positioningContainer?.style &&
+          Object.assign(this.positioningContainer.style, {
             position: 'fixed',
             top: '0',
             left: '0',
@@ -148,121 +233,95 @@ export class Menu extends FASTElement {
   }
 
   /**
-   * Method that gets called whenever the menu changes.
-   * @protected
+   * Adds event listeners.
+   * Adds click and keydown event listeners to the trigger and a click event listener to the document.
+   * If 'openOnHover' is true, adds a 'mouseover' event listener to the trigger.
+   * @public
    */
-  protected menuChanged(): void {
-    if (this.$fastController.isConnected && this.menu && this.menu.length) {
-      this._menu = this.menu[0] as MenuList;
+  private addListeners(): void {
+    document.addEventListener('click', this.handleDocumentClick);
+    this._trigger?.addEventListener('click', this.toggleMenu);
+    this._trigger?.addEventListener('keydown', this.handleTriggerKeydown);
+    if (this.openOnHover) {
+      this._trigger?.addEventListener('mouseover', this.openMenu);
     }
   }
 
   /**
-   * Method that gets called whenever the trigger changes.
-   * @protected
-   * @param {HTMLElement[] | void} prev - The previous value of the trigger.
-   * @param {HTMLElement[]} next - The new value of the trigger.
-   */
-  protected triggerChanged(prev: HTMLElement[] | void, next: HTMLElement[]): void {
-    if (prev !== next) {
-      if (Array.isArray(prev) && prev.length) {
-        this.cleanupTriggerEventListeners(prev[0]);
-      }
-
-      if (next && next.length) {
-        this._trigger = next[0];
-        this._trigger.setAttribute('aria-haspopup', 'true');
-        this._trigger.setAttribute('aria-expanded', `${this.open}`);
-        this._trigger.addEventListener('keydown', this.handleTriggerKeydown);
-        this._trigger.addEventListener('click', this.toggleMenu);
-
-        if (this.openOnHover) {
-          this._trigger.addEventListener('mouseover', this.toggleMenu);
-        }
-      }
-    }
-  }
-
-  /**
-   * Method that gets called whenever the open state changes.
-   * @protected
-   */
-  protected openChanged(oldValue: boolean, newValue: boolean): void {
-    if (this.$fastController.isConnected && this._trigger) {
-      this._trigger.setAttribute('aria-expanded', `${this.open}`);
-    }
-    Updates.enqueue(() => {
-      this.setPositioning();
-      this.focus();
-    });
-    this.$emit('openChanged', { open: newValue });
-  }
-
-  /**
-   * Handles document click events to close the menu when a click occurs outside of the menu or the trigger.
-   * @param {Event} e - The event triggered on document click.
+   * Removes event listeners.
+   * Removes click and keydown event listeners from the trigger and a click event listener from the document.
+   * Also removes 'mouseover' event listeners from the trigger.
    * @private
    */
-  private handleDocumentClick = (e: any) => {
-    if (e && !e.composedPath().includes(this._menu) && !e.composedPath().includes(this._trigger)) {
-      this.closeMenu();
-    }
-  };
+  private removeListeners(): void {
+    document.removeEventListener('click', this.handleDocumentClick);
+    this._trigger?.removeEventListener('click', this.toggleMenu);
+    this._trigger?.removeEventListener('keydown', this.handleTriggerKeydown);
+    this._trigger?.removeEventListener('mouseover', this.openMenu);
+    this._trigger?.removeEventListener('mouseover', this.openMenu);
+  }
 
   /**
-   * Handle keyboard interaction for the menu.
-   *
-   * @param e - the keyboard event
-   * @internal
+   * Handles keyboard interaction for the menu.
+   * Closes the menu and focuses on the trigger when the Escape key is pressed.
+   * Closes the menu when the Tab key is pressed.
+   * @public
+   * @param {KeyboardEvent} e - the keyboard event
    */
   public handleMenuKeydown(e: KeyboardEvent): boolean | void {
     const key = e.key;
 
     switch (key) {
-      case keyTab: {
+      case keyEscape:
+        e.preventDefault();
+        if (this.open) {
+          this.closeMenu();
+          this.focusTrigger();
+        }
+        break;
+      case keyTab:
         if (this.open) {
           this.closeMenu();
         }
-        break;
-      }
-      case keyEscape: {
-        if (this.open) {
-          e.preventDefault();
-          this.closeMenu();
-          this._trigger?.focus();
+        if (e.shiftKey) {
+          this.focusTrigger();
         }
-        break;
-      }
+      default:
+        return true;
     }
   }
 
   /**
    * Handles keyboard interaction for the trigger.
-   * @param {KeyboardEvent} e - the keyboard event
+   * Toggles the menu when the Space or Enter key is pressed.
+   * If the menu is open, focuses on the menu list.
    * @public
+   * @param {KeyboardEvent} e - the keyboard event
    */
-  public handleTriggerKeydown(e: KeyboardEvent): void {
+  public handleTriggerKeydown = (e: KeyboardEvent): boolean | void => {
     const key = e.key;
     switch (key) {
       case keySpace:
-      case keyEnter: {
+      case keyEnter:
         e.preventDefault();
-        this.toggleMenu;
+        this.toggleMenu();
+        if (this.open) {
+          this.focusMenuList();
+        }
         break;
-      }
+      default:
+        return true;
     }
-  }
+  };
 
   /**
-   * Method to cleanup trigger event listeners
-   * @param {HTMLElement} trigger - The HTMLElement of the trigger
+   * Handles document click events to close the menu when a click occurs outside of the menu or the trigger.
    * @private
+   * @param {Event} e - The event triggered on document click.
    */
-  private cleanupTriggerEventListeners(trigger: HTMLElement): void {
-    if (this._trigger) {
-      this._trigger.removeEventListener('keydown', this.handleTriggerKeydown);
-      this._trigger.removeEventListener('click', this.toggleMenu);
-      this._trigger.removeEventListener('mouseover', this.toggleMenu);
+  private handleDocumentClick = (e: any) => {
+    if (e && !e.composedPath().includes(this._menuList) && !e.composedPath().includes(this._trigger)) {
+      this.closeMenu();
     }
-  }
+  };
 }
