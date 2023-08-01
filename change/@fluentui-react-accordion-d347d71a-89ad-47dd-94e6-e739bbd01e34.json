@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Accordion - export AccordionHeaderContextProvider",
-  "packageName": "@fluentui/react-accordion",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
