@@ -2317,6 +2317,465 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
 </div>
 `;
 
+exports[`Sankey chart rendering Should re-render the Sankey chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_SankeyChart_empty2"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    role="presentation"
+    style=""
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone16"
+    >
+      <svg
+        focusable="false"
+        height="436"
+        id="sankeyChart15"
+        width="864"
+      >
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-0"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from192.168.42.72toinboxwith weight80"
+              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link3"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="0"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-1"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from172.152.48.13toinboxwith weight50"
+              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link4"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-2"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from172.152.48.13toJunk Folderwith weight28"
+              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link5"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-3"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from124.360.55.1toJunk Folderwith weight14"
+              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link6"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-4"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from192.564.10.2toJunk Folderwith weight7"
+              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link7"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-5"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link8"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-6"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from124.124.50.1toJunk Folderwith weight10"
+              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link9"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-7"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#0E7878"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from172.630.89.4toJunk Folderwith weight10"
+              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link10"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-8"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#0E7878"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#4F6BED"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link frominboxtoClickedwith weight30"
+              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link11"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-9"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#0E7878"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#4F6BED"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link frominboxtoOpenedwith weight55"
+              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link12"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-10"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#0E7878"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#4F6BED"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link13"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-11"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#0E7878"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#4F6BED"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link14"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on providing height less than onepercent of total height 1`] = `
 <div
   className=

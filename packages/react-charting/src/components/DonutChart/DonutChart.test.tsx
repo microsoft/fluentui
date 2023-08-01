@@ -42,7 +42,7 @@ export const chartPoints: IChartProps = {
   chartData: points,
 };
 
-const emptyChartPoints: IChartProps = {
+export const emptyChartPoints: IChartProps = {
   chartTitle: chartTitle,
   chartData: [],
 };

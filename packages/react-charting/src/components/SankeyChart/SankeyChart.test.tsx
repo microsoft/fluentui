@@ -29,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-const data: IChartProps = {
+export const data: IChartProps = {
   chartTitle: 'Sankey Chart',
   SankeyChartData: {
     nodes: [
