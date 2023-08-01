@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-tags-preview",
+  "entries": [
+    {
+      "date": "Tue, 01 Aug 2023 13:04:25 GMT",
+      "tag": "@fluentui/react-tags-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ed5421e62b010bfb8cb368757c2c34baccb0076e",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    }
+  ]
+}

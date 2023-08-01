@@ -31,6 +31,7 @@ export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
 export type TreeOpenChangeData = {
   open: boolean;
+  openItems: Set<TreeItemValue>;
   value: TreeItemValue;
   target: HTMLElement;
 } & (
@@ -45,6 +46,7 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 export type TreeCheckedChangeData = {
   value: TreeItemValue;
+  checkedItems: Map<TreeItemValue, TreeSelectionValue>;
   target: HTMLElement;
   event: React.ChangeEvent<HTMLElement>;
   type: 'Change';

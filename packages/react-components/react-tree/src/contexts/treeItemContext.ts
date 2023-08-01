@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TreeItemType, TreeItemValue } from '../TreeItem';
+import { headlessTreeRootId } from '../utils/createHeadlessTree';
+import { TreeSelectionValue } from '../Tree';
 
 export type TreeItemContextValue = {
   isActionsVisible: boolean;
@@ -13,10 +15,11 @@ export type TreeItemContextValue = {
   itemType: TreeItemType;
   value: TreeItemValue;
   open: boolean;
+  checked?: TreeSelectionValue;
 };
 
 const defaultContextValue: TreeItemContextValue = {
-  value: '',
+  value: headlessTreeRootId,
   selectionRef: React.createRef(),
   layoutRef: React.createRef(),
   subtreeRef: React.createRef(),
@@ -26,6 +29,7 @@ const defaultContextValue: TreeItemContextValue = {
   isAsideVisible: false,
   itemType: 'leaf',
   open: false,
+  checked: undefined,
 };
 
 export const TreeItemContext: Context<TreeItemContextValue | undefined> = createContext<

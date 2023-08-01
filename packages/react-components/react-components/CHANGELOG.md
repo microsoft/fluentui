@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 27 Jul 2023 10:34:13 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 13:04:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.27.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.3)
+
+Tue, 01 Aug 2023 13:04:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.27.2..@fluentui/react-components_v9.27.3)
+
+### Minor changes
+
+- `@fluentui/react-tags-preview`
+  - feat: release preview package ([PR #28696](https://github.com/microsoft/fluentui/pull/28696) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: revert menuItem focus ring back to border ([PR #28698](https://github.com/microsoft/fluentui/pull/28698) by yuanboxue@microsoft.com)
+- `@fluentui/react-provider`
+  - feat(FluentProvider): emit errors on duplicate IDs ([PR #28670](https://github.com/microsoft/fluentui/pull/28670) by olfedias@microsoft.com)
+
+## [9.27.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.2)
+
+Tue, 01 Aug 2023 10:17:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.27.1..@fluentui/react-components_v9.27.2)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - Accordion - export AccordionHeaderContextProvider ([PR #28542](https://github.com/microsoft/fluentui/pull/28542) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-combobox`
+  - Added portal slot to Combobox and Dropdown ([PR #28661](https://github.com/microsoft/fluentui/pull/28661) by gcox@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - adds Announce context ([PR #28654](https://github.com/microsoft/fluentui/pull/28654) by eysjiang@gmail.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: use css outline for MenuItem focus ring instead of pseudo element ([PR #28685](https://github.com/microsoft/fluentui/pull/28685) by yuanboxue@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: autoSize causing maximum positioning update ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by yuanboxue@microsoft.com)
+- `@fluentui/react-toolbar`
+  - Remove margin from Icon in ToolbarButton when vertical prop is passed ([PR #28658](https://github.com/microsoft/fluentui/pull/28658) by chassunc@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - bugfix: Tree, vertical spacing of branches and children is inconsistent ([PR #28681](https://github.com/microsoft/fluentui/pull/28681) by petrduda@microsoft.com)
+  - feat: adds openItems and checkedItems to tree callback data ([PR #28669](https://github.com/microsoft/fluentui/pull/28669) by bernardo.sunderhus@gmail.com)
+  - chore: improves internal headless signature ([PR #28651](https://github.com/microsoft/fluentui/pull/28651) by bernardo.sunderhus@gmail.com)
 
 ## [9.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.1)
 

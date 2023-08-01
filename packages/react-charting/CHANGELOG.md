@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 25 Jul 2023 07:44:54 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jul 2023 07:34:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.56)
+
+Fri, 28 Jul 2023 07:34:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.55..@fluentui/react-charting_v5.16.56)
+
+### Patches
+
+- fixed the keyboard accessibility issue in area chart when legend is clicked ([PR #28515](https://github.com/microsoft/fluentui/pull/28515) by yushsingla@microsoft.com)
 
 ## [5.16.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.55)
 

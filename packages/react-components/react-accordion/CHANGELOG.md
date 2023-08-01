@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Tue, 25 Jul 2023 13:29:16 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 10:17:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.2.0)
+
+Tue, 01 Aug 2023 10:17:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.1.25..@fluentui/react-accordion_v9.2.0)
+
+### Minor changes
+
+- Accordion - export AccordionHeaderContextProvider ([PR #28542](https://github.com/microsoft/fluentui/pull/28542) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-tabster to v9.11.1 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
 
 ## [9.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.25)
 
