@@ -1,5 +1,6 @@
 import { ElementViewTemplate, html, repeat, ViewTemplate, when } from '@microsoft/fast-element';
 import { CalendarOptions, calendarTemplate, calendarTitleTemplate, tagFor } from '@microsoft/fast-foundation';
+import { keyEnter } from '@microsoft/fast-web-utilities';
 import type { Calendar } from './calendar.js';
 
 const ArrowUp16 = html.partial(`
@@ -29,7 +30,13 @@ export function calendarSecondaryPanelTitleTemplate<T extends Calendar>(): ViewT
   const monthPickerTitle = html` <span>${(x: T) => x.dateFormatter.getYear(x.getMonthPickerInfo().year)}</span> `;
 
   return html`
-    <div class="secondary-panel-title" part="secondary-panel-title" @click=${x => x.toggleYearPicker()}>
+    <div
+      class="secondary-panel-title"
+      part="secondary-panel-title"
+      tabindex="4"
+      @click=${x => x.toggleYearPicker()}
+      @keydown=${(x, c) => x.handleSecondaryPanelTitleKeydown(c.event as KeyboardEvent)}
+    >
       ${x => (x.yearPickerOpen ? yearPickerTitle : monthPickerTitle)}
     </div>
   `;
@@ -43,7 +50,11 @@ export function calendarSecondaryPanelTitleTemplate<T extends Calendar>(): ViewT
  * @returns - The secondary panel cell template for month picker or year picker
  * @public
  */
-export function secondaryPanelCellTemplate(options: CalendarOptions, todayMonth: number, todayYear: number): ViewTemplate {
+export function secondaryPanelCellTemplate(
+  options: CalendarOptions,
+  todayMonth: number,
+  todayYear: number,
+): ViewTemplate {
   const cellTag = html.partial(tagFor(options.dataGridCell));
   return html`
       <${cellTag}
@@ -71,7 +82,11 @@ export function secondaryPanelCellTemplate(options: CalendarOptions, todayMonth:
  * @returns - The secondary panel row template for month picker or year picker
  * @public
  */
-export function secondaryPanelRowTemplate(options: CalendarOptions, todayMonth: number, todayYear: number): ViewTemplate {
+export function secondaryPanelRowTemplate(
+  options: CalendarOptions,
+  todayMonth: number,
+  todayYear: number,
+): ViewTemplate {
   const rowTag = html.partial(tagFor(options.dataGridRow));
   return html`
       <${rowTag}
@@ -136,7 +151,7 @@ export function secondaryPanelTemplate<T extends Calendar>(options: CalendarOpti
  * @public
  */
 export const template: ElementViewTemplate<Calendar> = html`
-  <div class="control">
+  <div class="control" @keydown=${(x, c) => x.handleDateGridKeydown(c.event as KeyboardEvent)}>
     <div class="date-view">
       <div class="header">
         ${calendarTitleTemplate()}
@@ -144,14 +159,18 @@ export const template: ElementViewTemplate<Calendar> = html`
           <span
             class="navicon-up"
             part="navicon-up"
-            @click="${(x, c) => x.handleSwitchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
+            tabindex="1"
+            @click="${x => x.handleSwitchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
+            @keydown="${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'previous')}"
           >
             ${ArrowUp16}
           </span>
           <span
             class="navicon-down"
             part="navicon-down"
-            @click="${(x, c) => x.handleSwitchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
+            tabindex="2"
+            @click="${x => x.handleSwitchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
+            @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'next')}
           >
             ${ArrowDown16}
           </span>
@@ -165,7 +184,10 @@ export const template: ElementViewTemplate<Calendar> = html`
       <div class="footer" part="footer">
         ${when(
           x => !x.hasAttribute('monthPickerVisible'),
-          html` <div class=${x => x.isToday() ? 'slotted-link inactive' : 'slotted-link'} @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
+          html` <div
+            class=${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}
+            @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}"
+          >
             Go to today
           </div>`,
         )}
@@ -180,20 +202,24 @@ export const template: ElementViewTemplate<Calendar> = html`
             <span
               class="navicon-up"
               part="navicon-up"
-              @click="${(x, c) =>
+              tabindex="5"
+              @click="${x =>
                 x.yearPickerOpen
                   ? (x.yearPickerDecade = x.getYearPickerInfo().previousStart)
                   : (x.monthPickerYear = x.getMonthPickerInfo().previous)}"
+              @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'previous')}
             >
               ${ArrowUp16}
             </span>
             <span
               class="navicon-down"
               part="navicon-down"
-              @click="${(x, c) =>
+              tabindex="5"
+              @click="${x =>
                 x.yearPickerOpen
                   ? (x.yearPickerDecade = x.getYearPickerInfo().nextStart)
                   : (x.monthPickerYear = x.getMonthPickerInfo().next)}"
+              @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'next')}
             >
               ${ArrowDown16}
             </span>
@@ -205,7 +231,10 @@ export const template: ElementViewTemplate<Calendar> = html`
           dataGridCell: 'fast-data-grid-cell',
         })}
         <div class="footer" part="footer">
-          <div class="${x => x.isToday()? 'slotted-link inactive' : 'slotted-link'}" @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}">
+          <div
+            class="${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}"
+            @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}"
+          >
             Go to today
           </div>
         </div>

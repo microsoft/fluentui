@@ -1,8 +1,20 @@
 import { attr, Updates } from '@microsoft/fast-element';
 import { CalendarDateInfo, FASTCalendar, WeekdayFormat } from '@microsoft/fast-foundation';
-import { keyArrowDown, keyArrowLeft, keyArrowRight, keyArrowUp } from '@microsoft/fast-web-utilities';
+import {
+  keyArrowDown,
+  keyArrowLeft,
+  keyArrowRight,
+  keyArrowUp,
+  keyEnd,
+  keyEnter,
+  keyHome,
+  keyPageDown,
+  keyPageUp,
+  keyTab,
+} from '@microsoft/fast-web-utilities';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
-import { FluentDateFormatter, NUM_YEARS_IN_DECADE } from './date-formatter.js';
+import { FluentDateFormatter, NUM_DAYS_IN_WEEK, NUM_YEARS_IN_DECADE } from './date-formatter.js';
+import { Key } from '@microsoft/fast-element/di';
 
 /**
  * Month picker information needed for rendering
@@ -188,8 +200,9 @@ export class Calendar extends FASTCalendar {
     if (name === 'month') {
       if (this.navigatedDate.getMonth() + 1 != this.month || this.navigatedDate.getFullYear() != this.year) {
         this.navigatedDate = new Date(`${this.month}-01-${this.year}`);
+      } else {
+        Updates.enqueue(() => this.setFocus());
       }
-      Updates.enqueue(() => this.setFocus());
     }
   }
 
@@ -382,14 +395,52 @@ export class Calendar extends FASTCalendar {
     this.handleSwitchMonth(month, year);
   }
 
+  public handleNavIconKeydown(event: KeyboardEvent, panel: string, direction: string): boolean {
+    this.handleKeydownPropagation(event);
+    if (event.key === keyEnter) {
+      if (panel === 'primary') {
+        if (direction === 'previous') {
+          this.handleSwitchMonth(this.getMonthInfo().previous.month, this.getMonthInfo().previous.year);
+        } else if (direction === 'next') {
+          this.handleSwitchMonth(this.getMonthInfo().next.month, this.getMonthInfo().next.year);
+        }
+      } else if (panel === 'secondary') {
+        if (direction === 'previous') {
+          this.yearPickerOpen
+            ? (this.yearPickerDecade = this.getYearPickerInfo().previousStart)
+            : (this.monthPickerYear = this.getMonthPickerInfo().previous);
+        } else if (direction === 'next') {
+          this.yearPickerOpen
+            ? (this.yearPickerDecade = this.getYearPickerInfo().nextStart)
+            : (this.monthPickerYear = this.getMonthPickerInfo().next);
+        }
+      }
+    }
+    return true;
+  }
+
+  public handleKeydownPropagation(event: KeyboardEvent): boolean {
+    event.stopPropagation();
+    return true;
+  }
+
+  public handleSecondaryPanelTitleKeydown(event: KeyboardEvent): boolean {
+    if (event.key === keyTab) {
+      this.handleKeydownPropagation(event);
+    } else if (event.key === keyEnter) {
+      this.toggleYearPicker();
+    }
+    return true;
+  }
+
   /**
    * Handles keyboard events on a cell
    * @param event - Keyboard event
    * @param date - Date of the cell selected
    */
   public handleKeydown(event: KeyboardEvent, date: CalendarDateInfo): boolean {
-    event.preventDefault();
     super.handleKeydown(event, date);
+    this.handleKeydownPropagation(event);
 
     const currentCell = event.target as HTMLElement;
     currentCell.tabIndex = -1;
@@ -442,6 +493,16 @@ export class Calendar extends FASTCalendar {
         }
         break;
       }
+      case keyHome: {
+        const column = Number(currentCell.getAttribute('grid-column'));
+        this.navigatedDate.setDate(date.day - column + 1);
+        break;
+      }
+      case keyEnd: {
+        const column = Number(currentCell.getAttribute('grid-column'));
+        this.navigatedDate.setDate(date.day + NUM_DAYS_IN_WEEK - column);
+        break;
+      }
       default:
         break;
     }
@@ -451,6 +512,23 @@ export class Calendar extends FASTCalendar {
     return true;
   }
 
+  public handleDateGridKeydown(event: KeyboardEvent) {
+    console.log(event.key);
+    switch (event.key) {
+      case keyPageDown: {
+        this.handleSwitchMonth(this.getMonthInfo().next.month, this.getMonthInfo().next.year);
+        break;
+      }
+      case keyPageUp: {
+        this.handleSwitchMonth(this.getMonthInfo().previous.month, this.getMonthInfo().previous.year);
+        break;
+      }
+    }
+  }
+
+  /**
+   * Sets focus on the current navigated date on the day grid
+   */
   private setFocus() {
     const navigatedDateString = `${
       this.navigatedDate.getMonth() + 1
@@ -458,7 +536,7 @@ export class Calendar extends FASTCalendar {
     const focus = this.shadowRoot?.querySelector(`slot[name=${CSS.escape(navigatedDateString)}]`)
       ?.parentElement as HTMLElement;
 
-    focus.tabIndex = 0;
+    focus.tabIndex = 3;
     focus.focus();
   }
 }

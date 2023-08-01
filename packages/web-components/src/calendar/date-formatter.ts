@@ -13,6 +13,12 @@ export const NUM_MONTHS_IN_YEAR = 12;
 export const NUM_YEARS_IN_DECADE = 12;
 
 /**
+ * Constant for number of days in a week
+ * @public
+ */
+export const NUM_DAYS_IN_WEEK = 7;
+
+/**
  * Date formatting utility
  * @public
  */
