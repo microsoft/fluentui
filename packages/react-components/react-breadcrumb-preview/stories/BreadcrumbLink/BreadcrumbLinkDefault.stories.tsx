@@ -82,7 +82,7 @@ const linkItems: Item[] = [
 
 function renderLink(el: Item, isLastItem: boolean = false) {
   return (
-    <React.Fragment key={`${el.key}-button`}>
+    <React.Fragment key={`${el.key}-link`}>
       <BreadcrumbItem>
         <BreadcrumbLink
           {...el.linkProps}
@@ -102,7 +102,7 @@ export const Default = () => {
   const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
   return (
     <>
-      <Label>Appearance (see the difference on `hover`)</Label>
+      <Label>Appearance</Label>
       <RadioGroup
         aria-labelledby="breadcrumb-appearance"
         value={appearance}

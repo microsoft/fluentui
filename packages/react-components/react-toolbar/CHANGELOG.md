@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.26)
+
+Tue, 25 Jul 2023 13:29:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.25..@fluentui/react-toolbar_v9.1.26)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.25 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-radio to v9.1.26 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-tabster to v9.11.0 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+
+## [9.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.25)
+
+Thu, 20 Jul 2023 18:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.24..@fluentui/react-toolbar_v9.1.25)
+
+### Patches
+
+- fix: Remove empty makeStyles call. ([PR #28566](https://github.com/microsoft/fluentui/pull/28566) by 138819425+benlemmon-ms@users.noreply.github.com)
+- Bump @fluentui/react-button to v9.3.24 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-divider to v9.2.21 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-radio to v9.1.25 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
 
 ## [9.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.24)
 

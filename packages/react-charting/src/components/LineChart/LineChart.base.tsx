@@ -301,7 +301,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   y1={0}
                   x2={0}
                   y2={props.containerHeight}
-                  stroke={'#C8C8C8'}
+                  stroke={'#323130'}
                   id={this._verticalLine}
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}

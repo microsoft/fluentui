@@ -1,19 +1,32 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
-import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/components/Tree/Tree.types';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from '@fluentui/react-tree';
 import story from './TreeItemExpandCollapseIconOnly.md';
 
 export const ExpandCollapseIconOnly = () => {
+  const [openItems, setOpenItems] = React.useState<Set<TreeItemValue>>(() => new Set());
   const onOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     if (data.type === 'Click' || data.type === 'Enter') {
-      event.preventDefault();
-      // TODO: We might need to add the ID of the treeeItem to the event
       alert('click on item');
+      return;
     }
+    const nextOpenItems = new Set(openItems);
+    if (data.open) {
+      nextOpenItems.add(data.value);
+    } else {
+      nextOpenItems.delete(data.value);
+    }
+    setOpenItems(nextOpenItems);
   };
 
   return (
-    <Tree aria-label="Tree" onOpenChange={onOpenChange}>
+    <Tree openItems={openItems} aria-label="Tree" onOpenChange={onOpenChange}>
       <TreeItem itemType="branch" value="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>

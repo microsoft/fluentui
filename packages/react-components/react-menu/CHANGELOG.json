@@ -2,6 +2,109 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 27 Jul 2023 10:34:13 GMT",
+      "tag": "@fluentui/react-menu_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43",
+            "comment": "feat: update style to prevent double scrollbar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.9.0",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:19 GMT",
+      "tag": "@fluentui/react-menu_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "refactor: Remove custom focus code in favour of useRestoreFocus hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.3.3",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.11.0",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 18:27:30 GMT",
+      "tag": "@fluentui/react-menu_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6",
+            "comment": "chore: migrate to monosize"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "631543d26bfef45b5288f19d2d0c396aea3b880a",
+            "comment": "fix: MenuItem content should be spaced 12px from the boundary"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5918d226f4561f9682fa60fab92341f0f7cbe435",
+            "comment": "chore: Exporting MENU_ENTER_EVENT and dispatchMenuEnterEvent utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.3.27",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.3.2",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jul 2023 21:25:42 GMT",
       "tag": "@fluentui/react-menu_v9.10.0",
       "version": "9.10.0",
