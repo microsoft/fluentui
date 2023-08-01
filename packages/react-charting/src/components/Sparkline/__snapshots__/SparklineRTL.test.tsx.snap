@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sparkline chart rendering Should re-render the Sparkline chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_SparklineChart_empty7"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Sparkline chart rendering Should re-render the Sparkline chart with data 2`] = `
+<div>
+  <div
+    class=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+        {
+          display: inline;
+        }
+    data-focuszone-id="FocusZone8"
+  >
+    <div
+      class=
+
+          {
+            display: inline;
+          }
+    >
+      <svg
+        data-is-focusable="true"
+        height="20"
+        tabindex="0"
+        width="80"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
 <div
   className=
