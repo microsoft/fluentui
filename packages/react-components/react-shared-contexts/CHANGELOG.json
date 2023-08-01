@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 10:17:20 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "eysjiang@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "937b241d624114c181ea1521d0d4ead1068ddfa3",
+            "comment": "adds Announce context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jul 2023 11:57:13 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.6.0",
       "version": "9.6.0",

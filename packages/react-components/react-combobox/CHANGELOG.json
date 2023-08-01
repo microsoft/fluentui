@@ -2,6 +2,45 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 10:17:19 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "50392ee3cdec1975dff5e496da6241d37acb11b2",
+            "comment": "Added portal slot to Combobox and Dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.14",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.3.4",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.9.1",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.0",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Jul 2023 10:34:14 GMT",
       "tag": "@fluentui/react-combobox_v9.4.10",
       "version": "9.4.10",

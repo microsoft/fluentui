@@ -2,6 +2,75 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 10:17:20 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.29",
+      "version": "9.0.0-beta.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d4b3feec354590939a340460bea62f4e39d38a74",
+            "comment": "bugfix: Tree, vertical spacing of branches and children is inconsistent"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f9e014b3919f00068940b0dd94980f6d542eff68",
+            "comment": "feat: adds openItems and checkedItems to tree callback data"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "2f795af17bf0cf844e0cc59c5d2f2418a00c9594",
+            "comment": "chore: improves internal headless signature"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.5.16",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.26",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-checkbox to v9.1.27",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-portal to v9.3.4",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-radio to v9.1.27",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.0",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-tabster to v9.11.1",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Jul 2023 10:34:14 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.28",
       "version": "9.0.0-beta.28",

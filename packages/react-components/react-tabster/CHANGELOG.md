@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 25 Jul 2023 13:29:22 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 10:17:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.11.1)
+
+Tue, 01 Aug 2023 10:17:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.11.0..@fluentui/react-tabster_v9.11.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
 
 ## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.11.0)
 
