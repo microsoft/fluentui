@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "add playwright testing to the web component package",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "none"
+}
