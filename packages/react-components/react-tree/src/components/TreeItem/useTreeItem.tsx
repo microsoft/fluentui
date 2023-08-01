@@ -3,7 +3,7 @@ import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-uti
 import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
-import { useTreeContext_unstable } from '../../contexts/index';
+import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts/index';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
@@ -42,8 +42,14 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const selectionRef = React.useRef<HTMLInputElement>(null);
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
-  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+  const parentChecked = useTreeItemContext_unstable(ctx => ctx.checked);
+  const checked = useTreeContext_unstable(ctx => {
+    if (selectionMode === 'multiselect' && typeof parentChecked === 'boolean') {
+      return parentChecked;
+    }
+    return ctx.checkedItems.get(value);
+  });
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -133,13 +139,21 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromSubtree) {
       return;
     }
-    requestTreeResponse({ event, value, itemType, type: 'Change', target: event.currentTarget });
+    requestTreeResponse({
+      event,
+      value,
+      itemType,
+      type: 'Change',
+      target: event.currentTarget,
+      checked: checked === 'mixed' ? true : !checked,
+    });
   });
 
   const isBranch = itemType === 'branch';
   return {
     value,
     open,
+    checked,
     subtreeRef,
     layoutRef,
     selectionRef,
@@ -159,7 +173,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       role: 'treeitem',
       'aria-level': level,
       [dataTreeItemValueAttrName]: value,
-      'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
+      'aria-checked':
+        selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
       'aria-selected': selectionMode === 'single' ? checked : undefined,
       'aria-expanded': isBranch ? open : undefined,
       onClick: handleClick,

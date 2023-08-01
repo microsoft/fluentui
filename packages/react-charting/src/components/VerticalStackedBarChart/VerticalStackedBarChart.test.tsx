@@ -70,7 +70,7 @@ const secondChartPoints: IVSChartDataPoint[] = [
   },
 ];
 
-const chartPoints: IVerticalStackedChartProps[] = [
+export const chartPoints: IVerticalStackedChartProps[] = [
   { chartData: firstChartPoints, xAxisPoint: 0 },
   { chartData: secondChartPoints, xAxisPoint: 20 },
 ];
@@ -84,7 +84,7 @@ const chartPoints2: IVerticalStackedChartProps[] = [
   },
 ];
 
-const emptyChartPoints: IVerticalStackedChartProps[] = [{ chartData: [], xAxisPoint: 0 }];
+export const emptyChartPoints: IVerticalStackedChartProps[] = [{ chartData: [], xAxisPoint: 0 }];
 
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {

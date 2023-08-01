@@ -2,6 +2,102 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 13:04:24 GMT",
+      "tag": "@fluentui/react-components_v9.27.3",
+      "version": "9.27.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "66117c3488dacab0baa7505a97edb308b8ec81b0",
+            "comment": "fix: revert menuItem focus ring back to border"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2ddd2ef27e8f1421d095a2ba600d417af98a7b22",
+            "comment": "feat(FluentProvider): emit errors on duplicate IDs"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ed5421e62b010bfb8cb368757c2c34baccb0076e",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Aug 2023 10:17:19 GMT",
+      "tag": "@fluentui/react-components_v9.27.2",
+      "version": "9.27.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0c693a82d2d6e3c52012d53fdd40af42397fc5cf",
+            "comment": "Accordion - export AccordionHeaderContextProvider"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "50392ee3cdec1975dff5e496da6241d37acb11b2",
+            "comment": "Added portal slot to Combobox and Dropdown"
+          },
+          {
+            "author": "eysjiang@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "937b241d624114c181ea1521d0d4ead1068ddfa3",
+            "comment": "adds Announce context"
+          }
+        ],
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9250428d00e7e2909a0e3bae667c6ef0044ea67e",
+            "comment": "fix: use css outline for MenuItem focus ring instead of pseudo element"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5",
+            "comment": "fix: autoSize causing maximum positioning update"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c6d2ace26c19b4c8102c77baf8f66ffeb36149f8",
+            "comment": "Remove margin from Icon in ToolbarButton when vertical prop is passed"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d4b3feec354590939a340460bea62f4e39d38a74",
+            "comment": "bugfix: Tree, vertical spacing of branches and children is inconsistent"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f9e014b3919f00068940b0dd94980f6d542eff68",
+            "comment": "feat: adds openItems and checkedItems to tree callback data"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "2f795af17bf0cf844e0cc59c5d2f2418a00c9594",
+            "comment": "chore: improves internal headless signature"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Jul 2023 10:34:13 GMT",
       "tag": "@fluentui/react-components_v9.27.1",
       "version": "9.27.1",

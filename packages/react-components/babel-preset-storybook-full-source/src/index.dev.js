@@ -3,7 +3,7 @@
 const { registerTsProject } = require('nx/src/utils/register');
 
 // This is internal code and should be a dev dependency
-const { joinPathFragments } = require('@nrwl/devkit');
+const { joinPathFragments } = require('@nx/devkit');
 /* eslint-enable import/no-extraneous-dependencies */
 
 registerTsProject(joinPathFragments(__dirname, '..'), 'tsconfig.lib.json');

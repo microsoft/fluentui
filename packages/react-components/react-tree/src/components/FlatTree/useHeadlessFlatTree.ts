@@ -18,6 +18,8 @@ import {
   TreeOpenChangeEvent,
   TreeProps,
 } from '../Tree/Tree.types';
+import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
+import { treeItemFilter } from '../../utils/treeItemFilter';
 
 export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
 export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = HeadlessTreeItem<Props>;
@@ -104,17 +106,28 @@ export type HeadlessFlatTreeOptions = Pick<
  * It should be used on cases where more complex interactions with a Tree is required.
  * On simple scenarios it is advised to simply use a nested structure instead.
  *
- * @param flatTreeItemProps - a list of tree items
+ * @param props - a list of tree items
  * @param options - in case control over the internal openItems is required
  */
 export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(
-  flatTreeItemProps: Props[],
+  props: Props[],
   options: HeadlessFlatTreeOptions = {},
 ): HeadlessFlatTree<Props> {
-  const flatTreeItems = React.useMemo(() => createHeadlessTree(flatTreeItemProps), [flatTreeItemProps]);
+  const headlessTree = React.useMemo(() => createHeadlessTree(props), [props]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options);
-  const [navigate, navigationRef] = useFlatTreeNavigation(flatTreeItems);
+  const { initialize, navigate } = useFlatTreeNavigation(headlessTree);
+  const walkerRef = React.useRef<HTMLElementWalker>();
+  const initializeWalker = React.useCallback(
+    (root: HTMLElement | null) => {
+      if (root) {
+        walkerRef.current = createHTMLElementWalker(root, treeItemFilter);
+        initialize(walkerRef.current);
+      }
+    },
+    [initialize],
+  );
+
   const treeRef = React.useRef<HTMLDivElement>(null);
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     options.onOpenChange?.(event, data);
@@ -123,25 +136,27 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 
   const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
     options.onCheckedChange?.(event, data);
-    setCheckedItems(createNextFlatCheckedItems(data, checkedItems, flatTreeItems));
+    setCheckedItems(createNextFlatCheckedItems(data, checkedItems, headlessTree));
   });
 
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
       options.onNavigation_unstable?.(event, data);
-      navigate(data);
+      if (walkerRef.current) {
+        navigate(data, walkerRef.current);
+      }
     },
   );
 
   const getNextNavigableItem = useEventCallback(
     (visibleItems: HeadlessTreeItem<Props>[], data: TreeNavigationData_unstable) => {
-      const item = flatTreeItems.get(data.value);
+      const item = headlessTree.get(data.value);
       if (item) {
         switch (data.type) {
           case treeDataTypes.TypeAhead:
             return item;
           case treeDataTypes.ArrowLeft:
-            return flatTreeItems.get(item.parentValue!);
+            return headlessTree.get(item.parentValue!);
           case treeDataTypes.ArrowRight:
             return visibleItems[item.index + 1];
           case treeDataTypes.End:
@@ -161,7 +176,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
     return treeRef.current?.querySelector(`[${dataTreeItemValueAttrName}="${item.value}"]`) as HTMLElement | null;
   }, []);
 
-  const ref = useMergedRefs<HTMLDivElement>(treeRef, navigationRef as React.Ref<HTMLDivElement>);
+  const ref = useMergedRefs<HTMLDivElement>(treeRef, initializeWalker);
 
   const getTreeProps = React.useCallback(
     () => ({
@@ -178,10 +193,20 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
     [openItems, checkedItems],
   );
 
-  const items = React.useCallback(() => flatTreeItems.visibleItems(openItems), [openItems, flatTreeItems]);
+  const items = React.useCallback(() => headlessTree.visibleItems(openItems), [openItems, headlessTree]);
 
   return React.useMemo<HeadlessFlatTree<Props>>(
-    () => ({ navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items }),
+    () => ({
+      navigate: data => {
+        if (walkerRef.current) {
+          navigate(data, walkerRef.current);
+        }
+      },
+      getTreeProps,
+      getNextNavigableItem,
+      getElementFromItem,
+      items,
+    }),
     [navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items],
   );
 }
