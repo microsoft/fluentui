@@ -3,22 +3,22 @@ import {
   TreeProps,
   TreeItem,
   TreeItemLayout,
-  useTree_unstable,
-  useTreeStyles_unstable,
-  useTreeContextValues_unstable,
   TreeProvider,
   TreeSlots,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
-  FlatTreeItemProps,
   useFlatTree_unstable,
-  FlatTreeItem,
+  HeadlessFlatTreeItemProps,
+  useFlatTreeStyles_unstable,
+  useFlatTreeContextValues_unstable,
+  HeadlessFlatTreeItem,
+  useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 import story from './Virtualization.md';
 
-type ItemProps = FlatTreeItemProps & { content: string };
+type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
 const defaultItems: ItemProps[] = [
   {
@@ -49,9 +49,9 @@ type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
  * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
  */
 const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef((props, ref) => {
-  const state = useTree_unstable(props, ref);
-  useTreeStyles_unstable(state);
-  const contextValues = useTreeContextValues_unstable(state);
+  const state = useFlatTree_unstable(props, ref);
+  useFlatTreeStyles_unstable(state);
+  const contextValues = useFlatTreeContextValues_unstable(state);
   const { slots, slotProps } = getSlots<TreeSlots>(state);
   return (
     <TreeProvider value={contextValues.tree}>
@@ -63,7 +63,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
 });
 
 interface FixedSizeTreeItemProps extends ListChildComponentProps {
-  data: FlatTreeItem<ItemProps>[];
+  data: HeadlessFlatTreeItem<ItemProps>[];
 }
 
 const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
@@ -77,9 +77,9 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
 };
 
 export const Virtualization = () => {
-  const flatTree = useFlatTree_unstable(defaultItems);
+  const virtualTree = useHeadlessFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
-  const items = React.useMemo(() => Array.from(flatTree.items()), [flatTree]);
+  const items = React.useMemo(() => Array.from(virtualTree.items()), [virtualTree]);
 
   /**
    * Since navigation is not possible due to the fact that not all items are rendered,
@@ -87,22 +87,22 @@ export const Virtualization = () => {
    */
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
     event.preventDefault();
-    const nextItem = flatTree.getNextNavigableItem(items, data);
+    const nextItem = virtualTree.getNextNavigableItem(items, data);
     if (!nextItem) {
       return;
     }
     // if the next item is not rendered, scroll to it and try to navigate again
-    if (!flatTree.getElementFromItem(nextItem)) {
+    if (!virtualTree.getElementFromItem(nextItem)) {
       listRef.current?.scrollToItem(nextItem.index);
-      return requestAnimationFrame(() => flatTree.navigate(data));
+      return requestAnimationFrame(() => virtualTree.navigate(data));
     }
     // if the next item is rendered, navigate to it
-    flatTree.navigate(data);
+    virtualTree.navigate(data);
   };
 
   return (
     <FixedSizeTree
-      {...flatTree.getTreeProps()}
+      {...virtualTree.getTreeProps()}
       listProps={{
         ref: listRef,
         height: 300,

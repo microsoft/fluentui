@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Mon, 03 Jul 2023 11:57:14 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 10:17:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.2)
+
+Tue, 01 Aug 2023 10:17:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.1..@fluentui/react-spinner_v9.3.2)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.1.22 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.1)
+
+Thu, 20 Jul 2023 18:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.0..@fluentui/react-spinner_v9.3.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-label to v9.1.21 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.0)
+
+Mon, 17 Jul 2023 21:27:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.2.7..@fluentui/react-spinner_v9.3.0)
+
+### Minor changes
+
+- feat: add extra-tiny value to size prop of Spinner ([PR #28249](https://github.com/microsoft/fluentui/pull/28249) by ololubek@microsoft.com)
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.2.7)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.2.6..@fluentui/react-spinner_v9.2.7)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-label to v9.1.20 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
 
 ## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.2.6)
 

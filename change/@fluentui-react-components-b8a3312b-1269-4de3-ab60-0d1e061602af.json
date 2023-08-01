@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export focus mode types for DataGrid",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

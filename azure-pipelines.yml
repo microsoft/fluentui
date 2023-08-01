@@ -30,8 +30,10 @@ jobs:
 
       - script: |
           yarn nx workspace-lint
-          yarn nx run @fluentui/nx-workspace-tools:check-graph
-          yarn nx workspace-generator tsconfig-base-all --verify
+          yarn nx run @fluentui/workspace-plugin:check-graph
+          yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+          yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+
         displayName: Workspace lint
 
       - script: |

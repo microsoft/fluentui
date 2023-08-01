@@ -4,6 +4,8 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { useTreeContext_unstable } from '../../contexts';
 import { treeAvatarSize } from '../../utils/tokens';
 import { useTreeItemLayout_unstable } from '../TreeItemLayout/useTreeItemLayout';
+import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
+import { Radio, RadioProps } from '@fluentui/react-radio';
 
 /**
  * Create the state required to render TreeItemPersonaLayout.
@@ -30,6 +32,8 @@ export const useTreeItemPersonaLayout_unstable = (
   );
 
   const size = useTreeContext_unstable(ctx => ctx.size);
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+
   return {
     ...treeItemLayoutState,
     components: {
@@ -40,6 +44,8 @@ export const useTreeItemPersonaLayout_unstable = (
       media: 'div',
       aside: 'div',
       actions: 'div',
+      // Casting here to a union between checkbox and radio
+      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     avatarSize: treeAvatarSize[size],
     content: resolveShorthand(content, { required: true, defaultProps: { children } }),

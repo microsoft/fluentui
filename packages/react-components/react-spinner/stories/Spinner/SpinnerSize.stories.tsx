@@ -12,6 +12,8 @@ export const Size = () => {
 
   return (
     <div className={styles.container}>
+      <Spinner size="extra-tiny" label="Extra Tiny Spinner" />
+
       <Spinner size="tiny" label="Tiny Spinner" />
 
       <Spinner size="extra-small" label="Extra Small Spinner" />
