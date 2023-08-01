@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 27 Jul 2023 10:34:13 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 10:17:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.1)
+
+Tue, 01 Aug 2023 10:17:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.0..@fluentui/react-menu_v9.12.1)
+
+### Patches
+
+- fix: use css outline for MenuItem focus ring instead of pseudo element ([PR #28685](https://github.com/microsoft/fluentui/pull/28685) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-portal to v9.3.4 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-positioning to v9.9.1 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-tabster to v9.11.1 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.0)
 
