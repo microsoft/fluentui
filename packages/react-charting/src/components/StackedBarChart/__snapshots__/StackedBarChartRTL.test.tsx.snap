@@ -22,7 +22,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone156"
+      data-focuszone-id="FocusZone196"
     >
       <div
         class=
@@ -59,7 +59,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </span>
           <div
             hidden=""
-            id="tooltip157"
+            id="tooltip197"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
@@ -73,7 +73,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone158"
+      data-focuszone-id="FocusZone198"
     >
       <div>
         <svg
@@ -111,7 +111,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#0078d4"
                 height="12"
-                id="_SBC_bar152"
+                id="_SBC_bar192"
                 width="37.22084367245658%"
                 x="0%"
                 y="0"
@@ -139,7 +139,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#107c10"
                 height="12"
-                id="_SBC_bar153"
+                id="_SBC_bar193"
                 width="12.40694789081886%"
                 x="37.22084367245658%"
                 y="0"
@@ -167,7 +167,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#e81123"
                 height="12"
-                id="_SBC_bar154"
+                id="_SBC_bar194"
                 width="0.7444168734491317%"
                 x="49.62779156327544%"
                 y="0"
@@ -195,7 +195,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#d83b01"
                 height="12"
-                id="_SBC_bar155"
+                id="_SBC_bar195"
                 width="49.62779156327544%"
                 x="50.37220843672457%"
                 y="0"
@@ -247,7 +247,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone159"
+                data-focuszone-id="FocusZone199"
                 role="listbox"
               >
                 <div
@@ -638,7 +638,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone165"
+      data-focuszone-id="FocusZone205"
     >
       <div
         class=
@@ -675,7 +675,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </span>
           <div
             hidden=""
-            id="tooltip166"
+            id="tooltip206"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
@@ -689,7 +689,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone167"
+      data-focuszone-id="FocusZone207"
     >
       <div>
         <svg
@@ -727,7 +727,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#0078d4"
                 height="12"
-                id="_SBC_bar161"
+                id="_SBC_bar201"
                 width="37.22084367245658%"
                 x="0%"
                 y="0"
@@ -755,7 +755,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#107c10"
                 height="12"
-                id="_SBC_bar162"
+                id="_SBC_bar202"
                 width="12.40694789081886%"
                 x="37.22084367245658%"
                 y="0"
@@ -783,7 +783,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#e81123"
                 height="12"
-                id="_SBC_bar163"
+                id="_SBC_bar203"
                 width="0.7444168734491317%"
                 x="49.62779156327544%"
                 y="0"
@@ -811,7 +811,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#d83b01"
                 height="12"
-                id="_SBC_bar164"
+                id="_SBC_bar204"
                 width="49.62779156327544%"
                 x="50.37220843672457%"
                 y="0"
@@ -863,7 +863,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone168"
+                data-focuszone-id="FocusZone208"
                 role="listbox"
               >
                 <div
@@ -1267,7 +1267,7 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone177"
+        data-focuszone-id="FocusZone217"
       >
         <div
           class=
@@ -1304,7 +1304,7 @@ exports[`Should reflect theme change 1`] = `
             </span>
             <div
               hidden=""
-              id="tooltip178"
+              id="tooltip218"
               style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
             >
               Stacked Bar chart example
@@ -1318,7 +1318,7 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone179"
+        data-focuszone-id="FocusZone219"
       >
         <div>
           <svg
@@ -1356,7 +1356,7 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_SBC_bar173"
+                  id="_SBC_bar213"
                   width="37.22084367245658%"
                   x="0%"
                   y="0"
@@ -1384,7 +1384,7 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_SBC_bar174"
+                  id="_SBC_bar214"
                   width="12.40694789081886%"
                   x="37.22084367245658%"
                   y="0"
@@ -1412,7 +1412,7 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_SBC_bar175"
+                  id="_SBC_bar215"
                   width="0.7444168734491317%"
                   x="49.62779156327544%"
                   y="0"
@@ -1440,7 +1440,7 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#d83b01"
                   height="12"
-                  id="_SBC_bar176"
+                  id="_SBC_bar216"
                   width="49.62779156327544%"
                   x="50.37220843672457%"
                   y="0"
@@ -1492,7 +1492,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone180"
+                  data-focuszone-id="FocusZone220"
                   role="listbox"
                 >
                   <div

@@ -27,9 +27,44 @@ const points: IChartDataPoint[] = [
   { legend: 'fourth', data: 400, color: DefaultPalette.orange },
 ];
 
+const onePoint: IChartDataPoint[] = [
+  {
+    legend: 'first',
+    data: 300,
+    color: DefaultPalette.blue,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '40%',
+    placeHolder: true,
+  },
+];
+
+const twoPoints: IChartDataPoint[] = [
+  {
+    legend: 'first',
+    data: 300,
+    color: DefaultPalette.blue,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '40%',
+  },
+  { legend: 'second', data: 100, color: DefaultPalette.green },
+];
+
 const data: IChartProps = {
   chartTitle: 'Stacked Bar chart example',
   chartData: points,
+};
+
+const onePointData: IChartProps = {
+  chartTitle: 'Stacked Bar chart example',
+  chartData: onePoint,
+};
+
+const twoPointsData: IChartProps = {
+  chartTitle: 'Stacked Bar chart example',
+  chartData: twoPoints,
+  chartDataAccessibilityData: {
+    ariaLabel: 'test',
+  },
 };
 
 const emptyPoints: IChartDataPoint[] = [
@@ -76,7 +111,7 @@ describe('Stacked bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
-    'Should render the stacked bar with the given bar height',
+    'Should render the empty bars with the specified background color',
     StackedBarChart,
     { data: emptyData, barBackgroundColor: DefaultPalette.red },
     container => {
@@ -84,6 +119,76 @@ describe('Stacked bar chart - Subcomponent bar', () => {
       expect(getById(container, /_SBC_bar/i)).toHaveLength(0);
       expect(getById(container, /_SBC_empty_bar_/i)).toHaveLength(1);
       expect(getById(container, /_SBC_empty_bar_/i)[0].getAttribute('fill')).toEqual(DefaultPalette.red);
+    },
+  );
+
+  testWithWait(
+    'Should render the number on top of the bar with only one data point',
+    StackedBarChart,
+    { data: onePointData },
+    container => {
+      // Assert
+      const ratioNumerator = getByClass(container, /ratioNumerator/i);
+      const ratioDenominator = getByClass(container, /ratioDenominator/i);
+      expect(ratioNumerator).toBeDefined();
+      expect(ratioNumerator[0].textContent).toEqual('300');
+      expect(ratioDenominator).toHaveLength(0);
+    },
+  );
+
+  testWithWait(
+    'Should render the ratio on top of the bar with only two data points',
+    StackedBarChart,
+    { data: twoPointsData },
+    container => {
+      // Assert
+      const ratioNumerator = getByClass(container, /ratioNumerator/i);
+      const ratioDenominator = getByClass(container, /ratioDenominator/i);
+      expect(ratioNumerator).toBeDefined();
+      expect(ratioNumerator[0].textContent).toEqual('300');
+      expect(ratioDenominator).toBeDefined();
+      expect(ratioDenominator[0].textContent).toEqual(' / 400');
+    },
+  );
+
+  testWithWait(
+    'Should not render the ratio on top of the bar with data points count greater than two',
+    StackedBarChart,
+    { data },
+    container => {
+      // Assert
+      const ratioNumerator = getByClass(container, /ratioNumerator/i);
+      const ratioDenominator = getByClass(container, /ratioDenominator/i);
+      expect(ratioNumerator).toHaveLength(0);
+      expect(ratioDenominator).toHaveLength(0);
+    },
+  );
+
+  testWithWait(
+    'Should render a colored arrow on top when target data is specified',
+    StackedBarChart,
+    { data, targetData: points[0] },
+    container => {
+      // Assert
+      const targetMarker = getByClass(container, /target/i);
+      expect(targetMarker).toHaveLength(1);
+      expect(targetMarker[0]).toHaveStyle(`border-top: 7px solid`);
+      expect(targetMarker[0]).toHaveStyle(`border-top-color: ${DefaultPalette.blue}`);
+      const legends = getByClass(container, /^legend-/i);
+      expect(legends).toHaveLength(5);
+      expect(legends[4].textContent).toEqual('first');
+    },
+  );
+
+  testWithWait(
+    'Should enable chartDataAccessibilityData prop only if ratio or numbers are enabled to be shown',
+    StackedBarChart,
+    { data: twoPointsData },
+    container => {
+      const textRole = screen.getAllByRole('text');
+      // Assert
+      expect(textRole).toHaveLength(2);
+      expect(textRole[1].getAttribute('aria-label')).toEqual('test');
     },
   );
 });
@@ -103,7 +208,7 @@ describe('Stacked bar chart - Subcomponent benchmark', () => {
 describe('Vertical bar chart - Subcomponent Legends', () => {
   testWithWait('Should show any rendered legends when hideLegend is not set', StackedBarChart, { data }, container => {
     // Arrange
-    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    const legends = getByClass(container, /^legend-/i);
     // Assert
     expect(legends).toHaveLength(4);
   });
@@ -114,7 +219,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
     { data, hideLegend: true },
     container => {
       // Arrange
-      const legends = screen.queryAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      const legends = getByClass(container, /^legend-/i);
       // Assert
       expect(legends).toHaveLength(0);
     },
@@ -131,11 +236,22 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
     },
   );
 
+  testWithWait(
+    'Should not show legend if data is marked as placeholder',
+    StackedBarChart,
+    { data: onePointData },
+    container => {
+      // Assert
+      // The benchmark legend (first) should also appear making the legend ('first') count to 2
+      expect(screen.queryAllByText('first')).toHaveLength(0);
+    },
+  );
+
   test('Should reduce the opacity of the other bars and their legends on mouse over a bar legend', async () => {
     // Arrange
     const { container } = render(<StackedBarChart data={data} />);
     const bars = getById(container, /_SBC_bar/i);
-    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    const legends = getByClass(container, /^legend-/i);
     // Assert
     expect(bars).toHaveLength(data.chartData!.length);
     expect(legends).toHaveLength(4);
@@ -153,7 +269,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
     // Arrange
     const { container } = render(<StackedBarChart data={data} />);
     const bars = getById(container, /_SBC_bar/i);
-    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    const legends = getByClass(container, /^legend-/i);
     // Assert
     expect(bars).toHaveLength(data.chartData!.length);
     expect(legends).toHaveLength(4);
@@ -171,7 +287,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
     // Arrange
     const { container } = render(<StackedBarChart data={data} />);
     const bars = getById(container, /_SBC_bar/i);
-    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    const legends = getByClass(container, /^legend-/i);
     // Assert
     expect(bars).toHaveLength(data.chartData!.length);
     expect(legends).toHaveLength(4);
