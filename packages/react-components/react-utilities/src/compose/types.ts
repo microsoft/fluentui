@@ -168,8 +168,11 @@ export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefin
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
   // Include a prop for each slot (see note below about the Omit)
   Omit<Slots, Primary & 'root'> &
-    // Include all of the props of the primary slot inline in the component's props
-    PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
+    // Include all of the props of the primary slot inline in the component's props but the slots itself
+    OmitWithoutExpanding<PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>, Exclude<keyof Slots, Primary>>;
+
+// helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
+type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;
 
 // Note: the `Omit<Slots, Primary & 'root'>` above is a little tricky. Here's what it's doing:
 // * If the Primary slot is 'root', then omit the `root` slot prop.
