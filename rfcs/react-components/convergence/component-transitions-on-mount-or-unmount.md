@@ -6,7 +6,7 @@
 
 ## Summary
 
-This RFC outlines the implementation details for effectively tracking and applying CSS animations/transitions within Fluent UI components, with a particular focus on the mount/unmount state.
+This RFC outlines the implementation details for effectively tracking CSS animations/transitions within Fluent UI components, with a particular focus on the mount/unmount state.
 
 ## Background
 
@@ -245,10 +245,10 @@ const {
   /**
    * Current state of the tracked element
    *
-   * Can return the following values:
+   * Can return one of the following states:
    * - `entering` - The element is entering the DOM.
    * - `exiting` - The element is exiting the DOM.
-   * - `resting` - The element is currently not animating. This is the final and initial state of the element.
+   * - `resting` - The element is currently not animating, but rendered on screen.
    * - `unmounted` - The element is not rendered in the DOM.
    */
   motionState,
