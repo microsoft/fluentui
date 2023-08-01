@@ -45,7 +45,7 @@ export {
   useAccordionHeaderContextValues_unstable,
   useAccordionHeaderStyles_unstable,
   useAccordionHeader_unstable,
-  useAccordionHeaderContext,
+  useAccordionHeaderContext as useAccordionHeaderContext_unstable,
 } from './AccordionHeader';
 export type {
   AccordionHeaderContextValue,

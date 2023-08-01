@@ -195,7 +195,7 @@ export function useAccordionContextValues_unstable(state: AccordionState): Accor
 export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
 // @public (undocumented)
-export const useAccordionHeaderContext: () => {
+export const useAccordionHeaderContext_unstable: () => {
     open: boolean;
     disabled: boolean;
     size: string;
