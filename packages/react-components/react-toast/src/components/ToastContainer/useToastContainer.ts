@@ -172,7 +172,7 @@ export const useToastContainer_unstable = (
     userRootSlot?.onMouseEnter?.(e);
   });
 
-  const { findFirstFocusable } = useFocusFinders();
+  const { findFirstFocusable, findLastFocusable } = useFocusFinders();
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === Delete) {
       e.preventDefault();
@@ -181,7 +181,11 @@ export const useToastContainer_unstable = (
 
     if (e.key === Tab && e.currentTarget === e.target) {
       e.preventDefault();
-      findFirstFocusable(e.currentTarget)?.focus();
+      if (e.shiftKey) {
+        findLastFocusable(e.currentTarget)?.focus();
+      } else {
+        findFirstFocusable(e.currentTarget)?.focus();
+      }
     }
 
     userRootSlot?.onKeyDown?.(e);

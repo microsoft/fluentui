@@ -541,49 +541,6 @@ describe('Toast', () => {
       .should('be.focused');
   });
 
-  it('should navigate toasts with tab and trap focus in toaster', () => {
-    const Example = () => {
-      let counter = 0;
-      const { dispatchToast } = useToastController();
-      const makeToast = () => {
-        dispatchToast(
-          <Toast>
-            <ToastTitle>Toast</ToastTitle>
-          </Toast>,
-          { root: { id: `toast-${counter++}` } },
-        );
-      };
-
-      return (
-        <>
-          <button id="make" onClick={makeToast}>
-            Make toast
-          </button>
-          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
-        </>
-      );
-    };
-
-    mount(<Example />);
-    cy.get('#make')
-      .click()
-      .click()
-      .click()
-      .get(`.${toastContainerClassNames.root}`)
-      .should('have.length', 3)
-      .get('body')
-      .type('{ctrl+m}')
-      .get(`#toast-2`)
-      .should('be.focused')
-      .focused()
-      .realPress(['Shift', 'Tab']);
-    cy.get(`#toast-1`).should('be.focused').realPress(['Shift', 'Tab']);
-    cy.get(`#toast-0`).should('be.focused').realPress(['Shift', 'Tab']);
-    cy.get(`#toast-2`).should('be.focused').realPress('Tab');
-    cy.get(`#toast-0`).should('be.focused').realPress('Tab');
-    cy.get(`#toast-1`).should('be.focused');
-  });
-
   it('should move focus into toast with tab and navigate out with arrow key', () => {
     const Example = () => {
       let counter = 0;
@@ -629,6 +586,56 @@ describe('Toast', () => {
     cy.get(`#toast-1`).should('be.focused').realPress('Tab');
     cy.get(`#toast-button-1`).should('be.focused').realPress('ArrowUp');
     cy.get(`#toast-0`).should('be.focused');
+  });
+
+  it('should trap focus in toast after tab', () => {
+    const Example = () => {
+      let counter = 0;
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        const toastCount = counter++;
+        dispatchToast(
+          <Toast>
+            <ToastTitle>
+              <button id={`toast-button-${toastCount}-1`}>toast {toastCount}</button>
+              <button id={`toast-button-${toastCount}-2`}>toast {toastCount}</button>
+            </ToastTitle>
+          </Toast>,
+          { root: { id: `toast-${toastCount}` } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .click()
+      .click()
+      .get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 3)
+      .get('body')
+      .type('{ctrl+m}')
+      .get(`#toast-2`)
+      .should('be.focused')
+      .focused()
+      .realPress('ArrowUp');
+    cy.realPress('ArrowUp');
+    cy.realPress('Tab');
+    cy.get(`#toast-button-0-1`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-0-2`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-0-1`).should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get(`#toast-0`).should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get(`#toast-button-0-2`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-0-1`).should('be.focused').realPress(['Shift', 'Tab']);
   });
 
   it('should dismiss all toasts with Escape and restore focus', () => {
