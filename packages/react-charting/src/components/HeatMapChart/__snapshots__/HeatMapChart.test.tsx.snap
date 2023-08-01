@@ -16,7 +16,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         overflow: hidden;
         width: 100%;
       }
-  id="chart_0"
+  id="chart_1"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -29,7 +29,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -69,7 +69,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
             & path {
               display: none;
             }
-        id="xAxisGElementchart_0"
+        id="xAxisGElementchart_1"
         transform="translate(0, 275)"
       />
       <g
@@ -97,7 +97,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_0"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g
@@ -215,7 +215,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -573,7 +573,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_0"
+  id="chart_1"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -586,7 +586,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -626,7 +626,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_0"
+        id="xAxisGElementchart_1"
         transform="translate(0, 275)"
       />
       <g
@@ -654,7 +654,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_0"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g
@@ -778,7 +778,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -915,7 +915,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         overflow: hidden;
         width: 100%;
       }
-  id="chart_0"
+  id="chart_1"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -928,7 +928,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -968,7 +968,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_0"
+        id="xAxisGElementchart_1"
         transform="translate(0, 275)"
       />
       <g
@@ -996,7 +996,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_0"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g
@@ -1120,7 +1120,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1348,7 +1348,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_0"
+  id="chart_1"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1361,7 +1361,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1401,7 +1401,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_0"
+        id="xAxisGElementchart_1"
         transform="translate(0, 315)"
       />
       <g
@@ -1429,7 +1429,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_0"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g
@@ -1529,7 +1529,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_0"
+  id="chart_1"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1542,7 +1542,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1582,7 +1582,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_0"
+        id="xAxisGElementchart_1"
         transform="translate(0, 275)"
       />
       <g
@@ -1610,7 +1610,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_0"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g
@@ -1734,7 +1734,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1871,7 +1871,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_0"
+  id="chart_1"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1884,7 +1884,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1924,7 +1924,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_0"
+        id="xAxisGElementchart_1"
         transform="translate(0, 275)"
       />
       <g
@@ -1952,7 +1952,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_0"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g
@@ -2076,7 +2076,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
