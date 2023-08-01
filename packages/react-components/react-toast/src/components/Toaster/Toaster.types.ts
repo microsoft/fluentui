@@ -32,7 +32,8 @@ export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> &
  * State used in rendering Toaster
  */
 export type ToasterState = ComponentState<ToasterSlotsInternal> &
-  Pick<AriaLiveProps, 'announceRef'> & {
+  Pick<AriaLiveProps, 'announceRef'> &
+  Pick<Required<ToasterProps>, 'announce'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
     dir: 'rtl' | 'ltr';
