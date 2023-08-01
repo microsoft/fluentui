@@ -334,6 +334,10 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     return onDestroy;
   }, [currentElement, present, processAnimation]);
 
+  React.useEffect(() => {
+    skipAnimationOnFirstRender.current = false;
+  }, []);
+
   return {
     ref,
     ...state,

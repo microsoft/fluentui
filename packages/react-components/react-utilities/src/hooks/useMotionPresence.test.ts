@@ -1,5 +1,4 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import * as React from 'react';
 
 import { useMotionPresence, UseMotionPresenceOptions } from './useMotionPresence';
 
@@ -10,26 +9,15 @@ const renderHookWithRef = (
   style: Record<string, string | undefined> = { 'transition-duration': `${defaultDuration}ms` },
 ) => {
   const refEl = document.createElement('div');
-  const hook = renderHook(
-    ({ presence, options }) => {
-      const state = useMotionPresence(presence, options);
-
-      React.useEffect(() => {
-        console.log(state);
-      }, [state]);
-
-      return state;
+  const hook = renderHook(({ presence, options }) => useMotionPresence(presence, options), {
+    initialProps: {
+      presence: initialPresence,
+      options: initialOptions,
+    } as {
+      presence: boolean;
+      options?: UseMotionPresenceOptions;
     },
-    {
-      initialProps: {
-        presence: initialPresence,
-        options: initialOptions,
-      } as {
-        presence: boolean;
-        options?: UseMotionPresenceOptions;
-      },
-    },
-  );
+  });
 
   Object.entries(style).forEach(([key, value]) => value && refEl.style.setProperty(key, value));
 
