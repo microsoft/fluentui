@@ -28,7 +28,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints: IChartProps[] = [
+export const chartPoints: IChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [

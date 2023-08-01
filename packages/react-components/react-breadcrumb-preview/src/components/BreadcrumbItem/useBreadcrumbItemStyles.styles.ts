@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     color: tokens.colorNeutralForeground2,
+    boxSizing: 'border-box',
   },
   small: {
     height: '24px',

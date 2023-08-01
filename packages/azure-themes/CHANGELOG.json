@@ -2,6 +2,51 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 25 Jul 2023 07:44:54 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.26",
+      "version": "8.6.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.110.11",
+            "commit": "086cd4c549d2cfabefdb3dcb7965082dc3baf846"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 07:34:08 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.25",
+      "version": "8.6.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "8a242b14151adf4186df88f0fb234508db47ec06",
+            "comment": "Cleaning up message bar semantic names for messagebar background and icon values per ICM team"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Jul 2023 07:35:18 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.24",
+      "version": "8.6.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.110.10",
+            "commit": "bbba7284a99cf7a63cbd7676a5a85e8770163357"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jul 2023 07:39:32 GMT",
       "tag": "@fluentui/azure-themes_v8.6.23",
       "version": "8.6.23",

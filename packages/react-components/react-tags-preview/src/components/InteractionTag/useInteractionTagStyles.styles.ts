@@ -3,6 +3,7 @@ import type { InteractionTagSlots, InteractionTagState } from './InteractionTag.
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import {
   useIconStyles,
   useMediaStyles,
@@ -95,23 +96,39 @@ const useContentButtonStyles = makeStyles({
       cursor: 'pointer',
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground2Hover,
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground2Pressed,
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+        color: tokens.colorNeutralForeground2BrandPressed,
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    color: tokens.colorBrandForeground1,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorBrandForeground2Hover,
+      color: tokens.colorCompoundBrandForeground1Hover,
     },
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorBrandForeground2Pressed,
+      color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 
@@ -241,16 +258,16 @@ const useDismissButtonStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    color: tokens.colorBrandForeground1,
     borderLeftColor: tokens.colorBrandStroke2, // divider
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorBrandForeground2Hover,
+      color: tokens.colorCompoundBrandForeground1Hover,
     },
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorBrandForeground2Pressed,
+      color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 

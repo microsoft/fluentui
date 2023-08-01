@@ -17,48 +17,44 @@ const AsideContent = ({ isImportant, messageCount }: { isImportant?: boolean; me
 
 export const Aside = () => (
   <Tree aria-label="Tree">
-    <TreeItem
-      aside={<AsideContent isImportant={true} messageCount={3} />}
-      itemType="branch"
-      aria-description="Important, 3 message"
-    >
-      <TreeItemLayout>level 1, item 1</TreeItemLayout>
+    <TreeItem itemType="branch" aria-description="Important, 3 message">
+      <TreeItemLayout aside={<AsideContent isImportant={true} messageCount={3} />}>level 1, item 1</TreeItemLayout>
       <Tree>
-        <TreeItem aside={<AsideContent isImportant={true} />} itemType="leaf" aria-description="Important">
-          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+        <TreeItem itemType="leaf" aria-description="Important">
+          <TreeItemLayout aside={<AsideContent isImportant={true} />}>level 2, item 1</TreeItemLayout>
         </TreeItem>
-        <TreeItem aside={<AsideContent messageCount={2} />} itemType="leaf" aria-description="2 messages">
-          <TreeItemLayout>level 2, item 2</TreeItemLayout>
+        <TreeItem itemType="leaf" aria-description="2 messages">
+          <TreeItemLayout aside={<AsideContent messageCount={2} />}>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem aside={<AsideContent messageCount={1} />} itemType="leaf" aria-description="1 messages">
-          <TreeItemLayout>level 2, item 3</TreeItemLayout>
+        <TreeItem itemType="leaf" aria-description="1 messages">
+          <TreeItemLayout aside={<AsideContent messageCount={1} />}>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem
-      aside={
-        <>
-          <AsideContent isImportant={true} messageCount={1} />
-        </>
-      }
-      itemType="branch"
-      aria-description="Important, 1 message"
-    >
-      <TreeItemLayout>level 1, item 2</TreeItemLayout>
+    <TreeItem itemType="branch" aria-description="Important, 1 message">
+      <TreeItemLayout
+        aside={
+          <>
+            <AsideContent isImportant={true} messageCount={1} />
+          </>
+        }
+      >
+        level 1, item 2
+      </TreeItemLayout>
 
       <Tree>
-        <TreeItem aside={<AsideContent messageCount={1} />} itemType="branch" aria-description="1 message">
-          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+        <TreeItem itemType="branch" aria-description="1 message">
+          <TreeItemLayout aside={<AsideContent messageCount={1} />}>level 2, item 1</TreeItemLayout>
 
           <Tree>
-            <TreeItem aside={<AsideContent />} itemType="leaf">
-              <TreeItemLayout>level 3, item 1</TreeItemLayout>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout aside={<AsideContent />}>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
 
-        <TreeItem aside={<AsideContent isImportant={true} />} itemType="branch" aria-description="Important">
-          <TreeItemLayout>level 2, item 2</TreeItemLayout>
+        <TreeItem itemType="branch" aria-description="Important">
+          <TreeItemLayout aside={<AsideContent isImportant={true} />}>level 2, item 2</TreeItemLayout>
 
           <Tree>
             <TreeItem itemType="leaf">
