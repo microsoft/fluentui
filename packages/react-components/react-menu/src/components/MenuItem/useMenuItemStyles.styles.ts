@@ -82,6 +82,9 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForeground3Hover,
     },
   },
+  checkmark: {
+    marginTop: '2px',
+  },
   icon: {
     width: '20px',
     height: '20px',
@@ -152,7 +155,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   }
 
   if (state.checkmark) {
-    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, state.checkmark.className);
+    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
