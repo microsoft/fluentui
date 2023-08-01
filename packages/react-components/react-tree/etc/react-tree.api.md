@@ -168,7 +168,7 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
     root: Slot<'div'>;
-    content: NonNullable<Slot<'div'>>;
+    main: NonNullable<Slot<'div'>>;
     iconBefore?: Slot<'div'>;
     iconAfter?: Slot<'div'>;
     expandIcon?: Slot<'div'>;
@@ -200,7 +200,7 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
 export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
     root: NonNullable<Slot<'div'>>;
     media: NonNullable<Slot<'div'>>;
-    content: NonNullable<Slot<'div'>>;
+    main: NonNullable<Slot<'div'>>;
     description?: Slot<'div'>;
 };
 
