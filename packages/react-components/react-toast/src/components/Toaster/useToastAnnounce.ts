@@ -23,6 +23,7 @@ export function useToastAnnounce(announce: Announce) {
 
   const toasterRef = React.useCallback((el: HTMLDivElement | null) => {
     if (!el) {
+      cleanupRef.current();
       return;
     }
 
