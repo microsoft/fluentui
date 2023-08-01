@@ -1,7 +1,16 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { GaugeChart, GaugeChartVariant, GaugeValueFormat, IGaugeChartProps } from './index';
-import { ARC_PADDING, GaugeChartBase, IGaugeChartState, BREAKPOINTS } from './GaugeChart.base';
+import {
+  ARC_PADDING,
+  GaugeChartBase,
+  IGaugeChartState,
+  BREAKPOINTS,
+  calcNeedleRotation,
+  getSegmentLabel,
+  getChartValueLabel,
+  IExtendedSegment,
+} from './GaugeChart.base';
 import { resetIds, setRTL } from '../../Utilities';
 import { DataVizPalette } from '../../utilities/colors';
 import toJson from 'enzyme-to-json';
@@ -176,56 +185,68 @@ describe('GaugeChart rendering and behavior tests', () => {
   });
 
   it('should ensure the needle rotation remains within the range of 0 to 180 degrees at all times', () => {
-    const { container, rerender } = render(<GaugeChart segments={segments} chartValue={-100} />);
+    expect(calcNeedleRotation(-100, 0, 100)).toBe(0);
+    expect(calcNeedleRotation(0, 100, 200)).toBe(0);
 
-    const needle = container.querySelector('[class^="needle"]');
-    expect(needle!.parentElement).toHaveAttribute('transform', 'rotate(0, 0, 0)');
+    expect(calcNeedleRotation(67, 0, 100)).toBeCloseTo(120.6);
+    expect(calcNeedleRotation(133, 100, 200)).toBeCloseTo(59.4);
 
-    rerender(<GaugeChart segments={segments} chartValue={200} />);
-
-    expect(needle!.parentElement).toHaveAttribute('transform', 'rotate(180, 0, 0)');
+    expect(calcNeedleRotation(200, 0, 100)).toBe(180);
+    expect(calcNeedleRotation(300, 100, 200)).toBe(180);
   });
 
-  it(`should render segment sizes as percentages when
-  the variant prop is set to GaugeChartVariant.SingleSegment`, () => {
-    const { container } = render(
-      <GaugeChart
-        segments={segments}
-        chartValue={25}
-        variant={GaugeChartVariant.SingleSegment}
-        calloutProps={{ doNotLayer: true }}
-      />,
-    );
+  it('should render segment sizes correctly', () => {
+    const extendedSegement1: IExtendedSegment = { ...segments[0], start: 0, end: 33 };
 
-    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
-    expect(container.querySelector('.ms-Callout')).toHaveTextContent('%');
+    expect(getSegmentLabel(extendedSegement1, 0, 100)).toMatch(/0 - 33/);
+    expect(getSegmentLabel(extendedSegement1, 0, 100, undefined, true)).toMatch(/0 to 33/);
+
+    expect(getSegmentLabel(extendedSegement1, 0, 100, GaugeChartVariant.SingleSegment)).toMatch(/33%/);
+    expect(getSegmentLabel(extendedSegement1, 0, 100, GaugeChartVariant.SingleSegment, true)).toMatch(/33%/);
+
+    expect(getSegmentLabel(extendedSegement1, 0, 100, GaugeChartVariant.MultipleSegments)).toMatch(/0 - 33/);
+    expect(getSegmentLabel(extendedSegement1, 0, 100, GaugeChartVariant.MultipleSegments, true)).toMatch(/0 to 33/);
+
+    const extendedSegement2: IExtendedSegment = { ...segments[0], start: 100, end: 133 };
+
+    expect(getSegmentLabel(extendedSegement2, 100, 200)).toMatch(/100 - 133/);
+    expect(getSegmentLabel(extendedSegement2, 100, 200, undefined, true)).toMatch(/100 to 133/);
+
+    expect(getSegmentLabel(extendedSegement2, 100, 200, GaugeChartVariant.SingleSegment)).toMatch(/100 - 133/);
+    expect(getSegmentLabel(extendedSegement2, 100, 200, GaugeChartVariant.SingleSegment, true)).toMatch(/100 to 133/);
+
+    expect(getSegmentLabel(extendedSegement2, 100, 200, GaugeChartVariant.MultipleSegments)).toMatch(/100 - 133/);
+    expect(getSegmentLabel(extendedSegement2, 100, 200, GaugeChartVariant.MultipleSegments, true)).toMatch(
+      /100 to 133/,
+    );
   });
 
-  it('should render the chart value returned by the provided formatter function', () => {
-    const { container } = render(
-      <GaugeChart segments={segments} chartValue={25} chartValueFormat={() => '000'} width={252} height={128} />,
-    );
+  it('should render the chart value correctly', () => {
+    const customChartValue = 'Custom chart value';
 
-    expect(container.querySelector('[class^="chartValue"]')).toHaveTextContent('000');
-  });
+    expect(getChartValueLabel(25, 0, 100)).toBe('25%');
+    expect(getChartValueLabel(25, 0, 100, undefined, true)).toBe('25/100');
 
-  it(`should render the chart value as a number when the minValue prop is non-zero and
-  no formatter function is provided`, () => {
-    const { container } = render(
-      <GaugeChart
-        segments={segments}
-        chartValue={25}
-        minValue={100}
-        width={252}
-        height={128}
-        calloutProps={{ doNotLayer: true }}
-      />,
-    );
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage)).toBe('25%');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage, true)).toBe('25/100');
 
-    expect(container.querySelector('[class^="chartValue"]')).not.toHaveTextContent('%');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction, true)).toBe('25%');
 
-    fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
-    expect(container.querySelector('.ms-Callout')).not.toHaveTextContent('%');
+    expect(getChartValueLabel(25, 0, 100, () => customChartValue)).toBe(customChartValue);
+    expect(getChartValueLabel(25, 0, 100, () => customChartValue, true)).toBe('25/100');
+
+    expect(getChartValueLabel(125, 100, 200)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('125');
+
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('125');
+
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('125');
+
+    expect(getChartValueLabel(125, 100, 200, () => customChartValue)).toBe(customChartValue);
+    expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe('125');
   });
 });
 

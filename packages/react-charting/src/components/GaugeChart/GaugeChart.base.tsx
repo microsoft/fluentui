@@ -44,6 +44,61 @@ export const BREAKPOINTS = [
 
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
+export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number) => {
+  let needleRotation = ((chartValue - minValue) / (maxValue - minValue)) * 180;
+  if (needleRotation < 0) {
+    needleRotation = 0;
+  } else if (needleRotation > 180) {
+    needleRotation = 180;
+  }
+
+  return needleRotation;
+};
+
+export const getSegmentLabel = (
+  segment: IExtendedSegment,
+  minValue: number,
+  maxValue: number,
+  variant?: GaugeChartVariant,
+  isAriaLabel: boolean = false,
+) => {
+  if (isAriaLabel) {
+    return minValue === 0 && variant === GaugeChartVariant.SingleSegment
+      ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`
+      : `${segment.legend}, ${segment.start} to ${segment.end}`;
+  }
+
+  return minValue === 0 && variant === GaugeChartVariant.SingleSegment
+    ? `${segment.size} (${((segment.size / maxValue) * 100).toFixed()}%)`
+    : `${segment.start} - ${segment.end}`;
+};
+
+export const getChartValueLabel = (
+  chartValue: number,
+  minValue: number,
+  maxValue: number,
+  chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string),
+  forCallout: boolean = false,
+): string => {
+  if (forCallout) {
+    // When displaying the chart value as a percentage, use fractions in the callout, and vice versa.
+    // This helps clarify the actual value and avoid repetition.
+    return minValue !== 0
+      ? chartValue.toString()
+      : chartValueFormat === GaugeValueFormat.Fraction
+      ? `${((chartValue / maxValue) * 100).toFixed()}%`
+      : `${chartValue}/${maxValue}`;
+  }
+
+  return typeof chartValueFormat === 'function'
+    ? chartValueFormat([chartValue - minValue, maxValue - minValue])
+    : minValue !== 0
+    ? chartValue.toString()
+    : chartValueFormat === GaugeValueFormat.Fraction
+    ? `${chartValue}/${maxValue}`
+    : `${((chartValue / maxValue) * 100).toFixed()}%`;
+};
+
 interface IYValue extends Omit<IYValueHover, 'y'> {
   y?: string | number;
 }
@@ -59,7 +114,7 @@ export interface IGaugeChartState {
   width: number;
   height: number;
 }
-interface IExtendedSegment extends IGaugeChartSegment {
+export interface IExtendedSegment extends IGaugeChartSegment {
   start: number;
   end: number;
 }
@@ -72,7 +127,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _minValue: number;
   private _maxValue: number;
   private _segments: IExtendedSegment[];
-  private _sweepFraction: number[];
   private _calloutAnchor: string;
   private _rootElem: HTMLDivElement | null;
   private _margins: { left: number; right: number; top: number; bottom: number };
@@ -125,7 +179,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._innerRadius = this._outerRadius - arcWidth;
 
     const { arcs } = this._processProps();
-    this._sweepFraction = [this.props.chartValue - this._minValue, this._maxValue - this._minValue];
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -192,13 +245,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     className={this._classNames.segment}
                     {...getAccessibleDataObject(
                       {
-                        ariaLabel:
-                          this.props.variant === GaugeChartVariant.SingleSegment
-                            ? `${segment.legend}, ${segment.size} out of ${this._maxValue - this._minValue} or ${(
-                                (segment.size / (this._maxValue - this._minValue)) *
-                                100
-                              ).toFixed()}%`
-                            : `${segment.legend}, ${segment.start} to ${segment.end}`,
+                        ariaLabel: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant, true),
                         ...segment.accessibilityData,
                       },
                       'img',
@@ -217,14 +264,26 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                 onMouseMove={e => this._handleMouseOver(e, 'Chart value')}
               >
                 <SVGTooltipText
-                  content={this._getChartValue()}
+                  content={getChartValueLabel(
+                    this.props.chartValue,
+                    this._minValue,
+                    this._maxValue,
+                    this.props.chartValueFormat,
+                  )}
                   textProps={{
                     x: 0,
                     y: 0,
                     textAnchor: 'middle',
                     className: this._classNames.chartValue,
                     role: 'img',
-                    'aria-label': 'Current value: ' + this._getChartValue(),
+                    'aria-label':
+                      'Current value: ' +
+                      getChartValueLabel(
+                        this.props.chartValue,
+                        this._minValue,
+                        this._maxValue,
+                        this.props.chartValueFormat,
+                      ),
                   }}
                   maxWidth={this._innerRadius * 2 - 24}
                   wrapContent={this._wrapContent}
@@ -356,13 +415,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   private _renderNeedle = () => {
-    let needleRotation = (this._sweepFraction[0] / this._sweepFraction[1]) * 180;
-    if (needleRotation < 0) {
-      needleRotation = 0;
-    } else if (needleRotation > 180) {
-      needleRotation = 180;
-    }
-
+    const needleRotation = calcNeedleRotation(this.props.chartValue, this._minValue, this._maxValue);
     const rtlSafeNeedleRotation = this._isRTL ? 180 - needleRotation : needleRotation;
     const strokeWidth = 2;
     const halfStrokeWidth = strokeWidth / 2;
@@ -469,14 +522,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     }
 
     this._calloutAnchor = legend;
-    const hoverXValue: string = 'Current value is ' + this._getChartValue(true);
+    const hoverXValue: string =
+      'Current value is ' +
+      getChartValueLabel(this.props.chartValue, this._minValue, this._maxValue, this.props.chartValueFormat, true);
     const hoverYValues: IYValue[] = this._segments.map(segment => {
       const yValue: IYValue = {
         legend: segment.legend,
-        y:
-          this.props.variant === GaugeChartVariant.SingleSegment
-            ? `${segment.size} (${((segment.size / (this._maxValue - this._minValue)) * 100).toFixed()}%)`
-            : `${segment.start} - ${segment.end}`,
+        y: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant),
         color: segment.color,
       };
       return yValue;
@@ -521,26 +573,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       textLength = textElement.node()!.getComputedTextLength();
     }
     return isOverflowing;
-  };
-
-  private _getChartValue = (forCallout: boolean = false): string => {
-    if (forCallout) {
-      // When displaying the chart value as a percentage, use fractions in the callout, and vice versa.
-      // This helps clarify the actual value and avoid repetition.
-      return this._minValue !== 0
-        ? this.props.chartValue.toString()
-        : this.props.chartValueFormat === GaugeValueFormat.Fraction
-        ? `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`
-        : `${this._sweepFraction[0]}/${this._sweepFraction[1]}`;
-    }
-
-    return typeof this.props.chartValueFormat === 'function'
-      ? this.props.chartValueFormat(this._sweepFraction)
-      : this._minValue !== 0
-      ? this.props.chartValue.toString()
-      : this.props.chartValueFormat === GaugeValueFormat.Fraction
-      ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
-      : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`;
   };
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method

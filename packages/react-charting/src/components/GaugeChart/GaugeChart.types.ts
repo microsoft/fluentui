@@ -88,7 +88,7 @@ export interface IGaugeChartProps {
    * Format of the chart value
    * @defaultvalue GaugeValueFormat.Percentage
    */
-  chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+  chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
 
   /**
    * Decides whether to show/hide legends
