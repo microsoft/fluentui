@@ -5,15 +5,17 @@ import {
   getNativeElementProps,
   resolveShorthand,
   useEventCallback,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import { Escape } from '@fluentui/keyboard-keys';
 import type { ToasterProps, ToasterState } from './Toaster.types';
 import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
 import { Announce } from '../AriaLive';
 import { ToastContainer } from '../ToastContainer';
 import { useToasterFocusManagement_unstable } from './useToasterFocusManagement';
-import { Escape } from '@fluentui/keyboard-keys';
+import { useToastAnnounce } from './useToastAnnounce';
 
 /**
  * Create the state required to render Toaster.
@@ -45,15 +47,16 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
 
   const usePositionSlot = (toastPosition: ToastPosition) => {
     const focusManagementRef = useToasterFocusManagement_unstable(pauseAllToasts, playAllToasts);
+    const { announceToast, toasterRef } = useToastAnnounce(announceProp ?? announce);
     return resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
-        ref: focusManagementRef,
+        ref: useMergedRefs(focusManagementRef, toasterRef),
         children: toastsToRender.get(toastPosition)?.map(toast => (
           <ToastContainer
             {...toast}
             tryRestoreFocus={tryRestoreFocus}
             intent={toast.intent}
-            announce={announce}
+            announce={announceToast}
             key={toast.toastId}
             visible={isToastVisible(toast.toastId)}
           >
@@ -85,7 +88,6 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     topEnd: usePositionSlot(TOAST_POSITIONS.topEnd),
     announceRef,
     offset,
-    announce: announceProp ?? announce,
     renderAriaLive: !announceProp,
   };
 };

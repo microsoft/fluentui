@@ -9,7 +9,8 @@ import {
   useId,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { Delete } from '@fluentui/keyboard-keys';
+import { Delete, Tab } from '@fluentui/keyboard-keys';
+import { useFocusableGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
@@ -58,6 +59,12 @@ export const useToastContainer_unstable = (
   const [running, setRunning] = React.useState(false);
   const imperativePauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
+  const focusableGroupAttribute = useFocusableGroup({
+    tabBehavior: 'limited-trap-focus',
+    // Users should only use Tab to focus into the toast
+    // Escape is already reserved to dismiss all toasts
+    ignoreDefaultKeydown: { Tab: true, Escape: true, Enter: true },
+  });
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -165,10 +172,16 @@ export const useToastContainer_unstable = (
     userRootSlot?.onMouseEnter?.(e);
   });
 
+  const { findFirstFocusable } = useFocusFinders();
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === Delete) {
       e.preventDefault();
       close();
+    }
+
+    if (e.key === Tab && e.currentTarget === e.target) {
+      e.preventDefault();
+      findFirstFocusable(e.currentTarget)?.focus();
     }
 
     userRootSlot?.onKeyDown?.(e);
@@ -210,6 +223,7 @@ export const useToastContainer_unstable = (
       'aria-describedby': bodyId,
       ...rest,
       ...userRootSlot,
+      ...focusableGroupAttribute,
       onMouseEnter,
       onMouseLeave,
       onKeyDown,
