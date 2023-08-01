@@ -1,18 +1,10 @@
 import * as React from 'react';
-import {
-  getNativeElementProps,
-  isResolvedShorthand,
-  resolveShorthand,
-  useControllableState,
-  useId,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
-import type { TreeItemProps, TreeItemSlots, TreeItemState } from './TreeItem.types';
-import { useTreeContext_unstable } from '../../contexts/index';
+import type { TreeItemProps, TreeItemState } from './TreeItem.types';
+import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts/index';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
-import { TreeItemChevron } from '../TreeItemChevron';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
 
@@ -28,33 +20,15 @@ import { treeDataTypes } from '../../utils/tokens';
 export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
   const contextLevel = useTreeContext_unstable(ctx => ctx.level);
 
+  // note, if the value is not externally provided,
+  // then selection and expansion will not work properly
   const value = useId('fuiTreeItemValue-', props.value?.toString());
 
-  const {
-    onClick,
-    onKeyDown,
-    as = 'div',
-    itemType = 'leaf',
-    'aria-level': level = contextLevel,
-    expandIcon,
-    aside,
-    ...rest
-  } = props;
+  const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
 
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
-  const [isActionsVisibleExternal, actions]: [boolean | undefined, TreeItemSlots['actions']] = isResolvedShorthand(
-    props.actions,
-  )
-    ? // .visible prop should not be propagated to the DOM
-      [props.actions.visible, { ...props.actions, visible: undefined }]
-    : [undefined, props.actions];
-
-  const [isActionsVisible, setActionsVisible] = useControllableState({
-    state: isActionsVisibleExternal,
-    defaultState: false,
-    initialState: false,
-  });
+  const [isActionsVisible, setActionsVisible] = React.useState(false);
   const [isAsideVisible, setAsideVisible] = React.useState(true);
 
   const handleActionsRef = (actionsElement: HTMLDivElement | null) => {
@@ -68,15 +42,14 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const selectionRef = React.useRef<HTMLInputElement>(null);
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
-  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
-
-  const actionsRefs = useMergedRefs(
-    isResolvedShorthand(actions) ? actions.ref : undefined,
-    handleActionsRef,
-    actionsRef,
-  );
-  const expandIconRefs = useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef);
+  const parentChecked = useTreeItemContext_unstable(ctx => ctx.checked);
+  const checked = useTreeContext_unstable(ctx => {
+    if (selectionMode === 'multiselect' && typeof parentChecked === 'boolean') {
+      return parentChecked;
+    }
+    return ctx.checkedItems.get(value);
+  });
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -166,47 +139,33 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromSubtree) {
       return;
     }
-    requestTreeResponse({ event, value, itemType, type: 'Change', target: event.currentTarget });
+    requestTreeResponse({
+      event,
+      value,
+      itemType,
+      type: 'Change',
+      target: event.currentTarget,
+      checked: checked === 'mixed' ? true : !checked,
+    });
   });
 
   const isBranch = itemType === 'branch';
-
-  const actionsSlot = React.useMemo(
-    () => (isActionsVisible ? resolveShorthand(actions) : undefined),
-    [actions, isActionsVisible],
-  );
-  if (actionsSlot) {
-    actionsSlot.ref = actionsRefs;
-  }
-  const asideSlot = React.useMemo(
-    () => (isAsideVisible ? resolveShorthand(aside) : undefined),
-    [aside, isAsideVisible],
-  );
-  const expandIconSlot = React.useMemo(
-    () =>
-      resolveShorthand(expandIcon, {
-        required: isBranch,
-        defaultProps: {
-          children: <TreeItemChevron />,
-          'aria-hidden': true,
-        },
-      }),
-    [expandIcon, isBranch],
-  );
-  if (expandIconSlot) {
-    expandIconSlot.ref = expandIconRefs;
-  }
-
   return {
     value,
     open,
+    checked,
     subtreeRef,
     layoutRef,
+    selectionRef,
+    expandIconRef,
+    actionsRef: useMergedRefs(handleActionsRef, actionsRef),
     itemType,
     level,
     components: {
       root: 'div',
     },
+    isAsideVisible,
+    isActionsVisible,
     root: getNativeElementProps(as, {
       tabIndex: -1,
       ...rest,
@@ -214,7 +173,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       role: 'treeitem',
       'aria-level': level,
       [dataTreeItemValueAttrName]: value,
-      'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
+      'aria-checked':
+        selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
       'aria-selected': selectionMode === 'single' ? checked : undefined,
       'aria-expanded': isBranch ? open : undefined,
       onClick: handleClick,
@@ -225,21 +185,5 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       onBlur: handleActionsInvisible,
       onChange: handleChange,
     }),
-    actions: actionsSlot,
-    aside: asideSlot,
-    expandIcon: expandIconSlot,
-    selector:
-      selectionMode === 'none'
-        ? undefined
-        : resolveShorthand(selectionMode === 'multiselect' ? props.checkboxIndicator : props.radioIndicator, {
-            required: true,
-            defaultProps: {
-              checked,
-              tabIndex: -1,
-              'aria-hidden': true,
-              ref: selectionRef,
-              // onChange: handleChange,
-            },
-          }),
   };
 }

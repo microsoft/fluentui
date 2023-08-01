@@ -29,7 +29,6 @@ export interface ISankeyChartState extends IBasestate, IChartHoverCardProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedLink?: SLink;
   shouldOverflow: boolean;
-  emptyChart?: boolean;
 }
 
 const NON_SELECTED_NODE_AND_STREAM_COLOR: string = '#757575';
@@ -66,6 +65,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _margins: IMargins;
   private _isRtl: boolean = getRTL();
   private _normalizeData: (data: ISankeyChartData) => void;
+  private _emptyChartId: string;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -77,18 +77,13 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       selectedNodes: new Set<number>(),
       shouldOverflow: false,
       isCalloutVisible: false,
-      emptyChart: !(
-        this.props.data &&
-        this.props.data.SankeyChartData &&
-        this.props.data.SankeyChartData.nodes.length > 0 &&
-        this.props.data.SankeyChartData.links.length > 0
-      ),
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
     this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
     this._preRenderLayout();
     this._normalizeData = memoizeFunction((data: ISankeyChartData) => this._normalizeSankeyData(data));
+    this._emptyChartId = getId('_SankeyChart_empty');
   }
   public componentDidMount(): void {
     this._fitParentContainer();
@@ -103,7 +98,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     cancelAnimationFrame(this._reqID);
   }
   public render(): React.ReactNode {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       const { theme, className, styles, pathColor } = this.props;
       this._classNames = getClassNames(styles!, {
         theme: theme!,
@@ -173,7 +168,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
     return (
       <div
-        id={getId('_SankeyChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -786,8 +781,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight = container.getBoundingClientRect().height;
+      const currentContainerWidth = container && container.getBoundingClientRect().width;
+      const currentContainerHeight = container && container.getBoundingClientRect().height;
       const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
       if (shouldResize) {
         this.setState({
@@ -857,5 +852,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _hideTooltip(div: any) {
     div.style('opacity', 0);
+  }
+
+  private _isChartEmpty() {
+    return !(
+      this.props.data &&
+      this.props.data.SankeyChartData &&
+      this.props.data.SankeyChartData.nodes.length > 0 &&
+      this.props.data.SankeyChartData.links.length > 0
+    );
   }
 }
