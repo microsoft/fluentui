@@ -2,13 +2,13 @@ import * as React from 'react';
 import { DataVizPalette, GaugeChart, GaugeValueFormat, GaugeChartVariant } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
 
-interface IGCVariantExampleState {
+interface IGCSingleSegmentExampleState {
   width: number;
   height: number;
   chartValue: number;
 }
 
-export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExampleState> {
+export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingleSegmentExampleState> {
   constructor(props = {}) {
     super(props);
 

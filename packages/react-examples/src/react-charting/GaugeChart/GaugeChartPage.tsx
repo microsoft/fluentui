@@ -8,11 +8,11 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { GaugeChartBasicExample } from './GaugeChart.Basic.Example';
-import { GaugeChartVariantExample } from './GaugeChart.Variant.Example';
+import { GaugeChartSingleSegmentExample } from './GaugeChart.SingleSegment.Example';
 
 const GaugeChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/GaugeChart.Basic.Example.tsx') as string;
-const GaugeChartVariantExampleCode =
+const GaugeChartSingleSegmentExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/GaugeChart.Variant.Example.tsx') as string;
 
 export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -26,8 +26,8 @@ export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title="GaugeChart basic" code={GaugeChartBasicExampleCode}>
               <GaugeChartBasicExample />
             </ExampleCard>
-            <ExampleCard title="GaugeChart variant" code={GaugeChartVariantExampleCode}>
-              <GaugeChartVariantExample />
+            <ExampleCard title="GaugeChart single segment variant" code={GaugeChartSingleSegmentExampleCode}>
+              <GaugeChartSingleSegmentExample />
             </ExampleCard>
           </div>
         }
@@ -70,15 +70,15 @@ export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}>
                 <code>minValue</code>: Use this prop if the minimum value of the gauge is different from 0.
               </li>
               <li>
-                <code>maxValue</code>: Use this prop to render a placeholder segment when the difference between the max
-                and min values is larger than the total size of the segments. If the difference is smaller, the max
-                value will be adjusted so that the total size of the segments matches the difference.
+                <code>maxValue</code>: Use this prop to render a placeholder segment when the desired range for the
+                gauge is more than the sum of all segments. If the maxValue is less than the sum of all segments, this
+                property is ignored.
               </li>
               <li>
                 <code>sublabel</code>: Use this prop to render additional text below the chart value.
               </li>
               <li>
-                <code>hideMinMax</code>: Set this prop to true to hide the min and max values of the gauge.
+                <code>hideMinMax</code>: Set this prop to true to hide the min and max labels of the gauge.
               </li>
               <li>
                 <code>chartValueFormat</code>: This prop controls how the chart value is displayed. Set it to one of the
@@ -101,12 +101,14 @@ export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}>
                 the following options:
                 <ul>
                   <li>
-                    <code>GaugeChartVariant.SingleSegment</code>: Displays and announces the segment sizes as
-                    percentages.
+                    <code>GaugeChartVariant.SingleSegment</code>: This variant helps represent a single metric or key
+                    performance indicator (KPI) within a predefined range or target. In this variant, the segment sizes
+                    are rendered as percentages.
                   </li>
                   <li>
-                    <code>GaugeChartVariant.MultipleSegments</code>: Displays and announces the segment sizes as ranges.
-                    This is the default variant.
+                    <code>GaugeChartVariant.MultipleSegments</code>: This is the default variant that helps display the
+                    distribution of a single variable across different thresholds or categories. In this variant, the
+                    segment sizes are rendered as ranges.
                   </li>
                 </ul>
               </li>
