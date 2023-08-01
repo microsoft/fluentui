@@ -10,3 +10,4 @@ export * from './useOnScrollOutside';
 export * from './usePrevious';
 export * from './useScrollbarWidth';
 export * from './useTimeout';
+export * from './useMotionPresence';
