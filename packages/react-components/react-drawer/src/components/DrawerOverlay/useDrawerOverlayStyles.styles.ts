@@ -19,8 +19,9 @@ const useDrawerRootStyles = makeStyles({
     position: 'fixed',
     top: 0,
     bottom: 0,
-    transitionProperty: 'transform',
-    willChange: 'transform',
+    transitionProperty: 'transform, box-shadow',
+    willChange: 'transform, box-shadow',
+    boxShadow: '0px transparent',
   },
 
   /* Positioning */
@@ -34,6 +35,7 @@ const useDrawerRootStyles = makeStyles({
   /* Visible */
   visible: {
     transform: 'translate3D(0, 0, 0)',
+    boxShadow: tokens.shadow64,
   },
 });
 
