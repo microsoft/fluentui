@@ -7,8 +7,16 @@ import { DefaultPalette } from '@fluentui/react';
 
 storiesOf('react-charting/AreaChart', module)
   .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => {
-    const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+  .addDecorator((story, context) => {
+    const steps =
+      context.name.startsWith('Basic') || context.name.startsWith('Multiple')
+        ? new Steps()
+            .snapshot('default', { cropTo: '.testWrapper' })
+            // to hover over the area charts and show the callout
+            .hover('circle[id^="circle"]')
+            .snapshot('hover', { cropTo: '.testWrapper' })
+            .end()
+        : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
   .addStory(

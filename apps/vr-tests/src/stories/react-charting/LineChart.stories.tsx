@@ -8,16 +8,16 @@ import { DataVizPalette, ICustomizedCalloutData } from '@fluentui/react-charting
 
 storiesOf('react-charting/LineChart', module)
   .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => {
-    const steps =
-      story.name === 'Basic'
-        ? new Steps()
-            .snapshot('default', { cropTo: '.testWrapper' })
-            // Selector to select a point on the line, to capture the callout
-            .hover('path[id^="circle"][id$="_0_5"]')
-            .snapshot('hover', { cropTo: '.testWrapper' })
-            .end()
-        : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+  .addDecorator((story, context) => {
+    console.log(context);
+    const steps = context.name.startsWith('Basic')
+      ? new Steps()
+          .snapshot('default', { cropTo: '.testWrapper' })
+          // Selector to select a point on the line, to capture the callout displayed
+          .hover('path[id^="circle"][id$="_0_5"]')
+          .snapshot('hover', { cropTo: '.testWrapper' })
+          .end()
+      : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
