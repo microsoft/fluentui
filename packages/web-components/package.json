@@ -176,7 +176,9 @@
     "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
     "start-storybook": "node node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
-    "test": "npx playwright test"
+    "pretest:ci": "yarn build-storybook --quiet",
+    "test": "npx playwright test",
+    "test:ci": "yarn test"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.31.2",

@@ -58,4 +58,4 @@ This is a known issue and will indicate that you need to refresh the page. We're
 
 ## Testing
 
-When testing locally, start the dev server and in a separate terminal window, run `yarn test` within the web-components folder. If it is your first time running/installing playwright, you may need to run `npx playwright install` to ensure the chromium binaries are installed and available for testing.
+When testing locally, start the dev server and in a separate terminal window, run `yarn test` within the web-components folder.
