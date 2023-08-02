@@ -1930,7 +1930,7 @@ exports[`VerticalStackedBarChart - mouse events Should render long legend varian
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1943,7 +1943,7 @@ exports[`VerticalStackedBarChart - mouse events Should render long legend varian
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1983,7 +1983,7 @@ exports[`VerticalStackedBarChart - mouse events Should render long legend varian
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_3"
         transform="translate(0, 275)"
       />
       <g
@@ -2011,7 +2011,7 @@ exports[`VerticalStackedBarChart - mouse events Should render long legend varian
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -2213,7 +2213,7 @@ exports[`VerticalStackedBarChart - mouse events Should render long legend varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone5"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
