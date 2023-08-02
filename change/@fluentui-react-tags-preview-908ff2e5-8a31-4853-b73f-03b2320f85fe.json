@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: InteractionTag dismissButton slot event handler not being called",
+  "packageName": "@fluentui/react-tags-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
