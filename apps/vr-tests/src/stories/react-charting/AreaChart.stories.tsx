@@ -157,7 +157,7 @@ storiesOf('react-charting/AreaChart', module)
     { includeDarkMode: true, includeRtl: true },
   )
   .addStory(
-    'Custom_Accessibility',
+    'Custom Accessibility',
     () => {
       const chart1Points = [
         {
