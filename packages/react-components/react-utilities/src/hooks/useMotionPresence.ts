@@ -182,19 +182,19 @@ const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string):
  * @returns Maximum duration
  */
 const getMaxCSSDuration = (durations: string[], delays: string[]): number => {
-  const totalDurations: number[] = [];
+  const totalProps = Math.max(durations.length, delays.length);
+  const totalDurations = [];
 
-  durations.forEach(duration => totalDurations.push(toMs(duration.trim())));
+  if (totalProps === 0) {
+    return 0;
+  }
 
-  delays.forEach((delay, index) => {
-    const parsedDelay = toMs(delay.trim());
+  for (let i = 0; i < totalProps; i++) {
+    const duration = toMs(durations[i] || '0');
+    const delay = toMs(delays[i] || '0');
 
-    if (totalDurations[index]) {
-      totalDurations[index] = totalDurations[index] + parsedDelay;
-    } else {
-      totalDurations[index] = parsedDelay;
-    }
-  });
+    totalDurations.push(duration + delay);
+  }
 
   return Math.max(...totalDurations);
 };
@@ -293,10 +293,6 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   }, [present]);
 
   React.useEffect(() => {
-    if (!currentElement) {
-      return;
-    }
-
     let animationFrame: number;
     const skipAnimation = skipAnimationOnFirstRender.current;
     const onDestroy = () => cancelAnimationFrame(animationFrame);
@@ -332,7 +328,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     });
 
     return onDestroy;
-  }, [currentElement, present, processAnimation]);
+  }, [present, processAnimation]);
 
   React.useEffect(() => {
     skipAnimationOnFirstRender.current = false;
