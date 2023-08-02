@@ -136,7 +136,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     super(props);
 
     this._margins = this._getMargins();
-    this._legendsHeight = !this.props.hideLegend ? 24 : 0;
+    this._legendsHeight = !props.hideLegend ? 24 : 0;
 
     this.state = {
       hoveredLegend: '',
@@ -150,7 +150,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       height: 70 + this._margins.top + this._margins.bottom + this._legendsHeight,
     };
 
-    this._isRTL = getRTL();
+    this._isRTL = getRTL(props.theme);
     this._calloutAnchor = '';
   }
 
@@ -193,7 +193,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
-            role="presentation"
             aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
             onMouseLeave={this._handleMouseOut}
           >
