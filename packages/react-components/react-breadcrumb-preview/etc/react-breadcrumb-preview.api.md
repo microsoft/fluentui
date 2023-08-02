@@ -91,6 +91,7 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots>;
 export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<LinkProps, 'appearance' | 'disabled'> & {
     current?: boolean;
     iconPosition?: 'before' | 'after';
+    href?: string;
     overflow?: boolean;
     size?: 'small' | 'medium' | 'large';
 };

@@ -18,6 +18,9 @@ export const useBreadcrumbLink_unstable = (
 ): BreadcrumbLinkState => {
   const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
   const { current = false, disabled = false, icon, overflow = false, ...rest } = props;
+  const href = disabled ? undefined : props.href;
+  const as = props.as || (href ? 'a' : 'button');
+  const type = as === 'button' ? 'button' : undefined;
 
   const linkAppearance = props.appearance || appearance;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
@@ -27,7 +30,11 @@ export const useBreadcrumbLink_unstable = (
       getNativeElementProps('a', {
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
         ref,
+        type,
+        disabled,
         ...rest,
+        href,
+        as
       }),
       { elementType: Link },
     ),

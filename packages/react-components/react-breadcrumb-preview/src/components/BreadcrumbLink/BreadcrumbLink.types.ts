@@ -33,6 +33,10 @@ export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> &
     iconPosition?: 'before' | 'after';
 
     /**
+     * Internal prop for `href`
+     */
+    href?: string;
+    /**
      * Defines a sate when the Link is part of overflow menu.
      *
      * @default false
