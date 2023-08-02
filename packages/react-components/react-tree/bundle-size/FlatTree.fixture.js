@@ -11,5 +11,5 @@ import {
 console.log(FlatTree, TreeItem, TreeItemLayout, flattenTree_unstable, useHeadlessFlatTree_unstable);
 
 export default {
-  name: 'Tree',
+  name: 'FlatTree',
 };
