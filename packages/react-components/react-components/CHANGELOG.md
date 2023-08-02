@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 01 Aug 2023 10:17:19 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 13:04:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.27.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.3)
+
+Tue, 01 Aug 2023 13:04:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.27.2..@fluentui/react-components_v9.27.3)
+
+### Minor changes
+
+- `@fluentui/react-tags-preview`
+  - feat: release preview package ([PR #28696](https://github.com/microsoft/fluentui/pull/28696) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: revert menuItem focus ring back to border ([PR #28698](https://github.com/microsoft/fluentui/pull/28698) by yuanboxue@microsoft.com)
+- `@fluentui/react-provider`
+  - feat(FluentProvider): emit errors on duplicate IDs ([PR #28670](https://github.com/microsoft/fluentui/pull/28670) by olfedias@microsoft.com)
 
 ## [9.27.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.27.2)
 
