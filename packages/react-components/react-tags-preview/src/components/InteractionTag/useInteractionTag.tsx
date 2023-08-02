@@ -44,20 +44,6 @@ export const useInteractionTag_unstable = (
     value = id,
   } = props;
 
-  const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
-    props.onClick?.(ev);
-    if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
-    }
-  });
-
-  const onDismissButtonKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
-    props?.onKeyDown?.(ev);
-    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
-    }
-  });
-
   const dismissButtonShorthand = resolveShorthand(props.dismissButton, {
     required: dismissible,
     defaultProps: {
@@ -65,6 +51,20 @@ export const useInteractionTag_unstable = (
       type: 'button',
       children: <DismissIcon />,
     },
+  });
+
+  const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+    dismissButtonShorthand?.onClick?.(ev);
+    if (!ev.defaultPrevented) {
+      handleTagDismiss?.(ev, value);
+    }
+  });
+
+  const onDismissButtonKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    dismissButtonShorthand?.onKeyDown?.(ev);
+    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+      handleTagDismiss?.(ev, value);
+    }
   });
 
   return {
