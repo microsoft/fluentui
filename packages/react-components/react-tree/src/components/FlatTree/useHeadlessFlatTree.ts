@@ -95,7 +95,9 @@ export type HeadlessFlatTreeOptions = Pick<
   FlatTreeProps,
   'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'
 > &
-  Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems' | 'defaultCheckedItems'>;
+  Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
+    defaultCheckedItems?: TreeProps['checkedItems'];
+  };
 
 /**
  * this hook provides FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems

@@ -79,7 +79,9 @@ export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = Head
 export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
 
 // @public (undocumented)
-export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems' | 'defaultCheckedItems'>;
+export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
+    defaultCheckedItems?: TreeProps['checkedItems'];
+};
 
 // @public (undocumented)
 export const renderFlatTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
@@ -154,7 +156,7 @@ export type TreeItemContextValue = {
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;
-    checked?: TreeSelectionValue;
+    checked: TreeSelectionValue;
 };
 
 // @public
@@ -305,7 +307,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
     selectionMode?: SelectionMode_2;
     checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
-    defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 

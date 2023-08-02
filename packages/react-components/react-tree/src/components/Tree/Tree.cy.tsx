@@ -130,12 +130,6 @@ describe('Tree', () => {
       cy.get(`#action`).realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
-    it('should select item on selector click', () => {
-      mount(<TreeTest selectionMode="single" />);
-      cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-selected', 'true');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.selector}`).realClick();
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-selected', 'true');
-    });
   });
   describe('Keyboard interactions', () => {
     it('should expand/collapse item on Enter key', () => {
@@ -243,107 +237,6 @@ describe('Tree', () => {
         cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{home}');
         cy.get('[data-testid="item1"]').should('be.focused');
       });
-    });
-    it('should select item on Space key', () => {
-      mount(<TreeTest selectionMode="single" />);
-      cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-selected', 'true');
-      cy.get(`[data-testid="item1"]`).focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-selected', 'true');
-    });
-  });
-  describe('single selection', () => {
-    it('should switch selection between items', () => {
-      mount(<TreeTest selectionMode="single" />);
-      cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-selected', 'true');
-      cy.get('[data-testid="item2"]').should('not.have.attr', 'aria-selected', 'true');
-      cy.get(`[data-testid="item1"]`).focus().realPress('Space');
-      cy.get(`[data-testid="item2"]`).focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-selected', 'true');
-      cy.get('[data-testid="item2"]').should('have.attr', 'aria-selected', 'true');
-    });
-    it('should render with a default selected item', () => {
-      mount(<TreeTest selectionMode="single" defaultCheckedItems={['item1']} />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-selected', 'true');
-    });
-    it('should maintain selection when closing and reopening a branch', () => {
-      mount(<TreeTest selectionMode="single" defaultOpenItems={['item1']} defaultCheckedItems={['item1__item1']} />);
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-selected', 'true');
-      cy.get('[data-testid="item1"]').focus().realPress('{enter}');
-      cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get('[data-testid="item1"]').focus().realPress('{enter}');
-      cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-selected', 'true');
-    });
-  });
-  describe('multiple selection', () => {
-    it('should select multiple items', () => {
-      mount(<TreeTest selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item2"]').should('not.have.attr', 'aria-checked', 'true');
-      cy.get(`[data-testid="item1"]`).focus().realPress('Space');
-      cy.get(`[data-testid="item2"]`).focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item2"]').should('have.attr', 'aria-checked', 'true');
-    });
-    it('should have multiple items default selected', () => {
-      mount(<TreeTest defaultCheckedItems={['item1', 'item2']} selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item2"]').should('have.attr', 'aria-checked', 'true');
-    });
-    it('should select all children when selecting a parent', () => {
-      mount(<TreeTest defaultCheckedItems={['item1']} defaultOpenItems={['item1']} selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item1__item2"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item1__item3"]').should('have.attr', 'aria-checked', 'true');
-    });
-    it('should deselect all children when deselecting a parent', () => {
-      mount(<TreeTest defaultCheckedItems={['item1']} defaultOpenItems={['item1']} selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'false');
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'false');
-      cy.get('[data-testid="item1__item2"]').should('have.attr', 'aria-checked', 'false');
-      cy.get('[data-testid="item1__item3"]').should('have.attr', 'aria-checked', 'false');
-    });
-    it('should deselect parent when deselecting all children', () => {
-      mount(<TreeTest defaultCheckedItems={['item1']} defaultOpenItems={['item1']} selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item1__item1"]').focus().realPress('Space');
-      cy.get('[data-testid="item1__item2"]').focus().realPress('Space');
-      cy.get('[data-testid="item1__item3"]').focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'false');
-    });
-    it('should select parent when selecting all children', () => {
-      mount(<TreeTest defaultOpenItems={['item1']} selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'false');
-      cy.get('[data-testid="item1__item1"]').focus().realPress('Space');
-      cy.get('[data-testid="item1__item2"]').focus().realPress('Space');
-      cy.get('[data-testid="item1__item3"]').focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'true');
-    });
-    it('parent should be indeterminate when selecting some children', () => {
-      mount(<TreeTest defaultOpenItems={['item1']} selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'false');
-      cy.get('[data-testid="item1__item1"]').focus().realPress('Space');
-      cy.get('[data-testid="item1__item2"]').focus().realPress('Space');
-      cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-checked', 'false');
-    });
-    it('should maintain selection when closing and reopening a branch', () => {
-      mount(
-        <TreeTest selectionMode="multiselect" defaultOpenItems={['item1']} defaultCheckedItems={['item1__item1']} />,
-      );
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'true');
-      cy.get('[data-testid="item1"]').focus().realPress('{enter}');
-      cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get('[data-testid="item1"]').focus().realPress('{enter}');
-      cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'true');
-    });
-    it('should change selection when selecting a closed branch', () => {
-      mount(<TreeTest selectionMode="multiselect" />);
-      cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'false');
-      cy.get('[data-testid="item1"]').focus().realPress('Space').realPress('{enter}');
-      cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'true');
     });
   });
 });

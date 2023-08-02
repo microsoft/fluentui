@@ -4,7 +4,7 @@ import { ImmutableMap } from '../../utils/ImmutableMap';
 import * as React from 'react';
 import type { HeadlessTree, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
 import { createCheckedItems } from '../../utils/createCheckedItems';
-import type { TreeCheckedChangeData, TreeProps } from '../Tree/Tree.types';
+import type { TreeCheckedChangeData } from '../Tree/Tree.types';
 import { HeadlessFlatTreeOptions } from './useHeadlessFlatTree';
 
 export function useFlatControllableCheckedItems<Props extends HeadlessTreeItemProps>(
@@ -68,7 +68,7 @@ export function createNextFlatCheckedItems(
 }
 
 function initializeCheckedItems(
-  props: Pick<TreeProps, 'selectionMode' | 'defaultCheckedItems'>,
+  props: Pick<HeadlessFlatTreeOptions, 'selectionMode' | 'defaultCheckedItems'>,
   headlessTree: HeadlessTree<HeadlessTreeItemProps>,
 ) {
   if (!props.selectionMode) {

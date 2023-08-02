@@ -11,7 +11,7 @@ import type {
   TreeState,
 } from './Tree.types';
 import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
-import { createNextNestedCheckedItems, useNestedControllableCheckedItems } from './useNestedControllableCheckedItems';
+import { createNextNestedCheckedItems, useNestedCheckedItems } from './useNestedControllableCheckedItems';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useRootTree } from '../../hooks/useRootTree';
 import { useSubtree } from '../../hooks/useSubtree';
@@ -29,7 +29,7 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
 
 function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const [openItems, setOpenItems] = useControllableOpenItems(props);
-  const [checkedItems, setCheckedItems] = useNestedControllableCheckedItems(props);
+  const checkedItems = useNestedCheckedItems(props);
   const { navigate, initialize } = useTreeNavigation();
   const walkerRef = React.useRef<HTMLElementWalker>();
   const initializeWalker = React.useCallback(
@@ -53,9 +53,11 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
 
   const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
     if (walkerRef.current) {
-      const nextCheckedItems = createNextNestedCheckedItems(data, checkedItems, walkerRef.current);
-      props.onCheckedChange?.(event, { ...data, checkedItems: nextCheckedItems.dangerouslyGetInternalMap_unstable() });
-      setCheckedItems(nextCheckedItems);
+      const nextCheckedItems = createNextNestedCheckedItems(data, checkedItems);
+      props.onCheckedChange?.(event, {
+        ...data,
+        checkedItems: nextCheckedItems.dangerouslyGetInternalMap_unstable(),
+      });
     }
   });
   const handleNavigation = useEventCallback(
