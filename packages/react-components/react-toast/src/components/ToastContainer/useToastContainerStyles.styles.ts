@@ -4,7 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ToastContainerSlots, ToastContainerState } from './ToastContainer.types';
 
-export const toastClassNames: SlotClassNames<ToastContainerSlots> = {
+export const toastContainerClassNames: SlotClassNames<ToastContainerSlots> = {
   root: 'fui-ToastContainer',
   timer: 'fui-ToastContainer__timer',
 };
@@ -85,7 +85,7 @@ export const useToastContainerStyles_unstable = (state: ToastContainerState): To
   const rootBaseClassName = useRootBaseClassName();
   const styles = useStyles();
   state.root.className = mergeClasses(
-    toastClassNames.root,
+    toastContainerClassNames.root,
     rootBaseClassName,
     state.visible ? styles.enter : styles.exit,
     state.root.className,
