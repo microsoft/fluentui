@@ -106,6 +106,17 @@ const secondChartPoints: IChartDataPoint[] = [
   },
 ];
 
+const singleChartPoint: IChartDataPoint[] = [
+  {
+    legend: 'Phone Numbers',
+    data: 40,
+    color: DefaultPalette.blue,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '87%',
+    placeHolder: true,
+  },
+];
+
 const data: IChartProps[] = [
   {
     chartTitle: 'Monitored',
@@ -118,6 +129,13 @@ const data: IChartProps[] = [
   {
     chartTitle: 'Unmonitored',
     chartData: secondChartPoints,
+  },
+];
+
+const oneDataPoint: IChartProps[] = [
+  {
+    chartTitle: 'Single Chart Point with placeholder',
+    chartData: singleChartPoint,
   },
 ];
 
@@ -161,7 +179,7 @@ describe('Multi Stacked bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
-    'Should render the multi stacked bar with the given variant part-to-whole',
+    'Should render the multi stacked bar with the given variant absolute-scale',
     MultiStackedBarChart,
     { data, variant: 'absolute-scale' },
     container => {
@@ -169,9 +187,31 @@ describe('Multi Stacked bar chart - Subcomponent bar', () => {
       // Assert
       expect(getById(container, /_MSBC_bar/i)).toHaveLength(data.length);
       expect(getById(container, /_MSBC_rect/i)).toHaveLength(12);
-      const rect1: number = +rect[10].getAttribute('width')!.split('%')[0];
-      const rect2: number = +rect[11].getAttribute('width')!.split('%')[0];
-      expect(rect1 + rect2).not.toEqual(100);
+      let longestBarTotalValue = 0;
+      const totalValue: number[] = [];
+      let barIndexWithHighestWidth = -1;
+      data.forEach((item, index) => {
+        const barTotalValue = item.chartData!.reduce((a, b) => a + b!.data!, 0);
+        longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+        barIndexWithHighestWidth = longestBarTotalValue === barTotalValue ? index : barIndexWithHighestWidth;
+        totalValue.push(barTotalValue);
+      });
+      const receivedWidth = rect.map(item => +item.getAttribute('width')!.split('%')[0]);
+      const receivedWidthGroups: number[] = [];
+      data.forEach((item, index) => {
+        const groupSize = item.chartData!.length;
+        receivedWidthGroups.push(
+          receivedWidth.slice(index * groupSize, (index + 1) * groupSize).reduce((a, b) => a + b, 0),
+        );
+      });
+      // The longest bar should have 100% width
+      expect(receivedWidthGroups[barIndexWithHighestWidth]).toEqual(100);
+      // Any other bar should have less than 100% width
+      receivedWidthGroups.forEach((item, index) => {
+        if (index !== barIndexWithHighestWidth) {
+          expect(item).toBeLessThan(100);
+        }
+      });
     },
   );
 });
@@ -186,6 +226,16 @@ describe('Multi Stacked bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       // Assert
       expect(legends).toHaveLength(5);
+    },
+  );
+
+  testWithWait(
+    'Should not show any legends when a datapoint is marked as placeholder',
+    MultiStackedBarChart,
+    { data: oneDataPoint },
+    container => {
+      // Assert
+      expect(screen.queryAllByText('Phone Numbers')).toHaveLength(0);
     },
   );
 

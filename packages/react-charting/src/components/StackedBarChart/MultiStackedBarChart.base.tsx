@@ -53,6 +53,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
   private _emptyChartId: string;
+  private _barId: string;
+  private _barIdEmptyPartToWhole: string;
+  private _barIdEmpty: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -72,6 +75,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
     this._emptyChartId = getId('_MSBC_empty');
+    this._barId = getId('_MSBC_rect_');
+    this._barIdEmptyPartToWhole = getId('_MSBC_rect_partToWhole_');
+    this._barIdEmpty = getId('_MSBC_rect_empty');
   }
 
   public render(): JSX.Element {
@@ -250,7 +256,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={getId('_MSBC_rect_')}
+            id={this._barId + index}
             x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
@@ -288,7 +294,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
             <rect
               key={0}
-              id={getId('_MSBC_rect_')}
+              id={this._barIdEmptyPartToWhole}
               x={'0%'}
               y={0}
               width={'100%'}
@@ -303,7 +309,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
             <rect
               key={0}
-              id={getId('_MSBC_rect_')}
+              id={this._barIdEmpty}
               x={'0%'}
               y={0}
               width={'100%'}
