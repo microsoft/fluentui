@@ -24,6 +24,8 @@ export const useDrawerOverlay_unstable = (
   const backdropPresence = useMotionPresence<HTMLDivElement>(open);
   const backdropRef = useMergedRefs(backdropPresence.ref, drawerRef);
 
+  const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
+
   return {
     components: {
       root: DialogSurface,
@@ -35,10 +37,14 @@ export const useDrawerOverlay_unstable = (
       defaultProps: {
         ...props,
         ref: useMergedRefs(ref, drawerRef),
-        ...(modalType !== 'non-modal' && {
+        ...(hasCustomBackdrop && {
           backdrop: {
-            ...((props.backdrop || {}) as Record<string, unknown>),
-            ref: backdropRef,
+            ...resolveShorthand(props.backdrop, {
+              required: true,
+              defaultProps: {
+                ref: backdropRef,
+              },
+            }),
           },
         }),
       } as DialogSurfaceProps,
