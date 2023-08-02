@@ -20,7 +20,7 @@ export const useTreeItemPersonaLayout_unstable = (
   props: TreeItemPersonaLayoutProps,
   ref: React.Ref<HTMLSpanElement>,
 ): TreeItemPersonaLayoutState => {
-  const { media, children, content, description } = props;
+  const { media, children, main, description } = props;
 
   const treeItemLayoutState = useTreeItemLayout_unstable(
     {
@@ -38,7 +38,7 @@ export const useTreeItemPersonaLayout_unstable = (
     ...treeItemLayoutState,
     components: {
       expandIcon: 'div',
-      content: 'div',
+      main: 'div',
       description: 'div',
       root: 'div',
       media: 'div',
@@ -48,7 +48,7 @@ export const useTreeItemPersonaLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     avatarSize: treeAvatarSize[size],
-    content: resolveShorthand(content, { required: true, defaultProps: { children } }),
+    main: resolveShorthand(main, { required: true, defaultProps: { children } }),
     media: resolveShorthand(media, { required: true }),
     description: resolveShorthand(description),
   };
