@@ -51,6 +51,8 @@ jobs:
 
       - name: Build storybook
         run: yarn workspace @fluentui/public-docsite-v9 build-storybook
+        env:
+          STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1

@@ -10,12 +10,12 @@ addons.setConfig({
 
 addons.register('application-insights', api => {
   if (process.env.NODE_ENV === 'production') {
-    const { STORYBOOK_INSTRUMENTATION_KEY } = process.env;
+    const { STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY } = process.env;
 
-    if (STORYBOOK_INSTRUMENTATION_KEY) {
+    if (STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY) {
       const appInsights = new ApplicationInsights({
         config: {
-          connectionString: STORYBOOK_INSTRUMENTATION_KEY,
+          connectionString: STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY,
           disableCookiesUsage: true,
         },
       });
@@ -35,7 +35,7 @@ addons.register('application-insights', api => {
       api.on(STORY_ERRORED, trackError);
       api.on(STORY_MISSING, trackError);
     } else {
-      console.warn(`[application-insights] instrumentation key not found`);
+      console.warn(`[application-insights] instrumentation key not found in window or env variable`);
     }
   }
 });
