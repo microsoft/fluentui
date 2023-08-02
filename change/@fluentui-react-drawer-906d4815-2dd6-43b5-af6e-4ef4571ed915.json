@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add transition on open/close",
+  "packageName": "@fluentui/react-drawer",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

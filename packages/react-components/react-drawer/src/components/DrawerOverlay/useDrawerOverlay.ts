@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs, useMotionPresence } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
-import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
+import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
 
 /**
@@ -11,14 +11,18 @@ import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
  * before being passed to renderDrawerOverlay_unstable.
  *
  * @param props - props from this instance of DrawerOverlay
- * @param ref - reference to root HTMLElement of DrawerOverlay
+ * @param ref - reference to root HTMLDivElement of DrawerOverlay
  */
 export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
   const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
+
+  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useMotionPresence<HTMLDivElement>(open);
+  const backdropPresence = useMotionPresence<HTMLDivElement>(open);
+  const backdropRef = useMergedRefs(backdropPresence.ref, drawerRef);
 
   return {
     components: {
@@ -26,12 +30,21 @@ export const useDrawerOverlay_unstable = (
       backdrop: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(getNativeElementProps('div', {}), {
+      required: true,
+      defaultProps: {
+        ...props,
+        ref: useMergedRefs(ref, drawerRef),
+        ...(modalType !== 'non-modal' && {
+          backdrop: {
+            ...((props.backdrop || {}) as Record<string, unknown>),
+            ref: backdropRef,
+          },
+        }),
+      } as DialogSurfaceProps,
     }),
     dialog: {
-      open,
+      open: shouldRender,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
@@ -40,5 +53,10 @@ export const useDrawerOverlay_unstable = (
 
     size,
     position,
+    shouldRender,
+    visible,
+    entering,
+    exiting,
+    backdropVisible: backdropPresence.visible,
   };
 };

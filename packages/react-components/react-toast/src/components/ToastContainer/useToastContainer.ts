@@ -7,6 +7,7 @@ import {
   useEventCallback,
   resolveShorthand,
   useId,
+  useMotionPresence,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { ToastStatus } from '../../state';
@@ -58,6 +59,7 @@ export const useToastContainer_unstable = (
   const [running, setRunning] = React.useState(false);
   const imperativePauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
+  const { ref: toastMotionRef, shouldRender, visible: motionVisible } = useMotionPresence<HTMLDivElement>(visible);
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -148,7 +150,8 @@ export const useToastContainer_unstable = (
   const toastAnimationRef = React.useCallback(
     (el: HTMLDivElement | null) => {
       if (el && toastRef.current) {
-        toastRef.current.addEventListener(
+        el.style.setProperty('--fui-toast-height', `${el.scrollHeight}px`);
+        el.addEventListener(
           'animationend',
           () => {
             // start toast once it's fully animated in
@@ -209,7 +212,7 @@ export const useToastContainer_unstable = (
       { required: true },
     ),
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, toastRef, toastAnimationRef),
+      ref: useMergedRefs(ref, toastRef, toastAnimationRef, toastMotionRef),
       children,
       tabIndex: -1,
       role: 'group',
@@ -233,5 +236,7 @@ export const useToastContainer_unstable = (
     intent,
     titleId,
     bodyId,
+    shouldRender,
+    motionVisible,
   };
 };

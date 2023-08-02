@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  useControllableState,
+  useMergedRefs,
+  useMotionPresence,
+} from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
 
@@ -12,7 +17,10 @@ import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
  * @param props - props from this instance of DrawerInline
  * @param ref - reference to root HTMLElement of DrawerInline
  */
-export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Ref<HTMLElement>): DrawerInlineState => {
+export const useDrawerInline_unstable = (
+  props: DrawerInlineProps,
+  ref: React.Ref<HTMLDivElement>,
+): DrawerInlineState => {
   const { open: initialOpen, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { separator = false } = props;
 
@@ -22,13 +30,15 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
     initialState: false,
   });
 
+  const { ref: drawerRef, shouldRender, visible, entering, exiting } = useMotionPresence<HTMLDivElement>(open);
+
   return {
     components: {
       root: 'div',
     },
 
     root: getNativeElementProps('div', {
-      ref,
+      ref: useMergedRefs(ref, drawerRef),
       ...props,
     }),
 
@@ -36,5 +46,9 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
     position,
     open,
     separator,
+    shouldRender,
+    visible,
+    entering,
+    exiting,
   };
 };

@@ -1,9 +1,10 @@
 /** @jsxRuntime classic */
+/** @jsxFrag React.Fragment */
 /** @jsx createElement */
 
+import * as React from 'react';
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import { Transition } from 'react-transition-group';
 import type { ToastContainerState, ToastContainerSlots, ToastContainerContextValues } from './ToastContainer.types';
 import { ToastContainerContextProvider } from '../../contexts/toastContainerContext';
 
@@ -18,19 +19,13 @@ export const renderToastContainer_unstable = (
   const { slots, slotProps } = getSlotsNext<ToastContainerSlots>(state);
 
   return (
-    <Transition
-      in={visible}
-      appear
-      unmountOnExit
-      timeout={transitionTimeout}
-      onExited={remove}
-      onEntering={onTransitionEntering}
-      nodeRef={nodeRef}
-    >
-      <ToastContainerContextProvider value={contextValues.toast}>
-        <slots.root {...slotProps.root} />
-        <slots.timer {...slotProps.timer} />
-      </ToastContainerContextProvider>
-    </Transition>
+    <ToastContainerContextProvider value={contextValues.toast}>
+      {state.shouldRender && (
+        <>
+          <slots.root {...slotProps.root} />
+          <slots.timer {...slotProps.timer} />
+        </>
+      )}
+    </ToastContainerContextProvider>
   );
 };

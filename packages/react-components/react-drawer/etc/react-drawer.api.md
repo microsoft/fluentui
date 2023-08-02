@@ -126,7 +126,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps;
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps & DrawerBaseState;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -143,8 +143,9 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
 };
 
 // @public
-export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & {
+export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & DrawerBaseState & {
     dialog: DialogProps;
+    backdropVisible: boolean;
 };
 
 // @public
@@ -218,13 +219,13 @@ export const useDrawerHeaderTitle_unstable: (props: DrawerHeaderTitleProps, ref:
 export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
 
 // @public
-export const useDrawerInline_unstable: (props: DrawerInlineProps, ref: React_2.Ref<HTMLElement>) => DrawerInlineState;
+export const useDrawerInline_unstable: (props: DrawerInlineProps, ref: React_2.Ref<HTMLDivElement>) => DrawerInlineState;
 
 // @public
 export const useDrawerInlineStyles_unstable: (state: DrawerInlineState) => DrawerInlineState;
 
 // @public
-export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2.Ref<HTMLElement>) => DrawerOverlayState;
+export const useDrawerOverlay_unstable: (props: DrawerOverlayProps, ref: React_2.Ref<HTMLDivElement>) => DrawerOverlayState;
 
 // @public
 export const useDrawerOverlayStyles_unstable: (state: DrawerOverlayState) => DrawerOverlayState;

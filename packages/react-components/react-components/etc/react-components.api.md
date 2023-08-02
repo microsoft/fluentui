@@ -974,6 +974,9 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useMotionPresence } from '@fluentui/react-utilities';
+import { UseMotionPresenceEvents } from '@fluentui/react-utilities';
+import { UseMotionPresenceState } from '@fluentui/react-utilities';
 import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
@@ -3035,6 +3038,11 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
+export { useMotionPresence }
+
+export { UseMotionPresenceEvents }
+
+export { UseMotionPresenceState }
 export { useObservedElement }
 
 export { useOption_unstable }

@@ -1,8 +1,10 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 import * as React from 'react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
+import { getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
@@ -12,11 +14,56 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const useDrawerRootStyles = makeStyles({
   root: {
     position: 'fixed',
     top: 0,
     bottom: 0,
+    transitionProperty: 'transform',
+    willChange: 'transform',
+  },
+
+  /* Positioning */
+  left: {
+    transform: 'translate3D(calc(var(--fui-Drawer--size) * -1), 0, 0)',
+  },
+  right: {
+    transform: 'translate3D(calc(var(--fui-Drawer--size) * 1), 0, 0)',
+  },
+
+  /* Visible */
+  visible: {
+    transform: 'translate3D(0, 0, 0)',
+  },
+});
+
+/**
+ * Styles for the backdrop slot
+ */
+const useBackdropStyles = makeStyles({
+  backdrop: {
+    opacity: 0,
+    transitionProperty: 'opacity',
+    transitionTimingFunction: tokens.curveEasyEase,
+    willChange: 'opacity',
+  },
+
+  backdropVisible: {
+    opacity: 1,
+  },
+
+  // Transition duration based on size
+  small: {
+    transitionDuration: tokens.durationNormal,
+  },
+  medium: {
+    transitionDuration: tokens.durationSlow,
+  },
+  large: {
+    transitionDuration: tokens.durationSlower,
+  },
+  full: {
+    transitionDuration: tokens.durationUltraSlow,
   },
 });
 
@@ -25,21 +72,29 @@ const useStyles = makeStyles({
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
   const baseStyles = useDrawerBaseStyles();
-  const styles = useStyles();
+  const rootStyles = useDrawerRootStyles();
+  const backdropStyles = useBackdropStyles();
 
-  const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement>;
+  const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
     baseStyles.root,
-    styles.root,
-    state.size && baseStyles[state.size],
-    state.position && baseStyles[state.position],
+    rootStyles.root,
+    getDrawerBaseClassNames(state, baseStyles),
+    state.position && rootStyles[state.position],
+    state.visible && rootStyles.visible,
     state.root.className,
   );
 
   if (backdrop) {
-    backdrop.className = mergeClasses(drawerOverlayClassNames.backdrop, backdrop.className);
+    backdrop.className = mergeClasses(
+      drawerOverlayClassNames.backdrop,
+      backdropStyles.backdrop,
+      state.backdropVisible && backdropStyles.backdropVisible,
+      state.size && backdropStyles[state.size],
+      backdrop.className,
+    );
   }
 
   return state;

@@ -282,6 +282,25 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
+// @public
+export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, events?: UseMotionPresenceEvents) => UseMotionPresenceState<TElement>;
+
+// @public
+export type UseMotionPresenceEvents = {
+    onEntered?: () => void;
+    onExited?: () => void;
+};
+
+// @public
+export type UseMotionPresenceState<TElement extends HTMLElement> = {
+    ref: React_2.RefCallback<TElement>;
+    shouldRender: boolean;
+    visible: boolean;
+    entering: boolean;
+    exiting: boolean;
+    animating: boolean;
+};
+
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;

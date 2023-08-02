@@ -36,4 +36,6 @@ export type ToastContainerState = ComponentState<ToastContainerSlots> &
     running: boolean;
     onTransitionEntering: () => void;
     nodeRef: React.Ref<HTMLDivElement>;
+    shouldRender: boolean;
+    motionVisible: boolean;
   };
