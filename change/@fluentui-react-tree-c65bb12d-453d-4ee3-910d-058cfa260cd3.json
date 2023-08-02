@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "chore: adds bundle size metrics",
   "packageName": "@fluentui/react-tree",
   "email": "bernardo.sunderhus@gmail.com",
