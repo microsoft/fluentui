@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import {
   IGaugeChartProps,
   IGaugeChartSegment,
@@ -71,6 +71,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _rootElem: HTMLDivElement | null;
   private _margins: { left: number; right: number; top: number; bottom: number };
   private _legendsHeight: number;
+  private _titleId = getId('chart-title-');
 
   constructor(props: IGaugeChartProps) {
     super(props);
@@ -136,17 +137,19 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
-            role="presentation"
-            aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
+            aria-labelledby={this._titleId}
+            aria-label={`This is a gauge chart with ${this._segments.length} sections represented.`}
             onMouseLeave={this._handleMouseOut}
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (
                 <text
+                  id={this._titleId}
                   x={0}
                   y={-(this._outerRadius + TITLE_OFFSET)}
                   textAnchor="middle"
                   className={this._classNames.chartTitle}
+                  aria-hidden={true}
                 >
                   {this.props.chartTitle}
                 </text>
@@ -158,8 +161,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     y={0}
                     textAnchor="end"
                     className={this._classNames.limits}
-                    role="img"
-                    aria-label={`Min value: ${this._minValue}`}
+                    aria-hidden={true}
                   >
                     {formatValueWithSIPrefix(this._minValue)}
                   </text>
@@ -168,8 +170,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     y={0}
                     textAnchor="start"
                     className={this._classNames.limits}
-                    role="img"
-                    aria-label={`Max value: ${maxValue}`}
+                    aria-hidden={true}
                   >
                     {formatValueWithSIPrefix(maxValue)}
                   </text>
@@ -200,6 +201,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     'img',
                     true,
                   )}
+                  aria-roledescription="segment"
                   onFocus={e => this._handleFocus(e, this._segments[arc.segmentIndex].legend)}
                   onBlur={this._handleBlur}
                   onMouseEnter={e => this._handleMouseOver(e, this._segments[arc.segmentIndex].legend)}
@@ -225,10 +227,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     textAnchor: 'middle',
                     className: this._classNames.chartValue,
                     role: 'img',
-                    'aria-label': `Current value: ${this._sweepFraction[0]} out of ${this._sweepFraction[1]}, or ${(
-                      (this._sweepFraction[0] / this._sweepFraction[1]) *
-                      100
-                    ).toFixed()}%`,
+                    'aria-label':
+                      typeof this.props.chartValueFormat === 'function'
+                        ? this.props.chartValueFormat(this._sweepFraction)
+                        : this.props.chartValueFormat === GaugeValueFormat.Fraction
+                        ? `${this._sweepFraction[0]}/${this._sweepFraction[1]}`
+                        : `${((this._sweepFraction[0] / this._sweepFraction[1]) * 100).toFixed()}%`,
+                    'aria-roledescription': 'current value',
                   }}
                   maxWidth={this._innerRadius * 2 - 24}
                   wrapContent={this._wrapContent}
@@ -243,8 +248,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     textAnchor: 'middle',
                     dominantBaseline: 'hanging',
                     className: this._classNames.sublabel,
-                    role: 'img',
-                    'aria-label': this.props.sublabel,
                   }}
                   maxWidth={this._innerRadius * 2}
                   wrapContent={this._wrapContent}
@@ -369,11 +372,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           strokeWidth={strokeWidth}
           className={this._classNames.needle}
           transform={`translate(${-this._innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
-          data-is-focusable={true}
-          onFocus={e => this._handleFocus(e, 'Needle')}
-          onBlur={this._handleBlur}
-          onMouseEnter={e => this._handleMouseOver(e, 'Needle')}
-          onMouseMove={e => this._handleMouseOver(e, 'Needle')}
+          aria-hidden={true}
         />
       </g>
     );

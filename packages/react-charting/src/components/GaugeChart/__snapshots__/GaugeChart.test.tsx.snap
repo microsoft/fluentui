@@ -22,10 +22,11 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone0"
+      data-focuszone-id="FocusZone1"
     >
       <svg
-        aria-label="This is a gauge chart with 3 section represented."
+        aria-label="This is a gauge chart with 3 sections represented."
+        aria-labelledby="chart-title-0"
         class=
 
             {
@@ -34,13 +35,12 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               width: 0px;
             }
         focusable="false"
-        role="presentation"
       >
         <g
           transform="translate(0, -40)"
         >
           <text
-            aria-label="Min value: 0"
+            aria-hidden="true"
             class=
 
                 {
@@ -48,7 +48,6 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                   font-size: 12px;
                   font-weight: 600;
                 }
-            role="img"
             text-anchor="end"
             x="54"
             y="0"
@@ -56,7 +55,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             0
           </text>
           <text
-            aria-label="Max value: 100"
+            aria-hidden="true"
             class=
 
                 {
@@ -64,7 +63,6 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                   font-size: 12px;
                   font-weight: 600;
                 }
-            role="img"
             text-anchor="start"
             x="-54"
             y="0"
@@ -73,6 +71,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           </text>
           <path
             aria-label="Low Risk, 33 out of 100 or 33%"
+            aria-roledescription="segment"
             class=
 
                 {
@@ -89,6 +88,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           />
           <path
             aria-label="Medium Risk, 34 out of 100 or 34%"
+            aria-roledescription="segment"
             class=
 
                 {
@@ -105,6 +105,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           />
           <path
             aria-label="High Risk, 33 out of 100 or 33%"
+            aria-roledescription="segment"
             class=
 
                 {
@@ -123,6 +124,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             transform="rotate(45, 0, 0)"
           >
             <path
+              aria-hidden="true"
               class=
 
                   {
@@ -136,15 +138,14 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-              data-is-focusable="true"
               stroke-width="2"
-              tabindex="-1"
               transform="translate(72)"
             />
           </g>
           <g>
             <text
-              aria-label="Current value: 25 out of 100, or 25%"
+              aria-label="25%"
+              aria-roledescription="current value"
               class=
 
                   {
@@ -153,7 +154,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                     font-weight: 600;
                   }
               data-is-focusable="true"
-              id="tooltip-host1"
+              id="tooltip-host2"
               role="img"
               tabindex="-1"
               text-anchor="middle"
@@ -202,7 +203,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone2"
+                data-focuszone-id="FocusZone3"
                 role="listbox"
               >
                 <div
@@ -796,13 +797,14 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -811,13 +813,13 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -838,6 +840,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -858,6 +861,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
         />
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -880,6 +884,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -893,11 +898,6 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -907,7 +907,8 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -916,7 +917,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -978,7 +979,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1298,13 +1299,14 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -1313,13 +1315,12 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -16)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -1327,7 +1328,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={52}
           y={0}
@@ -1335,7 +1335,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -1343,7 +1343,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-52}
           y={0}
@@ -1352,6 +1351,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
         </text>
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -1372,6 +1372,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -1392,6 +1393,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
         />
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -1414,6 +1416,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -1427,11 +1430,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(70)"
           />
@@ -1441,7 +1439,8 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -1450,7 +1449,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -1490,13 +1489,14 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -1505,13 +1505,12 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -1519,7 +1518,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={54}
           y={0}
@@ -1527,7 +1525,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -1535,7 +1533,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-54}
           y={0}
@@ -1544,6 +1541,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
         </text>
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -1564,6 +1562,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -1584,6 +1583,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
         />
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -1606,6 +1606,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -1619,11 +1620,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -1633,7 +1629,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -1642,7 +1639,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -1704,7 +1701,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2037,13 +2034,14 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone3"
+      data-focuszone-id="FocusZone4"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
     >
       <svg
-        aria-label="This is a gauge chart with 3 section represented."
+        aria-label="This is a gauge chart with 3 sections represented."
+        aria-labelledby="chart-title-3"
         className=
 
             {
@@ -2052,13 +2050,12 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
               width: 0px;
             }
         onMouseLeave={[Function]}
-        role="presentation"
       >
         <g
           transform="translate(0, -40)"
         >
           <text
-            aria-label="Min value: 0"
+            aria-hidden={true}
             className=
 
                 {
@@ -2066,7 +2063,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                   font-size: 12px;
                   font-weight: 600;
                 }
-            role="img"
             textAnchor="end"
             x={54}
             y={0}
@@ -2074,7 +2070,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             0
           </text>
           <text
-            aria-label="Max value: 100"
+            aria-hidden={true}
             className=
 
                 {
@@ -2082,7 +2078,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                   font-size: 12px;
                   font-weight: 600;
                 }
-            role="img"
             textAnchor="start"
             x={-54}
             y={0}
@@ -2091,6 +2086,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
           </text>
           <path
             aria-label="Low Risk, 33 out of 100 or 33%"
+            aria-roledescription="segment"
             className=
 
                 {
@@ -2111,6 +2107,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
           />
           <path
             aria-label="Medium Risk, 34 out of 100 or 34%"
+            aria-roledescription="segment"
             className=
 
                 {
@@ -2131,6 +2128,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
           />
           <path
             aria-label="High Risk, 33 out of 100 or 33%"
+            aria-roledescription="segment"
             className=
 
                 {
@@ -2153,6 +2151,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             transform="rotate(45, 0, 0)"
           >
             <path
+              aria-hidden={true}
               className=
 
                   {
@@ -2166,11 +2165,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseMove={[Function]}
               strokeWidth={2}
               transform="translate(72)"
             />
@@ -2180,7 +2174,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             onMouseMove={[Function]}
           >
             <text
-              aria-label="Current value: 25 out of 100, or 25%"
+              aria-label="25%"
+              aria-roledescription="current value"
               className=
 
                   {
@@ -2189,7 +2184,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                     font-weight: 600;
                   }
               data-is-focusable={false}
-              id="tooltip-host4"
+              id="tooltip-host5"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
               onKeyDown={[Function]}
@@ -2251,7 +2246,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone5"
+                data-focuszone-id="FocusZone6"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDownCapture={[Function]}
@@ -2572,13 +2567,14 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -2587,13 +2583,12 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -2601,7 +2596,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={-54}
           y={0}
@@ -2609,7 +2603,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -2617,7 +2611,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={54}
           y={0}
@@ -2626,6 +2619,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
         </text>
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -2646,6 +2640,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -2666,6 +2661,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
         />
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -2688,6 +2684,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           transform="rotate(135, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -2701,11 +2698,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -2715,7 +2707,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -2724,7 +2717,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -2786,7 +2779,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3106,13 +3099,14 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 2 section represented."
+      aria-label="This is a gauge chart with 2 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -3121,13 +3115,12 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -3135,7 +3128,6 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={54}
           y={0}
@@ -3143,7 +3135,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -3151,7 +3143,6 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-54}
           y={0}
@@ -3160,6 +3151,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
         </text>
         <path
           aria-label="Used, 60 out of 100 or 60%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -3180,6 +3172,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
         />
         <path
           aria-label="Available, 40 out of 100 or 40%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -3202,6 +3195,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           transform="rotate(108, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -3215,11 +3209,6 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -3229,7 +3218,8 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 60 out of 100, or 60%"
+            aria-label="60%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -3238,7 +3228,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -3300,7 +3290,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3530,13 +3520,14 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 2 section represented."
+      aria-label="This is a gauge chart with 2 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -3545,13 +3536,12 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -3559,7 +3549,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={54}
           y={0}
@@ -3567,7 +3556,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -3575,7 +3564,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-54}
           y={0}
@@ -3584,6 +3572,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
         </text>
         <path
           aria-label="Used, 60 out of 100 or 60%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -3604,6 +3593,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
         />
         <path
           aria-label="Unknown, 40 out of 100 or 40%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -3626,6 +3616,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           transform="rotate(108, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -3639,11 +3630,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -3653,7 +3639,8 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 60 out of 100, or 60%"
+            aria-label="60%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -3662,7 +3649,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -3724,7 +3711,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3953,13 +3940,14 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -3968,18 +3956,19 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
+          aria-hidden={true}
           className=
 
               {
                 fill: #323130;
                 font-size: 12px;
               }
+          id="chart-title-0"
           textAnchor="middle"
           x={0}
           y={72}
@@ -3987,7 +3976,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           Riskometer
         </text>
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -3995,7 +3984,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={79}
           y={0}
@@ -4003,7 +3991,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -4011,7 +3999,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-79}
           y={0}
@@ -4020,6 +4007,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
         </text>
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -4040,6 +4028,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -4060,6 +4049,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
         />
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -4082,6 +4072,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -4095,11 +4086,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(97)"
           />
@@ -4109,7 +4095,8 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -4118,7 +4105,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -4180,7 +4167,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4500,13 +4487,14 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -4515,13 +4503,12 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -4529,7 +4516,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={54}
           y={0}
@@ -4537,7 +4523,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -4545,7 +4531,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-54}
           y={0}
@@ -4554,6 +4539,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
         </text>
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -4574,6 +4560,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -4594,6 +4581,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
         />
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -4616,6 +4604,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -4629,11 +4618,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -4643,7 +4627,8 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25/100"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -4652,7 +4637,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -4714,7 +4699,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5034,13 +5019,14 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="This is a gauge chart with 3 sections represented."
+      aria-labelledby="chart-title-0"
       className=
 
           {
@@ -5049,13 +5035,12 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -60)"
       >
         <text
-          aria-label="Min value: 0"
+          aria-hidden={true}
           className=
 
               {
@@ -5063,7 +5048,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="end"
           x={74}
           y={0}
@@ -5071,7 +5055,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           0
         </text>
         <text
-          aria-label="Max value: 100"
+          aria-hidden={true}
           className=
 
               {
@@ -5079,7 +5063,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                 font-size: 12px;
                 font-weight: 600;
               }
-          role="img"
           textAnchor="start"
           x={-74}
           y={0}
@@ -5088,6 +5071,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
         </text>
         <path
           aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -5108,6 +5092,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
         />
         <path
           aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -5128,6 +5113,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
         />
         <path
           aria-label="High Risk, 33 out of 100 or 33%"
+          aria-roledescription="segment"
           className=
 
               {
@@ -5150,6 +5136,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-hidden={true}
             className=
 
                 {
@@ -5163,11 +5150,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseMove={[Function]}
             strokeWidth={2}
             transform="translate(92)"
           />
@@ -5177,7 +5159,8 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-label="25%"
+            aria-roledescription="current value"
             className=
 
                 {
@@ -5186,7 +5169,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host2"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -5201,7 +5184,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           </text>
         </g>
         <text
-          aria-label="Low Risk"
           className=
 
               {
@@ -5211,13 +5193,12 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
               }
           data-is-focusable={false}
           dominantBaseline="hanging"
-          id="tooltip-host2"
+          id="tooltip-host3"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="img"
           textAnchor="middle"
           x={0}
           y={4}
@@ -5272,7 +5253,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

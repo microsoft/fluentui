@@ -199,41 +199,6 @@ describe('GaugeChart - event listeners testing', () => {
     expect(container.querySelector('.ms-Callout')).toBeNull();
   });
 
-  it(`should show a callout when the mouse moves over the needle and
-  hide it when the mouse leaves the chart`, () => {
-    const { container } = render(
-      <GaugeChart
-        segments={segments}
-        chartValue={25}
-        chartValueFormat={GaugeValueFormat.Fraction}
-        calloutProps={{ doNotLayer: true }}
-      />,
-    );
-
-    const needle = container.querySelector('[class^="needle"]');
-    fireEvent.mouseEnter(needle!);
-    expect(container.querySelector('.ms-Callout')).not.toBeNull();
-
-    fireEvent.mouseMove(needle!);
-    expect(container.querySelector('.ms-Callout')).not.toBeNull();
-
-    fireEvent.mouseLeave(container.querySelector('[class^="chart"]')!);
-    expect(container.querySelector('.ms-Callout')).toBeNull();
-  });
-
-  it('should show a callout when the needle is focused and hide it when blurred', () => {
-    const { container } = render(
-      <GaugeChart segments={segments} chartValue={25} calloutProps={{ doNotLayer: true }} />,
-    );
-
-    const needle = container.querySelector('[class^="needle"]');
-    fireEvent.focus(needle!);
-    expect(container.querySelector('.ms-Callout')).not.toBeNull();
-
-    fireEvent.blur(needle!);
-    expect(container.querySelector('.ms-Callout')).toBeNull();
-  });
-
   it(`should highlight the corresponding segment when the mouse moves over a legend and
   unhighlight it when the mouse moves out of the legend`, () => {
     const { container } = render(
