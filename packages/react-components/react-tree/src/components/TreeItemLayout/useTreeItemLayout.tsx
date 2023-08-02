@@ -19,7 +19,7 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { content, iconAfter, iconBefore, as = 'span' } = props;
+  const { main, iconAfter, iconBefore, as = 'span' } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
@@ -63,7 +63,7 @@ export const useTreeItemLayout_unstable = (
       root: 'div',
       expandIcon: 'div',
       iconBefore: 'div',
-      content: 'div',
+      main: 'div',
       iconAfter: 'div',
       actions: 'div',
       aside: 'div',
@@ -73,7 +73,7 @@ export const useTreeItemLayout_unstable = (
     buttonContextValue: { size: 'small' },
     root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
     iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
-    content: resolveShorthand(content, { required: true }),
+    main: resolveShorthand(main, { required: true }),
     iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
     aside: isAsideVisible ? resolveShorthand(props.aside) : undefined,
     actions,
