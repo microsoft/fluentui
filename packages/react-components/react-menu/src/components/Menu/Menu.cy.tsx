@@ -1051,6 +1051,14 @@ describe('Context menu', () => {
     cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('exist');
   });
 
+  it('should not open if event is prevented', () => {
+    mount(<ContextMenuExample />);
+    cy.get(menuTriggerSelector).then(([trigger]) => {
+      trigger.addEventListener('contextmenu', e => e.preventDefault(), { capture: true, once: true });
+    });
+    cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('not.exist');
+  });
+
   it('should close when the trigger is clicked', () => {
     mount(<ContextMenuExample />);
 
