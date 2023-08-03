@@ -548,7 +548,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     state.icon.className = mergeClasses(
       buttonClassNames.icon,
       iconBaseClassName,
-      state.root.children && iconStyles[iconPosition],
+      !!state.root.children && iconStyles[iconPosition],
       iconStyles[size],
       state.icon.className,
     );
