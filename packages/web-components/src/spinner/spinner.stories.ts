@@ -8,7 +8,11 @@ type SpinnerStoryArgs = Args;
 type SpinnerStoryMeta = Meta<SpinnerStoryArgs>;
 
 const storyTemplate = html<SpinnerStoryArgs>`
-  <fluent-spinner appearance=${x => x.appearance} size=${x => x.size}></fluent-spinner>
+  <fluent-spinner
+    appearance=${x => x.appearance}
+    size=${x => x.size}
+    aria-label="fluent-spinner-default"
+  ></fluent-spinner>
 `;
 
 export default {
@@ -54,11 +58,15 @@ export const Appearance = renderComponent(html<SpinnerStoryArgs>`
   <div>
     <div style="padding: 20px;">
       <code>primary</code>
-      <fluent-spinner appearance="primary"></fluent-spinner>
+      <fluent-spinner appearance="primary" aria-label="fluent-spinner-appearance-primary"></fluent-spinner>
     </div>
     <div style="padding: 20px; background-color: #0f6cbd; color: #fff;">
       <code>inverted</code>
-      <fluent-spinner appearance="inverted" size="medium"></fluent-spinner>
+      <fluent-spinner
+        appearance="inverted"
+        size="medium"
+        aria-label="fluent-spinner-appearance-inverted"
+      ></fluent-spinner>
     </div>
   </div>
 `);
@@ -66,16 +74,16 @@ export const Appearance = renderComponent(html<SpinnerStoryArgs>`
 export const Size = renderComponent(html<SpinnerStoryArgs>`
   <div style="display: grid; align-items: center; gap: 0 20px; grid-template-columns: 90px min-content;">
     <code>tiny</code>
-    <fluent-spinner size="tiny"></fluent-spinner>
+    <fluent-spinner size="tiny" aria-label="fluent-spinner-size-tiny"></fluent-spinner>
     <code>extra-small</code>
-    <fluent-spinner size="extra-small"></fluent-spinner>
+    <fluent-spinner size="extra-small" aria-label="fluent-spinner-extra-small-"></fluent-spinner>
     <code>small</code>
-    <fluent-spinner size="small"></fluent-spinner>
+    <fluent-spinner size="small" aria-label="fluent-spinner-size-small"></fluent-spinner>
     <code>medium</code>
-    <fluent-spinner size="medium"></fluent-spinner>
+    <fluent-spinner size="medium" aria-label="fluent-spinner-size-medium"></fluent-spinner>
     <code>large</code>
-    <fluent-spinner size="large"></fluent-spinner>
+    <fluent-spinner size="large" aria-label="fluent-spinner-size-large"></fluent-spinner>
     <code>extra-large</code>
-    <fluent-spinner size="extra-large"></fluent-spinner>
+    <fluent-spinner size="extra-large" aria-label="fluent-spinner-size-extra-large"></fluent-spinner>
   </div>
 `);
