@@ -1,4 +1,9 @@
-import { statusSharedColorNames, personaSharedColorNames, unusedSharedColorNames } from './sharedColorNames';
+import {
+  statusSharedColorNames,
+  personaSharedColorNames,
+  unusedSharedColorNames,
+  mappedStatusColorNames,
+} from './sharedColorNames';
 
 /**
  * Design tokens for alias colors
@@ -164,6 +169,42 @@ export type ColorTokens = {
   colorBrandShadowAmbient: string;
   colorBrandShadowKey: string;
 };
+
+export type ColorStatusSuccess =
+  | 'colorStatusSuccessBackground1'
+  | 'colorStatusSuccessBackground2'
+  | 'colorStatusSuccessBackground3'
+  | 'colorStatusSuccessForeground1'
+  | 'colorStatusSuccessForeground2'
+  | 'colorStatusSuccessForeground3'
+  | 'colorStatusSuccessForegroundInverted'
+  | 'colorStatusSuccessBorderActive'
+  | 'colorStatusSuccessBorder1'
+  | 'colorStatusSuccessBorder2';
+
+export type ColorStatusWarning =
+  | 'colorStatusWarningBackground1'
+  | 'colorStatusWarningBackground2'
+  | 'colorStatusWarningBackground3'
+  | 'colorStatusWarningForeground1'
+  | 'colorStatusWarningForeground2'
+  | 'colorStatusWarningForeground3'
+  | 'colorStatusWarningForegroundInverted'
+  | 'colorStatusWarningBorderActive'
+  | 'colorStatusWarningBorder1'
+  | 'colorStatusWarningBorder2';
+
+export type ColorStatusDanger =
+  | 'colorStatusDangerBackground1'
+  | 'colorStatusDangerBackground2'
+  | 'colorStatusDangerBackground3'
+  | 'colorStatusDangerForeground1'
+  | 'colorStatusDangerForeground2'
+  | 'colorStatusDangerForeground3'
+  | 'colorStatusDangerForegroundInverted'
+  | 'colorStatusDangerBorderActive'
+  | 'colorStatusDangerBorder1'
+  | 'colorStatusDangerBorder2';
 
 export type ColorPaletteRed =
   | 'colorPaletteRedBackground1'
@@ -385,6 +426,8 @@ export type ColorPaletteAnchor =
   | 'colorPaletteAnchorForeground2'
   | 'colorPaletteAnchorBorderActive';
 
+export type ColorStatusTokens = Record<ColorStatusSuccess | ColorStatusWarning | ColorStatusDanger, string>;
+
 export type StatusColorPaletteTokens = Record<
   | ColorPaletteRed
   | ColorPaletteGreen
@@ -454,10 +497,12 @@ export type BrandVariants = Record<Brands, string>;
 
 type StatusSharedColorNames = (typeof statusSharedColorNames)[number];
 type PersonaSharedColorNames = (typeof personaSharedColorNames)[number];
+export type MappedStatusColorNames = (typeof mappedStatusColorNames)[number];
 type UnusedSharedColorNames = (typeof unusedSharedColorNames)[number];
 
 export type StatusSharedColors = Record<StatusSharedColorNames, ColorVariants>;
 export type PersonaSharedColors = Record<PersonaSharedColorNames, ColorVariants>;
+export type MappedStatusColors = Record<MappedStatusColorNames, ColorVariants>;
 export type UnusedSharedColors = Record<UnusedSharedColorNames, ColorVariants>;
 
 export type FontSizeTokens = {
@@ -717,6 +762,7 @@ export type Theme = FontSizeTokens &
   FontFamilyTokens &
   FontWeightTokens &
   ColorPaletteTokens &
+  ColorStatusTokens &
   ColorTokens;
 
 export type PartialTheme = Partial<Theme>;

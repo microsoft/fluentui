@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add status color tokens",
+  "packageName": "@fluentui/tokens",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
