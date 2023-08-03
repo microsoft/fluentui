@@ -43,18 +43,18 @@ const dialogTemplate = html<DialogStoryArgs>`
   </style>
   <div>
       <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
-      <fluent-dialog 
-        id="dialog-default" 
-        ?modal=${x => x.modal} 
-        ?alert=${x => x.alert} 
-        ?no-trap-focus=${x => x.noFocusTrap} 
+      <fluent-dialog
+        id="dialog-default"
+        ?modal=${x => x.modal}
+        ?alert=${x => x.alert}
+        ?no-trap-focus=${x => x.noFocusTrap}
         hidden
       >
         <div slot="title">Dialog Title</div>
         <div><code>Dialog</code> is a window overlaid on either the primary window or another dialog window. Windows under a modal dialog are inert. That is, users cannot interact with content outside an active dialog window. Inert content outside an active dialog is typically visually obscured or dimmed so it is difficult to discern, and in some implementations, attempts to interact with the inert content cause the dialog to close.</div>
-        <fluent-button 
-          slot="actions" 
-          appearance="primary" 
+        <fluent-button
+          slot="actions"
+          appearance="primary"
           @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}">Close Drawer</fluent-button>
         <fluent-button
           slot="actions">Do Something</fluent-button>
@@ -73,7 +73,7 @@ export default {
   },
   argTypes: {
     hidden: {
-      description: 'Renders dialog as a modal',
+      description: 'Sets the visibility of the dialog',
       table: {
         defaultValue: {
           summary: false,

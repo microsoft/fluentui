@@ -129,8 +129,8 @@ export const styles = css`
     grid-row-start: 3;
     justify-self: end;
     grid-column-end: 4;
-    row-gap: 8px;
-    column-gap: 8px;
+    row-gap: ${spacingHorizontalS};
+    column-gap: ${spacingVerticalS};
     grid-template-columns: 1fr 1fr auto;
     grid-template-rows: auto 1fr auto;
   }
@@ -138,7 +138,7 @@ export const styles = css`
   @media screen and (max-width: 480px) {
     .control {
       max-width: 100%;
-      width: 100vh;
+      width: 100vw;
     }
     .root {
       max-width: 100vw;
