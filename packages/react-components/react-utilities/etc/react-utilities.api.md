@@ -282,6 +282,22 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
+// @public
+export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, options?: UseMotionPresenceOptions) => UseMotionPresenceState<TElement>;
+
+// @public
+export type UseMotionPresenceOptions = {
+    animateOnFirstMount?: boolean;
+};
+
+// @public
+export type UseMotionPresenceState<TElement extends HTMLElement> = {
+    ref: React_2.RefCallback<TElement>;
+    shouldRender: boolean;
+    visible: boolean;
+    motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
+};
+
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;
@@ -307,7 +323,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 
