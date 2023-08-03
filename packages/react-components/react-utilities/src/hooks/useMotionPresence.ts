@@ -33,12 +33,12 @@ type HTMLElementWithStyledMap<TElement extends HTMLElement = HTMLElement> = TEle
   computedStyleMap(): StylePropertyMapReadOnly;
 };
 
-interface CSSWithNumber {
+type CSSWithNumber = typeof CSS & {
   number(value: number): {
     value: number;
     readonly unit: string;
   };
-}
+};
 
 /**
  * State for useMotionPresence hook.
@@ -127,7 +127,7 @@ const hasCSSOMSupport = (node: HTMLElementWithStyledMap) => {
    * The typecast here is to allow the use of the `number` function that is not yet part of the CSSOM typings.
    * @see https://www.npmjs.com/package/@types/w3c-css-typed-object-model-level-1
    */
-  return Boolean(typeof CSS !== 'undefined' && (CSS as unknown as CSSWithNumber).number && node.computedStyleMap);
+  return Boolean(typeof CSS !== 'undefined' && (CSS as CSSWithNumber).number && node.computedStyleMap);
 };
 
 /**
