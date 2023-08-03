@@ -656,7 +656,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     }
               >
                 2020/04/30
-
+                 
               </div>
             </div>
             <div
@@ -1456,9 +1456,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -1906,9 +1906,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2356,9 +2356,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2786,9 +2786,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2896,9 +2896,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -3346,9 +3346,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -3796,9 +3796,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -4246,9 +4246,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>

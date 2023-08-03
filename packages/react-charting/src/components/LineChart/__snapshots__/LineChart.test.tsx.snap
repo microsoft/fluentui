@@ -499,7 +499,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                               color: rgb(255, 255, 255);
                             }
                       >
-
+                         
                         metaData1
                       </div>
                       <div
