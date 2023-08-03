@@ -224,7 +224,6 @@ export const Active = renderComponent(html<AvatarStoryArgs>`
     <fluent-avatar aria-label="fluent-avatar-initial">U</fluent-avatar>
     <fluent-avatar active="active" aria-label="fluent-avatar-active">A</fluent-avatar>
     <fluent-avatar active="inactive" aria-label="fluent-avatar-inactive">I</fluent-avatar>
-    <div></div>
   </div>
 `);
 
