@@ -1,10 +1,17 @@
 import * as React from 'react';
-import { getNativeElementProps, isResolvedShorthand, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  ExtractSlotProps,
+  getNativeElementProps,
+  isResolvedShorthand,
+  resolveShorthand,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
 import type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Radio, RadioProps } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -19,7 +26,7 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { content, iconAfter, iconBefore, as = 'span' } = props;
+  const { main, iconAfter, iconBefore, as = 'span' } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
@@ -51,7 +58,18 @@ export const useTreeItemLayout_unstable = (
     expandIcon.ref = expandIconRefs;
   }
 
-  const actions = isActionsVisible ? resolveShorthand(actionsShorthand) : undefined;
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: true,
+    axis: 'horizontal',
+  });
+  const actions = isActionsVisible
+    ? resolveShorthand(actionsShorthand, {
+        defaultProps: {
+          ...arrowNavigationProps,
+          role: 'toolbar',
+        } as ExtractSlotProps<TreeItemLayoutSlots['actions']>,
+      })
+    : undefined;
 
   const actionsRefs = useMergedRefs(actions?.ref, actionsRef);
   if (actions) {
@@ -63,7 +81,7 @@ export const useTreeItemLayout_unstable = (
       root: 'div',
       expandIcon: 'div',
       iconBefore: 'div',
-      content: 'div',
+      main: 'div',
       iconAfter: 'div',
       actions: 'div',
       aside: 'div',
@@ -73,7 +91,7 @@ export const useTreeItemLayout_unstable = (
     buttonContextValue: { size: 'small' },
     root: getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }),
     iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
-    content: resolveShorthand(content, { required: true }),
+    main: resolveShorthand(main, { required: true }),
     iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
     aside: isAsideVisible ? resolveShorthand(props.aside) : undefined,
     actions,

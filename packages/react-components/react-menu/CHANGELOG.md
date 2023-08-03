@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 01 Aug 2023 10:17:19 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2023 13:04:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.2)
+
+Tue, 01 Aug 2023 13:04:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.1..@fluentui/react-menu_v9.12.2)
+
+### Patches
+
+- fix: revert menuItem focus ring back to border ([PR #28698](https://github.com/microsoft/fluentui/pull/28698) by yuanboxue@microsoft.com)
 
 ## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.1)
 

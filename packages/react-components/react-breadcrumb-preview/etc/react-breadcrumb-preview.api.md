@@ -67,15 +67,19 @@ export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots>;
 // @public
 export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<BreadcrumbProps, 'size'> & {
     current?: boolean;
+    iconPosition?: 'before' | 'after';
 };
 
 // @public (undocumented)
 export type BreadcrumbItemSlots = {
     root: Slot<'li'>;
+    icon?: Slot<'span'>;
 };
 
 // @public
-export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
+export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current' | 'iconPosition'>> & {
+    iconOnly: boolean;
+};
 
 // @public
 export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps>;
