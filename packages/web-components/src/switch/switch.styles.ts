@@ -18,18 +18,22 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus2,
   colorTransparentBackground,
+  colorTransparentStroke,
   curveEasyEase,
   durationNormal,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
   lineHeightBase300,
+  shadow4,
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalS,
   spacingVerticalXS,
+  strokeWidthThick,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
@@ -141,5 +145,56 @@ export const styles = css`
   }
   :host([aria-checked='true'][disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
+  }
+
+  :host(:focus-visible) {
+    border-color: ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+  }
+
+  /* High contrast styles */
+  @media (forced-colors: active) {
+    .switch {
+      border-color: InactiveBorder;
+    }
+    :host(:hover) .switch {
+      border-color: InactiveBorder;
+    }
+    :host(:active) .switch {
+      border-color: ActiveBorder;
+    }
+    :host([aria-checked='true']) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
+    :host([aria-checked='true']:hover) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
+    :host([aria-checked='true']:active) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
+
+    .checked-indicator {
+      background-color: ActiveCaption;
+    }
+    :host(:hover) .checked-indicator {
+      background-color: ActiveCaption;
+    }
+    :host(:active) .checked-indicator {
+      background-color: ActiveCaption;
+    }
+
+    :host([aria-checked='true']) .checked-indicator {
+      background-color: ButtonFace;
+    }
+    :host([aria-checked='true']:hover) .checked-indicator {
+      background-color: ButtonFace;
+    }
+    :host([aria-checked='true']:active) .checked-indicator {
+      background-color: ButtonFace;
+    }
   }
 `;

@@ -105,4 +105,23 @@ export const styles = css`
   :host([aria-pressed='true'][appearance='transparent']:active) .control {
     color: ${colorNeutralForeground2BrandPressed};
   }
+
+  @media (forced-colors: active) {
+    :host([aria-pressed='true']) .control,
+    :host([aria-pressed='true'][appearance='primary']) .control,
+    :host([aria-pressed='true'][appearance='subtle']) .control,
+    :host([aria-pressed='true'][appearance='outline']) .control,
+    :host([aria-pressed='true'][appearance='transparent']) .control,
+    :host([aria-pressed='true'][appearance='transparent']) .control {
+      border-color: Highlight;
+    }
+    :host([aria-pressed='false']) .control,
+    :host([aria-pressed='false'][appearance='primary']) .control,
+    :host([aria-pressed='false'][appearance='subtle']) .control,
+    :host([aria-pressed='false'][appearance='outline']) .control,
+    :host([aria-pressed='false'][appearance='transparent']) .control,
+    :host([aria-pressed='false'][appearance='transparent']) .control {
+      border-color: ActiveBorder;
+    }
+  }
 `;

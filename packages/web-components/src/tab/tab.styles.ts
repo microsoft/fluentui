@@ -108,4 +108,10 @@ export const styles = css`
     box-shadow: 0 0 0 3px ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
   }
+
+  @media (forced-colors: active) {
+    :host([aria-selected='true'])::after {
+      background-color: Highlight;
+    }
+  }
 `;

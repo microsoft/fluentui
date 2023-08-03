@@ -199,4 +199,23 @@ export const styles = css`
     width: 100%;
     bottom: 0;
   }
+
+  @media (forced-colors: active) {
+    .track:hover,
+    .track:active,
+    .track {
+      background: WindowText;
+    }
+    .thumb-cursor:hover,
+    .thumb-cursor:active,
+    .thumb-cursor {
+      background: ButtonText;
+    }
+
+    :host(:hover) .track-start,
+    .track-start:active,
+    .track-start {
+      background: Highlight;
+    }
+  }
 `;

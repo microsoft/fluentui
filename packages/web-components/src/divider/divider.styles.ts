@@ -125,4 +125,18 @@ export const styles = css`
   :host([appearance='subtle']) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
+
+  @media (forced-colors: active) {
+    :host([appearance='strong'])::before,
+    :host([appearance='strong'])::after,
+    :host([appearance='brand'])::before,
+    :host([appearance='brand'])::after,
+    :host([appearance='subtle'])::before,
+    :host([appearance='subtle'])::after,
+    :host::after,
+    :host::before {
+      background: WindowText;
+      color: WindowText;
+    }
+  }
 `;
