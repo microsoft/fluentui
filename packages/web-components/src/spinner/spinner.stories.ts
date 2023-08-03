@@ -52,11 +52,13 @@ export const Spinner = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<SpinnerStoryArgs>`
   <div>
-    <div style="padding: 20px;">
+    <div style="padding: 20px; display: flex; align-items: center; gap: 20px;">
       <code>primary</code>
       <fluent-spinner appearance="primary"></fluent-spinner>
     </div>
-    <div style="padding: 20px; background-color: #0f6cbd; color: #fff;">
+    <div
+      style="padding: 20px; background-color: var(--colorNeutralBackgroundInverted); color: var(--colorNeutralForegroundInverted); display: flex; align-items: center; gap: 20px;"
+    >
       <code>inverted</code>
       <fluent-spinner appearance="inverted" size="medium"></fluent-spinner>
     </div>
@@ -64,7 +66,7 @@ export const Appearance = renderComponent(html<SpinnerStoryArgs>`
 `);
 
 export const Size = renderComponent(html<SpinnerStoryArgs>`
-  <div style="display: grid; align-items: center; gap: 0 20px; grid-template-columns: 90px min-content;">
+  <div style="display: grid; align-items: center; gap: 0 20px; grid-template-columns: 120px min-content;">
     <code>tiny</code>
     <fluent-spinner size="tiny"></fluent-spinner>
     <code>extra-small</code>
