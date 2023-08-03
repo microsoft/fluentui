@@ -103,40 +103,28 @@ export function createOverflowManager(): OverflowManager {
 
   const groupManager = createGroupManager();
 
-  const invisibleItemQueue = createPriorityQueue<string>((a, b) => {
-    const itemA = overflowItems[a];
-    const itemB = overflowItems[b];
-    // Higher priority at the top of the queue
-    const priority = itemB.priority - itemA.priority;
-    if (priority !== 0) {
-      return priority;
+  function compareItems(lt: string | null, rt: string | null): number {
+    if (!lt || !rt) {
+      return 0;
+    }
+
+    const lte = overflowItems[lt];
+    const rte = overflowItems[rt];
+
+    if (lte.priority !== rte.priority) {
+      return lte.priority > rte.priority ? 1 : -1;
     }
 
     const positionStatusBit =
       options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_FOLLOWING : Node.DOCUMENT_POSITION_PRECEDING;
 
-    // equal priority, use DOM order
     // eslint-disable-next-line no-bitwise
-    return itemA.element.compareDocumentPosition(itemB.element) & positionStatusBit ? -1 : 1;
-  });
+    return lte.element.compareDocumentPosition(rte.element) & positionStatusBit ? 1 : -1;
+  }
 
-  const visibleItemQueue = createPriorityQueue<string>((a, b) => {
-    const itemA = overflowItems[a];
-    const itemB = overflowItems[b];
-    // Lower priority at the top of the queue
-    const priority = itemA.priority - itemB.priority;
+  const invisibleItemQueue = createPriorityQueue<string>((a, b) => -1 * compareItems(a, b));
 
-    if (priority !== 0) {
-      return priority;
-    }
-
-    const positionStatusBit =
-      options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_PRECEDING : Node.DOCUMENT_POSITION_FOLLOWING;
-
-    // equal priority, use DOM order
-    // eslint-disable-next-line no-bitwise
-    return itemA.element.compareDocumentPosition(itemB.element) & positionStatusBit ? -1 : 1;
-  });
+  const visibleItemQueue = createPriorityQueue<string>(compareItems);
 
   const getOffsetSize = (el: HTMLElement) => {
     if (sizeCache.has(el)) {
@@ -144,6 +132,16 @@ export function createOverflowManager(): OverflowManager {
     }
 
     const offsetSize = options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
+    sizeCache.set(el, offsetSize);
+    return offsetSize;
+  };
+
+  const getClientSize = (el: HTMLElement) => {
+    if (sizeCache.has(el)) {
+      return sizeCache.get(el)!;
+    }
+
+    const offsetSize = options.overflowAxis === 'horizontal' ? el.clientWidth : el.clientHeight;
     sizeCache.set(el, offsetSize);
     return offsetSize;
   };
@@ -212,7 +210,7 @@ export function createOverflowManager(): OverflowManager {
       return invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
     }
 
-    const availableSize = getOffsetSize(container) - totalDividersWidth - options.padding;
+    const availableSize = getClientSize(container) - totalDividersWidth - options.padding;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
@@ -224,11 +222,18 @@ export function createOverflowManager(): OverflowManager {
       .map(getOffsetSize)
       .reduce((prev, current) => prev + current, 0);
 
+    while (compareItems(invisibleItemQueue.peek(), visibleItemQueue.peek()) > 0) {
+      currentSize -= hideItem(); // hide elements whose priority become smaller than the highest priority of the hidden one
+    }
+
     // Run the show/hide step twice - the first step might not be correct if
     // it was triggered by a new item being added - new items are always visible by default.
     for (let i = 0; i < 2; i++) {
       // Add items until available width is filled - can result in overflow
-      while (currentSize + overflowMenuSize() < availableSize && invisibleItemQueue.size() > 0) {
+      while (
+        (currentSize + overflowMenuSize() < availableSize && invisibleItemQueue.size() > 0) ||
+        invisibleItemQueue.size() === 1 // attempt to show the last invisible item hoping it's size does not exceed overflow menu size
+      ) {
         currentSize += showItem();
       }
 
