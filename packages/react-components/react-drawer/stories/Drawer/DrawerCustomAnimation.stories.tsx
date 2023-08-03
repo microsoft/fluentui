@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     animationDuration: '2s',
     animationTimingFunction: tokens.curveDecelerateMid,
     animationName: {
-      '0%': hiddenKeyframe,
+      from: hiddenKeyframe,
       to: visibleKeyframe,
     },
   },
@@ -33,8 +33,8 @@ const useStyles = makeStyles({
     animationDuration: '1s',
     animationTimingFunction: tokens.curveAccelerateMin,
     animationName: {
-      '0%': visibleKeyframe,
-      '100%': hiddenKeyframe,
+      from: visibleKeyframe,
+      to: hiddenKeyframe,
     },
   },
 });
