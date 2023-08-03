@@ -308,4 +308,11 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
     cursor: not-allowed;
   }
+
+  @media (forced-colors: active) {
+    :host(:hover) .control,
+    :host([appearance='transparent']:hover) .control {
+      border-color: Highlight;
+    }
+  }
 `;

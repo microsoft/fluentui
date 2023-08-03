@@ -127,4 +127,18 @@ export const styles = css`
   :host([disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
+  @media (forced-colors: active) {
+    :host([aria-checked='true']) .checked-indicator,
+    :host([aria-checked='true']:active) .checked-indicator,
+    :host([aria-checked='true']:hover) .checked-indicator {
+      background-color: Highlight;
+    }
+    :host .control {
+      border-color: InactiveBorder;
+    }
+    :host([aria-checked='false']:active) .control,
+    :host([aria-checked='false']:hover) .control {
+      border-color: ActiveBorder;
+    }
+  }
 `;

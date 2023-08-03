@@ -123,5 +123,9 @@ export const styles = css`
     :host([aria-pressed='false'][appearance='transparent']) .control {
       border-color: ActiveBorder;
     }
+
+    :host(:hover) .control {
+      border-color: Highlight;
+    }
   }
 `;
