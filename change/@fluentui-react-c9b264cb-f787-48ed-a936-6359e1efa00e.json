@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(TimePicker): Selection now works in locales that don't use \"am\"/\"pm\" in their time format",
+  "packageName": "@fluentui/react",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
