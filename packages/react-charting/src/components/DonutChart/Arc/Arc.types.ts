@@ -140,11 +140,6 @@ export interface IArcStyles {
   focusRing: IStyle;
 
   /**
-   * Style for tool tip
-   */
-  tooltip?: IStyle;
-
-  /**
    * Style for overflow center text container
    */
   nodeTextContainer?: IStyle;

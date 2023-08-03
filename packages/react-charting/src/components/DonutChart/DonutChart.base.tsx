@@ -138,6 +138,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 onMouseMove={this._showTooltip.bind(this, this.props.valueInsideDonut)}
                 onMouseOut={this._hideTooltip.bind(this)}
                 className={this._classNames.tooltipContainer!}
+                ref={(element: SVGElement | null) => (this._tooltip = element)}
               />
               <Pie
                 width={this.state._width!}
@@ -341,7 +342,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   private _showTooltip = (text: string | number, evt: any) => {
-    this._tooltip = document.getElementById(this._tooltipId);
     if (this._tooltip) {
       this._tooltip!.innerHTML = text ? text.toString() : '';
       this._tooltip!.style.display = 'block';
