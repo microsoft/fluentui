@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useAnimationFrame } from './useAnimationFrame';
 import { useTimeout } from './useTimeout';
 
 /**
@@ -241,6 +242,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<TElement> | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setProcessingAnimationFrame, cancelProcessingAnimationFrame] = useAnimationFrame();
   const skipAnimationOnFirstRender = React.useRef(!animateOnFirstMount);
 
   const processAnimation = React.useCallback(
@@ -293,11 +295,10 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   }, [present]);
 
   React.useEffect(() => {
-    let animationFrame: number;
     const skipAnimation = skipAnimationOnFirstRender.current;
-    const onDestroy = () => cancelAnimationFrame(animationFrame);
+    const onUnmount = () => cancelProcessingAnimationFrame();
 
-    animationFrame = requestAnimationFrame(() => {
+    setProcessingAnimationFrame(() => {
       setState(prevState => {
         let motionState = prevState.motionState;
 
@@ -316,7 +317,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     });
 
     if (skipAnimation) {
-      return onDestroy;
+      return onUnmount;
     }
 
     processAnimation(() => {
@@ -327,8 +328,8 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       }));
     });
 
-    return onDestroy;
-  }, [present, processAnimation]);
+    return onUnmount;
+  }, [cancelProcessingAnimationFrame, present, processAnimation, setProcessingAnimationFrame]);
 
   React.useEffect(() => {
     skipAnimationOnFirstRender.current = false;
