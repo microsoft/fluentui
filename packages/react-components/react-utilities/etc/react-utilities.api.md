@@ -292,7 +292,7 @@ export type UseMotionPresenceOptions = {
 
 // @public
 export type UseMotionPresenceState<TElement extends HTMLElement> = {
-    ref: React_2.Ref<TElement>;
+    ref: React_2.RefCallback<TElement>;
     shouldRender: boolean;
     visible: boolean;
     motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';

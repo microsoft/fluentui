@@ -42,6 +42,8 @@ type CSSWithNumber = typeof CSS & {
 };
 
 /**
+ * @internal
+ *
  * State for useMotionPresence hook.
  */
 export type UseMotionPresenceState<TElement extends HTMLElement> = {
@@ -73,6 +75,8 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
 };
 
 /**
+ * @internal
+ *
  * Options for useMotionPresence hook.
  */
 export type UseMotionPresenceOptions = {
@@ -85,6 +89,8 @@ export type UseMotionPresenceOptions = {
 };
 
 /**
+ * @internal
+ *
  * Returns CSS styles of the given node.
  * @param node - DOM node.
  * @returns - CSS styles.
