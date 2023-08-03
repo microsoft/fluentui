@@ -1,13 +1,20 @@
+/** @jsxRuntime classic */
+/** @jsxFrag React.Fragment */
+/** @jsx createElement */
+
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
-import { getSlots } from '@fluentui/react-utilities';
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 
 /**
  * Render the final JSX of Tooltip
  */
 export const renderTooltip_unstable = (state: TooltipState) => {
-  const { slots, slotProps } = getSlots<TooltipSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TooltipSlots>(state);
 
   return (
     <>

@@ -2,4 +2,4 @@ export * from './Table';
 export * from './Table.types';
 export * from './renderTable';
 export * from './useTable';
-export * from './useTableStyles';
+export * from './useTableStyles.styles';

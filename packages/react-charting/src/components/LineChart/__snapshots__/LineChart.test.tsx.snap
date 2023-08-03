@@ -16,7 +16,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -26,20 +26,23 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -67,8 +70,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -95,25 +98,24 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
             id="lineID1_0_1"
             key="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -122,47 +124,49 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M34.5 -0.625
-     A5.5 5.5 0 1 0 45.5 -0.625
-     M34.5 -0.625
-     A 5.5 5.5 0 1 1 45.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
             id="circle0_0_1"
             key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
             id="circle0_0_11L"
             key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -201,12 +205,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -216,7 +214,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -363,14 +361,20 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={true}
       hidden={false}
       id="toolTipcircle0_0_1"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -536,7 +540,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -546,20 +550,23 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -587,8 +594,8 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -615,25 +622,24 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
             id="lineID1_0_1"
             key="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -642,47 +648,49 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M34.5 -0.625
-     A5.5 5.5 0 1 0 45.5 -0.625
-     M34.5 -0.625
-     A 5.5 5.5 0 1 1 45.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
             id="circle0_0_1"
             key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
             id="circle0_0_11L"
             key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -721,12 +729,6 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -736,7 +738,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -883,14 +885,20 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={true}
       hidden={false}
       id="toolTipcircle0_0_1"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -954,7 +962,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -964,20 +972,23 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -1005,8 +1016,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1033,25 +1044,24 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
             id="lineID1_0_1"
             key="lineID1_0_1"
-            onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1060,47 +1070,49 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M34.5 -0.625
-     A5.5 5.5 0 1 0 45.5 -0.625
-     M34.5 -0.625
-     A 5.5 5.5 0 1 1 45.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
             id="circle0_0_1"
             key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
             id="circle0_0_11L"
             key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -1139,12 +1151,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1154,7 +1160,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1301,14 +1307,20 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           &::-moz-focus-inner {
             border: 0px;
           }
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+          }
       data-is-focusable={true}
       hidden={false}
       id="toolTipcircle0_0_1"
       style={
         Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
+          "left": 8,
+          "maxHeight": 745,
+          "top": 15,
         }
       }
       tabIndex={-1}
@@ -1372,7 +1384,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_84"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1382,20 +1394,23 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone85"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -1423,8 +1438,8 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_84"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1451,24 +1466,24 @@ exports[`LineChart snapShot testing Should render with default colors when line 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_84"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine79"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
-            id="lineID77_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1477,45 +1492,49 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="#637cef"
-            id="circle76_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="#637cef"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="#637cef"
-            id="circle76_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="#637cef"
             strokeWidth={4}
           />
@@ -1569,7 +1588,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone86"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1593,6 +1612,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -1705,7 +1725,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_8"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1715,20 +1735,23 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -1756,8 +1779,8 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1784,24 +1807,24 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_8"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
           id="verticalLine3"
-          stroke="#C8C8C8"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
             id="lineID1_0_1"
-            onClick={[Function]}
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -1810,45 +1833,49 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
             id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
             id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -1902,7 +1929,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1926,6 +1953,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -2038,7 +2066,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_40"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2048,20 +2076,23 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone41"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2089,8 +2120,8 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_40"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2117,24 +2148,24 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_40"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine35"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
-            id="lineID33_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2143,45 +2174,49 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
-            id="circle32_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
-            id="circle32_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2218,7 +2253,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone42"
+        data-focuszone-id="FocusZone11"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2242,6 +2277,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                   display: inherit;
                   flex-shrink: 0;
                 }
+            key="0"
             role="none"
           >
             <button
@@ -2351,7 +2387,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_19"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2361,20 +2397,23 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone20"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={350}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2402,8 +2441,8 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_19"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 315)"
       />
       <g
         className=
@@ -2430,24 +2469,24 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_19"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine14"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={350}
         />
         <g>
           <line
-            id="lineID12_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2456,45 +2495,49 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={130.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 130.625
+     A0.5 0.5 0 1 0 40.5 130.625
+     M39.5 130.625
+     A 0.5 0.5 0 1 1 40.5 130.625
      "
             data-is-focusable={true}
             fill="red"
-            id="circle11_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
-            id="circle11_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2524,7 +2567,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_29"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2534,20 +2577,23 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone30"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2575,8 +2621,8 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_29"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2603,24 +2649,24 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_29"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine24"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
-            id="lineID22_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2629,45 +2675,49 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
-            id="circle21_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
-            id="circle21_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -2721,7 +2771,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone31"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2745,6 +2795,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -2857,7 +2908,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_51"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2867,20 +2918,23 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone52"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -2908,8 +2962,8 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_51"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2936,24 +2990,24 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_51"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine46"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
-            id="lineID44_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -2962,45 +3016,49 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
-            id="circle43_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
-            id="circle43_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -3054,7 +3112,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone53"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3078,6 +3136,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -3190,7 +3249,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_62"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3200,20 +3259,23 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone63"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={140}
     >
       <g
         className=
@@ -3241,8 +3303,8 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_62"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -3269,24 +3331,24 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_62"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine57"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
-            id="lineID55_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -3295,45 +3357,49 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={120}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
-            id="circle54_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M119.5 20
+     A0.5 0.5 0 1 0 120.5 20
+     M119.5 20
+     A 0.5 0.5 0 1 1 120.5 20
      "
             data-is-focusable={true}
             fill="red"
-            id="circle54_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -3387,7 +3453,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone64"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3411,6 +3477,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -3523,7 +3590,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_73"
+  id="chart_9"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3533,20 +3600,23 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone74"
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
         }
       }
-      width={0}
+      width={100}
     >
       <g
         className=
@@ -3574,8 +3644,8 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_73"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_9"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -3602,24 +3672,24 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_73"
+        id="yAxisGElementchart_9"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine68"
-          stroke="#C8C8C8"
+          id="verticalLine3"
+          stroke="#323130"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
-            id="lineID66_0_1"
-            onClick={[Function]}
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
@@ -3628,45 +3698,49 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
-            x2={-20}
-            y1={-0.625}
+            x2={80}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M39.5 -0.625
-     A0.5 0.5 0 1 0 40.5 -0.625
-     M39.5 -0.625
-     A 0.5 0.5 0 1 1 40.5 -0.625
+            aria-label="20. metaData1, 50."
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
-            id="circle65_0_1"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
           <path
-            d="M-20.5 20
-     A0.5 0.5 0 1 0 -19.5 20
-     M-20.5 20
-     A 0.5 0.5 0 1 1 -19.5 20
+            aria-label="40. metaData1, 80."
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
-            id="circle65_0_11L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
+            role="img"
             stroke="red"
             strokeWidth={4}
           />
@@ -3720,7 +3794,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone75"
+              data-focuszone-id="FocusZone11"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3744,6 +3818,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button

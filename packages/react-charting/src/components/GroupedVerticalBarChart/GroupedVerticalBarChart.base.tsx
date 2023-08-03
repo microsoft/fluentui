@@ -83,6 +83,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
   private _barWidth: number;
   private _domainMargin: number;
+  private _emptyChartId: string;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -111,6 +112,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._calloutId = getId('callout');
     this._tooltipId = getId('GVBCTooltipId_');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_GVBC_empty');
   }
 
   public render(): React.ReactNode {
@@ -153,7 +155,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       tickFormat: this.props.tickFormat!,
     };
 
-    return (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._datasetForBars}
@@ -181,6 +183,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
         }}
+      />
+    ) : (
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }
@@ -580,4 +589,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
+    );
+  }
 }

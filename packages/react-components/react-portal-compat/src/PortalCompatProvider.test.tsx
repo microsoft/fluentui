@@ -1,7 +1,7 @@
 import { ThemeClassNameProvider_unstable as ThemeClassNameProvider } from '@fluentui/react-shared-contexts';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import { FluentProvider } from '@fluentui/react-provider';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { IdPrefixProvider, resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
@@ -37,6 +37,44 @@ describe('PortalCompatProvider', () => {
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
         "0": "fui-FluentProvider1",
+      }
+    `);
+  });
+
+  it('during register adds a className from "ThemeClassNameContext" context with custom ID prefix', () => {
+    const element = document.createElement('div');
+    const { result } = renderHook(() => usePortalCompat(), {
+      wrapper: props => (
+        <IdPrefixProvider value="custom1-">
+          <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+            <PortalCompatProvider>{props.children}</PortalCompatProvider>
+          </FluentProvider>
+        </IdPrefixProvider>
+      ),
+    });
+
+    expect(result.current(element)).toBeInstanceOf(Function);
+    expect(element.classList).toMatchInlineSnapshot(`
+      DOMTokenList {
+        "0": "custom1-fui-FluentProvider1",
+      }
+    `);
+  });
+
+  it('during register adds a className from "ThemeClassNameContext" context with a React 18 compatible ID', () => {
+    const element = document.createElement('div');
+    const { result } = renderHook(() => usePortalCompat(), {
+      wrapper: props => (
+        <ThemeClassNameProvider value="fui-FluentProviderR1a">
+          <PortalCompatProvider>{props.children}</PortalCompatProvider>
+        </ThemeClassNameProvider>
+      ),
+    });
+
+    expect(result.current(element)).toBeInstanceOf(Function);
+    expect(element.classList).toMatchInlineSnapshot(`
+      DOMTokenList {
+        "0": "fui-FluentProviderR1a",
       }
     `);
   });

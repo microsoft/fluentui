@@ -1,3 +1,3 @@
 export * from './CalendarDay';
 export * from './CalendarDay.types';
-export * from './useCalendarDayStyles';
+export * from './useCalendarDayStyles.styles';

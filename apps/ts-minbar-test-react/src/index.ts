@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 
 import {
@@ -25,13 +24,10 @@ async function performTest() {
     tempPaths = prepareTempDirs(`${testName}-`);
     logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
-    // https://github.com/microsoft/fluentui/issues/27425 - remove related logic once issue will be resolved
-    const pinnedReactTypesVersion = '17.0.55';
-
     // Install dependencies, using the minimum TS version supported for consumers
     const dependencies = [
       '@types/node@14',
-      `@types/react@${pinnedReactTypesVersion}`,
+      `@types/react@17`,
       '@types/react-dom@17',
       'react@17',
       'react-dom@17',
@@ -44,13 +40,6 @@ async function performTest() {
     const packedPackages = await packProjectPackages(logger, lernaRoot, ['@fluentui/react']);
     await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
-    // Remove Start - once will be resolved https://github.com/microsoft/fluentui/issues/27425
-    const jsonPath = path.resolve(tempPaths.testApp, 'package.json');
-    const packageJson = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
-    packageJson.resolutions['@types/react-dom/@types/react'] = pinnedReactTypesVersion;
-    fs.writeFileSync(jsonPath, JSON.stringify(packageJson), 'utf-8');
-    // Remove End
-
     await shEcho(`yarn add ${packedPackages['@fluentui/react']}`, tempPaths.testApp);
     logger(`✔️ Fluent UI packages were added to dependencies`);
 
@@ -62,9 +51,9 @@ async function performTest() {
     await shEcho(`yarn --version`);
     await shEcho(`yarn tsc --version`);
     await shEcho(`yarn tsc --version`, tempPaths.testApp);
-  } catch (e) {
+  } catch (err) {
     console.error('Something went wrong setting up the test:');
-    console.error(e?.stack || e);
+    console.error(err instanceof Error ? err?.stack : err);
     process.exit(1);
   }
 

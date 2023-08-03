@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  mergeCallbacks,
+  resolveShorthand,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
 import { SelectTabEvent } from '../TabList/TabList.types';
@@ -14,7 +20,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, disabled: tabDisabled = false, icon, value } = props;
+  const { content, disabled: tabDisabled = false, icon, onClick, value } = props;
 
   const appearance = useTabListContext_unstable(ctx => ctx.appearance);
   const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
@@ -28,7 +34,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
+  const onTabClick = useEventCallback(mergeCallbacks(onClick, (event: SelectTabEvent) => onSelect(event, { value })));
 
   React.useEffect(() => {
     onRegister({
@@ -58,7 +64,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
       'aria-selected': disabled ? undefined : `${selected}`,
       ...props,
       disabled,
-      onClick,
+      onClick: onTabClick,
     }),
     icon: iconShorthand,
     iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),

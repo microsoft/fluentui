@@ -1,118 +1,71 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
-import { useTreeContext_unstable } from '../../contexts';
-import { useNestedTreeNavigation, useOpenItemsState } from '../../hooks';
-import { treeDataTypes } from '../../utils/tokens';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import type {
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
+  TreeNavigationData_unstable,
+  TreeNavigationEvent_unstable,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+  TreeProps,
+  TreeState,
+} from './Tree.types';
+import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
+import { useTreeNavigation } from './useTreeNavigation';
+import { useControllableCheckedItems } from './useControllableCheckedItems';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
+import { useRootTree } from '../../hooks/useRootTree';
+import { useSubtree } from '../../hooks/useSubtree';
+import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
+import { treeItemFilter } from '../../utils/treeItemFilter';
 
-/**
- * Create the state required to render Tree.
- *
- * The returned state can be modified with hooks such as useTreeStyles_unstable,
- * before being passed to renderTree_unstable.
- *
- * @param props - props from this instance of Tree
- * @param ref - reference to root HTMLElement of Tree
- */
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
+  const [openItems, setOpenItems] = useControllableOpenItems(props);
+  const [checkedItems] = useControllableCheckedItems(props);
+  const { navigate, initialize } = useTreeNavigation();
+  const walkerRef = React.useRef<HTMLElementWalker>();
+  const initializeWalker = React.useCallback(
+    (root: HTMLElement | null) => {
+      if (root) {
+        walkerRef.current = createHTMLElementWalker(root, treeItemFilter);
+        initialize(walkerRef.current);
+      }
+    },
+    [initialize],
+  );
+
+  const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    props.onOpenChange?.(event, data);
+    setOpenItems(createNextOpenItems(data, openItems));
+  });
+  const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {
+    props.onCheckedChange?.(event, data);
+    // TODO: implement next checked items for  tree
+  });
+  const handleNavigation = useEventCallback(
+    (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
+      props.onNavigation_unstable?.(event, data);
+      if (walkerRef.current) {
+        navigate(data, walkerRef.current);
+      }
+    },
+  );
+
+  const baseProps = {
+    ...props,
+    openItems,
+    checkedItems,
+    onOpenChange: handleOpenChange,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    onNavigation_unstable: handleNavigation,
+    onCheckedChange: handleCheckedChange,
+  };
+
+  const baseRef = useMergedRefs(ref, initializeWalker);
+
   const isSubtree = useTreeContext_unstable(ctx => ctx.level > 0);
-  // as isSubtree is static, this doesn't break rule of hooks
+  // as isSubTree is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return isSubtree ? useSubtree(props, ref) : useRootTree(props, ref);
+  return isSubtree ? useSubtree(baseProps, baseRef) : useRootTree(baseProps, baseRef);
 };
-
-/**
- * Create the state required to render a sub-level Tree.
- *
- * @param props - props from this instance of Tree
- * @param ref - reference to root HTMLElement of Tree
- */
-function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
-  const contextAppearance = useTreeContext_unstable(ctx => ctx.appearance);
-  const contextSize = useTreeContext_unstable(ctx => ctx.size);
-
-  const { appearance = contextAppearance ?? 'subtle', size = contextSize ?? 'medium' } = props;
-
-  const parentLevel = useTreeContext_unstable(ctx => ctx.level);
-  const openItems = useTreeContext_unstable(ctx => ctx.openItems);
-  const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
-  const requestNavigation = useTreeContext_unstable(ctx => ctx.requestNavigation);
-
-  return {
-    components: {
-      root: 'div',
-    },
-    appearance,
-    size,
-    level: parentLevel + 1,
-    root: getNativeElementProps('div', {
-      ref,
-      role: 'group',
-      ...props,
-    }),
-    openItems,
-    requestOpenChange,
-    requestNavigation,
-  };
-}
-
-/**
- * Create the state required to render the root level Tree.
- *
- * @param props - props from this instance of Tree
- * @param ref - reference to root HTMLElement of Tree
- */
-function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
-  warnIfNoProperPropsRootTree(props);
-
-  const { appearance = 'subtle', size = 'medium' } = props;
-
-  const [openItems, updateOpenItems] = useOpenItemsState(props);
-  const [navigate, navigationRef] = useNestedTreeNavigation();
-
-  const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
-    props.onOpenChange?.(data.event, data);
-    if (data.event.isDefaultPrevented()) {
-      return;
-    }
-    return updateOpenItems(data);
-  });
-
-  const requestNavigation = useEventCallback((data: TreeNavigationData_unstable) => {
-    props.onNavigation_unstable?.(data.event, data);
-    if (data.event.isDefaultPrevented()) {
-      return;
-    }
-    navigate(data);
-    if (data.type === treeDataTypes.arrowDown || data.type === treeDataTypes.arrowUp) {
-      data.event.preventDefault();
-    }
-  });
-
-  return {
-    components: {
-      root: 'div',
-    },
-    appearance,
-    size,
-    level: 1,
-    openItems,
-    requestOpenChange,
-    requestNavigation,
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(navigationRef, ref),
-      role: 'tree',
-      ...props,
-    }),
-  };
-}
-
-function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria-labelledby'>) {
-  if (process.env.NODE_ENV === 'development') {
-    if (!props['aria-label'] && !props['aria-labelledby']) {
-      // eslint-disable-next-line no-console
-      console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
-    }
-  }
-}

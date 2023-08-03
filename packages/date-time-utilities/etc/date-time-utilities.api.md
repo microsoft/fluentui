@@ -96,16 +96,16 @@ export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => stri
 export const formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
 
 // @public
-export const formatTimeString: (date: Date, showSeconds?: boolean | undefined, useHour12?: boolean | undefined) => string;
+export const formatTimeString: (date: Date, showSeconds?: boolean, useHour12?: boolean) => string;
 
 // @public
 export const formatYear: (date: Date) => string;
 
 // @public
-export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined, maxDate?: Date | undefined) => Date[];
+export const getBoundedDateRange: (dateRange: Date[], minDate?: Date, maxDate?: Date) => Date[];
 
 // @public
-export const getDateFromTimeSelection: (useHour12: boolean, baseDate: Date, selectedTime: string) => Date;
+export const getDateFromTimeSelection: (useHour12: boolean, dateStartAnchor: Date, selectedTime: string) => Date;
 
 // @public
 export function getDatePartHashValue(date: Date): number;

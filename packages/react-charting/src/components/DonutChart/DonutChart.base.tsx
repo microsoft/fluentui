@@ -8,6 +8,7 @@ import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../ind
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -43,6 +44,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _tooltip: any;
   private _tooltipId: string;
   private _rectTooltipId: string;
+  private _emptyChartId: string | null;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -83,6 +85,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
     this._tooltipId = getId('_Donut_tooltip_');
     this._rectTooltipId = getId('_Rect_tooltip_');
+    this._emptyChartId = getId('_DonutChart_empty');
   }
   public componentDidMount(): void {
     if (this._rootElem) {
@@ -112,7 +115,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
-    return (
+    return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
@@ -187,6 +190,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         </Callout>
         {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
       </div>
+    ) : (
+      <div
+        id={this._emptyChartId!}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -308,7 +318,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       });
       return legendValue;
     } else {
-      return valueInsideDonut;
+      return valueInsideDonut !== undefined ? valueInsideDonut : '';
     }
   }
 
@@ -333,7 +343,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _showTooltip = (text: string | number, evt: any) => {
     this._tooltip = document.getElementById(this._tooltipId);
     if (this._tooltip) {
-      this._tooltip!.innerHTML = text.toString();
+      this._tooltip!.innerHTML = text ? text.toString() : '';
       this._tooltip!.style.display = 'block';
       this._tooltip!.style.opacity = '0.9';
       this._tooltip!.style.left = evt.pageX + 'px';
@@ -347,4 +357,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       this._tooltip!.style.display = 'none';
     }
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.chartData &&
+      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
+    );
+  }
 }

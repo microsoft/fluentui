@@ -1,25 +1,38 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
-import { TreeItemId } from '../TreeItem';
-import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
+import { TreeItemType, TreeItemValue } from '../TreeItem';
+import { SelectionMode } from '@fluentui/react-utilities';
+import { ImmutableSet } from '../utils/ImmutableSet';
+import { ImmutableMap } from '../utils/ImmutableMap';
+import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
   level: number;
+  selectionMode: 'none' | SelectionMode;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
-  openItems: ImmutableSet<TreeItemId>;
+  openItems: ImmutableSet<TreeItemValue>;
+  checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
   /**
-   * Requests dialog main component to update it's internal open state
+   * requests root Tree component to respond to some tree item event,
    */
-  requestOpenChange(data: TreeOpenChangeData): void;
-  requestNavigation(data: TreeNavigationData_unstable): void;
+  requestTreeResponse(request: TreeItemRequest): void;
 };
+
+export type TreeItemRequest = { itemType: TreeItemType } & (
+  | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'>
+  | TreeNavigationData_unstable
+  | OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'>
+);
+
+// helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
+type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
-  openItems: emptyImmutableSet,
-  requestOpenChange: noop,
-  requestNavigation: noop,
+  selectionMode: 'none',
+  openItems: ImmutableSet.empty,
+  checkedItems: ImmutableMap.empty,
+  requestTreeResponse: noop,
   appearance: 'subtle',
   size: 'medium',
 };

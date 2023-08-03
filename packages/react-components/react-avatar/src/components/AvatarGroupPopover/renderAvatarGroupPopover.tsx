@@ -1,7 +1,11 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
 import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
 import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
-import { getSlots } from '@fluentui/react-utilities';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
 import type { AvatarGroupPopoverState, AvatarGroupPopoverSlots } from './AvatarGroupPopover.types';
@@ -13,7 +17,7 @@ export const renderAvatarGroupPopover_unstable = (
   state: AvatarGroupPopoverState,
   contextValues: AvatarGroupContextValues,
 ) => {
-  const { slots, slotProps } = getSlots<AvatarGroupPopoverSlots>(state);
+  const { slots, slotProps } = getSlotsNext<AvatarGroupPopoverSlots>(state);
 
   return (
     <slots.root {...(slotProps.root as PopoverProps)}>

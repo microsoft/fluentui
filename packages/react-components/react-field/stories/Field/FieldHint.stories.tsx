@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Input } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, Input } from '@fluentui/react-components';
 
 export const Hint = () => (
   <Field label="Example with hint" hint="Sample hint text.">

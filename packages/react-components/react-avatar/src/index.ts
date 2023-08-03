@@ -5,8 +5,16 @@ export {
   useAvatarStyles_unstable,
   useAvatar_unstable,
 } from './Avatar';
-// eslint-disable-next-line deprecation/deprecation
-export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState, AvatarSizes, AvatarSize } from './Avatar';
+export type {
+  AvatarNamedColor,
+  AvatarProps,
+  AvatarSlots,
+  AvatarState,
+  AvatarShape,
+  // eslint-disable-next-line deprecation/deprecation
+  AvatarSizes,
+  AvatarSize,
+} from './Avatar';
 export { getInitials, partitionAvatarGroupItems } from './utils/index';
 export type { PartitionAvatarGroupItems, PartitionAvatarGroupItemsOptions } from './utils/index';
 export {

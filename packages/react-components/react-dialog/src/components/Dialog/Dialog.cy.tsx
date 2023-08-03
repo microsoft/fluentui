@@ -451,9 +451,40 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('not.have.css', 'overflow', 'hidden');
     });
+    it('should be able to focus inside non-modal dialog after navigating outside', () => {
+      mount(
+        <>
+          <Dialog modalType="non-modal">
+            <DialogTrigger disableButtonEnhancement>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogBody>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button id={dialogTriggerCloseId} appearance="secondary">
+                      Close
+                    </Button>
+                  </DialogTrigger>
+                  <Button id="extra-btn-inside" appearance="primary">
+                    Do Something
+                  </Button>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+          <Button id="extra-btn-outside">Button outside dialog</Button>
+        </>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
+      cy.get('#extra-btn-outside').realClick().should('be.focused');
+      cy.get('#extra-btn-inside').realClick().should('be.focused').realType('{esc}');
+      cy.get(dialogSurfaceSelector).should('not.exist');
+    });
   });
   describe('modalType = alert', () => {
-    it('should not close with escape keydown', () => {
+    it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger disableButtonEnhancement>
@@ -481,7 +512,7 @@ describe('Dialog', () => {
       );
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.focused().realType('{esc}');
-      cy.get(dialogSurfaceSelector).should('exist');
+      cy.get(dialogSurfaceSelector).should('not.exist');
     });
     it('should lock body scroll when dialog open', () => {
       mount(

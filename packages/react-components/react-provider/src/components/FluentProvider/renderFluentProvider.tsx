@@ -1,4 +1,8 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { canUseDOM, getSlotsNext } from '@fluentui/react-utilities';
 import { TextDirectionProvider } from '@griffel/react';
 import {
   OverridesProvider_unstable as OverridesProvider,
@@ -9,7 +13,6 @@ import {
   CustomStyleHooksProvider_unstable as CustomStyleHooksProvider,
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
-import { canUseDOM, getSlots } from '@fluentui/react-utilities';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
 
 /**
@@ -19,7 +22,7 @@ export const renderFluentProvider_unstable = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
 ) => {
-  const { slots, slotProps } = getSlots<FluentProviderSlots>(state);
+  const { slots, slotProps } = getSlotsNext<FluentProviderSlots>(state);
 
   // Typescript (vscode) incorrectly references the FluentProviderProps.customStyleHooks_unstable
   // instead of FluentProviderContextValues.customStyleHooks_unstable and thinks it is

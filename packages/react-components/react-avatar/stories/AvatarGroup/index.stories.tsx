@@ -9,6 +9,7 @@ export { Indicator } from './AvatarGroupIndicator.stories';
 export { SizeSpread } from './AvatarGroupSizeSpread.stories';
 export { SizeStack } from './AvatarGroupSizeStack.stories';
 export { SizePie } from './AvatarGroupSizePie.stories';
+export { Tooltip } from './AvatarGroupTooltip.stories';
 
 export default {
   title: 'Components/AvatarGroup',

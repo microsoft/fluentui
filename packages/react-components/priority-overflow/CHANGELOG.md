@@ -1,8 +1,45 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 21 Mar 2023 21:23:19 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2023 13:29:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.2)
+
+Tue, 25 Jul 2023 13:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.1..@fluentui/priority-overflow_v9.1.2)
+
+### Patches
+
+- fix: Overflow update should run show/hide steps twice ([PR #28628](https://github.com/microsoft/fluentui/pull/28628) by lingfan.gao@microsoft.com)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.1)
+
+Mon, 26 Jun 2023 09:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.0..@fluentui/priority-overflow_v9.1.1)
+
+### Patches
+
+- fix: remove overflow menu if the last overflowed item can take its place ([PR #28285](https://github.com/microsoft/fluentui/pull/28285) by vkozlova@microsoft.com)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.0)
+
+Tue, 20 Jun 2023 12:38:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.3..@fluentui/priority-overflow_v9.1.0)
+
+### Minor changes
+
+- feat: Added support for custom divider ([PR #28011](https://github.com/microsoft/fluentui/pull/28011) by vkozlova@microsoft.com)
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.3)
+
+Fri, 12 May 2023 20:28:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.2..@fluentui/priority-overflow_v9.0.3)
+
+### Patches
+
+- fix: overflowManager should always dispatch initial state ([PR #27756](https://github.com/microsoft/fluentui/pull/27756) by lingfangao@hotmail.com)
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.2)
 

@@ -110,6 +110,42 @@ function MyComponent(props) {
 }
 ```
 
+### IdPrefixProvider
+
+Having multiple applications using `FluentProvider` on a single web page can cause interop problems when they come from different bundles, more details in [microsoft/fluentui#26496](https://github.com/microsoft/fluentui/pull/26496).
+
+### React 18
+
+It's possible to handle id prefixing natively with React 18 using the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters) API by configuring `identifierPrefix` on it:
+
+```jsx
+import * as React from 'react';
+import { createRoot } from 'react-dom';
+
+const root = createRoot(document.getElementById('root'), {
+  identifierPrefix: 'APP1-',
+});
+
+root.render(<App />);
+```
+
+### React 16 & 17
+
+Adding the `IdPrefixProvider` component around the `FluentProvider` will resolve the issue of losing styling on components and IDs collisions in an application.
+
+```jsx
+import { IdPrefixProvider, FluentProvider } from '@fluentui/react-components';
+import * as React from 'react';
+
+function MyApp() {
+  return (
+    <IdPrefixProvider value="APP1-">
+      <FluentProvider>{/* children */}</FluentProvider>
+    </IdPrefixProvider>
+  );
+}
+```
+
 ## References
 
 - https://griffel.js.org/react/api/create-dom-renderer

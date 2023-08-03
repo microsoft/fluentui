@@ -14,11 +14,11 @@ export const DEFAULT_STRINGS = {
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { size: contextSize } = useAvatarContext();
+  const { shape: contextShape, size: contextSize } = useAvatarContext();
   const {
     name,
     size = contextSize ?? (32 as const),
-    shape = 'circular',
+    shape = contextShape ?? 'circular',
     active = 'unset',
     activeAppearance = 'ring',
     idForColor,
@@ -45,7 +45,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   );
 
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
-  const image: AvatarState['image'] = resolveShorthand(props.image, {
+  let image: AvatarState['image'] = resolveShorthand(props.image, {
     defaultProps: {
       alt: '',
       role: 'presentation',
@@ -53,6 +53,11 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       hidden: imageHidden,
     },
   });
+
+  // Image shouldn't be rendered if its src is not set
+  if (!image?.src) {
+    image = undefined;
+  }
 
   // Hide the image if it fails to load and restore it on a successful load
   if (image) {

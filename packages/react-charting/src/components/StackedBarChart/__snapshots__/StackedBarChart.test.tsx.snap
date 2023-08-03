@@ -22,7 +22,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -59,14 +59,14 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip2"
+          id="tooltip5"
           style={
             Object {
               "border": 0,
@@ -84,7 +84,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -117,7 +117,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -162,6 +162,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar7"
               key="0"
               width="63.49206349206349%"
               x="0%"
@@ -195,6 +196,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar8"
               key="1"
               width="36.507936507936506%"
               x="63.49206349206349%"
@@ -392,7 +394,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -429,14 +431,14 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip2"
+          id="tooltip5"
           style={
             Object {
               "border": 0,
@@ -454,7 +456,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -487,7 +489,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -532,6 +534,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar7"
               key="0"
               width="63.49206349206349%"
               x="0%"
@@ -565,6 +568,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar8"
               key="1"
               width="36.507936507936506%"
               x="63.49206349206349%"
@@ -679,7 +683,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -716,14 +720,14 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip2"
+          id="tooltip5"
           style={
             Object {
               "border": 0,
@@ -741,7 +745,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -774,7 +778,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -818,6 +822,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar2"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -849,6 +854,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar3"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -886,7 +892,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone26"
+    data-focuszone-id="FocusZone47"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -923,14 +929,14 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip27"
+          id="tooltip48"
           style={
             Object {
               "border": 0,
@@ -948,7 +954,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -981,7 +987,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone28"
+    data-focuszone-id="FocusZone49"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1025,6 +1031,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar45"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1056,6 +1063,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar46"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1093,7 +1101,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone32"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1130,14 +1138,14 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip18"
+          id="tooltip33"
           style={
             Object {
               "border": 0,
@@ -1155,7 +1163,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1178,7 +1186,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone19"
+    data-focuszone-id="FocusZone34"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1222,6 +1230,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar30"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1253,6 +1262,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar31"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1290,7 +1300,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1327,14 +1337,14 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip6"
+          id="tooltip12"
           style={
             Object {
               "border": 0,
@@ -1352,7 +1362,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1385,7 +1395,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone13"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1429,6 +1439,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar9"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1460,6 +1471,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar10"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1497,7 +1509,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone25"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1534,14 +1546,14 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip14"
+          id="tooltip26"
           style={
             Object {
               "border": 0,
@@ -1566,7 +1578,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone15"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1610,6 +1622,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar23"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1641,6 +1654,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar24"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1678,7 +1692,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone18"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1715,14 +1729,14 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip10"
+          id="tooltip19"
           style={
             Object {
               "border": 0,
@@ -1740,7 +1754,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </div>
       </div>
       <div
-        data-is-focusable={true}
+        data-is-focusable={false}
         role="text"
       >
         <span
@@ -1773,7 +1787,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1817,6 +1831,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar16"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1848,6 +1863,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar17"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1885,7 +1901,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone39"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1922,14 +1938,14 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         role="none"
       >
         <span
-          data-is-focusable={true}
+          data-is-focusable={false}
           role="text"
         >
           Stacked bar chart 2nd example
         </span>
         <div
           hidden={true}
-          id="tooltip22"
+          id="tooltip40"
           style={
             Object {
               "border": 0,
@@ -1954,7 +1970,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone23"
+    data-focuszone-id="FocusZone41"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1998,6 +2014,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <rect
               fill="#5c005c"
               height={12}
+              id="_SBC_bar37"
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -2029,6 +2046,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <rect
               fill="#e81123"
               height={12}
+              id="_SBC_bar38"
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -2089,7 +2107,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone24"
+              data-focuszone-id="FocusZone42"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

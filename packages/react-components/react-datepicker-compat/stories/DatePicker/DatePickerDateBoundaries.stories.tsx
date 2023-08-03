@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-components';
-import { addMonths, addYears, defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
-import type { DatePickerStrings } from '@fluentui/react-datepicker-compat';
+import { addMonths, addYears, DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   inputControl: {
@@ -9,29 +8,28 @@ const useStyles = makeStyles({
   },
 });
 
-const today = new Date(Date.now());
+const today = new Date();
 const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
-const strings: DatePickerStrings = {
-  ...defaultDatePickerStrings,
-  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()} and ${maxDate.toLocaleDateString()}`,
+
+const onFormatDate = (date?: Date): string => {
+  return `${date?.getMonth()}/${date?.getDate()}/${date?.getFullYear()}`;
 };
 
 export const DateBoundaries = () => {
   const styles = useStyles();
 
   return (
-    <DatePicker
-      minDate={minDate}
-      maxDate={maxDate}
-      label={`The date boundaries for this example are ${minDate.toLocaleDateString()} to ${maxDate.toLocaleDateString()}.`}
-      aria-label="Select a date"
-      placeholder="Select a date..."
-      allowTextInput
-      // DatePicker uses English strings by default. For localized apps, you must override this prop.
-      strings={strings}
-      input={{ className: styles.inputControl }}
-    />
+    <Field label={`The date boundaries for this example are ${minDate.toDateString()} to ${maxDate.toDateString()}.`}>
+      <DatePicker
+        minDate={minDate}
+        maxDate={maxDate}
+        placeholder="Select a date..."
+        formatDate={onFormatDate}
+        allowTextInput
+        className={styles.inputControl}
+      />
+    </Field>
   );
 };
 

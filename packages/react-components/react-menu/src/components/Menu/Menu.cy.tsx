@@ -132,6 +132,41 @@ describe('MenuTrigger', () => {
     );
     cy.get(menuTriggerSelector).should('not.be.focused');
   });
+
+  it('should not focus itself after re-render', () => {
+    const Example = () => {
+      const [count, setCount] = React.useState(0);
+
+      React.useEffect(() => {
+        // trigger 2 re-renders to make sure that the focus effect has finished running
+        // after first re-render
+        if (count < 2) {
+          setCount(c => c + 1);
+        }
+      }, [count]);
+
+      return (
+        <>
+          <Menu>
+            <MenuTrigger disableButtonEnhancement>
+              <button data-status={count < 2 ? 'incomplete' : 'complete'} id={menuTriggerId}>
+                Menu
+              </button>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Item</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+          <input type="text" />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get(menuTriggerSelector).should('have.attr', 'data-status', 'complete').should('not.be.focused');
+  });
 });
 
 describe('Custom Trigger', () => {
@@ -391,7 +426,7 @@ describe('MenuItemRadio', () => {
 });
 
 describe('Menu', () => {
-  it('should not focus trigger on dismiss if another elemnt is focused', () => {
+  it('should not focus trigger on dismiss if another element is focused', () => {
     mount(
       <>
         <Menu>

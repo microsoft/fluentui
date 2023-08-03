@@ -42,6 +42,9 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
+export const AccordionHeaderContextProvider: React_2.Provider<AccordionHeaderContextValue | undefined>;
+
+// @public (undocumented)
 export type AccordionHeaderContextValue = Required<Pick<AccordionHeaderProps, 'expandIconPosition' | 'size'>> & {
     disabled: boolean;
     open: boolean;
@@ -67,9 +70,9 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    root: NonNullable<Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>>;
     button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
     icon?: Slot<'div'>;
 };
 
@@ -107,7 +110,7 @@ export const AccordionItemProvider: React_2.Provider<AccordionItemContextValue>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -127,7 +130,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -150,7 +153,7 @@ export const AccordionProvider: Provider<AccordionContextValue> & FC<ProviderPro
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -190,6 +193,14 @@ export function useAccordionContextValues_unstable(state: AccordionState): Accor
 
 // @public
 export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+
+// @public (undocumented)
+export const useAccordionHeaderContext_unstable: () => {
+    open: boolean;
+    disabled: boolean;
+    size: string;
+    expandIconPosition: string;
+};
 
 // @public (undocumented)
 export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues;

@@ -2,9 +2,10 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type DialogTitleSlots = {
   /**
-   * By default this is a div, but can be a heading.
+   * By default this is a h2, but can be any heading or div,
+   * if `div` is provided do not forget to also provide proper `role="heading"` and `aria-level` attributes
    */
-  root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+  root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
   /**
    * By default a Dialog with modalType='non-modal' will have a close button action
    */

@@ -1,2 +1,2 @@
 export * from './CalendarPicker.types';
-export * from './useCalendarPickerStyles';
+export * from './useCalendarPickerStyles.styles';

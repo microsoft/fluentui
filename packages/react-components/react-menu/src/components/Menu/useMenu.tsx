@@ -11,7 +11,6 @@ import {
   useOnClickOutside,
   useEventCallback,
   useOnScrollOutside,
-  useFirstMount,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
@@ -275,24 +274,11 @@ const useMenuOpenState = (
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
 
-  const firstMount = useFirstMount();
   React.useEffect(() => {
     if (open) {
       focusFirst();
-    } else {
-      if (!firstMount) {
-        if (targetDocument?.activeElement === targetDocument?.body) {
-          // We know that React effects are sync so we focus the trigger here
-          // after any event handler (event handlers will update state and re-render).
-          // Since the browser only performs the default behaviour for the Tab key once
-          // keyboard events have fully bubbled up the window, the browser will move
-          // focus to the next tabbable element before/after the trigger if needed.
-          // If the Tab key was not pressed, focus will remain on the trigger as expected.
-          state.triggerRef.current?.focus();
-        }
-      }
     }
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, firstMount, targetDocument, state.menuPopoverRef]);
+  }, [open, focusFirst]);
 
   return [open, setOpen] as const;
 };

@@ -5,8 +5,13 @@ import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Combobox', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',
@@ -661,6 +666,58 @@ describe('Combobox', () => {
       optionText: 'Blue',
       selectedOptions: ['Green', 'Blue'],
     });
+  });
+
+  /* Freeform space key behavior */
+  it('inserts space character when typing in a freeform combobox', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole } = render(
+      <Combobox onOptionSelect={onOptionSelect} freeform>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.type(getByRole('combobox'), 're ');
+
+    expect(onOptionSelect).not.toHaveBeenCalled();
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('re ');
+  });
+
+  it('uses space to select after arrowing through options in a freeform combobox', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole } = render(
+      <Combobox onOptionSelect={onOptionSelect} freeform>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.type(getByRole('combobox'), 're{ArrowDown} ');
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('inserts space character in closed freeform combobox', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole } = render(
+      <Combobox onOptionSelect={onOptionSelect} freeform>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.type(getByRole('combobox'), 'r{ArrowDown}{Escape} ');
+
+    expect(onOptionSelect).not.toHaveBeenCalled();
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('r ');
   });
 
   /* Active option */

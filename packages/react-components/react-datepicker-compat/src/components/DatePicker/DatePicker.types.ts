@@ -1,57 +1,27 @@
-import * as React from 'react';
-import { Input } from '@fluentui/react-input';
-import { Field } from '@fluentui/react-field';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
-import { PopoverSurface } from '@fluentui/react-popover';
-import type { PopoverProps } from '@fluentui/react-popover';
+import { Input } from '@fluentui/react-input';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
+import type { PositioningProps } from '@fluentui/react-positioning';
 
 export type DatePickerSlots = {
-  root: NonNullable<Slot<'div'>>;
-  field: NonNullable<Slot<typeof Field>>;
-  input: NonNullable<Slot<typeof Input>>;
-  wrapper: NonNullable<Slot<'div'>>;
-  popover: NonNullable<Slot<Partial<PopoverProps>>>;
-  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  root: NonNullable<Slot<typeof Input>>;
   calendar: NonNullable<Slot<Partial<CalendarProps>>>;
+  popupSurface?: Slot<'div'>;
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IDatePicker {
-  /** Sets focus to the text field */
-  focus(): void;
-
-  /** Reset the state of the picker to the default */
-  reset(): void;
-
-  /** Open the datepicker callout */
-  showDatePickerPopup(): void;
-}
-
-export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
-  /**
-   * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: React.RefObject<IDatePicker>;
-
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
   /**
    * Callback issued when a date is selected
    */
   onSelectDate?: (date: Date | null | undefined) => void;
 
   /**
-   * Label for the DatePicker
-   */
-  label?: string;
-
-  /**
-   * Whether the DatePicker is a required field or not
+   * Whether the DatePicker is a required field or not. When using `<Field>`, this prop is automatically set.
    * @default false
    */
-  isRequired?: boolean;
+  required?: boolean;
 
   /**
    * Disabled state of the DatePicker.
@@ -97,6 +67,44 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   openOnClick?: boolean;
 
   /**
+   * Whether the DatePicker should be open by default
+   *
+   * @default false
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * Whether the DatePicker is open or not
+   *
+   * @default false
+   */
+  open?: boolean;
+
+  /**
+   * Callback to run when the DatePicker's open state changes
+   */
+  onOpenChange?: (open: boolean) => void;
+
+  /**
+   * Callback to run after the DatePicker's input has been validated
+   */
+  onValidationResult?: (data: DatePickerValidationResultData) => void;
+
+  /**
+   * Whether the DatePicker should render the popup as inline or in a portal
+   *
+   * @default false
+   */
+  inlinePopup?: boolean;
+
+  /**
+   * Configure the positioning of the DatePicker dialog
+   *
+   * @default below
+   */
+  positioning?: PositioningProps;
+
+  /**
    * Placeholder text for the DatePicker
    */
   placeholder?: string;
@@ -108,8 +116,11 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
 
   /**
    * Default value of the DatePicker, if any
+   *
+   * When the component is controlled, `null` should be used instead of `undefined` to avoid controlled vs. uncontrolled
+   * ambiguity.
    */
-  value?: Date;
+  value?: Date | null;
 
   /**
    * Optional method to format the chosen date to a string to display in the DatePicker
@@ -130,9 +141,9 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Localized strings to use in the DatePicker
+   * Localized strings to use in the Calendar
    */
-  strings?: DatePickerStrings;
+  strings?: CalendarStrings;
 
   /**
    * Whether the month picker should highlight the current month
@@ -197,46 +208,28 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   allFocusable?: boolean;
 
   /**
-   * Callback that runs after DatePicker's menu (Calendar) is closed
-   */
-  onAfterMenuDismiss?: () => void;
-
-  /**
    * Whether the CalendarDay close button should be shown or not.
    */
   showCloseButton?: boolean;
-
-  /**
-   * The tabIndex of the Input
-   */
-  tabIndex?: number;
 };
 
+/**
+ * State used in rendering DatePicker.
+ */
 export type DatePickerState = ComponentState<DatePickerSlots> & {
   disabled: boolean;
-  isDatePickerShown: boolean;
+  inlinePopup: boolean;
 };
 
-export interface DatePickerStrings extends CalendarStrings {
-  /**
-   * Error message to render for Input if isRequired validation fails.
-   */
-  isRequiredErrorMessage?: string;
+/**
+ * Data passed to the `onValidationResult` callback.
+ */
+export type DatePickerValidationResultData = {
+  /** The error found when validating the input. */
+  error?: DatePickerErrorType;
+};
 
-  /**
-   * Error message to render for Input if input date string parsing fails.
-   */
-  invalidInputErrorMessage?: string;
-
-  /**
-   * Error message to render for Input if date boundary (minDate, maxDate) validation fails.
-   */
-  isOutOfBoundsErrorMessage?: string;
-
-  /**
-   * Status message to render for Input the input date parsing fails,
-   * and the typed value is cleared and reset to the previous value.
-   *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
-   */
-  isResetStatusMessage?: string;
-}
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';

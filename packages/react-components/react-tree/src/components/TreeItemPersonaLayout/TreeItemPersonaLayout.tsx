@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTreeItemPersonaLayout_unstable } from './useTreeItemPersonaLayout';
 import { renderTreeItemPersonaLayout_unstable } from './renderTreeItemPersonaLayout';
-import { useTreeItemPersonaLayoutStyles_unstable } from './useTreeItemPersonaLayoutStyles';
+import { useTreeItemPersonaLayoutStyles_unstable } from './useTreeItemPersonaLayoutStyles.styles';
 import type { TreeItemPersonaLayoutProps } from './TreeItemPersonaLayout.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeItemPersonaLayoutContextValues_unstable } from './useTreeItemPersonaLayoutContextValues';

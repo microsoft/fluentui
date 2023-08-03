@@ -49,6 +49,9 @@
 /.prettierignore @microsoft/fluentui-react-build
 /.nxignore @microsoft/fluentui-react-build
 /jest.preset.js @microsoft/fluentui-react-build
+/jest.preset.ts @microsoft/fluentui-react-build
+/jest.config.js @microsoft/fluentui-react-build
+/jest.config.ts @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /sizeauditor.json @microsoft/fluentui-react-build
@@ -63,7 +66,6 @@
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build
-/workspace.json @microsoft/fluentui-react-build
 /migrations.json @microsoft/fluentui-react-build
 
 #### Meta and License stuff
@@ -92,12 +94,14 @@ scripts/projects-test @microsoft/fluentui-react-build
 scripts/puppeteer @microsoft/fluentui-react-build
 scripts/storybook @microsoft/fluentui-react-build
 scripts/tasks @microsoft/fluentui-react-build
+scripts/test-ssr @microsoft/fluentui-react-build
 scripts/triage-bot @microsoft/fluentui-react-build @microsoft/cxe-prg
 scripts/ts-node @microsoft/fluentui-react-build
 scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
+scripts/bundle-size-auditor @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -120,7 +124,6 @@ apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
-apps/test-bundles @microsoft/fluentui-react
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
@@ -131,7 +134,7 @@ apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microso
 
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
-packages/bundle-size @microsoft/teams-prg
+packages/react-conformance @microsoft/fluentui-react-build
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -149,13 +152,15 @@ packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
+packages/react-examples @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-examples/src/react-charting @microsoft/charting-team
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-components/react-shared-contexts @microsoft/teams-prg
+packages/react-components/react-shared-contexts @microsoft/teams-prg @microsoft/cxe-red
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
@@ -211,27 +216,29 @@ packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
-packages/react-components/theme-designer @microsoft/cxe-coastal
+packages/react-components/theme-designer @microsoft/cxe-coastal @ms-acalzaretto
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
 packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
-packages/react-components/react-avatar-context @microsoft/teams-prg
 packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
-packages/react-components/react-data-grid-react-window @microsoft/teams-prg
+packages/react-components/react-tags-preview @microsoft/cxe-coastal @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
-packages/react-components/react-breadcrumb @microsoft/cxe-prg
+packages/react-components/react-breadcrumb-preview @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg
 packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
+packages/react-components/react-jsx-runtime @microsoft/teams-prg
+packages/react-components/react-toast @microsoft/teams-prg
+packages/react-components/react-search-preview @microsoft/cxe-coastal
+packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
@@ -248,20 +255,20 @@ packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coas
 packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/DatePicker @microsoft/cxe-red
-packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
 packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
 packages/react/src/components/HoverCard @microsoft/cxe-red @microsoft/cxe-coastal @Jahnp
 packages/react/src/components/Icon @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Image @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Label @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Layer @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/Link @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
+packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan  @ThomasMichon
 packages/react/src/components/MarqueeSelection @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/MessageBar @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Nav @microsoft/cxe-red @microsoft/cxe-coastal
@@ -290,6 +297,7 @@ packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon
 
 ### generic rules for v-build. Might be tweaked based on needs.
+**/project.json @microsoft/fluentui-react-build
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
 **/webpack.*.js @microsoft/fluentui-react-build

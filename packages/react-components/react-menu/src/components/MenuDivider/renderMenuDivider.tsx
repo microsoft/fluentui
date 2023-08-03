@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
 
 /**
@@ -7,7 +10,7 @@ import { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
  * slots to children.
  */
 export const renderMenuDivider_unstable = (state: MenuDividerState) => {
-  const { slots, slotProps } = getSlots<MenuDividerSlots>(state);
+  const { slots, slotProps } = getSlotsNext<MenuDividerSlots>(state);
 
   return <slots.root {...slotProps.root} />;
 };

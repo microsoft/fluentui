@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTreeItemLayout_unstable } from './useTreeItemLayout';
 import { renderTreeItemLayout_unstable } from './renderTreeItemLayout';
-import { useTreeItemLayoutStyles_unstable } from './useTreeItemLayoutStyles';
+import { useTreeItemLayoutStyles_unstable } from './useTreeItemLayoutStyles.styles';
 import type { TreeItemLayoutProps } from './TreeItemLayout.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

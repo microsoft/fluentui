@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCounterBadge_unstable } from './useCounterBadge';
-import { useCounterBadgeStyles_unstable } from './useCounterBadgeStyles';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCounterBadgeStyles_unstable } from './useCounterBadgeStyles.styles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from '../Badge/index';
 import type { CounterBadgeProps } from './CounterBadge.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -14,8 +14,7 @@ export const CounterBadge: ForwardRefComponent<CounterBadgeProps> = React.forwar
 
   useCounterBadgeStyles_unstable(state);
 
-  const { useCounterBadgeStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useCounterBadgeStyles_unstable')(state);
 
   return renderBadge_unstable(state);
 });

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add FieldContext to pass props to controls inside Field",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

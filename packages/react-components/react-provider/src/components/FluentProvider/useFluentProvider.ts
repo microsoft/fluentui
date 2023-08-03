@@ -1,20 +1,20 @@
+import { useRenderer_unstable } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
   useOverrides_unstable as useOverrides,
-  useCustomStyleHooks_unstable as useCustomStyleHooks,
+  CustomStyleHooksContext_unstable as CustomStyleHooksContext,
 } from '@fluentui/react-shared-contexts';
 import type {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
-
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
+
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
-import { useRenderer_unstable } from '@griffel/react';
 
 /**
  * Create the state required to render FluentProvider.
@@ -32,7 +32,7 @@ export const useFluentProvider_unstable = (
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
-  const parentCustomStyleHooks = useCustomStyleHooks();
+  const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -48,27 +48,14 @@ export const useFluentProvider_unstable = (
     theme,
     overrides_unstable: overrides = {},
   } = props;
-  const mergedTheme = shallowMerge(parentTheme, theme);
 
+  const mergedTheme = shallowMerge(parentTheme, theme);
   const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
-  // parentCustomStyleHooks will not be a partial
   const mergedCustomStyleHooks = shallowMerge(
     parentCustomStyleHooks,
     customStyleHooks_unstable,
   ) as CustomStyleHooksContextValue;
-
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
-      // eslint-disable-next-line no-console
-      console.warn(`
-      FluentProvider: your "theme" is not defined !
-      =============================================
-      Make sure your root FluentProvider has set a theme or you're setting the theme in your child FluentProvider.
-      `);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const renderer = useRenderer_unstable();
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
@@ -76,6 +63,23 @@ export const useFluentProvider_unstable = (
     targetDocument,
     rendererAttributes: renderer.styleElementAttributes ?? {},
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (mergedTheme === undefined) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          [
+            '@fluentui/react-provider: FluentProvider does not have your "theme" defined.',
+            "Make sure that your top-level FluentProvider has set a `theme` prop or you're setting the theme in your child FluentProvider.",
+          ].join(' '),
+        );
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
+
   return {
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention

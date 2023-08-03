@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { TreeItem } from './TreeItem';
 import { isConformant } from '../../testing/isConformant';
 import { TreeItemProps } from './TreeItem.types';
-import { treeItemClassNames } from './useTreeItemStyles';
+import { treeItemClassNames } from './useTreeItemStyles.styles';
 
 describe('TreeItem', () => {
   isConformant<TreeItemProps>({
@@ -18,9 +18,6 @@ describe('TreeItem', () => {
         {
           props: {
             expandIcon: 'Test Expand Icon',
-            iconBefore: 'Test Icon Before',
-            iconAfter: 'Test Icon After',
-            actions: 'test Actions',
             aside: 'test Aside',
           },
         },
@@ -31,7 +28,7 @@ describe('TreeItem', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TreeItem>Default TreeItem</TreeItem>);
+    const result = render(<TreeItem itemType="leaf">Default TreeItem</TreeItem>);
     expect(result.container).toMatchSnapshot();
   });
 });

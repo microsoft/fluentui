@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field } from '@fluentui/react-components';
 
 export { Default } from './FieldDefault.stories';
 export { Horizontal } from './FieldHorizontal.stories';
@@ -17,7 +17,7 @@ import descriptionMd from './FieldDescription.md';
 import bestPracticesMd from './FieldBestPractices.md';
 
 export default {
-  title: 'Preview Components/Field',
+  title: 'Components/Field',
   component: Field,
   parameters: {
     docs: {

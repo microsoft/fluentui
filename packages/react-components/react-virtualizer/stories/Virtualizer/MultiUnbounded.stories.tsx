@@ -4,9 +4,15 @@ import { makeStyles, useFluent } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
+    /*
+     * This is an 'unbounded' example intended to show virtualization in Body doc scroll
+     * However, we need a sensible height limit
+     * this would be enforced by a browser window,
+     * but iFrames can break this if not capped.
+     */
     display: 'flex',
     flexDirection: 'column',
-    overflowAnchor: 'none',
+    maxHeight: '300VH',
     width: '100%',
     height: '100%',
   },

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render, RenderResult } from '@testing-library/react';
 import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
-import { datePickerClassNames } from './useDatePickerStyles';
+import { datePickerClassNames } from './useDatePickerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -16,11 +16,30 @@ function queryByRoleDialog(result: RenderResult) {
   }
 }
 
-const getDatepickerPopoverElement = (result: RenderResult) => {
+const getDatepickerPopupElement = (result: RenderResult) => {
   result.getByRole('combobox').click();
   const dialog = queryByRoleDialog(result);
   expect(dialog).not.toBeNull();
   return dialog!;
+};
+
+const ControlledDatePicker = (props: Partial<React.ComponentProps<typeof DatePicker>>) => {
+  const [value, setValue] = React.useState<Date | null>(null);
+
+  return (
+    <DatePicker
+      value={value}
+      allowTextInput
+      formatDate={date => {
+        props.formatDate?.();
+        return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+      }}
+      onSelectDate={date => {
+        props.onSelectDate?.(date);
+        date !== undefined && setValue(date);
+      }}
+    />
+  );
 };
 
 describe('DatePicker', () => {
@@ -31,20 +50,19 @@ describe('DatePicker', () => {
   isConformant({
     Component: DatePicker,
     displayName: 'DatePicker',
-    disabledTests: ['consistent-callback-args'],
+    // component-has-root-ref is disabled because the root is an Input component, the conformance test thinks the
+    // wrapper is the root, not the input itself. This is a bug in the conformance test.
+    disabledTests: ['consistent-callback-args', 'component-has-root-ref'],
     testOptions: {
       'has-static-classnames': [
         {
           props: {},
           expectedClassNames: {
             root: datePickerClassNames.root,
-            field: datePickerClassNames.field,
-            wrapper: datePickerClassNames.wrapper,
-            popoverSurface: datePickerClassNames.popoverSurface,
-            input: datePickerClassNames.input,
+            popupSurface: datePickerClassNames.popupSurface,
             calendar: datePickerClassNames.calendar,
           },
-          getPortalElement: getDatepickerPopoverElement,
+          getPortalElement: getDatepickerPopupElement,
         },
       ],
     },
@@ -55,7 +73,7 @@ describe('DatePicker', () => {
     expect(result.findByTestId('test-id')).toBeTruthy();
   });
 
-  it('should not render DatePicker when isDatePickerShown is not set', () => {
+  it('should not render popup when it is not open', () => {
     const result = render(<DatePicker />);
     expect(result).toMatchSnapshot();
   });
@@ -72,7 +90,7 @@ describe('DatePicker', () => {
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
-    const result = render(<DatePicker isRequired allowTextInput onSelectDate={onSelectDate} />);
+    const result = render(<DatePicker required allowTextInput onSelectDate={onSelectDate} />);
     const input = result.getByRole('combobox');
 
     fireEvent.change(input, { target: { value: 'Jan 1 2030' } });
@@ -138,5 +156,27 @@ describe('DatePicker', () => {
     result.getByText('15').click();
 
     expect(input.getAttribute('value')).toBe('15/1/20');
+  });
+
+  it('calls onSelectDate when controlled', () => {
+    const onSelectDate = jest.fn();
+    const result = render(<ControlledDatePicker onSelectDate={onSelectDate} />);
+
+    fireEvent.click(result.getByRole('combobox'));
+    result.getAllByRole('gridcell')[10].click();
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onSelectDate and formatDate when controlled', () => {
+    const onSelectDate = jest.fn();
+    const formatDate = jest.fn();
+    const result = render(<ControlledDatePicker formatDate={formatDate} onSelectDate={onSelectDate} />);
+
+    fireEvent.click(result.getByRole('combobox'));
+    result.getAllByRole('gridcell')[10].click();
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+    expect(formatDate).toHaveBeenCalledTimes(1);
   });
 });

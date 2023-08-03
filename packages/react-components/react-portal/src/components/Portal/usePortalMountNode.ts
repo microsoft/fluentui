@@ -2,10 +2,13 @@ import * as React from 'react';
 import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
+  usePortalMountNode as usePortalMountNodeContext,
 } from '@fluentui/react-shared-contexts';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
+
+import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
@@ -18,33 +21,29 @@ export type UsePortalMountNodeOptions = {
   className?: string;
 };
 
-const useStyles = makeStyles({
-  root: {
-    position: 'relative',
-    zIndex: 1000000,
-  },
-});
-
 /**
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
   const { targetDocument, dir } = useFluent();
+  const mountNode = usePortalMountNodeContext();
+
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-  const classes = useStyles();
+  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
   const className = mergeClasses(themeClassName, classes.root, options.className);
+  const targetNode: HTMLElement | ShadowRoot | undefined = mountNode ?? targetDocument?.body;
 
   const element = useDisposable(() => {
-    if (targetDocument === undefined || options.disabled) {
+    if (targetNode === undefined || options.disabled) {
       return [null, () => null];
     }
 
-    const newElement = targetDocument.createElement('div');
-    targetDocument.body.appendChild(newElement);
+    const newElement = targetNode.ownerDocument.createElement('div');
+    targetNode.appendChild(newElement);
     return [newElement, () => newElement.remove()];
-  }, [targetDocument]);
+  }, [targetNode]);
 
   if (useInsertionEffect) {
     // eslint-disable-next-line react-hooks/rules-of-hooks

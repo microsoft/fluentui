@@ -3,8 +3,7 @@ import * as React from 'react';
 import descriptionMd from './Description.md';
 
 import { FormField, Input, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, makeStyles, shorthands } from '@fluentui/react-components';
 import { FormFieldShim } from '@fluentui/react-migration-v0-v9';
 
 const useStyles = makeStyles({

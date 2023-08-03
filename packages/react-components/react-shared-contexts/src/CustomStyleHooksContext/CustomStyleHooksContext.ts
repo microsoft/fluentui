@@ -5,7 +5,7 @@ import * as React from 'react';
 type CustomStyleHook = (state: unknown) => void;
 
 // The list of hooks is built from the exports from react-components/src/index
-export type CustomStyleHooksContextValue = {
+export type CustomStyleHooksContextValue = Partial<{
   useAccordionHeaderStyles_unstable: CustomStyleHook;
   useAccordionItemStyles_unstable: CustomStyleHook;
   useAccordionPanelStyles_unstable: CustomStyleHook;
@@ -89,7 +89,12 @@ export type CustomStyleHooksContextValue = {
   useDataGridHeaderStyles_unstable: CustomStyleHook;
   useDataGridHeaderCellStyles_unstable: CustomStyleHook;
   useDataGridSelectionCellStyles_unstable: CustomStyleHook;
-};
+  useDrawerStyles_unstable: CustomStyleHook;
+  useDrawerBodyStyles_unstable: CustomStyleHook;
+  useDrawerHeaderStyles_unstable: CustomStyleHook;
+  useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+  useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+}>;
 
 /**
  * @internal
@@ -97,97 +102,17 @@ export type CustomStyleHooksContextValue = {
 export const CustomStyleHooksContext = React.createContext<CustomStyleHooksContextValue | undefined>(undefined);
 
 const noop = () => {};
-const customStyleHooksContextDefaultValue: CustomStyleHooksContextValue = {
-  useAccordionHeaderStyles_unstable: noop,
-  useAccordionItemStyles_unstable: noop,
-  useAccordionPanelStyles_unstable: noop,
-  useAccordionStyles_unstable: noop,
-  useAvatarStyles_unstable: noop,
-  useAvatarGroupStyles_unstable: noop,
-  useAvatarGroupItemStyles_unstable: noop,
-  useAvatarGroupPopoverStyles_unstable: noop,
-  useBadgeStyles_unstable: noop,
-  useCounterBadgeStyles_unstable: noop,
-  useCardHeaderStyles_unstable: noop,
-  useCardStyles_unstable: noop,
-  useCardFooterStyles_unstable: noop,
-  useCardPreviewStyles_unstable: noop,
-  usePresenceBadgeStyles_unstable: noop,
-  useButtonStyles_unstable: noop,
-  useCompoundButtonStyles_unstable: noop,
-  useMenuButtonStyles_unstable: noop,
-  useSplitButtonStyles_unstable: noop,
-  useToggleButtonStyles_unstable: noop,
-  useCheckboxStyles_unstable: noop,
-  useComboboxStyles_unstable: noop,
-  useDropdownStyles_unstable: noop,
-  useListboxStyles_unstable: noop,
-  useOptionStyles_unstable: noop,
-  useOptionGroupStyles_unstable: noop,
-  useDividerStyles_unstable: noop,
-  useInputStyles_unstable: noop,
-  useImageStyles_unstable: noop,
-  useLabelStyles_unstable: noop,
-  useLinkStyles_unstable: noop,
-  useMenuDividerStyles_unstable: noop,
-  useMenuGroupHeaderStyles_unstable: noop,
-  useMenuGroupStyles_unstable: noop,
-  useMenuItemCheckboxStyles_unstable: noop,
-  useMenuItemRadioStyles_unstable: noop,
-  useMenuItemStyles_unstable: noop,
-  useMenuListStyles_unstable: noop,
-  useMenuPopoverStyles_unstable: noop,
-  useMenuSplitGroupStyles_unstable: noop,
-  usePersonaStyles_unstable: noop,
-  usePopoverSurfaceStyles_unstable: noop,
-  useRadioGroupStyles_unstable: noop,
-  useRadioStyles_unstable: noop,
-  useSelectStyles_unstable: noop,
-  useSliderStyles_unstable: noop,
-  useSpinButtonStyles_unstable: noop,
-  useSpinnerStyles_unstable: noop,
-  useSwitchStyles_unstable: noop,
-  useTabStyles_unstable: noop,
-  useTabListStyles_unstable: noop,
-  useTextStyles_unstable: noop,
-  useTextareaStyles_unstable: noop,
-  useTooltipStyles_unstable: noop,
-  useDialogTitleStyles_unstable: noop,
-  useDialogBodyStyles_unstable: noop,
-  useDialogActionsStyles_unstable: noop,
-  useDialogSurfaceStyles_unstable: noop,
-  useDialogContentStyles_unstable: noop,
-  useProgressBarStyles_unstable: noop,
-  useToolbarButtonStyles_unstable: noop,
-  useToolbarRadioButtonStyles_unstable: noop,
-  useToolbarGroupStyles_unstable: noop,
-  useToolbarToggleButtonStyles_unstable: noop,
-  useToolbarDividerStyles_unstable: noop,
-  useToolbarStyles_unstable: noop,
-  useTableCellStyles_unstable: noop,
-  useTableRowStyles_unstable: noop,
-  useTableBodyStyles_unstable: noop,
-  useTableStyles_unstable: noop,
-  useTableHeaderStyles_unstable: noop,
-  useTableHeaderCellStyles_unstable: noop,
-  useTableResizeHandleStyles_unstable: noop,
-  useTableSelectionCellStyles_unstable: noop,
-  useTableCellActionsStyles_unstable: noop,
-  useTableCellLayoutStyles_unstable: noop,
-  useDataGridCellStyles_unstable: noop,
-  useDataGridRowStyles_unstable: noop,
-  useDataGridBodyStyles_unstable: noop,
-  useDataGridStyles_unstable: noop,
-  useDataGridHeaderStyles_unstable: noop,
-  useDataGridHeaderCellStyles_unstable: noop,
-  useDataGridSelectionCellStyles_unstable: noop,
-};
 
 /**
  * @internal
  */
 export const CustomStyleHooksProvider = CustomStyleHooksContext.Provider;
 
-export function useCustomStyleHooks(): CustomStyleHooksContextValue {
-  return React.useContext(CustomStyleHooksContext) ?? customStyleHooksContextDefaultValue;
-}
+/**
+ * Gets a custom style hook
+ * @param hook - One of the hook properties in CustomStyleHooksContextValue
+ * @returns The corresponding hook when defined, otherwise a no-op function.
+ */
+export const useCustomStyleHook = (hook: keyof CustomStyleHooksContextValue): CustomStyleHook => {
+  return React.useContext(CustomStyleHooksContext)?.[hook] ?? noop;
+};

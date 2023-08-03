@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { mergeCallbacks, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
@@ -19,12 +19,14 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     root: rootShorthand,
     label: labelShorthand,
     infoButton: infoButtonShorthand,
-    size,
     info,
+    size,
     className,
     style,
     ...labelProps
   } = props;
+  const baseId = useId('infolabel-');
+  const [open, setOpen] = React.useState(false);
 
   const root = resolveShorthand(rootShorthand, {
     required: true,
@@ -37,7 +39,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   const label = resolveShorthand(labelShorthand, {
     required: true,
     defaultProps: {
-      id: useId('infolabel-'),
+      id: baseId + '__label',
       ref,
       size,
       ...labelProps,
@@ -47,14 +49,32 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   const infoButton = resolveShorthand(infoButtonShorthand, {
     required: !!info,
     defaultProps: {
-      id: useId('infobutton-'),
-      info,
+      id: baseId + '__infoButton',
       size,
+      info,
     },
   });
 
+  const infoButtonPopover = resolveShorthand(infoButton?.popover, { required: true });
+  infoButtonPopover.onOpenChange = useEventCallback(
+    mergeCallbacks(infoButtonPopover.onOpenChange, (e, data) => {
+      setOpen(data.open);
+    }),
+  );
+
   if (infoButton) {
+    infoButton.popover = infoButtonPopover;
+    infoButton.info = resolveShorthand(infoButton?.info, {
+      defaultProps: {
+        id: baseId + '__info',
+      },
+    });
+
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
+
+    if (open) {
+      root['aria-owns'] ??= infoButton.info?.id;
+    }
   }
 
   return {

@@ -15,21 +15,27 @@ describe('resolveShorthand', () => {
     const props: TestProps = { slotA: 'hello' };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ children: 'hello' });
+    expect(resolvedProps).toEqual({
+      children: 'hello',
+    });
   });
 
   it('resolves a JSX element', () => {
     const props: TestProps = { slotA: <div>hello</div> };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ children: <div>hello</div> });
+    expect(resolvedProps).toEqual({
+      children: <div>hello</div>,
+    });
   });
 
   it('resolves a number', () => {
     const props: TestProps = { slotA: 42 };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ children: 42 });
+    expect(resolvedProps).toEqual({
+      children: 42,
+    });
   });
 
   it('resolves an object as its copy', () => {

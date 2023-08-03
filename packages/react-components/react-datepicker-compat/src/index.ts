@@ -1,4 +1,4 @@
-export { AnimationDirection, defaultCalendarStrings } from './Calendar';
+export { AnimationDirection } from './Calendar';
 export type { CalendarProps, ICalendar } from './Calendar';
 
 export type { CalendarDayProps, ICalendarDay } from './CalendarDay';
@@ -8,12 +8,13 @@ export type { CalendarMonthProps, ICalendarMonth } from './CalendarMonth';
 export {
   DatePicker,
   datePickerClassNames,
+  defaultDatePickerErrorStrings,
   defaultDatePickerStrings,
   renderDatePicker_unstable,
   useDatePicker_unstable,
   useDatePickerStyles_unstable,
 } from './DatePicker';
-export type { DatePickerProps, DatePickerStrings, IDatePicker } from './DatePicker';
+export type { DatePickerErrorType, DatePickerProps, DatePickerValidationResultData } from './DatePicker';
 
 export {
   DAYS_IN_WEEK,

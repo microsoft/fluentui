@@ -92,10 +92,16 @@ export interface IsConformantOptions<TProps = {}> {
   primarySlot?: keyof TProps | 'root';
 
   /**
+   * @deprecated - use `tsConfig` property
+   *
    * Test will load the first tsconfig.json file working upwards from `tsconfigDir`.
    * @defaultvalue the directory of the component being tested
    */
   tsconfigDir?: string;
+  /**
+   * replaces tsconfigDir
+   */
+  tsConfig?: Partial<{ configName: string; configDir: string }>;
 }
 
 export type ConformanceTest<TProps = {}> = (

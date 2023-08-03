@@ -2,6 +2,51 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Wed, 28 Jun 2023 07:37:34 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.11",
+      "version": "1.3.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:05 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.9",
+      "version": "1.3.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 22:20:23 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.8",
+      "version": "1.3.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Apr 2023 07:37:17 GMT",
       "tag": "@fluentui/monaco-editor_v1.3.6",
       "version": "1.3.6",

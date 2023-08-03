@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
+import { Button, Field, makeStyles } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import type { IDatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
@@ -24,11 +23,11 @@ const onFormatDate = (date?: Date): string => {
 export const CustomDateFormatting = () => {
   const styles = useStyles();
 
-  const [value, setValue] = React.useState<Date | undefined>();
-  const datePickerRef = React.useRef<IDatePicker>(null);
+  const [value, setValue] = React.useState<Date | null | undefined>(null);
+  const datePickerRef = React.useRef<HTMLInputElement>(null);
 
   const onClick = React.useCallback((): void => {
-    setValue(undefined);
+    setValue(null);
     datePickerRef.current?.focus();
   }, []);
 
@@ -53,17 +52,18 @@ export const CustomDateFormatting = () => {
 
   return (
     <div className={styles.root}>
-      <DatePicker
-        componentRef={datePickerRef}
-        label="Start date"
-        allowTextInput
-        aria-label="Select a date. Input format is day slash month slash year."
-        value={value}
-        onSelectDate={setValue as (date?: Date | null) => void}
-        formatDate={onFormatDate}
-        parseDateFromString={onParseDateFromString}
-        className={styles.control}
-      />
+      <Field label="Select a date. Input format is day slash month slash year.">
+        <DatePicker
+          ref={datePickerRef}
+          allowTextInput
+          value={value}
+          onSelectDate={setValue as (date?: Date | null) => void}
+          formatDate={onFormatDate}
+          parseDateFromString={onParseDateFromString}
+          placeholder="Select a date..."
+          className={styles.control}
+        />
+      </Field>
       <div>
         <Button onClick={onClick} className={styles.clearButton}>
           Clear

@@ -4,7 +4,7 @@ import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
-import { useCalendarYearStyles_unstable } from './useCalendarYearStyles';
+import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
 import type {
   CalendarYearStrings,
   CalendarYearProps,

@@ -5,7 +5,7 @@ import { applyFocusVisiblePolyfill } from '@fluentui/react-tabster';
 
 import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
 
-const CLASS_NAME_REGEX = new RegExp(`(${fluentProviderClassNames.root}\\d+)`);
+const CLASS_NAME_REGEX = new RegExp(`([^\\s]*${fluentProviderClassNames.root}\\w+)`);
 
 export const PortalCompatProvider: React.FC<{ children?: React.ReactNode }> = props => {
   const { children } = props;

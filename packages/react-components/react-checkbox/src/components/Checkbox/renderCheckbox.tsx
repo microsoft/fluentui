@@ -1,9 +1,13 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { CheckboxState, CheckboxSlots } from './Checkbox.types';
 
 export const renderCheckbox_unstable = (state: CheckboxState) => {
-  const { slots, slotProps } = getSlots<CheckboxSlots>(state);
+  const { slots, slotProps } = getSlotsNext<CheckboxSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

@@ -13,6 +13,26 @@ $usageListPadding: 24px;
   max-width: $content-width + ($App-padding-sm * 2);
 }
 
+.banner {
+  background-image: linear-gradient(
+    to right bottom,
+    #c989e8,
+    #cea1f0,
+    #d6b8f7,
+    #dfcefb,
+    #ebe3fe,
+    #ece9ff,
+    #efeeff,
+    #f2f3ff,
+    #e6eaff,
+    #d7e2ff,
+    #c6dbff,
+    #b3d4ff
+  ) !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
 .section {
   background: $ms-color-white;
   padding: $App-padding-sm;

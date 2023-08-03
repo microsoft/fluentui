@@ -8,14 +8,28 @@ import { getComponentDoc } from './utils/getComponentDoc';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
-  const { componentPath, displayName, disabledTests = [], extraTests, tsconfigDir } = mergedOptions;
+
+  const {
+    componentPath,
+    displayName,
+    disabledTests = [],
+    extraTests,
+    tsConfig,
+    // eslint-disable-next-line deprecation/deprecation
+    tsconfigDir,
+  } = mergedOptions;
+
+  const mergedTsConfig = {
+    configDir: tsConfig?.configDir ?? tsconfigDir,
+    configName: tsConfig?.configName,
+  };
 
   describe('isConformant', () => {
     if (!fs.existsSync(componentPath)) {
       throw new Error(`Path ${componentPath} does not exist`);
     }
 
-    const tsProgram = createTsProgram(componentPath, tsconfigDir);
+    const tsProgram = createTsProgram(componentPath, mergedTsConfig);
 
     const components = getComponentDoc(componentPath, tsProgram);
     const mainComponents = components.filter(comp => comp.displayName === displayName);

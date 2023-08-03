@@ -2,10 +2,10 @@ import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { Dismiss20Regular } from '@fluentui/react-icons';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
-import { useDialogTitleInternalStyles } from './useDialogTitleStyles';
+import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
 
 /**
  * Create the state required to render DialogTitle.
@@ -16,17 +16,17 @@ import { useDialogTitleInternalStyles } from './useDialogTitleStyles';
  * @param props - props from this instance of DialogTitle
  * @param ref - reference to root HTMLElement of DialogTitle
  */
-export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLElement>): DialogTitleState => {
+export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLDivElement>): DialogTitleState => {
   const { as, action } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const internalStyles = useDialogTitleInternalStyles();
 
   return {
     components: {
-      root: 'div',
+      root: 'h2',
       action: 'div',
     },
-    root: getNativeElementProps(as ?? 'div', {
+    root: getNativeElementProps(as ?? 'h2', {
       ref,
       id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
       ...props,
@@ -42,7 +42,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
               // TODO: find a better way to add internal labels
               aria-label="close"
             >
-              <Dismiss24Regular />
+              <Dismiss20Regular />
             </button>
           </DialogTrigger>
         ),

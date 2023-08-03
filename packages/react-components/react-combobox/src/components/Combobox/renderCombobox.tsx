@@ -1,6 +1,10 @@
-import * as React from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
 import { Portal } from '@fluentui/react-portal';
-import { getSlots } from '@fluentui/react-utilities';
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
 
@@ -8,7 +12,7 @@ import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Comb
  * Render the final JSX of Combobox
  */
 export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
-  const { slots, slotProps } = getSlots<ComboboxSlots>(state);
+  const { slots, slotProps } = getSlotsNext<ComboboxSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
@@ -19,7 +23,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
           (state.inlinePopup ? (
             <slots.listbox {...slotProps.listbox} />
           ) : (
-            <Portal>
+            <Portal mountNode={state.mountNode}>
               <slots.listbox {...slotProps.listbox} />
             </Portal>
           ))}

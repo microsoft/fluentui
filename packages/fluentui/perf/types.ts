@@ -1,9 +1,3 @@
-declare global {
-  interface Window {
-    runMeasures: (filter?: string) => Promise<ProfilerMeasureCycle>;
-  }
-}
-
 export type MeasuredValues = 'actualTime' | 'renderComponentTime' | 'componentCount';
 
 export type ProfilerMeasure = { [key in MeasuredValues]: number } & {

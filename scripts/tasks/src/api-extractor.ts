@@ -1,7 +1,7 @@
 import * as path from 'path';
 
 import type { ExtractorMessageCategory, ExtractorResult } from '@microsoft/api-extractor';
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 import chalk from 'chalk';
 import { isCI } from 'ci-info';
 import * as glob from 'glob';
@@ -57,7 +57,7 @@ export function apiExtractor(): TaskFunction {
   };
 
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
-  const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
 
   if (configsToExecute.length === 0) {
     return noop;
@@ -102,14 +102,14 @@ export function apiExtractor(): TaskFunction {
   }
 
   function onConfigLoaded(config: Parameters<NonNullable<ApiExtractorOptions['onConfigLoaded']>>[0]) {
-    if (!(isUsingTsSolutionConfigs && tsConfig)) {
+    if (!(isUsingTsSolutionConfigs && tsConfigs.lib)) {
       return;
     }
 
     logger.info(`api-extractor: package is using TS path aliases. Overriding TS compiler settings.`);
 
     const compilerConfig = getTsPathAliasesApiExtractorConfig({
-      tsConfig,
+      tsConfig: tsConfigs.lib,
       packageJson,
       pathAliasesTsConfigPath: isLocalBuild ? path.join(workspaceRoot, 'tsconfig.base.json') : undefined,
       definitionsRootPath: 'dist/out-tsc/types',

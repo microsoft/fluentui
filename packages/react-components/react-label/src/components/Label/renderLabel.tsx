@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { LabelState, LabelSlots } from './Label.types';
 
 /**
  * Render the final JSX of Label
  */
 export const renderLabel_unstable = (state: LabelState) => {
-  const { slots, slotProps } = getSlots<LabelSlots>(state);
+  const { slots, slotProps } = getSlotsNext<LabelSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

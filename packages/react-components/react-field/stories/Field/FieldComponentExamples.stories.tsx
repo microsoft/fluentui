@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   Checkbox,
   Combobox,
+  Field,
   Input,
   makeResetStyles,
   Option,
@@ -14,7 +15,6 @@ import {
   Textarea,
   tokens,
 } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
 
 const useStackClassName = makeResetStyles({
   display: 'flex',

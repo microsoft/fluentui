@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { getSlotsNext } from '@fluentui/react-utilities';
 import type { AvatarGroupItemState, AvatarGroupItemSlots } from './AvatarGroupItem.types';
 
 /**
  * Render the final JSX of AvatarGroupItem
  */
 export const renderAvatarGroupItem_unstable = (state: AvatarGroupItemState) => {
-  const { slots, slotProps } = getSlots<AvatarGroupItemSlots>(state);
+  const { slots, slotProps } = getSlotsNext<AvatarGroupItemSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
