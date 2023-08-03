@@ -6,14 +6,18 @@ import { AreaChart, ICustomizedCalloutData, ChartHoverCard } from '@fluentui/rea
 import { DefaultPalette } from '@fluentui/react';
 
 storiesOf('react-charting/AreaChart', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator((story, context) => TestWrapperDecorator(story, context))
   .addDecorator((story, context) => {
     const steps =
-      context.name.startsWith('Basic') || context.name.startsWith('Multiple')
+      (context.name.startsWith('Basic') || context.name.startsWith('Multiple')) &&
+      !context.name.includes('RTL')
         ? new Steps()
             .snapshot('default', { cropTo: '.testWrapper' })
             // to hover over the area charts and show the callout
-            .hover('circle[id^="circle"]')
+            .executeScript(
+              // eslint-disable-next-line @fluentui/max-len
+              `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:400,clientY:100}))`,
+            )
             .snapshot('hover', { cropTo: '.testWrapper' })
             .end()
         : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
