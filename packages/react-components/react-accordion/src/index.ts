@@ -40,10 +40,12 @@ export type {
 export {
   AccordionHeader,
   accordionHeaderClassNames,
+  AccordionHeaderContextProvider,
   renderAccordionHeader_unstable,
   useAccordionHeaderContextValues_unstable,
   useAccordionHeaderStyles_unstable,
   useAccordionHeader_unstable,
+  useAccordionHeaderContext as useAccordionHeaderContext_unstable,
 } from './AccordionHeader';
 export type {
   AccordionHeaderContextValue,

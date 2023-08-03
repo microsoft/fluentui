@@ -175,12 +175,14 @@ import { DataGridBodySlots } from '@fluentui/react-table';
 import { DataGridBodyState } from '@fluentui/react-table';
 import { DataGridCell } from '@fluentui/react-table';
 import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellFocusMode } from '@fluentui/react-table';
 import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridFocusMode } from '@fluentui/react-table';
 import { DataGridHeader } from '@fluentui/react-table';
 import { DataGridHeaderCell } from '@fluentui/react-table';
 import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
@@ -282,6 +284,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
+import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
@@ -354,6 +357,11 @@ import { menuItemCheckboxClassNames } from '@fluentui/react-menu';
 import { MenuItemCheckboxProps } from '@fluentui/react-menu';
 import { MenuItemCheckboxState } from '@fluentui/react-menu';
 import { menuItemClassNames } from '@fluentui/react-menu';
+import { MenuItemLink } from '@fluentui/react-menu';
+import { menuItemLinkClassNames } from '@fluentui/react-menu';
+import { MenuItemLinkProps } from '@fluentui/react-menu';
+import { MenuItemLinkSlots } from '@fluentui/react-menu';
+import { MenuItemLinkState } from '@fluentui/react-menu';
 import { MenuItemProps } from '@fluentui/react-menu';
 import { MenuItemRadio } from '@fluentui/react-menu';
 import { menuItemRadioClassNames } from '@fluentui/react-menu';
@@ -437,6 +445,7 @@ import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
+import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
@@ -518,6 +527,7 @@ import { renderMenuGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuGroupHeader_unstable } from '@fluentui/react-menu';
 import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
@@ -555,6 +565,12 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
+import { renderToast_unstable } from '@fluentui/react-toast';
+import { renderToastBody_unstable } from '@fluentui/react-toast';
+import { renderToaster_unstable } from '@fluentui/react-toast';
+import { renderToastFooter_unstable } from '@fluentui/react-toast';
+import { renderToastTitle_unstable } from '@fluentui/react-toast';
+import { renderToastTrigger_unstable } from '@fluentui/react-toast';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
@@ -739,6 +755,40 @@ import { Title2 } from '@fluentui/react-text';
 import { title2ClassNames } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
 import { title3ClassNames } from '@fluentui/react-text';
+import { Toast } from '@fluentui/react-toast';
+import { ToastBody } from '@fluentui/react-toast';
+import { toastBodyClassNames } from '@fluentui/react-toast';
+import { ToastBodyProps } from '@fluentui/react-toast';
+import { ToastBodySlots } from '@fluentui/react-toast';
+import { ToastBodyState } from '@fluentui/react-toast';
+import { Toaster } from '@fluentui/react-toast';
+import { toasterClassNames } from '@fluentui/react-toast';
+import { ToasterProps } from '@fluentui/react-toast';
+import { ToasterSlots } from '@fluentui/react-toast';
+import { ToasterState } from '@fluentui/react-toast';
+import { ToastFooter } from '@fluentui/react-toast';
+import { toastFooterClassNames } from '@fluentui/react-toast';
+import { ToastFooterProps } from '@fluentui/react-toast';
+import { ToastFooterSlots } from '@fluentui/react-toast';
+import { ToastFooterState } from '@fluentui/react-toast';
+import { ToastId } from '@fluentui/react-toast';
+import { ToastIntent } from '@fluentui/react-toast';
+import { ToastOffset } from '@fluentui/react-toast';
+import { ToastPoliteness } from '@fluentui/react-toast';
+import { ToastPosition } from '@fluentui/react-toast';
+import { ToastProps } from '@fluentui/react-toast';
+import { ToastSlots } from '@fluentui/react-toast';
+import { ToastState } from '@fluentui/react-toast';
+import { ToastStatus } from '@fluentui/react-toast';
+import { ToastTitle } from '@fluentui/react-toast';
+import { toastTitleClassNames } from '@fluentui/react-toast';
+import { ToastTitleProps } from '@fluentui/react-toast';
+import { ToastTitleSlots } from '@fluentui/react-toast';
+import { ToastTitleState } from '@fluentui/react-toast';
+import { ToastTrigger } from '@fluentui/react-toast';
+import { ToastTriggerChildProps } from '@fluentui/react-toast';
+import { ToastTriggerProps } from '@fluentui/react-toast';
+import { ToastTriggerState } from '@fluentui/react-toast';
 import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
@@ -870,6 +920,7 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusObserved } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
@@ -905,6 +956,8 @@ import { useMenuGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItem_unstable } from '@fluentui/react-menu';
 import { useMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { useMenuItemCheckboxStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemLink_unstable } from '@fluentui/react-menu';
+import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
@@ -921,6 +974,7 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
@@ -935,6 +989,7 @@ import { usePopoverSurface_unstable } from '@fluentui/react-popover';
 import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
+import { usePortalMountNode } from '@fluentui/react-shared-contexts';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
@@ -946,6 +1001,8 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -976,6 +1033,7 @@ import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableColumnSizing_unstable } from '@fluentui/react-table';
+import { useTableCompositeNavigation } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableFeatures } from '@fluentui/react-table';
 import { UseTableFeaturesOptions } from '@fluentui/react-table';
@@ -1003,6 +1061,18 @@ import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useToast_unstable } from '@fluentui/react-toast';
+import { useToastBody_unstable } from '@fluentui/react-toast';
+import { useToastBodyStyles_unstable } from '@fluentui/react-toast';
+import { useToastController } from '@fluentui/react-toast';
+import { useToaster_unstable } from '@fluentui/react-toast';
+import { useToasterStyles_unstable } from '@fluentui/react-toast';
+import { useToastFooter_unstable } from '@fluentui/react-toast';
+import { useToastFooterStyles_unstable } from '@fluentui/react-toast';
+import { useToastStyles_unstable } from '@fluentui/react-toast';
+import { useToastTitle_unstable } from '@fluentui/react-toast';
+import { useToastTitleStyles_unstable } from '@fluentui/react-toast';
+import { useToastTrigger_unstable } from '@fluentui/react-toast';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
@@ -1367,6 +1437,8 @@ export { DataGridCell }
 
 export { dataGridCellClassNames }
 
+export { DataGridCellFocusMode }
+
 export { DataGridCellProps }
 
 export { DataGridCellSlots }
@@ -1378,6 +1450,8 @@ export { dataGridClassNames }
 export { DataGridContextValue }
 
 export { DataGridContextValues }
+
+export { DataGridFocusMode }
 
 export { DataGridHeader }
 
@@ -1581,6 +1655,8 @@ export { getSlots }
 
 export { GriffelRenderer }
 
+export { GriffelResetStyle }
+
 export { GriffelStyle }
 
 export { HorizontalSpacingTokens }
@@ -1724,6 +1800,16 @@ export { MenuItemCheckboxProps }
 export { MenuItemCheckboxState }
 
 export { menuItemClassNames }
+
+export { MenuItemLink }
+
+export { menuItemLinkClassNames }
+
+export { MenuItemLinkProps }
+
+export { MenuItemLinkSlots }
+
+export { MenuItemLinkState }
 
 export { MenuItemProps }
 
@@ -1891,6 +1977,8 @@ export { PopoverTriggerState }
 
 export { Portal }
 
+export { PortalMountNodeProvider }
+
 export { PortalProps }
 
 export { PortalState }
@@ -2053,6 +2141,8 @@ export { renderMenuItem_unstable }
 
 export { renderMenuItemCheckbox_unstable }
 
+export { renderMenuItemLink_unstable }
+
 export { renderMenuItemRadio_unstable }
 
 export { renderMenuList_unstable }
@@ -2126,6 +2216,18 @@ export { renderTabList_unstable }
 export { renderText_unstable }
 
 export { renderTextarea_unstable }
+
+export { renderToast_unstable }
+
+export { renderToastBody_unstable }
+
+export { renderToaster_unstable }
+
+export { renderToastFooter_unstable }
+
+export { renderToastTitle_unstable }
+
+export { renderToastTrigger_unstable }
 
 export { renderToggleButton_unstable }
 
@@ -2495,6 +2597,74 @@ export { Title3 }
 
 export { title3ClassNames }
 
+export { Toast }
+
+export { ToastBody }
+
+export { toastBodyClassNames }
+
+export { ToastBodyProps }
+
+export { ToastBodySlots }
+
+export { ToastBodyState }
+
+export { Toaster }
+
+export { toasterClassNames }
+
+export { ToasterProps }
+
+export { ToasterSlots }
+
+export { ToasterState }
+
+export { ToastFooter }
+
+export { toastFooterClassNames }
+
+export { ToastFooterProps }
+
+export { ToastFooterSlots }
+
+export { ToastFooterState }
+
+export { ToastId }
+
+export { ToastIntent }
+
+export { ToastOffset }
+
+export { ToastPoliteness }
+
+export { ToastPosition }
+
+export { ToastProps }
+
+export { ToastSlots }
+
+export { ToastState }
+
+export { ToastStatus }
+
+export { ToastTitle }
+
+export { toastTitleClassNames }
+
+export { ToastTitleProps }
+
+export { ToastTitleSlots }
+
+export { ToastTitleState }
+
+export { ToastTrigger }
+
+export { ToastTriggerChildProps }
+
+export { ToastTriggerProps }
+
+export { ToastTriggerState }
+
 export { ToggleButton }
 
 export { toggleButtonClassNames }
@@ -2757,6 +2927,8 @@ export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
 
+export { useFocusObserved }
+
 export { useFocusWithin }
 
 export { useId }
@@ -2827,6 +2999,10 @@ export { useMenuItemCheckbox_unstable }
 
 export { useMenuItemCheckboxStyles_unstable }
 
+export { useMenuItemLink_unstable }
+
+export { useMenuItemLinkStyles_unstable }
+
 export { useMenuItemRadio_unstable }
 
 export { useMenuItemRadioStyles_unstable }
@@ -2859,6 +3035,8 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
+export { useObservedElement }
+
 export { useOption_unstable }
 
 export { useOptionGroup_unstable }
@@ -2887,6 +3065,8 @@ export { usePopoverTrigger_unstable }
 
 export { usePortal_unstable }
 
+export { usePortalMountNode }
+
 export { usePresenceBadge_unstable }
 
 export { usePresenceBadgeStyles_unstable }
@@ -2908,6 +3088,10 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useRestoreFocusSource }
+
+export { useRestoreFocusTarget }
 
 export { useScrollbarWidth }
 
@@ -2969,6 +3153,8 @@ export { useTableCellStyles_unstable }
 
 export { useTableColumnSizing_unstable }
 
+export { useTableCompositeNavigation }
+
 export { useTableContext }
 
 export { useTableFeatures }
@@ -3022,6 +3208,30 @@ export { useTextareaStyles_unstable }
 export { useTextStyles_unstable }
 
 export { useThemeClassName }
+
+export { useToast_unstable }
+
+export { useToastBody_unstable }
+
+export { useToastBodyStyles_unstable }
+
+export { useToastController }
+
+export { useToaster_unstable }
+
+export { useToasterStyles_unstable }
+
+export { useToastFooter_unstable }
+
+export { useToastFooterStyles_unstable }
+
+export { useToastStyles_unstable }
+
+export { useToastTitle_unstable }
+
+export { useToastTitleStyles_unstable }
+
+export { useToastTrigger_unstable }
 
 export { useToggleButton_unstable }
 

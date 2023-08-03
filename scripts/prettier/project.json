@@ -1,0 +1,7 @@
+{
+  "name": "@fluentui/scripts-prettier",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "scripts/prettier/src",
+  "projectType": "library",
+  "tags": ["tools"]
+}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: added overflowWrap to make sure content does not exceed the tooltip container and added vr test for the same",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

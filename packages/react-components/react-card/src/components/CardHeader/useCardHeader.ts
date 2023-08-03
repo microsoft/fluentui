@@ -9,7 +9,7 @@ import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
  *
  * @param header - the header prop of CardHeader
  */
-function getChildWithId(header: CardHeaderProps['header']) {
+function getChildWithId(header: React.ReactNode) {
   function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement {
     return React.isValidElement(element) && Boolean(element.props.id);
   }
@@ -62,14 +62,22 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
   const hasChildId = React.useRef(false);
   const generatedId = useId(cardHeaderClassNames.header, referenceId);
 
+  const headerSlot = resolveShorthand(header, {
+    required: true,
+    defaultProps: {
+      ref: headerRef,
+      id: !hasChildId.current ? referenceId : undefined,
+    },
+  });
+
   React.useEffect(() => {
     const headerId = !hasChildId.current ? headerRef.current?.id : undefined;
-    const childWithId = getChildWithId(header);
+    const childWithId = getChildWithId(headerSlot?.children);
 
     hasChildId.current = Boolean(childWithId);
 
     setReferenceId(getReferenceId(headerId, childWithId, generatedId));
-  }, [generatedId, header, setReferenceId]);
+  }, [generatedId, header, headerSlot, setReferenceId]);
 
   return {
     components: {
@@ -85,13 +93,7 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       ...props,
     }),
     image: resolveShorthand(image),
-    header: resolveShorthand(header, {
-      required: true,
-      defaultProps: {
-        ref: headerRef,
-        id: !hasChildId.current ? referenceId : undefined,
-      },
-    }),
+    header: headerSlot,
     description: resolveShorthand(description),
     action: resolveShorthand(action),
   };

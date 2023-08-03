@@ -64,6 +64,39 @@ export const useFluentProviderThemeStyleTag = (
 
   const rule = `.${styleTagId} { ${cssVarsAsString} }`;
 
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useMemo(() => {
+      // Heads up!
+      // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,
+      // this allows to do checks with strict mode enabled as .useEffect() will be called with incremented IDs because
+      // of double render.
+
+      if (targetDocument) {
+        const providerSelector = `.${fluentProviderClassNames.root}.${styleTagId}`;
+        const providerElements = targetDocument.querySelectorAll(providerSelector);
+
+        // In SSR, we will have DOM upfront. To avoid false positives the check on nested style tag is performed
+        const isSSR = targetDocument.querySelector(`${providerSelector} > style[id="${styleTagId}"]`) !== null;
+        const elementsCount = isSSR ? 1 : 0;
+
+        if (providerElements.length > elementsCount) {
+          // eslint-disable-next-line no-console
+          console.error(
+            [
+              '@fluentui/react-provider: There are conflicting ids in your DOM.',
+              'Please make sure that you configured your application properly.',
+              '\n',
+              '\n',
+              'Configuration guide: https://aka.ms/fluentui-conflicting-ids',
+            ].join(' '),
+          );
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
+
   useHandleSSRStyleElements(targetDocument, styleTagId);
   useInsertionEffect(() => {
     // The style element could already have been created during SSR - no need to recreate it

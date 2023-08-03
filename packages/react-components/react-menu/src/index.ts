@@ -107,3 +107,14 @@ export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from '
 
 export { useCheckmarkStyles_unstable } from './selectable/index';
 export type { MenuItemSelectableProps, MenuItemSelectableState, SelectableHandler } from './selectable/index';
+
+export {
+  MenuItemLink,
+  menuItemLinkClassNames,
+  renderMenuItemLink_unstable,
+  useMenuItemLinkStyles_unstable,
+  useMenuItemLink_unstable,
+} from './MenuItemLink';
+export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink';
+
+export { MENU_ENTER_EVENT, dispatchMenuEnterEvent, useOnMenuMouseEnter } from './utils';

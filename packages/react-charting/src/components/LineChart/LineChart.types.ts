@@ -76,11 +76,17 @@ export interface ILineChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * @default false
+   * The prop used to enable the perf optimization
+   */
+  enablePerfOptimization?: boolean;
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];
-  strokeColor: string;
-  labelColor: string;
+  strokeColor?: string;
+  labelColor?: string;
   labelHeight?: number;
   labelWidth?: number;
   mergedLabel: (count: number) => string;

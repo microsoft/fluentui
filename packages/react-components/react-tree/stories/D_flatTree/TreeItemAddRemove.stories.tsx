@@ -1,19 +1,18 @@
 import * as React from 'react';
 import {
-  FlatTreeItemProps,
-  Tree,
+  FlatTree as Tree,
   TreeItem,
-  TreeItemAside,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
-  useFlatTree_unstable,
+  HeadlessFlatTreeItemProps,
+  useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { Delete20Regular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 import story from './TreeItemAddRemove.md';
 
-type ItemProps = FlatTreeItemProps & { content: string };
+type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
 const defaultSubTrees: ItemProps[][] = [
   [
@@ -31,8 +30,10 @@ export const AddRemoveTreeItem = () => {
   const [trees, setTrees] = React.useState(defaultSubTrees);
 
   const handleOpenChange = (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    if (data.value.endsWith('-btn')) {
-      const subtreeIndex = Number(data.value[0]) - 1;
+    // casting here to string as no number values are used in this example
+    const value = data.value as string;
+    if (value.endsWith('-btn')) {
+      const subtreeIndex = Number(value[0]) - 1;
       addFlatTreeItem(subtreeIndex);
     }
   };
@@ -40,7 +41,7 @@ export const AddRemoveTreeItem = () => {
   const addFlatTreeItem = (subtreeIndex: number) =>
     setTrees(currentTrees => {
       const lastItem = currentTrees[subtreeIndex][currentTrees[subtreeIndex].length - 1];
-      const newItemValue = `${subtreeIndex + 1}-${Number(lastItem.value.slice(2)) + 1}`;
+      const newItemValue = `${subtreeIndex + 1}-${Number(lastItem.value.toString().slice(2)) + 1}`;
       const nextSubTree: ItemProps[] = [
         ...currentTrees[subtreeIndex],
         {
@@ -59,7 +60,7 @@ export const AddRemoveTreeItem = () => {
       return [...currentTrees.slice(0, subtreeIndex), nextSubTree, ...currentTrees.slice(subtreeIndex + 1)];
     });
 
-  const flatTree = useFlatTree_unstable(
+  const flatTree = useHeadlessFlatTree_unstable(
     React.useMemo(
       () => [
         ...trees[0],
@@ -83,21 +84,24 @@ export const AddRemoveTreeItem = () => {
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
       {Array.from(flatTree.items(), item => {
-        const isUndeletable = item.level === 1 || item.value.endsWith('-btn');
+        const isUndeletable = item.level === 1 || item.value.toString().endsWith('-btn');
         const { content, ...treeItemProps } = item.getTreeItemProps();
         return (
           <TreeItem key={item.value} {...treeItemProps}>
-            <TreeItemLayout>{content}</TreeItemLayout>
-            {isUndeletable ? null : (
-              <TreeItemAside actions>
-                <Button
-                  aria-label="Remove item"
-                  appearance="subtle"
-                  onClick={() => removeFlatTreeItem(item.value)}
-                  icon={<Delete20Regular />}
-                />
-              </TreeItemAside>
-            )}
+            <TreeItemLayout
+              actions={
+                isUndeletable ? undefined : (
+                  <Button
+                    aria-label="Remove item"
+                    appearance="subtle"
+                    onClick={() => removeFlatTreeItem(item.value.toString())}
+                    icon={<Delete20Regular />}
+                  />
+                )
+              }
+            >
+              {content}
+            </TreeItemLayout>
           </TreeItem>
         );
       })}

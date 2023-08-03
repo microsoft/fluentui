@@ -1,22 +1,27 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
-import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
-import { TreeItemType } from '../TreeItem';
+import { TreeItemType, TreeItemValue } from '../TreeItem';
+import { SelectionMode } from '@fluentui/react-utilities';
+import { ImmutableSet } from '../utils/ImmutableSet';
+import { ImmutableMap } from '../utils/ImmutableMap';
+import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
   level: number;
+  selectionMode: 'none' | SelectionMode;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
-  openItems: ImmutableSet<unknown>;
+  openItems: ImmutableSet<TreeItemValue>;
+  checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
   /**
    * requests root Tree component to respond to some tree item event,
    */
-  requestTreeResponse(request: TreeItemRequest<unknown>): void;
+  requestTreeResponse(request: TreeItemRequest): void;
 };
 
-export type TreeItemRequest<Value> = { itemType: TreeItemType } & (
-  | OmitWithoutExpanding<TreeOpenChangeData<Value>, 'open' | 'target'>
-  | OmitWithoutExpanding<TreeNavigationData_unstable<Value>, 'target'>
+export type TreeItemRequest = { itemType: TreeItemType } & (
+  | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'>
+  | TreeNavigationData_unstable
+  | OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'>
 );
 
 // helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
@@ -24,7 +29,9 @@ type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unk
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
-  openItems: emptyImmutableSet,
+  selectionMode: 'none',
+  openItems: ImmutableSet.empty,
+  checkedItems: ImmutableMap.empty,
   requestTreeResponse: noop,
   appearance: 'subtle',
   size: 'medium',

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
 
 import { getJustArgv as argv } from '../argv';

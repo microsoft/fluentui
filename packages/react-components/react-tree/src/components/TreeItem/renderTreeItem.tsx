@@ -3,7 +3,7 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
-import type { TreeItemState, TreeItemSlots, TreeItemContextValues } from './TreeItem.types';
+import type { TreeItemState, TreeItemContextValues, TreeItemSlots } from './TreeItem.types';
 import { TreeItemProvider } from '../../contexts';
 
 /**

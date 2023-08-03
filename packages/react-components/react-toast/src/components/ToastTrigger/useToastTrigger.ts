@@ -2,7 +2,7 @@ import * as React from 'react';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import type { ToastTriggerProps, ToastTriggerState } from './ToastTrigger.types';
-import { useToastContext } from '../../contexts/toastContext';
+import { useToastContainerContext } from '../../contexts/toastContainerContext';
 
 /**
  * A non-visual component that wraps its child
@@ -15,7 +15,7 @@ import { useToastContext } from '../../contexts/toastContext';
  */
 export const useToastTrigger_unstable = (props: ToastTriggerProps): ToastTriggerState => {
   const { children, disableButtonEnhancement = false } = props;
-  const { close } = useToastContext();
+  const { close } = useToastContainerContext();
 
   const child = getTriggerChild(children);
 

@@ -46,9 +46,14 @@ import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
-import { FlatTreeItem } from '@fluentui/react-tree';
-import { FlatTreeItemProps } from '@fluentui/react-tree';
+import { flatTreeClassNames } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
+import { FlatTreeSlots } from '@fluentui/react-tree';
+import { FlatTreeState } from '@fluentui/react-tree';
+import { HeadlessFlatTree } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItem } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItemProps } from '@fluentui/react-tree';
+import { HeadlessFlatTreeOptions } from '@fluentui/react-tree';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
@@ -59,7 +64,6 @@ import { infoLabelClassNames } from '@fluentui/react-infobutton';
 import { InfoLabelProps } from '@fluentui/react-infobutton';
 import { InfoLabelSlots } from '@fluentui/react-infobutton';
 import { InfoLabelState } from '@fluentui/react-infobutton';
-import { NestedTreeItem } from '@fluentui/react-tree';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderDrawer_unstable } from '@fluentui/react-drawer';
 import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
@@ -69,11 +73,11 @@ import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
 import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
+import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
-import { renderTreeItemAside_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
@@ -89,11 +93,6 @@ import { Tree } from '@fluentui/react-tree';
 import { treeClassNames } from '@fluentui/react-tree';
 import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeItem } from '@fluentui/react-tree';
-import { TreeItemAside } from '@fluentui/react-tree';
-import { treeItemAsideClassNames } from '@fluentui/react-tree';
-import { TreeItemAsideProps } from '@fluentui/react-tree';
-import { TreeItemAsideSlots } from '@fluentui/react-tree';
-import { TreeItemAsideState } from '@fluentui/react-tree';
 import { treeItemClassNames } from '@fluentui/react-tree';
 import { TreeItemLayout } from '@fluentui/react-tree';
 import { treeItemLayoutClassNames } from '@fluentui/react-tree';
@@ -137,6 +136,9 @@ import { useDrawerOverlay_unstable } from '@fluentui/react-drawer';
 import { useDrawerOverlayStyles_unstable } from '@fluentui/react-drawer';
 import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
+import { useFlatTreeContextValues_unstable } from '@fluentui/react-tree';
+import { useFlatTreeStyles_unstable } from '@fluentui/react-tree';
+import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
@@ -146,10 +148,10 @@ import { useResizeObserverRef_unstable } from '@fluentui/react-virtualizer';
 import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
-import { useTreeItemAside_unstable } from '@fluentui/react-tree';
-import { useTreeItemAsideStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemContextValues_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
@@ -268,11 +270,21 @@ export { flattenTree_unstable }
 
 export { FlatTree }
 
-export { FlatTreeItem }
-
-export { FlatTreeItemProps }
+export { flatTreeClassNames }
 
 export { FlatTreeProps }
+
+export { FlatTreeSlots }
+
+export { FlatTreeState }
+
+export { HeadlessFlatTree }
+
+export { HeadlessFlatTreeItem }
+
+export { HeadlessFlatTreeItemProps }
+
+export { HeadlessFlatTreeOptions }
 
 export { InfoButton }
 
@@ -294,8 +306,6 @@ export { InfoLabelSlots }
 
 export { InfoLabelState }
 
-export { NestedTreeItem }
-
 export { renderAlert_unstable }
 
 export { renderDrawer_unstable }
@@ -314,6 +324,8 @@ export { renderDrawerInline_unstable }
 
 export { renderDrawerOverlay_unstable }
 
+export { renderFlatTree_unstable }
+
 export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
@@ -321,8 +333,6 @@ export { renderInfoLabel_unstable }
 export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
-
-export { renderTreeItemAside_unstable }
 
 export { renderTreeItemLayout_unstable }
 
@@ -353,16 +363,6 @@ export { treeClassNames }
 export { TreeContextValue }
 
 export { TreeItem }
-
-export { TreeItemAside }
-
-export { treeItemAsideClassNames }
-
-export { TreeItemAsideProps }
-
-export { TreeItemAsideSlots }
-
-export { TreeItemAsideState }
 
 export { treeItemClassNames }
 
@@ -450,6 +450,12 @@ export { useDynamicVirtualizerMeasure }
 
 export { useFlatTree_unstable }
 
+export { useFlatTreeContextValues_unstable }
+
+export { useFlatTreeStyles_unstable }
+
+export { useHeadlessFlatTree_unstable }
+
 export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
@@ -468,13 +474,13 @@ export { useTree_unstable }
 
 export { useTreeContext_unstable }
 
+export { useTreeContextValues_unstable }
+
 export { useTreeItem_unstable }
 
-export { useTreeItemAside_unstable }
-
-export { useTreeItemAsideStyles_unstable }
-
 export { useTreeItemContext_unstable }
+
+export { useTreeItemContextValues_unstable }
 
 export { useTreeItemLayout_unstable }
 
