@@ -142,6 +142,7 @@ export type ColorTokens = {
   colorBrandStroke2: string;
   colorBrandStroke2Hover: string;
   colorBrandStroke2Pressed: string;
+  colorBrandStroke2Contrast: string;
   colorCompoundBrandStroke: string;
   colorCompoundBrandStrokeHover: string;
   colorCompoundBrandStrokePressed: string;
@@ -151,6 +152,7 @@ export type ColorTokens = {
   colorTransparentStrokeInteractive: string;
   colorTransparentStrokeDisabled: string;
   colorNeutralStrokeAlpha: string;
+  colorNeutralStrokeAlpha2: string;
   colorStrokeFocus1: string;
   colorStrokeFocus2: string;
   colorNeutralShadowAmbient: string;
