@@ -7,8 +7,10 @@ import { Label } from './label.js';
  */
 export function labelTemplate<T extends Label>(): ElementViewTemplate<T> {
   return html<T>`
-    <slot></slot>
-    <span part="asterisk" class="asterisk" ?hidden="${x => !x.required}">*</span>
+    <template tabindex="${x => (x.disabled ? null : 0)}">
+      <slot></slot>
+      <span part="asterisk" class="asterisk" ?hidden="${x => !x.required}">*</span>
+    </template>
   `;
 }
 
