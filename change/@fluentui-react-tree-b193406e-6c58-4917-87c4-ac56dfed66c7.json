@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: converts actions to be a toolbar",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
