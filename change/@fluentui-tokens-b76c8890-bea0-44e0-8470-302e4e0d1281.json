@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2",
+  "packageName": "@fluentui/tokens",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
