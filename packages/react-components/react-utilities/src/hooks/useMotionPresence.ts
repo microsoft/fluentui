@@ -48,7 +48,7 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
   /**
    * Ref to the element.
    */
-  ref: React.RefCallback<TElement>;
+  ref: React.Ref<TElement>;
 
   /**
    * Whether the element should be rendered in the DOM.
@@ -283,7 +283,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     [clearAnimationTimeout, currentElement, setAnimationTimeout],
   );
 
-  const ref: React.RefCallback<HTMLElementWithStyledMap<TElement>> = React.useCallback(node => {
+  const ref: React.Ref<HTMLElementWithStyledMap<TElement>> = React.useCallback(node => {
     if (!node) {
       return;
     }
