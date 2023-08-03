@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: disable menu opening if contextmenu event is prevented",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -23,6 +23,7 @@
     "@fluentui/react-accordion": "*",
     "@fluentui/react-avatar": "*",
     "@fluentui/react-badge": "*",
+    "@fluentui/react-breadcrumb-preview": "*",
     "@fluentui/react-button": "*",
     "@fluentui/react-card": "*",
     "@fluentui/react-checkbox": "*",

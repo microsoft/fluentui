@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

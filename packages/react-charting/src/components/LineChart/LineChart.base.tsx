@@ -138,8 +138,6 @@ export interface ILineChartState extends IBasestate {
   nearestCircleToHighlight: ILineChartDataPoint | null;
 
   activeLine: number | null;
-
-  emptyChart?: boolean;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
@@ -171,6 +169,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _staticHighlightCircle: string;
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -187,7 +186,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
-      emptyChart: false,
     };
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
@@ -203,6 +201,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._staticHighlightCircle = getId('staticHighlightCircle');
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
     this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_LineChart_empty');
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -220,18 +219,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     ) {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
       this._calloutPoints = calloutData(this._points) || [];
-    }
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
     }
   }
 
@@ -272,7 +259,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickFormat: tickFormat,
     };
 
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         chartTitle={data.chartTitle}
@@ -301,7 +288,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   y1={0}
                   x2={0}
                   y2={props.containerHeight}
-                  stroke={'#C8C8C8'}
+                  stroke={'#323130'}
                   id={this._verticalLine}
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
@@ -336,7 +323,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     ) : (
       <div
-        id={getId('_LineChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -1389,4 +1376,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+    );
+  }
 }

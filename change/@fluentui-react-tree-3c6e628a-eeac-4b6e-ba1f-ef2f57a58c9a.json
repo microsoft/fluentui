@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Update react-icons version to pick up fowardref change.",
-  "packageName": "@fluentui/react-tree",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

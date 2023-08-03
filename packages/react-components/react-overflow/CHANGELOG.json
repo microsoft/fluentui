@@ -2,6 +2,27 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 25 Jul 2023 13:29:20 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.24",
+      "version": "9.0.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d8493a92520cacac29e9fe341a17d3595bc48343",
+            "comment": "fix: Overflow update should run show/hide steps twice"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.2",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:31 GMT",
       "tag": "@fluentui/react-overflow_v9.0.23",
       "version": "9.0.23",

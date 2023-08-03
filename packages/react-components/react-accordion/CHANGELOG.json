@@ -2,6 +2,54 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 10:17:19 GMT",
+      "tag": "@fluentui/react-accordion_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0c693a82d2d6e3c52012d53fdd40af42397fc5cf",
+            "comment": "Accordion - export AccordionHeaderContextProvider"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.0",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.11.1",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:16 GMT",
+      "tag": "@fluentui/react-accordion_v9.1.25",
+      "version": "9.1.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.11.0",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:25 GMT",
       "tag": "@fluentui/react-accordion_v9.1.24",
       "version": "9.1.24",

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 10:17:21 GMT",
+      "tag": "@fluentui/react-badge_v9.1.23",
+      "version": "9.1.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.0",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:16 GMT",
+      "tag": "@fluentui/react-badge_v9.1.22",
+      "version": "9.1.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:26 GMT",
       "tag": "@fluentui/react-badge_v9.1.21",
       "version": "9.1.21",
