@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { canUseDOM } from '../ssr/canUseDOM';
 import { useAnimationFrame } from './useAnimationFrame';
 import { useTimeout } from './useTimeout';
 
@@ -89,9 +90,15 @@ export type UseMotionPresenceOptions = {
  * @returns - CSS styles.
  */
 const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
-  const window = node.ownerDocument?.defaultView;
+  const window = node.ownerDocument.defaultView;
 
-  return window!.getComputedStyle(node, null);
+  if (!window || !canUseDOM()) {
+    return {
+      getPropertyValue: (_: string) => '',
+    } as CSSStyleDeclaration;
+  }
+
+  return window.getComputedStyle(node, null);
 };
 
 /**
