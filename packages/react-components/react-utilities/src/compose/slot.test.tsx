@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { slot } from './slot';
+import * as slot from './slot';
 import type { ComponentProps, Slot } from './types';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
@@ -17,7 +17,7 @@ type TestProps = ComponentProps<TestSlots> & {
 describe('slot', () => {
   it('resolves a string', () => {
     const props: TestProps = { slotA: 'hello' };
-    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual({
       children: 'hello',
@@ -27,7 +27,7 @@ describe('slot', () => {
 
   it('resolves a JSX element', () => {
     const props: TestProps = { slotA: <div>hello</div> };
-    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual({
       children: <div>hello</div>,
@@ -37,7 +37,7 @@ describe('slot', () => {
 
   it('resolves a number', () => {
     const props: TestProps = { slotA: 42 };
-    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual({
       children: 42,
@@ -48,7 +48,7 @@ describe('slot', () => {
   it('resolves an object as its copy', () => {
     const slotA = {};
     const props: TestProps = { slotA };
-    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
     expect(resolvedProps).not.toBe(slotA);
@@ -57,27 +57,27 @@ describe('slot', () => {
   it('resolves "null" without creating a child element', () => {
     const props: TestProps = { slotA: null, slotB: null };
 
-    expect(slot(props.slotA, { elementType: 'div' })).toEqual(undefined);
-    expect(slot(null, { renderByDefault: true, elementType: 'div' })).toEqual(undefined);
+    expect(slot.optional(props.slotA, { elementType: 'div' })).toEqual(undefined);
+    expect(slot.optional(null, { renderByDefault: true, elementType: 'div' })).toEqual(undefined);
   });
 
   it('resolves undefined without creating a child element', () => {
     const props: TestProps = { slotA: undefined };
-    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual(undefined);
   });
 
   it('resolves to empty object creating a child element', () => {
     const props: TestProps = { slotA: undefined };
-    const resolvedProps = slot(props.slotA, { renderByDefault: true, elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { renderByDefault: true, elementType: 'div' });
 
     expect(resolvedProps).toEqual({ [SLOT_ELEMENT_TYPE_SYMBOL]: 'div' });
   });
 
   it('handles render functions', () => {
     const props: TestProps = { slotA: { children: () => null } };
-    const resolvedProps = slot(props.slotA, { elementType: 'div' });
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
 
     expect(resolvedProps).toEqual({
       [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',

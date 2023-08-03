@@ -18,53 +18,18 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
 /**
  * Creates a slot from a slot shorthand or properties (`props.SLOT_NAME` or `props` itself)
  * @param value - the value of the slot, it can be a slot shorthand, a slot component or a slot properties
- * @param options - optional values you can pass to alter the signature of a slot, those values are:
+ * @param options - values you can pass to alter the signature of a slot, those values are:
  *
  * * `elementType` - the base element type of a slot, defaults to `'div'`
- * * `defaultProps` - similar to a React component declaration, you can provide a slot default properties to be merged with the shorthand/properties provided
- * * `renderByDefault` - a boolean that indicates if a slot will be rendered even if it's base value is `undefined`.
- * By default if `props.SLOT_NAME` is `undefined` then `state.SLOT_NAME` becomes `undefined`
- * and nothing will be rendered, but if `renderByDefault = true` then `state.SLOT_NAME` becomes an object
- * with the values provided by `options.defaultProps` (or `{}`). This is useful for cases such as providing a default content
- * in case no shorthand is provided, like the case of the `expandIcon` slot for the `AccordionHeader`
- *
- * @example of a required nullable slot
- * ```tsx
- * // AccordionHeader.types.ts
- * type AccordionHeaderSlots = {
- *    expandIcon?: Slot<'span'>
- * }
- * // useAccordionHeader.ts
- * const state = {
- *  expandIcon: slot(expandIconShorthand, {
- *    renderByDefault: true,
- *    elementType: 'span',
- *    defaultProps: { children: <ChevronRight/>, 'aria-hidden': true}
- *  })
- * }
- * // renderAccordionHeader
- * state.expandIcon && <state.expandIcon/>
- * ```
+ * * `defaultProps` - similar to a React component declaration, you can provide a slot default properties to be merged with the shorthand/properties provided.
  */
-export function slot<Props extends UnknownSlotProps>(
+export function always<Props extends UnknownSlotProps>(
   value: Props | SlotShorthandValue | undefined,
-  options: { renderByDefault: true } & SlotOptions<Props>,
-): SlotComponentType<Props>;
-export function slot<Props extends UnknownSlotProps>(
-  value: Props | SlotShorthandValue | undefined | null,
-  options: { renderByDefault?: boolean } & SlotOptions<Props>,
-): SlotComponentType<Props> | undefined;
-export function slot<Props extends UnknownSlotProps>(
-  value: Props | SlotShorthandValue | undefined | null,
-  options: { renderByDefault?: boolean } & SlotOptions<Props>,
-): SlotComponentType<Props> | undefined {
-  const { renderByDefault = false, defaultProps, elementType } = options;
+  options: SlotOptions<Props>,
+): SlotComponentType<Props> {
+  const { defaultProps, elementType } = options;
 
-  if (value === null || (value === undefined && !renderByDefault)) {
-    return undefined;
-  }
-
-  const props = slotShorthandToProps(value);
+  const props = resolveShorthand(value);
 
   /**
    * Casting is required here as SlotComponentType is a function, not an object.
@@ -87,11 +52,34 @@ export function slot<Props extends UnknownSlotProps>(
 }
 
 /**
- * Helper function that converts a slot shorthand or properties to a slot properties object or undefined
+ * Creates a slot from a slot shorthand or properties (`props.SLOT_NAME` or `props` itself)
+ * @param value - the value of the slot, it can be a slot shorthand, a slot component or a slot properties
+ * @param options - values you can pass to alter the signature of a slot, those values are:
+ *
+ * * `elementType` - the base element type of a slot, defaults to `'div'`
+ * * `defaultProps` - similar to a React component declaration, you can provide a slot default properties to be merged with the shorthand/properties provided
+ * * `renderByDefault` - a boolean that indicates if a slot will be rendered even if it's base value is `undefined`.
+ * By default if `props.SLOT_NAME` is `undefined` then `state.SLOT_NAME` becomes `undefined`
+ * and nothing will be rendered, but if `renderByDefault = true` then `state.SLOT_NAME` becomes an object
+ * with the values provided by `options.defaultProps` (or `{}`). This is useful for cases such as providing a default content
+ * in case no shorthand is provided, like the case of the `expandIcon` slot for the `AccordionHeader`
+ */
+export function optional<Props extends UnknownSlotProps>(
+  value: Props | SlotShorthandValue | undefined | null,
+  options: { renderByDefault?: boolean } & SlotOptions<Props>,
+): SlotComponentType<Props> | undefined {
+  if (value === null || (value === undefined && !options.renderByDefault)) {
+    return undefined;
+  }
+  return always(value, options);
+}
+
+/**
+ * Helper function that converts a slot shorthand or properties to a slot properties object
  * The main difference between this function and `slot` is that this function does not return the metadata required for a slot to be considered a properly renderable slot, it only converts the value to a slot properties object
  * @param value - the value of the slot, it can be a slot shorthand or a slot properties object
  */
-function slotShorthandToProps<Props extends UnknownSlotProps | null | undefined>(
+export function resolveShorthand<Props extends UnknownSlotProps | null | undefined>(
   value: Props | SlotShorthandValue,
 ): Props {
   if (

@@ -1,6 +1,5 @@
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
-import { slot } from './slot';
 import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
 
 type SlotComponents<Slots extends SlotPropsRecord> = {
@@ -41,14 +40,14 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
       if (!isSlot(slotElement)) {
         throw new Error(
           `${assertSlots.name} error: state.${slotName} is not a slot.\n` +
-            `Be sure to create slots properly by using ${slot.name}`,
+            `Be sure to create slots properly by using 'slot.always' or 'slot.optional'.`,
         );
       } else {
         const { [SLOT_ELEMENT_TYPE_SYMBOL]: elementType } = slotElement;
         if (elementType !== typedState.components[slotName]) {
           throw new TypeError(
             `${assertSlots.name} error: state.${slotName} element type differs from state.components.${slotName}, ${elementType} !== ${typedState.components[slotName]}. \n` +
-              `Be sure to create slots properly by using ${slot.name} with the correct elementType`,
+              `Be sure to create slots properly by using 'slot.always' or 'slot.optional' with the correct elementType`,
           );
         }
       }

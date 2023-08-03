@@ -7,6 +7,9 @@
 import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
+// @public
+function always<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined, options: SlotOptions<Props>): SlotComponentType<Props>;
+
 // @internal
 export function applyTriggerPropsToChildren<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children'], triggerChildProps: TriggerChildProps): React_2.ReactElement | null;
 
@@ -130,6 +133,11 @@ export type OnSelectionChangeData = {
     selectedItems: Set<SelectionItemId>;
 };
 
+// @public
+function optional<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
+    renderByDefault?: boolean;
+} & SlotOptions<Props>): SlotComponentType<Props> | undefined;
+
 // @internal (undocumented)
 export interface PriorityQueue<T> {
     // (undocumented)
@@ -161,6 +169,9 @@ export function resetIdsForTests(): void;
 
 // @public
 export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps>;
+
+// @public
+function resolveShorthand_2<Props extends UnknownSlotProps | null | undefined>(value: Props | SlotShorthandValue): Props;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
@@ -217,15 +228,15 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
-// @public
-export function slot<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined, options: {
-    renderByDefault: true;
-} & SlotOptions<Props>): SlotComponentType<Props>;
-
-// @public (undocumented)
-export function slot<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
-    renderByDefault?: boolean;
-} & SlotOptions<Props>): SlotComponentType<Props> | undefined;
+declare namespace slot {
+    export {
+        always,
+        optional,
+        resolveShorthand_2 as resolveShorthand,
+        SlotOptions
+    }
+}
+export { slot }
 
 // @internal
 export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;

@@ -241,8 +241,7 @@ describe('createElement with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { someSlot: 'div' },
-          someSlot: slot(props.someSlot, {
-            renderByDefault: true,
+          someSlot: slot.always(props.someSlot, {
             elementType: 'div',
             defaultProps: { children: 'Default Children', id: 'slot' },
           }),
@@ -282,8 +281,8 @@ describe('createElement with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { outer: 'div', inner: 'div' },
-          inner: slot(props.inner, { renderByDefault: true, defaultProps: { id: 'inner' }, elementType: 'div' }),
-          outer: slot(props.outer, { renderByDefault: true, defaultProps: { id: 'outer' }, elementType: 'div' }),
+          inner: slot.always(props.inner, { defaultProps: { id: 'inner' }, elementType: 'div' }),
+          outer: slot.always(props.outer, { defaultProps: { id: 'outer' }, elementType: 'div' }),
         };
         assertSlots<TestComponentSlots>(state);
         return (
@@ -338,10 +337,7 @@ describe('createElement with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { slot: 'div' },
-          slot: slot(props.slot, {
-            renderByDefault: true,
-            elementType: 'div',
-          }),
+          slot: slot.always(props.slot, { elementType: 'div' }),
         };
         assertSlots<TestComponentSlots>(state);
         return <state.slot />;

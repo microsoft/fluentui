@@ -1,4 +1,4 @@
-import { slot } from './slot';
+import * as slot from './slot';
 import type { SlotShorthandValue, UnknownSlotProps } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true
@@ -19,7 +19,7 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
  * @param options - options to resolve shorthand props
  */
 export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps> = (value, options) =>
-  slot<UnknownSlotProps>(value, {
+  slot.optional<UnknownSlotProps>(value, {
     ...options,
     renderByDefault: options?.required,
     // elementType as undefined is the way to identify between a slot and a resolveShorthand call

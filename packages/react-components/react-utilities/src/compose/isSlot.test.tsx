@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isSlot } from './isSlot';
-import { slot } from './slot';
+import * as slot from './slot';
 
 describe('isSlot', () => {
   it('handles a string', () => {
@@ -32,6 +32,6 @@ describe('isSlot', () => {
   });
 
   it('handles actual slot', () => {
-    expect(isSlot(slot({}, { elementType: 'div' }))).toEqual(true);
+    expect(isSlot(slot.optional({}, { elementType: 'div' }))).toEqual(true);
   });
 });

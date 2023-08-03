@@ -1,5 +1,5 @@
 import { assertSlots } from './assertSlots';
-import { slot } from './slot';
+import * as slot from './slot';
 import { ComponentProps, ComponentState, Slot } from './types';
 
 type TestSlots = {
@@ -23,7 +23,7 @@ describe('assertSlots', () => {
         slotB: 'div',
         slotC: 'div',
       },
-      slotA: slot(props.slotA, { elementType: 'div' }),
+      slotA: slot.optional(props.slotA, { elementType: 'div' }),
     };
     expect(() => assertSlots<TestSlots>(state)).not.toThrow();
   });
@@ -46,7 +46,7 @@ describe('assertSlots', () => {
         slotB: 'div',
         slotC: 'div',
       },
-      slotA: slot(props.slotA, { elementType: 'div' }),
+      slotA: slot.optional(props.slotA, { elementType: 'div' }),
     };
     expect(() => assertSlots<TestSlots>(state)).toThrow();
   });
