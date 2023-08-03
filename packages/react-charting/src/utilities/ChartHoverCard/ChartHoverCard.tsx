@@ -10,5 +10,3 @@ export const ChartHoverCard: React.FunctionComponent<IChartHoverCardProps> = sty
   IChartHoverCardStyleProps,
   IChartHoverCardStyles
 >(ChartHoverCardBase, getChartHoverCardStyles);
-
-export default ChartHoverCard;

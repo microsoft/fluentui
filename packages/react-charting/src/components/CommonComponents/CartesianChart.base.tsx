@@ -36,7 +36,9 @@ import {
 import { LegendShape, Shape } from '../Legends/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
-const ChartHoverCard = lazy(() => import('../../utilities/ChartHoverCard/ChartHoverCard'));
+const ChartHoverCard = lazy(() =>
+  import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
+);
 
 export interface ICartesianChartState {
   containerWidth: number;
