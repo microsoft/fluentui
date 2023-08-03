@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 01 Aug 2023 13:04:25 GMT",
+      "tag": "@fluentui/react-provider_v9.7.13",
+      "version": "9.7.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2ddd2ef27e8f1421d095a2ba600d417af98a7b22",
+            "comment": "feat(FluentProvider): emit errors on duplicate IDs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Aug 2023 10:17:21 GMT",
       "tag": "@fluentui/react-provider_v9.7.12",
       "version": "9.7.12",

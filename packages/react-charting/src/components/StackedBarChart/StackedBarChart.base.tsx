@@ -304,7 +304,15 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           pointerEvents="all"
           onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
         >
-          <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
+          <rect
+            key={index}
+            id={getId('_SBC_bar')}
+            x={startingPoint[index] + '%'}
+            y={0}
+            width={value + '%'}
+            height={barHeight}
+            fill={color}
+          />
         </g>
       );
     });
@@ -368,7 +376,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>
-        <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
+        <rect key={0} id={getId('_SBC_empty_bar_')} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
       </g>
     );
   }
