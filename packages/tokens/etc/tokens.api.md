@@ -322,6 +322,7 @@ export type DurationTokens = {
     durationFaster: string;
     durationFast: string;
     durationNormal: string;
+    durationGentle: string;
     durationSlow: string;
     durationSlower: string;
     durationUltraSlow: string;
