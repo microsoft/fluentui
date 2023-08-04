@@ -25,7 +25,7 @@ export const renderDatePicker_unstable = (state: DatePickerState) => {
             <slots.calendar {...(slotProps.calendar as CalendarProps)} />
           </slots.popupSurface>
         ) : (
-          <Portal>
+          <Portal mountNode={state.mountNode}>
             <slots.popupSurface {...slotProps.popupSurface}>
               <slots.calendar {...(slotProps.calendar as CalendarProps)} />
             </slots.popupSurface>
