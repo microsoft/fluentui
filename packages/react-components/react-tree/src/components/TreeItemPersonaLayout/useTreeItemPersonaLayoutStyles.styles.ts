@@ -9,7 +9,7 @@ export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayo
   root: 'fui-TreeItemPersonaLayout',
   media: 'fui-TreeItemPersonaLayout__media',
   description: 'fui-TreeItemPersonaLayout__description',
-  content: 'fui-TreeItemPersonaLayout__content',
+  main: 'fui-TreeItemPersonaLayout__main',
   expandIcon: 'fui-TreeItemPersonaLayout__expandIcon',
   aside: 'fui-TreeItemPersonaLayout__aside',
   actions: 'fui-TreeItemPersonaLayout__actions',
@@ -25,7 +25,7 @@ const useRootStyles = makeStyles({
     gridTemplateRows: '1fr auto',
     gridTemplateColumns: 'auto auto 1fr auto',
     gridTemplateAreas: `
-      "expandIcon media content        aside"
+      "expandIcon media main        aside"
       "expandIcon media description aside"
     `,
     alignItems: 'center',
@@ -69,9 +69,9 @@ const useMediaStyles = makeStyles({
   },
 });
 
-const useContentStyles = makeStyles({
+const useMainStyles = makeStyles({
   base: {
-    ...shorthands.gridArea('content'),
+    ...shorthands.gridArea('main'),
     ...shorthands.padding(
       tokens.spacingVerticalMNudge,
       tokens.spacingHorizontalXS,
@@ -149,7 +149,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const actionsStyles = useActionsStyles();
   const asideStyles = useAsideStyles();
   const expandIconStyles = useExpandIconStyles();
-  const contentStyles = useContentStyles();
+  const mainStyles = useMainStyles();
 
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
@@ -162,12 +162,12 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
 
   state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaStyles.base, state.media.className);
 
-  if (state.content) {
-    state.content.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.content,
-      contentStyles.base,
-      state.description && contentStyles.withDescription,
-      state.content.className,
+  if (state.main) {
+    state.main.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.main,
+      mainStyles.base,
+      state.description && mainStyles.withDescription,
+      state.main.className,
     );
   }
   if (state.description) {

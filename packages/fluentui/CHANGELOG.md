@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Input`: Remove wrong recommendation - usage of role="search" #28168 @kolaps33 ([#28168](https://github.com/microsoft/fluentui/pull/28168))
 
 ### Fixes
+- Do not use `defaultProps` in `EventListener` to avoid deprecation warnings. @layershifter ([#28725](https://github.com/microsoft/fluentui/pull/28725))
 - `Datepicker`: add onCalendarOpenStateChange prop. @jurokapsiar ([#28136](https://github.com/microsoft/fluentui/pull/28136))
 - Outline color now respects OS force colors settings. @george-cz ([#28182](https://github.com/microsoft/fluentui/pull/28182))
 

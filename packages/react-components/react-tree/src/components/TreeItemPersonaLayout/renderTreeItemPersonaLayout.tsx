@@ -27,7 +27,7 @@ export const renderTreeItemPersonaLayout_unstable = (
       <AvatarContextProvider value={contextValues.avatar}>
         <slots.media {...slotProps.media} />
       </AvatarContextProvider>
-      <slots.content {...slotProps.content} />
+      <slots.main {...slotProps.main} />
       {slots.description && <slots.description {...slotProps.description} />}
       <ButtonContextProvider value={state.buttonContextValue}>
         {slots.actions && <slots.actions {...slotProps.actions} />}
