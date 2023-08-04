@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { useAccordionItemContext_unstable } from '../AccordionItem/index';
-import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
+import { useAccordionContext_unstable } from '../../contexts/accordion';
 import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
+import { useAccordionItemContext_unstable } from '../../contexts/accordionItem';
 
 /**
  * Returns the props and state required to render the component
