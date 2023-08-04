@@ -130,11 +130,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
   /**
-   * This refers to a list of ids of default checked items, or a list of tuples of ids and checked state.
-   * These property is ignored for subtrees.
-   */
-  defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
-  /**
    * Callback fired when the component changes value from checked state.
    * These property is ignored for subtrees.
    *
