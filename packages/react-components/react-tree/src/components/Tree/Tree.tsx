@@ -7,7 +7,8 @@ import { useTreeStyles_unstable } from './useTreeStyles.styles';
 import { renderTree_unstable } from './renderTree';
 
 /**
- * Tree component - TODO: add more docs
+ * The `Tree` component renders nested items in a hierarchical structure.
+ * Use it with `TreeItem` component and layouts components `TreeItemLayout` or `TreeItemPersonaLayout`.
  */
 export const Tree: ForwardRefComponent<TreeProps> = React.forwardRef((props, ref) => {
   const state = useTree_unstable(props, ref);

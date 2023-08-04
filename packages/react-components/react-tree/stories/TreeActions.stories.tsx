@@ -113,7 +113,7 @@ Actions.parameters = {
     description: {
       story: `In addition to \`aside\` content, both tree item layouts support \`actions\` prop that can be used for tasks such as edit, rename, or triggering a menu. These action buttons are initially hidden but are shown on hover or can be controlled by the \`visible\` property, ensuring they take priority over the \`aside\` content when needed.
 
-> ⚠️ Note: Actions are \`aria-hidden\` by default. Always include a context menu to ensure accessibility for screen-reader users.`,
+> ⚠️ Actions prop is \`aria-hidden\` by default. Always include a context menu to ensure that actions are accessible for all users.`,
     },
   },
 };
