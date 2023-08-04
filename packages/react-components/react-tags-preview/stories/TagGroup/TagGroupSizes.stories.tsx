@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag } from '@fluentui/react-tags-preview';
+import { TagGroup, Tag, InteractionTag, Primary, Secondary, TagSize } from '@fluentui/react-tags-preview';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { TagSize } from '../../src/Tag';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -27,8 +26,9 @@ export const Sizes = () => {
             <Tag icon={<CalendarMonthRegular />} shape="circular" dismissible>
               {size}
             </Tag>
-            <InteractionTag dismissible icon={<CalendarMonthRegular />}>
-              {size}
+            <InteractionTag>
+              <Primary icon={<CalendarMonthRegular />}>{size}</Primary>
+              <Secondary />
             </InteractionTag>
           </TagGroup>
         </div>
