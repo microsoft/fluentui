@@ -59,17 +59,18 @@ export function secondaryPanelCellTemplate(
   return html`
       <${cellTag}
           class="${(x, c) => c.parentContext.parent.getSecondaryCellClassNames(x.detail, todayMonth, todayYear)}"
-          part="month-cell"
+          part="secondary-panel-cell"
           tabindex="-1"
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
           @click="${(x, c) => c.parentContext.parent.$emit('secondaryPanelCellSelected', x.detail)}"
+          @keydown="${(x, c) => c.parentContext.parent.handleSecondaryPanelKeydown(c.event as KeyboardEvent, x.detail)}"
       >
         <div
         class="secondary-panel-cell">
           ${x => x.text}
         </div>
-        </slot></slot>
+        <slot name="${x => x.detail}"></slot>
       </${cellTag}>
   `;
 }
@@ -186,7 +187,9 @@ export const template: ElementViewTemplate<Calendar> = html`
           x => !x.hasAttribute('monthPickerVisible'),
           html` <div
             class=${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}
-            @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}"
+            tabindex="7"
+            @click="${(x, c) => x.handleGoToToday()}"
+            @keydown="${(x, c) => x.handleLinkKeydown(c.event as KeyboardEvent)}"
           >
             Go to today
           </div>`,
@@ -233,7 +236,9 @@ export const template: ElementViewTemplate<Calendar> = html`
         <div class="footer" part="footer">
           <div
             class="${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}"
-            @click="${(x, c) => x.handleGoToToday(c.event as MouseEvent)}"
+            @click="${(x, c) => x.handleGoToToday()}"
+            tabindex="7"
+            @keydown="${(x, c) => x.handleLinkKeydown(c.event as KeyboardEvent)}"
           >
             Go to today
           </div>
