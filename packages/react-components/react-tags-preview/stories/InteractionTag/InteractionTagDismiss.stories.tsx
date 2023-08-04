@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -16,16 +16,19 @@ export const Dismiss = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <InteractionTag dismissible>Primary text</InteractionTag>
-      <InteractionTag dismissible icon={<CalendarMonthRegular />}>
-        Primary text
+      <InteractionTag>
+        <Primary>Primary text</Primary>
+        <Secondary />
       </InteractionTag>
-      <InteractionTag
-        dismissible
-        media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
-        secondaryText="Secondary text"
-      >
-        Primary text
+      <InteractionTag>
+        <Primary icon={<CalendarMonthRegular />}>Primary text</Primary>
+        <Secondary />
+      </InteractionTag>
+      <InteractionTag>
+        <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} secondaryText="Secondary text">
+          Primary text
+        </Primary>
+        <Secondary />
       </InteractionTag>
     </div>
   );

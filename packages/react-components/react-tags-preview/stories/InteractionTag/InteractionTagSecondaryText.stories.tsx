@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, Primary } from '@fluentui/react-tags-preview';
 
-export const SecondaryText = () => <InteractionTag secondaryText="Secondary text">Primary text</InteractionTag>;
+export const SecondaryText = () => (
+  <InteractionTag>
+    <Primary secondaryText="Secondary text">Primary text</Primary>
+  </InteractionTag>
+);
 
 SecondaryText.storyName = 'SecondaryText';
 SecondaryText.parameters = {

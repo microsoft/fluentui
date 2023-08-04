@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, Primary } from '@fluentui/react-tags-preview';
 
-export const Icon = () => <InteractionTag icon={<CalendarMonthRegular />}>Primary text</InteractionTag>;
+export const Icon = () => (
+  <InteractionTag>
+    <Primary icon={<CalendarMonthRegular />}>Primary text</Primary>
+  </InteractionTag>
+);
 
 Icon.storyName = 'Icon';
 Icon.parameters = {

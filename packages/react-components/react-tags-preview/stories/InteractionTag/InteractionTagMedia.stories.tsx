@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-components';
 
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, Primary } from '@fluentui/react-tags-preview';
 
 export const Media = () => (
-  <InteractionTag media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Primary text</InteractionTag>
+  <InteractionTag>
+    <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Primary text</Primary>
+  </InteractionTag>
 );
 
 Media.storyName = 'Media';

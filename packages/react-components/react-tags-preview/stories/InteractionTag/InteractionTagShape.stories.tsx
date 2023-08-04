@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -17,16 +17,24 @@ export const Shape = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <InteractionTag media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Rounded</InteractionTag>
-      <InteractionTag shape="circular" media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-        Circular
+      <InteractionTag>
+        <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Rounded</Primary>
+      </InteractionTag>
+      <InteractionTag shape="circular">
+        <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Circular</Primary>
       </InteractionTag>
 
-      <InteractionTag dismissible icon={<CalendarMonthRegular />} secondaryText="Secondary text">
-        Rounded
+      <InteractionTag>
+        <Primary icon={<CalendarMonthRegular />} secondaryText="Secondary text">
+          Rounded
+        </Primary>
+        <Secondary />
       </InteractionTag>
-      <InteractionTag shape="circular" dismissible icon={<CalendarMonthRegular />} secondaryText="Secondary text">
-        Circular
+      <InteractionTag shape="circular">
+        <Primary icon={<CalendarMonthRegular />} secondaryText="Secondary text">
+          Circular
+        </Primary>
+        <Secondary />
       </InteractionTag>
     </div>
   );
