@@ -29,7 +29,6 @@ export default {
 
 export const Filled = () => (
   <InteractionTag appearance="filled">
-    Primary Text
     <Primary id={contentId} icon={<CalendarMonth />}>
       Primary Text
     </Primary>

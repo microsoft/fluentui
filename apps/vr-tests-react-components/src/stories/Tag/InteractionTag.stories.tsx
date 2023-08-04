@@ -16,7 +16,11 @@ export default {
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } as ComponentMeta<typeof InteractionTag>;
 
-export const Default = () => <InteractionTag>Primary Text</InteractionTag>;
+export const Default = () => (
+  <InteractionTag>
+    <Primary>Primary Text</Primary>
+  </InteractionTag>
+);
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
