@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, Button, PopoverSurface, makeStyles } from '@fluentui/react-components';
-import { InteractionTag } from '@fluentui/react-tags-preview';
-import { InteractionTagContent } from '../../src/components/Primary1/InteractionTagContent';
+import { Popover, PopoverTrigger, PopoverSurface, makeStyles } from '@fluentui/react-components';
+import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
 
 const useStyles = makeStyles({
   popover: {
@@ -19,43 +18,15 @@ const useStyles = makeStyles({
 export const HasPrimaryAction = () => {
   const styles = useStyles();
 
-  const [dismiss, setDismiss] = React.useState(false);
   const handleDismiss = (e: React.MouseEvent) => {
-    console.log('dismiss');
-    // setDismiss(true);
+    alert('dismiss clicked');
   };
 
   return (
-    <>
-      {/* <InteractionTag
-        dismissible
-        content={{
-          children: (Comp, props) => (
-            <Popover>
-              <PopoverTrigger>
-                <Comp {...props} />
-              </PopoverTrigger>
-              <PopoverSurface className={styles.popover}>
-                <ul>
-                  <li>Size: Medium to large-sized dog breed. </li>
-                  <li>
-                    Coat: Luxurious double coat with a dense, water-repellent outer layer and a soft, dense undercoat.
-                  </li>
-                  <li>Color: Typically a luscious golden or cream color, with variations in shade.</li>
-                  <li>Build: Sturdy and well-proportioned body with a friendly and intelligent expression.</li>
-                </ul>
-              </PopoverSurface>
-            </Popover>
-          ),
-        }}
-        dismissButton={{ onClick: handleDismiss }}
-      >
-        Golden Retriever
-      </InteractionTag> */}
-
-      {/* <Popover>
+    <InteractionTag>
+      <Popover>
         <PopoverTrigger>
-          <InteractionTag> dog2 </InteractionTag>
+          <Primary>golden retriever</Primary>
         </PopoverTrigger>
         <PopoverSurface className={styles.popover}>
           <ul>
@@ -65,46 +36,9 @@ export const HasPrimaryAction = () => {
             <li>Build: Sturdy and well-proportioned body with a friendly and intelligent expression.</li>
           </ul>
         </PopoverSurface>
-      </Popover> */}
-
-      {/* ------ after -------- */}
-
-      <InteractionTag dismissible dismissButton={{ onClick: handleDismiss }}>
-        <Popover>
-          <PopoverTrigger>
-            <InteractionTagContent>golden retriever</InteractionTagContent>
-          </PopoverTrigger>
-          <PopoverSurface className={styles.popover}>
-            <ul>
-              <li>Size: Medium to large-sized dog breed. </li>
-              <li>
-                Coat: Luxurious double coat with a dense, water-repellent outer layer and a soft, dense undercoat.
-              </li>
-              <li>Color: Typically a luscious golden or cream color, with variations in shade.</li>
-              <li>Build: Sturdy and well-proportioned body with a friendly and intelligent expression.</li>
-            </ul>
-          </PopoverSurface>
-        </Popover>
-      </InteractionTag>
-
-      {/* <InteractionTag>
-        <Popover>
-          <PopoverTrigger>
-            <InteractionTagContent>dog2</InteractionTagContent>
-          </PopoverTrigger>
-          <PopoverSurface className={styles.popover}>
-            <ul>
-              <li>Size: Medium to large-sized dog breed. </li>
-              <li>
-                Coat: Luxurious double coat with a dense, water-repellent outer layer and a soft, dense undercoat.
-              </li>
-              <li>Color: Typically a luscious golden or cream color, with variations in shade.</li>
-              <li>Build: Sturdy and well-proportioned body with a friendly and intelligent expression.</li>
-            </ul>
-          </PopoverSurface>
-        </Popover>
-      </InteractionTag> */}
-    </>
+      </Popover>
+      <Secondary onClick={handleDismiss} />
+    </InteractionTag>
   );
 };
 
