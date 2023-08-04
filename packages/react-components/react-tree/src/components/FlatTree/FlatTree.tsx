@@ -1,12 +1,10 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { FlatTreeProps } from './FlatTree.types';
-import {
-  useTreeContextValues_unstable as useFlatTreeContextValues_unstable,
-  renderTree_unstable as renderFlatTree_unstable,
-} from '../Tree/index';
 import { useFlatTree_unstable } from './useFlatTree';
 import { useFlatTreeStyles_unstable } from './useFlatTreeStyles.styles';
+import { useFlatTreeContextValues_unstable } from './useFlatTreeContextValues';
+import { renderFlatTree_unstable } from './renderFlatTree';
 
 /**
  * FlatTree component - TODO: add more docs
