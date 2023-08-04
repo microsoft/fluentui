@@ -20,17 +20,16 @@ export const Default = () => (
   </TagGroup>
 );
 
-const onDismiss = () => ({});
 export const Dismissible = () => (
-  <TagGroup onDismiss={onDismiss}>
-    <Tag>Tag 1</Tag>
-    <Tag>Tag 2</Tag>
-    <Tag>Tag 3</Tag>
+  <TagGroup>
+    <Tag dismissible>Tag 1</Tag>
+    <Tag dismissible>Tag 2</Tag>
+    <Tag dismissible>Tag 3</Tag>
   </TagGroup>
 );
 
 export const DismissibleWithInteractionTag = () => (
-  <TagGroup onDismiss={onDismiss}>
+  <TagGroup>
     <InteractionTag>
       <Primary>Tag 1</Primary>
       <Secondary />

@@ -55,7 +55,11 @@ export const BrandDisabledHighContrast = getStoryVariant(BrandDisabled, HIGH_CON
 export const BrandDisabledDarkMode = getStoryVariant(BrandDisabled, DARK_MODE);
 
 // size
-export const SizeSmall = () => <InteractionTag size="small">Primary Text</InteractionTag>;
+export const SizeSmall = () => (
+  <InteractionTag size="small">
+    <Primary>Primary Text</Primary>
+  </InteractionTag>
+);
 export const SizeSmallDismissible = () => (
   <InteractionTag size="small">
     <Primary>Primary Text</Primary>
@@ -73,7 +77,11 @@ export const SizeSmallWithMedia = () => (
   </InteractionTag>
 );
 
-export const SizeExtraSmall = () => <InteractionTag size="extra-small">Primary Text</InteractionTag>;
+export const SizeExtraSmall = () => (
+  <InteractionTag size="extra-small">
+    <Primary>Primary Text</Primary>
+  </InteractionTag>
+);
 export const SizeExtraSmallDismissible = () => (
   <InteractionTag size="extra-small">
     <Primary>Primary Text</Primary>
