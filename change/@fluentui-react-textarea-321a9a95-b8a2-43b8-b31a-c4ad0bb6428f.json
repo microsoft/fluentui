@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: migrate to new slot API",
+  "packageName": "@fluentui/react-textarea",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

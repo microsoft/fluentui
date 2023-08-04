@@ -3,7 +3,7 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { AccordionHeaderState, AccordionHeaderSlots, AccordionHeaderContextValues } from './AccordionHeader.types';
 import { AccordionHeaderProvider } from '../../contexts/accordionHeader';
 
@@ -14,18 +14,18 @@ export const renderAccordionHeader_unstable = (
   state: AccordionHeaderState,
   contextValues: AccordionHeaderContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<AccordionHeaderSlots>(state);
+  assertSlots<AccordionHeaderSlots>(state);
 
   return (
     <AccordionHeaderProvider value={contextValues.accordionHeader}>
-      <slots.root {...slotProps.root}>
-        <slots.button {...slotProps.button}>
-          {state.expandIconPosition === 'start' && slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
-          {slots.icon && <slots.icon {...slotProps.icon} />}
-          {slotProps.root.children}
-          {state.expandIconPosition === 'end' && slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
-        </slots.button>
-      </slots.root>
+      <state.root>
+        <state.button>
+          {state.expandIconPosition === 'start' && state.expandIcon && <state.expandIcon />}
+          {state.icon && <state.icon />}
+          {state.root.children}
+          {state.expandIconPosition === 'end' && state.expandIcon && <state.expandIcon />}
+        </state.button>
+      </state.root>
     </AccordionHeaderProvider>
   );
 };
