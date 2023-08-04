@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Adds ignoreDefaultKeydown for useFocusableGroup",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
