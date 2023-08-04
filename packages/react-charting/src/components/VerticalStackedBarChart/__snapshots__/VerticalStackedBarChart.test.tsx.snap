@@ -15,7 +15,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         height: 100%;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -28,7 +28,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -68,8 +68,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, 240)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -77,7 +77,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -85,13 +84,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host4"
+        id="tooltip-host5"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={302}
       />
       <g
@@ -119,34 +118,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
-        transform="translate(80, 0)"
-      />
-      <text
-        className=
-
-            {
-              color: var(--neutrals-web-gray-160323130, #323130);
-              fill: #323130;
-              font-family: Segoe UI;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host5"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+        id="yAxisGElementchart_3"
+        transform="translate(40, 0)"
       />
       <g>
         <g
@@ -165,7 +138,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={169.23076923076923}
+              height={196.15384615384616}
               key="0"
               onBlur={[Function]}
               onClick={[Function]}
@@ -176,8 +149,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={88}
-              y={70.76923076923077}
+              x={48}
+              y={78.84615384615384}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
@@ -189,7 +162,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={21.153846153846153}
+              height={24.51923076923077}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -200,8 +173,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={88}
-              y={49.61538461538462}
+              x={48}
+              y={54.326923076923066}
             />
           </g>
           <text
@@ -216,8 +189,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={96}
-            y={43.61538461538462}
+            x={56}
+            y={48.326923076923066}
           >
             45
           </text>
@@ -238,7 +211,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={126.92307692307692}
+              height={147.1153846153846}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -249,8 +222,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-64}
-              y={113.07692307692308}
+              x={-44}
+              y={127.88461538461539}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
@@ -262,7 +235,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={84.61538461538461}
+              height={98.07692307692308}
               key="2"
               onBlur={[Function]}
               onClick={[Function]}
@@ -273,8 +246,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-64}
-              y={28.461538461538467}
+              x={-44}
+              y={29.807692307692307}
             />
           </g>
           <text
@@ -289,14 +262,39 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-56}
-            y={22.461538461538467}
+            x={-36}
+            y={23.807692307692307}
           >
             50
           </text>
         </g>
       </g>
       <g />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host6"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   247)rotate(-90)"
+        x={43}
+        y={12}
+      />
     </svg>
   </div>
   <div
@@ -328,7 +326,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -712,7 +710,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         height: 100%;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -725,7 +723,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -765,8 +763,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, 240)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -774,7 +772,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -782,13 +779,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host4"
+        id="tooltip-host5"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={302}
       />
       <g
@@ -816,34 +813,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
-        transform="translate(80, 0)"
-      />
-      <text
-        className=
-
-            {
-              color: var(--neutrals-web-gray-160323130, #323130);
-              fill: #323130;
-              font-family: Segoe UI;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host5"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+        id="yAxisGElementchart_3"
+        transform="translate(40, 0)"
       />
       <g>
         <g
@@ -862,7 +833,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={169.23076923076923}
+              height={196.15384615384616}
               key="0"
               onBlur={[Function]}
               onClick={[Function]}
@@ -873,8 +844,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={88}
-              y={70.76923076923077}
+              x={48}
+              y={78.84615384615384}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
@@ -886,7 +857,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={21.153846153846153}
+              height={24.51923076923077}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -897,8 +868,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={88}
-              y={49.61538461538462}
+              x={48}
+              y={54.326923076923066}
             />
           </g>
           <text
@@ -913,8 +884,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={96}
-            y={43.61538461538462}
+            x={56}
+            y={48.326923076923066}
           >
             45
           </text>
@@ -935,7 +906,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={126.92307692307692}
+              height={147.1153846153846}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -946,8 +917,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-64}
-              y={113.07692307692308}
+              x={-44}
+              y={127.88461538461539}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
@@ -959,7 +930,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={84.61538461538461}
+              height={98.07692307692308}
               key="2"
               onBlur={[Function]}
               onClick={[Function]}
@@ -970,8 +941,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-64}
-              y={28.461538461538467}
+              x={-44}
+              y={29.807692307692307}
             />
           </g>
           <text
@@ -986,14 +957,39 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-56}
-            y={22.461538461538467}
+            x={-36}
+            y={23.807692307692307}
           >
             50
           </text>
         </g>
       </g>
       <g />
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host6"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   247)rotate(-90)"
+        x={43}
+        y={12}
+      />
     </svg>
   </div>
   <div
@@ -1025,7 +1021,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1327,7 +1323,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         height: 100%;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1340,7 +1336,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1380,8 +1376,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, 240)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -1389,7 +1385,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1397,13 +1392,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host4"
+        id="tooltip-host5"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={302}
       />
       <g
@@ -1431,34 +1426,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
-        transform="translate(80, 0)"
-      />
-      <text
-        className=
-
-            {
-              color: var(--neutrals-web-gray-160323130, #323130);
-              fill: #323130;
-              font-family: Segoe UI;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host5"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+        id="yAxisGElementchart_3"
+        transform="translate(40, 0)"
       />
       <g>
         <g
@@ -1484,12 +1453,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#0078d4"
-              height={169.23076923076923}
+              height={196.15384615384616}
               key="0"
               transform="translate(0, 0)"
               width={16}
-              x={88}
-              y={70.76923076923077}
+              x={48}
+              y={78.84615384615384}
             />
             <rect
               className=
@@ -1499,12 +1468,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#00188f"
-              height={21.153846153846153}
+              height={24.51923076923077}
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={88}
-              y={49.61538461538462}
+              x={48}
+              y={54.326923076923066}
             />
           </g>
           <text
@@ -1519,8 +1488,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={96}
-            y={43.61538461538462}
+            x={56}
+            y={48.326923076923066}
           >
             45
           </text>
@@ -1548,12 +1517,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#0078d4"
-              height={126.92307692307692}
+              height={147.1153846153846}
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={-64}
-              y={113.07692307692308}
+              x={-44}
+              y={127.88461538461539}
             />
             <rect
               className=
@@ -1563,12 +1532,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#00188f"
-              height={84.61538461538461}
+              height={98.07692307692308}
               key="2"
               transform="translate(0, 0)"
               width={16}
-              x={-64}
-              y={28.461538461538467}
+              x={-44}
+              y={29.807692307692307}
             />
           </g>
           <text
@@ -1583,8 +1552,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-56}
-            y={22.461538461538467}
+            x={-36}
+            y={23.807692307692307}
           >
             50
           </text>
@@ -1598,14 +1567,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           strokeLinecap="round"
           strokeWidth={3}
           transform="translate(0, 0)"
-          x1={96}
-          x2={-56}
-          y1={176.53846153846155}
-          y2={113.07692307692308}
+          x1={56}
+          x2={-36}
+          y1={201.4423076923077}
+          y2={127.88461538461539}
         />
         <circle
-          cx={96}
-          cy={176.53846153846155}
+          cx={56}
+          cy={201.4423076923077}
           fill="#ffffff"
           key="0-0-dot"
           onMouseOver={[Function]}
@@ -1616,8 +1585,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           visibility="visibility"
         />
         <circle
-          cx={-56}
-          cy={113.07692307692308}
+          cx={-36}
+          cy={127.88461538461539}
           fill="#ffffff"
           key="0-1-dot"
           onMouseOver={[Function]}
@@ -1628,6 +1597,31 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           visibility="hidden"
         />
       </g>
+      <text
+        className=
+
+            {
+              color: var(--neutrals-web-gray-160323130, #323130);
+              fill: #323130;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 14px;
+              text-align: center;
+            }
+        data-is-focusable={false}
+        id="tooltip-host6"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        textAnchor="middle"
+        transform="translate(0,
+                   247)rotate(-90)"
+        x={43}
+        y={12}
+      />
     </svg>
   </div>
   <div
@@ -1659,7 +1653,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2073,7 +2067,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         height: 100%;
         width: 100%;
       }
-  id="chart_57"
+  id="chart_66"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2086,7 +2080,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone58"
+    data-focuszone-id="FocusZone67"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2126,8 +2120,8 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_57"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_66"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -2135,7 +2129,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2143,13 +2136,13 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host59"
+        id="tooltip-host68"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -2177,16 +2170,17 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_57"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_66"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2194,7 +2188,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host60"
+        id="tooltip-host69"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -2202,12 +2196,10 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -2256,7 +2248,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone61"
+              data-focuszone-id="FocusZone70"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2481,7 +2473,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         height: 100%;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2494,7 +2486,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2534,8 +2526,8 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -2543,7 +2535,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2551,13 +2542,13 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host4"
+        id="tooltip-host5"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -2585,16 +2576,17 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_3"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2602,7 +2594,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host5"
+        id="tooltip-host6"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -2610,12 +2602,10 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -2664,7 +2654,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2889,7 +2879,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         height: 100%;
         width: 100%;
       }
-  id="chart_22"
+  id="chart_26"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -2902,7 +2892,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone23"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2942,8 +2932,8 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             & path {
               display: none;
             }
-        id="xAxisGElementchart_22"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_26"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -2951,7 +2941,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2959,13 +2948,13 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host24"
+        id="tooltip-host28"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -2993,16 +2982,17 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_22"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_26"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3010,7 +3000,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host25"
+        id="tooltip-host29"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -3018,12 +3008,10 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -3055,7 +3043,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone30"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3277,7 +3265,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         height: 100%;
         width: 100%;
       }
-  id="chart_9"
+  id="chart_11"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3290,7 +3278,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3330,8 +3318,8 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_9"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_11"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -3339,7 +3327,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3347,13 +3334,13 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host11"
+        id="tooltip-host13"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -3381,16 +3368,17 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_9"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_11"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3398,7 +3386,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host12"
+        id="tooltip-host14"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -3406,12 +3394,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <span
@@ -3435,7 +3421,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         height: 100%;
         width: 100%;
       }
-  id="chart_15"
+  id="chart_18"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3448,7 +3434,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone16"
+    data-focuszone-id="FocusZone19"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3488,8 +3474,8 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_15"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_18"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -3497,7 +3483,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3505,13 +3490,13 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host17"
+        id="tooltip-host20"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -3539,16 +3524,17 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_15"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_18"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3556,7 +3542,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host18"
+        id="tooltip-host21"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -3564,12 +3550,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -3618,7 +3602,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone19"
+              data-focuszone-id="FocusZone22"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3843,7 +3827,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         height: 100%;
         width: 100%;
       }
-  id="chart_43"
+  id="chart_50"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -3856,7 +3840,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone44"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3896,8 +3880,8 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_43"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_50"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -3905,7 +3889,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3913,13 +3896,13 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host45"
+        id="tooltip-host52"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -3947,16 +3930,17 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_43"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_50"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3964,7 +3948,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host46"
+        id="tooltip-host53"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -3972,12 +3956,10 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -4026,7 +4008,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone47"
+              data-focuszone-id="FocusZone54"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4251,7 +4233,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         height: 100%;
         width: 100%;
       }
-  id="chart_29"
+  id="chart_34"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -4264,7 +4246,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone30"
+    data-focuszone-id="FocusZone35"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4304,8 +4286,8 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             & path {
               display: none;
             }
-        id="xAxisGElementchart_29"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_34"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -4313,7 +4295,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4321,13 +4302,13 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host31"
+        id="tooltip-host36"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -4355,16 +4336,17 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_29"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_34"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4372,7 +4354,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host32"
+        id="tooltip-host37"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -4380,12 +4362,10 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -4434,7 +4414,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone38"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4659,7 +4639,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         height: 100%;
         width: 100%;
       }
-  id="chart_36"
+  id="chart_42"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -4672,7 +4652,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone37"
+    data-focuszone-id="FocusZone43"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4712,8 +4692,8 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_36"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_42"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -4721,7 +4701,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4729,13 +4708,13 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host38"
+        id="tooltip-host44"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -4763,16 +4742,17 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_36"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_42"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4780,7 +4760,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host39"
+        id="tooltip-host45"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -4788,12 +4768,10 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -4842,7 +4820,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone40"
+              data-focuszone-id="FocusZone46"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5067,7 +5045,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         height: 100%;
         width: 100%;
       }
-  id="chart_50"
+  id="chart_58"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -5080,7 +5058,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone51"
+    data-focuszone-id="FocusZone59"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -5120,8 +5098,8 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_50"
-        transform="translate(0, -70)"
+        id="xAxisGElementchart_58"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -5129,7 +5107,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5137,13 +5114,13 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host52"
+        id="tooltip-host60"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={80}
+        x={40}
         y={-8}
       />
       <g
@@ -5171,16 +5148,17 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_50"
-        transform="translate(80, 0)"
+        id="yAxisGElementchart_58"
+        transform="translate(40, 0)"
       />
+      <g />
+      <g />
       <text
         className=
 
             {
               color: var(--neutrals-web-gray-160323130, #323130);
               fill: #323130;
-              font-family: Segoe UI;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5188,7 +5166,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               text-align: center;
             }
         data-is-focusable={false}
-        id="tooltip-host53"
+        id="tooltip-host61"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -5196,12 +5174,10 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
-      <g />
-      <g />
     </svg>
   </div>
   <div
@@ -5250,7 +5226,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone62"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

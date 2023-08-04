@@ -2,7 +2,7 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 
 import { findGitRoot } from '@fluentui/scripts-monorepo';
-import { stripIndents } from '@nrwl/devkit';
+import { stripIndents } from '@nx/devkit';
 import * as fs from 'fs-extra';
 import * as glob from 'glob';
 

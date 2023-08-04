@@ -115,18 +115,6 @@ export interface IMultiStackedBarChartProps {
    * @default false
    */
   hideLabels?: boolean;
-
-  /**
-   * Prop to set the x axis title
-   * @default undefined
-   */
-  xAxisTitle?: string;
-
-  /**
-   * Prop to set the y axis title
-   * @default undefined
-   */
-  yAxisTitle?: string;
 }
 
 export interface IMultiStackedBarChartStyleProps {

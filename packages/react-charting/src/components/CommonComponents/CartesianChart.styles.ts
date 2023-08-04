@@ -23,7 +23,6 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     },
     tooltipTitle: {
       textAlign: 'center',
-      fontFamily: 'Segoe UI',
       fontSize: '10px',
       fontWeight: '600',
       fontStyle: 'normal',

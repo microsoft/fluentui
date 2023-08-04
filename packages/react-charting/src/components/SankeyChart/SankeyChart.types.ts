@@ -59,18 +59,6 @@ export interface ISankeyChartProps {
    * Colors for nodes border
    */
   borderColorsForNodes?: string[];
-
-  /**
-   * Prop to set the x axis title
-   * @default undefined
-   */
-  xAxisTitle?: string;
-
-  /**
-   * Prop to set the y axis title
-   * @default undefined
-   */
-  yAxisTitle?: string;
 }
 
 export interface ISankeyChartStyleProps {

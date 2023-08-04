@@ -130,18 +130,6 @@ export interface IStackedBarChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
-
-  /**
-   * Prop to set the x axis title
-   * @default undefined
-   */
-  xAxisTitle?: string;
-
-  /**
-   * Prop to set the y axis title
-   * @default undefined
-   */
-  yAxisTitle?: string;
 }
 
 export interface IStackedBarChartStyleProps {

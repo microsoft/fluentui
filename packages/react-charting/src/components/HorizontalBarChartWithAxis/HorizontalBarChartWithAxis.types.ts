@@ -66,18 +66,6 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
-
-  /**
-   * Prop to set the x axis title
-   * @default undefined
-   */
-  xAxisTitle?: string;
-
-  /**
-   * Prop to set the y axis title
-   * @default undefined
-   */
-  yAxisTitle?: string;
 }
 
 export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartStyleProps {

@@ -184,7 +184,6 @@ export class SVGTooltipText
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onTooltipMouseEnter = (ev: any): void => {
-    console.log('entered _onTooltipMouseEnter');
     const { delay } = this.props;
 
     if (SVGTooltipText._currentVisibleTooltip && SVGTooltipText._currentVisibleTooltip !== this) {

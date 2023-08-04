@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
-  Tree,
+  FlatTree as Tree,
   TreeItem,
-  useFlatTree_unstable,
   flattenTree_unstable,
   TreeItemProps,
   TreeItemLayout,
+  useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import story from './flattenTree.md';
 
@@ -55,10 +55,10 @@ const defaultItems = flattenTree_unstable<Item>([
 ]);
 
 export const FlattenTree = () => {
-  const flatTree = useFlatTree_unstable(defaultItems);
+  const virtualTree = useHeadlessFlatTree_unstable(defaultItems);
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-      {Array.from(flatTree.items(), item => {
+    <Tree {...virtualTree.getTreeProps()} aria-label="Tree">
+      {Array.from(virtualTree.items(), item => {
         const { layout, ...itemProps } = item.getTreeItemProps();
         return (
           <TreeItem {...itemProps} key={item.value}>

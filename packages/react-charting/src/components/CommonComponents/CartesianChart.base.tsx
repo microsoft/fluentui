@@ -36,7 +36,6 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { ThemeProvider } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
@@ -105,17 +104,25 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     this.margins = {
       top: this.props.margins?.top ?? 20,
-      bottom: this.props.margins?.bottom ?? 70,
+      bottom: this.props.margins?.bottom ?? this.props.xAxisTitle ? 70 : 35,
       right: this._isRtl
-        ? this.props.margins?.left ?? 80
-        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
-        ? 80
-        : 40,
-      left: this._isRtl
-        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+        ? this.props.margins?.left ?? this.props.yAxisTitle
           ? 80
           : 40
-        : this.props.margins?.left ?? 80,
+        : this.props.margins?.right ?? this.props.yAxisTitle
+        ? this.props?.secondaryYScaleOptions
+          ? 80
+          : 40
+        : 20,
+      left: this._isRtl
+        ? this.props.margins?.right ?? this.props.yAxisTitle
+          ? this.props?.secondaryYScaleOptions
+            ? 80
+            : 40
+          : 20
+        : this.props.margins?.left ?? this.props.yAxisTitle
+        ? 80
+        : 40,
     };
   }
 
@@ -481,6 +488,38 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }, 0)`}
               className={this._classNames.yAxis}
             />
+            {this.props.secondaryYScaleOptions && (
+              <g>
+                <g
+                  ref={(e: SVGElement | null) => {
+                    this.yAxisElementSecondary = e;
+                  }}
+                  id={`yAxisGElementSecondary${this.idForGraph}`}
+                  transform={`translate(${
+                    this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                  }, 0)`}
+                  className={this._classNames.yAxis}
+                />
+                <SVGTooltipText
+                  content={this.props.yAxisTitle}
+                  textProps={{
+                    x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
+                    y: this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!,
+                    textAnchor: 'middle',
+                    transform: `translate(${
+                      this._isRtl
+                        ? this.margins.right! / 2 - this.titleMargin
+                        : this.margins.right! / 2 + this.titleMargin
+                    },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                    className: this._classNames.tooltipTitle!,
+                  }}
+                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  wrapContent={wrapContent}
+                />
+              </g>
+            )}
+            {children}
             <SVGTooltipText
               content={this.props.yAxisTitle}
               textProps={{
@@ -496,19 +535,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
             />
-            {this.props.secondaryYScaleOptions && (
-              <g
-                ref={(e: SVGElement | null) => {
-                  this.yAxisElementSecondary = e;
-                }}
-                id={`yAxisGElementSecondary${this.idForGraph}`}
-                transform={`translate(${
-                  this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
-                }, 0)`}
-                className={this._classNames.yAxis}
-              />
-            )}
-            {children}
           </svg>
         </FocusZone>
         {!this.props.hideLegend && (

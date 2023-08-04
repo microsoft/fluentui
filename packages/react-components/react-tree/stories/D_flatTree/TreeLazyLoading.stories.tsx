@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  FlatTreeItemProps,
-  Tree,
+  FlatTree as Tree,
   TreeItem,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
-  useFlatTree_unstable,
+  HeadlessFlatTreeItemProps,
+  useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import story from './TreeLazyLoading.md';
 import { Spinner } from '@fluentui/react-components';
@@ -15,7 +15,7 @@ interface Result {
   results: { name: string }[];
 }
 
-type Entity = FlatTreeItemProps & { name: string };
+type Entity = HeadlessFlatTreeItemProps & { name: string };
 
 export const LazyLoading = () => {
   const peopleTree = useQuery<Entity[]>([]);
@@ -72,7 +72,7 @@ export const LazyLoading = () => {
     }
   };
 
-  const flatTree = useFlatTree_unstable(tree, { onOpenChange: handleOpenChange });
+  const flatTree = useHeadlessFlatTree_unstable(tree, { onOpenChange: handleOpenChange });
   const treeProps = flatTree.getTreeProps();
   return (
     <Tree {...treeProps} aria-label="Tree">
@@ -80,8 +80,8 @@ export const LazyLoading = () => {
         const { name, ...itemProps } = item.getTreeItemProps();
         const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};
         return (
-          <TreeItem key={item.value} expandIcon={isLoading ? <Spinner size="tiny" /> : undefined} {...itemProps}>
-            <TreeItemLayout>{name}</TreeItemLayout>
+          <TreeItem key={item.value} {...itemProps}>
+            <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>{name}</TreeItemLayout>
           </TreeItem>
         );
       })}

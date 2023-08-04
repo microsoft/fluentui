@@ -59,18 +59,6 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Optimize area chart rendering for large data set.
    */
   optimizeLargeData?: boolean;
-
-  /**
-   * Prop to set the x axis title
-   * @default undefined
-   */
-  xAxisTitle?: string;
-
-  /**
-   * Prop to set the y axis title
-   * @default undefined
-   */
-  yAxisTitle?: string;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}

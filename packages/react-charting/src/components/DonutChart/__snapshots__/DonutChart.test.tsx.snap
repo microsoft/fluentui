@@ -24,7 +24,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -336,7 +336,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -660,7 +660,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -890,7 +890,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1214,7 +1214,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1252,7 +1252,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20first20000"
+              id="_Pie_25first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1294,7 +1294,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20second39000"
+              id="_Pie_25second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1336,7 +1336,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20third45000"
+              id="_Pie_25third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1415,7 +1415,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone28"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1736,7 +1736,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone32"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1774,7 +1774,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24first20000"
+              id="_Pie_30first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1816,7 +1816,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24second39000"
+              id="_Pie_30second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1858,7 +1858,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24third45000"
+              id="_Pie_30third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1937,7 +1937,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone26"
+              data-focuszone-id="FocusZone33"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2258,7 +2258,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2411,7 +2411,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2732,7 +2732,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2770,7 +2770,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12first20000"
+              id="_Pie_15first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2796,7 +2796,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12second39000"
+              id="_Pie_15second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2822,7 +2822,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_12third45000"
+              id="_Pie_15third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2885,7 +2885,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone14"
+              data-focuszone-id="FocusZone18"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3206,7 +3206,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3244,7 +3244,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5first20000"
+              id="_Pie_6first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3270,7 +3270,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5second39000"
+              id="_Pie_6second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3296,7 +3296,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5third45000"
+              id="_Pie_6third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3340,7 +3340,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3378,7 +3378,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8first20000"
+              id="_Pie_10first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3404,7 +3404,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8second39000"
+              id="_Pie_10second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3430,7 +3430,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_8third45000"
+              id="_Pie_10third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3493,7 +3493,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone13"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3814,7 +3814,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone22"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3852,7 +3852,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16first20000"
+              id="_Pie_20first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3878,7 +3878,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16second39000"
+              id="_Pie_20second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3904,7 +3904,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16third45000"
+              id="_Pie_20third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3985,7 +3985,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone23"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

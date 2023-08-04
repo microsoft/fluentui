@@ -82,18 +82,6 @@ export interface ILineChartProps extends ICartesianChartProps {
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;
-
-  /**
-   * Prop to set the x axis title
-   * @default undefined
-   */
-  xAxisTitle?: string;
-
-  /**
-   * Prop to set the y axis title
-   * @default undefined
-   */
-  yAxisTitle?: string;
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];

@@ -23,7 +23,6 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
-  const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
@@ -59,19 +58,24 @@ export const useDialogSurface_unstable = (
     }
   });
 
+  const backdrop = resolveShorthand(props.backdrop, {
+    required: open && modalType !== 'non-modal',
+    defaultProps: {
+      'aria-hidden': 'true',
+    },
+  });
+
+  if (backdrop) {
+    backdrop.onClick = handledBackdropClick;
+  }
+
   return {
     components: {
       backdrop: 'div',
       root: 'div',
     },
-    backdrop: resolveShorthand(backdrop, {
-      required: open && modalType !== 'non-modal',
-      defaultProps: {
-        'aria-hidden': 'true',
-        onClick: handledBackdropClick,
-      },
-    }),
-    root: getNativeElementProps(as ?? 'div', {
+    backdrop,
+    root: getNativeElementProps(props.as ?? 'div', {
       tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
       'aria-modal': modalType !== 'non-modal',
       role: modalType === 'alert' ? 'alertdialog' : 'dialog',
