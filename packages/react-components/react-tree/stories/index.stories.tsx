@@ -18,7 +18,7 @@ export { DefaultOpenTrees } from './TreeDefaultOpenTrees.stories';
 export { OpenItemsControlled } from './TreeControllingOpenAndClose.stories';
 export { CustomizingInteractionAndControl } from './TreeCustomizingInteractionAndControl.stories';
 export { InlineStylingForNestedTree } from './TreeInlineStylingForNestedTree.stories';
-export { FlatTree } from './FlatTree.stories';
+export { FlatTree } from './TreeFlatTree.stories';
 export { TreeSingleAndMultiSelection } from './TreeSelection.stories';
 
 // SCENARIOS & FEATURES
