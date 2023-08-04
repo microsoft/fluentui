@@ -9,7 +9,8 @@ import {
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { Delete20Regular } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-button';
+import { HeadlessTreeItem } from '../src/utils/createHeadlessTree';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
@@ -24,6 +25,41 @@ const defaultSubTrees: ItemProps[][] = [
     { value: '2-1', parentValue: '2', content: 'Item 2-1' },
   ],
 ];
+
+const CustomTreeItem = ({
+  item,
+  isItemRemovable,
+  onRemoveItem,
+}: {
+  item: HeadlessTreeItem<ItemProps>;
+  onRemoveItem: (id: string) => void;
+  isItemRemovable: boolean;
+}) => {
+  const { content, ...treeItemProps } = item.getTreeItemProps();
+
+  const handleRemoveItem = React.useCallback(() => {
+    onRemoveItem(item.value.toString());
+  }, [item, onRemoveItem]);
+
+  return (
+    <TreeItem key={item.value} {...treeItemProps}>
+      <TreeItemLayout
+        actions={
+          isItemRemovable ? (
+            <Button
+              aria-label="Remove item"
+              appearance="subtle"
+              onClick={handleRemoveItem}
+              icon={<Delete20Regular />}
+            />
+          ) : undefined
+        }
+      >
+        {content}
+      </TreeItemLayout>
+    </TreeItem>
+  );
+};
 
 export const TreeManipulation = () => {
   const [trees, setTrees] = React.useState(defaultSubTrees);
@@ -52,12 +88,15 @@ export const TreeManipulation = () => {
       return [...currentTrees.slice(0, subtreeIndex), nextSubTree, ...currentTrees.slice(subtreeIndex + 1)];
     });
 
-  const removeFlatTreeItem = (value: string) =>
-    setTrees(currentTrees => {
-      const subtreeIndex = Number(value[0]) - 1;
-      const nextSubTree = trees[subtreeIndex].filter(item => item.value !== value);
-      return [...currentTrees.slice(0, subtreeIndex), nextSubTree, ...currentTrees.slice(subtreeIndex + 1)];
-    });
+  const removeFlatTreeItem = React.useCallback(
+    (value: string) =>
+      setTrees(currentTrees => {
+        const subtreeIndex = Number(value[0]) - 1;
+        const nextSubTree = trees[subtreeIndex].filter(item => item.value !== value);
+        return [...currentTrees.slice(0, subtreeIndex), nextSubTree, ...currentTrees.slice(subtreeIndex + 1)];
+      }),
+    [trees],
+  );
 
   const flatTree = useHeadlessFlatTree_unstable(
     React.useMemo(
@@ -82,28 +121,13 @@ export const TreeManipulation = () => {
 
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-      {Array.from(flatTree.items(), item => {
-        const isUndeletable = item.level === 1 || item.value.toString().endsWith('-btn');
-        const { content, ...treeItemProps } = item.getTreeItemProps();
-        return (
-          <TreeItem key={item.value} {...treeItemProps}>
-            <TreeItemLayout
-              actions={
-                isUndeletable ? undefined : (
-                  <Button
-                    aria-label="Remove item"
-                    appearance="subtle"
-                    onClick={() => removeFlatTreeItem(item.value.toString())}
-                    icon={<Delete20Regular />}
-                  />
-                )
-              }
-            >
-              {content}
-            </TreeItemLayout>
-          </TreeItem>
-        );
-      })}
+      {Array.from(flatTree.items(), item => (
+        <CustomTreeItem
+          item={item}
+          isItemRemovable={!(item.level === 1 || item.value.toString().endsWith('-btn'))}
+          onRemoveItem={removeFlatTreeItem}
+        />
+      ))}
     </Tree>
   );
 };
