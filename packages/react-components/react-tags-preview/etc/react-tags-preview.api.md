@@ -22,20 +22,57 @@ export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
 export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
 
 // @public
-export type InteractionTagProps = ComponentProps<Partial<InteractionTagSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
+export type InteractionTagProps<Value = string> = ComponentProps<Partial<InteractionTagSlots>> & {
+    appearance?: TagAppearance;
+    disabled?: boolean;
+    shape?: TagShape;
+    size?: TagSize;
+    value?: Value;
+};
 
 // @public (undocumented)
-export type InteractionTagSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
+export type InteractionTagSlots = {
     root: NonNullable<Slot<'div'>>;
-    dismissButton?: Slot<'button'>;
-    content: NonNullable<Slot<'button'>>;
 };
 
 // @public
-export type InteractionTagState = ComponentState<InteractionTagSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
+export type InteractionTagState<Value = string> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
+    hasSecondary: boolean;
+    handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
+};
+
+// @public
+export const Primary: ForwardRefComponent<PrimaryProps>;
+
+// @public (undocumented)
+export const primaryClassNames: SlotClassNames<PrimarySlots>;
+
+// @public (undocumented)
+export type PrimaryContextValues = AvatarContextValues;
+
+// @public
+export type PrimaryProps = ComponentProps<Partial<PrimarySlots>>;
+
+// @public (undocumented)
+export type PrimarySlots = {
+    root: NonNullable<Slot<'button'>>;
+    media?: Slot<'span'>;
+    icon?: Slot<'span'>;
+    primaryText: Slot<'span'>;
+    secondaryText?: Slot<'span'>;
+};
+
+// @public
+export type PrimaryState = ComponentState<PrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> & UseAvatarContextValuesOptions;
 
 // @public
 export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
+
+// @public
+export const renderPrimary_unstable: (state: PrimaryState, contextValues: PrimaryContextValues) => JSX.Element;
+
+// @public
+export const renderSecondary_unstable: (state: SecondaryState) => JSX.Element;
 
 // @public
 export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
@@ -44,7 +81,27 @@ export const renderTag_unstable: (state: TagState, contextValues: TagContextValu
 export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
 
 // @public
+export const Secondary: ForwardRefComponent<SecondaryProps>;
+
+// @public (undocumented)
+export const secondaryClassNames: SlotClassNames<SecondarySlots>;
+
+// @public
+export type SecondaryProps = ComponentProps<SecondarySlots> & {};
+
+// @public (undocumented)
+export type SecondarySlots = {
+    root: Slot<'button'>;
+};
+
+// @public
+export type SecondaryState = ComponentState<SecondarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;
+
+// @public
 export const Tag: ForwardRefComponent<TagProps>;
+
+// @public (undocumented)
+export type TagAppearance = 'filled' | 'outline' | 'brand';
 
 // @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
@@ -68,19 +125,24 @@ export type TagGroupSlots = {
 
 // @public
 export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
-    dismissible: boolean;
     handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
 };
 
 // @public
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-    appearance?: 'filled' | 'outline' | 'brand';
+    appearance?: TagAppearance;
     disabled?: boolean;
     dismissible?: boolean;
-    shape?: 'rounded' | 'circular';
+    shape?: TagShape;
     size?: TagSize;
     value?: Value;
 };
+
+// @public (undocumented)
+export type TagShape = 'rounded' | 'circular';
+
+// @public (undocumented)
+export type TagSize = 'extra-small' | 'small' | 'medium';
 
 // @public (undocumented)
 export type TagSlots = {
@@ -93,16 +155,25 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
-    avatarSize: AvatarSize | undefined;
-    avatarShape: AvatarShape | undefined;
-}>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> & UseAvatarContextValuesOptions;
 
 // @public
 export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;
 
 // @public
 export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
+
+// @public
+export const usePrimary_unstable: (props: PrimaryProps, ref: React_2.Ref<HTMLElement>) => PrimaryState;
+
+// @public (undocumented)
+export const usePrimaryStyles_unstable: (state: PrimaryState) => PrimaryState;
+
+// @public
+export const useSecondary_unstable: (props: SecondaryProps, ref: React_2.Ref<HTMLElement>) => SecondaryState;
+
+// @public (undocumented)
+export const useSecondaryStyles_unstable: (state: SecondaryState) => SecondaryState;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
