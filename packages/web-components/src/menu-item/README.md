@@ -8,8 +8,8 @@ Menu list item options displayed in a MenuList component. They are invoked when 
 
 **Remaining work items**
 
-2. Create support for menu item "grouping"
-3. Split button variation
+1. Create support for menu item "grouping"
+2. Split button variation
 
 <br />
 <hr />
