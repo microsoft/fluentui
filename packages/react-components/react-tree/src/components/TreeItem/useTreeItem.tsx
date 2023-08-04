@@ -3,7 +3,7 @@ import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-uti
 import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
-import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts/index';
+import { useTreeContext_unstable } from '../../contexts/index';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
@@ -43,13 +43,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
-  const parentChecked = useTreeItemContext_unstable(ctx => ctx.checked);
-  const checked = useTreeContext_unstable(ctx => {
-    if (selectionMode === 'multiselect' && typeof parentChecked === 'boolean') {
-      return parentChecked;
-    }
-    return ctx.checkedItems.get(value);
-  });
+  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
