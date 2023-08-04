@@ -1,7 +1,7 @@
 import { Tree, logger } from '@nx/devkit';
-import * as path from 'path';
-import * as childProcess from 'child_process';
-import * as chalk from 'chalk';
+import path from 'path';
+import childProcess from 'child_process';
+import chalk from 'chalk';
 
 import type { CliOptions } from 'beachball/lib/types/BeachballOptions';
 

@@ -1,7 +1,7 @@
-import * as Enquirer from 'enquirer';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as chalk from 'chalk';
+import Enquirer from 'enquirer';
+import fs from 'fs';
+import path from 'path';
+import chalk from 'chalk';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
