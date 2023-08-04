@@ -1,7 +1,6 @@
 import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type TagSize = 'extra-small' | 'small' | 'medium';
+import { TagAppearance, TagShape, TagSize } from '../../utils/types';
 
 export type TagContextValues = {
   avatar: {
@@ -37,10 +36,10 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-  appearance?: 'filled' | 'outline' | 'brand';
+  appearance?: TagAppearance;
   disabled?: boolean;
   dismissible?: boolean;
-  shape?: 'rounded' | 'circular';
+  shape?: TagShape;
   size?: TagSize;
   /**
    * Unique value identifying the tag within a TagGroup

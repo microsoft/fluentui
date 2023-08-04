@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagSize } from '../Tag/Tag.types';
+import { TagSize } from '../../utils/types';
 import { TagGroupContextValue } from '../../contexts/TagGroupContext';
 
 export type TagGroupContextValues = {
@@ -32,6 +32,5 @@ export type TagGroupProps = ComponentProps<TagGroupSlots> & {
  */
 export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> &
   Required<Pick<TagGroupProps, 'size'>> & {
-    dismissible: boolean;
     handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
   };
