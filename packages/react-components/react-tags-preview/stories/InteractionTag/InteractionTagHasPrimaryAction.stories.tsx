@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, makeStyles } from '@fluentui/react-components';
+import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip } from '@fluentui/react-components';
 import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import { bundleIcon, HeartFilled, HeartRegular } from '@fluentui/react-icons';
+
+const HeartIcon = bundleIcon(HeartFilled, HeartRegular);
 
 const useStyles = makeStyles({
   popover: {
@@ -8,20 +11,12 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     height: 'fit-content',
   },
-  popoverHeader: {
-    display: 'flex',
-    columnGap: '10px',
-    alignItems: 'center',
-  },
 });
 
 export const HasPrimaryAction = () => {
   const styles = useStyles();
-
-  const handleDismiss = (e: React.MouseEvent) => {
-    alert('dismiss clicked');
-  };
-
+  const [liked, setLiked] = React.useState(false);
+  const toggleSecondary = () => setLiked(v => !v);
   return (
     <InteractionTag>
       <Popover>
@@ -37,7 +32,11 @@ export const HasPrimaryAction = () => {
           </ul>
         </PopoverSurface>
       </Popover>
-      <Secondary onClick={handleDismiss} />
+      <Tooltip content={liked ? 'unlike' : 'I like this'} relationship="label">
+        <Secondary onClick={toggleSecondary}>
+          <HeartIcon filled={liked} />
+        </Secondary>
+      </Tooltip>
     </InteractionTag>
   );
 };
@@ -46,7 +45,8 @@ HasPrimaryAction.storyName = 'Has Primary Action';
 HasPrimaryAction.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can have a primary action. This example shows an Interaction Tag that opens a popover.',
+      story:
+        'An InteractionTag can have a primary action. This example shows an Interaction Tag that opens a popover as Primary Action.',
     },
   },
 };
