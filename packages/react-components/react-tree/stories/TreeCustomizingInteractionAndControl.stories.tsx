@@ -25,7 +25,7 @@ export const CustomizingInteractionAndControl = () => {
   };
 
   return (
-    <Tree openItems={openItems} aria-label="Tree" onOpenChange={onOpenChange}>
+    <Tree aria-label="Tree" openItems={openItems} onOpenChange={onOpenChange}>
       <TreeItem itemType="branch" value="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>

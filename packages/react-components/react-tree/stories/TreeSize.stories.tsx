@@ -4,7 +4,7 @@ import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 export const Size = () => {
   return (
     <>
-      <Tree size="small" aria-label="Tree">
+      <Tree size="small" aria-label="Small Tree">
         <TreeItem itemType="branch">
           <TreeItemLayout>Small size tree</TreeItemLayout>
           <Tree>
@@ -26,7 +26,7 @@ export const Size = () => {
         </TreeItem>
       </Tree>
       <br />
-      <Tree aria-label="Tree">
+      <Tree aria-label="Default Tree">
         <TreeItem itemType="branch">
           <TreeItemLayout>Medium size tree</TreeItemLayout>
           <Tree>

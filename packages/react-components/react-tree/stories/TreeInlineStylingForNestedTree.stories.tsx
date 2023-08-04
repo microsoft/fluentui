@@ -8,79 +8,27 @@ import {
   useTreeContext_unstable,
 } from '@fluentui/react-tree';
 
+const SHOW_MAX_LEVELS = 12;
+
 const TreeItem = (props: TreeItemProps) => {
   const level = useTreeContext_unstable(ctx => ctx.level);
   return <BaseTreeItem {...props} style={{ [treeItemLevelToken]: level }} />;
 };
 
-export const InlineStylingForNestedTree = () => {
-  return (
-    <Tree aria-label="Tree">
-      <TreeItem itemType="branch">
-        <TreeItemLayout>level 1, item 2</TreeItemLayout>
-        <Tree>
-          <TreeItem itemType="branch">
-            <TreeItemLayout>level 2, item 1</TreeItemLayout>
-            <Tree>
-              <TreeItem itemType="branch">
-                <TreeItemLayout>level 3, item 1</TreeItemLayout>
-                <Tree>
-                  <TreeItem itemType="branch">
-                    <TreeItemLayout>level 4, item 1</TreeItemLayout>
-                    <Tree>
-                      <TreeItem itemType="branch">
-                        <TreeItemLayout>level 5, item 1</TreeItemLayout>
-                        <Tree>
-                          <TreeItem itemType="branch">
-                            <TreeItemLayout>level 6, item 1</TreeItemLayout>
-                            <Tree>
-                              <TreeItem itemType="branch">
-                                <TreeItemLayout>level 7, item 1</TreeItemLayout>
-                                <Tree>
-                                  <TreeItem itemType="branch">
-                                    <TreeItemLayout>level 8, item 1</TreeItemLayout>
-                                    <Tree>
-                                      <TreeItem itemType="branch">
-                                        <TreeItemLayout>level 9, item 1</TreeItemLayout>
-                                        <Tree>
-                                          <TreeItem itemType="branch">
-                                            <TreeItemLayout>level 10, item 1</TreeItemLayout>
-                                            <Tree>
-                                              <TreeItem itemType="branch">
-                                                <TreeItemLayout>level 11, item 1</TreeItemLayout>
-                                                <Tree>
-                                                  <TreeItem itemType="branch">
-                                                    <TreeItemLayout>level 12, item 1</TreeItemLayout>
-                                                    <Tree>
-                                                      <TreeItem itemType="leaf">
-                                                        <TreeItemLayout>level 13, item 1</TreeItemLayout>
-                                                      </TreeItem>
-                                                    </Tree>
-                                                  </TreeItem>
-                                                </Tree>
-                                              </TreeItem>
-                                            </Tree>
-                                          </TreeItem>
-                                        </Tree>
-                                      </TreeItem>
-                                    </Tree>
-                                  </TreeItem>
-                                </Tree>
-                              </TreeItem>
-                            </Tree>
-                          </TreeItem>
-                        </Tree>
-                      </TreeItem>
-                    </Tree>
-                  </TreeItem>
-                </Tree>
-              </TreeItem>
-            </Tree>
-          </TreeItem>
-        </Tree>
-      </TreeItem>
-    </Tree>
+const renderTree = (level: number, maxLevel: number) =>
+  level > maxLevel ? (
+    <TreeItem itemType="leaf">
+      <TreeItemLayout>{`level ${level}, item 1`}</TreeItemLayout>
+    </TreeItem>
+  ) : (
+    <TreeItem itemType="branch">
+      <TreeItemLayout>{`level ${level}, item 1`}</TreeItemLayout>
+      <Tree>{renderTree(level + 1, maxLevel)}</Tree>
+    </TreeItem>
   );
+
+export const InlineStylingForNestedTree = () => {
+  return <Tree aria-label="Tree">{renderTree(1, SHOW_MAX_LEVELS)}</Tree>;
 };
 
 InlineStylingForNestedTree.parameters = {

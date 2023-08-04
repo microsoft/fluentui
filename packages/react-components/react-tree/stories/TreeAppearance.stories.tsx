@@ -4,7 +4,7 @@ import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 export const Appearance = () => {
   return (
     <>
-      <Tree aria-label="Tree">
+      <Tree aria-label="Default Tree">
         <TreeItem itemType="branch">
           <TreeItemLayout>Default appearance</TreeItemLayout>
           <Tree>
@@ -18,7 +18,7 @@ export const Appearance = () => {
         </TreeItem>
       </Tree>
       <br />
-      <Tree appearance="subtle-alpha" aria-label="Tree">
+      <Tree aria-label="Subtle Alpha Tree" appearance="subtle-alpha">
         <TreeItem itemType="branch">
           <TreeItemLayout>Subtle-alpha appearance</TreeItemLayout>
           <Tree>
@@ -32,7 +32,7 @@ export const Appearance = () => {
         </TreeItem>
       </Tree>
       <br />
-      <Tree appearance="transparent" aria-label="Tree">
+      <Tree aria-label="Transparent Tree" appearance="transparent">
         <TreeItem itemType="branch">
           <TreeItemLayout>Transparent appearance</TreeItemLayout>
           <Tree>

@@ -112,7 +112,7 @@ TreeManipulation.parameters = {
   docs: {
     description: {
       story:
-        'This example demonstrates how to add or remove items in a flat tree structure by manipulating the state and maintaining proper parent-child relationships through the `parentValue` property.',
+        'With a flat tree structure, you can easily manipulate the tree and control its state. In the example below, you can add or remove tree items by working with the `parentValue` property, which ensures the correct parent-child relationships within the tree',
     },
   },
 };
