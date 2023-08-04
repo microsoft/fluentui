@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
-import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
+import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
 /**
  * Create the state required to render InteractionTag.

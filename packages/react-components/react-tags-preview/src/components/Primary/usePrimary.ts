@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { PrimaryProps, PrimaryState } from './Primary.types';
-import { useInteractionTagContext_unstable } from '../../contexts/InteractionTagContext';
+import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
 const avatarSizeMap = {
   medium: 28,

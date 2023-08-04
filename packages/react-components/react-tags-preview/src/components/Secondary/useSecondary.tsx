@@ -3,7 +3,7 @@ import { getNativeElementProps, useEventCallback } from '@fluentui/react-utiliti
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { SecondaryProps, SecondaryState } from './Secondary.types';
-import { useInteractionTagContext_unstable } from '../../contexts/InteractionTagContext';
+import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
 const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 

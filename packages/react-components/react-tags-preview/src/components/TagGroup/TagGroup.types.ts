@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TagSize } from '../../utils/types';
-import { TagGroupContextValue } from '../../contexts/TagGroupContext';
+import { TagGroupContextValue } from '../../contexts/tagGroupContext';
 
 export type TagGroupContextValues = {
   tagGroup: TagGroupContextValue;

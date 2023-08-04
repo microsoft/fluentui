@@ -3,7 +3,7 @@ import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
-import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
+import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
 const tagAvatarSizeMap = {
   medium: 28,

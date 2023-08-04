@@ -1,7 +1,7 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import { TagSlots } from '../Tag/index';
-import { InteractionTagContextValue } from '../../contexts/InteractionTagContext';
+import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 
 export type PrimaryContextValues = {
   avatar: {

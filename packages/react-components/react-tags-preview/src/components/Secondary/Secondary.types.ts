@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InteractionTagContextValue } from '../../contexts/InteractionTagContext';
+import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 
 export type SecondarySlots = {
   root: Slot<'button'>;

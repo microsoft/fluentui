@@ -3,7 +3,7 @@
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { getSlotsNext } from '@fluentui/react-utilities';
 import type { TagGroupState, TagGroupSlots, TagGroupContextValues } from './TagGroup.types';
-import { TagGroupContextProvider } from '../../contexts/TagGroupContext';
+import { TagGroupContextProvider } from '../../contexts/tagGroupContext';
 
 /**
  * Render the final JSX of TagGroup
