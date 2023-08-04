@@ -15,7 +15,6 @@ const avatarShapeMap = {
 } as const;
 
 /**
- * TODO comments
  * Create the state required to render Primary.
  *
  * The returned state can be modified with hooks such as usePrimaryStyles_unstable,

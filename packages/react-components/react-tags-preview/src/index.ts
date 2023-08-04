@@ -1,5 +1,6 @@
 export { Tag, renderTag_unstable, tagClassNames, useTagStyles_unstable, useTag_unstable } from './Tag';
 export type { TagProps, TagSlots, TagState } from './Tag';
+
 export {
   InteractionTag,
   renderInteractionTag_unstable,
@@ -8,14 +9,6 @@ export {
   useInteractionTag_unstable,
 } from './InteractionTag';
 export type { InteractionTagProps, InteractionTagSlots, InteractionTagState } from './InteractionTag';
-export {
-  TagGroup,
-  renderTagGroup_unstable,
-  tagGroupClassNames,
-  useTagGroupStyles_unstable,
-  useTagGroup_unstable,
-} from './TagGroup';
-export type { TagGroupProps, TagGroupSlots, TagGroupState } from './TagGroup';
 export {
   Primary,
   primaryClassNames,
@@ -32,4 +25,14 @@ export {
   useSecondary_unstable,
 } from './Secondary';
 export type { SecondaryProps, SecondarySlots, SecondaryState } from './Secondary';
+
+export {
+  TagGroup,
+  renderTagGroup_unstable,
+  tagGroupClassNames,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+} from './TagGroup';
+export type { TagGroupProps, TagGroupSlots, TagGroupState } from './TagGroup';
+
 export type { TagAppearance, TagShape, TagSize } from './utils/types';

@@ -17,15 +17,7 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of Secondary
  */
 export const useSecondary_unstable = (props: SecondaryProps, ref: React.Ref<HTMLElement>): SecondaryState => {
-  const { disabled, appearance, size, shape, handleTagDismiss, value } = useInteractionTagContext_unstable();
-
-  const rootShorthand = getNativeElementProps('button', {
-    children: <DismissIcon />,
-    type: 'button',
-    disabled,
-    ...props,
-    ref,
-  });
+  const { appearance, disabled, handleTagDismiss, shape, size, value } = useInteractionTagContext_unstable();
 
   const onClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props?.onClick?.(ev);
@@ -50,7 +42,13 @@ export const useSecondary_unstable = (props: SecondaryProps, ref: React.Ref<HTML
       root: 'button',
     },
     root: {
-      ...rootShorthand,
+      ...getNativeElementProps('button', {
+        children: <DismissIcon />,
+        type: 'button',
+        disabled,
+        ...props,
+        ref,
+      }),
       onClick,
       onKeyDown,
     },

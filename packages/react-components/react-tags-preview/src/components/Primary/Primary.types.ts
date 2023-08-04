@@ -1,17 +1,28 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
-import { TagSlots } from '../Tag/index';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
+import { AvatarContextValues, UseAvatarContextValuesOptions } from '../../contexts/useAvatarContextValues';
 
-export type PrimaryContextValues = {
-  avatar: {
-    size?: AvatarSize;
-    shape?: AvatarShape;
-  };
-};
+export type PrimaryContextValues = AvatarContextValues;
 
-export type PrimarySlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
+export type PrimarySlots = {
   root: NonNullable<Slot<'button'>>;
+
+  /**
+   * Slot for an icon or other visual element
+   */
+  media?: Slot<'span'>;
+
+  icon?: Slot<'span'>;
+
+  /**
+   * Main text for the Primary button. Children of the root slot are automatically rendered here
+   */
+  primaryText: Slot<'span'>;
+
+  /**
+   * Secondary text that describes or complements the main text
+   */
+  secondaryText?: Slot<'span'>;
 };
 
 /**
@@ -23,7 +34,5 @@ export type PrimaryProps = ComponentProps<Partial<PrimarySlots>>;
  * State used in rendering Primary
  */
 export type PrimaryState = ComponentState<PrimarySlots> &
-  Required<Pick<InteractionTagContextValue, 'shape' | 'size' | 'appearance' | 'disabled' | 'hasSecondary'>> & {
-    avatarSize: AvatarSize | undefined;
-    avatarShape: AvatarShape | undefined;
-  };
+  Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> &
+  UseAvatarContextValuesOptions;

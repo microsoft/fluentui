@@ -6,7 +6,7 @@ import { useSecondaryStyles_unstable } from './useSecondaryStyles.styles';
 import type { SecondaryProps } from './Secondary.types';
 
 /**
- * Secondary component - TODO: add more docs
+ * Secondary component - used as the second child of the `InteractionTag` component and provides the secondary action, which is dismiss by default.
  */
 export const Secondary: ForwardRefComponent<SecondaryProps> = React.forwardRef((props, ref) => {
   const state = useSecondary_unstable(props, ref);

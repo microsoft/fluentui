@@ -117,7 +117,7 @@ const useRootStyles = makeStyles({
     paddingRight: '5px',
   },
 });
-const useDisabledStyles = makeStyles({
+const useRootDisabledAppearances = makeStyles({
   filled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -153,7 +153,7 @@ const useRootWithoutMediaStyles = makeStyles({
   },
 });
 /**
- * Styles for Primary with Secondary button
+ * Styles for Primary when InteractionTag has a Secondary button
  */
 const useRootWithSecondaryStyles = makeStyles({
   base: {
@@ -176,12 +176,9 @@ const useRootWithSecondaryStyles = makeStyles({
   },
 });
 
-/**
- * Apply styling to the Primary slots based on the state
- */
 export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => {
   const rootStyles = useRootStyles();
-  const rootDisabledStyles = useDisabledStyles();
+  const rootDisabledAppearances = useRootDisabledAppearances();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
   const rootWithSecondaryStyles = useRootWithSecondaryStyles();
 
@@ -196,7 +193,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
     primaryClassNames.root,
 
     rootStyles.base,
-    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
 

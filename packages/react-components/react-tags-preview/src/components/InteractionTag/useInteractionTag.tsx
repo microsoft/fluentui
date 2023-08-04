@@ -38,8 +38,8 @@ export const useInteractionTag_unstable = (
   return {
     appearance,
     disabled,
-    hasSecondary: children.length === 2,
     handleTagDismiss,
+    hasSecondary: children.length === 2,
     shape,
     size,
     value,

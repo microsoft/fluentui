@@ -4,12 +4,12 @@ import { InteractionTagState } from '../components/InteractionTag/index';
 export const InteractionTagContext = React.createContext<InteractionTagContextValue | undefined>(undefined);
 
 const interactionTagContextDefaultValue: InteractionTagContextValue = {
-  hasSecondary: false,
-  disabled: false,
   appearance: 'filled',
-  size: 'medium',
-  shape: 'rounded',
+  disabled: false,
   handleTagDismiss: () => null,
+  hasSecondary: false,
+  shape: 'rounded',
+  size: 'medium',
   value: '',
 };
 
@@ -17,7 +17,7 @@ const interactionTagContextDefaultValue: InteractionTagContextValue = {
  * Context shared between InteractionTag and its children components
  */
 export type InteractionTagContextValue<Value = string> = Required<
-  Pick<InteractionTagState, 'hasSecondary' | 'disabled' | 'appearance' | 'size' | 'shape'> & {
+  Pick<InteractionTagState, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'> & {
     handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
     value?: Value;
   }

@@ -14,4 +14,4 @@ export type SecondaryProps = ComponentProps<SecondarySlots> & {};
  * State used in rendering Secondary
  */
 export type SecondaryState = ComponentState<SecondarySlots> &
-  Required<Pick<InteractionTagContextValue, 'shape' | 'size' | 'appearance' | 'disabled'>>;
+  Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;

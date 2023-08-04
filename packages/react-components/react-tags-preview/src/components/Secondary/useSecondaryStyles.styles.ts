@@ -127,9 +127,6 @@ const useRootDisabledStyles = makeStyles({
   },
 });
 
-/**
- * Apply styling to the Secondary slots based on the state
- */
 export const useSecondaryStyles_unstable = (state: SecondaryState): SecondaryState => {
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
