@@ -122,29 +122,24 @@ export function createOverflowManager(): OverflowManager {
     return lte.element.compareDocumentPosition(rte.element) & positionStatusBit ? 1 : -1;
   }
 
+  function getElementAxisSize(
+    horizontal: 'clientWidth' | 'offsetWidth',
+    vertical: 'clientHeight' | 'offsetHeight',
+    el: HTMLElement,
+  ): number {
+    if (!sizeCache.has(el)) {
+      sizeCache.set(el, options.overflowAxis === 'horizontal' ? el[horizontal] : el[vertical]);
+    }
+
+    return sizeCache.get(el)!;
+  }
+
+  const getOffsetSize = getElementAxisSize.bind(null, 'offsetWidth', 'offsetHeight');
+  const getClientSize = getElementAxisSize.bind(null, 'clientWidth', 'clientHeight');
+
   const invisibleItemQueue = createPriorityQueue<string>((a, b) => -1 * compareItems(a, b));
 
   const visibleItemQueue = createPriorityQueue<string>(compareItems);
-
-  const getOffsetSize = (el: HTMLElement) => {
-    if (sizeCache.has(el)) {
-      return sizeCache.get(el)!;
-    }
-
-    const offsetSize = options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
-    sizeCache.set(el, offsetSize);
-    return offsetSize;
-  };
-
-  const getClientSize = (el: HTMLElement) => {
-    if (sizeCache.has(el)) {
-      return sizeCache.get(el)!;
-    }
-
-    const offsetSize = options.overflowAxis === 'horizontal' ? el.clientWidth : el.clientHeight;
-    sizeCache.set(el, offsetSize);
-    return offsetSize;
-  };
 
   function computeSizeChange(entry: OverflowItemEntry) {
     const dividerWidth =
