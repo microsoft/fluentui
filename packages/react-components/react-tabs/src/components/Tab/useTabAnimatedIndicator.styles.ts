@@ -86,25 +86,27 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
 
   if (selected) {
     const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
-    const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
-    const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
 
-    if (
-      selectedTabRect &&
-      previousSelectedTabRect &&
-      previousSelectedValue &&
-      lastAnimatedFrom !== previousSelectedValue
-    ) {
-      const offset = vertical
-        ? previousSelectedTabRect.y - selectedTabRect.y
-        : previousSelectedTabRect.x - selectedTabRect.x;
-
-      const scale = vertical
-        ? previousSelectedTabRect.height / selectedTabRect.height
-        : previousSelectedTabRect.width / selectedTabRect.width;
-
-      setAnimationValues({ offset, scale });
-      setLastAnimatedFrom(previousSelectedValue);
+    if (previousSelectedValue) {
+      const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
+      const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
+  
+      if (
+        selectedTabRect &&
+        previousSelectedTabRect &&
+        lastAnimatedFrom !== previousSelectedValue
+      ) {
+        const offset = vertical
+          ? previousSelectedTabRect.y - selectedTabRect.y
+          : previousSelectedTabRect.x - selectedTabRect.x;
+  
+        const scale = vertical
+          ? previousSelectedTabRect.height / selectedTabRect.height
+          : previousSelectedTabRect.width / selectedTabRect.width;
+  
+        setAnimationValues({ offset, scale });
+        setLastAnimatedFrom(previousSelectedValue);
+      }
     }
   } else if (lastAnimatedFrom) {
     // need to clear the last animated from so that if this tab is selected again
