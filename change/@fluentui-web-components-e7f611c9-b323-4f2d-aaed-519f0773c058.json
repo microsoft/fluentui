@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add support for scoped theming",
+  "packageName": "@fluentui/web-components",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
