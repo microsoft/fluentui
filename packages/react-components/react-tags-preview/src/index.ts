@@ -7,6 +7,7 @@ export {
   interactionTagClassNames,
   useInteractionTagStyles_unstable,
   useInteractionTag_unstable,
+  useInteractionTagContextValues_unstable,
 } from './InteractionTag';
 export type { InteractionTagProps, InteractionTagSlots, InteractionTagState } from './InteractionTag';
 export {
@@ -32,7 +33,9 @@ export {
   tagGroupClassNames,
   useTagGroupStyles_unstable,
   useTagGroup_unstable,
+  useTagGroupContextValues_unstable,
 } from './TagGroup';
 export type { TagGroupProps, TagGroupSlots, TagGroupState } from './TagGroup';
 
+export { useTagAvatarContextValues_unstable } from './utils';
 export type { TagAppearance, TagShape, TagSize } from './utils/types';

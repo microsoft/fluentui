@@ -161,6 +161,9 @@ export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appea
 // @public
 export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;
 
+// @public (undocumented)
+export function useInteractionTagContextValues_unstable(state: InteractionTagState): InteractionTagContextValues;
+
 // @public
 export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
 
@@ -179,8 +182,14 @@ export const useSecondaryStyles_unstable: (state: SecondaryState) => SecondarySt
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
 
+// @public (undocumented)
+export function useTagAvatarContextValues_unstable(state: UseTagAvatarContextValuesOptions): TagAvatarContextValues;
+
 // @public
 export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
+
+// @public (undocumented)
+export function useTagGroupContextValues_unstable(state: TagGroupState): TagGroupContextValues;
 
 // @public
 export const useTagGroupStyles_unstable: (state: TagGroupState) => TagGroupState;

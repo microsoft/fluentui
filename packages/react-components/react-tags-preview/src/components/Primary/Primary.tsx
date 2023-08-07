@@ -4,7 +4,7 @@ import { usePrimary_unstable } from './usePrimary';
 import { renderPrimary_unstable } from './renderPrimary';
 import { usePrimaryStyles_unstable } from './usePrimaryStyles.styles';
 import type { PrimaryProps } from './Primary.types';
-import { useTagAvatarContextValues_unstable } from '../../contexts/useTagAvatarContextValues';
+import { useTagAvatarContextValues_unstable } from '../../utils';
 
 /**
  * Primary component - used as the first child of the `InteractionTag` component.
