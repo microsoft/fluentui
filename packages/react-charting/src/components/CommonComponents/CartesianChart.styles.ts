@@ -1,12 +1,12 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { HighContrastSelectorBlack, FontWeights, FontSizes } from '@fluentui/react/lib/Styling';
 import { isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyles => {
-  const { className, theme, isRtl, shouldHighlight, href, lineColor = 'transparent', toDrawShape } = props;
-  const { fonts } = theme!;
+  const { className, theme, isRtl, shouldHighlight, href } = props;
+
   return {
     root: [
       theme.fonts.medium,
@@ -99,85 +99,54 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         marginLeft: '20px',
       },
     ],
-    calloutContentRoot: [
-      {
-        display: 'grid',
-        overflow: 'hidden',
-        padding: '11px 16px 10px 16px',
-        backgroundColor: theme.semanticColors.bodyBackground,
-        backgroundBlendMode: 'normal, luminosity',
-      },
-    ],
-    calloutDateTimeContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+
+    calloutContentRoot: {
+      ...theme.fonts.medium,
+      color: theme.semanticColors.bodyText,
+      padding: '16px',
+      backgroundColor: theme.semanticColors.bodyBackground,
+      backgroundBlendMode: 'normal, luminosity',
     },
-    calloutContentX: [
-      {
-        ...fonts.small,
-        lineHeight: '16px',
-        opacity: '0.8',
-        color: theme.semanticColors.bodySubtext,
-      },
-    ],
-    calloutBlockContainer: [
-      theme.fonts.mediumPlus,
-      {
-        marginTop: '13px',
-        color: theme.semanticColors.bodyText,
-      },
-      !toDrawShape && {
-        selectors: {
-          [HighContrastSelector]: {
-            forcedColorAdjust: 'none',
-          },
-        },
-        borderLeft: `4px solid ${lineColor}`,
-        paddingLeft: '8px',
-      },
-      toDrawShape && {
-        display: 'flex',
-      },
-    ],
+
+    calloutDateTimeContainer: {
+      marginBottom: '8px',
+    },
+
+    calloutContentX: {
+      fontWeight: FontWeights.semibold,
+    },
+
+    calloutBlockContainer: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+
     shapeStyles: {
       marginRight: '8px',
+      flexShrink: 0,
     },
+
     calloutlegendText: {
-      ...fonts.small,
-      lineHeight: '16px',
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
-        },
-      },
-      color: theme.semanticColors.bodySubtext,
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      flexGrow: 1,
     },
-    calloutContentY: [
-      {
-        ...fonts.mediumPlus,
-        fontWeight: 'bold',
-        lineHeight: '22px',
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
-      },
-    ],
-    descriptionMessage: [
-      theme.fonts.small,
-      {
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
-        color: theme.semanticColors.bodyText,
-        marginTop: '10px',
-        paddingTop: '10px',
-        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
-      },
-    ],
+
+    calloutContentY: {
+      fontWeight: FontWeights.semibold,
+      flexShrink: 0,
+    },
+
+    divider: {
+      height: '1px',
+      backgroundColor: '#c8c8c8',
+      marginTop: '8px',
+      marginBottom: '8px',
+    },
+
+    descriptionMessage: {
+      fontSize: FontSizes.small,
+    },
   };
 };

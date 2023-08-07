@@ -9,6 +9,7 @@ import {
   IVerticalStackedBarChartProps,
   VerticalStackedBarChart,
   IVerticalStackedChartProps,
+  ChartHoverCardVariant,
 } from '../../index';
 import { IVerticalStackedBarChartState, VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import toJson from 'enzyme-to-json';
@@ -316,6 +317,25 @@ describe('VerticalStackedBarChart - mouse events', () => {
     );
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render long legend variant of callout correctly on mouseover', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart
+        data={chartPoints2}
+        calloutProps={{ doNotLayer: true }}
+        calloutVariant={ChartHoverCardVariant.LongLegend}
+        enabledLegendsWrapLines
+      />,
+    );
+
+    // Wait for the chart to be resized
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();

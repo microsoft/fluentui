@@ -6,7 +6,7 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
-import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
+import { ChartHoverCardVariant, ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 import * as d3TimeFormat from 'd3-time-format';
 
 export interface ICartesianChartStyleProps {
@@ -49,16 +49,6 @@ export interface ICartesianChartStyleProps {
    * prop to check if the Page is in Rtl
    */
   isRtl?: boolean;
-
-  /**
-   * color of the line
-   */
-  lineColor?: string;
-
-  /**
-   * boolean flag which determines if shape is drawn in callout
-   */
-  toDrawShape?: boolean;
 }
 
 export interface ICartesianChartStyles {
@@ -151,6 +141,11 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the group divider in callout
+   */
+  divider?: IStyle;
 }
 
 export interface ICartesianChartProps {
@@ -380,6 +375,12 @@ export interface ICartesianChartProps {
    * @default True for LineChart but False for other charts
    */
   enableReflow?: boolean;
+
+  /**
+   * Specifies the variant of hover card to be rendered
+   * @defaultvalue ChartHoverCardVariant.ShortLegend
+   */
+  calloutVariant?: ChartHoverCardVariant;
 }
 
 export interface IYValueHover {

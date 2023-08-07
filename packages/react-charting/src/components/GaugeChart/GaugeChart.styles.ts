@@ -1,8 +1,8 @@
-import { FontSizes, FontWeights, HighContrastSelector, HighContrastSelectorBlack } from '@fluentui/react';
+import { FontSizes, FontWeights } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const { theme, chartValueSize, chartWidth, chartHeight, className, lineColor, toDrawShape } = props;
+  const { theme, chartValueSize, chartWidth, chartHeight, className } = props;
 
   return {
     root: [
@@ -58,85 +58,53 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       width: chartWidth,
     },
 
-    calloutContentRoot: [
-      {
-        display: 'grid',
-        overflow: 'hidden',
-        padding: '11px 16px 10px 16px',
-        backgroundColor: theme.semanticColors.bodyBackground,
-        backgroundBlendMode: 'normal, luminosity',
-      },
-    ],
-    calloutDateTimeContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+    calloutContentRoot: {
+      ...theme.fonts.medium,
+      color: theme.semanticColors.bodyText,
+      padding: '16px',
+      backgroundColor: theme.semanticColors.bodyBackground,
+      backgroundBlendMode: 'normal, luminosity',
     },
-    calloutContentX: [
-      {
-        ...theme.fonts.small,
-        lineHeight: '16px',
-        opacity: '0.8',
-        color: theme.semanticColors.bodySubtext,
-      },
-    ],
-    calloutBlockContainer: [
-      theme.fonts.mediumPlus,
-      {
-        marginTop: '13px',
-        color: theme.semanticColors.bodyText,
-      },
-      !toDrawShape && {
-        selectors: {
-          [HighContrastSelector]: {
-            forcedColorAdjust: 'none',
-          },
-        },
-        borderLeft: `4px solid ${lineColor}`,
-        paddingLeft: '8px',
-      },
-      toDrawShape && {
-        display: 'flex',
-      },
-    ],
+
+    calloutDateTimeContainer: {
+      marginBottom: '8px',
+    },
+
+    calloutContentX: {
+      fontWeight: FontWeights.semibold,
+    },
+
+    calloutBlockContainer: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+
     shapeStyles: {
       marginRight: '8px',
+      flexShrink: 0,
     },
+
     calloutlegendText: {
-      ...theme.fonts.small,
-      lineHeight: '16px',
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
-        },
-      },
-      color: theme.semanticColors.bodySubtext,
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      flexGrow: 1,
     },
-    calloutContentY: [
-      {
-        ...theme.fonts.mediumPlus,
-        fontWeight: 'bold',
-        lineHeight: '22px',
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
-      },
-    ],
-    descriptionMessage: [
-      theme.fonts.small,
-      {
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
-        color: theme.semanticColors.bodyText,
-        marginTop: '10px',
-        paddingTop: '10px',
-        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
-      },
-    ],
+
+    calloutContentY: {
+      fontWeight: FontWeights.semibold,
+      flexShrink: 0,
+    },
+
+    divider: {
+      height: '1px',
+      backgroundColor: '#c8c8c8',
+      marginTop: '8px',
+      marginBottom: '8px',
+    },
+
+    descriptionMessage: {
+      fontSize: FontSizes.small,
+    },
   };
 };

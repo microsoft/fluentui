@@ -3,6 +3,7 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
+import { ChartHoverCardVariant } from '../../utilities/index';
 
 export interface IGaugeChartSegment {
   /**
@@ -126,6 +127,12 @@ export interface IGaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Specifies the variant of hover card to be rendered
+   * @defaultvalue ChartHoverCardVariant.ShortLegend
+   */
+  calloutVariant?: ChartHoverCardVariant;
 }
 
 export interface IGaugeChartStyleProps {
@@ -153,16 +160,6 @@ export interface IGaugeChartStyleProps {
    * Additional CSS class(es) to apply to the chart
    */
   className?: string;
-
-  /**
-   * Color of the line
-   */
-  lineColor?: string;
-
-  /**
-   * Boolean flag which determines if shape is drawn in callout
-   */
-  toDrawShape?: boolean;
 }
 
 export interface IGaugeChartStyles {
@@ -255,4 +252,9 @@ export interface IGaugeChartStyles {
    * Styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
+
+  /**
+   * Styles for the group divider in callout
+   */
+  divider?: IStyle;
 }

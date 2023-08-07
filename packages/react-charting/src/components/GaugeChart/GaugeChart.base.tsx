@@ -10,6 +10,7 @@ import {
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import {
+  ChartHoverCardVariant,
   Points,
   convertToLocaleString,
   formatValueWithSIPrefix,
@@ -518,12 +519,10 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
+
     return (
       <div className={this._classNames.calloutContentRoot}>
-        <div
-          className={this._classNames.calloutDateTimeContainer}
-          style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-        >
+        <div className={this._classNames.calloutDateTimeContainer}>
           <div
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
@@ -540,34 +539,28 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
               const isLast: boolean = index + 1 === yValues.length;
               const { shouldDrawBorderBottom = false } = yValue;
               return (
-                <div
-                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
-                  key={`callout-content-${index}`}
-                  style={
-                    yValueHoverSubCountsExists
-                      ? {
-                          display: 'inline-block',
-                          ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
-                            paddingBottom: '10px',
-                          }),
-                        }
-                      : {
-                          ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
-                            paddingBottom: '10px',
-                          }),
-                        }
-                  }
-                >
-                  {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                </div>
+                <React.Fragment key={`callout-content-${index}`}>
+                  <div
+                    {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
+                    style={{
+                      paddingLeft: !yValueHoverSubCountsExists || index === 0 ? '0px' : '16px',
+                      paddingRight: !yValueHoverSubCountsExists || isLast ? '0px' : '16px',
+                      marginBottom: yValueHoverSubCountsExists || isLast ? '0px' : '8px',
+                    }}
+                  >
+                    {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                  </div>
+                  {shouldDrawBorderBottom && <div className={this._classNames.divider} />}
+                </React.Fragment>
               );
             })}
-          {!!calloutProps.descriptionMessage && (
-            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
-          )}
         </div>
+        {!!calloutProps.descriptionMessage && (
+          <>
+            <div className={this._classNames.divider} />
+            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          </>
+        )}
       </div>
     );
   };
@@ -592,42 +585,41 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     yValueHoverSubCountsExists: boolean,
     isLast: boolean,
   ): React.ReactNode {
-    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
     const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
-    const _classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-      lineColor: xValue.color,
-      toDrawShape,
-    });
 
-    const { culture } = this.props;
+    const { culture, calloutVariant } = this.props;
     const yValue = convertToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
-        <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
+        <div>
           {yValueHoverSubCountsExists && (
-            <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+            <div className={this._classNames.calloutContentX} style={{ marginBottom: '8px' }}>
               {xValue.legend!} ({yValue})
             </div>
           )}
-          <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
-            {toDrawShape && (
-              <Shape
-                svgProps={{
-                  className: _classNames.shapeStyles,
-                }}
-                pathProps={{ fill: xValue.color }}
-                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
-              />
-            )}
-            <div>
-              <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
-              <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                  culture,
-                )}
+          {(yValueHoverSubCountsExists || calloutVariant === ChartHoverCardVariant.LongLegend) && (
+            <div className={this._classNames.calloutlegendText} style={{ marginBottom: '4px' }}>
+              {xValue.legend}
+            </div>
+          )}
+          <div id={`${index}_${xValue.y}`} className={this._classNames.calloutBlockContainer}>
+            <Shape
+              svgProps={{
+                className: this._classNames.shapeStyles,
+              }}
+              pathProps={{ fill: xValue.color }}
+              shape={Points[toDrawShape ? xValue.index! % Object.keys(pointTypes).length : 1] as LegendShape}
+            />
+            {!yValueHoverSubCountsExists && calloutVariant !== ChartHoverCardVariant.LongLegend && (
+              <div className={this._classNames.calloutlegendText} style={{ marginRight: '24px' }}>
+                {xValue.legend}
               </div>
+            )}
+            <div className={this._classNames.calloutContentY}>
+              {convertToLocaleString(
+                xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                culture,
+              )}
             </div>
           </div>
         </div>
@@ -635,16 +627,27 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     } else {
       const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
       return (
-        <div style={marginStyle}>
-          <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+        <div>
+          <div className={this._classNames.calloutContentX} style={{ marginBottom: '8px' }}>
             {xValue.legend!} ({yValue})
           </div>
-          {Object.keys(subcounts).map((subcountName: string) => {
+          {Object.keys(subcounts).map((subcountName: string, idx, sc) => {
             return (
-              <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
-                <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+              <div key={subcountName} style={idx + 1 === sc.length ? {} : { marginBottom: '8px' }}>
+                <div className={this._classNames.calloutlegendText} style={{ marginBottom: '4px' }}>
+                  {convertToLocaleString(subcountName, culture)}
+                </div>
+                <div className={this._classNames.calloutBlockContainer}>
+                  <Shape
+                    svgProps={{
+                      className: this._classNames.shapeStyles,
+                    }}
+                    pathProps={{ fill: xValue.color }}
+                    shape={Points[toDrawShape ? xValue.index! % Object.keys(pointTypes).length : 1] as LegendShape}
+                  />
+                  <div className={this._classNames.calloutContentY}>
+                    {convertToLocaleString(subcounts[subcountName], culture)}
+                  </div>
                 </div>
               </div>
             );
