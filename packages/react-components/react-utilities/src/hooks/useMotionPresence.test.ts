@@ -41,8 +41,7 @@ describe('useMotionPresence', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
     });
   });
 
@@ -52,8 +51,7 @@ describe('useMotionPresence', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('resting');
-      expect(result.current.shouldRender).toBe(true);
-      expect(result.current.visible).toBe(true);
+      expect(result.current.active).toBe(true);
     });
 
     it('should not change values after timeout ', () => {
@@ -62,8 +60,7 @@ describe('useMotionPresence', () => {
       const assertSameValues = () => {
         expect(typeof result.current.ref).toBe('function');
         expect(result.current.motionState).toBe('resting');
-        expect(result.current.shouldRender).toBe(true);
-        expect(result.current.visible).toBe(true);
+        expect(result.current.active).toBe(true);
       };
 
       assertSameValues();
@@ -72,17 +69,16 @@ describe('useMotionPresence', () => {
       assertSameValues();
     });
 
-    it('should change visible to true when animateOnFirstMount is true', () => {
+    it('should change active to true when animateOnFirstMount is true', () => {
       const { result } = renderHookWithRef(true, { animateOnFirstMount: true });
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('resting');
-      expect(result.current.shouldRender).toBe(true);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.visible).toBe(true);
+      expect(result.current.active).toBe(true);
     });
   });
 
@@ -92,23 +88,21 @@ describe('useMotionPresence', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       rerender({ presence: true });
 
-      expect(result.current.shouldRender).toBe(true);
       expect(result.current.motionState).toBe('resting');
 
       // double requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.visible).toBe(true);
+      expect(result.current.active).toBe(true);
 
       rerender({ presence: false });
 
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.motionState).toBe('exiting');
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       act(() => {
         // requestAnimationFrame
@@ -119,8 +113,7 @@ describe('useMotionPresence', () => {
       });
 
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
     });
 
     it('should toggle values starting with true', () => {
@@ -128,8 +121,7 @@ describe('useMotionPresence', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('resting');
-      expect(result.current.shouldRender).toBe(true);
-      expect(result.current.visible).toBe(true);
+      expect(result.current.active).toBe(true);
 
       rerender({ presence: false });
 
@@ -137,7 +129,7 @@ describe('useMotionPresence', () => {
       act(() => jest.advanceTimersToNextTimer());
 
       expect(result.current.motionState).toBe('exiting');
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       act(() => {
         // requestAnimationFrame
@@ -148,8 +140,7 @@ describe('useMotionPresence', () => {
       });
 
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
     });
   });
 
@@ -170,16 +161,14 @@ describe('useMotionPresence', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       rerender({ presence: true });
 
-      expect(result.current.shouldRender).toBe(true);
       expect(result.current.motionState).toBe('resting');
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.visible).toBe(true);
+      expect(result.current.active).toBe(true);
       expect(result.current.motionState).toBe('entering');
       // timeout
       act(() => jest.advanceTimersToNextTimer());
@@ -188,7 +177,7 @@ describe('useMotionPresence', () => {
       rerender({ presence: false });
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
       expect(result.current.motionState).toBe('exiting');
 
       // requestAnimationFrame
@@ -196,7 +185,6 @@ describe('useMotionPresence', () => {
       // timeout
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
     });
   });
 
@@ -215,17 +203,15 @@ describe('useMotionPresence', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       rerender({ presence: true });
 
-      expect(result.current.shouldRender).toBe(true);
       expect(result.current.motionState).toBe('resting');
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.visible).toBe(true);
+      expect(result.current.active).toBe(true);
       // timeout
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.motionState).toBe('resting');
@@ -234,14 +220,13 @@ describe('useMotionPresence', () => {
 
       act(() => jest.advanceTimersToNextTimer());
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.visible).toBe(false);
+      expect(result.current.active).toBe(false);
 
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
       // timeout
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.motionState).toBe('unmounted');
-      expect(result.current.shouldRender).toBe(false);
     });
   });
 });

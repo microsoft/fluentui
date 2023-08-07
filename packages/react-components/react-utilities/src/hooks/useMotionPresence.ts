@@ -49,27 +49,37 @@ type CSSWithNumber = typeof CSS & {
 export type UseMotionPresenceState<TElement extends HTMLElement> = {
   /**
    * Ref to the element.
+   *
+   * @example
+   * const { ref } = useMotionPresence<HTMLDivElement>(isOpen);
+   *
+   * <div ref={ref} />
    */
   ref: React.RefCallback<TElement>;
 
   /**
-   * Whether the element should be rendered in the DOM.
-   * This should be used to conditionally render the element.
+   * Whether the element is currently active in the DOM.
+   * Useful to apply CSS transitions only when the element is active.
+   *
+   * @example
+   * const { active, ref } = useMotionPresence<HTMLDivElement>(isOpen);
+   *
+   * <div ref={ref} className={active ? 'element element-active' : 'element'} />
    */
-  shouldRender: boolean;
-
-  /**
-   * Whether the element is currently visible in the DOM.
-   */
-  visible: boolean;
+  active: boolean;
 
   /**
    * Current state of the element.
    *
-   * - `entering` - The element is entering the DOM.
-   * - `exiting` - The element is exiting the DOM.
-   * - `resting` - The element is currently not animating. This is the final and initial state of the element.
-   * - `unmounted` - The element is not rendered in the DOM.
+   * - `entering` - The element is performing enter animation.
+   * - `exiting` - The element is performing exit animation.
+   * - `resting` - The element is currently not animating, but rendered on screen.
+   * - `unmounted` - The element is not rendered or can be removed from the DOM.
+   *
+   * @example
+   * const { motionState, ref } = useMotionPresence<HTMLDivElement>(isOpen);
+   *
+   * <div ref={ref} className={`element element-${motionState}`} />
    */
   motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
 };
@@ -248,9 +258,8 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
   const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
-    shouldRender: present,
     motionState: present ? 'resting' : 'unmounted',
-    visible: false,
+    active: false,
   });
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<TElement> | null>(null);
@@ -300,8 +309,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   React.useEffect(() => {
     if (present) {
       setState({
-        shouldRender: true,
-        visible: skipAnimationOnFirstRender.current ? true : false,
+        active: skipAnimationOnFirstRender.current ? true : false,
         motionState: 'resting',
       });
     }
@@ -324,7 +332,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
         return {
           ...prevState,
           motionState,
-          visible: present,
+          active: present,
         };
       });
     });
@@ -337,7 +345,6 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       setState(prevState => ({
         ...prevState,
         motionState: present ? 'resting' : 'unmounted',
-        shouldRender: present,
       }));
     });
 
