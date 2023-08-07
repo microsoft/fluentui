@@ -157,41 +157,19 @@ export const styles = css`
     .switch {
       border-color: InactiveBorder;
     }
-    :host(:hover) .switch {
-      border-color: InactiveBorder;
-    }
-    :host(:active) .switch {
-      border-color: ActiveBorder;
-    }
-    :host([aria-checked='true']) .switch {
-      background: Highlight;
-      border-color: Highlight;
-    }
+    :host([aria-checked='true']) .switch,
+    :host([aria-checked='true']:active) .switch,
     :host([aria-checked='true']:hover) .switch {
       background: Highlight;
       border-color: Highlight;
     }
-    :host([aria-checked='true']:active) .switch {
-      background: Highlight;
-      border-color: Highlight;
-    }
-
-    .checked-indicator {
-      background-color: ActiveCaption;
-    }
-    :host(:hover) .checked-indicator {
-      background-color: ActiveCaption;
-    }
+    .checked-indicator,
+    :host(:hover) .checked-indicator,
     :host(:active) .checked-indicator {
       background-color: ActiveCaption;
     }
-
-    :host([aria-checked='true']) .checked-indicator {
-      background-color: ButtonFace;
-    }
-    :host([aria-checked='true']:hover) .checked-indicator {
-      background-color: ButtonFace;
-    }
+    :host([aria-checked='true']) .checked-indicator,
+    :host([aria-checked='true']:hover) .checked-indicator,
     :host([aria-checked='true']:active) .checked-indicator {
       background-color: ButtonFace;
     }

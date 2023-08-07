@@ -113,7 +113,8 @@ export const styles = css`
     :host([aria-pressed='true'][appearance='subtle']) .control,
     :host([aria-pressed='true'][appearance='outline']) .control,
     :host([aria-pressed='true'][appearance='transparent']) .control,
-    :host([aria-pressed='true'][appearance='transparent']) .control {
+    :host([aria-pressed='true'][appearance='transparent']) .control,
+    :host(:hover) .control {
       border-color: Highlight;
     }
     :host([aria-pressed='false']) .control,
@@ -123,9 +124,6 @@ export const styles = css`
     :host([aria-pressed='false'][appearance='transparent']) .control,
     :host([aria-pressed='false'][appearance='transparent']) .control {
       border-color: InactiveBorder;
-    }
-    :host(:hover) .control {
-      border-color: Highlight;
     }
   `),
 );
