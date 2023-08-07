@@ -2,6 +2,39 @@
   "name": "@fluentui/react-migration-v0-v9",
   "entries": [
     {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.0.17",
+      "version": "9.0.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.10",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.27.4",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Aug 2023 13:04:25 GMT",
       "tag": "@fluentui/react-migration-v0-v9_v9.0.16",
       "version": "9.0.16",
