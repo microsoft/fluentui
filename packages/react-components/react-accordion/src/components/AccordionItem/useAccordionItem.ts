@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
 
@@ -23,6 +23,6 @@ export const useAccordionItem_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', { ref, ...props }),
+    root: slot.always(getNativeElementProps('div', { ref, ...props }), { elementType: 'div' }),
   };
 };
