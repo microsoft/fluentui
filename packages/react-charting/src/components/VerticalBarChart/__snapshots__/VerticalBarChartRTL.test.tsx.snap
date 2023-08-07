@@ -69,7 +69,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -120,7 +120,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -531,7 +531,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -582,7 +582,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -1006,7 +1006,7 @@ exports[`Should reflect theme change 1`] = `
             class=
 
                 {
-                  color: var(--neutrals-web-gray-160323130, #323130);
+                  color: #323130;
                   fill: #f3f2f1;
                   font-size: 10px;
                   font-style: normal;
@@ -1057,7 +1057,7 @@ exports[`Should reflect theme change 1`] = `
             class=
 
                 {
-                  color: var(--neutrals-web-gray-160323130, #323130);
+                  color: #323130;
                   fill: #f3f2f1;
                   font-size: 10px;
                   font-style: normal;
@@ -1480,7 +1480,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -1531,7 +1531,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -1942,7 +1942,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -1993,7 +1993,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -2404,7 +2404,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -2456,7 +2456,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -2951,7 +2951,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3120,7 +3120,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3707,7 +3707,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3876,7 +3876,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4382,7 +4382,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4437,7 +4437,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4881,7 +4881,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4936,7 +4936,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -5380,7 +5380,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -5435,7 +5435,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -5859,7 +5859,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -5914,7 +5914,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -6018,7 +6018,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -6073,7 +6073,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -6517,7 +6517,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -6572,7 +6572,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -7016,7 +7016,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -7071,7 +7071,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -7515,7 +7515,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -7570,7 +7570,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;

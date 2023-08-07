@@ -75,7 +75,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -211,7 +211,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1303,7 +1303,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1378,7 +1378,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1912,7 +1912,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1987,7 +1987,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2091,7 +2091,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2162,7 +2162,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2688,7 +2688,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2759,7 +2759,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;

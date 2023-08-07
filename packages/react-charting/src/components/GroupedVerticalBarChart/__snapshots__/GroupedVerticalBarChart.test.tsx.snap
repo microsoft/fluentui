@@ -75,7 +75,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -269,7 +269,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -873,7 +873,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1067,7 +1067,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1591,7 +1591,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1785,7 +1785,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2232,7 +2232,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2426,7 +2426,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2853,7 +2853,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3047,7 +3047,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3151,7 +3151,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3345,7 +3345,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3792,7 +3792,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3986,7 +3986,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4433,7 +4433,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4627,7 +4627,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -5074,7 +5074,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -5268,7 +5268,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;

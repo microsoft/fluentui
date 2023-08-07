@@ -75,7 +75,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -198,7 +198,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -678,7 +678,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -801,7 +801,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1066,7 +1066,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1189,7 +1189,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1545,7 +1545,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1668,7 +1668,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1772,7 +1772,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1895,7 +1895,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2160,7 +2160,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2283,7 +2283,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;

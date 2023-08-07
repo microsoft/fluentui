@@ -76,7 +76,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -197,7 +197,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -646,7 +646,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -767,7 +767,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1114,7 +1114,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1235,7 +1235,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1582,7 +1582,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1703,7 +1703,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -1969,7 +1969,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2090,7 +2090,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2356,7 +2356,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2477,7 +2477,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2723,7 +2723,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2844,7 +2844,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -2949,7 +2949,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3070,7 +3070,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3336,7 +3336,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3457,7 +3457,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3723,7 +3723,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -3844,7 +3844,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4110,7 +4110,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;
@@ -4231,7 +4231,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
-              color: var(--neutrals-web-gray-160323130, #323130);
+              color: #323130;
               fill: #323130;
               font-size: 10px;
               font-style: normal;

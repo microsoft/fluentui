@@ -80,7 +80,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
@@ -191,7 +191,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           class=
 
               {
-                color: var(--neutrals-web-gray-160323130, #323130);
+                color: #323130;
                 fill: #323130;
                 font-size: 10px;
                 font-style: normal;
