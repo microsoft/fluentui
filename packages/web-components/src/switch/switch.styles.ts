@@ -154,49 +154,46 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    /* High contrast styles */
-    @media (forced-colors: active) {
-      .switch {
-        border-color: InactiveBorder;
-      }
-      :host(:hover) .switch {
-        border-color: InactiveBorder;
-      }
-      :host(:active) .switch {
-        border-color: ActiveBorder;
-      }
-      :host([aria-checked='true']) .switch {
-        background: Highlight;
-        border-color: Highlight;
-      }
-      :host([aria-checked='true']:hover) .switch {
-        background: Highlight;
-        border-color: Highlight;
-      }
-      :host([aria-checked='true']:active) .switch {
-        background: Highlight;
-        border-color: Highlight;
-      }
+    .switch {
+      border-color: InactiveBorder;
+    }
+    :host(:hover) .switch {
+      border-color: InactiveBorder;
+    }
+    :host(:active) .switch {
+      border-color: ActiveBorder;
+    }
+    :host([aria-checked='true']) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
+    :host([aria-checked='true']:hover) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
+    :host([aria-checked='true']:active) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
 
-      .checked-indicator {
-        background-color: ActiveCaption;
-      }
-      :host(:hover) .checked-indicator {
-        background-color: ActiveCaption;
-      }
-      :host(:active) .checked-indicator {
-        background-color: ActiveCaption;
-      }
+    .checked-indicator {
+      background-color: ActiveCaption;
+    }
+    :host(:hover) .checked-indicator {
+      background-color: ActiveCaption;
+    }
+    :host(:active) .checked-indicator {
+      background-color: ActiveCaption;
+    }
 
-      :host([aria-checked='true']) .checked-indicator {
-        background-color: ButtonFace;
-      }
-      :host([aria-checked='true']:hover) .checked-indicator {
-        background-color: ButtonFace;
-      }
-      :host([aria-checked='true']:active) .checked-indicator {
-        background-color: ButtonFace;
-      }
+    :host([aria-checked='true']) .checked-indicator {
+      background-color: ButtonFace;
+    }
+    :host([aria-checked='true']:hover) .checked-indicator {
+      background-color: ButtonFace;
+    }
+    :host([aria-checked='true']:active) .checked-indicator {
+      background-color: ButtonFace;
     }
   `),
 );

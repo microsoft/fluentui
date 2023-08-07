@@ -201,24 +201,21 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    /* high contrast styles */
-    @media (forced-colors: active) {
-      .track:hover,
-      .track:active,
-      .track {
-        background: WindowText;
-      }
-      .thumb-cursor:hover,
-      .thumb-cursor:active,
-      .thumb-cursor {
-        background: ButtonText;
-      }
+    .track:hover,
+    .track:active,
+    .track {
+      background: WindowText;
+    }
+    .thumb-cursor:hover,
+    .thumb-cursor:active,
+    .thumb-cursor {
+      background: ButtonText;
+    }
 
-      :host(:hover) .track-start,
-      .track-start:active,
-      .track-start {
-        background: Highlight;
-      }
+    :host(:hover) .track-start,
+    .track-start:active,
+    .track-start {
+      background: Highlight;
     }
   `),
 );

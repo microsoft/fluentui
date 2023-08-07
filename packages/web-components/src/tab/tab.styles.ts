@@ -110,11 +110,8 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    /* High contrast styles */
-    @media (forced-colors: active) {
-      :host([aria-selected='true'])::after {
-        background-color: Highlight;
-      }
+    :host([aria-selected='true'])::after {
+      background-color: Highlight;
     }
   `),
 );

@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusSmall,
@@ -127,7 +127,8 @@ export const styles = css`
   :host([disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  @media (forced-colors: active) {
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
     :host([aria-checked='true']) .checked-indicator,
     :host([aria-checked='true']:active) .checked-indicator,
     :host([aria-checked='true']:hover) .checked-indicator {
@@ -140,5 +141,5 @@ export const styles = css`
     :host([aria-checked='false']:hover) .control {
       border-color: ActiveBorder;
     }
-  }
-`;
+  `),
+);

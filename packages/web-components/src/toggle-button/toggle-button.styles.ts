@@ -108,27 +108,24 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    /* High contrast styles */
-    @media (forced-colors: active) {
-      :host([aria-pressed='true']) .control,
-      :host([aria-pressed='true'][appearance='primary']) .control,
-      :host([aria-pressed='true'][appearance='subtle']) .control,
-      :host([aria-pressed='true'][appearance='outline']) .control,
-      :host([aria-pressed='true'][appearance='transparent']) .control,
-      :host([aria-pressed='true'][appearance='transparent']) .control {
-        border-color: Highlight;
-      }
-      :host([aria-pressed='false']) .control,
-      :host([aria-pressed='false'][appearance='primary']) .control,
-      :host([aria-pressed='false'][appearance='subtle']) .control,
-      :host([aria-pressed='false'][appearance='outline']) .control,
-      :host([aria-pressed='false'][appearance='transparent']) .control,
-      :host([aria-pressed='false'][appearance='transparent']) .control {
-        border-color: InactiveBorder;
-      }
-      :host(:hover) .control {
-        border-color: Highlight;
-      }
+    :host([aria-pressed='true']) .control,
+    :host([aria-pressed='true'][appearance='primary']) .control,
+    :host([aria-pressed='true'][appearance='subtle']) .control,
+    :host([aria-pressed='true'][appearance='outline']) .control,
+    :host([aria-pressed='true'][appearance='transparent']) .control,
+    :host([aria-pressed='true'][appearance='transparent']) .control {
+      border-color: Highlight;
+    }
+    :host([aria-pressed='false']) .control,
+    :host([aria-pressed='false'][appearance='primary']) .control,
+    :host([aria-pressed='false'][appearance='subtle']) .control,
+    :host([aria-pressed='false'][appearance='outline']) .control,
+    :host([aria-pressed='false'][appearance='transparent']) .control,
+    :host([aria-pressed='false'][appearance='transparent']) .control {
+      border-color: InactiveBorder;
+    }
+    :host(:hover) .control {
+      border-color: Highlight;
     }
   `),
 );

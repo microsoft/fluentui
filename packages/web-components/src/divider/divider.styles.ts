@@ -127,20 +127,16 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    /* high contrast styles */
-
-    @media (forced-colors: active) {
-      :host([appearance='strong'])::before,
-      :host([appearance='strong'])::after,
-      :host([appearance='brand'])::before,
-      :host([appearance='brand'])::after,
-      :host([appearance='subtle'])::before,
-      :host([appearance='subtle'])::after,
-      :host::after,
-      :host::before {
-        background: WindowText;
-        color: WindowText;
-      }
+    :host([appearance='strong'])::before,
+    :host([appearance='strong'])::after,
+    :host([appearance='brand'])::before,
+    :host([appearance='brand'])::after,
+    :host([appearance='subtle'])::before,
+    :host([appearance='subtle'])::after,
+    :host::after,
+    :host::before {
+      background: WindowText;
+      color: WindowText;
     }
   `),
 );

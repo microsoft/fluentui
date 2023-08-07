@@ -167,25 +167,22 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    /* high contrast styles */
-    @media (forced-colors: active) {
-      .progress {
-        background-color: HighlightText;
-      }
-      .determinate {
-        background-color: Highlight;
-      }
-      :host([validation-state='success']) .determinate,
-      :host([validation-state='warning']) .determinate,
-      :host([validation-state='error']) .determinate,
-      :host([validation-state='success']) ..indeterminate-indicator-1,
-      :host([validation-state='success']) ..indeterminate-indicator-2,
-      :host([validation-state='warning']) .indeterminate-indicator-1,
-      :host([validation-state='warning']) .indeterminate-indicator-2,
-      :host([validation-state='error']) .indeterminate-indicator-1,
-      :host([validation-state='error']) .indeterminate-indicator-2 {
-        background-color: Highlight;
-      }
+    .progress {
+      background-color: HighlightText;
+    }
+    .determinate {
+      background-color: Highlight;
+    }
+    :host([validation-state='success']) .determinate,
+    :host([validation-state='warning']) .determinate,
+    :host([validation-state='error']) .determinate,
+    :host([validation-state='success']) ..indeterminate-indicator-1,
+    :host([validation-state='success']) ..indeterminate-indicator-2,
+    :host([validation-state='warning']) .indeterminate-indicator-1,
+    :host([validation-state='warning']) .indeterminate-indicator-2,
+    :host([validation-state='error']) .indeterminate-indicator-1,
+    :host([validation-state='error']) .indeterminate-indicator-2 {
+      background-color: Highlight;
     }
   `),
 );
