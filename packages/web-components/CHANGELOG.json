@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 07 Aug 2023 04:17:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.26",
+      "version": "3.0.0-alpha.26",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c41d572219c127e1c042ce847b9e867c150b230c",
+            "comment": "dummy change to trigger CI"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "67cb8d06db5c7f17da4c6116729925705c0f7d3e",
+            "comment": "feat: Add support for scoped theming"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Jul 2023 04:14:52 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.25",
       "version": "3.0.0-alpha.25",

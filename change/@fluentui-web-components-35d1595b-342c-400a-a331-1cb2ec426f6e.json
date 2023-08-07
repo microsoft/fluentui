@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "dummy change to trigger CI",
-  "packageName": "@fluentui/web-components",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}
