@@ -310,7 +310,6 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    :host(:hover) .control,
     :host([appearance='transparent']:hover) .control {
       border-color: Highlight;
     }
