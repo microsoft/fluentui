@@ -39,6 +39,7 @@ const ActionableTreeItem = ({ children, ...rest }: TreeItemProps) => {
   const [layout, subtree] = React.Children.toArray(children);
   return (
     <TreeItem
+      aria-description="has context menu"
       onContextMenu={e => {
         if (e.isDefaultPrevented()) {
           return;
@@ -111,9 +112,9 @@ export const Actions = () => {
 Actions.parameters = {
   docs: {
     description: {
-      story: `In addition to \`aside\` content, both tree item layouts support \`actions\` prop that can be used for tasks such as edit, rename, or triggering a menu. These action buttons are initially hidden but are shown on hover or can be controlled by the \`visible\` property, ensuring they take priority over the \`aside\` content when needed.
+      story: `In addition to the \`aside\` content, both tree item layouts support \`actions\` prop that can be used for tasks such as edit, rename, or triggering a menu. These action buttons are initially hidden but are shown on hover or can be controlled by the \`visible\` property, ensuring they take priority over the \`aside\` content when needed.
 
-> ⚠️ Actions prop is \`aria-hidden\` by default. Always include a context menu to ensure that actions are accessible for all users.`,
+> ⚠️ The \`actions\` prop is \`aria-hidden\` by default. Always implement a context menu to ensure that these actions are accessible to all users. Additionally, include an \`aria-description\` or \`aria-describedby\` on tree items with actions or context menus to indicate interactions, such as "has context menu."`,
     },
   },
 };
