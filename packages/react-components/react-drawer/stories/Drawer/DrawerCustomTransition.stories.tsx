@@ -27,7 +27,7 @@ export const CustomTransition = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const { ref, motionState, visible } = useMotionPresence(isOpen);
+  const { ref, motionState, active } = useMotionPresence(isOpen);
 
   return (
     <div>
@@ -35,7 +35,7 @@ export const CustomTransition = () => {
         ref={ref}
         className={mergeClasses(
           styles.drawer,
-          visible && styles.drawerVisible,
+          active && styles.drawerVisible,
           motionState === 'exiting' && styles.drawerExiting,
         )}
         open={isOpen}

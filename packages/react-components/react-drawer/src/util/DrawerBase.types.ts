@@ -35,6 +35,4 @@ export type DrawerBaseProps = {
   defaultOpen?: boolean;
 };
 
-export type DrawerBaseState = Pick<UseMotionPresenceState<HTMLDivElement>, 'shouldRender' | 'visible'> & {
-  motionState: UseMotionPresenceState<HTMLDivElement>['state'];
-};
+export type DrawerBaseState = Required<Pick<UseMotionPresenceState<HTMLDivElement>, 'active' | 'motionState'>>;

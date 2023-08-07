@@ -20,10 +20,42 @@ export const useDrawerOverlay_unstable = (
   const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
-  const { ref: drawerRef, shouldRender, visible, motionState } = useMotionPresence<HTMLDivElement>(open);
-  const backdropPresence = useMotionPresence<HTMLDivElement>(open);
+  const { ref: drawerRef, active, motionState } = useMotionPresence<HTMLDivElement>(open);
 
+  const backdropPresence = useMotionPresence<HTMLDivElement>(open);
   const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
+
+  const root = slot.always<DialogSurfaceProps>(
+    getNativeElementProps('div', {
+      ...props,
+      ref: useMergedRefs(ref, drawerRef),
+    }),
+    {
+      elementType: DialogSurface,
+      defaultProps: {
+        backdrop: slot.optional(props.backdrop, {
+          elementType: 'div',
+          renderByDefault: hasCustomBackdrop,
+          defaultProps: {
+            ref: backdropPresence.ref,
+          },
+        }),
+      },
+    },
+  );
+
+  const dialog = slot.always<DialogProps>(
+    {
+      open: motionState !== 'unmounted',
+      defaultOpen,
+      onOpenChange,
+      inertTrapFocus,
+      modalType,
+    } as DialogProps,
+    {
+      elementType: 'div',
+    },
+  );
 
   return {
     components: {
@@ -31,37 +63,13 @@ export const useDrawerOverlay_unstable = (
       backdrop: 'div',
     },
 
-    root: slot.always<DialogSurfaceProps>(
-      getNativeElementProps('div', {
-        ...props,
-        ref: useMergedRefs(ref, drawerRef),
-      }),
-      {
-        elementType: DialogSurface,
-        defaultProps: {
-          backdrop: slot.optional(props.backdrop, {
-            elementType: 'div',
-            renderByDefault: hasCustomBackdrop,
-            defaultProps: {
-              ref: backdropPresence.ref,
-            },
-          }),
-        },
-      },
-    ),
-    dialog: {
-      open: shouldRender,
-      defaultOpen,
-      onOpenChange,
-      inertTrapFocus,
-      modalType,
-    } as DialogProps,
+    root,
 
+    dialog,
     size,
     position,
-    shouldRender,
     motionState,
-    visible,
-    backdropVisible: backdropPresence.visible,
+    active,
+    backdropActive: backdropPresence.active,
   };
 };
