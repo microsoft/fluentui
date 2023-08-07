@@ -27,14 +27,14 @@ export const useBreadcrumbLink_unstable = (
   return {
     components: { root: Link, icon: 'span' },
     root: slot.always(
-      getNativeElementProps('a', {
+      getNativeElementProps(as, {
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
         ref,
         type,
         disabled,
         ...rest,
         href,
-        as
+        as,
       }),
       { elementType: Link },
     ),
