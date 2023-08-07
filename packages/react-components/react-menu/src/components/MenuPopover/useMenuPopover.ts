@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
@@ -60,26 +60,24 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
   const mountNode = useMenuContext_unstable(context => context.mountNode);
 
-  const rootProps = getNativeElementProps('div', {
-    role: 'presentation',
-    ...restoreFocusSourceAttributes,
-    ...props,
-    ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
-  });
-
+  const rootProps = slot.always(
+    getNativeElementProps('div', {
+      role: 'presentation',
+      ...restoreFocusSourceAttributes,
+      ...props,
+      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
+    }),
+    { elementType: 'div' },
+  );
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
-
   rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(event, { open: true, keyboard: false, type: 'menuPopoverMouseEnter', event });
     }
-
     onMouseEnterOriginal?.(event);
   });
-
   rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
     const key = event.key;
-
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
       if (open && popoverRef.current?.contains(event.target as HTMLElement)) {
         setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
@@ -88,23 +86,13 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
         event.stopPropagation();
       }
     }
-
     if (key === Tab) {
       setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
       if (!isSubmenu) {
         triggerRef.current?.focus();
       }
     }
-
     onKeyDownOriginal?.(event);
   });
-
-  return {
-    inline,
-    mountNode,
-    components: {
-      root: 'div',
-    },
-    root: rootProps,
-  };
+  return { inline, mountNode, components: { root: 'div' }, root: rootProps };
 };

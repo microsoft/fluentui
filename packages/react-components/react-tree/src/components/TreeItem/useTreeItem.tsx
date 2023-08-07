@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
@@ -160,24 +159,27 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     },
     isAsideVisible,
     isActionsVisible,
-    root: getNativeElementProps(as, {
-      tabIndex: -1,
-      ...rest,
-      ref,
-      role: 'treeitem',
-      'aria-level': level,
-      [dataTreeItemValueAttrName]: value,
-      'aria-checked':
-        selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
-      'aria-selected': selectionMode === 'single' ? checked : undefined,
-      'aria-expanded': isBranch ? open : undefined,
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-      onMouseOver: handleActionsVisible,
-      onFocus: handleActionsVisible,
-      onMouseOut: handleActionsInvisible,
-      onBlur: handleActionsInvisible,
-      onChange: handleChange,
-    }),
+    root: slot.always(
+      getNativeElementProps(as, {
+        tabIndex: -1,
+        ...rest,
+        ref,
+        role: 'treeitem',
+        'aria-level': level,
+        [dataTreeItemValueAttrName]: value,
+        'aria-checked':
+          selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
+        'aria-selected': selectionMode === 'single' ? checked : undefined,
+        'aria-expanded': isBranch ? open : undefined,
+        onClick: handleClick,
+        onKeyDown: handleKeyDown,
+        onMouseOver: handleActionsVisible,
+        onFocus: handleActionsVisible,
+        onMouseOut: handleActionsInvisible,
+        onBlur: handleActionsInvisible,
+        onChange: handleChange,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }
