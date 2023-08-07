@@ -117,13 +117,5 @@ export const styles = css`
     :host(:hover) .control {
       border-color: Highlight;
     }
-    :host([aria-pressed='false']) .control,
-    :host([aria-pressed='false'][appearance='primary']) .control,
-    :host([aria-pressed='false'][appearance='subtle']) .control,
-    :host([aria-pressed='false'][appearance='outline']) .control,
-    :host([aria-pressed='false'][appearance='transparent']) .control,
-    :host([aria-pressed='false'][appearance='transparent']) .control {
-      border-color: ButtonBorder;
-    }
   `),
 );
