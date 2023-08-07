@@ -87,7 +87,7 @@ export const Secondary: ForwardRefComponent<SecondaryProps>;
 export const secondaryClassNames: SlotClassNames<SecondarySlots>;
 
 // @public
-export type SecondaryProps = ComponentProps<SecondarySlots> & {};
+export type SecondaryProps = ComponentProps<SecondarySlots>;
 
 // @public (undocumented)
 export type SecondarySlots = {

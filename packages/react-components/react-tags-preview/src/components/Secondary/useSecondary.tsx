@@ -43,17 +43,15 @@ export const useSecondary_unstable = (props: SecondaryProps, ref: React.Ref<HTML
     },
 
     root: slot.always(
-      {
-        ...getNativeElementProps('button', {
-          children: <DismissIcon />,
-          type: 'button',
-          disabled,
-          ...props,
-          ref,
-        }),
+      getNativeElementProps('button', {
+        children: <DismissIcon />,
+        type: 'button',
+        disabled,
+        ...props,
         onClick,
         onKeyDown,
-      },
+        ref,
+      }),
       { elementType: 'button' },
     ),
   };
