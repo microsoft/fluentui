@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Added mountNode to DatePicker compat",
+  "comment": "feat: Added mountNode to DatePicker compat.",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
