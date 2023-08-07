@@ -3,10 +3,15 @@ import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../testing/isConformant';
 import { AccordionItemProvider } from '../../contexts/accordionItem';
+import { mockAccordionItemContextValue } from '../../testing/mockContextValue';
 
 describe('AccordionPanel', () => {
   const Wrapper: React.FC = props => (
-    <AccordionItemProvider value={{ open: true, disabled: false, value: undefined }}>
+    <AccordionItemProvider
+      value={mockAccordionItemContextValue({
+        open: true,
+      })}
+    >
       {props.children}
     </AccordionItemProvider>
   );
