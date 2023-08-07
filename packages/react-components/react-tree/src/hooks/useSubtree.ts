@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TreeProps, TreeState } from '../Tree';
 import { useTreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render a sub-level tree.
@@ -34,11 +34,14 @@ export function useSubtree(props: Pick<TreeProps, 'appearance' | 'size'>, ref: R
     size,
     selectionMode,
     level: parentLevel + 1,
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, subtreeRef),
-      role: 'group',
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, subtreeRef),
+        role: 'group',
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     openItems,
     checkedItems,
     requestTreeResponse,

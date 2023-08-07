@@ -5,8 +5,8 @@ import { createElement } from '@fluentui/react-jsx-runtime';
 
 import { getSlotsNext } from '@fluentui/react-utilities';
 
-import { AccordionContext } from './AccordionContext';
 import type { AccordionState, AccordionSlots, AccordionContextValues } from './Accordion.types';
+import { AccordionProvider } from '../../contexts/accordion';
 
 /**
  * Function that renders the final JSX of the component
@@ -16,7 +16,7 @@ export const renderAccordion_unstable = (state: AccordionState, contextValues: A
 
   return (
     <slots.root {...slotProps.root}>
-      <AccordionContext.Provider value={contextValues.accordion}>{slotProps.root.children}</AccordionContext.Provider>
+      <AccordionProvider value={contextValues.accordion}>{slotProps.root.children}</AccordionProvider>
     </slots.root>
   );
 };

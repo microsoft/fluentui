@@ -15,7 +15,7 @@ export type TreeItemContextValue = {
   itemType: TreeItemType;
   value: TreeItemValue;
   open: boolean;
-  checked?: TreeSelectionValue;
+  checked: TreeSelectionValue;
 };
 
 const defaultContextValue: TreeItemContextValue = {
@@ -29,7 +29,7 @@ const defaultContextValue: TreeItemContextValue = {
   isAsideVisible: false,
   itemType: 'leaf',
   open: false,
-  checked: undefined,
+  checked: false,
 };
 
 export const TreeItemContext: Context<TreeItemContextValue | undefined> = createContext<
