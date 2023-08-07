@@ -42,16 +42,35 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   const timeoutId = React.useRef<number | undefined>(undefined);
   useIFrameFocus(options);
 
+  const mouseDownEventRef = React.useRef<MouseEvent | null>();
+
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const contains: UseOnClickOrScrollOutsideOptions['contains'] =
       containsProp || ((parent, child) => !!parent?.contains(child));
 
     const target = ev.composedPath()[0] as HTMLElement;
-    const isOutside = refs.every(ref => !contains(ref.current || null, target));
+
+    const isOutside = refs.every(ref => {
+      if (mouseDownEventRef.current) {
+        // Selecting text from inside to outside will rigger click event.
+        // In this case click event target is outside but mouse down event target is inside.
+        // And this click event should be considered as inside click.
+        return (
+          !contains(ref.current || null, target) &&
+          !contains(ref.current || null, mouseDownEventRef.current.target as HTMLElement)
+        );
+      }
+      return !contains(ref.current || null, target);
+    });
+    mouseDownEventRef.current = null;
 
     if (isOutside && !disabled) {
       callback(ev);
     }
+  });
+
+  const handleMouseDown = useEventCallback((ev: MouseEvent) => {
+    mouseDownEventRef.current = ev;
   });
 
   React.useEffect(() => {
@@ -75,9 +94,10 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     };
 
     // use capture phase because React can update DOM before the event bubbles to the document
-    element?.addEventListener('click', conditionalHandler, true);
     element?.addEventListener('touchstart', conditionalHandler, true);
     element?.addEventListener('contextmenu', conditionalHandler, true);
+    element?.addEventListener('mousedown', handleMouseDown, true);
+    element?.addEventListener('mouseup', conditionalHandler, true);
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
     timeoutId.current = window.setTimeout(() => {
@@ -85,14 +105,15 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     }, 1);
 
     return () => {
-      element?.removeEventListener('click', conditionalHandler, true);
       element?.removeEventListener('touchstart', conditionalHandler, true);
       element?.removeEventListener('contextmenu', conditionalHandler, true);
+      element?.removeEventListener('mousedown', handleMouseDown, true);
+      element?.removeEventListener('mouseup', conditionalHandler, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
     };
-  }, [listener, element, disabled]);
+  }, [listener, element, disabled, handleMouseDown]);
 };
 
 const getWindowEvent = (target: Node | Window): Event | undefined => {
