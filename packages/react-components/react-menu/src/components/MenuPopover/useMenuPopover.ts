@@ -80,7 +80,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     const key = event.key;
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
       if (open && popoverRef.current?.contains(event.target as HTMLElement)) {
-        setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event }); // stop propagation to avoid conflicting with other elements that listen for `Escape`
+        setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
+        // stop propagation to avoid conflicting with other elements that listen for `Escape`
         // e,g: Dialog, Popover and Tooltip
         event.stopPropagation();
       }
