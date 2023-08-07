@@ -113,9 +113,9 @@ export const styles = css`
     :host([aria-pressed='true'][appearance='subtle']) .control,
     :host([aria-pressed='true'][appearance='outline']) .control,
     :host([aria-pressed='true'][appearance='transparent']) .control,
-    :host([aria-pressed='true'][appearance='transparent']) .control,
-    :host(:hover) .control {
-      border-color: Highlight;
+    :host([aria-pressed='true'][appearance='transparent']) .control {
+      background: SelectedItem;
+      color: SelectedItemText;
     }
   `),
 );
