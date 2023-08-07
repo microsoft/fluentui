@@ -17,6 +17,7 @@ import {
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
+  strokeWidthThicker,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
@@ -55,6 +56,11 @@ export const styles = css`
     height: 0;
     line-height: ${lineHeightBase300};
     font-weight: ${fontWeightSemibold};
+  }
+
+  :host::before,
+  :host::after {
+    height: ${strokeWidthThicker};
   }
 
   :host([aria-selected='true'])::after {
