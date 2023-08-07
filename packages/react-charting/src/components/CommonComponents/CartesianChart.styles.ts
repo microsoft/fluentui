@@ -1,6 +1,6 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { isIE11 } from '@fluentui/react';
+import { FontSizes, FontWeights, HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { NeutralColors, isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
 
@@ -23,11 +23,11 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     },
     tooltipTitle: {
       textAlign: 'center',
-      fontSize: '10px',
-      fontWeight: '600',
+      fontSize: FontSizes.xSmall,
+      fontWeight: FontWeights.semibold,
       fontStyle: 'normal',
-      lineHeight: '14px',
-      color: 'var(--neutrals-web-gray-160323130, #323130)',
+      lineHeight: FontSizes.medium,
+      color: NeutralColors.gray160,
       fill: theme.semanticColors.bodyText,
     },
     xAxis: {
