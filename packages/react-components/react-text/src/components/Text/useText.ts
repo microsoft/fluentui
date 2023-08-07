@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { TextProps, TextState } from './Text.types';
 
 /**
@@ -29,11 +29,14 @@ export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>):
 
     components: { root: 'span' },
 
-    root: getNativeElementProps(as, {
-      ref,
-      ...props,
-      as,
-    }),
+    root: slot.always(
+      getNativeElementProps(as, {
+        ref,
+        ...props,
+        as,
+      }),
+      { elementType: 'span' },
+    ),
   };
 
   return state;
