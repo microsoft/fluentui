@@ -219,7 +219,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
  * State used in rendering DatePicker.
  */
 export type DatePickerState = ComponentState<DatePickerSlots> &
-  Pick<PortalProps, 'mountNode'> & {
+  Pick<PortalState, 'mountNode'> & {
     disabled: boolean;
     inlinePopup: boolean;
   };
