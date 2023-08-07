@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
@@ -58,15 +58,15 @@ export const useInteractionTag_unstable = (
     }
   });
 
-  const dismissButtonShorthand = resolveShorthand(props.dismissButton, {
-    required: dismissible,
+  const dismissButtonShorthand = slot.optional(props.dismissButton, {
+    renderByDefault: dismissible,
     defaultProps: {
       disabled,
       type: 'button',
       children: <DismissIcon />,
     },
+    elementType: 'button',
   });
-
   return {
     appearance,
     avatarShape: interactionTagAvatarShapeMap[shape],
@@ -75,7 +75,6 @@ export const useInteractionTag_unstable = (
     dismissible,
     shape,
     size,
-
     components: {
       root: 'div',
       content: 'button',
@@ -86,28 +85,34 @@ export const useInteractionTag_unstable = (
       dismissButton: 'button',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      id,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+        id,
+      }),
+      { elementType: 'div' },
+    ),
 
-    content: resolveShorthand(props.content, {
-      required: true,
+    content: slot.always(props.content, {
       defaultProps: {
         disabled,
         type: 'button',
       },
+      elementType: 'button',
     }),
-    media: resolveShorthand(props.media),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, { required: true }),
-    secondaryText: resolveShorthand(props.secondaryText),
+    media: slot.optional(props.media, { elementType: 'span' }),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
+    primaryText: slot.optional(props.primaryText, { renderByDefault: true, elementType: 'span' }),
+    secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
 
-    dismissButton: {
-      ...dismissButtonShorthand,
-      onClick: onDismissButtonClick,
-      onKeyDown: onDismissButtonKeyDown,
-    },
+    dismissButton: slot.always(
+      {
+        ...dismissButtonShorthand,
+        onClick: onDismissButtonClick,
+        onKeyDown: onDismissButtonKeyDown,
+      },
+      { elementType: 'button' },
+    ),
   };
 };

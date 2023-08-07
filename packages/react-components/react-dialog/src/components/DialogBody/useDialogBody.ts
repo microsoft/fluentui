@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { DialogBodyProps, DialogBodyState } from './DialogBody.types';
 
 /**
@@ -16,9 +16,12 @@ export const useDialogBody_unstable = (props: DialogBodyProps, ref: React.Ref<HT
     components: {
       root: 'div',
     },
-    root: getNativeElementProps(props.as ?? 'div', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps(props.as ?? 'div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

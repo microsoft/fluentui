@@ -3,7 +3,7 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { InteractionTagState, InteractionTagSlots, InteractionTagContextValues } from './InteractionTag.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 
@@ -14,25 +14,26 @@ export const renderInteractionTag_unstable = (
   state: InteractionTagState,
   contextValues: InteractionTagContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<InteractionTagSlots>(state);
+  assertSlots<InteractionTagSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.media && (
+    <state.root>
+      {state.content && (
+        <state.content>
+          {state.media && (
             <AvatarContextProvider value={contextValues.avatar}>
-              <slots.media {...slotProps.media} />
+              <state.media />
             </AvatarContextProvider>
           )}
-          {slots.icon && <slots.icon {...slotProps.icon} />}
-          {slots.primaryText && (
-            <slots.primaryText {...slotProps.primaryText}>{slotProps.root.children}</slots.primaryText>
-          )}
-          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
-        </slots.content>
+
+          {state.icon && <state.icon />}
+          {state.primaryText && <state.primaryText>{state.root.children}</state.primaryText>}
+
+          {state.secondaryText && <state.secondaryText />}
+        </state.content>
       )}
-      {slots.dismissButton && state.dismissible && <slots.dismissButton {...slotProps.dismissButton} />}
-    </slots.root>
+
+      {state.dismissButton && state.dismissible && <state.dismissButton />}
+    </state.root>
   );
 };
