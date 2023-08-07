@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 
 export type SecondarySlots = {
-  root: Slot<'button'>;
+  root: NonNullable<Slot<'button'>>;
 };
 
 /**
