@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TableResizeHandleProps, TableResizeHandleState } from './TableResizeHandle.types';
 
 /**
@@ -23,10 +23,13 @@ export const useTableResizeHandle_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      onClick,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+        onClick,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

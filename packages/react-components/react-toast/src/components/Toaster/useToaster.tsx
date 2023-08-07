@@ -3,9 +3,9 @@ import {
   ExtractSlotProps,
   Slot,
   getNativeElementProps,
-  resolveShorthand,
   useEventCallback,
   useMergedRefs,
+  slot,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -30,25 +30,22 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
-  const rootProps = getNativeElementProps('div', rest);
+  const rootProps = slot.always(getNativeElementProps('div', rest), { elementType: 'div' });
   const focusableGroupAttr = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
     ignoreDefaultKeydown: { Escape: true },
   });
-
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === Escape) {
       e.preventDefault();
       closeAllToasts();
     }
-
     props.onKeyDown?.(e);
   });
-
   const usePositionSlot = (toastPosition: ToastPosition) => {
     const focusManagementRef = useToasterFocusManagement_unstable(pauseAllToasts, playAllToasts);
     const { announceToast, toasterRef } = useToastAnnounce(announceProp ?? announce);
-    return resolveShorthand(toastsToRender.has(toastPosition) ? rootProps : null, {
+    return slot.optional(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
         ref: useMergedRefs(focusManagementRef, toasterRef),
         children: toastsToRender.get(toastPosition)?.map(toast => (
@@ -69,19 +66,13 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
         role: 'list',
         // Explicitly casting because our slot types can't handle data attributes
       } as ExtractSlotProps<Slot<'div'>>,
+      elementType: 'div',
     });
   };
-
   return {
     dir,
-    components: {
-      root: 'div',
-      bottomStart: 'div',
-      bottomEnd: 'div',
-      topStart: 'div',
-      topEnd: 'div',
-    },
-    root: resolveShorthand(rootProps, { required: true }),
+    components: { root: 'div', bottomStart: 'div', bottomEnd: 'div', topStart: 'div', topEnd: 'div' },
+    root: slot.always(rootProps, { elementType: 'div' }),
     bottomStart: usePositionSlot(TOAST_POSITIONS.bottomStart),
     bottomEnd: usePositionSlot(TOAST_POSITIONS.bottomEnd),
     topStart: usePositionSlot(TOAST_POSITIONS.topStart),
