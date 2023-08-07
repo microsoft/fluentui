@@ -152,7 +152,7 @@ export function secondaryPanelTemplate<T extends Calendar>(options: CalendarOpti
  * @public
  */
 export const template: ElementViewTemplate<Calendar> = html`
-  <div class="control" @keydown=${(x, c) => x.handleDateGridKeydown(c.event as KeyboardEvent)}>
+  <div class="control" @keydown=${(x, c) => x.handleControlKeydown(c.event as KeyboardEvent)}>
     <div class="date-view">
       <div class="header">
         ${calendarTitleTemplate()}
