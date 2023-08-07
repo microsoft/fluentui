@@ -11,6 +11,7 @@ import {
   colorNeutralBackground4,
   colorNeutralBackground5,
   colorNeutralForeground1,
+  colorNeutralForeground1Static,
   colorNeutralForeground3,
   colorNeutralForegroundInverted,
   colorNeutralForegroundOnBrand,
@@ -188,7 +189,7 @@ export const badgeFilledStyles = css.partial`
 
   :host([color='warning']) {
     background-color: ${colorPaletteYellowBackground3};
-    color: ${colorNeutralForeground1};
+    color: ${colorNeutralForeground1Static};
   }
 `;
 
@@ -198,7 +199,7 @@ export const badgeFilledStyles = css.partial`
  */
 export const badgeGhostStyles = css.partial`
   :host([appearance='ghost']) {
-    color: ${colorBrandBackground};
+    color: ${colorBrandForeground1};
     background-color: initial;
   }
 
