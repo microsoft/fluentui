@@ -8,7 +8,7 @@ export type SecondarySlots = {
 /**
  * Secondary Props
  */
-export type SecondaryProps = ComponentProps<SecondarySlots> & {};
+export type SecondaryProps = ComponentProps<SecondarySlots>;
 
 /**
  * State used in rendering Secondary
