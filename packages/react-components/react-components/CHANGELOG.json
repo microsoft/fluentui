@@ -2,6 +2,117 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 04 Aug 2023 08:52:55 GMT",
+      "tag": "@fluentui/react-components_v9.27.4",
+      "version": "9.27.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "192666b54cb365f4c958f46c3e097b597ebd94fc",
+            "comment": "feat: make AccordionItemValue generic"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "ede28fe6d1d1ce394c6f019bd424ec8b14ca9d12",
+            "comment": "feat: Added an icon for BreadcrumbItem"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "495a08579f2d16f082f2b18c299f1a647906b236",
+            "comment": "feat: Adds ignoreDefaultKeydown for useFocusableGroup"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "495a08579f2d16f082f2b18c299f1a647906b236",
+            "comment": "feat: Add extra keyboard behaviour for multi toast scenario"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026",
+            "comment": "feat: implement new slot methods (slot and assertSlots)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "d445789f33a50255a6a51548d7282a482bc78a0b",
+            "comment": "fix: made BreadcrumbButton consistent with other items"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "44b128284cf90386b75dfba7336e4950428820bf",
+            "comment": "bugfix: disable menu opening if contextmenu event is prevented"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026",
+            "comment": "chore: update createElement to support new slot methods"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "141424a604b98ea762cfa375fe78df8c9e6bdec8",
+            "comment": "feat(tokens): add status color tokens"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8f41df31be3a4bc203c496eb1183884d30e12031",
+            "comment": "bugfix: renames content slot to main"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "a5aa130c959a79a9c4cffcffdb9253e8d1ce4d0a",
+            "comment": "feat: converts actions to be a toolbar"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "141424a604b98ea762cfa375fe78df8c9e6bdec8",
+            "comment": "feat: add status color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4b802ba3745dde01c68224329c1414f077faa1db",
+            "comment": "chore: adds bundle size metrics"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Aug 2023 13:04:24 GMT",
       "tag": "@fluentui/react-components_v9.27.3",
       "version": "9.27.3",

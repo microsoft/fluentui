@@ -2,6 +2,50 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 04 Aug 2023 07:35:28 GMT",
+      "tag": "@fluentui/react-charting_v5.16.58",
+      "version": "5.16.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.105",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.110.12",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Aug 2023 07:34:48 GMT",
+      "tag": "@fluentui/react-charting_v5.16.57",
+      "version": "5.16.57",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ac8385d586881c06a91811791190b393eefd837c",
+            "comment": "Fixing re-render issue for all charts when empty"
+          }
+        ],
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "88bd423b47995eca9a23a8438405d55626be9ebf",
+            "comment": "Added component tests for Stacked bar chart "
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Jul 2023 07:34:57 GMT",
       "tag": "@fluentui/react-charting_v5.16.56",
       "version": "5.16.56",

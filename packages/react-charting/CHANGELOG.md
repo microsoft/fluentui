@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 28 Jul 2023 07:34:57 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Aug 2023 07:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.58)
+
+Fri, 04 Aug 2023 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.57..@fluentui/react-charting_v5.16.58)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.105 ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by beachball)
+- Bump @fluentui/react to v8.110.12 ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by beachball)
+
+## [5.16.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.57)
+
+Wed, 02 Aug 2023 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.56..@fluentui/react-charting_v5.16.57)
+
+### Patches
+
+- Fixing re-render issue for all charts when empty ([PR #28321](https://github.com/microsoft/fluentui/pull/28321) by srmukher@microsoft.com)
 
 ## [5.16.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.56)
 

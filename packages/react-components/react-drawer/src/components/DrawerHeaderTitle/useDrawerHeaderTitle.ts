@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 
@@ -25,19 +25,24 @@ export const useDrawerHeaderTitle_unstable = (
       action: titleComponents.action,
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    heading: resolveShorthand(props.heading, {
-      required: true,
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    heading: slot.optional(props.heading, {
+      renderByDefault: true,
       defaultProps: {
         ...heading,
         className: undefined, // remove className from heading
       },
+      elementType: titleComponents.root,
     }),
-    action: resolveShorthand(props.action, {
+    action: slot.optional(props.action, {
       defaultProps: action,
+      elementType: titleComponents.action,
     }),
   };
 };
