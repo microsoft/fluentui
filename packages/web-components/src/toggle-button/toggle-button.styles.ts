@@ -123,7 +123,7 @@ export const styles = css`
     :host([aria-pressed='false'][appearance='outline']) .control,
     :host([aria-pressed='false'][appearance='transparent']) .control,
     :host([aria-pressed='false'][appearance='transparent']) .control {
-      border-color: InactiveBorder;
+      border-color: ButtonBorder;
     }
   `),
 );
