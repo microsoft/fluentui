@@ -10,9 +10,15 @@ import {
   isTruncatableBreadcrumbContent,
 } from '@fluentui/react-breadcrumb-preview';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb-preview';
-import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
+import {
+  MoreHorizontalRegular,
+  MoreHorizontalFilled,
+  bundleIcon,
+  CalendarMonth20Filled,
+  CalendarMonth20Regular,
+} from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-components';
-
+const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
 type Item = {
@@ -84,6 +90,16 @@ export const Default = () => {
           </BreadcrumbItem>
         )}
         {endDisplayedItems && endDisplayedItems.map(item => renderItem(item))}
+      </Breadcrumb>
+      <h2>BreadcrumbItem with icon</h2>
+      <Breadcrumb aria-label="breadcrumb-item-icon-example">
+        <BreadcrumbItem icon={<CalendarMonth />}>Item with an icon</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem icon={<CalendarMonth />} />
+        <BreadcrumbDivider />
+        <BreadcrumbItem icon={<CalendarMonth />} iconPosition="after">
+          Item with an icon
+        </BreadcrumbItem>
       </Breadcrumb>
     </>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
@@ -28,9 +28,10 @@ export const useMenuItemRadio_unstable = (
         ...props,
         role: 'menuitemradio',
         'aria-checked': checked,
-        checkmark: resolveShorthand(props.checkmark, {
+        checkmark: slot.optional(props.checkmark, {
           defaultProps: { children: <Checkmark16Filled /> },
-          required: true,
+          renderByDefault: true,
+          elementType: 'span',
         }),
         onClick: (e: React.MouseEvent<ARIAButtonElementIntersection<'div'>>) => {
           selectRadio?.(e, name, value, checked);

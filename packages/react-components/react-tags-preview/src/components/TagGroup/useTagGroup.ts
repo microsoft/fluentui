@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -58,11 +58,14 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'toolbar',
-      ...arrowNavigationProps,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'toolbar',
+        ...arrowNavigationProps,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

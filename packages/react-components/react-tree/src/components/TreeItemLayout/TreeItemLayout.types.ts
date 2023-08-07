@@ -8,7 +8,7 @@ export type TreeItemLayoutSlots = {
   /**
    * Content. Children of the root slot are automatically rendered here
    */
-  content: NonNullable<Slot<'div'>>;
+  main: NonNullable<Slot<'div'>>;
   /**
    * Icon slot that renders right before main content
    */
