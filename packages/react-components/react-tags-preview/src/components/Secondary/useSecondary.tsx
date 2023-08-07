@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
 import type { SecondaryProps, SecondaryState } from './Secondary.types';
@@ -41,16 +41,20 @@ export const useSecondary_unstable = (props: SecondaryProps, ref: React.Ref<HTML
     components: {
       root: 'button',
     },
-    root: {
-      ...getNativeElementProps('button', {
-        children: <DismissIcon />,
-        type: 'button',
-        disabled,
-        ...props,
-        ref,
-      }),
-      onClick,
-      onKeyDown,
-    },
+
+    root: slot.always(
+      {
+        ...getNativeElementProps('button', {
+          children: <DismissIcon />,
+          type: 'button',
+          disabled,
+          ...props,
+          ref,
+        }),
+        onClick,
+        onKeyDown,
+      },
+      { elementType: 'button' },
+    ),
   };
 };

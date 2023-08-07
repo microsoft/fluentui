@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { PrimaryProps, PrimaryState } from './Primary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
@@ -43,15 +43,24 @@ export const usePrimary_unstable = (props: PrimaryProps, ref: React.Ref<HTMLElem
       secondaryText: 'span',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      disabled,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('button', {
+        ref,
+        disabled,
+        ...props,
+      }),
+      { elementType: 'button' },
+    ),
 
-    media: resolveShorthand(props.media),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, { required: true }),
-    secondaryText: resolveShorthand(props.secondaryText),
+    media: slot.optional(props.media, { elementType: 'span' }),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
+    primaryText: slot.optional(props.primaryText, {
+      renderByDefault: true,
+      defaultProps: {
+        children: props.children,
+      },
+      elementType: 'span',
+    }),
+    secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
   };
 };
