@@ -2,7 +2,12 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { drawerCSSVars, getDrawerBaseClassNames, useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
+import {
+  drawerCSSVars,
+  getDrawerBaseClassNames,
+  useDrawerBaseStyles,
+  useDrawerDurationStyles,
+} from '../../util/useDrawerBaseStyles.styles';
 import { tokens } from '@fluentui/react-theme';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
@@ -12,7 +17,7 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const useDrawerRootStyles = makeStyles({
   root: {
     position: 'relative',
     transform: 'translateZ(0)',
@@ -42,7 +47,8 @@ const useStyles = makeStyles({
  */
 export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): DrawerInlineState => {
   const baseStyles = useDrawerBaseStyles();
-  const styles = useStyles();
+  const durationStyles = useDrawerDurationStyles();
+  const styles = useDrawerRootStyles();
 
   const separatorClass = React.useCallback(() => {
     if (!state.separator) {
@@ -52,13 +58,22 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     return state.position === 'left' ? styles.separatorLeft : styles.separatorRight;
   }, [state.position, state.separator, styles.separatorRight, styles.separatorLeft]);
 
+  const hiddenClass = React.useCallback(() => {
+    if (state.visible) {
+      return undefined;
+    }
+
+    return state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight;
+  }, [state.position, state.visible, styles.hiddenLeft, styles.hiddenRight]);
+
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
     baseStyles.root,
     styles.root,
     getDrawerBaseClassNames(state, baseStyles),
-    !state.visible && (state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight),
+    hiddenClass(),
     separatorClass(),
+    state.size && durationStyles[state.size],
     state.root.className,
   );
 

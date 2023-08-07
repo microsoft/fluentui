@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bugfix: renames content slot to main",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

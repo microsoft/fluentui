@@ -4,6 +4,7 @@ import {
   useControllableState,
   useMergedRefs,
   useMotionPresence,
+  slot,
 } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
@@ -37,10 +38,13 @@ export const useDrawerInline_unstable = (
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, drawerRef),
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, drawerRef),
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
 
     size,
     position,

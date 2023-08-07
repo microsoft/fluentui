@@ -1,16 +1,19 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { DrawerInlineState, DrawerInlineSlots } from './DrawerInline.types';
 
 /**
  * Render the final JSX of DrawerInline
  */
 export const renderDrawerInline_unstable = (state: DrawerInlineState) => {
-  const { slots, slotProps } = getSlots<DrawerInlineSlots>(state);
+  assertSlots<DrawerInlineSlots>(state);
 
   if (!state.shouldRender) {
     return null;
   }
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

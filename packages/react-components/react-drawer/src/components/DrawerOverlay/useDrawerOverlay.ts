@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useMergedRefs, useMotionPresence } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, useMotionPresence, slot } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
@@ -22,7 +22,6 @@ export const useDrawerOverlay_unstable = (
 
   const { ref: drawerRef, shouldRender, visible, motionState } = useMotionPresence<HTMLDivElement>(open);
   const backdropPresence = useMotionPresence<HTMLDivElement>(open);
-  const backdropRef = useMergedRefs(backdropPresence.ref, drawerRef);
 
   const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
 
@@ -32,23 +31,24 @@ export const useDrawerOverlay_unstable = (
       backdrop: 'div',
     },
 
-    root: resolveShorthand(getNativeElementProps('div', {}), {
-      required: true,
-      defaultProps: {
+    root: slot.always<DialogSurfaceProps>(
+      getNativeElementProps('div', {
         ...props,
         ref: useMergedRefs(ref, drawerRef),
-        ...(hasCustomBackdrop && {
-          backdrop: {
-            ...resolveShorthand(props.backdrop, {
-              required: true,
-              defaultProps: {
-                ref: backdropRef,
-              },
-            }),
-          },
-        }),
-      } as DialogSurfaceProps,
-    }),
+      }),
+      {
+        elementType: DialogSurface,
+        defaultProps: {
+          backdrop: slot.optional(props.backdrop, {
+            elementType: 'div',
+            renderByDefault: hasCustomBackdrop,
+            defaultProps: {
+              ref: backdropPresence.ref,
+            },
+          }),
+        },
+      },
+    ),
     dialog: {
       open: shouldRender,
       defaultOpen,

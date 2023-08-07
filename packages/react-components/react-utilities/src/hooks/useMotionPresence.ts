@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { canUseDOM } from '../ssr/canUseDOM';
+import { useAnimationFrame } from './useAnimationFrame';
 import { useTimeout } from './useTimeout';
 
 /**
@@ -32,14 +34,16 @@ type HTMLElementWithStyledMap<TElement extends HTMLElement = HTMLElement> = TEle
   computedStyleMap(): StylePropertyMapReadOnly;
 };
 
-interface CSSWithNumber {
+type CSSWithNumber = typeof CSS & {
   number(value: number): {
     value: number;
     readonly unit: string;
   };
-}
+};
 
 /**
+ * @internal
+ *
  * State for useMotionPresence hook.
  */
 export type UseMotionPresenceState<TElement extends HTMLElement> = {
@@ -71,6 +75,8 @@ export type UseMotionPresenceState<TElement extends HTMLElement> = {
 };
 
 /**
+ * @internal
+ *
  * Options for useMotionPresence hook.
  */
 export type UseMotionPresenceOptions = {
@@ -83,14 +89,22 @@ export type UseMotionPresenceOptions = {
 };
 
 /**
+ * @internal
+ *
  * Returns CSS styles of the given node.
  * @param node - DOM node.
  * @returns - CSS styles.
  */
 const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
-  const window = node.ownerDocument?.defaultView;
+  const window = node.ownerDocument.defaultView;
 
-  return window!.getComputedStyle(node, null);
+  if (!window || !canUseDOM()) {
+    return {
+      getPropertyValue: (_: string) => '',
+    } as CSSStyleDeclaration;
+  }
+
+  return window.getComputedStyle(node, null);
 };
 
 /**
@@ -126,7 +140,7 @@ const hasCSSOMSupport = (node: HTMLElementWithStyledMap) => {
    * The typecast here is to allow the use of the `number` function that is not yet part of the CSSOM typings.
    * @see https://www.npmjs.com/package/@types/w3c-css-typed-object-model-level-1
    */
-  return Boolean(typeof CSS !== 'undefined' && (CSS as unknown as CSSWithNumber).number && node.computedStyleMap);
+  return Boolean(typeof CSS !== 'undefined' && (CSS as CSSWithNumber).number && node.computedStyleMap);
 };
 
 /**
@@ -182,19 +196,19 @@ const getComputedStyleProp = (computedStyle: CSSStyleDeclaration, prop: string):
  * @returns Maximum duration
  */
 const getMaxCSSDuration = (durations: string[], delays: string[]): number => {
-  const totalDurations: number[] = [];
+  const totalProps = Math.max(durations.length, delays.length);
+  const totalDurations = [];
 
-  durations.forEach(duration => totalDurations.push(toMs(duration.trim())));
+  if (totalProps === 0) {
+    return 0;
+  }
 
-  delays.forEach((delay, index) => {
-    const parsedDelay = toMs(delay.trim());
+  for (let i = 0; i < totalProps; i++) {
+    const duration = toMs(durations[i] || '0');
+    const delay = toMs(delays[i] || '0');
 
-    if (totalDurations[index]) {
-      totalDurations[index] = totalDurations[index] + parsedDelay;
-    } else {
-      totalDurations[index] = parsedDelay;
-    }
-  });
+    totalDurations.push(duration + delay);
+  }
 
   return Math.max(...totalDurations);
 };
@@ -241,6 +255,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<TElement> | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setProcessingAnimationFrame, cancelProcessingAnimationFrame] = useAnimationFrame();
   const skipAnimationOnFirstRender = React.useRef(!animateOnFirstMount);
 
   const processAnimation = React.useCallback(
@@ -293,15 +308,10 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   }, [present]);
 
   React.useEffect(() => {
-    if (!currentElement) {
-      return;
-    }
-
-    let animationFrame: number;
     const skipAnimation = skipAnimationOnFirstRender.current;
-    const onDestroy = () => cancelAnimationFrame(animationFrame);
+    const onUnmount = () => cancelProcessingAnimationFrame();
 
-    animationFrame = requestAnimationFrame(() => {
+    setProcessingAnimationFrame(() => {
       setState(prevState => {
         let motionState = prevState.motionState;
 
@@ -320,7 +330,7 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     });
 
     if (skipAnimation) {
-      return onDestroy;
+      return onUnmount;
     }
 
     processAnimation(() => {
@@ -331,8 +341,8 @@ export const useMotionPresence = <TElement extends HTMLElement>(
       }));
     });
 
-    return onDestroy;
-  }, [currentElement, present, processAnimation]);
+    return onUnmount;
+  }, [cancelProcessingAnimationFrame, present, processAnimation, setProcessingAnimationFrame]);
 
   React.useEffect(() => {
     skipAnimationOnFirstRender.current = false;

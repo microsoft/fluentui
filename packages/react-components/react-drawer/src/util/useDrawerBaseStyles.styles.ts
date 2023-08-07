@@ -28,7 +28,6 @@ export const useDrawerBaseStyles = makeStyles({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
-    transitionDuration: tokens.durationNormal,
   },
 
   /* Reduced motion */
@@ -62,14 +61,26 @@ export const useDrawerBaseStyles = makeStyles({
   },
   medium: {
     [drawerCSSVars.drawerSizeVar]: '592px',
-    transitionDuration: tokens.durationSlow,
   },
   large: {
     [drawerCSSVars.drawerSizeVar]: '940px',
-    transitionDuration: tokens.durationSlower,
   },
   full: {
     [drawerCSSVars.drawerSizeVar]: '100vw',
+  },
+});
+
+export const useDrawerDurationStyles = makeStyles({
+  small: {
+    transitionDuration: tokens.durationNormal,
+  },
+  medium: {
+    transitionDuration: tokens.durationSlow,
+  },
+  large: {
+    transitionDuration: tokens.durationSlower,
+  },
+  full: {
     transitionDuration: tokens.durationUltraSlow,
   },
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { ToastFooterProps, ToastFooterState } from './ToastFooter.types';
 
 /**
@@ -16,9 +16,12 @@ export const useToastFooter_unstable = (props: ToastFooterProps, ref: React.Ref<
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

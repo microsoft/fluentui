@@ -4,7 +4,12 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
-import { getDrawerBaseClassNames, useDrawerBaseStyles, drawerCSSVars } from '../../util/useDrawerBaseStyles.styles';
+import {
+  getDrawerBaseClassNames,
+  useDrawerBaseStyles,
+  drawerCSSVars,
+  useDrawerDurationStyles,
+} from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
@@ -53,20 +58,6 @@ const useBackdropStyles = makeStyles({
   backdropVisible: {
     opacity: 1,
   },
-
-  // Transition duration based on size
-  small: {
-    transitionDuration: tokens.durationNormal,
-  },
-  medium: {
-    transitionDuration: tokens.durationSlow,
-  },
-  large: {
-    transitionDuration: tokens.durationSlower,
-  },
-  full: {
-    transitionDuration: tokens.durationUltraSlow,
-  },
 });
 
 /**
@@ -74,6 +65,7 @@ const useBackdropStyles = makeStyles({
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
   const baseStyles = useDrawerBaseStyles();
+  const durationStyles = useDrawerDurationStyles();
   const rootStyles = useDrawerRootStyles();
   const backdropStyles = useBackdropStyles();
 
@@ -85,6 +77,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     rootStyles.root,
     getDrawerBaseClassNames(state, baseStyles),
     state.position && rootStyles[state.position],
+    state.size && durationStyles[state.size],
     state.visible && rootStyles.visible,
     state.root.className,
   );
@@ -94,7 +87,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
       drawerOverlayClassNames.backdrop,
       backdropStyles.backdrop,
       state.backdropVisible && backdropStyles.backdropVisible,
-      state.size && backdropStyles[state.size],
+      state.size && durationStyles[state.size],
       backdrop.className,
     );
   }
