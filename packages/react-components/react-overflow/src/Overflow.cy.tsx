@@ -55,7 +55,7 @@ const setContainerSize = (size: number) => {
     .wait(1);
 };
 
-const Item: React.FC<{ children?: React.ReactNode; width?: number } & Omit<OverflowItemProps, 'children'>> = ({
+const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
   children,
   width,
   ...overflowItemProps
@@ -573,6 +573,62 @@ describe('Overflow', () => {
     setContainerSize(499);
     setContainerSize(500);
     cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  it('should count accurately size of items', () => {
+    mount(
+      <Container>
+        <Item width="unset" id="0">
+          Item 0
+        </Item>
+        <Item width="unset" id="1">
+          Item 1
+        </Item>
+        <Item width="unset" id="2">
+          Super Long Item 2
+        </Item>
+        <Item width="unset" id="3">
+          3
+        </Item>
+        <Item id="4">Item 4</Item>
+        <Item id="5">Item 5</Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerSize(355);
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+    setContainerSize(354);
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    setContainerSize(355);
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+    setContainerSize(305);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    setContainerSize(304);
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerSize(305);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    setContainerSize(282);
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerSize(281);
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+    setContainerSize(282);
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerSize(104);
+    cy.get(`[${selectors.item}="0"]`).should('be.visible');
+    cy.get(`[${selectors.item}="1"]`).should('not.be.visible');
+    setContainerSize(102);
+    cy.get(`[${selectors.item}="0"]`).should('not.be.visible');
   });
 
   it('should start overflowing once minimum visible items is reached', () => {
