@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, tokens } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, tokens, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   contentHeader: {
@@ -28,6 +28,7 @@ const ExampleContent = () => {
 
 export const Appearance = () => {
   const layoutStyles = useLayoutStyles();
+  const id = useId();
 
   return (
     <div className={layoutStyles.root}>
@@ -36,7 +37,7 @@ export const Appearance = () => {
           <Button>Default appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface id={id} aria-labelledby={id}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -46,7 +47,7 @@ export const Appearance = () => {
           <Button>Brand appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface id={id} aria-labelledby={id}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -56,7 +57,7 @@ export const Appearance = () => {
           <Button>Inverted appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface id={id} aria-labelledby={id}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

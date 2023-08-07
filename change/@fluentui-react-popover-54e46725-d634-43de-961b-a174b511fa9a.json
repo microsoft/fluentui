@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Screen reader compatibility",
+  "packageName": "@fluentui/react-popover",
+  "email": "eysjiang@gmail.com",
+  "dependentChangeType": "patch"
+}

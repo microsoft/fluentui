@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, useId } from '@fluentui/react-components';
 import type { PopoverTriggerChildProps } from '@fluentui/react-components';
 const useStyles = makeStyles({
   contentHeader: {
@@ -27,12 +27,13 @@ const CustomPopoverTrigger = React.forwardRef<HTMLButtonElement, Partial<Popover
 });
 
 export const CustomTrigger = () => {
+  const id = useId();
   return (
     <Popover>
       <PopoverTrigger>
         <CustomPopoverTrigger />
       </PopoverTrigger>
-      <PopoverSurface>
+      <PopoverSurface id={id} aria-labelledby={id}>
         <ExampleContent />
       </PopoverSurface>
     </Popover>

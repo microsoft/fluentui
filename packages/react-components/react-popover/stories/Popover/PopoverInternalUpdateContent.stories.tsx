@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, useId } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -20,6 +20,7 @@ const ExampleContent = () => {
 };
 
 export const InternalUpdateContent = () => {
+  const id = useId();
   const [visible, setVisible] = React.useState(false);
 
   const changeContent = () => setVisible(true);
@@ -35,7 +36,7 @@ export const InternalUpdateContent = () => {
         <Button>Popover trigger</Button>
       </PopoverTrigger>
 
-      <PopoverSurface>
+      <PopoverSurface id={id} aria-labelledby={id}>
         <ExampleContent />
 
         {visible ? (

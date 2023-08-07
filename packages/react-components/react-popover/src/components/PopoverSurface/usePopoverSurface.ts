@@ -49,6 +49,7 @@ export const usePopoverSurface_unstable = (
       role: trapFocus ? 'dialog' : 'group',
       'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
+      tabIndex: '-1',
       ...props,
     }),
   };

@@ -67,7 +67,7 @@ export const NestedPopovers = () => {
         <Button>Root trigger</Button>
       </PopoverTrigger>
 
-      <PopoverSurface>
+      <PopoverSurface aria-labelledby={id}>
         <div>
           <h3 id={id} className={styles.contentHeader}>
             Popover content
