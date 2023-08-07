@@ -16,15 +16,21 @@ export const Appearance = () => {
   return (
     <div className={styles.container}>
       <InteractionTag>
-        <Primary icon={<CalendarMonth />}>filled</Primary>
+        <Primary icon={<CalendarMonth />} hasSecondaryAction>
+          filled
+        </Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag appearance="outline">
-        <Primary icon={<CalendarMonth />}>outline</Primary>
+        <Primary icon={<CalendarMonth />} hasSecondaryAction>
+          outline
+        </Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag appearance="brand">
-        <Primary icon={<CalendarMonth />}>brand</Primary>
+        <Primary icon={<CalendarMonth />} hasSecondaryAction>
+          brand
+        </Primary>
         <Secondary />
       </InteractionTag>
     </div>

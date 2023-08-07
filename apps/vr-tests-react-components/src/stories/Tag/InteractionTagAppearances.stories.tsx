@@ -29,7 +29,7 @@ export default {
 
 export const Filled = () => (
   <InteractionTag appearance="filled">
-    <Primary id={contentId} icon={<CalendarMonth />}>
+    <Primary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
     </Primary>
     <Secondary id={dismissButtonId} />
@@ -40,7 +40,7 @@ export const FilledDarkMode = getStoryVariant(Filled, DARK_MODE);
 
 export const Outline = () => (
   <InteractionTag appearance="outline">
-    <Primary id={contentId} icon={<CalendarMonth />}>
+    <Primary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
     </Primary>
     <Secondary id={dismissButtonId} />
@@ -51,7 +51,7 @@ export const OutlineDarkMode = getStoryVariant(Outline, DARK_MODE);
 
 export const Brand = () => (
   <InteractionTag appearance="brand">
-    <Primary id={contentId} icon={<CalendarMonth />}>
+    <Primary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
     </Primary>
     <Secondary id={dismissButtonId} />

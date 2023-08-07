@@ -37,7 +37,6 @@ export type InteractionTagSlots = {
 
 // @public
 export type InteractionTagState<Value = string> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
-    hasSecondary: boolean;
     handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
 };
 
@@ -51,7 +50,9 @@ export const primaryClassNames: SlotClassNames<PrimarySlots>;
 export type PrimaryContextValues = TagAvatarContextValues;
 
 // @public
-export type PrimaryProps = ComponentProps<Partial<PrimarySlots>>;
+export type PrimaryProps = ComponentProps<Partial<PrimarySlots>> & {
+    hasSecondaryAction?: boolean;
+};
 
 // @public (undocumented)
 export type PrimarySlots = {
@@ -63,7 +64,7 @@ export type PrimarySlots = {
 };
 
 // @public
-export type PrimaryState = ComponentState<PrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> & UseTagAvatarContextValuesOptions;
+export type PrimaryState = ComponentState<PrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> & Pick<PrimaryProps, 'hasSecondaryAction'>> & UseTagAvatarContextValuesOptions;
 
 // @public
 export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;

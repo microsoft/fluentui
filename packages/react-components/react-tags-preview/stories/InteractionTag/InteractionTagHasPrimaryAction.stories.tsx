@@ -21,7 +21,7 @@ export const HasPrimaryAction = () => {
     <InteractionTag>
       <Popover>
         <PopoverTrigger>
-          <Primary>golden retriever</Primary>
+          <Primary hasSecondaryAction>golden retriever</Primary>
         </PopoverTrigger>
         <PopoverSurface className={styles.popover}>
           <ul>

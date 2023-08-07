@@ -155,7 +155,7 @@ const useRootWithoutMediaStyles = makeStyles({
 /**
  * Styles for Primary when InteractionTag has a Secondary button
  */
-const useRootWithSecondaryStyles = makeStyles({
+const useRootWithSecondaryActionStyles = makeStyles({
   base: {
     borderTopRightRadius: tokens.borderRadiusNone,
     borderBottomRightRadius: tokens.borderRadiusNone,
@@ -180,7 +180,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
   const rootStyles = useRootStyles();
   const rootDisabledAppearances = useRootDisabledAppearances();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
-  const rootWithSecondaryStyles = useRootWithSecondaryStyles();
+  const rootWithSecondaryActionStyles = useRootWithSecondaryActionStyles();
 
   const iconStyles = useIconStyles();
   const mediaStyles = useMediaStyles();
@@ -198,8 +198,8 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
-    state.hasSecondary && rootWithSecondaryStyles.base,
-    state.hasSecondary && rootWithSecondaryStyles[size],
+    state.hasSecondaryAction && rootWithSecondaryActionStyles.base,
+    state.hasSecondaryAction && rootWithSecondaryActionStyles[size],
 
     state.root.className,
   );

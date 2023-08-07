@@ -32,10 +32,6 @@ export type InteractionTagProps<Value = string> = ComponentProps<Partial<Interac
 export type InteractionTagState<Value = string> = ComponentState<InteractionTagSlots> &
   Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
     /**
-     * Whether the InteractionTag has a second children
-     */
-    hasSecondary: boolean;
-    /**
      * Event handler from TagGroup context that allows TagGroup to dismiss the tag
      */
     handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;

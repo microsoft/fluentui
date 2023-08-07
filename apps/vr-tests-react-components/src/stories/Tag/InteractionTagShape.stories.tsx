@@ -55,7 +55,9 @@ export const RoundedWithMediaRTL = getStoryVariant(RoundedWithMedia, RTL);
 
 export const RoundedDismissible = () => (
   <InteractionTag>
-    <Primary id={contentId}>Primary Text</Primary>
+    <Primary id={contentId} hasSecondaryAction>
+      Primary Text
+    </Primary>
     <Secondary id={dismissButtonId} />
   </InteractionTag>
 );
@@ -86,7 +88,9 @@ export const CircularWithMediaRTL = getStoryVariant(CircularWithMedia, RTL);
 
 export const CircularDismissible = () => (
   <InteractionTag shape="circular">
-    <Primary id={contentId}>Primary Text</Primary>
+    <Primary id={contentId} hasSecondaryAction>
+      Primary Text
+    </Primary>
     <Secondary id={dismissButtonId} />
   </InteractionTag>
 );

@@ -28,11 +28,20 @@ export type PrimarySlots = {
 /**
  * Primary Props
  */
-export type PrimaryProps = ComponentProps<Partial<PrimarySlots>>;
+export type PrimaryProps = ComponentProps<Partial<PrimarySlots>> & {
+  /**
+   * Whether the `InteractionTag` component has a `Secondary` component that provides an secondary action.
+   * If `true`, the `Primary` component will adjust its styles to accommodate the `Secondary` component.
+   */
+  hasSecondaryAction?: boolean;
+};
 
 /**
  * State used in rendering Primary
  */
 export type PrimaryState = ComponentState<PrimarySlots> &
-  Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> &
+  Required<
+    Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> &
+      Pick<PrimaryProps, 'hasSecondaryAction'>
+  > &
   UseTagAvatarContextValuesOptions;

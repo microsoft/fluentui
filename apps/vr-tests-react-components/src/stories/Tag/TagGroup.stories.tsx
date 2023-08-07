@@ -31,15 +31,15 @@ export const Dismissible = () => (
 export const DismissibleWithInteractionTag = () => (
   <TagGroup>
     <InteractionTag>
-      <Primary>Tag 1</Primary>
+      <Primary hasSecondaryAction>Tag 1</Primary>
       <Secondary />
     </InteractionTag>
     <InteractionTag>
-      <Primary>Tag 2</Primary>
+      <Primary hasSecondaryAction>Tag 2</Primary>
       <Secondary />
     </InteractionTag>
     <InteractionTag>
-      <Primary>Tag 3</Primary>
+      <Primary hasSecondaryAction>Tag 3</Primary>
       <Secondary />
     </InteractionTag>
   </TagGroup>

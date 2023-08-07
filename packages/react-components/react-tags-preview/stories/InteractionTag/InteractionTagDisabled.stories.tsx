@@ -14,19 +14,19 @@ export const Disabled = () => {
   return (
     <div className={styles.container}>
       <InteractionTag disabled>
-        <Primary secondaryText="appearance=filled" icon={<CalendarMonthRegular />}>
+        <Primary secondaryText="appearance=filled" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag disabled appearance="outline">
-        <Primary secondaryText="appearance=outline" icon={<CalendarMonthRegular />}>
+        <Primary secondaryText="appearance=outline" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag disabled appearance="brand">
-        <Primary secondaryText="appearance=brand" icon={<CalendarMonthRegular />}>
+        <Primary secondaryText="appearance=brand" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </Primary>
         <Secondary />

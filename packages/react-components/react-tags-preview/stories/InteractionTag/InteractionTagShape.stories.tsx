@@ -25,13 +25,13 @@ export const Shape = () => {
       </InteractionTag>
 
       <InteractionTag>
-        <Primary icon={<CalendarMonthRegular />} secondaryText="Secondary text">
+        <Primary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
           Rounded
         </Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag shape="circular">
-        <Primary icon={<CalendarMonthRegular />} secondaryText="Secondary text">
+        <Primary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
           Circular
         </Primary>
         <Secondary />

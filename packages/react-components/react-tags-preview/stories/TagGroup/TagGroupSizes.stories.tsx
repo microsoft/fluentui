@@ -27,7 +27,9 @@ export const Sizes = () => {
               {size}
             </Tag>
             <InteractionTag>
-              <Primary icon={<CalendarMonthRegular />}>{size}</Primary>
+              <Primary icon={<CalendarMonthRegular />} hasSecondaryAction>
+                {size}
+              </Primary>
               <Secondary />
             </InteractionTag>
           </TagGroup>

@@ -22,24 +22,10 @@ export const useInteractionTag_unstable = (
 
   const { appearance = 'filled', disabled = false, shape = 'rounded', size = contextSize, value = id } = props;
 
-  const children = React.Children.toArray(props.children) as React.ReactElement[];
-  if (process.env.NODE_ENV !== 'production') {
-    if (children.length === 0) {
-      // eslint-disable-next-line no-console
-      console.warn('InteractionTag must contain at least one child');
-    }
-
-    if (children.length > 2) {
-      // eslint-disable-next-line no-console
-      console.warn('InteractionTag must contain at most two children');
-    }
-  }
-
   return {
     appearance,
     disabled,
     handleTagDismiss,
-    hasSecondary: children.length === 2,
     shape,
     size,
     value,

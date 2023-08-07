@@ -29,7 +29,9 @@ export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 // disabled
 export const Disabled = () => (
   <InteractionTag disabled>
-    <Primary icon={<CalendarMonth />}>Primary Text</Primary>
+    <Primary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </Primary>
     <Secondary />
   </InteractionTag>
 );
@@ -38,7 +40,9 @@ export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 
 export const OutlineDisabled = () => (
   <InteractionTag appearance="outline" disabled>
-    <Primary icon={<CalendarMonth />}>Primary Text</Primary>
+    <Primary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </Primary>
     <Secondary />
   </InteractionTag>
 );
@@ -47,7 +51,9 @@ export const OutlineDisabledDarkMode = getStoryVariant(OutlineDisabled, DARK_MOD
 
 export const BrandDisabled = () => (
   <InteractionTag appearance="brand" disabled>
-    <Primary icon={<CalendarMonth />}>Primary Text</Primary>
+    <Primary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </Primary>
     <Secondary />
   </InteractionTag>
 );
@@ -62,7 +68,7 @@ export const SizeSmall = () => (
 );
 export const SizeSmallDismissible = () => (
   <InteractionTag size="small">
-    <Primary>Primary Text</Primary>
+    <Primary hasSecondaryAction>Primary Text</Primary>
     <Secondary />
   </InteractionTag>
 );
@@ -84,7 +90,7 @@ export const SizeExtraSmall = () => (
 );
 export const SizeExtraSmallDismissible = () => (
   <InteractionTag size="extra-small">
-    <Primary>Primary Text</Primary>
+    <Primary hasSecondaryAction>Primary Text</Primary>
     <Secondary />
   </InteractionTag>
 );

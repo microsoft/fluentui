@@ -17,15 +17,21 @@ export const Dismiss = () => {
   return (
     <div className={containerStyles.root}>
       <InteractionTag>
-        <Primary>Primary text</Primary>
+        <Primary hasSecondaryAction>Primary text</Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag>
-        <Primary icon={<CalendarMonthRegular />}>Primary text</Primary>
+        <Primary icon={<CalendarMonthRegular />} hasSecondaryAction>
+          Primary text
+        </Primary>
         <Secondary />
       </InteractionTag>
       <InteractionTag>
-        <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} secondaryText="Secondary text">
+        <Primary
+          media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
+          secondaryText="Secondary text"
+          hasSecondaryAction
+        >
           Primary text
         </Primary>
         <Secondary />

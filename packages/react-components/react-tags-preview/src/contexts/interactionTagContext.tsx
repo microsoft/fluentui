@@ -7,7 +7,6 @@ const interactionTagContextDefaultValue: InteractionTagContextValue = {
   appearance: 'filled',
   disabled: false,
   handleTagDismiss: () => null,
-  hasSecondary: false,
   shape: 'rounded',
   size: 'medium',
   value: '',
@@ -17,7 +16,7 @@ const interactionTagContextDefaultValue: InteractionTagContextValue = {
  * Context shared between InteractionTag and its children components
  */
 export type InteractionTagContextValue<Value = string> = Required<
-  Pick<InteractionTagState, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'> & {
+  Pick<InteractionTagState, 'appearance' | 'disabled' | 'shape' | 'size'> & {
     handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
     value?: Value;
   }

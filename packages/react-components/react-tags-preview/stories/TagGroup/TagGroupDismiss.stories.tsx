@@ -23,7 +23,7 @@ export const Dismiss = () => {
       value: 'foo',
       tag: (
         <InteractionTag key="foo">
-          <Primary>Foo</Primary>
+          <Primary hasSecondaryAction>Foo</Primary>
           <Secondary aria-label="Foo, remove" />
         </InteractionTag>
       ),
@@ -32,7 +32,7 @@ export const Dismiss = () => {
       value: 'bar',
       tag: (
         <InteractionTag key="bar">
-          <Primary>Bar</Primary>
+          <Primary hasSecondaryAction>Bar</Primary>
           <Secondary aria-label="Bar, remove" />
         </InteractionTag>
       ),

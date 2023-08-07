@@ -24,14 +24,15 @@ const avatarShapeMap = {
  * @param ref - reference to root HTMLElement of Primary
  */
 export const usePrimary_unstable = (props: PrimaryProps, ref: React.Ref<HTMLElement>): PrimaryState => {
-  const { appearance, disabled, hasSecondary, shape, size } = useInteractionTagContext_unstable();
+  const { appearance, disabled, shape, size } = useInteractionTagContext_unstable();
+  const { hasSecondaryAction = false } = props;
 
   return {
     appearance,
     avatarShape: avatarShapeMap[shape],
     avatarSize: avatarSizeMap[size],
     disabled,
-    hasSecondary,
+    hasSecondaryAction,
     shape,
     size,
 
