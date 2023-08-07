@@ -132,8 +132,7 @@ jobs:
       - template: .devops/templates/cleanup.yml
 
   - job: merge
-    pool:
-      vmImage: 'windows-2019'
+    pool: '1ES-Host-Ubuntu'
     dependsOn:
       - build_northstar
       - build_react
@@ -152,10 +151,10 @@ jobs:
           artifactName: 'bundlesize-northstar'
           targetPath: '$(Build.ArtifactStagingDirectory)/react-northstar'
 
-      - script: 'chocolatey install jq'
+      - script: 'sudo apt-get install jq'
         displayName: 'Install jq'
 
-      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
+      - script: jq -c -s 'reduce .[] as $item ({}; . * $item)' $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
         displayName: 'Merge @fluentui/react, @fluentui/react-components & @fluentui/react-northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1

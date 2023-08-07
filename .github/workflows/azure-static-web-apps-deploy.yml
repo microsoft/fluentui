@@ -5,7 +5,8 @@ on:
     branches:
       - web-components-v3
     paths:
-      - packages/web-components/*
+      - packages/web-components/**
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,6 +17,11 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.18.1
+          cache: 'yarn'
 
       - name: Build and Deploy Job
         id: builddeploy
