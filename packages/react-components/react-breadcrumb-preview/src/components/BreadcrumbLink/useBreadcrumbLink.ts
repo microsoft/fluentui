@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { BreadcrumbLinkProps, BreadcrumbLinkState } from './BreadcrumbLink.types';
-import { Link } from '@fluentui/react-link';
+import { useLink_unstable } from '@fluentui/react-link';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 /**
  * Create the state required to render BreadcrumbLink.
@@ -14,30 +14,29 @@ import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
  */
 export const useBreadcrumbLink_unstable = (
   props: BreadcrumbLinkProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): BreadcrumbLinkState => {
   const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
-  const { current = false, disabled = false, icon, overflow = false, ...rest } = props;
-  const href = disabled ? undefined : props.href;
-  const as = props.as || (href ? 'a' : 'button');
-  const type = as === 'button' ? 'button' : undefined;
+  const { current = false, disabled = false, icon, overflow = false } = props;
+
+  const link = useLink_unstable(props, ref);
 
   const linkAppearance = props.appearance || appearance;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
+
   return {
-    components: { root: Link, icon: 'span' },
-    root: slot.always(
-      getNativeElementProps(as, {
+    components: {
+      root: link.components.root,
+      icon: 'span',
+    },
+
+    root: slot.always(link.root, {
+      defaultProps: {
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
-        ref,
-        type,
-        disabled,
-        ...rest,
-        href,
-        as,
-      }),
-      { elementType: Link },
-    ),
+      },
+      elementType: link.components.root,
+    }),
+
     appearance: linkAppearance === 'subtle' ? 'subtle' : 'default',
     current,
     disabled,
