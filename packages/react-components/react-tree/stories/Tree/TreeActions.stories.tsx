@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, TreeItemProps } from '@fluentui/react-tree';
+import { Tree, TreeItem as FuiTreeItem, TreeItemLayout, TreeItemProps as FuiTreeItemProps } from '@fluentui/react-tree';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import {
   Button,
@@ -8,103 +8,109 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
+  Slot,
+  getSlots,
+  ComponentProps,
+  resolveShorthand,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 
-const ActionsExample = () => {
-  return (
-    <>
-      <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
-      <Menu>
-        <MenuTrigger disableButtonEnhancement>
-          <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
-        </MenuTrigger>
+type TreeItemSlots = { layout: Slot<typeof TreeItemLayout> };
+type TreeItemProps = FuiTreeItemProps & ComponentProps<Partial<TreeItemSlots>>;
 
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>New </MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>Open File</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
+const TreeItem = ({ layout, children, ...props }: TreeItemProps) => {
+  const focusTargetAttribute = useRestoreFocusTarget();
+  const [layoutChildren, subtree] = React.Children.toArray(children);
+
+  // same items to be used between contextmenu and actions
+  const commonMenuItems = (
+    <>
+      <MenuItem>New </MenuItem>
+      <MenuItem>New Window</MenuItem>
+      <MenuItem disabled>Open File</MenuItem>
+      <MenuItem>Open Folder</MenuItem>
     </>
   );
-};
 
-const ActionableTreeItem = ({ children, ...rest }: TreeItemProps) => {
-  const [open, setOpen] = React.useState(false);
-  const focusTargetAttribute = useRestoreFocusTarget();
-  const [layout, subtree] = React.Children.toArray(children);
+  const { slots, slotProps } = getSlots<TreeItemSlots>({
+    components: { layout: TreeItemLayout },
+    layout: resolveShorthand(layout, {
+      required: true,
+      defaultProps: {
+        actions: (
+          <>
+            <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+            <Menu>
+              <MenuTrigger disableButtonEnhancement>
+                <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>{commonMenuItems}</MenuList>
+              </MenuPopover>
+            </Menu>
+          </>
+        ),
+        children: layoutChildren,
+      },
+    }),
+  });
+
   return (
-    <TreeItem
-      aria-description="has context menu"
-      onContextMenu={e => {
-        if (e.isDefaultPrevented()) {
-          return;
-        }
-        e.preventDefault();
-        setOpen(true);
-      }}
-      {...focusTargetAttribute}
-      {...rest}
-    >
-      <Menu open={open} positioning={'below-end'} onOpenChange={(_, data) => setOpen(data.open)} openOnContext>
-        <MenuTrigger disableButtonEnhancement>
-          <TreeItemLayout actions={<ActionsExample />}>{layout}</TreeItemLayout>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Edit</MenuItem>
-            <MenuItem>New</MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>Open File</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-      {subtree}
-    </TreeItem>
+    <Menu positioning="below-end" openOnContext>
+      <MenuTrigger disableButtonEnhancement>
+        <FuiTreeItem aria-description="has context menu" {...focusTargetAttribute} {...props}>
+          <slots.layout {...slotProps.layout} />
+          {subtree}
+        </FuiTreeItem>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Edit</MenuItem>
+          {commonMenuItems}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
 };
 
 export const Actions = () => {
   return (
     <Tree aria-label="Tree">
-      <ActionableTreeItem itemType="branch">
-        level 1, item 1
+      <TreeItem itemType="branch">
+        item 1
         <Tree>
-          <ActionableTreeItem itemType="branch">
-            level 2, item 1
+          <TreeItem itemType="branch">
+            item 1-1
             <Tree>
-              <ActionableTreeItem itemType="leaf">level 3, item 1</ActionableTreeItem>
-              <ActionableTreeItem itemType="leaf">level 3, item 2</ActionableTreeItem>
+              <TreeItem itemType="leaf">item 1-1-1</TreeItem>
+              <TreeItem itemType="leaf">item 1-1-2</TreeItem>
+              <TreeItem itemType="leaf">item 1-1-3</TreeItem>
             </Tree>
-          </ActionableTreeItem>
-          <ActionableTreeItem itemType="leaf">level 2, item 2</ActionableTreeItem>
-          <ActionableTreeItem itemType="leaf">level 2, item 3</ActionableTreeItem>
+          </TreeItem>
+          <TreeItem itemType="leaf">item 1-2</TreeItem>
+          <TreeItem itemType="leaf">item 1-3</TreeItem>
         </Tree>
-      </ActionableTreeItem>
-      <ActionableTreeItem itemType="branch">
-        level 1, item 2
+      </TreeItem>
+      <TreeItem itemType="branch">
+        item 2
         <Tree>
-          <ActionableTreeItem itemType="branch">
-            level 2, item 1
+          <TreeItem itemType="branch">
+            item 2-1
             <Tree>
-              <ActionableTreeItem itemType="leaf">level 3, item 1</ActionableTreeItem>
+              <TreeItem itemType="leaf">item 2-1-1</TreeItem>
             </Tree>
-          </ActionableTreeItem>
+          </TreeItem>
 
-          <ActionableTreeItem itemType="branch">
-            level 2, item 2
+          <TreeItem itemType="branch">
+            item 3
             <Tree>
-              <ActionableTreeItem itemType="leaf">level 2, item 1</ActionableTreeItem>
-              <ActionableTreeItem itemType="leaf">level 2, item 2</ActionableTreeItem>
+              <TreeItem itemType="leaf">item 3-1</TreeItem>
+              <TreeItem itemType="leaf">item 3-2</TreeItem>
+              <TreeItem itemType="leaf">item 3-3</TreeItem>
             </Tree>
-          </ActionableTreeItem>
+          </TreeItem>
         </Tree>
-      </ActionableTreeItem>
+      </TreeItem>
     </Tree>
   );
 };

@@ -57,15 +57,13 @@ export const LazyLoading = () => {
         !trees[data.value].isLoaded
       ) {
         trees[data.value].query(() =>
-          fetch(`https://swapi.dev/api/${data.value}`)
-            .then(result => result.json())
-            .then((json: Result) =>
-              json.results.map<Entity>(people => ({
-                value: `${data.value}/${people.name}`,
-                parentValue: data.value,
-                name: people.name,
-              })),
-            ),
+          mockFetch(data.value as string).then((json: Result) =>
+            json.results.map<Entity>(entity => ({
+              value: `${data.value}/${entity.name}`,
+              parentValue: data.value,
+              name: entity.name,
+            })),
+          ),
         );
       }
     }
@@ -102,6 +100,19 @@ function useQuery<Value>(initialValue: Value) {
   };
   return { ...queryResult, query } as const;
 }
+
+const mockFetch = (type: string) => {
+  return new Promise<Result>(resolve => {
+    setTimeout(() => {
+      const mockData: Result = {
+        results: Array.from({ length: 10 }, (_, index) => ({
+          name: `${type.charAt(0).toUpperCase() + type.slice(1)} ${index + 1}`,
+        })),
+      };
+      resolve(mockData);
+    }, 1000);
+  });
+};
 
 LazyLoading.parameters = {
   docs: {
