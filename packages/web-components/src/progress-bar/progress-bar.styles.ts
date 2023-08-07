@@ -170,9 +170,7 @@ export const styles = css`
     .progress {
       background-color: HighlightText;
     }
-    .determinate {
-      background-color: Highlight;
-    }
+    .determinate,
     :host([validation-state='success']) .determinate,
     :host([validation-state='warning']) .determinate,
     :host([validation-state='error']) .determinate,
