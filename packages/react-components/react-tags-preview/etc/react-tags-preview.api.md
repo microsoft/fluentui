@@ -91,7 +91,7 @@ export type SecondaryProps = ComponentProps<SecondarySlots>;
 
 // @public (undocumented)
 export type SecondarySlots = {
-    root: Slot<'button'>;
+    root: NonNullable<Slot<'button'>>;
 };
 
 // @public
