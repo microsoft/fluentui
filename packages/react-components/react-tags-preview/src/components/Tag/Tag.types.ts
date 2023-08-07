@@ -1,8 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TagAppearance, TagShape, TagSize } from '../../utils/types';
-import { AvatarContextValues, UseAvatarContextValuesOptions } from '../../contexts/useAvatarContextValues';
+import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../contexts/useTagAvatarContextValues';
 
-export type TagContextValues = AvatarContextValues;
+export type TagContextValues = TagAvatarContextValues;
 
 export type TagSlots = {
   root: NonNullable<Slot<'button', 'span'>>;
@@ -47,4 +47,4 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
  */
 export type TagState = ComponentState<TagSlots> &
   Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> &
-  UseAvatarContextValuesOptions;
+  UseTagAvatarContextValuesOptions;

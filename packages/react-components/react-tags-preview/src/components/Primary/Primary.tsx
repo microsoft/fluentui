@@ -4,7 +4,7 @@ import { usePrimary_unstable } from './usePrimary';
 import { renderPrimary_unstable } from './renderPrimary';
 import { usePrimaryStyles_unstable } from './usePrimaryStyles.styles';
 import type { PrimaryProps } from './Primary.types';
-import { useAvatarContextValues_unstable } from '../../contexts/useAvatarContextValues';
+import { useTagAvatarContextValues_unstable } from '../../contexts/useTagAvatarContextValues';
 
 /**
  * Primary component - used as the first child of the `InteractionTag` component.
@@ -14,7 +14,7 @@ export const Primary: ForwardRefComponent<PrimaryProps> = React.forwardRef((prop
   const state = usePrimary_unstable(props, ref);
 
   usePrimaryStyles_unstable(state);
-  return renderPrimary_unstable(state, useAvatarContextValues_unstable(state));
+  return renderPrimary_unstable(state, useTagAvatarContextValues_unstable(state));
 });
 
 Primary.displayName = 'Primary';

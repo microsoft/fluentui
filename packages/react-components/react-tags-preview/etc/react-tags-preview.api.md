@@ -48,7 +48,7 @@ export const Primary: ForwardRefComponent<PrimaryProps>;
 export const primaryClassNames: SlotClassNames<PrimarySlots>;
 
 // @public (undocumented)
-export type PrimaryContextValues = AvatarContextValues;
+export type PrimaryContextValues = TagAvatarContextValues;
 
 // @public
 export type PrimaryProps = ComponentProps<Partial<PrimarySlots>>;
@@ -63,7 +63,7 @@ export type PrimarySlots = {
 };
 
 // @public
-export type PrimaryState = ComponentState<PrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> & UseAvatarContextValuesOptions;
+export type PrimaryState = ComponentState<PrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> & UseTagAvatarContextValuesOptions;
 
 // @public
 export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
@@ -155,7 +155,7 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> & UseAvatarContextValuesOptions;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> & UseTagAvatarContextValuesOptions;
 
 // @public
 export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;

@@ -1,8 +1,8 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
-import { AvatarContextValues, UseAvatarContextValuesOptions } from '../../contexts/useAvatarContextValues';
+import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../contexts/useTagAvatarContextValues';
 
-export type PrimaryContextValues = AvatarContextValues;
+export type PrimaryContextValues = TagAvatarContextValues;
 
 export type PrimarySlots = {
   root: NonNullable<Slot<'button'>>;
@@ -35,4 +35,4 @@ export type PrimaryProps = ComponentProps<Partial<PrimarySlots>>;
  */
 export type PrimaryState = ComponentState<PrimarySlots> &
   Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'hasSecondary' | 'shape' | 'size'>> &
-  UseAvatarContextValuesOptions;
+  UseTagAvatarContextValuesOptions;

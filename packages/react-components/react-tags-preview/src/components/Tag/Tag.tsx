@@ -4,7 +4,7 @@ import { renderTag_unstable } from './renderTag';
 import { useTagStyles_unstable } from './useTagStyles.styles';
 import type { TagProps } from './Tag.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useAvatarContextValues_unstable } from '../../contexts/useAvatarContextValues';
+import { useTagAvatarContextValues_unstable } from '../../contexts/useTagAvatarContextValues';
 
 /**
  * Tag component -  a visual representation of an attribute.
@@ -14,7 +14,7 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
   const state = useTag_unstable(props, ref);
 
   useTagStyles_unstable(state);
-  return renderTag_unstable(state, useAvatarContextValues_unstable(state));
+  return renderTag_unstable(state, useTagAvatarContextValues_unstable(state));
 });
 
 Tag.displayName = 'Tag';
