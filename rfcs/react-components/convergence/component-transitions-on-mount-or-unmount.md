@@ -37,7 +37,7 @@ import { getNativeElementProps, useMotionPresence, useMergedRefs } from '@fluent
 import type { SampleProps, SampleState } from './Sample.types';
 
 export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref<HTMLElement>): SampleState => {
-  const { ref: componentRef, shouldRender, visible, motionState } = useMotionPresence(open);
+  const { ref: componentRef, active, motionState } = useMotionPresence(open);
 
   return {
     components: {
@@ -48,8 +48,7 @@ export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref
       ref: useMergedRefs(ref, componentRef),
     }),
 
-    shouldRender,
-    visible,
+    active,
     motionState,
   };
 };
@@ -68,7 +67,7 @@ import type { SampleState, SampleSlots } from './Sample.types';
 export const renderSample_unstable = (state: SampleState) => {
   const { slots, slotProps } = getSlots<SampleSlots>(state);
 
-  if (!state.shouldRender) {
+  if (state.motionState === 'unmounted') {
     return null;
   }
 
@@ -117,7 +116,7 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 
   state.root.className = mergeClasses(
     SampleClassNames.root,
-    state.visible && styles.visible,
+    state.active && styles.visible,
     state.motionState === 'entering' && styles.entering,
     state.motionState === 'exiting' && styles.exiting,
     styles.root,
@@ -226,21 +225,13 @@ const {
   ref,
 
   /**
-   * Determines whether the component should be displayed on the screen.
-   *
-   * This property will evaluate to `true` when the provided presence value is true.
-   * Once the provided value changes to false, the hook will monitor the transition/animation
-   * completion and subsequently set this property to false.
-   */
-  shouldRender,
-
-  /**
    * Indicates whether the component is currently rendered and visible.
    *
-   * This flag will be set to `true` one frame after the shouldRender value becomes true.
+   * This flag will be set to `true` one frame after the motionState changes from 'unmounted' to 'entering' or 'resting'
    * It will be set to `false` when the specified presence value changes to false.
+   * Useful to apply CSS transitions only when the element is active.
    */
-  visible,
+  active,
 
   /**
    * Current state of the tracked element
@@ -260,8 +251,8 @@ Options can be provided as a second argument of the hook.:
 ```js
   const presence = useMotionPresence(open, {
     /**
-     * Whether to animate the element on first mount. Useful when the element
-     * is visible on first render, but still can be to be toggled off
+     * Whether to animate the element on first mount. Useful when the animation/transition
+     * should be played if the element is already rendered on screen.
      *
      * @default false
      */
