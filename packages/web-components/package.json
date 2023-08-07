@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.20",
+  "version": "3.0.0-alpha.26",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -47,6 +47,10 @@
     "./button": {
       "types": "./dist/esm/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
+    },
+    "./checkbox": {
+      "types": "./dist/esm/checkbox/define.d.ts",
+      "default": "./dist/esm/checkbox/define.js"
     },
     "./compound-button": {
       "types": "./dist/esm/compound-button/define.d.ts",
@@ -119,6 +123,10 @@
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
+    },
+    "./text-input": {
+      "types": "./dist/esm/text-input/define.d.ts",
+      "default": "./dist/esm/text-input/define.js"
     },
     "./toggle-button": {
       "types": "./dist/esm/toggle-button/define.d.ts",
