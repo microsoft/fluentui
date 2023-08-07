@@ -8,57 +8,67 @@ import {
   useHeadlessFlatTree_unstable,
   HeadlessFlatTreeItemProps,
 } from '@fluentui/react-tree';
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  useRestoreFocusTarget,
+} from '@fluentui/react-components';
+import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 
-type FlatItem = HeadlessFlatTreeItemProps & { layout: string };
+type FlatItem = HeadlessFlatTreeItemProps & { content: string };
 
 const flatTreeItems: FlatItem[] = [
-  { value: '1', layout: 'Level 1, item 1' },
-  { value: '1-1', parentValue: '1', layout: 'Level 2, item 1' },
-  { value: '1-2', parentValue: '1', layout: 'Level 2, item 2' },
-  { value: '1-3', parentValue: '1', layout: 'Level 2, item 3' },
-  { value: '2', layout: 'Level 1, item 2' },
-  { value: '2-1', parentValue: '2', layout: 'Level 2, item 1' },
-  { value: '2-1-1', parentValue: '2-1', layout: 'Level 3, item 1' },
-  { value: '2-1-1-1', parentValue: '2-1-1', layout: 'Level 4, item 1' },
+  { value: '1', content: 'Level 1, item 1' },
+  { value: '1-1', parentValue: '1', content: 'Level 2, item 1' },
+  { value: '1-2', parentValue: '1', content: 'Level 2, item 2' },
+  { value: '1-3', parentValue: '1', content: 'Level 2, item 3' },
+  { value: '2', content: 'Level 1, item 2' },
+  { value: '2-1', parentValue: '2', content: 'Level 2, item 1' },
+  { value: '2-1-1', parentValue: '2-1', content: 'Level 3, item 1' },
+  { value: '2-1-1-1', parentValue: '2-1-1', content: 'Level 4, item 1' },
 ];
 
 // // EXAMPLE OF NESTED TREE ITEMS BEING FLATTEN BY `flattenTree`:
-// type Item = TreeItemProps & { layout: React.ReactNode };
+// type Item = TreeItemProps & { content: React.ReactNode };
 
 // const nestedTreeItems = [
 //   {
 //     value: '1',
-//     layout: <>level 1, item 1</>,
+//     content: <>level 1, item 1</>,
 //     subtree: [
 //       {
 //         value: '1-1',
-//         layout: <>level 2, item 1</>,
+//         content: <>level 2, item 1</>,
 //       },
 //       {
 //         value: '1-2',
-//         layout: <>level 2, item 2</>,
+//         content: <>level 2, item 2</>,
 //       },
 //       {
 //         value: '1-3',
-//         layout: <>level 2, item 3</>,
+//         content: <>level 2, item 3</>,
 //       },
 //     ],
 //   },
 //   {
 //     value: '2',
-//     layout: <>level 1, item 2</>,
+//     content: <>level 1, item 2</>,
 //     subtree: [
 //       {
 //         value: '2-1',
-//         layout: <>level 2, item 1</>,
+//         content: <>level 2, item 1</>,
 //         subtree: [
 //           {
 //             value: '2-1-1',
-//             layout: <>level 3, item 1</>,
+//             content: <>level 3, item 1</>,
 //             subtree: [
 //               {
 //                 value: '2-1-1-1',
-//                 layout: <>level 4, item 1</>,
+//                 content: <>level 4, item 1</>,
 //               },
 //             ],
 //           },
@@ -70,16 +80,51 @@ const flatTreeItems: FlatItem[] = [
 
 // const flatTreeItems = flattenTree_unstable<Item>(nestedTreeItems);
 
+const ActionsExample = () => (
+  <>
+    <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New</MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  </>
+);
+
 export const FlatTree = () => {
-  const virtualTree = useHeadlessFlatTree_unstable(flatTreeItems);
+  const flatTree = useHeadlessFlatTree_unstable(flatTreeItems);
+  const focusTargetAttribute = useRestoreFocusTarget();
+
   return (
-    <Tree {...virtualTree.getTreeProps()} aria-label="Tree">
-      {Array.from(virtualTree.items(), item => {
-        const { layout, ...itemProps } = item.getTreeItemProps();
+    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), flatTreeItem => {
+        const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (
-          <TreeItem {...itemProps} key={item.value}>
-            <TreeItemLayout>{layout}</TreeItemLayout>
-          </TreeItem>
+          <Menu key={flatTreeItem.value} positioning="below-end" openOnContext>
+            <MenuTrigger disableButtonEnhancement>
+              <TreeItem aria-description="has context menu" {...focusTargetAttribute} {...treeItemProps}>
+                <TreeItemLayout actions={<ActionsExample />}>{content}</TreeItemLayout>
+              </TreeItem>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Edit</MenuItem>
+                <MenuItem>New</MenuItem>
+                <MenuItem>New Window</MenuItem>
+                <MenuItem disabled>Open File</MenuItem>
+                <MenuItem>Open Folder</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
         );
       })}
     </Tree>

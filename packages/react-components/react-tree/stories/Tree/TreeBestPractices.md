@@ -13,6 +13,9 @@
 
 - **Use the `aria-label` attribute on the root of the `Tree` component to provide an accessible name for the tree:** This attribute helps screen readers to understand the purpose of the tree, making it more accessible and inclusive.
 
-- **If you provide additional buttons or functionality within tree items, make them accessible with a context menu:** Ensure that any additional actions or features in tree items are accessible for both mouse and keyboard users by implementing a context menu. The additional functionality should not disturb keyboard navigation within the tree.
+- **If you provide additional buttons or functionality within tree items, make them accessible with a context menu:**
+  - Ensure that any additional actions or features in tree items are accessible for both mouse and keyboard users by implementing a context menu.
+  - Include an `aria-description` or `aria-describedby` on tree items with actions/context menu to offer more descriptive information about the interactions, e.g., "has context menu."
+  - The added functionality should not disrupt keyboard navigation within the tree.
 
 </details>
