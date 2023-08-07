@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorBrandBackground2,
@@ -165,24 +165,27 @@ export const styles = css`
       opacity: 1;
     }
   }
-
-  @media (forced-colors: active) {
-    .progress {
-      background-color: HighlightText;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    /* high contrast styles */
+    @media (forced-colors: active) {
+      .progress {
+        background-color: HighlightText;
+      }
+      .determinate {
+        background-color: Highlight;
+      }
+      :host([validation-state='success']) .determinate,
+      :host([validation-state='warning']) .determinate,
+      :host([validation-state='error']) .determinate,
+      :host([validation-state='success']) ..indeterminate-indicator-1,
+      :host([validation-state='success']) ..indeterminate-indicator-2,
+      :host([validation-state='warning']) .indeterminate-indicator-1,
+      :host([validation-state='warning']) .indeterminate-indicator-2,
+      :host([validation-state='error']) .indeterminate-indicator-1,
+      :host([validation-state='error']) .indeterminate-indicator-2 {
+        background-color: Highlight;
+      }
     }
-    .determinate {
-      background-color: Highlight;
-    }
-    :host([validation-state='success']) .determinate,
-    :host([validation-state='warning']) .determinate,
-    :host([validation-state='error']) .determinate,
-    :host([validation-state='success']) ..indeterminate-indicator-1,
-    :host([validation-state='success']) ..indeterminate-indicator-2,
-    :host([validation-state='warning']) .indeterminate-indicator-1,
-    :host([validation-state='warning']) .indeterminate-indicator-2,
-    :host([validation-state='error']) .indeterminate-indicator-1,
-    :host([validation-state='error']) .indeterminate-indicator-2 {
-      background-color: Highlight;
-    }
-  }
-`;
+  `),
+);

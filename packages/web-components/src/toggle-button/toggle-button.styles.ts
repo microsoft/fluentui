@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { styles as ButtonStyles } from '../button/button.styles.js';
 import {
   colorBrandBackgroundHover,
@@ -105,27 +106,29 @@ export const styles = css`
   :host([aria-pressed='true'][appearance='transparent']:active) .control {
     color: ${colorNeutralForeground2BrandPressed};
   }
-
-  @media (forced-colors: active) {
-    :host([aria-pressed='true']) .control,
-    :host([aria-pressed='true'][appearance='primary']) .control,
-    :host([aria-pressed='true'][appearance='subtle']) .control,
-    :host([aria-pressed='true'][appearance='outline']) .control,
-    :host([aria-pressed='true'][appearance='transparent']) .control,
-    :host([aria-pressed='true'][appearance='transparent']) .control {
-      border-color: Highlight;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    /* High contrast styles */
+    @media (forced-colors: active) {
+      :host([aria-pressed='true']) .control,
+      :host([aria-pressed='true'][appearance='primary']) .control,
+      :host([aria-pressed='true'][appearance='subtle']) .control,
+      :host([aria-pressed='true'][appearance='outline']) .control,
+      :host([aria-pressed='true'][appearance='transparent']) .control,
+      :host([aria-pressed='true'][appearance='transparent']) .control {
+        border-color: Highlight;
+      }
+      :host([aria-pressed='false']) .control,
+      :host([aria-pressed='false'][appearance='primary']) .control,
+      :host([aria-pressed='false'][appearance='subtle']) .control,
+      :host([aria-pressed='false'][appearance='outline']) .control,
+      :host([aria-pressed='false'][appearance='transparent']) .control,
+      :host([aria-pressed='false'][appearance='transparent']) .control {
+        border-color: InactiveBorder;
+      }
+      :host(:hover) .control {
+        border-color: Highlight;
+      }
     }
-    :host([aria-pressed='false']) .control,
-    :host([aria-pressed='false'][appearance='primary']) .control,
-    :host([aria-pressed='false'][appearance='subtle']) .control,
-    :host([aria-pressed='false'][appearance='outline']) .control,
-    :host([aria-pressed='false'][appearance='transparent']) .control,
-    :host([aria-pressed='false'][appearance='transparent']) .control {
-      border-color: ActiveBorder;
-    }
-
-    :host(:hover) .control {
-      border-color: Highlight;
-    }
-  }
-`;
+  `),
+);

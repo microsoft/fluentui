@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
@@ -152,49 +152,51 @@ export const styles = css`
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    /* High contrast styles */
+    @media (forced-colors: active) {
+      .switch {
+        border-color: InactiveBorder;
+      }
+      :host(:hover) .switch {
+        border-color: InactiveBorder;
+      }
+      :host(:active) .switch {
+        border-color: ActiveBorder;
+      }
+      :host([aria-checked='true']) .switch {
+        background: Highlight;
+        border-color: Highlight;
+      }
+      :host([aria-checked='true']:hover) .switch {
+        background: Highlight;
+        border-color: Highlight;
+      }
+      :host([aria-checked='true']:active) .switch {
+        background: Highlight;
+        border-color: Highlight;
+      }
 
-  /* High contrast styles */
-  @media (forced-colors: active) {
-    .switch {
-      border-color: InactiveBorder;
-    }
-    :host(:hover) .switch {
-      border-color: InactiveBorder;
-    }
-    :host(:active) .switch {
-      border-color: ActiveBorder;
-    }
-    :host([aria-checked='true']) .switch {
-      background: Highlight;
-      border-color: Highlight;
-    }
-    :host([aria-checked='true']:hover) .switch {
-      background: Highlight;
-      border-color: Highlight;
-    }
-    :host([aria-checked='true']:active) .switch {
-      background: Highlight;
-      border-color: Highlight;
-    }
+      .checked-indicator {
+        background-color: ActiveCaption;
+      }
+      :host(:hover) .checked-indicator {
+        background-color: ActiveCaption;
+      }
+      :host(:active) .checked-indicator {
+        background-color: ActiveCaption;
+      }
 
-    .checked-indicator {
-      background-color: ActiveCaption;
+      :host([aria-checked='true']) .checked-indicator {
+        background-color: ButtonFace;
+      }
+      :host([aria-checked='true']:hover) .checked-indicator {
+        background-color: ButtonFace;
+      }
+      :host([aria-checked='true']:active) .checked-indicator {
+        background-color: ButtonFace;
+      }
     }
-    :host(:hover) .checked-indicator {
-      background-color: ActiveCaption;
-    }
-    :host(:active) .checked-indicator {
-      background-color: ActiveCaption;
-    }
-
-    :host([aria-checked='true']) .checked-indicator {
-      background-color: ButtonFace;
-    }
-    :host([aria-checked='true']:hover) .checked-indicator {
-      background-color: ButtonFace;
-    }
-    :host([aria-checked='true']:active) .checked-indicator {
-      background-color: ButtonFace;
-    }
-  }
-`;
+  `),
+);

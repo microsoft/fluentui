@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -108,10 +108,13 @@ export const styles = css`
     box-shadow: 0 0 0 3px ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
   }
-
-  @media (forced-colors: active) {
-    :host([aria-selected='true'])::after {
-      background-color: Highlight;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    /* High contrast styles */
+    @media (forced-colors: active) {
+      :host([aria-selected='true'])::after {
+        background-color: Highlight;
+      }
     }
-  }
-`;
+  `),
+);
