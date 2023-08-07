@@ -47,6 +47,10 @@ export class ToggleButton extends Button {
   @observable
   public checked: boolean = false;
   protected checkedChanged(prev: boolean | undefined, next: boolean): void {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+
     if (!this.dirtyChecked) {
       this.dirtyChecked = true;
     }
