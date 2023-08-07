@@ -7,7 +7,10 @@ import { useFlatTreeContextValues_unstable } from './useFlatTreeContextValues';
 import { renderFlatTree_unstable } from './renderFlatTree';
 
 /**
- * FlatTree component - TODO: add more docs
+ * The `FlatTree` component is a variation of the `Tree` component that deals with a flattened data structure.
+ *
+ * It should be used on cases where more complex interactions with a Tree is required.
+ * On simple scenarios it is advised to simply use a nested structure instead.
  */
 export const FlatTree: ForwardRefComponent<FlatTreeProps> = React.forwardRef((props, ref) => {
   const state = useFlatTree_unstable(props, ref);
