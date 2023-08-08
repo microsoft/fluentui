@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "sideEffects": false,
   "version": "3.0.0-alpha.27",
   "author": {
     "name": "Microsoft",
@@ -133,6 +132,35 @@
       "default": "./dist/esm/toggle-button/define.js"
     }
   },
+  "sideEffects": [
+    "./dist/esm/accordion/define.js",
+    "./dist/esm/accordion-item/define.js",
+    "./dist/esm/anchor-button/define.js",
+    "./dist/esm/avatar/define.js",
+    "./dist/esm/badge/define.js",
+    "./dist/esm/button/define.js",
+    "./dist/esm/checkbox/define.js",
+    "./dist/esm/compound-button/define.js",
+    "./dist/esm/counter-badge/define.js",
+    "./dist/esm/divider/define.js",
+    "./dist/esm/image/define.js",
+    "./dist/esm/label/define.js",
+    "./dist/esm/menu-list/define.js",
+    "./dist/esm/menu-button/define.js",
+    "./dist/esm/menu-item/define.js",
+    "./dist/esm/progress-bar/define.js",
+    "./dist/esm/radio/define.js",
+    "./dist/esm/radio-group/define.js",
+    "./dist/esm/slider/define.js",
+    "./dist/esm/spinner/define.js",
+    "./dist/esm/switch/define.js",
+    "./dist/esm/tab/define.js",
+    "./dist/esm/tabs/define.js",
+    "./dist/esm/tab-panel/define.js",
+    "./dist/esm/text/define.js",
+    "./dist/esm/text-input/define.js",
+    "./dist/esm/toggle-button/define.js"
+  ],
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
