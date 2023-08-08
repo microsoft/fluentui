@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "multistack bar chart bug fix and vr-test integration",
+  "packageName": "@fluentui/react-charting",
+  "email": "yuhshsingla@microsoft.com",
+  "dependentChangeType": "patch"
+}
