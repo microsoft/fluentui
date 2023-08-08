@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 07 Aug 2023 04:17:07 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Aug 2023 04:18:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.27)
+
+Tue, 08 Aug 2023 04:18:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.26..@fluentui/web-components_v3.0.0-alpha.27)
+
+### Changes
+
+- (accessibility): high contrast fixes ([PR #28717](https://github.com/microsoft/fluentui/pull/28717) by brian.christopher.brady@gmail.com)
+- Fixes low contrast in dark mode for web component badge ([PR #28766](https://github.com/microsoft/fluentui/pull/28766) by ryan@ryanmerrill.net)
 
 ## [3.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.26)
 

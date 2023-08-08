@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "(accessibility): high contrast fixes",
-  "packageName": "@fluentui/web-components",
-  "email": "brian.christopher.brady@gmail.com",
-  "dependentChangeType": "patch"
-}

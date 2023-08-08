@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 08 Aug 2023 04:18:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.27",
+      "version": "3.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "54df8d3a425019ac593089e57225e624247aeb2e",
+            "comment": "(accessibility): high contrast fixes"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "5e205bc242bef175275d73d3ca5c52243782f589",
+            "comment": "Fixes low contrast in dark mode for web component badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Aug 2023 04:17:07 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.26",
       "version": "3.0.0-alpha.26",
