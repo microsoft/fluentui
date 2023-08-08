@@ -497,8 +497,8 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   }
 
   // This needs to be before state.content.className is updated
-  if (state.contentReservedSpaceClassName !== undefined) {
-    state.contentReservedSpaceClassName = mergeClasses(
+  if (state.contentReservedSpace) {
+    state.contentReservedSpace.className = mergeClasses(
       reservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,

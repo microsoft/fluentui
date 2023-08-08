@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   getNativeElementProps,
   mergeCallbacks,
-  resolveShorthand,
   useEventCallback,
   useMergedRefs,
+  slot,
 } from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
@@ -47,30 +47,38 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const iconShorthand = resolveShorthand(icon);
-  const contentShorthand = resolveShorthand(content, { required: true, defaultProps: { children: props.children } });
+  const iconSlot = slot.optional(icon, { elementType: 'span' });
+  const contentShorthand = slot.always(content, {
+    defaultProps: { children: props.children },
+    elementType: 'span',
+  });
+  const iconOnly = Boolean(iconSlot?.children && !contentShorthand.children);
+  const contentReservedSpaceSlot = slot.optional(content, {
+    renderByDefault: !selected && !iconOnly && reserveSelectedTabSpace,
+    defaultProps: { children: props.children },
+    elementType: 'span',
+  });
   return {
-    components: {
-      root: 'button',
-      icon: 'span',
-      content: 'span',
-    },
-    root: getNativeElementProps('button', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'tab',
-      type: 'button',
-      // aria-selected undefined indicates it is not selectable
-      // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
-      'aria-selected': disabled ? undefined : `${selected}`,
-      ...props,
-      disabled,
-      onClick: onTabClick,
-    }),
-    icon: iconShorthand,
-    iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
+    components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
+    root: slot.always(
+      getNativeElementProps('button', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'tab',
+        type: 'button',
+        // aria-selected undefined indicates it is not selectable
+        // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
+        'aria-selected': disabled ? undefined : `${selected}`,
+        ...props,
+        disabled,
+        onClick: onTabClick,
+      }),
+      { elementType: 'button' },
+    ),
+    icon: iconSlot,
+    iconOnly,
     content: contentShorthand,
+    contentReservedSpace: contentReservedSpaceSlot,
     appearance,
-    contentReservedSpaceClassName: reserveSelectedTabSpace ? '' : undefined,
     disabled,
     selected,
     size,
