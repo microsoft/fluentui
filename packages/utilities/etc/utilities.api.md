@@ -22,6 +22,7 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -1014,10 +1015,15 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 // @public
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
-// Warning: (ae-forgotten-export) The symbol "MergeStylesProviderProps" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "MergeStylesRootProviderProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const MergeStylesProvider_unstable: React_2.FC<MergeStylesProviderProps>;
+export const MergeStylesRootProvider_unstable: React_2.FC<MergeStylesRootProviderProps>;
+
+// Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootProviderProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MergeStylesShadowRootProvider_unstable: React_2.FC<MergeStylesShadowRootProviderProps>;
 
 // @public
 export function modalize(target: HTMLElement): () => void;

@@ -12,17 +12,17 @@ describe('styleToClassName', () => {
   });
 
   it('can register classes and avoid re-registering', () => {
-    let className = styleToClassName({}, { background: 'red' });
+    let className = styleToClassName('__globalTest__', {}, { background: 'red' });
 
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}');
 
-    className = styleToClassName({}, { background: 'red' });
+    className = styleToClassName('__globalTest__', {}, { background: 'red' });
 
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}');
 
-    className = styleToClassName({}, { background: 'green' });
+    className = styleToClassName('__globalTest__', {}, { background: 'green' });
 
     expect(className).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:green;}');
@@ -30,6 +30,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -43,6 +44,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors without the selectors wrapper', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         '.foo': { background: 'red' },
@@ -54,6 +56,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors with comma', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -67,6 +70,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors with comma without the selectors wrapper', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         '.foo, .bar': { background: 'red' },
@@ -78,6 +82,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors with comma with pseudo selectors', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -91,6 +96,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors with comma with pseudo selectors', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         ':hover, :active': { background: 'red' },
@@ -102,6 +108,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors with comma with @media query', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -119,6 +126,7 @@ describe('styleToClassName', () => {
 
   it('can have child selectors with comma with @media query', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
@@ -134,6 +142,7 @@ describe('styleToClassName', () => {
 
   it('can have same element class selectors', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -147,6 +156,7 @@ describe('styleToClassName', () => {
 
   it('can have same element class selectors without the selectors wrapper', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         '&.foo': [{ background: 'red' }],
@@ -158,6 +168,7 @@ describe('styleToClassName', () => {
 
   it('can register pseudo selectors', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -172,6 +183,7 @@ describe('styleToClassName', () => {
 
   it('can register pseudo selectors without the selectors wrapper', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         ':hover': { background: 'red' },
@@ -184,6 +196,7 @@ describe('styleToClassName', () => {
 
   it('can register parent and sibling selectors', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -199,6 +212,7 @@ describe('styleToClassName', () => {
 
   it('can merge rules', () => {
     let className = styleToClassName(
+      '__globalTest__',
       {},
       null,
       false,
@@ -210,53 +224,56 @@ describe('styleToClassName', () => {
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual('.css-0{background-color:green;color:white;}');
 
-    className = styleToClassName({}, { backgroundColor: 'green', color: 'white' });
+    className = styleToClassName('__globalTest__', {}, { backgroundColor: 'green', color: 'white' });
     expect(className).toEqual('css-0');
   });
 
   it('returns blank string with no input', () => {
-    expect(styleToClassName({})).toEqual('');
+    expect(styleToClassName('__globalTest__', {})).toEqual('');
   });
 
   it('does not emit a rule which has an undefined value', () => {
-    expect(styleToClassName({}, { fontFamily: undefined })).toEqual('');
+    expect(styleToClassName('__globalTest__', {}, { fontFamily: undefined })).toEqual('');
     expect(_stylesheet.getRules()).toEqual('');
   });
 
   it('returns the same class name for a rule that only has a displayName', () => {
-    expect(styleToClassName({}, { displayName: 'foo' })).toEqual('foo-0');
-    expect(styleToClassName({}, { displayName: 'foo' })).toEqual('foo-0');
+    expect(styleToClassName('__globalTest__', {}, { displayName: 'foo' })).toEqual('foo-0');
+    expect(styleToClassName('__globalTest__', {}, { displayName: 'foo' })).toEqual('foo-0');
     expect(_stylesheet.getRules()).toEqual('');
   });
 
   it('can preserve displayName in names', () => {
-    expect(styleToClassName({}, { displayName: 'DisplayName', background: 'red' })).toEqual('DisplayName-0');
+    expect(styleToClassName('__globalTest__', {}, { displayName: 'DisplayName', background: 'red' })).toEqual(
+      'DisplayName-0',
+    );
     expect(_stylesheet.getRules()).toEqual('.DisplayName-0{background:red;}');
   });
 
   it('can flip rtl and add units', () => {
-    styleToClassName({ rtl: true }, { left: 40 });
+    styleToClassName('__globalTest__', { rtl: true }, { left: 40 });
     expect(_stylesheet.getRules()).toEqual('.css-0{right:40px;}');
   });
 
   it('can prefix webkit specific things', () => {
-    styleToClassName({}, { WebkitFontSmoothing: 'none' });
+    styleToClassName('__globalTest__', {}, { WebkitFontSmoothing: 'none' });
     expect(_stylesheet.getRules()).toEqual('.css-0{-webkit-font-smoothing:none;}');
   });
 
   // TODO: It may not be valid to pass a previously registered rule into styleToClassName
   // since mergeStyles/mergeStyleSets should probably do this in the resolution code.
   it('can expand previously defined rules', () => {
-    const className = styleToClassName({}, { background: 'red' });
-    const newClassName = styleToClassName({}, className, { color: 'white' });
+    const className = styleToClassName('__globalTest__', {}, { background: 'red' });
+    const newClassName = styleToClassName('__globalTest__', {}, className, { color: 'white' });
 
     expect(newClassName).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:red;color:white;}');
   });
 
   it('can expand previously defined rules in selectors', () => {
-    const className = styleToClassName({}, { background: 'red' });
+    const className = styleToClassName('__globalTest__', {}, { background: 'red' });
     const newClassName = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -271,6 +288,7 @@ describe('styleToClassName', () => {
 
   it('can register global selectors', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -285,6 +303,7 @@ describe('styleToClassName', () => {
 
   it('can register global selectors for a parent', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -299,6 +318,7 @@ describe('styleToClassName', () => {
 
   it('can register global selectors hover parent for a selector', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -313,6 +333,7 @@ describe('styleToClassName', () => {
 
   it('can register multiple selectors within a global wrapper', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -327,6 +348,7 @@ describe('styleToClassName', () => {
 
   it('can register multiple selectors wrapped within a global wrappers', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -341,6 +363,7 @@ describe('styleToClassName', () => {
 
   it('can process a ":global(.class3, button)" selector', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -355,6 +378,7 @@ describe('styleToClassName', () => {
 
   it('can process a ":global(.class3 button)" selector', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -369,6 +393,7 @@ describe('styleToClassName', () => {
 
   it('can process a "button:focus, :global(.class1, .class2, .class3)" selector', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -385,6 +410,7 @@ describe('styleToClassName', () => {
 
   it('can process a complex multiple global selector', () => {
     const className = styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -401,12 +427,13 @@ describe('styleToClassName', () => {
   });
 
   it('can expand an array of rules', () => {
-    styleToClassName({}, [{ background: 'red' }, { background: 'white' }]);
+    styleToClassName('__globalTest__', {}, [{ background: 'red' }, { background: 'white' }]);
     expect(_stylesheet.getRules()).toEqual('.css-0{background:white;}');
   });
 
   it('can expand increased specificity rules', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -422,6 +449,7 @@ describe('styleToClassName', () => {
 
   it('can apply media queries', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         background: 'blue',
@@ -451,6 +479,7 @@ describe('styleToClassName', () => {
 
   it('can apply @support queries', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         selectors: {
@@ -466,6 +495,7 @@ describe('styleToClassName', () => {
 
   it('ignores undefined property values', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         background: 'red',
@@ -484,14 +514,14 @@ describe('styleToClassName with specificityMultiplier', () => {
   });
 
   it('can repeat classname', () => {
-    const className = styleToClassName(options, { background: 'red' });
+    const className = styleToClassName('__globalTest__', options, { background: 'red' });
 
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual('.css-0.css-0{background:red;}');
   });
 
   it('can repeat classname when have child selectors', () => {
-    styleToClassName(options, {
+    styleToClassName('__globalTest__', options, {
       selectors: {
         '.foo': { background: 'red' },
       },
@@ -501,7 +531,7 @@ describe('styleToClassName with specificityMultiplier', () => {
   });
 
   it('can repeat classname when have child selectors with comma', () => {
-    styleToClassName(options, {
+    styleToClassName('__globalTest__', options, {
       selectors: {
         '.foo, .bar': { background: 'red' },
       },
@@ -511,7 +541,7 @@ describe('styleToClassName with specificityMultiplier', () => {
   });
 
   it('can repeat classname when have child selectors with comma with pseudo selectors', () => {
-    styleToClassName(options, {
+    styleToClassName('__globalTest__', options, {
       selectors: {
         ':hover, :active': { background: 'red' },
       },
@@ -521,7 +551,7 @@ describe('styleToClassName with specificityMultiplier', () => {
   });
 
   it('can repeat classname when have child selectors with comma with @media query', () => {
-    styleToClassName(options, {
+    styleToClassName('__globalTest__', options, {
       selectors: {
         '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
           background: 'red',
@@ -535,7 +565,7 @@ describe('styleToClassName with specificityMultiplier', () => {
   });
 
   it('do not repeat classname when have global selector', () => {
-    const className = styleToClassName(options, {
+    const className = styleToClassName('__globalTest__', options, {
       selectors: {
         ':global(.class1)': { background: 'red' },
       },
@@ -547,6 +577,7 @@ describe('styleToClassName with specificityMultiplier', () => {
 
   it('handles numeric 0 in props with shorthand syntax (margin, padding)', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         margin: 0,
@@ -560,6 +591,7 @@ describe('styleToClassName with specificityMultiplier', () => {
 
   it('handles calc(...) in props with shorthand syntax (margin, padding)', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         padding: 'calc(24px / 2) 0',
@@ -583,6 +615,7 @@ describe('styleToClassName with specificityMultiplier', () => {
 
   it('handles !important in props with shorthand syntax (margin, padding)', () => {
     styleToClassName(
+      '__globalTest__',
       {},
       {
         padding: '42px !important',

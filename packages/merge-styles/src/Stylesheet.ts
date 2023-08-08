@@ -137,6 +137,10 @@ export class EventMap<K, V> {
     return this._self.has(key);
   }
 
+  public forEach(callback: (value: V, key: K, map: Map<K, V>) => void) {
+    this._self.forEach(callback);
+  }
+
   public raise(type: string, data: { key: K; sheet: V }) {
     const handlers = this._events.get(type);
     if (!handlers) {
@@ -156,6 +160,16 @@ export class EventMap<K, V> {
       this._events.set(type, [callback]);
     } else {
       handlers.push(callback);
+    }
+  }
+
+  public off(type: string, callback: EventHandler) {
+    const handlers = this._events.get(type);
+    if (handlers) {
+      const index = handlers.indexOf(callback);
+      if (index >= 0) {
+        handlers.splice(index, 1);
+      }
     }
   }
 }
@@ -186,6 +200,8 @@ try {
 
 let _stylesheet: Stylesheet | undefined;
 
+let constructableStyleSheetCounter = 0;
+
 /**
  * Represents the state of styles registered in the page. Abstracts
  * the surface for adding styles to the stylesheet, exposes helpers
@@ -203,7 +219,7 @@ export class Stylesheet {
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
   private _config: IStyleSheetConfig;
-  private _counter = 0;
+  private _styleCounter = 0;
   private _keyToClassName: { [key: string]: string } = {};
   private _onInsertRuleCallbacks: Function[] = [];
   private _onResetCallbacks: Function[] = [];
@@ -230,8 +246,10 @@ export class Stylesheet {
         }
         _global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
         const css = _stylesheet._getConstructibleStylesheet();
-        css.__yo__ = stylesheetKey;
-        _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
+        // css.__yo__ = stylesheetKey;
+        requestAnimationFrame(() => {
+          _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
+        });
       } else {
         _global[STYLESHEET_SETTING] = stylesheet;
       }
@@ -260,7 +278,9 @@ export class Stylesheet {
     }
 
     this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
-    this._counter = serializedStylesheet?.counter ?? this._counter;
+    if (this._config.injectionMode !== InjectionMode.unstable_constructibleStylesheet) {
+      this._styleCounter = serializedStylesheet?.counter ?? this._styleCounter;
+    }
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
     this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
     this._rules = serializedStylesheet?.rules ?? this._rules;
@@ -333,6 +353,7 @@ export class Stylesheet {
     const { namespace } = this._config;
     const prefix = displayName || this._config.defaultPrefix;
 
+    // return `${namespace ? namespace + '-' : ''}${prefix}-${this._counter++}`;
     return `${namespace ? namespace + '-' : ''}${prefix}-${this._counter++}`;
   }
 
@@ -465,6 +486,20 @@ export class Stylesheet {
   // Forces the regeneration of incoming styles without totally resetting the stylesheet.
   public resetKeys(): void {
     this._keyToClassName = {};
+  }
+
+  private get _counter(): number {
+    return this._config.injectionMode === InjectionMode.unstable_constructibleStylesheet
+      ? constructableStyleSheetCounter
+      : this._styleCounter;
+  }
+
+  private set _counter(value: number) {
+    if (this._config.injectionMode === InjectionMode.unstable_constructibleStylesheet) {
+      constructableStyleSheetCounter = value;
+    } else {
+      this._styleCounter = value;
+    }
   }
 
   private _getStyleElement(): HTMLStyleElement | undefined {

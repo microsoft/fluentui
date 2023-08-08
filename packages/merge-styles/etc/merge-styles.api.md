@@ -37,9 +37,13 @@ export type DeepPartial<T> = {
 export class EventMap<K, V> {
     constructor();
     // (undocumented)
+    forEach(callback: (value: V, key: K, map: Map<K, V>) => void): void;
+    // (undocumented)
     get(key: K): V | undefined;
     // (undocumented)
     has(key: K): boolean;
+    // (undocumented)
+    off(type: string, callback: EventHandler): void;
     // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -529,6 +533,9 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(s
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
+export function mergeStyleSets(stylesheetKey: string, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+
+// @public (undocumented)
 export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
@@ -542,10 +549,12 @@ export function setRTL(isRTL: boolean): void;
 
 // @public
 export class Stylesheet {
-    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
+    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string);
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
+    // (undocumented)
+    getAdoptableStyleSheet(): CSSStyleSheet | undefined;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;

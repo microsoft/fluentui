@@ -4,7 +4,7 @@ import { hoistStatics } from '../hoistStatics';
 import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets } from '@fluentui/merge-styles';
 import type { ICustomizerContext } from './CustomizerContext';
-import { MergeStylesContextConsumer } from '../shadowDom/MergeStylesContext/MergeStylesContext';
+import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
 
 export function customizable(
   scope: string,
@@ -36,7 +36,7 @@ export function customizable(
 
       public render(): JSX.Element {
         return (
-          <MergeStylesContextConsumer stylesheetKey={scope}>
+          <MergeStylesShadowRootConsumer stylesheetKey={scope}>
             <CustomizerContext.Consumer>
               {(context: ICustomizerContext) => {
                 const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
@@ -69,7 +69,7 @@ export function customizable(
                 return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
               }}
             </CustomizerContext.Consumer>
-          </MergeStylesContextConsumer>
+          </MergeStylesShadowRootConsumer>
         );
       }
 

@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Stack, IStackTokens, SpinButton } from '@fluentui/react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
-import { MergeStylesProvider_unstable, useAdoptedStylesheet_unstable } from '@fluentui/utilities';
+import {
+  MergeStylesRootProvider_unstable,
+  MergeStylesShadowRootProvider_unstable,
+  useAdoptedStylesheet_unstable,
+} from '@fluentui/utilities';
 // import { createProxy as _createProxy, default as _root } from 'react-shadow';
 // eslint-disable-next-line
 import root from 'react-shadow';
@@ -40,32 +44,42 @@ export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> 
   const [shadowRootEl, setShadowRootEl] = React.useState<HTMLElement | null>(null);
 
   const setter = val => {
+    console.log('setter');
     setShadowRootEl(val);
   };
 
   return (
-    <root.div className="shadow-root" delegatesFocus ref={setter}>
-      <MergeStylesProvider_unstable shadowRoot={shadowRootEl?.shadowRoot}>
-        <Stack horizontal tokens={stackTokens}>
-          <DefaultButton
-            text="Standard"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <PrimaryButton
-            text="Primary"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <Hmmm>Hmmm</Hmmm>
-          <SpinButton />
-        </Stack>
-      </MergeStylesProvider_unstable>
-    </root.div>
+    <MergeStylesRootProvider_unstable>
+      <root.div className="shadow-root" delegatesFocus ref={setter}>
+        <MergeStylesShadowRootProvider_unstable shadowRoot={shadowRootEl?.shadowRoot}>
+          <Stack horizontal tokens={stackTokens}>
+            <DefaultButton
+              text="Standard"
+              onClick={_alertClicked}
+              allowDisabledFocus
+              disabled={disabled}
+              checked={checked}
+            />
+            <PrimaryButton
+              text="Primary"
+              onClick={_alertClicked}
+              allowDisabledFocus
+              disabled={disabled}
+              checked={checked}
+            />
+            <PrimaryButton
+              text="Primary 2"
+              onClick={_alertClicked}
+              allowDisabledFocus
+              disabled={disabled}
+              checked={checked}
+            />
+            <Hmmm>Hmmm</Hmmm>
+            <SpinButton />
+          </Stack>
+        </MergeStylesShadowRootProvider_unstable>
+      </root.div>
+    </MergeStylesRootProvider_unstable>
   );
 };
 

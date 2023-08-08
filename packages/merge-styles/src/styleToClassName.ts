@@ -244,7 +244,7 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(
-  stylesheetKey: string,
+  stylesheetKey: string = '__global__',
   options: IStyleOptions,
   ...args: IStyle[]
 ): IRegistration | undefined {
@@ -252,7 +252,7 @@ export function styleToRegistration(
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance(stylesheetKey ?? '__global__');
+    const stylesheet = Stylesheet.getInstance(stylesheetKey);
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
@@ -306,8 +306,8 @@ export function applyRegistration(
   }
 }
 
-export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
-  const registration = styleToRegistration(options, ...args);
+export function styleToClassName(stylesheetKey: string, options: IStyleOptions, ...args: IStyle[]): string {
+  const registration = styleToRegistration(stylesheetKey, options, ...args);
   if (registration) {
     applyRegistration(registration, options.specificityMultiplier);
 

@@ -2720,6 +2720,8 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
 
 // @public (undocumented)
 export interface IButtonStyles {
+    // (undocumented)
+    __stylesheetKey__?: string;
     description?: IStyle;
     descriptionChecked?: IStyle;
     descriptionDisabled?: IStyle;

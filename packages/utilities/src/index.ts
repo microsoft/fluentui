@@ -236,7 +236,14 @@ import './version';
 // eslint-disable-next-line deprecation/deprecation
 export type { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
 
+// export {
+//   MergeStylesProvider_unstable,
+//   useAdoptedStylesheet_unstable,
+// } from './shadowDom/MergeStylesContext/MergeStylesContext';
+
 export {
-  MergeStylesProvider_unstable,
+  MergeStylesShadowRootProvider_unstable,
   useAdoptedStylesheet_unstable,
-} from './shadowDom/MergeStylesContext/MergeStylesContext';
+} from './shadowDom/MergeStylesShadowRootContext';
+
+export { MergeStylesRootProvider_unstable } from './shadowDom/MergeStylesRootContext';

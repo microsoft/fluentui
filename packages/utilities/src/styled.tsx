@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
-import { useAdoptedStylesheet_unstable } from './shadowDom/MergeStylesContext/MergeStylesContext';
+import { useAdoptedStylesheet_unstable } from './shadowDom/MergeStylesShadowRootContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 

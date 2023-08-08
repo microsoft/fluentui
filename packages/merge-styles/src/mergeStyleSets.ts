@@ -79,6 +79,11 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  */
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
+export function mergeStyleSets(
+  stylesheetKey: string,
+  ...styleSets: Array<IStyleSet | undefined | false | null>
+): IProcessedStyleSet<any>;
+
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
  * each which will produce a class name. Using this is analogous to calling
@@ -88,10 +93,17 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
  * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
-  const last = styleSets[styleSets.length - 1];
-  const { stylesheetKey } = last;
-  if (stylesheetKey) {
-    styleSets.pop();
+  // const last = styleSets[styleSets.length - 1];
+  // const { stylesheetKey } = last;
+  // if (stylesheetKey) {
+  //   styleSets.pop();
+  // }
+
+  let stylesheetKey = undefined;
+  let sets = styleSets;
+  if (typeof styleSets[0] === 'string') {
+    stylesheetKey = styleSets[0];
+    sets = styleSets.slice(1);
   }
 
   return mergeCssSets(styleSets as any, getStyleOptions(), stylesheetKey);
@@ -195,7 +207,7 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets(
   styleSets: Array<IStyleSet | undefined | false | null>,
   options?: IStyleOptions,
-  stylesheetKey?: string,
+  stylesheetKey: string = '__global__',
 ): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
