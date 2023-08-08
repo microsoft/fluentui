@@ -8,13 +8,8 @@ import {
 } from '@fluentui/react-tree';
 import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 
-interface Result {
-  results: { name: string }[];
-}
-
-type Item = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
-
-const MAX_PAGES = 3;
+const ITEMS_PER_PAGE = 10;
+const MAX_PAGES = 4;
 
 const pinnedItems = [
   { value: 'pinned', name: 'Pinned', id: 'pinned' },
@@ -22,6 +17,12 @@ const pinnedItems = [
   { value: 'pinned-item-2', parentValue: 'pinned', name: 'Pinned item 2' },
   { value: 'pinned-item-3', parentValue: 'pinned', name: 'Pinned item 3' },
 ];
+
+interface Result {
+  results: { name: string }[];
+}
+
+type Item = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
 
 const useStyles = makeStyles({
   container: {
@@ -36,7 +37,7 @@ export const InfiniteScrolling = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const peopleItems = useQuery<Item[]>([
     { value: 'people', name: 'People' },
-    ...Array.from({ length: 10 }, (_, index) => ({
+    ...Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
       value: `person-${index + 1}`,
       parentValue: 'people',
       name: `Person ${index + 1}`,
@@ -67,19 +68,17 @@ export const InfiniteScrolling = () => {
   const fetchMoreItems = () => {
     setIsLoading(true);
 
-    fetch(`https://swapi.dev/api/people?page=${page}`)
-      .then(res => res.json())
-      .then((json: Result) => {
-        const fetchedItems = json.results.map<Item>(person => ({
-          value: `person-${person.name}`,
-          parentValue: 'people',
-          name: person.name,
-        }));
+    mockFetchPeople(page).then((json: Result) => {
+      const fetchedItems = json.results.map<Item>(person => ({
+        value: `person-${person.name}`,
+        parentValue: 'people',
+        name: person.name,
+      }));
 
-        setIsLoading(false);
-        setPage(page + 1);
-        peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
-      });
+      setIsLoading(false);
+      setPage(prev => prev + 1);
+      peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
+    });
   };
 
   const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
@@ -118,6 +117,19 @@ function useQuery<Value>(initialValue: Value) {
     });
   };
   return { ...queryResult, query } as const;
+}
+
+function mockFetchPeople(page: number): Promise<Result> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const startIndex = page * ITEMS_PER_PAGE + 1;
+      const results = Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
+        name: `Person ${startIndex + index}`,
+      }));
+
+      resolve({ results });
+    }, 1000);
+  });
 }
 
 InfiniteScrolling.parameters = {

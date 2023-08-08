@@ -1,5 +1,5 @@
 import { Tree, updateJson, getProjects, formatFiles } from '@nx/devkit';
-import * as semver from 'semver';
+import semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
 import { getProjectConfig, isPackageVersionConverged, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';

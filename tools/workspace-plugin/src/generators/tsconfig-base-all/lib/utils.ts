@@ -1,5 +1,5 @@
 // use this module to define any kind of generic utilities that are used in more than 1 place within the generator implementation
-import * as path from 'path';
+import path from 'path';
 import { readJson, Tree } from '@nx/devkit';
 
 /**

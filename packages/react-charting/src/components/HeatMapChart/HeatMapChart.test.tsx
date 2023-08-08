@@ -13,7 +13,6 @@ const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
-  jest.useFakeTimers();
   Object.defineProperty(window, 'requestAnimationFrame', {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
@@ -32,7 +31,6 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
-  jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
 }
 const yPoint: string[] = ['p1', 'p2'];
@@ -275,7 +273,7 @@ describe('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout correctly on mouseover', () => {
+  it('Should render callout correctly on mouseover', async () => {
     wrapper = mount(
       <HeatMapChart
         data={HeatMapData}
@@ -284,7 +282,11 @@ describe('HeatMapChart - mouse events', () => {
         calloutProps={{ doNotLayer: true }}
       />,
     );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
     wrapper.find('rect').at(1).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
