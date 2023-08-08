@@ -1,4 +1,4 @@
-import * as yargsParser from 'yargs-parser';
+import yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
 import {
   joinPathFragments,
@@ -11,7 +11,7 @@ import {
   readNxJson,
 } from '@nx/devkit';
 import { PackageJson, PackageJsonWithBeachball } from './types';
-import * as semver from 'semver';
+import semver from 'semver';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator

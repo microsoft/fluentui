@@ -1,4 +1,4 @@
-import * as path from 'path';
+import path from 'path';
 import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nx/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';

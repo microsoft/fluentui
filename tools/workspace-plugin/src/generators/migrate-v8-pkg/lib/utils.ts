@@ -1,11 +1,8 @@
 import { stripIndents } from '@nx/devkit';
-import * as ts from 'typescript';
+import ts from 'typescript';
 
 /**
  * Should be used to get the tooling config object when JS configuration is used
- *
- * @param host
- * @param path
  */
 export function getCjsConfigObjectAst(fileContent: string): ts.ObjectLiteralExpression {
   const sourceFile = ts.createSourceFile('file-config.js', fileContent, ts.ScriptTarget.Latest, true);

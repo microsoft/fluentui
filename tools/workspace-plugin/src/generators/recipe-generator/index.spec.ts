@@ -1,6 +1,6 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { addProjectConfiguration, Tree, writeJson } from '@nx/devkit';
-import * as path from 'path';
+import path from 'path';
 
 import generator from './index';
 import { RecipeGeneratorGeneratorSchema } from './schema';
