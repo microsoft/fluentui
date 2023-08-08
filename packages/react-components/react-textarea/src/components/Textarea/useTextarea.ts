@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import {
-  getPartitionedNativeProps,
-  resolveShorthand,
-  useControllableState,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TextareaProps, TextareaState } from './Textarea.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
@@ -62,16 +57,16 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
       root: 'span',
       textarea: 'textarea',
     },
-    textarea: resolveShorthand(props.textarea, {
-      required: true,
+    textarea: slot.always(props.textarea, {
       defaultProps: {
         ref,
         ...nativeProps.primary,
       },
+      elementType: 'textarea',
     }),
-    root: resolveShorthand(props.root, {
-      required: true,
+    root: slot.always(props.root, {
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
   };
 

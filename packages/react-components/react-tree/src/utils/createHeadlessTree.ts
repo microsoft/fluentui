@@ -126,7 +126,7 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
           'aria-setsize': parentItem.childrenValues.length,
           itemType: item.itemType,
         }),
-        itemType: 'leaf',
+        itemType: propsWithoutParentValue.itemType ?? 'leaf',
         level: parentItem.level + 1,
         parentValue,
         childrenValues: [],

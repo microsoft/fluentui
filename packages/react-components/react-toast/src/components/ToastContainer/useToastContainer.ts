@@ -5,8 +5,8 @@ import {
   ExtractSlotProps,
   Slot,
   useEventCallback,
-  resolveShorthand,
   useId,
+  slot,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
@@ -214,24 +214,27 @@ export const useToastContainer_unstable = (
       timer: Timer,
       root: 'div',
     },
-    timer: resolveShorthand<TimerProps>(
+    timer: slot.always<TimerProps>(
       { key: updateId, onTimeout: close, running, timeout: timerTimeout ?? -1 },
-      { required: true },
+      { elementType: Timer },
     ),
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, toastRef, toastAnimationRef),
-      children,
-      tabIndex: 0,
-      role: 'listitem',
-      'aria-labelledby': titleId,
-      'aria-describedby': bodyId,
-      ...rest,
-      ...userRootSlot,
-      ...focusableGroupAttribute,
-      onMouseEnter,
-      onMouseLeave,
-      onKeyDown,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, toastRef, toastAnimationRef),
+        children,
+        tabIndex: 0,
+        role: 'listitem',
+        'aria-labelledby': titleId,
+        'aria-describedby': bodyId,
+        ...rest,
+        ...userRootSlot,
+        ...focusableGroupAttribute,
+        onMouseEnter,
+        onMouseLeave,
+        onKeyDown,
+      }),
+      { elementType: 'div' },
+    ),
     timerTimeout,
     transitionTimeout: 500,
     running,

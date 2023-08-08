@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, slot } from '@fluentui/react-utilities';
 import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
 
 /**
@@ -12,12 +12,15 @@ export function useMenuGroup_unstable(props: MenuGroupProps, ref: React.Ref<HTML
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      'aria-labelledby': headerId,
-      role: 'group',
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        'aria-labelledby': headerId,
+        role: 'group',
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     headerId,
   };
 }

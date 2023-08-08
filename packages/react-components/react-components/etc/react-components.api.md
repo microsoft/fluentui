@@ -44,6 +44,7 @@ import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
+import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -401,6 +402,7 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
+import { mergeCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
@@ -613,7 +615,10 @@ import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
 import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotComponentType } from '@fluentui/react-utilities';
+import { SlotOptions } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 import { SortDirection } from '@fluentui/react-table';
@@ -908,6 +913,7 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { useFieldContextValues_unstable } from '@fluentui/react-field';
@@ -1174,6 +1180,8 @@ export { AccordionToggleEvent }
 export { AccordionToggleEventHandler }
 
 export { arrowHeights }
+
+export { assertSlots }
 
 export { Avatar }
 
@@ -1889,6 +1897,8 @@ export { MenuTriggerProps }
 
 export { MenuTriggerState }
 
+export { mergeCallbacks }
+
 export { mergeClasses }
 
 export { OnOpenChangeData }
@@ -2313,7 +2323,13 @@ export { SliderState }
 
 export { Slot }
 
+export { slot }
+
 export { SlotClassNames }
+
+export { SlotComponentType }
+
+export { SlotOptions }
 
 export { SlotPropsRecord }
 
@@ -2902,6 +2918,8 @@ export { useDividerStyles_unstable }
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useEventCallback }
 
 export { useField_unstable }
 

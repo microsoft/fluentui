@@ -2,7 +2,7 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 /**
@@ -10,7 +10,7 @@ import { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.ty
  * slots to children.
  */
 export const renderMenuGroupHeader_unstable = (state: MenuGroupHeaderState) => {
-  const { slots, slotProps } = getSlotsNext<MenuGroupHeaderSlots>(state);
+  assertSlots<MenuGroupHeaderSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

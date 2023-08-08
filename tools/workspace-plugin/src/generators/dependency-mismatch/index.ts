@@ -1,4 +1,4 @@
-import * as semver from 'semver';
+import semver from 'semver';
 import { Tree, formatFiles, updateJson, readJson, ProjectConfiguration, getProjects } from '@nrwl/devkit';
 
 import { getProjectPaths, isPackageVersionPrerelease } from '../../utils';

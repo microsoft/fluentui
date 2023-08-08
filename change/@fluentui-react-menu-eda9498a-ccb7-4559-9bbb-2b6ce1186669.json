@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(teams-prg): migrate to new slot API",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
