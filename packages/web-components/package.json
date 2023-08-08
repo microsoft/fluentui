@@ -131,6 +131,10 @@
     "./toggle-button": {
       "types": "./dist/esm/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
+    },
+    "./toolbar": {
+      "types": "./dist/esm/toolbar/define.d.ts",
+      "default": "./dist/esm/toolbar/define.js"
     }
   },
   "scripts": {
