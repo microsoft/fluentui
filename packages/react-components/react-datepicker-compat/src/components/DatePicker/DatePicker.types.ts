@@ -3,7 +3,7 @@ import { Input } from '@fluentui/react-input';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
-import type { PortalProps } from '@fluentui/react-portal';
+import type { PortalProps, PortalState } from '@fluentui/react-portal';
 import type { PositioningProps } from '@fluentui/react-positioning';
 
 export type DatePickerSlots = {
