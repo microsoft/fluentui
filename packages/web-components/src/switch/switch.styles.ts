@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
@@ -18,18 +18,22 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus2,
   colorTransparentBackground,
+  colorTransparentStroke,
   curveEasyEase,
   durationNormal,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
   lineHeightBase300,
+  shadow4,
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalS,
   spacingVerticalXS,
+  strokeWidthThick,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
@@ -142,4 +146,32 @@ export const styles = css`
   :host([aria-checked='true'][disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-`;
+
+  :host(:focus-visible) {
+    border-color: ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .switch {
+      border-color: InactiveBorder;
+    }
+    :host([aria-checked='true']) .switch,
+    :host([aria-checked='true']:active) .switch,
+    :host([aria-checked='true']:hover) .switch {
+      background: Highlight;
+      border-color: Highlight;
+    }
+    .checked-indicator,
+    :host(:hover) .checked-indicator,
+    :host(:active) .checked-indicator {
+      background-color: ActiveCaption;
+    }
+    :host([aria-checked='true']) .checked-indicator,
+    :host([aria-checked='true']:hover) .checked-indicator,
+    :host([aria-checked='true']:active) .checked-indicator {
+      background-color: ButtonFace;
+    }
+  `),
+);
