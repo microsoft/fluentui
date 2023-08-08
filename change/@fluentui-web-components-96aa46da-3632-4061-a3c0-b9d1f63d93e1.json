@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixes low contrast in dark mode for web component badge",
-  "packageName": "@fluentui/web-components",
-  "email": "ryan@ryanmerrill.net",
-  "dependentChangeType": "patch"
-}
