@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { BadgeProps, BadgeState } from './Badge.types';
 
 /**
@@ -24,11 +24,14 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
       root: 'div',
       icon: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    icon: resolveShorthand(props.icon),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
   };
 
   return state;

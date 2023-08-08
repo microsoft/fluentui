@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbLinkProps, BreadcrumbLinkState } from './BreadcrumbLink.types';
 import { Link } from '@fluentui/react-link';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
@@ -20,18 +20,17 @@ export const useBreadcrumbLink_unstable = (
   const { current = false, disabled = false, icon, overflow = false, ...rest } = props;
 
   const linkAppearance = props.appearance || appearance;
-  const iconShorthand = resolveShorthand(icon);
-
+  const iconShorthand = slot.optional(icon, { elementType: 'span' });
   return {
-    components: {
-      root: Link,
-      icon: 'span',
-    },
-    root: getNativeElementProps('a', {
-      'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
-      ref,
-      ...rest,
-    }),
+    components: { root: Link, icon: 'span' },
+    root: slot.always(
+      getNativeElementProps('a', {
+        'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
+        ref,
+        ...rest,
+      }),
+      { elementType: Link },
+    ),
     appearance: linkAppearance === 'subtle' ? 'subtle' : 'default',
     current,
     disabled,

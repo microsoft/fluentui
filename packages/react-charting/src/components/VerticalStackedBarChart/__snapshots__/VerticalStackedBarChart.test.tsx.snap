@@ -540,131 +540,101 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-      data-is-focusable={true}
-      hidden={false}
-      id="toolTipcallout0"
-      style={
-        Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        role="text"
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable={true}
+        hidden={false}
+        id="toolTipcallout0"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "filter": "opacity(0)",
+            "opacity": 0,
+            "pointerEvents": "none",
           }
         }
+        tabIndex={-1}
       >
         <div
           className=
-
+              ms-Callout-main
               {
-                background-blend-mode: normal, luminosity;
                 background-color: #ffffff;
-                display: grid;
-                overflow: hidden;
-                padding-bottom: 10px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 11px;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
               }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          role="text"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
         >
           <div
             className=
 
                 {
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
+                  background-blend-mode: normal, luminosity;
+                  background-color: #ffffff;
+                  display: grid;
+                  overflow: hidden;
+                  padding-bottom: 10px;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 11px;
                 }
           >
             <div
               className=
 
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #605e5c;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: 0.8;
-                  }
-            >
-              2020/04/30
-               
-            </div>
-          </div>
-          <div
-            className=""
-          >
-            <div
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    border-left: 4px solid #0078d4;
-                    color: #323130;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 28px;
-                    font-weight: 600;
-                    line-height: 22px;
-                    margin-top: 13px;
-                    padding-left: 8px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
                   }
             >
               <div
@@ -673,36 +643,74 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #323130;
+                      color: #605e5c;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
+                      opacity: 0.8;
                     }
               >
-                Metadata1
+                2020/04/30
+                 
               </div>
+            </div>
+            <div
+              className=""
+            >
               <div
                 className=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #0078d4;
+                      border-left: 4px solid #0078d4;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 28px;
-                      font-weight: bold;
-                      line-height: 36px;
+                      font-weight: 600;
+                      line-height: 22px;
+                      margin-top: 13px;
+                      padding-left: 8px;
                     }
               >
-                40%
+                <div
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 16px;
+                      }
+                >
+                  Metadata1
+                </div>
+                <div
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #0078d4;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 28px;
+                        font-weight: bold;
+                        line-height: 36px;
+                      }
+                >
+                  40%
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -1246,87 +1254,95 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-      data-is-focusable={true}
-      hidden={false}
-      id="toolTipcallout0"
-      style={
-        Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        role="text"
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable={true}
+        hidden={false}
+        id="toolTipcallout0"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "filter": "opacity(0)",
+            "opacity": 0,
+            "pointerEvents": "none",
           }
         }
+        tabIndex={-1}
       >
-        <div>
-          <pre>
-            {
+        <div
+          className=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          role="text"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
+        >
+          <div>
+            <pre>
+              {
   "legend": "Metadata1",
   "data": 40,
   "color": "#0078d4",
   "xAxisCalloutData": "2020/04/30",
   "yAxisCalloutData": "40%"
 }
-          </pre>
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -1980,76 +1996,83 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-      data-is-focusable={true}
-      hidden={false}
-      id="toolTipcallout0"
-      style={
-        Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        role="text"
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable={true}
+        hidden={false}
+        id="toolTipcallout0"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "filter": "opacity(0)",
+            "opacity": 0,
+            "pointerEvents": "none",
           }
         }
+        tabIndex={-1}
       >
-        <div>
-          <pre>
-            {
+        <div
+          className=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          role="text"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
+        >
+          <div>
+            <pre>
+              {
   "chartData": [
     {
       "legend": "Metadata1",
@@ -2077,11 +2100,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     }
   ]
 }
-          </pre>
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -2496,9 +2520,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2913,9 +2934,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3310,9 +3328,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3477,9 +3492,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
       />
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3894,9 +3906,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4311,9 +4320,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4728,9 +4734,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -5145,9 +5148,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -5562,8 +5562,5 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
